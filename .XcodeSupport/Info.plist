@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>XCCCappuccinoObjjIncludePathKey</key>
+	<string>/Users/bach/Documents/Bach/Projekte/Websites/WWW-michaelbach.de/fract/FrACT10/cappDevelop/Frameworks/Debug</string>
+	<key>XCCCappuccinoProcessCappLintKey</key>
+	<false/>
+	<key>XCCCappuccinoProcessNib2CibKey</key>
+	<true/>
+	<key>XCCCappuccinoProcessObjj2ObjcSkeletonKey</key>
+	<true/>
+	<key>XCCCappuccinoProcessObjjKey</key>
+	<false/>
+	<key>XCCCappuccinoProjectBinPathsKey</key>
+	<array>
+		<string>~/bin</string>
+	</array>
+	<key>XCCCappuccinoProjectNicknameKey</key>
+	<string>cappDevelop</string>
+	<key>XCCCappuccinoProjectPreviousStatusKey</key>
+	<integer>1</integer>
+	<key>XCCCompatibilityVersion</key>
+	<string>4</string>
+</dict>
+</plist>
