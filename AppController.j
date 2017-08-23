@@ -47,8 +47,8 @@ window.ondeviceorientation = function(event) {
     kOptoTypeIndexAcuityC = 0;  kOptoTypeIndexAcuityLetters = 1;// constants
 //    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
     [Settgs checkDefaults];
+    if ([Settgs notCalibrated]) alert("»FrACT«\n\nNOTE: Calibration is mandatory for valid results\n(see distance & ruler in 'Settings').");
     [self setColOptotypeFore: [CPColor blackColor]];  [self setColOptotypeBack: [CPColor whiteColor]];
-    if ([Settgs notCalibrated]) alert("NOTE: Calibration is mandatory for valid results (distance & ruler in 'Settings').");
     var s = @"Current key test settings: " + [Settgs distanceInCM] +" cm distance, ";
     s += [Settgs nAlternatives] + " alternatives, " + [Settgs nTrials] + " trials";
     [self setKeyTestSettingsString: s];
