@@ -11,7 +11,7 @@ Created by mb on July 15, 2015.
 */
 
 
-#define dateFract @"2017-08-22"
+#define dateFract @"2017-09-21"
 #define versionFract @"Vs10.beta"
 #define dateSettingsCurrent @"2017-08-05"
 #define defaultDistanceInCM 399

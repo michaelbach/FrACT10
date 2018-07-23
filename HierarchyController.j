@@ -18,7 +18,6 @@
     CPString versionDateString @accessors;
     CPString keyTestSettingsString @accessors;
     CPString currentTestName @accessors;
-
 }
 
 

@@ -9,11 +9,12 @@
 @import <Foundation/Foundation.j>
 @import <AppKit/AppKit.j>
 @import "HierarchyController.j"
+@import "FractView.j"
 @import "FractController.j"
 @import "FractControllerAcuityC.j"
 @import "FractControllerAcuityLetters.j"
 @import "FractControllerAcuityE.j"
-@import "FractView.j"
+@import "FractControllerContrastC.j"
 
 
 /*document.onload = function(){
@@ -53,6 +54,7 @@ window.ondeviceorientation = function(event) {
     s += [Settgs nAlternatives] + " alternatives, " + [Settgs nTrials] + " trials";
     [self setKeyTestSettingsString: s];
 }
+
 
 /*[[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"APXMyPropertyIamInterestedInKey" options:NSKeyValueObservingOptionNew
  context:NULL];
@@ -109,7 +111,12 @@ function requestFullScreen(element) {console.log("requestFullScreen");// Support
     [self runFractControllerOfClass: [FractControllerAcuityE class]];
 }
 
-    
+
+- (IBAction) buttonDoContrastC_action: (id) sender {//console.log("AppController>buttonDoContrastC_action");
+    [self runFractControllerOfClass: [FractControllerContrastC class]];
+}
+
+
 - (IBAction) buttonSettings_action: (id) sender {//console.log("AppController>buttonSettings");
     [Settgs checkDefaults];  [settgsPanel makeKeyAndOrderFront: self];
     [[settgsPanel contentView] setNeedsDisplay: YES];
