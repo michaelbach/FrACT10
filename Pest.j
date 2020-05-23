@@ -10,7 +10,7 @@
 }
 
 
-- (id)initWithNumAlternatives: (int) numAlternatives {//console.log("Pest>init");
+- (id)initWithNumAlternatives: (int) numAlternatives { //console.log("Pest>init");
     self = [super init];
     if (self) {
         kRange = 5000;  kRange1 = kRange - 1;  kRange2 = kRange * 2
@@ -44,7 +44,7 @@
 }
 
 
-- (float) nextStim2apply {//console.log("Pest>nextStim2apply");
+- (float) nextStim2apply { //console.log("Pest>nextStim2apply");
     return [self nextStimGivenAppliedStim: appliedStimStored wasCorrect: wasCorrectStored];
 }
 

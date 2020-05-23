@@ -18,21 +18,8 @@
     CPString versionDateString @accessors;
     CPString keyTestSettingsString @accessors;
     CPString currentTestName @accessors;
+    CPString currentTestResultUnit @accessors;
 }
-
-
-/*- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView {
-    console.log("HierarchyController>drawRect NEEDS OVERRIDE");
-}
-
-
-- (void) runDone {console.log("HierarchyController>runDone");
-}
-
-
-- (void) cancel {
-    // exit to parent controller and don't save
-}*/
 
 
 @end

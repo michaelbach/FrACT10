@@ -16,9 +16,6 @@
 
 - (id)initWithFrame:(CGRect)frame {console.log("FractView>initWithFrame");
     self = [super initWithFrame:frame];
-/*    if (self)  {
-        // Initialization code here
-    }*/
     return self;
 }
 

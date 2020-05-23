@@ -5,10 +5,10 @@
 	<key>Main cib file base name</key>
 	<string>MainMenu.cib</string>
 	<key>CPBundleName</key>
-	<string>capp</string>
+	<string>FrACT10</string>
 	<key>CPBundleVersion</key>
 	<string>1.0</string>
 	<key>CPHumanReadableCopyright</key>
-	<string>Copyright © 2017, Michael Bach, All rights reserved.</string>
+	<string>Copyright © 2020, Michael Bach, All rights reserved.</string>
 </dict>
 </plist>

@@ -8,7 +8,7 @@
 }
 
 
-- (id)initWithNumAlternatives: (int) numAlternatives {//console.log("Thresholder>init");
+- (id)initWithNumAlternatives: (int) numAlternatives { //console.log("Thresholder>init");
     self = [super init];
     if (self) {
         currentThresholder = [[Pest alloc] initWithNumAlternatives: numAlternatives];
@@ -26,7 +26,7 @@
 }
 
 
-- (float) nextStim2apply {//console.log("Thresholder>NextStim2apply");
+- (float) nextStim2apply { //console.log("Thresholder>NextStim2apply");
     return [currentThresholder nextStim2apply];
 }
 

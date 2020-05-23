@@ -11,48 +11,67 @@
 @import "HierarchyController.j"
 @import "FractView.j"
 @import "FractController.j"
-@import "FractControllerAcuityC.j"
-@import "FractControllerAcuityLetters.j"
-@import "FractControllerAcuityE.j"
+@import "FractControllerVAC.j"
+@import "FractControllerVAL.j"
+@import "FractControllerVAE.j"
+@import "FractControllerVAAuck.j"
+@import "FractControllerVAVernier.j"
 @import "FractControllerContrastC.j"
+@import "RewardsController.j"
 
-
-/*document.onload = function(){
-    //alert("*");
-}
-window.ondeviceorientation = function(event) {
-    [setAngleAlpha: Math.round(event.alpha)];
-    [setAngleAlpha: Math.round(event.beta)];
-    [setAngleAlpha: Math.round(event.gamma)];
+/*window.ondeviceorientation = function(event) {
+    [setAngleAlpha: Math.round(event.alpha)]; [setAngleAlpha: Math.round(event.beta)]; [setAngleAlpha: Math.round(event.gamma)];
 }*/
 
 
 @implementation AppController : HierarchyController {
     @outlet CPWindow fractControllerWindow;
-    @outlet CPPanel settgsPanel, aboutPanel, helpPanel;
+    @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVAAuck, responseinfoPanelVAVernier;
+    @outlet CPButton buttVALett, buttVAC, buttVAE, buttVAAuck, buttVAVernier;
+    @outlet CPImageView rewardImageView;
+    CPImage rewardsController;
+    RewardsController rewardsController;
     FractController currentFractController;
-    float angleAlpha @accessors, angleBeta @accessors, angleGamma @accessors;
+    //float angleAlpha @accessors, angleBeta @accessors, angleGamma @accessors;
+    int testID, kTestIDLett, kTestIDC, kTestIDE, kTestIDAuck, kTestIDVernier;
+    BOOL settingsNeedNewDefaults;
+    BOOL runAborted @accessors;
+    id auckImages;
+    int nAuckImagesLoaded;
 }
 
 
 - (void)awakeFromCib { //console.log("AppController>awakeFromCib");
+    settingsNeedNewDefaults = [Settings needNewDefaults];
+    [Settings checkDefaults]; //important to do this early, otherwise the updates don't populate the settings panel – DOES NOT HELP, unfortunately
     [[self window] setFullPlatformWindow: YES];
+    [CPMenu setMenuBarVisible:NO];
 }
 
 
-- (void)applicationDidFinishLaunching:(CPNotification)aNotification {//console.log("AppController>applicationDidFinishLaunching");
-    var v = [Settgs versionNumber] + " · " + [Settgs versionDate]
+- (void) applicationDidFinishLaunching: (CPNotification)aNotification { //console.log("AppController>applicationDidFinishLaunching");
+    [self buttonImageAdjust: buttVALett];  [self buttonImageAdjust: buttVAC];
+    [self buttonImageAdjust: buttVAE];  [self buttonImageAdjust: buttVAAuck];
+    [self buttonImageAdjust: buttVAVernier];
+
+    var v = [Settings versionNumber] + "·" + [Settings versionDate]
     [[self window] setTitle: "FrACT10"]; [self setVersionDateString: v];
-    [settgsPanel setFrameOrigin: CGPointMake(0, 0)];
-    [aboutPanel setFrameOrigin: CGPointMake(0, 0)];
+    //[settingsPanel setFrameOrigin: CGPointMake(0, 0)];
+    
+    kTestIDLett = 0;  kTestIDC = 1; kTestIDE = 2; kTestIDAuck = 3; kTestIDVernier = 4; // constants
+
     kOptoTypeIndexAcuityC = 0;  kOptoTypeIndexAcuityLetters = 1;// constants
 //    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
-    [Settgs checkDefaults];
-    if ([Settgs notCalibrated]) alert("»FrACT«\n\nNOTE: Calibration is mandatory for valid results\n(see distance & ruler in 'Settings').");
+    [Settings checkDefaults];
+    
     [self setColOptotypeFore: [CPColor blackColor]];  [self setColOptotypeBack: [CPColor whiteColor]];
-    var s = @"Current key test settings: " + [Settgs distanceInCM] +" cm distance, ";
-    s += [Settgs nAlternatives] + " alternatives, " + [Settgs nTrials] + " trials";
+    var s = @"Current key test settings: " + [Settings distanceInCM] +" cm distance, ";
+    s += [Settings nAlternatives] + " Landolt alternatives, " + [Settings nTrials] + " trials";
     [self setKeyTestSettingsString: s];
+
+    rewardsController = [[RewardsController alloc] initWithView: rewardImageView];
+
+    [self loadAucklandOptotypes];
 }
 
 
@@ -63,90 +82,178 @@ window.ondeviceorientation = function(event) {
 - (void) defaultsDidChange: (CPNotification) aNotification {console.log("defaultsDidChange");}
 
 
-function requestFullScreen(element) {console.log("requestFullScreen");// Supports most browsers and their versions
-    var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
-    if (requestMethod) { // Native full screen
-        requestMethod.call(element);
-    } else if (typeof window.ActiveXObject !== "undefined") { // Older IE
-        var wscript = new ActiveXObject("WScript.Shell");
-        if (wscript !== null) {wscript.SendKeys("{F11}");}
+- (void) buttonImageAdjust: (CPButton) b {
+    var rect1 = [b frame];
+    [b setFrame: CGRectMake(rect1.origin.x, rect1.origin.y - (rect1.size.width - 16) / 2, rect1.size.width, rect1.size.width)];
+}
+
+
+- (void) loadAucklandOptotypes {
+    [buttVAAuck setEnabled: NO];
+    var auckImageNames = ["butterfly", "car", "duck", "flower", "heart", "house", "moon", "rabbit", "rocket", "tree"];
+    auckImages = [];  nAuckImagesLoaded = 0;
+    for (var i=0; i < auckImageNames.length; i++) {
+        auckImages[i] = [[CPImage alloc] initWithContentsOfFile: [[CPBundle mainBundle] pathForResource: "AucklandOptotypes/" + auckImageNames[i] + ".png"]];
+        [auckImages[i] setDelegate:self];
+    }
+} // delegate ensures that only after all images are successfully loaded, the button is enabled.
+- (void) imageDidLoad: (CPNotification) aNotification { //console.log("didLoadRepresentation: ", aNotification);
+    if ([aNotification loadStatus] == CPImageLoadStatusCompleted) {
+        if (++nAuckImagesLoaded > 9) [buttVAAuck setEnabled: YES];
     }
 }
 
 
-- (void) runFractControllerOfClass: (Class) theClass { //console.log("AppController>runFractControllerOfClass");
-    [settgsPanel close];  [aboutPanel close];
-    [currentFractController release];
-    currentFractController = [[theClass alloc] initWithWindow: fractControllerWindow parent: self];
+- (void) closeAllPanels {
+    [settingsPanel close];  [aboutPanel close];  [responseinfoPanelVAL close];
+    [responseinfoPanelVA4C close];  [responseinfoPanelVA8C close]; [responseinfoPanelVAE close];
+    [responseinfoPanelVAAuck close];  [responseinfoPanelVAVernier close];
 }
 
 
-- (void) runEnd {//console.log("AppController>runEnd");
-    [currentFractController release];
-    currentFractController = nil;
+- (void) runFractController { //console.log("AppController>runFractController");
+    if ([Settings notCalibrated]) {
+        var alert = [CPAlert alertWithMessageText: "WARNING"
+        defaultButton: "I just want to try it out" alternateButton: "OK, take me to Settings" otherButton: nil
+                    informativeTextWithFormat: "\rCalibration is mandatory for valid results.\r\rGoto 'Settings' and enter appropriate values for \r«Length of blue ruler»\rand \r«Observer distance».\r\rThis will also avoid the present obnoxious warning dialog."];
+        [alert runModalWithDidEndBlock: function(alert, returnCode) {
+            switch (returnCode) {
+                case 1: [self buttonSettings_action: nil];  break;
+                case 0: [self runFractController2]; break;
+            }
+        }];
+    } else {
+        [self runFractController2]; 
+    }
 }
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView {//console.log("AppController>drawStimulusInRect");
+-(void) runFractController2 { //console.log("AppController>runFractController2  ");
+    [self closeAllPanels];
+    if ([Settings responseInfoAtStart]) {
+        switch (testID) {
+            case kTestIDLett: [responseinfoPanelVAL makeKeyAndOrderFront: self]; break;
+            case kTestIDC:
+                switch ([Settings nAlternatives]) {
+                   case 4: [responseinfoPanelVA4C makeKeyAndOrderFront: self];  break;
+                   case 8: [responseinfoPanelVA8C makeKeyAndOrderFront: self];  break;
+                }  break;
+            case kTestIDE:
+                [responseinfoPanelVAE makeKeyAndOrderFront: self];  break;
+            case kTestIDAuck:
+                [responseinfoPanelVAAuck makeKeyAndOrderFront: self];  break;
+            case kTestIDVernier:
+                [responseinfoPanelVAVernier makeKeyAndOrderFront: self];  break;
+        }
+    } else {
+        [self runFractController2_actionOK: nil];
+    }
+}
+
+
+- (IBAction) runFractController2_actionOK: (id) sender { //console.log("AppController>buttonFullScreen");
+    [self closeAllPanels];  [currentFractController release];
+    switch (testID) {
+        case kTestIDLett:
+            currentFractController = [[FractControllerVAL alloc] initWithWindow: fractControllerWindow parent: self];
+            break;
+        case kTestIDC:
+            currentFractController = [[FractControllerVAC alloc] initWithWindow: fractControllerWindow parent: self];
+            break;
+        case kTestIDE:
+            currentFractController = [[FractControllerVAE alloc] initWithWindow: fractControllerWindow parent: self];
+            break;
+        case kTestIDAuck:
+            currentFractController = [[FractControllerVAAuck alloc] initWithWindow: fractControllerWindow parent: self];
+            [currentFractController setAuckImages: auckImages];
+            break;
+        case kTestIDVernier:
+            currentFractController = [[FractControllerVAVernier alloc] initWithWindow: fractControllerWindow parent: self];
+            break;
+    }
+}
+
+
+- (IBAction) runFractController2_actionCancel: (id) sender { //console.log("AppController>buttonFullScreen");
+    [self closeAllPanels];
+}
+
+
+- (void) runEnd { //console.log("AppController>runEnd");
+    [currentFractController release];  currentFractController = nil;
+    if (([Settings rewardPicturesWhenDone]) && (!runAborted)) [rewardsController drawRandom];
+}
+
+
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.log("AppController>drawStimulusInRect");
     [currentFractController drawStimulusInRect: dirtyRect forView: fractView];
 }
 
 
-- (IBAction) buttonFullScreen_action: (id) sender {console.log("AppController>buttonFullScreen");
-    requestFullScreen(document.body);
+- (IBAction) buttonFullScreen_action: (id) sender { //console.log("AppController>buttonFullScreen");
+    [Misc fullScreenOn: ![Misc isFullScreen]];
 }
 
 
-- (IBAction) buttonDoAcuityLandolt_action: (id) sender {//console.log("AppController>buttonDoAcuity_action");
-    [self runFractControllerOfClass: [FractControllerAcuityC class]];
+- (IBAction) buttonDoAcuityLetters_action: (id) sender { //console.log("AppController>buttonDoAcuityLetters_action");
+    testID = kTestIDLett;    [self runFractController];
+}
+- (IBAction) buttonDoAcuityLandolt_action: (id) sender { //console.log("AppController>buttonDoAcuity_action");
+    testID = kTestIDC;    [self runFractController];
+}
+- (IBAction) buttonDoAcuityE_action: (id) sender { //console.log("AppController>buttonDoAcuityE_action");
+    testID = kTestIDE;    [self runFractController];
+}
+- (IBAction) buttonDoAcuityAuck_action: (id) sender { //console.log("AppController>buttonDoAcuityA_action");
+    testID = kTestIDAuck;    [self runFractController];
+}
+- (IBAction) buttonDoAcuityVernier_action: (id) sender { //console.log("AppController>buttonDoAcuityE_action");
+    testID = kTestIDVernier;    [self runFractController];
 }
 
 
-- (IBAction) buttonDoAcuityLetters_action: (id) sender {//console.log("AppController>buttonDoAcuityLetters_action");
-    [self runFractControllerOfClass: [FractControllerAcuityLetters class]];
+- (IBAction) buttonSettings_action: (id) sender { //console.log("AppController>buttonSettings");
+    [settingsPanel close];  [settingsPanel release];
+    [Settings checkDefaults];  [settingsPanel makeKeyAndOrderFront: self];
+    [[settingsPanel contentView] setNeedsDisplay: YES];
+    if (settingsNeedNewDefaults) {
+        settingsNeedNewDefaults = NO;
+        [[CPAlert alertWithMessageText: "WARNING" defaultButton: "OK" alternateButton: nil
+            otherButton: nil
+             informativeTextWithFormat: "\r\rAll settings were set to their default values.\r\rIf some fields are empty, please reload this browser window once, then all values will be current.\r\r"] runModal];
+    }
 }
-
-    
-- (IBAction) buttonDoAcuityE_action: (id) sender {//console.log("AppController>buttonDoAcuityE_action");
-    [self runFractControllerOfClass: [FractControllerAcuityE class]];
+- (IBAction) buttonSettingsClose_action: (id) sender { //console.log("AppController>buttonSettingsClose");
+    [Settings checkDefaults];  [settingsPanel close];
 }
-
-
-- (IBAction) buttonDoContrastC_action: (id) sender {//console.log("AppController>buttonDoContrastC_action");
-    [self runFractControllerOfClass: [FractControllerContrastC class]];
-}
-
-
-- (IBAction) buttonSettings_action: (id) sender {//console.log("AppController>buttonSettings");
-    [Settgs checkDefaults];  [settgsPanel makeKeyAndOrderFront: self];
-    [[settgsPanel contentView] setNeedsDisplay: YES];
-}
-- (IBAction) buttonSettingsClose_action: (id) sender {//console.log("AppController>buttonSettingsClose");
-    [Settgs checkDefaults];  [settgsPanel close];
-}
-- (IBAction) buttonSettingsDefaults_action: (id) sender {//console.log("AppController>buttonSettingsDefaults");
+- (IBAction) buttonSettingsDefaults_action: (id) sender { //console.log("AppController>buttonSettingsDefaults");
     [self setColOptotypeFore: [CPColor blackColor]];  [self setColOptotypeBack: [CPColor whiteColor]];
-    [Settgs setDefaults];  [settgsPanel close];  [Settgs setDefaults];  [settgsPanel makeKeyAndOrderFront: self];
-    [[settgsPanel contentView] setNeedsDisplay: YES];
-}
-- (IBAction) buttonSettingsUpdate_action: (id) sender {//console.log("AppController>buttonSettingsDefaults");
-    [settgsPanel close];  [Settgs checkDefaults];  [settgsPanel makeKeyAndOrderFront: self];
-    [[settgsPanel contentView] setNeedsDisplay: YES];
+    [Settings setDefaults];  [settingsPanel close];  [Settings setDefaults];  [settingsPanel makeKeyAndOrderFront: self];
+    [[settingsPanel contentView] setNeedsDisplay: YES];
 }
 
 
-- (IBAction) buttonAbout_action: (id) sender {//console.log("AppController>buttonAbout_action");
+- (IBAction) buttonAbout_action: (id) sender { //console.log("AppController>buttonAbout_action");
     [aboutPanel makeKeyAndOrderFront: self];
 }
-- (IBAction) buttonAboutWebsite_action: (id) sender {//console.log("AppController>buttonAboutClose_action");
-    window.open("http://michaelbach.de");
+- (IBAction) buttonAboutWebsiteMB_action: (id) sender {
+    window.open("https://michaelbach.de");
 }
-- (IBAction) buttonAboutClose_action: (id) sender {//console.log("AppController>buttonAboutClose_action");
+- (IBAction) buttonAboutWebsiteFractSite_action: (id) sender {
+    window.open("https://michaelbach.de/fract/");
+}
+- (IBAction) buttonAboutWebsiteFractBlog_action: (id) sender {
+    window.open("https://michaelbach.de/fract/blog.html");
+}
+- (IBAction) buttonAboutClose_action: (id) sender { //console.log("AppController>buttonAboutClose_action");
     [aboutPanel close];
 }
 
 
-- (IBAction) buttonExit_action: (id) sender {//console.log("AppController>buttonExit_action");
+- (IBAction) buttonExit_action: (id) sender { //console.log("AppController>buttonExit_action");
+    if ([Misc isFullScreen]) {
+        [Misc fullScreenOn: NO];
+    }
     [[self window] close];  [CPApp terminate: nil];
 }
 

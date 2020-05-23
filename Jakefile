@@ -2,8 +2,8 @@
  * Jakefile
  * FrACT10
  *
- * Created by You on July 15, 2015.
- * Copyright 2015, Your Company All rights reserved.
+ * Created by Michael Bach on July 15, 2015.
+ * Copyright 2015–2020, michaelbach.de All rights reserved.
  */
 
 var ENV = require("system").env,
@@ -27,10 +27,10 @@ app (projectName, function(task) {
     task.setBuildPath(FILE.join("Build", configuration));
 
     task.setProductName("capp");
-    task.setIdentifier("com.yourcompany.FrACT10");
+    task.setIdentifier("de.michaelbach.FrACT10");
     task.setVersion("1.0");
-    task.setAuthor("Your Company");
-    task.setEmail("feedback @nospam@ yourcompany.com");
+    task.setAuthor("michaelbach.de");
+    task.setEmail("mike @nospam@ michaelbach.de");
     task.setSummary("capp");
     task.setSources(new FileList("**/*.j").exclude(FILE.join("Build", "**")).exclude(FILE.join("Frameworks", "Source", "**")));
     task.setResources(new FileList("Resources/**"));

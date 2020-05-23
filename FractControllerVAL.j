@@ -1,5 +1,5 @@
-/*
- *  FractControllerAcuityLetters.j
+    /*
+ *  FractControllerVALetters.j
  *  cappDevelop
  *
  *  Created by Bach on 08.08.2017.
@@ -8,13 +8,13 @@
 
 @import <Foundation/CPObject.j>
 
-@implementation FractControllerAcuityLetters: FractController {
+@implementation FractControllerVAL: FractController {
     float kPi, kPi2;
 }
 
 
 - (void) modifyGenericStimulus {[self modifyGenericStimulusWithBonus];}
-- (void) modifyDeviceStimulus {[self acuityModifyDeviceStimulusDIN01_02_04];}
+- (void) modifyDeviceStimulus {[self acuityModifyDeviceStimulusDIN01_02_04_08];}
 - (float) stimDeviceFromGeneric: (float) tPest {return [self acuityStimDeviceFromGeneric: tPest];}
 - (float) stimGenericFromDevice: (float) d {return [self acuityStimGenericFromDevice: d];}
 
@@ -27,10 +27,10 @@
 }
 
 
-- (void)drawSloanCWithGapInPx: (float) gap {//console.log("FractControllerAcuityLetters>drawSloanCWithGapInPx");
+- (void)drawSloanCWithGapInPx: (float) gap { //console.log("FractControllerVALetters>drawSloanCWithGapInPx");
     [self drawLandoltWithGapInPx: gap landoltDirection: 0];
 }
-- (void)drawSloanDWithGapInPx: (float) d {//console.log("FractControllerAcuityLetters>drawSloanDWithGapInPx");
+- (void)drawSloanDWithGapInPx: (float) d { //console.log("FractControllerVALetters>drawSloanDWithGapInPx");
     d *= 0.5;
     var gxf = 1.0, gyf = 1.0;
     CGContextBeginPath(cgc);
@@ -54,7 +54,7 @@
     CGContextAddLineToPoint(cgc, -d * 5 * gxf, -d * 5 * gyf);
     CGContextFillPath(cgc);
 }
-- (void)drawSloanHWithGapInPx: (float) d {//console.log("FractControllerAcuityLetters>drawSloanHWithGapInPx");
+- (void)drawSloanHWithGapInPx: (float) d { //console.log("FractControllerVALetters>drawSloanHWithGapInPx");
     var pnts = [[-5,-5], [-3,-5], [-3,-1], [+3,-1], [+3,-5], [+5,-5], [+5,+5], [+3,+5], [+3,+1], [-3,+1], [-3,+5], [-5,+5], [-5, -5]];
     CGContextBeginPath(cgc);  [self myPoly: pnts withD: d * 0.5];  CGContextFillPath(cgc);
 }
@@ -116,7 +116,7 @@
 }
 
 
-- (void)drawLetterWithGapInPx: (float) gap letterNumber: (int) letterNumber {//console.log("FractControllerAcuityLetters>drawLetterWithGapInPx")
+- (void)drawLetterWithGapInPx: (float) gap letterNumber: (int) letterNumber { //console.log("FractControllerVALetters>drawLetterWithGapInPx")
     CGContextSetFillColor(cgc, colOptotypeFore);
     switch (letterNumber) { //"CDHKNORSVZ"
         case 0:
@@ -143,7 +143,7 @@
 }
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView {//console.log("FractControllerAcuityLetters>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.log("FractControllerVALetters>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, colOptotypeBack);
@@ -153,7 +153,7 @@
         case kStateDrawBack: break;
         case kStateDrawFore:
             CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
-            [self drawLetterWithGapInPx: stimStrengthDevice letterNumber: [alternativesGenerator currentAlternative]];
+            [self drawLetterWithGapInPx: stimStrengthInDeviceunits letterNumber: [alternativesGenerator currentAlternative]];
             break;
         default: break;
     }
@@ -163,16 +163,17 @@
 }
 
 
-- (void) runStart {//console.log("FractControllerAcuityLetters>runStart");
+- (void) runStart { //console.log("FractControllerVALetters>runStart");
     kPi = Math.PI;  kPi2 = kPi / 2;
-    nAlternatives = 8;  nTrials = [Settgs nTrials08];
+    nAlternatives = 10;  nTrials = [Settings nTrials08];
     [self setCurrentTestName: "Acuity_Letters"];
+    [self setCurrentTestResultUnit: "LogMAR"];
     [super runStart];
 }
 
 
-- (void)runEnd {//console.log("FractControllerAcuityLetters>runEnd");
-    if (iTrial < [Settgs nTrials]) {//premature end
+- (void)runEnd { //console.log("FractControllerVALetters>runEnd");
+    if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {
         [self setResultString: [self acuityComposeResult]];
@@ -181,7 +182,7 @@
 }
 
 
-- (int)responseNumberFromChar: (CPString) keyChar {//console.log("FractControllerAcuityLetters>responseNumberFromChar: ", keyChar);
+- (int)responseNumberFromChar: (CPString) keyChar { //console.log("FractControllerVALetters>responseNumberFromChar: ", keyChar);
     switch ([keyChar uppercaseString]) { // "CDHKNORSVZ"
         case "C": return 0;
         case "D": return 1;

@@ -16,35 +16,69 @@
 
 
 @implementation AlternativesGenerator: CPObject {
-    int _nAlternatives;
-    int _lastAlternative;
+    int _currentTrial;
     int currentAlternative @accessors;
+    id alternatives2present;
+    int i;
 }
 
-- (id) initWithNumAlternatives: nAlternatives {//console.log("AlternativesGenerator>initWithNumAlternatives");
+
+function randomiseArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return(array);
+}
+
+
+- (id) initWithNumAlternatives: (int) nAlternatives andNTrials: (int) nTrials { //console.log("AlternativesGenerator>initWithNumAlternatives");
     self = [super init];
     if (self) {
+        //console.log("AlternativesGenerator>initWithNumAlternatives, nAlt:", nAlternatives, ", nT:", nTrials);
         if (nAlternatives < 2) console.log("AlternativesGenerator>initWithNumAlternatives TOO SMALL ", nAlternatives);
-        _nAlternatives = nAlternatives;
-        _lastAlternative = -1;
-        // TODO: randomise
-        [self nextAlternative];
+        if (nAlternatives > 10) {
+            //console.log("AlternativesGenerator>initWithNumAlternatives TOO LARGE ", nAlternatives);
+            nAlternatives = 10;
+        }
+        var possibleAlternatives = [nAlternatives];
+        for (i = 0; i < nAlternatives; ++i) possibleAlternatives[i] = i;
+        //console.log(nAlternatives);
+        switch(nAlternatives) {
+            case 2:
+                for (i = 0; i < nAlternatives; ++i) possibleAlternatives[i] *= 4;  break;
+            case 4: // skip oblique == odd
+                for (i = 0; i < nAlternatives; ++i) possibleAlternatives[i] *= 2;  break;
+            case 8:  //console.log("8 alternatives, special rare-oblique choice");
+                possibleAlternatives = [0, 2, 4, 6, 1, 3, 5, 7]; // oblique never more often then straight
+                break;
+            case 10: break; // letters, no action needed
+            default: console.log("nAlternatives=", nAlternatives, " should never occur!");
+        }
+//        if (nAlternatives == 2) { // to discern between v and h
+//            if (currentTestName != "Acuity_Vernier") { // don't do this for Vernier
+//                if (Prefs.dir2.n == 2) {
+//                    for (i = 0; i < nAlternatives; ++i) possiblenAlternatives[i] += 2;
+//                }
+//            }
+//        }
+        alternatives2present = [nTrials];
+        for (i=0; i < nTrials; ++i) {
+            alternatives2present[i] = possibleAlternatives[i % (nAlternatives)];
+        }
+        alternatives2present = randomiseArray(alternatives2present);
+        _currentTrial = 0;
     }
     return self;
 }
 
 
-// _nAlternatives==8: 0–7
-// _nAlternatives==4: 0, 2, 4, 6
-// _nAlternatives==2: 0, 4.
-- (int) nextAlternative {//console.log("AlternativesGenerator>nextAlternative");
-    _lastAlternative = currentAlternative;
-    [self setCurrentAlternative: Math.round(Math.random() * (_nAlternatives - 1))];
-    if (_nAlternatives == 4) [self setCurrentAlternative: currentAlternative * 2];
-    if (_nAlternatives == 2) [self setCurrentAlternative: currentAlternative * 4];
-    if (_nAlternatives > 2) {
-        //TODO: avoid last (most of the time)
-    }
+- (int) nextAlternative { //console.log("AlternativesGenerator>nextAlternative");
+    [self setCurrentAlternative: alternatives2present[_currentTrial]];
+    //console.log(_currentTrial, " ", currentAlternative);
+    _currentTrial++;
     return currentAlternative;
 }
 

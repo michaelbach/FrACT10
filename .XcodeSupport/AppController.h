@@ -4,20 +4,37 @@
 @interface AppController : HierarchyController
 
 @property (assign) IBOutlet NSWindow* fractControllerWindow;
-@property (assign) IBOutlet NSPanel* settgsPanel;
+@property (assign) IBOutlet NSPanel* settingsPanel;
 @property (assign) IBOutlet NSPanel* aboutPanel;
 @property (assign) IBOutlet NSPanel* helpPanel;
+@property (assign) IBOutlet NSPanel* responseinfoPanelVAL;
+@property (assign) IBOutlet NSPanel* responseinfoPanelVA4C;
+@property (assign) IBOutlet NSPanel* responseinfoPanelVA8C;
+@property (assign) IBOutlet NSPanel* responseinfoPanelVAE;
+@property (assign) IBOutlet NSPanel* responseinfoPanelVAAuck;
+@property (assign) IBOutlet NSPanel* responseinfoPanelVAVernier;
+@property (assign) IBOutlet NSButton* buttVALett;
+@property (assign) IBOutlet NSButton* buttVAC;
+@property (assign) IBOutlet NSButton* buttVAE;
+@property (assign) IBOutlet NSButton* buttVAAuck;
+@property (assign) IBOutlet NSButton* buttVAVernier;
+@property (assign) IBOutlet NSImageView* rewardImageView;
 
+- (IBAction)runFractController2_actionOK:(id)sender;
+- (IBAction)runFractController2_actionCancel:(id)sender;
 - (IBAction)buttonFullScreen_action:(id)sender;
-- (IBAction)buttonDoAcuityLandolt_action:(id)sender;
 - (IBAction)buttonDoAcuityLetters_action:(id)sender;
+- (IBAction)buttonDoAcuityLandolt_action:(id)sender;
 - (IBAction)buttonDoAcuityE_action:(id)sender;
+- (IBAction)buttonDoAcuityAuck_action:(id)sender;
+- (IBAction)buttonDoAcuityVernier_action:(id)sender;
 - (IBAction)buttonSettings_action:(id)sender;
 - (IBAction)buttonSettingsClose_action:(id)sender;
 - (IBAction)buttonSettingsDefaults_action:(id)sender;
-- (IBAction)buttonSettingsUpdate_action:(id)sender;
 - (IBAction)buttonAbout_action:(id)sender;
-- (IBAction)buttonAboutWebsite_action:(id)sender;
+- (IBAction)buttonAboutWebsiteMB_action:(id)sender;
+- (IBAction)buttonAboutWebsiteFractSite_action:(id)sender;
+- (IBAction)buttonAboutWebsiteFractBlog_action:(id)sender;
 - (IBAction)buttonAboutClose_action:(id)sender;
 - (IBAction)buttonExit_action:(id)sender;
 

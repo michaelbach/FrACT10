@@ -14,12 +14,12 @@
 }
 
 - (void) modifyGenericStimulus {[self modifyGenericStimulusWithBonus];}
-- (void) modifyDeviceStimulus {[self acuityModifyDeviceStimulusDIN01_02_04];}
+- (void) modifyDeviceStimulus {[self acuityModifyDeviceStimulusDIN01_02_04_08];}
 - (float) stimDeviceFromGeneric: (float) tPest {return [self acuityStimDeviceFromGeneric: tPest];}
 - (float) stimGenericFromDevice: (float) d {return [self acuityStimGenericFromDevice: d];}
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView {//console.log("FractControllerAcuityC>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.log("FractControllerAcuityC>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, colOptotypeBack);
@@ -40,7 +40,7 @@
             CGContextSetFillPattern(cgc, patternContext);
             [self fillCircleAtX: 0 y: 0 radius: 50];
 
-            //[self drawLandoltWithGapInPx: stimStrengthDevice landoltDirection: [alternativesGenerator currentAlternative]];
+            //[self drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: [alternativesGenerator currentAlternative]];
             break;
         default: break;
     }
@@ -51,14 +51,15 @@
 }
 
 
-- (void) runStart {//console.log("FractControllerAcuityLetters>runStart");
+- (void) runStart { //console.log("FractControllerAcuityLetters>runStart");
     [self setCurrentTestName: "Acuity_LandoltC"];
-    [super runStart];
+    [self setCurrentTestResultUnit: "logCS"];
+[super runStart];
 }
 
 
-- (void)runEnd {//console.log("FractControllerAcuityC>runEnd");
-    if (iTrial < nTrials) {//premature end
+- (void)runEnd { //console.log("FractControllerAcuityC>runEnd");
+    if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {
         [self setResultString: [self acuityComposeResult]];
@@ -68,7 +69,7 @@
 
 
 // 0–8: valid; -1: ignore; -2: invalid
-- (int) responseNumberFromChar: (CPString) keyChar {//console.log("FractControllerAcuityC>responseNumberFromChar: ", keyChar);
+- (int) responseNumberFromChar: (CPString) keyChar { //console.log("FractControllerAcuityC>responseNumberFromChar: ", keyChar);
     switch (keyChar) {
         case CPLeftArrowFunctionKey: return 4;
         case CPRightArrowFunctionKey: return 0;
