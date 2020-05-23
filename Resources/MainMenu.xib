@@ -49,9 +49,12 @@
                         <rect key="frame" x="12" y="521" width="776" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
-                    <button toolTip="Start acuity run using Landolt-Cs" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWr-KV-CRJ">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWr-KV-CRJ">
                         <rect key="frame" x="190" y="385" width="110" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">Start acuity run using Landolt-Cs
+
+Shortcut: c </string>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttVAC" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ivt-76-XPn">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -61,9 +64,12 @@
                             <action selector="buttonDoAcuityLandolt_action:" target="450" id="QI5-LG-vla"/>
                         </connections>
                     </button>
-                    <button toolTip="Start acuity run using tumbling Es" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Phl-6Z-YpU">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Phl-6Z-YpU">
                         <rect key="frame" x="343" y="385" width="110" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">Start acuity run using tumbling Es
+
+Shortcut: e </string>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttVAE" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gQo-pc-sRD">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -73,9 +79,12 @@
                             <action selector="buttonDoAcuityE_action:" target="450" id="XwX-rB-ha0"/>
                         </connections>
                     </button>
-                    <button toolTip="Start acuity run using Auckland Optotypes" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6e2-Sj-gkY">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6e2-Sj-gkY">
                         <rect key="frame" x="498" y="385" width="110" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">Start acuity run using Auckland Optotypes
+
+Shortcut: a </string>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttonAuck" imagePosition="only" alignment="center" enabled="NO" borderStyle="border" imageScaling="axesIndependently" inset="2" id="nnv-n0-fGE">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -85,9 +94,12 @@
                             <action selector="buttonDoAcuityAuck_action:" target="450" id="s20-4q-Urj"/>
                         </connections>
                     </button>
-                    <button toolTip="Go to the Settings screen" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUU-sC-ci6">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUU-sC-ci6">
                         <rect key="frame" x="39" y="214" width="110" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">Go to the Settings screen
+
+Shortcut: s </string>
                         <buttonCell key="cell" type="push" title="Settings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Tru-y2-nPz">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -121,9 +133,12 @@
                         <rect key="frame" x="15" y="-1" width="776" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
-                    <button toolTip="Start acuity run using Sloan Letters" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jHx-aa-MPC">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jHx-aa-MPC">
                         <rect key="frame" x="40" y="385" width="110" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">Start acuity run using Sloan Letters
+
+Shortcut: l </string>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttVALett" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xw1-er-aQN">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -133,9 +148,14 @@
                             <action selector="buttonDoAcuityLetters_action:" target="450" id="rlc-aP-8JW"/>
                         </connections>
                     </button>
-                    <button toolTip="Start hyperacuity run" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oB-kn-EbO">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oB-kn-EbO">
                         <rect key="frame" x="651" y="385" width="110" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">
+Start hyperacuity (Vernier) run
+
+Shortcut: v
+</string>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttVAVernier" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vzK-pu-pjy">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -156,9 +176,12 @@
                             <action selector="buttonAbout_action:" target="450" id="yEc-1I-cem"/>
                         </connections>
                     </button>
-                    <button toolTip="Toggle “fullscreen”" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHP-WN-mFO">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHP-WN-mFO">
                         <rect key="frame" x="343" y="214" width="110" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">Toggle “fullscreen”
+
+Shortcut: f </string>
                         <buttonCell key="cell" type="push" title="Fullscreen" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cEz-jl-XIn">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -181,7 +204,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBn-1C-8cg">
-                        <rect key="frame" x="2" y="10" width="797" height="66"/>
+                        <rect key="frame" x="2" y="13" width="797" height="66"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="resultString" allowsEditingTextAttributes="YES" usesSingleLineMode="YES" id="eZN-cU-So4">
                             <font key="font" metaFont="system" size="36"/>
@@ -192,8 +215,8 @@
                             <binding destination="450" name="value" keyPath="resultString" id="Szf-LU-Qs3"/>
                         </connections>
                     </textField>
-                    <imageView hidden="YES" toolTip="Start acuity using Sloan Letters" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hno-SY-FzK">
-                        <rect key="frame" x="120" y="1" width="600" height="600"/>
+                    <imageView hidden="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hno-SY-FzK">
+                        <rect key="frame" x="103" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" focusRingType="none" alignment="left" id="e5j-0O-kr0"/>
                     </imageView>
@@ -202,7 +225,7 @@
             <connections>
                 <outlet property="delegate" destination="450" id="0rS-1d-7NY"/>
             </connections>
-            <point key="canvasLocation" x="139" y="147"/>
+            <point key="canvasLocation" x="173" y="106"/>
         </window>
         <customObject id="450" customClass="AppController">
             <connections>
@@ -903,9 +926,8 @@
                                 <view key="view" id="0Bl-gJ-kre">
                                     <rect key="frame" x="10" y="33" width="766" height="489"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <string key="toolTip">Some optotype have a fixed number of choices: 10 for Sloan letters and for Auckland optotypes. For Landolt-Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4</string>
                                     <subviews>
-                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YNX-f3-PL9">
+                                        <textField toolTip="For CALIBRATION: enter the distance between observer and screen here in CENTIMETERS." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YNX-f3-PL9">
                                             <rect key="frame" x="448" y="19" width="40" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="mSo-Pg-7e1">
@@ -913,7 +935,6 @@
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
-                                            <accessibility description="For CALIBRATION: enter the distance between observer and screen here in CENTIMETERS."/>
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.distanceInCM" id="bKr-vF-OLx"/>
                                                 <outlet property="nextKeyView" destination="Wrj-XQ-Ter" id="7QN-cp-VE9"/>
@@ -1109,7 +1130,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wrj-XQ-Ter">
-                                                        <rect key="frame" x="18" y="46" width="54" height="26"/>
+                                                        <rect key="frame" x="18" y="48" width="54" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes.  For Landolt-Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.</string>
                                                         <popUpButtonCell key="cell" type="push" title="2" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="MNg-IJ-MqA" id="jUX-2m-CLf">
@@ -1196,7 +1217,7 @@
                                                 <rect key="frame" x="3" y="3" width="372" height="56"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField toolTip="The optotypes will be presented for a limited time only." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lf9-G7-Nrh">
+                                                    <textField toolTip="The optotypes will be presented for a limited time only [seconds]." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lf9-G7-Nrh">
                                                         <rect key="frame" x="20" y="17" width="40" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="RoV-oa-d4Z">
@@ -1227,7 +1248,7 @@
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField toolTip="After this time, an incorrect response will be recorded." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ojh-w9-WzR">
+                                                    <textField toolTip="After this time, an incorrect response will be recorded [seconds]." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ojh-w9-WzR">
                                                         <rect key="frame" x="194" y="17" width="40" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="rKN-Fo-nEr">
@@ -1362,7 +1383,7 @@
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.maxPossibleDecimalAcuity" id="EiE-0L-37P"/>
                                             </connections>
                                         </textField>
-                                        <textField toolTip="The width of a single vernier line in arcmin" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hrq-dn-eOJ">
+                                        <textField toolTip="The width of a single vernier line in arcmin." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hrq-dn-eOJ">
                                             <rect key="frame" x="108" y="92" width="60" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="nGV-sq-MBL">
@@ -1374,7 +1395,7 @@
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.vernierWidth" id="XVe-72-OAW"/>
                                             </connections>
                                         </textField>
-                                        <textField toolTip="The length of a single vernier line in arcmin" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aCO-F8-Ur7">
+                                        <textField toolTip="The (vertical) length of a single vernier line in arcmin." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aCO-F8-Ur7">
                                             <rect key="frame" x="186" y="92" width="60" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="pVS-jk-NjQ">
@@ -1424,7 +1445,7 @@
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.maxDisplayedAcuity" id="rU5-mf-eQg"/>
                                             </connections>
                                         </comboBox>
-                                        <popUpButton toolTip="The vernier stimulus can be of the 2 ro 3 line variant." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="52z-5L-aE6" userLabel="Vernier type">
+                                        <popUpButton toolTip="The vernier stimulus can be of the 2 or 3 line variant." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="52z-5L-aE6" userLabel="Vernier type">
                                             <rect key="frame" x="15" y="92" width="78" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="2 lines" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="qvW-F3-MnN" id="Din-QU-a6Y" userLabel="2 lines">
@@ -1472,7 +1493,7 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField toolTip="The vertical gap between the vernier lines in arcmin" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xbb-EQ-toj">
+                                        <textField toolTip="The vertical gap between the vernier lines in arcmin." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xbb-EQ-toj">
                                             <rect key="frame" x="264" y="92" width="60" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="jQR-SS-gJb">
@@ -1570,7 +1591,7 @@ DQ
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="19G-8T-Bgw">
                         <rect key="frame" x="20" y="251" width="372" height="329"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="H5V-2Z-rys">
+                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="H5V-2Z-rys">
                             <font key="font" metaFont="system" size="16"/>
                             <string key="title">FrACT10
 ======
@@ -1592,7 +1613,7 @@ With ‘Best PEST’, antialiasing and dithering.</string>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ke1-2Q-RJn">
                         <rect key="frame" x="413" y="352" width="367" height="228"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="IoN-VZ-cjE">
+                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="IoN-VZ-cjE">
                             <font key="font" metaFont="system" size="16"/>
                             <string key="title">©2017–2020
 
@@ -1623,7 +1644,7 @@ DQ
                             <action selector="buttonAboutClose_action:" target="450" id="q99-th-ILa"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UsK-H5-DbG">
+                    <button toolTip="This will open the FrACT blog page in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UsK-H5-DbG">
                         <rect key="frame" x="502" y="13" width="147" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="→FrACT blog" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KLB-6N-g7V">
@@ -1634,7 +1655,7 @@ DQ
                             <action selector="buttonAboutWebsiteFractBlog_action:" target="450" id="zSw-ah-haf"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mhi-G0-KpF">
+                    <button toolTip="This will open my home page in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mhi-G0-KpF">
                         <rect key="frame" x="14" y="13" width="147" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="→michaelbach.de" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="A2S-ZO-kQy">
@@ -1645,7 +1666,7 @@ DQ
                             <action selector="buttonAboutWebsiteMB_action:" target="450" id="NHq-mp-IVL"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xo5-1y-fja">
+                    <button toolTip="This will open the FrACT home page in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xo5-1y-fja">
                         <rect key="frame" x="268" y="13" width="147" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="→FrACT site" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FmC-12-fbn">
@@ -1671,7 +1692,7 @@ DQ
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1DO-9k-S9y">
                         <rect key="frame" x="20" y="216" width="760" height="329"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="JMr-GS-kTU">
+                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="JMr-GS-kTU">
                             <font key="font" metaFont="system" size="16"/>
                             <string key="title">
 Use the letter keys on your keyboard to type the letter appearing on the screen.
@@ -1765,7 +1786,7 @@ Gw
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ljO-6L-t3V">
                         <rect key="frame" x="30" y="201" width="384" height="329"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="UMe-Yr-3VB">
+                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="UMe-Yr-3VB">
                             <font key="font" metaFont="system" size="16"/>
                             <string key="title">
 Rings with gaps will appear, how are they oriented?
@@ -1811,7 +1832,7 @@ Type 55, or &lt;esc&gt; to abort the run.</string>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="icO-7N-r70">
                         <rect key="frame" x="20" y="211" width="383" height="329"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="ZL2-B5-ysg">
+                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="ZL2-B5-ysg">
                             <font key="font" metaFont="system" size="16"/>
                             <string key="title">
 Rings with gaps will appear, where is the gap?
@@ -1914,7 +1935,7 @@ Gw
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tLX-Wp-TQ9">
                         <rect key="frame" x="30" y="206" width="383" height="329"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="4ks-UH-FmP">
+                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="4ks-UH-FmP">
                             <font key="font" metaFont="system" size="16"/>
                             <string key="title">
 Rings with gaps, or “tumbling Es“ will appear, how are they oriented?
@@ -1981,7 +2002,7 @@ Type 55, or &lt;esc&gt; to abort the run.
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7eK-W1-qka">
                         <rect key="frame" x="20" y="216" width="760" height="329"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="zpa-kM-aNd">
+                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="zpa-kM-aNd">
                             <font key="font" metaFont="system" size="16"/>
                             <string key="title">
 Use the number keys on your keyboard to indicate the symbol appearing on the screen.
@@ -2047,7 +2068,7 @@ Gw
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MEO-dD-MuZ">
                         <rect key="frame" x="20" y="216" width="760" height="329"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="nSs-N5-jC6">
+                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="nSs-N5-jC6">
                             <font key="font" metaFont="system" size="16"/>
                             <string key="title">
 Use the arrow (cursor) keys on your keyboard to indicate if the TOP / MIDDLE line is left or right.
