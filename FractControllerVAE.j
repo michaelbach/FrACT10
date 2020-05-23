@@ -1,5 +1,5 @@
 /*
- *  FractControllerAcuityE.j
+ *  FractControllerVAE.j
  *  cappDevelop
  *
  *  Created by Bach on 14.08.2017.
@@ -9,17 +9,17 @@
 @import "FractController.j"
 
 
-@implementation FractControllerAcuityE: FractController
+@implementation FractControllerVAE: FractController
 
 
 - (void) modifyGenericStimulus {[self modifyGenericStimulusWithBonus];}
-- (void) modifyDeviceStimulus {[self acuityModifyDeviceStimulusDIN01_02_04];}
+- (void) modifyDeviceStimulus {[self acuityModifyDeviceStimulusDIN01_02_04_08];}
 - (float) stimDeviceFromGeneric: (float) tPest {return [self acuityStimDeviceFromGeneric: tPest];}
 - (float) stimGenericFromDevice: (float) d {return [self acuityStimGenericFromDevice: d];}
 
 
 // optotype on a -5…+5 coordinate system
-- (void) myPoly: (float) p d: (float) d {//console.log("FractControllerAcuityE>myPoly");
+- (void) myPoly: (float) p d: (float) d { //console.log("FractControllerVAE>myPoly");
     CGContextSetFillColor(cgc, colOptotypeFore);
     CGContextBeginPath(cgc);
     CGContextMoveToPoint(cgc, d * p[0][0], -d * p[0][1]);
@@ -31,7 +31,7 @@
 }
 
 
-- (void) tumblingEWithGapInPx: (float) d direction: (int) theDirection {//console.log("FractControllerAcuityE>tumblingEWithGapInPx");
+- (void) tumblingEWithGapInPx: (float) d direction: (int) theDirection { //console.log("FractControllerVAE>tumblingEWithGapInPx");
     //theDirection = directionIfMirrored(theDirection);
     switch (theDirection) {
         case 0: "E"
@@ -49,7 +49,7 @@
 }
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView {//console.log("FractControllerAcuityC>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.log("FractControllerVAC>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, colOptotypeBack);
@@ -59,7 +59,7 @@
         case kStateDrawBack:  break;
         case kStateDrawFore: //console.log("kStateDrawFore");
             CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
-            [self tumblingEWithGapInPx: stimStrengthDevice direction: [alternativesGenerator currentAlternative]];
+            [self tumblingEWithGapInPx: stimStrengthInDeviceunits direction: [alternativesGenerator currentAlternative]];
             break;
         default: break;
     }
@@ -70,15 +70,16 @@
 }
 
 
-- (void) runStart {//console.log("FractControllerAcuityE>runStart");
+- (void) runStart { //console.log("FractControllerVAE>runStart");
     [self setCurrentTestName: "Acuity_TumblingE"];
-    nAlternatives = 4;  nTrials = [Settgs nTrials04];
+    [self setCurrentTestResultUnit: "LogMAR"];
+    nAlternatives = 4;  nTrials = [Settings nTrials04];
     [super runStart];
 }
 
 
-- (void)runEnd {//console.log("FractControllerAcuityE>runEnd");
-    if (iTrial < nTrials) {//premature end
+- (void)runEnd { //console.log("FractControllerVAE>runEnd");
+    if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {
         [self setResultString: [self acuityComposeResult]];
@@ -87,7 +88,7 @@
 }
 
 
-- (int) responseNumberFromChar: (CPString) keyChar {//console.log("FractControllerAcuityC>responseNumberFromChar: ", keyChar);
+- (int) responseNumberFromChar: (CPString) keyChar { //console.log("FractControllerVAC>responseNumberFromChar: ", keyChar);
     switch (keyChar) {
         case CPLeftArrowFunctionKey: return 4;
         case CPRightArrowFunctionKey: return 0;
