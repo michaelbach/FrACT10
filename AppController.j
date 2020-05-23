@@ -18,6 +18,7 @@
 @import "FractControllerVAVernier.j"
 @import "FractControllerContrastC.j"
 @import "RewardsController.j"
+@import "AucklandOptotypesController.j"
 
 /*window.ondeviceorientation = function(event) {
     [setAngleAlpha: Math.round(event.alpha)]; [setAngleAlpha: Math.round(event.beta)]; [setAngleAlpha: Math.round(event.gamma)];
@@ -31,13 +32,14 @@
     @outlet CPImageView rewardImageView;
     CPImage rewardsController;
     RewardsController rewardsController;
+    AucklandOptotypesController aucklandOptotypesController;
     FractController currentFractController;
     //float angleAlpha @accessors, angleBeta @accessors, angleGamma @accessors;
     int testID, kTestIDLett, kTestIDC, kTestIDE, kTestIDAuck, kTestIDVernier;
     BOOL settingsNeedNewDefaults;
     BOOL runAborted @accessors;
-    id auckImages;
-    int nAuckImagesLoaded;
+//    id auckImages;
+//    int nAuckImagesLoaded;
 }
 
 
@@ -70,8 +72,7 @@
     [self setKeyTestSettingsString: s];
 
     rewardsController = [[RewardsController alloc] initWithView: rewardImageView];
-
-    [self loadAucklandOptotypes];
+    aucklandOptotypesController = [[AucklandOptotypesController alloc] initWithButton2Enable: buttVAAuck];
 }
 
 
@@ -85,22 +86,6 @@
 - (void) buttonImageAdjust: (CPButton) b {
     var rect1 = [b frame];
     [b setFrame: CGRectMake(rect1.origin.x, rect1.origin.y - (rect1.size.width - 16) / 2, rect1.size.width, rect1.size.width)];
-}
-
-
-- (void) loadAucklandOptotypes {
-    [buttVAAuck setEnabled: NO];
-    var auckImageNames = ["butterfly", "car", "duck", "flower", "heart", "house", "moon", "rabbit", "rocket", "tree"];
-    auckImages = [];  nAuckImagesLoaded = 0;
-    for (var i=0; i < auckImageNames.length; i++) {
-        auckImages[i] = [[CPImage alloc] initWithContentsOfFile: [[CPBundle mainBundle] pathForResource: "AucklandOptotypes/" + auckImageNames[i] + ".png"]];
-        [auckImages[i] setDelegate:self];
-    }
-} // delegate ensures that only after all images are successfully loaded, the button is enabled.
-- (void) imageDidLoad: (CPNotification) aNotification { //console.log("didLoadRepresentation: ", aNotification);
-    if ([aNotification loadStatus] == CPImageLoadStatusCompleted) {
-        if (++nAuckImagesLoaded > 9) [buttVAAuck setEnabled: YES];
-    }
 }
 
 
@@ -165,7 +150,7 @@
             break;
         case kTestIDAuck:
             currentFractController = [[FractControllerVAAuck alloc] initWithWindow: fractControllerWindow parent: self];
-            [currentFractController setAuckImages: auckImages];
+            [currentFractController setAuckImages: [aucklandOptotypesController imageArray]];
             break;
         case kTestIDVernier:
             currentFractController = [[FractControllerVAVernier alloc] initWithWindow: fractControllerWindow parent: self];

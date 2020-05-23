@@ -7,6 +7,7 @@
 #include "HierarchyController.h"
 #include "FractView.h"
 #include "FractController.h"
+#include "AucklandOptotypesController.h"
 #include "FractControllerVAL.h"
 #include "RewardsController.h"
 #include "FractControllerVAC.h"
