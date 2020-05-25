@@ -248,6 +248,7 @@
     var resultInGapPx = stimStrengthInDeviceunits;
     var resultInDecVA = [Misc visusFromGapPixels: resultInGapPx];
     resultInDecVA *= ([Settings threshCorrection]) ? 0.891 : 1.0;// Korrektur für Schwellenunterschätzung aufsteigender Verfahren
+    resultInDecVA = Math.min([Settings maxDisplayedAcuity], resultInDecVA);
     var resultInLogMAR = [Misc logMARfromDecVA: resultInDecVA];
     
     // console.log("rangeLimitStatus: ", rangeLimitStatus);
