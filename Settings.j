@@ -22,7 +22,7 @@ History
 */
 
 
-#define dateFract "2020-05-23"
+#define dateFract "2020-05-25"
 #define versionFract "Vs10.0beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399

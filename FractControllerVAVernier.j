@@ -9,13 +9,31 @@
 @import "FractController.j"
 
 
-@implementation FractControllerVAVernier: FractController
+@implementation FractControllerVAVernier: FractController {
+    float gapVernierMinimalArcSec, gapVernierMaximalArcSec;
+}
 
 
 - (void) modifyGenericStimulus {[self modifyGenericStimulusWithBonus];}
-- (void) modifyDeviceStimulus {[self acuityModifyDeviceStimulusDIN01_02_04_08];}
-- (float) stimDeviceFromGeneric: (float) tPest {return [self acuityStimDeviceFromGeneric: tPest];}
-- (float) stimGenericFromDevice: (float) d {return [self acuityStimGenericFromDevice: d];}
+- (void) modifyDeviceStimulus {}
+
+
+- (float) stimDeviceFromGeneric: (float) tPest {
+    gapMinimal = [Misc pixelFromDegree: gapVernierMinimalArcSec / 60.0 / 60.0];
+    gapMaximal = [Misc pixelFromDegree: gapVernierMaximalArcSec / 60.0 / 60.0];
+    var c1 = gapMinimal;
+    var c2 = -Math.log(gapMinimal / gapMaximal);
+    var nativeVal = c1 * Math.exp(tPest * c2); //trace("Vernier.pest2native, tPest:", tPest, "native=", nativeVal);
+    return nativeVal;
+}
+- (float) stimGenericFromDevice: (float) d {
+    gapMinimal = [Misc pixelFromDegree: gapVernierMinimalArcSec / 60.0 / 60.0];
+    gapMaximal = [Misc pixelFromDegree: gapVernierMaximalArcSec / 60.0 / 60.0];
+    var c1 = gapMinimal;
+    var c2 = -Math.log(gapMinimal / gapMaximal);
+    var retVal =Math.log(d / c1) / c2;//retVal /= Prefs.vernierScale.n;
+    return retVal;
+}
 
 
 //Draw vertical line with gaussian profile. x-position (floating point) approximated by center of gravity on discrete raster
@@ -90,17 +108,18 @@
 
 - (void) runStart { //console.log("FractControllerVAVernier>runStart");
     [self setCurrentTestName: "Acuity_Vernier"];
-    [self setCurrentTestResultUnit: "LogMAR"];
+    [self setCurrentTestResultUnit: "arcsec"];
     nAlternatives = 2;  nTrials = [Settings nTrials04];
+    gapVernierMinimalArcSec = 0.5;  gapVernierMaximalArcSec = 3000.0;
     [super runStart];
 }
 
 
-- (void)runEnd { //console.log("FractControllerVAVernier>runEnd");
+- (void) runEnd { //console.log("FractControllerVAVernier>runEnd");
     if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {
-        [self setResultString: [self acuityComposeResult]];
+        [self setResultString: [self composeResults]];
     }
     [super runEnd];
 }
@@ -116,5 +135,20 @@
     return -2;// 0, 4: valid; -1: ignore; -2: invalid
 }
 
-    
+
+- (float) resultValue4Export {
+    return Math.round([self reportFromNative: stimStrengthInDeviceunits] * 10) / 10;
+}
+
+- (CPString) composeResults {
+    var rslt = [self resultValue4Export];
+    var dcs = rslt > 100 ? 0 : 1;
+    return "Vernier threshold: " +  [Misc stringFromNumber: rslt decimals: dcs localised: YES] + " arcsec";
+}
+
+
+- (floag) reportFromNative: (float) t {
+    return ([Misc degreeFromPixel: t] * 60.0 * 60.0);
+}
+
 @end

@@ -114,12 +114,11 @@
 
 
 + (CPString) stringFromNumber: (float) num decimals: (int) decs localised: (BOOL) locd { //console.log("stringFromNumber");
-    var s;
     if (decs < 1) {
         return [CPString stringWithFormat: @"%d", num];
     }
     var fmt = @"%6." + [CPString stringWithFormat:@"%d", decs] + "f";
-    str = [CPString stringWithFormat: fmt, num];
+    var str = [CPString stringWithFormat: fmt, num];
     while ([str hasPrefix:@" "] && [str length] > 1) {
         str = [str substringFromIndex:1];
     }

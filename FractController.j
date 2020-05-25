@@ -121,12 +121,17 @@
 }
 
 
+- (float) resultValue4Export {
+    return [self acuityResultInLogMAR];
+}
+
+
 - (CPString) composeExportString { //console.log("FractController>composeExportString");
     var s = "";
     if ([[self parentController] runAborted]) return;
     var tab = "\t", crlf = "\n", nDigits = 5, now = [CPDate date];
     s = [Misc date2YYYY_MM_DD: now] + tab + [Misc date2HH_MM_SS: now];
-    s += tab + [Misc stringFromNumber: [self acuityResultInLogMAR] decimals: nDigits localised: YES];
+    s += tab + [Misc stringFromNumber: [self resultValue4Export] decimals: nDigits localised: YES];
     s += tab + currentTestResultUnit;
     s += tab + rangeLimitStatus;
     s += tab + currentTestName;
@@ -273,7 +278,7 @@
                 s += ": ";
             }
         }
-        s += [Misc stringFromNumber: resultInLogMAR decimals: 2 localised: YES]
+        s += [Misc stringFromNumber: resultInLogMAR decimals: 2 localised: YES];
     }
     if ([Settings acuityFormatSnellenFractionFoot]) {
         if (s.length > 1) s += ",  ";
