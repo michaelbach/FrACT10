@@ -6,6 +6,7 @@ Created by mb on July 15, 2015.
 History
 =======
 
+2020-05-25 vernier now correct results. maxDisplayedAcuity. Help panel.
 2020-05-23 added Vernier acuity; outfactored RewardsController, added Tooltips
 2020-05-22 added Auckland Optotypes
 2020-05-21 →clipboard for exporting works in Safari & FireFox,

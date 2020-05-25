@@ -90,7 +90,7 @@
 
 
 - (void) closeAllPanels {
-    [settingsPanel close];  [aboutPanel close];  [responseinfoPanelVAL close];
+    [settingsPanel close];  [aboutPanel close];  [helpPanel close]; [responseinfoPanelVAL close];
     [responseinfoPanelVA4C close];  [responseinfoPanelVA8C close]; [responseinfoPanelVAE close];
     [responseinfoPanelVAAuck close];  [responseinfoPanelVAVernier close];
 }
@@ -215,6 +215,17 @@
     [self setColOptotypeFore: [CPColor blackColor]];  [self setColOptotypeBack: [CPColor whiteColor]];
     [Settings setDefaults];  [settingsPanel close];  [Settings setDefaults];  [settingsPanel makeKeyAndOrderFront: self];
     [[settingsPanel contentView] setNeedsDisplay: YES];
+}
+
+
+- (IBAction) buttonHelp_action: (id) sender { console.log("AppController>buttonHelp_actionsss");
+    [helpPanel makeKeyAndOrderFront: self];
+}
+- (IBAction) buttonHelpGetManual_action: (id) sender {
+    window.open("https://michaelbach.de/fract/media/FrACT3_Manual.pdf");
+}
+- (IBAction) buttonHelpClose_action: (id) sender { //console.log("AppController>buttonHelpClose_action");
+    [helpPanel close];
 }
 
 

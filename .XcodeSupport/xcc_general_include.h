@@ -11,6 +11,7 @@
 #include "FractControllerVAL.h"
 #include "RewardsController.h"
 #include "FractControllerVAC.h"
+#include "Settgs.h"
 #include "Pest.h"
 #include "FractControllerVAVernier.h"
 #include "Thresholder.h"
