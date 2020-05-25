@@ -19,6 +19,7 @@
 @import "FractControllerContrastC.j"
 @import "RewardsController.j"
 @import "AucklandOptotypesController.j"
+@import "Sound.j"
 
 /*window.ondeviceorientation = function(event) {
     [setAngleAlpha: Math.round(event.alpha)]; [setAngleAlpha: Math.round(event.beta)]; [setAngleAlpha: Math.round(event.gamma)];
@@ -38,8 +39,7 @@
     int testID, kTestIDLett, kTestIDC, kTestIDE, kTestIDAuck, kTestIDVernier;
     BOOL settingsNeedNewDefaults;
     BOOL runAborted @accessors;
-//    id auckImages;
-//    int nAuckImagesLoaded;
+    Sound sound;
 }
 
 
@@ -73,6 +73,7 @@
 
     rewardsController = [[RewardsController alloc] initWithView: rewardImageView];
     aucklandOptotypesController = [[AucklandOptotypesController alloc] initWithButton2Enable: buttVAAuck];
+    sound = [[Sound alloc] init];
 }
 
 
@@ -156,6 +157,7 @@
             currentFractController = [[FractControllerVAVernier alloc] initWithWindow: fractControllerWindow parent: self];
             break;
     }
+    [currentFractController setSound: sound];
 }
 
 
@@ -203,8 +205,7 @@
     [[settingsPanel contentView] setNeedsDisplay: YES];
     if (settingsNeedNewDefaults) {
         settingsNeedNewDefaults = NO;
-        [[CPAlert alertWithMessageText: "WARNING" defaultButton: "OK" alternateButton: nil
-            otherButton: nil
+        [[CPAlert alertWithMessageText: "WARNING" defaultButton: "OK" alternateButton: nil otherButton: nil
              informativeTextWithFormat: "\r\rAll settings were set to their default values.\r\rIf some fields are empty, please reload this browser window once, then all values will be current.\r\r"] runModal];
     }
 }
@@ -218,7 +219,7 @@
 }
 
 
-- (IBAction) buttonHelp_action: (id) sender { console.log("AppController>buttonHelp_actionsss");
+- (IBAction) buttonHelp_action: (id) sender { //console.log("AppController>buttonHelp_action");
     [helpPanel makeKeyAndOrderFront: self];
 }
 - (IBAction) buttonHelpGetManual_action: (id) sender {

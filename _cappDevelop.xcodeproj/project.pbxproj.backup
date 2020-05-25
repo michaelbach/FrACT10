@@ -9,8 +9,10 @@
 /* Begin PBXFileReference section */
 		03DF473D9DA8BD87A19ED610 /* FractControllerContrastC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractControllerContrastC.h; path = .XcodeSupport/FractControllerContrastC.h; sourceTree = SOURCE_ROOT; };
 		07D545AB96996B684A144BB0 /* FractControllerVAAuck.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FractControllerVAAuck.m; path = .XcodeSupport/FractControllerVAAuck.m; sourceTree = SOURCE_ROOT; };
+		080A48B89572C6083356122C /* Sound.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Sound.m; path = .XcodeSupport/Sound.m; sourceTree = SOURCE_ROOT; };
 		08264943A25637A16CFDFECD /* AucklandOptotypesController.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AucklandOptotypesController.j; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		0ADC4A1FA6F5CE9239F726D4 /* AlternativesGenerator.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlternativesGenerator.j; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		137C4E56BBD3299E57F4E3AE /* Sound.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sound.j; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		25944142A202DA17974FFB4B /* FractControllerVAC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FractControllerVAC.m; path = .XcodeSupport/FractControllerVAC.m; sourceTree = SOURCE_ROOT; };
 		25BF4170B414818A61A2B6E8 /* AppController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppController.m; path = .XcodeSupport/AppController.m; sourceTree = SOURCE_ROOT; };
 		278246D4AEEA4BE99241BB98 /* AucklandOptotypesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AucklandOptotypesController.m; path = .XcodeSupport/AucklandOptotypesController.m; sourceTree = SOURCE_ROOT; };
@@ -22,6 +24,7 @@
 		43EF483D95F2D80261D4BF39 /* FractControllerVAVernier.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FractControllerVAVernier.j; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4616420DBEDD820294995A43 /* Settings.j */ = {isa = PBXFileReference; lastKnownFileType = text; path = Settings.j; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		545F429AA7CFC53916D84B2A /* HierarchyController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HierarchyController.m; path = .XcodeSupport/HierarchyController.m; sourceTree = SOURCE_ROOT; };
+		550E4EC186D107185158DBC2 /* Sound.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Sound.h; path = .XcodeSupport/Sound.h; sourceTree = SOURCE_ROOT; };
 		569D4237BC7637CE5F42A082 /* HierarchyController.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HierarchyController.j; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		57294C4BB0F676D0828EF05A /* FractControllerVAL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FractControllerVAL.m; path = .XcodeSupport/FractControllerVAL.m; sourceTree = SOURCE_ROOT; };
 		5819423280FA1F4799CCBEA9 /* FractControllerContrastC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FractControllerContrastC.m; path = .XcodeSupport/FractControllerContrastC.m; sourceTree = SOURCE_ROOT; };
@@ -31,10 +34,12 @@
 		70544953B2374D182C094211 /* FractControllerVAC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractControllerVAC.h; path = .XcodeSupport/FractControllerVAC.h; sourceTree = SOURCE_ROOT; };
 		7640447CA2D86CCA630B5D4D /* Misc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Misc.h; path = .XcodeSupport/Misc.h; sourceTree = SOURCE_ROOT; };
 		7AC140C1B517206793E2C800 /* FractController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractController.h; path = .XcodeSupport/FractController.h; sourceTree = SOURCE_ROOT; };
+		7B4D4E56BE51A3A7B1F5F948 /* Settgs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Settgs.m; path = .XcodeSupport/Settgs.m; sourceTree = SOURCE_ROOT; };
 		7CC04D268B2DA23EF5C08E1C /* Pest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Pest.m; path = .XcodeSupport/Pest.m; sourceTree = SOURCE_ROOT; };
 		83AA42EBA9711C20BADD96D3 /* Thresholder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Thresholder.m; path = .XcodeSupport/Thresholder.m; sourceTree = SOURCE_ROOT; };
 		844749B6A8749A632AAAB40B /* RewardsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RewardsController.h; path = .XcodeSupport/RewardsController.h; sourceTree = SOURCE_ROOT; };
 		88BA4D0FABFC1356CF2B1A9F /* FractControllerVAE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractControllerVAE.h; path = .XcodeSupport/FractControllerVAE.h; sourceTree = SOURCE_ROOT; };
+		903F4F8C860383F9101E8876 /* Settgs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Settgs.h; path = .XcodeSupport/Settgs.h; sourceTree = SOURCE_ROOT; };
 		9E614B00813D9845B301F2A2 /* FractController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FractController.m; path = .XcodeSupport/FractController.m; sourceTree = SOURCE_ROOT; };
 		A33F4E37933CF02DD84BE89E /* Misc.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Misc.j; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		A4F348DAB1D7B023F3A753A6 /* FractControllerVAVernier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractControllerVAVernier.h; path = .XcodeSupport/FractControllerVAVernier.h; sourceTree = SOURCE_ROOT; };
@@ -96,8 +101,12 @@
 				7CC04D268B2DA23EF5C08E1C /* Pest.m */,
 				844749B6A8749A632AAAB40B /* RewardsController.h */,
 				B35F471B86B6C6E45C719496 /* RewardsController.m */,
+				903F4F8C860383F9101E8876 /* Settgs.h */,
+				7B4D4E56BE51A3A7B1F5F948 /* Settgs.m */,
 				F58A41B881D8D8F59DCEF80B /* Settings.h */,
 				33EA4B1289CE655EC59AC43F /* Settings.m */,
+				550E4EC186D107185158DBC2 /* Sound.h */,
+				080A48B89572C6083356122C /* Sound.m */,
 				B04549F58F6F3C29C5963591 /* Thresholder.h */,
 				83AA42EBA9711C20BADD96D3 /* Thresholder.m */,
 				6B254D44BA9FB4657674997C /* xcc_general_include.h */,
@@ -124,6 +133,7 @@
 				37734A1598D28F7E432822DF /* Pest.j */,
 				64A0411C9D39CC2003F8E2E1 /* RewardsController.j */,
 				4616420DBEDD820294995A43 /* Settings.j */,
+				137C4E56BBD3299E57F4E3AE /* Sound.j */,
 				2DF24005A7ECA60444B5E193 /* Thresholder.j */,
 			);
 			name = "Cappuccino Source";

@@ -109,7 +109,7 @@
 - (void) runStart { //console.log("FractControllerVAVernier>runStart");
     [self setCurrentTestName: "Acuity_Vernier"];
     [self setCurrentTestResultUnit: "arcsec"];
-    nAlternatives = 2;  nTrials = [Settings nTrials04];
+    nAlternatives = 2;  nTrials = [Settings nTrials02];
     gapVernierMinimalArcSec = 0.5;  gapVernierMaximalArcSec = 3000.0;
     [super runStart];
 }

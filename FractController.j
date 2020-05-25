@@ -26,6 +26,7 @@
     CPString trialInfoString @accessors;
     CPTimer timerDisplay, timerResponse, timerFirstResponder;
     CPString kRangeLimitDefault, kRangeLimitOk, kRangeLimitValueAtFloor, kRangeLimitValueAtCeiling, rangeLimitStatus, abortCharacter;
+    id sound @accessors;
 }
 
 
@@ -114,9 +115,18 @@
 
 
 - (void) trialEnd { //console.log("Fract>trialEnd");
-    [timerDisplay invalidate];  timerDisplay = nil;
-    [timerResponse invalidate];  timerResponse = nil;
+    [timerDisplay invalidate];  timerDisplay = nil;  [timerResponse invalidate];  timerResponse = nil;//nötig?
     [thresholder enterTrialOutcomeWithAppliedStim: [self stimGenericFromDevice: stimStrengthInDeviceunits] wasCorrect: responseWasCorrect];
+    switch ([Settings auditoryFeedback]) { // case 0: nothing
+        case 1:
+            [sound play1];  break;
+        case 2:
+            if (responseWasCorrect) [sound play1];  break;
+        case 3:
+            if (responseWasCorrect) [sound play1];
+            else [sound play2];
+            break;
+    }
     [self trialStart];
 }
 
@@ -143,6 +153,8 @@
 
 
 - (void) runEnd { //console.log("FractController>runEnd");
+    [timerDisplay invalidate];  timerDisplay = nil;
+    [timerResponse invalidate];  timerResponse = nil;
     [timerFirstResponder invalidate];  timerFirstResponder = nil;
     [[self window] close];
     [[self parentController] setRunAborted: (iTrial < nTrials)]; //premature end
@@ -150,6 +162,7 @@
     if (([Settings results2clipboard] > 0) && (![[self parentController] runAborted])) {
         [Misc copyString2ClipboardAlert: [self composeExportString]];
     }
+    if ([Settings auditoryFeedbackWhenDone]) [sound play3];
     [[self parentController] runEnd];
 }
 
@@ -309,7 +322,7 @@
 
 ///////////////////////// DRAWING
 - (void) fillCircleAtX: (float)x y: (float)y radius: (float)r { //console.log("MBIllus>fillCircleAtX");
-    CGContextFillEllipseInRect(cgc, CGRectMake(x-r, y-r, 2*r, 2*r));
+    CGContextFillEllipseInRect(cgc, CGRectMake(x - r, y - r, 2 * r, 2 * r));
 }
 
 
@@ -326,15 +339,13 @@
 
 - (void) strokeLineX0: (float) x0 y0: (float)y0 x1: (float)x1 y1: (float)y1 {//console.info("strokeLineX0");
     CGContextBeginPath(cgc);
-    CGContextMoveToPoint(cgc, x0, y0);
-    CGContextAddLineToPoint(cgc, x1, y1);
+    CGContextMoveToPoint(cgc, x0, y0);  CGContextAddLineToPoint(cgc, x1, y1);
     CGContextStrokePath(cgc);
     currentX = x1;  currentY = y1;
 }
 - (void) strokeLineToX: (float) xxx y: (float) yyy {//console.info("strokeLineX0");
     CGContextBeginPath(cgc);
-    CGContextMoveToPoint(cgc, currentX, currentY);
-    CGContextAddLineToPoint(cgc, xxx, yyy);
+    CGContextMoveToPoint(cgc, currentX, currentY);  CGContextAddLineToPoint(cgc, xxx, yyy);
     CGContextStrokePath(cgc);
     currentX = xxx;  currentY = yyy;
 }

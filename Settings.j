@@ -6,7 +6,7 @@ Created by mb on July 15, 2015.
 History
 =======
 
-2020-05-25 vernier now correct results. maxDisplayedAcuity. Help panel.
+2020-05-25 vernier now correct results. maxDisplayedAcuity. Help panel. Feedback sounds. GUI tweaks.
 2020-05-23 added Vernier acuity; outfactored RewardsController, added Tooltips
 2020-05-22 added Auckland Optotypes
 2020-05-21 →clipboard for exporting works in Safari & FireFox,
@@ -23,8 +23,8 @@ History
 */
 
 
-#define dateFract "2020-05-25"
-#define versionFract "Vs10.0beta"
+#define dateFract "2020-05-25a"
+#define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
 #define defaultCalBarLengthInMM 149
@@ -80,6 +80,11 @@ History
     [self setTimeoutResponseSeconds: [self chckFlt: [self timeoutResponseSeconds] def: 30 min: 0.1 max: 9999 set: set]];
     [self setTimeoutDisplaySeconds: [self chckFlt: [self timeoutDisplaySeconds] def: 30 min: 0.1 max: 9999 set: set]];
 
+    [self setAuditoryFeedback: [self chckInt: [self auditoryFeedback] def: 3 min: 0 max: 3 set: set]];// 0:none, 1:always, 2:on correct, 3:w/ info
+    [self setVisualFeedback: [self chckInt: [self visualFeedback] def: 0 min: 0 max: 4 set: set]];// 0:none, 1:always, 2:on correct, 3:2/ info, 4:on correct
+    [self setAuditoryFeedbackWhenDone: [self chckBool: [self auditoryFeedbackWhenDone] def: YES set: set]];
+
+    
     // 0: no, 1: final only, 2: full history
     [self setResults2clipboard: [self chckInt: [self results2clipboard] def: 0 min: 0 max: 2 set: set]];
 
