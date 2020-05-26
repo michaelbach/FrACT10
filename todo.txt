@@ -1,0 +1,14 @@
+To Dos
+
+• Add: crowding
+• Add: start with "5"
+• Add: gamma calibration
+• Add: contrast testing
+• Fix: "s" to start Settings enters "s" in nTrials@2
+
+√ Auck: # with CGContextShowText, not w/ labels
+√ feedback sounds
+√ reward pictures
+√ results export
+√ Vernier acuity
+√ default → comma / dot

@@ -1,4 +1,4 @@
-    /*
+/*
  *  FractControllerVAAuck.j
  *  cappDevelop
  *
@@ -11,7 +11,6 @@
 @implementation FractControllerVAAuck: FractController {
     CGRect imageRect;
     id auckImages @accessors;
-    id labels;
 }
 
 
@@ -38,14 +37,13 @@
 
             CGContextTranslateCTM(cgc,  -viewWidth / 2, -viewHeight / 2); // origin back
             var size = viewWidth / 21;
-            labels = [];
+            CGContextSetTextDrawingMode(cgc, kCGTextFill);
+            CGContextSelectFont(cgc, "36px sans-serif");
             for (var i = 0; i < 10; i++) {
                 imageRect = CGRectMake((i + 0.5) * 2 * size, viewHeight - 1.1 * size, size, size);
                 CGContextDrawImage(cgc, imageRect, auckImages[i]);
-                labels[i] = [[CPTextField alloc] initWithFrame: CGRectMake((i + 0.5) * 2 * size, viewHeight - 1.9 * size, size, size)];
-                [labels[i] setIntegerValue: (i + 1) % 10];  [labels[i] setAlignment: CPCenterTextAlignment];
-                [labels[i] setFont: [CPFont fontWithName: [[labels[i] font] familyName] size: 36]];
-                [[[self window] contentView] addSubview: labels[i]];
+                CGContextShowTextAtPoint(cgc, (i + 0.5) * 2 * size + 18, viewHeight - 1.5 * size,
+                                         [CPString stringWithFormat: @"%d", i]);
             }
             break;
         default: break;
@@ -53,6 +51,7 @@
     CGContextRestoreGState(cgc);
     CGContextSetTextPosition(cgc, 10, 10);  CGContextSetFillColor(cgc, colOptotypeFore);
     CGContextShowText(cgc, trialInfoString);
+    [super drawStimulusInRect: dirtyRect];
 }
 
 
@@ -61,13 +60,11 @@
     [self setCurrentTestName: "Acuity_Auckland"];
     [self setCurrentTestResultUnit: "LogMAR"];
     abortCharacter = "A";
-
     [super runStart];
 }
 
 
 - (void)runEnd { //console.log("FractControllerVAAuck>runEnd");
-    for (var i = 0; i < 10; i++) [labels[i] removeFromSuperview];
     if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {

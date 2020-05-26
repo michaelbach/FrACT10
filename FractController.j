@@ -89,7 +89,16 @@
     [alternativesGenerator nextAlternative];
     timerDisplay = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutDisplaySeconds] target:self selector:@selector(onTimeoutDisplay:) userInfo:nil repeats:NO];
     timerResponse = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutResponseSeconds] target:self selector:@selector(onTimeoutResponse:) userInfo:nil repeats:NO];
+    
     state = kStateDrawFore;  [[[self window] contentView] setNeedsDisplay: YES];
+}
+
+
+- (void) drawStimulusInRect: (CGRect) dirtyRect { //console.log("FractController>drawStimulusInRect");
+    CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
+    //[self strokeLineX0: -100 y0: -100 x1: 100 y1: 100];
+    //[self strokeLineX0: 100 y0: -100 x1: -100 y1: 100];
+
 }
 
 
