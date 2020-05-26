@@ -2,14 +2,11 @@
 //    =======
 //
 //    2015-07-15 started
-//
-
 
 @import "HierarchyController.j"
 @import "Settings.j"
 @import "AlternativesGenerator.j"
 @import "Thresholder.j";
-
 
 @implementation FractController: HierarchyController {
     int state, kStateDrawBack, kStateDrawFore, iTrial, nTrials, nAlternatives;
@@ -17,10 +14,9 @@
     char oldResponseKeyChar, responseKeyChar;
     unsigned short responseKeyCode;
     CGContext cgc;
-    BOOL keyWindowValid;
     float stimStrengthGeneric, stimStrengthInDeviceunits, viewWidth, viewHeight;
     float gapMinimal, gapMaximal;
-    float currentX, currentY;
+    float currentX, currentY; // for drawing
     Thresholder thresholder;
     AlternativesGenerator alternativesGenerator;
     CPString trialInfoString @accessors;
@@ -34,10 +30,6 @@
     self = [super initWithWindow: aWindow];
     if (self) {
         [[self window] setFullPlatformWindow: YES];
-        if (![Misc isFullScreen]) {
-            //[Misc fullScreenOn: YES];
-            //[[self window] setFrame: CGRectMake(0, 0, window.screen.width, window.screen.height)];
-        }
         if ([Misc isFullScreen]) {
             [[self window] setFrame: CGRectMake(0, 0, window.screen.width, window.screen.height)];
         }
@@ -55,8 +47,8 @@
         [Settings checkDefaults];
         abortCharacter = "5";
         nTrials = [Settings nTrials];
-        [[self parentController] setRunAborted: YES];
         nAlternatives = [Settings nAlternatives];
+        [[self parentController] setRunAborted: YES];
         [[self window] makeKeyAndOrderFront: self];  [[self window] makeFirstResponder: self];
         //[self performSelector: @selector(runStart) withObject: nil afterDelay: 0.01];//geht nicht mehr nach DEPLOY???
         [self runStart];
@@ -96,14 +88,40 @@
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.log("FractController>drawStimulusInRect");
     CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
-    //[self strokeLineX0: -100 y0: -100 x1: 100 y1: 100];
-    //[self strokeLineX0: 100 y0: -100 x1: -100 y1: 100];
-
+    //[self strokeLineX0: -100 y0: -100 x1: 100 y1: 100];  [self strokeLineX0: 100 y0: -100 x1: -100 y1: 100];
+    var i;  //console.log([Settings crowdingType]);
+    switch ([Settings crowdingType]) {
+        case 0:  break;
+        case 1:    // flanking rings
+            for (i = -1; i <= 1; i++) { //console.log(i);
+                var tempX = i * [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits];
+                CGContextTranslateCTM(cgc,  -tempX, 0);
+                if (i != 0)  [self drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: -1];
+                CGContextTranslateCTM(cgc,  +tempX, 0);
+            }  break;
+        case 2:    // row of optotypes
+            for (i = -2; i <= 2; i++) {
+                var directionPresentedX = [Misc iRandom: nAlternatives];
+                var tempX = i * [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits];
+                CGContextTranslateCTM(cgc,  -tempX, 0);
+                if (i != 0)  [self drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: directionPresentedX];
+                CGContextTranslateCTM(cgc,  +tempX, 0);
+            }  break;
+        case 3:
+            CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
+            [self strokeCircleAtX: 0 y: 0 radius: 1.5 * [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits] / 2];
+            break;
+        case 4:
+            var frameSize = 1.5 * [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits], frameSize2 = frameSize / 2;
+            CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
+            CGContextStrokeRect(cgc, CGRectMake(-frameSize2, -frameSize2, frameSize, frameSize));
+            break;
+    }
 }
 
 
 -(void) onTimerFirstResponder: (CPTimer) timer { //console.log("FractController>onTimerFirstResponder");
-    [[self window] makeFirstResponder: self];
+    //[[self window] makeFirstResponder: self];
 }
 
 -(void) onTimeoutDisplay: (CPTimer) timer { //console.log("FractController>onTimeoutDisplay");
@@ -184,8 +202,8 @@
     s += [Misc stringFromNumber: (distanceInFeet / decVA) decimals: 0 localised: YES];
     return s;
 }
-/*private function format4SnellenInMeter(theAcuityResult:Number):String {
- var distanceInMetres:Number=Prefs.distanceInCM.n / 100.0, distanceInFeet:Number=distanceInMetres * 3.28084;
+/*private function format4SnellenInMeter(theAcuityResult):String {
+ var distanceInMetres=Prefs.distanceInCM.n / 100.0, distanceInFeet=distanceInMetres * 3.28084;
  return Utils.DeleteTrailing_PointZero(Utils.rStrNInt(distanceInMetres, 1, Prefs.decimalPointChar)) + "/" + Utils.DeleteTrailing_PointZero(Utils.rStrNInt(distanceInMetres / theAcuityResult,1,Prefs.decimalPointChar));
  }*/
 
@@ -329,24 +347,46 @@
 }
 
 
+- (float) acuityCrowdingDistanceFromGap: (float) gap {
+    var returnVal = 5 * gap + 2 * gap; // case 0
+    switch ([Settings crowdingDistanceCalculationType]) {
+        case 1:
+            returnVal = 5 * gap + [Misc pixelFromDegree: 2.6 / 60.0];  break;
+        case 2:
+            returnVal = [Misc pixelFromDegree: 30 / 60.0];  break;
+        case 3:
+            returnVal = 10 * gap;  break;
+    }
+    return returnVal;
+}
+
+
 ///////////////////////// DRAWING
-- (void) fillCircleAtX: (float)x y: (float)y radius: (float)r { //console.log("MBIllus>fillCircleAtX");
+- (void) strokeCircleAtX: (float)x y: (float)y radius: (float) r { //console.log("MBIllus>strokeCircleAtX");
+    CGContextStrokeEllipseInRect(cgc, CGRectMake(x - r, y - r, 2 * r, 2 * r));
+}
+
+
+- (void) fillCircleAtX: (float)x y: (float)y radius: (float) r { //console.log("MBIllus>fillCircleAtX");
     CGContextFillEllipseInRect(cgc, CGRectMake(x - r, y - r, 2 * r, 2 * r));
 }
 
 
-- (void) drawLandoltWithGapInPx: (float) gap landoltDirection: (int) direction { //console.log("OTLandolts>drawLandoltWithGapInPx");
+// no gap for direction -1
+- (void) drawLandoltWithGapInPx: (float) gap landoltDirection: (int) direction { //console.log("OTLandolts>drawLandoltWithGapInPx", gap, direction);
     CGContextSetFillColor(cgc, colOptotypeFore);
     [self fillCircleAtX: 0 y: 0 radius: 2.5 * gap];
     CGContextSetFillColor(cgc, colOptotypeBack);
     [self fillCircleAtX: 0 y: 0 radius: 1.5 * gap];
     var rct = CGRectMake(gap * 1.4 - 1, -gap / 2, 1.3 * gap + 1, gap); //console.log(gap, " ", rct);
     var rot = Math.PI / 180.0 * (7 - (direction - 1)) / 8.0 * 360.0;
-    CGContextRotateCTM(cgc, rot);  CGContextFillRect(cgc, rct);  CGContextRotateCTM(cgc, -rot);
+    CGContextRotateCTM(cgc, rot);
+    if (direction >= 0) CGContextFillRect(cgc, rct);
+    CGContextRotateCTM(cgc, -rot);
 }
 
 
-- (void) strokeLineX0: (float) x0 y0: (float)y0 x1: (float)x1 y1: (float)y1 {//console.info("strokeLineX0");
+- (void) strokeLineX0: (float) x0 y0: (float) y0 x1: (float) x1 y1: (float) y1 {//console.info("strokeLineX0");
     CGContextBeginPath(cgc);
     CGContextMoveToPoint(cgc, x0, y0);  CGContextAddLineToPoint(cgc, x1, y1);
     CGContextStrokePath(cgc);

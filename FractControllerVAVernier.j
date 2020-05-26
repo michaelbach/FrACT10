@@ -51,29 +51,29 @@
 }
 
 
-- (void) drawVernierAtX: (float) xCenter y: (float) yCenter vLength: (float) vLength sigma: (float) sigma gapHeight: (float) gapHeight offsetSize: (float) offsetSize offsetIsTopRight: (BOOL) offsetIsTopRight { //console.log("FractControllerVAVernier>drawVernierAtX", offsetSize);
-    xCenter += (Math.random() < 0.5 ? 1 : -1) + 2 * (2 * Math.random() - 1.0);
+- (void) drawVernierAtX: (float) xCent y: (float) yCent vLength: (float) vLength sigma: (float) sigma gapHeight: (float) gapHeight offsetSize: (float) offsetSize offsetIsTopRight: (BOOL) offsetIsTopRight { //console.log("FractControllerVAVernier>drawVernierAtX", offsetSize);
+    xCent += (Math.random() < 0.5 ? 1 : -1) + 2 * (2 * Math.random() - 1.0);
     var theSign = offsetIsTopRight ? +1 : -1;
-    var xPos0 = xCenter + theSign * offsetSize / 2.0;
-    var xPos1 = xCenter - theSign * offsetSize / 2.0;
+    var xPos0 = xCent + theSign * offsetSize / 2.0;
+    var xPos1 = xCent - theSign * offsetSize / 2.0;
     var vLength2 = vLength / 2.0;
     switch([Settings vernierType]) {
         case 1: // 3 bars
             // untere
-            var yTemp = yCenter + vLength2 + gapHeight;
+            var yTemp = yCent + vLength2 + gapHeight;
             [self drawLineGaussProfileVerticalAtX: xPos0 y0: yTemp y1: yTemp + vLength sigma: sigma];
             // mittlere
-            [self drawLineGaussProfileVerticalAtX: xPos1 y0: yCenter - vLength2 y1: yCenter + vLength2 sigma: sigma];
+            [self drawLineGaussProfileVerticalAtX: xPos1 y0: yCent - vLength2 y1: yCent + vLength2 sigma: sigma];
             // ganz oben
-            yTemp = yCenter - vLength / 2 - gapHeight;
+            yTemp = yCent - vLength / 2 - gapHeight;
             [self drawLineGaussProfileVerticalAtX: xPos0 y0: yTemp y1: yTemp - vLength sigma: sigma];
             break;
         default: // case 0, 2 bars
             var gapHeight2 = gapHeight / 2.0;
             // untere
-            [self drawLineGaussProfileVerticalAtX: xPos0 y0: yCenter + gapHeight2 y1: yCenter + gapHeight2 + vLength sigma: sigma];
+            [self drawLineGaussProfileVerticalAtX: xPos0 y0: yCent + gapHeight2 y1: yCent + gapHeight2 + vLength sigma: sigma];
             // obere
-            [self drawLineGaussProfileVerticalAtX: xPos1 y0: yCenter - gapHeight2 y1: yCenter - gapHeight2 - vLength sigma: sigma];
+            [self drawLineGaussProfileVerticalAtX: xPos1 y0: yCent - gapHeight2 y1: yCent - gapHeight2 - vLength sigma: sigma];
             break;
     }
 }
@@ -103,6 +103,7 @@
     CGContextSetTextPosition(cgc, 10, 10);
     CGContextSetFillColor(cgc, colOptotypeFore);
     CGContextShowText(cgc, trialInfoString);
+    [super drawStimulusInRect: dirtyRect];
 }
 
 

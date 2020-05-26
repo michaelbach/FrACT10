@@ -6,6 +6,8 @@ Created by mb on July 15, 2015.
 History
 =======
 
+2020-05-26 Settings: shifted all to chckBool / chckInt / chckFlt
+            crowding largely done
 2020-05-25 vernier now correct results. maxDisplayedAcuity. Help panel. Feedback sounds. GUI tweaks.
 2020-05-23 added Vernier acuity; outfactored RewardsController, added Tooltips
 2020-05-22 added Auckland Optotypes
@@ -23,7 +25,7 @@ History
 */
 
 
-#define dateFract "2020-05-25a"
+#define dateFract "2020-05-26"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -43,18 +45,21 @@ History
 + (CPString) versionNumber {return versionFract;}
 
 
+// helpers: check if outside range or nil, if so set default
 + (BOOL) chckBool: (BOOL) val def: (BOOL) def set: (BOOL) set { //console.log("chckBool ", val);
     if (!set && !isNaN(val))  return val;
-    return def;
-}
-+ (int) chckFlt: (float) val def: (float) def min: (float) min max: (float) max set: (BOOL) set { //console.log("chckFlt ", val);
-    if (!set && !isNaN(val) && (val <= max) && (val >= min))  return val;
     return def;
 }
 + (int) chckInt: (int) val def: (int) def min: (int) min max: (int) max set: (BOOL) set { //console.log("chckFlt ", val);
     if (!set && !isNaN(val) && (val <= max) && (val >= min))  return val;
     return def;
 }
++ (int) chckFlt: (float) val def: (float) def min: (float) min max: (float) max set: (BOOL) set { //console.log("chckFlt ", val);
+    if (!set && !isNaN(val) && (val <= max) && (val >= min))  return val;
+    return def;
+}
+
+
 + (void) allNotCheckButSet: (BOOL) set {
     [[CPUserDefaults standardUserDefaults] synchronize];
     if (set) [self setDateSettingsVersion: dateSettingsCurrent];
@@ -75,26 +80,43 @@ History
     [self setEccentXInDeg: [self chckFlt: [self eccentXInDeg] def: 0 min: -99 max: 99 set: set]];
     [self setEccentYInDeg: [self chckFlt: [self eccentYInDeg] def: 0 min: -99 max: 99 set: set]];
 
+    // 0=normal, 1=mirror horizontally, 2=mirror vertically, 3=both=rot180°
+    [self setDisplayTransform: [self chckInt: [self displayTransform] def: 0 min: 0 max: 3 set: set]];
+
     [self setTrialInfoFontSize: [self chckFlt: [self trialInfoFontSize] def: 9 min: 4 max: 48 set: set]];
 
     [self setTimeoutResponseSeconds: [self chckFlt: [self timeoutResponseSeconds] def: 30 min: 0.1 max: 9999 set: set]];
     [self setTimeoutDisplaySeconds: [self chckFlt: [self timeoutDisplaySeconds] def: 30 min: 0.1 max: 9999 set: set]];
+    [self setMaskTimeOnResponseInMS: [self chckFlt: [self timeoutDisplaySeconds] def: 0 min: 0 max: 9999 set: set]];
 
-    [self setAuditoryFeedback: [self chckInt: [self auditoryFeedback] def: 3 min: 0 max: 3 set: set]];// 0:none, 1:always, 2:on correct, 3:w/ info
-    [self setVisualFeedback: [self chckInt: [self visualFeedback] def: 0 min: 0 max: 4 set: set]];// 0:none, 1:always, 2:on correct, 3:2/ info, 4:on correct
+    // 0:none, 1:always, 2:on correct, 3:w/ info
+    [self setAuditoryFeedback: [self chckInt: [self auditoryFeedback] def: 3 min: 0 max: 3 set: set]];
+    // 0:none, 1:always, 2:on correct, 3:2/ info, 4:on correct
+    [self setVisualFeedback: [self chckInt: [self visualFeedback] def: 0 min: 0 max: 4 set: set]];
     [self setAuditoryFeedbackWhenDone: [self chckBool: [self auditoryFeedbackWhenDone] def: YES set: set]];
 
-    
     // 0: no, 1: final only, 2: full history
     [self setResults2clipboard: [self chckInt: [self results2clipboard] def: 0 min: 0 max: 2 set: set]];
 
     [self setRewardPicturesWhenDone: [self chckBool: [self rewardPicturesWhenDone] def: YES set: set]];
     [self setTimeoutRewardPicturesInSeconds: [self chckFlt: [self timeoutRewardPicturesInSeconds] def: 5 min: 0.1 max: 999 set: set]];
 
+    
     // Acuity stuff
     [self setContrastAcuity: [self chckFlt: [self contrastAcuity] def: 1 min: -1 max: 1 set: set]];
     [self setAcuityEasyTrials: [self chckBool: [self acuityEasyTrials] def: YES set: set]];
     [self setMaxDisplayedAcuity: [self chckFlt: [self maxDisplayedAcuity] def: 2 min: 1 max: 99 set: set]];
+    [self setThreshCorrection: [self chckBool: [self threshCorrection] def: YES set: set]];
+    [self setAcuityFormatDecimal: [self chckBool: [self acuityFormatDecimal] def: YES set: set]];
+    [self setAcuityFormatLogMAR: [self chckBool: [self acuityFormatLogMAR] def: YES set: set]];
+    [self setAcuityFormatSnellenFractionFoot: [self chckBool: [self acuityFormatSnellenFractionFoot] def: NO set: set]];
+    [self setForceSnellen20: [self chckBool: [self forceSnellen20] def: NO set: set]];
+
+    // Crowding
+    // crowdingType: 0 = none, 1 = flanking rings, 2 = row of optotypes, 3 = frame (ring), 4 = frame (square)
+    [self setCrowdingType: [self chckInt: [self crowdingType] def: 0 min: 0 max: 4 set: set]];
+    // 0 = 2·gap between rings, 1 = fixed 2.6 arcmin between rings, 2 = fixed 30', 3 = like ETDRS
+    [self setCrowdingDistanceCalculationType: [self chckInt: [self crowdingDistanceCalculationType] def: 0 min: 0 max: 3 set: set]];
 
     // Vernier stuff
     [self setVernierType: [self chckInt: [self vernierType] def: 0 min: 0 max: 1 set: set]]; // 2 or 3 bars
@@ -102,33 +124,19 @@ History
     [self setVernierLength: [self chckFlt: [self vernierLength] def: 15.0 min: 0.1 max: 1200 set: set]];
     [self setVernierGap: [self chckFlt: [self vernierGap] def: 0.2 min: 0.0 max: 120 set: set]];
 
+    
     // Contrast stuff
     [self setGammaValue: [self chckFlt: [self gammaValue] def: 1.8 min: 0.8 max: 4 set: set]];
     [self setContrastEasyTrials: [self chckBool: [self contrastEasyTrials] def: YES set: set]];
 
-    if (set) {
-        //console.log("FrACT10>>Settings>setting all to defaults")
+    if (set) { //console.log("FrACT10>>Settings>setting all to defaults")
         [[CPUserDefaults standardUserDefaults] setInteger: 2 forKey: "nAlternativesIndex"];//=8 alternatives
-        [self setDisplayTransform: 0]; // 0=normal, 1=mirror horizontally, 2=mirror vertically, 3=both=rot180°
-
-        [self setAuditoryFeedback: 3]; // 0:none, 1:always, 2:on correct, 3:w/ info
-        [self setVisualFeedback: 0]; // 0:none, 1:always, 2:on correct, 3:2/ info, 4:on correct
-        [self setAuditoryFeedbackWhenDone: YES];
-        [self setMaskTimeOnResponseInMS: 0]; // in contrast to FrACT this is numnber in ms
-
-        [self setAcuityFormatDecimal: YES];
-        [self setAcuityFormatLogMAR: YES];
-        [self setAcuityFormatSnellenFractionFoot: NO];
-        [self setForceSnellen20: NO];
-        [self setThreshCorrection: YES];
-        [self setCrowdingType: 0]; //crowdingType: 0 = none, 1 = row of optotypes, 2 = frame (ring), 3 frame (square)
-        [self setCrowdingDistanceCalculationType: 0]; //0=2·gap between rings, 1: fixed 2.6 arcmin between rings
-                
         [[CPUserDefaults standardUserDefaults] synchronize];
     }
 
     var maxPossibleAcuity = [Misc visusFromGapPixels: 1.0];
-    maxPossibleAcuity = [self threshCorrection] ? maxPossibleAcuity * 0.891 : maxPossibleAcuity;// Korrektur für Schwellenunterschätzung aufsteigender Verfahren
+    maxPossibleAcuity = [self threshCorrection] ? maxPossibleAcuity * 0.891 : maxPossibleAcuity;
+    // Korrektur für Schwellenunterschätzung aufsteigender Verfahren
     [self setMaxPossibleDecimalAcuity: [Misc stringFromNumber: maxPossibleAcuity decimals: 2 localised: YES]];
     
     [[CPUserDefaults standardUserDefaults] synchronize];

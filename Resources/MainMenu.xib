@@ -1438,7 +1438,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </view>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D5o-iI-kxj">
-                                            <rect key="frame" x="598" y="452" width="105" height="20"/>
+                                            <rect key="frame" x="608" y="450" width="85" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Feedback" bezelStyle="round" id="g6M-mX-9Gb">
                                                 <font key="font" metaFont="system"/>
@@ -1525,7 +1525,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gNV-ad-8PW">
                                                         <rect key="frame" x="128" y="17" width="225" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of trials  for2, 4, or 8/10 choices)" id="rae-uy-roh">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of trials  for 2, 4, or 8/10 choices)" id="rae-uy-roh">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1589,7 +1589,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </view>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bYX-OR-zsU">
-                                            <rect key="frame" x="142" y="338" width="105" height="20"/>
+                                            <rect key="frame" x="154" y="336" width="82" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Timeouts" bezelStyle="round" id="9C2-xl-yi2">
                                                 <font key="font" metaFont="system"/>
@@ -1598,7 +1598,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ltj-KO-hkh">
-                                            <rect key="frame" x="163" y="452" width="204" height="20"/>
+                                            <rect key="frame" x="172" y="450" width="187" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="# of choices and # of trials" bezelStyle="round" id="YAU-7j-hx8">
                                                 <font key="font" metaFont="system"/>
@@ -1615,7 +1615,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1M-jn-hMI">
-                                            <rect key="frame" x="531" y="451" width="240" height="18"/>
+                                            <rect key="frame" x="531" y="451" width="201" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">If unchecked, the raw=psychometric threshold is caculated. If checked (default), it's descending-corrected, thus reflecting DIN/ISO values.</string>
                                             <buttonCell key="cell" type="check" title="Threshold correction DIN/ISO" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="UxQ-w5-9S4">
@@ -1623,59 +1623,6 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                         </button>
-                                        <button toolTip="VA result will be in LogMAR" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-So-EuO">
-                                            <rect key="frame" x="531" y="364" width="240" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="LogMAR" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="F21-ib-PiV">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <binding destination="izh-pU-csC" name="value" keyPath="values.acuityFormatLogMAR" id="tmL-ol-HNr"/>
-                                            </connections>
-                                        </button>
-                                        <button toolTip="VA result will be in decimal acuity" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="coP-Jl-su5">
-                                            <rect key="frame" x="531" y="344" width="240" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="decimal" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SJQ-yt-aSo">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <binding destination="izh-pU-csC" name="value" keyPath="values.acuityFormatDecimal" id="3Rm-bW-KyN"/>
-                                            </connections>
-                                        </button>
-                                        <button toolTip="VA result will be in Snellen fraction" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="18b-AZ-XJs">
-                                            <rect key="frame" x="531" y="324" width="240" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="Snellen fraction [ft]" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="cMV-FZ-AcE">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <binding destination="izh-pU-csC" name="value" keyPath="values.acuityFormatSnellenFractionFoot" id="foW-yu-FH8"/>
-                                            </connections>
-                                        </button>
-                                        <button toolTip="for the Snellen fraction" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0XK-Po-7GX">
-                                            <rect key="frame" x="531" y="304" width="240" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="denominator always 20'" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="VFP-0x-sEP">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <binding destination="izh-pU-csC" name="value" keyPath="values.forceSnellen20" id="ucr-9B-eeX"/>
-                                            </connections>
-                                        </button>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7eE-9K-ghm">
-                                            <rect key="frame" x="531" y="388" width="240" height="17"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Formatting" id="rHk-Tn-CRA">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
                                         <button toolTip="if checked, the 12th, 18th, 24th… trial will have an “easy” optotype for motivation" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Kp-gt-Eg5">
                                             <rect key="frame" x="15" y="451" width="103" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1688,7 +1635,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </connections>
                                         </button>
                                         <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4eR-Ax-gL1">
-                                            <rect key="frame" x="17" y="337" width="40" height="23"/>
+                                            <rect key="frame" x="17" y="382" width="40" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -1696,7 +1643,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </connections>
                                         </colorWell>
                                         <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OSW-TH-Yop">
-                                            <rect key="frame" x="67" y="337" width="40" height="23"/>
+                                            <rect key="frame" x="67" y="382" width="40" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -1704,7 +1651,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </connections>
                                         </colorWell>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3IW-SR-qta">
-                                            <rect key="frame" x="110" y="337" width="225" height="17"/>
+                                            <rect key="frame" x="110" y="384" width="163" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Fore- / background colour" id="4Cc-fv-th1">
                                                 <font key="font" metaFont="system"/>
@@ -1713,7 +1660,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pv0-RI-yoO">
-                                            <rect key="frame" x="17" y="268" width="36" height="22"/>
+                                            <rect key="frame" x="17" y="298" width="36" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Depending on the distance to the screen and its pixelsize, there is a maximum acuity grade that can be presented. This may be a problem for near vision.</string>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="922-E2-W0V">
@@ -1726,7 +1673,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </connections>
                                         </textField>
                                         <textField toolTip="The width of a single vernier line in arcmin." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hrq-dn-eOJ">
-                                            <rect key="frame" x="108" y="92" width="60" height="22"/>
+                                            <rect key="frame" x="108" y="17" width="60" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="nGV-sq-MBL">
                                                 <font key="font" metaFont="system"/>
@@ -1738,7 +1685,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </connections>
                                         </textField>
                                         <textField toolTip="The (vertical) length of a single vernier line in arcmin." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aCO-F8-Ur7">
-                                            <rect key="frame" x="186" y="92" width="60" height="22"/>
+                                            <rect key="frame" x="186" y="17" width="60" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="pVS-jk-NjQ">
                                                 <font key="font" metaFont="system"/>
@@ -1750,7 +1697,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wLy-jw-eAa">
-                                            <rect key="frame" x="59" y="238" width="262" height="48"/>
+                                            <rect key="frame" x="59" y="268" width="250" height="48"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="max. possible decimal acuity, as calculated from ruler size, distance, and pixel size." id="l47-Mf-pgw">
                                                 <font key="font" metaFont="system"/>
@@ -1759,7 +1706,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qsd-g5-eto">
-                                            <rect key="frame" x="75" y="192" width="226" height="16"/>
+                                            <rect key="frame" x="75" y="207" width="176" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="max. REPORTED decimal VA" id="osW-YR-Yfx">
                                                 <font key="font" metaFont="system"/>
@@ -1768,7 +1715,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </textFieldCell>
                                         </textField>
                                         <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JW2-QN-Paz">
-                                            <rect key="frame" x="17" y="188" width="56" height="25"/>
+                                            <rect key="frame" x="17" y="203" width="56" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="KWU-19-CiH">
                                                 <font key="font" metaFont="system"/>
@@ -1788,7 +1735,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </connections>
                                         </comboBox>
                                         <popUpButton toolTip="The vernier stimulus can be of the 2 or 3 line variant." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="52z-5L-aE6" userLabel="Vernier type">
-                                            <rect key="frame" x="15" y="92" width="78" height="25"/>
+                                            <rect key="frame" x="15" y="17" width="78" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="2 lines" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="qvW-F3-MnN" id="Din-QU-a6Y" userLabel="2 lines">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1809,7 +1756,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </connections>
                                         </popUpButton>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pKe-oF-HhJ">
-                                            <rect key="frame" x="106" y="119" width="64" height="16"/>
+                                            <rect key="frame" x="106" y="44" width="64" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" enabled="NO" sendsActionOnEndEditing="YES" title="width (σ)" id="nHo-Ii-k6O">
                                                 <font key="font" metaFont="system"/>
@@ -1818,7 +1765,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wXS-2i-Gbz">
-                                            <rect key="frame" x="184" y="119" width="51" height="16"/>
+                                            <rect key="frame" x="184" y="44" width="51" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" enabled="NO" sendsActionOnEndEditing="YES" title="length" id="Qot-fh-9lO">
                                                 <font key="font" metaFont="system"/>
@@ -1827,7 +1774,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9h9-JG-qFi">
-                                            <rect key="frame" x="15" y="119" width="87" height="16"/>
+                                            <rect key="frame" x="15" y="44" width="87" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" enabled="NO" sendsActionOnEndEditing="YES" title="Vernier type" id="anh-rn-0yQ">
                                                 <font key="font" metaFont="system"/>
@@ -1835,8 +1782,17 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pbL-S0-XrG">
+                                            <rect key="frame" x="129" y="119" width="83" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Crowding" bezelStyle="round" id="Rpe-YE-TbN">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                         <textField toolTip="The vertical gap between the vernier lines in arcmin." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xbb-EQ-toj">
-                                            <rect key="frame" x="264" y="92" width="60" height="22"/>
+                                            <rect key="frame" x="264" y="17" width="60" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="jQR-SS-gJb">
                                                 <font key="font" metaFont="system"/>
@@ -1848,12 +1804,132 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zoT-Pc-gNF">
-                                            <rect key="frame" x="262" y="119" width="89" height="16"/>
+                                            <rect key="frame" x="262" y="44" width="89" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" enabled="NO" sendsActionOnEndEditing="YES" title="gap [arcmin]" id="Jsn-yr-2Nv">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <popUpButton toolTip="The vernier stimulus can be of the 2 or 3 line variant." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFy-VR-55t" userLabel="Crowding">
+                                            <rect key="frame" x="15" y="118" width="104" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="CEr-tD-UxQ" id="Q94-l5-Nrk">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <menu key="menu" id="JBV-Xo-VBB">
+                                                    <items>
+                                                        <menuItem title="none" id="CEr-tD-UxQ">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                        <menuItem title="flanking rings" id="toO-3L-BPU">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                        <menuItem title="row of optotypes" id="r4C-xb-eUC">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                        <menuItem title="frame (ring)" id="DaP-0N-H87">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                        <menuItem title="frame (square)" id="5RA-V9-LFo">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.crowdingType" id="pUP-54-tjJ"/>
+                                            </connections>
+                                        </popUpButton>
+                                        <popUpButton toolTip="The vernier stimulus can be of the 2 or 3 line variant." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6J-2A-7mk" userLabel="Crowding type">
+                                            <rect key="frame" x="223" y="118" width="104" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <popUpButtonCell key="cell" type="push" title="2·gap" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="mt7-ev-w6m" id="8J5-AI-Fsw">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <menu key="menu" id="z7D-2p-Kha">
+                                                    <items>
+                                                        <menuItem title="2·gap" id="mt7-ev-w6m">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                        <menuItem title="2.6 arcmin" id="sF6-rS-Nzp">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                        <menuItem title="30 arcmin" id="Shb-Ec-48T">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                        <menuItem title="1 optotype (like ETDRS)" id="xsa-AM-ywT">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.crowdingDistanceCalculationType" id="lyq-HX-gbT"/>
+                                            </connections>
+                                        </popUpButton>
+                                        <box fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="PFJ-Wz-bh8">
+                                            <rect key="frame" x="510" y="294" width="222" height="135"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <view key="contentView" id="uhJ-9O-auV">
+                                                <rect key="frame" x="3" y="3" width="216" height="117"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <button toolTip="VA result will be in LogMAR" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-So-EuO">
+                                                        <rect key="frame" x="18" y="81" width="200" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="LogMAR" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="F21-ib-PiV">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.acuityFormatLogMAR" id="tmL-ol-HNr"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button toolTip="VA result will be in decimal acuity" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="coP-Jl-su5">
+                                                        <rect key="frame" x="18" y="61" width="200" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="decimal" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SJQ-yt-aSo">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.acuityFormatDecimal" id="3Rm-bW-KyN"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button toolTip="VA result will be in Snellen fraction" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="18b-AZ-XJs">
+                                                        <rect key="frame" x="18" y="41" width="200" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="Snellen fraction [ft]" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="cMV-FZ-AcE">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.acuityFormatSnellenFractionFoot" id="foW-yu-FH8"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button toolTip="for the Snellen fraction" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0XK-Po-7GX">
+                                                        <rect key="frame" x="18" y="21" width="200" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="denominator always 20'" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="VFP-0x-sEP">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.forceSnellen20" id="ucr-9B-eeX"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </view>
+                                        </box>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="W21-40-DHa">
+                                            <rect key="frame" x="533" y="399" width="92" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Formatting" bezelStyle="round" id="Pwg-hz-e0j">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="unemphasizedSelectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </subviews>
