@@ -7,7 +7,13 @@ To Dos
 • Add: displayTransform
 • Add: eccentricity
 • Improve: crowding
+• Tooltips do not show correct text
 
+√ helptext for 3 nTrials
+√ Auck: better positioning of #
+√ Settings: all a bit ↓ in General
+√ makeKey timer: omit
+√ Fix: webkitAudioContext error
 √ Add: crowding
 √ Auck: # with CGContextShowText, not w/ labels
 √ feedback sounds

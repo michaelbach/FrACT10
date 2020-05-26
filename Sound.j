@@ -77,7 +77,7 @@
     self = [super init];
     if (self) {
         if('webkitAudioContext' in window) {
-            audioContext = new webkitAudioContext();
+            audioContext = new window.webkitAudioContext();
         } else {
             audioContext = new window.AudioContext();
         }

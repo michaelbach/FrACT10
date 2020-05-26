@@ -53,7 +53,6 @@
                         <rect key="frame" x="190" y="385" width="110" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Start acuity run using Landolt-Cs
-
 Shortcut: c </string>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttVAC" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ivt-76-XPn">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -68,7 +67,6 @@ Shortcut: c </string>
                         <rect key="frame" x="343" y="385" width="110" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Start acuity run using tumbling Es
-
 Shortcut: e </string>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttVAE" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gQo-pc-sRD">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -136,8 +134,7 @@ Shortcut: s </string>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jHx-aa-MPC">
                         <rect key="frame" x="40" y="385" width="110" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Start acuity run using Sloan Letters
-
+                        <string key="toolTip">Start acuity run using Sloan Letters.
 Shortcut: l </string>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttVALett" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xw1-er-aQN">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -151,9 +148,7 @@ Shortcut: l </string>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oB-kn-EbO">
                         <rect key="frame" x="651" y="385" width="110" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">
-Start hyperacuity (Vernier) run
-
+                        <string key="toolTip">Start hyperacuity (Vernier) run
 Shortcut: v
 </string>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttVAVernier" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vzK-pu-pjy">
@@ -228,7 +223,7 @@ Shortcut: f </string>
                         </connections>
                     </textField>
                     <imageView hidden="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hno-SY-FzK">
-                        <rect key="frame" x="98" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="83" y="-246" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" focusRingType="none" alignment="left" id="e5j-0O-kr0"/>
                     </imageView>
@@ -1238,7 +1233,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </textFieldCell>
                                         </textField>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WCS-rL-YCa">
-                                            <rect key="frame" x="15" y="113" width="110" height="26"/>
+                                            <rect key="frame" x="15" y="109" width="110" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="dot" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="p64-gR-0Sx" id="Ymt-mG-1P5">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1259,7 +1254,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </connections>
                                         </popUpButton>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YNd-5j-KRz">
-                                            <rect key="frame" x="15" y="175" width="110" height="26"/>
+                                            <rect key="frame" x="15" y="170" width="110" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Optionally, after the test the results can be placed on the clipboard. A dialog will appear asking if ok (this is necessary for safety reasons). Then you could switch (e.g. with the task switcher) to a spreadsheet runnin in the background and paste the results for record keeping and statistical processing.</string>
                                             <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="o1v-C2-qAT" id="FXQ-q8-3FM">
@@ -1285,7 +1280,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </connections>
                                         </popUpButton>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qMH-Kz-jR5">
-                                            <rect key="frame" x="124" y="115" width="179" height="17"/>
+                                            <rect key="frame" x="124" y="111" width="179" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="decimal-mark character" id="aPd-Pg-2d0">
                                                 <font key="font" metaFont="system"/>
@@ -1324,7 +1319,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             <color key="fillColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </box>
                                         <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vfI-Mo-x5r">
-                                            <rect key="frame" x="15" y="241" width="288" height="18"/>
+                                            <rect key="frame" x="15" y="235" width="288" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Show response info at start of each run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="VsO-Bf-3O1">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1336,7 +1331,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o8D-i8-6T9">
-                                            <rect key="frame" x="124" y="178" width="210" height="17"/>
+                                            <rect key="frame" x="124" y="173" width="210" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="export results to clipboard" id="Emm-a5-Lui">
                                                 <font key="font" metaFont="system"/>
@@ -1345,7 +1340,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="86j-B3-S1H">
-                                            <rect key="frame" x="540" y="291" width="220" height="188"/>
+                                            <rect key="frame" x="540" y="284" width="220" height="188"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="lAH-6p-KzQ">
                                                 <rect key="frame" x="3" y="3" width="214" height="170"/>
@@ -1438,7 +1433,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </view>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D5o-iI-kxj">
-                                            <rect key="frame" x="608" y="450" width="85" height="22"/>
+                                            <rect key="frame" x="608" y="443" width="85" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Feedback" bezelStyle="round" id="g6M-mX-9Gb">
                                                 <font key="font" metaFont="system"/>
@@ -1447,7 +1442,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="8AU-kb-15P">
-                                            <rect key="frame" x="6" y="374" width="517" height="105"/>
+                                            <rect key="frame" x="6" y="367" width="517" height="105"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="qqp-Oy-oZv">
                                                 <rect key="frame" x="3" y="3" width="511" height="87"/>
@@ -1473,7 +1468,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                             <outlet property="nextKeyView" destination="Wuy-yQ-B3F" id="Px9-nW-0yI"/>
                                                         </connections>
                                                     </popUpButton>
-                                                    <textField toolTip="The number of trials presented. 3 boxes depending on # of choices." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wuy-yQ-B3F">
+                                                    <textField toolTip="The number of trials presented when 2 choices are possible (e.g. Vernier)" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wuy-yQ-B3F">
                                                         <rect key="frame" x="20" y="15" width="34" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="7YW-A6-gCu">
@@ -1486,7 +1481,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                             <outlet property="nextKeyView" destination="9PX-pe-3kM" id="nKc-rx-KQV"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField toolTip="The number of trials presented. 3 boxes depending on # of choices." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9PX-pe-3kM">
+                                                    <textField toolTip="The number of trials presented when 4 choices are possible (e.g. tumbling E)" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9PX-pe-3kM">
                                                         <rect key="frame" x="54" y="15" width="34" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="iyE-mY-Vwd">
@@ -1499,7 +1494,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                             <outlet property="nextKeyView" destination="xWr-Q3-BrM" id="ar4-EX-gt9"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField toolTip="The number of trials presented. 3 boxes depending on # of choices." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xWr-Q3-BrM">
+                                                    <textField toolTip="The number of trials presented when 8 or 10 choices are possible (e.g. Sloan Letters or Landolt-C)" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xWr-Q3-BrM">
                                                         <rect key="frame" x="88" y="15" width="34" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="5t6-Le-phN">
@@ -1535,7 +1530,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </view>
                                         </box>
                                         <box fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="Lyg-sn-7fZ">
-                                            <rect key="frame" x="6" y="291" width="378" height="74"/>
+                                            <rect key="frame" x="6" y="284" width="378" height="74"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="Qcg-KZ-L0s">
                                                 <rect key="frame" x="3" y="3" width="372" height="56"/>
@@ -1589,7 +1584,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </view>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bYX-OR-zsU">
-                                            <rect key="frame" x="154" y="336" width="82" height="22"/>
+                                            <rect key="frame" x="154" y="329" width="82" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Timeouts" bezelStyle="round" id="9C2-xl-yi2">
                                                 <font key="font" metaFont="system"/>
@@ -1598,7 +1593,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ltj-KO-hkh">
-                                            <rect key="frame" x="172" y="450" width="187" height="22"/>
+                                            <rect key="frame" x="172" y="443" width="187" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="# of choices and # of trials" bezelStyle="round" id="YAU-7j-hx8">
                                                 <font key="font" metaFont="system"/>
@@ -1815,12 +1810,12 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                         <popUpButton toolTip="The vernier stimulus can be of the 2 or 3 line variant." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFy-VR-55t" userLabel="Crowding">
                                             <rect key="frame" x="15" y="118" width="104" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="CEr-tD-UxQ" id="Q94-l5-Nrk">
+                                            <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="CEr-tD-UxQ" id="Q94-l5-Nrk">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                                 <menu key="menu" id="JBV-Xo-VBB">
                                                     <items>
-                                                        <menuItem title="none" id="CEr-tD-UxQ">
+                                                        <menuItem title="none" state="on" id="CEr-tD-UxQ">
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
                                                         <menuItem title="flanking rings" id="toO-3L-BPU">
@@ -1845,12 +1840,12 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                         <popUpButton toolTip="The vernier stimulus can be of the 2 or 3 line variant." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6J-2A-7mk" userLabel="Crowding type">
                                             <rect key="frame" x="223" y="118" width="104" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <popUpButtonCell key="cell" type="push" title="2·gap" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="mt7-ev-w6m" id="8J5-AI-Fsw">
+                                            <popUpButtonCell key="cell" type="push" title="2·gap" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="mt7-ev-w6m" id="8J5-AI-Fsw">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                                 <menu key="menu" id="z7D-2p-Kha">
                                                     <items>
-                                                        <menuItem title="2·gap" id="mt7-ev-w6m">
+                                                        <menuItem title="2·gap" state="on" id="mt7-ev-w6m">
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
                                                         <menuItem title="2.6 arcmin" id="sF6-rS-Nzp">

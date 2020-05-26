@@ -58,7 +58,7 @@
 
 
 - (void) runStart { //console.log("FractController>runStart");
-    timerFirstResponder = [CPTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(onTimerFirstResponder:) userInfo:nil repeats:YES];
+    //timerFirstResponder = [CPTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(onTimerFirstResponder:) userInfo:nil repeats:YES];
     iTrial = 0;
     oldResponseKeyChar = " ";
     state = kStateDrawBack;
