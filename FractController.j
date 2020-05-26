@@ -121,7 +121,7 @@
 
 
 -(void) onTimerFirstResponder: (CPTimer) timer { //console.log("FractController>onTimerFirstResponder");
-    //[[self window] makeFirstResponder: self];
+    [[self window] makeFirstResponder: self];
 }
 
 -(void) onTimeoutDisplay: (CPTimer) timer { //console.log("FractController>onTimeoutDisplay");
