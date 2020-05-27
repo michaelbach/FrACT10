@@ -177,6 +177,28 @@
 }
 
 
+- (void) keyDown: (CPEvent) theEvent { //console.info("AppController>keyDown");
+    switch([[[theEvent charactersIgnoringModifiers] characterAtIndex: 0] uppercaseString]) {
+        case "S":
+            [self  buttonSettings_action: nil];  break;
+        case "F":
+            [self  buttonFullScreen_action: nil];  break;
+        case "L":
+            [self  buttonDoAcuityLetters_action: nil];  break;
+        case "C":
+            [self  buttonDoAcuityLandolt_action: nil];  break;
+        case "E":
+            [self  buttonDoAcuityE_action: nil];  break;
+        case "A":
+            [self  buttonDoAcuityAuck_action: nil];  break;
+        case "V":
+            [self  buttonDoAcuityVernier_action: nil];  break;
+        default:
+            [super keyDown: theEvent];  break;
+    }
+}
+
+
 - (IBAction) buttonFullScreen_action: (id) sender { //console.log("AppController>buttonFullScreen");
     [Misc fullScreenOn: ![Misc isFullScreen]];
 }
@@ -200,9 +222,7 @@
 
 
 - (IBAction) buttonSettings_action: (id) sender { //console.log("AppController>buttonSettings");
-    [settingsPanel close];  [settingsPanel release];
     [Settings checkDefaults];  [settingsPanel makeKeyAndOrderFront: self];
-    [[settingsPanel contentView] setNeedsDisplay: YES];
     if (settingsNeedNewDefaults) {
         settingsNeedNewDefaults = NO;
         [[CPAlert alertWithMessageText: "WARNING" defaultButton: "OK" alternateButton: nil otherButton: nil

@@ -57,7 +57,6 @@ Shortcut: c </string>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttVAC" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ivt-76-XPn">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent">c</string>
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoAcuityLandolt_action:" target="450" id="QI5-LG-vla"/>
@@ -71,7 +70,6 @@ Shortcut: e </string>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttVAE" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gQo-pc-sRD">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent">e</string>
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoAcuityE_action:" target="450" id="XwX-rB-ha0"/>
@@ -86,7 +84,6 @@ Shortcut: a </string>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttonAuck" imagePosition="only" alignment="center" enabled="NO" borderStyle="border" imageScaling="axesIndependently" inset="2" id="nnv-n0-fGE">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent">a</string>
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoAcuityAuck_action:" target="450" id="s20-4q-Urj"/>
@@ -101,7 +98,6 @@ Shortcut: s </string>
                         <buttonCell key="cell" type="push" title="Settings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Tru-y2-nPz">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent">s</string>
                         </buttonCell>
                         <connections>
                             <action selector="buttonSettings_action:" target="450" id="Gsf-c7-lcD"/>
@@ -139,7 +135,6 @@ Shortcut: l </string>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttVALett" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xw1-er-aQN">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent">l</string>
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoAcuityLetters_action:" target="450" id="rlc-aP-8JW"/>
@@ -154,7 +149,6 @@ Shortcut: v
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttVAVernier" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vzK-pu-pjy">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent">v</string>
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoAcuityVernier_action:" target="450" id="om1-xE-6CZ"/>
@@ -192,7 +186,6 @@ Shortcut: f </string>
                         <buttonCell key="cell" type="push" title="Fullscreen" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cEz-jl-XIn">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent">f</string>
                         </buttonCell>
                         <connections>
                             <action selector="buttonFullScreen_action:" target="450" id="OjF-xB-SV6"/>
@@ -223,7 +216,7 @@ Shortcut: f </string>
                         </connections>
                     </textField>
                     <imageView hidden="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hno-SY-FzK">
-                        <rect key="frame" x="83" y="-246" width="600" height="600"/>
+                        <rect key="frame" x="103" y="10" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" focusRingType="none" alignment="left" id="e5j-0O-kr0"/>
                     </imageView>
