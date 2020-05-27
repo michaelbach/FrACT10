@@ -178,9 +178,10 @@
 
 
 - (void) keyDown: (CPEvent) theEvent { //console.info("AppController>keyDown");
+    //theEvent._DOMEvent.stopPropagation();
     switch([[[theEvent charactersIgnoringModifiers] characterAtIndex: 0] uppercaseString]) {
         case "S":
-            [self  buttonSettings_action: nil];  break;
+            [[CPRunLoop currentRunLoop] performSelector: @selector(buttonSettings_action:) target: self argument: nil order: 10000 modes:[CPDefaultRunLoopMode]];  break; // this complicated version avoids propagation of the "s"
         case "F":
             [self  buttonFullScreen_action: nil];  break;
         case "L":
