@@ -5,7 +5,9 @@ Created by mb on July 15, 2015.
 
 History
 =======
-
+ 
+2020-05-28 Settings: maxPossAcuity on General tab, and now updates as needed via delegate controlTextDidEndEditing when leaving field
+            maxPossAcuity was not set correctly with localisation (float needs dot!)
 2020-05-26 Settings: shifted all to chckBool / chckInt / chckFlt
             crowding largely done
 2020-05-25 vernier now correct results. maxDisplayedAcuity. Help panel. Feedback sounds. GUI tweaks.
@@ -25,7 +27,7 @@ History
 */
 
 
-#define dateFract "2020-05-27a"
+#define dateFract "2020-05-28"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -111,6 +113,7 @@ History
     [self setAcuityFormatLogMAR: [self chckBool: [self acuityFormatLogMAR] def: YES set: set]];
     [self setAcuityFormatSnellenFractionFoot: [self chckBool: [self acuityFormatSnellenFractionFoot] def: NO set: set]];
     [self setForceSnellen20: [self chckBool: [self forceSnellen20] def: NO set: set]];
+    [self calculateMaxPossibleDecimalAcuity];
 
     // Crowding
     // crowdingType: 0 = none, 1 = flanking rings, 2 = row of optotypes, 3 = frame (ring), 4 = frame (square)
@@ -134,12 +137,15 @@ History
         [[CPUserDefaults standardUserDefaults] synchronize];
     }
 
-    var maxPossibleAcuity = [Misc visusFromGapPixels: 1.0];
-    maxPossibleAcuity = [self threshCorrection] ? maxPossibleAcuity * 0.891 : maxPossibleAcuity;
-    // Korrektur für Schwellenunterschätzung aufsteigender Verfahren
-    [self setMaxPossibleDecimalAcuity: [Misc stringFromNumber: maxPossibleAcuity decimals: 2 localised: YES]];
-    
     [[CPUserDefaults standardUserDefaults] synchronize];
+}
+
+
++ (void) calculateMaxPossibleDecimalAcuity { //console.log("Settings>calculateMaxPossibleDecimalAcuity");
+    var maxPossibleAcuityVal = [Misc visusFromGapPixels: 1.0];
+    maxPossibleAcuityVal = [self threshCorrection] ? maxPossibleAcuityVal * 0.891 : maxPossibleAcuityVal;
+    // Korrektur für Schwellenunterschätzung aufsteigender Verfahren
+    [self setMaxPossibleDecimalAcuity: [Misc stringFromNumber: maxPossibleAcuityVal decimals: 2 localised: NO]];
 }
 
 

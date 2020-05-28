@@ -51,7 +51,7 @@
 }
 
 
-- (void) applicationDidFinishLaunching: (CPNotification)aNotification { //console.log("AppController>applicationDidFinishLaunching");
+- (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.log("AppController>applicationDidFinishLaunching");
     [self buttonImageAdjust: buttVALett];  [self buttonImageAdjust: buttVAC];
     [self buttonImageAdjust: buttVAE];  [self buttonImageAdjust: buttVAAuck];
     [self buttonImageAdjust: buttVAVernier];
@@ -174,6 +174,14 @@
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.log("AppController>drawStimulusInRect");
     [currentFractController drawStimulusInRect: dirtyRect forView: fractView];
+}
+
+
+/*- (void) controlTextDidChange: (CPNotification) notification { //console.log(@"controlTextDidChange: stringValue == %@", [[notification object] stringValue]);
+    [Settings calculateMaxPossibleDecimalAcuity];
+}*/
+- (void) controlTextDidEndEditing: (CPNotification) notification { //console.log(@"controlTextDidChange: stringValue == %@", [[notification object] stringValue]);
+    [Settings calculateMaxPossibleDecimalAcuity];
 }
 
 

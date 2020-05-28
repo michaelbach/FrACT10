@@ -113,7 +113,7 @@
 }
 
 
-+ (CPString) stringFromNumber: (float) num decimals: (int) decs localised: (BOOL) locd { //console.log("stringFromNumber");
++ (CPString) stringFromNumber: (float) num decimals: (int) decs localised: (BOOL) locd { //console.log("Misc>stringFromNumber");
     if (decs < 1) {
         return [CPString stringWithFormat: @"%d", num];
     }
@@ -129,6 +129,7 @@
     if (locd && ([Settings decimalMarkChar] != ".")) {
         str = [str stringByReplacingOccurrencesOfString:@"." withString:@","];
     }
+//    console.log("Misc>stringFromNumber", fmt, str);
     return str;
 }
 
