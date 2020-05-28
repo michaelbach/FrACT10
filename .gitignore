@@ -1,3 +1,6 @@
-Frameworks/**
-.XcodeSupport/**
-Cocoa Classes/**
+Frameworks/*
+.XcodeSupport/*
+Cocoa Classes/*
+.XcodeSupport
+_cappDevelop.xcodeproj
+Resources/MainMenu.cib
