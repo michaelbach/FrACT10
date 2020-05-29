@@ -36,7 +36,7 @@
     AucklandOptotypesController aucklandOptotypesController;
     FractController currentFractController;
     //float angleAlpha @accessors, angleBeta @accessors, angleGamma @accessors;
-    int testID, kTestIDLett, kTestIDC, kTestIDE, kTestIDAuck, kTestIDVernier;
+    int testID, kTestIDLett, kTestIDC, kTestIDE, kTestIDAuck, kTestIDVernier, kTestContrastC;
     BOOL settingsNeedNewDefaults;
     BOOL runAborted @accessors;
     Sound sound;
@@ -60,7 +60,7 @@
     [[self window] setTitle: "FrACT10"]; [self setVersionDateString: v];
     //[settingsPanel setFrameOrigin: CGPointMake(0, 0)];
     
-    kTestIDLett = 0;  kTestIDC = 1; kTestIDE = 2; kTestIDAuck = 3; kTestIDVernier = 4; // constants
+    kTestIDLett = 0;  kTestIDC = 1; kTestIDE = 2; kTestIDAuck = 3; kTestIDVernier = 4; kTestContrastC = 5;
 
     kOptoTypeIndexAcuityC = 0;  kOptoTypeIndexAcuityLetters = 1;// constants
 //    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
@@ -130,6 +130,8 @@
                 [responseinfoPanelVAAuck makeKeyAndOrderFront: self];  break;
             case kTestIDVernier:
                 [responseinfoPanelVAVernier makeKeyAndOrderFront: self];  break;
+            case kTestContrastC:
+                [responseinfoPanelVAVernier makeKeyAndOrderFront: self];  break;
         }
     } else {
         [self runFractController2_actionOK: nil];
@@ -155,6 +157,9 @@
             break;
         case kTestIDVernier:
             currentFractController = [[FractControllerVAVernier alloc] initWithWindow: fractControllerWindow parent: self];
+            break;
+        case kTestContrastC:
+            currentFractController = [[FractControllerContrastC alloc] initWithWindow: fractControllerWindow parent: self];
             break;
     }
     [currentFractController setSound: sound];
@@ -186,7 +191,6 @@
 
 
 - (void) keyDown: (CPEvent) theEvent { //console.info("AppController>keyDown");
-    //theEvent._DOMEvent.stopPropagation();
     switch([[[theEvent charactersIgnoringModifiers] characterAtIndex: 0] uppercaseString]) {
         case "S":
             [[CPRunLoop currentRunLoop] performSelector: @selector(buttonSettings_action:) target: self argument: nil order: 10000 modes:[CPDefaultRunLoopMode]];  break; // this complicated version avoids propagation of the "s"
@@ -202,6 +206,8 @@
             [self  buttonDoAcuityAuck_action: nil];  break;
         case "V":
             [self  buttonDoAcuityVernier_action: nil];  break;
+        case "KK":
+            [self  buttonDoContrastC_action: nil];  break;
         default:
             [super keyDown: theEvent];  break;
     }
@@ -228,10 +234,14 @@
 - (IBAction) buttonDoAcuityVernier_action: (id) sender { //console.log("AppController>buttonDoAcuityE_action");
     testID = kTestIDVernier;    [self runFractController];
 }
+- (IBAction) buttonDoContrastC_action: (id) sender { //console.log("AppController>buttonDoContrastC_action");
+    testID = kTestContrastC;    [self runFractController];
+}
 
 
 - (IBAction) buttonSettings_action: (id) sender { //console.log("AppController>buttonSettings");
     [Settings checkDefaults];  [settingsPanel makeKeyAndOrderFront: self];
+    [settingsPanel setFrameOrigin: CGPointMake(0, 0)];
     if (settingsNeedNewDefaults) {
         settingsNeedNewDefaults = NO;
         [[CPAlert alertWithMessageText: "WARNING" defaultButton: "OK" alternateButton: nil otherButton: nil

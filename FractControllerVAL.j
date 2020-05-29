@@ -10,6 +10,7 @@
 
 @implementation FractControllerVAL: FractController {
     float kPi, kPi2;
+    BOOL responseButtonsAdded;
 }
 
 
@@ -160,12 +161,31 @@
     CGContextRestoreGState(cgc);
     CGContextSetTextPosition(cgc, 10, 10);  CGContextSetFillColor(cgc, colOptotypeFore);
     CGContextShowText(cgc, trialInfoString);
+    
+    if ([Settings enableTouchControls] && (!responseButtonsAdded)) {
+        responseButtonsAdded = YES;
+        var size = viewWidth / ((nAlternatives+1) * 1.4 + 1);
+        for (var i = 0; i < nAlternatives+1; i++){
+            var rect = CGRectMake((i + 0.5) * 1.4 * size, viewHeight - size - 4, size, size);
+            var button = [[CPButton alloc] initWithFrame:rect];
+            [button setTitle: [@"CDHKNORSVZØ" characterAtIndex: i]];
+            [button setKeyEquivalent: [button title]];
+            [button setTarget: self];  [button setAction: @selector(letterResponseButton_action:)];
+            [[[self window] contentView] addSubview: button];
+        }
+    }
     [super drawStimulusInRect: dirtyRect];
+}
+- (IBAction) letterResponseButton_action: (id) sender { //console.info("FrACTControllerVALett>letterResponseButton_action");
+    responseKeyChar = [sender keyEquivalent];
+    if (responseKeyChar == "Ø") {
+        [self runEnd];
+    } else [super processKeyDownEvent];
 }
 
 
 - (void) runStart { //console.log("FractControllerVALetters>runStart");
-    kPi = Math.PI;  kPi2 = kPi / 2;
+    kPi = Math.PI;  kPi2 = kPi / 2;  responseButtonsAdded = NO;
     nAlternatives = 10;  nTrials = [Settings nTrials08];
     [self setCurrentTestName: "Acuity_Letters"];
     [self setCurrentTestResultUnit: "LogMAR"];
@@ -173,7 +193,11 @@
 }
 
 
-- (void)runEnd { //console.log("FractControllerVALetters>runEnd");
+- (void) runEnd { //console.log("FractControllerVALetters>runEnd");
+    if (responseButtonsAdded) {
+        var sv = [[[self window] contentView] subviews];
+        for (var i = 0; i < nAlternatives+1; i++) [sv[i] removeFromSuperview];
+    }
     if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {

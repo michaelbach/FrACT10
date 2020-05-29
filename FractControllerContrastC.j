@@ -19,7 +19,7 @@
 - (float) stimGenericFromDevice: (float) d {return [self acuityStimGenericFromDevice: d];}
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.log("FractControllerAcuityC>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { console.log("FractControllerContrastC>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, colOptotypeBack);
@@ -51,14 +51,14 @@
 }
 
 
-- (void) runStart { //console.log("FractControllerAcuityLetters>runStart");
-    [self setCurrentTestName: "Acuity_LandoltC"];
+- (void) runStart { console.log("FractControllerContrastC>runStart");
+    [self setCurrentTestName: "Contrast_LandoltC"];
     [self setCurrentTestResultUnit: "logCS"];
 [super runStart];
 }
 
 
-- (void)runEnd { //console.log("FractControllerAcuityC>runEnd");
+- (void)runEnd { //console.log("FractControllerContrastC>runEnd");
     if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {
@@ -69,7 +69,7 @@
 
 
 // 0–8: valid; -1: ignore; -2: invalid
-- (int) responseNumberFromChar: (CPString) keyChar { //console.log("FractControllerAcuityC>responseNumberFromChar: ", keyChar);
+- (int) responseNumberFromChar: (CPString) keyChar { //console.log("FractControllerContrastC>responseNumberFromChar: ", keyChar);
     switch (keyChar) {
         case CPLeftArrowFunctionKey: return 4;
         case CPRightArrowFunctionKey: return 0;

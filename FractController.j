@@ -117,6 +117,11 @@
             CGContextStrokeRect(cgc, CGRectMake(-frameSize2, -frameSize2, frameSize, frameSize));
             break;
     }
+    /* response buttons for touch?
+    var viewSize = Math.min(viewWidth, viewHeight);
+    var buttonSize = Math.min(Math.max(48, stimStrengthInDeviceunits), viewSize / 5)
+    var myButton = [[CPButton alloc] initWithFrame:CGRectMake(viewWidth-buttonSize, 0, buttonSize, buttonSize)];
+    [[[self window] contentView] addSubview: myButton]; */
 }
 
 
@@ -216,7 +221,7 @@
     responseKeyChar = [[[theEvent characters] characterAtIndex: 0] uppercaseString];
     responseKeyCode = [theEvent keyCode];
     if ((responseKeyCode == CPEscapeKeyCode) || ((responseKeyChar == abortCharacter) && (oldResponseKeyChar == abortCharacter))) {
-        [self runEnd];
+        [self runEnd];  return;
     }
     oldResponseKeyChar = responseKeyChar;
     if (responseKeyChar != abortCharacter) [self processKeyDownEvent];

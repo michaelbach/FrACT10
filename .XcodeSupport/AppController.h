@@ -28,6 +28,7 @@
 - (IBAction)buttonDoAcuityE_action:(id)sender;
 - (IBAction)buttonDoAcuityAuck_action:(id)sender;
 - (IBAction)buttonDoAcuityVernier_action:(id)sender;
+- (IBAction)buttonDoContrastC_action:(id)sender;
 - (IBAction)buttonSettings_action:(id)sender;
 - (IBAction)buttonSettingsClose_action:(id)sender;
 - (IBAction)buttonSettingsDefaults_action:(id)sender;
