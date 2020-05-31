@@ -6,6 +6,7 @@ Created by mb on July 15, 2015.
 History
 =======
 
+2020-05-31 enableTouchControls no accessible from info screen, improved tab sequence
 2020-05-29 Text correction in GUI;  added buttons for touch devices to Sloan Letters;  prepared contrast
 2020-05-28 Settings: maxPossAcuity on General tab, and now updates as needed via delegate controlTextDidEndEditing when leaving field
             maxPossAcuity was not set correctly with localisation (float needs dot!)
@@ -28,7 +29,7 @@ History
 */
 
 
-#define dateFract "2020-05-29"
+#define dateFract "2020-05-30"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -77,7 +78,7 @@ History
     [self setCalBarLengthInPixel: [self chckFlt: [self calBarLengthInPixel] def: 700 min: 1 max: 2000 set: set]];
 
     [self setResponseInfoAtStart: [self chckBool: [self responseInfoAtStart] def: YES set: set]];
-    [self setEnableTouchControls: [self chckBool: [self enableTouchControls] def: YES set: set]];
+    [self setEnableTouchControls: [self chckBool: [self enableTouchControls] def: NO set: set]];
 
     [self setNOfRuns2Recall: [self chckInt: [self nOfRuns2Recall] def: 0 min: 0 max: 100 set: set]];
 
@@ -172,7 +173,7 @@ History
 
 + (BOOL) notCalibrated {
     [self checkDefaults];
-    return (([self distanceInCM]==defaultDistanceInCM) || ([self calBarLengthInMM]==defaultCalBarLengthInMM));
+    return (([self distanceInCM]==defaultDistanceInCM) || ([self calBarLengthInMM] == defaultCalBarLengthInMM));
 }
 
 

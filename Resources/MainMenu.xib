@@ -216,7 +216,7 @@ Shortcut: f </string>
                         </connections>
                     </textField>
                     <imageView hidden="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hno-SY-FzK">
-                        <rect key="frame" x="103" y="10" width="600" height="600"/>
+                        <rect key="frame" x="103" y="2" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" focusRingType="none" alignment="left" id="e5j-0O-kr0"/>
                     </imageView>
@@ -413,7 +413,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="8aG-i8-Dh8">
                             <rect key="frame" x="1" y="1" width="743" height="327"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="zNM-Gb-Jh9">
                                     <rect key="frame" x="0.0" y="0.0" width="743" height="364"/>
@@ -1192,7 +1192,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.distanceInCM" id="bKr-vF-OLx"/>
                                                 <outlet property="delegate" destination="450" id="Dlh-hu-hP1"/>
-                                                <outlet property="nextKeyView" destination="Wrj-XQ-Ter" id="7QN-cp-VE9"/>
+                                                <outlet property="nextKeyView" destination="Wuy-yQ-B3F" id="v4B-Jq-dAP"/>
                                             </connections>
                                         </textField>
                                         <textField toolTip="For CALIBRATION: measure the length of the blue “ruler” here, and enter its value in millimeters." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aXw-Ht-RMk">
@@ -1206,7 +1206,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.calBarLengthInMM" id="rGX-Ua-nd0"/>
                                                 <outlet property="delegate" destination="450" id="hgS-w7-eDq"/>
-                                                <outlet property="nextKeyView" destination="YNX-f3-PL9" id="knf-ji-ThQ"/>
+                                                <outlet property="nextKeyView" destination="YNX-f3-PL9" id="wJJ-jn-AP5"/>
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LFN-en-1hJ">
@@ -1245,7 +1245,6 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </accessibility>
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.decimalMarkCharIndex" id="lHe-4g-dbh"/>
-                                                <outlet property="nextKeyView" destination="aXw-Ht-RMk" id="OPx-W0-MyH"/>
                                             </connections>
                                         </popUpButton>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YNd-5j-KRz">
@@ -1383,7 +1382,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.timeoutRewardPicturesInSeconds" id="JVm-dc-Wac"/>
-                                                            <outlet property="nextKeyView" destination="vfI-Mo-x5r" id="kOn-IU-hXI"/>
+                                                            <outlet property="nextKeyView" destination="aXw-Ht-RMk" id="tLp-ty-Mz6"/>
                                                         </connections>
                                                     </textField>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iPf-w8-izN">
@@ -1470,7 +1469,6 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                         </popUpButtonCell>
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.nAlternativesIndex" id="RlV-ns-IbV"/>
-                                                            <outlet property="nextKeyView" destination="Wuy-yQ-B3F" id="Px9-nW-0yI"/>
                                                         </connections>
                                                     </popUpButton>
                                                     <textField toolTip="The number of trials presented when 2 choices are possible (e.g. Vernier)" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wuy-yQ-B3F">
@@ -1483,7 +1481,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.nTrials02" id="aad-02-t2D"/>
-                                                            <outlet property="nextKeyView" destination="9PX-pe-3kM" id="nKc-rx-KQV"/>
+                                                            <outlet property="nextKeyView" destination="9PX-pe-3kM" id="6iv-gn-omW"/>
                                                         </connections>
                                                     </textField>
                                                     <textField toolTip="The number of trials presented when 4 choices are possible (e.g. tumbling E)" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9PX-pe-3kM">
@@ -1496,7 +1494,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.nTrials04" id="3MC-au-62j"/>
-                                                            <outlet property="nextKeyView" destination="xWr-Q3-BrM" id="ar4-EX-gt9"/>
+                                                            <outlet property="nextKeyView" destination="xWr-Q3-BrM" id="ele-gj-hew"/>
                                                         </connections>
                                                     </textField>
                                                     <textField toolTip="The number of trials presented when 8 or 10 choices are possible (e.g. Sloan Letters or Landolt-C)" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xWr-Q3-BrM">
@@ -1509,7 +1507,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.nTrials08" id="rkZ-VW-3NC"/>
-                                                            <outlet property="nextKeyView" destination="Lf9-G7-Nrh" id="EH8-f9-Yw4"/>
+                                                            <outlet property="nextKeyView" destination="Lf9-G7-Nrh" id="RYZ-2j-GvP"/>
                                                         </connections>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LJd-oY-MqO">
@@ -1551,7 +1549,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.timeoutDisplaySeconds" id="m1j-eE-wP6"/>
-                                                            <outlet property="nextKeyView" destination="Ojh-w9-WzR" id="eS3-IF-0bD"/>
+                                                            <outlet property="nextKeyView" destination="Ojh-w9-WzR" id="k2d-CB-POe"/>
                                                         </connections>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aAA-HG-qTm">
@@ -1582,7 +1580,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.timeoutResponseSeconds" id="TMw-nz-tDm"/>
-                                                            <outlet property="nextKeyView" destination="vfI-Mo-x5r" id="yfq-1I-qt3"/>
+                                                            <outlet property="nextKeyView" destination="w75-A9-ahy" id="MyN-lu-7ml"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
@@ -2035,7 +2033,7 @@ DQ
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1DO-9k-S9y">
-                        <rect key="frame" x="20" y="216" width="760" height="329"/>
+                        <rect key="frame" x="20" y="369" width="760" height="176"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="JMr-GS-kTU">
                             <font key="font" metaFont="system" size="16"/>
@@ -2089,6 +2087,18 @@ Gw
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Gq-O1-JGY">
+                        <rect key="frame" x="18" y="324" width="342" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Enable Touch Controls (necessary without keyboard)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="O4S-3g-ToL">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTouchControls" id="8Ib-Xx-ZO0"/>
+                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="DLf-Zv-dg5"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
