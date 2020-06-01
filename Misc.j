@@ -12,6 +12,18 @@
 }
 
 
++ (float) limit: (float) theValue lo: (float) lo hi: (float) hi {
+    if (theValue < lo) return lo;
+    if (theValue > hi) return hi;
+    return theValue;
+}
+
+
++ (BOOL) isOdd: (int) i {
+    return (i & 1);
+}
+
+
 + (void) fullScreenOn: (BOOL) onOff {
     var element = document.documentElement;
     if (onOff) {
@@ -106,17 +118,13 @@
 }
 
 
-+ (float) limit: (float) theValue lo: (float) lo hi: (float) hi {
-    if (theValue < lo) return lo;
-    if (theValue > hi) return hi;
-    return theValue;
++ (CPString) stringFromInteger: (int) num { //console.log("Misc>stringFromInteger");
+    return [CPString stringWithFormat: @"%d", num];
 }
 
 
 + (CPString) stringFromNumber: (float) num decimals: (int) decs localised: (BOOL) locd { //console.log("Misc>stringFromNumber");
-    if (decs < 1) {
-        return [CPString stringWithFormat: @"%d", num];
-    }
+    if (decs < 1)  return [self stringFromInteger: num];
     var fmt = @"%6." + [CPString stringWithFormat:@"%d", decs] + "f";
     var str = [CPString stringWithFormat: fmt, num];
     while ([str hasPrefix:@" "] && [str length] > 1) {

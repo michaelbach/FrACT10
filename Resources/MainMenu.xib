@@ -52,7 +52,7 @@
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWr-KV-CRJ">
                         <rect key="frame" x="190" y="385" width="110" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Start acuity run using Landolt-Cs
+                        <string key="toolTip">Start acuity run using Landolt-Cs.
 Shortcut: c </string>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttVAC" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ivt-76-XPn">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -65,7 +65,7 @@ Shortcut: c </string>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Phl-6Z-YpU">
                         <rect key="frame" x="343" y="385" width="110" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Start acuity run using tumbling Es
+                        <string key="toolTip">Start acuity run using tumbling Es.
 Shortcut: e </string>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttVAE" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gQo-pc-sRD">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -78,8 +78,7 @@ Shortcut: e </string>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6e2-Sj-gkY">
                         <rect key="frame" x="498" y="385" width="110" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Start acuity run using Auckland Optotypes
-
+                        <string key="toolTip">Start acuity run using Auckland Optotypes.
 Shortcut: a </string>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttonAuck" imagePosition="only" alignment="center" enabled="NO" borderStyle="border" imageScaling="axesIndependently" inset="2" id="nnv-n0-fGE">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -143,7 +142,7 @@ Shortcut: l (as in l&gt;etter).</string>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oB-kn-EbO">
                         <rect key="frame" x="651" y="385" width="110" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Start hyperacuity (Vernier) run
+                        <string key="toolTip">Start hyperacuity (Vernier) run.
 Shortcut: v
 </string>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttVAVernier" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vzK-pu-pjy">
@@ -216,7 +215,7 @@ Shortcut: f </string>
                         </connections>
                     </textField>
                     <imageView hidden="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hno-SY-FzK">
-                        <rect key="frame" x="103" y="2" width="600" height="600"/>
+                        <rect key="frame" x="103" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" focusRingType="none" alignment="left" id="e5j-0O-kr0"/>
                     </imageView>
@@ -241,12 +240,12 @@ Shortcut: f </string>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="H5V-2Z-rys">
                             <font key="font" metaFont="system" size="16"/>
                             <string key="title">FrACT10
-======
+=======
 
 Freiburg Visual Acuity and Contrast Test, Vs 10
 
 
-Interactive measurement of visual acuity, contrast sensitivity and Vernier acuity following DIN/ISO.
+Interactive measurement of visual acuities following DIN/ISO.
 
 Optotypes: Landolt C, Tumbling E, Sloan letters, etc.
 
@@ -2146,17 +2145,19 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="UMe-Yr-3VB">
                             <font key="font" metaFont="system" size="16"/>
-                            <string key="title">
+                            <mutableString key="title">
 Rings with gaps will appear, how are they oriented?
 
 Use the cursor keys, or on a keypad:
 → = 6,  ↑ = 8,  ← = 4,  ↓ = 2.
 
+On touch devices, use the buttons around the screen (may need to enable).
+
 
 If you can't recognise the orientation, use your best guess.
 
 
-Type 55, or &lt;esc&gt; to abort the run.</string>
+Type 55, or &lt;esc&gt; to abort the run.</mutableString>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -2188,7 +2189,7 @@ Type 55, or &lt;esc&gt; to abort the run.</string>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="icO-7N-r70">
-                        <rect key="frame" x="20" y="211" width="383" height="329"/>
+                        <rect key="frame" x="20" y="250" width="383" height="290"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="ZL2-B5-ysg">
                             <font key="font" metaFont="system" size="16"/>
@@ -2198,6 +2199,9 @@ Rings with gaps will appear, where is the gap?
 Use the number keys on number pad of your keyboard or an external numeric keypad.
 
 [In a pinch, you can use the normal numeric keys if you memorize their arrangement.]
+
+On touch devices, use the buttons around the screen (may need to enable).
+
 
 If you can't recognise the direction of the gap, use your best guess.
 
@@ -2250,6 +2254,18 @@ Gw
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GQg-6w-eLT">
+                        <rect key="frame" x="18" y="165" width="342" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Enable Touch Controls (necessary without keyboard)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xKJ-u0-pb8">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTouchControls" id="TQo-cQ-KbI"/>
+                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="GlL-Ic-CNW"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
@@ -2295,18 +2311,20 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="4ks-UH-FmP">
                             <font key="font" metaFont="system" size="16"/>
-                            <string key="title">
+                            <mutableString key="title">
 Rings with gaps, or “tumbling Es“ will appear, how are they oriented?
 
 Use the cursor keys, or on a keypad:
 → = 6,  ↑ = 8,  ← = 4,  ↓ = 2.
+
+On touch devices, use the buttons around the screen (may need to enable).
 
 
 If you can't recognise the orientation, use your best guess.
 
 
 Type 55, or &lt;esc&gt; to abort the run.
-</string>
+</mutableString>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -2345,6 +2363,18 @@ Type 55, or &lt;esc&gt; to abort the run.
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tfq-df-vdX">
+                        <rect key="frame" x="28" y="146" width="342" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Enable Touch Controls (necessary without keyboard)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9HQ-Ne-3eC">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTouchControls" id="BXm-oa-IdX"/>
+                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="FCk-Jx-xdB"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
@@ -2424,12 +2454,15 @@ Gw
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MEO-dD-MuZ">
-                        <rect key="frame" x="20" y="216" width="760" height="329"/>
+                        <rect key="frame" x="20" y="346" width="760" height="199"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="nSs-N5-jC6">
                             <font key="font" metaFont="system" size="16"/>
                             <string key="title">
 Use the arrow (cursor) keys on your keyboard to indicate if the TOP / MIDDLE line is left or right.
+
+On touch devices, use the buttons right/left on the screen (may need to enable).
+
 
 If you can't decide, simply use your best guess.
 
@@ -2477,6 +2510,18 @@ Gw
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0v7-0w-LXR">
+                        <rect key="frame" x="18" y="268" width="342" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Enable Touch Controls (necessary without keyboard)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="mbA-1f-P4s">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTouchControls" id="axZ-2y-LBq"/>
+                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="3Xw-60-aPK"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="131" y="2168"/>

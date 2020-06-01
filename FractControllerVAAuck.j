@@ -43,7 +43,7 @@
                 imageRect = CGRectMake((i + 0.5) * 2 * size, viewHeight - 1.1 * size, size, size);
                 CGContextDrawImage(cgc, imageRect, auckImages[i]);
                 CGContextShowTextAtPoint(cgc, (i + 0.5) * 2 * size + size / 2 - 8, viewHeight - 1.5 * size,
-                                         [CPString stringWithFormat: @"%d", (i + 1) % 10]);
+                                         [Misc stringFromInteger: (i + 1) % 10]);
             }
             break;
         default: break;

@@ -44,10 +44,9 @@
             break;
         default: break;
     }
+
     CGContextRestoreGState(cgc);
-    CGContextSetTextPosition(cgc, 10, 10);
-    CGContextSetFillColor(cgc, colOptotypeFore);
-    CGContextShowText(cgc, trialInfoString);
+    [super drawStimulusInRect: dirtyRect];
 }
 
 

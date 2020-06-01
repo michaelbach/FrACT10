@@ -56,16 +56,12 @@
     [self buttonImageAdjust: buttVAE];  [self buttonImageAdjust: buttVAAuck];
     [self buttonImageAdjust: buttVAVernier];
 
-    var v = [Settings versionNumber] + "·" + [Settings versionDate]
-    [[self window] setTitle: "FrACT10"]; [self setVersionDateString: v];
-    //[settingsPanel setFrameOrigin: CGPointMake(0, 0)];
-    
     kTestIDLett = 0;  kTestIDC = 1; kTestIDE = 2; kTestIDAuck = 3; kTestIDVernier = 4; kTestContrastC = 5;
-
-    kOptoTypeIndexAcuityC = 0;  kOptoTypeIndexAcuityLetters = 1;// constants
 //    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
-    [Settings checkDefaults];
-    
+ 
+    var v = [Settings versionNumber] + "·" + [Settings versionDate]
+     [[self window] setTitle: "FrACT10"]; [self setVersionDateString: v];
+    [Settings checkDefaults]; // what was the reason to put this here???
     [self setColOptotypeFore: [CPColor blackColor]];  [self setColOptotypeBack: [CPColor whiteColor]];
     var s = @"Current key test settings: " + [Settings distanceInCM] +" cm distance, ";
     s += [Settings nAlternatives] + " Landolt alternatives, " + [Settings nTrials] + " trials";
@@ -74,6 +70,7 @@
     rewardsController = [[RewardsController alloc] initWithView: rewardImageView];
     aucklandOptotypesController = [[AucklandOptotypesController alloc] initWithButton2Enable: buttVAAuck];
     sound = [[Sound alloc] init];
+    for (var i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++); // ranomising the pseudorandom sequence
 }
 
 
@@ -114,7 +111,7 @@
 }
 
 
--(void) runFractController2 { //console.log("AppController>runFractController2  ");
+- (void) runFractController2 { //console.log("AppController>runFractController2  ");
     [self closeAllPanels];
     if ([Settings responseInfoAtStart]) {
         switch (testID) {
@@ -182,8 +179,7 @@
 }
 
 
-/*- (void) controlTextDidChange: (CPNotification) notification { //console.log(@"controlTextDidChange: stringValue == %@", [[notification object] stringValue]);
-    [Settings calculateMaxPossibleDecimalAcuity];
+/*- (void) controlTextDidChange: (CPNotification) notification { //console.log(@"controlTextDidChange: stringValue == %@", [[notification object] stringValue]);[Settings calculateMaxPossibleDecimalAcuity];
 }*/
 - (void) controlTextDidEndEditing: (CPNotification) notification { //console.log(@"controlTextDidChange: stringValue == %@", [[notification object] stringValue]);
     [Settings calculateMaxPossibleDecimalAcuity];

@@ -159,26 +159,15 @@
     }
     
     if ([Settings enableTouchControls] && (!responseButtonsAdded)) {
-        responseButtonsAdded = YES;
         var size = viewWidth / ((nAlternatives+1) * 1.4 + 1);
         for (var i = 0; i < nAlternatives+1; i++){
-            var rect = CGRectMake((i + 0.5) * 1.4 * size, viewHeight - size - 4, size, size);
-            var button = [[CPButton alloc] initWithFrame:rect];
-            [button setTitle: [@"CDHKNORSVZØ" characterAtIndex: i]];
-            [button setKeyEquivalent: [button title]];
-            [button setTarget: self];  [button setAction: @selector(letterResponseButton_action:)];
-            [[[self window] contentView] addSubview: button];
+            [self buttonCenteredAtX: (i + 0.9) * 1.4 * size y: viewHeight/2 - size / 2 - 4
+                               size: size title: [@"CDHKNORSVZØ" characterAtIndex: i]];
         }
     }
 
     CGContextRestoreGState(cgc);
     [super drawStimulusInRect: dirtyRect];
-}
-- (IBAction) letterResponseButton_action: (id) sender { //console.info("FrACTControllerVALett>letterResponseButton_action");
-    responseKeyChar = [sender keyEquivalent];
-    if (responseKeyChar == "Ø") {
-        [self runEnd];
-    } else [super processKeyDownEvent];
 }
 
 

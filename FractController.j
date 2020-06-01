@@ -20,7 +20,7 @@
     Thresholder thresholder;
     AlternativesGenerator alternativesGenerator;
     CPString trialInfoString @accessors;
-    CPTimer timerDisplay, timerResponse, timerFirstResponder;
+    CPTimer timerDisplay, timerResponse;
     CPString kRangeLimitDefault, kRangeLimitOk, kRangeLimitValueAtFloor, kRangeLimitValueAtCeiling, rangeLimitStatus, abortCharacter;
     id sound @accessors;
     BOOL responseButtonsAdded;
@@ -59,7 +59,6 @@
 
 
 - (void) runStart { //console.log("FractController>runStart");
-    //timerFirstResponder = [CPTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(onTimerFirstResponder:) userInfo:nil repeats:YES];
     responseButtonsAdded = NO;
     iTrial = 0;
     oldResponseKeyChar = " ";
@@ -123,6 +122,24 @@
             CGContextStrokeRect(cgc, CGRectMake(-frameSize2, -frameSize2, frameSize, frameSize));
             break;
     }
+}
+
+
+- (CPButton) buttonCenteredAtX: (float) x y: (float) y size: (float) size title: (CPString) title { //console.info("FrACTControllerVAE>buttonAtX", x, y, size, title);
+    y = y + viewHeight / 2 // contentView is not affected by CGContextTranslateCTM, so I'm shifting y here to 0 at center
+    var sze2 = size / 2;
+    var button = [[CPButton alloc] initWithFrame: CGRectMake(x - sze2, y - sze2, size, size)];
+    [button setTitle: title];  [button setKeyEquivalent: [button title]];
+    [button setTarget: self];  [button setAction: @selector(responseButton_action:)];
+    [button setBezelStyle: CPRoundedBezelStyle];
+    [[[self window] contentView] addSubview: button];
+    responseButtonsAdded = YES;
+}
+- (IBAction) responseButton_action: (id) sender { //console.info("FrACTControllerVAE>responseButton_action");
+    responseKeyChar = [sender keyEquivalent];
+    if (responseKeyChar == "Ø") {
+        [self runEnd];
+    } else [super processKeyDownEvent];
 }
 
 
@@ -192,7 +209,6 @@
     }
     [timerDisplay invalidate];  timerDisplay = nil;
     [timerResponse invalidate];  timerResponse = nil;
-    [timerFirstResponder invalidate];  timerFirstResponder = nil;
     [[self window] close];
     [[self parentController] setRunAborted: (iTrial < nTrials)]; //premature end
     [[self parentController] setResultString: resultString];

@@ -13,7 +13,6 @@
 @implementation HierarchyController: CPWindowController {
     HierarchyController parentController @accessors;
     CPColor colOptotypeFore @accessors, colOptotypeBack @accessors;
-    int kOptoTypeIndexAcuityC, kOptoTypeIndexAcuityLetters;
     CPString resultString @accessors;
     CPString versionDateString @accessors;
     CPString keyTestSettingsString @accessors;

@@ -6,6 +6,8 @@ Created by mb on July 15, 2015.
 History
 =======
 
+2020-06-01 added Misc>stringFromInteger, touchResponse 4 Vernier & LandoltC
+            truly randomised iRandom
 2020-06-01 bug with tooltips: need to change something else in IB too.
             corrected typos. <esc> still doesn't work in the info screens
             touchResponse works for E, factored out infoText
