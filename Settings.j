@@ -6,6 +6,9 @@ Created by mb on July 15, 2015.
 History
 =======
 
+2020-06-01 bug with tooltips: need to change something else in IB too.
+            corrected typos. <esc> still doesn't work in the info screens
+            touchResponse works for E, factored out infoText
 2020-05-31 enableTouchControls no accessible from info screen, improved tab sequence
 2020-05-29 Text correction in GUI;  added buttons for touch devices to Sloan Letters;  prepared contrast
 2020-05-28 Settings: maxPossAcuity on General tab, and now updates as needed via delegate controlTextDidEndEditing when leaving field
@@ -29,7 +32,7 @@ History
 */
 
 
-#define dateFract "2020-05-30"
+#define dateFract "2020-06-01"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399

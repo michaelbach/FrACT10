@@ -131,7 +131,7 @@ Shortcut: s </string>
                         <rect key="frame" x="40" y="385" width="110" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Start acuity run using Sloan Letters.
-Shortcut: l </string>
+Shortcut: l (as in l&gt;etter).</string>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttVALett" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xw1-er-aQN">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -413,7 +413,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="8aG-i8-Dh8">
                             <rect key="frame" x="1" y="1" width="743" height="327"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="zNM-Gb-Jh9">
                                     <rect key="frame" x="0.0" y="0.0" width="743" height="364"/>
@@ -2033,13 +2033,15 @@ DQ
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1DO-9k-S9y">
-                        <rect key="frame" x="20" y="369" width="760" height="176"/>
+                        <rect key="frame" x="20" y="348" width="760" height="197"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="JMr-GS-kTU">
                             <font key="font" metaFont="system" size="16"/>
                             <string key="title">
-Use the letter keys on your keyboard to type the letter appearing on the screen,
-or, for touch devices, use the buttons at he bottom of the screen.
+Use the letter keys on your keyboard to type the letter appearing on the screen.
+
+On touch devices, use the buttons at the bottom of the screen (may need to enable).
+
 
 If you can't recognise the letter, use your best guess.
 
@@ -2088,7 +2090,7 @@ Gw
                         </textFieldCell>
                     </textField>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Gq-O1-JGY">
-                        <rect key="frame" x="18" y="324" width="342" height="18"/>
+                        <rect key="frame" x="18" y="304" width="342" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Enable Touch Controls (necessary without keyboard)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="O4S-3g-ToL">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>

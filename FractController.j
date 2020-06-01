@@ -23,6 +23,7 @@
     CPTimer timerDisplay, timerResponse, timerFirstResponder;
     CPString kRangeLimitDefault, kRangeLimitOk, kRangeLimitValueAtFloor, kRangeLimitValueAtCeiling, rangeLimitStatus, abortCharacter;
     id sound @accessors;
+    BOOL responseButtonsAdded;
 }
 
 
@@ -59,6 +60,7 @@
 
 - (void) runStart { //console.log("FractController>runStart");
     //timerFirstResponder = [CPTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(onTimerFirstResponder:) userInfo:nil repeats:YES];
+    responseButtonsAdded = NO;
     iTrial = 0;
     oldResponseKeyChar = " ";
     state = kStateDrawBack;
@@ -87,6 +89,10 @@
 
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.log("FractController>drawStimulusInRect");
+    CGContextSetTextPosition(cgc, 10, 10); // we assume here no transformed CGContext
+    CGContextSetFillColor(cgc, colOptotypeFore);
+    CGContextShowText(cgc, trialInfoString);
+
     CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
     //[self strokeLineX0: -100 y0: -100 x1: 100 y1: 100];  [self strokeLineX0: 100 y0: -100 x1: -100 y1: 100];
     var i;  //console.log([Settings crowdingType]);
@@ -180,6 +186,10 @@
 
 
 - (void) runEnd { //console.log("FractController>runEnd");
+    if (responseButtonsAdded) {
+        var sv = [[[self window] contentView] subviews];
+        for (var i = 0; i < nAlternatives+1; i++) [sv[i] removeFromSuperview];
+    }
     [timerDisplay invalidate];  timerDisplay = nil;
     [timerResponse invalidate];  timerResponse = nil;
     [timerFirstResponder invalidate];  timerFirstResponder = nil;

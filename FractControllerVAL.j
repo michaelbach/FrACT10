@@ -10,7 +10,6 @@
 
 @implementation FractControllerVAL: FractController {
     float kPi, kPi2;
-    BOOL responseButtonsAdded;
 }
 
 
@@ -158,9 +157,6 @@
             break;
         default: break;
     }
-    CGContextRestoreGState(cgc);
-    CGContextSetTextPosition(cgc, 10, 10);  CGContextSetFillColor(cgc, colOptotypeFore);
-    CGContextShowText(cgc, trialInfoString);
     
     if ([Settings enableTouchControls] && (!responseButtonsAdded)) {
         responseButtonsAdded = YES;
@@ -174,6 +170,8 @@
             [[[self window] contentView] addSubview: button];
         }
     }
+
+    CGContextRestoreGState(cgc);
     [super drawStimulusInRect: dirtyRect];
 }
 - (IBAction) letterResponseButton_action: (id) sender { //console.info("FrACTControllerVALett>letterResponseButton_action");
@@ -185,7 +183,7 @@
 
 
 - (void) runStart { //console.log("FractControllerVALetters>runStart");
-    kPi = Math.PI;  kPi2 = kPi / 2;  responseButtonsAdded = NO;
+    kPi = Math.PI;  kPi2 = kPi / 2;
     nAlternatives = 10;  nTrials = [Settings nTrials08];
     [self setCurrentTestName: "Acuity_Letters"];
     [self setCurrentTestResultUnit: "LogMAR"];
@@ -194,10 +192,6 @@
 
 
 - (void) runEnd { //console.log("FractControllerVALetters>runEnd");
-    if (responseButtonsAdded) {
-        var sv = [[[self window] contentView] subviews];
-        for (var i = 0; i < nAlternatives+1; i++) [sv[i] removeFromSuperview];
-    }
     if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {

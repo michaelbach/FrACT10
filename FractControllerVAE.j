@@ -49,24 +49,49 @@
 }
 
 
+
+- (CPButton) buttonAtX: (float) x y: (float) y size: (float) size title: (CPString) title { //console.info("FrACTControllerVAE>buttonAtX");
+    y = y + viewHeight / 2 // contentView is not affected by CGContextTranslateCTM, so I'm shifting y here
+    var sze2 = size / 2;
+    var button = [[CPButton alloc] initWithFrame: CGRectMake(x - sze2, y - sze2, size, size)];
+    [button setTitle: title];
+    [button setKeyEquivalent: [button title]];
+    [button setTarget: self];  [button setAction: @selector(responseButton_action:)];
+    [[[self window] contentView] addSubview: button];
+}
+- (IBAction) responseButton_action: (id) sender { //console.info("FrACTControllerVAE>responseButton_action");
+    responseKeyChar = [sender keyEquivalent];
+    if (responseKeyChar == "Ø") {
+        [self runEnd];
+    } else [super processKeyDownEvent];
+}
+
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.log("FractControllerVAC>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, colOptotypeBack);
     CGContextFillRect(cgc, [[self window] frame]);
     CGContextSaveGState(cgc);
+    CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
     switch(state) {
         case kStateDrawBack:  break;
         case kStateDrawFore: //console.log("kStateDrawFore");
-            CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
             [self tumblingEWithGapInPx: stimStrengthInDeviceunits direction: [alternativesGenerator currentAlternative]];
             break;
         default: break;
     }
+    
+    if ([Settings enableTouchControls] && (!responseButtonsAdded)) {
+        responseButtonsAdded = YES;
+        var sze = 50, sze2 = sze / 2;
+        [self buttonAtX: viewWidth-sze2 y: 0 size: sze title: "6"];
+        [self buttonAtX: sze2 y: 0 size: sze title: "4"];
+        [self buttonAtX: viewWidth / 2 y: -viewHeight / 2 + sze2 size: sze title: "8"];
+        [self buttonAtX: viewWidth / 2 y: viewHeight / 2 - sze2 size: sze title: "2"];
+    }
+
     CGContextRestoreGState(cgc);
-    CGContextSetTextPosition(cgc, 10, 10);
-    CGContextSetFillColor(cgc, colOptotypeFore);
-    CGContextShowText(cgc, trialInfoString);
+    
     [super drawStimulusInRect: dirtyRect];
 }
 
