@@ -27,10 +27,10 @@
 }
 
 
-- (void)drawSloanCWithGapInPx: (float) gap { //console.log("FractControllerVALetters>drawSloanCWithGapInPx");
+- (void)drawSloanCWithGapInPx: (float) gap { //console.info("FractControllerVALetters>drawSloanCWithGapInPx");
     [self drawLandoltWithGapInPx: gap landoltDirection: 0];
 }
-- (void)drawSloanDWithGapInPx: (float) d { //console.log("FractControllerVALetters>drawSloanDWithGapInPx");
+- (void)drawSloanDWithGapInPx: (float) d { //console.info("FractControllerVALetters>drawSloanDWithGapInPx");
     d *= 0.5;
     var gxf = 1.0, gyf = 1.0;
     CGContextBeginPath(cgc);
@@ -54,7 +54,7 @@
     CGContextAddLineToPoint(cgc, -d * 5 * gxf, -d * 5 * gyf);
     CGContextFillPath(cgc);
 }
-- (void)drawSloanHWithGapInPx: (float) d { //console.log("FractControllerVALetters>drawSloanHWithGapInPx");
+- (void)drawSloanHWithGapInPx: (float) d { //console.info("FractControllerVALetters>drawSloanHWithGapInPx");
     var pnts = [[-5,-5], [-3,-5], [-3,-1], [+3,-1], [+3,-5], [+5,-5], [+5,+5], [+3,+5], [+3,+1], [-3,+1], [-3,+5], [-5,+5], [-5, -5]];
     CGContextBeginPath(cgc);  [self myPoly: pnts withD: d * 0.5];  CGContextFillPath(cgc);
 }
@@ -116,7 +116,7 @@
 }
 
 
-- (void)drawLetterWithGapInPx: (float) gap letterNumber: (int) letterNumber { //console.log("FractControllerVALetters>drawLetterWithGapInPx")
+- (void)drawLetterWithGapInPx: (float) gap letterNumber: (int) letterNumber { //console.info("FractControllerVALetters>drawLetterWithGapInPx")
     CGContextSetFillColor(cgc, colOptotypeFore);
     switch (letterNumber) { //"CDHKNORSVZ"
         case 0:
@@ -143,7 +143,7 @@
 }
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.log("FractControllerVALetters>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerVALetters>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, colOptotypeBack);
@@ -171,7 +171,7 @@
 }
 
 
-- (void) runStart { //console.log("FractControllerVALetters>runStart");
+- (void) runStart { //console.info("FractControllerVALetters>runStart");
     kPi = Math.PI;  kPi2 = kPi / 2;
     nAlternatives = 10;  nTrials = [Settings nTrials08];
     [self setCurrentTestName: "Acuity_Letters"];
@@ -180,7 +180,7 @@
 }
 
 
-- (void) runEnd { //console.log("FractControllerVALetters>runEnd");
+- (void) runEnd { //console.info("FractControllerVALetters>runEnd");
     if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {
@@ -190,7 +190,7 @@
 }
 
 
-- (int)responseNumberFromChar: (CPString) keyChar { //console.log("FractControllerVALetters>responseNumberFromChar: ", keyChar);
+- (int)responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerVALetters>responseNumberFromChar: ", keyChar);
     switch ([keyChar uppercaseString]) { // "CDHKNORSVZ"
         case "C": return 0;
         case "D": return 1;

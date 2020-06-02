@@ -58,14 +58,14 @@
 }
 
 
-+ (void) copyString2ClipboardAlert: (CPString) s { //console.log("AppController>copyString2ClipboardAlert");
++ (void) copyString2ClipboardAlert: (CPString) s { //console.info("AppController>copyString2ClipboardAlert");
     var alert = [CPAlert alertWithMessageText: "Question:"
     defaultButton: "Yes, put result → clipboard" alternateButton: "No" otherButton: nil
                 informativeTextWithFormat: "\rShall we place the result details into the clipboard?\r(So you can paste them into a spreadsheet.)\r"];
     [alert setAlertStyle: CPInformationalAlertStyle];
     [alert runModalWithDidEndBlock: function(alert, returnCode) {
         switch (returnCode) {
-            case 1: /*console.log("ok, dann nicht");*/  break;
+            case 1: /*console.info("ok, dann nicht");*/  break;
             case 0: navigator.clipboard.writeText(s); break;
         }
     }];
@@ -85,11 +85,11 @@
 
 //degree2pixel
 //return millimeter2pixel(Math.tan(inDegree * Math.PI / 180.0) * Prefs.distanceInCM.n * 10.0);
-+ (float) pixelFromDegree: (float) degs { //console.log("pixelFromDegree");
++ (float) pixelFromDegree: (float) degs { //console.info("pixelFromDegree");
     var mm = Math.tan(degs * Math.PI / 180.0) * 10.0 * [Settings distanceInCM];
     return [self pixelFromMillimeter: mm];
 }
-+ (float) degreeFromPixel: (float) pixel { //console.log("Misc>pixelFromDegree");
++ (float) degreeFromPixel: (float) pixel { //console.info("Misc>pixelFromDegree");
     return 180.0 / Math.PI * Math.atan2([self millimeterFromPixel: pixel], [Settings distanceInCM] * 10.0);
 }
 
@@ -97,7 +97,7 @@
 + (float) millimeterFromPixel: (float) pixel {
     return pixel * [Settings calBarLengthInMM] / [Settings calBarLengthInPixel];
 }
-+ (float) pixelFromMillimeter: (float) inMM { //console.log("pixelFromMillimeter");
++ (float) pixelFromMillimeter: (float) inMM { //console.info("pixelFromMillimeter");
     return inMM * [Settings calBarLengthInPixel] / [Settings calBarLengthInMM];
 }
 
@@ -118,12 +118,12 @@
 }
 
 
-+ (CPString) stringFromInteger: (int) num { //console.log("Misc>stringFromInteger");
++ (CPString) stringFromInteger: (int) num { //console.info("Misc>stringFromInteger");
     return [CPString stringWithFormat: @"%d", num];
 }
 
 
-+ (CPString) stringFromNumber: (float) num decimals: (int) decs localised: (BOOL) locd { //console.log("Misc>stringFromNumber");
++ (CPString) stringFromNumber: (float) num decimals: (int) decs localised: (BOOL) locd { //console.info("Misc>stringFromNumber");
     if (decs < 1)  return [self stringFromInteger: num];
     var fmt = @"%6." + [CPString stringWithFormat:@"%d", decs] + "f";
     var str = [CPString stringWithFormat: fmt, num];
@@ -137,7 +137,7 @@
     if (locd && ([Settings decimalMarkChar] != ".")) {
         str = [str stringByReplacingOccurrencesOfString:@"." withString:@","];
     }
-//    console.log("Misc>stringFromNumber", fmt, str);
+//    console.info("Misc>stringFromNumber", fmt, str);
     return str;
 }
 

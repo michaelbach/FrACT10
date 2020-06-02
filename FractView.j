@@ -14,13 +14,13 @@
 }
 
 
-- (id)initWithFrame:(CGRect)frame {console.log("FractView>initWithFrame");
+- (id)initWithFrame:(CGRect)frame {console.info("FractView>initWithFrame");
     self = [super initWithFrame:frame];
     return self;
 }
 
 
-- (void)drawRect: (CGRect) dirtyRect { //console.log("FractView>drawRect");
+- (void)drawRect: (CGRect) dirtyRect { //console.info("FractView>drawRect");
     [drawingDelegate drawStimulusInRect: dirtyRect forView: self];
 }
 

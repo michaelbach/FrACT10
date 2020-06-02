@@ -18,7 +18,6 @@
 @property (assign) IBOutlet NSButton* buttVAE;
 @property (assign) IBOutlet NSButton* buttVAAuck;
 @property (assign) IBOutlet NSButton* buttVAVernier;
-@property (assign) IBOutlet NSImageView* rewardImageView;
 
 - (IBAction)runFractController2_actionOK:(id)sender;
 - (IBAction)runFractController2_actionCancel:(id)sender;

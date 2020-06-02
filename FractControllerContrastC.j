@@ -19,7 +19,7 @@
 - (float) stimGenericFromDevice: (float) d {return [self acuityStimGenericFromDevice: d];}
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { console.log("FractControllerContrastC>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { console.info("FractControllerContrastC>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, colOptotypeBack);
@@ -27,7 +27,7 @@
     CGContextSaveGState(cgc);
     switch(state) {
         case kStateDrawBack: break;
-        case kStateDrawFore: //console.log("kStateDrawFore");
+        case kStateDrawFore: //console.info("kStateDrawFore");
             CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
             var col = [CPColor colorWithWhite:	0.8 alpha: 1];
             var patternContext = CGContextCreatePatternContext(cgc, CGSizeMake(3, 3));
@@ -50,14 +50,14 @@
 }
 
 
-- (void) runStart { console.log("FractControllerContrastC>runStart");
+- (void) runStart { console.info("FractControllerContrastC>runStart");
     [self setCurrentTestName: "Contrast_LandoltC"];
     [self setCurrentTestResultUnit: "logCS"];
 [super runStart];
 }
 
 
-- (void)runEnd { //console.log("FractControllerContrastC>runEnd");
+- (void)runEnd { //console.info("FractControllerContrastC>runEnd");
     if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {
@@ -68,7 +68,7 @@
 
 
 // 0–8: valid; -1: ignore; -2: invalid
-- (int) responseNumberFromChar: (CPString) keyChar { //console.log("FractControllerContrastC>responseNumberFromChar: ", keyChar);
+- (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerContrastC>responseNumberFromChar: ", keyChar);
     switch (keyChar) {
         case CPLeftArrowFunctionKey: return 4;
         case CPRightArrowFunctionKey: return 0;

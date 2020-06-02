@@ -6,6 +6,10 @@ Created by mb on July 15, 2015.
 History
 =======
 
+2020-06-02 AppController window now centered when in fullScreen,
+            renamed console.log → console.info (don't need no log),
+            rewardImageView now programmatically added, not in IB (it always got in the way)
+            simplified controller allocation etc. by using an array, dito for panels
 2020-06-01 added Misc>stringFromInteger, touchResponse 4 Vernier & LandoltC
             truly randomised iRandom
 2020-06-01 bug with tooltips: need to change something else in IB too.
@@ -34,7 +38,7 @@ History
 */
 
 
-#define dateFract "2020-06-01"
+#define dateFract "2020-06-02b"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -55,15 +59,15 @@ History
 
 
 // helpers: check if outside range or nil, if so set default
-+ (BOOL) chckBool: (BOOL) val def: (BOOL) def set: (BOOL) set { //console.log("chckBool ", val);
++ (BOOL) chckBool: (BOOL) val def: (BOOL) def set: (BOOL) set { //console.info("chckBool ", val);
     if (!set && !isNaN(val))  return val;
     return def;
 }
-+ (int) chckInt: (int) val def: (int) def min: (int) min max: (int) max set: (BOOL) set { //console.log("chckFlt ", val);
++ (int) chckInt: (int) val def: (int) def min: (int) min max: (int) max set: (BOOL) set { //console.info("chckFlt ", val);
     if (!set && !isNaN(val) && (val <= max) && (val >= min))  return val;
     return def;
 }
-+ (int) chckFlt: (float) val def: (float) def min: (float) min max: (float) max set: (BOOL) set { //console.log("chckFlt ", val);
++ (int) chckFlt: (float) val def: (float) def min: (float) min max: (float) max set: (BOOL) set { //console.info("chckFlt ", val);
     if (!set && !isNaN(val) && (val <= max) && (val >= min))  return val;
     return def;
 }
@@ -140,7 +144,7 @@ History
     [self setGammaValue: [self chckFlt: [self gammaValue] def: 1.8 min: 0.8 max: 4 set: set]];
     [self setContrastEasyTrials: [self chckBool: [self contrastEasyTrials] def: YES set: set]];
 
-    if (set) { //console.log("FrACT10>>Settings>setting all to defaults")
+    if (set) { //console.info("FrACT10>>Settings>setting all to defaults")
         [[CPUserDefaults standardUserDefaults] setInteger: 2 forKey: "nAlternativesIndex"];//=8 alternatives
         [[CPUserDefaults standardUserDefaults] synchronize];
     }
@@ -149,7 +153,7 @@ History
 }
 
 
-+ (void) calculateMaxPossibleDecimalAcuity { //console.log("Settings>calculateMaxPossibleDecimalAcuity");
++ (void) calculateMaxPossibleDecimalAcuity { //console.info("Settings>calculateMaxPossibleDecimalAcuity");
     var maxPossibleAcuityVal = [Misc visusFromGapPixels: 1.0];
     maxPossibleAcuityVal = [self threshCorrection] ? maxPossibleAcuityVal * 0.891 : maxPossibleAcuityVal;
     // Korrektur für Schwellenunterschätzung aufsteigender Verfahren
@@ -160,7 +164,7 @@ History
 + (BOOL) needNewDefaults {
     return [self dateSettingsVersion] != dateSettingsCurrent;
 }
-+ (void) checkDefaults { //console.log("Settings>checkDefaults");
++ (void) checkDefaults { //console.info("Settings>checkDefaults");
     if ([self needNewDefaults]) {
 // var alert = [CPAlert alertWithMessageText: "»FrACT«: First run or major version change" defaultButton: "OK" alternateButton: nil otherButton: nil informativeTextWithFormat: "\rAll Settings are reset to their default values, please check them.\r\n\r\n[If all Settings are empty, simply reload, next time they'll be fine.]"]; [alert runModal];
         [self setDefaults];
@@ -171,7 +175,7 @@ History
 }
 
 
-+ (void) setDefaults { //console.log("Prefs>setDefaults");
++ (void) setDefaults { //console.info("Prefs>setDefaults");
     [self allNotCheckButSet: YES];
 }
 
@@ -182,15 +186,15 @@ History
 }
 
 
-+ (CPString) dateSettingsVersion { //console.log("Prefs>dateSettingsVersion");
++ (CPString) dateSettingsVersion { //console.info("Prefs>dateSettingsVersion");
     return [[CPUserDefaults standardUserDefaults] objectForKey: "dateSettingsVersion"];
 }
-+ (void) setDateSettingsVersion: (CPString) theValue { //console.log("Prefs>setDatesettingsVersion");
++ (void) setDateSettingsVersion: (CPString) theValue { //console.info("Prefs>setDatesettingsVersion");
     [[CPUserDefaults standardUserDefaults] setObject: theValue forKey: "dateSettingsVersion"];
 }
 
 
-+ (int) nAlternatives { //console.log("Prefs>nAlternatives");
++ (int) nAlternatives { //console.info("Prefs>nAlternatives");
     switch ([[CPUserDefaults standardUserDefaults] integerForKey: "nAlternativesIndex"]) {
         case 0:  return 2;  break;
         case 1:  return 4;  break;
@@ -199,7 +203,7 @@ History
 }
 
 
-+ (int) nTrials { //console.log("Prefs>nTrials");
++ (int) nTrials { //console.info("Prefs>nTrials");
     switch ([self nAlternatives]) {
         case 2:  return [self nTrials02];  break;
         case 4:  return [self nTrials04];  break;
@@ -208,16 +212,16 @@ History
 }
 
 
-+ (int) nTrials02 { //console.log("Prefs>nTrials02");
-    var t = [[CPUserDefaults standardUserDefaults] integerForKey: "nTrials02"]; //console.log(t);
++ (int) nTrials02 { //console.info("Prefs>nTrials02");
+    var t = [[CPUserDefaults standardUserDefaults] integerForKey: "nTrials02"]; //console.info(t);
     return t;
 }
-+ (void) setNTrials02: (int) theValue { //console.log("Prefs>nTrials02");
++ (void) setNTrials02: (int) theValue { //console.info("Prefs>nTrials02");
     [[CPUserDefaults standardUserDefaults] setInteger: theValue forKey: "nTrials02"];
 }
 
 
-+ (int) nTrials04 { //console.log("Prefs>nTrials04");
++ (int) nTrials04 { //console.info("Prefs>nTrials04");
     return [[CPUserDefaults standardUserDefaults] integerForKey: "nTrials04"];
 }
 + (void) setNTrials04: (int) theValue {
@@ -271,7 +275,7 @@ History
 
 
 
-+ (int) nAlternatives { //console.log("Prefs>nAlternatives");
++ (int) nAlternatives { //console.info("Prefs>nAlternatives");
     switch ([[CPUserDefaults standardUserDefaults] integerForKey: "nAlternativesIndex"]) {
         case 0:  return 2;  break;
         case 1:  return 4;  break;
@@ -433,7 +437,7 @@ History
 + (float) timeoutRewardPicturesInSeconds {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "timeoutRewardPicturesInSeconds"];
 }
-+ (void) setTimeoutRewardPicturesInSeconds: (float) theValue { //console.log("Prefs>setTimeoutRewardPicturesInSeconds");
++ (void) setTimeoutRewardPicturesInSeconds: (float) theValue { //console.info("Prefs>setTimeoutRewardPicturesInSeconds");
     [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "timeoutRewardPicturesInSeconds"];
 }
 

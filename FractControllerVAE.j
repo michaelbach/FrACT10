@@ -19,7 +19,7 @@
 
 
 // optotype on a -5…+5 coordinate system
-- (void) myPoly: (float) p d: (float) d { //console.log("FractControllerVAE>myPoly");
+- (void) myPoly: (float) p d: (float) d { //console.info("FractControllerVAE>myPoly");
     CGContextSetFillColor(cgc, colOptotypeFore);
     CGContextBeginPath(cgc);
     CGContextMoveToPoint(cgc, d * p[0][0], -d * p[0][1]);
@@ -31,7 +31,7 @@
 }
 
 
-- (void) tumblingEWithGapInPx: (float) d direction: (int) theDirection { //console.log("FractControllerVAE>tumblingEWithGapInPx");
+- (void) tumblingEWithGapInPx: (float) d direction: (int) theDirection { //console.info("FractControllerVAE>tumblingEWithGapInPx");
     //theDirection = directionIfMirrored(theDirection);
     switch (theDirection) {
         case 0: "E"
@@ -49,7 +49,7 @@
 }
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.log("FractControllerVAC>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerVAC>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, colOptotypeBack);
@@ -58,7 +58,7 @@
     CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
     switch(state) {
         case kStateDrawBack:  break;
-        case kStateDrawFore: //console.log("kStateDrawFore");
+        case kStateDrawFore: //console.info("kStateDrawFore");
             [self tumblingEWithGapInPx: stimStrengthInDeviceunits direction: [alternativesGenerator currentAlternative]];
             break;
         default: break;
@@ -78,7 +78,7 @@
 }
 
 
-- (void) runStart { //console.log("FractControllerVAE>runStart");
+- (void) runStart { //console.info("FractControllerVAE>runStart");
     [self setCurrentTestName: "Acuity_TumblingE"];
     [self setCurrentTestResultUnit: "LogMAR"];
     nAlternatives = 4;  nTrials = [Settings nTrials04];
@@ -86,7 +86,7 @@
 }
 
 
-- (void)runEnd { //console.log("FractControllerVAE>runEnd");
+- (void)runEnd { //console.info("FractControllerVAE>runEnd");
     if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {
@@ -96,7 +96,7 @@
 }
 
 
-- (int) responseNumberFromChar: (CPString) keyChar { //console.log("FractControllerVAC>responseNumberFromChar: ", keyChar);
+- (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerVAC>responseNumberFromChar: ", keyChar);
     switch (keyChar) {
         case CPLeftArrowFunctionKey: return 4;
         case CPRightArrowFunctionKey: return 0;

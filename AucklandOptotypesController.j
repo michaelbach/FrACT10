@@ -18,7 +18,7 @@
 }
 
 
-- (id) initWithButton2Enable: (CPButton) button { //console.log("RewardsController>initWithView");
+- (id) initWithButton2Enable: (CPButton) button { //console.info("RewardsController>initWithView");
     self = [super init];
     if (self) {
         _button = button;
@@ -36,7 +36,7 @@
 }
 
 
-- (void) imageDidLoad: (CPNotification) aNotification { //console.log("didLoadRepresentation: ", aNotification);
+- (void) imageDidLoad: (CPNotification) aNotification { //console.info("didLoadRepresentation: ", aNotification);
     if ([aNotification loadStatus] == CPImageLoadStatusCompleted) {
         if (++_nAuckImagesLoaded > 9) {
             [self setNImages: _nAuckImagesLoaded];

@@ -8,7 +8,7 @@
 }
 
 
-- (id)initWithNumAlternatives: (int) numAlternatives { //console.log("Thresholder>init");
+- (id)initWithNumAlternatives: (int) numAlternatives { //console.info("Thresholder>init");
     self = [super init];
     if (self) {
         currentThresholder = [[Pest alloc] initWithNumAlternatives: numAlternatives];
@@ -20,13 +20,13 @@
 - (void) unitTest {
     for (var i = 0; i < 10; ++i) {
         var stim = [self nextStim2apply];
-        console.log(i + " " + stim);
+        console.info(i + " " + stim);
         [self enterTrialOutcomeWithAppliedStim: stim wasCorrect: NO];
     }
 }
 
 
-- (float) nextStim2apply { //console.log("Thresholder>NextStim2apply");
+- (float) nextStim2apply { //console.info("Thresholder>NextStim2apply");
     return [currentThresholder nextStim2apply];
 }
 

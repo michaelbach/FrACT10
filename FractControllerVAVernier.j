@@ -37,7 +37,7 @@
 
 
 //Draw vertical line with gaussian profile. x-position (floating point) approximated by center of gravity on discrete raster
-- (void) drawLineGaussProfileVerticalAtX: (float) x0 y0: (float) y0 y1: (float) y1 sigma: (float) sigma { //console.log("FractControllerVAVernier>>DrawLineGaussianProfileVertical ", x0, y0, y1);
+- (void) drawLineGaussProfileVerticalAtX: (float) x0 y0: (float) y0 y1: (float) y1 sigma: (float) sigma { //console.info("FractControllerVAVernier>>DrawLineGaussianProfileVertical ", x0, y0, y1);
     var ix0 = Math.round(x0);
     var iSigma = Math.round(Math.max(5, Math.min(sigma * 4, 30))); //trace(sigma, iSigma);
     CGContextSetLineWidth(cgc, 1);
@@ -51,7 +51,7 @@
 }
 
 
-- (void) drawVernierAtX: (float) xCent y: (float) yCent vLength: (float) vLength sigma: (float) sigma gapHeight: (float) gapHeight offsetSize: (float) offsetSize offsetIsTopRight: (BOOL) offsetIsTopRight { //console.log("FractControllerVAVernier>drawVernierAtX", offsetSize);
+- (void) drawVernierAtX: (float) xCent y: (float) yCent vLength: (float) vLength sigma: (float) sigma gapHeight: (float) gapHeight offsetSize: (float) offsetSize offsetIsTopRight: (BOOL) offsetIsTopRight { //console.info("FractControllerVAVernier>drawVernierAtX", offsetSize);
     xCent += (Math.random() < 0.5 ? 1 : -1) + 2 * (2 * Math.random() - 1.0);
     var theSign = offsetIsTopRight ? +1 : -1;
     var xPos0 = xCent + theSign * offsetSize / 2.0;
@@ -79,7 +79,7 @@
 }
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.log("FractControllerVAVernier>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerVAVernier>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, colOptotypeBack);
@@ -87,7 +87,7 @@
     CGContextSaveGState(cgc);
     switch(state) {
         case kStateDrawBack:  break;
-        case kStateDrawFore: //console.log("kStateDrawFore");
+        case kStateDrawFore: //console.info("kStateDrawFore");
             CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
             [self  drawVernierAtX: [Misc pixelFromDegree: [Settings eccentXInDeg]]
                                 y: [Misc pixelFromDegree: [Settings eccentYInDeg]]
@@ -112,7 +112,7 @@
 }
 
 
-- (void) runStart { //console.log("FractControllerVAVernier>runStart");
+- (void) runStart { //console.info("FractControllerVAVernier>runStart");
     [self setCurrentTestName: "Acuity_Vernier"];
     [self setCurrentTestResultUnit: "arcsec"];
     nAlternatives = 2;  nTrials = [Settings nTrials02];
@@ -121,7 +121,7 @@
 }
 
 
-- (void) runEnd { //console.log("FractControllerVAVernier>runEnd");
+- (void) runEnd { //console.info("FractControllerVAVernier>runEnd");
     if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {
@@ -131,7 +131,7 @@
 }
 
 
-- (int) responseNumberFromChar: (CPString) keyChar { //console.log("FractControllerVAVernier>responseNumberFromChar: ", keyChar);
+- (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerVAVernier>responseNumberFromChar: ", keyChar);
     switch (keyChar) {
         case CPLeftArrowFunctionKey: return 4;
         case CPRightArrowFunctionKey: return 0;

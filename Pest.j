@@ -10,7 +10,7 @@
 }
 
 
-- (id)initWithNumAlternatives: (int) numAlternatives { //console.log("Pest>init");
+- (id)initWithNumAlternatives: (int) numAlternatives { //console.info("Pest>init");
     self = [super init];
     if (self) {
         kRange = 5000;  kRange1 = kRange - 1;  kRange2 = kRange * 2
@@ -38,19 +38,19 @@
 - (void) unitTest {
     for (var i = 0; i < 10; ++i) {
         var stim = [self nextStim2apply];
-        console.log(i + " " + stim);
+        console.info(i + " " + stim);
         [self enterTrialOutcomeWithAppliedStim: stim wasCorrect: NO];
     }
 }
 
 
-- (float) nextStim2apply { //console.log("Pest>nextStim2apply");
+- (float) nextStim2apply { //console.info("Pest>nextStim2apply");
     return [self nextStimGivenAppliedStim: appliedStimStored wasCorrect: wasCorrectStored];
 }
 
 
 - (void) enterTrialOutcomeWithAppliedStim: (float) appliedStim wasCorrect: (BOOL) wasCorrect {
-    //console.log("Pest>enterTrialOutcomeWithAppliedStim ", wasCorrect);
+    //console.info("Pest>enterTrialOutcomeWithAppliedStim ", wasCorrect);
     appliedStimStored = appliedStim,
     wasCorrectStored = wasCorrect;
 }

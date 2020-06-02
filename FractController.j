@@ -27,7 +27,7 @@
 }
 
 
-- (id) initWithWindow: (CPWindow) aWindow parent: (HierarchyController) parent { //console.log("FractController>initWithWindow");
+- (id) initWithWindow: (CPWindow) aWindow parent: (HierarchyController) parent { //console.info("FractController>initWithWindow");
     self = [super initWithWindow: aWindow];
     if (self) {
         [[self window] setFullPlatformWindow: YES];
@@ -58,7 +58,7 @@
 }
 
 
-- (void) runStart { //console.log("FractController>runStart");
+- (void) runStart { //console.info("FractController>runStart");
     responseButtonsAdded = NO;
     iTrial = 0;
     oldResponseKeyChar = " ";
@@ -70,11 +70,11 @@
 }
 
 
-- (void) trialStart { //console.log("FractController>trialStart");
+- (void) trialStart { //console.info("FractController>trialStart");
     iTrial += 1;
-    stimStrengthGeneric = [thresholder nextStim2apply];//console.log("stimStrengthGeneric ", stimStrengthGeneric);
+    stimStrengthGeneric = [thresholder nextStim2apply];//console.info("stimStrengthGeneric ", stimStrengthGeneric);
     [self modifyGenericStimulus];// e.g. for bonus trials
-    stimStrengthInDeviceunits = [self stimDeviceFromGeneric: stimStrengthGeneric];//console.log("stimStrengthInDeviceunits ", stimStrengthInDeviceunits);
+    stimStrengthInDeviceunits = [self stimDeviceFromGeneric: stimStrengthGeneric];//console.info("stimStrengthInDeviceunits ", stimStrengthInDeviceunits);
     if (iTrial > nTrials) { // testing after new stimStrength so we can use final threshold
         [self runEnd];  return;
     }
@@ -87,18 +87,18 @@
 }
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect { //console.log("FractController>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
     CGContextSetTextPosition(cgc, 10, 10); // we assume here no transformed CGContext
     CGContextSetFillColor(cgc, colOptotypeFore);
     CGContextShowText(cgc, trialInfoString);
 
     CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
     //[self strokeLineX0: -100 y0: -100 x1: 100 y1: 100];  [self strokeLineX0: 100 y0: -100 x1: -100 y1: 100];
-    var i;  //console.log([Settings crowdingType]);
+    var i;  //console.info([Settings crowdingType]);
     switch ([Settings crowdingType]) {
         case 0:  break;
         case 1:    // flanking rings
-            for (i = -1; i <= 1; i++) { //console.log(i);
+            for (i = -1; i <= 1; i++) { //console.info(i);
                 var tempX = i * [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits];
                 CGContextTranslateCTM(cgc,  -tempX, 0);
                 if (i != 0)  [self drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: -1];
@@ -143,28 +143,28 @@
 }
 
 
--(void) onTimerFirstResponder: (CPTimer) timer { //console.log("FractController>onTimerFirstResponder");
+-(void) onTimerFirstResponder: (CPTimer) timer { //console.info("FractController>onTimerFirstResponder");
     [[self window] makeFirstResponder: self];
 }
 
--(void) onTimeoutDisplay: (CPTimer) timer { //console.log("FractController>onTimeoutDisplay");
+-(void) onTimeoutDisplay: (CPTimer) timer { //console.info("FractController>onTimeoutDisplay");
     state = kStateDrawBack;  [[[self window] contentView] setNeedsDisplay: YES];
 }
 
 
--(void) onTimeoutResponse: (CPTimer) timer { //console.log("FractController>onTimeoutResponse");
+-(void) onTimeoutResponse: (CPTimer) timer { //console.info("FractController>onTimeoutResponse");
     responseWasCorrect = NO;  [self trialEnd];
 }
 
 
-- (void) processKeyDownEvent { //console.log("FractController>processKeyDownEvent");
+- (void) processKeyDownEvent { //console.info("FractController>processKeyDownEvent");
     var r = [self responseNumberFromChar: responseKeyChar];
     responseWasCorrect = (r == [alternativesGenerator currentAlternative]);
     [self trialEnd];
 }
 
 
-- (void) trialEnd { //console.log("Fract>trialEnd");
+- (void) trialEnd { //console.info("Fract>trialEnd");
     [timerDisplay invalidate];  timerDisplay = nil;  [timerResponse invalidate];  timerResponse = nil;//nötig?
     [thresholder enterTrialOutcomeWithAppliedStim: [self stimGenericFromDevice: stimStrengthInDeviceunits] wasCorrect: responseWasCorrect];
     switch ([Settings auditoryFeedback]) { // case 0: nothing
@@ -186,7 +186,7 @@
 }
 
 
-- (CPString) composeExportString { //console.log("FractController>composeExportString");
+- (CPString) composeExportString { //console.info("FractController>composeExportString");
     var s = "";
     if ([[self parentController] runAborted]) return;
     var tab = "\t", crlf = "\n", nDigits = 5, now = [CPDate date];
@@ -197,12 +197,12 @@
     s += tab + currentTestName;
     s += tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: nDigits localised: YES] + tab + "cm";
     s += tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES] + tab + "nTrials";
-    s += crlf; //console.log("FractController>date: ", s);
+    s += crlf; //console.info("FractController>date: ", s);
     return s;
 }
 
 
-- (void) runEnd { //console.log("FractController>runEnd");
+- (void) runEnd { //console.info("FractController>runEnd");
     if (responseButtonsAdded) {
         var sv = [[[self window] contentView] subviews];
         for (var i = 0; i < nAlternatives+1; i++) [sv[i] removeFromSuperview];
@@ -234,11 +234,11 @@
  }*/
 
 
-- (BOOL) acceptsFirstResponder { //console.log("FractController>acceptsFirstResponder");
+- (BOOL) acceptsFirstResponder { //console.info("FractController>acceptsFirstResponder");
     return YES;
 }
 
-- (void) keyDown: (CPEvent) theEvent { //console.log("FractController>keyDown");
+- (void) keyDown: (CPEvent) theEvent { //console.info("FractController>keyDown");
     responseKeyChar = [[[theEvent characters] characterAtIndex: 0] uppercaseString];
     responseKeyCode = [theEvent keyCode];
     if ((responseKeyCode == CPEscapeKeyCode) || ((responseKeyChar == abortCharacter) && (oldResponseKeyChar == abortCharacter))) {
@@ -249,13 +249,13 @@
 }
 
 - (float) stimGenericFromDevice: (float) ntve {
-    console.log("FractController>stimGenericFromDevice OVERRIDE!");
+    console.info("FractController>stimGenericFromDevice OVERRIDE!");
     return ntve;
 }
 
 
 - (float) stimDeviceFromGeneric: (float) generic {
-    console.log("FractController>stimDeviceFromGeneric OVERRIDE!");
+    console.info("FractController>stimDeviceFromGeneric OVERRIDE!");
     return generic;
 }
 
@@ -265,16 +265,16 @@
 /*	Transformation formula:   gap = c1 * exp(tPest * c2).
  Constants c1 and c2 are determined by thesse 2 contions: tPest==0 → gap=gapMinimal;  tPest==1 → gap=gapMaximal.
  =>c2 = ln(gapMinimal / gapMaximal)/(0 - 1);  c1 = gapMinimal / exp(0 * c2)  */
-- (float) acuityStimDeviceFromGeneric: (float) tPest { //console.log("FractControllerVAC>stimDeviceFromGeneric");
+- (float) acuityStimDeviceFromGeneric: (float) tPest { //console.info("FractControllerVAC>stimDeviceFromGeneric");
     var c2 = - Math.log(gapMinimal / gapMaximal), c1 = gapMinimal;
-    var deviceVal = c1 * Math.exp(tPest * c2); //console.log("DeviceFromPest " + tPest + " " + deviceVal);
+    var deviceVal = c1 * Math.exp(tPest * c2); //console.info("DeviceFromPest " + tPest + " " + deviceVal);
     if ([Misc areNearlyEqual: deviceVal and: gapMaximal]) {
         if (!isBonus) {
-            rangeLimitStatus = kRangeLimitValueAtCeiling; //console.log("max gap size!")
+            rangeLimitStatus = kRangeLimitValueAtCeiling; //console.info("max gap size!")
         }
     } else {
         if  ([Misc areNearlyEqual: deviceVal and: gapMinimal]) {
-            rangeLimitStatus = kRangeLimitValueAtFloor; //console.log("min gap size!");
+            rangeLimitStatus = kRangeLimitValueAtFloor; //console.info("min gap size!");
         } else {
             rangeLimitStatus = kRangeLimitOk;
         }
@@ -283,9 +283,9 @@
 }
         
         
-- (float) acuityStimGenericFromDevice: (float) d { //console.log("FractControllerVAC>stimGenericFromDevice");
+- (float) acuityStimGenericFromDevice: (float) d { //console.info("FractControllerVAC>stimGenericFromDevice");
     var c2 = - Math.log(gapMinimal / gapMaximal), c1 = gapMinimal;
-    var retVal = Math.log(d / c1) / c2; //console.log("PestFromDevice " + d + " " + retVal);
+    var retVal = Math.log(d / c1) / c2; //console.info("PestFromDevice " + d + " " + retVal);
     return retVal;
 }
 
@@ -317,7 +317,7 @@
     resultInDecVA = Math.min([Settings maxDisplayedAcuity], resultInDecVA);
     var resultInLogMAR = [Misc logMARfromDecVA: resultInDecVA];
     
-    // console.log("rangeLimitStatus: ", rangeLimitStatus);
+    // console.info("rangeLimitStatus: ", rangeLimitStatus);
     var s = "";
     if ([Settings acuityFormatDecimal]) {
         s += "decVA";
@@ -388,23 +388,23 @@
 
 
 ///////////////////////// DRAWING
-- (void) strokeCircleAtX: (float)x y: (float)y radius: (float) r { //console.log("MBIllus>strokeCircleAtX");
+- (void) strokeCircleAtX: (float)x y: (float)y radius: (float) r { //console.info("MBIllus>strokeCircleAtX");
     CGContextStrokeEllipseInRect(cgc, CGRectMake(x - r, y - r, 2 * r, 2 * r));
 }
 
 
-- (void) fillCircleAtX: (float)x y: (float)y radius: (float) r { //console.log("MBIllus>fillCircleAtX");
+- (void) fillCircleAtX: (float)x y: (float)y radius: (float) r { //console.info("MBIllus>fillCircleAtX");
     CGContextFillEllipseInRect(cgc, CGRectMake(x - r, y - r, 2 * r, 2 * r));
 }
 
 
 // no gap for direction -1
-- (void) drawLandoltWithGapInPx: (float) gap landoltDirection: (int) direction { //console.log("OTLandolts>drawLandoltWithGapInPx", gap, direction);
+- (void) drawLandoltWithGapInPx: (float) gap landoltDirection: (int) direction { //console.info("OTLandolts>drawLandoltWithGapInPx", gap, direction);
     CGContextSetFillColor(cgc, colOptotypeFore);
     [self fillCircleAtX: 0 y: 0 radius: 2.5 * gap];
     CGContextSetFillColor(cgc, colOptotypeBack);
     [self fillCircleAtX: 0 y: 0 radius: 1.5 * gap];
-    var rct = CGRectMake(gap * 1.4 - 1, -gap / 2, 1.3 * gap + 1, gap); //console.log(gap, " ", rct);
+    var rct = CGRectMake(gap * 1.4 - 1, -gap / 2, 1.3 * gap + 1, gap); //console.info(gap, " ", rct);
     var rot = Math.PI / 180.0 * (7 - (direction - 1)) / 8.0 * 360.0;
     CGContextRotateCTM(cgc, rot);
     if (direction >= 0) CGContextFillRect(cgc, rct);

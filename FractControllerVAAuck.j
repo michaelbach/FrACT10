@@ -20,7 +20,7 @@
 - (float) stimGenericFromDevice: (float) d {return [self acuityStimGenericFromDevice: d];}
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.log("FractControllerVAAuck>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerVAAuck>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, colOptotypeBack);
@@ -53,7 +53,7 @@
 }
 
 
-- (void) runStart { //console.log("FractControllerVAAuck>runStart");
+- (void) runStart { //console.info("FractControllerVAAuck>runStart");
     nAlternatives = 10;  nTrials = [Settings nTrials08];
     [self setCurrentTestName: "Acuity_Auckland"];
     [self setCurrentTestResultUnit: "LogMAR"];
@@ -62,7 +62,7 @@
 }
 
 
-- (void)runEnd { //console.log("FractControllerVAAuck>runEnd");
+- (void)runEnd { //console.info("FractControllerVAAuck>runEnd");
     if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {
@@ -72,7 +72,7 @@
 }
 
 
-- (int)responseNumberFromChar: (CPString) keyChar { //console.log("FractControllerVAAuck>responseNumberFromChar: ", keyChar);
+- (int)responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerVAAuck>responseNumberFromChar: ", keyChar);
     switch ([keyChar uppercaseString]) {
         case "0": return 9;
         case "1": return 0;

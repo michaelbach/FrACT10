@@ -18,7 +18,7 @@
 - (float) stimGenericFromDevice: (float) d {return [self acuityStimGenericFromDevice: d];}
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.log("FractControllerVAC>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerVAC>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, colOptotypeBack);
@@ -26,7 +26,7 @@
     CGContextSaveGState(cgc);
     switch(state) {
         case kStateDrawBack: break;
-        case kStateDrawFore: //console.log("kStateDrawFore");
+        case kStateDrawFore: //console.info("kStateDrawFore");
             CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
             [self drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: [alternativesGenerator currentAlternative]];
             break;
@@ -49,7 +49,7 @@
 }
 
 
-- (void) runStart { //console.log("FractControllerVALetters>runStart");
+- (void) runStart { //console.info("FractControllerVALetters>runStart");
     [self setCurrentTestName: "Acuity_LandoltC"];
     [self setCurrentTestResultUnit: "LogMAR"];
 
@@ -57,7 +57,7 @@
 }
 
 
-- (void)runEnd { //console.log("FractControllerVAC>runEnd");
+- (void)runEnd { //console.info("FractControllerVAC>runEnd");
     if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {
@@ -68,7 +68,7 @@
 
 
 // 0–8: valid; -1: ignore; -2: invalid
-- (int) responseNumberFromChar: (CPString) keyChar { //console.log("FractControllerVAC>responseNumberFromChar: ", keyChar);
+- (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerVAC>responseNumberFromChar: ", keyChar);
     switch (keyChar) {
         case CPLeftArrowFunctionKey: return 4;
         case CPRightArrowFunctionKey: return 0;
