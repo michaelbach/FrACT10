@@ -11,7 +11,7 @@
 - (id)initWithNumAlternatives: (int) numAlternatives { //console.info("Thresholder>init");
     self = [super init];
     if (self) {
-        currentThresholder = [[Pest alloc] initWithNumAlternatives: numAlternatives];
+        currentThresholder = [[Pest alloc] initWithNumAlternatives: numAçlternatives];
     }
     return self;
 }
