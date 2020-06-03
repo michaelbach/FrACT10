@@ -37,19 +37,18 @@
 
             CGContextTranslateCTM(cgc,  -viewWidth / 2, -viewHeight / 2); // origin back
             var size = viewWidth / (nAlternatives * 2 + 2), button;
-            CGContextSetTextDrawingMode(cgc, kCGTextFill);
-            CGContextSelectFont(cgc, "36px sans-serif"); // this, surprisingly, must be CSS
-            for (var i = 0; i < (nAlternatives + 1); i++) {
-                button = [self buttonCenteredAtX: (i + 0.75) * 2 * size y: viewHeight/2 - 0.5 * size size: size title: "" keyEquivalent: [@"1234567890Ø" characterAtIndex: i]];
-                if (i < nAlternatives) {
+            if (!responseButtonsAdded) {
+                for (var i = 0; i < (nAlternatives); i++) {
+                    button = [self buttonCenteredAtX: (i + 0.75) * 2 * size y: viewHeight/2 - 0.5 * size size: size title: "" keyEquivalent: [@"1234567890Ø" characterAtIndex: i]];
                     [button setImage: auckImages[i]];
                     [button setImageScaling: CPImageScaleProportionallyDown];
-                    CGContextShowTextAtPoint(cgc, (i + 0.5) * 2 * size + size / 2 - 8, viewHeight - 1.4 * size,
-                                         [Misc stringFromInteger: (i + 1) % 10]);
-                } else {
-                    [button setTitle: "Ø"];
                 }
+                [self buttonCenteredAtX: (11 + 0.75) * 2 * size y: viewHeight/2 - 0.5 * size size: size title: "Ø"];
             }
+            CGContextSetTextDrawingMode(cgc, kCGTextFill);
+            CGContextSelectFont(cgc, "36px sans-serif"); // this, surprisingly, must be CSS
+            for (var i = 0; i < (nAlternatives); i++)
+                CGContextShowTextAtPoint(cgc, (i + 0.5) * 2 * size + size / 2 - 8, viewHeight - 1.4 * size, [Misc stringFromInteger: (i + 1) % 10]);
             break;
         default: break;
     }
