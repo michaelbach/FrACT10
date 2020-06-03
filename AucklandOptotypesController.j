@@ -18,7 +18,7 @@
 }
 
 
-- (id) initWithButton2Enable: (CPButton) button { //console.info("RewardsController>initWithView");
+- (id) initWithButton2Enable: (CPButton) button { //console.info("AucklandOptotypesController>initWithButton2Enable");
     self = [super init];
     if (self) {
         _button = button;
@@ -36,7 +36,7 @@
 }
 
 
-- (void) imageDidLoad: (CPNotification) aNotification { //console.info("didLoadRepresentation: ", aNotification);
+- (void) imageDidLoad: (CPNotification) aNotification { //console.info("AucklandOptotypesController>didLoadRepresentation: ", aNotification);
     if ([aNotification loadStatus] == CPImageLoadStatusCompleted) {
         if (++_nAuckImagesLoaded > 9) {
             [self setNImages: _nAuckImagesLoaded];

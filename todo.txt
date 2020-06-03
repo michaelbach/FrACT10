@@ -6,7 +6,7 @@ To Dos
 • Add: displayTransform
 • Add: eccentricity
 • Improve: crowding
-• Tooltips do not show correct text
+• Tooltips do not show correct text !! (crowding)
 
 √ Fix: "s" to start Settings enters "s" in nTrials@2 in Safari & Chrome
 √ → FrACT site button on main screen

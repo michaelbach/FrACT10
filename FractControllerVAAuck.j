@@ -10,7 +10,7 @@
 
 @implementation FractControllerVAAuck: FractController {
     CGRect imageRect;
-    id auckImages @accessors;
+    id auckImages;
 }
 
 
@@ -54,6 +54,7 @@
 
 
 - (void) runStart { //console.info("FractControllerVAAuck>runStart");
+    auckImages = [parentController auckImageArray];
     nAlternatives = 10;  nTrials = [Settings nTrials08];
     [self setCurrentTestName: "Acuity_Auckland"];
     [self setCurrentTestResultUnit: "LogMAR"];

@@ -102,6 +102,11 @@
 }
 
 
+- (id) auckImageArray {
+    return [aucklandOptotypesController imageArray];
+}
+
+
 - (void) runFractController { //console.info("AppController>runFractController");
     if ([Settings notCalibrated]) {
         var alert = [CPAlert alertWithMessageText: "WARNING"
