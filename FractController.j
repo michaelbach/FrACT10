@@ -128,11 +128,11 @@
 - (CPButton) buttonCenteredAtX: (float) x y: (float) y size: (float) size title: (CPString) title { //console.info("FrACTControllerVAE>buttonAtX", x, y, size, title);
     [self buttonCenteredAtX: x y: y size: size title: title keyEquivalent: title];
 }
-- (CPButton) buttonCenteredAtX: (float) x y: (float) y size: (float) size title: (CPString) title keyEquivalent: (CPString) keyEquivalent { //console.info("FrACTControllerVAE>buttonAtX…", x, y, size, title);
+- (CPButton) buttonCenteredAtX: (float) x y: (float) y size: (float) size title: (CPString) title keyEquivalent: (CPString) keyEquivalent { //console.info("FrACTControllerVAE>buttonAtX…", x, y, size, title, keyEquivalent);
     y = y + viewHeight / 2 // contentView is not affected by CGContextTranslateCTM, so I'm shifting y here to 0 at center
     var sze2 = size / 2;
     var button = [[CPButton alloc] initWithFrame: CGRectMake(x - sze2, y - sze2, size, size)];
-    [button setTitle: title];  [button setKeyEquivalent: [button title]];
+    [button setTitle: title];  [button setKeyEquivalent: keyEquivalent];
     [button setTarget: self];  [button setAction: @selector(responseButton_action:)];
     [button setBezelStyle: CPRoundedBezelStyle];
     [[[self window] contentView] addSubview: button];
@@ -141,6 +141,7 @@
 }
 - (IBAction) responseButton_action: (id) sender { //console.info("FrACTControllerVAE>responseButton_action");
     responseKeyChar = [sender keyEquivalent];
+    //console.info("<",responseKeyChar,">");
     if (responseKeyChar == "Ø") {
         [self runEnd];
     } else [super processKeyDownEvent];
@@ -207,10 +208,9 @@
 
 
 - (void) runEnd { //console.info("FractController>runEnd");
-    if (responseButtonsAdded) {
-        var sv = [[[self window] contentView] subviews];
-        for (var i = 0; i < nAlternatives+1; i++) [sv[i] removeFromSuperview];
-    }
+    var sv = [[[self window] contentView] subviews];
+    for (var i = 0; i < nAlternatives+1; i++) [sv[i] removeFromSuperview];
+
     [timerDisplay invalidate];  timerDisplay = nil;
     [timerResponse invalidate];  timerResponse = nil;
     [[self window] close];

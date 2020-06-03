@@ -1871,7 +1871,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                 <rect key="frame" x="3" y="3" width="308" height="61"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <popUpButton toolTip="The vernier stimulus can be of the 2 or 3 line variant." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFy-VR-55t" userLabel="Crowding">
+                                                    <popUpButton toolTip="Types of crowding" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFy-VR-55t" userLabel="Crowding">
                                                         <rect key="frame" x="18" y="16" width="130" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="CEr-tD-UxQ" id="Q94-l5-Nrk">
@@ -1901,7 +1901,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                             <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.crowdingType" id="pUP-54-tjJ"/>
                                                         </connections>
                                                     </popUpButton>
-                                                    <popUpButton toolTip="The vernier stimulus can be of the 2 or 3 line variant." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6J-2A-7mk" userLabel="Crowding type">
+                                                    <popUpButton toolTip="Distance of crowding elements" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6J-2A-7mk" userLabel="Crowding type">
                                                         <rect key="frame" x="162" y="16" width="130" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <popUpButtonCell key="cell" type="push" title="2·gap" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="mt7-ev-w6m" id="8J5-AI-Fsw">

@@ -6,7 +6,7 @@ Created by mb on July 15, 2015.
 History
 =======
 
-2020-06-03 fixed recursion with Auckimages
+2020-06-03 fixed recursion with Auckimages, Auckland Optotypes now with buttons for touch
 2020-06-02 AppController window now centered when in fullScreen,
             renamed console.log → console.info (don't need no log),
             rewardImageView now programmatically added, not in IB (it always got in the way)
