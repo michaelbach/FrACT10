@@ -126,6 +126,9 @@
 
 
 - (CPButton) buttonCenteredAtX: (float) x y: (float) y size: (float) size title: (CPString) title { //console.info("FrACTControllerVAE>buttonAtX", x, y, size, title);
+    [self buttonCenteredAtX: x y: y size: size title: title keyEquivalent: title];
+}
+- (CPButton) buttonCenteredAtX: (float) x y: (float) y size: (float) size title: (CPString) title keyEquivalent: (CPString) keyEquivalent { //console.info("FrACTControllerVAE>buttonAtX…", x, y, size, title);
     y = y + viewHeight / 2 // contentView is not affected by CGContextTranslateCTM, so I'm shifting y here to 0 at center
     var sze2 = size / 2;
     var button = [[CPButton alloc] initWithFrame: CGRectMake(x - sze2, y - sze2, size, size)];
@@ -134,6 +137,7 @@
     [button setBezelStyle: CPRoundedBezelStyle];
     [[[self window] contentView] addSubview: button];
     responseButtonsAdded = YES;
+    return button;
 }
 - (IBAction) responseButton_action: (id) sender { //console.info("FrACTControllerVAE>responseButton_action");
     responseKeyChar = [sender keyEquivalent];
@@ -143,9 +147,9 @@
 }
 
 
--(void) onTimerFirstResponder: (CPTimer) timer { //console.info("FractController>onTimerFirstResponder");
+/*-(void) onTimeoutFirstResponder: (CPTimer) timer { //console.info("FractController>onTimerFirstResponder");
     [[self window] makeFirstResponder: self];
-}
+}*/
 
 -(void) onTimeoutDisplay: (CPTimer) timer { //console.info("FractController>onTimeoutDisplay");
     state = kStateDrawBack;  [[[self window] contentView] setNeedsDisplay: YES];

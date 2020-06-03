@@ -36,13 +36,14 @@
             CGContextDrawImage(cgc, imageRect, auckImages[[alternativesGenerator currentAlternative]]);
 
             CGContextTranslateCTM(cgc,  -viewWidth / 2, -viewHeight / 2); // origin back
-            var size = viewWidth / (nAlternatives * 2 + 1);
+            var size = viewWidth / (nAlternatives * 2 + 1), button;
             CGContextSetTextDrawingMode(cgc, kCGTextFill);
             CGContextSelectFont(cgc, "36px sans-serif"); // this, surprisingly, must be CSS
             for (var i = 0; i < nAlternatives; i++) {
-                imageRect = CGRectMake((i + 0.5) * 2 * size, viewHeight - 1.1 * size, size, size);
-                CGContextDrawImage(cgc, imageRect, auckImages[i]);
-                CGContextShowTextAtPoint(cgc, (i + 0.5) * 2 * size + size / 2 - 8, viewHeight - 1.5 * size,
+                button = [self buttonCenteredAtX: (i + 0.75) * 2 * size y: viewHeight/2 - 0.5 * size size: size title: "" keyEquivalent: [Misc stringFromInteger: (i + 1) % 10]];
+                [button setImage: auckImages[i]];
+                [button setImageScaling: CPImageScaleProportionallyDown];
+                CGContextShowTextAtPoint(cgc, (i + 0.5) * 2 * size + size / 2 - 8, viewHeight - 1.4 * size,
                                          [Misc stringFromInteger: (i + 1) % 10]);
             }
             break;

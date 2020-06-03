@@ -55,7 +55,7 @@ function randomiseArray(array) {
                 possibleAlternatives = [0, 2, 4, 6, 1, 3, 5, 7]; // oblique never more often then straight
                 break;
             case 10: break; // letters, no action needed
-            default: console.info("nAlternatives=", nAlternatives, " should never occur!");
+            default: console.log("nAlternatives=", nAlternatives, " should never occur!"); // needs to be logged
         }
 //        if (nAlternatives == 2) { // to discern between v and h
 //            if (currentTestName != "Acuity_Vernier") { // don't do this for Vernier
