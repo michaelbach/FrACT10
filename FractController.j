@@ -209,15 +209,16 @@
 
 - (void) runEnd { //console.info("FractController>runEnd");
     var sv = [[[self window] contentView] subviews];
-    for (var i = 0; i < nAlternatives+1; i++) [sv[i] removeFromSuperview];
+    for (var i = 0; i < sv.length; i++) [sv[i] removeFromSuperview];
 
     [timerDisplay invalidate];  timerDisplay = nil;
     [timerResponse invalidate];  timerResponse = nil;
     [[self window] close];
     [[self parentController] setRunAborted: (iTrial < nTrials)]; //premature end
     [[self parentController] setResultString: resultString];
+    [[self parentController] setCurrentTestResultExportString: [self composeExportString]];
     if (([Settings results2clipboard] > 0) && (![[self parentController] runAborted])) {
-        [Misc copyString2ClipboardAlert: [self composeExportString]];
+        [Misc copyString2ClipboardAlert: currentTestResultExportString];
     }
     if ([Settings auditoryFeedbackWhenDone]) [sound play3];
     [[self parentController] runEnd];

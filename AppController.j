@@ -30,7 +30,7 @@
     @outlet CPWindow fractControllerWindow;
     @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVAAuck, responseinfoPanelVAVernier;
     @outlet CPButton buttVALett, buttVAC, buttVAE, buttVAAuck, buttVAVernier;
-    //@outlet
+    @outlet CPButton buttonExport;
     CPImageView rewardImageView;
     RewardsController rewardsController;
     AucklandOptotypesController aucklandOptotypesController;
@@ -55,10 +55,6 @@
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>applicationDidFinishLaunching");
     var allButtons = [buttVALett, buttVAC, buttVAE, buttVAAuck, buttVAVernier];
     for (var i = 0; i < allButtons.length; i++)  [self buttonImageAdjust: allButtons[i]];
-/*    [self buttonImageAdjust: buttVALett];  [self buttonImageAdjust: buttVAC];
-    [self buttonImageAdjust: buttVAE];  [self buttonImageAdjust: buttVAAuck];
-    [self buttonImageAdjust: buttVAVernier];
-*/
     
     kTestIDLett = 0;  kTestIDC = 1; kTestIDE = 2; kTestIDAuck = 3; kTestIDVernier = 4; kTestContrastC = 5;
     allTestControllers = [FractControllerVAL, FractControllerVAC, FractControllerVAE, FractControllerVAAuck, FractControllerVAVernier, FractControllerContrastC];
@@ -81,6 +77,7 @@
     aucklandOptotypesController = [[AucklandOptotypesController alloc] initWithButton2Enable: buttVAAuck];
     sound = [[Sound alloc] init];
     for (var i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++); // ranomising the pseudorandom sequence
+    [buttonExport setEnabled: NO];
 }
 
 
@@ -162,6 +159,8 @@
 - (void) runEnd { //console.info("AppController>runEnd");
     [currentFractController release];  currentFractController = nil;
     if (([Settings rewardPicturesWhenDone]) && (!runAborted)) [rewardsController drawRandom];
+    if (!runAborted)  [buttonExport setEnabled: YES];
+
 }
 
 
@@ -277,6 +276,12 @@
 }
 - (IBAction) buttonAboutClose_action: (id) sender { //console.info("AppController>buttonAboutClose_action");
     [aboutPanel close];
+}
+
+
+- (IBAction) buttonExport_action: (id) sender { //console.info("AppController>buttonExport_action");
+    navigator.clipboard.writeText(currentTestResultExportString);
+    [buttonExport setEnabled: NO];
 }
 
 

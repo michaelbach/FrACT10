@@ -18,6 +18,7 @@
     CPString keyTestSettingsString @accessors;
     CPString currentTestName @accessors;
     CPString currentTestResultUnit @accessors;
+    CPString currentTestResultExportString @accessors;
 }
 
 

@@ -39,11 +39,11 @@
             var size = viewWidth / (nAlternatives * 2 + 2), button;
             if (!responseButtonsAdded) {
                 for (var i = 0; i < (nAlternatives); i++) {
-                    button = [self buttonCenteredAtX: (i + 0.75) * 2 * size y: viewHeight/2 - 0.5 * size size: size title: "" keyEquivalent: [@"1234567890Ø" characterAtIndex: i]];
+                    button = [self buttonCenteredAtX: (i + 0.75) * 2 * size y: viewHeight/2 - 0.5 * size size: size title: "" keyEquivalent: [@"1234567890" characterAtIndex: i]];
                     [button setImage: auckImages[i]];
                     [button setImageScaling: CPImageScaleProportionallyDown];
                 }
-                [self buttonCenteredAtX: (11 + 0.75) * 2 * size y: viewHeight/2 - 0.5 * size size: size title: "Ø"];
+                [self buttonCenteredAtX: (10 + 0.75) * 2 * size y: viewHeight/2 - 0.5 * size size: size title: "Ø"];
             }
             CGContextSetTextDrawingMode(cgc, kCGTextFill);
             CGContextSelectFont(cgc, "36px sans-serif"); // this, surprisingly, must be CSS

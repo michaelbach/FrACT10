@@ -18,6 +18,7 @@
 @property (assign) IBOutlet NSButton* buttVAE;
 @property (assign) IBOutlet NSButton* buttVAAuck;
 @property (assign) IBOutlet NSButton* buttVAVernier;
+@property (assign) IBOutlet NSButton* buttonExport;
 
 - (IBAction)runFractController2_actionOK:(id)sender;
 - (IBAction)runFractController2_actionCancel:(id)sender;
@@ -39,6 +40,7 @@
 - (IBAction)buttonAboutWebsiteFractSite_action:(id)sender;
 - (IBAction)buttonAboutWebsiteFractBlog_action:(id)sender;
 - (IBAction)buttonAboutClose_action:(id)sender;
+- (IBAction)buttonExport_action:(id)sender;
 - (IBAction)buttonExit_action:(id)sender;
 
 @end
