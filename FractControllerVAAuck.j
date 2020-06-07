@@ -60,7 +60,7 @@
 - (void) runStart { //console.info("FractControllerVAAuck>runStart");
     auckImages = [parentController auckImageArray];
     nAlternatives = 10;  nTrials = [Settings nTrials08];
-    [self setCurrentTestName: "Acuity_Auckland"];
+    [self setCurrentTestName: "Acuity_TAO"];
     [self setCurrentTestResultUnit: "LogMAR"];
     abortCharacter = "A";
     [super runStart];
