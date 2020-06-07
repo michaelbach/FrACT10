@@ -58,18 +58,21 @@
 }
 
 
-+ (void) copyString2ClipboardAlert: (CPString) s { //console.info("AppController>copyString2ClipboardAlert");
++ (BOOL) copyString2ClipboardAlert: (CPString) s { //console.info("AppController>copyString2ClipboardAlert");
     var alert = [CPAlert alertWithMessageText: "Question:"
     defaultButton: "Yes, put result → clipboard" alternateButton: "No" otherButton: nil
                 informativeTextWithFormat: "\rShall we place the result details into the clipboard?\r(So you can paste them into a spreadsheet.)\r"];
     [alert setAlertStyle: CPInformationalAlertStyle];
+    [[alert window] setFrameOrigin: CGPointMake(200, 200)];
     [alert runModalWithDidEndBlock: function(alert, returnCode) {
         switch (returnCode) {
             case 1: /*console.info("ok, dann nicht");*/  break;
-            case 0: navigator.clipboard.writeText(s); break;
+            case 0:
+                navigator.clipboard.writeText(s);
+                [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
+                break;
         }
     }];
-    [[alert window] setFrameOrigin: CGPointMake(200, 200)];
 }
 
 

@@ -77,7 +77,13 @@
     aucklandOptotypesController = [[AucklandOptotypesController alloc] initWithButton2Enable: buttVAAuck];
     sound = [[Sound alloc] init];
     for (var i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++); // ranomising the pseudorandom sequence
-    [buttonExport setEnabled: NO];
+    [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(buttonExportEnableYESorNO:) name: "buttonExportEnableYESorNO" object: nil];
+    [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
+}
+
+
+- (void) buttonExportEnableYESorNO: (CPNotification) aNotification { //console.info("buttonExportEnableYESorNO");
+    [buttonExport setEnabled: [aNotification object] != 0];
 }
 
 
@@ -158,9 +164,15 @@
 
 - (void) runEnd { //console.info("AppController>runEnd");
     [currentFractController release];  currentFractController = nil;
-    if (([Settings rewardPicturesWhenDone]) && (!runAborted)) [rewardsController drawRandom];
-    if (!runAborted)  [buttonExport setEnabled: YES];
-
+    if (!runAborted) {
+        if ([Settings rewardPicturesWhenDone]) {
+            [rewardsController drawRandom];
+        }
+        [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 1]
+        if ([Settings results2clipboard] > 0) {
+            [Misc copyString2ClipboardAlert: [currentTestResultExportString]];
+        }
+    }
 }
 
 
@@ -281,7 +293,7 @@
 
 - (IBAction) buttonExport_action: (id) sender { //console.info("AppController>buttonExport_action");
     navigator.clipboard.writeText(currentTestResultExportString);
-    [buttonExport setEnabled: NO];
+    [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
 }
 
 

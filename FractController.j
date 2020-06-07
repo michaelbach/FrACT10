@@ -217,9 +217,6 @@
     [[self parentController] setRunAborted: (iTrial < nTrials)]; //premature end
     [[self parentController] setResultString: resultString];
     [[self parentController] setCurrentTestResultExportString: [self composeExportString]];
-    if (([Settings results2clipboard] > 0) && (![[self parentController] runAborted])) {
-        [Misc copyString2ClipboardAlert: currentTestResultExportString];
-    }
     if ([Settings auditoryFeedbackWhenDone]) [sound play3];
     [[self parentController] runEnd];
 }
