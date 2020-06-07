@@ -83,7 +83,8 @@
 
 
 - (void) buttonExportEnableYESorNO: (CPNotification) aNotification { //console.info("buttonExportEnableYESorNO");
-    [buttonExport setEnabled: [aNotification object] != 0];
+    //[buttonExport setEnabled: [aNotification object] != 0];
+    [buttonExport setHidden: [aNotification object] == 0];
 }
 
 

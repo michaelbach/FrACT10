@@ -33,8 +33,10 @@
             var sizeInPix = stimStrengthInDeviceunits * 5 * 8.172 / 5;// correction for stroke width (Dakin)
             CGContextSetFillColor(cgc, colOptotypeFore);
             imageRect = CGRectMake(-sizeInPix / 2, -sizeInPix / 2, sizeInPix, sizeInPix);
+            CGContextTranslateCTM(cgc,  -xEcc, -yEcc);
             CGContextDrawImage(cgc, imageRect, auckImages[[alternativesGenerator currentAlternative]]);
-
+            CGContextTranslateCTM(cgc,  xEcc, yEcc);
+            
             CGContextTranslateCTM(cgc,  -viewWidth / 2, -viewHeight / 2); // origin back
             var size = viewWidth / (nAlternatives * 2 + 2), button;
             if (!responseButtonsAdded) {

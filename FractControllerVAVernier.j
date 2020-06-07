@@ -89,8 +89,7 @@
         case kStateDrawBack:  break;
         case kStateDrawFore: //console.info("kStateDrawFore");
             CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
-            [self  drawVernierAtX: [Misc pixelFromDegree: [Settings eccentXInDeg]]
-                                y: [Misc pixelFromDegree: [Settings eccentYInDeg]]
+            [self  drawVernierAtX: -xEcc y: -yEcc
                           vLength: [Misc pixelFromDegree: [Settings vernierLength] / 60.0]
                             sigma: [Misc pixelFromDegree: [Settings vernierWidth] / 60.0]
                         gapHeight: [Misc pixelFromDegree: [Settings vernierGap] / 60.0]

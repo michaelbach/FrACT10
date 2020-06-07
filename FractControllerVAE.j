@@ -59,7 +59,9 @@
     switch(state) {
         case kStateDrawBack:  break;
         case kStateDrawFore: //console.info("kStateDrawFore");
+            CGContextTranslateCTM(cgc,  -xEcc, -yEcc);
             [self tumblingEWithGapInPx: stimStrengthInDeviceunits direction: [alternativesGenerator currentAlternative]];
+            CGContextTranslateCTM(cgc,  xEcc, yEcc);
             break;
         default: break;
     }

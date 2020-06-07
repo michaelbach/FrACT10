@@ -6,6 +6,7 @@ Created by mb on July 15, 2015.
 History
 =======
 
+2020-06-08 simplify Settings, set default touch to YES, add eccentricity to all tests, buttonExport disabled→hidden
 2020-06-07 fix regression on export alert sequence after adding the button
 2020-06-05 add export button
 2020-06-03 fixed recursion with Auckimages, Auckland Optotypes now with buttons for touch
@@ -41,7 +42,7 @@ History
 */
 
 
-#define dateFract "2020-06-07"
+#define dateFract "2020-06-08"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -78,7 +79,10 @@ History
 
 + (void) allNotCheckButSet: (BOOL) set {
     [[CPUserDefaults standardUserDefaults] synchronize];
-    if (set) [self setDateSettingsVersion: dateSettingsCurrent];
+    if (set) {
+        [self setDateSettingsVersion: dateSettingsCurrent];
+        [[CPUserDefaults standardUserDefaults] setInteger: 2 forKey: "nAlternativesIndex"];//=8 alternatives
+    }
 
     // for all tests
     [self setNTrials02: [self chckInt: [self nTrials02] def: 32 min: 1 max: 200 set: set]];
@@ -90,7 +94,7 @@ History
     [self setCalBarLengthInPixel: [self chckFlt: [self calBarLengthInPixel] def: 700 min: 1 max: 2000 set: set]];
 
     [self setResponseInfoAtStart: [self chckBool: [self responseInfoAtStart] def: YES set: set]];
-    [self setEnableTouchControls: [self chckBool: [self enableTouchControls] def: NO set: set]];
+    [self setEnableTouchControls: [self chckBool: [self enableTouchControls] def: YES set: set]];
 
     [self setNOfRuns2Recall: [self chckInt: [self nOfRuns2Recall] def: 0 min: 0 max: 100 set: set]];
 
@@ -146,11 +150,6 @@ History
     // Contrast stuff
     [self setGammaValue: [self chckFlt: [self gammaValue] def: 1.8 min: 0.8 max: 4 set: set]];
     [self setContrastEasyTrials: [self chckBool: [self contrastEasyTrials] def: YES set: set]];
-
-    if (set) { //console.info("FrACT10>>Settings>setting all to defaults")
-        [[CPUserDefaults standardUserDefaults] setInteger: 2 forKey: "nAlternativesIndex"];//=8 alternatives
-        [[CPUserDefaults standardUserDefaults] synchronize];
-    }
 
     [[CPUserDefaults standardUserDefaults] synchronize];
 }

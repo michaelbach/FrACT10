@@ -17,6 +17,7 @@
     float stimStrengthGeneric, stimStrengthInDeviceunits, viewWidth, viewHeight;
     float gapMinimal, gapMaximal;
     float currentX, currentY; // for drawing
+    float xEcc, yEcc; // eccentricity
     Thresholder thresholder;
     AlternativesGenerator alternativesGenerator;
     CPString trialInfoString @accessors;
@@ -66,6 +67,7 @@
     alternativesGenerator = [[AlternativesGenerator alloc] initWithNumAlternatives: nAlternatives andNTrials: nTrials];
     thresholder = [[Thresholder alloc] initWithNumAlternatives: nAlternatives];
     responseWasCorrect = YES;  responseWasCorrectCumulative = YES;
+    xEcc = [Misc pixelFromDegree: [Settings eccentXInDeg]];  yEcc = [Misc pixelFromDegree: [Settings eccentYInDeg]]; //pos y: ↓
     [self trialStart];
 }
 
@@ -92,8 +94,9 @@
     CGContextSetFillColor(cgc, colOptotypeFore);
     CGContextShowText(cgc, trialInfoString);
 
+    if (currentTestName == "Acuity_Vernier") return; // don't do crowding with Vernier
     CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
-    //[self strokeLineX0: -100 y0: -100 x1: 100 y1: 100];  [self strokeLineX0: 100 y0: -100 x1: -100 y1: 100];
+    CGContextTranslateCTM(cgc,  -xEcc, -yEcc);
     var i;  //console.info([Settings crowdingType]);
     switch ([Settings crowdingType]) {
         case 0:  break;
@@ -122,6 +125,7 @@
             CGContextStrokeRect(cgc, CGRectMake(-frameSize2, -frameSize2, frameSize, frameSize));
             break;
     }
+    CGContextTranslateCTM(cgc,  xEcc, yEcc);
 }
 
 

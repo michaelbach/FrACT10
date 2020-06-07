@@ -28,7 +28,9 @@
         case kStateDrawBack: break;
         case kStateDrawFore: //console.info("kStateDrawFore");
             CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
+            CGContextTranslateCTM(cgc,  -xEcc, -yEcc);
             [self drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: [alternativesGenerator currentAlternative]];
+            CGContextTranslateCTM(cgc,  xEcc, yEcc);
             break;
         default: break;
     }
