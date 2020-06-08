@@ -12,6 +12,9 @@
 }
 
 
++ (float) limit01: (float) theValue {
+    return [self limit: theValue lo: 0 hi: 1];
+}
 + (float) limit: (float) theValue lo: (float) lo hi: (float) hi {
     if (theValue < lo) return lo;
     if (theValue > hi) return hi;
@@ -151,7 +154,14 @@
 }
 
 
+//////////////////////////////////////////////////////////////////
 ////////////////////////////////////// luminance <—> deviceGrey
+// scales
+// contrast: -100 … 100%
+// “deviceGrey": 0 … 1 AFTER gamma correction
+// "luminance": (0…1) as "normalised" luminance as would be measured in cd/m²
+//////////////////////////////////////////////////////////////////
+
 + (float) luminance2deviceGrey: (float) luminance {
     return Math.pow(luminance, 1.0 / [Settings gammaValue]);
 }
@@ -159,6 +169,15 @@
 + (float) deviceGrey2luminance: (float) g {
     return Math.pow(g, [Settings gammaValue]);
 }
+
++ (float) lowerLuminanceFromContrast: (float) contrast { //console.info("lowerLuminanceFromContrast");
+    return [self limit01: [self limit01: 0.5 - contrast]];
+}
++ (float) upperLuminanceFromContrast: (float) contrast { //console.info("highLuminanceFromContras");
+    return [self limit01: [self limit01: 0.5 + contrast]];
+}
+
+
 ////////////////////////////////////// deviceGrey <—> RGB
 + (int) deviceGrey2RGB_UNFERTIG: (float) theDeviceGrey {
     var g = limit(0, Math.round(255 * theDeviceGrey), 255);
@@ -195,19 +214,6 @@ return 30.0 / (Math.pow(10, logMAR));
 //3. "deviceGrey": luminance in device values, that is gamma-corrected, on a (0…1) scale
 //4. RGB: deviceGrey converted to RGB on a (3 x 0x00…0xFF) scale
 ////////////////////////////////////// luminance <—> contrast
-static public  function lumContrast2lumLo(luminance:Number,contrast:Number):Number {
-//trace("lumContrast2lumLo("+luminance+","+contrast+")");
-luminance=limit(0.0,luminance,1.0);
-var l:Number=luminance * (1.0 - contrast);
-//trace("lLo: ",l);
-return limit(0.0,l,1.0);
-}
-static public  function lumContrast2lumHi(luminance:Number, contrast:Number):Number {
-luminance=limit(0.0, luminance, 1.0);
-var l:Number=luminance * (1.0 + contrast);
-//trace("lHi: ",l);
-return limit(0.0,l,1.0);
-}
 static public  function lumHiLo2contrast(lumLo:Number, lumHi:Number):Number {
 if (lumLo > lumHi) { // sort if necessary
 var temp:Number = lumHi;  lumHi = lumLo; lumLo = temp;
@@ -221,7 +227,7 @@ if (deviceGreyLo>deviceGreyHi) { // sort if necessary
 var temp:Number = deviceGreyHi;  deviceGreyHi = deviceGreyLo;  deviceGreyLo = temp;
 }
 var lumLo:Number = deviceGrey2luminance(deviceGreyLo),  lumHi:Number = deviceGrey2luminance(deviceGreyHi);
-//trace(lumLo, " -- ", lumHi);
+//console.info(lumLo, " -- ", lumHi);
 return lumHiLo2contrast(lumLo, lumHi);
 }
 ////////////////////////////////////// luminance & contrast <—> RGB
@@ -234,7 +240,7 @@ static public function contrast2LoRGB(contrast:Number):uint {
 var temp1:Number = lumContrast2lumLo(0.5, contrast);
 temp1=luminance2deviceGrey(temp1);
 return deviceGrey2RGB(temp1);
-//			trace("contrast2LoRGB, contrast: ",contrast,", temp2: ", deviceGrey2RGB(temp1));
+//			console.info("contrast2LoRGB, contrast: ",contrast,", temp2: ", deviceGrey2RGB(temp1));
 }
 //////////////////////////////////////
 // average the r, g, and b value to represent the grey number (from 0 to 255)

@@ -66,7 +66,7 @@
     var v = [Settings versionNumber] + "·" + [Settings versionDate]
      [[self window] setTitle: "FrACT10"]; [self setVersionDateString: v];
     [Settings checkDefaults]; // what was the reason to put this here???
-    [self setColOptotypeFore: [CPColor blackColor]];  [self setColOptotypeBack: [CPColor whiteColor]];
+    //[self setColOptotypeFore: [CPColor blackColor]];  [self setColOptotypeBack: [CPColor whiteColor]];
     var s = @"Current key test settings: " + [Settings distanceInCM] +" cm distance, ";
     s += [Settings nAlternatives] + " Landolt alternatives, " + [Settings nTrials] + " trials";
     [self setKeyTestSettingsString: s];
@@ -79,6 +79,8 @@
     for (var i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++); // ranomising the pseudorandom sequence
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(buttonExportEnableYESorNO:) name: "buttonExportEnableYESorNO" object: nil];
     [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
+    if ([Settings contrastAcuity] == 1) [Settings setContrastAcuity: 100]; // temporary until everyone defaulted anew :)
+    //console.log("contrastAcuity", [Settings contrastAcuity]);
 }
 
 
@@ -186,6 +188,7 @@
 }*/
 - (void) controlTextDidEndEditing: (CPNotification) notification { //console.info(@"controlTextDidChange: stringValue == %@", [[notification object] stringValue]);
     [Settings calculateMaxPossibleDecimalAcuity];
+    [Settings  calculateAcuityForeBackColorsFromContrast];
 }
 
 
@@ -258,7 +261,7 @@
     [Settings checkDefaults];  [settingsPanel close];
 }
 - (IBAction) buttonSettingsDefaults_action: (id) sender { //console.info("AppController>buttonSettingsDefaults");
-    [self setColOptotypeFore: [CPColor blackColor]];  [self setColOptotypeBack: [CPColor whiteColor]];
+    //[self setColOptotypeFore: [CPColor blackColor]];  [self setColOptotypeBack: [CPColor whiteColor]];
     [Settings setDefaults];  [settingsPanel close];  [Settings setDefaults];  [settingsPanel makeKeyAndOrderFront: self];
     [[settingsPanel contentView] setNeedsDisplay: YES];
 }

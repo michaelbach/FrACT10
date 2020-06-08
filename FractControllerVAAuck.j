@@ -23,7 +23,7 @@
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerVAAuck>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
-    CGContextSetFillColor(cgc, colOptotypeBack);
+    CGContextSetFillColor(cgc, [CPColor whiteColor]); // contrast not respected with TAO
     CGContextFillRect(cgc, [[self window] frame]);
     CGContextSaveGState(cgc);
     switch(state) {

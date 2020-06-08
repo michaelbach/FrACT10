@@ -6,6 +6,7 @@ Created by mb on July 15, 2015.
 History
 =======
 
+2020-06-08a add contrast effect on optotypes, Vernier still wrong, TAO not. Tweak Settings GUI
 2020-06-08 simplify Settings, set default touch to YES, add eccentricity to all tests, buttonExport disabled→hidden
 2020-06-07 fix regression on export alert sequence after adding the button
 2020-06-05 add export button
@@ -42,7 +43,7 @@ History
 */
 
 
-#define dateFract "2020-06-08"
+#define dateFract "2020-06-08a"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -62,7 +63,9 @@ History
 + (CPString) versionNumber {return versionFract;}
 
 
-// helpers: check if outside range or nil, if so set default
+// helpers:
+// if "set == true" the default is set,
+// otherwise check if outside range or nil, if so also set default
 + (BOOL) chckBool: (BOOL) val def: (BOOL) def set: (BOOL) set { //console.info("chckBool ", val);
     if (!set && !isNaN(val))  return val;
     return def;
@@ -81,7 +84,7 @@ History
     [[CPUserDefaults standardUserDefaults] synchronize];
     if (set) {
         [self setDateSettingsVersion: dateSettingsCurrent];
-        [[CPUserDefaults standardUserDefaults] setInteger: 2 forKey: "nAlternativesIndex"];//=8 alternatives
+        [[CPUserDefaults standardUserDefaults] setInteger: 2 forKey: "nAlternativesIndex"]; // 8 alternatives
     }
 
     // for all tests
@@ -110,21 +113,22 @@ History
     [self setTimeoutDisplaySeconds: [self chckFlt: [self timeoutDisplaySeconds] def: 30 min: 0.1 max: 9999 set: set]];
     [self setMaskTimeOnResponseInMS: [self chckFlt: [self timeoutDisplaySeconds] def: 0 min: 0 max: 9999 set: set]];
 
-    // 0:none, 1:always, 2:on correct, 3:w/ info
-    [self setAuditoryFeedback: [self chckInt: [self auditoryFeedback] def: 3 min: 0 max: 3 set: set]];
-    // 0:none, 1:always, 2:on correct, 3:2/ info, 4:on correct
-    [self setVisualFeedback: [self chckInt: [self visualFeedback] def: 0 min: 0 max: 4 set: set]];
-    [self setAuditoryFeedbackWhenDone: [self chckBool: [self auditoryFeedbackWhenDone] def: YES set: set]];
-
     // 0: no, 1: final only, 2: full history
     [self setResults2clipboard: [self chckInt: [self results2clipboard] def: 0 min: 0 max: 2 set: set]];
+
+    // 0: none, 1: always, 2: on correct, 3: w/ info
+    [self setAuditoryFeedback: [self chckInt: [self auditoryFeedback] def: 3 min: 0 max: 3 set: set]];
+    // 0: none, 1: always, 2: on correct, 3: w/ info
+    [self setVisualFeedback: [self chckInt: [self visualFeedback] def: 0 min: 0 max: 3 set: set]]; // NOT IN USE
+    [self setAuditoryFeedbackWhenDone: [self chckBool: [self auditoryFeedbackWhenDone] def: YES set: set]];
 
     [self setRewardPicturesWhenDone: [self chckBool: [self rewardPicturesWhenDone] def: YES set: set]];
     [self setTimeoutRewardPicturesInSeconds: [self chckFlt: [self timeoutRewardPicturesInSeconds] def: 5 min: 0.1 max: 999 set: set]];
 
     
     // Acuity stuff
-    [self setContrastAcuity: [self chckFlt: [self contrastAcuity] def: 1 min: -1 max: 1 set: set]];
+    [self setContrastAcuity: [self chckFlt: [self contrastAcuity] def: 100 min: -100 max: 100 set: set]];
+    [self calculateAcuityForeBackColorsFromContrast];
     [self setAcuityEasyTrials: [self chckBool: [self acuityEasyTrials] def: YES set: set]];
     [self setMaxDisplayedAcuity: [self chckFlt: [self maxDisplayedAcuity] def: 2 min: 1 max: 99 set: set]];
     [self setThreshCorrection: [self chckBool: [self threshCorrection] def: YES set: set]];
@@ -163,6 +167,19 @@ History
 }
 
 
+// contrast in in %, so we need to divide for the -1 … +1 scale
+// 100%: background fully white, foreground fully dark
++ (void) calculateAcuityForeBackColorsFromContrast { //console.info("Settings>calculateAcuityForeBackColorsFromContrast");
+    var temp = [Misc lowerLuminanceFromContrast: [self contrastAcuity] / 200];
+    temp = [Misc deviceGrey2luminance: temp];
+    [self setAcuityForeColor: [CPColor colorWithWhite: temp alpha: 1]];
+
+    temp = [Misc upperLuminanceFromContrast: [self contrastAcuity] / 200];
+    temp = [Misc deviceGrey2luminance: temp];
+    [self setAcuityBackColor: [CPColor colorWithWhite: temp alpha: 1]];
+}
+
+
 + (BOOL) needNewDefaults {
     return [self dateSettingsVersion] != dateSettingsCurrent;
 }
@@ -177,7 +194,7 @@ History
 }
 
 
-+ (void) setDefaults { //console.info("Prefs>setDefaults");
++ (void) setDefaults { //console.info("Settings>setDefaults");
     [self allNotCheckButSet: YES];
 }
 
@@ -188,15 +205,15 @@ History
 }
 
 
-+ (CPString) dateSettingsVersion { //console.info("Prefs>dateSettingsVersion");
++ (CPString) dateSettingsVersion { //console.info("Settings>dateSettingsVersion");
     return [[CPUserDefaults standardUserDefaults] objectForKey: "dateSettingsVersion"];
 }
-+ (void) setDateSettingsVersion: (CPString) theValue { //console.info("Prefs>setDatesettingsVersion");
++ (void) setDateSettingsVersion: (CPString) theValue { //console.info("Settings>setDatesettingsVersion");
     [[CPUserDefaults standardUserDefaults] setObject: theValue forKey: "dateSettingsVersion"];
 }
 
 
-+ (int) nAlternatives { //console.info("Prefs>nAlternatives");
++ (int) nAlternatives { //console.info("Settings>nAlternatives");
     switch ([[CPUserDefaults standardUserDefaults] integerForKey: "nAlternativesIndex"]) {
         case 0:  return 2;  break;
         case 1:  return 4;  break;
@@ -205,7 +222,7 @@ History
 }
 
 
-+ (int) nTrials { //console.info("Prefs>nTrials");
++ (int) nTrials { //console.info("Settings>nTrials");
     switch ([self nAlternatives]) {
         case 2:  return [self nTrials02];  break;
         case 4:  return [self nTrials04];  break;
@@ -214,16 +231,16 @@ History
 }
 
 
-+ (int) nTrials02 { //console.info("Prefs>nTrials02");
++ (int) nTrials02 { //console.info("Settings>nTrials02");
     var t = [[CPUserDefaults standardUserDefaults] integerForKey: "nTrials02"]; //console.info(t);
     return t;
 }
-+ (void) setNTrials02: (int) theValue { //console.info("Prefs>nTrials02");
++ (void) setNTrials02: (int) theValue { //console.info("Settings>nTrials02");
     [[CPUserDefaults standardUserDefaults] setInteger: theValue forKey: "nTrials02"];
 }
 
 
-+ (int) nTrials04 { //console.info("Prefs>nTrials04");
++ (int) nTrials04 { //console.info("Settings>nTrials04");
     return [[CPUserDefaults standardUserDefaults] integerForKey: "nTrials04"];
 }
 + (void) setNTrials04: (int) theValue {
@@ -277,7 +294,7 @@ History
 
 
 
-+ (int) nAlternatives { //console.info("Prefs>nAlternatives");
++ (int) nAlternatives { //console.info("Settings>nAlternatives");
     switch ([[CPUserDefaults standardUserDefaults] integerForKey: "nAlternativesIndex"]) {
         case 0:  return 2;  break;
         case 1:  return 4;  break;
@@ -439,7 +456,7 @@ History
 + (float) timeoutRewardPicturesInSeconds {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "timeoutRewardPicturesInSeconds"];
 }
-+ (void) setTimeoutRewardPicturesInSeconds: (float) theValue { //console.info("Prefs>setTimeoutRewardPicturesInSeconds");
++ (void) setTimeoutRewardPicturesInSeconds: (float) theValue { //console.info("Settings>setTimeoutRewardPicturesInSeconds");
     [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "timeoutRewardPicturesInSeconds"];
 }
 
@@ -463,7 +480,7 @@ History
 + (int) crowdingType {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "crowdingType"];
 }
-+ (void) setCrowdingType: (float) theValue {
++ (void) setCrowdingType: (int) theValue {
     [[CPUserDefaults standardUserDefaults] setInteger: theValue forKey: "crowdingType"];
 }
 
@@ -514,18 +531,33 @@ History
 }
 
 
-+ (CPColor) acuityForeColor {
-    var aColor = [CPColor blackColor];
-    var theData = [[CPUserDefaults standardUserDefaults] dataForKey: "acuityForeColor"];
-    if (theData != nil)
-        aColor = (CPColor) [CPUnarchiver unarchiveObjectWithData: theData];
-    return aColor;
++ (CPColor) acuityForeColor { //console.info("Settings>acuityForeColor");
+    var theData = [[CPUserDefaults standardUserDefaults] stringForKey: "acuityForeColor"];
+    var c = [CPColor colorWithHexString: theData]; //console.info("Settings>acuityForeColor:", c);
+    return c;
 }
-+ (void) setAcuityForeColor: (CPColor) theColor {
-    var theData = [CPArchiver archivedDataWithRootObject: theColor];
-    [[CPUserDefaults standardUserDefaults] setObject: theData forKey: "acuityForeColor"];
++ (void) setAcuityForeColor: (CPColor) theColor { //console.info("Settings>setAcuityBackColor");
+    [[CPUserDefaults standardUserDefaults] setObject: [theColor hexString] forKey: "acuityForeColor"];
 }
-//+ (CPColor) acuityBackColor
++ (CPColor) acuityBackColor { //console.info("Settings>acuityBackColor");
+    var theData = [[CPUserDefaults standardUserDefaults] stringForKey: "acuityBackColor"];
+    var c = [CPColor colorWithHexString: theData]; //console.info("Settings>acuityBackColor:", c);
+    return c;
+}
++ (void) setAcuityBackColor: (CPColor) theColor { //console.info("Settings>setAcuityBackColor");
+    [[CPUserDefaults standardUserDefaults] setObject: [theColor hexString] forKey: "acuityBackColor"];
+}
+
++ (id) dataFromColor: (CPColor) color { console.info("Settings>dataFromColor");
+    data = [color hsbComponents];
+    console.log(data);
+    return data;
+}
++ (CPColor) colorFromData: (id) data { console.info("Settings>colorFromData");
+    console.log(data);
+    [data = [0, 0, 1]]
+    return [CPColor colorWithHue: data[0] saturation: data[1] brightness: data[2] alpha: 1];
+}
 
 
 + (BOOL) acuityEasyTrials {

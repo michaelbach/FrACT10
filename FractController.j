@@ -25,6 +25,7 @@
     CPString kRangeLimitDefault, kRangeLimitOk, kRangeLimitValueAtFloor, kRangeLimitValueAtCeiling, rangeLimitStatus, abortCharacter;
     id sound @accessors;
     BOOL responseButtonsAdded;
+    CPColor colOptotypeFore, colOptotypeBack;
 }
 
 
@@ -44,8 +45,7 @@
         kRangeLimitDefault = "";  kRangeLimitOk = "rangeOK";  kRangeLimitValueAtFloor = "atFloor";
         kRangeLimitValueAtCeiling = "atCeiling";  rangeLimitStatus = kRangeLimitDefault;
 
-        [self setColOptotypeFore: [[self parentController] colOptotypeFore]];
-        [self setColOptotypeBack: [[self parentController] colOptotypeBack]];
+        colOptotypeFore = [Settings acuityForeColor];  colOptotypeBack = [Settings acuityBackColor];
         [Settings checkDefaults];
         abortCharacter = "5";
         nTrials = [Settings nTrials];

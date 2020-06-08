@@ -43,7 +43,7 @@
     CGContextSetLineWidth(cgc, 1);
     for (var ix = ix0 - iSigma; ix <= ix0 + iSigma; ix++) {
         var gaussValue = Math.exp(-Math.pow(x0 - ix, 2) / sigma);
-        var gValue = 0.5 + [Settings contrastAcuity] * (0.5 - gaussValue);
+        var gValue = 0.5 + [Settings contrastAcuity] / 100 * (0.5 - gaussValue);
         gValue = [Misc luminance2deviceGrey: gValue];
         CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: gValue alpha: 1]);
         [self strokeVLineAtX: ix y0: y0 y1: y1];

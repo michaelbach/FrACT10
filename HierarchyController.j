@@ -12,7 +12,6 @@
 
 @implementation HierarchyController: CPWindowController {
     HierarchyController parentController @accessors;
-    CPColor colOptotypeFore @accessors, colOptotypeBack @accessors;
     CPString resultString @accessors;
     CPString versionDateString @accessors;
     CPString keyTestSettingsString @accessors;
