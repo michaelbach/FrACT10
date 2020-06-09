@@ -154,40 +154,55 @@
 }
 
 
+//////////////////////////////////////
+// Michelson ←→ Weber contrast.
+// both contrasts are defined on a 0…100 scale
++ (float) contrastWeberFromMichelson: (float) inMichelson {
+    inMichelson /= 100;
+    weberValue = 2.0 * inMichelson / (1.0 + inMichelson);
+    return weberValue * 100;
+}
++ (float) contrastMichelsonFromWeber: (float) inWeber {
+    inWeber /= 100;
+    michelsonValue = inWeber / (2.0 - inWeber);
+    return michelsonValue * 100;
+}
+
+
 //////////////////////////////////////////////////////////////////
-////////////////////////////////////// luminance <—> deviceGrey
+////////////////////////////////////// luminance <—> devicegrey
 // scales
 // contrast: -100 … 100%
-// “deviceGrey": 0 … 1 AFTER gamma correction
+// “devicegrey": 0 … 1 AFTER gamma correction
 // "luminance": (0…1) as "normalised" luminance as would be measured in cd/m²
 //////////////////////////////////////////////////////////////////
 
-+ (float) luminance2deviceGrey: (float) luminance {
++ (float) devicegreyFromLuminance: (float) luminance {
     return Math.pow(luminance, 1.0 / [Settings gammaValue]);
 }
                     
-+ (float) deviceGrey2luminance: (float) g {
++ (float) luminanceFromDevicegrey: (float) g {
     return Math.pow(g, [Settings gammaValue]);
 }
 
 + (float) lowerLuminanceFromContrast: (float) contrast { //console.info("lowerLuminanceFromContrast");
-    return [self limit01: [self limit01: 0.5 - contrast]];
+    return [self limit01: [self limit01: 0.5 - 0.5 * contrast]];
 }
 + (float) upperLuminanceFromContrast: (float) contrast { //console.info("highLuminanceFromContras");
-    return [self limit01: [self limit01: 0.5 + contrast]];
+    return [self limit01: [self limit01: 0.5 + 0.5 * contrast]];
 }
 
 
-////////////////////////////////////// deviceGrey <—> RGB
-+ (int) deviceGrey2RGB_UNFERTIG: (float) theDeviceGrey {
-    var g = limit(0, Math.round(255 * theDeviceGrey), 255);
+/*///////////////////////////////////// devicegrey <—> RGB
++ (int) devicegrey2RGB_UNFERTIG: (float) thedevicegrey {
+    var g = limit(0, Math.round(255 * thedevicegrey), 255);
     return (g | g << 8 | g << 16);
 }
 
 + (float) luminance2RGB: (float) luminance {
-    var temp1 = luminance2deviceGrey(luminance);
-    return deviceGrey2RGB(temp1);
-}
+    var temp1 = devicegreyFromLuminance(luminance);
+    return devicegrey2RGB(temp1);
+}*/
 
 
 /*
@@ -211,8 +226,8 @@ return 30.0 / (Math.pow(10, logMAR));
 // ===============
 //1. luminance (0…1) as "normalised" luminance as would be measured in cd/m2
 //2. contrast on a (0…1) scale, corresponding to (0…100%)
-//3. "deviceGrey": luminance in device values, that is gamma-corrected, on a (0…1) scale
-//4. RGB: deviceGrey converted to RGB on a (3 x 0x00…0xFF) scale
+//3. "devicegrey": luminance in device values, that is gamma-corrected, on a (0…1) scale
+//4. RGB: devicegrey converted to RGB on a (3 x 0x00…0xFF) scale
 ////////////////////////////////////// luminance <—> contrast
 static public  function lumHiLo2contrast(lumLo:Number, lumHi:Number):Number {
 if (lumLo > lumHi) { // sort if necessary
@@ -222,42 +237,31 @@ var c:Number = (lumHi - lumLo) / (lumHi + lumLo);
 return limit(0.0, c, 1.0);
 }
 static public function rgbHiLo2contrast(rgbLo:uint, rgbHi:uint): Number {
-var deviceGreyLo:Number = RGB2L(rgbLo),  deviceGreyHi:Number = RGB2L(rgbHi);
-if (deviceGreyLo>deviceGreyHi) { // sort if necessary
-var temp:Number = deviceGreyHi;  deviceGreyHi = deviceGreyLo;  deviceGreyLo = temp;
+var devicegreyLo:Number = RGB2L(rgbLo),  devicegreyHi:Number = RGB2L(rgbHi);
+if (devicegreyLo>devicegreyHi) { // sort if necessary
+var temp:Number = devicegreyHi;  devicegreyHi = devicegreyLo;  devicegreyLo = temp;
 }
-var lumLo:Number = deviceGrey2luminance(deviceGreyLo),  lumHi:Number = deviceGrey2luminance(deviceGreyHi);
+var lumLo:Number = luminanceFromDevicegrey(devicegreyLo),  lumHi:Number = luminanceFromDevicegrey(devicegreyHi);
 //console.info(lumLo, " -- ", lumHi);
 return lumHiLo2contrast(lumLo, lumHi);
 }
 ////////////////////////////////////// luminance & contrast <—> RGB
 static public function contrast2HiRGB(contrast:Number):uint {
 var temp1:Number = lumContrast2lumHi(0.5, contrast);
-temp1 = luminance2deviceGrey(temp1);
-return deviceGrey2RGB(temp1);
+temp1 = devicegreyFromLuminance(temp1);
+return devicegrey2RGB(temp1);
 }
 static public function contrast2LoRGB(contrast:Number):uint {
 var temp1:Number = lumContrast2lumLo(0.5, contrast);
-temp1=luminance2deviceGrey(temp1);
-return deviceGrey2RGB(temp1);
-//			console.info("contrast2LoRGB, contrast: ",contrast,", temp2: ", deviceGrey2RGB(temp1));
+temp1=devicegreyFromLuminance(temp1);
+return devicegrey2RGB(temp1);
+//			console.info("contrast2LoRGB, contrast: ",contrast,", temp2: ", devicegrey2RGB(temp1));
 }
 //////////////////////////////////////
 // average the r, g, and b value to represent the grey number (from 0 to 255)
 static public function RGB2L(inRGB:uint):uint {
 var r:uint = (inRGB >> 16) & 0xFF,  g:uint = (inRGB >> 8) & 0xFF,  b:uint = inRGB & 0xFF;
 return (Math.round((r + g + b)/3.0));
-}
-
-
-//////////////////////////////////////
-// Michelson ←→ Weber contrast.
-// assuming contrast is defined on a 0.0–1.0 scale
-static public function contrastMichelson2Weber(inMichelson:Number):Number {
-return(2.0 * inMichelson / (1.0 + inMichelson));// vor 2010-09-01: im Nenner (1-cM)
-}
-static public function contrastWeber2Michelson(inWeber:Number):Number {
-return(inWeber / (2.0 - inWeber));
 }
 
 */

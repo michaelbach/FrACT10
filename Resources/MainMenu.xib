@@ -1704,16 +1704,22 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             <rect key="frame" x="17" y="377" width="40" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <binding destination="450" name="value" keyPath="acuityForeColor" id="Sfr-Nl-xTH"/>
+                                            </connections>
                                         </colorWell>
                                         <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OSW-TH-Yop">
                                             <rect key="frame" x="67" y="377" width="40" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <binding destination="450" name="value" keyPath="acuityBackColor" id="ucH-f7-hdz"/>
+                                            </connections>
                                         </colorWell>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3IW-SR-qta">
                                             <rect key="frame" x="110" y="379" width="163" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Fore- / background colour" id="4Cc-fv-th1">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Fore- / background colour" id="4Cc-fv-th1">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

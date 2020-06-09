@@ -40,15 +40,18 @@
 - (void) drawLineGaussProfileVerticalAtX: (float) x0 y0: (float) y0 y1: (float) y1 sigma: (float) sigma { //console.info("FractControllerVAVernier>>DrawLineGaussianProfileVertical ", x0, y0, y1);
     var ix0 = Math.round(x0);
     var iSigma = Math.round(Math.max(5, Math.min(sigma * 4, 30))); //trace(sigma, iSigma);
+    var cnt = [Settings contrastAcuity] / 100;
     CGContextSetLineWidth(cgc, 1);
     for (var ix = ix0 - iSigma; ix <= ix0 + iSigma; ix++) {
         var gaussValue = Math.exp(-Math.pow(x0 - ix, 2) / sigma);
-        var gValue = 0.5 + [Settings contrastAcuity] / 100 * (0.5 - gaussValue);
-        gValue = [Misc luminance2deviceGrey: gValue];
-        CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: gValue alpha: 1]);
+        var greyValue = 0.5 + cnt * (0.5 - gaussValue);
+        greyValue = [Misc devicegreyFromLuminance: greyValue];
+        CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: greyValue alpha: 1]);
         [self strokeVLineAtX: ix y0: y0 y1: y1];
     }
 }
+//var gaussValue:Number = Math.exp(-Math.pow(x0 - ix, 2) / sigma);
+//var gValue:Number = 0.5 + Prefs.contrastAcuity.n * (0.5 - gaussValue);
 
 
 - (void) drawVernierAtX: (float) xCent y: (float) yCent vLength: (float) vLength sigma: (float) sigma gapHeight: (float) gapHeight offsetSize: (float) offsetSize offsetIsTopRight: (BOOL) offsetIsTopRight { //console.info("FractControllerVAVernier>drawVernierAtX", offsetSize);

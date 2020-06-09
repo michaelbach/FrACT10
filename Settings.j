@@ -6,6 +6,7 @@ Created by mb on July 15, 2015.
 History
 =======
 
+2020-06-09 finish contrast effect on optotypes. Vernier now ok, TAO not. Some Misc function renamed to fit Objective-J
 2020-06-08a add contrast effect on optotypes, Vernier still wrong, TAO not. Tweak Settings GUI
 2020-06-08 simplify Settings, set default touch to YES, add eccentricity to all tests, buttonExport disabled→hidden
 2020-06-07 fix regression on export alert sequence after adding the button
@@ -43,7 +44,7 @@ History
 */
 
 
-#define dateFract "2020-06-08a"
+#define dateFract "2020-06-09"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -170,13 +171,15 @@ History
 // contrast in in %, so we need to divide for the -1 … +1 scale
 // 100%: background fully white, foreground fully dark
 + (void) calculateAcuityForeBackColorsFromContrast { //console.info("Settings>calculateAcuityForeBackColorsFromContrast");
-    var temp = [Misc lowerLuminanceFromContrast: [self contrastAcuity] / 200];
-    temp = [Misc deviceGrey2luminance: temp];
+    var temp = [Misc lowerLuminanceFromContrast: [self contrastAcuity] / 100];
+    temp = [Misc devicegreyFromLuminance: temp];
     [self setAcuityForeColor: [CPColor colorWithWhite: temp alpha: 1]];
 
-    temp = [Misc upperLuminanceFromContrast: [self contrastAcuity] / 200];
-    temp = [Misc deviceGrey2luminance: temp];
+    temp = [Misc upperLuminanceFromContrast: [self contrastAcuity] / 100];
+    temp = [Misc devicegreyFromLuminance: temp];
     [self setAcuityBackColor: [CPColor colorWithWhite: temp alpha: 1]];
+    
+    [[CPNotificationCenter defaultCenter] postNotificationName: "copyForeBackColorsFromSettings" object: nil];
 }
 
 
@@ -531,6 +534,7 @@ History
 }
 
 
+// CPColors are stored as hexstring because the archiver does not work in Cappuccino. Why not??
 + (CPColor) acuityForeColor { //console.info("Settings>acuityForeColor");
     var theData = [[CPUserDefaults standardUserDefaults] stringForKey: "acuityForeColor"];
     var c = [CPColor colorWithHexString: theData]; //console.info("Settings>acuityForeColor:", c);
@@ -546,17 +550,6 @@ History
 }
 + (void) setAcuityBackColor: (CPColor) theColor { //console.info("Settings>setAcuityBackColor");
     [[CPUserDefaults standardUserDefaults] setObject: [theColor hexString] forKey: "acuityBackColor"];
-}
-
-+ (id) dataFromColor: (CPColor) color { console.info("Settings>dataFromColor");
-    data = [color hsbComponents];
-    console.log(data);
-    return data;
-}
-+ (CPColor) colorFromData: (id) data { console.info("Settings>colorFromData");
-    console.log(data);
-    [data = [0, 0, 1]]
-    return [CPColor colorWithHue: data[0] saturation: data[1] brightness: data[2] alpha: 1];
 }
 
 

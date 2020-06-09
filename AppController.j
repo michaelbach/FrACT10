@@ -44,6 +44,21 @@
 }
 
 
+- (CPColor) acuityForeColor { //console.info("AppController>acuityForeColor");
+    return [Settings acuityForeColor];
+}
+- (void) setAcuityForeColor: (CPColor) theColor { //console.info("AppController>
+    [Settings setAcuityForeColor: theColor];
+}
+- (CPColor) acuityBackColor { //console.info("AppController>acuityBackColor");
+    return [Settings acuityBackColor];
+}
+- (void) setAcuityBackColor: (CPColor) theColor { //console.info("AppController>setAcuityBackColor");
+    [Settings setAcuityBackColor: theColor];
+}
+
+
+
 - (void)awakeFromCib { //console.info("AppController>awakeFromCib");
     settingsNeedNewDefaults = [Settings needNewDefaults];
     [Settings checkDefaults]; //important to do this early, otherwise the updates don't populate the settings panel – DOES NOT HELP, unfortunately
@@ -66,7 +81,6 @@
     var v = [Settings versionNumber] + "·" + [Settings versionDate]
      [[self window] setTitle: "FrACT10"]; [self setVersionDateString: v];
     [Settings checkDefaults]; // what was the reason to put this here???
-    //[self setColOptotypeFore: [CPColor blackColor]];  [self setColOptotypeBack: [CPColor whiteColor]];
     var s = @"Current key test settings: " + [Settings distanceInCM] +" cm distance, ";
     s += [Settings nAlternatives] + " Landolt alternatives, " + [Settings nTrials] + " trials";
     [self setKeyTestSettingsString: s];
@@ -79,14 +93,22 @@
     for (var i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++); // ranomising the pseudorandom sequence
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(buttonExportEnableYESorNO:) name: "buttonExportEnableYESorNO" object: nil];
     [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
+
+    [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(copyForeBackColorsFromSettings:) name: "copyForeBackColorsFromSettings" object: nil];
+
     if ([Settings contrastAcuity] == 1) [Settings setContrastAcuity: 100]; // temporary until everyone defaulted anew :)
     //console.log("contrastAcuity", [Settings contrastAcuity]);
 }
 
 
 - (void) buttonExportEnableYESorNO: (CPNotification) aNotification { //console.info("buttonExportEnableYESorNO");
-    //[buttonExport setEnabled: [aNotification object] != 0];
     [buttonExport setHidden: [aNotification object] == 0];
+}
+
+
+// mirroring is necessary, because the Settingspanel cannot read the stored colours, because the Archiver does not work
+- (void) copyForeBackColorsFromSettings: (CPNotification) aNotification { //console.info("mirrorForeBackColors");
+    [self setAcuityForeColor: [Settings acuityForeColor]];  [self setAcuityBackColor: [Settings acuityBackColor]];
 }
 
 
@@ -219,8 +241,7 @@
 - (IBAction) buttonFullScreen_action: (id) sender { //console.info("AppController>buttonFullScreen");
     var full = [Misc isFullScreen];
     if (full) {
-        [Misc fullScreenOn: NO];
-        [[[self window] contentView] setFrameOrigin: CGPointMake(0, 0)];
+        [Misc fullScreenOn: NO];  [[[self window] contentView] setFrameOrigin: CGPointMake(0, 0)];
     } else {
         [Misc fullScreenOn: YES];
         var point = CGPointMake((window.screen.width - 800) / 2, (window.screen.height - 600) / 2);
@@ -256,12 +277,14 @@
         [[CPAlert alertWithMessageText: "WARNING" defaultButton: "OK" alternateButton: nil otherButton: nil
              informativeTextWithFormat: "\r\rAll settings were set to their default values.\r\rIf some fields are empty, please reload this browser window once, then all values will be current.\r\r"] runModal];
     }
+    [[CPNotificationCenter defaultCenter] postNotificationName: "copyForeBackColorsFromSettings" object: nil];
 }
 - (IBAction) buttonSettingsClose_action: (id) sender { //console.info("AppController>buttonSettingsClose");
     [Settings checkDefaults];  [settingsPanel close];
+    // below the idea was to keep e.g. red optotypes – but they do not appear. Ah, they cannot appear – only grey values there
+    //[Settings setAcuityForeColor: [self acuityForeColor]];  [Settings setAcuityBackColor: [self acuityBackColor]];
 }
 - (IBAction) buttonSettingsDefaults_action: (id) sender { //console.info("AppController>buttonSettingsDefaults");
-    //[self setColOptotypeFore: [CPColor blackColor]];  [self setColOptotypeBack: [CPColor whiteColor]];
     [Settings setDefaults];  [settingsPanel close];  [Settings setDefaults];  [settingsPanel makeKeyAndOrderFront: self];
     [[settingsPanel contentView] setNeedsDisplay: YES];
 }
