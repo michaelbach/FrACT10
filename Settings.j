@@ -6,7 +6,8 @@ Created by mb on July 15, 2015.
 History
 =======
 
-2020-06-09 finish contrast effect on optotypes. Vernier now ok, TAO not. Some Misc function renamed to fit Objective-J
+2020-06-09  recover from nil data in hexString conversion
+            finish contrast effect on optotypes. Vernier now ok, TAO not. Some Misc function renamed to fit Objective-J
 2020-06-08a add contrast effect on optotypes, Vernier still wrong, TAO not. Tweak Settings GUI
 2020-06-08 simplify Settings, set default touch to YES, add eccentricity to all tests, buttonExport disabled→hidden
 2020-06-07 fix regression on export alert sequence after adding the button
@@ -534,21 +535,25 @@ History
 }
 
 
-// CPColors are stored as hexstring because the archiver does not work in Cappuccino. Why not??
+// CPColors are stored as hexString because the archiver does not work in Cappuccino. Why not??
 + (CPColor) acuityForeColor { //console.info("Settings>acuityForeColor");
     var theData = [[CPUserDefaults standardUserDefaults] stringForKey: "acuityForeColor"];
+//    console.info("Settings>acuityForeColor>theData: ", theData)
+    if (theData == nil) theData = "FFFFFF"; // safety measure
     var c = [CPColor colorWithHexString: theData]; //console.info("Settings>acuityForeColor:", c);
     return c;
 }
-+ (void) setAcuityForeColor: (CPColor) theColor { //console.info("Settings>setAcuityBackColor");
++ (void) setAcuityForeColor: (CPColor) theColor { //console.info("Settings>setAcuityBackColor:", theColor);
     [[CPUserDefaults standardUserDefaults] setObject: [theColor hexString] forKey: "acuityForeColor"];
 }
 + (CPColor) acuityBackColor { //console.info("Settings>acuityBackColor");
     var theData = [[CPUserDefaults standardUserDefaults] stringForKey: "acuityBackColor"];
+    //console.info("Settings>acuityBackColor>theData: ", theData)
+    if (theData == nil) theData = "000000"; // safety measure
     var c = [CPColor colorWithHexString: theData]; //console.info("Settings>acuityBackColor:", c);
     return c;
 }
-+ (void) setAcuityBackColor: (CPColor) theColor { //console.info("Settings>setAcuityBackColor");
++ (void) setAcuityBackColor: (CPColor) theColor { //console.info("Settings>setAcuityBackColor:", theColor);
     [[CPUserDefaults standardUserDefaults] setObject: [theColor hexString] forKey: "acuityBackColor"];
 }
 

@@ -5,8 +5,10 @@ To Dos
 • Add: contrast testing
 • Add: displayTransform
 • Improve: crowding
-• letters for the TAO
-			
+• letter responses for the TAO
+• rename TAO ← Auck
+
+√ Add: contrast settings for acuity
 √ Add: eccentricity
 √ →Clipboard button
 √ Tooltips do not show correct text !! (crowding)
