@@ -160,11 +160,13 @@
 + (float) contrastWeberFromMichelson: (float) inMichelson {
     inMichelson /= 100;
     weberValue = 2.0 * inMichelson / (1.0 + inMichelson);
+    // console.info("contrastWeberFromMichelson: ", inMichelson * 100, weberValue * 100);
     return weberValue * 100;
 }
 + (float) contrastMichelsonFromWeber: (float) inWeber {
     inWeber /= 100;
     michelsonValue = inWeber / (2.0 - inWeber);
+    // console.info("contrastMichelsonFromWeber: ", inWeber * 100, michelsonValue * 100);
     return michelsonValue * 100;
 }
 
@@ -185,10 +187,10 @@
     return Math.pow(g, [Settings gammaValue]);
 }
 
-+ (float) lowerLuminanceFromContrast: (float) contrast { //console.info("lowerLuminanceFromContrast");
++ (float) lowerLuminanceFromContrastMn: (float) contrast { //console.info("lowerLuminanceFromContrastMn");
     return [self limit01: [self limit01: 0.5 - 0.5 * contrast]];
 }
-+ (float) upperLuminanceFromContrast: (float) contrast { //console.info("highLuminanceFromContras");
++ (float) upperLuminanceFromContrastMn: (float) contrast { //console.info("highLuminanceFromContras");
     return [self limit01: [self limit01: 0.5 + 0.5 * contrast]];
 }
 

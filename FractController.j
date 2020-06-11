@@ -198,14 +198,17 @@
 - (CPString) composeExportString { //console.info("FractController>composeExportString");
     var s = "";
     if ([[self parentController] runAborted]) return;
-    var tab = "\t", crlf = "\n", nDigits = 5, now = [CPDate date];
-    s = [Misc date2YYYY_MM_DD: now] + tab + [Misc date2HH_MM_SS: now];
-    s += tab + [Misc stringFromNumber: [self resultValue4Export] decimals: nDigits localised: YES];
-    s += tab + currentTestResultUnit;
-    s += tab + rangeLimitStatus;
-    s += tab + currentTestName;
-    s += tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: nDigits localised: YES] + tab + "cm";
-    s += tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES] + tab + "nTrials";
+    var tab = "\t", crlf = "\n", nDigits = 4, now = [CPDate date];
+    s = "Vs" + tab + "1"; // version
+    s += tab + "date" + tab + [Misc date2YYYY_MM_DD: now] + tab + "time" + [Misc date2HH_MM_SS: now];
+    s += tab + "test" + tab + currentTestName;
+    s += tab + "value" + tab + [Misc stringFromNumber: [self resultValue4Export] decimals: nDigits localised: YES];
+    s += tab + "unit" + tab + currentTestResultUnit
+    s += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: nDigits localised: YES];
+    s += tab + "contrastWeber" + tab + [Misc stringFromNumber: [Settings contrastAcuityWeber] decimals: 1 localised: YES];
+    s += tab + "nTrials" + tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
+    s += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
+    //s += tab + "XX" + tab + YY;
     s += crlf; //console.info("FractController>date: ", s);
     return s;
 }
@@ -316,7 +319,26 @@
 }
 
 
-- (CPString) acuityComposeResult {
+// calculates ≤ or ≥ as needed. Needs to be inverted for LogMAR
+- (CPString) rangeStatusIndicatorStringInverted: (BOOL) invert {
+    var sFloor = kRangeLimitValueAtFloor, sCeil = kRangeLimitValueAtCeiling, s = "";
+    if (invert) {
+        var sTemp = sCeil; sCeil = sFloor; sFloor = sTemp;
+    }
+    if (rangeLimitStatus == sFloor) {
+        s += " ≥ ";
+    } else {
+        if (rangeLimitStatus == sCeil) {
+            s += " ≤ ";
+        } else {
+            s += ": ";
+        }
+    }
+    return s;
+}
+
+
+- (CPString) acuityComposeResultString {
     var resultInGapPx = stimStrengthInDeviceunits;
     var resultInDecVA = [Misc visusFromGapPixels: resultInGapPx];
     resultInDecVA *= ([Settings threshCorrection]) ? 0.891 : 1.0;// Korrektur für Schwellenunterschätzung aufsteigender Verfahren
@@ -326,36 +348,18 @@
     // console.info("rangeLimitStatus: ", rangeLimitStatus);
     var s = "";
     if ([Settings acuityFormatDecimal]) {
-        s += "decVA";
-        if (rangeLimitStatus == kRangeLimitValueAtFloor) {
-            s += " ≥ ";
-        } else {
-            if (rangeLimitStatus == kRangeLimitValueAtCeiling) {
-                s += " ≤ ";
-            } else {
-                s += ": ";
-            }
-        }
+        s += "decVA" + [self rangeStatusIndicatorStringInverted: NO];
         s += [Misc stringFromNumber: resultInDecVA decimals: 2 localised: YES];
-
     }
     if ([Settings acuityFormatLogMAR]) {
         if (s.length > 1) s += ",  ";
-        s += "logMAR";
-        if (rangeLimitStatus == kRangeLimitValueAtFloor) {
-            s += " ≤ ";
-        } else {
-            if (rangeLimitStatus == kRangeLimitValueAtCeiling) {
-                s += " ≥ ";
-            } else {
-                s += ": ";
-            }
-        }
+        s += "LogMAR" + [self rangeStatusIndicatorStringInverted: YES];
         s += [Misc stringFromNumber: resultInLogMAR decimals: 2 localised: YES];
     }
     if ([Settings acuityFormatSnellenFractionFoot]) {
         if (s.length > 1) s += ",  ";
-        s += "Snellen fraction: " + [self format4SnellenInFeet: resultInDecVA];
+        s += "Snellen fraction" +  [self rangeStatusIndicatorStringInverted: NO];
+        s += [self format4SnellenInFeet: resultInDecVA];
     }
     return s;
 }

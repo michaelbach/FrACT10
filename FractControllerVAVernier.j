@@ -18,13 +18,26 @@
 - (void) modifyDeviceStimulus {}
 
 
-- (float) stimDeviceFromGeneric: (float) tPest {
+- (float) stimDeviceFromGeneric: (float) tPest { //console.info("FractControllerVAVernier>stimDeviceFromGeneric");
     gapMinimal = [Misc pixelFromDegree: gapVernierMinimalArcSec / 60.0 / 60.0];
     gapMaximal = [Misc pixelFromDegree: gapVernierMaximalArcSec / 60.0 / 60.0];
     var c1 = gapMinimal;
     var c2 = -Math.log(gapMinimal / gapMaximal);
-    var nativeVal = c1 * Math.exp(tPest * c2); //trace("Vernier.pest2native, tPest:", tPest, "native=", nativeVal);
-    return nativeVal;
+    var deviceVal = c1 * Math.exp(tPest * c2); //trace("Vernier.pest2native, tPest:", tPest, "native=", nativeVal);
+    
+    if ([Misc areNearlyEqual: deviceVal and: gapMaximal]) {
+        if (!isBonus) {
+            rangeLimitStatus = kRangeLimitValueAtCeiling; //console.info("max gap size!")
+        }
+    } else {
+        if  ([Misc areNearlyEqual: deviceVal and: gapMinimal]) {
+            rangeLimitStatus = kRangeLimitValueAtFloor; //console.info("min gap size!");
+        } else {
+            rangeLimitStatus = kRangeLimitOk;
+        }
+    }
+
+    return deviceVal;
 }
 - (float) stimGenericFromDevice: (float) d {
     gapMinimal = [Misc pixelFromDegree: gapVernierMinimalArcSec / 60.0 / 60.0];
@@ -40,7 +53,7 @@
 - (void) drawLineGaussProfileVerticalAtX: (float) x0 y0: (float) y0 y1: (float) y1 sigma: (float) sigma { //console.info("FractControllerVAVernier>>DrawLineGaussianProfileVertical ", x0, y0, y1);
     var ix0 = Math.round(x0);
     var iSigma = Math.round(Math.max(5, Math.min(sigma * 4, 30))); //trace(sigma, iSigma);
-    var cnt = [Settings contrastAcuity] / 100;
+    var cnt = [Settings contrastAcuityWeber] / 100;
     CGContextSetLineWidth(cgc, 1);
     for (var ix = ix0 - iSigma; ix <= ix0 + iSigma; ix++) {
         var gaussValue = Math.exp(-Math.pow(x0 - ix, 2) / sigma);
@@ -51,7 +64,7 @@
     }
 }
 //var gaussValue:Number = Math.exp(-Math.pow(x0 - ix, 2) / sigma);
-//var gValue:Number = 0.5 + Prefs.contrastAcuity.n * (0.5 - gaussValue);
+//var gValue:Number = 0.5 + Prefs.contrastAcuityWeber.n * (0.5 - gaussValue);
 
 
 - (void) drawVernierAtX: (float) xCent y: (float) yCent vLength: (float) vLength sigma: (float) sigma gapHeight: (float) gapHeight offsetSize: (float) offsetSize offsetIsTopRight: (BOOL) offsetIsTopRight { //console.info("FractControllerVAVernier>drawVernierAtX", offsetSize);
@@ -127,7 +140,7 @@
     if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {
-        [self setResultString: [self composeResults]];
+        [self setResultString: [self composeResultString]];
     }
     [super runEnd];
 }
@@ -148,10 +161,13 @@
     return Math.round([self reportFromNative: stimStrengthInDeviceunits] * 10) / 10;
 }
 
-- (CPString) composeResults {
+
+- (CPString) composeResultString {
     var rslt = [self resultValue4Export];
     var dcs = rslt > 100 ? 0 : 1;
-    return "Vernier threshold: " +  [Misc stringFromNumber: rslt decimals: dcs localised: YES] + " arcsec";
+    var s = "Vernier threshold" + [self rangeStatusIndicatorStringInverted: NO];
+    s += [Misc stringFromNumber: rslt decimals: dcs localised: YES] + " arcsec";
+    return s;
 }
 
 

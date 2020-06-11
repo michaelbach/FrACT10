@@ -6,6 +6,10 @@ Created by mb on July 15, 2015.
 History
 =======
 
+2020-06-11 add "localStorage" from the HTML Web Storage API for an alternative export version,
+            optotype contrast now in Weber units, renamed contrast conversion formulae to discern Weber/Michelson,
+            systematic export string, factored rangeOverflowIndicator, add it to Vernier,
+            link to new manual
 2020-06-09  recover from nil data in hexString conversion
             finish contrast effect on optotypes. Vernier now ok, TAO not. Some Misc function renamed to fit Objective-J
 2020-06-08a add contrast effect on optotypes, Vernier still wrong, TAO not. Tweak Settings GUI
@@ -45,7 +49,7 @@ History
 */
 
 
-#define dateFract "2020-06-09"
+#define dateFract "2020-06-10"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -128,8 +132,8 @@ History
     [self setTimeoutRewardPicturesInSeconds: [self chckFlt: [self timeoutRewardPicturesInSeconds] def: 5 min: 0.1 max: 999 set: set]];
 
     
-    // Acuity stuff
-    [self setContrastAcuity: [self chckFlt: [self contrastAcuity] def: 100 min: -100 max: 100 set: set]];
+    // Acuity stufflowerLuminanceFromContrast
+    [self setContrastAcuityWeber: [self chckFlt: [self contrastAcuityWeber] def: 100 min: -100 max: 100 set: set]];
     [self calculateAcuityForeBackColorsFromContrast];
     [self setAcuityEasyTrials: [self chckBool: [self acuityEasyTrials] def: YES set: set]];
     [self setMaxDisplayedAcuity: [self chckFlt: [self maxDisplayedAcuity] def: 2 min: 1 max: 99 set: set]];
@@ -172,12 +176,12 @@ History
 // contrast in in %, so we need to divide for the -1 … +1 scale
 // 100%: background fully white, foreground fully dark
 + (void) calculateAcuityForeBackColorsFromContrast { //console.info("Settings>calculateAcuityForeBackColorsFromContrast");
-    var temp = [Misc lowerLuminanceFromContrast: [self contrastAcuity] / 100];
-    temp = [Misc devicegreyFromLuminance: temp];
+    var cnt = [Misc contrastMichelsonFromWeber: [self contrastAcuityWeber]] / 100;
+
+    var temp = [Misc lowerLuminanceFromContrastMn: cnt];  temp = [Misc devicegreyFromLuminance: temp];
     [self setAcuityForeColor: [CPColor colorWithWhite: temp alpha: 1]];
 
-    temp = [Misc upperLuminanceFromContrast: [self contrastAcuity] / 100];
-    temp = [Misc devicegreyFromLuminance: temp];
+    temp = [Misc upperLuminanceFromContrastMn: cnt];  temp = [Misc devicegreyFromLuminance: temp];
     [self setAcuityBackColor: [CPColor colorWithWhite: temp alpha: 1]];
     
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyForeBackColorsFromSettings" object: nil];
@@ -527,11 +531,11 @@ History
 }
 
 
-+ (float) contrastAcuity {
-    return [[CPUserDefaults standardUserDefaults] floatForKey: "contrastAcuity"];
++ (float) contrastAcuityWeber { //console.info("Settings>contrastAcuityWeber: ", [[CPUserDefaults standardUserDefaults] floatForKey: "contrastAcuityWeber"]);
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "contrastAcuityWeber"];
 }
-+ (void) setContrastAcuity: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "contrastAcuity"];
++ (void) setContrastAcuityWeber: (float) theValue { //console.info("Settings>setContrastAcuityWeber: ", theValue);
+    [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "contrastAcuityWeber"];
 }
 
 

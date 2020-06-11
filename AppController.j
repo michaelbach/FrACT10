@@ -96,8 +96,8 @@
 
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(copyForeBackColorsFromSettings:) name: "copyForeBackColorsFromSettings" object: nil];
 
-    if ([Settings contrastAcuity] == 1) [Settings setContrastAcuity: 100]; // temporary until everyone defaulted anew :)
-    //console.log("contrastAcuity", [Settings contrastAcuity]);
+    if ([Settings contrastAcuityWeber] == 1) [Settings setContrastAcuityWeber: 100]; // until everyone defaulted anew :)
+    if ([Settings contrastAcuityWeber] == 0) [Settings setContrastAcuityWeber: 100]; // until everyone defaulted anew :)
 }
 
 
@@ -193,6 +193,7 @@
         if ([Settings rewardPicturesWhenDone]) {
             [rewardsController drawRandom];
         }
+        localStorage.setItem("FRACT10-FINAL-RESULT-STRING", [currentTestResultExportString]);
         [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 1]
         if ([Settings results2clipboard] > 0) {
             [Misc copyString2ClipboardAlert: [currentTestResultExportString]];
@@ -294,7 +295,7 @@
     [helpPanel makeKeyAndOrderFront: self];
 }
 - (IBAction) buttonHelpGetManual_action: (id) sender {
-    window.open("https://michaelbach.de/fract/media/FrACT3_Manual.pdf");
+    window.open("https://michaelbach.de/ot/FrACT10/manual/index.html");
 }
 - (IBAction) buttonHelpClose_action: (id) sender { //console.info("AppController>buttonHelpClose_action");
     [helpPanel close];

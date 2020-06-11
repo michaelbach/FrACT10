@@ -61,7 +61,7 @@
     if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {
-        [self setResultString: [self acuityComposeResult]];
+        [self setResultString: [self acuityComposeResultString]];
     }
     [super runEnd];
 }
