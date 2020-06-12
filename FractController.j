@@ -60,6 +60,9 @@
 
 
 - (void) runStart { //console.info("FractController>runStart");
+    if (!([Settings acuityFormatLogMAR] || [Settings acuityFormatDecimal] ||  [Settings acuityFormatSnellenFractionFoot])) {
+        [Settings setAcuityFormatLogMAR: YES];  [Settings setAcuityFormatDecimal: YES]; // make sure not all formats are de-selected
+    }
     responseButtonsAdded = NO;
     iTrial = 0;
     oldResponseKeyChar = " ";

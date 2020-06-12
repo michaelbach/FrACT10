@@ -6,7 +6,8 @@ Created by mb on July 15, 2015.
 History
 =======
 
-2020-06-12 add "trialInfo" checkbox and logic
+2020-06-12 add logic to make sure not all formats are de-selected
+ add "trialInfo" checkbox and logic
 2020-06-11 add "localStorage" from the HTML Web Storage API for an alternative export version,
             optotype contrast now in Weber units, renamed contrast conversion formulae to discern Weber/Michelson,
             systematic export string, factored rangeOverflowIndicator, add it to Vernier,
