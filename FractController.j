@@ -205,7 +205,7 @@
     if ([[self parentController] runAborted]) return;
     var tab = "\t", crlf = "\n", nDigits = 4, now = [CPDate date];
     s = "Vs" + tab + "1"; // version
-    s += tab + "date" + tab + [Misc date2YYYY_MM_DD: now] + tab + "time" + [Misc date2HH_MM_SS: now];
+    s += tab + "date" + tab + [Misc date2YYYY_MM_DD: now] + tab + "time" + tab + [Misc date2HH_MM_SS: now];
     s += tab + "test" + tab + currentTestName;
     s += tab + "value" + tab + [Misc stringFromNumber: [self resultValue4Export] decimals: nDigits localised: YES];
     s += tab + "unit" + tab + currentTestResultUnit
