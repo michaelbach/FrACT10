@@ -1258,7 +1258,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </connections>
                                         </popUpButton>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YNd-5j-KRz">
-                                            <rect key="frame" x="175" y="143" width="110" height="26"/>
+                                            <rect key="frame" x="175" y="135" width="110" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Optionally, after the test the results can be placed on the clipboard. A dialog will appear asking if ok (this is necessary for safety reasons). Then you could switch (e.g. with the task switcher) to a spreadsheet runnin in the background and paste the results for record keeping and statistical processing.</string>
                                             <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="o1v-C2-qAT" id="FXQ-q8-3FM">
@@ -1334,9 +1334,9 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </connections>
                                         </button>
                                         <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mIY-OC-I8Q">
-                                            <rect key="frame" x="15" y="197" width="158" height="18"/>
+                                            <rect key="frame" x="15" y="207" width="154" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="Enable Touch Controls" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wX6-mM-ZH0">
+                                            <buttonCell key="cell" type="check" title="Enable touch controls" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wX6-mM-ZH0">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
@@ -1345,8 +1345,21 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                 <outlet property="nextKeyView" destination="WCS-rL-YCa" id="RO3-XB-yWd"/>
                                             </connections>
                                         </button>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xoy-Q5-O3A">
+                                            <rect key="frame" x="15" y="175" width="108" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <string key="toolTip">When on, shows current trial number, total number of trials, and the current threshold (in decimal acuity) in tiny letters at top left.</string>
+                                            <buttonCell key="cell" type="check" title="Show trial info" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="g4l-Vk-dB6">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="value" keyPath="values.trialInfo" id="iUa-M6-Xfk"/>
+                                                <outlet property="nextKeyView" destination="WCS-rL-YCa" id="bZD-iF-Bwa"/>
+                                            </connections>
+                                        </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o8D-i8-6T9">
-                                            <rect key="frame" x="15" y="146" width="164" height="16"/>
+                                            <rect key="frame" x="15" y="138" width="164" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Export results to clipboard" id="Emm-a5-Lui">
                                                 <font key="font" metaFont="system"/>

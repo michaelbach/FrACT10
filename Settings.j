@@ -6,6 +6,7 @@ Created by mb on July 15, 2015.
 History
 =======
 
+2020-06-12 add "trialInfo" checkbox and logic
 2020-06-11 add "localStorage" from the HTML Web Storage API for an alternative export version,
             optotype contrast now in Weber units, renamed contrast conversion formulae to discern Weber/Michelson,
             systematic export string, factored rangeOverflowIndicator, add it to Vernier,
@@ -112,7 +113,8 @@ History
 
     // 0=normal, 1=mirror horizontally, 2=mirror vertically, 3=both=rot180°
     [self setDisplayTransform: [self chckInt: [self displayTransform] def: 0 min: 0 max: 3 set: set]];
-
+    
+    [self setTrialInfo: [self chckBool: [self trialInfo] def: YES set: set]];
     [self setTrialInfoFontSize: [self chckFlt: [self trialInfoFontSize] def: 9 min: 4 max: 48 set: set]];
 
     [self setTimeoutResponseSeconds: [self chckFlt: [self timeoutResponseSeconds] def: 30 min: 0.1 max: 9999 set: set]];
@@ -420,6 +422,14 @@ History
 }
 + (void) setVernierGap: (float) theValue {
     [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "vernierGap"];
+}
+
+
++ (BOOL) trialInfo {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "trialInfo"];
+}
++ (void) setTrialInfo: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "trialInfo"];
 }
 
 

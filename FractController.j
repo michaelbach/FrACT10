@@ -90,9 +90,11 @@
 
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
-    CGContextSetTextPosition(cgc, 10, 10); // we assume here no transformed CGContext
-    CGContextSetFillColor(cgc, colOptotypeFore);
-    CGContextShowText(cgc, trialInfoString);
+    if ([Settings trialInfo]) {
+        CGContextSetTextPosition(cgc, 10, 10); // we assume here no transformed CGContext
+        CGContextSetFillColor(cgc, colOptotypeFore);
+        CGContextShowText(cgc, trialInfoString);
+    }
 
     if (currentTestName == "Acuity_Vernier") return; // don't do crowding with Vernier
     CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
