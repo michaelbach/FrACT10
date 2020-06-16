@@ -131,7 +131,7 @@ History
     // 0: none, 1: always, 2: on correct, 3: w/ info
     [self setVisualFeedback: [self chckInt: [self visualFeedback] def: 0 min: 0 max: 3 set: set]]; // NOT IN USE
     [self setAuditoryFeedbackWhenDone: [self chckBool: [self auditoryFeedbackWhenDone] def: YES set: set]];
-    [self setSoundVolume: [self chckFlt: [self soundVolume] def: 20 min: 0 max: 100 set: set]];
+    [self setSoundVolume: [self chckFlt: [self soundVolume] def: 20 min: 1 max: 100 set: set]];
 
     [self setRewardPicturesWhenDone: [self chckBool: [self rewardPicturesWhenDone] def: YES set: set]];
     [self setTimeoutRewardPicturesInSeconds: [self chckFlt: [self timeoutRewardPicturesInSeconds] def: 5 min: 0.1 max: 999 set: set]];
@@ -475,8 +475,8 @@ History
 
 + (float) soundVolume { // from 1 to 100%.
     var theValue = [[CPUserDefaults standardUserDefaults] floatForKey: "soundVolume"];
-    if (theValue < 1.0) {
-        theValue = 1.0;  // if 0 then it did not go through defaulting; 0 not allowed
+    if (theValue < 1) { // really need this???
+        theValue = 20;  // if 0 then it did not go through defaulting; 0 not allowed
         [self setSoundVolume: theValue];
     }
     if (theValue > 100) { // really necessary?
