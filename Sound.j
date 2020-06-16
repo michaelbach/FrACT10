@@ -8,11 +8,11 @@
 
 
 @implementation Sound: CPObject {
-    id audioContext, buffer1, buffer2, buffer3;
+    id audioContext, buffer1, buffer2, buffer3, volumeNode;
 }
 
 
-// thia is clumsy (doing it 3 times), but the closure didn't take update the provided buffer in early attempts.
+// thia is clumsy (doing it 3 times), but the closure didn't take the provided buffer in early attempts.
 
 // sound1: “tink” for correct response
 - (void) loadSound1 { //console.info("Sound>loadSound");
@@ -57,7 +57,8 @@
     if (buffer == nil) return;
     var source = audioContext.createBufferSource();
     source.buffer = buffer;
-    source.connect(audioContext.destination);
+    source.connect(volumeNode);
+    volumeNode.gain.value = Math.pow([Settings soundVolume] / 100.0, 2); // a more physiologic transfer function IMHO
     source.start(0);
 }
 
@@ -76,11 +77,14 @@
 - (id) init { //console.info("Sound>init");
     self = [super init];
     if (self) {
-        if('webkitAudioContext' in window) {
+        if ('webkitAudioContext' in window) {
             audioContext = new window.webkitAudioContext();
         } else {
             audioContext = new window.AudioContext();
         }
+        volumeNode = audioContext.createGain();
+        volumeNode.gain.value = 0;
+        volumeNode.connect(audioContext.destination);
         [self loadSound1];  [self loadSound2];  [self loadSound3];
     }
     return self;

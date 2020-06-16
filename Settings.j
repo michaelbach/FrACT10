@@ -6,6 +6,7 @@ Created by mb on July 15, 2015.
 History
 =======
 
+2020-06-16 add volume control to Sound.j, Settings & GUI; moved contrastAcuityWeber plausibility control → Settings
 2020-06-12 add logic to make sure not all formats are de-selected
  add "trialInfo" checkbox and logic
 2020-06-11 add "localStorage" from the HTML Web Storage API for an alternative export version,
@@ -51,7 +52,7 @@ History
 */
 
 
-#define dateFract "2020-06-10"
+#define dateFract "2020-06-16"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -130,6 +131,7 @@ History
     // 0: none, 1: always, 2: on correct, 3: w/ info
     [self setVisualFeedback: [self chckInt: [self visualFeedback] def: 0 min: 0 max: 3 set: set]]; // NOT IN USE
     [self setAuditoryFeedbackWhenDone: [self chckBool: [self auditoryFeedbackWhenDone] def: YES set: set]];
+    [self setSoundVolume: [self chckFlt: [self soundVolume] def: 20 min: 0 max: 100 set: set]];
 
     [self setRewardPicturesWhenDone: [self chckBool: [self rewardPicturesWhenDone] def: YES set: set]];
     [self setTimeoutRewardPicturesInSeconds: [self chckFlt: [self timeoutRewardPicturesInSeconds] def: 5 min: 0.1 max: 999 set: set]];
@@ -201,6 +203,11 @@ History
     } else {
         [self allNotCheckButSet: NO];
     }
+    
+    // checking some later additions for sensible values
+    if ([Settings contrastAcuityWeber] == 1) [Settings setContrastAcuityWeber: 100]; // until everyone defaulted anew :)
+    if ([Settings contrastAcuityWeber] == 0) [Settings setContrastAcuityWeber: 100]; // until everyone defaulted anew :)
+
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -463,6 +470,22 @@ History
 }
 + (void)setAuditoryFeedbackWhenDone: (BOOL) theValue {
     [[CPUserDefaults standardUserDefaults] setBool: theValue forKey: "auditoryFeedbackWhenDone"];
+}
+
+
++ (float) soundVolume { // from 1 to 100%.
+    var theValue = [[CPUserDefaults standardUserDefaults] floatForKey: "soundVolume"];
+    if (theValue < 1.0) {
+        theValue = 1.0;  // if 0 then it did not go through defaulting; 0 not allowed
+        [self setSoundVolume: theValue];
+    }
+    if (theValue > 100) { // really necessary?
+        theValue = 100;  [self setSoundVolume: theValue];
+    }
+    return theValue;
+}
++ (void) setSoundVolume: (float) theValue {
+    [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "soundVolume"];
 }
 
 

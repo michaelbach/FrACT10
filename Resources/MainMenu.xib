@@ -1368,14 +1368,14 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="86j-B3-S1H">
-                                            <rect key="frame" x="540" y="284" width="220" height="188"/>
+                                            <rect key="frame" x="540" y="237" width="220" height="235"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="lAH-6p-KzQ">
-                                                <rect key="frame" x="3" y="3" width="214" height="170"/>
+                                                <rect key="frame" x="3" y="3" width="214" height="217"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button toolTip="If checked, cute images will appear when a run is completed." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWG-86-qaT">
-                                                        <rect key="frame" x="22" y="56" width="162" height="18"/>
+                                                        <rect key="frame" x="22" y="53" width="162" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="check" title="Reward pictures at end" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="PGB-KE-sqe">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1387,7 +1387,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                         </connections>
                                                     </button>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TdC-iT-hRA">
-                                                        <rect key="frame" x="22" y="21" width="76" height="16"/>
+                                                        <rect key="frame" x="22" y="23" width="76" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Duration [s]" id="tjD-PX-7eX">
                                                             <font key="font" metaFont="system"/>
@@ -1396,7 +1396,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField toolTip="How long the “rewarding” picture will stay on screen (it obscures the buttons)." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w75-A9-ahy">
-                                                        <rect key="frame" x="98" y="18" width="40" height="22"/>
+                                                        <rect key="frame" x="98" y="20" width="40" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="mkh-ZL-yhq">
                                                             <font key="font" metaFont="system"/>
@@ -1408,8 +1408,8 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                             <outlet property="nextKeyView" destination="sNY-mP-vcW" id="xcs-zY-kJA"/>
                                                         </connections>
                                                     </textField>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iPf-w8-izN">
-                                                        <rect key="frame" x="22" y="92" width="175" height="18"/>
+                                                    <button toolTip="If checked, a “finish” sound will play when a run is completed." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iPf-w8-izN">
+                                                        <rect key="frame" x="22" y="139" width="175" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="check" title="Auditory feedback at end" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yRh-Ls-7dg">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1420,7 +1420,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                         </connections>
                                                     </button>
                                                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BOr-fJ-CY3">
-                                                        <rect key="frame" x="63" y="127" width="125" height="26"/>
+                                                        <rect key="frame" x="63" y="169" width="125" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Type of sound feedback when you respond to an optotype presentation. “With info”: two different sounds for correct/incorrect (default).</string>
                                                         <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Ncx-YP-qRh" id="a2e-3I-Iu4">
@@ -1448,7 +1448,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                         </connections>
                                                     </popUpButton>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9pa-WZ-evv">
-                                                        <rect key="frame" x="22" y="129" width="43" height="16"/>
+                                                        <rect key="frame" x="22" y="171" width="43" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sound" id="OGH-kZ-fds">
                                                             <font key="font" metaFont="system"/>
@@ -1456,6 +1456,18 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
+                                                    <slider toolTip="Sound volume (1…100%)" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l9b-P2-fRY">
+                                                        <rect key="frame" x="22" y="105" width="174" height="19"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <sliderCell key="cell" alignment="left" toolTip="Sound volume (0…100%)" minValue="1" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="XVL-UI-EZn"/>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.soundVolume" id="POR-Ns-KB8"/>
+                                                        </connections>
+                                                    </slider>
+                                                    <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="eJc-bu-Ebc">
+                                                        <rect key="frame" x="0.0" y="87" width="214" height="5"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    </box>
                                                 </subviews>
                                             </view>
                                         </box>
@@ -1650,7 +1662,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="xZ2-45-cNs">
-                                            <rect key="frame" x="540" y="174" width="220" height="87"/>
+                                            <rect key="frame" x="540" y="84" width="220" height="87"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="Dak-yq-H69">
                                                 <rect key="frame" x="3" y="3" width="214" height="69"/>
@@ -1697,7 +1709,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </view>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qsu-PW-QQj">
-                                            <rect key="frame" x="564" y="231" width="172" height="22"/>
+                                            <rect key="frame" x="564" y="141" width="172" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Optotype eccentricity [°]" bezelStyle="round" id="tcE-lo-X54">
                                                 <font key="font" metaFont="system"/>

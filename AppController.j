@@ -95,9 +95,6 @@
     [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
 
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(copyForeBackColorsFromSettings:) name: "copyForeBackColorsFromSettings" object: nil];
-
-    if ([Settings contrastAcuityWeber] == 1) [Settings setContrastAcuityWeber: 100]; // until everyone defaulted anew :)
-    if ([Settings contrastAcuityWeber] == 0) [Settings setContrastAcuityWeber: 100]; // until everyone defaulted anew :)
 }
 
 
