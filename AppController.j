@@ -69,7 +69,7 @@
 
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>applicationDidFinishLaunching");
     var allButtons = [buttVALett, buttVAC, buttVAE, buttVAAuck, buttVAVernier];
-    for (var i = 0; i < allButtons.length; i++)  [self buttonImageAdjust: allButtons[i]];
+    for (var i = 0; i < allButtons.length; i++)  [self adjustImageButton: allButtons[i]];
     
     kTestIDLett = 0;  kTestIDC = 1; kTestIDE = 2; kTestIDAuck = 3; kTestIDVernier = 4; kTestContrastC = 5;
     allTestControllers = [FractControllerVAL, FractControllerVAC, FractControllerVAE, FractControllerVAAuck, FractControllerVAVernier, FractControllerContrastC];
@@ -78,8 +78,7 @@
     allPanels = [responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVAAuck, responseinfoPanelVAVernier, settingsPanel, helpPanel, aboutPanel];
     for (var i = 0; i < allPanels.length; i++)  [allPanels[i] setFrameOrigin: CGPointMake(0, 0)];
    
-    var v = [Settings versionNumber] + "·" + [Settings versionDate]
-     [[self window] setTitle: "FrACT10"]; [self setVersionDateString: v];
+    [[self window] setTitle: "FrACT10"];  [self setVersionDateString: [Settings versionNumber] + "·" + [Settings versionDate]];
     [Settings checkDefaults]; // what was the reason to put this here???
     var s = @"Current key test settings: " + [Settings distanceInCM] +" cm distance, ";
     s += [Settings nAlternatives] + " Landolt alternatives, " + [Settings nTrials] + " trials";
@@ -116,7 +115,7 @@
 - (void) defaultsDidChange: (CPNotification) aNotification {console.info("defaultsDidChange");}
 
 
-- (void) buttonImageAdjust: (CPButton) b {
+- (void) adjustImageButton: (CPButton) b {
     var rect1 = [b frame];
     [b setFrame: CGRectMake(rect1.origin.x, rect1.origin.y - (rect1.size.width - 16) / 2, rect1.size.width, rect1.size.width)];
 }

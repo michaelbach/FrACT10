@@ -1,11 +1,19 @@
 /*
 Settings, FrACT10
 Created by mb on July 15, 2015.
+*/
 
+#define dateFract "2020-06-17"
+#define versionFract "Version 10.0.beta"
+#define dateSettingsCurrent "2020-05-19"
+#define defaultDistanceInCM 399
+#define defaultCalBarLengthInMM 149
 
-History
-=======
+/* History
+   =======
 
+2020-06-17 add “This is free software. There is no warranty for anything" to About panel.
+            moved the "defines" to top, so not to forget upping the date and version
 2020-06-16 add volume control to Sound.j, Settings & GUI; moved contrastAcuityWeber plausibility control → Settings
 2020-06-12 add logic to make sure not all formats are de-selected
  add "trialInfo" checkbox and logic
@@ -50,13 +58,6 @@ History
 2017-08-05 Acuity working
 2017-07-18 serious restart with design help by PM
 */
-
-
-#define dateFract "2020-06-16"
-#define versionFract "Version 10.0.beta"
-#define dateSettingsCurrent "2020-05-19"
-#define defaultDistanceInCM 399
-#define defaultCalBarLengthInMM 149
 
 
 @import <Foundation/Foundation.j>
@@ -178,7 +179,7 @@ History
 }
 
 
-// contrast in in %, so we need to divide for the -1 … +1 scale
+// contrast in %, so we need to divide for the -1 … +1 scale
 // 100%: background fully white, foreground fully dark
 + (void) calculateAcuityForeBackColorsFromContrast { //console.info("Settings>calculateAcuityForeBackColorsFromContrast");
     var cnt = [Misc contrastMichelsonFromWeber: [self contrastAcuityWeber]] / 100;

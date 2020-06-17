@@ -252,7 +252,7 @@ With ‘Best PEST’, antialiasing and dithering.</string>
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ke1-2Q-RJn">
-                        <rect key="frame" x="413" y="352" width="367" height="228"/>
+                        <rect key="frame" x="413" y="344" width="367" height="236"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="IoN-VZ-cjE">
                             <font key="font" metaFont="system" size="16"/>
@@ -266,7 +266,9 @@ Killianstr. 5
 Germany.
 
 https://michaelbach.de
-michael.bach@uni-freiburg.de</string>
+michael.bach@uni-freiburg.de
+
+This is free software. There is no warranty for anything.</string>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -319,7 +321,7 @@ DQ
                         </connections>
                     </button>
                     <button toolTip="This will open my home page in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mhi-G0-KpF">
-                        <rect key="frame" x="407" y="282" width="147" height="32"/>
+                        <rect key="frame" x="407" y="254" width="147" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="→michaelbach.de" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="A2S-ZO-kQy">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
