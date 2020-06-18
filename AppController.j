@@ -189,12 +189,12 @@
         if ([Settings rewardPicturesWhenDone]) {
             [rewardsController drawRandom];
         }
-        localStorage.setItem("FRACT10-FINAL-RESULT-STRING", [currentTestResultExportString]);
-        [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 1]
+        localStorage.setItem("FRACT10-FINAL-RESULT-STRING", currentTestResultExportString);
         if ([Settings results2clipboard] > 0) {
-            [Misc copyString2ClipboardAlert: [currentTestResultExportString]];
+            [Misc copyString2ClipboardAlert: currentTestResultExportString];
         }
     }
+    [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: ([currentTestResultExportString length] >1)];
 }
 
 
@@ -291,7 +291,7 @@
     [helpPanel makeKeyAndOrderFront: self];
 }
 - (IBAction) buttonHelpGetManual_action: (id) sender {
-    window.open("https://michaelbach.de/ot/FrACT10/manual/index.html");
+    window.open("https://michaelbach.de/fract/manual.html");
 }
 - (IBAction) buttonHelpClose_action: (id) sender { //console.info("AppController>buttonHelpClose_action");
     [helpPanel close];

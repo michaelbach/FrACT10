@@ -85,7 +85,7 @@
 
 
 + (CPString) date2HH_MM_SS: (CPDate) theDate {
-    return [CPString stringWithFormat:@"%02d:%02d:%02d", theDate.getHours(), theDate.getMinutes() + 1, theDate.getSeconds()];
+    return [CPString stringWithFormat:@"%02d:%02d:%02d", theDate.getHours(), theDate.getMinutes(), theDate.getSeconds()];
 }
 
 

@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define dateFract "2020-06-17"
+#define dateFract "2020-06-18"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -12,6 +12,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2020-06-18 improve logig to enable➶ the export button; correct minute in date conversion (1 t0o high); new manual location
 2020-06-17 add “This is free software. There is no warranty for anything" to About panel.
             moved the "defines" to top, so not to forget upping the date and version
 2020-06-16 add volume control to Sound.j, Settings & GUI; moved contrastAcuityWeber plausibility control → Settings
