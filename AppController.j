@@ -229,6 +229,14 @@
             [self  buttonDoAcuityVernier_action: nil];  break;
         case "KK":
             [self  buttonDoContrastC_action: nil];  break;
+        case "5" :
+            switch([Settings testOnFive]) {
+                case 1: [self  buttonDoAcuityLetters_action: nil];  break;
+                case 2: [self  buttonDoAcuityLandolt_action: nil];  break;
+                case 3: [self  buttonDoAcuityE_action: nil];  break;
+                case 4: [self  buttonDoAcuityAuck_action: nil];  break;
+                case 5: [self  buttonDoAcuityVernier_action: nil];  break;
+            }
         default:
             [super keyDown: theEvent];  break;
     }

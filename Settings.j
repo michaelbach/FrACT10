@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define dateFract "2020-06-18"
+#define dateFract "2020-06-24"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -12,7 +12,9 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
-2020-06-18 improve logig to enable➶ the export button; correct minute in date conversion (1 t0o high); new manual location
+2020-06-24 add "test on 5"
+2020-06-22 AucklandOptotypes → TAO(s)
+2020-06-18 improve logic to enable➶ the export button; correct minute in date conversion (1 t0o high); new manual location
 2020-06-17 add “This is free software. There is no warranty for anything" to About panel.
             moved the "defines" to top, so not to forget upping the date and version
 2020-06-16 add volume control to Sound.j, Settings & GUI; moved contrastAcuityWeber plausibility control → Settings
@@ -109,6 +111,8 @@ Created by mb on July 15, 2015.
 
     [self setResponseInfoAtStart: [self chckBool: [self responseInfoAtStart] def: YES set: set]];
     [self setEnableTouchControls: [self chckBool: [self enableTouchControls] def: YES set: set]];
+    
+    [self setTestOnFive: [self chckInt: [self testOnFive] def: 0 min: 0 max: 5 set: set]];
 
     [self setNOfRuns2Recall: [self chckInt: [self nOfRuns2Recall] def: 0 min: 0 max: 100 set: set]];
 
@@ -228,8 +232,8 @@ Created by mb on July 15, 2015.
 + (CPString) dateSettingsVersion { //console.info("Settings>dateSettingsVersion");
     return [[CPUserDefaults standardUserDefaults] objectForKey: "dateSettingsVersion"];
 }
-+ (void) setDateSettingsVersion: (CPString) theValue { //console.info("Settings>setDatesettingsVersion");
-    [[CPUserDefaults standardUserDefaults] setObject: theValue forKey: "dateSettingsVersion"];
++ (void) setDateSettingsVersion: (CPString) value { //console.info("Settings>setDatesettingsVersion");
+    [[CPUserDefaults standardUserDefaults] setObject: value forKey: "dateSettingsVersion"];
 }
 
 
@@ -255,48 +259,56 @@ Created by mb on July 15, 2015.
     var t = [[CPUserDefaults standardUserDefaults] integerForKey: "nTrials02"]; //console.info(t);
     return t;
 }
-+ (void) setNTrials02: (int) theValue { //console.info("Settings>nTrials02");
-    [[CPUserDefaults standardUserDefaults] setInteger: theValue forKey: "nTrials02"];
++ (void) setNTrials02: (int) value { //console.info("Settings>nTrials02");
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "nTrials02"];
 }
 
 
 + (int) nTrials04 { //console.info("Settings>nTrials04");
     return [[CPUserDefaults standardUserDefaults] integerForKey: "nTrials04"];
 }
-+ (void) setNTrials04: (int) theValue {
-    [[CPUserDefaults standardUserDefaults] setInteger: theValue forKey: "nTrials04"];
++ (void) setNTrials04: (int) value {
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "nTrials04"];
 }
 
 
 + (int) nTrials08 {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "nTrials08"];
 }
-+ (void) setNTrials08: (int) theValue {
-    [[CPUserDefaults standardUserDefaults] setInteger: theValue forKey: "nTrials08"];
++ (void) setNTrials08: (int) value {
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "nTrials08"];
 }
 
 
 + (float) distanceInCM {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "distanceInCM"];
 }
-+ (void)setDistanceInCM: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "distanceInCM"];
++ (void)setDistanceInCM: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "distanceInCM"];
 }
 
 
 + (float) calBarLengthInMM {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "calBarLengthInMM"];
 }
-+ (void)setCalBarLengthInMM: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "calBarLengthInMM"];
++ (void)setCalBarLengthInMM: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "calBarLengthInMM"];
 }
 
 
 + (float) calBarLengthInPixel {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "calBarLengthInPixel"];
 }
-+ (void)setCalBarLengthInPixel: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "calBarLengthInPixel"];
++ (void)setCalBarLengthInPixel: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "calBarLengthInPixel"];
+}
+
+
++ (int) testOnFive {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "testOnFive"];
+}
++ (void) setTestOnFive: (int) value {
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "testOnFive"];
 }
 
 
@@ -326,112 +338,112 @@ Created by mb on July 15, 2015.
 + (BOOL) responseInfoAtStart {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "responseInfoAtStart"];
 }
-+ (void) setResponseInfoAtStart: (BOOL) theValue {
-    [[CPUserDefaults standardUserDefaults] setBool: theValue forKey: "responseInfoAtStart"];
++ (void) setResponseInfoAtStart: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "responseInfoAtStart"];
 }
 
 
 + (BOOL) enableTouchControls {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "enableTouchControls"];
 }
-+ (void) setEnableTouchControls: (BOOL) theValue {
-    [[CPUserDefaults standardUserDefaults] setBool: theValue forKey: "enableTouchControls"];
++ (void) setEnableTouchControls: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "enableTouchControls"];
 }
 
 
 + (float) eccentXInDeg {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "eccentXInDeg"];
 }
-+ (void) setEccentXInDeg: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "eccentXInDeg"];
++ (void) setEccentXInDeg: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "eccentXInDeg"];
 }
 
 
 + (float) eccentYInDeg {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "eccentYInDeg"];
 }
-+ (void) setEccentYInDeg: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "eccentYInDeg"];
++ (void) setEccentYInDeg: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "eccentYInDeg"];
 }
 
 
 + (int) displayTransform {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "displayTransform"];
 }
-+ (void) setDisplayTransform: (int) displayTransform {
-    [[CPUserDefaults standardUserDefaults] setInteger: displayTransform forKey: "displayTransform"];
++ (void) setDisplayTransform: (int) value {
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "displayTransform"];
 }
 
 
 + (float) maxPossibleDecimalAcuity {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "maxPossibleDecimalAcuity"];
 }
-+ (void) setMaxPossibleDecimalAcuity: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "maxPossibleDecimalAcuity"];
++ (void) setMaxPossibleDecimalAcuity: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "maxPossibleDecimalAcuity"];
 }
 
 
 + (float) gammaValue {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "gammaValue"];
 }
-+ (void)setGammaValue: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "gammaValue"];
++ (void)setGammaValue: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "gammaValue"];
 }
 
 
 + (BOOL) threshCorrection {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "threshCorrection"];
 }
-+ (void)setThreshCorrection: (BOOL) theValue {
-    [[CPUserDefaults standardUserDefaults] setBool: theValue forKey: "threshCorrection"];
++ (void)setThreshCorrection: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "threshCorrection"];
 }
 
 
 + (int) results2clipboard {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "results2clipboard"];
 }
-+ (void) setResults2clipboard: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setInteger: theValue forKey: "results2clipboard"];
++ (void) setResults2clipboard: (float) value {
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "results2clipboard"];
 }
 
 
 + (int) nOfRuns2Recall {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "nOfRuns2Recall"];
 }
-+ (void) setNOfRuns2Recall: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setInteger: theValue forKey: "nOfRuns2Recall"];
++ (void) setNOfRuns2Recall: (float) value {
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "nOfRuns2Recall"];
 }
 
 
 + (int) vernierType {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "vernierType"];
 }
-+ (void) setVernierType: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setInteger: theValue forKey: "vernierType"];
++ (void) setVernierType: (float) value {
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "vernierType"];
 }
 
 
 + (float) vernierWidth {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "vernierWidth"];
 }
-+ (void) setVernierWidth: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "vernierWidth"];
++ (void) setVernierWidth: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "vernierWidth"];
 }
 
 
 + (float) vernierLength {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "vernierLength"];
 }
-+ (void) setVernierLength: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "vernierLength"];
++ (void) setVernierLength: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "vernierLength"];
 }
 
 
 + (float) vernierGap {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "vernierGap"];
 }
-+ (void) setVernierGap: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "vernierGap"];
++ (void) setVernierGap: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "vernierGap"];
 }
 
 
@@ -446,32 +458,32 @@ Created by mb on July 15, 2015.
 + (int) trialInfoFontSize {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "trialInfoFontSize"];
 }
-+ (void) setTrialInfoFontSize: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setInteger: theValue forKey: "trialInfoFontSize"];
++ (void) setTrialInfoFontSize: (float) value {
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "trialInfoFontSize"];
 }
 
 
 + (int) auditoryFeedback {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "auditoryFeedback"];
 }
-+ (void) setAuditoryFeedback: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setInteger: theValue forKey: "auditoryFeedback"];
++ (void) setAuditoryFeedback: (float) value {
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "auditoryFeedback"];
 }
 
 
 + (int) visualFeedback {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "visualFeedback"];
 }
-+ (void) setVisualFeedback: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setInteger: theValue forKey: "visualFeedback"];
++ (void) setVisualFeedback: (float) value {
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "visualFeedback"];
 }
 
 
 + (BOOL) auditoryFeedbackWhenDone {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "auditoryFeedbackWhenDone"];
 }
-+ (void)setAuditoryFeedbackWhenDone: (BOOL) theValue {
-    [[CPUserDefaults standardUserDefaults] setBool: theValue forKey: "auditoryFeedbackWhenDone"];
++ (void)setAuditoryFeedbackWhenDone: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "auditoryFeedbackWhenDone"];
 }
 
 
@@ -486,92 +498,92 @@ Created by mb on July 15, 2015.
     }
     return theValue;
 }
-+ (void) setSoundVolume: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "soundVolume"];
++ (void) setSoundVolume: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "soundVolume"];
 }
 
 
 + (BOOL) rewardPicturesWhenDone {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "rewardPicturesWhenDone"];
 }
-+ (void)setRewardPicturesWhenDone: (BOOL) theValue {
-    [[CPUserDefaults standardUserDefaults] setBool: theValue forKey: "rewardPicturesWhenDone"];
++ (void)setRewardPicturesWhenDone: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "rewardPicturesWhenDone"];
 }
 + (float) timeoutRewardPicturesInSeconds {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "timeoutRewardPicturesInSeconds"];
 }
-+ (void) setTimeoutRewardPicturesInSeconds: (float) theValue { //console.info("Settings>setTimeoutRewardPicturesInSeconds");
-    [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "timeoutRewardPicturesInSeconds"];
++ (void) setTimeoutRewardPicturesInSeconds: (float) value { //console.info("Settings>setTimeoutRewardPicturesInSeconds");
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "timeoutRewardPicturesInSeconds"];
 }
 
 
 + (float) maskTimeOnResponseInMS {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "maskTimeOnResponseInMS"];
 }
-+ (void)setMaskTimeOnResponseInMS: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "maskTimeOnResponseInMS"];
++ (void)setMaskTimeOnResponseInMS: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "maskTimeOnResponseInMS"];
 }
 
 
 + (float) maxDisplayedAcuity {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "maxDisplayedAcuity"];
 }
-+ (void) setMaxDisplayedAcuity: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "maxDisplayedAcuity"];
++ (void) setMaxDisplayedAcuity: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "maxDisplayedAcuity"];
 }
 
 
 + (int) crowdingType {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "crowdingType"];
 }
-+ (void) setCrowdingType: (int) theValue {
-    [[CPUserDefaults standardUserDefaults] setInteger: theValue forKey: "crowdingType"];
++ (void) setCrowdingType: (int) value {
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "crowdingType"];
 }
 
 
 + (int) crowdingDistanceCalculationType {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "crowdingDistanceCalculationType"];
 }
-+ (void) setCrowdingDistanceCalculationType: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setInteger: theValue forKey: "crowdingDistanceCalculationType"];
++ (void) setCrowdingDistanceCalculationType: (float) value {
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "crowdingDistanceCalculationType"];
 }
 
 
 + (BOOL) acuityFormatDecimal {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "acuityFormatDecimal"];
 }
-+ (void) setAcuityFormatDecimal: (BOOL) theValue {
-    [[CPUserDefaults standardUserDefaults] setBool: theValue forKey: "acuityFormatDecimal"];
++ (void) setAcuityFormatDecimal: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "acuityFormatDecimal"];
 }
 
 
 + (BOOL) acuityFormatLogMAR {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "acuityFormatLogMAR"];
 }
-+ (void) setAcuityFormatLogMAR: (BOOL) theValue {
-    [[CPUserDefaults standardUserDefaults] setBool: theValue forKey: "acuityFormatLogMAR"];
++ (void) setAcuityFormatLogMAR: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "acuityFormatLogMAR"];
 }
 
 
 + (BOOL) acuityFormatSnellenFractionFoot {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "acuityFormatSnellenFractionFoot"];
 }
-+ (void) setAcuityFormatSnellenFractionFoot: (BOOL) theValue {
-    [[CPUserDefaults standardUserDefaults] setBool: theValue forKey: "acuityFormatSnellenFractionFoot"];
++ (void) setAcuityFormatSnellenFractionFoot: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "acuityFormatSnellenFractionFoot"];
 }
 + (BOOL) forceSnellen20 {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "forceSnellen20"];
 }
-+ (void) setForceSnellen20: (BOOL) theValue {
-    [[CPUserDefaults standardUserDefaults] setBool: theValue forKey: "forceSnellen20"];
++ (void) setForceSnellen20: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "forceSnellen20"];
 }
 
 
 + (float) contrastAcuityWeber { //console.info("Settings>contrastAcuityWeber: ", [[CPUserDefaults standardUserDefaults] floatForKey: "contrastAcuityWeber"]);
     return [[CPUserDefaults standardUserDefaults] floatForKey: "contrastAcuityWeber"];
 }
-+ (void) setContrastAcuityWeber: (float) theValue { //console.info("Settings>setContrastAcuityWeber: ", theValue);
-    [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "contrastAcuityWeber"];
++ (void) setContrastAcuityWeber: (float) value { //console.info("Settings>setContrastAcuityWeber: ", value);
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "contrastAcuityWeber"];
 }
 
 
@@ -601,32 +613,32 @@ Created by mb on July 15, 2015.
 + (BOOL) acuityEasyTrials {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "acuityEasyTrials"];
 }
-+ (void) setAcuityEasyTrials: (BOOL) theValue {
-    [[CPUserDefaults standardUserDefaults] setBool: theValue forKey: "acuityEasyTrials"];
++ (void) setAcuityEasyTrials: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "acuityEasyTrials"];
 }
 
 
 + (BOOL) contrastEasyTrials {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "contrastEasyTrials"];
 }
-+ (void) setContrastEasyTrials: (BOOL) theValue {
-    [[CPUserDefaults standardUserDefaults] setBool: theValue forKey: "contrastEasyTrials"];
++ (void) setContrastEasyTrials: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "contrastEasyTrials"];
 }
 
 
 + (float) timeoutResponseSeconds {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "timeoutResponseSeconds"];
 }
-+ (void) setTimeoutResponseSeconds: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "timeoutResponseSeconds"];
++ (void) setTimeoutResponseSeconds: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "timeoutResponseSeconds"];
 }
 
 
 + (float) timeoutDisplaySeconds {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "timeoutDisplaySeconds"];
 }
-+ (void) setTimeoutDisplaySeconds: (float) theValue {
-    [[CPUserDefaults standardUserDefaults] setFloat: theValue forKey: "timeoutDisplaySeconds"];
++ (void) setTimeoutDisplaySeconds: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "timeoutDisplaySeconds"];
 }
 
 

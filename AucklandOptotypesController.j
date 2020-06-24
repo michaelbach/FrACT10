@@ -28,7 +28,7 @@
         _auckImages = [];
         _nAuckImagesLoaded = 0;
         for (var i=0; i < _auckImageNames.length; i++) {
-            _auckImages[i] = [[CPImage alloc] initWithContentsOfFile: [[CPBundle mainBundle] pathForResource: "AucklandOptotypes/" + _auckImageNames[i] + ".png"]];
+            _auckImages[i] = [[CPImage alloc] initWithContentsOfFile: [[CPBundle mainBundle] pathForResource: "TAOs/" + _auckImageNames[i] + ".png"]];
             [_auckImages[i] setDelegate: self];
         }
     }

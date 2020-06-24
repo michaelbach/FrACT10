@@ -6,8 +6,11 @@ To Dos
 • Add: displayTransform
 • Improve: crowding
 • letter responses for the TAO
-• rename TAO ← Auck
+• Rename TAO ← Auck
+• Add: contrast check (for acuity)
+• Add: tool tips for acuity contrast and more
 
+√ Add: volume slider
 √ Add: contrast settings for acuity
 √ Add: eccentricity
 √ →Clipboard button
