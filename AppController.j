@@ -26,6 +26,11 @@
 }*/
 
 
+@typedef TestIDType
+kTestIDLett = 0; kTestIDC = 1; kTestIDE = 2; kTestIDAuck = 3; kTestIDVernier = 4; kTestContrastC = 5;
+
+CPPushOnPushOffButton   = 1;
+
 @implementation AppController : HierarchyController {
     @outlet CPWindow fractControllerWindow;
     @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier;
@@ -36,7 +41,7 @@
     TAOController taoController;
     FractController currentFractController;
     //float angleAlpha @accessors, angleBeta @accessors, angleGamma @accessors;
-    int testID, kTestIDLett, kTestIDC, kTestIDE, kTestIDAuck, kTestIDVernier, kTestContrastC;
+    TestIDType testID;
     BOOL settingsNeedNewDefaults;
     BOOL runAborted @accessors;
     Sound sound;
@@ -71,7 +76,6 @@
     var allButtons = [buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier];
     for (var i = 0; i < allButtons.length; i++)  [self adjustImageButton: allButtons[i]];
     
-    kTestIDLett = 0;  kTestIDC = 1; kTestIDE = 2; kTestIDAuck = 3; kTestIDVernier = 4; kTestContrastC = 5;
     allTestControllers = [FractControllerVAL, FractControllerVAC, FractControllerVAE, FractControllerVATAO, FractControllerVAVernier, FractControllerContrastC];
 //    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
     
@@ -300,6 +304,9 @@
 }
 - (IBAction) buttonHelpGetManual_action: (id) sender {
     window.open("https://michaelbach.de/fract/manual.html");
+}
+- (IBAction) buttonHelpCheats_action: (id) sender {
+    window.open("https://michaelbach.de/sci/acuity.html");
 }
 - (IBAction) buttonHelpClose_action: (id) sender { //console.info("AppController>buttonHelpClose_action");
     [helpPanel close];

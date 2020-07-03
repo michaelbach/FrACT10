@@ -8,8 +8,12 @@
 @import "AlternativesGenerator.j"
 @import "Thresholder.j";
 
+@typedef StateType
+kStateDrawBack = 0; kStateDrawFore = 1;
+
 @implementation FractController: HierarchyController {
-    int state, kStateDrawBack, kStateDrawFore, iTrial, nTrials, nAlternatives;
+    int iTrial, nTrials, nAlternatives;
+    StateType state;
     BOOL isBonus, responseWasCorrect, responseWasCorrectCumulative;
     char oldResponseKeyChar, responseKeyChar;
     unsigned short responseKeyCode;
@@ -40,7 +44,6 @@
         [aWindow setDelegate: self];
         viewWidth = CGRectGetWidth([aWindow frame]);  viewHeight = CGRectGetHeight([aWindow frame]);
         gapMinimal = 0.5;  gapMaximal = viewHeight / 5 - 2;
-        kStateDrawBack = 0; kStateDrawFore = 1;
         state = kStateDrawBack;
         kRangeLimitDefault = "";  kRangeLimitOk = "rangeOK";  kRangeLimitValueAtFloor = "atFloor";
         kRangeLimitValueAtCeiling = "atCeiling";  rangeLimitStatus = kRangeLimitDefault;
@@ -204,7 +207,8 @@
     var s = "";
     if ([[self parentController] runAborted]) return;
     var tab = "\t", crlf = "\n", nDigits = 4, now = [CPDate date];
-    s = "Vs" + tab + "1"; // version
+    s = "Vs" + tab + "2"; // version
+    s += tab + "decimalMark" + tab + [Settings decimalMarkChar];
     s += tab + "date" + tab + [Misc date2YYYY_MM_DD: now] + tab + "time" + tab + [Misc date2HH_MM_SS: now];
     s += tab + "test" + tab + currentTestName;
     s += tab + "value" + tab + [Misc stringFromNumber: [self resultValue4Export] decimals: nDigits localised: YES];

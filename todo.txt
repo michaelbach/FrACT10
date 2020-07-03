@@ -6,9 +6,10 @@ To Dos
 • Improve: crowding
 • Add: letter responses for TAO
 • Add: contrast check (for acuity)
-• Export: add comma/dot
-• Button → cheat sheet
+• Export: full history
 
+√ Export: add comma/dot
+√ Button → cheat sheet
 √ Rename TAO ← Auck
 √ Add: tool tips for acuity contrast and comma and…
 √ Add: start with "5"

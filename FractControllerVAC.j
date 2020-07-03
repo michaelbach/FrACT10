@@ -59,7 +59,7 @@
 }
 
 
-- (void)runEnd { //console.info("FractControllerVAC>runEnd");
+- (void) runEnd { //console.info("FractControllerVAC>runEnd");
     if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {

@@ -34,6 +34,7 @@
 - (IBAction)buttonSettingsDefaults_action:(id)sender;
 - (IBAction)buttonHelp_action:(id)sender;
 - (IBAction)buttonHelpGetManual_action:(id)sender;
+- (IBAction)buttonHelpCheats_action:(id)sender;
 - (IBAction)buttonHelpClose_action:(id)sender;
 - (IBAction)buttonAbout_action:(id)sender;
 - (IBAction)buttonAboutWebsiteMB_action:(id)sender;

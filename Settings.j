@@ -12,6 +12,8 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2020-07-03 add @typedef TestIDType; @typedef StateType
+2020-07-03 Export: Vs: 2; add comma/dot; add button → cheat sheet in Help
 2020-07-03 rename (nearly) all "Auck…" to TAO…, default no reward images, default testOn5: Sloan Letters
 2020-06-24 add "test on 5"
 2020-06-22 AucklandOptotypes → TAO(s)

@@ -374,7 +374,7 @@ DQ
                         </connections>
                     </button>
                     <button toolTip="This will open the FrACT blog page in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFH-Mg-hvS">
-                        <rect key="frame" x="502" y="13" width="147" height="32"/>
+                        <rect key="frame" x="372" y="13" width="142" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="→FrACT blog" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xSN-4X-HKf">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -385,7 +385,7 @@ DQ
                         </connections>
                     </button>
                     <button toolTip="This will open my home page in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pig-bH-1jM">
-                        <rect key="frame" x="14" y="13" width="147" height="32"/>
+                        <rect key="frame" x="14" y="13" width="142" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="→Manual" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="L5g-3L-9xi">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -396,7 +396,7 @@ DQ
                         </connections>
                     </button>
                     <button toolTip="This will open the FrACT home page in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iza-6M-cRz">
-                        <rect key="frame" x="268" y="13" width="147" height="32"/>
+                        <rect key="frame" x="189" y="13" width="142" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="→FrACT site" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="stL-8j-RhU">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -411,7 +411,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="8aG-i8-Dh8">
                             <rect key="frame" x="1" y="1" width="743" height="327"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="zNM-Gb-Jh9">
                                     <rect key="frame" x="0.0" y="0.0" width="743" height="406"/>
@@ -487,6 +487,17 @@ Not implemented yet in FrACT10, use FrACT.</string>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button toolTip="This will open the FrACT blog page in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFU-iu-5G1">
+                        <rect key="frame" x="551" y="13" width="142" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="→Acuity Formats" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sdj-oG-XTl">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="buttonHelpCheats_action:" target="450" id="wfk-D5-Hsd"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
