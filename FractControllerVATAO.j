@@ -1,5 +1,5 @@
 /*
- *  FractControllerVAAuck.j
+ *  FractControllerVATAO.j
  *  cappDevelop
  *
  *  Created by Bach on 2020-05-21
@@ -8,9 +8,9 @@
 
 @import <Foundation/CPObject.j>
 
-@implementation FractControllerVAAuck: FractController {
+@implementation FractControllerVATAO: FractController {
     CGRect imageRect;
-    id auckImages;
+    id taoImages;
 }
 
 
@@ -20,7 +20,7 @@
 - (float) stimGenericFromDevice: (float) d {return [self acuityStimGenericFromDevice: d];}
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerVAAuck>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerVATAO>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, [CPColor whiteColor]); // contrast not respected with TAO
@@ -34,7 +34,7 @@
             CGContextSetFillColor(cgc, colOptotypeFore);
             imageRect = CGRectMake(-sizeInPix / 2, -sizeInPix / 2, sizeInPix, sizeInPix);
             CGContextTranslateCTM(cgc,  -xEcc, -yEcc);
-            CGContextDrawImage(cgc, imageRect, auckImages[[alternativesGenerator currentAlternative]]);
+            CGContextDrawImage(cgc, imageRect, taoImages[[alternativesGenerator currentAlternative]]);
             CGContextTranslateCTM(cgc,  xEcc, yEcc);
             
             CGContextTranslateCTM(cgc,  -viewWidth / 2, -viewHeight / 2); // origin back
@@ -42,7 +42,7 @@
             if (!responseButtonsAdded) {
                 for (var i = 0; i < (nAlternatives); i++) {
                     button = [self buttonCenteredAtX: (i + 0.75) * 2 * size y: viewHeight/2 - 0.5 * size size: size title: "" keyEquivalent: [@"1234567890" characterAtIndex: i]];
-                    [button setImage: auckImages[i]];
+                    [button setImage: taoImages[i]];
                     [button setImageScaling: CPImageScaleProportionallyDown];
                 }
                 [self buttonCenteredAtX: (10 + 0.75) * 2 * size y: viewHeight/2 - 0.5 * size size: size title: "Ø"];
@@ -59,8 +59,8 @@
 }
 
 
-- (void) runStart { //console.info("FractControllerVAAuck>runStart");
-    auckImages = [parentController auckImageArray];
+- (void) runStart { //console.info("FractControllerVATAO>runStart");
+    taoImages = [parentController taoImageArray];
     nAlternatives = 10;  nTrials = [Settings nTrials08];
     [self setCurrentTestName: "Acuity_TAO"];
     [self setCurrentTestResultUnit: "LogMAR"];
@@ -69,7 +69,7 @@
 }
 
 
-- (void)runEnd { //console.info("FractControllerVAAuck>runEnd");
+- (void)runEnd { //console.info("FractControllerVATAO>runEnd");
     if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {
@@ -79,7 +79,7 @@
 }
 
 
-- (int)responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerVAAuck>responseNumberFromChar: ", keyChar);
+- (int)responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerVATAO>responseNumberFromChar: ", keyChar);
     switch ([keyChar uppercaseString]) {
         case "0": return 9;
         case "1": return 0;

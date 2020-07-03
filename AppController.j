@@ -14,11 +14,11 @@
 @import "FractControllerVAC.j"
 @import "FractControllerVAL.j"
 @import "FractControllerVAE.j"
-@import "FractControllerVAAuck.j"
+@import "FractControllerVATAO.j"
 @import "FractControllerVAVernier.j"
 @import "FractControllerContrastC.j"
 @import "RewardsController.j"
-@import "AucklandOptotypesController.j"
+@import "TAOController.j"
 @import "Sound.j"
 
 /*window.ondeviceorientation = function(event) {
@@ -28,12 +28,12 @@
 
 @implementation AppController : HierarchyController {
     @outlet CPWindow fractControllerWindow;
-    @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVAAuck, responseinfoPanelVAVernier;
-    @outlet CPButton buttVALett, buttVAC, buttVAE, buttVAAuck, buttVAVernier;
+    @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier;
+    @outlet CPButton buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier;
     @outlet CPButton buttonExport;
     CPImageView rewardImageView;
     RewardsController rewardsController;
-    AucklandOptotypesController aucklandOptotypesController;
+    TAOController taoController;
     FractController currentFractController;
     //float angleAlpha @accessors, angleBeta @accessors, angleGamma @accessors;
     int testID, kTestIDLett, kTestIDC, kTestIDE, kTestIDAuck, kTestIDVernier, kTestContrastC;
@@ -68,14 +68,14 @@
 
 
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>applicationDidFinishLaunching");
-    var allButtons = [buttVALett, buttVAC, buttVAE, buttVAAuck, buttVAVernier];
+    var allButtons = [buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier];
     for (var i = 0; i < allButtons.length; i++)  [self adjustImageButton: allButtons[i]];
     
     kTestIDLett = 0;  kTestIDC = 1; kTestIDE = 2; kTestIDAuck = 3; kTestIDVernier = 4; kTestContrastC = 5;
-    allTestControllers = [FractControllerVAL, FractControllerVAC, FractControllerVAE, FractControllerVAAuck, FractControllerVAVernier, FractControllerContrastC];
+    allTestControllers = [FractControllerVAL, FractControllerVAC, FractControllerVAE, FractControllerVATAO, FractControllerVAVernier, FractControllerContrastC];
 //    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
     
-    allPanels = [responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVAAuck, responseinfoPanelVAVernier, settingsPanel, helpPanel, aboutPanel];
+    allPanels = [responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier, settingsPanel, helpPanel, aboutPanel];
     for (var i = 0; i < allPanels.length; i++)  [allPanels[i] setFrameOrigin: CGPointMake(0, 0)];
    
     [[self window] setTitle: "FrACT10"];  [self setVersionDateString: [Settings versionNumber] + "·" + [Settings versionDate]];
@@ -87,7 +87,7 @@
     rewardImageView = [[CPImageView alloc] initWithFrame: CGRectMake(100, 0, 600, 600)];
     [[[self window] contentView] addSubview: rewardImageView];
     rewardsController = [[RewardsController alloc] initWithView: rewardImageView];
-    aucklandOptotypesController = [[AucklandOptotypesController alloc] initWithButton2Enable: buttVAAuck];
+    taoController = [[TAOController alloc] initWithButton2Enable: buttVATAO];
     sound = [[Sound alloc] init];
     for (var i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++); // ranomising the pseudorandom sequence
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(buttonExportEnableYESorNO:) name: "buttonExportEnableYESorNO" object: nil];
@@ -126,8 +126,8 @@
 }
 
 
-- (id) auckImageArray {
-    return [aucklandOptotypesController imageArray];
+- (id) taoImageArray {
+    return [taoController imageArray];
 }
 
 
@@ -161,7 +161,7 @@
             case kTestIDE:
                 [responseinfoPanelVAE makeKeyAndOrderFront: self];  break;
             case kTestIDAuck:
-                [responseinfoPanelVAAuck makeKeyAndOrderFront: self];  break;
+                [responseinfoPanelVATAO makeKeyAndOrderFront: self];  break;
             case kTestIDVernier:
                 [responseinfoPanelVAVernier makeKeyAndOrderFront: self];  break;
             case kTestContrastC:
@@ -224,7 +224,7 @@
         case "E":
             [self  buttonDoAcuityE_action: nil];  break;
         case "A":
-            [self  buttonDoAcuityAuck_action: nil];  break;
+            [self  buttonDoAcuityTAO_action: nil];  break;
         case "V":
             [self  buttonDoAcuityVernier_action: nil];  break;
         case "KK":
@@ -234,7 +234,7 @@
                 case 1: [self  buttonDoAcuityLetters_action: nil];  break;
                 case 2: [self  buttonDoAcuityLandolt_action: nil];  break;
                 case 3: [self  buttonDoAcuityE_action: nil];  break;
-                case 4: [self  buttonDoAcuityAuck_action: nil];  break;
+                case 4: [self  buttonDoAcuityTAO_action: nil];  break;
                 case 5: [self  buttonDoAcuityVernier_action: nil];  break;
             }
         default:
@@ -264,7 +264,7 @@
 - (IBAction) buttonDoAcuityE_action: (id) sender { //console.info("AppController>buttonDoAcuityE_action");
     testID = kTestIDE;    [self runFractController];
 }
-- (IBAction) buttonDoAcuityAuck_action: (id) sender { //console.info("AppController>buttonDoAcuityA_action");
+- (IBAction) buttonDoAcuityTAO_action: (id) sender { //console.info("AppController>buttonDoAcuityA_action");
     testID = kTestIDAuck;    [self runFractController];
 }
 - (IBAction) buttonDoAcuityVernier_action: (id) sender { //console.info("AppController>buttonDoAcuityE_action");

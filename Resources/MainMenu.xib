@@ -71,7 +71,7 @@
                             <action selector="buttonDoAcuityE_action:" target="450" id="XwX-rB-ha0"/>
                         </connections>
                     </button>
-                    <button toolTip="Start acuity run using Auckland Optotypes.  Shortcut: A" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6e2-Sj-gkY">
+                    <button toolTip="Start acuity run using TAO (The Auckland Optotypes).  Shortcut: A" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6e2-Sj-gkY">
                         <rect key="frame" x="495" y="385" width="114" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttonTAO" imagePosition="only" alignment="center" enabled="NO" borderStyle="border" imageScaling="axesIndependently" inset="2" id="nnv-n0-fGE">
@@ -79,7 +79,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonDoAcuityAuck_action:" target="450" id="s20-4q-Urj"/>
+                            <action selector="buttonDoAcuityTAO_action:" target="450" id="s20-4q-Urj"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUU-sC-ci6">
@@ -411,7 +411,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="8aG-i8-Dh8">
                             <rect key="frame" x="1" y="1" width="743" height="327"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="zNM-Gb-Jh9">
                                     <rect key="frame" x="0.0" y="0.0" width="743" height="406"/>
@@ -513,19 +513,19 @@ Not implemented yet in FrACT10, use FrACT.</string>
         <customObject id="450" customClass="AppController">
             <connections>
                 <outlet property="aboutPanel" destination="ErU-UN-jpI" id="7Pz-ls-119"/>
-                <outlet property="buttVAAuck" destination="6e2-Sj-gkY" id="wS5-ys-hpB"/>
                 <outlet property="buttVAC" destination="sWr-KV-CRJ" id="eJP-Al-Hhm"/>
                 <outlet property="buttVAE" destination="Phl-6Z-YpU" id="obG-lD-sX0"/>
                 <outlet property="buttVALett" destination="jHx-aa-MPC" id="tuh-WT-4uS"/>
+                <outlet property="buttVATAO" destination="6e2-Sj-gkY" id="wS5-ys-hpB"/>
                 <outlet property="buttVAVernier" destination="8oB-kn-EbO" id="D7M-xX-xff"/>
                 <outlet property="buttonExport" destination="L8d-bR-KqO" id="YCp-1H-vRB"/>
                 <outlet property="fractControllerWindow" destination="r6R-bh-Qyp" id="M05-uu-qYO"/>
                 <outlet property="helpPanel" destination="28C-lv-KIF" id="Uyw-Zc-Dhd"/>
                 <outlet property="responseinfoPanelVA4C" destination="KH7-H9-rEd" id="9RI-zp-bV8"/>
                 <outlet property="responseinfoPanelVA8C" destination="UBW-u3-RSn" id="Gqz-Zw-DfA"/>
-                <outlet property="responseinfoPanelVAAuck" destination="mal-zk-76C" id="AMZ-0a-rBi"/>
                 <outlet property="responseinfoPanelVAE" destination="TXq-Ap-CfY" id="g0E-03-G4D"/>
                 <outlet property="responseinfoPanelVAL" destination="1zz-Aw-bf2" id="s2s-G8-0wC"/>
+                <outlet property="responseinfoPanelVATAO" destination="mal-zk-76C" id="AMZ-0a-rBi"/>
                 <outlet property="responseinfoPanelVAVernier" destination="aQE-yg-pvo" id="ujy-mj-Kc7"/>
                 <outlet property="settingsPanel" destination="MF5-y3-Ol0" id="6RV-5t-pXs"/>
                 <outlet property="window" destination="371" id="cmb-GE-Av3"/>
@@ -1242,6 +1242,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WCS-rL-YCa">
                                             <rect key="frame" x="175" y="86" width="110" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <string key="toolTip">Especially for the export to clipboard action, it is necessary to choose the right one here, otherwise numbers etc. will not be recognised correctly by the spreadsheet.</string>
                                             <popUpButtonCell key="cell" type="push" title="dot" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="p64-gR-0Sx" id="Ymt-mG-1P5">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1252,9 +1253,6 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                     </items>
                                                 </menu>
                                             </popUpButtonCell>
-                                            <accessibility>
-                                                <string key="description">Especially for the export to clipboard action, it is necessary to choose the right one here, otherwise numbers etc. will not be recognised correctly by the spreadsheet.</string>
-                                            </accessibility>
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.decimalMarkCharIndex" id="lHe-4g-dbh"/>
                                             </connections>
@@ -1324,9 +1322,9 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             <color key="fillColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </box>
                                         <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vfI-Mo-x5r">
-                                            <rect key="frame" x="15" y="249" width="261" height="18"/>
+                                            <rect key="frame" x="15" y="249" width="263" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="Show response info at start of each run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="VsO-Bf-3O1">
+                                            <buttonCell key="cell" type="check" title="Show operation info at start of each run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="VsO-Bf-3O1">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
@@ -2097,7 +2095,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hes-HT-KtK">
+                                        <textField toolTip="Contrast (in Weber %) of the acuity optotypes" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hes-HT-KtK">
                                             <rect key="frame" x="17" y="324" width="40" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="Contrast" placeholderString="Contrast" drawsBackground="YES" id="AyL-3q-wsa">
@@ -2542,7 +2540,7 @@ Type 55, or &lt;esc&gt; to abort the run.
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
         </window>
-        <window title="Auckland Optotypes acuity – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="mal-zk-76C" userLabel="responseinfoPanelVAAuck" customClass="NSPanel">
+        <window title="TAO (Auckland Optotypes) acuity – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="mal-zk-76C" userLabel="responseinfoPanelVATAO" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -2611,7 +2609,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="YOy-T5-hTB">
                             <font key="font" metaFont="system" size="16"/>
-                            <string key="title">Here's a paper on these optotyles:
+                            <string key="title">Here's a paper on these optotypes:
 
 Hamm LM, Yeoman JP, Anstice N, Dakin SC (2018) The Auckland Optotypes: An open-access pictogram set for measuring recognition acuity. JOV 18:13
 

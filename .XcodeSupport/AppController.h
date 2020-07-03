@@ -11,12 +11,12 @@
 @property (assign) IBOutlet NSPanel* responseinfoPanelVA4C;
 @property (assign) IBOutlet NSPanel* responseinfoPanelVA8C;
 @property (assign) IBOutlet NSPanel* responseinfoPanelVAE;
-@property (assign) IBOutlet NSPanel* responseinfoPanelVAAuck;
+@property (assign) IBOutlet NSPanel* responseinfoPanelVATAO;
 @property (assign) IBOutlet NSPanel* responseinfoPanelVAVernier;
 @property (assign) IBOutlet NSButton* buttVALett;
 @property (assign) IBOutlet NSButton* buttVAC;
 @property (assign) IBOutlet NSButton* buttVAE;
-@property (assign) IBOutlet NSButton* buttVAAuck;
+@property (assign) IBOutlet NSButton* buttVATAO;
 @property (assign) IBOutlet NSButton* buttVAVernier;
 @property (assign) IBOutlet NSButton* buttonExport;
 
@@ -26,7 +26,7 @@
 - (IBAction)buttonDoAcuityLetters_action:(id)sender;
 - (IBAction)buttonDoAcuityLandolt_action:(id)sender;
 - (IBAction)buttonDoAcuityE_action:(id)sender;
-- (IBAction)buttonDoAcuityAuck_action:(id)sender;
+- (IBAction)buttonDoAcuityTAO_action:(id)sender;
 - (IBAction)buttonDoAcuityVernier_action:(id)sender;
 - (IBAction)buttonDoContrastC_action:(id)sender;
 - (IBAction)buttonSettings_action:(id)sender;

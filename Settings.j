@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define dateFract "2020-06-24"
+#define dateFract "2020-07-02"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -12,6 +12,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2020-07-03 rename (nearly) all "Auck…" to TAO…, default no reward images, default testOn5: Sloan Letters
 2020-06-24 add "test on 5"
 2020-06-22 AucklandOptotypes → TAO(s)
 2020-06-18 improve logic to enable➶ the export button; correct minute in date conversion (1 t0o high); new manual location
@@ -112,7 +113,7 @@ Created by mb on July 15, 2015.
     [self setResponseInfoAtStart: [self chckBool: [self responseInfoAtStart] def: YES set: set]];
     [self setEnableTouchControls: [self chckBool: [self enableTouchControls] def: YES set: set]];
     
-    [self setTestOnFive: [self chckInt: [self testOnFive] def: 0 min: 0 max: 5 set: set]];
+    [self setTestOnFive: [self chckInt: [self testOnFive] def: 1 min: 0 max: 5 set: set]]; // 1: Sloan Letters
 
     [self setNOfRuns2Recall: [self chckInt: [self nOfRuns2Recall] def: 0 min: 0 max: 100 set: set]];
 
@@ -139,7 +140,7 @@ Created by mb on July 15, 2015.
     [self setAuditoryFeedbackWhenDone: [self chckBool: [self auditoryFeedbackWhenDone] def: YES set: set]];
     [self setSoundVolume: [self chckFlt: [self soundVolume] def: 20 min: 1 max: 100 set: set]];
 
-    [self setRewardPicturesWhenDone: [self chckBool: [self rewardPicturesWhenDone] def: YES set: set]];
+    [self setRewardPicturesWhenDone: [self chckBool: [self rewardPicturesWhenDone] def: NO set: set]];
     [self setTimeoutRewardPicturesInSeconds: [self chckFlt: [self timeoutRewardPicturesInSeconds] def: 5 min: 0.1 max: 999 set: set]];
 
     

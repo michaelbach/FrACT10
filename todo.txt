@@ -1,15 +1,17 @@
 To Dos
 
-• Add: start with "5"
 • Add: gamma calibration
 • Add: contrast testing
 • Add: displayTransform
 • Improve: crowding
-• letter responses for the TAO
-• Rename TAO ← Auck
+• Add: letter responses for TAO
 • Add: contrast check (for acuity)
-• Add: tool tips for acuity contrast and more
+• Export: add comma/dot
+• Button → cheat sheet
 
+√ Rename TAO ← Auck
+√ Add: tool tips for acuity contrast and comma and…
+√ Add: start with "5"
 √ Add: volume slider
 √ Add: contrast settings for acuity
 √ Add: eccentricity
