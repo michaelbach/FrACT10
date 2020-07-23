@@ -1,12 +1,13 @@
 To Dos
 
-• Add: gamma calibration
+• Add: letter responses for TAO
 • Add: contrast testing
 • Add: displayTransform
+• Add: gamma calibration
 • Improve: crowding
-• Add: letter responses for TAO
 • Add: contrast check (for acuity)
 • Export: full history
+• Improve/extend: About panel (recent history)
 
 √ Export: add comma/dot
 √ Button → cheat sheet
@@ -17,12 +18,11 @@ To Dos
 √ Add: contrast settings for acuity
 √ Add: eccentricity
 √ →Clipboard button
-√ Tooltips do not show correct text !! (crowding)
+√ Tooltips do not show correct text (crowding)
 √ Fix: "s" to start Settings enters "s" in nTrials@2 in Safari & Chrome
 √ → FrACT site button on main screen
 √ helptext for 3 nTrials
 √ Auck: better positioning of #
-√ Settings: all a bit ↓ in General
 √ makeKey timer: omit
 √ Fix: webkitAudioContext error
 √ Add: crowding
