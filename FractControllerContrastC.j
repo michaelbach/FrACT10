@@ -15,8 +15,8 @@
 
 - (void) modifyGenericStimulus {[self modifyGenericStimulusWithBonus];}
 - (void) modifyDeviceStimulus {[self acuityModifyDeviceStimulusDIN01_02_04_08];}
-- (float) stimDeviceFromGeneric: (float) tPest {return [self acuityStimDeviceFromGeneric: tPest];}
-- (float) stimGenericFromDevice: (float) d {return [self acuityStimGenericFromDevice: d];}
+- (float) stimDeviceunitsFromGenericunits: (float) tPest {return [self acuitystimDeviceunitsFromGenericunits: tPest];}
+- (float) stimGenericunitsFromDeviceunits: (float) d {return [self acuitystimGenericunitsFromDeviceunits: d];}
 
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { console.info("FractControllerContrastC>drawStimulusInRect");
@@ -38,9 +38,8 @@
             //CGContextMoveToPoint(patternContext, 0, 2); CGContextAddLineToPoint(patternContext, 3, 2);
             CGContextStrokePath(patternContext);
             CGContextSetFillPattern(cgc, patternContext);
-            [self fillCircleAtX: 0 y: 0 radius: 50];
-
-            //[self drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: [alternativesGenerator currentAlternative]];
+            [optotypes setCgc: cgc colFore: colOptotypeFore colBack: colOptotypeBack];
+            [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: [alternativesGenerator currentAlternative]];
             break;
         default: break;
     }

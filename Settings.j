@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define dateFract "2020-07-02"
+#define dateFract "2020-08-17"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -12,6 +12,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2020-08-17 refactored to separated the "Optotypes"
 2020-07-03 add @typedef TestIDType; @typedef StateType
 2020-07-03 Export: Vs: 2; add comma/dot; add button → cheat sheet in Help
 2020-07-03 rename (nearly) all "Auck…" to TAO…, default no reward images, default testOn5: Sloan Letters

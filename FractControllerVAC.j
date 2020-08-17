@@ -14,8 +14,8 @@
 
 - (void) modifyGenericStimulus {[self modifyGenericStimulusWithBonus];}
 - (void) modifyDeviceStimulus {[self acuityModifyDeviceStimulusDIN01_02_04_08];}
-- (float) stimDeviceFromGeneric: (float) tPest {return [self acuityStimDeviceFromGeneric: tPest];}
-- (float) stimGenericFromDevice: (float) d {return [self acuityStimGenericFromDevice: d];}
+- (float) stimDeviceunitsFromGenericunits: (float) tPest {return [self acuitystimDeviceunitsFromGenericunits: tPest];}
+- (float) stimGenericunitsFromDeviceunits: (float) d {return [self acuitystimGenericunitsFromDeviceunits: d];}
 
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerVAC>drawStimulusInRect");
@@ -29,7 +29,8 @@
         case kStateDrawFore: //console.info("kStateDrawFore");
             CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
             CGContextTranslateCTM(cgc,  -xEcc, -yEcc);
-            [self drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: [alternativesGenerator currentAlternative]];
+            [optotypes setCgc: cgc colFore: colOptotypeFore colBack: colOptotypeBack];
+            [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: [alternativesGenerator currentAlternative]];
             CGContextTranslateCTM(cgc,  xEcc, yEcc);
             break;
         default: break;

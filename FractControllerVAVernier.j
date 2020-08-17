@@ -18,7 +18,7 @@
 - (void) modifyDeviceStimulus {}
 
 
-- (float) stimDeviceFromGeneric: (float) tPest { //console.info("FractControllerVAVernier>stimDeviceFromGeneric");
+- (float) stimDeviceunitsFromGenericunits: (float) tPest { //console.info("FractControllerVAVernier>stimDeviceunitsFromGenericunits");
     gapMinimal = [Misc pixelFromDegree: gapVernierMinimalArcSec / 60.0 / 60.0];
     gapMaximal = [Misc pixelFromDegree: gapVernierMaximalArcSec / 60.0 / 60.0];
     var c1 = gapMinimal;
@@ -39,7 +39,7 @@
 
     return deviceVal;
 }
-- (float) stimGenericFromDevice: (float) d {
+- (float) stimGenericunitsFromDeviceunits: (float) d {
     gapMinimal = [Misc pixelFromDegree: gapVernierMinimalArcSec / 60.0 / 60.0];
     gapMaximal = [Misc pixelFromDegree: gapVernierMaximalArcSec / 60.0 / 60.0];
     var c1 = gapMinimal;
@@ -60,7 +60,10 @@
         var greyValue = 0.5 + cnt * (0.5 - gaussValue);
         greyValue = [Misc devicegreyFromLuminance: greyValue];
         CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: greyValue alpha: 1]);
-        [self strokeVLineAtX: ix y0: y0 y1: y1];
+        CGContextBeginPath(cgc);
+        CGContextMoveToPoint(cgc, ix, y0);
+        CGContextAddLineToPoint(cgc, ix, y1);
+        CGContextStrokePath(cgc);
     }
 }
 //var gaussValue:Number = Math.exp(-Math.pow(x0 - ix, 2) / sigma);

@@ -16,6 +16,7 @@
 @import "FractControllerVAE.j"
 @import "FractControllerVATAO.j"
 @import "FractControllerVAVernier.j"
+@import "FractControllerContrastLett.j"
 @import "FractControllerContrastC.j"
 @import "RewardsController.j"
 @import "TAOController.j"
@@ -76,7 +77,7 @@ CPPushOnPushOffButton   = 1;
     var allButtons = [buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier];
     for (var i = 0; i < allButtons.length; i++)  [self adjustImageButton: allButtons[i]];
     
-    allTestControllers = [FractControllerVAL, FractControllerVAC, FractControllerVAE, FractControllerVATAO, FractControllerVAVernier, FractControllerContrastC];
+    allTestControllers = [FractControllerVAL, FractControllerVAC, FractControllerVAE, FractControllerVATAO, FractControllerVAVernier, FractControllerContrastLett, FractControllerContrastC];
 //    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
     
     allPanels = [responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier, settingsPanel, helpPanel, aboutPanel];
@@ -169,7 +170,8 @@ CPPushOnPushOffButton   = 1;
             case kTestIDVernier:
                 [responseinfoPanelVAVernier makeKeyAndOrderFront: self];  break;
             case kTestContrastC:
-                [responseinfoPanelVAVernier makeKeyAndOrderFront: self];  break;
+                //[responseinfoPanelVAVernier makeKeyAndOrderFront: self];
+                break;
         }
     } else {
         [self runFractController2_actionOK: nil];
@@ -231,7 +233,7 @@ CPPushOnPushOffButton   = 1;
             [self  buttonDoAcuityTAO_action: nil];  break;
         case "V":
             [self  buttonDoAcuityVernier_action: nil];  break;
-        case "KK":
+        case "1":
             [self  buttonDoContrastC_action: nil];  break;
         case "5" :
             switch([Settings testOnFive]) {

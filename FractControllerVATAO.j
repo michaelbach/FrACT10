@@ -16,8 +16,8 @@
 
 - (void) modifyGenericStimulus {[self modifyGenericStimulusWithBonus];}
 - (void) modifyDeviceStimulus {[self acuityModifyDeviceStimulusDIN01_02_04_08];}
-- (float) stimDeviceFromGeneric: (float) tPest {return [self acuityStimDeviceFromGeneric: tPest];}
-- (float) stimGenericFromDevice: (float) d {return [self acuityStimGenericFromDevice: d];}
+- (float) stimDeviceunitsFromGenericunits: (float) tPest {return [self acuitystimDeviceunitsFromGenericunits: tPest];}
+- (float) stimGenericunitsFromDeviceunits: (float) d {return [self acuitystimGenericunitsFromDeviceunits: d];}
 
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerVATAO>drawStimulusInRect");

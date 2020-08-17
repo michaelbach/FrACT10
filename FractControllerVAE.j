@@ -14,39 +14,8 @@
 
 - (void) modifyGenericStimulus {[self modifyGenericStimulusWithBonus];}
 - (void) modifyDeviceStimulus {[self acuityModifyDeviceStimulusDIN01_02_04_08];}
-- (float) stimDeviceFromGeneric: (float) tPest {return [self acuityStimDeviceFromGeneric: tPest];}
-- (float) stimGenericFromDevice: (float) d {return [self acuityStimGenericFromDevice: d];}
-
-
-// optotype on a -5…+5 coordinate system
-- (void) myPoly: (float) p d: (float) d { //console.info("FractControllerVAE>myPoly");
-    CGContextSetFillColor(cgc, colOptotypeFore);
-    CGContextBeginPath(cgc);
-    CGContextMoveToPoint(cgc, d * p[0][0], -d * p[0][1]);
-    for (var i=1; i<p.length; ++i) {
-        CGContextAddLineToPoint(cgc, d * p[i][0], -d * p[i][1]);
-    }
-    CGContextAddLineToPoint(cgc, d * p[0][0], -d * p[0][1]);
-    CGContextFillPath(cgc);
-}
-
-
-- (void) tumblingEWithGapInPx: (float) d direction: (int) theDirection { //console.info("FractControllerVAE>tumblingEWithGapInPx");
-    //theDirection = directionIfMirrored(theDirection);
-    switch (theDirection) {
-        case 0: "E"
-            var p = [[5, -5], [-5, -5], [-5, 5], [5, 5], [5, 3], [-3, 3], [-3, 1], [5, 1], [5, -1], [-3, -1], [-3, -3], [5, -3]];  break;
-        case 2:
-            var p = [[-5, 5], [-5, -5], [5, -5], [5, 5], [3, 5], [3, -3], [1, -3], [1, 5], [-1, 5], [-1, -3], [-3, -3], [-3, 5]];  break;
-        case 4:
-            var p = [[-5, -5], [5, -5], [5, 5], [-5, 5], [-5, 3], [3, 3], [3, 1], [-5, 1], [-5, -1], [3, -1], [3, -3], [-5, -3]];  break;
-        case 6:
-            var p = [[5, -5], [5, 5], [-5, 5], [-5, -5], [-3, -5], [-3, 3], [-1, 3], [-1, -5], [1, -5], [1, 3], [3, 3], [3, -5]];  break;
-        default:	// hollow square (for flanker)
-            var p = [[5, -5], [-5, -5], [-5, 5], [5, 5], [5, -5], [3, -3], [-3, -3], [-3, 3], [3, 3], [3, -3]];
-    }
-    [self myPoly: p d: d * 0.5];
-}
+- (float) stimDeviceunitsFromGenericunits: (float) tPest {return [self acuitystimDeviceunitsFromGenericunits: tPest];}
+- (float) stimGenericunitsFromDeviceunits: (float) d {return [self acuitystimGenericunitsFromDeviceunits: d];}
 
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerVAC>drawStimulusInRect");
@@ -60,7 +29,8 @@
         case kStateDrawBack:  break;
         case kStateDrawFore: //console.info("kStateDrawFore");
             CGContextTranslateCTM(cgc,  -xEcc, -yEcc);
-            [self tumblingEWithGapInPx: stimStrengthInDeviceunits direction: [alternativesGenerator currentAlternative]];
+            [optotypes setCgc: cgc colFore: colOptotypeFore colBack: colOptotypeBack];            
+            [optotypes tumblingEWithGapInPx: stimStrengthInDeviceunits direction: [alternativesGenerator currentAlternative]];
             CGContextTranslateCTM(cgc,  xEcc, yEcc);
             break;
         default: break;

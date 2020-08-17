@@ -4,6 +4,9 @@
  *
  *  Created by Bach on 18.07.2017.
  *  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
+ 
+ This class is necessary to allow all subclasses of FractController to draw
+ 
  */
 
 @import "HierarchyController.j"

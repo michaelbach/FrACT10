@@ -7,6 +7,8 @@
 @import "Settings.j"
 @import "AlternativesGenerator.j"
 @import "Thresholder.j";
+@import "Optotypes.j";
+
 
 @typedef StateType
 kStateDrawBack = 0; kStateDrawFore = 1;
@@ -19,11 +21,11 @@ kStateDrawBack = 0; kStateDrawFore = 1;
     unsigned short responseKeyCode;
     CGContext cgc;
     float stimStrengthGeneric, stimStrengthInDeviceunits, viewWidth, viewHeight;
-    float gapMinimal, gapMaximal;
-    float currentX, currentY; // for drawing
+    float gapMinimal, gapMaximal, cMinimal;
     float xEcc, yEcc; // eccentricity
     Thresholder thresholder;
     AlternativesGenerator alternativesGenerator;
+    Optotypes optotypes;
     CPString trialInfoString @accessors;
     CPTimer timerDisplay, timerResponse;
     CPString kRangeLimitDefault, kRangeLimitOk, kRangeLimitValueAtFloor, kRangeLimitValueAtCeiling, rangeLimitStatus, abortCharacter;
@@ -44,10 +46,12 @@ kStateDrawBack = 0; kStateDrawFore = 1;
         [aWindow setDelegate: self];
         viewWidth = CGRectGetWidth([aWindow frame]);  viewHeight = CGRectGetHeight([aWindow frame]);
         gapMinimal = 0.5;  gapMaximal = viewHeight / 5 - 2;
+        cMinimal = 0.001;
         state = kStateDrawBack;
         kRangeLimitDefault = "";  kRangeLimitOk = "rangeOK";  kRangeLimitValueAtFloor = "atFloor";
         kRangeLimitValueAtCeiling = "atCeiling";  rangeLimitStatus = kRangeLimitDefault;
 
+        optotypes = [[Optotypes alloc] init];
         colOptotypeFore = [Settings acuityForeColor];  colOptotypeBack = [Settings acuityBackColor];
         [Settings checkDefaults];
         abortCharacter = "5";
@@ -82,7 +86,7 @@ kStateDrawBack = 0; kStateDrawFore = 1;
     iTrial += 1;
     stimStrengthGeneric = [thresholder nextStim2apply];//console.info("stimStrengthGeneric ", stimStrengthGeneric);
     [self modifyGenericStimulus];// e.g. for bonus trials
-    stimStrengthInDeviceunits = [self stimDeviceFromGeneric: stimStrengthGeneric];//console.info("stimStrengthInDeviceunits ", stimStrengthInDeviceunits);
+    stimStrengthInDeviceunits = [self stimDeviceunitsFromGenericunits: stimStrengthGeneric];//console.info("stimStrengthInDeviceunits ", stimStrengthInDeviceunits);
     if (iTrial > nTrials) { // testing after new stimStrength so we can use final threshold
         [self runEnd];  return;
     }
@@ -183,7 +187,7 @@ kStateDrawBack = 0; kStateDrawFore = 1;
 
 - (void) trialEnd { //console.info("Fract>trialEnd");
     [timerDisplay invalidate];  timerDisplay = nil;  [timerResponse invalidate];  timerResponse = nil;//nötig?
-    [thresholder enterTrialOutcomeWithAppliedStim: [self stimGenericFromDevice: stimStrengthInDeviceunits] wasCorrect: responseWasCorrect];
+    [thresholder enterTrialOutcomeWithAppliedStim: [self stimGenericunitsFromDeviceunits: stimStrengthInDeviceunits] wasCorrect: responseWasCorrect];
     switch ([Settings auditoryFeedback]) { // case 0: nothing
         case 1:
             [sound play1];  break;
@@ -266,14 +270,14 @@ kStateDrawBack = 0; kStateDrawFore = 1;
     if (responseKeyChar != abortCharacter) [self processKeyDownEvent];
 }
 
-- (float) stimGenericFromDevice: (float) ntve {
-    console.info("FractController>stimGenericFromDevice OVERRIDE!");
+- (float) stimGenericunitsFromDeviceunits: (float) ntve {
+    console.info("FractController>stimGenericunitsFromDeviceunits OVERRIDE!");
     return ntve;
 }
 
 
-- (float) stimDeviceFromGeneric: (float) generic {
-    console.info("FractController>stimDeviceFromGeneric OVERRIDE!");
+- (float) stimDeviceunitsFromGenericunits: (float) generic {
+    console.info("FractController>stimDeviceunitsFromGenericunits OVERRIDE!");
     return generic;
 }
 
@@ -283,7 +287,7 @@ kStateDrawBack = 0; kStateDrawFore = 1;
 /*	Transformation formula:   gap = c1 * exp(tPest * c2).
  Constants c1 and c2 are determined by thesse 2 contions: tPest==0 → gap=gapMinimal;  tPest==1 → gap=gapMaximal.
  =>c2 = ln(gapMinimal / gapMaximal)/(0 - 1);  c1 = gapMinimal / exp(0 * c2)  */
-- (float) acuityStimDeviceFromGeneric: (float) tPest { //console.info("FractControllerVAC>stimDeviceFromGeneric");
+- (float) acuitystimDeviceunitsFromGenericunits: (float) tPest { //console.info("FractControllerVAC>stimDeviceunitsFromGenericunits");
     var c2 = - Math.log(gapMinimal / gapMaximal), c1 = gapMinimal;
     var deviceVal = c1 * Math.exp(tPest * c2); //console.info("DeviceFromPest " + tPest + " " + deviceVal);
     if ([Misc areNearlyEqual: deviceVal and: gapMaximal]) {
@@ -300,8 +304,8 @@ kStateDrawBack = 0; kStateDrawFore = 1;
     return deviceVal;
 }
         
-        
-- (float) acuityStimGenericFromDevice: (float) d { //console.info("FractControllerVAC>stimGenericFromDevice");
+
+- (float) acuitystimGenericunitsFromDeviceunits: (float) d { //console.info("FractControllerVAC>stimGenericunitsFromDeviceunits");
     var c2 = - Math.log(gapMinimal / gapMaximal), c1 = gapMinimal;
     var retVal = Math.log(d / c1) / c2; //console.info("PestFromDevice " + d + " " + retVal);
     return retVal;
@@ -406,58 +410,28 @@ kStateDrawBack = 0; kStateDrawFore = 1;
 }
 
 
-///////////////////////// DRAWING
-- (void) strokeCircleAtX: (float)x y: (float)y radius: (float) r { //console.info("MBIllus>strokeCircleAtX");
-    CGContextStrokeEllipseInRect(cgc, CGRectMake(x - r, y - r, 2 * r, 2 * r));
+///////////////////////// CONTRAST UTILs
+
+// contrast: 0.001 … 1, pest: 0 … 1
+- (float) contraststimDeviceunitsFromGenericunits: (float) tPest { //console.info("FractControllerVAC>contraststimDeviceunitsFromGenericunits");
+    var deviceVal = cMinimal * Math.pow(10, tPest * 3.0);
+    return deviceVal;
 }
 
 
-- (void) fillCircleAtX: (float)x y: (float)y radius: (float) r { //console.info("MBIllus>fillCircleAtX");
-    CGContextFillEllipseInRect(cgc, CGRectMake(x - r, y - r, 2 * r, 2 * r));
+- (float) contraststimGenericunitsFromDeviceunits: (float) d { //console.info("FractControllerVAC>contraststimGenericunitsFromDeviceunits");
+    var retVal = Math.log10(d / cMinimal) / 3.0;
+    console.info("d: ", d, ",  retVal: ", retVal)
+    return retVal;
 }
 
 
-// no gap for direction -1
-- (void) drawLandoltWithGapInPx: (float) gap landoltDirection: (int) direction { //console.info("OTLandolts>drawLandoltWithGapInPx", gap, direction);
-    CGContextSetFillColor(cgc, colOptotypeFore);
-    [self fillCircleAtX: 0 y: 0 radius: 2.5 * gap];
-    CGContextSetFillColor(cgc, colOptotypeBack);
-    [self fillCircleAtX: 0 y: 0 radius: 1.5 * gap];
-    var rct = CGRectMake(gap * 1.4 - 1, -gap / 2, 1.3 * gap + 1, gap); //console.info(gap, " ", rct);
-    var rot = Math.PI / 180.0 * (7 - (direction - 1)) / 8.0 * 360.0;
-    CGContextRotateCTM(cgc, rot);
-    if (direction >= 0) CGContextFillRect(cgc, rct);
-    CGContextRotateCTM(cgc, -rot);
+- (CPString) contrastComposeTrialInfoString {
+    var s = iTrial + "/" + nTrials + " ";
+    s += [Misc stringFromNumber: [Misc visusFromGapPixels: stimStrengthInDeviceunits] decimals: 2 localised: YES];
+    return s;
 }
 
-
-- (void) strokeLineX0: (float) x0 y0: (float) y0 x1: (float) x1 y1: (float) y1 {//console.info("strokeLineX0");
-    CGContextBeginPath(cgc);
-    CGContextMoveToPoint(cgc, x0, y0);  CGContextAddLineToPoint(cgc, x1, y1);
-    CGContextStrokePath(cgc);
-    currentX = x1;  currentY = y1;
-}
-- (void) strokeLineToX: (float) xxx y: (float) yyy {//console.info("strokeLineX0");
-    CGContextBeginPath(cgc);
-    CGContextMoveToPoint(cgc, currentX, currentY);  CGContextAddLineToPoint(cgc, xxx, yyy);
-    CGContextStrokePath(cgc);
-    currentX = xxx;  currentY = yyy;
-}
-- (void) strokeLineDeltaX: (float) xxx deltaY: (float) yyy {//console.info("strokeLineX0");
-    CGContextBeginPath(cgc);
-    CGContextMoveToPoint(cgc, currentX, currentY);
-    currentX = currentX+xxx;  currentY = currentY+yyy;
-    CGContextAddLineToPoint(cgc, currentX, currentY);
-    CGContextStrokePath(cgc);
-}
-- (void) strokeVLineAtX: (float) x y0: (float) y0 y1: (float) y1 {
-    [self strokeLineX0: x y0: y0 x1: x y1: y1];
-    currentX = x;  currentY = y1;
-}
-- (void) strokeHLineAtX0: (float) x0 y: (float) y x1: (float) x1 {
-    [self strokeLineX0: x0 y0: y x1: x1 y1: y];
-    currentX = x1;  currentY = y;
-}
 
 
 @end
