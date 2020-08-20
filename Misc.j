@@ -195,6 +195,15 @@
 }
 
 
++ (float) lowerLuminanceFromContrastWbr: (float) contrast { //console.info("lowerLuminanceFromContrastMn");
+    contrast = [self contrastWeberFromMichelson: contrast]
+    return [self limit01: [self limit01: 0.5 - 0.5 * contrast]];
+}
++ (float) upperLuminanceFromContrastWbr: (float) contrast { //console.info("highLuminanceFromContras");
+    return [self limit01: [self limit01: 0.5 + 0.5 * contrast]];
+}
+
+
 /*///////////////////////////////////// devicegrey <—> RGB
 + (int) devicegrey2RGB_UNFERTIG: (float) thedevicegrey {
     var g = limit(0, Math.round(255 * thedevicegrey), 255);

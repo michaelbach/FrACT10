@@ -11,7 +11,7 @@
 
 
 @typedef StateType
-kStateDrawBack = 0; kStateDrawFore = 1;
+kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 @implementation FractController: HierarchyController {
     int iTrial, nTrials, nAlternatives;
@@ -27,7 +27,7 @@ kStateDrawBack = 0; kStateDrawFore = 1;
     AlternativesGenerator alternativesGenerator;
     Optotypes optotypes;
     CPString trialInfoString @accessors;
-    CPTimer timerDisplay, timerResponse;
+    CPTimer timerDisplay, timerResponse, timerFixCross;
     CPString kRangeLimitDefault, kRangeLimitOk, kRangeLimitValueAtFloor, kRangeLimitValueAtCeiling, rangeLimitStatus, abortCharacter;
     id sound @accessors;
     BOOL responseButtonsAdded;
@@ -168,12 +168,12 @@ kStateDrawBack = 0; kStateDrawFore = 1;
     [[self window] makeFirstResponder: self];
 }*/
 
--(void) onTimeoutDisplay: (CPTimer) timer { //console.info("FractController>onTimeoutDisplay");
+- (void) onTimeoutDisplay: (CPTimer) timer { //console.info("FractController>onTimeoutDisplay");
     state = kStateDrawBack;  [[[self window] contentView] setNeedsDisplay: YES];
 }
 
 
--(void) onTimeoutResponse: (CPTimer) timer { //console.info("FractController>onTimeoutResponse");
+- (void) onTimeoutResponse: (CPTimer) timer { //console.info("FractController>onTimeoutResponse");
     responseWasCorrect = NO;  [self trialEnd];
 }
 
@@ -421,7 +421,7 @@ kStateDrawBack = 0; kStateDrawFore = 1;
 
 - (float) contraststimGenericunitsFromDeviceunits: (float) d { //console.info("FractControllerVAC>contraststimGenericunitsFromDeviceunits");
     var retVal = Math.log10(d / cMinimal) / 3.0;
-    console.info("d: ", d, ",  retVal: ", retVal)
+    //console.info("d: ", d, ",  retVal: ", retVal)
     return retVal;
 }
 

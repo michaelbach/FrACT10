@@ -175,6 +175,8 @@ Created by mb on July 15, 2015.
     // Contrast stuff
     [self setGammaValue: [self chckFlt: [self gammaValue] def: 1.8 min: 0.8 max: 4 set: set]];
     [self setContrastEasyTrials: [self chckBool: [self contrastEasyTrials] def: YES set: set]];
+    [self setContrastDarkOnLight: [self chckBool: [self contrastDarkOnLight] def: YES set: set]];
+    [self setContrastOptotypeDiameter: [self chckFlt: [self contrastOptotypeDiameter] def: 50 min: 1 max: 500 set: set]];
 
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
@@ -627,6 +629,22 @@ Created by mb on July 15, 2015.
 }
 + (void) setContrastEasyTrials: (BOOL) value {
     [[CPUserDefaults standardUserDefaults] setBool: value forKey: "contrastEasyTrials"];
+}
+
+
++ (BOOL) contrastDarkOnLight {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "contrastDarkOnLight"];
+}
++ (void) setContrastDarkOnLight: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "contrastDarkOnLight"];
+}
+
+
++ (float) contrastOptotypeDiameter {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "contrastOptotypeDiameter"];
+}
++ (void) setContrastOptotypeDiameter: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "contrastOptotypeDiameter"];
 }
 
 

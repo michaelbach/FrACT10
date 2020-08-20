@@ -26,12 +26,15 @@
 }
 
 
-- (float) nextStim2apply { //console.info("Thresholder>NextStim2apply");
-    return [currentThresholder nextStim2apply];
+- (float) nextStim2apply {
+    var retVal = [currentThresholder nextStim2apply];
+    //console.info("Thresholder>NextStim2apply: ", retVal);
+    return retVal;
 }
 
 
 - (void) enterTrialOutcomeWithAppliedStim: (float) appliedStim wasCorrect: (BOOL) wasCorrect {
+    //console.info("Thresholder>enterTrialOutcomeWithAppliedStim", appliedStim, ", wasCorrect: ", wasCorrect)
     [currentThresholder enterTrialOutcomeWithAppliedStim: appliedStim wasCorrect: wasCorrect];
 }
 

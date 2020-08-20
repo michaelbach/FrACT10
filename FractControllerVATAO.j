@@ -14,7 +14,9 @@
 }
 
 
-- (void) modifyGenericStimulus {[self modifyGenericStimulusWithBonus];}
+- (void) modifyGenericStimulus {
+    if ([Settings acuityEasyTrials]) [self modifyGenericStimulusWithBonus];
+}
 - (void) modifyDeviceStimulus {[self acuityModifyDeviceStimulusDIN01_02_04_08];}
 - (float) stimDeviceunitsFromGenericunits: (float) tPest {return [self acuitystimDeviceunitsFromGenericunits: tPest];}
 - (float) stimGenericunitsFromDeviceunits: (float) d {return [self acuitystimGenericunitsFromDeviceunits: d];}
