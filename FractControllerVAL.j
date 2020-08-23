@@ -9,7 +9,6 @@
 @import <Foundation/CPObject.j>
 
 @implementation FractControllerVAL: FractController {
-    float kPi, kPi2;
 }
 
 
@@ -54,7 +53,6 @@
 
 
 - (void) runStart { //console.info("FractControllerVALetters>runStart");
-    kPi = Math.PI;  kPi2 = kPi / 2;
     nAlternatives = 10;  nTrials = [Settings nTrials08];
     [self setCurrentTestName: "Acuity_Letters"];
     [self setCurrentTestResultUnit: "LogMAR"];

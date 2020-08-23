@@ -12,7 +12,8 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
-2020-08-17 refactored to separated the "Optotypes"
+2020-08-20 Contrast Letters seems to be working, added button and contrast GUI tab, added appropriate Settings
+2020-08-17 refactored to separate the "Optotypes"
 2020-07-03 add @typedef TestIDType; @typedef StateType
 2020-07-03 Export: Vs: 2; add comma/dot; add button → cheat sheet in Help
 2020-07-03 rename (nearly) all "Auck…" to TAO…, default no reward images, default testOn5: Sloan Letters
@@ -177,6 +178,7 @@ Created by mb on July 15, 2015.
     [self setContrastEasyTrials: [self chckBool: [self contrastEasyTrials] def: YES set: set]];
     [self setContrastDarkOnLight: [self chckBool: [self contrastDarkOnLight] def: YES set: set]];
     [self setContrastOptotypeDiameter: [self chckFlt: [self contrastOptotypeDiameter] def: 50 min: 1 max: 500 set: set]];
+    [self setContrastTimeoutFixmark: [self chckFlt: [self contrastTimeoutFixmark] def: 500 min: 0 max: 5000 set: set]];
 
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
@@ -185,20 +187,19 @@ Created by mb on July 15, 2015.
 + (void) calculateMaxPossibleDecimalAcuity { //console.info("Settings>calculateMaxPossibleDecimalAcuity");
     var maxPossibleAcuityVal = [Misc visusFromGapPixels: 1.0];
     maxPossibleAcuityVal = [self threshCorrection] ? maxPossibleAcuityVal * 0.891 : maxPossibleAcuityVal;
-    // Korrektur für Schwellenunterschätzung aufsteigender Verfahren
+    // Correction for threshold underestimation of ascending procedures (as opposed to our bracketing one)
     [self setMaxPossibleDecimalAcuity: [Misc stringFromNumber: maxPossibleAcuityVal decimals: 2 localised: NO]];
 }
 
 
-// contrast in %, so we need to divide for the -1 … +1 scale
-// 100%: background fully white, foreground fully dark
+// contrast in %. 100%: background fully white, foreground fully dark. -100%: inverted
 + (void) calculateAcuityForeBackColorsFromContrast { //console.info("Settings>calculateAcuityForeBackColorsFromContrast");
-    var cnt = [Misc contrastMichelsonFromWeber: [self contrastAcuityWeber]] / 100;
+    var cnt = [Misc contrastMichelsonFromWeber: [self contrastAcuityWeber]];
 
-    var temp = [Misc lowerLuminanceFromContrastMn: cnt];  temp = [Misc devicegreyFromLuminance: temp];
+    var temp = [Misc lowerLuminanceFromContrastMln: cnt];  temp = [Misc devicegreyFromLuminance: temp];
     [self setAcuityForeColor: [CPColor colorWithWhite: temp alpha: 1]];
 
-    temp = [Misc upperLuminanceFromContrastMn: cnt];  temp = [Misc devicegreyFromLuminance: temp];
+    temp = [Misc upperLuminanceFromContrastMln: cnt];  temp = [Misc devicegreyFromLuminance: temp];
     [self setAcuityBackColor: [CPColor colorWithWhite: temp alpha: 1]];
     
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyForeBackColorsFromSettings" object: nil];
@@ -217,8 +218,8 @@ Created by mb on July 15, 2015.
     }
     
     // checking some later additions for sensible values
-    if ([Settings contrastAcuityWeber] == 1) [Settings setContrastAcuityWeber: 100]; // until everyone defaulted anew :)
-    if ([Settings contrastAcuityWeber] == 0) [Settings setContrastAcuityWeber: 100]; // until everyone defaulted anew :)
+//    if ([Settings contrastAcuityWeber] == 1) [Settings setContrastAcuityWeber: 100]; // until everyone defaulted anew :)
+//    if ([Settings contrastAcuityWeber] == 0) [Settings setContrastAcuityWeber: 100]; // until everyone defaulted anew :)
 
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
@@ -243,15 +244,8 @@ Created by mb on July 15, 2015.
 }
 
 
-+ (int) nAlternatives { //console.info("Settings>nAlternatives");
-    switch ([[CPUserDefaults standardUserDefaults] integerForKey: "nAlternativesIndex"]) {
-        case 0:  return 2;  break;
-        case 1:  return 4;  break;
-        case 2:  return 8;  break;
-    }
-}
-
-
+///////////////////////////////////////////////////////////
+// for all tests
 + (int) nTrials { //console.info("Settings>nTrials");
     switch ([self nAlternatives]) {
         case 2:  return [self nTrials02];  break;
@@ -259,7 +253,6 @@ Created by mb on July 15, 2015.
         default:  return [self nTrials08];
     }
 }
-
 
 + (int) nTrials02 { //console.info("Settings>nTrials02");
     var t = [[CPUserDefaults standardUserDefaults] integerForKey: "nTrials02"]; //console.info(t);
@@ -269,7 +262,6 @@ Created by mb on July 15, 2015.
     [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "nTrials02"];
 }
 
-
 + (int) nTrials04 { //console.info("Settings>nTrials04");
     return [[CPUserDefaults standardUserDefaults] integerForKey: "nTrials04"];
 }
@@ -277,12 +269,19 @@ Created by mb on July 15, 2015.
     [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "nTrials04"];
 }
 
-
 + (int) nTrials08 {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "nTrials08"];
 }
 + (void) setNTrials08: (int) value {
     [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "nTrials08"];
+}
+
++ (int) nAlternatives { //console.info("Settings>nAlternatives");
+    switch ([[CPUserDefaults standardUserDefaults] integerForKey: "nAlternativesIndex"]) {
+        case 0:  return 2;  break;
+        case 1:  return 4;  break;
+        case 2:  return 8;  break;
+    }
 }
 
 
@@ -293,7 +292,6 @@ Created by mb on July 15, 2015.
     [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "distanceInCM"];
 }
 
-
 + (float) calBarLengthInMM {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "calBarLengthInMM"];
 }
@@ -301,43 +299,11 @@ Created by mb on July 15, 2015.
     [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "calBarLengthInMM"];
 }
 
-
 + (float) calBarLengthInPixel {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "calBarLengthInPixel"];
 }
 + (void)setCalBarLengthInPixel: (float) value {
     [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "calBarLengthInPixel"];
-}
-
-
-+ (int) testOnFive {
-    return [[CPUserDefaults standardUserDefaults] integerForKey: "testOnFive"];
-}
-+ (void) setTestOnFive: (int) value {
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "testOnFive"];
-}
-
-
-+ (char) decimalMarkChar {
-    if ([[CPUserDefaults standardUserDefaults] integerForKey: "decimalMarkCharIndex"] == 0) {
-        return "."
-    } else {
-        return ","
-    }
-}
-+ (void) setDecimalMarkChar: (char) mark {
-    var idx = (mark == ".") ? 0 : 1;
-    [[CPUserDefaults standardUserDefaults] setInteger: idx forKey: "decimalMarkCharIndex"];
-}
-
-
-
-+ (int) nAlternatives { //console.info("Settings>nAlternatives");
-    switch ([[CPUserDefaults standardUserDefaults] integerForKey: "nAlternativesIndex"]) {
-        case 0:  return 2;  break;
-        case 1:  return 4;  break;
-        case 2:  return 8;  break;
-    }
 }
 
 
@@ -349,11 +315,19 @@ Created by mb on July 15, 2015.
 }
 
 
-+ (BOOL) enableTouchControls {
-    return [[CPUserDefaults standardUserDefaults] boolForKey: "enableTouchControls"];
++ (int) testOnFive {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "testOnFive"];
 }
-+ (void) setEnableTouchControls: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "enableTouchControls"];
++ (void) setTestOnFive: (int) value {
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "testOnFive"];
+}
+
+
++ (int) nOfRuns2Recall {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "nOfRuns2Recall"];
+}
++ (void) setNOfRuns2Recall: (float) value {
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "nOfRuns2Recall"];
 }
 
 
@@ -381,78 +355,6 @@ Created by mb on July 15, 2015.
 }
 
 
-+ (float) maxPossibleDecimalAcuity {
-    return [[CPUserDefaults standardUserDefaults] floatForKey: "maxPossibleDecimalAcuity"];
-}
-+ (void) setMaxPossibleDecimalAcuity: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "maxPossibleDecimalAcuity"];
-}
-
-
-+ (float) gammaValue {
-    return [[CPUserDefaults standardUserDefaults] floatForKey: "gammaValue"];
-}
-+ (void)setGammaValue: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "gammaValue"];
-}
-
-
-+ (BOOL) threshCorrection {
-    return [[CPUserDefaults standardUserDefaults] boolForKey: "threshCorrection"];
-}
-+ (void)setThreshCorrection: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "threshCorrection"];
-}
-
-
-+ (int) results2clipboard {
-    return [[CPUserDefaults standardUserDefaults] integerForKey: "results2clipboard"];
-}
-+ (void) setResults2clipboard: (float) value {
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "results2clipboard"];
-}
-
-
-+ (int) nOfRuns2Recall {
-    return [[CPUserDefaults standardUserDefaults] integerForKey: "nOfRuns2Recall"];
-}
-+ (void) setNOfRuns2Recall: (float) value {
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "nOfRuns2Recall"];
-}
-
-
-+ (int) vernierType {
-    return [[CPUserDefaults standardUserDefaults] integerForKey: "vernierType"];
-}
-+ (void) setVernierType: (float) value {
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "vernierType"];
-}
-
-
-+ (float) vernierWidth {
-    return [[CPUserDefaults standardUserDefaults] floatForKey: "vernierWidth"];
-}
-+ (void) setVernierWidth: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "vernierWidth"];
-}
-
-
-+ (float) vernierLength {
-    return [[CPUserDefaults standardUserDefaults] floatForKey: "vernierLength"];
-}
-+ (void) setVernierLength: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "vernierLength"];
-}
-
-
-+ (float) vernierGap {
-    return [[CPUserDefaults standardUserDefaults] floatForKey: "vernierGap"];
-}
-+ (void) setVernierGap: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "vernierGap"];
-}
-
-
 + (BOOL) trialInfo {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "trialInfo"];
 }
@@ -466,6 +368,36 @@ Created by mb on July 15, 2015.
 }
 + (void) setTrialInfoFontSize: (float) value {
     [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "trialInfoFontSize"];
+}
+
+
++ (float) timeoutResponseSeconds {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "timeoutResponseSeconds"];
+}
++ (void) setTimeoutResponseSeconds: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "timeoutResponseSeconds"];
+}
+
++ (float) timeoutDisplaySeconds {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "timeoutDisplaySeconds"];
+}
++ (void) setTimeoutDisplaySeconds: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "timeoutDisplaySeconds"];
+}
+
++ (float) maskTimeOnResponseInMS {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "maskTimeOnResponseInMS"];
+}
++ (void)setMaskTimeOnResponseInMS: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "maskTimeOnResponseInMS"];
+}
+
+
++ (int) results2clipboard {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "results2clipboard"];
+}
++ (void) setResults2clipboard: (float) value {
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "results2clipboard"];
 }
 
 
@@ -523,11 +455,53 @@ Created by mb on July 15, 2015.
 }
 
 
-+ (float) maskTimeOnResponseInMS {
-    return [[CPUserDefaults standardUserDefaults] floatForKey: "maskTimeOnResponseInMS"];
+
+
+
+////////////////////////
+
+
+
+
+
+
+
+
++ (char) decimalMarkChar {
+    if ([[CPUserDefaults standardUserDefaults] integerForKey: "decimalMarkCharIndex"] == 0) {
+        return "."
+    } else {
+        return ","
+    }
 }
-+ (void)setMaskTimeOnResponseInMS: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "maskTimeOnResponseInMS"];
++ (void) setDecimalMarkChar: (char) mark {
+    var idx = (mark == ".") ? 0 : 1;
+    [[CPUserDefaults standardUserDefaults] setInteger: idx forKey: "decimalMarkCharIndex"];
+}
+
+
+
++ (BOOL) enableTouchControls {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "enableTouchControls"];
+}
++ (void) setEnableTouchControls: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "enableTouchControls"];
+}
+
+
++ (float) maxPossibleDecimalAcuity {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "maxPossibleDecimalAcuity"];
+}
++ (void) setMaxPossibleDecimalAcuity: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "maxPossibleDecimalAcuity"];
+}
+
+
++ (BOOL) threshCorrection {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "threshCorrection"];
+}
++ (void)setThreshCorrection: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "threshCorrection"];
 }
 
 
@@ -624,13 +598,43 @@ Created by mb on July 15, 2015.
 }
 
 
+// Vernier stuff
++ (int) vernierType {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "vernierType"];
+}
++ (void) setVernierType: (float) value {
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "vernierType"];
+}
+
++ (float) vernierWidth {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "vernierWidth"];
+}
++ (void) setVernierWidth: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "vernierWidth"];
+}
+
++ (float) vernierLength {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "vernierLength"];
+}
++ (void) setVernierLength: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "vernierLength"];
+}
+
++ (float) vernierGap {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "vernierGap"];
+}
++ (void) setVernierGap: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "vernierGap"];
+}
+
+
+// Contrast stuff
 + (BOOL) contrastEasyTrials {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "contrastEasyTrials"];
 }
 + (void) setContrastEasyTrials: (BOOL) value {
     [[CPUserDefaults standardUserDefaults] setBool: value forKey: "contrastEasyTrials"];
 }
-
 
 + (BOOL) contrastDarkOnLight {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "contrastDarkOnLight"];
@@ -639,7 +643,6 @@ Created by mb on July 15, 2015.
     [[CPUserDefaults standardUserDefaults] setBool: value forKey: "contrastDarkOnLight"];
 }
 
-
 + (float) contrastOptotypeDiameter {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "contrastOptotypeDiameter"];
 }
@@ -647,21 +650,20 @@ Created by mb on July 15, 2015.
     [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "contrastOptotypeDiameter"];
 }
 
++ (float) contrastTimeoutFixmark {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "contrastTimeoutFixmark"];
+}
++ (void) setContrastTimeoutFixmark: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "contrastTimeoutFixmark"];
+}
 
-+ (float) timeoutResponseSeconds {
-    return [[CPUserDefaults standardUserDefaults] floatForKey: "timeoutResponseSeconds"];
++ (float) gammaValue {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "gammaValue"];
 }
-+ (void) setTimeoutResponseSeconds: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "timeoutResponseSeconds"];
++ (void) setGammaValue: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "gammaValue"];
 }
 
-
-+ (float) timeoutDisplaySeconds {
-    return [[CPUserDefaults standardUserDefaults] floatForKey: "timeoutDisplaySeconds"];
-}
-+ (void) setTimeoutDisplaySeconds: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "timeoutDisplaySeconds"];
-}
 
 
 @end

@@ -46,7 +46,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         [aWindow setDelegate: self];
         viewWidth = CGRectGetWidth([aWindow frame]);  viewHeight = CGRectGetHeight([aWindow frame]);
         gapMinimal = 0.5;  gapMaximal = viewHeight / 5 - 2;
-        cMinimal = 0.001;
+        cMinimal = 0.001; // Ø%!!! (o…1)
         state = kStateDrawBack;
         kRangeLimitDefault = "";  kRangeLimitOk = "rangeOK";  kRangeLimitValueAtFloor = "atFloor";
         kRangeLimitValueAtCeiling = "atCeiling";  rangeLimitStatus = kRangeLimitDefault;
@@ -61,6 +61,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         [[self window] makeKeyAndOrderFront: self];  [[self window] makeFirstResponder: self];
         //[self performSelector: @selector(runStart) withObject: nil afterDelay: 0.01];//geht nicht mehr nach DEPLOY???
         [self runStart];
+        // [self testContrastDeviceThresholdConversion];
     }
     return self;
 }
@@ -103,6 +104,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if ([Settings trialInfo]) {
         CGContextSetTextPosition(cgc, 10, 10); // we assume here no transformed CGContext
         CGContextSetFillColor(cgc, colOptotypeFore);
+        CGContextSetFillColor(cgc, [CPColor blackColor]);
         CGContextShowText(cgc, trialInfoString);
     }
 
@@ -290,6 +292,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (float) acuitystimDeviceunitsFromGenericunits: (float) tPest { //console.info("FractControllerVAC>stimDeviceunitsFromGenericunits");
     var c2 = - Math.log(gapMinimal / gapMaximal), c1 = gapMinimal;
     var deviceVal = c1 * Math.exp(tPest * c2); //console.info("DeviceFromPest " + tPest + " " + deviceVal);
+    // ROUNDING for realisable gap values? @@@
     if ([Misc areNearlyEqual: deviceVal and: gapMaximal]) {
         if (!isBonus) {
             rangeLimitStatus = kRangeLimitValueAtCeiling; //console.info("max gap size!")
@@ -412,23 +415,28 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 ///////////////////////// CONTRAST UTILs
 
-// contrast: 0.001 … 1, pest: 0 … 1
+// contrast: 0.1 … 100, pest: 0 … 1
 - (float) contraststimDeviceunitsFromGenericunits: (float) tPest { //console.info("FractControllerVAC>contraststimDeviceunitsFromGenericunits");
-    var deviceVal = cMinimal * Math.pow(10, tPest * 3.0);
+    var deviceVal = 100 * cMinimal * Math.pow(10, tPest * Math.log10(1 / cMinimal));
     return deviceVal;
 }
-
-
 - (float) contraststimGenericunitsFromDeviceunits: (float) d { //console.info("FractControllerVAC>contraststimGenericunitsFromDeviceunits");
-    var retVal = Math.log10(d / cMinimal) / 3.0;
+    var retVal = Math.log10(d / 100 / cMinimal) / Math.log10(1 / cMinimal);
     //console.info("d: ", d, ",  retVal: ", retVal)
     return retVal;
 }
-
+- (void) testContrastDeviceThresholdConversion {
+    for (var i = 0; i <= 1.0; i += 0.1) {
+        var d = [self contraststimDeviceunitsFromGenericunits: i];
+        console.info("threshh: ", i, ", devUnits: ", d, ", threshh: ", [self contraststimGenericunitsFromDeviceunits: d]);
+    }
+}
 
 - (CPString) contrastComposeTrialInfoString {
-    var s = iTrial + "/" + nTrials + " ";
-    s += [Misc stringFromNumber: [Misc visusFromGapPixels: stimStrengthInDeviceunits] decimals: 2 localised: YES];
+    var s = "trial: " + iTrial + "/" + nTrials;
+    s +=  ", contrast: " + [Misc stringFromNumber: [optotypes getCurrentContrastWbr] decimals: 2 localised: YES];
+    s += ", logCSW: " + [Misc stringFromNumber: Math.log10([optotypes getCurrentContrastWbr] / 100) decimals: 3 localised: YES];
+    s += ", alternative: " + [alternativesGenerator currentAlternative];
     return s;
 }
 

@@ -28,14 +28,14 @@
 
 
 @typedef TestIDType
-kTestIDLett = 0; kTestIDC = 1; kTestIDE = 2; kTestIDAuck = 3; kTestIDVernier = 4; kTestContrastC = 5;
+kTestIDLett = 0; kTestIDC = 1; kTestIDE = 2; kTestIDAuck = 3; kTestIDVernier = 4; kTestContrastLett = 5; kTestContrastC = 6;
 
 CPPushOnPushOffButton   = 1;
 
 @implementation AppController : HierarchyController {
     @outlet CPWindow fractControllerWindow;
-    @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier;
-    @outlet CPButton buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier;
+    @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier, responseinfoPanelCntLett, responseinfoPanelCntC;
+    @outlet CPButton buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier, buttCntLett;
     @outlet CPButton buttonExport;
     CPImageView rewardImageView;
     RewardsController rewardsController;
@@ -74,13 +74,13 @@ CPPushOnPushOffButton   = 1;
 
 
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>applicationDidFinishLaunching");
-    var allButtons = [buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier];
+    var allButtons = [buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier, buttCntLett];
     for (var i = 0; i < allButtons.length; i++)  [self adjustImageButton: allButtons[i]];
     
     allTestControllers = [FractControllerVAL, FractControllerVAC, FractControllerVAE, FractControllerVATAO, FractControllerVAVernier, FractControllerContrastLett, FractControllerContrastC];
 //    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
     
-    allPanels = [responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier, settingsPanel, helpPanel, aboutPanel];
+    allPanels = [responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier, responseinfoPanelCntLett, settingsPanel, helpPanel, aboutPanel];
     for (var i = 0; i < allPanels.length; i++)  [allPanels[i] setFrameOrigin: CGPointMake(0, 0)];
    
     [[self window] setTitle: "FrACT10"];  [self setVersionDateString: [Settings versionNumber] + "·" + [Settings versionDate]];
@@ -169,6 +169,8 @@ CPPushOnPushOffButton   = 1;
                 [responseinfoPanelVATAO makeKeyAndOrderFront: self];  break;
             case kTestIDVernier:
                 [responseinfoPanelVAVernier makeKeyAndOrderFront: self];  break;
+            case kTestContrastLett:
+                [responseinfoPanelCntLett makeKeyAndOrderFront: self];  break;
             case kTestContrastC:
                 //[responseinfoPanelVAVernier makeKeyAndOrderFront: self];
                 break;
@@ -234,7 +236,7 @@ CPPushOnPushOffButton   = 1;
         case "V":
             [self  buttonDoAcuityVernier_action: nil];  break;
         case "1":
-            [self  buttonDoContrastC_action: nil];  break;
+            [self  buttonDoContrastLett_action: nil];  break;
         case "5" :
             switch([Settings testOnFive]) {
                 case 1: [self  buttonDoAcuityLetters_action: nil];  break;
@@ -275,6 +277,9 @@ CPPushOnPushOffButton   = 1;
 }
 - (IBAction) buttonDoAcuityVernier_action: (id) sender { //console.info("AppController>buttonDoAcuityE_action");
     testID = kTestIDVernier;    [self runFractController];
+}
+- (IBAction) buttonDoContrastLett_action: (id) sender { //console.info("AppController>buttonDoContrastC_action");
+    testID = kTestContrastLett;    [self runFractController];
 }
 - (IBAction) buttonDoContrastC_action: (id) sender { //console.info("AppController>buttonDoContrastC_action");
     testID = kTestContrastC;    [self runFractController];

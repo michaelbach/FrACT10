@@ -50,7 +50,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
                     <button toolTip="Start acuity run using Landolt-Cs.  Shortcut: C" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWr-KV-CRJ">
-                        <rect key="frame" x="189" y="385" width="114" height="32"/>
+                        <rect key="frame" x="189" y="430" width="114" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttVAC" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ivt-76-XPn">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -61,7 +61,7 @@
                         </connections>
                     </button>
                     <button toolTip="Start acuity run using tumbling Es.  Shortcut: E" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Phl-6Z-YpU">
-                        <rect key="frame" x="341" y="385" width="114" height="32"/>
+                        <rect key="frame" x="341" y="430" width="114" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttVAE" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gQo-pc-sRD">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -72,7 +72,7 @@
                         </connections>
                     </button>
                     <button toolTip="Start acuity run using TAO (The Auckland Optotypes).  Shortcut: A" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6e2-Sj-gkY">
-                        <rect key="frame" x="495" y="385" width="114" height="32"/>
+                        <rect key="frame" x="495" y="430" width="114" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttonTAO" imagePosition="only" alignment="center" enabled="NO" borderStyle="border" imageScaling="axesIndependently" inset="2" id="nnv-n0-fGE">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -83,7 +83,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUU-sC-ci6">
-                        <rect key="frame" x="39" y="224" width="114" height="32"/>
+                        <rect key="frame" x="39" y="194" width="114" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Go to the Settings screen
 
@@ -97,7 +97,7 @@ Shortcut: s </string>
                         </connections>
                     </button>
                     <textField toolTip="Gist of important current settings" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RFV-zI-Z0H">
-                        <rect key="frame" x="45" y="168" width="592" height="26"/>
+                        <rect key="frame" x="45" y="143" width="592" height="26"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="keyTestSettingsString" id="pPK-bU-djf">
                             <font key="font" metaFont="system"/>
@@ -109,11 +109,11 @@ Shortcut: s </string>
                         </connections>
                     </textField>
                     <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="VTI-MS-JAu">
-                        <rect key="frame" x="12" y="149" width="776" height="5"/>
+                        <rect key="frame" x="12" y="124" width="776" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
                     <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Oxi-an-PcJ">
-                        <rect key="frame" x="12" y="284" width="776" height="5"/>
+                        <rect key="frame" x="12" y="244" width="776" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
                     <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="RYj-oG-Hiz">
@@ -121,7 +121,7 @@ Shortcut: s </string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
                     <button toolTip="Start acuity run using Sloan Letters.  Shortcut: L" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jHx-aa-MPC">
-                        <rect key="frame" x="40" y="385" width="114" height="32"/>
+                        <rect key="frame" x="40" y="430" width="114" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttVALett" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xw1-er-aQN">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -132,7 +132,7 @@ Shortcut: s </string>
                         </connections>
                     </button>
                     <button toolTip="Start hyperacuity (Vernier) run.  Shortcut: V" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oB-kn-EbO">
-                        <rect key="frame" x="647" y="385" width="114" height="32"/>
+                        <rect key="frame" x="647" y="430" width="114" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="buttVAVernier" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vzK-pu-pjy">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -143,7 +143,7 @@ Shortcut: s </string>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y5b-QD-e3x">
-                        <rect key="frame" x="647" y="224" width="114" height="32"/>
+                        <rect key="frame" x="647" y="194" width="114" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="About" bezelStyle="rounded" image="iconAbout" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="duS-rs-9gg">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -154,7 +154,7 @@ Shortcut: s </string>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CDI-8L-YSC">
-                        <rect key="frame" x="443" y="224" width="114" height="32"/>
+                        <rect key="frame" x="443" y="194" width="114" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Help" bezelStyle="rounded" image="iconHelp" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7qY-Pl-QqO">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -166,7 +166,7 @@ Shortcut: s </string>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHP-WN-mFO">
-                        <rect key="frame" x="239" y="224" width="115" height="32"/>
+                        <rect key="frame" x="239" y="194" width="115" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Toggle “fullscreen”
 
@@ -204,7 +204,7 @@ Shortcut: f </string>
                         </connections>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L8d-bR-KqO">
-                        <rect key="frame" x="610" y="170" width="151" height="32"/>
+                        <rect key="frame" x="610" y="145" width="151" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Export→Clipboard" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yIl-d4-aF3">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -212,6 +212,17 @@ Shortcut: f </string>
                         </buttonCell>
                         <connections>
                             <action selector="buttonExport_action:" target="450" id="aIb-Nf-ia3"/>
+                        </connections>
+                    </button>
+                    <button toolTip="Start acuity run using Sloan Letters.  Shortcut: L" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rNE-r4-ESi">
+                        <rect key="frame" x="39" y="301" width="114" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="butCntLett" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="g65-ae-fbX">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="buttonDoContrastLett_action:" target="450" id="h4K-qc-MWf"/>
                         </connections>
                     </button>
                 </subviews>
@@ -524,6 +535,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
         <customObject id="450" customClass="AppController">
             <connections>
                 <outlet property="aboutPanel" destination="ErU-UN-jpI" id="7Pz-ls-119"/>
+                <outlet property="buttCntLett" destination="rNE-r4-ESi" id="WnG-aY-YwI"/>
                 <outlet property="buttVAC" destination="sWr-KV-CRJ" id="eJP-Al-Hhm"/>
                 <outlet property="buttVAE" destination="Phl-6Z-YpU" id="obG-lD-sX0"/>
                 <outlet property="buttVALett" destination="jHx-aa-MPC" id="tuh-WT-4uS"/>
@@ -532,6 +544,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                 <outlet property="buttonExport" destination="L8d-bR-KqO" id="YCp-1H-vRB"/>
                 <outlet property="fractControllerWindow" destination="r6R-bh-Qyp" id="M05-uu-qYO"/>
                 <outlet property="helpPanel" destination="28C-lv-KIF" id="Uyw-Zc-Dhd"/>
+                <outlet property="responseinfoPanelCntLett" destination="FJ1-4N-r6U" id="Shv-Ch-VaO"/>
                 <outlet property="responseinfoPanelVA4C" destination="KH7-H9-rEd" id="9RI-zp-bV8"/>
                 <outlet property="responseinfoPanelVA8C" destination="UBW-u3-RSn" id="Gqz-Zw-DfA"/>
                 <outlet property="responseinfoPanelVAE" destination="TXq-Ap-CfY" id="g0E-03-G4D"/>
@@ -1345,7 +1358,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </connections>
                                         </button>
                                         <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mIY-OC-I8Q">
-                                            <rect key="frame" x="15" y="222" width="154" height="18"/>
+                                            <rect key="frame" x="15" y="195" width="154" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Enable touch controls" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wX6-mM-ZH0">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1357,7 +1370,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xoy-Q5-O3A">
-                                            <rect key="frame" x="15" y="195" width="108" height="18"/>
+                                            <rect key="frame" x="15" y="222" width="108" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">When on, shows current trial number, total number of trials, and the current threshold (in decimal acuity) in tiny letters at top left.</string>
                                             <buttonCell key="cell" type="check" title="Show trial info" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="g4l-Vk-dB6">
@@ -2150,7 +2163,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lcc-Iq-YtQ">
-                                            <rect key="frame" x="15" y="389" width="123" height="35"/>
+                                            <rect key="frame" x="15" y="352" width="123" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">If unchecked, the raw=psychometric threshold is caculated. If checked (default), it's descending-corrected, thus reflecting DIN/ISO values.</string>
                                             <buttonCell key="cell" type="check" title="Dark on light" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="W2N-2I-sCS">
@@ -2162,7 +2175,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </connections>
                                         </button>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q2Y-AR-KXh">
-                                            <rect key="frame" x="17" y="306" width="45" height="21"/>
+                                            <rect key="frame" x="17" y="267" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="Znx-Pa-tgb">
                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="nuG-MA-6ZM"/>
@@ -2178,7 +2191,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WRa-Gy-4ku">
-                                            <rect key="frame" x="15" y="335" width="114" height="16"/>
+                                            <rect key="frame" x="68" y="270" width="114" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Diameter [arcmin]" id="k8n-UU-dxq">
                                                 <font key="font" metaFont="system"/>
@@ -2186,8 +2199,33 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7g6-ZC-0RB">
+                                            <rect key="frame" x="17" y="177" width="45" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="7Hj-2n-DFq">
+                                                <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="rCY-X3-393"/>
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <connections>
+                                                    <binding destination="izh-pU-csC" name="value" keyPath="values.contrastTimeoutFixmark" id="Y3N-dK-y0T"/>
+                                                </connections>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="value" keyPath="values.contrastTimeoutFixmark" id="oJx-Ol-gwd"/>
+                                            </connections>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="APZ-Gr-9ge">
+                                            <rect key="frame" x="68" y="180" width="133" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Fixation timeout [ms]" id="Y30-RA-8mH">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VtL-41-f6x">
-                                            <rect key="frame" x="17" y="222" width="45" height="21"/>
+                                            <rect key="frame" x="17" y="87" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="8S2-DM-aFk">
                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="1Ld-kJ-3lP"/>
@@ -2203,7 +2241,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jmI-Rj-0PL">
-                                            <rect key="frame" x="15" y="251" width="51" height="16"/>
+                                            <rect key="frame" x="68" y="90" width="51" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Gamma" id="GhE-2Z-zHS">
                                                 <font key="font" metaFont="system"/>
@@ -2764,9 +2802,91 @@ Gw
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
         </window>
+        <window title="Letter contrast assessment – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="FJ1-4N-r6U" userLabel="responseinfoPanelCntLett" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
+            <rect key="contentRect" x="167" y="107" width="800" height="600"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <view key="contentView" id="eyu-nI-EUu">
+                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hQ1-aO-Xpi">
+                        <rect key="frame" x="20" y="348" width="760" height="197"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="whV-ev-cQc">
+                            <font key="font" metaFont="system" size="16"/>
+                            <string key="title">
+Use the letter keys on your keyboard to type the letter appearing on the screen.
+
+On touch devices, use the buttons at the bottom of the screen (may need to enable).
+
+
+If you can't recognise the letter, use your best guess.
+
+
+Type 55, or Ø, or &lt;esc&gt; to abort the run.
+</string>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xIs-LT-Vyp">
+                        <rect key="frame" x="702" y="13" width="84" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9bi-Wj-Rlf">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="runFractController2_actionOK:" target="450" id="Ow1-zA-jNw"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5C4-xt-BpN">
+                        <rect key="frame" x="618" y="13" width="84" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ZFI-Cn-iJZ">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="runFractController2_actionCancel:" target="450" id="qDG-kn-CBT"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wzJ-CB-ZjH">
+                        <rect key="frame" x="18" y="20" width="284" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Settings&gt;General&gt;Show response info at start" id="NNF-W9-7wx">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ShV-7h-Gjs">
+                        <rect key="frame" x="18" y="304" width="342" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Enable Touch Controls (necessary without keyboard)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="sI3-uA-Bb2">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTouchControls" id="fxf-TK-Gyp"/>
+                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="9Kf-qH-6TH"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="131" y="2168"/>
+        </window>
     </objects>
     <resources>
         <image name="FrACT_icon-390" width="390" height="390"/>
+        <image name="butCntLett" width="936" height="658"/>
         <image name="buttVAC" width="170.16000366210938" height="95.760002136230469"/>
         <image name="buttVAE" width="130.08000183105469" height="101.76000213623047"/>
         <image name="buttVALett" width="170.16000366210938" height="95.519996643066406"/>

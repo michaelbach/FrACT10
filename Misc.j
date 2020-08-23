@@ -156,25 +156,46 @@
 
 //////////////////////////////////////
 // Michelson ←→ Weber contrast.
-// both contrasts are defined on a 0…100 scale
+// both contrasts are defined on a -100…100 scale
+// Weber is manipulated so it is also point-symmetric to zero like Michelson
 + (float) contrastWeberFromMichelson: (float) inMichelson {
+    var outWeber;
     inMichelson /= 100;
-    weberValue = 2.0 * inMichelson / (1.0 + inMichelson);
-    // console.info("contrastWeberFromMichelson: ", inMichelson * 100, weberValue * 100);
-    return weberValue * 100;
+    if (inMichelson >= 0) {
+        outWeber = 2.0 * inMichelson / (1.0 + inMichelson);
+    } else {
+        inMichelson *= -1;
+        outWeber = 2.0 * inMichelson / (1.0 + inMichelson);
+        outWeber *= 1;
+    }
+    // console.info("contrastWeberFromMichelson: ", inMichelson * 100, outWeber * 100);
+    return outWeber * 100;
 }
 + (float) contrastMichelsonFromWeber: (float) inWeber {
+    var outMichelson;
     inWeber /= 100;
-    michelsonValue = inWeber / (2.0 - inWeber);
-    // console.info("contrastMichelsonFromWeber: ", inWeber * 100, michelsonValue * 100);
-    return michelsonValue * 100;
+    if (inWeber >= 0) {
+        outMichelson = inWeber / (2.0 - inWeber);
+    } else {
+        inWeber *= -1;
+        outMichelson = inWeber / (2.0 - inWeber);
+        outMichelson *= -1;
+    }
+    // console.info("contrastMichelsonFromWeber: ", inWeber * 100, outMichelson * 100);
+    return outMichelson * 100;
+}
++ testContrastConversion {
+    for (var i = -100; i <= 100; i += 10) {
+        var w = [Misc contrastWeberFromMichelson: i];
+        console.info("contrastM: ", i, ", W: ", w, ", M: ", [Misc contrastMichelsonFromWeber: w]);
+    }
 }
 
 
 //////////////////////////////////////////////////////////////////
 ////////////////////////////////////// luminance <—> devicegrey
 // scales
-// contrast: -1 … 1
+// contrast: -100 … 100 (both for Michelson & Weber
 // “devicegrey": 0 … 1 AFTER gamma correction
 // "luminance": (0…1) as "normalised" luminance as would be measured in cd/m²
 //////////////////////////////////////////////////////////////////
@@ -187,20 +208,20 @@
     return Math.pow(g, [Settings gammaValue]);
 }
 
-+ (float) lowerLuminanceFromContrastMn: (float) contrast { //console.info("lowerLuminanceFromContrastMn");
-    return [self limit01: [self limit01: 0.5 - 0.5 * contrast]];
++ (float) lowerLuminanceFromContrastMln: (float) contrast { //console.info("lowerLuminanceFromContrastMln");
+    return [self limit01: [self limit01: 0.5 - 0.5 * contrast / 100]];
 }
-+ (float) upperLuminanceFromContrastMn: (float) contrast { //console.info("highLuminanceFromContras");
-    return [self limit01: [self limit01: 0.5 + 0.5 * contrast]];
++ (float) upperLuminanceFromContrastMln: (float) contrast { //console.info("highLuminanceFromContras");
+    return [self limit01: [self limit01: 0.5 + 0.5 * contrast / 100]];
 }
 
 
-+ (float) lowerLuminanceFromContrastWbr: (float) contrast { //console.info("lowerLuminanceFromContrastMn");
-    contrast = [self contrastWeberFromMichelson: contrast]
++ (float) lowerLuminanceFromContrastWbr: (float) contrast { //console.info("lowerLuminanceFromContrastMln");
+    contrast = [self contrastWeberFromMichelson: contrast / 100]
     return [self limit01: [self limit01: 0.5 - 0.5 * contrast]];
 }
 + (float) upperLuminanceFromContrastWbr: (float) contrast { //console.info("highLuminanceFromContras");
-    return [self limit01: [self limit01: 0.5 + 0.5 * contrast]];
+    return [self limit01: [self limit01: 0.5 + 0.5 * contrast / 100]];
 }
 
 

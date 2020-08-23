@@ -13,11 +13,14 @@
 @property (assign) IBOutlet NSPanel* responseinfoPanelVAE;
 @property (assign) IBOutlet NSPanel* responseinfoPanelVATAO;
 @property (assign) IBOutlet NSPanel* responseinfoPanelVAVernier;
+@property (assign) IBOutlet NSPanel* responseinfoPanelCntLett;
+@property (assign) IBOutlet NSPanel* responseinfoPanelCntC;
 @property (assign) IBOutlet NSButton* buttVALett;
 @property (assign) IBOutlet NSButton* buttVAC;
 @property (assign) IBOutlet NSButton* buttVAE;
 @property (assign) IBOutlet NSButton* buttVATAO;
 @property (assign) IBOutlet NSButton* buttVAVernier;
+@property (assign) IBOutlet NSButton* buttCntLett;
 @property (assign) IBOutlet NSButton* buttonExport;
 
 - (IBAction)runFractController2_actionOK:(id)sender;
@@ -28,6 +31,7 @@
 - (IBAction)buttonDoAcuityE_action:(id)sender;
 - (IBAction)buttonDoAcuityTAO_action:(id)sender;
 - (IBAction)buttonDoAcuityVernier_action:(id)sender;
+- (IBAction)buttonDoContrastLett_action:(id)sender;
 - (IBAction)buttonDoContrastC_action:(id)sender;
 - (IBAction)buttonSettings_action:(id)sender;
 - (IBAction)buttonSettingsClose_action:(id)sender;
