@@ -20,8 +20,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     char oldResponseKeyChar, responseKeyChar;
     unsigned short responseKeyCode;
     CGContext cgc;
-    float stimStrengthGeneric, stimStrengthInDeviceunits, viewWidth, viewHeight;
-    float gapMinimal, gapMaximal, cMinimal;
+    float stimStrengthInThresholderUnits, stimStrengthInDeviceunits, viewWidth, viewHeight;
+    float gapMinimal, gapMaximal;
     float xEcc, yEcc; // eccentricity
     Thresholder thresholder;
     AlternativesGenerator alternativesGenerator;
@@ -46,7 +46,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         [aWindow setDelegate: self];
         viewWidth = CGRectGetWidth([aWindow frame]);  viewHeight = CGRectGetHeight([aWindow frame]);
         gapMinimal = 0.5;  gapMaximal = viewHeight / 5 - 2;
-        cMinimal = 0.001; // Ø%!!! (o…1)
         state = kStateDrawBack;
         kRangeLimitDefault = "";  kRangeLimitOk = "rangeOK";  kRangeLimitValueAtFloor = "atFloor";
         kRangeLimitValueAtCeiling = "atCeiling";  rangeLimitStatus = kRangeLimitDefault;
@@ -60,6 +59,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         [[self parentController] setRunAborted: YES];
         [[self window] makeKeyAndOrderFront: self];  [[self window] makeFirstResponder: self];
         //[self performSelector: @selector(runStart) withObject: nil afterDelay: 0.01];//geht nicht mehr nach DEPLOY???
+        [self setCurrentTestName: "NOT ASSIGNED"];  [self setCurrentTestResultUnit: "NOT ASSIGNED"];
         [self runStart];
         // [self testContrastDeviceThresholdConversion];
     }
@@ -85,9 +85,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 - (void) trialStart { //console.info("FractController>trialStart");
     iTrial += 1;
-    stimStrengthGeneric = [thresholder nextStim2apply];//console.info("stimStrengthGeneric ", stimStrengthGeneric);
-    [self modifyGenericStimulus];// e.g. for bonus trials
-    stimStrengthInDeviceunits = [self stimDeviceunitsFromGenericunits: stimStrengthGeneric];//console.info("stimStrengthInDeviceunits ", stimStrengthInDeviceunits);
+    stimStrengthInThresholderUnits = [thresholder nextStim2apply];//console.info("stimStrengthInThresholderUnits ", stimStrengthInThresholderUnits);
+    [self modifyThresholderStimulus];// e.g. for bonus trials
+    stimStrengthInDeviceunits = [self stimDeviceunitsFromThresholderunits: stimStrengthInThresholderUnits];//console.info("stimStrengthInDeviceunits ", stimStrengthInDeviceunits);
     if (iTrial > nTrials) { // testing after new stimStrength so we can use final threshold
         [self runEnd];  return;
     }
@@ -189,7 +189,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 - (void) trialEnd { //console.info("Fract>trialEnd");
     [timerDisplay invalidate];  timerDisplay = nil;  [timerResponse invalidate];  timerResponse = nil;//nötig?
-    [thresholder enterTrialOutcomeWithAppliedStim: [self stimGenericunitsFromDeviceunits: stimStrengthInDeviceunits] wasCorrect: responseWasCorrect];
+    [thresholder enterTrialOutcomeWithAppliedStim: [self stimThresholderunitsFromDeviceunits: stimStrengthInDeviceunits] wasCorrect: responseWasCorrect];
     switch ([Settings auditoryFeedback]) { // case 0: nothing
         case 1:
             [sound play1];  break;
@@ -201,31 +201,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             break;
     }
     [self trialStart];
-}
-
-
-- (float) resultValue4Export {
-    return [self acuityResultInLogMAR];
-}
-
-
-- (CPString) composeExportString { //console.info("FractController>composeExportString");
-    var s = "";
-    if ([[self parentController] runAborted]) return;
-    var tab = "\t", crlf = "\n", nDigits = 4, now = [CPDate date];
-    s = "Vs" + tab + "2"; // version
-    s += tab + "decimalMark" + tab + [Settings decimalMarkChar];
-    s += tab + "date" + tab + [Misc date2YYYY_MM_DD: now] + tab + "time" + tab + [Misc date2HH_MM_SS: now];
-    s += tab + "test" + tab + currentTestName;
-    s += tab + "value" + tab + [Misc stringFromNumber: [self resultValue4Export] decimals: nDigits localised: YES];
-    s += tab + "unit" + tab + currentTestResultUnit
-    s += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: nDigits localised: YES];
-    s += tab + "contrastWeber" + tab + [Misc stringFromNumber: [Settings contrastAcuityWeber] decimals: 1 localised: YES];
-    s += tab + "nTrials" + tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
-    s += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
-    //s += tab + "XX" + tab + YY;
-    s += crlf; //console.info("FractController>date: ", s);
-    return s;
 }
 
 
@@ -272,14 +247,14 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if (responseKeyChar != abortCharacter) [self processKeyDownEvent];
 }
 
-- (float) stimGenericunitsFromDeviceunits: (float) ntve {
-    console.info("FractController>stimGenericunitsFromDeviceunits OVERRIDE!");
+- (float) stimThresholderunitsFromDeviceunits: (float) ntve {
+    console.info("FractController>stimThresholderunitsFromDeviceunits OVERRIDE!");
     return ntve;
 }
 
 
-- (float) stimDeviceunitsFromGenericunits: (float) generic {
-    console.info("FractController>stimDeviceunitsFromGenericunits OVERRIDE!");
+- (float) stimDeviceunitsFromThresholderunits: (float) generic {
+    console.info("FractController>stimDeviceunitsFromThresholderunits OVERRIDE!");
     return generic;
 }
 
@@ -289,7 +264,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 /*	Transformation formula:   gap = c1 * exp(tPest * c2).
  Constants c1 and c2 are determined by thesse 2 contions: tPest==0 → gap=gapMinimal;  tPest==1 → gap=gapMaximal.
  =>c2 = ln(gapMinimal / gapMaximal)/(0 - 1);  c1 = gapMinimal / exp(0 * c2)  */
-- (float) acuitystimDeviceunitsFromGenericunits: (float) tPest { //console.info("FractControllerVAC>stimDeviceunitsFromGenericunits");
+- (float) acuitystimDeviceunitsFromThresholderunits: (float) tPest { //console.info("FractControllerVAC>stimDeviceunitsFromThresholderunits");
     var c2 = - Math.log(gapMinimal / gapMaximal), c1 = gapMinimal;
     var deviceVal = c1 * Math.exp(tPest * c2); //console.info("DeviceFromPest " + tPest + " " + deviceVal);
     // ROUNDING for realisable gap values? @@@
@@ -308,7 +283,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
         
 
-- (float) acuitystimGenericunitsFromDeviceunits: (float) d { //console.info("FractControllerVAC>stimGenericunitsFromDeviceunits");
+- (float) acuitystimThresholderunitsFromDeviceunits: (float) d { //console.info("FractControllerVAC>stimThresholderunitsFromDeviceunits");
     var c2 = - Math.log(gapMinimal / gapMaximal), c1 = gapMinimal;
     var retVal = Math.log(d / c1) / c2; //console.info("PestFromDevice " + d + " " + retVal);
     return retVal;
@@ -347,7 +322,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         if (rangeLimitStatus == sCeil) {
             s += " ≤ ";
         } else {
-            s += ": ";
+            s += " ";
         }
     }
     return s;
@@ -363,28 +338,55 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     
     // console.info("rangeLimitStatus: ", rangeLimitStatus);
     var s = "";
-    if ([Settings acuityFormatDecimal]) {
-        s += "decVA" + [self rangeStatusIndicatorStringInverted: NO];
-        s += [Misc stringFromNumber: resultInDecVA decimals: 2 localised: YES];
-    }
     if ([Settings acuityFormatLogMAR]) {
         if (s.length > 1) s += ",  ";
-        s += "LogMAR" + [self rangeStatusIndicatorStringInverted: YES];
+        s += "LogMAR:" + [self rangeStatusIndicatorStringInverted: YES];
         s += [Misc stringFromNumber: resultInLogMAR decimals: 2 localised: YES];
+    }
+    if ([Settings acuityFormatDecimal]) {
+        if (s.length > 1) s += ",  ";
+        s += "decVA:" + [self rangeStatusIndicatorStringInverted: NO];
+        s += [Misc stringFromNumber: resultInDecVA decimals: 2 localised: YES];
     }
     if ([Settings acuityFormatSnellenFractionFoot]) {
         if (s.length > 1) s += ",  ";
-        s += "Snellen fraction" +  [self rangeStatusIndicatorStringInverted: NO];
+        s += "Snellen fraction:" +  [self rangeStatusIndicatorStringInverted: NO];
         s += [self format4SnellenInFeet: resultInDecVA];
     }
     return s;
 }
 
 
-- (void) modifyGenericStimulusWithBonus {
+- (float) acuityResultValue4Export {
+    return [self acuityResultInLogMAR];
+}
+
+
+- (CPString) acuityComposeExportString { //console.info("FractController>composeExportString");
+    var s = "";
+    if ([[self parentController] runAborted]) return;
+    var tab = "\t", crlf = "\n", nDigits = 4, now = [CPDate date];
+    s = "Vs" + tab + "3"; // version
+    s += tab + "decimalMark" + tab + [Settings decimalMarkChar];
+    s += tab + "date" + tab + [Misc date2YYYY_MM_DD: now] + tab + "time" + tab + [Misc date2HH_MM_SS: now];
+    s += tab + "test" + tab + currentTestName;
+    s += tab + "value" + tab + [Misc stringFromNumber: [self resultValue4Export] decimals: nDigits localised: YES];
+    s += tab + "unit" + tab + currentTestResultUnit
+    s += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 1 localised: YES];
+    s += tab + "contrastWeber" + tab + [Misc stringFromNumber: [Settings contrastAcuityWeber] decimals: 1 localised: YES];
+    s += tab + "unit" + tab + "%";
+    s += tab + "nTrials" + tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
+    s += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
+    //s += tab + "XX" + tab + YY;
+    s += crlf; //console.info("FractController>date: ", s);
+    return s;
+}
+
+
+- (void) modifyThresholderStimulusWithBonus {
     if (iTrial > nTrials) return; // don't change if done
     isBonus = (iTrial % 6 == 0) && (iTrial != 6);
-    if (isBonus) stimStrengthGeneric = Math.min(stimStrengthGeneric + 0.2, 1.0);
+    if (isBonus) stimStrengthInThresholderUnits = Math.min(stimStrengthInThresholderUnits + 0.2, 1.0);
 }
 
 
@@ -414,32 +416,82 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 ///////////////////////// CONTRAST UTILs
+/*
+basic flow:
+ Thresholder → thresholderunits
+ thresholderunits → deviceunits (logCSWeber)
+ deviceunits → upper/lower luminance, considering gamma → discrete values for [CPColor colorWithWhite] (0…255)
+ present stimulus
+ stimStrengthInDeviceunits → thresholderunits (currently ignoring gamma because "locally everything is linear")
+ thresholderunits + correctness → Thresholder
+ 
 
-// contrast: 0.1 … 100, pest: 0 … 1
-- (float) contraststimDeviceunitsFromGenericunits: (float) tPest { //console.info("FractControllerVAC>contraststimDeviceunitsFromGenericunits");
-    var deviceVal = 100 * cMinimal * Math.pow(10, tPest * Math.log10(1 / cMinimal));
+// contrast: 0.1 … 100, thresholder: 0 … 1
+// deviceUnits are in logCSWeber
+// logCSW: 2 … 0, thresholder: 0 … 1 */
+- (float) contrastStimDeviceunitsFromThresholderunits: (float) thresholderunit { //console.info("FractControllerVAC>contrastStimDeviceunitsFromThresholderunits");
+    var logCSWMaximal = [Settings contrastMaxLogCSWeber];
+    var deviceVal = logCSWMaximal - logCSWMaximal * thresholderunit; // logCSWMinimal = 0 anyway
     return deviceVal;
 }
-- (float) contraststimGenericunitsFromDeviceunits: (float) d { //console.info("FractControllerVAC>contraststimGenericunitsFromDeviceunits");
-    var retVal = Math.log10(d / 100 / cMinimal) / Math.log10(1 / cMinimal);
+- (float) contrastStimThresholderunitsFromDeviceunits: (float) d { //console.info("FractControllerVAC>contrastStimThresholderunitsFromDeviceunits");
     //console.info("d: ", d, ",  retVal: ", retVal)
+    var logCSWMaximal = [Settings contrastMaxLogCSWeber];
+    var retVal = (logCSWMaximal - d) / logCSWMaximal
     return retVal;
 }
 - (void) testContrastDeviceThresholdConversion {
     for (var i = 0; i <= 1.0; i += 0.1) {
-        var d = [self contraststimDeviceunitsFromGenericunits: i];
-        console.info("threshh: ", i, ", devUnits: ", d, ", threshh: ", [self contraststimGenericunitsFromDeviceunits: d]);
+        var d = [self contrastStimDeviceunitsFromThresholderunits: i];
+        console.info("threshh: ", i, ", devUnits: ", d, ", threshh: ", [self contrastStimThresholderunitsFromDeviceunits: d]);
     }
 }
 
 - (CPString) contrastComposeTrialInfoString {
     var s = "trial: " + iTrial + "/" + nTrials;
-    s +=  ", contrast: " + [Misc stringFromNumber: [optotypes getCurrentContrastWbr] decimals: 2 localised: YES];
-    s += ", logCSW: " + [Misc stringFromNumber: Math.log10([optotypes getCurrentContrastWbr] / 100) decimals: 3 localised: YES];
+    s +=  ", contrast: " + [Misc stringFromNumber: [optotypes getCurrentContrastWeberPercent] decimals: 1 localised: YES] + "%";
+    s += ", logCSW: " + [Misc stringFromNumber: [optotypes getCurrentContrastLogCSWeber] decimals: 2 localised: YES];
     s += ", alternative: " + [alternativesGenerator currentAlternative];
     return s;
 }
 
+
+- (CPString) contrastComposeResultString { //console.info("contrastComposeResultString");
+    // console.info("rangeLimitStatus: ", rangeLimitStatus);
+    rangeLimitStatus = kRangeLimitOk;
+    if ([optotypes getCurrentContrastLogCSWeber] >= 2.0) { // todo: do this while testing
+        rangeLimitStatus = kRangeLimitValueAtCeiling;
+    }
+    var s = "Contrast threshold: \n";
+    s += [self rangeStatusIndicatorStringInverted: YES];
+    s += [Misc stringFromNumber: [optotypes getCurrentContrastLogCSWeber] decimals: 2 localised: YES];
+    s += " logCS(Weber) ≘ ";
+    s += [self rangeStatusIndicatorStringInverted: NO];
+    s += [Misc stringFromNumber: [optotypes getCurrentContrastWeberPercent] decimals: 2 localised: YES];
+    s += "%";
+    return s;
+}
+
+
+- (CPString) contrastComposeExportString { //console.info("FractController>contrastComposeExportString");
+    var s = "";
+    if ([[self parentController] runAborted]) return;
+    var tab = "\t", crlf = "\n", nDigits = 3, now = [CPDate date];
+    s = "Vs" + tab + "3"; // version
+    s += tab + "decimalMark" + tab + [Settings decimalMarkChar];
+    s += tab + "date" + tab + [Misc date2YYYY_MM_DD: now] + tab + "time" + tab + [Misc date2HH_MM_SS: now];
+    s += tab + "test" + tab + currentTestName;
+    s += tab + "value" + tab + [Misc stringFromNumber: [optotypes getCurrentContrastLogCSWeber] decimals: nDigits localised: YES];
+    s += tab + "unit" + tab + currentTestResultUnit
+    s += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 2 localised: YES];
+    s += tab + "diameter" + tab + [Misc stringFromNumber: [Settings contrastOptotypeDiameter] decimals: 2 localised: YES];
+    s += tab + "unit" + tab + "arcmin";
+    s += tab + "nTrials" + tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
+    s += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
+    //s += tab + "XX" + tab + YY;
+    s += crlf; //console.info("FractController>contrastComposeExportString: ", s);
+    return s;
+}
 
 
 @end

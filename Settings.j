@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define dateFract "2020-08-29"
+#define dateFract "2020-08-30"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -12,6 +12,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2020-08-30 changed the internal contrast scale to logCS, renamed many functions, finished contrast
 2020-08-20 Contrast Letters seems to be working, added button and contrast GUI tab, added appropriate Settings
 2020-08-17 refactored to separate the "Optotypes"
 2020-07-03 add @typedef TestIDType; @typedef StateType
@@ -179,6 +180,8 @@ Created by mb on July 15, 2015.
     [self setContrastDarkOnLight: [self chckBool: [self contrastDarkOnLight] def: YES set: set]];
     [self setContrastOptotypeDiameter: [self chckFlt: [self contrastOptotypeDiameter] def: 50 min: 1 max: 500 set: set]];
     [self setContrastTimeoutFixmark: [self chckFlt: [self contrastTimeoutFixmark] def: 500 min: 0 max: 5000 set: set]];
+    [self setContrastMaxLogCSWeber: [self chckFlt: [self contrastMaxLogCSWeber] def: 2.4 min: 1.5 max: 3 set: set]];
+
 
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
@@ -194,12 +197,12 @@ Created by mb on July 15, 2015.
 
 // contrast in %. 100%: background fully white, foreground fully dark. -100%: inverted
 + (void) calculateAcuityForeBackColorsFromContrast { //console.info("Settings>calculateAcuityForeBackColorsFromContrast");
-    var cnt = [Misc contrastMichelsonFromWeber: [self contrastAcuityWeber]];
+    var cnt = [Misc contrastMichelsonFromWeberPercent: [self contrastAcuityWeber]];
 
-    var temp = [Misc lowerLuminanceFromContrastMln: cnt];  temp = [Misc devicegreyFromLuminance: temp];
+    var temp = [Misc lowerLuminanceFromContrastMilsn: cnt];  temp = [Misc devicegreyFromLuminance: temp];
     [self setAcuityForeColor: [CPColor colorWithWhite: temp alpha: 1]];
 
-    temp = [Misc upperLuminanceFromContrastMln: cnt];  temp = [Misc devicegreyFromLuminance: temp];
+    temp = [Misc upperLuminanceFromContrastMilsn: cnt];  temp = [Misc devicegreyFromLuminance: temp];
     [self setAcuityBackColor: [CPColor colorWithWhite: temp alpha: 1]];
     
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyForeBackColorsFromSettings" object: nil];
@@ -216,11 +219,6 @@ Created by mb on July 15, 2015.
     } else {
         [self allNotCheckButSet: NO];
     }
-    
-    // checking some later additions for sensible values
-//    if ([Settings contrastAcuityWeber] == 1) [Settings setContrastAcuityWeber: 100]; // until everyone defaulted anew :)
-//    if ([Settings contrastAcuityWeber] == 0) [Settings setContrastAcuityWeber: 100]; // until everyone defaulted anew :)
-
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -656,6 +654,14 @@ Created by mb on July 15, 2015.
 + (void) setContrastTimeoutFixmark: (float) value {
     [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "contrastTimeoutFixmark"];
 }
+
++ (float) contrastMaxLogCSWeber {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "contrastMaxLogCSWeber"];
+}
++ (void) setContrastMaxLogCSWeber: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "contrastMaxLogCSWeber"];
+}
+
 
 + (float) gammaValue {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "gammaValue"];

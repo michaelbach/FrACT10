@@ -12,12 +12,14 @@
 }
 
 
-- (void) modifyGenericStimulus {
-    if ([Settings acuityEasyTrials]) [self modifyGenericStimulusWithBonus];
+- (void) modifyThresholderStimulus {
+    if ([Settings acuityEasyTrials]) [self modifyThresholderStimulusWithBonus];
 }
 - (void) modifyDeviceStimulus {[self acuityModifyDeviceStimulusDIN01_02_04_08];}
-- (float) stimDeviceunitsFromGenericunits: (float) tPest {return [self acuitystimDeviceunitsFromGenericunits: tPest];}
-- (float) stimGenericunitsFromDeviceunits: (float) d {return [self acuitystimGenericunitsFromDeviceunits: d];}
+- (float) stimDeviceunitsFromThresholderunits: (float) tPest {return [self acuitystimDeviceunitsFromThresholderunits: tPest];}
+- (float) stimThresholderunitsFromDeviceunits: (float) d {return [self acuitystimThresholderunitsFromDeviceunits: d];}
+- (float) resultValue4Export {return [self acuityResultValue4Export];}
+- (CPString) composeExportString {return [self acuityComposeExportString];}
 
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerVALetters>drawStimulusInRect");

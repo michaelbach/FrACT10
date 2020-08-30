@@ -13,12 +13,12 @@
 @implementation FractControllerContrastC: FractController {
 }
 
-- (void) modifyGenericStimulus {
-    if ([Settings contrastEasyTrials]) [self modifyGenericStimulusWithBonus];
+- (void) modifyThresholderStimulus {
+    if ([Settings contrastEasyTrials]) [self modifyThresholderStimulusWithBonus];
 }
 - (void) modifyDeviceStimulus {[self acuityModifyDeviceStimulusDIN01_02_04_08];}
-- (float) stimDeviceunitsFromGenericunits: (float) tPest {return [self acuitystimDeviceunitsFromGenericunits: tPest];}
-- (float) stimGenericunitsFromDeviceunits: (float) d {return [self acuitystimGenericunitsFromDeviceunits: d];}
+- (float) stimDeviceunitsFromThresholderunits: (float) tPest {return [self acuitystimDeviceunitsFromThresholderunits: tPest];}
+- (float) stimThresholderunitsFromDeviceunits: (float) d {return [self acuitystimThresholderunitsFromDeviceunits: d];}
 
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerContrastC>drawStimulusInRect");

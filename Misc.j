@@ -158,9 +158,8 @@
 // Michelson ←→ Weber contrast.
 // both contrasts are defined on a -100…100 scale
 // Weber is manipulated so it is also point-symmetric to zero like Michelson
-+ (float) contrastWeberFromMichelson: (float) inMichelson {
-    var outWeber;
-    inMichelson /= 100;
++ (float) contrastWeberFromMichelsonPercent: (float) inMichelsonPercent {
+    var inMichelson = inMichelsonPercent /= 100,  outWeber;
     if (inMichelson >= 0) {
         outWeber = 2.0 * inMichelson / (1.0 + inMichelson);
     } else {
@@ -168,26 +167,34 @@
         outWeber = 2.0 * inMichelson / (1.0 + inMichelson);
         outWeber *= 1;
     }
-    // console.info("contrastWeberFromMichelson: ", inMichelson * 100, outWeber * 100);
+    // console.info("contrastWeberFromMichelsonPercent: ", inMichelson * 100, outWeber * 100);
     return outWeber * 100;
 }
-+ (float) contrastMichelsonFromWeber: (float) inWeber {
-    var outMichelson;
-    inWeber /= 100;
-    if (inWeber >= 0) {
-        outMichelson = inWeber / (2.0 - inWeber);
-    } else {
-        inWeber *= -1;
-        outMichelson = inWeber / (2.0 - inWeber);
-        outMichelson *= -1;
-    }
-    // console.info("contrastMichelsonFromWeber: ", inWeber * 100, outMichelson * 100);
++ (float) contrastMichelsonFromWeberPercent: (float) inWeberPercent {
+    var inWeber = inWeberPercent /= 100;
+    var outMichelson = inWeber / (2 - inWeber);
     return outMichelson * 100;
 }
-+ testContrastConversion {
+    
++ (float) contrastLogCSWeberFromWeberPercent: (float) weberPercent {
+    weberPercent /= 100;
+    var logCS;
+    if (weberPercent > 0.001) { // avoid log of zero
+       logCS = Math.log10(1 / weberPercent);
+    } else {
+        logCS = 3.0;
+    }
+    return logCS;
+}
++ (float) contrastWeberPercentFromLogCSWeber: (float) logCS {
+    var weberPercent = 100 * Math.pow(10, -logCS);
+    return weberPercent;
+}
+                               
++ (void) testContrastConversion {
     for (var i = -100; i <= 100; i += 10) {
-        var w = [Misc contrastWeberFromMichelson: i];
-        console.info("contrastM: ", i, ", W: ", w, ", M: ", [Misc contrastMichelsonFromWeber: w]);
+        var w = [Misc contrastWeberFromMichelsonPercent: i];
+        console.info("contrastM: ", i, ", W: ", w, ", M: ", [Misc contrastMichelsonFromWeberPercent: w]);
     }
 }
 
@@ -208,19 +215,26 @@
     return Math.pow(g, [Settings gammaValue]);
 }
 
-+ (float) lowerLuminanceFromContrastMln: (float) contrast { //console.info("lowerLuminanceFromContrastMln");
++ (float) lowerLuminanceFromContrastMilsn: (float) contrast { //console.info("lowerLuminanceFromContrastMilsn");
     return [self limit01: [self limit01: 0.5 - 0.5 * contrast / 100]];
 }
-+ (float) upperLuminanceFromContrastMln: (float) contrast { //console.info("highLuminanceFromContras");
++ (float) upperLuminanceFromContrastMilsn: (float) contrast { //console.info("highLuminanceFromContras");
     return [self limit01: [self limit01: 0.5 + 0.5 * contrast / 100]];
 }
 
-
-+ (float) lowerLuminanceFromContrastWbr: (float) contrast { //console.info("lowerLuminanceFromContrastMln");
-    contrast = [self contrastWeberFromMichelson: contrast / 100]
++ (float) lowerLuminanceFromContrastLogCSWeber: (float) logCSW {
+    var weberPercent = [Misc contrastWeberPercentFromLogCSWeber: logCSW];
+    return [self lowerLuminanceFromContrastWeberPercent: weberPercent];
+}
++ (float) lowerLuminanceFromContrastWeberPercent: (float) contrast { //console.info("lowerLuminanceFromContrastMilsn");
+    contrast = [self contrastWeberFromMichelsonPercent: contrast / 100]
     return [self limit01: [self limit01: 0.5 - 0.5 * contrast]];
 }
-+ (float) upperLuminanceFromContrastWbr: (float) contrast { //console.info("highLuminanceFromContras");
++ (float) upperLuminanceFromContrastLogCSWeber: (float) logCSW {
+    var weberPercent = [Misc contrastWeberPercentFromLogCSWeber: logCSW];
+    return [self upperLuminanceFromContrastWeberPercent: weberPercent];
+}
++ (float) upperLuminanceFromContrastWeberPercent: (float) contrast { //console.info("highLuminanceFromContras");
     return [self limit01: [self limit01: 0.5 + 0.5 * contrast / 100]];
 }
 

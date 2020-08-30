@@ -14,11 +14,13 @@
 }
 
 
-- (void) modifyGenericStimulus {[self modifyGenericStimulusWithBonus];}
+- (void) modifyThresholderStimulus {[self modifyThresholderStimulusWithBonus];}
 - (void) modifyDeviceStimulus {}
+//- (float) resultValue4Export {return [self acuityResultValue4Export];}
+- (CPString) composeExportString {return [self acuityComposeExportString];}
 
 
-- (float) stimDeviceunitsFromGenericunits: (float) tPest { //console.info("FractControllerVAVernier>stimDeviceunitsFromGenericunits");
+- (float) stimDeviceunitsFromThresholderunits: (float) tPest { //console.info("FractControllerVAVernier>stimDeviceunitsFromThresholderunits");
     gapMinimal = [Misc pixelFromDegree: gapVernierMinimalArcSec / 60.0 / 60.0];
     gapMaximal = [Misc pixelFromDegree: gapVernierMaximalArcSec / 60.0 / 60.0];
     var c1 = gapMinimal;
@@ -39,7 +41,7 @@
 
     return deviceVal;
 }
-- (float) stimGenericunitsFromDeviceunits: (float) d {
+- (float) stimThresholderunitsFromDeviceunits: (float) d {
     gapMinimal = [Misc pixelFromDegree: gapVernierMinimalArcSec / 60.0 / 60.0];
     gapMaximal = [Misc pixelFromDegree: gapVernierMaximalArcSec / 60.0 / 60.0];
     var c1 = gapMinimal;

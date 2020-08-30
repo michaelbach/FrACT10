@@ -11,22 +11,20 @@
 }
 
 
-- (void) modifyGenericStimulus {
-    if ([Settings contrastEasyTrials]) [self modifyGenericStimulusWithBonus];
-}
+- (void) modifyThresholderStimulus {if ([Settings contrastEasyTrials]) [self modifyThresholderStimulusWithBonus];}
 - (void) modifyDeviceStimulus {}
-- (float) stimDeviceunitsFromGenericunits: (float) tPest {return [self contraststimDeviceunitsFromGenericunits: tPest];}
-- (float) stimGenericunitsFromDeviceunits: (float) d {return [self contraststimGenericunitsFromDeviceunits: d];}
-
+- (float) stimDeviceunitsFromThresholderunits: (float) thresholderunit {return [self contrastStimDeviceunitsFromThresholderunits: thresholderunit];}
+- (float) stimThresholderunitsFromDeviceunits: (float) d {return [self contrastStimThresholderunitsFromDeviceunits: d];}
+- (CPString) composeExportString {return [self contrastComposeExportString];}
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerContrastLett>drawStimulusInRect");
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
 
-    var temp1 = [Misc lowerLuminanceFromContrastWbr: stimStrengthInDeviceunits];
+    var temp1 = [Misc lowerLuminanceFromContrastLogCSWeber: stimStrengthInDeviceunits];
     temp1 = [Misc devicegreyFromLuminance: temp1];
     colOptotypeFore = [CPColor colorWithWhite: temp1 alpha: 1];
     //console.info(colOptotypeFore);
-    var temp2 = [Misc upperLuminanceFromContrastWbr: stimStrengthInDeviceunits];
+    var temp2 = [Misc upperLuminanceFromContrastLogCSWeber: stimStrengthInDeviceunits];
     temp2 = [Misc devicegreyFromLuminance: temp2];
     colOptotypeBack = [CPColor colorWithWhite: temp2 alpha: 1];
     //console.info(colOptotypeBack);
@@ -55,8 +53,8 @@
             //console.info("FractControllerContrastLett>drawStimulusInRect, temp1: ", temp1, ", temp2: ", temp2);
             [optotypes setCgc: cgc colFore: colOptotypeFore colBack: colOptotypeBack];
             [optotypes drawLetterWithGapInPx: oSize letterNumber: [alternativesGenerator currentAlternative]];
-            console.info(stimStrengthInDeviceunits, [optotypes getCurrentContrastWbr])
-            //stimStrengthInDeviceunits = [optotypes getCurrentContrastWbr];
+            //console.info(stimStrengthInDeviceunits, [optotypes getCurrentContrastLogCSWeber])
+            stimStrengthInDeviceunits = [optotypes getCurrentContrastLogCSWeber];
             trialInfoString = [self contrastComposeTrialInfoString];// compose here after colors are set
             CGContextTranslateCTM(cgc,  xEcc, yEcc);
             break;
@@ -84,16 +82,16 @@
 - (void) runStart { //console.info("FractControllerContrastLett>runStart");
     nAlternatives = 10;  nTrials = [Settings nTrials08];
     [self setCurrentTestName: "Contrast_Letters"];
-    [self setCurrentTestResultUnit: "csWeber"];
+    [self setCurrentTestResultUnit: "logCSWeber"];
     [super runStart];
 }
 
 
-- (void) runEnd { //console.info("FractControllerContrastLett>runEnd");
+- (void) runEnd { //p.info("FractControllerContrastLett>runEnd");
     if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {
-        [self setResultString: [self acuityComposeResultString]];
+        [self setResultString: [self contrastComposeResultString]];
     }
     [super runEnd];
 }
