@@ -56,8 +56,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         [Settings checkDefaults];
         colOptotypeFore = [Settings acuityForeColor];  colOptotypeBack = [Settings acuityBackColor];
         abortCharacter = "5";
-        nTrials = [Settings nTrials];
-        nAlternatives = [Settings nAlternatives];
         [[self parentController] setRunAborted: YES];
         [[self window] makeKeyAndOrderFront: self];  [[self window] makeFirstResponder: self];
         //[self performSelector: @selector(runStart) withObject: nil afterDelay: 0.01];//geht nicht mehr nach DEPLOY???

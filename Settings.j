@@ -12,7 +12,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
-2020-09-02 introduce class FractControllerContrast
+2020-09-02 introduce class FractControllerContrast, add ContrastC & ContrastE, fix Vernier in reduced contrast
 2020-08-30 changed the internal contrast scale to logCS, renamed many functions, finished contrast
 2020-08-20 Contrast Letters seems to be working, added button and contrast GUI tab, added appropriate Settings
 2020-08-17 refactored to separate the "Optotypes"

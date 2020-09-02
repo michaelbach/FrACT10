@@ -56,9 +56,9 @@
 
 
 - (void) runStart { //console.info("FractControllerVALetters>runStart");
+    nAlternatives = [Settings nAlternatives];  nTrials = [Settings nTrials];
     [self setCurrentTestName: "Acuity_LandoltC"];
     [self setCurrentTestResultUnit: "LogMAR"];
-
     [super runStart];
 }
 

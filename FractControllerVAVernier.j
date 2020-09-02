@@ -46,7 +46,7 @@
     gapMaximal = [Misc pixelFromDegree: gapVernierMaximalArcSec / 60.0 / 60.0];
     var c1 = gapMinimal;
     var c2 = -Math.log(gapMinimal / gapMaximal);
-    var retVal =Math.log(d / c1) / c2;//retVal /= Prefs.vernierScale.n;
+    var retVal = Math.log(d / c1) / c2;
     return retVal;
 }
 
@@ -70,8 +70,6 @@
         CGContextStrokePath(cgc);
     }
 }
-//var gaussValue:Number = Math.exp(-Math.pow(x0 - ix, 2) / sigma);
-//var gValue:Number = 0.5 + Prefs.contrastAcuityWeber.n * (0.5 - gaussValue);
 
 
 - (void) drawVernierAtX: (float) xCent y: (float) yCent vLength: (float) vLength sigma: (float) sigma gapHeight: (float) gapHeight offsetSize: (float) offsetSize offsetIsTopRight: (BOOL) offsetIsTopRight { //console.info("FractControllerVAVernier>drawVernierAtX", offsetSize);

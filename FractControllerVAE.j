@@ -55,9 +55,9 @@
 
 
 - (void) runStart { //console.info("FractControllerVAE>runStart");
+    nAlternatives = 4;  nTrials = [Settings nTrials04];
     [self setCurrentTestName: "Acuity_TumblingE"];
     [self setCurrentTestResultUnit: "LogMAR"];
-    nAlternatives = 4;  nTrials = [Settings nTrials04];
     [super runStart];
 }
 
