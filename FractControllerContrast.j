@@ -19,12 +19,15 @@
 
 
 - (void) calculateForeBackColors {
-    var temp1 = [Misc lowerLuminanceFromContrastLogCSWeber: stimStrengthInDeviceunits];
-    temp1 = [Misc devicegreyFromLuminance: temp1];
-    colOptotypeFore = [CPColor colorWithWhite: temp1 alpha: 1];//console.info(colOptotypeFore);
-    var temp2 = [Misc upperLuminanceFromContrastLogCSWeber: stimStrengthInDeviceunits];
-    temp2 = [Misc devicegreyFromLuminance: temp2];
-    colOptotypeBack = [CPColor colorWithWhite: temp2 alpha: 1];//console.info(colOptotypeBack);
+    var grey1 = [Misc lowerLuminanceFromContrastLogCSWeber: stimStrengthInDeviceunits];
+    grey1 = [Misc devicegreyFromLuminance: grey1];
+    var grey2 = [Misc upperLuminanceFromContrastLogCSWeber: stimStrengthInDeviceunits];
+    grey2 = [Misc devicegreyFromLuminance: grey2];
+    if (![Settings contrastDarkOnLight]) {
+        var grey = grey1; grey1 = grey2; grey2 = grey;
+    }
+    colOptotypeFore = [CPColor colorWithWhite: grey1 alpha: 1];//console.info(colOptotypeFore);
+    colOptotypeBack = [CPColor colorWithWhite: grey2 alpha: 1];//console.info(colOptotypeBack);
 }
 
 

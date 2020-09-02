@@ -142,17 +142,6 @@ Shortcut: s </string>
                             <action selector="buttonDoAcuityVernier_action:" target="450" id="om1-xE-6CZ"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y5b-QD-e3x">
-                        <rect key="frame" x="647" y="184" width="114" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="About" bezelStyle="rounded" image="iconAbout" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="duS-rs-9gg">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonAbout_action:" target="450" id="yEc-1I-cem"/>
-                        </connections>
-                    </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CDI-8L-YSC">
                         <rect key="frame" x="443" y="179" width="114" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -245,6 +234,17 @@ Shortcut: f </string>
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoContrastC_action:" target="450" id="fdt-nY-HGT"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y5b-QD-e3x">
+                        <rect key="frame" x="647" y="179" width="114" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="About" bezelStyle="rounded" image="iconAbout" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="duS-rs-9gg">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="buttonAbout_action:" target="450" id="yEc-1I-cem"/>
                         </connections>
                     </button>
                 </subviews>
@@ -2235,7 +2235,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7g6-ZC-0RB">
-                                            <rect key="frame" x="17" y="230" width="45" height="21"/>
+                                            <rect key="frame" x="17" y="235" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="7Hj-2n-DFq">
                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="rCY-X3-393"/>
@@ -2251,7 +2251,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="APZ-Gr-9ge">
-                                            <rect key="frame" x="68" y="231" width="133" height="16"/>
+                                            <rect key="frame" x="68" y="236" width="133" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Fixation timeout [ms]" id="Y30-RA-8mH">
                                                 <font key="font" metaFont="system"/>
@@ -2260,7 +2260,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VtL-41-f6x">
-                                            <rect key="frame" x="17" y="123" width="45" height="21"/>
+                                            <rect key="frame" x="17" y="133" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="8S2-DM-aFk">
                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="1Ld-kJ-3lP"/>
@@ -2276,7 +2276,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jmI-Rj-0PL">
-                                            <rect key="frame" x="68" y="124" width="51" height="16"/>
+                                            <rect key="frame" x="68" y="134" width="51" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Gamma" id="GhE-2Z-zHS">
                                                 <font key="font" metaFont="system"/>
@@ -2310,7 +2310,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                             </textFieldCell>
                                         </textField>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n1N-DA-kHl">
-                                            <rect key="frame" x="573" y="426" width="162" height="35"/>
+                                            <rect key="frame" x="302" y="228" width="162" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">If unchecked, the raw=psychometric threshold is caculated. If checked (default), it's descending-corrected, thus reflecting DIN/ISO values.</string>
                                             <buttonCell key="cell" type="check" title="Show fixation mark " bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="a9c-xr-Q7f">
@@ -3160,7 +3160,7 @@ Type 55, or &lt;esc&gt; to abort the run.
     <resources>
         <image name="FrACT_icon-390" width="390" height="390"/>
         <image name="butCntC" width="1040" height="772"/>
-        <image name="butCntE" width="730" height="612"/>
+        <image name="butCntE" width="770" height="652"/>
         <image name="butCntLett" width="936" height="658"/>
         <image name="buttVAC" width="170.16000366210938" height="95.760002136230469"/>
         <image name="buttVAE" width="130.08000183105469" height="101.76000213623047"/>
