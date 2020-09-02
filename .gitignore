@@ -1,6 +1,7 @@
+.DS_Store
 Frameworks/*
-.XcodeSupport/*
 Cocoa Classes/*
 .XcodeSupport/*
+_cappDevelop.xcodeproj
 _cappDevelop.xcodeproj/*
-Resources/MainMenu.cib
+Resources/MainMenu.cib*
