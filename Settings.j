@@ -119,7 +119,7 @@ Created by mb on July 15, 2015.
     [self setResponseInfoAtStart: [self chckBool: [self responseInfoAtStart] def: YES set: set]];
     [self setEnableTouchControls: [self chckBool: [self enableTouchControls] def: YES set: set]];
     
-    [self setTestOnFive: [self chckInt: [self testOnFive] def: 1 min: 0 max: 5 set: set]]; // 1: Sloan Letters
+    [self setTestOnFive: [self chckInt: [self testOnFive] def: 1 min: 0 max: 8 set: set]]; // 1: Sloan Letters
 
     [self setNOfRuns2Recall: [self chckInt: [self nOfRuns2Recall] def: 0 min: 0 max: 100 set: set]];
 
@@ -182,7 +182,7 @@ Created by mb on July 15, 2015.
     [self setContrastOptotypeDiameter: [self chckFlt: [self contrastOptotypeDiameter] def: 50 min: 1 max: 500 set: set]];
     [self setContrastTimeoutFixmark: [self chckFlt: [self contrastTimeoutFixmark] def: 500 min: 0 max: 5000 set: set]];
     [self setContrastMaxLogCSWeber: [self chckFlt: [self contrastMaxLogCSWeber] def: 2.4 min: 1.5 max: 3 set: set]];
-
+    [self setContrastShowFixMark: [self chckBool: [self contrastShowFixMark] def: YES set: set]];
 
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
@@ -463,9 +463,6 @@ Created by mb on July 15, 2015.
 
 
 
-
-
-
 + (char) decimalMarkChar {
     if ([[CPUserDefaults standardUserDefaults] integerForKey: "decimalMarkCharIndex"] == 0) {
         return "."
@@ -663,7 +660,6 @@ Created by mb on July 15, 2015.
     [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "contrastMaxLogCSWeber"];
 }
 
-
 + (float) gammaValue {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "gammaValue"];
 }
@@ -671,6 +667,12 @@ Created by mb on July 15, 2015.
     [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "gammaValue"];
 }
 
++ (BOOL) contrastShowFixMark {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "contrastShowFixMark"];
+}
++ (void) setContrastShowFixMark: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "contrastShowFixMark"];
+}
 
 
 @end

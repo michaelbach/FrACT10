@@ -1,7 +1,7 @@
 /*
- FractControllerContrastLett.j
+ FractControllerContrastE.j
 
- Created by Bach on 2020-08-17
+ Created by Bach on 2020-09-02
 */
 
 
@@ -9,7 +9,7 @@
 @import "FractControllerContrast.j"
 
 
-@implementation FractControllerContrastLett: FractControllerContrast {
+@implementation FractControllerContrastE: FractControllerContrast {
 }
 
 
@@ -28,7 +28,9 @@
             break;
         case kStateDrawFore2:
             [optotypes setCgc: cgc colFore: colOptotypeFore colBack: colOptotypeBack];
-            [optotypes drawLetterWithGapInPx: optotypeSize letterNumber: [alternativesGenerator currentAlternative]];
+            
+            [optotypes tumblingEWithGapInPx: optotypeSize direction: [alternativesGenerator currentAlternative]];
+
             stimStrengthInDeviceunits = [optotypes getCurrentContrastLogCSWeber];
             trialInfoString = [self contrastComposeTrialInfoString];// compose here after colors are set
             break;
@@ -36,11 +38,12 @@
     }
     
     if ([Settings enableTouchControls] && (!responseButtonsAdded)) {
-        var size = viewWidth / ((nAlternatives+1) * 1.4 + 1);
-        for (var i = 0; i < nAlternatives+1; i++){
-            [self buttonCenteredAtX: (i + 0.9) * 1.4 * size y: viewHeight/2 - size / 2 - 4
-                               size: size title: [@"CDHKNORSVZØ" characterAtIndex: i]];
-        }
+        var sze = 50, sze2 = sze / 2;
+        [self buttonCenteredAtX: viewWidth-sze2 y: 0 size: sze title: "6"];
+        [self buttonCenteredAtX: sze2 y: 0 size: sze title: "4"];
+        [self buttonCenteredAtX: viewWidth / 2 y: -viewHeight / 2 + sze2 size: sze title: "8"];
+        [self buttonCenteredAtX: viewWidth / 2 y: viewHeight / 2 - sze2 size: sze title: "2"];
+        [self buttonCenteredAtX: viewWidth - sze2 y: viewHeight / 2 - sze2 size: sze title: "Ø"];
     }
 
     CGContextRestoreGState(cgc);
@@ -49,27 +52,24 @@
 
 
 - (void) runStart { //console.info("FractControllerContrastLett>runStart");
-    nAlternatives = 10;  nTrials = [Settings nTrials08];
-    [self setCurrentTestName: "Contrast_Letters"];
+    nAlternatives = 4;  nTrials = [Settings nTrials04];
+    [self setCurrentTestName: "Contrast_TumblingE"];
     [super runStart];
 }
 
 
-- (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerVALetters>responseNumberFromChar: ", keyChar);
-    switch ([keyChar uppercaseString]) { // "CDHKNORSVZ"
-        case "C": return 0;
-        case "D": return 1;
-        case "H": return 2;
-        case "K": return 3;
-        case "N": return 4;
-        case "O": return 5;
-        case "R": return 6;
-        case "S": return 7;
-        case "V": return 8;
-        case "Z": return 9;
-        case "5": return -1;
+- (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerContrastE>responseNumberFromChar: ", keyChar);
+    switch (keyChar) {
+        case CPLeftArrowFunctionKey: return 4;
+        case CPRightArrowFunctionKey: return 0;
+        case CPUpArrowFunctionKey: return 2;
+        case CPDownArrowFunctionKey: return 6;
+        case "6": return 0;
+        case "8": return 2;
+        case "4": return 4;
+        case "2": return 6;
     }
-    return -2;// -1: ignore; -2: invalid
+    return -2;// 0, 2, 4, 6: valid; -1: ignore; -2: invalid
 }
 
 

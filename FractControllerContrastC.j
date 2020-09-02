@@ -1,13 +1,12 @@
 /*
- *  FractControllerContrastC.j
- *  cappDevelop
- *
- *  Created by Bach on 23.08.2017.
- *  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
- */
+ FractControllerContrastC.j
+
+ Created by Bach on 2020-08-17
+*/
+
 
 @import <Foundation/CPObject.j>
-@import "FractController.j"
+@import "FractControllerContrast.j"
 
 
 @implementation FractControllerContrastC: FractControllerContrast {
@@ -15,54 +14,52 @@
 
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerContrastC>drawStimulusInRect");
-    trialInfoString = [self acuityComposeTrialInfoString];
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
+    [self calculateForeBackColors];
     CGContextSetFillColor(cgc, colOptotypeBack);
     CGContextFillRect(cgc, [[self window] frame]);
     CGContextSaveGState(cgc);
+    CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
+    CGContextTranslateCTM(cgc,  -xEcc, -yEcc);
     switch(state) {
         case kStateDrawBack: break;
-        case kStateDrawFore: //console.info("kStateDrawFore");
-            CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
-            var col = [CPColor colorWithWhite:	0.8 alpha: 1];
-            var patternContext = CGContextCreatePatternContext(cgc, CGSizeMake(3, 3));
-            CGContextSetStrokeColor(patternContext, col);
-            CGContextBeginPath(patternContext);
-            CGContextMoveToPoint(patternContext, 0, 0); CGContextAddLineToPoint(patternContext, 1, 0);
-            //CGContextMoveToPoint(patternContext, 0, 1); CGContextAddLineToPoint(patternContext, 3, 1);
-            //CGContextMoveToPoint(patternContext, 0, 2); CGContextAddLineToPoint(patternContext, 3, 2);
-            CGContextStrokePath(patternContext);
-            CGContextSetFillPattern(cgc, patternContext);
+        case kStateDrawFore:
+            [self drawFixMark];
+            break;
+        case kStateDrawFore2:
             [optotypes setCgc: cgc colFore: colOptotypeFore colBack: colOptotypeBack];
-            [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: [alternativesGenerator currentAlternative]];
+            [optotypes drawLandoltWithGapInPx: optotypeSize landoltDirection: [alternativesGenerator currentAlternative]];
+            stimStrengthInDeviceunits = [optotypes getCurrentContrastLogCSWeber];
+            trialInfoString = [self contrastComposeTrialInfoString];// compose here after colors are set
             break;
         default: break;
     }
-
+    
+    if ([Settings enableTouchControls] && (!responseButtonsAdded)) {
+        var sze = 50, sze2 = sze / 2, radius = 0.5 * Math.min(viewWidth, viewHeight) - sze2 - 1;
+        for (var i = 0; i < 8; i++) {
+            if ( ([Settings nAlternatives] > 4)  || (![Misc isOdd: i])) {
+                var ang = i / 8 * 2 * Math.PI;
+                [self buttonCenteredAtX: viewWidth / 2 + Math.cos(ang) * radius y:  Math.sin(ang) * radius size: sze title: [@"632147899" characterAtIndex: i]];
+            }
+        }
+        [self buttonCenteredAtX: viewWidth - sze2 - 1 y: viewHeight / 2 - sze2 - 1 size: sze title: "Ø"];
+    }
+    
     CGContextRestoreGState(cgc);
     [super drawStimulusInRect: dirtyRect];
 }
 
 
-- (void) runStart { console.info("FractControllerContrastC>runStart");
+- (void) runStart { //console.info("FractControllerContrastLett>runStart");
+    nAlternatives = [Settings nAlternatives];  nTrials = [Settings nTrials08];
     [self setCurrentTestName: "Contrast_LandoltC"];
-    [self setCurrentTestResultUnit: "logCS"];
     [super runStart];
 }
 
 
-- (void)runEnd { //console.info("FractControllerContrastC>runEnd");
-    if (iTrial < nTrials) { //premature end
-        [self setResultString: @"Aborted"];
-    } else {
-        [self setResultString: [self acuityComposeResultString]];
-    }
-    [super runEnd];
-}
-
-
 // 0–8: valid; -1: ignore; -2: invalid
-- (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerContrastC>responseNumberFromChar: ", keyChar);
+- (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerVAC>responseNumberFromChar: ", keyChar);
     switch (keyChar) {
         case CPLeftArrowFunctionKey: return 4;
         case CPRightArrowFunctionKey: return 0;

@@ -29,12 +29,17 @@
 
 
 - (void) drawFixMark {
-    CGContextSetStrokeColor(cgc, [CPColor colorWithRed: 0 green: 0 blue: 1 alpha: 0.7]);
-    CGContextSetLineWidth(cgc, 0.5);
-    [optotypes setCgc: cgc colFore: [CPColor colorWithRed: 0 green: 0 blue: 1 alpha: 0.3] colBack: colOptotypeBack];
-    [optotypes strokeCrossAtX: 0 y: 0 size: optotypeSize * 3];
-    [optotypes strokeXAtX: 0 y: 0 size: optotypeSize * 3];
     var t = [Settings contrastTimeoutFixmark] / 1000;
+    if ([Settings contrastShowFixMark]) {
+        CGContextSetStrokeColor(cgc, [CPColor colorWithRed: 0 green: 0 blue: 1 alpha: 0.7]);
+        CGContextSetLineWidth(cgc, 0.5);
+        [optotypes setCgc: cgc colFore: [CPColor colorWithRed: 0 green: 0 blue: 1 alpha: 0.3] colBack: colOptotypeBack];
+        [optotypes strokeCrossAtX: 0 y: 0 size: optotypeSize * 3];
+        [optotypes strokeXAtX: 0 y: 0 size: optotypeSize * 3];
+        timerFixMark = [CPTimer scheduledTimerWithTimeInterval: t target:self selector:@selector(onTimeoutFixMark:) userInfo:nil repeats:NO];
+    } else {
+        t = 0.05;
+    }
     timerFixMark = [CPTimer scheduledTimerWithTimeInterval: t target:self selector:@selector(onTimeoutFixMark:) userInfo:nil repeats:NO];
 }
 - (void) onTimeoutFixMark: (CPTimer) timer { //console.info("FractController>onTimeoutFixCross");

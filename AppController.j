@@ -18,6 +18,7 @@
 @import "FractControllerVAVernier.j"
 @import "FractControllerContrastLett.j"
 @import "FractControllerContrastC.j"
+@import "FractControllerContrastE.j"
 @import "RewardsController.j"
 @import "TAOController.j"
 @import "Sound.j"
@@ -28,14 +29,14 @@
 
 
 @typedef TestIDType
-kTestIDLett = 0; kTestIDC = 1; kTestIDE = 2; kTestIDAuck = 3; kTestIDVernier = 4; kTestContrastLett = 5; kTestContrastC = 6;
+kTestIDLett = 0; kTestIDC = 1; kTestIDE = 2; kTestIDAuck = 3; kTestIDVernier = 4; kTestContrastLett = 5; kTestContrastC = 6; kTestContrastE = 7;
 
 CPPushOnPushOffButton   = 1;
 
 @implementation AppController : HierarchyController {
     @outlet CPWindow fractControllerWindow;
-    @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier, responseinfoPanelCntLett, responseinfoPanelCntC;
-    @outlet CPButton buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier, buttCntLett;
+    @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE;
+    @outlet CPButton buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier, buttCntLett, buttCntC, buttCntE;
     @outlet CPButton buttonExport;
     CPImageView rewardImageView;
     RewardsController rewardsController;
@@ -74,13 +75,13 @@ CPPushOnPushOffButton   = 1;
 
 
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>applicationDidFinishLaunching");
-    var allButtons = [buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier, buttCntLett];
+    var allButtons = [buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier, buttCntLett, buttCntC, buttCntE];
     for (var i = 0; i < allButtons.length; i++)  [self adjustImageButton: allButtons[i]];
     
-    allTestControllers = [FractControllerVAL, FractControllerVAC, FractControllerVAE, FractControllerVATAO, FractControllerVAVernier, FractControllerContrastLett, FractControllerContrastC];
+    allTestControllers = [FractControllerVAL, FractControllerVAC, FractControllerVAE, FractControllerVATAO, FractControllerVAVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE];
 //    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
     
-    allPanels = [responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier, responseinfoPanelCntLett, settingsPanel, helpPanel, aboutPanel];
+    allPanels = [responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, settingsPanel, helpPanel, aboutPanel];
     for (var i = 0; i < allPanels.length; i++)  [allPanels[i] setFrameOrigin: CGPointMake(0, 0)];
    
     [[self window] setTitle: "FrACT10"];  [self setVersionDateString: [Settings versionNumber] + "·" + [Settings versionDate]];
@@ -170,9 +171,11 @@ CPPushOnPushOffButton   = 1;
             case kTestIDVernier:
                 [responseinfoPanelVAVernier makeKeyAndOrderFront: self];  break;
             case kTestContrastLett:
-                [responseinfoPanelCntLett makeKeyAndOrderFront: self];  break;
+                [responseinfoPanelContrastLett makeKeyAndOrderFront: self];  break;
             case kTestContrastC:
-                //[responseinfoPanelVAVernier makeKeyAndOrderFront: self];
+                [responseinfoPanelContrastC makeKeyAndOrderFront: self];  break;
+            case kTestContrastE:
+                [responseinfoPanelContrastE makeKeyAndOrderFront: self];  break;
                 break;
         }
     } else {
@@ -237,6 +240,10 @@ CPPushOnPushOffButton   = 1;
             [self  buttonDoAcuityVernier_action: nil];  break;
         case "1":
             [self  buttonDoContrastLett_action: nil];  break;
+        case "2":
+            [self  buttonDoContrastC_action: nil];  break;
+        case "3":
+            [self  buttonDoContrastE_action: nil];  break;
         case "5" :
             switch([Settings testOnFive]) {
                 case 1: [self  buttonDoAcuityLetters_action: nil];  break;
@@ -244,6 +251,9 @@ CPPushOnPushOffButton   = 1;
                 case 3: [self  buttonDoAcuityE_action: nil];  break;
                 case 4: [self  buttonDoAcuityTAO_action: nil];  break;
                 case 5: [self  buttonDoAcuityVernier_action: nil];  break;
+                case 6: [self  buttonDoContrastLett_action: nil];  break;
+                case 7: [self  buttonDoContrastC_action: nil];  break;
+                case 8: [self  buttonDoContrastE_action: nil];  break;
             }
         default:
             [super keyDown: theEvent];  break;
@@ -278,11 +288,14 @@ CPPushOnPushOffButton   = 1;
 - (IBAction) buttonDoAcuityVernier_action: (id) sender { //console.info("AppController>buttonDoAcuityE_action");
     testID = kTestIDVernier;    [self runFractController];
 }
-- (IBAction) buttonDoContrastLett_action: (id) sender { //console.info("AppController>buttonDoContrastC_action");
+- (IBAction) buttonDoContrastLett_action: (id) sender { //console.info("AppController>buttonDoContrastLett_action");
     testID = kTestContrastLett;    [self runFractController];
 }
 - (IBAction) buttonDoContrastC_action: (id) sender { //console.info("AppController>buttonDoContrastC_action");
     testID = kTestContrastC;    [self runFractController];
+}
+- (IBAction) buttonDoContrastE_action: (id) sender { //console.info("AppController>buttonDoContrastC_action");
+    testID = kTestContrastE;    [self runFractController];
 }
 
 
