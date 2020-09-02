@@ -5,3 +5,5 @@ Cocoa Classes/*
 _cappDevelop.xcodeproj
 _cappDevelop.xcodeproj/*
 Resources/MainMenu.cib*
+*.h
+*.m
