@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define dateFract "2020-08-30"
+#define dateFract "2020-09-02"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -12,6 +12,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2020-09-02 introduce class FractControllerContrast
 2020-08-30 changed the internal contrast scale to logCS, renamed many functions, finished contrast
 2020-08-20 Contrast Letters seems to be working, added button and contrast GUI tab, added appropriate Settings
 2020-08-17 refactored to separate the "Optotypes"

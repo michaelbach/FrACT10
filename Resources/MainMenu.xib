@@ -214,7 +214,7 @@ Shortcut: f </string>
                             <action selector="buttonExport_action:" target="450" id="aIb-Nf-ia3"/>
                         </connections>
                     </button>
-                    <button toolTip="Start acuity run using Sloan Letters.  Shortcut: L" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rNE-r4-ESi">
+                    <button toolTip="Start contrast run using Sloan Letters.  Shortcut: 1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rNE-r4-ESi">
                         <rect key="frame" x="39" y="301" width="114" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="butCntLett" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="g65-ae-fbX">
@@ -251,7 +251,7 @@ Shortcut: f </string>
 Freiburg Visual Acuity and Contrast Test, Vs 10
 
 
-Interactive measurement of visual acuities following DIN/ISO.
+Interactive measurement of visual acuities following DIN/ISO; also can assess contrast sensitivity.
 
 Optotypes: Sloan letters, Landolt C, Tumbling E, and TAO.
 
@@ -479,9 +479,9 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="9Tq-uu-N7t">
                             <font key="font" metaFont="menu" size="14"/>
-                            <string key="title">CONTRAST
+                            <string key="title">CONTRAST SENSITIVITY
 
-Not implemented yet in FrACT10, use FrACT.</string>
+· Results in logCS(Weber). CS: “contrast sensitivity"</string>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -491,7 +491,7 @@ Not implemented yet in FrACT10, use FrACT.</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="4jh-qp-wtH">
                             <font key="font" metaFont="menu" size="14"/>
-                            <string key="title">ACUITY
+                            <string key="title">VISUA ACUITY
 
 • Results in “decimal acuity”, logMAR or Snellen format</string>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2836,7 +2836,7 @@ Gw
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hQ1-aO-Xpi">
-                        <rect key="frame" x="20" y="348" width="760" height="197"/>
+                        <rect key="frame" x="20" y="348" width="760" height="252"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="whV-ev-cQc">
                             <font key="font" metaFont="system" size="16"/>
@@ -2850,7 +2850,9 @@ If you can't recognise the letter, use your best guess.
 
 
 Type 55, or Ø, or &lt;esc&gt; to abort the run.
-</string>
+
+
+The result of contrast assessment is in logCS(Weber) units.</string>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>

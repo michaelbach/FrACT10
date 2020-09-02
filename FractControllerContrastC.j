@@ -10,15 +10,8 @@
 @import "FractController.j"
 
 
-@implementation FractControllerContrastC: FractController {
+@implementation FractControllerContrastC: FractControllerContrast {
 }
-
-- (void) modifyThresholderStimulus {
-    if ([Settings contrastEasyTrials]) [self modifyThresholderStimulusWithBonus];
-}
-- (void) modifyDeviceStimulus {[self acuityModifyDeviceStimulusDIN01_02_04_08];}
-- (float) stimDeviceunitsFromThresholderunits: (float) tPest {return [self acuitystimDeviceunitsFromThresholderunits: tPest];}
-- (float) stimThresholderunitsFromDeviceunits: (float) d {return [self acuitystimThresholderunitsFromDeviceunits: d];}
 
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerContrastC>drawStimulusInRect");
@@ -54,7 +47,7 @@
 - (void) runStart { console.info("FractControllerContrastC>runStart");
     [self setCurrentTestName: "Contrast_LandoltC"];
     [self setCurrentTestResultUnit: "logCS"];
-[super runStart];
+    [super runStart];
 }
 
 
