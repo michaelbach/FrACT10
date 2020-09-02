@@ -55,11 +55,13 @@
 - (void) drawLineGaussProfileVerticalAtX: (float) x0 y0: (float) y0 y1: (float) y1 sigma: (float) sigma { //console.info("FractControllerVAVernier>>DrawLineGaussianProfileVertical ", x0, y0, y1);
     var ix0 = Math.round(x0);
     var iSigma = Math.round(Math.max(5, Math.min(sigma * 4, 30))); //trace(sigma, iSigma);
-    var cnt = [Settings contrastAcuityWeber] / 100;
     CGContextSetLineWidth(cgc, 1);
+    var backGrey = [Misc upperLuminanceFromContrastMilsn: [Misc contrastMichelsonFromWeberPercent: [Settings contrastAcuityWeber]]];
+    var cnt = [Settings contrastAcuityWeber] / 100;
+    var greyValue, gaussValue;
     for (var ix = ix0 - iSigma; ix <= ix0 + iSigma; ix++) {
-        var gaussValue = Math.exp(-Math.pow(x0 - ix, 2) / sigma);
-        var greyValue = 0.5 + cnt * (0.5 - gaussValue);
+        gaussValue = Math.exp(-Math.pow(x0 - ix, 2) / sigma);
+        greyValue = backGrey - cnt * gaussValue;
         greyValue = [Misc devicegreyFromLuminance: greyValue];
         CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: greyValue alpha: 1]);
         CGContextBeginPath(cgc);

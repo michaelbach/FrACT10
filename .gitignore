@@ -1,6 +1,6 @@
 Frameworks/*
 .XcodeSupport/*
 Cocoa Classes/*
-.XcodeSupport
-_cappDevelop.xcodeproj
+.XcodeSupport/*
+_cappDevelop.xcodeproj/*
 Resources/MainMenu.cib

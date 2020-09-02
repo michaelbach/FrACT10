@@ -53,8 +53,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         kRangeLimitValueAtCeiling = "atCeiling";  rangeLimitStatus = kRangeLimitDefault;
 
         optotypes = [[Optotypes alloc] init];
-        colOptotypeFore = [Settings acuityForeColor];  colOptotypeBack = [Settings acuityBackColor];
         [Settings checkDefaults];
+        colOptotypeFore = [Settings acuityForeColor];  colOptotypeBack = [Settings acuityBackColor];
         abortCharacter = "5";
         nTrials = [Settings nTrials];
         nAlternatives = [Settings nAlternatives];
