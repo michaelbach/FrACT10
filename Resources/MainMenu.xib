@@ -2301,9 +2301,9 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Syd-WZ-yVY">
-                                            <rect key="frame" x="68" y="33" width="171" height="16"/>
+                                            <rect key="frame" x="68" y="33" width="192" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="max. logCSWeber (careful!)" id="mUy-h3-BZW">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Maximal logCSWeber (careful!)" id="mUy-h3-BZW">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -3088,7 +3088,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="9Yj-ik-8Ly">
                             <font key="font" metaFont="system" size="16"/>
-                            <mutableString key="title">
+                            <string key="title">
 “Tumbling Es“ will appear, how are they oriented?
 
 Use the cursor keys, or on a keypad:
@@ -3101,7 +3101,7 @@ If you can't recognise the orientation, use your best guess.
 
 
 Type 55, or &lt;esc&gt; to abort the run.
-</mutableString>
+</string>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>

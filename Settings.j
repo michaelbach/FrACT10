@@ -180,9 +180,9 @@ Created by mb on July 15, 2015.
     [self setContrastEasyTrials: [self chckBool: [self contrastEasyTrials] def: YES set: set]];
     [self setContrastDarkOnLight: [self chckBool: [self contrastDarkOnLight] def: YES set: set]];
     [self setContrastOptotypeDiameter: [self chckFlt: [self contrastOptotypeDiameter] def: 50 min: 1 max: 500 set: set]];
-    [self setContrastTimeoutFixmark: [self chckFlt: [self contrastTimeoutFixmark] def: 500 min: 0 max: 5000 set: set]];
-    [self setContrastMaxLogCSWeber: [self chckFlt: [self contrastMaxLogCSWeber] def: 2.4 min: 1.5 max: 3 set: set]];
     [self setContrastShowFixMark: [self chckBool: [self contrastShowFixMark] def: YES set: set]];
+    [self setContrastTimeoutFixmark: [self chckFlt: [self contrastTimeoutFixmark] def: 500 min: 20 max: 5000 set: set]];
+    [self setContrastMaxLogCSWeber: [self chckFlt: [self contrastMaxLogCSWeber] def: 2.4 min: 1.5 max: 3 set: set]];
 
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
@@ -646,6 +646,13 @@ Created by mb on July 15, 2015.
     [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "contrastOptotypeDiameter"];
 }
 
++ (BOOL) contrastShowFixMark {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "contrastShowFixMark"];
+}
++ (void) setContrastShowFixMark: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "contrastShowFixMark"];
+}
+
 + (float) contrastTimeoutFixmark {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "contrastTimeoutFixmark"];
 }
@@ -665,13 +672,6 @@ Created by mb on July 15, 2015.
 }
 + (void) setGammaValue: (float) value {
     [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "gammaValue"];
-}
-
-+ (BOOL) contrastShowFixMark {
-    return [[CPUserDefaults standardUserDefaults] boolForKey: "contrastShowFixMark"];
-}
-+ (void) setContrastShowFixMark: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "contrastShowFixMark"];
 }
 
 
