@@ -2085,7 +2085,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                                 <rect key="frame" x="3" y="3" width="308" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <popUpButton toolTip="Types of crowding" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFy-VR-55t" userLabel="Crowding">
+                                                    <popUpButton toolTip="Types of crowding" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFy-VR-55t" userLabel="Crowding type">
                                                         <rect key="frame" x="18" y="23" width="130" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="CEr-tD-UxQ" id="Q94-l5-Nrk">
@@ -2115,10 +2115,10 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                                             <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.crowdingType" id="pUP-54-tjJ"/>
                                                         </connections>
                                                     </popUpButton>
-                                                    <popUpButton toolTip="Distance of crowding elements" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6J-2A-7mk" userLabel="Crowding type">
+                                                    <popUpButton toolTip="Distance of crowding elements" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6J-2A-7mk" userLabel="Crowding distance">
                                                         <rect key="frame" x="162" y="23" width="130" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <popUpButtonCell key="cell" type="push" title="2·gap" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="mt7-ev-w6m" id="8J5-AI-Fsw">
+                                                        <popUpButtonCell key="cell" type="push" title="2·gap" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="mt7-ev-w6m" id="8J5-AI-Fsw" userLabel="2·gap etc.">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                             <menu key="menu" id="z7D-2p-Kha">
@@ -2139,6 +2139,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                                             </menu>
                                                         </popUpButtonCell>
                                                         <connections>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.crowdingType" id="fCp-62-cNh"/>
                                                             <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.crowdingDistanceCalculationType" id="lyq-HX-gbT"/>
                                                         </connections>
                                                     </popUpButton>
