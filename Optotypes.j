@@ -28,24 +28,15 @@
 }
 
 
-- (float) getBrightnessViaCSSfromColor: (CPColor) aColor {
-    return [[CPColor colorWithCSSString: [aColor cssString]] brightnessComponent];
-}
-
-- (float) getCurrentContrastMilsnPercent {
-    var f = [self getBrightnessViaCSSfromColor: _colOptotypeFore], b = [self getBrightnessViaCSSfromColor: _colOptotypeBack];
-//    var f = [_colOptotypeFore brightnessComponent], b = [_colOptotypeBack brightnessComponent];
-    // console.info(_colOptotypeFore, _colOptotypeBack);
-    var retVal = (f - b) / (f + b) * 100;
-    // console.info(f, b, retVal);
-    return retVal;
+- (float) getCurrentContrastMichelsonPercent {
+    return [Misc contrastMichelsonPercentFromColor1: _colOptotypeFore color2: _colOptotypeBack];
 }
 - (float) getCurrentContrastWeberPercent {
-    return [Misc contrastWeberFromMichelsonPercent: [self getCurrentContrastMilsnPercent]];
+    return [Misc contrastWeberFromMichelsonPercent: [self getCurrentContrastMichelsonPercent]];
 }
 - (float) getCurrentContrastLogCSWeber {
-    var milsnPercent = [self getCurrentContrastMilsnPercent];
-    var weberPercent = [Misc contrastWeberFromMichelsonPercent: milsnPercent];
+    var michelsonPercent = [self getCurrentContrastMichelsonPercent];
+    var weberPercent = [Misc contrastWeberFromMichelsonPercent: michelsonPercent];
     return [Misc contrastLogCSWeberFromWeberPercent: weberPercent];
 }
 

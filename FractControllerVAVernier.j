@@ -56,14 +56,14 @@
     var ix0 = Math.round(x0);
     var iSigma = Math.round(Math.max(5, Math.min(sigma * 4, 30))); //trace(sigma, iSigma);
     CGContextSetLineWidth(cgc, 1);
-    var backGrey = [Misc upperLuminanceFromContrastMilsn: [Misc contrastMichelsonFromWeberPercent: [Settings contrastAcuityWeber]]];
+    var backGray = [Misc upperLuminanceFromContrastMilsn: [Misc contrastMichelsonFromWeberPercent: [Settings contrastAcuityWeber]]];
     var cnt = [Settings contrastAcuityWeber] / 100;
-    var greyValue, gaussValue;
+    var grayValue, gaussValue;
     for (var ix = ix0 - iSigma; ix <= ix0 + iSigma; ix++) {
         gaussValue = Math.exp(-Math.pow(x0 - ix, 2) / sigma);
-        greyValue = backGrey - cnt * gaussValue;
-        greyValue = [Misc devicegreyFromLuminance: greyValue];
-        CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: greyValue alpha: 1]);
+        grayValue = backGray - cnt * gaussValue;
+        grayValue = [Misc devicegrayFromLuminance: grayValue];
+        CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: grayValue alpha: 1]);
         CGContextBeginPath(cgc);
         CGContextMoveToPoint(cgc, ix, y0);
         CGContextAddLineToPoint(cgc, ix, y1);

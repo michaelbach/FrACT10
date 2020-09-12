@@ -35,6 +35,7 @@ CPPushOnPushOffButton   = 1;
 
 @implementation AppController : HierarchyController {
     @outlet CPWindow fractControllerWindow;
+    @outlet CPColorWell checkContrastWeberField1, checkContrastWeberField2;
     @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE;
     @outlet CPButton buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier, buttCntLett, buttCntC, buttCntE;
     @outlet CPButton buttonExport;
@@ -48,6 +49,10 @@ CPPushOnPushOffButton   = 1;
     BOOL runAborted @accessors;
     Sound sound;
     id allPanels, allTestControllers;
+    CPColor checkContrastWeberFieldColor1 @accessors;
+    CPColor checkContrastWeberFieldColor2 @accessors;
+    float checkContrastActualWeberPercent @accessors
+    float checkContrastActualMichelsonPercent @accessors
 }
 
 
@@ -70,13 +75,13 @@ CPPushOnPushOffButton   = 1;
     settingsNeedNewDefaults = [Settings needNewDefaults];
     [Settings checkDefaults]; //important to do this early, otherwise the updates don't populate the settings panel – DOES NOT HELP, unfortunately
     [[self window] setFullPlatformWindow: YES];
-    [CPMenu setMenuBarVisible:NO];
+    [CPMenu setMenuBarVisible: NO];
 }
 
 
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>applicationDidFinishLaunching");
     var allButtons = [buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier, buttCntLett, buttCntC, buttCntE];
-    for (var i = 0; i < allButtons.length; i++)  [self adjustImageButton: allButtons[i]];
+    for (var i = 0; i < allButtons.length; i++)  [Misc makeFrameSquareFromWidth: allButtons[i]];
     
     allTestControllers = [FractControllerVAL, FractControllerVAC, FractControllerVAE, FractControllerVATAO, FractControllerVAVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE];
 //    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
@@ -100,6 +105,8 @@ CPPushOnPushOffButton   = 1;
     [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
 
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(copyForeBackColorsFromSettings:) name: "copyForeBackColorsFromSettings" object: nil];
+    
+    [self buttonCheckContrast_action: null];
 }
 
 
@@ -119,12 +126,6 @@ CPPushOnPushOffButton   = 1;
  // KVO handler
  -(void)observeValueForKeyPath:(NSString *)aKeyPath ofObject:(id)anObject change:(NSDictionary *)aChange context:(void *)aContext {}*/
 - (void) defaultsDidChange: (CPNotification) aNotification {console.info("defaultsDidChange");}
-
-
-- (void) adjustImageButton: (CPButton) b {
-    var rect1 = [b frame];
-    [b setFrame: CGRectMake(rect1.origin.x, rect1.origin.y - (rect1.size.width - 16) / 2, rect1.size.width, rect1.size.width)];
-}
 
 
 - (void) closeAllPanels {
@@ -310,7 +311,7 @@ CPPushOnPushOffButton   = 1;
 }
 - (IBAction) buttonSettingsClose_action: (id) sender { //console.info("AppController>buttonSettingsClose");
     [Settings checkDefaults];  [settingsPanel close];
-    // below the idea was to keep e.g. red optotypes – but they do not appear. Ah, they cannot appear – only grey values there
+    // below the idea was to keep e.g. red optotypes – but they do not appear. Ah, they cannot appear – only gray values there
     //[Settings setAcuityForeColor: [self acuityForeColor]];  [Settings setAcuityBackColor: [self acuityBackColor]];
 }
 - (IBAction) buttonSettingsDefaults_action: (id) sender { //console.info("AppController>buttonSettingsDefaults");
@@ -361,6 +362,31 @@ CPPushOnPushOffButton   = 1;
         [Misc fullScreenOn: NO];
     }
     [[self window] close];  [CPApp terminate: nil];
+}
+
+
+- (IBAction) buttonCheckContrast_action: (id) sender { //console.info("AppController>buttonCheckContrast_action");
+    var tag = [sender tag], contrastsPercent = [1, 3, 10, 30, 90], contrastPercent = 0;
+    if ((tag > 0) && (tag <= 5))  contrastPercent = contrastsPercent[tag - 1];
+    var contrastLogCSWeber = [Misc contrastLogCSWeberFromWeberPercent: contrastPercent];
+//    console.log(tag, contrastPercent, contrastLogCSWeber)
+    var gray1 = [Misc lowerLuminanceFromContrastLogCSWeber: contrastLogCSWeber];
+    gray1 = [Misc devicegrayFromLuminance: gray1];
+    var gray2 = [Misc upperLuminanceFromContrastLogCSWeber: contrastLogCSWeber];
+    gray2 = [Misc devicegrayFromLuminance: gray2];
+    if (![Settings contrastDarkOnLight]) {
+        var gray = gray1; gray1 = gray2; gray2 = gray;
+    }
+//    console.log("Wperc ", contrastPercent, ", lgCSW ", contrastLogCSWeber, ", g1 ", gray1, ", g2 ", gray2);
+    
+    var c1 = [CPColor colorWithWhite: gray1 alpha: 1], c2 = [CPColor colorWithWhite: gray2 alpha: 1];
+    [self setCheckContrastWeberFieldColor1: c1];   [self setCheckContrastWeberFieldColor2: c2];
+    
+    var actualMichelsonPerc = [Misc contrastMichelsonPercentFromColor1: c1 color2: c2];
+    [self setCheckContrastActualMichelsonPercent: Math.round(actualMichelsonPerc * 10) / 10];
+    
+    var actualWeberPerc = [Misc contrastWeberFromMichelsonPercent: actualMichelsonPerc];
+    [self setCheckContrastActualWeberPercent:  Math.round(actualWeberPerc * 10) / 10];
 }
 
 

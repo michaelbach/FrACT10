@@ -444,7 +444,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="8aG-i8-Dh8">
                             <rect key="frame" x="1" y="1" width="743" height="327"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="zNM-Gb-Jh9">
                                     <rect key="frame" x="0.0" y="0.0" width="743" height="406"/>
@@ -566,7 +566,9 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                 <outlet property="buttVATAO" destination="6e2-Sj-gkY" id="wS5-ys-hpB"/>
                 <outlet property="buttVAVernier" destination="8oB-kn-EbO" id="D7M-xX-xff"/>
                 <outlet property="buttonExport" destination="L8d-bR-KqO" id="YCp-1H-vRB"/>
-                <outlet property="fractControllerWindow" destination="r6R-bh-Qyp" id="M05-uu-qYO"/>
+                <outlet property="checkContrastWeberField1" destination="rpb-ue-CQK" id="6ZW-Oz-wpM"/>
+                <outlet property="checkContrastWeberField2" destination="4WO-rY-pis" id="Lcj-IY-0Np"/>
+                <outlet property="fractControllerWindow" destination="r6R-bh-Qyp" id="WQx-mH-JUh"/>
                 <outlet property="helpPanel" destination="28C-lv-KIF" id="Uyw-Zc-Dhd"/>
                 <outlet property="responseinfoPanelContrastC" destination="Tf3-6J-w5e" id="Y68-5r-F1P"/>
                 <outlet property="responseinfoPanelContrastE" destination="XVY-wU-ZJF" id="4nI-Wi-dhf"/>
@@ -578,7 +580,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                 <outlet property="responseinfoPanelVATAO" destination="mal-zk-76C" id="AMZ-0a-rBi"/>
                 <outlet property="responseinfoPanelVAVernier" destination="aQE-yg-pvo" id="ujy-mj-Kc7"/>
                 <outlet property="settingsPanel" destination="MF5-y3-Ol0" id="6RV-5t-pXs"/>
-                <outlet property="window" destination="371" id="cmb-GE-Av3"/>
+                <outlet property="window" destination="371" id="OB7-Tk-Lov"/>
             </connections>
         </customObject>
         <menu title="Main Menu" systemMenu="main" id="2NG-0l-WhQ">
@@ -1233,6 +1235,31 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="04J-Xh-PWS">
+                        <rect key="frame" x="733" y="13" width="59" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bhn-3j-xKc">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="buttonSettingsClose_action:" target="450" id="AKb-di-UxX"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7J6-oI-eCG">
+                        <rect key="frame" x="587" y="13" width="146" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Set all to defaults" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VLz-8j-SPB">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="buttonSettingsDefaults_action:" target="450" id="lZH-J8-uqa"/>
+                        </connections>
+                    </button>
                     <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S1X-kS-Zwg">
                         <rect key="frame" x="7" y="51" width="786" height="535"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1244,7 +1271,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField toolTip="For CALIBRATION: enter the distance between observer and screen here in CENTIMETERS." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YNX-f3-PL9">
-                                            <rect key="frame" x="309" y="17" width="40" height="22"/>
+                                            <rect key="frame" x="309" y="12" width="40" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="mSo-Pg-7e1">
                                                 <font key="font" metaFont="system"/>
@@ -1258,7 +1285,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                             </connections>
                                         </textField>
                                         <textField toolTip="For CALIBRATION: measure the length of the blue “ruler” here, and enter its value in millimeters." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aXw-Ht-RMk">
-                                            <rect key="frame" x="17" y="17" width="40" height="22"/>
+                                            <rect key="frame" x="17" y="12" width="40" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="aeQ-iq-4hD">
                                                 <font key="font" metaFont="system"/>
@@ -1272,7 +1299,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LFN-en-1hJ">
-                                            <rect key="frame" x="59" y="20" width="206" height="16"/>
+                                            <rect key="frame" x="59" y="15" width="206" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Length of this ↑ blue ruler, in mm" id="Y2A-Yd-GvF">
                                                 <font key="font" metaFont="system"/>
@@ -1281,7 +1308,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PMY-4u-bWa">
-                                            <rect key="frame" x="351" y="20" width="155" height="16"/>
+                                            <rect key="frame" x="351" y="15" width="155" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Observer distance, in cm" id="Cau-YW-4o6">
                                                 <font key="font" metaFont="system"/>
@@ -1342,7 +1369,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" boxType="custom" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4PI-eF-GR8">
-                                            <rect key="frame" x="33" y="52" width="700" height="3"/>
+                                            <rect key="frame" x="33" y="47" width="700" height="3"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="Itc-rv-ck6">
                                                 <rect key="frame" x="1" y="1" width="698" height="1"/>
@@ -1352,7 +1379,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                             <color key="fillColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </box>
                                         <box fixedFrame="YES" boxType="custom" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="NYw-lp-ui0">
-                                            <rect key="frame" x="33" y="48" width="3" height="12"/>
+                                            <rect key="frame" x="33" y="43" width="3" height="12"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="F2O-4Y-ugx">
                                                 <rect key="frame" x="1" y="1" width="1" height="10"/>
@@ -1362,7 +1389,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                             <color key="fillColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </box>
                                         <box fixedFrame="YES" boxType="custom" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="c3I-kf-NBt">
-                                            <rect key="frame" x="731" y="48" width="3" height="12"/>
+                                            <rect key="frame" x="731" y="43" width="3" height="12"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="kqD-gL-3di">
                                                 <rect key="frame" x="1" y="1" width="1" height="10"/>
@@ -1741,10 +1768,10 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pas-6M-sVy" userLabel="max. poss. decimal VA">
-                                            <rect key="frame" x="711" y="17" width="44" height="22"/>
+                                            <rect key="frame" x="711" y="12" width="44" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">This displays the maximal acuity that can be achieved, in decimal VA units. It depends on the pixel size of your VDU (in degrees), which is calculated from your two entries under the ruler.</string>
-                                            <textFieldCell key="cell" selectable="YES" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="Q7g-N1-ucl">
+                                            <textFieldCell key="cell" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="Q7g-N1-ucl">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1754,7 +1781,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RdI-3Q-nit">
-                                            <rect key="frame" x="522" y="20" width="186" height="16"/>
+                                            <rect key="frame" x="522" y="15" width="186" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="→max possible decimal acuity" id="JpO-3M-x0P">
                                                 <font key="font" metaFont="system"/>
@@ -1837,7 +1864,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.acuityEasyTrials" id="ghy-mX-Bb1"/>
                                             </connections>
                                         </button>
-                                        <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4eR-Ax-gL1">
+                                        <colorWell fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eR-Ax-gL1">
                                             <rect key="frame" x="17" y="377" width="40" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1845,7 +1872,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                                 <binding destination="450" name="value" keyPath="acuityForeColor" id="Sfr-Nl-xTH"/>
                                             </connections>
                                         </colorWell>
-                                        <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OSW-TH-Yop">
+                                        <colorWell fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSW-TH-Yop">
                                             <rect key="frame" x="67" y="377" width="40" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -2139,8 +2166,8 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                                             </menu>
                                                         </popUpButtonCell>
                                                         <connections>
-                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.crowdingType" id="fCp-62-cNh"/>
                                                             <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.crowdingDistanceCalculationType" id="lyq-HX-gbT"/>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.crowdingType" id="fCp-62-cNh"/>
                                                         </connections>
                                                     </popUpButton>
                                                 </subviews>
@@ -2199,7 +2226,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lcc-Iq-YtQ">
-                                            <rect key="frame" x="302" y="426" width="123" height="35"/>
+                                            <rect key="frame" x="272" y="426" width="123" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">If unchecked, the raw=psychometric threshold is caculated. If checked (default), it's descending-corrected, thus reflecting DIN/ISO values.</string>
                                             <buttonCell key="cell" type="check" title="Dark on light" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="W2N-2I-sCS">
@@ -2224,12 +2251,40 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                             </textFieldCell>
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.contrastOptotypeDiameter" id="i1U-Y6-xcN"/>
+                                                <outlet property="nextKeyView" destination="7g6-ZC-0RB" id="hmJ-EC-cmI"/>
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WRa-Gy-4ku">
                                             <rect key="frame" x="68" y="338" width="114" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Diameter [arcmin]" id="k8n-UU-dxq">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ukk-GT-YCS">
+                                            <rect key="frame" x="555" y="470" width="186" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Checking Contrast Calibration" id="1ks-bV-U8w">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EaL-OP-PBz">
+                                            <rect key="frame" x="517" y="394" width="55" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="left" title="Weber%" id="IF7-re-rSz">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jGq-DM-9nB">
+                                            <rect key="frame" x="633" y="394" width="77" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="right" title="Michelson%" id="Whv-wz-1VP">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -2249,6 +2304,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                             </textFieldCell>
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.contrastTimeoutFixmark" id="oJx-Ol-gwd"/>
+                                                <outlet property="nextKeyView" destination="VtL-41-f6x" id="cj2-Ek-oqL"/>
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="APZ-Gr-9ge">
@@ -2274,6 +2330,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                             </textFieldCell>
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.gammaValue" id="6NS-ft-JwG"/>
+                                                <outlet property="nextKeyView" destination="AQw-jE-a5x" id="TQx-yC-UXo"/>
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jmI-Rj-0PL">
@@ -2299,6 +2356,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                             </textFieldCell>
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.contrastMaxLogCSWeber" id="gMB-Zo-3un"/>
+                                                <outlet property="nextKeyView" destination="Q2Y-AR-KXh" id="VNU-dD-y04"/>
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Syd-WZ-yVY">
@@ -2311,7 +2369,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                             </textFieldCell>
                                         </textField>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n1N-DA-kHl">
-                                            <rect key="frame" x="302" y="228" width="162" height="35"/>
+                                            <rect key="frame" x="272" y="228" width="162" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">If unchecked, the raw=psychometric threshold is caculated. If checked (default), it's descending-corrected, thus reflecting DIN/ISO values.</string>
                                             <buttonCell key="cell" type="check" title="Show fixation mark " bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="a9c-xr-Q7f">
@@ -2322,36 +2380,119 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.contrastShowFixMark" id="szB-hn-YmU"/>
                                             </connections>
                                         </button>
+                                        <box horizontalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Gry-my-fXc">
+                                            <rect key="frame" x="444" y="-9" width="5" height="492"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        </box>
+                                        <colorWell toolTip="Measure luminance in these 2 fields to calculate actual contrast." fixedFrame="YES" bordered="NO" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4WO-rY-pis">
+                                            <rect key="frame" x="512" y="-9" width="200" height="200"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <binding destination="450" name="value" keyPath="checkContrastWeberFieldColor2" id="XTa-Bf-ei4"/>
+                                            </connections>
+                                        </colorWell>
+                                        <colorWell toolTip="Measure luminance in these 2 fields to calculate actual contrast." fixedFrame="YES" allowsExpansionToolTips="YES" bordered="NO" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpb-ue-CQK">
+                                            <rect key="frame" x="512" y="185" width="200" height="200"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <binding destination="450" name="value" keyPath="checkContrastWeberFieldColor1" id="F9D-jk-1Tu"/>
+                                            </connections>
+                                        </colorWell>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="hIy-ej-UZL">
+                                            <rect key="frame" x="525" y="434" width="58" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="3%" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1P6-vF-hoz">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="buttonCheckContrast_action:" target="450" id="oes-xR-e6l"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="0BV-zZ-cWy">
+                                            <rect key="frame" x="464" y="434" width="58" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="1%" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AB1-ng-QrF">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="buttonCheckContrast_action:" target="450" id="yVK-WT-gaC"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="79G-4d-smM">
+                                            <rect key="frame" x="589" y="434" width="58" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="10%" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CmE-75-uwu">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="buttonCheckContrast_action:" target="450" id="hYI-hY-PyK"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="PK9-fk-lXd">
+                                            <rect key="frame" x="646" y="434" width="58" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="30%" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gbk-mY-cce">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="buttonCheckContrast_action:" target="450" id="mTw-IG-EMe"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="TKw-fV-GSt">
+                                            <rect key="frame" x="703" y="434" width="58" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="90%" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2PE-y0-Q2V">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="buttonCheckContrast_action:" target="450" id="Xde-Bx-Okk"/>
+                                            </connections>
+                                        </button>
+                                        <textField toolTip="This displays the realisable Weber contrast, depending on colour discretness and gamma value." horizontalHuggingPriority="251" verticalHuggingPriority="750" id="zwW-mU-UJ5" userLabel="actual contrast">
+                                            <rect key="frame" x="472" y="393" width="44" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="tZh-H7-P0v">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="450" name="value" keyPath="checkContrastActualWeberPercent" id="fMh-WG-LLt"/>
+                                            </connections>
+                                        </textField>
+                                        <textField toolTip="This displays the realisable Michelson contrast, depending on colour discretness and gamma value" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="B51-it-99X" userLabel="actual contrast">
+                                            <rect key="frame" x="711" y="393" width="44" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="Puz-11-8LJ">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="450" name="value" keyPath="checkContrastActualMichelsonPercent" id="HRE-Cj-yPN"/>
+                                            </connections>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eau-sb-iUa">
+                                            <rect key="frame" x="553" y="412" width="120" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="center" title="realisable contrast" id="unR-3S-tER">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                 </view>
                             </tabViewItem>
                         </tabViewItems>
                     </tabView>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="04J-Xh-PWS">
-                        <rect key="frame" x="733" y="13" width="59" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bhn-3j-xKc">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonSettingsClose_action:" target="450" id="AKb-di-UxX"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7J6-oI-eCG">
-                        <rect key="frame" x="587" y="13" width="146" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Set all to defaults" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VLz-8j-SPB">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonSettingsDefaults_action:" target="450" id="lZH-J8-uqa"/>
-                        </connections>
-                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="139" y="819"/>

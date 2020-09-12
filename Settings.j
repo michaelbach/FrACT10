@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define dateFract "2020-09-02"
+#define dateFract "2020-09-12"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -176,14 +176,14 @@ Created by mb on July 15, 2015.
 
     
     // Contrast stuff
-    [self setGammaValue: [self chckFlt: [self gammaValue] def: 1.8 min: 0.8 max: 4 set: set]];
+    [self setGammaValue: [self chckFlt: [self gammaValue] def: 1.7 min: 0.8 max: 4 set: set]];
     [self setContrastEasyTrials: [self chckBool: [self contrastEasyTrials] def: YES set: set]];
     [self setContrastDarkOnLight: [self chckBool: [self contrastDarkOnLight] def: YES set: set]];
     [self setContrastOptotypeDiameter: [self chckFlt: [self contrastOptotypeDiameter] def: 50 min: 1 max: 500 set: set]];
     [self setContrastShowFixMark: [self chckBool: [self contrastShowFixMark] def: YES set: set]];
     [self setContrastTimeoutFixmark: [self chckFlt: [self contrastTimeoutFixmark] def: 500 min: 20 max: 5000 set: set]];
     [self setContrastMaxLogCSWeber: [self chckFlt: [self contrastMaxLogCSWeber] def: 2.4 min: 1.5 max: 3 set: set]];
-
+    
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -200,10 +200,10 @@ Created by mb on July 15, 2015.
 + (void) calculateAcuityForeBackColorsFromContrast { //console.info("Settings>calculateAcuityForeBackColorsFromContrast");
     var cnt = [Misc contrastMichelsonFromWeberPercent: [self contrastAcuityWeber]];
 
-    var temp = [Misc lowerLuminanceFromContrastMilsn: cnt];  temp = [Misc devicegreyFromLuminance: temp];
+    var temp = [Misc lowerLuminanceFromContrastMilsn: cnt];  temp = [Misc devicegrayFromLuminance: temp];
     [self setAcuityForeColor: [CPColor colorWithWhite: temp alpha: 1]];
 
-    temp = [Misc upperLuminanceFromContrastMilsn: cnt];  temp = [Misc devicegreyFromLuminance: temp];
+    temp = [Misc upperLuminanceFromContrastMilsn: cnt];  temp = [Misc devicegrayFromLuminance: temp];
     [self setAcuityBackColor: [CPColor colorWithWhite: temp alpha: 1]];
     
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyForeBackColorsFromSettings" object: nil];
