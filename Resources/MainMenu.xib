@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="1050" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -192,7 +192,7 @@ Shortcut: f </string>
                             <binding destination="450" name="value" keyPath="resultString" id="Szf-LU-Qs3"/>
                         </connections>
                     </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L8d-bR-KqO">
+                    <button toolTip="This button only appears after a finished run and does what it says." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L8d-bR-KqO">
                         <rect key="frame" x="610" y="130" width="151" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Export→Clipboard" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yIl-d4-aF3">
@@ -1322,7 +1322,7 @@ DQ
                                             <string key="toolTip">Especially for the export to clipboard action, it is necessary to choose the right one here, otherwise numbers etc. will not be recognised correctly by the spreadsheet.</string>
                                             <popUpButtonCell key="cell" type="push" title="dot" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="p64-gR-0Sx" id="Ymt-mG-1P5">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="menu"/>
                                                 <menu key="menu" id="IVL-nZ-4hD">
                                                     <items>
                                                         <menuItem title="dot" state="on" id="p64-gR-0Sx"/>
@@ -1340,7 +1340,7 @@ DQ
                                             <string key="toolTip">Optionally, after the test the results can be placed on the clipboard. A dialog will appear asking if ok (this is necessary for safety reasons). Then you could switch (e.g. with the task switcher) to a spreadsheet runnin in the background and paste the results for record keeping and statistical processing.</string>
                                             <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="o1v-C2-qAT" id="FXQ-q8-3FM">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="menu"/>
                                                 <menu key="menu" id="qaa-tM-phA">
                                                     <items>
                                                         <menuItem title="none" state="on" id="o1v-C2-qAT">
@@ -1449,7 +1449,7 @@ DQ
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Ydh-Um-hUv" id="4cQ-ky-Scu">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="menu"/>
                                                 <menu key="menu" id="fco-In-o7p">
                                                     <items>
                                                         <menuItem title="none" state="on" id="Ydh-Um-hUv">
@@ -1553,7 +1553,7 @@ DQ
                                                         <string key="toolTip">Type of sound feedback when you respond to an optotype presentation. “With info”: two different sounds for correct/incorrect (default).</string>
                                                         <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Ncx-YP-qRh" id="a2e-3I-Iu4">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="menu"/>
                                                             <menu key="menu" id="701-5e-hT6">
                                                                 <items>
                                                                     <menuItem title="none" state="on" id="Ncx-YP-qRh">
@@ -1621,7 +1621,7 @@ DQ
                                                         <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes.  For Landolt-Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.</string>
                                                         <popUpButtonCell key="cell" type="push" title="2" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="MNg-IJ-MqA" id="jUX-2m-CLf">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="menu"/>
                                                             <menu key="menu" id="SUD-01-rKd">
                                                                 <items>
                                                                     <menuItem title="2" state="on" id="MNg-IJ-MqA"/>
@@ -1796,7 +1796,7 @@ DQ
                                                 <rect key="frame" x="3" y="3" width="214" height="69"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField toolTip="0°: middel of the screen, positive values shift to the right." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sNY-mP-vcW">
+                                                    <textField toolTip="0°: middle of the screen, positive values shift to the right." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sNY-mP-vcW">
                                                         <rect key="frame" x="20" y="22" width="40" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="EbP-1c-bMs">
@@ -1810,7 +1810,7 @@ DQ
                                                             <outlet property="nextKeyView" destination="cXH-fg-tcl" id="BOB-tY-dTk"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField toolTip="0°: middel of the screen, positive values shift up." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cXH-fg-tcl">
+                                                    <textField toolTip="0°: middle of the screen, positive values shift up." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cXH-fg-tcl">
                                                         <rect key="frame" x="154" y="22" width="40" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="cm5-Bq-tZU">
@@ -2077,7 +2077,7 @@ DQ
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <popUpButtonCell key="cell" type="push" title="2 lines" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="qvW-F3-MnN" id="Din-QU-a6Y" userLabel="2 lines">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="menu"/>
                                                             <menu key="menu" id="0uI-0w-5Vt">
                                                                 <items>
                                                                     <menuItem title="2 lines" state="on" id="qvW-F3-MnN">
@@ -2117,7 +2117,7 @@ DQ
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="CEr-tD-UxQ" id="Q94-l5-Nrk">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="menu"/>
                                                             <menu key="menu" id="JBV-Xo-VBB">
                                                                 <items>
                                                                     <menuItem title="none" state="on" id="CEr-tD-UxQ">
@@ -2147,7 +2147,7 @@ DQ
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <popUpButtonCell key="cell" type="push" title="2·gap" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="mt7-ev-w6m" id="8J5-AI-Fsw" userLabel="2·gap etc.">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="menu"/>
                                                             <menu key="menu" id="z7D-2p-Kha">
                                                                 <items>
                                                                     <menuItem title="2·gap" state="on" id="mt7-ev-w6m">
@@ -2225,10 +2225,9 @@ DQ
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.contrastEasyTrials" id="uOy-A7-9AJ"/>
                                             </connections>
                                         </button>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lcc-Iq-YtQ">
+                                        <button toolTip="Contrast polarity" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lcc-Iq-YtQ">
                                             <rect key="frame" x="272" y="426" width="123" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">If unchecked, the raw=psychometric threshold is caculated. If checked (default), it's descending-corrected, thus reflecting DIN/ISO values.</string>
                                             <buttonCell key="cell" type="check" title="Dark on light" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="W2N-2I-sCS">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -2237,7 +2236,7 @@ DQ
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.contrastDarkOnLight" id="PIh-Zv-JmK"/>
                                             </connections>
                                         </button>
-                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q2Y-AR-KXh">
+                                        <textField toolTip="Diameter of the optotype" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q2Y-AR-KXh">
                                             <rect key="frame" x="17" y="337" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="Znx-Pa-tgb">
@@ -2290,7 +2289,7 @@ DQ
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7g6-ZC-0RB">
+                                        <textField toolTip="Duration the brief blue fisation star is visible." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7g6-ZC-0RB">
                                             <rect key="frame" x="17" y="235" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="7Hj-2n-DFq">
@@ -2316,7 +2315,7 @@ DQ
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VtL-41-f6x">
+                                        <textField toolTip="Gamma value to correct for display non-linearity" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VtL-41-f6x">
                                             <rect key="frame" x="17" y="133" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="8S2-DM-aFk">
@@ -2342,7 +2341,7 @@ DQ
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AQw-jE-a5x">
+                                        <textField toolTip="Best not change it…" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AQw-jE-a5x">
                                             <rect key="frame" x="17" y="32" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="B2m-gD-gKI">
@@ -2400,7 +2399,7 @@ DQ
                                                 <binding destination="450" name="value" keyPath="checkContrastWeberFieldColor1" id="F9D-jk-1Tu"/>
                                             </connections>
                                         </colorWell>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="hIy-ej-UZL">
+                                        <button toolTip="Set the fields below to 3% Weber contrast (possibly too small to render correctly)" verticalHuggingPriority="750" fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="hIy-ej-UZL">
                                             <rect key="frame" x="525" y="434" width="58" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="push" title="3%" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1P6-vF-hoz">
@@ -2411,7 +2410,7 @@ DQ
                                                 <action selector="buttonCheckContrast_action:" target="450" id="oes-xR-e6l"/>
                                             </connections>
                                         </button>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="0BV-zZ-cWy">
+                                        <button toolTip="Set the fields below to 1% Weber contrast (too small to render)" verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="0BV-zZ-cWy">
                                             <rect key="frame" x="464" y="434" width="58" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="push" title="1%" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AB1-ng-QrF">
@@ -2422,7 +2421,7 @@ DQ
                                                 <action selector="buttonCheckContrast_action:" target="450" id="yVK-WT-gaC"/>
                                             </connections>
                                         </button>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="79G-4d-smM">
+                                        <button toolTip="Set the fields below to 10% Weber contrast." verticalHuggingPriority="750" fixedFrame="YES" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="79G-4d-smM">
                                             <rect key="frame" x="589" y="434" width="58" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="push" title="10%" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CmE-75-uwu">
@@ -2433,7 +2432,7 @@ DQ
                                                 <action selector="buttonCheckContrast_action:" target="450" id="hYI-hY-PyK"/>
                                             </connections>
                                         </button>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="PK9-fk-lXd">
+                                        <button toolTip="Set the fields below to 30% Weber contrast-." verticalHuggingPriority="750" fixedFrame="YES" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="PK9-fk-lXd">
                                             <rect key="frame" x="646" y="434" width="58" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="push" title="30%" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gbk-mY-cce">
@@ -2444,7 +2443,7 @@ DQ
                                                 <action selector="buttonCheckContrast_action:" target="450" id="mTw-IG-EMe"/>
                                             </connections>
                                         </button>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="TKw-fV-GSt">
+                                        <button toolTip="Set the fields below to 90% Weber contrast." verticalHuggingPriority="750" fixedFrame="YES" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="TKw-fV-GSt">
                                             <rect key="frame" x="703" y="434" width="58" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="push" title="90%" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2PE-y0-Q2V">
@@ -2455,7 +2454,7 @@ DQ
                                                 <action selector="buttonCheckContrast_action:" target="450" id="Xde-Bx-Okk"/>
                                             </connections>
                                         </button>
-                                        <textField toolTip="This displays the realisable Weber contrast, depending on colour discretness and gamma value." horizontalHuggingPriority="251" verticalHuggingPriority="750" id="zwW-mU-UJ5" userLabel="actual contrast">
+                                        <textField toolTip="This displays the realisable Weber contrast, depending on colour discreteness and gamma value." horizontalHuggingPriority="251" verticalHuggingPriority="750" id="zwW-mU-UJ5" userLabel="actual contrast">
                                             <rect key="frame" x="472" y="393" width="44" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="tZh-H7-P0v">
@@ -2467,7 +2466,7 @@ DQ
                                                 <binding destination="450" name="value" keyPath="checkContrastActualWeberPercent" id="fMh-WG-LLt"/>
                                             </connections>
                                         </textField>
-                                        <textField toolTip="This displays the realisable Michelson contrast, depending on colour discretness and gamma value" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="B51-it-99X" userLabel="actual contrast">
+                                        <textField toolTip="This displays the realisable Michelson contrast, depending on colour discreteness and gamma value" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="B51-it-99X" userLabel="actual contrast">
                                             <rect key="frame" x="711" y="393" width="44" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="Puz-11-8LJ">
