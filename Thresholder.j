@@ -1,6 +1,6 @@
 @import <Foundation/Foundation.j>
 @import <AppKit/AppKit.j>
-@import "Pest.j";
+@import "ThresholderPest.j";
 
 
 @implementation Thresholder: CPObject {
@@ -11,7 +11,7 @@
 - (id)initWithNumAlternatives: (int) numAlternatives { //console.info("Thresholder>init");
     self = [super init];
     if (self) {
-        currentThresholder = [[Pest alloc] initWithNumAlternatives: numAlternatives];
+        currentThresholder = [[ThresholderPest alloc] initWithNumAlternatives: numAlternatives];
     }
     return self;
 }

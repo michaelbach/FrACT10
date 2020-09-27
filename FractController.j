@@ -78,7 +78,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     alternativesGenerator = [[AlternativesGenerator alloc] initWithNumAlternatives: nAlternatives andNTrials: nTrials];
     thresholder = [[Thresholder alloc] initWithNumAlternatives: nAlternatives];
     responseWasCorrect = YES;  responseWasCorrectCumulative = YES;
-    xEcc = [Misc pixelFromDegree: [Settings eccentXInDeg]];  yEcc = [Misc pixelFromDegree: [Settings eccentYInDeg]]; //pos y: ↓
+    xEcc = -[Misc pixelFromDegree: [Settings eccentXInDeg]];  yEcc = [Misc pixelFromDegree: [Settings eccentYInDeg]]; //pos y: ↑
     [self trialStart];
 }
 
