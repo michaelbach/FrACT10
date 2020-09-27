@@ -41,7 +41,7 @@
         [optotypes strokeXAtX: 0 y: 0 size: optotypeSize * 3];
         timerFixMark = [CPTimer scheduledTimerWithTimeInterval: t target:self selector:@selector(onTimeoutFixMark:) userInfo:nil repeats:NO];
     } else {
-        t = 0.05;
+        t = 0.02;
     }
     timerFixMark = [CPTimer scheduledTimerWithTimeInterval: t target:self selector:@selector(onTimeoutFixMark:) userInfo:nil repeats:NO];
 }
@@ -102,8 +102,8 @@ basic flow:
 
 - (CPString) contrastComposeTrialInfoString {
     var s = "trial: " + iTrial + "/" + nTrials;
-    s +=  ", contrast: " + [Misc stringFromNumber: [optotypes getCurrentContrastWeberPercent] decimals: 1 localised: YES] + "%";
-    s += ", logCSW: " + [Misc stringFromNumber: [optotypes getCurrentContrastLogCSWeber] decimals: 2 localised: YES];
+    s +=  ", contrast: " + [Misc stringFromNumber: [Misc contrastWeberPercentFromLogCSWeber: stimStrengthInDeviceunits] decimals: 1 localised: YES] + "%";
+    s += ", logCSW: " + [Misc stringFromNumber: stimStrengthInDeviceunits decimals: 2 localised: YES];
     s += ", alternative: " + [alternativesGenerator currentAlternative];
     return s;
 }
@@ -112,15 +112,15 @@ basic flow:
 - (CPString) contrastComposeResultString { //console.info("contrastComposeResultString");
     // console.info("rangeLimitStatus: ", rangeLimitStatus);
     rangeLimitStatus = kRangeLimitOk;
-    if ([optotypes getCurrentContrastLogCSWeber] >= 2.0) { // todo: do this while testing
+    if (stimStrengthInDeviceunits >= 2.0) { // todo: do this while testing
         rangeLimitStatus = kRangeLimitValueAtCeiling;
     }
     var s = "Contrast threshold: \n";
     s += [self rangeStatusIndicatorStringInverted: YES];
-    s += [Misc stringFromNumber: [optotypes getCurrentContrastLogCSWeber] decimals: 2 localised: YES];
+    s += [Misc stringFromNumber: stimStrengthInDeviceunits decimals: 2 localised: YES];
     s += " logCS(Weber) ≘ ";
     s += [self rangeStatusIndicatorStringInverted: NO];
-    s += [Misc stringFromNumber: [optotypes getCurrentContrastWeberPercent] decimals: 2 localised: YES];
+    s += [Misc stringFromNumber: [Misc contrastWeberPercentFromLogCSWeber: stimStrengthInDeviceunits] decimals: 2 localised: YES];
     s += "%";
     return s;
 }
@@ -134,7 +134,7 @@ basic flow:
     s += tab + "decimalMark" + tab + [Settings decimalMarkChar];
     s += tab + "date" + tab + [Misc date2YYYY_MM_DD: now] + tab + "time" + tab + [Misc date2HH_MM_SS: now];
     s += tab + "test" + tab + currentTestName;
-    s += tab + "value" + tab + [Misc stringFromNumber: [optotypes getCurrentContrastLogCSWeber] decimals: nDigits localised: YES];
+    s += tab + "value" + tab + [Misc stringFromNumber: stimStrengthInDeviceunits decimals: nDigits localised: YES];
     s += tab + "unit" + tab + currentTestResultUnit
     s += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 2 localised: YES];
     s += tab + "diameter" + tab + [Misc stringFromNumber: [Settings contrastOptotypeDiameter] decimals: 2 localised: YES];

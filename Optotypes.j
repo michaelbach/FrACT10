@@ -34,6 +34,8 @@
 - (float) getCurrentContrastWeberPercent {
     return [Misc contrastWeberFromMichelsonPercent: [self getCurrentContrastMichelsonPercent]];
 }
+// problem here: 0 % contrast will end in finite logCSWeber. But since this is now clamped at 4.0,
+// after rounding this will still read 0%.
 - (float) getCurrentContrastLogCSWeber {
     var michelsonPercent = [self getCurrentContrastMichelsonPercent];
     var weberPercent = [Misc contrastWeberFromMichelsonPercent: michelsonPercent];

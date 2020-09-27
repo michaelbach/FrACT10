@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define dateFract "2020-09-27a"
+#define dateFract "2020-09-28"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -12,6 +12,8 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2020-09-28 correct actual contrast levels reported back to Thresholder. Limited logCSWeber to 4.0 when %=0.
+            This allowed basing all reported contrast values on stimStrengthInDeviceunits
 2020-09-27 renamed Pest → ThresholderPest, added Tooltips for contrast checks
 2020-09-02 introduce class FractControllerContrast, add ContrastC & ContrastE, fix Vernier in reduced contrast
 2020-08-30 changed the internal contrast scale to logCS, renamed many functions, finished contrast

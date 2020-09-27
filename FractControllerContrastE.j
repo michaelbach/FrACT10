@@ -28,9 +28,7 @@
             break;
         case kStateDrawFore2:
             [optotypes setCgc: cgc colFore: colOptotypeFore colBack: colOptotypeBack];
-            
             [optotypes tumblingEWithGapInPx: optotypeSize direction: [alternativesGenerator currentAlternative]];
-
             stimStrengthInDeviceunits = [optotypes getCurrentContrastLogCSWeber];
             trialInfoString = [self contrastComposeTrialInfoString];// compose here after colors are set
             break;

@@ -34,7 +34,8 @@
 
 
 - (void) enterTrialOutcomeWithAppliedStim: (float) appliedStim wasCorrect: (BOOL) wasCorrect {
-    //console.info("Thresholder>enterTrialOutcomeWithAppliedStim", appliedStim, ", wasCorrect: ", wasCorrect)
+    appliedStim = [Misc limit01: appliedStim]; // makes sure that 0 contrast after converting to logCS is in range
+    // console.info("Thresholder>enterTrialOutcomeWithAppliedStim", appliedStim, ", wasCorrect: ", wasCorrect);
     [currentThresholder enterTrialOutcomeWithAppliedStim: appliedStim wasCorrect: wasCorrect];
 }
 

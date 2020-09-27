@@ -192,10 +192,10 @@
 + (float) contrastLogCSWeberFromWeberPercent: (float) weberPercent {
     weberPercent /= 100;
     var logCS;
-    if (weberPercent > 0.001) { // avoid log of zero
+    if (weberPercent > 0.0001) { // avoid log of zero
        logCS = Math.log10(1 / weberPercent);
     } else {
-        logCS = 3.0;
+        logCS = 4.0;
     }
     return logCS;
 }
