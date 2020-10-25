@@ -148,11 +148,9 @@ function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config
     <body>
         <div id="cappuccino-body">
             <div class="container">
-                <div class="content">
-                    <script type="text/javascript">
-                        document.write(loadingHTML);
-                    </script>
-                </div>
+                <div class="content" id="loadingDiv" >
+                    <script>document.getElementById("loadingDiv").innerHTML = loadingHTML;</script>
+                 </div>
             </div>
             <noscript style="position:absolute; top:0; left:0; width:100%; height:100%">
                 <div class="container">
