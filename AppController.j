@@ -75,6 +75,7 @@ CPPushOnPushOffButton   = 1;
     settingsNeedNewDefaults = [Settings needNewDefaults];
     [Settings checkDefaults]; //important to do this early, otherwise the updates don't populate the settings panel – DOES NOT HELP, unfortunately
     [[self window] setFullPlatformWindow: YES];
+    [[self window] setBackgroundColor: [CPColor colorWithWhite: 0.99 alpha: 1]];
     [CPMenu setMenuBarVisible: NO];
 }
 

@@ -9,6 +9,7 @@ To Dos
 • Export: full history
 • Improve/extend: About panel (recent history)
 
+√ Window background not transparent (to avoid black in fullscreen)
 √ Export: add comma/dot
 √ Button → cheat sheet
 √ Rename TAO ← Auck
