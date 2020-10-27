@@ -13,7 +13,8 @@ Created by mb on July 15, 2015.
    =======
 
 2020-10-27 correct regression with crowing (optotypes now in optotypes), add flanking bars, re-ordered crowding types
-            direct button to checklist from Help screen
+            direct button to checklist from Help screen, window.open mit "_blank"
+
 2020-10-25 Window background not transparent, …
 2020-09-28 correct actual contrast levels reported back to Thresholder. Limited logCSWeber to 4.0 when %=0.
             This allowed basing all reported contrast values on stimStrengthInDeviceunits

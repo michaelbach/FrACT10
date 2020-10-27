@@ -325,13 +325,13 @@ CPPushOnPushOffButton   = 1;
     [helpPanel makeKeyAndOrderFront: self];
 }
 - (IBAction) buttonHelpGetManual_action: (id) sender {
-    window.open("https://michaelbach.de/fract/manual.html");
+    window.open("https://michaelbach.de/fract/manual.html", "_blank");
 }
 - (IBAction) buttonHelpGetChecklist_action: (id) sender {
-    window.open("https://michaelbach.de/fract/checklist.html");
+    window.open("https://michaelbach.de/fract/checklist.html", "_blank");
 }
 - (IBAction) buttonHelpCheats_action: (id) sender {
-    window.open("https://michaelbach.de/sci/acuity.html");
+    window.open("https://michaelbach.de/sci/acuity.html", "_blank");
 }
 - (IBAction) buttonHelpClose_action: (id) sender { //console.info("AppController>buttonHelpClose_action");
     [helpPanel close];
@@ -342,13 +342,13 @@ CPPushOnPushOffButton   = 1;
     [aboutPanel makeKeyAndOrderFront: self];
 }
 - (IBAction) buttonAboutWebsiteMB_action: (id) sender {
-    window.open("https://michaelbach.de");
+    window.open("https://michaelbach.de", "_blank");
 }
 - (IBAction) buttonAboutWebsiteFractSite_action: (id) sender {
-    window.open("https://michaelbach.de/fract/");
+    window.open("https://michaelbach.de/fract/", "_blank");
 }
 - (IBAction) buttonAboutWebsiteFractBlog_action: (id) sender {
-    window.open("https://michaelbach.de/fract/blog.html");
+    window.open("https://michaelbach.de/fract/blog.html", "_blank");
 }
 - (IBAction) buttonAboutClose_action: (id) sender { //console.info("AppController>buttonAboutClose_action");
     [aboutPanel close];
