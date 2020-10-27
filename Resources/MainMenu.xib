@@ -431,12 +431,12 @@ DQ
                     <button toolTip="This will open the FrACT home page in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iza-6M-cRz">
                         <rect key="frame" x="189" y="13" width="142" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="→FrACT site" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="stL-8j-RhU">
+                        <buttonCell key="cell" type="push" title="→Checklist" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="stL-8j-RhU">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonAboutWebsiteFractSite_action:" target="450" id="9lw-KF-VtP"/>
+                            <action selector="buttonHelpGetChecklist_action:" target="450" id="1l1-48-D3A"/>
                         </connections>
                     </button>
                     <scrollView fixedFrame="YES" borderType="line" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCB-G5-d1e">
@@ -444,7 +444,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="8aG-i8-Dh8">
                             <rect key="frame" x="1" y="1" width="743" height="327"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="zNM-Gb-Jh9">
                                     <rect key="frame" x="0.0" y="0.0" width="743" height="406"/>
@@ -2123,16 +2123,19 @@ DQ
                                                                     <menuItem title="none" state="on" id="CEr-tD-UxQ">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
+                                                                    <menuItem title="flanking bars" id="ewM-ce-701">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
                                                                     <menuItem title="flanking rings" id="toO-3L-BPU">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
+                                                                    <menuItem title="frame: ring" id="DaP-0N-H87">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="frame: square" id="5RA-V9-LFo">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
                                                                     <menuItem title="row of optotypes" id="r4C-xb-eUC">
-                                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                                    </menuItem>
-                                                                    <menuItem title="frame (ring)" id="DaP-0N-H87">
-                                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                                    </menuItem>
-                                                                    <menuItem title="frame (square)" id="5RA-V9-LFo">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
                                                                 </items>

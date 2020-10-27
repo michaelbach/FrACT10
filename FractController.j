@@ -114,33 +114,40 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if (currentTestName == "Acuity_Vernier") return; // don't do crowding with Vernier
     CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
     CGContextTranslateCTM(cgc,  -xEcc, -yEcc);
-    var i;  //console.info([Settings crowdingType]);
+    var i;  //console.info("[Settings crowdingTypew]: ", [Settings crowdingType]);
     switch ([Settings crowdingType]) {
         case 0:  break;
-        case 1:    // flanking rings
+        case 1:
+            var distance = 1.5 * [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits] / 2;
+            var length2 = stimStrengthInDeviceunits * 2.5;
+            CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
+            [optotypes strokeVLineAtX: -distance y0: -length2 y1: length2];
+            [optotypes strokeVLineAtX: distance y0: -length2 y1: length2];
+            break;
+        case 2:    // flanking rings
             for (i = -1; i <= 1; i++) { //console.info(i);
                 var tempX = i * [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits];
                 CGContextTranslateCTM(cgc,  -tempX, 0);
-                if (i != 0)  [self drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: -1];
-                CGContextTranslateCTM(cgc,  +tempX, 0);
-            }  break;
-        case 2:    // row of optotypes
-            for (i = -2; i <= 2; i++) {
-                var directionPresentedX = [Misc iRandom: nAlternatives];
-                var tempX = i * [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits];
-                CGContextTranslateCTM(cgc,  -tempX, 0);
-                if (i != 0)  [self drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: directionPresentedX];
+                if (i != 0)  [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: -1];
                 CGContextTranslateCTM(cgc,  +tempX, 0);
             }  break;
         case 3:
             CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
-            [self strokeCircleAtX: 0 y: 0 radius: 1.5 * [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits] / 2];
+            [optotypes strokeCircleAtX: 0 y: 0 radius: 1.5 * [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits] / 2];
             break;
         case 4:
             var frameSize = 1.5 * [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits], frameSize2 = frameSize / 2;
             CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
             CGContextStrokeRect(cgc, CGRectMake(-frameSize2, -frameSize2, frameSize, frameSize));
             break;
+        case 5:    // row of optotypes
+            for (i = -2; i <= 2; i++) {
+                var directionPresentedX = [Misc iRandom: nAlternatives];
+                var tempX = i * [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits];
+                CGContextTranslateCTM(cgc,  -tempX, 0);
+                if (i != 0)  [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: directionPresentedX];
+                CGContextTranslateCTM(cgc,  +tempX, 0);
+            }  break;
     }
     CGContextTranslateCTM(cgc,  xEcc, yEcc);
 }

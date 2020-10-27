@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define dateFract "2020-10-25"
+#define dateFract "2020-10-27"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -12,6 +12,9 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2020-10-27 correct regression with crowing (optotypes now in optotypes), add flanking bars, re-ordered crowding types
+            direct button to checklist from Help screen
+2020-10-25 Window background not transparent, …
 2020-09-28 correct actual contrast levels reported back to Thresholder. Limited logCSWeber to 4.0 when %=0.
             This allowed basing all reported contrast values on stimStrengthInDeviceunits
 2020-09-27 renamed Pest → ThresholderPest, added Tooltips for contrast checks
@@ -165,9 +168,8 @@ Created by mb on July 15, 2015.
     [self setForceSnellen20: [self chckBool: [self forceSnellen20] def: NO set: set]];
     [self calculateMaxPossibleDecimalAcuity];
 
-    // Crowding
-    // crowdingType: 0 = none, 1 = flanking rings, 2 = row of optotypes, 3 = frame (ring), 4 = frame (square)
-    [self setCrowdingType: [self chckInt: [self crowdingType] def: 0 min: 0 max: 4 set: set]];
+    // Crowding, crowdingType: 0 = none, 1: flanking bars, 2 = flanking rings, 3 = frame (ring), 4 = frame (square), 5 = row of optotypes
+    [self setCrowdingType: [self chckInt: [self crowdingType] def: 0 min: 0 max: 5 set: set]];
     // 0 = 2·gap between rings, 1 = fixed 2.6 arcmin between rings, 2 = fixed 30', 3 = like ETDRS
     [self setCrowdingDistanceCalculationType: [self chckInt: [self crowdingDistanceCalculationType] def: 0 min: 0 max: 3 set: set]];
 

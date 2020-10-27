@@ -14,7 +14,10 @@
 
 
 - (void) modifyThresholderStimulus {
-    if ([Settings contrastEasyTrials]) [self modifyThresholderStimulusWithBonus];
+    if (iTrial == 1) // make the first more visible
+        stimStrengthInThresholderUnits = Math.min(stimStrengthInThresholderUnits + 0.3, 1.0);
+    if ([Settings contrastEasyTrials]) // don't forget bonus
+        [self modifyThresholderStimulusWithBonus];
 }
 
 

@@ -1,15 +1,15 @@
 To Dos
 
 • Add: letter responses for TAO
-• Add: contrast testing
 • Add: displayTransform
 • Add: gamma calibration
-• Improve: crowding
 • Add: contrast check (for acuity)
 • Export: full history
 • Improve/extend: About panel (recent history)
 
+√ Improve: crowding
 √ Window background not transparent (to avoid black in fullscreen)
+√ Add: contrast testing
 √ Export: add comma/dot
 √ Button → cheat sheet
 √ Rename TAO ← Auck

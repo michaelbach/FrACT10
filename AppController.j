@@ -327,6 +327,9 @@ CPPushOnPushOffButton   = 1;
 - (IBAction) buttonHelpGetManual_action: (id) sender {
     window.open("https://michaelbach.de/fract/manual.html");
 }
+- (IBAction) buttonHelpGetChecklist_action: (id) sender {
+    window.open("https://michaelbach.de/fract/checklist.html");
+}
 - (IBAction) buttonHelpCheats_action: (id) sender {
     window.open("https://michaelbach.de/sci/acuity.html");
 }
