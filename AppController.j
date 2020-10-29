@@ -319,6 +319,9 @@ CPPushOnPushOffButton   = 1;
     [Settings setDefaults];  [settingsPanel close];  [Settings setDefaults];  [settingsPanel makeKeyAndOrderFront: self];
     [[settingsPanel contentView] setNeedsDisplay: YES];
 }
+- (IBAction) buttonSettingsTestSound_action: (id) sender { //console.info("AppController>buttonSettingsDefaults");
+    [sound play3];
+}
 
 
 - (IBAction) buttonHelp_action: (id) sender { //console.info("AppController>buttonHelp_action");
