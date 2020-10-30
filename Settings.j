@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define dateFract "2020-10-29"
+#define dateFract "2020-10-30"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -12,6 +12,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2020-10-30 changed soundtest unicode glyph
 2020-10-29 add sound test button, slight GUI shifts for optical balance
 2020-10-27 correct regression with crowing (optotypes now in optotypes), add flanking bars, re-ordered crowding types
             direct button to checklist from Help screen, window.open mit "_blank"
