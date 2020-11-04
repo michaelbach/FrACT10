@@ -22,7 +22,7 @@
 }
 
 
-- (void) setCgc: (CGContext) cgc colFore: (CPColor) colFore colBack: (CPColor) colBack {
+- (void) setCgc: (CGContext) cgc colFore: (CPColor) colFore colBack: (CPColor) colBack {//console.info("setCgc");
     _cgc = cgc;
     _colOptotypeFore = colFore;  _colOptotypeBack = colBack;
 }

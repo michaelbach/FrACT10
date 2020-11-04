@@ -421,6 +421,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         case 3:
             returnVal = 10 * gap;  break;
     }
+    if (currentTestName == "Acuity_TAO") {
+//        returnVal *= 6 / 5;
+    }
     return returnVal;
 }
 

@@ -42,6 +42,7 @@
             CGContextTranslateCTM(cgc,  xEcc, yEcc);
             
             CGContextTranslateCTM(cgc,  -viewWidth / 2, -viewHeight / 2); // origin back
+            [optotypes setCgc: cgc colFore: colOptotypeFore colBack: colOptotypeBack];
             var size = viewWidth / (nAlternatives * 2 + 2), button;
             if (!responseButtonsAdded) {
                 for (var i = 0; i < (nAlternatives); i++) {
