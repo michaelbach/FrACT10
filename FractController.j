@@ -111,14 +111,20 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         CGContextShowText(cgc, trialInfoString);
     }
 
-    if (currentTestName == "Acuity_Vernier") return; // don't do crowding with Vernier
+    if ([Settings crowdingType] < 1) return;
+    if (currentTestName == "Acuity_Vernier") return; // don't do crowding with Vernier etc.
+    if (currentTestName == "Contrast_Letters") return;
+    if (currentTestName == "Contrast_LandoltC") return;
+    if (currentTestName == "Contrast_TumblingE") return;
+    // console.info("doing Crowding, currentTestName: ", currentTestName);
     CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
     CGContextTranslateCTM(cgc,  -xEcc, -yEcc);
     var i;  //console.info("[Settings crowdingTypew]: ", [Settings crowdingType]);
+    var crowdingDistance = [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits];
     switch ([Settings crowdingType]) {
-        case 0:  break;
-        case 1:
-            var distance = 1.5 * [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits] / 2;
+        case 0:  break; // should not occur anyway
+        case 1: // flanking bars
+            var distance = 1.5 * crowdingDistance / 2;
             var length2 = stimStrengthInDeviceunits * 2.5;
             CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
             [optotypes strokeVLineAtX: -distance y0: -length2 y1: length2];
@@ -126,30 +132,29 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             break;
         case 2:    // flanking rings
             for (i = -1; i <= 1; i++) { //console.info(i);
-                var tempX = i * [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits];
+                var tempX = i * crowdingDistance;
                 CGContextTranslateCTM(cgc,  -tempX, 0);
                 if (i != 0)  [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: -1];
                 CGContextTranslateCTM(cgc,  +tempX, 0);
             }  break;
         case 3:
             CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
-            [optotypes strokeCircleAtX: 0 y: 0 radius: 1.5 * [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits] / 2];
+            [optotypes strokeCircleAtX: 0 y: 0 radius: 1.5 * crowdingDistance / 2];
             break;
         case 4:
-            var frameSize = 1.5 * [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits], frameSize2 = frameSize / 2;
+            var frameSize = 1.5 * crowdingDistance, frameSize2 = frameSize / 2;
             CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
             CGContextStrokeRect(cgc, CGRectMake(-frameSize2, -frameSize2, frameSize, frameSize));
             break;
         case 5:    // row of optotypes
             for (i = -2; i <= 2; i++) {
                 var directionPresentedX = [Misc iRandom: nAlternatives];
-                var tempX = i * [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits];
+                var tempX = i * crowdingDistance;
                 CGContextTranslateCTM(cgc,  -tempX, 0);
                 if (i != 0)  [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: directionPresentedX];
                 CGContextTranslateCTM(cgc,  +tempX, 0);
             }  break;
     }
-    CGContextTranslateCTM(cgc,  xEcc, yEcc);
 }
 
 
@@ -376,7 +381,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     var s = "";
     if ([[self parentController] runAborted]) return;
     var tab = "\t", crlf = "\n", nDigits = 4, now = [CPDate date];
-    s = "Vs" + tab + "3"; // version
+    s = "Vs" + tab + "4"; // version
     s += tab + "decimalMark" + tab + [Settings decimalMarkChar];
     s += tab + "date" + tab + [Misc date2YYYY_MM_DD: now] + tab + "time" + tab + [Misc date2HH_MM_SS: now];
     s += tab + "test" + tab + currentTestName;
@@ -387,6 +392,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     s += tab + "unit" + tab + "%";
     s += tab + "nTrials" + tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
     s += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
+    s += tab + "crowding" + tab + [Settings crowdingType];
     //s += tab + "XX" + tab + YY;
     s += crlf; //console.info("FractController>date: ", s);
     return s;

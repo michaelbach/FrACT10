@@ -1,8 +1,8 @@
 /*
  FractControllerContrastLett.j
-
+ 
  Created by Bach on 2020-08-17
-*/
+ */
 
 
 @import <Foundation/CPObject.j>
@@ -42,7 +42,7 @@
                                size: size title: [@"CDHKNORSVZØ" characterAtIndex: i]];
         }
     }
-
+    
     CGContextRestoreGState(cgc);
     [super drawStimulusInRect: dirtyRect];
 }
