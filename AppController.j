@@ -24,8 +24,8 @@
 @import "Sound.j"
 
 /*window.ondeviceorientation = function(event) {
-    [setAngleAlpha: Math.round(event.alpha)]; [setAngleAlpha: Math.round(event.beta)]; [setAngleAlpha: Math.round(event.gamma)];
-}*/
+ [setAngleAlpha: Math.round(event.alpha)]; [setAngleAlpha: Math.round(event.beta)]; [setAngleAlpha: Math.round(event.gamma)];
+ }*/
 
 
 @typedef TestIDType
@@ -80,22 +80,28 @@ CPPushOnPushOffButton   = 1;
 }
 
 
-- (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>applicationDidFinishLaunching");
+- (void) applicationDidFinishLaunching: (CPNotification) aNotification {
+    window.addEventListener('error', function (e) {
+        alert("An error occured, I'm sorry. Error message:\r\r" + e.message + "\r\rIf it recurs, please notify michael.bach@uni-freiburg.de, ideally relating the message, e.g. via a screeshot.\rI will look into it and endeavour to provide a fix.\r\rOn “Close”, the window will reload and you can retry.");
+        window.location.reload(false);
+    });
+    
+    //console.info("AppController>applicationDidFinishLaunching");
     var allButtons = [buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier, buttCntLett, buttCntC, buttCntE];
     for (var i = 0; i < allButtons.length; i++)  [Misc makeFrameSquareFromWidth: allButtons[i]];
     
     allTestControllers = [FractControllerVAL, FractControllerVAC, FractControllerVAE, FractControllerVATAO, FractControllerVAVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE];
-//    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
+    //    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
     
     allPanels = [responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, settingsPanel, helpPanel, aboutPanel];
     for (var i = 0; i < allPanels.length; i++)  [allPanels[i] setFrameOrigin: CGPointMake(0, 0)];
-   
+    
     [[self window] setTitle: "FrACT10"];  [self setVersionDateString: [Settings versionNumber] + "·" + [Settings versionDate]];
     [Settings checkDefaults]; // what was the reason to put this here???
     var s = @"Current key test settings: " + [Settings distanceInCM] +" cm distance, ";
     s += [Settings nAlternatives] + " Landolt alternatives, " + [Settings nTrials] + " trials";
     [self setKeyTestSettingsString: s];
-
+    
     rewardImageView = [[CPImageView alloc] initWithFrame: CGRectMake(100, 0, 600, 600)];
     [[[self window] contentView] addSubview: rewardImageView];
     rewardsController = [[RewardsController alloc] initWithView: rewardImageView];
@@ -104,7 +110,7 @@ CPPushOnPushOffButton   = 1;
     for (var i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++); // ranomising the pseudorandom sequence
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(buttonExportEnableYESorNO:) name: "buttonExportEnableYESorNO" object: nil];
     [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
-
+    
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(copyForeBackColorsFromSettings:) name: "copyForeBackColorsFromSettings" object: nil];
     
     [self buttonCheckContrast_action: null];
@@ -142,8 +148,8 @@ CPPushOnPushOffButton   = 1;
 - (void) runFractController { //console.info("AppController>runFractController");
     if ([Settings notCalibrated]) {
         var alert = [CPAlert alertWithMessageText: "WARNING"
-        defaultButton: "I just want to try it out" alternateButton: "OK, take me to Settings" otherButton: nil
-                    informativeTextWithFormat: "\rCalibration is mandatory for valid results.\r\rGoto 'Settings' and enter appropriate values for \r«Length of blue ruler»\rand \r«Observer distance».\r\rThis will also avoid the present obnoxious warning dialog."];
+                                    defaultButton: "I just want to try it out" alternateButton: "OK, take me to Settings" otherButton: nil
+                        informativeTextWithFormat: "\rCalibration is mandatory for valid results.\r\rGoto 'Settings' and enter appropriate values for \r«Length of blue ruler»\rand \r«Observer distance».\r\rThis will also avoid the present obnoxious warning dialog."];
         [alert runModalWithDidEndBlock: function(alert, returnCode) {
             switch (returnCode) {
                 case 1: [self buttonSettings_action: nil];  break;
@@ -151,7 +157,7 @@ CPPushOnPushOffButton   = 1;
             }
         }];
     } else {
-        [self runFractController2]; 
+        [self runFractController2];
     }
 }
 
@@ -163,8 +169,8 @@ CPPushOnPushOffButton   = 1;
             case kTestIDLett: [responseinfoPanelVAL makeKeyAndOrderFront: self]; break;
             case kTestIDC:
                 switch ([Settings nAlternatives]) {
-                   case 4: [responseinfoPanelVA4C makeKeyAndOrderFront: self];  break;
-                   case 8: [responseinfoPanelVA8C makeKeyAndOrderFront: self];  break;
+                    case 4: [responseinfoPanelVA4C makeKeyAndOrderFront: self];  break;
+                    case 8: [responseinfoPanelVA8C makeKeyAndOrderFront: self];  break;
                 }  break;
             case kTestIDE:
                 [responseinfoPanelVAE makeKeyAndOrderFront: self];  break;
@@ -217,7 +223,7 @@ CPPushOnPushOffButton   = 1;
 
 
 /*- (void) controlTextDidChange: (CPNotification) notification { //console.info(@"controlTextDidChange: stringValue == %@", [[notification object] stringValue]);[Settings calculateMaxPossibleDecimalAcuity];
-}*/
+ }*/
 - (void) controlTextDidEndEditing: (CPNotification) notification { //console.info(@"controlTextDidChange: stringValue == %@", [[notification object] stringValue]);
     [Settings calculateMaxPossibleDecimalAcuity];
     [Settings  calculateAcuityForeBackColorsFromContrast];
@@ -376,7 +382,7 @@ CPPushOnPushOffButton   = 1;
     var tag = [sender tag], contrastsPercent = [1, 3, 10, 30, 90], contrastPercent = 0;
     if ((tag > 0) && (tag <= 5))  contrastPercent = contrastsPercent[tag - 1];
     var contrastLogCSWeber = [Misc contrastLogCSWeberFromWeberPercent: contrastPercent];
-//    console.log(tag, contrastPercent, contrastLogCSWeber)
+    //    console.log(tag, contrastPercent, contrastLogCSWeber)
     var gray1 = [Misc lowerLuminanceFromContrastLogCSWeber: contrastLogCSWeber];
     gray1 = [Misc devicegrayFromLuminance: gray1];
     var gray2 = [Misc upperLuminanceFromContrastLogCSWeber: contrastLogCSWeber];
@@ -384,7 +390,7 @@ CPPushOnPushOffButton   = 1;
     if (![Settings contrastDarkOnLight]) {
         var gray = gray1; gray1 = gray2; gray2 = gray;
     }
-//    console.log("Wperc ", contrastPercent, ", lgCSW ", contrastLogCSWeber, ", g1 ", gray1, ", g2 ", gray2);
+    //    console.log("Wperc ", contrastPercent, ", lgCSW ", contrastLogCSWeber, ", g1 ", gray1, ", g2 ", gray2);
     
     var c1 = [CPColor colorWithWhite: gray1 alpha: 1], c2 = [CPColor colorWithWhite: gray2 alpha: 1];
     [self setCheckContrastWeberFieldColor1: c1];   [self setCheckContrastWeberFieldColor2: c2];

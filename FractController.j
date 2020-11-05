@@ -119,8 +119,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     // console.info("doing Crowding, currentTestName: ", currentTestName);
     CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
     CGContextTranslateCTM(cgc,  -xEcc, -yEcc);
-    var i;  //console.info("[Settings crowdingTypew]: ", [Settings crowdingType]);
-    var crowdingDistance = [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits];
+    var i, crowdingDistance = [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits];
     switch ([Settings crowdingType]) {
         case 0:  break; // should not occur anyway
         case 1: // flanking bars
