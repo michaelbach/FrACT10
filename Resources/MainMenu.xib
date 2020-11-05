@@ -2557,17 +2557,8 @@ Gw
                             <action selector="runFractController2_actionCancel:" target="450" id="Z9L-X9-J2l"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dnD-hh-vaA">
-                        <rect key="frame" x="18" y="20" width="284" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="Settings&gt;General&gt;Show response info at start" id="WKd-eU-COK">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Gq-O1-JGY">
-                        <rect key="frame" x="18" y="304" width="342" height="18"/>
+                        <rect key="frame" x="18" y="294" width="342" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Enable Touch Controls (necessary without keyboard)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="O4S-3g-ToL">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2576,6 +2567,18 @@ Gw
                         <connections>
                             <binding destination="izh-pU-csC" name="value" keyPath="values.enableTouchControls" id="8Ib-Xx-ZO0"/>
                             <outlet property="nextKeyView" destination="WCS-rL-YCa" id="DLf-Zv-dg5"/>
+                        </connections>
+                    </button>
+                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6o4-T6-NsI">
+                        <rect key="frame" x="18" y="22" width="491" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nOb-QR-RMy">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.responseInfoAtStart" id="AwF-L3-bU1"/>
+                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="4ez-nN-LEh"/>
                         </connections>
                     </button>
                 </subviews>
@@ -2645,15 +2648,18 @@ Type 55, or &lt;esc&gt; to abort the run.</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap4" id="YOw-PI-MNZ"/>
                     </imageView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9se-De-Vy1">
-                        <rect key="frame" x="18" y="20" width="284" height="16"/>
+                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ahk-gy-psf">
+                        <rect key="frame" x="28" y="22" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="Settings&gt;General&gt;Show response info at start" id="XL1-iN-fZq">
+                        <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Flu-8c-Np5">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.responseInfoAtStart" id="4Sp-LG-zUx"/>
+                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="rX6-7r-Ck5"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
@@ -2723,15 +2729,6 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap8" id="HQF-UM-Wbw"/>
                     </imageView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sGH-iy-3w2">
-                        <rect key="frame" x="18" y="25" width="284" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="Settings&gt;General&gt;Show response info at start" id="JA1-ma-x4s">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GQg-6w-eLT">
                         <rect key="frame" x="18" y="165" width="342" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -2742,6 +2739,18 @@ Gw
                         <connections>
                             <binding destination="izh-pU-csC" name="value" keyPath="values.enableTouchControls" id="TQo-cQ-KbI"/>
                             <outlet property="nextKeyView" destination="WCS-rL-YCa" id="GlL-Ic-CNW"/>
+                        </connections>
+                    </button>
+                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gI2-uJ-d3q">
+                        <rect key="frame" x="18" y="22" width="491" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yp9-6V-pdS">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.responseInfoAtStart" id="wt4-kz-dKm"/>
+                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="jed-LZ-G7t"/>
                         </connections>
                     </button>
                 </subviews>
@@ -2832,15 +2841,6 @@ Type 55, or &lt;esc&gt; to abort the run.
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap4keysOnly" id="ofJ-Lh-BMN"/>
                     </imageView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UhQ-Le-OR8">
-                        <rect key="frame" x="28" y="20" width="284" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="Settings&gt;General&gt;Show response info at start" id="ffg-XN-f5t">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tfq-df-vdX">
                         <rect key="frame" x="28" y="146" width="342" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -2851,6 +2851,18 @@ Type 55, or &lt;esc&gt; to abort the run.
                         <connections>
                             <binding destination="izh-pU-csC" name="value" keyPath="values.enableTouchControls" id="BXm-oa-IdX"/>
                             <outlet property="nextKeyView" destination="WCS-rL-YCa" id="FCk-Jx-xdB"/>
+                        </connections>
+                    </button>
+                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7dB-dL-Xce">
+                        <rect key="frame" x="28" y="22" width="491" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="x74-TQ-9o2">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.responseInfoAtStart" id="gGc-5a-fqg"/>
+                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="xze-Et-a4O"/>
                         </connections>
                     </button>
                 </subviews>
@@ -2912,15 +2924,6 @@ Gw
                             <action selector="runFractController2_actionCancel:" target="450" id="Q0k-gF-aag"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RTk-mf-C2G">
-                        <rect key="frame" x="18" y="20" width="284" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="Settings&gt;General&gt;Show response info at start" id="RV6-tw-WgU">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f0y-iN-dzr">
                         <rect key="frame" x="20" y="172" width="760" height="119"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -2935,6 +2938,18 @@ https://doi.org/10.1167/18.3.13</string>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f59-fh-Ajj">
+                        <rect key="frame" x="18" y="22" width="491" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="b2h-Pg-jNp">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.responseInfoAtStart" id="2OS-Hg-5sG"/>
+                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="ORo-JV-1pc"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
@@ -2995,15 +3010,6 @@ Gw
                             <action selector="runFractController2_actionCancel:" target="450" id="n5F-PX-Eho"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RIr-EG-HFh">
-                        <rect key="frame" x="18" y="20" width="284" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="Settings&gt;General&gt;Show response info at start" id="3yl-gg-7Zr">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0v7-0w-LXR">
                         <rect key="frame" x="18" y="268" width="342" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -3014,6 +3020,18 @@ Gw
                         <connections>
                             <binding destination="izh-pU-csC" name="value" keyPath="values.enableTouchControls" id="axZ-2y-LBq"/>
                             <outlet property="nextKeyView" destination="WCS-rL-YCa" id="3Xw-60-aPK"/>
+                        </connections>
+                    </button>
+                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xJH-Vi-BPg">
+                        <rect key="frame" x="18" y="22" width="491" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="v2k-OW-crk">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.responseInfoAtStart" id="p9f-b2-3AS"/>
+                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="MJi-Ry-BOu"/>
                         </connections>
                     </button>
                 </subviews>
@@ -3078,15 +3096,6 @@ Gw
                             <action selector="runFractController2_actionCancel:" target="450" id="qDG-kn-CBT"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wzJ-CB-ZjH">
-                        <rect key="frame" x="18" y="20" width="284" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="Settings&gt;General&gt;Show response info at start" id="NNF-W9-7wx">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ShV-7h-Gjs">
                         <rect key="frame" x="18" y="304" width="342" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -3097,6 +3106,18 @@ Gw
                         <connections>
                             <binding destination="izh-pU-csC" name="value" keyPath="values.enableTouchControls" id="fxf-TK-Gyp"/>
                             <outlet property="nextKeyView" destination="WCS-rL-YCa" id="9Kf-qH-6TH"/>
+                        </connections>
+                    </button>
+                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IlL-Qc-BHv">
+                        <rect key="frame" x="18" y="22" width="491" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nOj-Fc-rtx">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.responseInfoAtStart" id="Nxm-TX-xKe"/>
+                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="hnX-nN-X3Q"/>
                         </connections>
                     </button>
                 </subviews>
@@ -3168,15 +3189,6 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap8" id="iy7-db-b7L"/>
                     </imageView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sI1-ec-P0f">
-                        <rect key="frame" x="18" y="25" width="284" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="Settings&gt;General&gt;Show response info at start" id="zfU-K5-RdD">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J4R-GT-rGS">
                         <rect key="frame" x="18" y="165" width="342" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -3187,6 +3199,18 @@ Gw
                         <connections>
                             <binding destination="izh-pU-csC" name="value" keyPath="values.enableTouchControls" id="B0h-EH-kfY"/>
                             <outlet property="nextKeyView" destination="WCS-rL-YCa" id="q4N-BW-AQd"/>
+                        </connections>
+                    </button>
+                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vhj-Uu-joO">
+                        <rect key="frame" x="18" y="22" width="491" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="91b-Qr-OG1">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.responseInfoAtStart" id="tlf-xa-5WV"/>
+                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="y3y-cH-5le"/>
                         </connections>
                     </button>
                 </subviews>
@@ -3277,15 +3301,6 @@ Type 55, or &lt;esc&gt; to abort the run.
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap4keysOnly" id="G2S-Tb-NqE"/>
                     </imageView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gLZ-mz-Fcm">
-                        <rect key="frame" x="28" y="20" width="284" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="Settings&gt;General&gt;Show response info at start" id="fNw-X5-OEz">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vH5-qD-cio">
                         <rect key="frame" x="28" y="146" width="342" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -3296,6 +3311,18 @@ Type 55, or &lt;esc&gt; to abort the run.
                         <connections>
                             <binding destination="izh-pU-csC" name="value" keyPath="values.enableTouchControls" id="E5K-i1-6dA"/>
                             <outlet property="nextKeyView" destination="WCS-rL-YCa" id="0TA-Cz-1Vf"/>
+                        </connections>
+                    </button>
+                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9hx-7G-0rB">
+                        <rect key="frame" x="28" y="22" width="491" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="1Me-af-wRA">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.responseInfoAtStart" id="x9x-DD-NWp"/>
+                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="zrG-9y-gee"/>
                         </connections>
                     </button>
                 </subviews>
