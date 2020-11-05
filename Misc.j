@@ -61,7 +61,7 @@
 }
 
 
-+ (BOOL) copyString2ClipboardAlert: (CPString) s { //console.info("AppController>copyString2ClipboardAlert");
++ (void) copyString2ClipboardDialog: (CPString) s { //console.info("AppController>copyString2ClipboardDialog");
     var alert = [CPAlert alertWithMessageText: "Question:"
     defaultButton: "Yes, put result → clipboard" alternateButton: "No" otherButton: nil
                 informativeTextWithFormat: "\rShall we place the result details into the clipboard?\r(So you can paste them into a spreadsheet.)\r"];
@@ -71,11 +71,19 @@
         switch (returnCode) {
             case 1: /*console.info("ok, dann nicht");*/  break;
             case 0:
-                navigator.clipboard.writeText(s);
+                [self copyString2Clipboard: s];
                 [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
                 break;
         }
     }];
+}
++ (void) copyString2Clipboard: (CPString) s { //console.info("AppController>copyString2Clipboard: ", s);
+    try {
+        navigator.clipboard.writeText(s); // only over https
+    }
+    catch(e) { // avoid global error catcher
+        console.info("Error copying to clipboard: ", e);  // alert(e);
+    }
 }
 
 

@@ -81,10 +81,10 @@ CPPushOnPushOffButton   = 1;
 
 
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification {
-    window.addEventListener('error', function (e) {
+   /*.addEventListener('error', function (e) {
         alert("An error occured, I'm sorry. Error message:\r\r" + e.message + "\r\rIf it recurs, please notify michael.bach@uni-freiburg.de, ideally relating the message, e.g. via a screeshot.\rI will look into it and endeavour to provide a fix.\r\rOn “Close”, the window will reload and you can retry.");
         window.location.reload(false);
-    });
+    });*/
     
     //console.info("AppController>applicationDidFinishLaunching");
     var allButtons = [buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier, buttCntLett, buttCntC, buttCntE];
@@ -210,7 +210,7 @@ CPPushOnPushOffButton   = 1;
         }
         localStorage.setItem("FRACT10-FINAL-RESULT-STRING", currentTestResultExportString);
         if ([Settings results2clipboard] > 0) {
-            [Misc copyString2ClipboardAlert: currentTestResultExportString];
+            [Misc copyString2ClipboardDialog: currentTestResultExportString];
         }
     }
     [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: ([currentTestResultExportString length] >1)];
@@ -365,7 +365,7 @@ CPPushOnPushOffButton   = 1;
 
 
 - (IBAction) buttonExport_action: (id) sender { //console.info("AppController>buttonExport_action");
-    navigator.clipboard.writeText(currentTestResultExportString);
+    [Misc copyString2Clipboard: currentTestResultExportString];
     [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
 }
 
