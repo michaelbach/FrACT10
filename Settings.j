@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define dateFract "2020-11-05"
+#define dateFract "2020-11-05a"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -12,7 +12,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
-2020-11-05a add global error handler
+2020-11-05a add global error handler, add checkbox for operating info on the operating info dialog
 2020-11-05 fix crash of contrast: no crowding with contrast, simplify code a little, add crowding to export (vs 4), title in color
 2020-11-04 fix crash of TAO with crowding
 2020-10-30 changed soundtest unicode glyph
