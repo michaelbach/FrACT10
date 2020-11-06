@@ -17,7 +17,7 @@
 }
 - (void) modifyDeviceStimulus {[self acuityModifyDeviceStimulusDIN01_02_04_08];}
 - (float) stimDeviceunitsFromThresholderunits: (float) tPest {return [self acuitystimDeviceunitsFromThresholderunits: tPest];}
-- (float) stimThresholderunitsFromDeviceunits: (float) d {return [self acuitystimThresholderunitsFromDeviceunits: d];}
+- (float) stimThresholderunitsFromDeviceunits: (float) d {return [self acuityStimThresholderunitsFromDeviceunits: d];}
 - (float) resultValue4Export {return [self acuityResultValue4Export];}
 - (CPString) composeExportString {return [self acuityComposeExportString];}
 

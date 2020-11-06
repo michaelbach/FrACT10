@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define dateFract "2020-11-05b"
+#define dateFract "2020-11-06"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -12,6 +12,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2020-11-06 add 4 bars for crowding, increase distance for TAO
 2020-11-05b unify browswer clipboard access. Works only over https! This error now separately caught.
 2020-11-05a add global error handler, add checkbox for operating info on the operating info dialog
 2020-11-05 fix crash of contrast: no crowding with contrast, simplify code a little, add crowding to export (vs 4), title in color
@@ -174,8 +175,8 @@ Created by mb on July 15, 2015.
     [self setForceSnellen20: [self chckBool: [self forceSnellen20] def: NO set: set]];
     [self calculateMaxPossibleDecimalAcuity];
 
-    // Crowding, crowdingType: 0 = none, 1: flanking bars, 2 = flanking rings, 3 = frame (ring), 4 = frame (square), 5 = row of optotypes
-    [self setCrowdingType: [self chckInt: [self crowdingType] def: 0 min: 0 max: 5 set: set]];
+    // Crowding, crowdingType: 0 = none, 1: flanking bars, 2 = flanking rings, 3 = surounding bars, 4: surounding ring, 5 = surounding square, 6 = row of optotypes
+    [self setCrowdingType: [self chckInt: [self crowdingType] def: 0 min: 0 max: 6 set: set]];
     // 0 = 2·gap between rings, 1 = fixed 2.6 arcmin between rings, 2 = fixed 30', 3 = like ETDRS
     [self setCrowdingDistanceCalculationType: [self chckInt: [self crowdingDistanceCalculationType] def: 0 min: 0 max: 3 set: set]];
 

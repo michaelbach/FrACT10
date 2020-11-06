@@ -81,10 +81,10 @@ CPPushOnPushOffButton   = 1;
 
 
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification {
-   /*.addEventListener('error', function (e) {
+   addEventListener('error', function (e) {
         alert("An error occured, I'm sorry. Error message:\r\r" + e.message + "\r\rIf it recurs, please notify michael.bach@uni-freiburg.de, ideally relating the message, e.g. via a screeshot.\rI will look into it and endeavour to provide a fix.\r\rOn “Close”, the window will reload and you can retry.");
         window.location.reload(false);
-    });*/
+    });
     
     //console.info("AppController>applicationDidFinishLaunching");
     var allButtons = [buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier, buttCntLett, buttCntC, buttCntE];
@@ -262,12 +262,18 @@ CPPushOnPushOffButton   = 1;
                 case 6: [self  buttonDoContrastLett_action: nil];  break;
                 case 7: [self  buttonDoContrastC_action: nil];  break;
                 case 8: [self  buttonDoContrastE_action: nil];  break;
-            }
+            } break;
+        //case "∆":
+        //      [self runtimeError_action: nil];  break;
         default:
             [super keyDown: theEvent];  break;
     }
 }
 
+- (IBAction) runtimeError_action: (id) sender { //console.info("AppController>runtimeError_action");
+    alert("The (rare) entered glyph ‘∆’ is my purposeful test for causing a runtime errror. So there will be an error now…")
+    [self abc];
+}
 
 - (IBAction) buttonFullScreen_action: (id) sender { //console.info("AppController>buttonFullScreen");
     var full = [Misc isFullScreen];

@@ -2131,10 +2131,13 @@ DQ
                                                                     <menuItem title="flanking rings" id="toO-3L-BPU">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
-                                                                    <menuItem title="frame: ring" id="DaP-0N-H87">
+                                                                    <menuItem title="surounding bars" id="JAh-wQ-lKI">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
-                                                                    <menuItem title="frame: square" id="5RA-V9-LFo">
+                                                                    <menuItem title="surounding ring" id="DaP-0N-H87">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="surounding square" id="5RA-V9-LFo">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
                                                                     <menuItem title="row of optotypes" id="r4C-xb-eUC">

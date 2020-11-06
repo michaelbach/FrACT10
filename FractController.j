@@ -104,14 +104,14 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
-    if ([Settings trialInfo]) {
+    if ([Settings trialInfo]) { // DO TRIAL INFO
         CGContextSetTextPosition(cgc, 10, 10); // we assume here no transformed CGContext
         CGContextSetFillColor(cgc, colOptotypeFore);
         CGContextSetFillColor(cgc, [CPColor blackColor]);
         CGContextShowText(cgc, trialInfoString);
     }
 
-    if ([Settings crowdingType] < 1) return;
+    if ([Settings crowdingType] < 1) return; // DO CROWDING IF…
     if (currentTestName == "Acuity_Vernier") return; // don't do crowding with Vernier etc.
     if (currentTestName == "Contrast_Letters") return;
     if (currentTestName == "Contrast_LandoltC") return;
@@ -121,13 +121,13 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     CGContextTranslateCTM(cgc,  -xEcc, -yEcc);
     var i, crowdingDistance = [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits];
     switch ([Settings crowdingType]) {
-        case 0:  break; // should not occur anyway
+        case 0:  break; // should not occur here
         case 1: // flanking bars
-            var distance = 1.5 * crowdingDistance / 2;
+            var distance2 = 1.5 * crowdingDistance / 2;
             var length2 = stimStrengthInDeviceunits * 2.5;
             CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
-            [optotypes strokeVLineAtX: -distance y0: -length2 y1: length2];
-            [optotypes strokeVLineAtX: distance y0: -length2 y1: length2];
+            [optotypes strokeVLineAtX: -distance2 y0: -length2 y1: length2];
+            [optotypes strokeVLineAtX: distance2 y0: -length2 y1: length2];
             break;
         case 2:    // flanking rings
             for (i = -1; i <= 1; i++) { //console.info(i);
@@ -136,16 +136,26 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
                 if (i != 0)  [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: -1];
                 CGContextTranslateCTM(cgc,  +tempX, 0);
             }  break;
-        case 3:
+        case 3:    // surounding bars
+            var distance2 = 1.5 * crowdingDistance / 2;
+            var length2 = stimStrengthInDeviceunits * 4;
+            CGContextSetLineCap(cgc,  kCGLineCapRound);
+            CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
+            [optotypes strokeVLineAtX: -distance2 y0: -length2 y1: length2];
+            [optotypes strokeVLineAtX: distance2 y0: -length2 y1: length2];
+            [optotypes strokeHLineAtX0: -length2 y: -distance2 x1: length2];
+            [optotypes strokeHLineAtX0: -length2 y: distance2 x1: length2];
+            break;
+        case 4:  // surounding ring
             CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
             [optotypes strokeCircleAtX: 0 y: 0 radius: 1.5 * crowdingDistance / 2];
             break;
-        case 4:
+        case 5: // surrunding square
             var frameSize = 1.5 * crowdingDistance, frameSize2 = frameSize / 2;
             CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
             CGContextStrokeRect(cgc, CGRectMake(-frameSize2, -frameSize2, frameSize, frameSize));
             break;
-        case 5:    // row of optotypes
+        case 6:    // row of optotypes
             for (i = -2; i <= 2; i++) {
                 var directionPresentedX = [Misc iRandom: nAlternatives];
                 var tempX = i * crowdingDistance;
@@ -297,7 +307,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
         
 
-- (float) acuitystimThresholderunitsFromDeviceunits: (float) d { //console.info("FractControllerVAC>stimThresholderunitsFromDeviceunits");
+- (float) acuityStimThresholderunitsFromDeviceunits: (float) d { //console.info("FractControllerVAC>stimThresholderunitsFromDeviceunits");
     var c2 = - Math.log(gapMinimal / gapMaximal), c1 = gapMinimal;
     var retVal = Math.log(d / c1) / c2; //console.info("PestFromDevice " + d + " " + retVal);
     return retVal;
@@ -319,7 +329,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
-- (floag) acuityResultInLogMAR {
+- (float) acuityResultInLogMAR {
     return [Misc logMARfromDecVA: [self acuityResultInDecVA]];
 }
 
@@ -427,7 +437,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             returnVal = 10 * gap;  break;
     }
     if (currentTestName == "Acuity_TAO") {
-//        returnVal *= 6 / 5;
+        returnVal *= 6 / 5;
     }
     return returnVal;
 }
