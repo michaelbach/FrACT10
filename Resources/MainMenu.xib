@@ -1402,7 +1402,7 @@ DQ
                                             </connections>
                                         </button>
                                         <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mIY-OC-I8Q">
-                                            <rect key="frame" x="15" y="195" width="154" height="18"/>
+                                            <rect key="frame" x="15" y="221" width="154" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Enable touch controls" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wX6-mM-ZH0">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1414,7 +1414,7 @@ DQ
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xoy-Q5-O3A">
-                                            <rect key="frame" x="15" y="222" width="202" height="18"/>
+                                            <rect key="frame" x="15" y="195" width="202" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">When on, shows current trial number, total number of trials, and the current threshold (in decimal acuity) in tiny letters at top left.</string>
                                             <buttonCell key="cell" type="check" title="Show info (top left) each trial " bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="g4l-Vk-dB6">
@@ -1848,14 +1848,16 @@ DQ
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PuM-ue-ids">
-                                            <rect key="frame" x="290" y="126" width="55" height="18"/>
+                                            <rect key="frame" x="290" y="124" width="55" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <string key="toolTip">Export results to the clipboard WITHOUT asking. Is faster, but it's easier to forget switching to the spreadsheet to transfer the clipboard content.</string>
                                             <buttonCell key="cell" type="check" title="silent" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="acI-tj-0Pq">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="enabled" keyPath="values.results2clipboard" id="Saf-uw-joz"/>
+                                                <binding destination="izh-pU-csC" name="value" keyPath="values.results2clipboardSilent" id="pxY-1h-U94"/>
                                             </connections>
                                         </button>
                                     </subviews>

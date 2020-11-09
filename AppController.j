@@ -207,11 +207,14 @@ CPPushOnPushOffButton   = 1;
         }
         localStorage.setItem("FRACT10-FINAL-RESULT-STRING", currentTestResultExportString);
         if ([Settings results2clipboard] > 0) {
-//            [Misc copyString2Clipboard: currentTestResultExportString];
-            [Misc copyString2ClipboardDialog: currentTestResultExportString];
+            if ([Settings results2clipboardSilent]) {
+                [Misc copyString2Clipboard: currentTestResultExportString];
+            } else {
+                [Misc copyString2ClipboardWithDialog: currentTestResultExportString];
+            }
         }
     }
-    [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: ([currentTestResultExportString length] >1)];
+    [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: ([currentTestResultExportString length] > 1)];
 }
 
 

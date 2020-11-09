@@ -12,7 +12,7 @@
 }
 
 
-// thia is clumsy (doing it 3 times), but the closure didn't take the provided buffer in early attempts.
+// this is clumsy (doing it 3 times), but the closure didn't take the provided buffer in early attempts.
 
 // sound1: “tink” for correct response
 - (void) loadSound1 { //console.info("Sound>loadSound");
@@ -47,7 +47,7 @@
     request.open('GET', "Resources/sounds/runEnd.mp3", true);
     request.responseType = 'arraybuffer';
     request.onload = function() {  // Decode asynchronously
-            audioContext.decodeAudioData(request.response, function(buff) {buffer3 = buff;});
+        audioContext.decodeAudioData(request.response, function(buff) {buffer3 = buff;});
     }
     request.send();
 }

@@ -61,7 +61,7 @@
 }
 
 
-+ (void) copyString2ClipboardDialog: (CPString) s { //console.info("AppController>copyString2ClipboardDialog");
++ (void) copyString2ClipboardWithDialog: (CPString) s { //console.info("AppController>copyString2ClipboardWithDialog");
     var alert = [CPAlert alertWithMessageText: "Question:"
     defaultButton: "Yes, put result → clipboard" alternateButton: "No" otherButton: nil
                 informativeTextWithFormat: "\rShall we place the result details into the clipboard?\r(So you can paste them into a spreadsheet.)\r"];

@@ -12,7 +12,8 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
-2020-11-09 refactor: add class "FractControllerAcuity" inheriting from "FractController", forking "FractControllerContrast"
+2020-11-09 refactor: add class "FractControllerAcuity" inheriting from "FractController", forking "FractControllerContrast",
+            add "silent mode" for clipboard transfer
 2020-11-06 add 4 bars for crowding, increase distance for TAO
 2020-11-05b unify browswer clipboard access. Works only over https! This error now separately caught.
 2020-11-05a add global error handler, add checkbox for operating info on the operating info dialog
@@ -152,6 +153,7 @@ Created by mb on July 15, 2015.
 
     // 0: no, 1: final only, 2: full history
     [self setResults2clipboard: [self chckInt: [self results2clipboard] def: 0 min: 0 max: 2 set: set]];
+    [self setResults2clipboardSilent: [self chckBool: [self results2clipboardSilent] def: NO set: set]];
 
     // 0: none, 1: always, 2: on correct, 3: w/ info
     [self setAuditoryFeedback: [self chckInt: [self auditoryFeedback] def: 3 min: 0 max: 3 set: set]];
@@ -411,6 +413,12 @@ Created by mb on July 15, 2015.
 + (void) setResults2clipboard: (float) value {
     [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "results2clipboard"];
 }
++ (BOOL) results2clipboardSilent {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "results2clipboardSilent"];
+}
++ (void) setResults2clipboardSilent: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "results2clipboardSilent"];
+}
 
 
 + (int) auditoryFeedback {
@@ -432,7 +440,7 @@ Created by mb on July 15, 2015.
 + (BOOL) auditoryFeedbackWhenDone {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "auditoryFeedbackWhenDone"];
 }
-+ (void)setAuditoryFeedbackWhenDone: (BOOL) value {
++ (void) setAuditoryFeedbackWhenDone: (BOOL) value {
     [[CPUserDefaults standardUserDefaults] setBool: value forKey: "auditoryFeedbackWhenDone"];
 }
 
