@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define dateFract "2020-11-06"
+#define dateFract "2020-11-09"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -12,6 +12,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2020-11-09 refactor: add class "FractControllerAcuity" inheriting from "FractController", forking "FractControllerContrast"
 2020-11-06 add 4 bars for crowding, increase distance for TAO
 2020-11-05b unify browswer clipboard access. Works only over https! This error now separately caught.
 2020-11-05a add global error handler, add checkbox for operating info on the operating info dialog

@@ -11,6 +11,7 @@
 
 @import "HierarchyController.j"
 
+
 @implementation FractView : CPView {
     @outlet HierarchyController drawingDelegate; // has a connection from view to delegate in IB
     SEL drawStimulusInRect;

@@ -5,9 +5,7 @@
 */
 
 
-@import <Foundation/CPObject.j>
-
-
+@import "FractControllerContrast.j"
 @implementation FractControllerContrast: FractController {
     float optotypeSize;
 }

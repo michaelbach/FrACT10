@@ -1,5 +1,5 @@
 /* 2020-05-23
- This class loads all 10 Auckland Optotype images.
+ This class loads all 10 Auckland Optotype (TAO) images.
  When all are loaded, the referenced button is enabled
  imageArray returns an id pointing at the image array
 */
@@ -7,7 +7,6 @@
 
 @import <Foundation/Foundation.j>
 @import <AppKit/AppKit.j>
-@import "Settings.j"
 
 
 @implementation TAOController: CPObject {

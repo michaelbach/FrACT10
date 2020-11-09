@@ -6,10 +6,10 @@
  *  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
  */
 
-@import "FractController.j"
 
-
-@implementation FractControllerVAE: FractController
+@import "FractControllerAcuity.j"
+@implementation FractControllerVAE: FractControllerAcuity {
+}
 
 
 - (void) modifyThresholderStimulus {

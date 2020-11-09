@@ -6,9 +6,9 @@
  *  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
  */
 
-@import <Foundation/CPObject.j>
 
-@implementation FractControllerVAL: FractController {
+@import "FractControllerAcuity.j"
+@implementation FractControllerVAL: FractControllerAcuity {
 }
 
 

@@ -5,10 +5,7 @@
  */
 
 
-@import <Foundation/CPObject.j>
 @import "FractControllerContrast.j"
-
-
 @implementation FractControllerContrastLett: FractControllerContrast {
 }
 

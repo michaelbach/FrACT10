@@ -6,9 +6,6 @@
  * Copyright 2015, Your Company All rights reserved.
  */
 
-@import <Foundation/Foundation.j>
-@import <AppKit/AppKit.j>
-@import "HierarchyController.j"
 @import "FractView.j"
 @import "FractController.j"
 @import "FractControllerVAC.j"
@@ -210,6 +207,7 @@ CPPushOnPushOffButton   = 1;
         }
         localStorage.setItem("FRACT10-FINAL-RESULT-STRING", currentTestResultExportString);
         if ([Settings results2clipboard] > 0) {
+//            [Misc copyString2Clipboard: currentTestResultExportString];
             [Misc copyString2ClipboardDialog: currentTestResultExportString];
         }
     }

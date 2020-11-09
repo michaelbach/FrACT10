@@ -5,6 +5,7 @@
 
 @import <Foundation/Foundation.j>
 @import <AppKit/AppKit.j>
+@import "Misc.j"
 @import "Settings.j"
 
 

@@ -6,9 +6,9 @@
  *  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
  */
 
-@import <Foundation/CPObject.j>
 
-@implementation FractControllerVATAO: FractController {
+@import "FractControllerAcuity.j"
+@implementation FractControllerVATAO: FractControllerAcuity {
     CGRect imageRect;
     id taoImages;
 }
