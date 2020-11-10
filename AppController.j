@@ -318,8 +318,13 @@ CPPushOnPushOffButton   = 1;
     [Settings checkDefaults];  [settingsPanel makeKeyAndOrderFront: self];
     if (settingsNeedNewDefaults) {
         settingsNeedNewDefaults = NO;
-        [[CPAlert alertWithMessageText: "WARNING" defaultButton: "OK" alternateButton: nil otherButton: nil
-             informativeTextWithFormat: "\r\rAll settings were set to their default values.\r\rIf some fields are empty, please reload this browser window once, then all values will be current.\r\r"] runModal];
+        var alert = [CPAlert alertWithMessageText: "WARNING"
+                                    defaultButton: "OK" alternateButton: nil otherButton: nil
+                        informativeTextWithFormat: "\r\rAll settings were set to their default values.\r\rIf some fields seem empty, reload and repeat; or ignore :).\r\r"];
+        [alert runModalWithDidEndBlock: function(alert, returnCode) {
+            // we could to an automatic reload here, but seems too intrusive
+            //window.location.reload(false); // the reload makes sure we see no empty fields
+        }];
     }
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyForeBackColorsFromSettings" object: nil];
 }

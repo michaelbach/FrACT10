@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define dateFract "2020-11-09"
+#define dateFract "2020-11-10"
 #define versionFract "Version 10.0.beta"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
@@ -12,6 +12,8 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2020-11-10 considered automatic reload when defaulting settings, but seems too intrusive
+2020-11-10 added reload when Settings are defaulted (also 1st time)
 2020-11-09 refactor: add class "FractControllerAcuity" inheriting from "FractController", forking "FractControllerContrast",
             add "silent mode" for clipboard transfer
 2020-11-06 add 4 bars for crowding, increase distance for TAO
