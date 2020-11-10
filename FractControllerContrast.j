@@ -83,12 +83,12 @@ basic flow:
 // contrast: 0.1 … 100, thresholder: 0 … 1
 // deviceUnits are in logCSWeber
 // logCSW: 2 … 0, thresholder: 0 … 1 */
-- (float) stimDeviceunitsFromThresholderunits: (float) thresholderunit { //console.info("FractControllerVAC>contrastStimDeviceunitsFromThresholderunits");
+- (float) stimDeviceunitsFromThresholderunits: (float) thresholderunit { //console.info("FractControllerVAC>stimDeviceunitsFromThresholderunits");
     var logCSWMaximal = [Settings contrastMaxLogCSWeber];
     var deviceVal = logCSWMaximal - logCSWMaximal * thresholderunit; // logCSWMinimal = 0 anyway
     return deviceVal;
 }
-- (float) stimThresholderunitsFromDeviceunits: (float) d { //console.info("FractControllerVAC>contrastStimThresholderunitsFromDeviceunits");
+- (float) stimThresholderunitsFromDeviceunits: (float) d { //console.info("FractControllerVAC>stimThresholderunitsFromDeviceunits");
     //console.info("d: ", d, ",  retVal: ", retVal)
     var logCSWMaximal = [Settings contrastMaxLogCSWeber];
     var retVal = (logCSWMaximal - d) / logCSWMaximal
