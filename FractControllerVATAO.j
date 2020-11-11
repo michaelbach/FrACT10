@@ -24,25 +24,16 @@
 - (CPString) composeExportString {return [self acuityComposeExportString];}
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerVATAO>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { // console.info("FractControllerVATAO>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
-    cgc = [[CPGraphicsContext currentContext] graphicsPort];
-    CGContextSetFillColor(cgc, [CPColor whiteColor]); // contrast not respected with TAO
-    CGContextFillRect(cgc, [[self window] frame]);
-    CGContextSaveGState(cgc);
+    [self prepareDrawing];
     switch(state) {
         case kStateDrawBack: break;
         case kStateDrawFore:
-            CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
             var sizeInPix = stimStrengthInDeviceunits * 5 * 8.172 / 5;// correction for stroke width (Dakin)
-            CGContextSetFillColor(cgc, colOptotypeFore);
             imageRect = CGRectMake(-sizeInPix / 2, -sizeInPix / 2, sizeInPix, sizeInPix);
-            CGContextTranslateCTM(cgc,  -xEcc, -yEcc);
             CGContextDrawImage(cgc, imageRect, taoImages[[alternativesGenerator currentAlternative]]);
-            CGContextTranslateCTM(cgc,  xEcc, yEcc);
-            
-            CGContextTranslateCTM(cgc,  -viewWidth / 2, -viewHeight / 2); // origin back
-            [optotypes setCgc: cgc colFore: colOptotypeFore colBack: colOptotypeBack];
+            [self prepareDrawingTransformUndo];
             var size = viewWidth / (nAlternatives * 2 + 2), button;
             if (!responseButtonsAdded) {
                 for (var i = 0; i < (nAlternatives); i++) {
@@ -71,16 +62,6 @@
     [self setCurrentTestResultUnit: "LogMAR"];
     abortCharacter = "A";
     [super runStart];
-}
-
-
-- (void)runEnd { //console.info("FractControllerVATAO>runEnd");
-    if (iTrial < nTrials) { //premature end
-        [self setResultString: @"Aborted"];
-    } else {
-        [self setResultString: [self acuityComposeResultString]];
-    }
-    [super runEnd];
 }
 
 

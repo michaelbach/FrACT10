@@ -101,14 +101,10 @@
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerVAVernier>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
-    cgc = [[CPGraphicsContext currentContext] graphicsPort];
-    CGContextSetFillColor(cgc, colOptotypeBack);
-    CGContextFillRect(cgc, [[self window] frame]);
-    CGContextSaveGState(cgc);
+    [self prepareDrawing];
     switch(state) {
         case kStateDrawBack:  break;
         case kStateDrawFore: //console.info("kStateDrawFore");
-            CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
             [self  drawVernierAtX: -xEcc y: -yEcc
                           vLength: [Misc pixelFromDegree: [Settings vernierLength] / 60.0]
                             sigma: [Misc pixelFromDegree: [Settings vernierWidth] / 60.0]

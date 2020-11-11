@@ -11,23 +11,17 @@
 
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerContrastLett>drawStimulusInRect");
-    cgc = [[CPGraphicsContext currentContext] graphicsPort];
     [self calculateForeBackColors];
-    CGContextSetFillColor(cgc, colOptotypeBack);
-    CGContextFillRect(cgc, [[self window] frame]);
-    CGContextSaveGState(cgc);
-    CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
-    CGContextTranslateCTM(cgc,  -xEcc, -yEcc);
+    [self prepareDrawing];
     switch(state) {
         case kStateDrawBack: break;
         case kStateDrawFore:
             [self drawFixMark];
             break;
         case kStateDrawFore2:
-            [optotypes setCgc: cgc colFore: colOptotypeFore colBack: colOptotypeBack];
             [optotypes drawLetterWithGapInPx: optotypeSize letterNumber: [alternativesGenerator currentAlternative]];
             stimStrengthInDeviceunits = [optotypes getCurrentContrastLogCSWeber];
-            trialInfoString = [self contrastComposeTrialInfoString];// compose here after colors are set
+            trialInfoString = [self contrastComposeTrialInfoString]; // compose here after colors are set
             break;
         default: break;
     }

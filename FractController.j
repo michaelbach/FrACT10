@@ -103,7 +103,36 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
-// this only draws the trial info after everything else has been drawn
+- (void) prepareDrawing { // console.info("FractController>prepareDrawing");
+    cgc = [[CPGraphicsContext currentContext] graphicsPort];
+    CGContextSetFillColor(cgc, colOptotypeBack);
+    if (currentTestName == "Acuity_TAO")
+        CGContextSetFillColor(cgc, [CPColor whiteColor]); ;// contrast not respected with TAO
+    CGContextFillRect(cgc, [[self window] frame]);
+    CGContextSaveGState(cgc);
+    CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
+    CGContextTranslateCTM(cgc,  -xEcc, -yEcc);
+    switch ([Settings displayTransform]) {
+        case 1: CGContextScaleCTM(cgc, -1, 1);  break;
+        case 2: CGContextScaleCTM(cgc, 1, -1);  break;
+        case 3: CGContextScaleCTM(cgc, -1, -1);  break;
+    }
+    CGContextSetFillColor(cgc, colOptotypeFore);
+    [optotypes setCgc: cgc colFore: colOptotypeFore colBack: colOptotypeBack];
+}
+
+- (void) prepareDrawingTransformUndo {
+    CGContextTranslateCTM(cgc,  -viewWidth / 2, -viewHeight / 2); // origin to center
+    CGContextTranslateCTM(cgc,  xEcc, yEcc);
+    switch ([Settings displayTransform]) {
+        case 1: CGContextScaleCTM(cgc, -1, 1);  break;
+        case 2: CGContextScaleCTM(cgc, 1, -1);  break;
+        case 3: CGContextScaleCTM(cgc, -1, -1);  break;
+    }
+}
+
+
+// this draws the trial info after everything else has been drawn
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
     if ([Settings trialInfo]) {
         CGContextSetTextPosition(cgc, 10, 10); // we assume here no transformed CGContext
@@ -188,20 +217,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if ([Settings auditoryFeedbackWhenDone]) [sound play3];
     [[self parentController] runEnd];
 }
-
-
-- (CPString) format4SnellenInFeet: (float) decVA {
-    var distanceInMetres = [Settings distanceInCM] / 100.0;
-    var distanceInFeet = distanceInMetres * 3.28084;
-    if ([Settings forceSnellen20])  distanceInFeet = 20;
-    var s = [Misc stringFromNumber: distanceInFeet decimals: 0 localised: YES] + "/";
-    s += [Misc stringFromNumber: (distanceInFeet / decVA) decimals: 0 localised: YES];
-    return s;
-}
-/*private function format4SnellenInMeter(theAcuityResult):String {
- var distanceInMetres=Prefs.distanceInCM.n / 100.0, distanceInFeet=distanceInMetres * 3.28084;
- return Utils.DeleteTrailing_PointZero(Utils.rStrNInt(distanceInMetres, 1, Prefs.decimalPointChar)) + "/" + Utils.DeleteTrailing_PointZero(Utils.rStrNInt(distanceInMetres / theAcuityResult,1,Prefs.decimalPointChar));
- }*/
 
 
 - (BOOL) acceptsFirstResponder { //console.info("FractController>acceptsFirstResponder");

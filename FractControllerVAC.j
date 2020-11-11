@@ -23,18 +23,12 @@
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerVAC>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
-    cgc = [[CPGraphicsContext currentContext] graphicsPort];
-    CGContextSetFillColor(cgc, colOptotypeBack);
-    CGContextFillRect(cgc, [[self window] frame]);
-    CGContextSaveGState(cgc);
+    [self prepareDrawing];
     switch(state) {
         case kStateDrawBack: break;
         case kStateDrawFore: //console.info("kStateDrawFore");
-            CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
-            CGContextTranslateCTM(cgc,  -xEcc, -yEcc);
             [optotypes setCgc: cgc colFore: colOptotypeFore colBack: colOptotypeBack];
             [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: [alternativesGenerator currentAlternative]];
-            CGContextTranslateCTM(cgc,  xEcc, yEcc);
             break;
         default: break;
     }
@@ -60,16 +54,6 @@
     [self setCurrentTestName: "Acuity_LandoltC"];
     [self setCurrentTestResultUnit: "LogMAR"];
     [super runStart];
-}
-
-
-- (void) runEnd { //console.info("FractControllerVAC>runEnd");
-    if (iTrial < nTrials) { //premature end
-        [self setResultString: @"Aborted"];
-    } else {
-        [self setResultString: [self acuityComposeResultString]];
-    }
-    [super runEnd];
 }
 
 

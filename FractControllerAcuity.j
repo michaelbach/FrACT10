@@ -68,6 +68,18 @@
 }
 
 
+- (void)runEnd { //console.info("FractController>runEnd");
+    if (currentTestName != "Acuity_Vernier") {
+        if (iTrial < nTrials) { //premature end
+            [self setResultString: @"Aborted"];
+        } else {
+            [self setResultString: [self acuityComposeResultString]];
+        }
+    }
+    [super runEnd];
+}
+
+
 - (CPString) format4SnellenInFeet: (float) decVA {
     var distanceInMetres = [Settings distanceInCM] / 100.0;
     var distanceInFeet = distanceInMetres * 3.28084;

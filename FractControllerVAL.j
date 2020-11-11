@@ -24,19 +24,11 @@
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerVALetters>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
-    cgc = [[CPGraphicsContext currentContext] graphicsPort];
-    CGContextSetFillColor(cgc, colOptotypeBack);
-    CGContextFillRect(cgc, [[self window] frame]);
-    CGContextSaveGState(cgc);
+    [self prepareDrawing];
     switch(state) {
         case kStateDrawBack: break;
         case kStateDrawFore:
-            CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
-            CGContextTranslateCTM(cgc,  -xEcc, -yEcc);
-            CGContextSetFillColor(cgc, colOptotypeFore);
-            [optotypes setCgc: cgc colFore: colOptotypeFore colBack: colOptotypeBack];
             [optotypes drawLetterWithGapInPx: stimStrengthInDeviceunits letterNumber: [alternativesGenerator currentAlternative]];
-            CGContextTranslateCTM(cgc,  xEcc, yEcc);
             break;
         default: break;
     }
@@ -59,16 +51,6 @@
     [self setCurrentTestName: "Acuity_Letters"];
     [self setCurrentTestResultUnit: "LogMAR"];
     [super runStart];
-}
-
-
-- (void) runEnd { //console.info("FractControllerVALetters>runEnd");
-    if (iTrial < nTrials) { //premature end
-        [self setResultString: @"Aborted"];
-    } else {
-        [self setResultString: [self acuityComposeResultString]];
-    }
-    [super runEnd];
 }
 
 
