@@ -10,6 +10,8 @@
     float optotypeSize;
 }
 
+- (CPString) composeExportString {return [self contrastComposeExportString];}
+
 
 - (void) modifyThresholderStimulus {
     if (iTrial == 1) // make the first more visible
@@ -127,21 +129,22 @@ basic flow:
 }
 
 
-- (CPString) composeExportString { //console.info("FractController>contrastComposeExportString");
+- (CPString) contrastComposeExportString { //console.info("FractController>contrastComposeExportString");
     var s = "";
-    if ([[self parentController] runAborted]) return;
+    if ([[self parentController] runAborted]) return s;
     var tab = "\t", crlf = "\n", nDigits = 3, now = [CPDate date];
-    s = "Vs" + tab + "3"; // version
+    s = "Vs" + tab + [Settings versionExportFormat]; // version
     s += tab + "decimalMark" + tab + [Settings decimalMarkChar];
     s += tab + "date" + tab + [Misc date2YYYY_MM_DD: now] + tab + "time" + tab + [Misc date2HH_MM_SS: now];
     s += tab + "test" + tab + currentTestName;
     s += tab + "value" + tab + [Misc stringFromNumber: stimStrengthInDeviceunits decimals: nDigits localised: YES];
-    s += tab + "unit" + tab + currentTestResultUnit
+    s += tab + "unit1" + tab + currentTestResultUnit
     s += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 2 localised: YES];
     s += tab + "diameter" + tab + [Misc stringFromNumber: [Settings contrastOptotypeDiameter] decimals: 2 localised: YES];
-    s += tab + "unit" + tab + "arcmin";
+    s += tab + "unit2" + tab + "arcmin";
     s += tab + "nTrials" + tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
     s += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
+    s += tab + "crowding" + tab + 0; // does not apply, but let's not NaN this
     //s += tab + "XX" + tab + YY;
     s += crlf; //console.info("FractController>contrastComposeExportString: ", s);
     return s;

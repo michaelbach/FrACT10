@@ -33,7 +33,7 @@ CPPushOnPushOffButton   = 1;
 @implementation AppController : HierarchyController {
     @outlet CPWindow fractControllerWindow;
     @outlet CPColorWell checkContrastWeberField1, checkContrastWeberField2;
-    @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE;
+    @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, resultDetailsPanel;
     @outlet CPButton buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier, buttCntLett, buttCntC, buttCntE;
     @outlet CPButton buttonExport;
     CPImageView rewardImageView;
@@ -90,10 +90,10 @@ CPPushOnPushOffButton   = 1;
     allTestControllers = [FractControllerVAL, FractControllerVAC, FractControllerVAE, FractControllerVATAO, FractControllerVAVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE];
     //    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
     
-    allPanels = [responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, settingsPanel, helpPanel, aboutPanel];
+    allPanels = [responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel];
     for (var i = 0; i < allPanels.length; i++)  [allPanels[i] setFrameOrigin: CGPointMake(0, 0)];
     
-    [[self window] setTitle: "FrACT10"];  [self setVersionDateString: [Settings versionNumber] + "·" + [Settings versionDate]];
+    [[self window] setTitle: "FrACT10"];  [self setVersionDateString: [Settings versionFrACT] + "·" + [Settings versionDate]];
     [Settings checkDefaults]; // what was the reason to put this here???
     var s = @"Current key test settings: " + [Settings distanceInCM] +" cm distance, ";
     s += [Settings nAlternatives] + " Landolt alternatives, " + [Settings nTrials] + " trials";
@@ -264,13 +264,50 @@ CPPushOnPushOffButton   = 1;
                 case 7: [self  buttonDoContrastC_action: nil];  break;
                 case 8: [self  buttonDoContrastE_action: nil];  break;
             } break;
-        //case "∆":
-        //      [self runtimeError_action: nil];  break;
+        //case "∆": [self runtimeError_action: nil];  break;
+        //case "T": [self resultDetails_action: nil];  break;
         default:
             [super keyDown: theEvent];  break;
     }
 }
 
+
+function checkUrl(url) {
+    var request;
+    if(window.XMLHttpRequest)
+        request = new XMLHttpRequest();
+    else
+        request = new ActiveXObject("Microsoft.XMLHTTP");
+    request.open('GET', url, false);
+    request.send(); // there will be a 'pause' here until the response to come.
+    // the object request will be actually modified
+    if (request.status === 404) {
+        alert("The page you are trying to reach is not available.");
+        return false;
+    }
+    return true;
+}
+
+function checkUrl0(url) {console.info("checkUrl: ", url);
+    var request = false;
+    if (window.XMLHttpRequest) {
+        request = new XMLHttpRequest;
+    } else if (window.ActiveXObject) {
+        request = new ActiveXObject("Microsoft.XMLHttp");
+    }
+    if (request) {
+        request.open("GET", url);alert();console.info(request.status);
+        if (request.status == 200) return true;
+    }
+    return false;
+}
+- (IBAction) resultDetails_action: (id) sender {
+    //[resultDetailsPanel makeKeyAndOrderFront: self];
+    var path = "../readResultString.html";
+    if (checkUrl(path)) {
+        window.open(path, "_blank");
+    }
+}
 - (IBAction) runtimeError_action: (id) sender { //console.info("AppController>runtimeError_action");
     alert("The (rare) entered glyph ‘∆’ is my purposeful test for causing a runtime errror. So there will be an error now…")
     [self abc];

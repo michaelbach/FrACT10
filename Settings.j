@@ -3,8 +3,9 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define dateFract "2020-11-10"
-#define versionFract "Version 10.0.beta"
+#define versionDateConst "2020-11-15"
+#define versionFractConst "Version 10.0.beta"
+#define versionExportFormatConst "4"
 #define dateSettingsCurrent "2020-05-19"
 #define defaultDistanceInCM 399
 #define defaultCalBarLengthInMM 149
@@ -12,7 +13,10 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
-2020-11-10 considered automatic reload when defaulting settings, but seems too intrusive
+2020-11-15 add button to go to resultDetails URL
+2020-11-10 add display transformation. This went along with much refactoring and removing code, either by moving
+            "up" or finding that it's not used anyway
+            considered automatic reload when defaulting settings, but seems too intrusive
 2020-11-10 added reload when Settings are defaulted (also 1st time)
 2020-11-09 refactor: add class "FractControllerAcuity" inheriting from "FractController", forking "FractControllerContrast",
             add "silent mode" for clipboard transfer
@@ -96,8 +100,9 @@ Created by mb on July 15, 2015.
 @implementation Settings: CPUserDefaultsController
 
 
-+ (CPString) versionDate {return dateFract;}
-+ (CPString) versionNumber {return versionFract;}
++ (CPString) versionDate {return versionDateConst;}
++ (CPString) versionFrACT {return versionFractConst;}
++ (CPString) versionExportFormat {return versionExportFormatConst;}
 
 
 // helpers:

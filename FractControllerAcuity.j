@@ -178,17 +178,17 @@
 
 - (CPString) acuityComposeExportString { //console.info("FractController>composeExportString");
     var s = "";
-    if ([[self parentController] runAborted]) return;
+    if ([[self parentController] runAborted]) return s;
     var tab = "\t", crlf = "\n", nDigits = 4, now = [CPDate date];
-    s = "Vs" + tab + "4"; // version
+    s = "Vs" + tab + [Settings versionExportFormat]; // version
     s += tab + "decimalMark" + tab + [Settings decimalMarkChar];
     s += tab + "date" + tab + [Misc date2YYYY_MM_DD: now] + tab + "time" + tab + [Misc date2HH_MM_SS: now];
     s += tab + "test" + tab + currentTestName;
     s += tab + "value" + tab + [Misc stringFromNumber: [self resultValue4Export] decimals: nDigits localised: YES];
-    s += tab + "unit" + tab + currentTestResultUnit
+    s += tab + "unit1" + tab + currentTestResultUnit
     s += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 1 localised: YES];
     s += tab + "contrastWeber" + tab + [Misc stringFromNumber: [Settings contrastAcuityWeber] decimals: 1 localised: YES];
-    s += tab + "unit" + tab + "%";
+    s += tab + "unit2" + tab + "%";
     s += tab + "nTrials" + tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
     s += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
     s += tab + "crowding" + tab + [Settings crowdingType];
