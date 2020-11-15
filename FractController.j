@@ -256,7 +256,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (CPString) rangeStatusIndicatorStringInverted: (BOOL) invert {
     var sFloor = kRangeLimitValueAtFloor, sCeil = kRangeLimitValueAtCeiling, s = "";
     if (invert) {
-        var sTemp = sCeil; sCeil = sFloor; sFloor = sTemp;
+        var sTemp = sCeil;  sCeil = sFloor;  sFloor = sTemp;
     }
     if (rangeLimitStatus == sFloor) {
         s += " ≥ ";

@@ -143,19 +143,20 @@
 }
 
 
+- (float) acuityResultValue4Export {
+    return [self acuityResultInLogMAR];
+}
+
+
 - (CPString) acuityComposeResultString {
     var resultInGapPx = stimStrengthInDeviceunits;
     var resultInDecVA = [Misc visusFromGapPixels: resultInGapPx];
-    resultInDecVA *= ([Settings threshCorrection]) ? 0.891 : 1.0;// Korrektur für Schwellenunterschätzung aufsteigender Verfahren
     resultInDecVA = Math.min([Settings maxDisplayedAcuity], resultInDecVA);
-    var resultInLogMAR = [Misc logMARfromDecVA: resultInDecVA];
-    
-    // console.info("rangeLimitStatus: ", rangeLimitStatus);
     var s = "";
     if ([Settings acuityFormatLogMAR]) {
         if (s.length > 1) s += ",  ";
         s += "LogMAR:" + [self rangeStatusIndicatorStringInverted: YES];
-        s += [Misc stringFromNumber: resultInLogMAR decimals: 2 localised: YES];
+        s += [Misc stringFromNumber: [self acuityResultInLogMAR] decimals: 2 localised: YES];
     }
     if ([Settings acuityFormatDecimal]) {
         if (s.length > 1) s += ",  ";
@@ -168,11 +169,6 @@
         s += [self format4SnellenInFeet: resultInDecVA];
     }
     return s;
-}
-
-
-- (float) acuityResultValue4Export {
-    return [self acuityResultInLogMAR];
 }
 
 

@@ -13,7 +13,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
-2020-11-15 add button to go to resultDetails URL
+2020-11-15 add button to go to resultDetails URL, corrected export format
 2020-11-10 add display transformation. This went along with much refactoring and removing code, either by moving
             "up" or finding that it's not used anyway
             considered automatic reload when defaulting settings, but seems too intrusive
