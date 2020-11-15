@@ -130,13 +130,9 @@ basic flow:
 
 
 - (CPString) contrastComposeExportString { //console.info("FractController>contrastComposeExportString");
-    var s = "";
-    if ([[self parentController] runAborted]) return s;
-    var tab = "\t", crlf = "\n", nDigits = 3, now = [CPDate date];
-    s = "Vs" + tab + [Settings versionExportFormat]; // version
-    s += tab + "decimalMark" + tab + [Settings decimalMarkChar];
-    s += tab + "date" + tab + [Misc date2YYYY_MM_DD: now] + tab + "time" + tab + [Misc date2HH_MM_SS: now];
-    s += tab + "test" + tab + currentTestName;
+    if ([[self parentController] runAborted]) return "";
+    var s = [self generalComposeExportString];
+    var tab = "\t", crlf = "\n", nDigits = 3;
     s += tab + "value" + tab + [Misc stringFromNumber: stimStrengthInDeviceunits decimals: nDigits localised: YES];
     s += tab + "unit1" + tab + currentTestResultUnit
     s += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 2 localised: YES];
@@ -149,5 +145,6 @@ basic flow:
     s += crlf; //console.info("FractController>contrastComposeExportString: ", s);
     return s;
 }
+
 
 @end
