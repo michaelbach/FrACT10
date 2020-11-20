@@ -1,12 +1,11 @@
 To Dos
 
-• Add: letter responses for TAO
-• Add: displayTransform
 • Add: gamma calibration
 • Add: contrast check (for acuity)
 • Export: full history
 • Improve/extend: About panel (recent history)
 
+√ Add: displayTransform
 √ Improve: crowding
 √ Window background not transparent (to avoid black in fullscreen)
 √ Add: contrast testing

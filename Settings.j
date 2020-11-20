@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define versionDateConst "2020-11-15"
+#define versionDateConst "2020-11-20"
 #define versionFractConst "Version 10.0.beta"
 #define versionExportFormatConst "4"
 #define dateSettingsCurrent "2020-05-19"
@@ -13,6 +13,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2020-11-20 latest Cappuccino frameworks made some button type changes necessary. Reverted to old framework, but changes still ok
 2020-11-15 add button to go to resultDetails URL, corrected export format
 2020-11-10 add display transformation. This went along with much refactoring and removing code, either by moving
             "up" or finding that it's not used anyway

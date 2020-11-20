@@ -28,7 +28,7 @@
 @typedef TestIDType
 kTestIDLett = 0; kTestIDC = 1; kTestIDE = 2; kTestIDAuck = 3; kTestIDVernier = 4; kTestContrastLett = 5; kTestContrastC = 6; kTestContrastE = 7;
 
-CPPushOnPushOffButton   = 1;
+CPPushOnPushOffButton = 1;
 
 @implementation AppController : HierarchyController {
     @outlet CPWindow fractControllerWindow;
