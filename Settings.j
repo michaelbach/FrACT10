@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define versionDateConst "2020-11-20"
+#define versionDateConst "2020-12-14"
 #define versionFractConst "Version 10.0.beta"
 #define versionExportFormatConst "4"
 #define dateSettingsCurrent "2020-05-19"
