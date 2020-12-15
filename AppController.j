@@ -125,8 +125,7 @@ CPPushOnPushOffButton = 1;
 }
 
 
-/*[[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"APXMyPropertyIamInterestedInKey" options:NSKeyValueObservingOptionNew
- context:NULL];
+/*[[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"APXMyPropertyIamInterestedInKey" options:NSKeyValueObservingOptionNew context:NULL];
  // KVO handler
  -(void)observeValueForKeyPath:(NSString *)aKeyPath ofObject:(id)anObject change:(NSDictionary *)aChange context:(void *)aContext {}*/
 - (void) defaultsDidChange: (CPNotification) aNotification {console.info("defaultsDidChange");}
@@ -309,7 +308,7 @@ function checkUrl0(url) {console.info("checkUrl: ", url);
     }
 }
 - (IBAction) runtimeError_action: (id) sender { //console.info("AppController>runtimeError_action");
-    alert("The (rare) entered glyph ‘∆’ is my purposeful test for causing a runtime errror. So there will be an error now…")
+    alert("The (rarely) entered glyph ‘∆’ is my purposeful test for causing a runtime errror. So there will be an error now…")
     [self abc];
 }
 

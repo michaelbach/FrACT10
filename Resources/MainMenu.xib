@@ -368,13 +368,13 @@ DQ
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Sn-ZQ-RqA">
-                        <rect key="frame" x="20" y="458" width="760" height="141"/>
+                        <rect key="frame" x="20" y="458" width="764" height="175"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="2hy-q0-ZtW">
                             <font key="font" metaFont="menu" size="14"/>
                             <string key="title">GENERAL
 
-Make use of the tool tips!
+Make use of the tool tips! (By hovering with the mouse over the pertinent interface element.)
 
 Be sure to set the calibration bar width and the observation distance in Preferences correctly. Preferences are automatically saved.
 
@@ -504,14 +504,14 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="4jh-qp-wtH">
                             <font key="font" metaFont="menu" size="14"/>
-                            <string key="title">VISUA ACUITY
+                            <string key="title">VISUAL ACUITY
 
 • Results in “decimal acuity”, logMAR or Snellen format</string>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button toolTip="Opens the “Acuity Cheat Shet&quot; in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFU-iu-5G1">
+                    <button toolTip="Opens the “Acuity Cheat Sheet&quot; in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFU-iu-5G1">
                         <rect key="frame" x="452" y="18" width="126" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="→Acuity Formats" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sdj-oG-XTl">
@@ -522,7 +522,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                             <action selector="buttonHelpCheats_action:" target="450" id="wfk-D5-Hsd"/>
                         </connections>
                     </button>
-                    <button toolTip="Opens a website which will read the test results exported by default" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SdT-ry-TcO">
+                    <button toolTip="Opens a website which will read and display the test results exported by default" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SdT-ry-TcO">
                         <rect key="frame" x="594" y="18" width="126" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="→Check Exported" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ltp-PJ-flF">
