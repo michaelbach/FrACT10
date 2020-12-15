@@ -3,16 +3,17 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define versionDateConst "2020-12-14"
-#define versionFractConst "Version 10.0.beta"
-#define versionExportFormatConst "4"
-#define dateSettingsCurrent "2020-05-19"
+#define versionDateFrACTConstant "2020-12-15"
+#define versionFractConstant "Version 10.0.beta"
+#define versionExportFormatConstant "5"
+#define dateSettingsCurrentConstant "2020-05-19"
 #define defaultDistanceInCM 399
 #define defaultCalBarLengthInMM 149
 
 /* History
    =======
 
+2020-12-14 (internal changes, Resources stuctured)
 2020-11-20 latest Cappuccino frameworks made some button type changes necessary. Reverted to old framework, but changes still ok
 2020-11-15 add button to go to resultDetails URL, corrected export format
 2020-11-10 add display transformation. This went along with much refactoring and removing code, either by moving
@@ -101,9 +102,9 @@ Created by mb on July 15, 2015.
 @implementation Settings: CPUserDefaultsController
 
 
-+ (CPString) versionDate {return versionDateConst;}
-+ (CPString) versionFrACT {return versionFractConst;}
-+ (CPString) versionExportFormat {return versionExportFormatConst;}
++ (CPString) versionFrACT {return versionFractConstant;}
++ (CPString) versionExportFormat {return versionExportFormatConstant;}
++ (CPString) versionDateFrACT {return versionDateFrACTConstant;}
 
 
 // helpers:
@@ -126,7 +127,7 @@ Created by mb on July 15, 2015.
 + (void) allNotCheckButSet: (BOOL) set {
     [[CPUserDefaults standardUserDefaults] synchronize];
     if (set) {
-        [self setDateSettingsVersion: dateSettingsCurrent];
+        [self setDateSettingsVersion: dateSettingsCurrentConstant];
         [[CPUserDefaults standardUserDefaults] setInteger: 2 forKey: "nAlternativesIndex"]; // 8 alternatives
     }
 
@@ -234,7 +235,7 @@ Created by mb on July 15, 2015.
 
 
 + (BOOL) needNewDefaults {
-    return [self dateSettingsVersion] != dateSettingsCurrent;
+    return [self dateSettingsVersion] != dateSettingsCurrentConstant;
 }
 + (void) checkDefaults { //console.info("Settings>checkDefaults");
     if ([self needNewDefaults]) {
