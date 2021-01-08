@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define versionDateFrACTConstant "2020-12-15"
+#define versionDateFrACTConstant "2021-01-06"
 #define versionFractConstant "Version 10.0.beta"
 #define versionExportFormatConstant "5"
 #define dateSettingsCurrentConstant "2020-05-19"
@@ -96,6 +96,7 @@ Created by mb on July 15, 2015.
 @import <Foundation/Foundation.j>
 @import <AppKit/AppKit.j>
 @import <Foundation/CPUserDefaults.j>
+@import "Globals.j"
 @import "Misc.j"
 
 

@@ -175,7 +175,7 @@
 - (CPString) acuityComposeExportString { //console.info("FractController>acuityComposeExportString");
     if ([[self parentController] runAborted]) return "";
     var s = [self generalComposeExportString];
-    var tab = "\t", crlf = "\n", nDigits = 3;
+    var nDigits = 3;
     s += tab + "value" + tab + [Misc stringFromNumber: [self resultValue4Export] decimals: nDigits localised: YES];
     s += tab + "unit1" + tab + currentTestResultUnit
     s += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 1 localised: YES];

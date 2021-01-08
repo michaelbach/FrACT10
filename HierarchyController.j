@@ -1,10 +1,11 @@
 /*
- *  HierarchyController.j
- *  FrACT10.02
- *
- *  Created by Bach on 18.07.2017.
- *  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
- */
+  HierarchyController.j
+  FrACT10.02
+
+  Created by Bach on 18.07.2017.
+  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
+*/
+
 
 @import <Foundation/CPObject.j>
 @import <AppKit/AppKit.j>

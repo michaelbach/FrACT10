@@ -4,11 +4,13 @@
 //    2015-07-15 started
 
 
+@import "Globals.j"
 @import "Settings.j"
 @import "AlternativesGenerator.j"
 @import "Thresholder.j";
 @import "Optotypes.j";
 @import "HierarchyController.j"
+@import "TrialHistoryController.j"
 
 
 @typedef StateType
@@ -27,6 +29,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     float xEcc, yEcc; // eccentricity
     Thresholder thresholder;
     AlternativesGenerator alternativesGenerator;
+    TrialHistoryController trialHistoryController;
     Optotypes optotypes;
     CPString trialInfoString @accessors;
     CPTimer timerDisplay, timerResponse, timerFixMark;
@@ -77,6 +80,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     state = kStateDrawBack;
     alternativesGenerator = [[AlternativesGenerator alloc] initWithNumAlternatives: nAlternatives andNTrials: nTrials];
     thresholder = [[Thresholder alloc] initWithNumAlternatives: nAlternatives];
+    trialHistoryController = [[TrialHistoryController alloc] initWithNumTrials: nTrials];
     responseWasCorrect = YES;  responseWasCorrectCumulative = YES;
     xEcc = -[Misc pixelFromDegree: [Settings eccentXInDeg]];  yEcc = [Misc pixelFromDegree: [Settings eccentYInDeg]]; //pos y: ↑
     [self trialStart];
@@ -98,7 +102,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [alternativesGenerator nextAlternative];
     timerDisplay = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutDisplaySeconds] target:self selector:@selector(onTimeoutDisplay:) userInfo:nil repeats:NO];
     timerResponse = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutResponseSeconds] target:self selector:@selector(onTimeoutResponse:) userInfo:nil repeats:NO];
-    
     state = kStateDrawFore;  [[[self window] contentView] setNeedsDisplay: YES];
 }
 
@@ -183,11 +186,14 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (void) processKeyDownEvent { //console.info("FractController>processKeyDownEvent");
     var r = [self responseNumberFromChar: responseKeyChar];
     responseWasCorrect = (r == [alternativesGenerator currentAlternative]);
+    [trialHistoryController setResponded: r];
+    [trialHistoryController setPresented: [alternativesGenerator currentAlternative]];
+    [trialHistoryController setCorrect: responseWasCorrect];
     [self trialEnd];
 }
 
 
-- (void) trialEnd { //console.info("Fract>trialEnd");
+- (void) trialEnd { //console.info("FractController>trialEnd");
     [timerDisplay invalidate];  timerDisplay = nil;  [timerResponse invalidate];  timerResponse = nil;//nötig?
     [thresholder enterTrialOutcomeWithAppliedStim: [self stimThresholderunitsFromDeviceunits: stimStrengthInDeviceunits] wasCorrect: responseWasCorrect];
     switch ([Settings auditoryFeedback]) { // case 0: nothing
@@ -200,6 +206,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             else [sound play2];
             break;
     }
+    [trialHistoryController trialEnded];
     [self trialStart];
 }
 
@@ -215,6 +222,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [[self parentController] setResultString: resultString];
     [[self parentController] setCurrentTestResultExportString: [self composeExportString]];
     if ([Settings auditoryFeedbackWhenDone]) [sound play3];
+    [trialHistoryController runEnded];
     [[self parentController] runEnd];
 }
 
@@ -234,13 +242,13 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 - (float) stimThresholderunitsFromDeviceunits: (float) ntve {
-    console.info("FractController>stimThresholderunitsFromDeviceunits OVERRIDE!");
+    console.info("FractController>stimThresholderunitsFromDeviceunits OVERRIDE THIS!");
     return ntve;
 }
 
 
 - (float) stimDeviceunitsFromThresholderunits: (float) generic {
-    console.info("FractController>stimDeviceunitsFromThresholderunits OVERRIDE!");
+    console.info("FractController>stimDeviceunitsFromThresholderunits OVERRIDE THIS!");
     return generic;
 }
 
@@ -272,8 +280,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (CPString) generalComposeExportString { // used by acuity & contrast
-    var s = "";
-    var tab = "\t", now = [CPDate date];
+    var s = "", now = [CPDate date];
     s += "Vs" + tab + [Settings versionExportFormat];
     s += tab + "vsFrACT" + tab + [Settings versionDateFrACT];
     s += tab + "decimalMark" + tab + [Settings decimalMarkChar];

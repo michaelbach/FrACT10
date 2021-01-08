@@ -132,7 +132,7 @@ basic flow:
 - (CPString) contrastComposeExportString { //console.info("FractController>contrastComposeExportString");
     if ([[self parentController] runAborted]) return "";
     var s = [self generalComposeExportString];
-    var tab = "\t", crlf = "\n", nDigits = 3;
+    var nDigits = 3;
     s += tab + "value" + tab + [Misc stringFromNumber: stimStrengthInDeviceunits decimals: nDigits localised: YES];
     s += tab + "unit1" + tab + currentTestResultUnit
     s += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 2 localised: YES];

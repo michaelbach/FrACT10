@@ -6,6 +6,7 @@
  * Copyright 2015, Your Company All rights reserved.
  */
 
+@import "Globals.j"
 @import "FractView.j"
 @import "FractController.j"
 @import "FractControllerVAC.j"
