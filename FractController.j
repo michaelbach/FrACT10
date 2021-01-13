@@ -221,8 +221,10 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [[self parentController] setRunAborted: (iTrial < nTrials)]; //premature end
     [[self parentController] setResultString: resultString];
     [[self parentController] setCurrentTestResultExportString: [self composeExportString]];
-    if ([Settings auditoryFeedbackWhenDone]) [sound play3];
+    
     [trialHistoryController runEnded];
+    [[self parentController] setCurrentTestResultsHistoryExportString: [trialHistoryController resultsHistoryString]];
+    if ([Settings auditoryFeedbackWhenDone]) [sound play3];
     [[self parentController] runEnd];
 }
 

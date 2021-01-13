@@ -19,6 +19,7 @@
     CPString currentTestName @accessors;
     CPString currentTestResultUnit @accessors;
     CPString currentTestResultExportString @accessors;
+    CPString currentTestResultsHistoryExportString @accessors;
 }
 
 

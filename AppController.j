@@ -205,7 +205,8 @@ CPPushOnPushOffButton = 1;
         if ([Settings rewardPicturesWhenDone]) {
             [rewardsController drawRandom];
         }
-        localStorage.setItem("FRACT10-FINAL-RESULT-STRING", currentTestResultExportString);
+        localStorage.setItem([Settings filenameResultStorage], currentTestResultExportString);
+        localStorage.setItem([Settings filenameResultsHistoryStorage], currentTestResultsHistoryExportString);
         if ([Settings results2clipboard] > 0) {
             if ([Settings results2clipboardSilent]) {
                 [Misc copyString2Clipboard: currentTestResultExportString];

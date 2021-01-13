@@ -3,12 +3,14 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define versionDateFrACTConstant "2021-01-06"
+#define versionDateFrACTConstant "2021-01-13"
 #define versionFractConstant "Version 10.0.beta"
 #define versionExportFormatConstant "5"
 #define dateSettingsCurrentConstant "2020-05-19"
 #define defaultDistanceInCM 399
 #define defaultCalBarLengthInMM 149
+#define filenameResultStorageConstant "FRACT10-FINAL-RESULT-STRING"
+#define filenameResultsHistoryStorageConstant "FRACT10-RESULTS-HISTORY-STRING"
 
 /* History
    =======
@@ -106,6 +108,8 @@ Created by mb on July 15, 2015.
 + (CPString) versionFrACT {return versionFractConstant;}
 + (CPString) versionExportFormat {return versionExportFormatConstant;}
 + (CPString) versionDateFrACT {return versionDateFrACTConstant;}
++ (CPString) filenameResultStorage {return filenameResultStorageConstant;}
++ (CPString) filenameResultsHistoryStorage {return filenameResultsHistoryStorageConstant;}
 
 
 // helpers:
