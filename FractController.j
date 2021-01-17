@@ -87,7 +87,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
-- (void) modifyDeviceStimulus {}
+- (void) modifyDeviceStimulus { //console.info("FractController>modifyDeviceStimulus");
+}
 
 
 - (void) trialStart { //console.info("FractController>trialStart");

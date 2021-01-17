@@ -9,8 +9,11 @@
 }
 
 
-// this manages crowding, after the optotypes have been drawn
+// this manages stuff after the optotypes have been drawn, e.g. crowding
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
+    var temp = [Misc logMARfromDecVA: [Misc visusFromGapPixels: stimStrengthInDeviceunits]];
+    [trialHistoryController setValue: [Misc stringFromNumber: temp decimals: 3 localised: YES]];
+    
     if ([Settings crowdingType] > 0) {
         if (currentTestName != "Acuity_Vernier") { // don't do crowding with Vernier etc.
             CGContextSaveGState(cgc);
@@ -68,7 +71,7 @@
 }
 
 
-- (void)runEnd { //console.info("FractController>runEnd");
+- (void) runEnd { //console.info("FractController>runEnd");
     if (currentTestName != "Acuity_Vernier") {
         if (iTrial < nTrials) { //premature end
             [self setResultString: @"Aborted"];

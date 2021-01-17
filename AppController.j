@@ -205,9 +205,15 @@ CPPushOnPushOffButton = 1;
         if ([Settings rewardPicturesWhenDone]) {
             [rewardsController drawRandom];
         }
-        localStorage.setItem([Settings filenameResultStorage], currentTestResultExportString);
-        localStorage.setItem([Settings filenameResultsHistoryStorage], currentTestResultsHistoryExportString);
+        var temp = currentTestResultExportString.replace(/,/g, "."); // in localStorage we don't need to localise
+        localStorage.setItem([Settings filenameResultStorage], temp);
+        temp = currentTestResultsHistoryExportString.replace(/,/g, ".");
+        localStorage.setItem([Settings filenameResultsHistoryStorage], temp);
+        
         if ([Settings results2clipboard] > 0) {
+            if ([Settings results2clipboard] == 2) {
+                currentTestResultExportString += currentTestResultsHistoryExportString;
+            }
             if ([Settings results2clipboardSilent]) {
                 [Misc copyString2Clipboard: currentTestResultExportString];
             } else {
@@ -289,7 +295,7 @@ function checkUrl(url) {
     return true;
 }
 
-function checkUrl0(url) {console.info("checkUrl: ", url);
+function checkUrl0(url) {//console.info("checkUrl: ", url);
     var request = false;
     if (window.XMLHttpRequest) {
         request = new XMLHttpRequest;
@@ -297,7 +303,7 @@ function checkUrl0(url) {console.info("checkUrl: ", url);
         request = new ActiveXObject("Microsoft.XMLHttp");
     }
     if (request) {
-        request.open("GET", url);alert();console.info(request.status);
+        request.open("GET", url);alert();//console.info(request.status);
         if (request.status == 200) return true;
     }
     return false;

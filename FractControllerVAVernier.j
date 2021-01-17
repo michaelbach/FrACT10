@@ -15,7 +15,6 @@
 
 - (void) modifyThresholderStimulus {[self modifyThresholderStimulusWithBonus];}
 - (void) modifyDeviceStimulus {}
-//- (float) resultValue4Export {return [self acuityResultValue4Export];}
 - (CPString) composeExportString {return [self acuityComposeExportString];}
 
 

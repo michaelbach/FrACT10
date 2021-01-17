@@ -61,7 +61,15 @@
 }
 
 
-- (void) runEnd { //p.info("FractControllerContrastLett>runEnd");
+// this manages stuff after the optotypes have been drawn
+- (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractControllerContrastLett>drawStimulusInRect");
+    [trialHistoryController setValue: [Misc stringFromNumber: stimStrengthInDeviceunits decimals: 2 localised: YES]];
+
+    [super drawStimulusInRect: dirtyRect];
+}
+
+
+- (void) runEnd { //console.info("FractControllerContrastLett>runEnd");
     if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {

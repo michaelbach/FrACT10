@@ -3,8 +3,8 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define versionDateFrACTConstant "2021-01-13"
-#define versionFractConstant "Version 10.0.beta"
+#define versionDateFrACTConstant "2021-01-17"
+#define versionFractConstant "Version 10.0gamma"
 #define versionExportFormatConstant "5"
 #define dateSettingsCurrentConstant "2020-05-19"
 #define defaultDistanceInCM 399
@@ -15,7 +15,8 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
-2020-12-14 (internal changes, Resources stuctured)
+2021-01-17 finish export of full history
+2020-12-14 (internal changes, Resources structured)
 2020-11-20 latest Cappuccino frameworks made some button type changes necessary. Reverted to old framework, but changes still ok
 2020-11-15 add button to go to resultDetails URL, corrected export format
 2020-11-10 add display transformation. This went along with much refactoring and removing code, either by moving
