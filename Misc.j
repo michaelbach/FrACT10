@@ -47,10 +47,8 @@
             document.webkitExitFullscreen();
         else if(document.msExitFullscreen)
             document.msExitFullscreen();
-        
     }
 }
-
 
 + (BOOL) isFullScreen {
     var full_screen_element = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement || null;

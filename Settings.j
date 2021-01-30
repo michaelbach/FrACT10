@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define versionDateFrACTConstant "2021-01-17"
+#define versionDateFrACTConstant "2021-01-30"
 #define versionFractConstant "Version 10.0gamma"
 #define versionExportFormatConstant "5"
 #define dateSettingsCurrentConstant "2020-05-19"
@@ -15,6 +15,9 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2021-01-31 help panel correctly named
+            1st attempt dealing with orientation change on tablets; works, but is reload always necessary?
+            improve positioning of Vernier button image
 2021-01-17 finish export of full history
 2020-12-14 (internal changes, Resources structured)
 2020-11-20 latest Cappuccino frameworks made some button type changes necessary. Reverted to old framework, but changes still ok

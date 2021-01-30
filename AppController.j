@@ -24,7 +24,15 @@
 /*window.ondeviceorientation = function(event) {
  [setAngleAlpha: Math.round(event.alpha)]; [setAngleAlpha: Math.round(event.beta)]; [setAngleAlpha: Math.round(event.gamma)];
  }*/
-
+/*
+ ScreenOrientation.addEventListener('change', function(e) { ... })
+ ScreenOrientation.onchange = function(e) { ... }
+ */
+/*
+ window.addEventListener("orientationchange", centerLoginBox);
+ …
+ if (window.orientation == 90
+ */
 
 @typedef TestIDType
 kTestIDLett = 0; kTestIDC = 1; kTestIDE = 2; kTestIDAuck = 3; kTestIDVernier = 4; kTestContrastLett = 5; kTestContrastC = 6; kTestContrastE = 7;
@@ -79,11 +87,20 @@ CPPushOnPushOffButton = 1;
 
 
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("applicationDidFinishLaunching");
-   addEventListener('error', function (e) {
+    addEventListener('error', function(e) {
         alert("An error occured, I'm sorry. Error message:\r\r" + e.message + "\r\rIf it recurs, please notify michael.bach@uni-freiburg.de, ideally relating the message, e.g. via a screeshot.\rI will look into it and endeavour to provide a fix.\r\rOn “Close”, the window will reload and you can retry.");
         window.location.reload(false);
-   });
+    });
+
+    window.addEventListener("orientationchange", function(e) {
+        //alert("Orientation change, now "+e.target.screen.orientation.angle+"°.\r\rOn “Close”, the window will reload to fit.");
+        window.location.reload(false);
+    });
     
+    /*window.addEventListener("resize", function(e) {
+        alert("window resize.");
+    });*/
+
     //console.info("AppController>applicationDidFinishLaunching");
     var allButtons = [buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier, buttCntLett, buttCntC, buttCntE];
     for (var i = 0; i < allButtons.length; i++)  [Misc makeFrameSquareFromWidth: allButtons[i]];

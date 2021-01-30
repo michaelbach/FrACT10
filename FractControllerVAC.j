@@ -28,6 +28,7 @@
         case kStateDrawBack: break;
         case kStateDrawFore: //console.info("kStateDrawFore");
             [optotypes setCgc: cgc colFore: colOptotypeFore colBack: colOptotypeBack];
+            //[alternativesGenerator setCurrentAlternative: [alternativesGenerator currentAlternative] + 1];
             [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: [alternativesGenerator currentAlternative]];
             break;
         default: break;
