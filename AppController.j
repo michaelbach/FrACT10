@@ -20,6 +20,8 @@
 @import "RewardsController.j"
 @import "TAOController.j"
 @import "Sound.j"
+@import "GammaView.j"
+
 
 /*window.ondeviceorientation = function(event) {
  [setAngleAlpha: Math.round(event.alpha)]; [setAngleAlpha: Math.round(event.beta)]; [setAngleAlpha: Math.round(event.gamma)];
@@ -45,6 +47,7 @@ CPPushOnPushOffButton = 1;
     @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, resultDetailsPanel;
     @outlet CPButton buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier, buttCntLett, buttCntC, buttCntE;
     @outlet CPButton buttonExport;
+    @outlet GammaView gammaView;
     CPImageView rewardImageView;
     RewardsController rewardsController;
     TAOController taoController;
@@ -478,4 +481,16 @@ function checkUrl0(url) {//console.info("checkUrl: ", url);
 }
 
 
+- (IBAction) buttonGamma_action: (id) sender { //console.info("AppController>buttonGamma_action");
+    switch ([sender tag]) {
+        case 1:
+            [Settings setGammaValue: [Settings gammaValue] + 0.1];
+        break;
+        case 2:
+            [Settings setGammaValue: [Settings gammaValue] - 0.1];
+        break;
+    }
+    [gammaView setNeedsDisplay: YES];
+}
+ 
 @end

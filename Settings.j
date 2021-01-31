@@ -19,6 +19,7 @@ Created by mb on July 15, 2015.
             1st attempt dealing with orientation change on tablets; works, but is reload always necessary?
             add mobileOrientation to Settings
             improve positioning of Vernier button image
+            add gamma calibration
 2021-01-17 finish export of full history
 2020-12-14 (internal changes, Resources structured)
 2020-11-20 latest Cappuccino frameworks made some button type changes necessary. Reverted to old framework, but changes still ok
