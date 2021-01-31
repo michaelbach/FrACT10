@@ -3,20 +3,21 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define versionDateFrACTConstant "2021-01-30"
-#define versionFractConstant "Version 10.0gamma"
-#define versionExportFormatConstant "5"
-#define dateSettingsCurrentConstant "2020-05-19"
-#define defaultDistanceInCM 399
-#define defaultCalBarLengthInMM 149
-#define filenameResultStorageConstant "FRACT10-FINAL-RESULT-STRING"
-#define filenameResultsHistoryStorageConstant "FRACT10-RESULTS-HISTORY-STRING"
+#define kVersionDateOfFrACT "2021-01-31"
+#define kVersionStringOfFract "Version 10.0gamma"
+#define kVersionOfExportFormat "5"
+#define kDateOfCurrentSettingsVersion "2021-01-31"
+#define kDefaultDistanceInCM 399
+#define kDefaultCalBarLengthInMM 149
+#define kFilename4ResultStorage "FRACT10-FINAL-RESULT-STRING"
+#define kFilename4ResultsHistoryStorage "FRACT10-RESULTS-HISTORY-STRING"
 
 /* History
    =======
 
-2021-01-31 help panel correctly named
+2021-01-31 revamp help panel
             1st attempt dealing with orientation change on tablets; works, but is reload always necessary?
+            add mobileOrientation to Settings
             improve positioning of Vernier button image
 2021-01-17 finish export of full history
 2020-12-14 (internal changes, Resources structured)
@@ -109,11 +110,11 @@ Created by mb on July 15, 2015.
 @implementation Settings: CPUserDefaultsController
 
 
-+ (CPString) versionFrACT {return versionFractConstant;}
-+ (CPString) versionExportFormat {return versionExportFormatConstant;}
-+ (CPString) versionDateFrACT {return versionDateFrACTConstant;}
-+ (CPString) filenameResultStorage {return filenameResultStorageConstant;}
-+ (CPString) filenameResultsHistoryStorage {return filenameResultsHistoryStorageConstant;}
++ (CPString) versionFrACT {return kVersionStringOfFract;}
++ (CPString) versionExportFormat {return kVersionOfExportFormat;}
++ (CPString) versionDateFrACT {return kVersionDateOfFrACT;}
++ (CPString) filenameResultStorage {return kFilename4ResultStorage;}
++ (CPString) filenameResultsHistoryStorage {return kFilename4ResultsHistoryStorage;}
 
 
 // helpers:
@@ -136,7 +137,7 @@ Created by mb on July 15, 2015.
 + (void) allNotCheckButSet: (BOOL) set {
     [[CPUserDefaults standardUserDefaults] synchronize];
     if (set) {
-        [self setDateSettingsVersion: dateSettingsCurrentConstant];
+        [self setDateSettingsVersion: kDateOfCurrentSettingsVersion];
         [[CPUserDefaults standardUserDefaults] setInteger: 2 forKey: "nAlternativesIndex"]; // 8 alternatives
     }
 
@@ -145,8 +146,8 @@ Created by mb on July 15, 2015.
     [self setNTrials04: [self chckInt: [self nTrials04] def: 24 min: 1 max: 200 set: set]];
     [self setNTrials08: [self chckInt: [self nTrials08] def: 18 min: 1 max: 200 set: set]];
 
-    [self setDistanceInCM: [self chckFlt: [self distanceInCM] def: defaultDistanceInCM min: 1 max: 2000 set: set]];
-    [self setCalBarLengthInMM: [self chckFlt: [self calBarLengthInMM] def: defaultCalBarLengthInMM min: 1 max: 2000 set: set]];
+    [self setDistanceInCM: [self chckFlt: [self distanceInCM] def: kDefaultDistanceInCM min: 1 max: 2000 set: set]];
+    [self setCalBarLengthInMM: [self chckFlt: [self calBarLengthInMM] def: kDefaultCalBarLengthInMM min: 1 max: 2000 set: set]];
     [self setCalBarLengthInPixel: [self chckFlt: [self calBarLengthInPixel] def: 700 min: 1 max: 2000 set: set]];
 
     [self setResponseInfoAtStart: [self chckBool: [self responseInfoAtStart] def: YES set: set]];
@@ -158,6 +159,8 @@ Created by mb on July 15, 2015.
 
     [self setEccentXInDeg: [self chckFlt: [self eccentXInDeg] def: 0 min: -99 max: 99 set: set]];
     [self setEccentYInDeg: [self chckFlt: [self eccentYInDeg] def: 0 min: -99 max: 99 set: set]];
+
+    [self setMobileOrientation: [self chckBool: [self mobileOrientation] def: YES set: set]];
 
     // 0=normal, 1=mirror horizontally, 2=mirror vertically, 3=both=rot180°
     [self setDisplayTransform: [self chckInt: [self displayTransform] def: 0 min: 0 max: 3 set: set]];
@@ -244,7 +247,7 @@ Created by mb on July 15, 2015.
 
 
 + (BOOL) needNewDefaults {
-    return [self dateSettingsVersion] != dateSettingsCurrentConstant;
+    return [self dateSettingsVersion] != kDateOfCurrentSettingsVersion;
 }
 + (void) checkDefaults { //console.info("Settings>checkDefaults");
     if ([self needNewDefaults]) {
@@ -264,7 +267,7 @@ Created by mb on July 15, 2015.
 
 + (BOOL) notCalibrated {
     [self checkDefaults];
-    return (([self distanceInCM]==defaultDistanceInCM) || ([self calBarLengthInMM] == defaultCalBarLengthInMM));
+    return (([self distanceInCM]==kDefaultDistanceInCM) || ([self calBarLengthInMM] == kDefaultCalBarLengthInMM));
 }
 
 
@@ -377,6 +380,15 @@ Created by mb on July 15, 2015.
 + (void) setEccentYInDeg: (float) value {
     [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "eccentYInDeg"];
 }
+
+
++ (BOOL) mobileOrientation {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "mobileOrientation"];
+}
++ (void) setMobileOrientation: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "mobileOrientation"];
+}
+
 
 
 + (int) displayTransform {

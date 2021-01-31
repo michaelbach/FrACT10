@@ -93,8 +93,10 @@ CPPushOnPushOffButton = 1;
     });
 
     window.addEventListener("orientationchange", function(e) {
-        //alert("Orientation change, now "+e.target.screen.orientation.angle+"°.\r\rOn “Close”, the window will reload to fit.");
-        window.location.reload(false);
+        if ([Settings mobileOrientation]) {
+            //alert("Orientation change, now "+e.target.screen.orientation.angle+"°.\r\rOn “Close”, the window will reload to fit.");
+            window.location.reload(false);
+        }
     });
     
     /*window.addEventListener("resize", function(e) {

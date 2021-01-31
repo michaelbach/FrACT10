@@ -280,7 +280,7 @@ With ‘Best PEST’, antialiasing and dithering.</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="IoN-VZ-cjE">
                             <font key="font" metaFont="system" size="16"/>
-                            <string key="title">©2017–2020
+                            <string key="title">©2017–2021
 
 Prof. Michael Bach
 Eye Center
@@ -367,24 +367,28 @@ DQ
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Sn-ZQ-RqA">
-                        <rect key="frame" x="20" y="458" width="764" height="175"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Sn-ZQ-RqA">
+                        <rect key="frame" x="20" y="384" width="764" height="196"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="2hy-q0-ZtW">
-                            <font key="font" metaFont="menu" size="14"/>
-                            <string key="title">GENERAL
+                        <textFieldCell key="cell" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="2hy-q0-ZtW">
+                            <font key="font" size="12" name="HelveticaNeue"/>
+                            <mutableString key="title">GENERAL
 
-Make use of the tool tips! (By hovering with the mouse over the pertinent interface element.)
+• Make use of the tool tips!  (By hovering with the mouse over the pertinent interface element.)
 
-Be sure to set the calibration bar width and the observation distance in Preferences correctly. Preferences are automatically saved.
+• Be sure to set the calibration bar width and the observation distance in Preferences correctly. Preferences are automatically saved.
 
-This is a forced choice test – even when your subjects convincingly claim that they cannot see a thing, have them go on and make their best guess, the software knows about the lucky guesses. Encourage your subjects to react swiftly, lengthy squinting at the optotype is not helpful.</string>
+• This is a forced choice test – even when your subjects indicate that they cannot see a thing, encourages them to make their best guess; the software knows about the lucky guesses. Encourage your subjects to react swiftly, lengthy squinting at the optotype is not helpful.
+
+• Quality results requite knowledge in sensory testing. At least observe the Checklist (button below).
+
+• The Manual (button below) should cover everything. For open Questions contact me.</mutableString>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v4E-5P-uLh">
-                        <rect key="frame" x="733" y="18" width="47" height="23"/>
+                        <rect key="frame" x="738" y="18" width="47" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="OK" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="03s-Qu-GWf">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -409,7 +413,7 @@ DQ
                         </connections>
                     </button>
                     <button toolTip="Opens the manual in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pig-bH-1jM">
-                        <rect key="frame" x="20" y="18" width="126" height="23"/>
+                        <rect key="frame" x="19" y="18" width="126" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="→Manual" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="L5g-3L-9xi">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -420,7 +424,7 @@ DQ
                         </connections>
                     </button>
                     <button toolTip="Opens the FrACT home page in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iza-6M-cRz">
-                        <rect key="frame" x="165" y="18" width="126" height="23"/>
+                        <rect key="frame" x="164" y="18" width="126" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="→Checklist" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="stL-8j-RhU">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -430,19 +434,67 @@ DQ
                             <action selector="buttonHelpGetChecklist_action:" target="450" id="1l1-48-D3A"/>
                         </connections>
                     </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XDB-tT-AfF">
+                        <rect key="frame" x="417" y="300" width="367" height="62"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="9Tq-uu-N7t">
+                            <font key="font" size="12" name="HelveticaNeue"/>
+                            <string key="title">CONTRAST SENSITIVITY
+
+· Results in logCS(Weber). CS: “contrast sensitivity"</string>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aru-OX-XXi">
+                        <rect key="frame" x="20" y="270" width="367" height="92"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="4jh-qp-wtH">
+                            <font key="font" size="12" name="HelveticaNeue"/>
+                            <string key="title">VISUAL ACUITY
+
+• Results in logMAR, decimal acuity or Snellen format
+
+• LImited screen resolution (pixel size) may clip high acuity</string>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button toolTip="Opens the “Acuity Cheat Sheet&quot; in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFU-iu-5G1">
+                        <rect key="frame" x="453" y="18" width="126" height="23"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="roundTextured" title="→Acuity Formats" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sdj-oG-XTl">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="buttonHelpCheats_action:" target="450" id="wfk-D5-Hsd"/>
+                        </connections>
+                    </button>
+                    <button toolTip="Opens a website which will read and display the test results exported by default" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SdT-ry-TcO">
+                        <rect key="frame" x="596" y="18" width="126" height="23"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="roundTextured" title="→Check Exported" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ltp-PJ-flF">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="resultDetails_action:" target="450" id="eZ2-3l-yWR"/>
+                        </connections>
+                    </button>
                     <scrollView fixedFrame="YES" borderType="line" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCB-G5-d1e">
-                        <rect key="frame" x="20" y="54" width="760" height="329"/>
+                        <rect key="frame" x="20" y="60" width="764" height="190"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="8aG-i8-Dh8">
-                            <rect key="frame" x="1" y="1" width="743" height="327"/>
+                            <rect key="frame" x="1" y="1" width="747" height="188"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="zNM-Gb-Jh9">
-                                    <rect key="frame" x="0.0" y="0.0" width="743" height="406"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="747" height="406"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="743" height="327"/>
+                                    <size key="minSize" width="747" height="188"/>
                                     <size key="maxSize" width="760" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment>
@@ -483,56 +535,10 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="LUd-Wl-vo2">
-                            <rect key="frame" x="744" y="1" width="15" height="327"/>
+                            <rect key="frame" x="748" y="1" width="15" height="188"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XDB-tT-AfF">
-                        <rect key="frame" x="413" y="391" width="367" height="56"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="9Tq-uu-N7t">
-                            <font key="font" metaFont="menu" size="14"/>
-                            <string key="title">CONTRAST SENSITIVITY
-
-· Results in logCS(Weber). CS: “contrast sensitivity"</string>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aru-OX-XXi">
-                        <rect key="frame" x="20" y="391" width="367" height="57"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="4jh-qp-wtH">
-                            <font key="font" metaFont="menu" size="14"/>
-                            <string key="title">VISUAL ACUITY
-
-• Results in “decimal acuity”, logMAR or Snellen format</string>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <button toolTip="Opens the “Acuity Cheat Sheet&quot; in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFU-iu-5G1">
-                        <rect key="frame" x="452" y="18" width="126" height="23"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" title="→Acuity Formats" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sdj-oG-XTl">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonHelpCheats_action:" target="450" id="wfk-D5-Hsd"/>
-                        </connections>
-                    </button>
-                    <button toolTip="Opens a website which will read and display the test results exported by default" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SdT-ry-TcO">
-                        <rect key="frame" x="594" y="18" width="126" height="23"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" title="→Check Exported" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ltp-PJ-flF">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="resultDetails_action:" target="450" id="eZ2-3l-yWR"/>
-                        </connections>
-                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
@@ -1691,7 +1697,7 @@ DQ
                                                         <rect key="frame" x="75" y="51" width="438" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes.  For Landolt-Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.</string>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of choices (applies only to Landolt-Cs), Letters always 10, Vernier 2" id="2kS-jg-XcS">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of choices for Landolt-Cs, Letters always 10, Vernier 2" id="2kS-jg-XcS">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1873,7 +1879,7 @@ DQ
                                             </connections>
                                         </button>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NH7-ys-bRe">
-                                            <rect key="frame" x="351" y="86" width="156" height="25"/>
+                                            <rect key="frame" x="350" y="86" width="156" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="Display transformation normal" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="fzq-C7-Daz" id="4HI-Hd-6YM">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1899,6 +1905,18 @@ DQ
                                                 <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.displayTransform" id="LT4-5k-iSW"/>
                                             </connections>
                                         </popUpButton>
+                                        <button toolTip="Redraw when changing orientation of a tablet between landscape and portrait." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BdA-0d-0v5">
+                                            <rect key="frame" x="351" y="249" width="183" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Use mobile orientation" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ioU-bC-45H">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="value" keyPath="values.mobileOrientation" id="jPA-Qf-r0d"/>
+                                                <outlet property="nextKeyView" destination="WCS-rL-YCa" id="hP4-Te-I6S"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -3419,7 +3437,7 @@ DQ
         <image name="buttVAC" width="170.16000366210938" height="95.760002136230469"/>
         <image name="buttVAE" width="130.08000183105469" height="101.76000213623047"/>
         <image name="buttVALett" width="170.16000366210938" height="95.519996643066406"/>
-        <image name="buttVAVernier" width="153.1199951171875" height="171.83999633789062"/>
+        <image name="buttVAVernier" width="121.91999816894531" height="195.83999633789062"/>
         <image name="buttonTAO" width="192" height="192"/>
         <image name="iconAbout" width="396" height="396"/>
         <image name="iconFullscreen" width="356" height="356"/>
