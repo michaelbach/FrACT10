@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2021-01-31"
+#define kVersionDateOfFrACT "2021-02-01"
 #define kVersionStringOfFract "Version 10.0gamma"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
@@ -15,6 +15,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2021-02-01 add "obliqueOnly"
 2021-01-31 revamp help panel
             1st attempt dealing with orientation change on tablets; works, but is reload always necessary?
             add mobileOrientation to Settings
@@ -188,7 +189,8 @@ Created by mb on July 15, 2015.
     [self setTimeoutRewardPicturesInSeconds: [self chckFlt: [self timeoutRewardPicturesInSeconds] def: 5 min: 0.1 max: 999 set: set]];
 
     
-    // Acuity stufflowerLuminanceFromContrast
+    // Acuity stuff
+    [self setObliqueOnly: [self chckBool: [self obliqueOnly] def: NO set: set]]; // only applies to acuity with 4 Landolt orienations
     [self setContrastAcuityWeber: [self chckFlt: [self contrastAcuityWeber] def: 100 min: -100 max: 100 set: set]];
     [self calculateAcuityForeBackColorsFromContrast];
     [self setAcuityEasyTrials: [self chckBool: [self acuityEasyTrials] def: YES set: set]];
@@ -318,6 +320,13 @@ Created by mb on July 15, 2015.
         case 1:  return 4;  break;
         case 2:  return 8;  break;
     }
+}
+
++ (BOOL) obliqueOnly {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "obliqueOnly"];
+}
++ (void) setObliqueOnly: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "obliqueOnly"];
 }
 
 

@@ -1628,7 +1628,7 @@ DQ
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wrj-XQ-Ter">
-                                                        <rect key="frame" x="18" y="48" width="54" height="26"/>
+                                                        <rect key="frame" x="13" y="48" width="54" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes.  For Landolt-Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.</string>
                                                         <popUpButtonCell key="cell" type="push" title="2" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="MNg-IJ-MqA" id="jUX-2m-CLf">
@@ -1647,7 +1647,7 @@ DQ
                                                         </connections>
                                                     </popUpButton>
                                                     <textField toolTip="The number of trials presented when 2 choices are possible (e.g. Vernier)." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wuy-yQ-B3F">
-                                                        <rect key="frame" x="20" y="15" width="34" height="22"/>
+                                                        <rect key="frame" x="15" y="15" width="34" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="7YW-A6-gCu">
                                                             <font key="font" metaFont="system"/>
@@ -1660,7 +1660,7 @@ DQ
                                                         </connections>
                                                     </textField>
                                                     <textField toolTip="The number of trials presented when 4 choices are possible (e.g. tumbling E. or Landolt-Cs set for 4)." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9PX-pe-3kM">
-                                                        <rect key="frame" x="54" y="15" width="34" height="22"/>
+                                                        <rect key="frame" x="49" y="15" width="34" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="iyE-mY-Vwd">
                                                             <font key="font" metaFont="system"/>
@@ -1673,7 +1673,7 @@ DQ
                                                         </connections>
                                                     </textField>
                                                     <textField toolTip="The number of trials presented when 8 or 10 choices are possible (e.g. Sloan Letters or Landolt-Cs set for 8)." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xWr-Q3-BrM">
-                                                        <rect key="frame" x="88" y="15" width="34" height="22"/>
+                                                        <rect key="frame" x="83" y="15" width="34" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="5t6-Le-phN">
                                                             <font key="font" metaFont="system"/>
@@ -1686,17 +1686,17 @@ DQ
                                                         </connections>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LJd-oY-MqO">
-                                                        <rect key="frame" x="75" y="51" width="438" height="17"/>
+                                                        <rect key="frame" x="70" y="51" width="343" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes.  For Landolt-Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.</string>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of choices for Landolt-Cs, Letters always 10, Vernier 2" id="2kS-jg-XcS">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of choices for Landolt-Cs. Letters always 10, Vernier 2" id="2kS-jg-XcS">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gNV-ad-8PW">
-                                                        <rect key="frame" x="128" y="17" width="225" height="17"/>
+                                                        <rect key="frame" x="123" y="17" width="225" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of trials  for 2, 4, or 8/10 choices" id="rae-uy-roh">
                                                             <font key="font" metaFont="system"/>
@@ -1704,6 +1704,24 @@ DQ
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
+                                                    <button toolTip="Applies only to Landolt-Cs with 4 orientations." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cEj-Jr-YXR">
+                                                        <rect key="frame" x="390" y="50" width="102" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="Oblique only" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ybg-Vb-Abm">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="hidden" keyPath="values.nAlternativesIndex" id="7V3-Ay-JgX">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                                </dictionary>
+                                                            </binding>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.obliqueOnly" id="k3s-lX-EHK"/>
+                                                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="N5k-qV-WAC"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                             </view>
                                         </box>
@@ -2638,12 +2656,12 @@ Change it with the ± buttons.</string>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" id="Ro8-W4-H2N">
                                                 <font key="font" metaFont="system"/>
-                                                <mutableString key="title">Necessary to “linearise” your display, a prerequisite for correct contrast threshold results.
+                                                <string key="title">Necessary to “linearise” your display, a prerequisite for correct contrast threshold results.
 
 ← There is a central checkerboard, surrounded by a gray background. 
 The mean luminance (brightness) of the checkerboard should be the same as the background.
 
-Click the + or – buttons to make brightness as similar as possible. It helps to blur the image (squint, or hold a frosted transparency in front). </mutableString>
+Click the + or – buttons to make brightness as similar as possible. It helps to blur the image (squint, or hold a frosted transparency in front). </string>
                                                 <string key="placeholderString" base64-UTF8="YES">
 CQ
 </string>
