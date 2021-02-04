@@ -37,7 +37,7 @@
  */
 
 @typedef TestIDType
-kTestIDLett = 0; kTestIDC = 1; kTestIDE = 2; kTestIDAuck = 3; kTestIDVernier = 4; kTestContrastLett = 5; kTestContrastC = 6; kTestContrastE = 7;
+kTestIDLett = 0; kTestIDC = 1; kTestIDE = 2; kTestIDTAO = 3; kTestIDVernier = 4; kTestContrastLett = 5; kTestContrastC = 6; kTestContrastE = 7;
 
 CPPushOnPushOffButton = 1;
 
@@ -91,7 +91,7 @@ CPPushOnPushOffButton = 1;
 
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("applicationDidFinishLaunching");
     addEventListener('error', function(e) {
-        alert("An error occured, I'm sorry. Error message:\r\r" + e.message + "\r\rIf it recurs, please notify michael.bach@uni-freiburg.de, ideally relating the message, e.g. via a screeshot.\rI will look into it and endeavour to provide a fix.\r\rOn “Close”, the window will reload and you can retry.");
+        alert("An error occured, I'm sorry. Error message:\r\r" + e.message + "\r\rIf it recurs, please notify michael.bach@uni-freiburg.de, ideally relating the message, e.g. via a screeshot.\rI will look into it and endeavour to provide a fix ASAP.\r\rOn “Close”, the window will reload and you can retry.");
         window.location.reload(false);
     });
 
@@ -102,11 +102,6 @@ CPPushOnPushOffButton = 1;
         }
     });
     
-    /*window.addEventListener("resize", function(e) {
-        alert("window resize.");
-    });*/
-
-    //console.info("AppController>applicationDidFinishLaunching");
     var allButtons = [buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier, buttCntLett, buttCntC, buttCntE];
     for (var i = 0; i < allButtons.length; i++)  [Misc makeFrameSquareFromWidth: allButtons[i]];
     
@@ -118,9 +113,9 @@ CPPushOnPushOffButton = 1;
     
     [[self window] setTitle: "FrACT10"];  [self setVersionDateString: [Settings versionFrACT] + "·" + [Settings versionDateFrACT]];
     [Settings checkDefaults]; // what was the reason to put this here???
-    var s = @"Current key test settings: " + [Settings distanceInCM] +" cm distance, ";
+    /*var s = @"Current key test settings: " + [Settings distanceInCM] +" cm distance, ";
     s += [Settings nAlternatives] + " Landolt alternatives, " + [Settings nTrials] + " trials";
-    [self setKeyTestSettingsString: s];
+    [self setKeyTestSettingsString: s];*/
     
     rewardImageView = [[CPImageView alloc] initWithFrame: CGRectMake(100, 0, 600, 600)];
     [[[self window] contentView] addSubview: rewardImageView];
@@ -193,7 +188,7 @@ CPPushOnPushOffButton = 1;
                 }  break;
             case kTestIDE:
                 [responseinfoPanelVAE makeKeyAndOrderFront: self];  break;
-            case kTestIDAuck:
+            case kTestIDTAO:
                 [responseinfoPanelVATAO makeKeyAndOrderFront: self];  break;
             case kTestIDVernier:
                 [responseinfoPanelVAVernier makeKeyAndOrderFront: self];  break;
@@ -364,7 +359,7 @@ function checkUrl0(url) {//console.info("checkUrl: ", url);
     testID = kTestIDE;    [self runFractController];
 }
 - (IBAction) buttonDoAcuityTAO_action: (id) sender { //console.info("AppController>buttonDoAcuityA_action");
-    testID = kTestIDAuck;    [self runFractController];
+    testID = kTestIDTAO;    [self runFractController];
 }
 - (IBAction) buttonDoAcuityVernier_action: (id) sender { //console.info("AppController>buttonDoAcuityE_action");
     testID = kTestIDVernier;    [self runFractController];

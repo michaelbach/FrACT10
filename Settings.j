@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2021-02-01"
+#define kVersionDateOfFrACT "2021-02-04"
 #define kVersionStringOfFract "Version 10.0gamma"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
@@ -15,6 +15,8 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2021-02-04 disable "keyTestSettingsString" because it doesn't update; "true" random using current seconds;
+    more "Auck…" → TAO; tweak gamma GUI
 2021-02-01 add "obliqueOnly"
 2021-01-31 revamp help panel
             1st attempt dealing with orientation change on tablets; works, but is reload always necessary?

@@ -24,7 +24,7 @@
 
 
 function randomiseArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
+    for (i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
         var temp = array[i];
         array[i] = array[j];
@@ -37,6 +37,8 @@ function randomiseArray(array) {
 - (id) initWithNumAlternatives: (int) nAlternatives andNTrials: (int) nTrials { //console.info("AlternativesGenerator>initWithNumAlternatives");
     self = [super init];
     if (self) {
+        for (i = 0; i < (([CPDate date].getSeconds()) % 10); ++i) Math.random(); // truly random
+        
         //console.info("AlternativesGenerator>initWithNumAlternatives, nAlt:", nAlternatives, ", nT:", nTrials);
         if (nAlternatives < 2) console.info("AlternativesGenerator>initWithNumAlternatives TOO SMALL ", nAlternatives);
         if (nAlternatives > 10) {

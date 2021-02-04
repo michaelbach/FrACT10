@@ -147,9 +147,9 @@ Shortcut: s </string>
                         </connections>
                     </textField>
                     <button toolTip="This button only appears after a finished run and does what it says." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L8d-bR-KqO">
-                        <rect key="frame" x="617" y="130" width="139" height="23"/>
+                        <rect key="frame" x="631" y="130" width="125" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" title="Export→Clipboard" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yIl-d4-aF3">
+                        <buttonCell key="cell" type="roundTextured" title="Result→Clipboard" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yIl-d4-aF3">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -1630,7 +1630,7 @@ DQ
                                                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wrj-XQ-Ter">
                                                         <rect key="frame" x="13" y="48" width="54" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes.  For Landolt-Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.</string>
+                                                        <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes (TAO).  For Landolt-Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.</string>
                                                         <popUpButtonCell key="cell" type="push" title="2" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="MNg-IJ-MqA" id="jUX-2m-CLf">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="menu"/>
@@ -1688,7 +1688,7 @@ DQ
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LJd-oY-MqO">
                                                         <rect key="frame" x="70" y="51" width="343" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes.  For Landolt-Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.</string>
+                                                        <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes (TAO).  For Landolt-Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.</string>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of choices for Landolt-Cs. Letters always 10, Vernier 2" id="2kS-jg-XcS">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1704,9 +1704,12 @@ DQ
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <button toolTip="Applies only to Landolt-Cs with 4 orientations." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cEj-Jr-YXR">
+                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cEj-Jr-YXR">
                                                         <rect key="frame" x="390" y="50" width="102" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">Applies only to Landolt-Cs with 4 orientations.
+
+The response keys are NOT updated (yet) by can be guessed :).</string>
                                                         <buttonCell key="cell" type="check" title="Oblique only" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ybg-Vb-Abm">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -2584,20 +2587,16 @@ DQ
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VKN-D1-Q8l">
-                                            <rect key="frame" x="327" y="444" width="120" height="16"/>
+                                            <rect key="frame" x="327" y="454" width="141" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Gamma Calibration" id="eWs-5N-fLc">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="GAMMA CALIBRATION" id="eWs-5N-fLc">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <box horizontalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="KYl-OQ-GvO">
-                                            <rect key="frame" x="444" y="17" width="5" height="400"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        </box>
                                         <button toolTip="Increase the gamma value a little. This makes the background a bit brighter." verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="VFX-B5-9gh" userLabel="–">
-                                            <rect key="frame" x="469" y="392" width="46" height="23"/>
+                                            <rect key="frame" x="464" y="392" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="roundTextured" title="+" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="j1S-Qo-P56" userLabel="–">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2608,7 +2607,7 @@ DQ
                                             </buttonCell>
                                         </button>
                                         <button toolTip="Decrease the gamma value a little. This makes the background a bit darker." verticalHuggingPriority="750" fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="HgA-UX-e3C" userLabel="+">
-                                            <rect key="frame" x="469" y="310" width="46" height="23"/>
+                                            <rect key="frame" x="464" y="326" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="roundTextured" title="–" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ooH-5B-x6e" userLabel="+">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2619,11 +2618,11 @@ DQ
                                             </connections>
                                         </button>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c7s-eX-XEN" customClass="GammaView">
-                                            <rect key="frame" x="17" y="17" width="400" height="400"/>
+                                            <rect key="frame" x="32" y="17" width="400" height="400"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </customView>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jv4-5m-hDh">
-                                            <rect key="frame" x="470" y="351" width="45" height="21"/>
+                                            <rect key="frame" x="465" y="361" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Gamma value to correct for display non-linearity.
 
@@ -2643,7 +2642,7 @@ Change it with the ± buttons.</string>
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OxX-bl-ne7">
-                                            <rect key="frame" x="528" y="352" width="86" height="16"/>
+                                            <rect key="frame" x="518" y="362" width="86" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Gamma value" id="H7x-as-Tvc">
                                                 <font key="font" metaFont="system"/>
@@ -2652,19 +2651,27 @@ Change it with the ± buttons.</string>
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvn-96-GfO">
-                                            <rect key="frame" x="468" y="17" width="283" height="224"/>
+                                            <rect key="frame" x="463" y="62" width="283" height="176"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" id="Ro8-W4-H2N">
                                                 <font key="font" metaFont="system"/>
-                                                <string key="title">Necessary to “linearise” your display, a prerequisite for correct contrast threshold results.
+                                                <mutableString key="title">← There is a central checkerboard, surrounded by a gray background. 
 
-← There is a central checkerboard, surrounded by a gray background. 
 The mean luminance (brightness) of the checkerboard should be the same as the background.
 
-Click the + or – buttons to make brightness as similar as possible. It helps to blur the image (squint, or hold a frosted transparency in front). </string>
+Click the + or – buttons to make brightness as similar as possible. It helps to blur the image: squint, or view through frosted transparency, e.g. transparent folder jacket.</mutableString>
                                                 <string key="placeholderString" base64-UTF8="YES">
 CQ
 </string>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uVS-tP-dD5">
+                                            <rect key="frame" x="114" y="435" width="546" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Necessary to “linearise” your display, a prerequisite for correct contrast threshold results." id="5Nq-fM-LSJ">
+                                                <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -2976,7 +2983,7 @@ Gw
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="4ks-UH-FmP">
                             <font key="font" metaFont="system" size="16"/>
                             <string key="title">
-Rings with gaps, or “tumbling Es“ will appear, how are they oriented?
+“Tumbling Es“ will appear, how are they oriented?
 
 Use the cursor keys, or on a keypad:
 → = 6,  ↑ = 8,  ← = 4,  ↓ = 2.
@@ -3042,6 +3049,42 @@ Type 55, or &lt;esc&gt; to abort the run.
                             <outlet property="nextKeyView" destination="WCS-rL-YCa" id="xze-Et-a4O"/>
                         </connections>
                     </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eWk-ni-jvA">
+                        <rect key="frame" x="596" y="279" width="12" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="2" id="99Y-JS-gp7">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gVq-un-aUT">
+                        <rect key="frame" x="596" y="519" width="12" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="8" id="Ta6-Zp-bXQ">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W6s-5N-Jqz">
+                        <rect key="frame" x="746" y="382" width="12" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="6" id="d2t-sW-KP1">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MVU-wT-P0T">
+                        <rect key="frame" x="451" y="382" width="12" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="4" id="3oQ-oI-h9I">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
@@ -3106,7 +3149,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="YOy-T5-hTB">
                             <font key="font" metaFont="system" size="16"/>
-                            <string key="title">Here's a paper on these optotypes:
+                            <string key="title">Here's a paper on these optotypes (TAO):
 
 Hamm LM, Yeoman JP, Anstice N, Dakin SC (2018) The Auckland Optotypes: An open-access pictogram set for measuring recognition acuity. JOV 18:13
 
@@ -3541,7 +3584,7 @@ DQ
         <image name="buttVAC" width="170.16000366210938" height="95.760002136230469"/>
         <image name="buttVAE" width="130.08000183105469" height="101.76000213623047"/>
         <image name="buttVALett" width="170.16000366210938" height="95.519996643066406"/>
-        <image name="buttVAVernier" width="121.91999816894531" height="195.83999633789062"/>
+        <image name="buttVAVernier" width="138.72000122070312" height="195.83999633789062"/>
         <image name="buttonTAO" width="192" height="192"/>
         <image name="iconAbout" width="396" height="396"/>
         <image name="iconFullscreen" width="356" height="356"/>
