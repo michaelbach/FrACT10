@@ -16,7 +16,7 @@ Created by mb on July 15, 2015.
    =======
 
 2021-02-04 disable "keyTestSettingsString" because it doesn't update; "true" random using current seconds;
-    more "Auck…" → TAO; tweak gamma GUI
+    more "Auck…" → TAO; tweak gamma GUI; add "make.sh"
 2021-02-01 add "obliqueOnly"
 2021-01-31 revamp help panel
             1st attempt dealing with orientation change on tablets; works, but is reload always necessary?

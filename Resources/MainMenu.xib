@@ -270,7 +270,7 @@ Optotypes: Sloan letters, Landolt C, Tumbling E, and TAO.
 
 Acuity results in decimal, LogMAR or Snellen notation.
 
-With ‘Best PEST’, antialiasing and dithering.</string>
+With ‘Best PEST’ and antialiasing.</string>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -489,7 +489,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="8aG-i8-Dh8">
                             <rect key="frame" x="1" y="1" width="747" height="188"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="zNM-Gb-Jh9">
                                     <rect key="frame" x="0.0" y="0.0" width="747" height="406"/>
@@ -2655,11 +2655,11 @@ Change it with the ± buttons.</string>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" id="Ro8-W4-H2N">
                                                 <font key="font" metaFont="system"/>
-                                                <mutableString key="title">← There is a central checkerboard, surrounded by a gray background. 
+                                                <string key="title">← There is a central checkerboard, surrounded by a gray background. 
 
 The mean luminance (brightness) of the checkerboard should be the same as the background.
 
-Click the + or – buttons to make brightness as similar as possible. It helps to blur the image: squint, or view through frosted transparency, e.g. transparent folder jacket.</mutableString>
+Click the + or – buttons to make brightness as similar as possible. It helps to blur the image: squint, or view through frosted transparency, e.g. transparent folder jacket.</string>
                                                 <string key="placeholderString" base64-UTF8="YES">
 CQ
 </string>
@@ -3584,7 +3584,7 @@ DQ
         <image name="buttVAC" width="170.16000366210938" height="95.760002136230469"/>
         <image name="buttVAE" width="130.08000183105469" height="101.76000213623047"/>
         <image name="buttVALett" width="170.16000366210938" height="95.519996643066406"/>
-        <image name="buttVAVernier" width="138.72000122070312" height="195.83999633789062"/>
+        <image name="buttVAVernier" width="145.91999816894531" height="195.83999633789062"/>
         <image name="buttonTAO" width="192" height="192"/>
         <image name="iconAbout" width="396" height="396"/>
         <image name="iconFullscreen" width="356" height="356"/>
