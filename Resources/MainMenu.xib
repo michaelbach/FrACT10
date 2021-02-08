@@ -1715,13 +1715,13 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="izh-pU-csC" name="hidden" keyPath="values.nAlternativesIndex" id="7V3-Ay-JgX">
+                                                            <binding destination="450" name="hidden" keyPath="self.is4orientations" id="Ibo-Ua-c4e">
                                                                 <dictionary key="options">
                                                                     <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                                                                     <string key="NSValueTransformerName">NSNegateBoolean</string>
                                                                 </dictionary>
                                                             </binding>
-                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.obliqueOnly" id="k3s-lX-EHK"/>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.obliqueOnly" id="jS1-rY-bmJ"/>
                                                             <outlet property="nextKeyView" destination="WCS-rL-YCa" id="N5k-qV-WAC"/>
                                                         </connections>
                                                     </button>

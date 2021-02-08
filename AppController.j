@@ -56,6 +56,7 @@ CPPushOnPushOffButton = 1;
     TestIDType testID;
     BOOL settingsNeedNewDefaults;
     BOOL runAborted @accessors;
+    BOOL is4orientations @accessors;
     Sound sound;
     id allPanels, allTestControllers;
     CPColor checkContrastWeberFieldColor1 @accessors;
@@ -106,8 +107,7 @@ CPPushOnPushOffButton = 1;
     for (var i = 0; i < allButtons.length; i++)  [Misc makeFrameSquareFromWidth: allButtons[i]];
     
     allTestControllers = [FractControllerVAL, FractControllerVAC, FractControllerVAE, FractControllerVATAO, FractControllerVAVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE];
-    //    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
-    
+
     allPanels = [responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel];
     for (var i = 0; i < allPanels.length; i++)  [allPanels[i] setFrameOrigin: CGPointMake(0, 0)];
     
@@ -123,13 +123,26 @@ CPPushOnPushOffButton = 1;
     taoController = [[TAOController alloc] initWithButton2Enable: buttVATAO];
     sound = [[Sound alloc] init];
     for (var i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++); // ranomising the pseudorandom sequence
+
+
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(buttonExportEnableYESorNO:) name: "buttonExportEnableYESorNO" object: nil];
     [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
-    
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(copyForeBackColorsFromSettings:) name: "copyForeBackColorsFromSettings" object: nil];
-    
+    //[[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
+    [[CPUserDefaultsController sharedUserDefaultsController] addObserver: self forKeyPath: "values.nAlternativesIndex" options: CPKeyValueObservingOptionNew context: NULL]; // needed for the "oblique only" setting
+    [self setIs4orientations: ([Settings nAlternatives] == 4)];
+
     [self buttonCheckContrast_action: null];
 }
+
+
+- (void) observeValueForKeyPath: (CPString) aKeyPath ofObject: (id) anObject change: (CPDictionary) changes context: (id) context {
+    [self setIs4orientations: ([Settings nAlternatives] == 4)];
+}
+
+
+- (void) defaultsDidChange: (CPNotification) aNotification {console.info("defaultsDidChange");}// not used
+
 
 
 - (void) buttonExportEnableYESorNO: (CPNotification) aNotification { //console.info("buttonExportEnableYESorNO");
@@ -141,12 +154,6 @@ CPPushOnPushOffButton = 1;
 - (void) copyForeBackColorsFromSettings: (CPNotification) aNotification { //console.info("mirrorForeBackColors");
     [self setAcuityForeColor: [Settings acuityForeColor]];  [self setAcuityBackColor: [Settings acuityBackColor]];
 }
-
-
-/*[[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"APXMyPropertyIamInterestedInKey" options:NSKeyValueObservingOptionNew context:NULL];
- // KVO handler
- -(void)observeValueForKeyPath:(NSString *)aKeyPath ofObject:(id)anObject change:(NSDictionary *)aChange context:(void *)aContext {}*/
-- (void) defaultsDidChange: (CPNotification) aNotification {console.info("defaultsDidChange");}
 
 
 - (void) closeAllPanels {

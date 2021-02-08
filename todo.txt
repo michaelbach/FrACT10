@@ -1,10 +1,11 @@
 To Dos
 
-• Add: gamma calibration
-• Add: contrast check (for acuity)
+• Add: contrast check (for acuity) ???
 • Export: full history
 • Improve/extend: About panel (recent history)
+• Gratings
 
+√ Add: gamma calibration
 √ Add: displayTransform
 √ Improve: crowding
 √ Window background not transparent (to avoid black in fullscreen)
