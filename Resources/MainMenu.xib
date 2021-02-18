@@ -190,7 +190,7 @@ Shortcut: s </string>
                             <action selector="buttonDoContrastC_action:" target="450" id="fdt-nY-HGT"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CDI-8L-YSC">
+                    <button toolTip="Guess what this button does…" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CDI-8L-YSC">
                         <rect key="frame" x="447" y="187" width="107" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="Help" bezelStyle="texturedRounded" image="iconHelp" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7qY-Pl-QqO">
@@ -216,7 +216,7 @@ Shortcut: f </string>
                             <action selector="buttonFullScreen_action:" target="450" id="OjF-xB-SV6"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y5b-QD-e3x">
+                    <button toolTip="Legal notice and more." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y5b-QD-e3x">
                         <rect key="frame" x="649" y="187" width="107" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="About" bezelStyle="texturedRounded" image="iconAbout" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="duS-rs-9gg">
@@ -372,7 +372,7 @@ DQ
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="2hy-q0-ZtW">
                             <font key="font" size="12" name="HelveticaNeue"/>
-                            <string key="title">GENERAL
+                            <mutableString key="title">GENERAL
 
 • Make use of the tool tips!  (By hovering with the mouse over the pertinent interface element.)
 
@@ -382,7 +382,7 @@ DQ
 
 • Quality results requite knowledge in sensory testing. At least observe the Checklist (button below).
 
-• The Manual (button below) should cover everything. For open Questions contact me.</string>
+• The Manual (button below) should cover everything. For open questions contact me.</mutableString>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -443,7 +443,7 @@ DQ
 
 · Results in logCS(Weber). CS: “contrast sensitivity"
 
-• Gamma calibration (in Settings) necessary</string>
+• Gamma calibration (in Settings) necessary!</string>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -489,7 +489,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="8aG-i8-Dh8">
                             <rect key="frame" x="1" y="1" width="747" height="188"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="zNM-Gb-Jh9">
                                     <rect key="frame" x="0.0" y="0.0" width="747" height="406"/>

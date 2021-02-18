@@ -91,6 +91,7 @@ CPPushOnPushOffButton = 1;
 
 
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("applicationDidFinishLaunching");
+    'use strict';
     addEventListener('error', function(e) {
         alert("An error occured, I'm sorry. Error message:\r\r" + e.message + "\r\rIf it recurs, please notify michael.bach@uni-freiburg.de, ideally relating the message, e.g. via a screeshot.\rI will look into it and endeavour to provide a fix ASAP.\r\rOn “Close”, the window will reload and you can retry.");
         window.location.reload(false);
