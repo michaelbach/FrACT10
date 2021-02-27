@@ -46,7 +46,7 @@
 }
 
 
-- (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerVALetters>responseNumberFromChar: ", keyChar);
+- (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerAcuityLetters>responseNumberFromChar: ", keyChar);
     switch ([keyChar uppercaseString]) { // "CDHKNORSVZ"
         case "C": return 0;
         case "D": return 1;

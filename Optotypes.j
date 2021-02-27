@@ -103,7 +103,7 @@
 
 
 // draw optotypes on a -5…+5 coordinate system
-- (void) myPoly: (float) p withD: (float) d { //console.info("FractControllerVAE>myPoly");
+- (void) myPoly: (float) p withD: (float) d { //console.info("FractControllerAcuityE>myPoly");
     CGContextSetFillColor(_cgc, _colOptotypeFore);
     CGContextBeginPath(_cgc);
     CGContextMoveToPoint(_cgc, d * p[0][0], -d * p[0][1]);
@@ -137,10 +137,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-- (void)drawSloanCWithGapInPx: (float) gap { //console.info("FractControllerVALetters>drawSloanCWithGapInPx");
+- (void)drawSloanCWithGapInPx: (float) gap { //console.info("FractControllerAcuityLetters>drawSloanCWithGapInPx");
     [self drawLandoltWithGapInPx: gap landoltDirection: 0];
 }
-- (void)drawSloanDWithGapInPx: (float) d { //console.info("FractControllerVALetters>drawSloanDWithGapInPx");
+- (void)drawSloanDWithGapInPx: (float) d { //console.info("FractControllerAcuityLetters>drawSloanDWithGapInPx");
     d *= 0.5;
     var gxf = 1.0, gyf = 1.0;
     CGContextBeginPath(_cgc);
@@ -164,7 +164,7 @@
     CGContextAddLineToPoint(_cgc, -d * 5 * gxf, -d * 5 * gyf);
     CGContextFillPath(_cgc);
 }
-- (void)drawSloanHWithGapInPx: (float) d { //console.info("FractControllerVALetters>drawSloanHWithGapInPx");
+- (void)drawSloanHWithGapInPx: (float) d { //console.info("FractControllerAcuityLetters>drawSloanHWithGapInPx");
     var pnts = [[-5,-5], [-3,-5], [-3,-1], [+3,-1], [+3,-5], [+5,-5], [+5,+5], [+3,+5], [+3,+1], [-3,+1], [-3,+5], [-5,+5], [-5, -5]];
     [self myPoly: pnts withD: d * 0.5]; 
 }

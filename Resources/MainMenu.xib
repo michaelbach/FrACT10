@@ -43,7 +43,7 @@
                     <button toolTip="Acuity run using Landolt-Cs.  Shortcut: C" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWr-KV-CRJ">
                         <rect key="frame" x="198" y="432" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttVAC" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ivt-76-XPn">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityC" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ivt-76-XPn">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -54,7 +54,7 @@
                     <button toolTip="Acuity run using tumbling Es.  Shortcut: E" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Phl-6Z-YpU">
                         <rect key="frame" x="350" y="432" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttVAE" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gQo-pc-sRD">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityE" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gQo-pc-sRD">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -65,7 +65,7 @@
                     <button toolTip="Acuity run using TAO (The Auckland Optotypes).  Shortcut: A" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6e2-Sj-gkY">
                         <rect key="frame" x="502" y="432" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonTAO" imagePosition="only" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nnv-n0-fGE">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityTAO" imagePosition="only" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nnv-n0-fGE">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -114,7 +114,7 @@ Shortcut: s </string>
                     <button toolTip="Hyperacuity (Vernier) run.  Shortcut: V" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oB-kn-EbO">
                         <rect key="frame" x="654" y="432" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttVAVernier" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vzK-pu-pjy">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityVernier" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vzK-pu-pjy">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -230,7 +230,7 @@ Shortcut: f </string>
                     <button toolTip="Acuity run using Sloan Letters.  Shortcut: L" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jHx-aa-MPC">
                         <rect key="frame" x="45" y="432" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttVALett" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xw1-er-aQN">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityLett" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xw1-er-aQN">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -372,7 +372,7 @@ DQ
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="2hy-q0-ZtW">
                             <font key="font" size="12" name="HelveticaNeue"/>
-                            <mutableString key="title">GENERAL
+                            <string key="title">GENERAL
 
 • Make use of the tool tips!  (By hovering with the mouse over the pertinent interface element.)
 
@@ -382,7 +382,7 @@ DQ
 
 • Quality results requite knowledge in sensory testing. At least observe the Checklist (button below).
 
-• The Manual (button below) should cover everything. For open questions contact me.</mutableString>
+• The Manual (button below) should cover everything. For open questions contact me.</string>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -570,26 +570,26 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                 <outlet property="buttCntC" destination="teG-PN-Gq7" id="Vvz-oi-F4f"/>
                 <outlet property="buttCntE" destination="V0h-oh-O7H" id="mPS-2H-434"/>
                 <outlet property="buttCntLett" destination="rNE-r4-ESi" id="lAC-91-RlZ"/>
-                <outlet property="buttVAC" destination="sWr-KV-CRJ" id="eJP-Al-Hhm"/>
-                <outlet property="buttVAE" destination="Phl-6Z-YpU" id="obG-lD-sX0"/>
-                <outlet property="buttVALett" destination="jHx-aa-MPC" id="tuh-WT-4uS"/>
-                <outlet property="buttVATAO" destination="6e2-Sj-gkY" id="wS5-ys-hpB"/>
-                <outlet property="buttVAVernier" destination="8oB-kn-EbO" id="D7M-xX-xff"/>
+                <outlet property="buttonAcuityC" destination="sWr-KV-CRJ" id="eJP-Al-Hhm"/>
+                <outlet property="buttonAcuityE" destination="Phl-6Z-YpU" id="obG-lD-sX0"/>
+                <outlet property="buttonAcuityLett" destination="jHx-aa-MPC" id="tuh-WT-4uS"/>
+                <outlet property="buttonAcuityTAO" destination="6e2-Sj-gkY" id="wS5-ys-hpB"/>
+                <outlet property="buttonAcuityVernier" destination="8oB-kn-EbO" id="D7M-xX-xff"/>
                 <outlet property="buttonExport" destination="L8d-bR-KqO" id="YCp-1H-vRB"/>
                 <outlet property="checkContrastWeberField1" destination="rpb-ue-CQK" id="6ZW-Oz-wpM"/>
                 <outlet property="checkContrastWeberField2" destination="4WO-rY-pis" id="Lcj-IY-0Np"/>
                 <outlet property="fractControllerWindow" destination="r6R-bh-Qyp" id="WQx-mH-JUh"/>
                 <outlet property="gammaView" destination="c7s-eX-XEN" id="fNv-bD-BRg"/>
                 <outlet property="helpPanel" destination="28C-lv-KIF" id="Uyw-Zc-Dhd"/>
+                <outlet property="responseinfoPanelAcuity4C" destination="KH7-H9-rEd" id="9RI-zp-bV8"/>
+                <outlet property="responseinfoPanelAcuity8C" destination="UBW-u3-RSn" id="Gqz-Zw-DfA"/>
+                <outlet property="responseinfoPanelAcuityE" destination="TXq-Ap-CfY" id="g0E-03-G4D"/>
+                <outlet property="responseinfoPanelAcuityL" destination="1zz-Aw-bf2" id="s2s-G8-0wC"/>
+                <outlet property="responseinfoPanelAcuityTAO" destination="mal-zk-76C" id="AMZ-0a-rBi"/>
+                <outlet property="responseinfoPanelAcuityVernier" destination="aQE-yg-pvo" id="ujy-mj-Kc7"/>
                 <outlet property="responseinfoPanelContrastC" destination="Tf3-6J-w5e" id="Y68-5r-F1P"/>
                 <outlet property="responseinfoPanelContrastE" destination="XVY-wU-ZJF" id="4nI-Wi-dhf"/>
                 <outlet property="responseinfoPanelContrastLett" destination="FJ1-4N-r6U" id="Veo-hD-u3i"/>
-                <outlet property="responseinfoPanelVA4C" destination="KH7-H9-rEd" id="9RI-zp-bV8"/>
-                <outlet property="responseinfoPanelVA8C" destination="UBW-u3-RSn" id="Gqz-Zw-DfA"/>
-                <outlet property="responseinfoPanelVAE" destination="TXq-Ap-CfY" id="g0E-03-G4D"/>
-                <outlet property="responseinfoPanelVAL" destination="1zz-Aw-bf2" id="s2s-G8-0wC"/>
-                <outlet property="responseinfoPanelVATAO" destination="mal-zk-76C" id="AMZ-0a-rBi"/>
-                <outlet property="responseinfoPanelVAVernier" destination="aQE-yg-pvo" id="ujy-mj-Kc7"/>
                 <outlet property="resultDetailsPanel" destination="4qQ-tv-ydF" id="0nl-o2-I67"/>
                 <outlet property="settingsPanel" destination="MF5-y3-Ol0" id="6RV-5t-pXs"/>
                 <outlet property="window" destination="371" id="OB7-Tk-Lov"/>
@@ -1939,9 +1939,9 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button toolTip="if checked, the 12th, 18th, 24th… trial will have an “easy” optotype for motivation" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Kp-gt-Eg5">
-                                            <rect key="frame" x="15" y="451" width="103" height="18"/>
+                                            <rect key="frame" x="15" y="451" width="162" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="‘easy trials’" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Gto-n0-omN">
+                                            <buttonCell key="cell" type="check" title="occasional ‘easy trials’" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Gto-n0-omN">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
@@ -2305,10 +2305,10 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G1n-TZ-USP">
-                                            <rect key="frame" x="15" y="426" width="123" height="35"/>
+                                            <rect key="frame" x="15" y="426" width="165" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">If unchecked, the raw=psychometric threshold is caculated. If checked (default), it's descending-corrected, thus reflecting DIN/ISO values.</string>
-                                            <buttonCell key="cell" type="check" title="‘easy trials’" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="8rt-0N-FfV">
+                                            <buttonCell key="cell" type="check" title="occasional ‘easy trials’" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="8rt-0N-FfV">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
@@ -2685,7 +2685,7 @@ CQ
             </view>
             <point key="canvasLocation" x="-44" y="738"/>
         </window>
-        <window title="Letter acuity – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="1zz-Aw-bf2" userLabel="responseinfoPanelVAL" customClass="NSPanel">
+        <window title="Letter acuity – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="1zz-Aw-bf2" userLabel="responseinfoPanelAcuityL" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
@@ -2754,7 +2754,7 @@ Gw
                         </connections>
                     </button>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6o4-T6-NsI">
-                        <rect key="frame" x="18" y="22" width="491" height="18"/>
+                        <rect key="frame" x="18" y="262" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nOb-QR-RMy">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2769,7 +2769,7 @@ Gw
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
         </window>
-        <window title="Landolt-C acuity – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="KH7-H9-rEd" userLabel="responseinfoPanelVA4C" customClass="NSPanel">
+        <window title="Landolt-C acuity – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="KH7-H9-rEd" userLabel="responseinfoPanelAcuity4C" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
@@ -2833,7 +2833,7 @@ Type 55, or &lt;esc&gt; to abort the run.</string>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap4" id="YOw-PI-MNZ"/>
                     </imageView>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ahk-gy-psf">
-                        <rect key="frame" x="28" y="22" width="491" height="18"/>
+                        <rect key="frame" x="28" y="166" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Flu-8c-Np5">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2848,7 +2848,7 @@ Type 55, or &lt;esc&gt; to abort the run.</string>
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
         </window>
-        <window title="Landolt-C acuity – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="UBW-u3-RSn" userLabel="responseinfoPanelVA8C" customClass="NSPanel">
+        <window title="Landolt-C acuity – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="UBW-u3-RSn" userLabel="responseinfoPanelAcuity8C" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
@@ -2926,7 +2926,7 @@ Gw
                         </connections>
                     </button>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gI2-uJ-d3q">
-                        <rect key="frame" x="18" y="22" width="491" height="18"/>
+                        <rect key="frame" x="18" y="133" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yp9-6V-pdS">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2941,7 +2941,7 @@ Gw
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
         </window>
-        <window title="Tumbling E acuity – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="TXq-Ap-CfY" userLabel="responseinfoPanelVA4E" customClass="NSPanel">
+        <window title="Tumbling E acuity – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="TXq-Ap-CfY" userLabel="responseinfoPanelAcuity4E" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
@@ -3038,7 +3038,7 @@ Type 55, or &lt;esc&gt; to abort the run.
                         </connections>
                     </button>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7dB-dL-Xce">
-                        <rect key="frame" x="28" y="22" width="491" height="18"/>
+                        <rect key="frame" x="28" y="114" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="x74-TQ-9o2">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3089,7 +3089,7 @@ Type 55, or &lt;esc&gt; to abort the run.
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
         </window>
-        <window title="TAO (Auckland Optotypes) acuity – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="mal-zk-76C" userLabel="responseinfoPanelVATAO" customClass="NSPanel">
+        <window title="TAO (Auckland Optotypes) acuity – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="mal-zk-76C" userLabel="responseinfoPanelAcuityTAO" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
@@ -3159,7 +3159,7 @@ https://doi.org/10.1167/18.3.13</string>
                         </textFieldCell>
                     </textField>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f59-fh-Ajj">
-                        <rect key="frame" x="18" y="22" width="491" height="18"/>
+                        <rect key="frame" x="18" y="107" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="b2h-Pg-jNp">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3174,7 +3174,7 @@ https://doi.org/10.1167/18.3.13</string>
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
         </window>
-        <window title="Vernier acuity – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="aQE-yg-pvo" userLabel="responseinfoPanelVAVernier" customClass="NSPanel">
+        <window title="Vernier acuity – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="aQE-yg-pvo" userLabel="responseinfoPanelAcuityVernier" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
@@ -3243,7 +3243,7 @@ Gw
                         </connections>
                     </button>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xJH-Vi-BPg">
-                        <rect key="frame" x="18" y="22" width="491" height="18"/>
+                        <rect key="frame" x="18" y="236" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="v2k-OW-crk">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3329,7 +3329,7 @@ Gw
                         </connections>
                     </button>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IlL-Qc-BHv">
-                        <rect key="frame" x="18" y="22" width="491" height="18"/>
+                        <rect key="frame" x="18" y="272" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nOj-Fc-rtx">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3422,7 +3422,7 @@ Gw
                         </connections>
                     </button>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vhj-Uu-joO">
-                        <rect key="frame" x="18" y="22" width="491" height="18"/>
+                        <rect key="frame" x="18" y="133" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="91b-Qr-OG1">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3534,7 +3534,7 @@ Type 55, or &lt;esc&gt; to abort the run.
                         </connections>
                     </button>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9hx-7G-0rB">
-                        <rect key="frame" x="28" y="22" width="491" height="18"/>
+                        <rect key="frame" x="28" y="114" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="1Me-af-wRA">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3581,11 +3581,11 @@ DQ
         <image name="butCntC" width="1040" height="772"/>
         <image name="butCntE" width="770" height="652"/>
         <image name="butCntLett" width="936" height="658"/>
-        <image name="buttVAC" width="170.16000366210938" height="95.760002136230469"/>
-        <image name="buttVAE" width="130.08000183105469" height="101.76000213623047"/>
-        <image name="buttVALett" width="170.16000366210938" height="95.519996643066406"/>
-        <image name="buttVAVernier" width="145.91999816894531" height="195.83999633789062"/>
-        <image name="buttonTAO" width="192" height="192"/>
+        <image name="buttonAcuityC" width="170.16000366210938" height="95.760002136230469"/>
+        <image name="buttonAcuityE" width="130.08000183105469" height="101.76000213623047"/>
+        <image name="buttonAcuityLett" width="170.16000366210938" height="95.519996643066406"/>
+        <image name="buttonAcuityTAO" width="192" height="192"/>
+        <image name="buttonAcuityVernier" width="145.91999816894531" height="195.83999633789062"/>
         <image name="iconAbout" width="396" height="396"/>
         <image name="iconFullscreen" width="356" height="356"/>
         <image name="iconHelp" width="356" height="356"/>

@@ -9,11 +9,11 @@
 @import "Globals.j"
 @import "FractView.j"
 @import "FractController.j"
-@import "FractControllerVAC.j"
-@import "FractControllerVAL.j"
-@import "FractControllerVAE.j"
-@import "FractControllerVATAO.j"
-@import "FractControllerVAVernier.j"
+@import "FractControllerAcuityC.j"
+@import "FractControllerAcuityL.j"
+@import "FractControllerAcuityE.j"
+@import "FractControllerAcuityTAO.j"
+@import "FractControllerAcuityVernier.j"
 @import "FractControllerContrastLett.j"
 @import "FractControllerContrastC.j"
 @import "FractControllerContrastE.j"
@@ -37,15 +37,15 @@
  */
 
 @typedef TestIDType
-kTestIDLett = 0; kTestIDC = 1; kTestIDE = 2; kTestIDTAO = 3; kTestIDVernier = 4; kTestContrastLett = 5; kTestContrastC = 6; kTestContrastE = 7;
+kTestAcuityLett = 0; kTestAcuityC = 1; kTestAcuityE = 2; kTestIDTAO = 3; kTestIDVernier = 4; kTestContrastLett = 5; kTestContrastC = 6; kTestContrastE = 7;
 
 CPPushOnPushOffButton = 1;
 
 @implementation AppController : HierarchyController {
     @outlet CPWindow fractControllerWindow;
     @outlet CPColorWell checkContrastWeberField1, checkContrastWeberField2;
-    @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, resultDetailsPanel;
-    @outlet CPButton buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier, buttCntLett, buttCntC, buttCntE;
+    @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, resultDetailsPanel;
+    @outlet CPButton buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE;
     @outlet CPButton buttonExport;
     @outlet GammaView gammaView;
     CPImageView rewardImageView;
@@ -104,12 +104,12 @@ CPPushOnPushOffButton = 1;
         }
     });
     
-    var allButtons = [buttVALett, buttVAC, buttVAE, buttVATAO, buttVAVernier, buttCntLett, buttCntC, buttCntE];
+    var allButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE];
     for (var i = 0; i < allButtons.length; i++)  [Misc makeFrameSquareFromWidth: allButtons[i]];
     
-    allTestControllers = [FractControllerVAL, FractControllerVAC, FractControllerVAE, FractControllerVATAO, FractControllerVAVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE];
+    allTestControllers = [FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE];
 
-    allPanels = [responseinfoPanelVAL, responseinfoPanelVA4C, responseinfoPanelVA8C, responseinfoPanelVAE, responseinfoPanelVATAO, responseinfoPanelVAVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel];
+    allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel];
     for (var i = 0; i < allPanels.length; i++)  [allPanels[i] setFrameOrigin: CGPointMake(0, 0)];
     
     [[self window] setTitle: "FrACT10"];  [self setVersionDateString: [Settings versionFrACT] + "·" + [Settings versionDateFrACT]];
@@ -121,7 +121,7 @@ CPPushOnPushOffButton = 1;
     rewardImageView = [[CPImageView alloc] initWithFrame: CGRectMake(100, 0, 600, 600)];
     [[[self window] contentView] addSubview: rewardImageView];
     rewardsController = [[RewardsController alloc] initWithView: rewardImageView];
-    taoController = [[TAOController alloc] initWithButton2Enable: buttVATAO];
+    taoController = [[TAOController alloc] initWithButton2Enable: buttonAcuityTAO];
     sound = [[Sound alloc] init];
     for (var i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++); // ranomising the pseudorandom sequence
 
@@ -188,18 +188,18 @@ CPPushOnPushOffButton = 1;
     [self closeAllPanels];
     if ([Settings responseInfoAtStart]) {
         switch (testID) {
-            case kTestIDLett: [responseinfoPanelVAL makeKeyAndOrderFront: self]; break;
-            case kTestIDC:
+            case kTestAcuityLett: [responseinfoPanelAcuityL makeKeyAndOrderFront: self]; break;
+            case kTestAcuityC:
                 switch ([Settings nAlternatives]) {
-                    case 4: [responseinfoPanelVA4C makeKeyAndOrderFront: self];  break;
-                    case 8: [responseinfoPanelVA8C makeKeyAndOrderFront: self];  break;
+                    case 4: [responseinfoPanelAcuity4C makeKeyAndOrderFront: self];  break;
+                    case 8: [responseinfoPanelAcuity8C makeKeyAndOrderFront: self];  break;
                 }  break;
-            case kTestIDE:
-                [responseinfoPanelVAE makeKeyAndOrderFront: self];  break;
+            case kTestAcuityE:
+                [responseinfoPanelAcuityE makeKeyAndOrderFront: self];  break;
             case kTestIDTAO:
-                [responseinfoPanelVATAO makeKeyAndOrderFront: self];  break;
+                [responseinfoPanelAcuityTAO makeKeyAndOrderFront: self];  break;
             case kTestIDVernier:
-                [responseinfoPanelVAVernier makeKeyAndOrderFront: self];  break;
+                [responseinfoPanelAcuityVernier makeKeyAndOrderFront: self];  break;
             case kTestContrastLett:
                 [responseinfoPanelContrastLett makeKeyAndOrderFront: self];  break;
             case kTestContrastC:
@@ -358,13 +358,13 @@ function checkUrl0(url) {//console.info("checkUrl: ", url);
 
 
 - (IBAction) buttonDoAcuityLetters_action: (id) sender { //console.info("AppController>buttonDoAcuityLetters_action");
-    testID = kTestIDLett;    [self runFractController];
+    testID = kTestAcuityLett;    [self runFractController];
 }
 - (IBAction) buttonDoAcuityLandolt_action: (id) sender { //console.info("AppController>buttonDoAcuity_action");
-    testID = kTestIDC;    [self runFractController];
+    testID = kTestAcuityC;    [self runFractController];
 }
 - (IBAction) buttonDoAcuityE_action: (id) sender { //console.info("AppController>buttonDoAcuityE_action");
-    testID = kTestIDE;    [self runFractController];
+    testID = kTestAcuityE;    [self runFractController];
 }
 - (IBAction) buttonDoAcuityTAO_action: (id) sender { //console.info("AppController>buttonDoAcuityA_action");
     testID = kTestIDTAO;    [self runFractController];

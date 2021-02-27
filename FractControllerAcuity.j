@@ -100,7 +100,7 @@
 /*	Transformation formula:   gap = c1 * exp(tPest * c2).
  Constants c1 and c2 are determined by thesse 2 contions: tPest==0 → gap=gapMinimal;  tPest==1 → gap=gapMaximal.
  =>c2 = ln(gapMinimal / gapMaximal)/(0 - 1);  c1 = gapMinimal / exp(0 * c2)  */
-- (float) acuitystimDeviceunitsFromThresholderunits: (float) tPest { //console.info("FractControllerVAC>stimDeviceunitsFromThresholderunits");
+- (float) acuitystimDeviceunitsFromThresholderunits: (float) tPest { //console.info("FractControllerAcuityC>stimDeviceunitsFromThresholderunits");
     var c2 = - Math.log(gapMinimal / gapMaximal), c1 = gapMinimal;
     var deviceVal = c1 * Math.exp(tPest * c2); //console.info("DeviceFromPest " + tPest + " " + deviceVal);
     // ROUNDING for realisable gap values? @@@
@@ -119,7 +119,7 @@
 }
 
 
-- (float) acuityStimThresholderunitsFromDeviceunits: (float) d { //console.info("FractControllerVAC>stimThresholderunitsFromDeviceunits");
+- (float) acuityStimThresholderunitsFromDeviceunits: (float) d { //console.info("FractControllerAcuityC>stimThresholderunitsFromDeviceunits");
     var c2 = - Math.log(gapMinimal / gapMaximal), c1 = gapMinimal;
     var retVal = Math.log(d / c1) / c2; //console.info("PestFromDevice " + d + " " + retVal);
     return retVal;

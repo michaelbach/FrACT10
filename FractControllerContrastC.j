@@ -43,14 +43,14 @@
 
 
 - (void) runStart { //console.info("FractControllerContrastLett>runStart");
-    nAlternatives = [Settings nAlternatives];  nTrials = [Settings nTrials08];
+    nAlternatives = [Settings nAlternatives];  nTrials = [Settings nTrials];
     [self setCurrentTestName: "Contrast_LandoltC"];
     [super runStart];
 }
 
 
 // 0–8: valid; -1: ignore; -2: invalid
-- (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerVAC>responseNumberFromChar: ", keyChar);
+- (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerAcuityC>responseNumberFromChar: ", keyChar);
     switch (keyChar) {
         case CPLeftArrowFunctionKey: return 4;
         case CPRightArrowFunctionKey: return 0;

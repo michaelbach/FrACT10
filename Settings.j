@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2021-02-08 "
+#define kVersionDateOfFrACT "2021-03-01"
 #define kVersionStringOfFract "Version 10.0gamma"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
@@ -14,6 +14,7 @@ Created by mb on July 15, 2015.
 
 /* History
    =======
+2021-03-01 fix bug that prevented contrast-Cs from following the # trials setting, internal renaming VA→Acuity for more consistency (changed file names too)
 2021-02-08 correctly deal with hiding "oblique only", understood more about KVO
 2021-02-04 disable "keyTestSettingsString" because it doesn't update; "true" random using current seconds;
     more "Auck…" → TAO; tweak gamma GUI; add "make.sh"
