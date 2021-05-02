@@ -151,15 +151,14 @@
 }
 
 
-- (CPString) acuityComposeResultString {
-    var resultInGapPx = stimStrengthInDeviceunits;
-    var resultInDecVA = [Misc decVAFromGapPixels: resultInGapPx];
-    resultInDecVA = Math.min([Settings maxDisplayedAcuity], resultInDecVA);
+- (CPString) acuityComposeResultString { // 2021-05-02: now all formats are "ceilinged"
+    var resultInDecVACeilinged = Math.min([Settings maxDisplayedAcuity], [self acuityResultInDecVA]);
+    var resultInLogMARCeilinged = [Misc logMARfromDecVA: resultInDecVACeilinged];
     var s = "";
     if ([Settings acuityFormatLogMAR]) {
         if (s.length > 1) s += ",  ";
         s += "LogMAR:" + [self rangeStatusIndicatorStringInverted: YES];
-        s += [Misc stringFromNumber: [self acuityResultInLogMAR] decimals: 2 localised: YES];//this is the unclipped acuity!
+        s += [Misc stringFromNumber: resultInLogMARCeilinged decimals: 2 localised: YES];
         if (ci95String.length > 1) {
             s += ci95String;
         }
@@ -167,12 +166,12 @@
     if ([Settings acuityFormatDecimal]) {
         if (s.length > 1) s += ",  ";
         s += "decVA:" + [self rangeStatusIndicatorStringInverted: NO];
-        s += [Misc stringFromNumber: resultInDecVA decimals: 2 localised: YES];
+        s += [Misc stringFromNumber: resultInDecVACeilinged decimals: 2 localised: YES];
     }
     if ([Settings acuityFormatSnellenFractionFoot]) {
         if (s.length > 1) s += ",  ";
         s += "Snellen fraction:" +  [self rangeStatusIndicatorStringInverted: NO];
-        s += [self format4SnellenInFeet: resultInDecVA];
+        s += [self format4SnellenInFeet: resultInDecVACeilinged];
     }
     return s;
 }
