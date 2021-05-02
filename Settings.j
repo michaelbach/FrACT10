@@ -3,8 +3,8 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2021-03-01"
-#define kVersionStringOfFract "Version 10.0gamma"
+#define kVersionDateOfFrACT "2021-05-02"
+#define kVersionStringOfFract "Version 10.0"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
 #define kDefaultDistanceInCM 399
@@ -14,6 +14,8 @@ Created by mb on July 15, 2015.
 
 /* History
    =======
+2021-05-02 rename to "show ±CI95/₂"
+2021-04-26 add everything for calculating and displaying a measure of dispersion for acuity
 2021-03-01 fix bug that prevented contrast-Cs from following the # trials setting, internal renaming VA→Acuity for more consistency (changed file names too)
 2021-02-08 correctly deal with hiding "oblique only", understood more about KVO
 2021-02-04 disable "keyTestSettingsString" because it doesn't update; "true" random using current seconds;
