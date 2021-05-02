@@ -114,10 +114,10 @@
 }
 
 
-+ (float) visusFromGapPixels: (float) pixels {
++ (float) decVAFromGapPixels: (float) pixels {
     return 1.0 / 60.0 / [self degreeFromPixel: pixels];
 }
-+ (float) gapPixelsFromVisus: (float) decVA {
++ (float) gapPixelsFromDecVA: (float) decVA {
     return [self pixelFromDegree: (1.0 / 60.0 / decVA)];
 }
 

@@ -203,6 +203,7 @@ Created by mb on July 15, 2015.
     [self setAcuityFormatLogMAR: [self chckBool: [self acuityFormatLogMAR] def: YES set: set]];
     [self setAcuityFormatSnellenFractionFoot: [self chckBool: [self acuityFormatSnellenFractionFoot] def: NO set: set]];
     [self setForceSnellen20: [self chckBool: [self forceSnellen20] def: NO set: set]];
+    [self setShowCI95: [self chckBool: [self showCI95] def: NO set: set]];
     [self calculateMaxPossibleDecimalAcuity];
 
     // Crowding, crowdingType: 0 = none, 1: flanking bars, 2 = flanking rings, 3 = surounding bars, 4: surounding ring, 5 = surounding square, 6 = row of optotypes
@@ -231,7 +232,7 @@ Created by mb on July 15, 2015.
 
 
 + (void) calculateMaxPossibleDecimalAcuity { //console.info("Settings>calculateMaxPossibleDecimalAcuity");
-    var maxPossibleAcuityVal = [Misc visusFromGapPixels: 1.0];
+    var maxPossibleAcuityVal = [Misc decVAFromGapPixels: 1.0];
     maxPossibleAcuityVal = [self threshCorrection] ? maxPossibleAcuityVal * 0.891 : maxPossibleAcuityVal;
     // Correction for threshold underestimation of ascending procedures (as opposed to our bracketing one)
     [self setMaxPossibleDecimalAcuity: [Misc stringFromNumber: maxPossibleAcuityVal decimals: 2 localised: NO]];
@@ -616,6 +617,14 @@ Created by mb on July 15, 2015.
 }
 + (void) setForceSnellen20: (BOOL) value {
     [[CPUserDefaults standardUserDefaults] setBool: value forKey: "forceSnellen20"];
+}
+
+
++ (BOOL) showCI95 {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "showCI95"];
+}
++ (void) setShowCI95: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "showCI95"];
 }
 
 

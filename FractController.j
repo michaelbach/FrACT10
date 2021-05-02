@@ -11,6 +11,7 @@
 @import "Optotypes.j";
 @import "HierarchyController.j"
 @import "TrialHistoryController.j"
+@import "MDBdispersionEstimation.j"
 
 
 @typedef StateType
@@ -32,8 +33,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     TrialHistoryController trialHistoryController;
     Optotypes optotypes;
     CPString trialInfoString @accessors;
-    CPTimer timerDisplay, timerResponse, timerFixMark;
-    CPString kRangeLimitDefault, kRangeLimitOk, kRangeLimitValueAtFloor, kRangeLimitValueAtCeiling, rangeLimitStatus, abortCharacter;
+    CPTimer timerDisplay, timerResponse, timerFixMark, timerCI95;
+    CPString kRangeLimitDefault, kRangeLimitOk, kRangeLimitValueAtFloor, kRangeLimitValueAtCeiling, rangeLimitStatus, abortCharacter, ci95String;
     id sound @accessors;
     BOOL responseButtonsAdded;
     CPColor colOptotypeFore, colOptotypeBack;
@@ -63,6 +64,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         [[self window] makeKeyAndOrderFront: self];  [[self window] makeFirstResponder: self];
         //[self performSelector: @selector(runStart) withObject: nil afterDelay: 0.01];//geht nicht mehr nach DEPLOY???
         [self setCurrentTestName: "NOT ASSIGNED"];  [self setCurrentTestResultUnit: "NOT ASSIGNED"];
+        [MDBdispersionEstimation initResultStatistics];  ci95String = "";
         [self runStart];
         // [self testContrastDeviceThresholdConversion];
     }
@@ -224,9 +226,22 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [[self parentController] setCurrentTestResultExportString: [self composeExportString]];
     
     [trialHistoryController runEnded];
+
     [[self parentController] setCurrentTestResultsHistoryExportString: [trialHistoryController resultsHistoryString]];
     if ([Settings auditoryFeedbackWhenDone]) [sound play3];
     [[self parentController] runEnd];
+    
+    if ([Settings showCI95]) {
+        if ((currentTestName == "Acuity_Letters") || (currentTestName == "Acuity_LandoltC") ||(currentTestName == "Acuity_TumblingE") || (currentTestName == "Acuity_TAO")) {
+            timerCI95 = [CPTimer scheduledTimerWithTimeInterval: 0.02 target:self selector:@selector(onTimeoutCI95:) userInfo:nil repeats:NO];
+        }
+    }
+}
+- (void) onTimeoutCI95: (CPTimer) timer { //console.info("FractController>onTimeoutCI95");
+    var historyResults = [trialHistoryController composeInfo4CI];
+    var ciResults = [MDBdispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: 3000][0];
+    ci95String = "±" + [Misc stringFromNumber: (ciResults.CI0975 - ciResults.CI0025) / 2 decimals: 2 localised: YES];
+    [[self parentController] setResultString: [self acuityComposeResultString]]; // this will redisplay with CI95 info
 }
 
 
@@ -243,6 +258,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     oldResponseKeyChar = responseKeyChar;
     if (responseKeyChar != abortCharacter) [self processKeyDownEvent];
 }
+
 
 - (float) stimThresholderunitsFromDeviceunits: (float) ntve {
     console.info("FractController>stimThresholderunitsFromDeviceunits OVERRIDE THIS!");

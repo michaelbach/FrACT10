@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="1050" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -489,7 +489,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="8aG-i8-Dh8">
                             <rect key="frame" x="1" y="1" width="747" height="188"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="zNM-Gb-Jh9">
                                     <rect key="frame" x="0.0" y="0.0" width="747" height="406"/>
@@ -1975,14 +1975,14 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="PFJ-Wz-bh8">
-                                            <rect key="frame" x="510" y="237" width="236" height="242"/>
+                                            <rect key="frame" x="510" y="199" width="236" height="280"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="uhJ-9O-auV">
-                                                <rect key="frame" x="3" y="3" width="230" height="224"/>
+                                                <rect key="frame" x="3" y="3" width="230" height="262"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button toolTip="VA result will be in LogMAR" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-So-EuO">
-                                                        <rect key="frame" x="18" y="153" width="200" height="18"/>
+                                                        <rect key="frame" x="18" y="191" width="200" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="check" title="LogMAR" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="F21-ib-PiV">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1993,7 +1993,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                         </connections>
                                                     </button>
                                                     <button toolTip="VA result will be in decimal acuity" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="coP-Jl-su5">
-                                                        <rect key="frame" x="18" y="123" width="200" height="18"/>
+                                                        <rect key="frame" x="18" y="131" width="200" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="check" title="decimal" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SJQ-yt-aSo">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2004,7 +2004,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                         </connections>
                                                     </button>
                                                     <button toolTip="VA result will be in Snellen fraction" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="18b-AZ-XJs">
-                                                        <rect key="frame" x="18" y="93" width="200" height="18"/>
+                                                        <rect key="frame" x="18" y="101" width="200" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="check" title="Snellen fraction [ft]" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="cMV-FZ-AcE">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2015,7 +2015,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                         </connections>
                                                     </button>
                                                     <button toolTip="for the Snellen fraction" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0XK-Po-7GX">
-                                                        <rect key="frame" x="18" y="63" width="200" height="18"/>
+                                                        <rect key="frame" x="18" y="71" width="200" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="check" title="denominator always 20'" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="VFP-0x-sEP">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2026,7 +2026,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                         </connections>
                                                     </button>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qsd-g5-eto">
-                                                        <rect key="frame" x="74" y="28" width="160" height="16"/>
+                                                        <rect key="frame" x="74" y="36" width="160" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="max. reported decimal VA" id="osW-YR-Yfx">
                                                             <font key="font" metaFont="system"/>
@@ -2035,7 +2035,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                         </textFieldCell>
                                                     </textField>
                                                     <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JW2-QN-Paz">
-                                                        <rect key="frame" x="20" y="24" width="52" height="25"/>
+                                                        <rect key="frame" x="20" y="32" width="52" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="KWU-19-CiH">
                                                             <font key="font" metaFont="system"/>
@@ -2055,13 +2055,25 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                         </connections>
                                                     </comboBox>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1M-jn-hMI">
-                                                        <rect key="frame" x="18" y="183" width="201" height="18"/>
+                                                        <rect key="frame" x="18" y="221" width="201" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">If unchecked, the raw=psychometric threshold is caculated. If checked (default), it's descending-corrected, thus reflecting DIN/ISO values. If in doubt: checked.</string>
                                                         <buttonCell key="cell" type="check" title="Threshold correction DIN/ISO" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="UxQ-w5-9S4">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
+                                                    </button>
+                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uJM-h3-PcN">
+                                                        <rect key="frame" x="41" y="161" width="107" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">The result will include a “±0.xx” number to indicate the 95% confidence interval; based on resampling. Only works when LogMAR is enabled.</string>
+                                                        <buttonCell key="cell" type="check" title="show ±CI95/₂" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="v7r-tv-miZ">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.showCI95" id="LV2-yV-dfJ"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </view>
@@ -2570,9 +2582,9 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eau-sb-iUa">
-                                            <rect key="frame" x="553" y="412" width="120" height="16"/>
+                                            <rect key="frame" x="551" y="412" width="124" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="center" title="realisable contrast" id="unR-3S-tER">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="center" title="Realisable contrast" id="unR-3S-tER">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

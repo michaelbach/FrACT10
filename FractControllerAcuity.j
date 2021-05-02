@@ -11,7 +11,7 @@
 
 // this manages stuff after the optotypes have been drawn, e.g. crowding
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
-    var temp = [Misc logMARfromDecVA: [Misc visusFromGapPixels: stimStrengthInDeviceunits]];
+    var temp = [Misc logMARfromDecVA: [Misc decVAFromGapPixels: stimStrengthInDeviceunits]];
     [trialHistoryController setValue: [Misc stringFromNumber: temp decimals: 3 localised: YES]];
     
     if ([Settings crowdingType] > 0) {
@@ -128,15 +128,15 @@
 
 - (CPString) acuityComposeTrialInfoString {
     var s = iTrial + "/" + nTrials + " ";
-    s += [Misc stringFromNumber: [Misc visusFromGapPixels: stimStrengthInDeviceunits] decimals: 2 localised: YES];
+    s += [Misc stringFromNumber: [Misc decVAFromGapPixels: stimStrengthInDeviceunits] decimals: 2 localised: YES];
     return s;
 }
 
 
 - (float) acuityResultInDecVA {
     var resultInGapPx = stimStrengthInDeviceunits;
-    var resultInDecVA = [Misc visusFromGapPixels: resultInGapPx];
-    resultInDecVA *= ([Settings threshCorrection]) ? 0.891 : 1.0;// Korrektur für Schwellenunterschätzung aufsteigender Verfahren
+    var resultInDecVA = [Misc decVAFromGapPixels: resultInGapPx];
+    resultInDecVA *= ([Settings threshCorrection]) ? 0.891 : 1.0;// Correction for underestimation by ascending method
     return resultInDecVA;
 }
 
@@ -153,13 +153,16 @@
 
 - (CPString) acuityComposeResultString {
     var resultInGapPx = stimStrengthInDeviceunits;
-    var resultInDecVA = [Misc visusFromGapPixels: resultInGapPx];
+    var resultInDecVA = [Misc decVAFromGapPixels: resultInGapPx];
     resultInDecVA = Math.min([Settings maxDisplayedAcuity], resultInDecVA);
     var s = "";
     if ([Settings acuityFormatLogMAR]) {
         if (s.length > 1) s += ",  ";
         s += "LogMAR:" + [self rangeStatusIndicatorStringInverted: YES];
-        s += [Misc stringFromNumber: [self acuityResultInLogMAR] decimals: 2 localised: YES];
+        s += [Misc stringFromNumber: [self acuityResultInLogMAR] decimals: 2 localised: YES];//this is the unclipped acuity!
+        if (ci95String.length > 1) {
+            s += ci95String;
+        }
     }
     if ([Settings acuityFormatDecimal]) {
         if (s.length > 1) s += ",  ";
@@ -196,10 +199,10 @@
 - (void) acuityModifyDeviceStimulusDIN01_02_04_08 {
     responseWasCorrectCumulative = responseWasCorrectCumulative && responseWasCorrect;
     switch (iTrial) {
-        case 1:  stimStrengthInDeviceunits = [Misc gapPixelsFromVisus: 0.1];  break;
-        case 2:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [Misc gapPixelsFromVisus: 0.2];  break;
-        case 3:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [Misc gapPixelsFromVisus: 0.4];  break;
-        case 4:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [Misc gapPixelsFromVisus: 0.8];  break;
+        case 1:  stimStrengthInDeviceunits = [Misc gapPixelsFromDecVA: 0.1];  break;
+        case 2:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [Misc gapPixelsFromDecVA: 0.2];  break;
+        case 3:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [Misc gapPixelsFromDecVA: 0.4];  break;
+        case 4:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [Misc gapPixelsFromDecVA: 0.8];  break;
     }
 }
 

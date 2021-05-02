@@ -1,10 +1,11 @@
 To Dos
 
 • Add: contrast check (for acuity) ???
-• Export: full history
 • Improve/extend: About panel (recent history)
 • Gratings
 
+√ measure of dispersion
+√ Export: full history
 √ Add: gamma calibration
 √ Add: displayTransform
 √ Improve: crowding
