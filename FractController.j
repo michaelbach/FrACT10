@@ -239,7 +239,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 - (void) onTimeoutCI95: (CPTimer) timer { //console.info("FractController>onTimeoutCI95");
     var historyResults = [trialHistoryController composeInfo4CI];
-    var ciResults = [MDBdispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: 3000][0];
+    var ciResults = [MDBdispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: 10000][0];
     ci95String = "±" + [Misc stringFromNumber: (ciResults.CI0975 - ciResults.CI0025) / 2 decimals: 2 localised: YES];
     [[self parentController] setResultString: [self acuityComposeResultString]]; // this will redisplay with CI95 info
 }
