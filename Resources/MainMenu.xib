@@ -276,11 +276,11 @@ With ‘Best PEST’ and antialiasing.</string>
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ke1-2Q-RJn">
-                        <rect key="frame" x="413" y="344" width="367" height="236"/>
+                        <rect key="frame" x="413" y="376" width="367" height="204"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="IoN-VZ-cjE">
                             <font key="font" metaFont="system" size="16"/>
-                            <string key="title">©2017–2021
+                            <string key="title">©1993–2021
 
 Prof. Michael Bach
 Eye Center
@@ -489,7 +489,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="8aG-i8-Dh8">
                             <rect key="frame" x="1" y="1" width="747" height="188"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="zNM-Gb-Jh9">
                                     <rect key="frame" x="0.0" y="0.0" width="747" height="406"/>
@@ -1245,7 +1245,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
             <view key="contentView" id="WXy-dU-HQc">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="04J-Xh-PWS">
                         <rect key="frame" x="740" y="18" width="47" height="23"/>
@@ -1369,7 +1369,7 @@ DQ
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <box fixedFrame="YES" boxType="custom" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4PI-eF-GR8">
+                                        <box fixedFrame="YES" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4PI-eF-GR8">
                                             <rect key="frame" x="33" y="47" width="700" height="3"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="Itc-rv-ck6">
@@ -1379,7 +1379,7 @@ DQ
                                             <color key="borderColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="fillColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </box>
-                                        <box fixedFrame="YES" boxType="custom" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="NYw-lp-ui0">
+                                        <box fixedFrame="YES" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="NYw-lp-ui0">
                                             <rect key="frame" x="33" y="43" width="3" height="12"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="F2O-4Y-ugx">
@@ -1389,7 +1389,7 @@ DQ
                                             <color key="borderColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="fillColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </box>
-                                        <box fixedFrame="YES" boxType="custom" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="c3I-kf-NBt">
+                                        <box fixedFrame="YES" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="c3I-kf-NBt">
                                             <rect key="frame" x="731" y="43" width="3" height="12"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="kqD-gL-3di">

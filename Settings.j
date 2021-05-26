@@ -3,7 +3,7 @@ Settings, FrACT10
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2021-05-04"
+#define kVersionDateOfFrACT "2021-05-26"
 #define kVersionStringOfFract "Version 10.0"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
@@ -14,6 +14,7 @@ Created by mb on July 15, 2015.
 
 /* History
    =======
+2021-05-26 switch to the current Cappuccino framwork; needed changes at the ruler. Corrected copyright span.
 2021-05-04 up sampling n from 3000 → 10000
 2021-05-02 rename to "show ±CI95/₂"
 2021-04-26 add everything for calculating and displaying a measure of dispersion for acuity
