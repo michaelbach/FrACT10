@@ -1908,7 +1908,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                         <menuItem title="Display mirrorred ↕︎" id="enf-92-y7w">
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
-                                                        <menuItem title="Display rotated ↷" id="Wr8-KS-I6L">
+                                                        <menuItem title="Display rotated 180° ↷" id="Wr8-KS-I6L">
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
                                                     </items>

@@ -113,12 +113,12 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, colOptotypeBack);
     if (currentTestName == "Acuity_TAO")
-        CGContextSetFillColor(cgc, [CPColor whiteColor]); ;// contrast not respected with TAO
+        CGContextSetFillColor(cgc, [CPColor whiteColor]); ;// contrast always 100% with TAO
     CGContextFillRect(cgc, [[self window] frame]);
     CGContextSaveGState(cgc);
     CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
-    CGContextTranslateCTM(cgc,  -xEcc, -yEcc);
-    switch ([Settings displayTransform]) {
+    CGContextTranslateCTM(cgc,  -xEcc, -yEcc); // eccentric if desired
+    switch ([Settings displayTransform]) { // mirroring etc.
         case 1: CGContextScaleCTM(cgc, -1, 1);  break;
         case 2: CGContextScaleCTM(cgc, 1, -1);  break;
         case 3: CGContextScaleCTM(cgc, -1, -1);  break;
@@ -127,14 +127,14 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [optotypes setCgc: cgc colFore: colOptotypeFore colBack: colOptotypeBack];
 }
 
-- (void) prepareDrawingTransformUndo {
-    CGContextTranslateCTM(cgc,  -viewWidth / 2, -viewHeight / 2); // origin to center
-    CGContextTranslateCTM(cgc,  xEcc, yEcc);
-    switch ([Settings displayTransform]) {
+
+- (void) prepareDrawingTransformUndo { // will be needed for TAO
+    switch ([Settings displayTransform]) { // opposite sequence than above
         case 1: CGContextScaleCTM(cgc, -1, 1);  break;
         case 2: CGContextScaleCTM(cgc, 1, -1);  break;
         case 3: CGContextScaleCTM(cgc, -1, -1);  break;
     }
+    CGContextTranslateCTM(cgc,  xEcc, yEcc);  CGContextTranslateCTM(cgc,  -viewWidth / 2, -viewHeight / 2);
 }
 
 
@@ -158,7 +158,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     var button = [[CPButton alloc] initWithFrame: CGRectMake(x - sze2, y - sze2, size, size)];
     [button setTitle: title];  [button setKeyEquivalent: keyEquivalent];
     [button setTarget: self];  [button setAction: @selector(responseButton_action:)];
-    [button setBezelStyle: CPRoundedBezelStyle];
+    [button setBezelStyle: CPRoundRectBezelStyle];
     [[[self window] contentView] addSubview: button];
     responseButtonsAdded = YES;
     return button;
@@ -232,7 +232,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if ([Settings auditoryFeedbackWhenDone]) [sound play3];
     [[self parentController] runEnd];
     
-    if ([Settings showCI95]) {
+    if ([Settings showCI95] && (![[self parentController] runAborted])) {
         if ((currentTestName == "Acuity_Letters") || (currentTestName == "Acuity_LandoltC") ||(currentTestName == "Acuity_TumblingE") || (currentTestName == "Acuity_TAO")) {
             timerCI95 = [CPTimer scheduledTimerWithTimeInterval: 0.02 target:self selector:@selector(onTimeoutCI95:) userInfo:nil repeats:NO];
         }

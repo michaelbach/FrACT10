@@ -10,7 +10,7 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2021-05-29"
+#define kVersionDateOfFrACT "2021-05-29a"
 #define kVersionStringOfFract "Version 10.0"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
@@ -21,6 +21,10 @@ Created by mb on July 15, 2015.
 
 /* History
    =======
+2021-05-29a had to change bezeltype for the buttons to CPRoundRectBezelStyle,
+                because the former CPRoundedBezelStyle did not draw images.
+            fixed regression (due to CI95) that displayed the result string for aborted runs
+            FractController>prepareDrawingTransformUndo: clarified why
 2021-05-29 code review for more consistency, no new functionality
 2021-05-26 switch to the current Cappuccino framwork; needed changes at the ruler. Corrected copyright span.
             no need for "awakeFromCib"

@@ -34,7 +34,7 @@ Created by Bach on 2020-05-21
             var sizeInPix = stimStrengthInDeviceunits * 5 * 8.172 / 5;// correction for stroke width (Dakin)
             imageRect = CGRectMake(-sizeInPix / 2, -sizeInPix / 2, sizeInPix, sizeInPix);
             CGContextDrawImage(cgc, imageRect, taoImages[[alternativesGenerator currentAlternative]]);
-            [self prepareDrawingTransformUndo];
+            [self prepareDrawingTransformUndo]; // otherwise the button numbers are subject to "display transform"
             var size = viewWidth / (nAlternatives * 2 + 2), button;
             if (!responseButtonsAdded) {
                 for (var i = 0; i < (nAlternatives); i++) {
