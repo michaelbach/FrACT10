@@ -6,6 +6,8 @@ AlternativesGenerator.j
 
 Created by Bach on 23.07.2017.
 
+Generates "alternatives" (e.g. Landolt-C directions) from 0 to (nAlternatives-1)
+ 
 */
 
 @import <Foundation/CPObject.j>
@@ -13,7 +15,7 @@ Created by Bach on 23.07.2017.
 
 
 /*
- Produces "alternatives" (e.g. Landolt-C directions) from 0 to (nAlternatives-1)
+ 
 */
 
 
