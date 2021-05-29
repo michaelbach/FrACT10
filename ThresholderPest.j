@@ -1,3 +1,12 @@
+/*
+This file is part of FrACT10, a vision test battery.
+Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
+
+ThresholderPest.j
+ 
+Implementation of BestPEST
+*/
+
 
 @import "Thresholder.j";
 
@@ -12,14 +21,13 @@
 
 - (id)initWithNumAlternatives: (int) numAlternatives { //console.info("ThresholderPest>init");
     self = [super init];
-    if (self) {
+    if (self) { // Code below is really really old, but at least long proven
         kRange = 5000;  kRange1 = kRange - 1;  kRange2 = kRange * 2
         probability = new Array(kRange);  plgit = new Array(kRange * 2);  mlgit = new Array(kRange * 2);
-
         for (var i = 0; i < kRange; i++) {
             probability[i] = 0.0;
         }
-        var slope = kRange / 10.0;
+        var slope = kRange / 10.0; // this is a major choice, should be parametrized
         var guessProb = 1.0 / numAlternatives;
         var logistic;
         for (var i = 0; i < kRange2; i++) {

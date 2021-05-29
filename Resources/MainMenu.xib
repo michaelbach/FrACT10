@@ -489,7 +489,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="8aG-i8-Dh8">
                             <rect key="frame" x="1" y="1" width="747" height="188"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="zNM-Gb-Jh9">
                                     <rect key="frame" x="0.0" y="0.0" width="747" height="406"/>
@@ -1540,7 +1540,7 @@ DQ
                                                     <button toolTip="If checked, a “finish” sound will play when a run is completed." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iPf-w8-izN">
                                                         <rect key="frame" x="22" y="139" width="175" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Auditory feedback at end" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yRh-Ls-7dg">
+                                                        <buttonCell key="cell" type="check" title="Sound at end of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yRh-Ls-7dg">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>

@@ -1,10 +1,11 @@
-    /*
- *  FractControllerAcuityC.j
- *  FrACT10.02
- *
- *  Created by Bach on 18.07.2017.
- *  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
- */
+/*
+This file is part of FrACT10, a vision test battery.
+Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
+
+FractControllerAcuityC.j
+
+Created by Bach on 18.07.2017.
+*/
 
 
 @import "FractControllerAcuity.j"
@@ -16,10 +17,14 @@
     if ([Settings acuityEasyTrials]) [self modifyThresholderStimulusWithBonus];
 }
 - (void) modifyDeviceStimulus {[self acuityModifyDeviceStimulusDIN01_02_04_08];}
+
 - (float) stimDeviceunitsFromThresholderunits: (float) tPest {return [self acuitystimDeviceunitsFromThresholderunits: tPest];}
 - (float) stimThresholderunitsFromDeviceunits: (float) d {return [self acuityStimThresholderunitsFromDeviceunits: d];}
+
 - (float) resultValue4Export {return [self acuityResultValue4Export];}
+
 - (CPString) composeExportString {return [self acuityComposeExportString];}
+
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerAcuityC>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
@@ -35,7 +40,6 @@
             break;
         default: break;
     }
-
     if ([Settings enableTouchControls] && (!responseButtonsAdded)) {
         var sze = 50, sze2 = sze / 2, radius = 0.5 * Math.min(viewWidth, viewHeight) - sze2 - 1;
         for (var i = 0; i < 8; i++) {
@@ -46,7 +50,6 @@
         }
         [self buttonCenteredAtX: viewWidth - sze2 - 1 y: viewHeight / 2 - sze2 - 1 size: sze title: "Ø"];
     }
-
     CGContextRestoreGState(cgc);
     [super drawStimulusInRect: dirtyRect];
 }

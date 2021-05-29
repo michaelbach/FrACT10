@@ -1,12 +1,13 @@
 /*
- * AppController.j
- * FrACT10
- *
- * Created by mb on 2017-07-12.
- * Copyright 2015, Your Company All rights reserved.
- */
+This file is part of FrACT10, a vision test battery.
+Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
 
-@import "Globals.j"
+AppController.j
+
+Created by mb on 2017-07-12.
+*/
+
+@import "HierarchyController.j"
 @import "FractView.j"
 @import "FractController.j"
 @import "FractControllerAcuityC.j"
@@ -163,7 +164,7 @@ CPPushOnPushOffButton = 1;
 
 
 - (void) runFractController { //console.info("AppController>runFractController");
-    if ([Settings notCalibrated]) {
+    if ([Settings isNotCalibrated]) {
         var alert = [CPAlert alertWithMessageText: "WARNING"
                                     defaultButton: "I just want to try it out" alternateButton: "OK, take me to Settings" otherButton: nil
                         informativeTextWithFormat: "\rCalibration is mandatory for valid results.\r\rGoto 'Settings' and enter appropriate values for \r«Length of blue ruler»\rand \r«Observer distance».\r\rThis will also avoid the present obnoxious warning dialog."];

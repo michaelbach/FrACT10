@@ -1,3 +1,12 @@
+/*
+This file is part of FrACT10, a vision test battery.
+Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
+
+Thresholder.j
+
+A wrapper for whatever thresholding algorithm is used (currently only BestPEST)
+*/
+
 
 @import <Foundation/Foundation.j>
 @import <AppKit/AppKit.j>
@@ -35,7 +44,7 @@
 
 
 - (void) enterTrialOutcomeWithAppliedStim: (float) appliedStim wasCorrect: (BOOL) wasCorrect {
-    appliedStim = [Misc limit01: appliedStim]; // makes sure that 0 contrast after converting to logCS is in range
+    appliedStim = [Misc limit01: appliedStim]; // makes sure that contrast after converting to logCS is in range
     // console.info("Thresholder>enterTrialOutcomeWithAppliedStim", appliedStim, ", wasCorrect: ", wasCorrect);
     [currentThresholder enterTrialOutcomeWithAppliedStim: appliedStim wasCorrect: wasCorrect];
 }

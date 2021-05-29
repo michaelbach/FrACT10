@@ -1,15 +1,15 @@
-//    History
-//    =======
-//
-//    2015-07-15 started
+/*
+This file is part of FrACT10, a vision test battery.
+Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
+
+2015-07-15 started
+*/
 
 
-@import "Globals.j"
-@import "Settings.j"
+@import "HierarchyController.j"
 @import "AlternativesGenerator.j"
 @import "Thresholder.j";
 @import "Optotypes.j";
-@import "HierarchyController.j"
 @import "TrialHistoryController.j"
 @import "MDBdispersionEstimation.j"
 
@@ -21,7 +21,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 @implementation FractController: HierarchyController {
     int iTrial, nTrials, nAlternatives;
     StateType state;
-    BOOL isBonus, responseWasCorrect, responseWasCorrectCumulative;
+    BOOL isBonusTrial, responseWasCorrect, responseWasCorrectCumulative;
     char oldResponseKeyChar, responseKeyChar;
     unsigned short responseKeyCode;
     CGContext cgc;
@@ -176,6 +176,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [[self window] makeFirstResponder: self];
 }*/
 
+
 - (void) onTimeoutDisplay: (CPTimer) timer { //console.info("FractController>onTimeoutDisplay");
     state = kStateDrawBack;  [[[self window] contentView] setNeedsDisplay: YES];
 }
@@ -240,7 +241,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (void) onTimeoutCI95: (CPTimer) timer { //console.info("FractController>onTimeoutCI95");
     var historyResults = [trialHistoryController composeInfo4CI];
     var ciResults = [MDBdispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: 10000][0];
-    ci95String = "±" + [Misc stringFromNumber: (ciResults.CI0975 - ciResults.CI0025) / 2 decimals: 2 localised: YES];
+    ci95String = " ± " + [Misc stringFromNumber: (ciResults.CI0975 - ciResults.CI0025) / 2 decimals: 2 localised: YES];
     [[self parentController] setResultString: [self acuityComposeResultString]]; // this will redisplay with CI95 info
 }
 
@@ -248,6 +249,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (BOOL) acceptsFirstResponder { //console.info("FractController>acceptsFirstResponder");
     return YES;
 }
+
 
 - (void) keyDown: (CPEvent) theEvent { //console.info("FractController>keyDown");
     responseKeyChar = [[[theEvent characters] characterAtIndex: 0] uppercaseString];
@@ -274,8 +276,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 - (void) modifyThresholderStimulusWithBonus {
     if (iTrial > nTrials) return; // don't change if done
-    isBonus = (iTrial % 6 == 0) && (iTrial != 6);
-    if (isBonus) stimStrengthInThresholderUnits = Math.min(stimStrengthInThresholderUnits + 0.2, 1.0);
+    isBonusTrial = (iTrial % 6 == 0) && (iTrial != 6);
+    if (isBonusTrial) stimStrengthInThresholderUnits = Math.min(stimStrengthInThresholderUnits + 0.2, 1.0);
 }
 
 

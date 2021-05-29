@@ -1,10 +1,11 @@
 /*
- *  FractControllerAcuityVernier.j
- *  cappDevelop
- *
- *  Created by Bach on 14.08.2017.
- *  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
- */
+This file is part of FrACT10, a vision test battery.
+Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
+
+FractControllerAcuityVernier.j
+
+Created by Bach on 14.08.2017.
+*/
 
 
 @import "FractControllerAcuity.j"
@@ -24,9 +25,8 @@
     var c1 = gapMinimal;
     var c2 = -Math.log(gapMinimal / gapMaximal);
     var deviceVal = c1 * Math.exp(tPest * c2); //trace("Vernier.pest2native, tPest:", tPest, "native=", nativeVal);
-    
     if ([Misc areNearlyEqual: deviceVal and: gapMaximal]) {
-        if (!isBonus) {
+        if (!isBonusTrial) {
             rangeLimitStatus = kRangeLimitValueAtCeiling; //console.info("max gap size!")
         }
     } else {
@@ -36,7 +36,6 @@
             rangeLimitStatus = kRangeLimitOk;
         }
     }
-
     return deviceVal;
 }
 - (float) stimThresholderunitsFromDeviceunits: (float) d {
@@ -49,7 +48,7 @@
 }
 
 
-//Draw vertical line with gaussian profile. x-position (floating point) approximated by center of gravity on discrete raster
+//Draw a vertical line with gaussian profile. x-position (floating point) approximated by center of gravity on discrete raster
 - (void) drawLineGaussProfileVerticalAtX: (float) x0 y0: (float) y0 y1: (float) y1 sigma: (float) sigma { //console.info("FractControllerAcuityVernier>>DrawLineGaussianProfileVertical ", x0, y0, y1);
     var ix0 = Math.round(x0);
     var iSigma = Math.round(Math.max(5, Math.min(sigma * 4, 30))); //trace(sigma, iSigma);
@@ -73,25 +72,24 @@
 - (void) drawVernierAtX: (float) xCent y: (float) yCent vLength: (float) vLength sigma: (float) sigma gapHeight: (float) gapHeight offsetSize: (float) offsetSize offsetIsTopRight: (BOOL) offsetIsTopRight { //console.info("FractControllerAcuityVernier>drawVernierAtX", offsetSize);
     xCent += (Math.random() < 0.5 ? 1 : -1) + 2 * (2 * Math.random() - 1.0);
     var theSign = offsetIsTopRight ? +1 : -1;
-    var xPos0 = xCent + theSign * offsetSize / 2.0;
-    var xPos1 = xCent - theSign * offsetSize / 2.0;
+    var xPos0 = xCent + theSign * offsetSize / 2.0, xPos1 = xCent - theSign * offsetSize / 2.0;
     var vLength2 = vLength / 2.0;
     switch([Settings vernierType]) {
         case 1: // 3 bars
-            // untere
+            // lower
             var yTemp = yCent + vLength2 + gapHeight;
             [self drawLineGaussProfileVerticalAtX: xPos0 y0: yTemp y1: yTemp + vLength sigma: sigma];
-            // mittlere
+            // middle
             [self drawLineGaussProfileVerticalAtX: xPos1 y0: yCent - vLength2 y1: yCent + vLength2 sigma: sigma];
-            // ganz oben
+            // upper
             yTemp = yCent - vLength / 2 - gapHeight;
             [self drawLineGaussProfileVerticalAtX: xPos0 y0: yTemp y1: yTemp - vLength sigma: sigma];
             break;
         default: // case 0, 2 bars
             var gapHeight2 = gapHeight / 2.0;
-            // untere
+            // lower
             [self drawLineGaussProfileVerticalAtX: xPos0 y0: yCent + gapHeight2 y1: yCent + gapHeight2 + vLength sigma: sigma];
-            // obere
+            // upper
             [self drawLineGaussProfileVerticalAtX: xPos1 y0: yCent - gapHeight2 y1: yCent - gapHeight2 - vLength sigma: sigma];
             break;
     }
@@ -113,14 +111,12 @@
             break;
         default: break;
     }
-
     if ([Settings enableTouchControls] && (!responseButtonsAdded)) {
         var sze = 50, sze2 = sze / 2;
         [self buttonCenteredAtX: viewWidth-sze2 y: 0 size: sze title: "6"];
         [self buttonCenteredAtX: sze2 y: 0 size: sze title: "4"];
         [self buttonCenteredAtX: viewWidth - sze2 y: viewHeight / 2 - sze2 size: sze title: "Ø"];
     }
-
     CGContextRestoreGState(cgc);
     [super drawStimulusInRect: dirtyRect];
 }
@@ -173,5 +169,6 @@
 - (floag) reportFromNative: (float) t {
     return ([Misc degreeFromPixel: t] * 60.0 * 60.0);
 }
+
 
 @end

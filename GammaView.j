@@ -1,9 +1,13 @@
-//
-//  GammaView.m
-//  _cappDevelop
-//
-//  Created by Bach on 31.01.21.
-//
+/*
+This file is part of FrACT10, a vision test battery.
+Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
+
+GammaView.m
+
+Created by Bach on 31.01.21.
+This draws the pattern for the psychophysical gamma estimation.
+ 
+*/
 
 @import <AppKit/CPView.j>
 

@@ -1,5 +1,10 @@
-/* 2020-05-25
- This class manages the FrACT10 feedback sounds
+/*
+This file is part of FrACT10, a vision test battery.
+Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
+
+Sound.j
+
+2020-05-25 This class manages the FrACT10 feedback sounds
 */
 
 
@@ -12,7 +17,7 @@
 }
 
 
-// this is clumsy (doing it 3 times), but the closure didn't take the provided buffer in early attempts.
+// the below is clumsy (doing it 3 times), but the closure didn't take the provided buffer in early attempts.
 
 // sound1: “tink” for correct response
 - (void) loadSound1 { //console.info("Sound>loadSound");

@@ -1,7 +1,10 @@
 /*
- FractControllerContrastC.j
+This file is part of FrACT10, a vision test battery.
+Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
 
- Created by Bach on 2020-08-17
+FractControllerContrastC.j
+
+Created by Bach on 2020-08-17
 */
 
 

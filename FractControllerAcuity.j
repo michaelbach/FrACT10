@@ -1,7 +1,9 @@
-//    History
-//    =======
-//
-//    2020-11-09 created, class "FractControllerAcuity" inheriting from "FractController"
+/*
+This file is part of FrACT10, a vision test battery.
+Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
+
+2020-11-09 created, class "FractControllerAcuity" inheriting from "FractController"
+*/
 
 
 @import "FractController.j"
@@ -13,7 +15,6 @@
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
     var temp = [Misc logMARfromDecVA: [Misc decVAFromGapPixels: stimStrengthInDeviceunits]];
     [trialHistoryController setValue: [Misc stringFromNumber: temp decimals: 3 localised: YES]];
-    
     if ([Settings crowdingType] > 0) {
         if (currentTestName != "Acuity_Vernier") { // don't do crowding with Vernier etc.
             CGContextSaveGState(cgc);
@@ -105,7 +106,7 @@
     var deviceVal = c1 * Math.exp(tPest * c2); //console.info("DeviceFromPest " + tPest + " " + deviceVal);
     // ROUNDING for realisable gap values? @@@
     if ([Misc areNearlyEqual: deviceVal and: gapMaximal]) {
-        if (!isBonus) {
+        if (!isBonusTrial) {
             rangeLimitStatus = kRangeLimitValueAtCeiling; //console.info("max gap size!")
         }
     } else {

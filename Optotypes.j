@@ -1,5 +1,11 @@
-/* 2020-08-17
- This class manages the xx
+/*
+This file is part of FrACT10, a vision test battery.
+Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
+
+Optotypes.j
+
+2020-08-17: This class manages all optotypes (letters, E, C, …)
+
 */
 
 
@@ -102,12 +108,12 @@
 }
 
 
-// draw optotypes on a -5…+5 coordinate system
-- (void) myPoly: (float) p withD: (float) d { //console.info("FractControllerAcuityE>myPoly");
+// draw optotypes (letters and Es)p on a -5…+5 coordinate system
+- (void) drawPolygon: (float) p withD: (float) d { //console.info("FractControllerAcuityE>drawPolygon");
     CGContextSetFillColor(_cgc, _colOptotypeFore);
     CGContextBeginPath(_cgc);
     CGContextMoveToPoint(_cgc, d * p[0][0], -d * p[0][1]);
-    for (var i=1; i<p.length; ++i) {
+    for (var i = 1; i < p.length; ++i) {
         CGContextAddLineToPoint(_cgc, d * p[i][0], -d * p[i][1]);
     }
     CGContextAddLineToPoint(_cgc, d * p[0][0], -d * p[0][1]);
@@ -166,15 +172,15 @@
 }
 - (void)drawSloanHWithGapInPx: (float) d { //console.info("FractControllerAcuityLetters>drawSloanHWithGapInPx");
     var pnts = [[-5,-5], [-3,-5], [-3,-1], [+3,-1], [+3,-5], [+5,-5], [+5,+5], [+3,+5], [+3,+1], [-3,+1], [-3,+5], [-5,+5], [-5, -5]];
-    [self myPoly: pnts withD: d * 0.5]; 
+    [self drawPolygon: pnts withD: d * 0.5];
 }
 - (void)drawSloanKWithGapInPx: (float) d {
     var pnts = [[-5,-5], [-3,-5], [-3,-0.82], [-0.98,0.69], [+2.43,-5], [+5,-5], [+0.74,+1.98], [+5,+5], [+1.66,+5], [-3,+1.68], [-3,+5], [-5,+5], [-5,-5]];
-    [self myPoly: pnts withD: d * 0.5];
+    [self drawPolygon: pnts withD: d * 0.5];
 }
 - (void)drawSloanNWithGapInPx: (float) d {
     var pnts = [[-5,-5], [-3,-5], [-3,1.9], [+3,-5], [+5,-5], [+5,+5], [+3,+5], [+3,-1.9], [-3,+5], [-5,+5], [-5,-5]];
-    [self myPoly: pnts withD: d * 0.5];
+    [self drawPolygon: pnts withD: d * 0.5];
 }
 - (void)drawSloanOWithGapInPx: (float) d {
     var r = 2.5 * d;
@@ -186,8 +192,8 @@
     var p1 = [[-5,-5], [-3,-5], [-3,-1], [+2,-1], [+2,+5], [-5,+5], [-5,-5]],
     p2 = [[0.7,0], [2.8,-5], [5,-5], [+2.85,0], [0.7,0]],
     d5 = d * 0.5;
-    CGContextBeginPath(_cgc);  [self myPoly: p1 withD: d5];  CGContextFillPath(_cgc);
-    CGContextBeginPath(_cgc);  [self myPoly: p2 withD: d5];  CGContextFillPath(_cgc);
+    CGContextBeginPath(_cgc);  [self drawPolygon: p1 withD: d5];  CGContextFillPath(_cgc);
+    CGContextBeginPath(_cgc);  [self drawPolygon: p2 withD: d5];  CGContextFillPath(_cgc);
     [self fillCircleAtX: d y: -d radius: 3 * d5];
     CGContextSetFillColor(_cgc, _colOptotypeBack);
     [self fillCircleAtX: d y: -d radius: d5];
@@ -218,11 +224,11 @@
 }
 - (void)drawSloanVWithGapInPx: (float) d {
     var pnts = [[-5,+5], [-1,-5], [+1,-5], [+5,+5], [+3,+5], [0,-2.1], [-3,+5], [-5,+5], [-5,+5]];
-    CGContextBeginPath(_cgc);  [self myPoly: pnts withD: d / 2];  CGContextFillPath(_cgc);
+    CGContextBeginPath(_cgc);  [self drawPolygon: pnts withD: d / 2];  CGContextFillPath(_cgc);
 }
 - (void)drawSloanZWithGapInPx: (float) d {
     var pnts = [[-5,-5], [+5,-5], [+5,-3], [-1.9,-3], [+5,+3], [+5,+5], [-5,+5], [-5,+3], [+1.9,+3], [-5,-3], [-5,-5]];
-    CGContextBeginPath(_cgc);  [self myPoly: pnts withD: d / 2];  CGContextFillPath(_cgc);
+    CGContextBeginPath(_cgc);  [self drawPolygon: pnts withD: d / 2];  CGContextFillPath(_cgc);
 }
 
 
@@ -270,7 +276,7 @@
         default:    // hollow square (for flanker)
             var p = [[5, -5], [-5, -5], [-5, 5], [5, 5], [5, -5], [3, -3], [-3, -3], [-3, 3], [3, 3], [3, -3]];
     }
-    [self myPoly: p withD: d * 0.5];
+    [self drawPolygon: p withD: d * 0.5];
 }
 
 

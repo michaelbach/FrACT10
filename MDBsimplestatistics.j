@@ -1,7 +1,10 @@
+/*
+This file is part of FrACT10, a vision test battery.
+Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
 
-/* History
-   =======
-   2021-04-26  begun
+MDBsimplestatistics.j
+
+2021-04-26  begun
 */
 
 
@@ -9,8 +12,10 @@
 
 
 //////////////////////////////////////////////////////////////////////////////
-// These are UNMODIFIED excerpts from simple-statistics.js
-// https://simplestatistics.org/docs/
+// These functions are unmodified excerpts from »simple-statistics.js« <https://simplestatistics.org/>
+// Copyright (c) 2014, Tom MacWright
+// simple-statistics is licensed under the ISC License,
+// a permissive license leting people do anything with the code with proper attribution and without warranty…
 //////////////////////////////////////////////////////////////////////////////
 
 

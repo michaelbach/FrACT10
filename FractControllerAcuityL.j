@@ -1,10 +1,11 @@
-    /*
- *  FractControllerAcuityLetters.j
- *  cappDevelop
- *
- *  Created by Bach on 08.08.2017.
- *  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
- */
+/*
+This file is part of FrACT10, a vision test battery.
+Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
+
+FractControllerAcuityLetters.j
+
+Created by Bach on 08.08.2017.
+*/
 
 
 @import "FractControllerAcuity.j"

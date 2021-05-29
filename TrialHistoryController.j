@@ -1,6 +1,11 @@
-/* 2021-01-06
- This class manages the FrACT10 trial history
- */
+/*
+This file is part of FrACT10, a vision test battery.
+Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
+
+TrialHistoryController.j
+
+2021-01-06 This class manages the FrACT10 trial history that contains the full run info
+*/
 
 
 @import <Foundation/Foundation.j>

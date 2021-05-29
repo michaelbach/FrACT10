@@ -1,6 +1,22 @@
-# FrACT10
+# FrACT₁₀
 
-A Cappuccino-implementation of [FrACT](https://michaelbach.de/fract/)
+A Cappuccino implementation of [FrACT](https://michaelbach.de/fract/), a semiautomated vision test battery.
+For full details see <https://michaelbach.de/fract/>.
 
+This file is part of FrACT10.
+Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
+
+## Programming overview
+The program is mostly written in Objective-J, a language implemented by <https://www.cappuccino.dev>, and compiled by Cappuccino into JavaScript. [While this site looks a bit lazy, there is a small, select and active community working on it, communicating via Gitter.] Objective-J is modeled on Objective-C and implements much of Apple's GUI tools. Some parts of FrACT₁₀ are also pure JavaScript. Apple's Xcode is used as the development environment. The program is started by opening the top-level index.html in a browser.
+
+For more see [CONTRIBUTING](file://CONTRIBUTING.md).
+
+
+## Some History
++ 2021-06-01 made open source
 + 2020-05-24 created a corresponding github repository
-+ 2015 begun
++ 2015 began porting from the "classical" FrACT3.x.
+
+
+## License
+[GNU GPL](file://LICENSE.md)

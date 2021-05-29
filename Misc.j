@@ -1,3 +1,12 @@
+/*
+This file is part of FrACT10, a vision test battery.
+Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
+
+Misc.j
+
+*/
+
+
 @import <Foundation/Foundation.j>
 @import <AppKit/AppKit.j>
 @import "Settings.j"
@@ -7,15 +16,15 @@
 }
 
 
-+ (int) iRandom: (int) i {
++ (int) iRandom: (int) i { // random integer from 0 to i-1
     return Math.floor(Math.random() * i);
 }
 
 
-+ (float) limit01: (float) theValue {
++ (float) limit01: (float) theValue { // limit the input value to lie between 0 and 1
     return [self limit: theValue lo: 0 hi: 1];
 }
-+ (float) limit: (float) theValue lo: (float) lo hi: (float) hi {
++ (float) limit: (float) theValue lo: (float) lo hi: (float) hi { // limit the input value to lie between lo and hi
     if (theValue < lo) return lo;
     if (theValue > hi) return hi;
     return theValue;
@@ -49,7 +58,6 @@
             document.msExitFullscreen();
     }
 }
-
 + (BOOL) isFullScreen {
     var full_screen_element = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement || null;
     if(full_screen_element === null)// If no element is in full-screen
@@ -80,7 +88,7 @@
         navigator.clipboard.writeText(s); // only over https
     }
     catch(e) { // avoid global error catcher
-        console.info("Error copying to clipboard: ", e);  // alert(e);
+        console.info("Error copying result to clipboard: ", e);  // alert(e);
     }
 }
 
@@ -114,7 +122,7 @@
 }
 
 
-+ (float) decVAFromGapPixels: (float) pixels {
++ (float) decVAFromGapPixels: (float) pixels { // "decVA": visual acuity in decimal format
     return 1.0 / 60.0 / [self degreeFromPixel: pixels];
 }
 + (float) gapPixelsFromDecVA: (float) decVA {
@@ -160,7 +168,6 @@
 }
 
 
-
 + (void) makeFrameSquareFromWidth: (CPView) view {
     var rect1 = [view frame];
     [view setFrame: CGRectMake(rect1.origin.x, rect1.origin.y - (rect1.size.width - 16) / 2, rect1.size.width, rect1.size.width)];
@@ -170,7 +177,7 @@
 //////////////////////////////////////
 // Michelson ←→ Weber contrast.
 // both contrasts are defined on a -100…100 scale
-// Weber is manipulated so it is also point-symmetric to zero like Michelson
+// Weber is modified so it is also point-symmetric to zero like Michelson
 
 + (float) contrastMichelsonPercentFromL1: (float) l1 l2: (float) l2 {
     return -(l1 - l2) / (l1 + l2) * 100;
@@ -214,7 +221,6 @@
     return [[CPColor colorWithCSSString: [aColor cssString]] brightnessComponent];
 }
 
-
                                
 + (void) testContrastConversion {
     for (var i = -100; i <= 100; i += 10) {
@@ -227,7 +233,7 @@
 //////////////////////////////////////////////////////////////////
 ////////////////////////////////////// luminance <—> devicegray
 // scales
-// contrast: -100 … 100 (both for Michelson & Weber
+// contrast: -100 … 100 (both for Michelson & Weber)
 // “devicegray": 0 … 1 AFTER gamma correction
 // "luminance": (0…1) as "normalised" luminance as would be measured in cd/m²
 //////////////////////////////////////////////////////////////////
@@ -270,17 +276,7 @@
 }
 
 
-/*///////////////////////////////////// devicegray <—> RGB
-+ (int) devicegray2RGB_UNFERTIG: (float) thedevicegray {
-    var g = limit(0, Math.round(255 * thedevicegray), 255);
-    return (g | g << 8 | g << 16);
-}
-
-+ (float) luminance2RGB: (float) luminance {
-    var temp1 = devicegrayFromLuminance(luminance);
-    return devicegray2RGB(temp1);
-}*/
-
+/*///////////////////////////////////// OLD, not in use (yet)
 
 /*
 static public function spatFreq2periodInPix(spatFreqInCPD:Number):Number {
@@ -298,50 +294,6 @@ return log10(30.0 / cpd);
 static public function logMAR2cpd(logMAR:Number):Number {
 return 30.0 / (Math.pow(10, logMAR));
 }
-
-// luminance units
-// ===============
-//1. luminance (0…1) as "normalised" luminance as would be measured in cd/m2
-//2. contrast on a (0…1) scale, corresponding to (0…100%)
-//3. "devicegray": luminance in device values, that is gamma-corrected, on a (0…1) scale
-//4. RGB: devicegray converted to RGB on a (3 x 0x00…0xFF) scale
-////////////////////////////////////// luminance <—> contrast
-static public  function lumHiLo2contrast(lumLo:Number, lumHi:Number):Number {
-if (lumLo > lumHi) { // sort if necessary
-var temp:Number = lumHi;  lumHi = lumLo; lumLo = temp;
-}
-var c:Number = (lumHi - lumLo) / (lumHi + lumLo);
-return limit(0.0, c, 1.0);
-}
-static public function rgbHiLo2contrast(rgbLo:uint, rgbHi:uint): Number {
-var devicegrayLo:Number = RGB2L(rgbLo),  devicegrayHi:Number = RGB2L(rgbHi);
-if (devicegrayLo>devicegrayHi) { // sort if necessary
-var temp:Number = devicegrayHi;  devicegrayHi = devicegrayLo;  devicegrayLo = temp;
-}
-var lumLo:Number = luminanceFromDevicegray(devicegrayLo),  lumHi:Number = luminanceFromDevicegray(devicegrayHi);
-//console.info(lumLo, " -- ", lumHi);
-return lumHiLo2contrast(lumLo, lumHi);
-}
-////////////////////////////////////// luminance & contrast <—> RGB
-static public function contrast2HiRGB(contrast:Number):uint {
-var temp1:Number = lumContrast2lumHi(0.5, contrast);
-temp1 = devicegrayFromLuminance(temp1);
-return devicegray2RGB(temp1);
-}
-static public function contrast2LoRGB(contrast:Number):uint {
-var temp1:Number = lumContrast2lumLo(0.5, contrast);
-temp1=devicegrayFromLuminance(temp1);
-return devicegray2RGB(temp1);
-//			console.info("contrast2LoRGB, contrast: ",contrast,", temp2: ", devicegray2RGB(temp1));
-}
-//////////////////////////////////////
-// average the r, g, and b value to represent the gray number (from 0 to 255)
-static public function RGB2L(inRGB:uint):uint {
-var r:uint = (inRGB >> 16) & 0xFF,  g:uint = (inRGB >> 8) & 0xFF,  b:uint = inRGB & 0xFF;
-return (Math.round((r + g + b)/3.0));
-}
-
-*/
 
 
 /*
@@ -363,7 +315,7 @@ return (Math.round((r + g + b)/3.0));
 // formats a number to a “sensible” precision
 static public  function rStr(theValue:Number):String {
     var precision:int=1,theValueAbs:Number=Math.abs(theValue);
-    if (theValueAbs < 0.0001) {
+    if (theValueAbs < 0.0001) { // this could be easier using log10…
         precision=7;
     } else {
         if (theValueAbs < 0.001) {

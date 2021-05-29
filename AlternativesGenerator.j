@@ -1,10 +1,12 @@
 /*
- *  AlternativesGenerator.j
- *  FrACT10.02
- *
- *  Created by Bach on 23.07.2017.
- *  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
- */
+This file is part of FrACT10, a vision test battery.
+Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
+
+AlternativesGenerator.j
+
+Created by Bach on 23.07.2017.
+
+*/
 
 @import <Foundation/CPObject.j>
 @import <AppKit/AppKit.j>

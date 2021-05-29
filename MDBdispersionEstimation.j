@@ -1,40 +1,45 @@
-/* History
- =======
- 2021-04-22  begun
- */
+/*
+This file is part of FrACT10, a vision test battery.
+Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
+
+MDBdispersionEstimation.j
+
+2021-04-22  begun
+*/
 
 @import "MDBsimplestatistics.j"
 
 
 @implementation MDBdispersionEstimation
 
-var kWorstLogMAR, kBestLogMAR, kGuess, testDF
+
+var kWorstLogMAR, kBestLogMAR, kGuess, testDF; // there are no class properties in Cappuccino
+
 
 + (void) initResultStatistics { //console.info("Entering initResultStatistics");
-    var viewHeight = 600, gapMinimal = 0.5, gapMaximal = viewHeight / 5 - 2; // improve: read from window
+    var viewHeight = 600, gapMinimal = 0.5, gapMaximal = viewHeight / 5 - 2; // improve: read viewHeight from window
     kWorstLogMAR = [Misc logMARfromDecVA: [Misc decVAFromGapPixels: gapMaximal]];
     kBestLogMAR =  [Misc logMARfromDecVA: [Misc decVAFromGapPixels: gapMinimal]];
     //console.info("kWorstLogMAR: ", kWorstLogMAR, ", kBestLogMAR: ", kBestLogMAR);
     kGuess = 0.125; // will be overridden
     
-    /*
-    selectTestDF(2);
+    /* selectTestDF(2);
     console.info("threshEstimate: ", threshEstimate(testDF, 10000));
-    calculateCI(testDF, 0.125, 10000);
-    */
+    calculateCI(testDF, 0.125, 10000); */
 }
 
 
 + (id) calculateCIfromDF: (id) df guessingProbability: (float) guessingProbability nSamples: (int) nSamples {
+    // df is for data frame, inspired by R, here an array of 2-tupels {correct, lMar}
+    // It represents the full run info of presented acuity (float lMAR) and response (BOOL correct)
     kGuess = guessingProbability; // as global parameter to speed up
-    nSamples = nSamples || 1000;
-    var threshSamples = [nSamples];
-    for (var i=0; i<nSamples; i++) threshSamples[i] = threshEstimate(sampleWithReplacement(df, df.length));
+    nSamples = nSamples || 1000; // default value
+    var threshSamples = [nSamples]; // this array will hold all bootstrap results
+    for (var i = 0; i < nSamples; i++) threshSamples[i] = threshEstimate(sampleWithReplacement(df, df.length));
     //console.info(threshSamples);
     //console.info("extent: ", extent(threshSamples));
     var med = median(threshSamples), CI0025 = quantile(threshSamples, 0.025), CI0975 = quantile(threshSamples, 0.975);
     //console.info("med: ", med, ", CI0025: ", CI0025, ", CI0975", CI0975, ", Bland-Altman-equiv: ±", (CI0025 - CI0975) / 2);
-
     /*var s = ""; // outputting all estimates on the clipboard for further workup in R
     for (i =0; i<threshSamples.length; i++) s += threshSamples[i]+ "\n";
     [Misc copyString2ClipboardWithDialog: s];*/
@@ -42,7 +47,7 @@ var kWorstLogMAR, kBestLogMAR, kGuess, testDF
 }
 
 
-// a naive maximumfinder. Ascent climbers can fail because of very low likelihood values
+// a naive maximumfinder. Gradient climbers can fail because of very low likelihood values
 function findMaxLlhInRange(df, r1, r2, delta) {
     var lMax = -1, lMarMax, lMar = r1;
     while (lMar < r2) {
@@ -64,6 +69,7 @@ function threshEstimate(df) { // console.info("threshEstimate");
 }
 
 
+// the term "pest" refers to a 0…1 scale. Carried over from old FrACT.
 function pest2logMAR(pestVal) {
     return kWorstLogMAR - pestVal * (kWorstLogMAR - kBestLogMAR);
 }
@@ -77,13 +83,12 @@ function logMAR2pest(lmar) {
 //////////////////////////////
 function likelihoodFunc(thresh, df) {
     var len = df.length
-    //var llh = probCorrectGivenLogMAR(kGuess, thresh, kWorstLogMAR); // nearly 1. Fix righ end.
+    //var llh = probCorrectGivenLogMAR(kGuess, thresh, kWorstLogMAR); // nearly 1. Fix right end.
     //var llh = llh * (1 - probCorrectGivenLogMAR(kGuess, thresh, kBestLogMAR)); // guess prob. Fix left end.
     var llh = 1;
     for (var i = 0; i < len; i++) {
         var l = probCorrectGivenLogMAR(kGuess, thresh, df[i].lMar);
         if (df[i].correct) {llh *= l} else {llh *= (1 - l);}
-        //cat(paste(i, round(d1$VAPres[i], 3), d1$correct[i], ", l:", round(l, 3), ", llh:", round(llh, 10), "\n"))
     }
     return llh;
 }
@@ -116,7 +121,7 @@ function selectTestDF(selector) {
     switch (selector) {
         default:
             testDF = [{lMar: 1.00, correct: true}, // trial run on 2021-04-22
-                      {lMar: 0.699, correct: false}, // inadvertant error, fine
+                      {lMar: 0.699, correct: false}, // inadvertant error, good for testing
                       {lMar: 0.886, correct: true},
                       {lMar: 0.725, correct: true},
                       {lMar: 0.595, correct: true},

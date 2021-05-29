@@ -1,19 +1,27 @@
 /*
-Settings, FrACT10
+This file is part of FrACT10, a vision test battery.
+Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
+
+Settings.j
+
+Provides a getter/setter interface to all settings (preferences)
+All values are checked for sensible ranges for robustness.
+Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2021-05-26"
+#define kVersionDateOfFrACT "2021-05-29"
 #define kVersionStringOfFract "Version 10.0"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
 #define kDefaultDistanceInCM 399
-#define kDefaultCalBarLengthInMM 149
+#define kDefaultCalibrationBarLengthInMM 149
 #define kFilename4ResultStorage "FRACT10-FINAL-RESULT-STRING"
 #define kFilename4ResultsHistoryStorage "FRACT10-RESULTS-HISTORY-STRING"
 
 /* History
    =======
+2021-05-29 code review for more consistency, no new functionality
 2021-05-26 switch to the current Cappuccino framwork; needed changes at the ruler. Corrected copyright span.
             no need for "awakeFromCib"
 2021-05-04 increase sampling n from 3000 → 10000
@@ -129,7 +137,7 @@ Created by mb on July 15, 2015.
 
 // helpers:
 // if "set == true" the default is set,
-// otherwise check if outside range or nil, if so also set default
+// otherwise check if outside range or nil, if so set to default
 + (BOOL) chckBool: (BOOL) val def: (BOOL) def set: (BOOL) set { //console.info("chckBool ", val);
     if (!set && !isNaN(val))  return val;
     return def;
@@ -157,7 +165,7 @@ Created by mb on July 15, 2015.
     [self setNTrials08: [self chckInt: [self nTrials08] def: 18 min: 1 max: 200 set: set]];
 
     [self setDistanceInCM: [self chckFlt: [self distanceInCM] def: kDefaultDistanceInCM min: 1 max: 2000 set: set]];
-    [self setCalBarLengthInMM: [self chckFlt: [self calBarLengthInMM] def: kDefaultCalBarLengthInMM min: 1 max: 2000 set: set]];
+    [self setCalBarLengthInMM: [self chckFlt: [self calBarLengthInMM] def: kDefaultCalibrationBarLengthInMM min: 1 max: 2000 set: set]];
     [self setCalBarLengthInPixel: [self chckFlt: [self calBarLengthInPixel] def: 700 min: 1 max: 2000 set: set]];
 
     [self setResponseInfoAtStart: [self chckBool: [self responseInfoAtStart] def: YES set: set]];
@@ -258,6 +266,7 @@ Created by mb on July 15, 2015.
 }
 
 
+// when new defaults are added, kDateOfCurrentSettingsVersion is updated. That tells FrACT that all settings need to be defaulted.
 + (BOOL) needNewDefaults {
     return [self dateSettingsVersion] != kDateOfCurrentSettingsVersion;
 }
@@ -277,9 +286,9 @@ Created by mb on July 15, 2015.
 }
 
 
-+ (BOOL) notCalibrated {
++ (BOOL) isNotCalibrated {
     [self checkDefaults];
-    return (([self distanceInCM]==kDefaultDistanceInCM) || ([self calBarLengthInMM] == kDefaultCalBarLengthInMM));
+    return (([self distanceInCM]==kDefaultDistanceInCM) || ([self calBarLengthInMM] == kDefaultCalibrationBarLengthInMM));
 }
 
 
@@ -409,7 +418,6 @@ Created by mb on July 15, 2015.
 }
 
 
-
 + (int) displayTransform {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "displayTransform"];
 }
@@ -524,13 +532,7 @@ Created by mb on July 15, 2015.
 }
 
 
-
-
-
 ////////////////////////
-
-
-
 
 
 + (char) decimalMarkChar {
@@ -544,7 +546,6 @@ Created by mb on July 15, 2015.
     var idx = (mark == ".") ? 0 : 1;
     [[CPUserDefaults standardUserDefaults] setInteger: idx forKey: "decimalMarkCharIndex"];
 }
-
 
 
 + (BOOL) enableTouchControls {

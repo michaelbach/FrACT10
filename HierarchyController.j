@@ -1,14 +1,19 @@
 /*
-  HierarchyController.j
-  FrACT10.02
+This file is part of FrACT10, a vision test battery.
+Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
 
-  Created by Bach on 18.07.2017.
-  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
+HierarchyController.j
+
+Created by Bach on 18.07.2017
+Superclass to allow communication between "AppController" and "FractController"
+ 
 */
 
 
 @import <Foundation/CPObject.j>
 @import <AppKit/AppKit.j>
+@import "Globals.j"
+@import "Settings.j"
 
 
 @implementation HierarchyController: CPWindowController {
