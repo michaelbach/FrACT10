@@ -21,7 +21,7 @@ Created by mb on July 15, 2015.
 
 /* History
    =======
-2021-06-01 add © to index.html, edited README & CONTRIBUTING
+2021-06-01 add © to index.html, edited README & CONTRIBUTING, improve error catching in AlternativesGenerator
 2021-05-29a had to change bezeltype for the buttons to CPRoundRectBezelStyle,
                 because the former CPRoundedBezelStyle did not draw images.
             fixed regression (due to CI95) that displayed the result string for aborted runs

@@ -14,11 +14,6 @@ Generates "alternatives" (e.g. Landolt-C directions) from 0 to (nAlternatives-1)
 @import <AppKit/AppKit.j>
 
 
-/*
- 
-*/
-
-
 @implementation AlternativesGenerator: CPObject {
     int _currentTrial;
     int currentAlternative @accessors;
@@ -44,9 +39,12 @@ function randomiseArray(array) {
         for (i = 0; i < (([CPDate date].getSeconds()) % 10); ++i) Math.random(); // truly random
         
         //console.info("AlternativesGenerator>initWithNumAlternatives, nAlt:", nAlternatives, ", nT:", nTrials);
-        if (nAlternatives < 2) console.info("AlternativesGenerator>initWithNumAlternatives TOO SMALL ", nAlternatives);
+        if (nAlternatives < 2) {
+            console.log("AlternativesGenerator>initWithNumAlternatives TOO SMALL: ", nAlternatives);
+            nAlternatives = 2;
+        }
         if (nAlternatives > 10) {
-            //console.info("AlternativesGenerator>initWithNumAlternatives TOO LARGE ", nAlternatives);
+            console.log("AlternativesGenerator>initWithNumAlternatives TOO LARGE: ", nAlternatives);
             nAlternatives = 10;
         }
         var possibleAlternatives = [nAlternatives];
