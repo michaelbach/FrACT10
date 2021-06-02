@@ -3609,7 +3609,7 @@ DQ
         <image name="buttonAcuityE" width="130.08000183105469" height="101.76000213623047"/>
         <image name="buttonAcuityLett" width="170.16000366210938" height="95.519996643066406"/>
         <image name="buttonAcuityTAO" width="192" height="192"/>
-        <image name="buttonAcuityVernier" width="145.91999816894531" height="195.83999633789062"/>
+        <image name="buttonAcuityVernier" width="124.31999969482422" height="195.83999633789062"/>
         <image name="iconAbout" width="396" height="396"/>
         <image name="iconFullscreen" width="356" height="356"/>
         <image name="iconHelp" width="356" height="356"/>
