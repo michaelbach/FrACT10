@@ -52,13 +52,14 @@ TrialHistoryController.j
 
 - (void) runEnded {  //console.info("TrialHistoryController>trialEnded");
     var s = "trial" + tab + "value" + tab + "choicePresented" + tab + "choiceResponded" + tab + "correct" + tab + "reactionTimeInMs" + crlf;
-    for (var i=0; i < _trialHistory.length; ++i) {
+    for (var i = 0; i < _trialHistory.length; ++i) {
+        var th = _trialHistory[i];
         s += [Misc stringFromInteger: i + 1] + tab;
-        s += _trialHistory[i].value + tab;
-        s += _trialHistory[i].presented + tab;
-        s += _trialHistory[i].responded + tab;
-        s += _trialHistory[i].correct + tab;
-        s += _trialHistory[i].reactionTimeInMs + crlf;
+        s += [Misc stringFromNumber: th.value decimals: 3 localised: YES]  + tab;
+        s += th.presented + tab;
+        s += th.responded + tab;
+        s += th.correct + tab;
+        s += th.reactionTimeInMs + crlf;
     }
     [self setResultsHistoryString: s];
 }
@@ -66,7 +67,7 @@ TrialHistoryController.j
 
 - (id) composeInfo4CI {
     var trialsDF = [];
-    for (var i=0; i < _trialHistory.length; ++i) {
+    for (var i = 0; i < _trialHistory.length; ++i) {
         trialsDF.push({lMar: _trialHistory[i].value, correct: _trialHistory[i].correct});
     }
     return trialsDF;

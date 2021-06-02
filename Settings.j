@@ -10,7 +10,7 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2021-06-01"
+#define kVersionDateOfFrACT "2021-06-02"
 #define kVersionStringOfFract "Version 10.0"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
@@ -21,6 +21,9 @@ Created by mb on July 15, 2015.
 
 /* History
    =======
+2021-06-02 decimalMarkChar now has an "automatic" setting which reads it from the Intl.NumberFormat of the browser,
+            fix error in CI95 because TrialHistory had localised number,
+            fix center alignment of the Vernier button image
 2021-06-01 add © to index.html, edited README & CONTRIBUTING, improve error catching in AlternativesGenerator
 2021-05-29a had to change bezeltype for the buttons to CPRoundRectBezelStyle,
                 because the former CPRoundedBezelStyle did not draw images.
@@ -198,6 +201,10 @@ Created by mb on July 15, 2015.
     // 0: no, 1: final only, 2: full history
     [self setResults2clipboard: [self chckInt: [self results2clipboard] def: 0 min: 0 max: 2 set: set]];
     [self setResults2clipboardSilent: [self chckBool: [self results2clipboardSilent] def: NO set: set]];
+
+    if (set) {
+        [self setDecimalMarkChar: "auto"]; // will select index 0
+    }
 
     // 0: none, 1: always, 2: on correct, 3: w/ info
     [self setAuditoryFeedback: [self chckInt: [self auditoryFeedback] def: 3 min: 0 max: 3 set: set]];
@@ -540,17 +547,33 @@ Created by mb on July 15, 2015.
 ////////////////////////
 
 
-+ (char) decimalMarkChar {
-    if ([[CPUserDefaults standardUserDefaults] integerForKey: "decimalMarkCharIndex"] == 0) {
-        return "."
-    } else {
-        return ","
+function _decimalMarkCharFindHelper(currentValue) {
+    return (currentValue.type === "decimal"); // arrow syntax not work in Cappuccino, need helper fun
+}
++ (char) decimalMarkChar {//console.info("settings>decimalMarkChar");
+    var _decimalMarkChar = ".";
+    switch ([[CPUserDefaults standardUserDefaults] integerForKey: "decimalMarkCharIndex"]) {
+        case 1: _decimalMarkChar = "."; break;
+        case 2: _decimalMarkChar = ","; break;
+        default:
+            try {
+                var tArray = Intl.NumberFormat().formatToParts(1.3); // "1.3" surely has a decimal mark
+                _decimalMarkChar = tArray.find(_decimalMarkCharFindHelper).value;
+            }
+            catch(e) { // avoid global error catcher
+                console.log("Intl.NumberFormat throws error: ", e);
+            }
     }
+    //console.info("_decimalMarkChar: ", _decimalMarkChar)
+    return _decimalMarkChar;
 }
 + (void) setDecimalMarkChar: (char) mark {
-    var idx = (mark == ".") ? 0 : 1;
+    var idx = 0;
+    if (mark == ".") idx = 1;
+    if (mark == ",") idx = 2;
     [[CPUserDefaults standardUserDefaults] setInteger: idx forKey: "decimalMarkCharIndex"];
 }
+
 
 
 + (BOOL) enableTouchControls {

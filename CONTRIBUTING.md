@@ -7,7 +7,8 @@ If anything is unclear, don't hesitate to contact me <michael.bach@uni-freiburg.
 
 ## What’s the development workflow?
 
-- Install Cappuccino <https://www.cappuccino.dev>. This, in principle, also runs in Unix/Linux, but all my explanation pertain to a MacOS environment. You should be fluent with the terminal. The Framework, built by the install, needs to be referred to appropriately in `ìndex.html`, see "directory structure" below.
+- Install Cappuccino <https://www.cappuccino.dev>. This, in principle, also runs in Unix/Linux, but all my explanation pertain to a MacOS environment. You should be fluent with the terminal. The Framework, built by the install, needs to be referred to appropriately in `ìndex.html`, see "directory structure" below. A good place to start: [Cappucino Wiki](https://github.com/cappuccino/cappuccino/wiki).
+
 - run `XcodeCapp`
 - add the folder containing all FrACT₁₀ files to XcodeCapp and use the hammer symbol to open this project in Xcode
 - to test your changes, save the pertinent Xcode file, wait until the XcodeCapp menu item is no longer blue (done processing), and open `index.html` (may need to flush browser cache)

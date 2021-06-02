@@ -14,7 +14,7 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 // this manages stuff after the optotypes have been drawn, e.g. crowding
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
     var temp = [Misc logMARfromDecVA: [Misc decVAFromGapPixels: stimStrengthInDeviceunits]];
-    [trialHistoryController setValue: [Misc stringFromNumber: temp decimals: 3 localised: YES]];
+    [trialHistoryController setValue: [Misc stringFromNumber: temp decimals: 3 localised: NO]];
     if ([Settings crowdingType] > 0) {
         if (currentTestName != "Acuity_Vernier") { // don't do crowding with Vernier etc.
             CGContextSaveGState(cgc);
@@ -129,7 +129,7 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 - (CPString) acuityComposeTrialInfoString {
     var s = iTrial + "/" + nTrials + " ";
-    s += [Misc stringFromNumber: [Misc decVAFromGapPixels: stimStrengthInDeviceunits] decimals: 2 localised: YES];
+    s += [Misc stringFromNumber: [Misc decVAFromGapPixels: stimStrengthInDeviceunits] decimals: 2 localised: NO];
     return s;
 }
 

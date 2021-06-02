@@ -1321,12 +1321,13 @@ DQ
                                             <rect key="frame" x="165" y="86" width="110" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Especially for the export to clipboard action, it is necessary to choose the right one here, otherwise numbers etc. will not be recognised correctly by the spreadsheet.</string>
-                                            <popUpButtonCell key="cell" type="push" title="dot" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="p64-gR-0Sx" id="Ymt-mG-1P5">
+                                            <popUpButtonCell key="cell" type="push" title="automatic" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="p64-gR-0Sx" id="Ymt-mG-1P5">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="menu"/>
                                                 <menu key="menu" id="IVL-nZ-4hD">
                                                     <items>
-                                                        <menuItem title="dot" state="on" id="p64-gR-0Sx"/>
+                                                        <menuItem title="automatic" state="on" id="p64-gR-0Sx"/>
+                                                        <menuItem title="dot" id="qAF-Id-awY"/>
                                                         <menuItem title="comma" id="SwO-qU-rPG"/>
                                                     </items>
                                                 </menu>
