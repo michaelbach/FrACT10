@@ -10,7 +10,7 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2021-06-02"
+#define kVersionDateOfFrACT "2021-06-03"
 #define kVersionStringOfFract "Version 10.0"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"

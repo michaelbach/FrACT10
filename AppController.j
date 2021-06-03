@@ -226,7 +226,7 @@ CPPushOnPushOffButton = 1;
         if ([Settings rewardPicturesWhenDone]) {
             [rewardsController drawRandom];
         }
-        var temp = currentTestResultExportString.replace(/,/g, "."); // in localStorage we don't need to localise
+        var temp = currentTestResultExportString.replace(/,/g, "."); // in localStorage we don't want to localise
         localStorage.setItem([Settings filenameResultStorage], temp);
         temp = currentTestResultsHistoryExportString.replace(/,/g, ".");
         localStorage.setItem([Settings filenameResultsHistoryStorage], temp);

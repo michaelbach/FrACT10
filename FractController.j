@@ -300,7 +300,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
-- (CPString) generalComposeExportString { // used by acuity & contrast
+// used by acuity & contrast
+- (CPString) generalComposeExportString {//console.info("FractController>generalComposeExportString");
     var s = "", now = [CPDate date];
     s += "Vs" + tab + [Settings versionExportFormat];
     s += tab + "vsFrACT" + tab + [Settings versionDateFrACT];
