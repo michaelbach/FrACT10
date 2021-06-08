@@ -385,7 +385,7 @@ function checkUrl0(url) {//console.info("checkUrl: ", url);
         settingsNeedNewDefaults = NO;
         var alert = [CPAlert alertWithMessageText: "WARNING"
                                     defaultButton: "OK" alternateButton: nil otherButton: nil
-                        informativeTextWithFormat: "\r\rAll settings were set to their default values.\r\rIf some fields seem empty, reload and repeat; or ignore :).\r\r"];
+                        informativeTextWithFormat: "\r\rAll settings were set to their default values.\r\rIt is best to »reload« now to avoid some fields seeming empty.\r\r"];
         [alert runModalWithDidEndBlock: function(alert, returnCode) {
             // we could to an automatic reload here, but seems too intrusive
             //window.location.reload(false); // the reload makes sure we see no empty fields

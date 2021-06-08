@@ -22,7 +22,8 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
-2021-06-08 update tooltips after adding "automatic" to decimal mark char, corrected some other tooltips
+2021-06-08 update tooltips after adding "automatic" to decimal mark char, corrected some other tooltips,
+            changed wording after automatic settings default
 2021-06-02 decimalMarkChar now has an "automatic" setting which reads it from the Intl.NumberFormat of the browser,
             fix error in CI95 because TrialHistory had localised number,
             fix center alignment of the Vernier button image
