@@ -1,5 +1,7 @@
 To Dos
 
+• improve wording after all defaulted, perhaps reload
+• update tooltips after adding "automatic" to decimal mark char, update manual
 • Add: contrast check (for acuity) ???
 • Improve/extend: About panel (recent history)
 • Gratings

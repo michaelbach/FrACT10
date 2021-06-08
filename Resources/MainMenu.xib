@@ -1320,7 +1320,7 @@ DQ
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WCS-rL-YCa">
                                             <rect key="frame" x="165" y="86" width="110" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Especially for the export to clipboard action, it is necessary to choose the right one here, otherwise numbers etc. will not be recognised correctly by the spreadsheet.</string>
+                                            <string key="toolTip">Especially for the export to clipboard action, it is necessary to choose the right one here, otherwise numbers etc. will not be recognised correctly by the spreadsheet. Automatic reads from the browser, which reads from the OS, should be good in most cases.</string>
                                             <popUpButtonCell key="cell" type="push" title="automatic" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="p64-gR-0Sx" id="Ymt-mG-1P5">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="menu"/>
@@ -1598,7 +1598,7 @@ DQ
                                                         <rect key="frame" x="0.0" y="87" width="214" height="5"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     </box>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SBA-Fz-V4M">
+                                                    <button toolTip="Test sound volume" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SBA-Fz-V4M">
                                                         <rect key="frame" x="160" y="104" width="34" height="23"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="roundTextured" title="🔈" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FdO-2o-hfp">
@@ -1783,7 +1783,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                 </subviews>
                                             </view>
                                         </box>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bYX-OR-zsU">
+                                        <textField toolTip="Separate timeouts for how long you see the optotype, and how much time you have to respond." horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bYX-OR-zsU">
                                             <rect key="frame" x="162" y="329" width="102" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Timeouts [s]" bezelStyle="round" id="9C2-xl-yi2">
@@ -1870,7 +1870,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                 </subviews>
                                             </view>
                                         </box>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qsu-PW-QQj">
+                                        <textField toolTip="If you don't want central fixation…" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qsu-PW-QQj">
                                             <rect key="frame" x="564" y="141" width="172" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Optotype eccentricity [°]" bezelStyle="round" id="tcE-lo-X54">
@@ -1892,7 +1892,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.results2clipboardSilent" id="pxY-1h-U94"/>
                                             </connections>
                                         </button>
-                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NH7-ys-bRe">
+                                        <popUpButton toolTip="Transformations are necessary if you increase viewing distance with mirrors." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NH7-ys-bRe">
                                             <rect key="frame" x="350" y="86" width="156" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="Display transformation normal" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="fzq-C7-Daz" id="4HI-Hd-6YM">
@@ -2317,10 +2317,9 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                     <rect key="frame" x="10" y="33" width="766" height="489"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G1n-TZ-USP">
+                                        <button toolTip="if checked, the 12th, 18th, 24th… trial will have an “easy” optotype for motivation" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G1n-TZ-USP">
                                             <rect key="frame" x="15" y="426" width="165" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">If unchecked, the raw=psychometric threshold is caculated. If checked (default), it's descending-corrected, thus reflecting DIN/ISO values.</string>
                                             <buttonCell key="cell" type="check" title="occasional ‘easy trials’" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="8rt-0N-FfV">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -2329,7 +2328,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.contrastEasyTrials" id="uOy-A7-9AJ"/>
                                             </connections>
                                         </button>
-                                        <button toolTip="Contrast polarity" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lcc-Iq-YtQ">
+                                        <button toolTip="Contrast polarity for the optotype" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lcc-Iq-YtQ">
                                             <rect key="frame" x="272" y="426" width="123" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Dark on light" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="W2N-2I-sCS">
@@ -2367,7 +2366,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ukk-GT-YCS">
-                                            <rect key="frame" x="555" y="470" width="186" height="16"/>
+                                            <rect key="frame" x="519" y="470" width="186" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Checking Contrast Calibration" id="1ks-bV-U8w">
                                                 <font key="font" metaFont="system"/>
