@@ -276,7 +276,7 @@ Misc.j
 }
 
 
-/*///////////////////////////////////// OLD, not in use (yet)
+/* ///////////////////////////////////// OLD, not in use (yet) */
 
 /*
 static public function spatFreq2periodInPix(spatFreqInCPD:Number):Number {
@@ -294,7 +294,7 @@ return log10(30.0 / cpd);
 static public function logMAR2cpd(logMAR:Number):Number {
 return 30.0 / (Math.pow(10, logMAR));
 }
-
+*/
 
 /*
  // formats a number to given precision

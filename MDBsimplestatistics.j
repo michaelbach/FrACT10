@@ -11,12 +11,12 @@ MDBsimplestatistics.j
 @implementation mdbSimplestatistics
 
 
-//////////////////////////////////////////////////////////////////////////////
-// These functions are unmodified excerpts from »simple-statistics.js« <https://simplestatistics.org/>
-// Copyright (c) 2014, Tom MacWright
-// simple-statistics is licensed under the ISC License,
-// a permissive license leting people do anything with the code with proper attribution and without warranty…
-//////////////////////////////////////////////////////////////////////////////
+/*
+   These functions are unmodified excerpts from »simple-statistics.js« <https://simplestatistics.org/>
+   Copyright (c) 2014, Tom MacWright
+   simple-statistics is licensed under the ISC License,
+   a permissive license leting people do anything with the code with proper attribution and without warranty…
+*/
 
 
 /**
@@ -26,7 +26,7 @@ MDBsimplestatistics.j
  * @param {Array<number>} x sample of one or more data points
  * @throws {Error} if the the length of x is less than one
  * @returns {number} minimum value
- * @example
+ * @ example
  * min([1, 5, -10, 100, 2]); // => -10
  */
 function min(x) {
@@ -51,7 +51,7 @@ function min(x) {
  * @param {Array<number>} x sample of one or more data points
  * @returns {number} maximum value
  * @throws {Error} if the the length of x is less than one
- * @example
+ * @ example
  * max([1, 2, 3, 4]);
  * // => 4
  */
@@ -77,7 +77,7 @@ function max(x) {
  * @param {Array<number>} x sample of one or more data points
  * @returns {Array<number>} minimum & maximum value
  * @throws {Error} if the the length of x is less than one
- * @example
+ * @ example
  * extent([1, 2, 3, 4]);
  * // => [1, 4]
  */
@@ -108,7 +108,7 @@ function extent(x) {
  * @param {Function} [randomSource=Math.random] an optional entropy source that
  * returns numbers between 0 inclusive and 1 exclusive: the range [0, 1)
  * @return {Array} n sampled items from the population
- * @example
+ * @ example
  * var values = [1, 2, 3, 4];
  * sampleWithReplacement(values, 2); // returns 2 random values, like [2, 4];
  */
@@ -148,7 +148,7 @@ function sampleWithReplacement(x, n, randomSource) {
  *
  * @param {Array<number>} x input
  * @returns {number} median value
- * @example
+ * @ example
  * median([10, 2, 5, 100, 2, 1]); // => 3.5
  */
 function median(x) {
@@ -166,7 +166,7 @@ function median(x) {
  * @returns {number} quantile value
  * @throws {Error} if p ix outside of the range from 0 to 1
  * @throws {Error} if x is empty
- * @example
+ * @ example
  * quantileSorted([3, 6, 7, 8, 8, 9, 10, 13, 15, 16, 20], 0.5); // => 9
  */
 function quantileSorted(x, p) {
@@ -207,7 +207,7 @@ function quantileSorted(x, p) {
  * @param {number} [left] left index
  * @param {number} [right] right index
  * @returns {void} mutates input array
- * @example
+ * @ example
  * var arr = [65, 28, 59, 33, 21, 56, 22, 95, 50, 12, 90, 53, 28, 77, 39];
  * quickselect(arr, 8);
  * // = [39, 28, 28, 33, 21, 12, 22, 50, 53, 56, 59, 65, 90, 77, 95]
@@ -284,7 +284,7 @@ function swap(arr, i, j) {
  * @param {Array<number>} x sample of one or more numbers
  * @param {Array<number> | number} p the desired quantile, as a number between 0 and 1
  * @returns {number} quantile
- * @example
+ * @ example
  * quantile([3, 6, 7, 8, 8, 9, 10, 13, 15, 16, 20], 0.5); // => 9
  */
 function quantile(x, p) {

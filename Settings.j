@@ -10,7 +10,7 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2021-06-08"
+#define kVersionDateOfFrACT "2021-06-15"
 #define kVersionStringOfFract "Version 10.0"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
@@ -22,6 +22,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2021-06-15 begin documenting with "doxygen". No code chanes, only comments and pseudo-comments
 2021-06-08 update tooltips after adding "automatic" to decimal mark char, corrected some other tooltips,
             changed wording after automatic settings default
 2021-06-02 decimalMarkChar now has an "automatic" setting which reads it from the Intl.NumberFormat of the browser,

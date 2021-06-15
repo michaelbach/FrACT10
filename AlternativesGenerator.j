@@ -10,6 +10,14 @@ Generates "alternatives" (e.g. Landolt-C directions) from 0 to (nAlternatives-1)
  
 */
 
+/**
+ * AlternativesGenerator
+ *
+ * Generates "alternatives" (e.g. Landolt-C directions) from 0 to (nAlternatives-1)
+ *
+ * */
+
+ 
 @import <Foundation/CPObject.j>
 @import <AppKit/AppKit.j>
 
@@ -22,6 +30,14 @@ Generates "alternatives" (e.g. Landolt-C directions) from 0 to (nAlternatives-1)
 }
 
 
+/**
+ * randomiseArray
+ *
+ * Randomises the sequence of the input array.
+ *
+ * Method: exchange every item with a random other one.
+ * If you want to pre-randomize, simply do this before calling here.
+ */
 function randomiseArray(array) {
     for (i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
@@ -32,7 +48,14 @@ function randomiseArray(array) {
     return(array);
 }
 
-
+/**
+ Initialiser
+ 
+ @param nAlternatives: (int) 2, 4, 8, 10
+ @param nTrials: (int) number of trials
+ @return class instance
+ 
+ */
 - (id) initWithNumAlternatives: (int) nAlternatives andNTrials: (int) nTrials { //console.info("AlternativesGenerator>initWithNumAlternatives");
     self = [super init];
     if (self) {
@@ -79,6 +102,11 @@ function randomiseArray(array) {
 }
 
 
+/**
+ Call to retrieve next alternative to present as optotype
+ 
+ @return (int) number within the range given when instantiating
+ */
 - (int) nextAlternative { //console.info("AlternativesGenerator>nextAlternative");
     [self setCurrentAlternative: alternatives2present[_currentTrial]];
     //console.info(_currentTrial, " ", currentAlternative);

@@ -23,6 +23,12 @@ Created by mb on 2017-07-12.
 @import "Sound.j"
 @import "GammaView.j"
 
+/**
+ AppController
+ 
+ The main controller. It inherits from HierarchyController
+ to make communication with some classes with do not inherit from AppController easier.
+ */
 
 /*window.ondeviceorientation = function(event) {
  [setAngleAlpha: Math.round(event.alpha)]; [setAngleAlpha: Math.round(event.beta)]; [setAngleAlpha: Math.round(event.gamma)];
@@ -67,20 +73,39 @@ CPPushOnPushOffButton = 1;
 }
 
 
+/**
+ Accessing the foreground color for acuity optotypes as saved in settings.
+ @return the current foreground color
+ */
 - (CPColor) acuityForeColor { //console.info("AppController>acuityForeColor");
     return [Settings acuityForeColor];
 }
+/**
+ Setting the foreground color for acuity optotypes
+ @param theColor: foreground color
+ */
 - (void) setAcuityForeColor: (CPColor) theColor { //console.info("AppController>
     [Settings setAcuityForeColor: theColor];
 }
+/**
+ Accessing the background color for acuity optotypes as saved in settings.
+ @return the current background color
+ */
 - (CPColor) acuityBackColor { //console.info("AppController>acuityBackColor");
     return [Settings acuityBackColor];
 }
+/**
+ Setting the background color for acuity optotypes
+ @param theColor: background color
+ */
 - (void) setAcuityBackColor: (CPColor) theColor { //console.info("AppController>setAcuityBackColor");
     [Settings setAcuityBackColor: theColor];
 }
 
 
+/**
+ Our main initialisation begins here
+ */
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("applicationDidFinishLaunching");
     'use strict';
     settingsNeedNewDefaults = [Settings needNewDefaults];
@@ -133,6 +158,9 @@ CPPushOnPushOffButton = 1;
 }
 
 
+/**
+ This observes some changes in the settings panel, making shure some dependencies are updated
+ */
 - (void) observeValueForKeyPath: (CPString) aKeyPath ofObject: (id) anObject change: (CPDictionary) changes context: (id) context {
     [self setIs4orientations: ([Settings nAlternatives] == 4)];
 }
@@ -158,11 +186,17 @@ CPPushOnPushOffButton = 1;
 }
 
 
+/**
+ We will need this in FractControllerAcuityTAO, it's an intermediate calling point accessed via parent.
+ */
 - (id) taoImageArray {
     return [taoController imageArray];
 }
 
 
+/**
+ One of the tests should run, but let's test some prerequisites first
+ */
 - (void) runFractController { //console.info("AppController>runFractController");
     if ([Settings isNotCalibrated]) {
         var alert = [CPAlert alertWithMessageText: "WARNING"
@@ -180,6 +214,9 @@ CPPushOnPushOffButton = 1;
 }
 
 
+/**
+ The above prerequisites were met, so let's run the test specified in the class-global `testID`
+ */
 - (void) runFractController2 { //console.info("AppController>runFractController2  ");
     [self closeAllPanels];
     if ([Settings responseInfoAtStart]) {
@@ -210,11 +247,17 @@ CPPushOnPushOffButton = 1;
 }
 
 
+/**
+ Info panels (above) were not present, or oked, so lets now REALLY run the test.
+ */
 - (IBAction) runFractController2_actionOK: (id) sender { //console.info("AppController>runFractController2_actionOK");
     [self closeAllPanels];  [currentFractController release];
     currentFractController = [[allTestControllers[testID] alloc] initWithWindow: fractControllerWindow parent: self];
     [currentFractController setSound: sound];
 }
+/**
+ ok, so let's not run this test after all
+ */
 - (IBAction) runFractController2_actionCancel: (id) sender { //console.info("AppController>runFractController2_actionCancel");
     [self closeAllPanels];
 }
@@ -253,9 +296,12 @@ CPPushOnPushOffButton = 1;
 
 /*- (void) controlTextDidChange: (CPNotification) notification { //console.info(@"controlTextDidChange: stringValue == %@", [[notification object] stringValue]);[Settings calculateMaxPossibleDecimalAcuity];
  }*/
+/**
+ Called from some text fields in the Settings panel, to update dependencies
+ */
 - (void) controlTextDidEndEditing: (CPNotification) notification { //console.info(@"controlTextDidChange: stringValue == %@", [[notification object] stringValue]);
     [Settings calculateMaxPossibleDecimalAcuity];
-    [Settings  calculateAcuityForeBackColorsFromContrast];
+    [Settings calculateAcuityForeBackColorsFromContrast];
 }
 
 
@@ -300,7 +346,10 @@ CPPushOnPushOffButton = 1;
 }
 
 
-function checkUrl(url) {
+/**
+ Helper function: Find out if this URL exists
+ */
+function existsUrl(url) {
     var request;
     if(window.XMLHttpRequest)
         request = new XMLHttpRequest();
@@ -308,38 +357,29 @@ function checkUrl(url) {
         request = new ActiveXObject("Microsoft.XMLHTTP");
     request.open('GET', url, false);
     request.send(); // there will be a 'pause' here until the response to come.
-    // the object request will be actually modified
+    // the object request will be modified
     if (request.status === 404) {
         alert("The page you are trying to reach is not available.");
         return false;
     }
     return true;
 }
-
-function checkUrl0(url) {//console.info("checkUrl: ", url);
-    var request = false;
-    if (window.XMLHttpRequest) {
-        request = new XMLHttpRequest;
-    } else if (window.ActiveXObject) {
-        request = new ActiveXObject("Microsoft.XMLHttp");
-    }
-    if (request) {
-        request.open("GET", url);alert();//console.info(request.status);
-        if (request.status == 200) return true;
-    }
-    return false;
-}
 - (IBAction) resultDetails_action: (id) sender {
-    //[resultDetailsPanel makeKeyAndOrderFront: self];
     var path = "../readResultString.html";
-    if (checkUrl(path)) {
+    if (existsUrl(path)) {
         window.open(path, "_blank");
     }
 }
+
+
+/**
+ This will, on purpose, cause a run-time error when entering ‘∆’. This tests behaviour on such conditions.
+ */
 - (IBAction) runtimeError_action: (id) sender { //console.info("AppController>runtimeError_action");
     alert("The (rarely) entered glyph ‘∆’ is my purposeful test for causing a runtime errror. So there will be an error now…")
     [self abc];
 }
+
 
 - (IBAction) buttonFullScreen_action: (id) sender { //console.info("AppController>buttonFullScreen");
     var full = [Misc isFullScreen];
