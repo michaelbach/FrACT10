@@ -286,7 +286,7 @@ Misc.j
 
 
 /**
- scale transformations luminance <—> devicegray
+ scale transformations luminance ⇄ devicegray
  contrast: -100 … 100 (both for Michelson & Weber)
  “devicegray": 0 … 1 AFTER gamma correction
  "luminance": (0…1) as "normalised" luminance as would be measured in cd/m²

@@ -77,37 +77,10 @@ Instance Methods</h2></td></tr>
 <tr class="separator:aec1661d843ea30a74cb660508aab6fc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_fract_view_8j_source.html#l00015">15</a> of file <a class="el" href="_fract_view_8j_source.html">FractView.j</a>.</p>
-</div><h2 class="groupheader">Method Documentation</h2>
-<a id="a21c9caa9ada10a0b69cef30150124b1d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21c9caa9ada10a0b69cef30150124b1d">&#9670;&nbsp;</a></span>initWithFrame:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (id) initWithFrame: </td>
-          <td></td>
-          <td class="paramtype">(CGRect)&#160;</td>
-          <td class="paramname"><em>frame</em></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<div class="textblock"><p>This class is necessary to allow all subclasses of <a class="el" href="class_fract_controller.html">FractController</a> to draw using the delegate as established in the Interface Builder Created by Bach on 18.07.2017. </p>
 
 <p class="definition">Definition at line <a class="el" href="_fract_view_8j_source.html#l00017">17</a> of file <a class="el" href="_fract_view_8j_source.html">FractView.j</a>.</p>
-
-</div>
-</div>
+</div><h2 class="groupheader">Method Documentation</h2>
 <a id="aec1661d843ea30a74cb660508aab6fc0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aec1661d843ea30a74cb660508aab6fc0">&#9670;&nbsp;</a></span>drawRect:</h2>
 
@@ -132,7 +105,36 @@ Instance Methods</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_fract_view_8j_source.html#l00017">17</a> of file <a class="el" href="_fract_view_8j_source.html">FractView.j</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_fract_view_8j_source.html#l00019">19</a> of file <a class="el" href="_fract_view_8j_source.html">FractView.j</a>.</p>
+
+</div>
+</div>
+<a id="a21c9caa9ada10a0b69cef30150124b1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21c9caa9ada10a0b69cef30150124b1d">&#9670;&nbsp;</a></span>initWithFrame:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (id) initWithFrame: </td>
+          <td></td>
+          <td class="paramtype">(CGRect)&#160;</td>
+          <td class="paramname"><em>frame</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>This is never called. Why is it here? And how can the drawRect work if never instantated? Ah, not it comes: that is done by IB </p>
+
+<p class="definition">Definition at line <a class="el" href="_fract_view_8j_source.html#l00019">19</a> of file <a class="el" href="_fract_view_8j_source.html">FractView.j</a>.</p>
 
 </div>
 </div>

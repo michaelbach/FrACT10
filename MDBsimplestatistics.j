@@ -12,10 +12,13 @@ MDBsimplestatistics.j
 
 
 /*
-   These functions are unmodified excerpts from »simple-statistics.js« <https://simplestatistics.org/>
+   These functions are  largely unmodified excerpts from »simple-statistics.js« <https://simplestatistics.org/>
    Copyright (c) 2014, Tom MacWright
    simple-statistics is licensed under the ISC License,
    a permissive license leting people do anything with the code with proper attribution and without warranty…
+   
+   Changes: @example → @ example
+   
 */
 
 

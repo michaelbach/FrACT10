@@ -102,8 +102,8 @@ Instance Methods</h2></td></tr>
 <div class="textblock">
 <p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00011">11</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
 </div><h2 class="groupheader">Method Documentation</h2>
-<a id="aa942fa8b405bda0d26b316b231a7698a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa942fa8b405bda0d26b316b231a7698a">&#9670;&nbsp;</a></span>min</h2>
+<a id="ae262893a2e85eaad6f354d1b46406337"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae262893a2e85eaad6f354d1b46406337">&#9670;&nbsp;</a></span>compare</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -112,53 +112,21 @@ Instance Methods</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">- (function) min </td>
+          <td class="memname">- (function) compare </td>
           <td></td>
-          <td class="paramtype">(x)&#160;</td>
+          <td class="paramtype">(a)&#160;</td>
           <td class="paramname"></td>
-          <td></td>
         </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>The min is the lowest number in the array. This runs in `O(n)`, linear time, with respect to the length of the array.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">{Array&lt;number&gt;}</td><td>x sample of one or more data points </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">{Error}</td><td>if the the length of x is less than one </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>{number} minimum value @ example min([1, 5, -10, 100, 2]); // =&gt; -10 </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00032">32</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
-
-</div>
-</div>
-<a id="a9d62d50f28fdd887e14f98898a8e57da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d62d50f28fdd887e14f98898a8e57da">&#9670;&nbsp;</a></span>max</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
         <tr>
-          <td class="memname">- (function) max </td>
+          <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">(x)&#160;</td>
-          <td class="paramname"></td>
+          <td class="paramtype">(b)&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
           <td></td>
+          <td></td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -167,23 +135,8 @@ Instance Methods</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>This computes the maximum number in an array.</p>
-<p>This runs in `O(n)`, linear time, with respect to the length of the array.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">{Array&lt;number&gt;}</td><td>x sample of one or more data points </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>{number} maximum value </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">{Error}</td><td>if the the length of x is less than one @ example max([1, 2, 3, 4]); // =&gt; 4 </td></tr>
-  </table>
-  </dd>
-</dl>
 
-<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00058">58</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00351">351</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
 
 </div>
 </div>
@@ -211,7 +164,7 @@ Instance Methods</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>This computes the minimum &amp; maximum number in an array.</p>
-<p>This runs in `O(n)`, linear time, with respect to the length of the array.</p>
+<p>This runs in <code>O(n)</code>, linear time, with respect to the length of the array.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">{Array&lt;number&gt;}</td><td>x sample of one or more data points </td></tr>
@@ -226,12 +179,12 @@ Instance Methods</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00084">84</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00087">87</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
 
 </div>
 </div>
-<a id="a44e0f0c3d7c15b260c92ea55718cd4d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a44e0f0c3d7c15b260c92ea55718cd4d5">&#9670;&nbsp;</a></span>sampleWithReplacement</h2>
+<a id="a9d62d50f28fdd887e14f98898a8e57da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d62d50f28fdd887e14f98898a8e57da">&#9670;&nbsp;</a></span>max</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -240,27 +193,11 @@ Instance Methods</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">- (function) sampleWithReplacement </td>
+          <td class="memname">- (function) max </td>
           <td></td>
           <td class="paramtype">(x)&#160;</td>
           <td class="paramname"></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">(n)&#160;</td>
-          <td class="paramname"></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">(randomSource)&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -269,18 +206,23 @@ Instance Methods</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Sampling with replacement is a type of sampling that allows the same item to be picked out of a population more than once.</p>
+<p>This computes the maximum number in an array.</p>
+<p>This runs in <code>O(n)</code>, linear time, with respect to the length of the array.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">{Array&lt;*&gt;}</td><td>x an array of any kind of value </td></tr>
-    <tr><td class="paramname">{number}</td><td>n count of how many elements to take </td></tr>
-    <tr><td class="paramname">{Function}</td><td>[randomSource=Math.random] an optional entropy source that returns numbers between 0 inclusive and 1 exclusive: the range [0, 1) </td></tr>
+    <tr><td class="paramname">{Array&lt;number&gt;}</td><td>x sample of one or more data points </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>{Array} n sampled items from the population @ example var values = [1, 2, 3, 4]; sampleWithReplacement(values, 2); // returns 2 random values, like [2, 4]; </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>{number} maximum value </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">{Error}</td><td>if the the length of x is less than one @ example max([1, 2, 3, 4]); // =&gt; 4 </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00115">115</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00061">61</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
 
 </div>
 </div>
@@ -307,7 +249,7 @@ Instance Methods</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>The [median](<a href="http://en.wikipedia.org/wiki/Median">http://en.wikipedia.org/wiki/Median</a>) is the middle number of a list. This is often a good indicator of 'the middle' when there are outliers that skew the `mean()` value. This is a [measure of central tendency](<a href="https://en.wikipedia.org/wiki/Central_tendency">https://en.wikipedia.org/wiki/Central_tendency</a>): a method of finding a typical or central value of a set of numbers.</p>
+<p>The <a href="http://en.wikipedia.org/wiki/Median">median</a> is the middle number of a list. This is often a good indicator of 'the middle' when there are outliers that skew the <code>mean()</code> value. This is a <a href="https://en.wikipedia.org/wiki/Central_tendency">measure of central tendency</a>: a method of finding a typical or central value of a set of numbers.</p>
 <p>The median isn't necessarily one of the elements in the list: the value can be the average of two elements if the list has an even length and the two central values are different.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -317,7 +259,223 @@ Instance Methods</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>{number} median value @ example median([10, 2, 5, 100, 2, 1]); // =&gt; 3.5 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00154">154</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00157">157</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
+
+</div>
+</div>
+<a id="aa942fa8b405bda0d26b316b231a7698a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa942fa8b405bda0d26b316b231a7698a">&#9670;&nbsp;</a></span>min</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (function) min </td>
+          <td></td>
+          <td class="paramtype">(x)&#160;</td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The min is the lowest number in the array. This runs in <code>O(n)</code>, linear time, with respect to the length of the array.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">{Array&lt;number&gt;}</td><td>x sample of one or more data points </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">{Error}</td><td>if the the length of x is less than one </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>{number} minimum value @ example min([1, 5, -10, 100, 2]); // =&gt; -10 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00035">35</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
+
+</div>
+</div>
+<a id="a187ed60a4f18025e2e7ea47bc382925c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a187ed60a4f18025e2e7ea47bc382925c">&#9670;&nbsp;</a></span>multiQuantileSelect</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (function) multiQuantileSelect </td>
+          <td></td>
+          <td class="paramtype">(arr)&#160;</td>
+          <td class="paramname"></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">(p)&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00324">324</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
+
+</div>
+</div>
+<a id="ac5bbdb4d77e4fb5271a99ae3da0cf510"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5bbdb4d77e4fb5271a99ae3da0cf510">&#9670;&nbsp;</a></span>quantile</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (function) quantile </td>
+          <td></td>
+          <td class="paramtype">(x)&#160;</td>
+          <td class="paramname"></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">(p)&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The <a href="https://en.wikipedia.org/wiki/Quantile">quantile</a>: this is a population quantile, since we assume to know the entire dataset in this library. This is an implementation of the <a href="http://en.wikipedia.org/wiki/Quantile#Quantiles_of_a_population">Quantiles of a Population</a> algorithm from wikipedia.</p>
+<p>Sample is a one-dimensional array of numbers, and p is either a decimal number from 0 to 1 or an array of decimal numbers from 0 to 1. In terms of a k/q quantile, p = k/q - it's just dealing with fractions or dealing with decimal values. When p is an array, the result of the function is also an array containing the appropriate quantiles in input order</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">{Array&lt;number&gt;}</td><td>x sample of one or more numbers </td></tr>
+    <tr><td class="paramname">{Array&lt;number&gt;</td><td>| number} p the desired quantile, as a number between 0 and 1 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>{number} quantile @ example quantile([3, 6, 7, 8, 8, 9, 10, 13, 15, 16, 20], 0.5); // =&gt; 9 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00293">293</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
+
+</div>
+</div>
+<a id="a8b217c1a31685e0137705251be8f3a47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b217c1a31685e0137705251be8f3a47">&#9670;&nbsp;</a></span>quantileIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (function) quantileIndex </td>
+          <td></td>
+          <td class="paramtype">(len)&#160;</td>
+          <td class="paramname"></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">(p)&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00355">355</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
+
+</div>
+</div>
+<a id="a30723dfd33f430d53a8361d4e1734f11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30723dfd33f430d53a8361d4e1734f11">&#9670;&nbsp;</a></span>quantileSelect</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (function) quantileSelect </td>
+          <td></td>
+          <td class="paramtype">(arr)&#160;</td>
+          <td class="paramname"></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">(k)&#160;</td>
+          <td class="paramname"></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">(left)&#160;</td>
+          <td class="paramname"></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">(right)&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00314">314</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
 
 </div>
 </div>
@@ -371,7 +529,7 @@ Instance Methods</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00172">172</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00175">175</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
 
 </div>
 </div>
@@ -420,7 +578,7 @@ Instance Methods</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Rearrange items in `arr` so that all items in `[left, k]` range are the smallest. The `k`-th element will have the `(k - left + 1)`-th smallest value in `[left, right]`.</p>
+<p>Rearrange items in <code>arr</code> so that all items in <code>[left, k]</code> range are the smallest. The <code>k</code>-th element will have the <code>(k - left + 1)</code>-th smallest value in <code>[left, right]</code>.</p>
 <p>Implements Floyd-Rivest selection algorithm <a href="https://en.wikipedia.org/wiki/Floyd-Rivest_algorithm">https://en.wikipedia.org/wiki/Floyd-Rivest_algorithm</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -433,7 +591,61 @@ Instance Methods</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>{void} mutates input array @ example var arr = [65, 28, 59, 33, 21, 56, 22, 95, 50, 12, 90, 53, 28, 77, 39]; quickselect(arr, 8); // = [39, 28, 28, 33, 21, 12, 22, 50, 53, 56, 59, 65, 90, 77, 95] </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00215">215</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00218">218</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
+
+</div>
+</div>
+<a id="a44e0f0c3d7c15b260c92ea55718cd4d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44e0f0c3d7c15b260c92ea55718cd4d5">&#9670;&nbsp;</a></span>sampleWithReplacement</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (function) sampleWithReplacement </td>
+          <td></td>
+          <td class="paramtype">(x)&#160;</td>
+          <td class="paramname"></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">(n)&#160;</td>
+          <td class="paramname"></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">(randomSource)&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sampling with replacement is a type of sampling that allows the same item to be picked out of a population more than once.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">{Array&lt;*&gt;}</td><td>x an array of any kind of value </td></tr>
+    <tr><td class="paramname">{number}</td><td>n count of how many elements to take </td></tr>
+    <tr><td class="paramname">{Function}</td><td>[randomSource=Math.random] an optional entropy source that returns numbers between 0 inclusive and 1 exclusive: the range [0, 1) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>{Array} n sampled items from the population @ example var values = [1, 2, 3, 4]; sampleWithReplacement(values, 2); // returns 2 random values, like [2, 4]; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00118">118</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
 
 </div>
 </div>
@@ -477,219 +689,7 @@ Instance Methods</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00262">262</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
-
-</div>
-</div>
-<a id="ac5bbdb4d77e4fb5271a99ae3da0cf510"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5bbdb4d77e4fb5271a99ae3da0cf510">&#9670;&nbsp;</a></span>quantile</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (function) quantile </td>
-          <td></td>
-          <td class="paramtype">(x)&#160;</td>
-          <td class="paramname"></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">(p)&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>The [quantile](<a href="https://en.wikipedia.org/wiki/Quantile">https://en.wikipedia.org/wiki/Quantile</a>): this is a population quantile, since we assume to know the entire dataset in this library. This is an implementation of the [Quantiles of a Population](<a href="http://en.wikipedia.org/wiki/Quantile#Quantiles_of_a_population">http://en.wikipedia.org/wiki/Quantile#Quantiles_of_a_population</a>) algorithm from wikipedia.</p>
-<p>Sample is a one-dimensional array of numbers, and p is either a decimal number from 0 to 1 or an array of decimal numbers from 0 to 1. In terms of a k/q quantile, p = k/q - it's just dealing with fractions or dealing with decimal values. When p is an array, the result of the function is also an array containing the appropriate quantiles in input order</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">{Array&lt;number&gt;}</td><td>x sample of one or more numbers </td></tr>
-    <tr><td class="paramname">{Array&lt;number&gt;</td><td>| number} p the desired quantile, as a number between 0 and 1 </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>{number} quantile @ example quantile([3, 6, 7, 8, 8, 9, 10, 13, 15, 16, 20], 0.5); // =&gt; 9 </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00290">290</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
-
-</div>
-</div>
-<a id="a30723dfd33f430d53a8361d4e1734f11"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30723dfd33f430d53a8361d4e1734f11">&#9670;&nbsp;</a></span>quantileSelect</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (function) quantileSelect </td>
-          <td></td>
-          <td class="paramtype">(arr)&#160;</td>
-          <td class="paramname"></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">(k)&#160;</td>
-          <td class="paramname"></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">(left)&#160;</td>
-          <td class="paramname"></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">(right)&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00311">311</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
-
-</div>
-</div>
-<a id="a187ed60a4f18025e2e7ea47bc382925c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a187ed60a4f18025e2e7ea47bc382925c">&#9670;&nbsp;</a></span>multiQuantileSelect</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (function) multiQuantileSelect </td>
-          <td></td>
-          <td class="paramtype">(arr)&#160;</td>
-          <td class="paramname"></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">(p)&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00321">321</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
-
-</div>
-</div>
-<a id="ae262893a2e85eaad6f354d1b46406337"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae262893a2e85eaad6f354d1b46406337">&#9670;&nbsp;</a></span>compare</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (function) compare </td>
-          <td></td>
-          <td class="paramtype">(a)&#160;</td>
-          <td class="paramname"></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">(b)&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00348">348</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
-
-</div>
-</div>
-<a id="a8b217c1a31685e0137705251be8f3a47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b217c1a31685e0137705251be8f3a47">&#9670;&nbsp;</a></span>quantileIndex</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (function) quantileIndex </td>
-          <td></td>
-          <td class="paramtype">(len)&#160;</td>
-          <td class="paramname"></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">(p)&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00352">352</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_m_d_bsimplestatistics_8j_source.html#l00265">265</a> of file <a class="el" href="_m_d_bsimplestatistics_8j_source.html">MDBsimplestatistics.j</a>.</p>
 
 </div>
 </div>

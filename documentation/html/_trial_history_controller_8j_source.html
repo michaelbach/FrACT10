@@ -71,82 +71,81 @@ $(document).ready(function(){initNavTree('_trial_history_controller_8j_source.ht
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"></span> </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">TrialHistoryController.j</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">2021-01-06 This class manages the FrACT10 trial history that contains the full run info</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;@<span class="keyword">import</span> &lt;Foundation/Foundation.j&gt;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;@<span class="keyword">import</span> &lt;AppKit/AppKit.j&gt;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;@<span class="keyword">import</span> <span class="stringliteral">&quot;Globals.j&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;@<span class="keyword">import</span> &lt;Foundation/Foundation.j&gt;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;@<span class="keyword">import</span> &lt;AppKit/AppKit.j&gt;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;@<span class="keyword">import</span> <span class="stringliteral">&quot;Globals.j&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_trial_history_controller.html">   16</a></span>&#160;<span class="keyword">@implementation </span><a class="code" href="class_trial_history_controller.html">TrialHistoryController</a>: CPObject {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">id</span> _trialHistory;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">int</span> _currentIndex, _nTrials;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    CPDate _dateStart;</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="_trial_history_controller_8j.html#ad1e1de9ac2c8899ab0e1e2f8549ca1c8">   20</a></span>&#160;    <span class="keywordtype">float</span> value @<a class="code" href="class_trial_history_controller.html#ac0f79eace5dcaa6e782fcee8e844f9c3">accessors</a>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_trial_history_controller.html#ac0f79eace5dcaa6e782fcee8e844f9c3">   21</a></span>&#160;    <span class="keywordtype">int</span> presented @<a class="code" href="class_trial_history_controller.html#ac0f79eace5dcaa6e782fcee8e844f9c3">accessors</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">int</span> responded @<a class="code" href="class_trial_history_controller.html#ac0f79eace5dcaa6e782fcee8e844f9c3">accessors</a>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    BOOL correct @<a class="code" href="class_trial_history_controller.html#ac0f79eace5dcaa6e782fcee8e844f9c3">accessors</a>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_trial_history_controller.html#aff48931299fd3263f95df87776287ccd">   24</a></span>&#160;    CPString resultsHistoryString @<a class="code" href="class_trial_history_controller.html#ac0f79eace5dcaa6e782fcee8e844f9c3">accessors</a>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;- (id) initWithNumTrials: (<span class="keywordtype">int</span>) nTrials { <span class="comment">//console.info(&quot;TrialHistoryController&gt;initWithNumTrials&quot;);</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">self</span> = [<span class="keyword">super</span> init];</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">self</span>) { <span class="comment">// console.info(&quot;TrialHistory&gt;initWithNumTrials: success&quot;);</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        _trialHistory = [];</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        _currentIndex = 0;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        _nTrials = <a class="code" href="_fract_controller_8j.html#aef7ddecebe461a4a235f0e2094aa5b9f">nTrials</a>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        _dateStart = [CPDate date];</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        [<span class="keyword">self</span> setResultsHistoryString: &quot;&quot;];</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">self</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;- (void) trialEnded {  <span class="comment">//console.info(&quot;TrialHistoryController&gt;trialEnded&quot;);</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    _trialHistory[_currentIndex] = {};</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    _trialHistory[_currentIndex].value = value;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    _trialHistory[_currentIndex].presented = presented;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    _trialHistory[_currentIndex].responded = responded;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    _trialHistory[_currentIndex].correct = correct;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    _trialHistory[_currentIndex].reactionTimeInMs = Math.round(-[_dateStart timeIntervalSinceNow] * 1000.0);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    _currentIndex++;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    _dateStart = [CPDate date];</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;- (void) runEnded {  <span class="comment">//console.info(&quot;TrialHistoryController&gt;trialEnded&quot;);</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    var s = <span class="stringliteral">&quot;trial&quot;</span> + <a class="code" href="_globals_8j.html#af1ffd7c07d3cf727dfbec1ee327606fa">tab</a> + &quot;value&quot; + <a class="code" href="_globals_8j.html#af1ffd7c07d3cf727dfbec1ee327606fa">tab</a> + &quot;choicePresented&quot; + <a class="code" href="_globals_8j.html#af1ffd7c07d3cf727dfbec1ee327606fa">tab</a> + &quot;choiceResponded&quot; + <a class="code" href="_globals_8j.html#af1ffd7c07d3cf727dfbec1ee327606fa">tab</a> + &quot;correct&quot; + <a class="code" href="_globals_8j.html#af1ffd7c07d3cf727dfbec1ee327606fa">tab</a> + &quot;reactionTimeInMs&quot; + <a class="code" href="_globals_8j.html#ad2130ac3827f058838325123cde40b13">crlf</a>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">for</span> (var <a class="code" href="_alternatives_generator_8j.html#acb559820d9ca11295b4500f179ef6392">i</a> = 0; <a class="code" href="_alternatives_generator_8j.html#acb559820d9ca11295b4500f179ef6392">i</a> &lt; _trialHistory.length; ++<a class="code" href="_alternatives_generator_8j.html#acb559820d9ca11295b4500f179ef6392">i</a>) {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        var th = _trialHistory[i];</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        s += [<a class="code" href="class_misc.html">Misc</a> stringFromInteger: i + 1] + tab;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        s += [<a class="code" href="class_misc.html">Misc</a> stringFromNumber: th.value decimals: 3 localised: YES]  + tab;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        s += th.presented + <a class="code" href="_globals_8j.html#af1ffd7c07d3cf727dfbec1ee327606fa">tab</a>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        s += th.responded + <a class="code" href="_globals_8j.html#af1ffd7c07d3cf727dfbec1ee327606fa">tab</a>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        s += th.correct + <a class="code" href="_globals_8j.html#af1ffd7c07d3cf727dfbec1ee327606fa">tab</a>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        s += th.reactionTimeInMs + <a class="code" href="_globals_8j.html#ad2130ac3827f058838325123cde40b13">crlf</a>;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    [<span class="keyword">self</span> setResultsHistoryString: s];</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;- (id) composeInfo4CI {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    var trialsDF = [];</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">for</span> (var <a class="code" href="_alternatives_generator_8j.html#acb559820d9ca11295b4500f179ef6392">i</a> = 0; <a class="code" href="_alternatives_generator_8j.html#acb559820d9ca11295b4500f179ef6392">i</a> &lt; _trialHistory.length; ++<a class="code" href="_alternatives_generator_8j.html#acb559820d9ca11295b4500f179ef6392">i</a>) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        trialsDF.push({lMar: _trialHistory[i].value, correct: _trialHistory[i].correct});</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">return</span> trialsDF;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_trial_history_controller.html">   18</a></span>&#160;<span class="keyword">@implementation </span><a class="code" href="class_trial_history_controller.html">TrialHistoryController</a>: CPObject {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">id</span> _trialHistory;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">int</span> _currentIndex, _nTrials;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    CPDate _dateStart;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="_trial_history_controller_8j.html#ad1e1de9ac2c8899ab0e1e2f8549ca1c8">   22</a></span>&#160;    <span class="keywordtype">float</span> value @<a class="code" href="class_trial_history_controller.html#ac0f79eace5dcaa6e782fcee8e844f9c3">accessors</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_trial_history_controller.html#ac0f79eace5dcaa6e782fcee8e844f9c3">   23</a></span>&#160;    <span class="keywordtype">int</span> presented @<a class="code" href="class_trial_history_controller.html#ac0f79eace5dcaa6e782fcee8e844f9c3">accessors</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">int</span> responded @<a class="code" href="class_trial_history_controller.html#ac0f79eace5dcaa6e782fcee8e844f9c3">accessors</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    BOOL correct @<a class="code" href="class_trial_history_controller.html#ac0f79eace5dcaa6e782fcee8e844f9c3">accessors</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_trial_history_controller.html#aff48931299fd3263f95df87776287ccd">   26</a></span>&#160;    CPString resultsHistoryString @<a class="code" href="class_trial_history_controller.html#ac0f79eace5dcaa6e782fcee8e844f9c3">accessors</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;- (id) initWithNumTrials: (<span class="keywordtype">int</span>) nTrials { <span class="comment">//console.info(&quot;TrialHistoryController&gt;initWithNumTrials&quot;);</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">self</span> = [<span class="keyword">super</span> init];</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">self</span>) { <span class="comment">// console.info(&quot;TrialHistory&gt;initWithNumTrials: success&quot;);</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        _trialHistory = [];</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        _currentIndex = 0;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        _nTrials = <a class="code" href="_fract_controller_8j.html#aef7ddecebe461a4a235f0e2094aa5b9f">nTrials</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        _dateStart = [CPDate date];</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        [<span class="keyword">self</span> setResultsHistoryString: &quot;&quot;];</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">self</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;- (void) trialEnded {  <span class="comment">//console.info(&quot;TrialHistoryController&gt;trialEnded&quot;);</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    _trialHistory[_currentIndex] = {};</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    _trialHistory[_currentIndex].value = value;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    _trialHistory[_currentIndex].presented = presented;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    _trialHistory[_currentIndex].responded = responded;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    _trialHistory[_currentIndex].correct = correct;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    _trialHistory[_currentIndex].reactionTimeInMs = Math.round(-[_dateStart timeIntervalSinceNow] * 1000.0);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    _currentIndex++;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    _dateStart = [CPDate date];</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;- (void) runEnded {  <span class="comment">//console.info(&quot;TrialHistoryController&gt;trialEnded&quot;);</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    var s = <span class="stringliteral">&quot;trial&quot;</span> + <a class="code" href="_globals_8j.html#af1ffd7c07d3cf727dfbec1ee327606fa">tab</a> + &quot;value&quot; + <a class="code" href="_globals_8j.html#af1ffd7c07d3cf727dfbec1ee327606fa">tab</a> + &quot;choicePresented&quot; + <a class="code" href="_globals_8j.html#af1ffd7c07d3cf727dfbec1ee327606fa">tab</a> + &quot;choiceResponded&quot; + <a class="code" href="_globals_8j.html#af1ffd7c07d3cf727dfbec1ee327606fa">tab</a> + &quot;correct&quot; + <a class="code" href="_globals_8j.html#af1ffd7c07d3cf727dfbec1ee327606fa">tab</a> + &quot;reactionTimeInMs&quot; + <a class="code" href="_globals_8j.html#ad2130ac3827f058838325123cde40b13">crlf</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">for</span> (var <a class="code" href="_alternatives_generator_8j.html#acb559820d9ca11295b4500f179ef6392">i</a> = 0; <a class="code" href="_alternatives_generator_8j.html#acb559820d9ca11295b4500f179ef6392">i</a> &lt; _trialHistory.length; ++<a class="code" href="_alternatives_generator_8j.html#acb559820d9ca11295b4500f179ef6392">i</a>) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        var th = _trialHistory[i];</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        s += [<a class="code" href="class_misc.html">Misc</a> stringFromInteger: i + 1] + tab;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        s += [<a class="code" href="class_misc.html">Misc</a> stringFromNumber: th.value decimals: 3 localised: YES]  + tab;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        s += th.presented + <a class="code" href="_globals_8j.html#af1ffd7c07d3cf727dfbec1ee327606fa">tab</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        s += th.responded + <a class="code" href="_globals_8j.html#af1ffd7c07d3cf727dfbec1ee327606fa">tab</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        s += th.correct + <a class="code" href="_globals_8j.html#af1ffd7c07d3cf727dfbec1ee327606fa">tab</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        s += th.reactionTimeInMs + <a class="code" href="_globals_8j.html#ad2130ac3827f058838325123cde40b13">crlf</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    [<span class="keyword">self</span> setResultsHistoryString: s];</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;- (id) composeInfo4CI {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    var trialsDF = [];</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">for</span> (var <a class="code" href="_alternatives_generator_8j.html#acb559820d9ca11295b4500f179ef6392">i</a> = 0; <a class="code" href="_alternatives_generator_8j.html#acb559820d9ca11295b4500f179ef6392">i</a> &lt; _trialHistory.length; ++<a class="code" href="_alternatives_generator_8j.html#acb559820d9ca11295b4500f179ef6392">i</a>) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        trialsDF.push({lMar: _trialHistory[i].value, correct: _trialHistory[i].correct});</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">return</span> trialsDF;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">@end</span></div>
 <div class="ttc" id="a_alternatives_generator_8j_html_acb559820d9ca11295b4500f179ef6392"><div class="ttname"><a href="_alternatives_generator_8j.html#acb559820d9ca11295b4500f179ef6392">i</a></div><div class="ttdeci">int i</div><div class="ttdef"><b>Definition:</b> <a href="_alternatives_generator_8j_source.html#l00029">AlternativesGenerator.j:29</a></div></div>
-<div class="ttc" id="a_fract_controller_8j_html_aef7ddecebe461a4a235f0e2094aa5b9f"><div class="ttname"><a href="_fract_controller_8j.html#aef7ddecebe461a4a235f0e2094aa5b9f">nTrials</a></div><div class="ttdeci">nTrials</div><div class="ttdef"><b>Definition:</b> <a href="_fract_controller_8j_source.html#l00022">FractController.j:22</a></div></div>
-<div class="ttc" id="a_globals_8j_html_ad2130ac3827f058838325123cde40b13"><div class="ttname"><a href="_globals_8j.html#ad2130ac3827f058838325123cde40b13">crlf</a></div><div class="ttdeci">crlf</div><div class="ttdef"><b>Definition:</b> <a href="_globals_8j_source.html#l00012">Globals.j:12</a></div></div>
-<div class="ttc" id="a_globals_8j_html_af1ffd7c07d3cf727dfbec1ee327606fa"><div class="ttname"><a href="_globals_8j.html#af1ffd7c07d3cf727dfbec1ee327606fa">tab</a></div><div class="ttdeci">tab</div><div class="ttdef"><b>Definition:</b> <a href="_globals_8j_source.html#l00011">Globals.j:11</a></div></div>
-<div class="ttc" id="aclass_misc_html"><div class="ttname"><a href="class_misc.html">Misc</a></div><div class="ttdef"><b>Definition:</b> <a href="_misc_8j_source.html#l00015">Misc.j:15</a></div></div>
-<div class="ttc" id="aclass_trial_history_controller_html"><div class="ttname"><a href="class_trial_history_controller.html">TrialHistoryController</a></div><div class="ttdef"><b>Definition:</b> <a href="_trial_history_controller_8j_source.html#l00016">TrialHistoryController.j:16</a></div></div>
-<div class="ttc" id="aclass_trial_history_controller_html_ac0f79eace5dcaa6e782fcee8e844f9c3"><div class="ttname"><a href="class_trial_history_controller.html#ac0f79eace5dcaa6e782fcee8e844f9c3">-[TrialHistoryController accessors]</a></div><div class="ttdeci">int presented accessors</div><div class="ttdef"><b>Definition:</b> <a href="_trial_history_controller_8j_source.html#l00021">TrialHistoryController.j:21</a></div></div>
+<div class="ttc" id="a_fract_controller_8j_html_aef7ddecebe461a4a235f0e2094aa5b9f"><div class="ttname"><a href="_fract_controller_8j.html#aef7ddecebe461a4a235f0e2094aa5b9f">nTrials</a></div><div class="ttdeci">nTrials</div><div class="ttdef"><b>Definition:</b> <a href="_fract_controller_8j_source.html#l00028">FractController.j:28</a></div></div>
+<div class="ttc" id="a_globals_8j_html_ad2130ac3827f058838325123cde40b13"><div class="ttname"><a href="_globals_8j.html#ad2130ac3827f058838325123cde40b13">crlf</a></div><div class="ttdeci">crlf</div><div class="ttdef"><b>Definition:</b> <a href="_globals_8j_source.html#l00015">Globals.j:15</a></div></div>
+<div class="ttc" id="a_globals_8j_html_af1ffd7c07d3cf727dfbec1ee327606fa"><div class="ttname"><a href="_globals_8j.html#af1ffd7c07d3cf727dfbec1ee327606fa">tab</a></div><div class="ttdeci">tab</div><div class="ttdef"><b>Definition:</b> <a href="_globals_8j_source.html#l00014">Globals.j:14</a></div></div>
+<div class="ttc" id="aclass_misc_html"><div class="ttname"><a href="class_misc.html">Misc</a></div><div class="ttdef"><b>Definition:</b> <a href="_misc_8j_source.html#l00019">Misc.j:19</a></div></div>
+<div class="ttc" id="aclass_trial_history_controller_html"><div class="ttname"><a href="class_trial_history_controller.html">TrialHistoryController</a></div><div class="ttdef"><b>Definition:</b> <a href="_trial_history_controller_8j_source.html#l00018">TrialHistoryController.j:18</a></div></div>
+<div class="ttc" id="aclass_trial_history_controller_html_ac0f79eace5dcaa6e782fcee8e844f9c3"><div class="ttname"><a href="class_trial_history_controller.html#ac0f79eace5dcaa6e782fcee8e844f9c3">-[TrialHistoryController accessors]</a></div><div class="ttdeci">int presented accessors</div><div class="ttdef"><b>Definition:</b> <a href="_trial_history_controller_8j_source.html#l00023">TrialHistoryController.j:23</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -145,9 +145,653 @@ Class Methods</h2></td></tr>
 <tr class="separator:a4943517da3c2e949b63e323997e49927"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00015">15</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+<div class="textblock"><p>A collection of "miscellaneous" function. All a class variables for easy global access </p>
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00019">19</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
 </div><h2 class="groupheader">Method Documentation</h2>
+<a id="a848ce903ba8c8a5624471343a3baa882"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a848ce903ba8c8a5624471343a3baa882">&#9670;&nbsp;</a></span>areNearlyEqual:and:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (BOOL) areNearlyEqual: </td>
+          <td></td>
+          <td class="paramtype">(float)&#160;</td>
+          <td class="paramname"><em>a</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">and:</td>
+          <td></td>
+          <td class="paramtype">(float)&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Given an epsilon, we test for "equality" of 2 floating point numbers </p>
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="a33eaa1562a3e57699483c5ab4ebbee43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33eaa1562a3e57699483c5ab4ebbee43">&#9670;&nbsp;</a></span>contrastLogCSWeberFromWeberPercent:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (float) contrastLogCSWeberFromWeberPercent: </td>
+          <td></td>
+          <td class="paramtype">(float)&#160;</td>
+          <td class="paramname"><em>weberPercent</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Transform Weber → logCSWeber </p>
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="a9d4452baa7c38d854a0b55ab5fd2bc62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d4452baa7c38d854a0b55ab5fd2bc62">&#9670;&nbsp;</a></span>contrastMichelsonFromWeberPercent:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (float) contrastMichelsonFromWeberPercent: </td>
+          <td></td>
+          <td class="paramtype">(float)&#160;</td>
+          <td class="paramname"><em>inWeberPercent</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>And the inverse </p>
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="a4943517da3c2e949b63e323997e49927"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4943517da3c2e949b63e323997e49927">&#9670;&nbsp;</a></span>contrastMichelsonPercentFromColor1:color2:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (float) contrastMichelsonPercentFromColor1: </td>
+          <td></td>
+          <td class="paramtype">(float)&#160;</td>
+          <td class="paramname"><em>c1</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">color2:</td>
+          <td></td>
+          <td class="paramtype">(id)&#160;</td>
+          <td class="paramname"><em>c2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="a8fc51d6acde60121a87784a4f162598d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fc51d6acde60121a87784a4f162598d">&#9670;&nbsp;</a></span>contrastMichelsonPercentFromDevicegray1:g2:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (float) contrastMichelsonPercentFromDevicegray1: </td>
+          <td></td>
+          <td class="paramtype">(float)&#160;</td>
+          <td class="paramname"><em>g1</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">g2:</td>
+          <td></td>
+          <td class="paramtype">(id)&#160;</td>
+          <td class="paramname"><em>g2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="ac1ef7f0a708164be119f6009faa08538"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1ef7f0a708164be119f6009faa08538">&#9670;&nbsp;</a></span>contrastMichelsonPercentFromL1:l2:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (float) contrastMichelsonPercentFromL1: </td>
+          <td></td>
+          <td class="paramtype">(float)&#160;</td>
+          <td class="paramname"><em>l1</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">l2:</td>
+          <td></td>
+          <td class="paramtype">(float)&#160;</td>
+          <td class="paramname"><em>l2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Michelson ←→ Weber contrast. both contrasts are defined on a -100…100 scale Weber is modified so it is also point-symmetric to zero like Michelson </p>
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="acff324f95f82c2346a6b8d13da5c9d79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acff324f95f82c2346a6b8d13da5c9d79">&#9670;&nbsp;</a></span>contrastWeberFromMichelsonPercent:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (float) contrastWeberFromMichelsonPercent: </td>
+          <td></td>
+          <td class="paramtype">(float)&#160;</td>
+          <td class="paramname"><em>inMichelsonPercent</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Transform Michelson → Weber </p>
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="a250a3bb5a1f2ea2e78be63d8a449c541"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a250a3bb5a1f2ea2e78be63d8a449c541">&#9670;&nbsp;</a></span>contrastWeberPercentFromLogCSWeber:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (float) contrastWeberPercentFromLogCSWeber: </td>
+          <td></td>
+          <td class="paramtype">(float)&#160;</td>
+          <td class="paramname"><em>logCS</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>And the inverse </p>
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="ab86bf2ac57c7e29767d5e82c955ffcad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab86bf2ac57c7e29767d5e82c955ffcad">&#9670;&nbsp;</a></span>copyString2Clipboard:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (void) copyString2Clipboard: </td>
+          <td></td>
+          <td class="paramtype">(CPString)&#160;</td>
+          <td class="paramname"><em>s</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Utility to copy a string to the clipboard which surprisingly now works in all(?) modern browsers </p>
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="ae9069c7b8bdb5c181be5620f4427386a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9069c7b8bdb5c181be5620f4427386a">&#9670;&nbsp;</a></span>copyString2ClipboardWithDialog:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (void) copyString2ClipboardWithDialog: </td>
+          <td></td>
+          <td class="paramtype">(CPString)&#160;</td>
+          <td class="paramname"><em>s</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="aa7253302834ffb0596fef5e4ae29ded3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7253302834ffb0596fef5e4ae29ded3">&#9670;&nbsp;</a></span>date2HH_MM_SS:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (CPString) date2HH_MM_SS: </td>
+          <td></td>
+          <td class="paramtype">(CPDate)&#160;</td>
+          <td class="paramname"><em>theDate</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>ISO date formatter </p>
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="abd12d56261e330f499061102f43ad3ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd12d56261e330f499061102f43ad3ba">&#9670;&nbsp;</a></span>date2YYYY_MM_DD:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (CPString) date2YYYY_MM_DD: </td>
+          <td></td>
+          <td class="paramtype">(CPDate)&#160;</td>
+          <td class="paramname"><em>theDate</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="a25677f2b1325c3a79223879748b20944"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25677f2b1325c3a79223879748b20944">&#9670;&nbsp;</a></span>decVAFromGapPixels:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (float) decVAFromGapPixels: </td>
+          <td></td>
+          <td class="paramtype">(float)&#160;</td>
+          <td class="paramname"><em>pixels</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Given gap size in pixels, calculates decimla VA </p>
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="a32a4ee04627410544d3ea70949612f34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32a4ee04627410544d3ea70949612f34">&#9670;&nbsp;</a></span>decVAfromLogMAR:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (float) decVAfromLogMAR: </td>
+          <td></td>
+          <td class="paramtype">(float)&#160;</td>
+          <td class="paramname"><em>logMAR</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>And the inverse </p>
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="a40d758756862c87998a4b1a0e17bb703"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40d758756862c87998a4b1a0e17bb703">&#9670;&nbsp;</a></span>degreeFromPixel:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (float) degreeFromPixel: </td>
+          <td></td>
+          <td class="paramtype">(float)&#160;</td>
+          <td class="paramname"><em>pixel</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Convert pixels to degrees </p>
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="a7eba1129db4a3229d6cf59bea45ee692"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7eba1129db4a3229d6cf59bea45ee692">&#9670;&nbsp;</a></span>devicegrayFromLuminance:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (float) devicegrayFromLuminance: </td>
+          <td></td>
+          <td class="paramtype">(float)&#160;</td>
+          <td class="paramname"><em>luminance</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>scale transformations luminance ⇄ devicegray contrast: -100 …&#160;100 (both for Michelson &amp; Weber) “devicegray": 0 … 1 AFTER gamma correction
+"luminance": (0…1) as "normalised" luminance as would be measured in cd/m² </p>
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="aa33b1d650a13b63385f30808aabff11b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa33b1d650a13b63385f30808aabff11b">&#9670;&nbsp;</a></span>fullScreenOn:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (void) fullScreenOn: </td>
+          <td></td>
+          <td class="paramtype">(BOOL)&#160;</td>
+          <td class="paramname"><em>onOff</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Switching to/from fullscreen. That was quite difficult to figure out </p>
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="ae31be74d49cbadf93896d7733ac25369"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae31be74d49cbadf93896d7733ac25369">&#9670;&nbsp;</a></span>gapPixelsFromDecVA:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (float) gapPixelsFromDecVA: </td>
+          <td></td>
+          <td class="paramtype">(float)&#160;</td>
+          <td class="paramname"><em>decVA</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>And the inverse </p>
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="a3f94b5c8872c666a729d9809d8c69f8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f94b5c8872c666a729d9809d8c69f8e">&#9670;&nbsp;</a></span>getBrightnessViaCSSfromColor:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (float) getBrightnessViaCSSfromColor: </td>
+          <td></td>
+          <td class="paramtype">(CPColor)&#160;</td>
+          <td class="paramname"><em>aColor</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the brightness component given a CPColor </p>
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="a03067d81ff251297bac3fe52da4cdbe7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03067d81ff251297bac3fe52da4cdbe7">&#9670;&nbsp;</a></span>isFullScreen</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (BOOL) isFullScreen </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="af66175acbcf155f4bed4011bd56cc9ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af66175acbcf155f4bed4011bd56cc9ed">&#9670;&nbsp;</a></span>isOdd:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (BOOL) isOdd: </td>
+          <td></td>
+          <td class="paramtype">(int)&#160;</td>
+          <td class="paramname"><em>i</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
 <a id="a2841d4dc2b0b3910fcde6a7c165096e1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2841d4dc2b0b3910fcde6a7c165096e1">&#9670;&nbsp;</a></span>limit01:</h2>
 
@@ -171,6 +815,7 @@ Class Methods</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>limits the input value to lie between 0 and 1 </p>
 
 <p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
 
@@ -215,13 +860,14 @@ Class Methods</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>limits the input value to lie between 2 values </p>
 
 <p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
 
 </div>
 </div>
-<a id="af66175acbcf155f4bed4011bd56cc9ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af66175acbcf155f4bed4011bd56cc9ed">&#9670;&nbsp;</a></span>isOdd:</h2>
+<a id="a61d95c178437db914b7a69c92c04cd0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61d95c178437db914b7a69c92c04cd0f">&#9670;&nbsp;</a></span>logMARfromDecVA:</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -230,205 +876,39 @@ Class Methods</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">+ (BOOL) isOdd: </td>
-          <td></td>
-          <td class="paramtype">(int)&#160;</td>
-          <td class="paramname"><em>i</em></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="aa33b1d650a13b63385f30808aabff11b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa33b1d650a13b63385f30808aabff11b">&#9670;&nbsp;</a></span>fullScreenOn:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (void) fullScreenOn: </td>
-          <td></td>
-          <td class="paramtype">(BOOL)&#160;</td>
-          <td class="paramname"><em>onOff</em></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="a03067d81ff251297bac3fe52da4cdbe7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a03067d81ff251297bac3fe52da4cdbe7">&#9670;&nbsp;</a></span>isFullScreen</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (BOOL) isFullScreen </td>
-          <td></td>
-          <td class="paramname"></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="ae9069c7b8bdb5c181be5620f4427386a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae9069c7b8bdb5c181be5620f4427386a">&#9670;&nbsp;</a></span>copyString2ClipboardWithDialog:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (void) copyString2ClipboardWithDialog: </td>
-          <td></td>
-          <td class="paramtype">(CPString)&#160;</td>
-          <td class="paramname"><em>s</em></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="ab86bf2ac57c7e29767d5e82c955ffcad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab86bf2ac57c7e29767d5e82c955ffcad">&#9670;&nbsp;</a></span>copyString2Clipboard:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (void) copyString2Clipboard: </td>
-          <td></td>
-          <td class="paramtype">(CPString)&#160;</td>
-          <td class="paramname"><em>s</em></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="abd12d56261e330f499061102f43ad3ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd12d56261e330f499061102f43ad3ba">&#9670;&nbsp;</a></span>date2YYYY_MM_DD:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (CPString) date2YYYY_MM_DD: </td>
-          <td></td>
-          <td class="paramtype">(CPDate)&#160;</td>
-          <td class="paramname"><em>theDate</em></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="aa7253302834ffb0596fef5e4ae29ded3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa7253302834ffb0596fef5e4ae29ded3">&#9670;&nbsp;</a></span>date2HH_MM_SS:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (CPString) date2HH_MM_SS: </td>
-          <td></td>
-          <td class="paramtype">(CPDate)&#160;</td>
-          <td class="paramname"><em>theDate</em></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="aa95bab65206da4def8596de5ba1e6377"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa95bab65206da4def8596de5ba1e6377">&#9670;&nbsp;</a></span>pixelFromDegree:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (float) pixelFromDegree: </td>
+          <td class="memname">+ (float) logMARfromDecVA: </td>
           <td></td>
           <td class="paramtype">(float)&#160;</td>
-          <td class="paramname"><em>degs</em></td>
+          <td class="paramname"><em>decVA</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Given decimal VA, returns equivalent LogMAR </p>
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="add64f49d813aed1dcddced7080b5363c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add64f49d813aed1dcddced7080b5363c">&#9670;&nbsp;</a></span>lowerLuminanceFromContrastLogCSWeber:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (float) lowerLuminanceFromContrastLogCSWeber: </td>
+          <td></td>
+          <td class="paramtype">(float)&#160;</td>
+          <td class="paramname"><em>logCSW</em></td>
           <td></td>
         </tr>
       </table>
@@ -443,8 +923,8 @@ Class Methods</h2></td></tr>
 
 </div>
 </div>
-<a id="a40d758756862c87998a4b1a0e17bb703"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40d758756862c87998a4b1a0e17bb703">&#9670;&nbsp;</a></span>degreeFromPixel:</h2>
+<a id="a251891da4e283d486e7b66389726d960"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a251891da4e283d486e7b66389726d960">&#9670;&nbsp;</a></span>lowerLuminanceFromContrastMilsn:</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -453,10 +933,66 @@ Class Methods</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">+ (float) degreeFromPixel: </td>
+          <td class="memname">+ (float) lowerLuminanceFromContrastMilsn: </td>
           <td></td>
           <td class="paramtype">(float)&#160;</td>
-          <td class="paramname"><em>pixel</em></td>
+          <td class="paramname"><em>contrast</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="a6497f2de028a921daf1d3fc2280728e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6497f2de028a921daf1d3fc2280728e8">&#9670;&nbsp;</a></span>luminanceFromDevicegray:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (float) luminanceFromDevicegray: </td>
+          <td></td>
+          <td class="paramtype">(float)&#160;</td>
+          <td class="paramname"><em>g</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
+<a id="ad5317dde491cedaf61a70ae56269dd02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5317dde491cedaf61a70ae56269dd02">&#9670;&nbsp;</a></span>makeFrameSquareFromWidth:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (void) makeFrameSquareFromWidth: </td>
+          <td></td>
+          <td class="paramtype">(CPView)&#160;</td>
+          <td class="paramname"><em>view</em></td>
           <td></td>
         </tr>
       </table>
@@ -499,6 +1035,35 @@ Class Methods</h2></td></tr>
 
 </div>
 </div>
+<a id="aa95bab65206da4def8596de5ba1e6377"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa95bab65206da4def8596de5ba1e6377">&#9670;&nbsp;</a></span>pixelFromDegree:</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (float) pixelFromDegree: </td>
+          <td></td>
+          <td class="paramtype">(float)&#160;</td>
+          <td class="paramname"><em>degs</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Convert degrees to pixels </p>
+
+<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
+
+</div>
+</div>
 <a id="aa885b2c6f5ef16ff47702191f6167688"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa885b2c6f5ef16ff47702191f6167688">&#9670;&nbsp;</a></span>pixelFromMillimeter:</h2>
 
@@ -513,118 +1078,6 @@ Class Methods</h2></td></tr>
           <td></td>
           <td class="paramtype">(float)&#160;</td>
           <td class="paramname"><em>inMM</em></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="a25677f2b1325c3a79223879748b20944"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25677f2b1325c3a79223879748b20944">&#9670;&nbsp;</a></span>decVAFromGapPixels:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (float) decVAFromGapPixels: </td>
-          <td></td>
-          <td class="paramtype">(float)&#160;</td>
-          <td class="paramname"><em>pixels</em></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="ae31be74d49cbadf93896d7733ac25369"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae31be74d49cbadf93896d7733ac25369">&#9670;&nbsp;</a></span>gapPixelsFromDecVA:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (float) gapPixelsFromDecVA: </td>
-          <td></td>
-          <td class="paramtype">(float)&#160;</td>
-          <td class="paramname"><em>decVA</em></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="a61d95c178437db914b7a69c92c04cd0f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61d95c178437db914b7a69c92c04cd0f">&#9670;&nbsp;</a></span>logMARfromDecVA:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (float) logMARfromDecVA: </td>
-          <td></td>
-          <td class="paramtype">(float)&#160;</td>
-          <td class="paramname"><em>decVA</em></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="a32a4ee04627410544d3ea70949612f34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a32a4ee04627410544d3ea70949612f34">&#9670;&nbsp;</a></span>decVAfromLogMAR:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (float) decVAfromLogMAR: </td>
-          <td></td>
-          <td class="paramtype">(float)&#160;</td>
-          <td class="paramname"><em>logMAR</em></td>
           <td></td>
         </tr>
       </table>
@@ -711,250 +1164,6 @@ Class Methods</h2></td></tr>
 
 </div>
 </div>
-<a id="a848ce903ba8c8a5624471343a3baa882"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a848ce903ba8c8a5624471343a3baa882">&#9670;&nbsp;</a></span>areNearlyEqual:and:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (BOOL) areNearlyEqual: </td>
-          <td></td>
-          <td class="paramtype">(float)&#160;</td>
-          <td class="paramname"><em>a</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">and:</td>
-          <td></td>
-          <td class="paramtype">(float)&#160;</td>
-          <td class="paramname"><em>b</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="ad5317dde491cedaf61a70ae56269dd02"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad5317dde491cedaf61a70ae56269dd02">&#9670;&nbsp;</a></span>makeFrameSquareFromWidth:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (void) makeFrameSquareFromWidth: </td>
-          <td></td>
-          <td class="paramtype">(CPView)&#160;</td>
-          <td class="paramname"><em>view</em></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="ac1ef7f0a708164be119f6009faa08538"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac1ef7f0a708164be119f6009faa08538">&#9670;&nbsp;</a></span>contrastMichelsonPercentFromL1:l2:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (float) contrastMichelsonPercentFromL1: </td>
-          <td></td>
-          <td class="paramtype">(float)&#160;</td>
-          <td class="paramname"><em>l1</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">l2:</td>
-          <td></td>
-          <td class="paramtype">(float)&#160;</td>
-          <td class="paramname"><em>l2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="acff324f95f82c2346a6b8d13da5c9d79"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acff324f95f82c2346a6b8d13da5c9d79">&#9670;&nbsp;</a></span>contrastWeberFromMichelsonPercent:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (float) contrastWeberFromMichelsonPercent: </td>
-          <td></td>
-          <td class="paramtype">(float)&#160;</td>
-          <td class="paramname"><em>inMichelsonPercent</em></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="a9d4452baa7c38d854a0b55ab5fd2bc62"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d4452baa7c38d854a0b55ab5fd2bc62">&#9670;&nbsp;</a></span>contrastMichelsonFromWeberPercent:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (float) contrastMichelsonFromWeberPercent: </td>
-          <td></td>
-          <td class="paramtype">(float)&#160;</td>
-          <td class="paramname"><em>inWeberPercent</em></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="a33eaa1562a3e57699483c5ab4ebbee43"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a33eaa1562a3e57699483c5ab4ebbee43">&#9670;&nbsp;</a></span>contrastLogCSWeberFromWeberPercent:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (float) contrastLogCSWeberFromWeberPercent: </td>
-          <td></td>
-          <td class="paramtype">(float)&#160;</td>
-          <td class="paramname"><em>weberPercent</em></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="a250a3bb5a1f2ea2e78be63d8a449c541"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a250a3bb5a1f2ea2e78be63d8a449c541">&#9670;&nbsp;</a></span>contrastWeberPercentFromLogCSWeber:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (float) contrastWeberPercentFromLogCSWeber: </td>
-          <td></td>
-          <td class="paramtype">(float)&#160;</td>
-          <td class="paramname"><em>logCS</em></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="a3f94b5c8872c666a729d9809d8c69f8e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3f94b5c8872c666a729d9809d8c69f8e">&#9670;&nbsp;</a></span>getBrightnessViaCSSfromColor:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (float) getBrightnessViaCSSfromColor: </td>
-          <td></td>
-          <td class="paramtype">(CPColor)&#160;</td>
-          <td class="paramname"><em>aColor</em></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
 <a id="ac56148f1775d11291dacb4102783d774"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac56148f1775d11291dacb4102783d774">&#9670;&nbsp;</a></span>testContrastConversion</h2>
 
@@ -968,146 +1177,6 @@ Class Methods</h2></td></tr>
           <td class="memname">+ (void) testContrastConversion </td>
           <td></td>
           <td class="paramname"></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="a7eba1129db4a3229d6cf59bea45ee692"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7eba1129db4a3229d6cf59bea45ee692">&#9670;&nbsp;</a></span>devicegrayFromLuminance:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (float) devicegrayFromLuminance: </td>
-          <td></td>
-          <td class="paramtype">(float)&#160;</td>
-          <td class="paramname"><em>luminance</em></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="a6497f2de028a921daf1d3fc2280728e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6497f2de028a921daf1d3fc2280728e8">&#9670;&nbsp;</a></span>luminanceFromDevicegray:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (float) luminanceFromDevicegray: </td>
-          <td></td>
-          <td class="paramtype">(float)&#160;</td>
-          <td class="paramname"><em>g</em></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="a251891da4e283d486e7b66389726d960"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a251891da4e283d486e7b66389726d960">&#9670;&nbsp;</a></span>lowerLuminanceFromContrastMilsn:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (float) lowerLuminanceFromContrastMilsn: </td>
-          <td></td>
-          <td class="paramtype">(float)&#160;</td>
-          <td class="paramname"><em>contrast</em></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="a68f475eedc4a23126531d80e4743998e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68f475eedc4a23126531d80e4743998e">&#9670;&nbsp;</a></span>upperLuminanceFromContrastMilsn:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (float) upperLuminanceFromContrastMilsn: </td>
-          <td></td>
-          <td class="paramtype">(float)&#160;</td>
-          <td class="paramname"><em>contrast</em></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="add64f49d813aed1dcddced7080b5363c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add64f49d813aed1dcddced7080b5363c">&#9670;&nbsp;</a></span>lowerLuminanceFromContrastLogCSWeber:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (float) lowerLuminanceFromContrastLogCSWeber: </td>
-          <td></td>
-          <td class="paramtype">(float)&#160;</td>
-          <td class="paramname"><em>logCSW</em></td>
           <td></td>
         </tr>
       </table>
@@ -1150,8 +1219,8 @@ Class Methods</h2></td></tr>
 
 </div>
 </div>
-<a id="a8fc51d6acde60121a87784a4f162598d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8fc51d6acde60121a87784a4f162598d">&#9670;&nbsp;</a></span>contrastMichelsonPercentFromDevicegray1:g2:</h2>
+<a id="a68f475eedc4a23126531d80e4743998e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68f475eedc4a23126531d80e4743998e">&#9670;&nbsp;</a></span>upperLuminanceFromContrastMilsn:</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1160,59 +1229,11 @@ Class Methods</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">+ (float) contrastMichelsonPercentFromDevicegray1: </td>
+          <td class="memname">+ (float) upperLuminanceFromContrastMilsn: </td>
           <td></td>
           <td class="paramtype">(float)&#160;</td>
-          <td class="paramname"><em>g1</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">g2:</td>
+          <td class="paramname"><em>contrast</em></td>
           <td></td>
-          <td class="paramtype">(id)&#160;</td>
-          <td class="paramname"><em>g2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_misc_8j_source.html#l00012">12</a> of file <a class="el" href="_misc_8j_source.html">Misc.j</a>.</p>
-
-</div>
-</div>
-<a id="a4943517da3c2e949b63e323997e49927"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4943517da3c2e949b63e323997e49927">&#9670;&nbsp;</a></span>contrastMichelsonPercentFromColor1:color2:</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (float) contrastMichelsonPercentFromColor1: </td>
-          <td></td>
-          <td class="paramtype">(float)&#160;</td>
-          <td class="paramname"><em>c1</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">color2:</td>
-          <td></td>
-          <td class="paramtype">(id)&#160;</td>
-          <td class="paramname"><em>c2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>

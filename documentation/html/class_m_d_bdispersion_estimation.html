@@ -99,36 +99,10 @@ Class Methods</h2></td></tr>
 <tr class="separator:a9fa00a8dd2baf032206f89a51041fdfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00013">13</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
-</div><h2 class="groupheader">Method Documentation</h2>
-<a id="a06ff78293988907cf81c15b855cc9956"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06ff78293988907cf81c15b855cc9956">&#9670;&nbsp;</a></span>initResultStatistics</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (void) initResultStatistics </td>
-          <td></td>
-          <td class="paramname"></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<div class="textblock"><p>Calculate the CI95 2021-04-22 begun </p>
 
 <p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00016">16</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
-
-</div>
-</div>
+</div><h2 class="groupheader">Method Documentation</h2>
 <a id="a9fa00a8dd2baf032206f89a51041fdfa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9fa00a8dd2baf032206f89a51041fdfa">&#9670;&nbsp;</a></span>calculateCIfromDF:guessingProbability:nSamples:</h2>
 
@@ -168,8 +142,9 @@ Class Methods</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>df is for data frame, inspired by R, here an array of 2-tupels {correct, lMar} It represents the full run info of presented acuity (float lMAR) and response (BOOL correct) That dataframe is composed in <a class="el" href="class_trial_history_controller.html">TrialHistoryController</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00016">16</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00019">19</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
 
 </div>
 </div>
@@ -218,13 +193,14 @@ Class Methods</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>A naive maximumfinder. Gradient climbers can fail because of very low likelihood values </p>
 
-<p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00051">51</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00059">59</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
 
 </div>
 </div>
-<a id="ae4a6b11dc38be71732c6d6536016addd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae4a6b11dc38be71732c6d6536016addd">&#9670;&nbsp;</a></span>threshEstimate(df)</h2>
+<a id="a06ff78293988907cf81c15b855cc9956"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06ff78293988907cf81c15b855cc9956">&#9670;&nbsp;</a></span>initResultStatistics</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -233,9 +209,8 @@ Class Methods</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">- (function threshEstimate(df)) </td>
+          <td class="memname">+ (void) initResultStatistics </td>
           <td></td>
-          <td class="paramtype">(df)&#160;</td>
           <td class="paramname"></td>
           <td></td>
         </tr>
@@ -247,63 +222,7 @@ Class Methods</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00060">60</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
-
-</div>
-</div>
-<a id="a40b09b7ce968efe83e845aa917559503"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40b09b7ce968efe83e845aa917559503">&#9670;&nbsp;</a></span>pest2logMAR(pestVal)</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (function pest2logMAR(pestVal)) </td>
-          <td></td>
-          <td class="paramtype">(pestVal)&#160;</td>
-          <td class="paramname"></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00073">73</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
-
-</div>
-</div>
-<a id="abbc3722f2f5f562f5d4c074885a12b1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abbc3722f2f5f562f5d4c074885a12b1e">&#9670;&nbsp;</a></span>logMAR2pest(lmar)</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (function logMAR2pest(lmar)) </td>
-          <td></td>
-          <td class="paramtype">(lmar)&#160;</td>
-          <td class="paramname"></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00076">76</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00019">19</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
 
 </div>
 </div>
@@ -340,80 +259,9 @@ Class Methods</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00084">84</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
-
-</div>
-</div>
-<a id="ab872101d55118c5b14244ffea5f63805"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab872101d55118c5b14244ffea5f63805">&#9670;&nbsp;</a></span>probCorrectGivenLogMAR</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (function) probCorrectGivenLogMAR </td>
-          <td></td>
-          <td class="paramtype">(guessingProbability)&#160;</td>
-          <td class="paramname"></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">(inflectionPoint)&#160;</td>
-          <td class="paramname"></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">(lMar)&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p>likelihood stuff </p>
 
 <p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00099">99</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
-
-</div>
-</div>
-<a id="ae32988d616f8a20217ca4502e8260ee4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae32988d616f8a20217ca4502e8260ee4">&#9670;&nbsp;</a></span>testLogistic(guessingProbability)</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (function testLogistic(guessingProbability)) </td>
-          <td></td>
-          <td class="paramtype">(guessingProbability)&#160;</td>
-          <td class="paramname"></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00108">108</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
 
 </div>
 </div>
@@ -457,7 +305,109 @@ Class Methods</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00111">111</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00130">130</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
+
+</div>
+</div>
+<a id="abbc3722f2f5f562f5d4c074885a12b1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbc3722f2f5f562f5d4c074885a12b1e">&#9670;&nbsp;</a></span>logMAR2pest(lmar)</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (function logMAR2pest(lmar)) </td>
+          <td></td>
+          <td class="paramtype">(lmar)&#160;</td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00090">90</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
+
+</div>
+</div>
+<a id="a40b09b7ce968efe83e845aa917559503"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40b09b7ce968efe83e845aa917559503">&#9670;&nbsp;</a></span>pest2logMAR(pestVal)</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (function pest2logMAR(pestVal)) </td>
+          <td></td>
+          <td class="paramtype">(pestVal)&#160;</td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Conversion functions The term "pest" refers to a 0…1 scale of the <a class="el" href="class_thresholder.html">Thresholder</a>. Carried over from old FrACT. </p>
+
+<p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00087">87</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
+
+</div>
+</div>
+<a id="ab872101d55118c5b14244ffea5f63805"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab872101d55118c5b14244ffea5f63805">&#9670;&nbsp;</a></span>probCorrectGivenLogMAR</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (function) probCorrectGivenLogMAR </td>
+          <td></td>
+          <td class="paramtype">(guessingProbability)&#160;</td>
+          <td class="paramname"></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">(inflectionPoint)&#160;</td>
+          <td class="paramname"></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">(lMar)&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Logistic function for nAFC tasks, lMar on the kWorstLogMAR…kBestLogMAR scale lMar=kWorstLogMAR: ≈1.0, lMar=kBestLogMAR: guessingProb </p>
+
+<p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00116">116</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
 
 </div>
 </div>
@@ -484,8 +434,67 @@ Class Methods</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>For testing, not used in production </p>
 
-<p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00119">119</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00141">141</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
+
+</div>
+</div>
+<a id="ae32988d616f8a20217ca4502e8260ee4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae32988d616f8a20217ca4502e8260ee4">&#9670;&nbsp;</a></span>testLogistic(guessingProbability)</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (function testLogistic(guessingProbability)) </td>
+          <td></td>
+          <td class="paramtype">(guessingProbability)&#160;</td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Logistic function for nAFC tasks, x on a linear 0…1 scale x=0: below threshold, =guess; x=1: above threshold, =1 </p>
+
+<p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00127">127</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
+
+</div>
+</div>
+<a id="ae4a6b11dc38be71732c6d6536016addd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4a6b11dc38be71732c6d6536016addd">&#9670;&nbsp;</a></span>threshEstimate(df)</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (function threshEstimate(df)) </td>
+          <td></td>
+          <td class="paramtype">(df)&#160;</td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">implementation</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The fit to the psychometric function is done in stages, because it can be VERY shallow </p>
+
+<p class="definition">Definition at line <a class="el" href="_m_d_bdispersion_estimation_8j_source.html#l00071">71</a> of file <a class="el" href="_m_d_bdispersion_estimation_8j_source.html">MDBdispersionEstimation.j</a>.</p>
 
 </div>
 </div>

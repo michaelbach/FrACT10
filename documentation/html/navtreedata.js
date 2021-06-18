@@ -49,7 +49,7 @@ var NAVTREEINDEX =
 [
 "_alternatives_generator_8j.html",
 "class_fract_controller.html",
-"class_settings.html#a437172de659c950f09bc29058f3d74a3"
+"functions_func_p.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
