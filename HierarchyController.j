@@ -3,9 +3,6 @@ This file is part of FrACT10, a vision test battery.
 Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
 
 HierarchyController.j
-
-Created by Bach on 18.07.2017
-Superclass to allow communication between "AppController" and "FractController"
  
 */
 
@@ -16,6 +13,10 @@ Superclass to allow communication between "AppController" and "FractController"
 @import "Settings.j"
 
 
+/**
+ Superclass to allow communication between "AppController" and "FractController"
+ Created on 18.07.2017
+ */
 @implementation HierarchyController: CPWindowController {
     HierarchyController parentController @accessors;
     CPString resultString @accessors;

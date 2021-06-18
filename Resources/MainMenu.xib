@@ -1238,7 +1238,6 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
             </items>
             <point key="canvasLocation" x="-64" y="-242"/>
         </menu>
-        <userDefaultsController representsSharedInstance="YES" id="izh-pU-csC"/>
         <window title="FrACT10 – Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" deferred="NO" hidesOnDeactivate="YES" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="MF5-y3-Ol0" userLabel="settingsPanel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES" fullSizeContentView="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
@@ -2708,6 +2707,7 @@ CQ
             </view>
             <point key="canvasLocation" x="-44" y="738"/>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="izh-pU-csC"/>
         <window title="Letter acuity – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="1zz-Aw-bf2" userLabel="responseinfoPanelAcuityL" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>

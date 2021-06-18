@@ -4,13 +4,13 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 Optotypes.j
 
-2020-08-17: This class manages all optotypes (letters, E, C, …)
-
 */
 
 
-
-
+/**
+ This class manages all optotypes (letters, E, C, …)
+ Begun: 2020-08-17
+ */
 @implementation Optotypes: CPObject {
     CPColor _colOptotypeFore, _colOptotypeBack;
     CGContext _cgc;
@@ -28,6 +28,9 @@ Optotypes.j
 }
 
 
+/**
+ this will be called from all tests and informs us here about the context
+ */
 - (void) setCgc: (CGContext) cgc colFore: (CPColor) colFore colBack: (CPColor) colBack {//console.info("setCgc");
     _cgc = cgc;
     _colOptotypeFore = colFore;  _colOptotypeBack = colBack;
@@ -49,7 +52,9 @@ Optotypes.j
 }
 
 
-// general drawing
+/**
+ A number of general drawing helpers
+ */
 - (void) strokeCircleAtX: (float)x y: (float)y radius: (float) r { //console.info("MBIllus>strokeCircleAtX");
     CGContextStrokeEllipseInRect(_cgc, CGRectMake(x - r, y - r, 2 * r, 2 * r));
 }
@@ -108,7 +113,9 @@ Optotypes.j
 }
 
 
-// draw optotypes (letters and Es)p on a -5…+5 coordinate system
+/**
+ Draw optotypes (letters and Es) on a -5…+5 coordinate system
+*/
 - (void) drawPolygon: (float) p withD: (float) d { //console.info("FractControllerAcuityE>drawPolygon");
     CGContextSetFillColor(_cgc, _colOptotypeFore);
     CGContextBeginPath(_cgc);
@@ -124,9 +131,6 @@ Optotypes.j
 }
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 - (void) drawLandoltWithGapInPx: (float) gap landoltDirection: (int) direction { //console.info("OTLandolts>drawLandoltWithGapInPx", gap, direction);
     CGContextSetFillColor(_cgc, _colOptotypeFore);
     [self fillCircleAtX: 0 y: 0 radius: 2.5 * gap];
@@ -138,9 +142,6 @@ Optotypes.j
     if (direction >= 0) CGContextFillRect(_cgc, rct);
     CGContextRotateCTM(_cgc, -rot);
 }
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 - (void)drawSloanCWithGapInPx: (float) gap { //console.info("FractControllerAcuityLetters>drawSloanCWithGapInPx");

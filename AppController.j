@@ -61,7 +61,7 @@ CPPushOnPushOffButton = 1;
     FractController currentFractController;
     //float angleAlpha @accessors, angleBeta @accessors, angleGamma @accessors;
     TestIDType testID;
-    BOOL settingsNeedNewDefaults;
+    BOOL settingsNeededNewDefaults;
     BOOL runAborted @accessors;
     BOOL is4orientations @accessors;
     Sound sound;
@@ -106,9 +106,9 @@ CPPushOnPushOffButton = 1;
 /**
  Our main initialisation begins here
  */
-- (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("applicationDidFinishLaunching");
+- (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>applicationDidFinishLaunching");
     'use strict';
-    settingsNeedNewDefaults = [Settings needNewDefaults];
+    settingsNeededNewDefaults = [Settings needNewDefaults];
     [Settings checkDefaults]; //important to do this early, otherwise the updates don't populate the settings panel – DOES NOT HELP, unfortunately
     [[self window] setFullPlatformWindow: YES];
     [[self window] setBackgroundColor: [CPColor colorWithWhite: 0.99 alpha: 1]];
@@ -421,14 +421,16 @@ function existsUrl(url) {
 
 - (IBAction) buttonSettings_action: (id) sender { //console.info("AppController>buttonSettings");
     [Settings checkDefaults];  [settingsPanel makeKeyAndOrderFront: self];
-    if (settingsNeedNewDefaults) {
-        settingsNeedNewDefaults = NO;
+    if (settingsNeededNewDefaults) {
+        settingsNeededNewDefaults = NO;
         var alert = [CPAlert alertWithMessageText: "WARNING"
-                                    defaultButton: "OK" alternateButton: nil otherButton: nil
-                        informativeTextWithFormat: "\r\rAll settings were set to their default values.\r\rIt is best to »reload« now to avoid some fields seeming empty.\r\r"];
+                                    defaultButton: "OK, reload." alternateButton: "Continue, no reload." otherButton: nil
+                        informativeTextWithFormat: "\r\rAll settings were set to their default values.\r\rIt is best to »reload« now to avoid some fields seeming empty.\rThis is only needed once.\r\r"];
         [alert runModalWithDidEndBlock: function(alert, returnCode) {
-            // we could to an automatic reload here, but seems too intrusive
-            //window.location.reload(false); // the reload makes sure we see no empty fields
+            switch (returnCode) {
+                case 0: window.location.reload(false);  break;
+            }
+
         }];
     }
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyForeBackColorsFromSettings" object: nil];

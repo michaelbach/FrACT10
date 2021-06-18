@@ -18,6 +18,12 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
+/**
+ FractController
+ 
+ The template controller for all tests. It inherits from HierarchyController
+ to make communication with AppController easier.
+ */
 @implementation FractController: HierarchyController {
     int iTrial, nTrials, nAlternatives;
     StateType state;
@@ -89,6 +95,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
+/**
+ This is a hook, for instance for the initial 4 acuity steps following DIN/ISO
+ */
 - (void) modifyDeviceStimulus { //console.info("FractController>modifyDeviceStimulus");
 }
 
@@ -109,6 +118,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
+/**
+ Standard things for all tests, including the display transform
+ */
 - (void) prepareDrawing { // console.info("FractController>prepareDrawing");
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, colOptotypeBack);
@@ -128,7 +140,10 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
-- (void) prepareDrawingTransformUndo { // will be needed for TAO
+/**
+ At this time we have to undo the transform, so that the buttons in TAO are ok
+ */
+- (void) prepareDrawingTransformUndo {
     switch ([Settings displayTransform]) { // opposite sequence than above
         case 1: CGContextScaleCTM(cgc, -1, 1);  break;
         case 2: CGContextScaleCTM(cgc, 1, -1);  break;
@@ -138,7 +153,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
-// this draws the trial info after everything else has been drawn
+/**
+ Drawing the trial info after everything else has been drawn
+ */
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
     if ([Settings trialInfo]) {
         CGContextSetTextPosition(cgc, 10, 10); // we assume here no transformed CGContext
@@ -238,6 +255,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         }
     }
 }
+/**
+ After a brief delay, to allow redraw of the main window, we calculate the CI95.
+ */
 - (void) onTimeoutCI95: (CPTimer) timer { //console.info("FractController>onTimeoutCI95");
     var historyResults = [trialHistoryController composeInfo4CI];
     var ciResults = [MDBdispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: 10000][0];
@@ -251,6 +271,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
+/**
+ Here's were we read the response keys
+ */
 - (void) keyDown: (CPEvent) theEvent { //console.info("FractController>keyDown");
     responseKeyChar = [[[theEvent characters] characterAtIndex: 0] uppercaseString];
     responseKeyCode = [theEvent keyCode];
@@ -262,6 +285,10 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
+/**
+ "stimThresholderunits" are on a linear 0…1 scale
+ "Deviceunits" are the corresponding pixels
+*/
 - (float) stimThresholderunitsFromDeviceunits: (float) ntve {
     console.info("FractController>stimThresholderunitsFromDeviceunits OVERRIDE THIS!");
     return ntve;
@@ -281,7 +308,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
-// calculates ≤ or ≥ as needed. Needs to be inverted for LogMAR
+/**
+ Calculate ≤ or ≥ as needed. Needs to be inverted for LogMAR
+ */
 - (CPString) rangeStatusIndicatorStringInverted: (BOOL) invert {
     var sFloor = kRangeLimitValueAtFloor, sCeil = kRangeLimitValueAtCeiling, s = "";
     if (invert) {
@@ -300,7 +329,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
-// used by acuity & contrast
+/**
+ Generic part of the export string, used by both acuity & contrast
+ */
 - (CPString) generalComposeExportString {//console.info("FractController>generalComposeExportString");
     var s = "", now = [CPDate date];
     s += "Vs" + tab + [Settings versionExportFormat];

@@ -4,7 +4,6 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 TrialHistoryController.j
 
-2021-01-06 This class manages the FrACT10 trial history that contains the full run info
 */
 
 
@@ -13,6 +12,9 @@ TrialHistoryController.j
 @import "Globals.j"
 
 
+/**
+ 2021-01-06 This class manages the FrACT10 trial history that collects the full run info
+*/
 @implementation TrialHistoryController: CPObject {
     id _trialHistory;
     int _currentIndex, _nTrials;
@@ -65,6 +67,9 @@ TrialHistoryController.j
 }
 
 
+/**
+ Here we collect all info in a dataframe that is needed for the CI95 calculation
+ */
 - (id) composeInfo4CI {
     var trialsDF = [];
     for (var i = 0; i < _trialHistory.length; ++i) {

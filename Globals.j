@@ -4,10 +4,13 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 Globals.j
 
-Created by Bach on 2021-01-07
 */
 
 
+/**
+ Since we do not have constants in Objective-J…
+ Created on 2021-01-07
+ */
 tab = "\t";
 crlf = "\n";
 

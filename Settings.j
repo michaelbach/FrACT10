@@ -10,7 +10,7 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2021-06-15"
+#define kVersionDateOfFrACT "2021-06-18"
 #define kVersionStringOfFract "Version 10.0"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
@@ -22,6 +22,8 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2021-06-18 added more documentation
+2021-06-16 better strategy when missing the Settings file to avoid seemingly empty fields in Settings. Found no way so far to re-populate the empty textfields w/o reload.
 2021-06-15 begin documenting with "doxygen". No code chanes, only comments and pseudo-comments
 2021-06-08 update tooltips after adding "automatic" to decimal mark char, corrected some other tooltips,
             changed wording after automatic settings default
@@ -150,7 +152,7 @@ Created by mb on July 15, 2015.
 // helpers:
 // if "set == true" the default is set,
 // otherwise check if outside range or nil, if so set to default
-+ (BOOL) chckBool: (BOOL) val def: (BOOL) def set: (BOOL) set { //console.info("chckBool ", val);
++ (BOOL) chckBool: (BOOL) val def: (BOOL) def set: (BOOL) set { //console.info("chckBool ", val, "set: ", set);
     if (!set && !isNaN(val))  return val;
     return def;
 }

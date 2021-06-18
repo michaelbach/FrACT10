@@ -12,18 +12,30 @@ Misc.j
 @import "Settings.j"
 
 
+/**
+ A collection of "miscellaneous" function.
+ All a class variables for easy global access
+ */
 @implementation Misc: CPObject {
 }
 
 
-+ (int) iRandom: (int) i { // random integer from 0 to i-1
+/**
+ Returns random integer from 0 to i-1 */
++ (int) iRandom: (int) i {
     return Math.floor(Math.random() * i);
 }
 
 
-+ (float) limit01: (float) theValue { // limit the input value to lie between 0 and 1
+/**
+ limits the input value to lie between 0 and 1
+ */
++ (float) limit01: (float) theValue {
     return [self limit: theValue lo: 0 hi: 1];
 }
+/**
+ limits the input value to lie between 2 values
+ */
 + (float) limit: (float) theValue lo: (float) lo hi: (float) hi { // limit the input value to lie between lo and hi
     if (theValue < lo) return lo;
     if (theValue > hi) return hi;
@@ -36,6 +48,9 @@ Misc.j
 }
 
 
+/**
+ Switching to/from fullscreen. That was quite difficult to figure out
+ */
 + (void) fullScreenOn: (BOOL) onOff {
     var element = document.documentElement;
     if (onOff) {
@@ -83,11 +98,14 @@ Misc.j
         }
     }];
 }
+/**
+ Utility to copy a string to the clipboard which surprisingly now works in all(?) modern browsers
+ */
 + (void) copyString2Clipboard: (CPString) s { //console.info("AppController>copyString2Clipboard: ", s);
     try {
         navigator.clipboard.writeText(s); // only over https
     }
-    catch(e) { // avoid global error catcher
+    catch(e) { // avoid the global error catcher
         console.info("Error copying result to clipboard: ", e);  // alert(e);
     }
 }
@@ -98,17 +116,24 @@ Misc.j
 }
 
 
+/**
+ ISO date formatter
+ */
 + (CPString) date2HH_MM_SS: (CPDate) theDate {
     return [CPString stringWithFormat:@"%02d:%02d:%02d", theDate.getHours(), theDate.getMinutes(), theDate.getSeconds()];
 }
 
 
-//degree2pixel
-//return millimeter2pixel(Math.tan(inDegree * Math.PI / 180.0) * Prefs.distanceInCM.n * 10.0);
+/**
+ Convert degrees to pixels
+ */
 + (float) pixelFromDegree: (float) degs { //console.info("pixelFromDegree");
     var mm = Math.tan(degs * Math.PI / 180.0) * 10.0 * [Settings distanceInCM];
     return [self pixelFromMillimeter: mm];
 }
+/**
+ Convert pixels to degrees
+ */
 + (float) degreeFromPixel: (float) pixel { //console.info("Misc>pixelFromDegree");
     return 180.0 / Math.PI * Math.atan2([self millimeterFromPixel: pixel], [Settings distanceInCM] * 10.0);
 }
@@ -122,17 +147,29 @@ Misc.j
 }
 
 
+/**
+ Given gap size in pixels, calculates decimla VA
+ */
 + (float) decVAFromGapPixels: (float) pixels { // "decVA": visual acuity in decimal format
     return 1.0 / 60.0 / [self degreeFromPixel: pixels];
 }
+/**
+ And the inverse
+ */
 + (float) gapPixelsFromDecVA: (float) decVA {
     return [self pixelFromDegree: (1.0 / 60.0 / decVA)];
 }
 
 
+/**
+ Given decimal VA, returns equivalent LogMAR
+ */
 + (float) logMARfromDecVA: (float) decVA {
     return -Math.log10(decVA);
 }
+/**
+ And the inverse
+ */
 + (float) decVAfromLogMAR: (float) logMAR {
     return -Math.pow(10, logMAR);
 }
@@ -162,6 +199,9 @@ Misc.j
 }
 
 
+/**
+ Given an epsilon, we test for "equality" of 2 floating point numbers
+ */
 + (BOOL) areNearlyEqual: (float)a and: (float) b {
     var epsilon = 1e-9, diff = Math.abs(a - b), magnitude = Math.abs(a) + Math.abs(b);
     return (diff / magnitude) < epsilon;
@@ -174,16 +214,17 @@ Misc.j
 }
 
 
-//////////////////////////////////////
-// Michelson ←→ Weber contrast.
-// both contrasts are defined on a -100…100 scale
-// Weber is modified so it is also point-symmetric to zero like Michelson
-
+/**
+ Michelson ←→ Weber contrast.
+ both contrasts are defined on a -100…100 scale
+ Weber is modified so it is also point-symmetric to zero like Michelson
+ */
 + (float) contrastMichelsonPercentFromL1: (float) l1 l2: (float) l2 {
     return -(l1 - l2) / (l1 + l2) * 100;
 }
-
-
+/**
+ Transform Michelson → Weber
+ */
 + (float) contrastWeberFromMichelsonPercent: (float) inMichelsonPercent {
     var inMichelson = inMichelsonPercent /= 100,  outWeber;
     if (inMichelson >= 0) {
@@ -196,12 +237,19 @@ Misc.j
     // console.info("contrastWeberFromMichelsonPercent: ", inMichelson * 100, outWeber * 100);
     return outWeber * 100;
 }
+/**
+ And the inverse
+ */
 + (float) contrastMichelsonFromWeberPercent: (float) inWeberPercent {
     var inWeber = inWeberPercent /= 100;
     var outMichelson = inWeber / (2 - inWeber);
     return outMichelson * 100;
 }
     
+
+/**
+ Transform Weber → logCSWeber
+ */
 + (float) contrastLogCSWeberFromWeberPercent: (float) weberPercent {
     weberPercent /= 100;
     var logCS;
@@ -212,11 +260,18 @@ Misc.j
     }
     return logCS;
 }
+/**
+ And the inverse
+ */
 + (float) contrastWeberPercentFromLogCSWeber: (float) logCS {
     var weberPercent = 100 * Math.pow(10, -logCS);
     return weberPercent;
 }
 
+
+/**
+ Returns the brightness component given a CPColor
+ */
 + (float) getBrightnessViaCSSfromColor: (CPColor) aColor {
     return [[CPColor colorWithCSSString: [aColor cssString]] brightnessComponent];
 }
@@ -230,14 +285,12 @@ Misc.j
 }
 
 
-//////////////////////////////////////////////////////////////////
-////////////////////////////////////// luminance <—> devicegray
-// scales
-// contrast: -100 … 100 (both for Michelson & Weber)
-// “devicegray": 0 … 1 AFTER gamma correction
-// "luminance": (0…1) as "normalised" luminance as would be measured in cd/m²
-//////////////////////////////////////////////////////////////////
-
+/**
+ scale transformations luminance <—> devicegray
+ contrast: -100 … 100 (both for Michelson & Weber)
+ “devicegray": 0 … 1 AFTER gamma correction
+ "luminance": (0…1) as "normalised" luminance as would be measured in cd/m²
+ */
 + (float) devicegrayFromLuminance: (float) luminance {
     return Math.pow(luminance, 1.0 / [Settings gammaValue]);
 }

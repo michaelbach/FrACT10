@@ -4,12 +4,15 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 MDBdispersionEstimation.j
 
-2021-04-22  begun
 */
 
 @import "MDBsimplestatistics.j"
 
 
+/**
+ Calculate the CI95
+ 2021-04-22  begun
+ */
 @implementation MDBdispersionEstimation
 
 
@@ -29,9 +32,12 @@ var kWorstLogMAR, kBestLogMAR, kGuess, testDF; // there are no class properties 
 }
 
 
+/**
+ df is for data frame, inspired by R, here an array of 2-tupels {correct, lMar}
+ It represents the full run info of presented acuity (float lMAR) and response (BOOL correct)
+ That dataframe is composed in TrialHistoryController
+ */
 + (id) calculateCIfromDF: (id) df guessingProbability: (float) guessingProbability nSamples: (int) nSamples {
-    // df is for data frame, inspired by R, here an array of 2-tupels {correct, lMar}
-    // It represents the full run info of presented acuity (float lMAR) and response (BOOL correct)
     kGuess = guessingProbability; // as global parameter to speed up
     nSamples = nSamples || 1000; // default value
     var threshSamples = [nSamples]; // this array will hold all bootstrap results
@@ -47,7 +53,9 @@ var kWorstLogMAR, kBestLogMAR, kGuess, testDF; // there are no class properties 
 }
 
 
-// a naive maximumfinder. Gradient climbers can fail because of very low likelihood values
+/**
+ A naive maximumfinder. Gradient climbers can fail because of very low likelihood values
+ */
 function findMaxLlhInRange(df, r1, r2, delta) {
     var lMax = -1, lMarMax, lMar = r1;
     while (lMar < r2) {
@@ -57,6 +65,9 @@ function findMaxLlhInRange(df, r1, r2, delta) {
     }
     return lMarMax;
 }
+/**
+ The fit to the psychometric function is done in stages, because it can be VERY shallow
+ */
 function threshEstimate(df) { // console.info("threshEstimate");
     var delta = 0.5; // initial LogMAR precision for rough homing-in
     var lMarMax = findMaxLlhInRange(df, kBestLogMAR, kWorstLogMAR, delta);
@@ -69,7 +80,10 @@ function threshEstimate(df) { // console.info("threshEstimate");
 }
 
 
-// the term "pest" refers to a 0…1 scale. Carried over from old FrACT.
+/**
+ Conversion functions
+ The term "pest" refers to a 0…1 scale of the Thresholder. Carried over from old FrACT.
+ */
 function pest2logMAR(pestVal) {
     return kWorstLogMAR - pestVal * (kWorstLogMAR - kBestLogMAR);
 }
@@ -78,9 +92,10 @@ function logMAR2pest(lmar) {
 }
 
 
-//////////////////////////////
-// likelihood stuff
-//////////////////////////////
+
+/**
+ likelihood stuff
+ */
 function likelihoodFunc(thresh, df) {
     var len = df.length
     //var llh = probCorrectGivenLogMAR(kGuess, thresh, kWorstLogMAR); // nearly 1. Fix right end.
@@ -94,8 +109,10 @@ function likelihoodFunc(thresh, df) {
 }
 
 
-// Logistic function for nAFC tasks, lMar on the kWorstLogMAR…kBestLogMAR scale
-// lMar=kWorstLogMAR: ≈1.0, lMar=kBestLogMAR: guessingProb
+/**
+ Logistic function for nAFC tasks, lMar on the kWorstLogMAR…kBestLogMAR scale
+ lMar=kWorstLogMAR: ≈1.0, lMar=kBestLogMAR: guessingProb
+ */
 function probCorrectGivenLogMAR(guessingProbability, inflectionPoint, lMar) {
     lMar = logMAR2pest(lMar);  inflectionPoint = logMAR2pest(inflectionPoint);
     return logisticFun(guessingProbability, inflectionPoint, lMar);
@@ -103,8 +120,10 @@ function probCorrectGivenLogMAR(guessingProbability, inflectionPoint, lMar) {
 
 
 
-// Logistic function for nAFC tasks, x on a linear 0…1 scale
-// x=0: below threshold, =guess; x=1: above threshold, =1
+/**
+Logistic function for nAFC tasks, x on a linear 0…1 scale
+x=0: below threshold, =guess; x=1: above threshold, =1
+ */
 function testLogistic(guessingProbability) {
     for (var i = 0; i < 10; i++)  console.info(i / 10, logisticFun(0.125, 0.5, i / 10));
 }
@@ -116,6 +135,9 @@ function logisticFun(guessingProbability, inflectionPoint, x) {
 }
 
 
+/**
+ For testing, not used in production
+ */
 function selectTestDF(selector) {
     selector = selector || 0;
     switch (selector) {
@@ -180,6 +202,5 @@ function selectTestDF(selector) {
                       {lMar: 1.159, correct: true}];
             break;
     }
-    
 }
 @end
