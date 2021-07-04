@@ -106,10 +106,15 @@ CPPushOnPushOffButton = 1;
 /**
  Our main initialisation begins here
  */
+- (id) init { // console.info("AppController>init");
+    settingsNeededNewDefaults = [Settings needNewDefaults];
+    [Settings checkDefaults]; //important to do this very early, before nib loading, otherwise the updates don't populate the settings panel – DOES NOT HELP, unfortunately
+    return self;
+}
+
+
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>applicationDidFinishLaunching");
     'use strict';
-    settingsNeededNewDefaults = [Settings needNewDefaults];
-    [Settings checkDefaults]; //important to do this early, otherwise the updates don't populate the settings panel – DOES NOT HELP, unfortunately
     [[self window] setFullPlatformWindow: YES];
     [[self window] setBackgroundColor: [CPColor colorWithWhite: 0.99 alpha: 1]];
     [CPMenu setMenuBarVisible: NO];
@@ -424,14 +429,9 @@ function existsUrl(url) {
     if (settingsNeededNewDefaults) {
         settingsNeededNewDefaults = NO;
         var alert = [CPAlert alertWithMessageText: "WARNING"
-                                    defaultButton: "OK, reload." alternateButton: "Continue, no reload." otherButton: nil
-                        informativeTextWithFormat: "\r\rAll settings were set to their default values.\r\rIt is best to »reload« now to avoid some fields seeming empty.\rThis is only needed once.\r\r"];
-        [alert runModalWithDidEndBlock: function(alert, returnCode) {
-            switch (returnCode) {
-                case 0: window.location.reload(false);  break;
-            }
-
-        }];
+                                    defaultButton: "OK" alternateButton: nil otherButton: nil
+                        informativeTextWithFormat: "\r\rAll settings were (re)set to their default values.\r\r"];
+        [alert runModalWithDidEndBlock: function(alert, returnCode) {}];
     }
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyForeBackColorsFromSettings" object: nil];
 }
