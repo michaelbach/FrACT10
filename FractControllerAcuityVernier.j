@@ -102,7 +102,7 @@ Created by Bach on 14.08.2017.
     switch(state) {
         case kStateDrawBack:  break;
         case kStateDrawFore: //console.info("kStateDrawFore");
-            [self  drawVernierAtX: -xEcc y: -yEcc
+            [self  drawVernierAtX: 0 y: 0
                           vLength: [Misc pixelFromDegree: [Settings vernierLength] / 60.0]
                             sigma: [Misc pixelFromDegree: [Settings vernierWidth] / 60.0]
                         gapHeight: [Misc pixelFromDegree: [Settings vernierGap] / 60.0]

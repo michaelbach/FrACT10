@@ -10,7 +10,7 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2021-07-04"
+#define kVersionDateOfFrACT "2021-07-23"
 #define kVersionStringOfFract "Version 10.0"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
@@ -22,6 +22,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2021-07-23 eccentricity settings no longer applied twice for Vernier
 2021-07-04 solved problem of empty fields in settings. Needs to be done before nib loading, e.g. in init-delegate of main controller
 2021-06-18 added more documentation
 2021-06-16 better strategy when missing the Settings file to avoid seemingly empty fields in Settings. Found no way so far to re-populate the empty textfields w/o reload.
