@@ -11,6 +11,19 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 }
 
 
+- (void) drawCenterFixMark { //console.info("FractController>drawCenterFixMarkIfEccentric");
+    if (![Settings eccentShowCenterFixMark]) return;
+    var eccRadiusInPix = Math.sqrt(xEccInPix * xEccInPix + yEccInPix * yEccInPix);
+    if ((stimStrengthInDeviceunits * 3.5) > eccRadiusInPix) return;
+    CGContextSaveGState(cgc);
+    CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2);
+    CGContextSetLineWidth(cgc, 1);
+    CGContextSetStrokeColor(cgc, [CPColor colorWithRed: 0 green: 0 blue: 1 alpha: 0.5]);
+    [optotypes strokeStarAtX: 0 y: 0 size: Math.max(stimStrengthInDeviceunits * 2.5, [Misc pixelFromDegree: 1 / 6])];
+    CGContextRestoreGState(cgc);
+}
+
+
 // this manages stuff after the optotypes have been drawn, e.g. crowding
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
     var temp = [Misc logMARfromDecVA: [Misc decVAFromGapPixels: stimStrengthInDeviceunits]];
@@ -19,7 +32,7 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
         if (currentTestName != "Acuity_Vernier") { // don't do crowding with Vernier etc.
             CGContextSaveGState(cgc);
             CGContextTranslateCTM(cgc, viewWidth / 2, viewHeight / 2); // origin to center
-            CGContextTranslateCTM(cgc, -xEcc, -yEcc);
+            CGContextTranslateCTM(cgc, -xEccInPix, -yEccInPix);
             var i, crowdingDistance = [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits];
             switch ([Settings crowdingType]) {
                 case 0:  break; // should not occur here
@@ -68,6 +81,7 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
             CGContextRestoreGState(cgc);
         }
     }
+    [self drawCenterFixMark];
     [super drawStimulusInRect: dirtyRect];
 }
 

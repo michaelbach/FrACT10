@@ -1612,7 +1612,7 @@ DQ
                                             </view>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D5o-iI-kxj">
-                                            <rect key="frame" x="608" y="443" width="85" height="22"/>
+                                            <rect key="frame" x="607" y="443" width="85" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Feedback" bezelStyle="round" id="g6M-mX-9Gb">
                                                 <font key="font" metaFont="system"/>
@@ -1823,14 +1823,14 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="xZ2-45-cNs">
-                                            <rect key="frame" x="540" y="84" width="220" height="87"/>
+                                            <rect key="frame" x="540" y="84" width="220" height="115"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="Dak-yq-H69">
-                                                <rect key="frame" x="3" y="3" width="214" height="69"/>
+                                                <rect key="frame" x="3" y="3" width="214" height="97"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField toolTip="0°: middle of the screen, positive values shift to the right." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sNY-mP-vcW">
-                                                        <rect key="frame" x="20" y="22" width="40" height="21"/>
+                                                        <rect key="frame" x="20" y="50" width="40" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="EbP-1c-bMs">
                                                             <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="szh-J0-Xu1"/>
@@ -1844,7 +1844,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                         </connections>
                                                     </textField>
                                                     <textField toolTip="0°: middle of the screen, positive values shift up." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cXH-fg-tcl">
-                                                        <rect key="frame" x="154" y="22" width="40" height="21"/>
+                                                        <rect key="frame" x="154" y="50" width="40" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="cm5-Bq-tZU">
                                                             <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="ZKf-5q-ZZm"/>
@@ -1858,7 +1858,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                         </connections>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Noj-5S-zHu">
-                                                        <rect key="frame" x="59" y="22" width="97" height="17"/>
+                                                        <rect key="frame" x="59" y="50" width="97" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="←hor      vert→" id="rVX-3B-Vbh">
                                                             <font key="font" metaFont="system"/>
@@ -1869,8 +1869,19 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                 </subviews>
                                             </view>
                                         </box>
+                                        <button toolTip="If you are using eccentric optotypes, this will put up a stationary central fixation target." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2G6-fw-AaD">
+                                            <rect key="frame" x="562" y="100" width="186" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Show Center fixation mark" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kki-EN-2Nb">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="value" keyPath="values.eccentShowCenterFixMark" id="XKj-HD-icx"/>
+                                            </connections>
+                                        </button>
                                         <textField toolTip="If you don't want central fixation…" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qsu-PW-QQj">
-                                            <rect key="frame" x="564" y="141" width="172" height="22"/>
+                                            <rect key="frame" x="564" y="170" width="172" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Optotype eccentricity [°]" bezelStyle="round" id="tcE-lo-X54">
                                                 <font key="font" metaFont="system"/>

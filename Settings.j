@@ -10,7 +10,7 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2021-07-23"
+#define kVersionDateOfFrACT "2021-08-01"
 #define kVersionStringOfFract "Version 10.0"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
@@ -22,6 +22,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2021-08-01 add option to show center fix mark when using eccentric optotypes. So far only with acuity, not contrast
 2021-07-23 eccentricity settings no longer applied twice for Vernier
 2021-07-04 solved problem of empty fields in settings. Needs to be done before nib loading, e.g. in init-delegate of main controller
 2021-06-18 added more documentation
@@ -193,6 +194,7 @@ Created by mb on July 15, 2015.
 
     [self setEccentXInDeg: [self chckFlt: [self eccentXInDeg] def: 0 min: -99 max: 99 set: set]];
     [self setEccentYInDeg: [self chckFlt: [self eccentYInDeg] def: 0 min: -99 max: 99 set: set]];
+    [self setEccentShowCenterFixMark: [self chckBool: [self eccentShowCenterFixMark] def: YES set: set]];
 
     [self setMobileOrientation: [self chckBool: [self mobileOrientation] def: YES set: set]];
 
@@ -420,13 +422,17 @@ Created by mb on July 15, 2015.
 + (void) setEccentXInDeg: (float) value {
     [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "eccentXInDeg"];
 }
-
-
 + (float) eccentYInDeg {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "eccentYInDeg"];
 }
 + (void) setEccentYInDeg: (float) value {
     [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "eccentYInDeg"];
+}
++ (BOOL) eccentShowCenterFixMark {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "eccentShowCenterFixMark"];
+}
++ (void) setEccentShowCenterFixMark: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "eccentShowCenterFixMark"];
 }
 
 
@@ -558,7 +564,7 @@ Created by mb on July 15, 2015.
 function _decimalMarkCharFindHelper(currentValue) {
     return (currentValue.type === "decimal"); // arrow syntax not work in Cappuccino, need helper fun
 }
-+ (char) decimalMarkChar {//console.info("settings>decimalMarkChar");
++ (char) decimalMarkChar { //console.info("settings>decimalMarkChar");
     var _decimalMarkChar = ".";
     switch ([[CPUserDefaults standardUserDefaults] integerForKey: "decimalMarkCharIndex"]) {
         case 1: _decimalMarkChar = "."; break;

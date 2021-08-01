@@ -22,7 +22,7 @@ Created by Bach on 2020-08-17
             [self drawFixMark];
             break;
         case kStateDrawFore2:
-            [optotypes drawLetterWithGapInPx: optotypeSize letterNumber: [alternativesGenerator currentAlternative]];
+            [optotypes drawLetterWithGapInPx: optotypeSizeInPix letterNumber: [alternativesGenerator currentAlternative]];
             stimStrengthInDeviceunits = [optotypes getCurrentContrastLogCSWeber];
             trialInfoString = [self contrastComposeTrialInfoString]; // compose here after colors are set
             break;

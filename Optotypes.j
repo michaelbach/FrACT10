@@ -31,7 +31,7 @@ Optotypes.j
 /**
  this will be called from all tests and informs us here about the context
  */
-- (void) setCgc: (CGContext) cgc colFore: (CPColor) colFore colBack: (CPColor) colBack {//console.info("setCgc");
+- (void) setCgc: (CGContext) cgc colFore: (CPColor) colFore colBack: (CPColor) colBack { //console.info("setCgc");
     _cgc = cgc;
     _colOptotypeFore = colFore;  _colOptotypeBack = colBack;
 }
@@ -65,19 +65,19 @@ Optotypes.j
 }
 
 
-- (void) strokeLineX0: (float) x0 y0: (float) y0 x1: (float) x1 y1: (float) y1 {//console.info("strokeLineX0");
+- (void) strokeLineX0: (float) x0 y0: (float) y0 x1: (float) x1 y1: (float) y1 { //console.info("strokeLineX0");
     CGContextBeginPath(_cgc);
     CGContextMoveToPoint(_cgc, x0, y0);  CGContextAddLineToPoint(_cgc, x1, y1);
     CGContextStrokePath(_cgc);
     currentX = x1;  currentY = y1;
 }
-- (void) strokeLineToX: (float) xxx y: (float) yyy {//console.info("strokeLineX0");
+- (void) strokeLineToX: (float) xxx y: (float) yyy { //console.info("strokeLineX0");
     CGContextBeginPath(_cgc);
     CGContextMoveToPoint(_cgc, currentX, currentY);  CGContextAddLineToPoint(_cgc, xxx, yyy);
     CGContextStrokePath(_cgc);
     currentX = xxx;  currentY = yyy;
 }
-- (void) strokeLineDeltaX: (float) xxx deltaY: (float) yyy {//console.info("strokeLineX0");
+- (void) strokeLineDeltaX: (float) xxx deltaY: (float) yyy { //console.info("strokeLineX0");
     CGContextBeginPath(_cgc);
     CGContextMoveToPoint(_cgc, currentX, currentY);
     currentX = currentX + xxx;  currentY = currentY + yyy;
@@ -106,17 +106,22 @@ Optotypes.j
 }
 
 
-- (void) strokeXAtX: (float) x y: (float) y size: (float) s {//console.info("MBIllus02>strokeXAtX");
+- (void) strokeXAtX: (float) x y: (float) y size: (float) s { //console.info("optotypes>strokeXAtX");
     s *= 0.5 / Math.sqrt(2);
     [self strokeLineX0: x - s y0:y - s x1: x + s y1: y + s];
     [self strokeLineX0: x - s y0:y + s x1: x + s y1: y - s];
 }
 
 
+- (void) strokeStarAtX: (float) x y: (float) y size: (float) s { //console.info("optotypes>strokeStarAtX");
+    [self strokeXAtX: x y: y size: s];  [self strokeCrossAtX: x y: y size: s];
+}
+
+
 /**
  Draw optotypes (letters and Es) on a -5…+5 coordinate system
 */
-- (void) drawPolygon: (float) p withD: (float) d { //console.info("FractControllerAcuityE>drawPolygon");
+- (void) drawPolygon: (float) p withD: (float) d { //console.info("optotypes>drawPolygon");
     CGContextSetFillColor(_cgc, _colOptotypeFore);
     CGContextBeginPath(_cgc);
     CGContextMoveToPoint(_cgc, d * p[0][0], -d * p[0][1]);
@@ -131,7 +136,7 @@ Optotypes.j
 }
 
 
-- (void) drawLandoltWithGapInPx: (float) gap landoltDirection: (int) direction { //console.info("OTLandolts>drawLandoltWithGapInPx", gap, direction);
+- (void) drawLandoltWithGapInPx: (float) gap landoltDirection: (int) direction { //console.info("optotypes>drawLandoltWithGapInPx", gap, direction);
     CGContextSetFillColor(_cgc, _colOptotypeFore);
     [self fillCircleAtX: 0 y: 0 radius: 2.5 * gap];
     CGContextSetFillColor(_cgc, _colOptotypeBack);
@@ -144,10 +149,10 @@ Optotypes.j
 }
 
 
-- (void)drawSloanCWithGapInPx: (float) gap { //console.info("FractControllerAcuityLetters>drawSloanCWithGapInPx");
+- (void)drawSloanCWithGapInPx: (float) gap { //console.info("optotypes>drawSloanCWithGapInPx");
     [self drawLandoltWithGapInPx: gap landoltDirection: 0];
 }
-- (void)drawSloanDWithGapInPx: (float) d { //console.info("FractControllerAcuityLetters>drawSloanDWithGapInPx");
+- (void)drawSloanDWithGapInPx: (float) d { //console.info("optotypes>drawSloanDWithGapInPx");
     d *= 0.5;
     var gxf = 1.0, gyf = 1.0;
     CGContextBeginPath(_cgc);
@@ -171,7 +176,7 @@ Optotypes.j
     CGContextAddLineToPoint(_cgc, -d * 5 * gxf, -d * 5 * gyf);
     CGContextFillPath(_cgc);
 }
-- (void)drawSloanHWithGapInPx: (float) d { //console.info("FractControllerAcuityLetters>drawSloanHWithGapInPx");
+- (void)drawSloanHWithGapInPx: (float) d { //console.info("optotypes>drawSloanHWithGapInPx");
     var pnts = [[-5,-5], [-3,-5], [-3,-1], [+3,-1], [+3,-5], [+5,-5], [+5,+5], [+3,+5], [+3,+1], [-3,+1], [-3,+5], [-5,+5], [-5, -5]];
     [self drawPolygon: pnts withD: d * 0.5];
 }

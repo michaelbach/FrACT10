@@ -33,7 +33,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     CGContext cgc;
     float stimStrengthInThresholderUnits, stimStrengthInDeviceunits, viewWidth, viewHeight;
     float gapMinimal, gapMaximal;
-    float xEcc, yEcc; // eccentricity
+    float xEccInPix, yEccInPix; // eccentricity
     Thresholder thresholder;
     AlternativesGenerator alternativesGenerator;
     TrialHistoryController trialHistoryController;
@@ -44,6 +44,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     id sound @accessors;
     BOOL responseButtonsAdded;
     CPColor colOptotypeFore, colOptotypeBack;
+    float optotypeSizeInPix;
 }
 
 
@@ -90,7 +91,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     thresholder = [[Thresholder alloc] initWithNumAlternatives: nAlternatives];
     trialHistoryController = [[TrialHistoryController alloc] initWithNumTrials: nTrials];
     responseWasCorrect = YES;  responseWasCorrectCumulative = YES;
-    xEcc = -[Misc pixelFromDegree: [Settings eccentXInDeg]];  yEcc = [Misc pixelFromDegree: [Settings eccentYInDeg]]; //pos y: ↑
+    xEccInPix = -[Misc pixelFromDegree: [Settings eccentXInDeg]];  yEccInPix = [Misc pixelFromDegree: [Settings eccentYInDeg]]; //pos y: ↑
+    optotypeSizeInPix = [Misc pixelFromDegree: [Settings contrastOptotypeDiameter] / 60] / 5;
     [self trialStart];
 }
 
@@ -129,7 +131,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     CGContextFillRect(cgc, [[self window] frame]);
     CGContextSaveGState(cgc);
     CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
-    CGContextTranslateCTM(cgc,  -xEcc, -yEcc); // eccentric if desired
+    CGContextTranslateCTM(cgc,  -xEccInPix, -yEccInPix); // eccentric if desired
     switch ([Settings displayTransform]) { // mirroring etc.
         case 1: CGContextScaleCTM(cgc, -1, 1);  break;
         case 2: CGContextScaleCTM(cgc, 1, -1);  break;
@@ -149,7 +151,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         case 2: CGContextScaleCTM(cgc, 1, -1);  break;
         case 3: CGContextScaleCTM(cgc, -1, -1);  break;
     }
-    CGContextTranslateCTM(cgc,  xEcc, yEcc);  CGContextTranslateCTM(cgc,  -viewWidth / 2, -viewHeight / 2);
+    CGContextTranslateCTM(cgc,  xEccInPix, yEccInPix);  CGContextTranslateCTM(cgc,  -viewWidth / 2, -viewHeight / 2);
 }
 
 
@@ -332,7 +334,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 /**
  Generic part of the export string, used by both acuity & contrast
  */
-- (CPString) generalComposeExportString {//console.info("FractController>generalComposeExportString");
+- (CPString) generalComposeExportString { //console.info("FractController>generalComposeExportString");
     var s = "", now = [CPDate date];
     s += "Vs" + tab + [Settings versionExportFormat];
     s += tab + "vsFrACT" + tab + [Settings versionDateFrACT];

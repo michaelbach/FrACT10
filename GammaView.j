@@ -21,13 +21,13 @@ GammaView.m
 }
 
 
-- (id) initWithFrame: (CGRect) theFrame {//console.info("GammaView>initWithFrame");
+- (id) initWithFrame: (CGRect) theFrame { //console.info("GammaView>initWithFrame");
     self = [super initWithFrame: theFrame];
     return self;
 }
 
 
-- (void) drawRect: (CGRect) dirtyRect {//console.info("GammaView>drawRect");
+- (void) drawRect: (CGRect) dirtyRect { //console.info("GammaView>drawRect");
     [super drawRect: dirtyRect];
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     xm = CGRectGetWidth([self bounds]) / 2;
