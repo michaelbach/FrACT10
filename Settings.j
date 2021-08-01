@@ -23,6 +23,7 @@ Created by mb on July 15, 2015.
    =======
 
 2021-08-01 add option to show center fix mark when using eccentric optotypes. So far only with acuity, not contrast
+            add "CPBundleIdentifier … de.michaelbach.FrACT10" to Info.plist
 2021-07-23 eccentricity settings no longer applied twice for Vernier
 2021-07-04 solved problem of empty fields in settings. Needs to be done before nib loading, e.g. in init-delegate of main controller
 2021-06-18 added more documentation

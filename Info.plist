@@ -7,8 +7,10 @@
 	<key>CPBundleName</key>
 	<string>FrACT10</string>
 	<key>CPBundleVersion</key>
-	<string>1.0</string>
+	<string>10.0</string>
+	<key>CPBundleIdentifier</key>
+	<string>de.michaelbach.FrACT10</string>
 	<key>CPHumanReadableCopyright</key>
-	<string>Copyright © 2020, Michael Bach, All rights reserved.</string>
+	<string>Copyright © 1993–2021, Michael Bach, all rights reserved.</string>
 </dict>
 </plist>
