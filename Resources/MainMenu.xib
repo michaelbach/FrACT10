@@ -1870,9 +1870,9 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </view>
                                         </box>
                                         <button toolTip="If you are using eccentric optotypes, this will put up a stationary central fixation target." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2G6-fw-AaD">
-                                            <rect key="frame" x="562" y="100" width="186" height="18"/>
+                                            <rect key="frame" x="562" y="100" width="187" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="Show Center fixation mark" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kki-EN-2Nb">
+                                            <buttonCell key="cell" type="check" title="Show central fixation mark" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kki-EN-2Nb">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
