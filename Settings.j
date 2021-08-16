@@ -10,7 +10,7 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2021-08-01"
+#define kVersionDateOfFrACT "2021-08-16"
 #define kVersionStringOfFract "Version 10.0"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
@@ -22,6 +22,8 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2021-08-16 button images needed more space left and right
+2021-08-15 add custom button to improve rendering of the large square buttons
 2021-08-01 add option to show center fix mark when using eccentric optotypes. So far only with acuity, not contrast
             add "CPBundleIdentifier … de.michaelbach.FrACT10" to Info.plist
 2021-07-23 eccentricity settings no longer applied twice for Vernier

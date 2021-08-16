@@ -40,10 +40,10 @@
                         <rect key="frame" x="12" y="521" width="776" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
-                    <button toolTip="Acuity run using Landolt-Cs.  Shortcut: C" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWr-KV-CRJ">
-                        <rect key="frame" x="198" y="432" width="102" height="23"/>
+                    <button toolTip="Acuity run using Landolt-Cs.  Shortcut: C" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWr-KV-CRJ" customClass="MDBButton">
+                        <rect key="frame" x="199" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityC" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ivt-76-XPn">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityC" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="ivt-76-XPn">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -51,10 +51,10 @@
                             <action selector="buttonDoAcuityLandolt_action:" target="450" id="QI5-LG-vla"/>
                         </connections>
                     </button>
-                    <button toolTip="Acuity run using tumbling Es.  Shortcut: E" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Phl-6Z-YpU">
-                        <rect key="frame" x="350" y="432" width="102" height="23"/>
+                    <button toolTip="Acuity run using tumbling Es.  Shortcut: E" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Phl-6Z-YpU" customClass="MDBButton">
+                        <rect key="frame" x="351" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityE" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gQo-pc-sRD">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityE" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="gQo-pc-sRD">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -62,10 +62,10 @@
                             <action selector="buttonDoAcuityE_action:" target="450" id="XwX-rB-ha0"/>
                         </connections>
                     </button>
-                    <button toolTip="Acuity run using TAO (The Auckland Optotypes).  Shortcut: A" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6e2-Sj-gkY">
-                        <rect key="frame" x="502" y="432" width="102" height="23"/>
+                    <button toolTip="Acuity run using TAO (The Auckland Optotypes).  Shortcut: A" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6e2-Sj-gkY" customClass="MDBButton">
+                        <rect key="frame" x="503" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityTAO" imagePosition="only" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nnv-n0-fGE">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityTAO" imagePosition="only" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="nnv-n0-fGE">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -111,10 +111,10 @@ Shortcut: s </string>
                         <rect key="frame" x="15" y="-1" width="776" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
-                    <button toolTip="Hyperacuity (Vernier) run.  Shortcut: V" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oB-kn-EbO">
-                        <rect key="frame" x="654" y="432" width="102" height="23"/>
+                    <button toolTip="Hyperacuity (Vernier) run.  Shortcut: V" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oB-kn-EbO" customClass="MDBButton">
+                        <rect key="frame" x="655" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityVernier" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vzK-pu-pjy">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityVernier" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="vzK-pu-pjy">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -157,10 +157,10 @@ Shortcut: s </string>
                             <action selector="buttonExport_action:" target="450" id="aIb-Nf-ia3"/>
                         </connections>
                     </button>
-                    <button toolTip="Contrast run using Sloan Letters.  Shortcut: 1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rNE-r4-ESi">
-                        <rect key="frame" x="45" y="297" width="102" height="23"/>
+                    <button toolTip="Contrast run using Sloan Letters.  Shortcut: 1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rNE-r4-ESi" customClass="MDBButton">
+                        <rect key="frame" x="46" y="299" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="butCntLett" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="g65-ae-fbX">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="butCntLett" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="g65-ae-fbX">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -168,10 +168,10 @@ Shortcut: s </string>
                             <action selector="buttonDoContrastLett_action:" target="450" id="h4K-qc-MWf"/>
                         </connections>
                     </button>
-                    <button toolTip="Contrast run using Tumbling E.  Shortcut: 3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0h-oh-O7H">
-                        <rect key="frame" x="350" y="297" width="102" height="23"/>
+                    <button toolTip="Contrast run using Tumbling E.  Shortcut: 3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0h-oh-O7H" customClass="MDBButton">
+                        <rect key="frame" x="351" y="299" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="butCntE" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iBN-dd-rq2">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="butCntE" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="iBN-dd-rq2">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -179,10 +179,10 @@ Shortcut: s </string>
                             <action selector="buttonDoContrastE_action:" target="450" id="yjK-mH-Mej"/>
                         </connections>
                     </button>
-                    <button toolTip="Contrast run using Landolt C.  Shortcut: 2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="teG-PN-Gq7">
-                        <rect key="frame" x="198" y="297" width="102" height="23"/>
+                    <button toolTip="Contrast run using Landolt C.  Shortcut: 2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="teG-PN-Gq7" customClass="MDBButton">
+                        <rect key="frame" x="199" y="299" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="butCntC" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RRU-h0-CYF">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="butCntC" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="RRU-h0-CYF">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -227,10 +227,10 @@ Shortcut: f </string>
                             <action selector="buttonAbout_action:" target="450" id="yEc-1I-cem"/>
                         </connections>
                     </button>
-                    <button toolTip="Acuity run using Sloan Letters.  Shortcut: L" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jHx-aa-MPC">
-                        <rect key="frame" x="45" y="432" width="102" height="23"/>
+                    <button toolTip="Acuity run using Sloan Letters.  Shortcut: L" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jHx-aa-MPC" customClass="MDBButton">
+                        <rect key="frame" x="46" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityLett" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xw1-er-aQN">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityLett" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="xw1-er-aQN">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -3615,10 +3615,10 @@ DQ
         <image name="butCntC" width="1040" height="772"/>
         <image name="butCntE" width="770" height="652"/>
         <image name="butCntLett" width="936" height="658"/>
-        <image name="buttonAcuityC" width="170.16000366210938" height="95.760002136230469"/>
-        <image name="buttonAcuityE" width="130.08000183105469" height="101.76000213623047"/>
-        <image name="buttonAcuityLett" width="170.16000366210938" height="95.519996643066406"/>
-        <image name="buttonAcuityTAO" width="192" height="192"/>
+        <image name="buttonAcuityC" width="203.75999450683594" height="119.76000213623047"/>
+        <image name="buttonAcuityE" width="158.8800048828125" height="101.76000213623047"/>
+        <image name="buttonAcuityLett" width="208.55999755859375" height="119.51999664306641"/>
+        <image name="buttonAcuityTAO" width="196.80000305175781" height="192"/>
         <image name="buttonAcuityVernier" width="124.31999969482422" height="195.83999633789062"/>
         <image name="iconAbout" width="396" height="396"/>
         <image name="iconFullscreen" width="356" height="356"/>

@@ -22,6 +22,8 @@ Created by mb on 2017-07-12.
 @import "TAOController.j"
 @import "Sound.j"
 @import "GammaView.j"
+@import "MDBButton.j"
+
 
 /**
  AppController
@@ -52,7 +54,7 @@ CPPushOnPushOffButton = 1;
     @outlet CPWindow fractControllerWindow;
     @outlet CPColorWell checkContrastWeberField1, checkContrastWeberField2;
     @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, resultDetailsPanel;
-    @outlet CPButton buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE;
+    @outlet MDBButton buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE;
     @outlet CPButton buttonExport;
     @outlet GammaView gammaView;
     CPImageView rewardImageView;
