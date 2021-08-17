@@ -3612,9 +3612,9 @@ DQ
     </objects>
     <resources>
         <image name="FrACT_icon-390" width="390" height="390"/>
-        <image name="butCntC" width="1040" height="772"/>
-        <image name="butCntE" width="770" height="652"/>
-        <image name="butCntLett" width="936" height="658"/>
+        <image name="butCntC" width="1160" height="772"/>
+        <image name="butCntE" width="970" height="652"/>
+        <image name="butCntLett" width="1097" height="658"/>
         <image name="buttonAcuityC" width="203.75999450683594" height="119.76000213623047"/>
         <image name="buttonAcuityE" width="158.8800048828125" height="101.76000213623047"/>
         <image name="buttonAcuityLett" width="208.55999755859375" height="119.51999664306641"/>
