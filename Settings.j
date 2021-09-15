@@ -10,7 +10,7 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2021-08-16"
+#define kVersionDateOfFrACT "2021-09-15"
 #define kVersionStringOfFract "Version 10.0"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
@@ -22,6 +22,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2021-09-15 refined buttons; add option to change background color
 2021-08-16 button images needed more space left and right
 2021-08-15 add custom button to improve rendering of the large square buttons
 2021-08-01 add option to show center fix mark when using eccentric optotypes. So far only with acuity, not contrast
@@ -177,6 +178,7 @@ Created by mb on July 15, 2015.
     if (set) {
         [self setDateSettingsVersion: kDateOfCurrentSettingsVersion];
         [[CPUserDefaults standardUserDefaults] setInteger: 2 forKey: "nAlternativesIndex"]; // 8 alternatives
+        [self setWindowBackgroundColor: [CPColor colorWithRed: 1 green: 1 blue: 0.95 alpha: 1]];
     }
 
     // for all tests
@@ -598,6 +600,18 @@ function _decimalMarkCharFindHelper(currentValue) {
 }
 + (void) setEnableTouchControls: (BOOL) value {
     [[CPUserDefaults standardUserDefaults] setBool: value forKey: "enableTouchControls"];
+}
+
+
++ (CPColor) windowBackgroundColor { //console.info("Settings>windowBackgroundColor");
+    var theData = [[CPUserDefaults standardUserDefaults] stringForKey: "windowBackgroundColor"];
+    if (theData == nil) theData = "FFFFEE"; // safety measure and default
+    var c = [CPColor colorWithHexString: theData]; //console.info("Settings>windowBackgroundColor:", c);
+    //console.info("Settings>windowBackgroundColor", c);
+    return c;
+}
++ (void) setWindowBackgroundColor: (CPColor) theColor { //console.info("Settings>setWindowBackgroundColor:", theColor);
+    [[CPUserDefaults standardUserDefaults] setObject: [theColor hexString] forKey: "windowBackgroundColor"];
 }
 
 

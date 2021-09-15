@@ -103,6 +103,21 @@ CPPushOnPushOffButton = 1;
 - (void) setAcuityBackColor: (CPColor) theColor { //console.info("AppController>setAcuityBackColor");
     [Settings setAcuityBackColor: theColor];
 }
+/**
+ Accessing the window background color
+ @return the current background color
+ */
+- (CPColor) windowBackgroundColor { //console.info("AppController>acuityBackColor");
+    return [Settings windowBackgroundColor];
+}
+/**
+ Setting the window background color
+ @param theColor: background color
+ */
+- (void) setWindowBackgroundColor: (CPColor) theColor { //console.info("AppController>setAcuityBackColor");
+    [Settings setWindowBackgroundColor: theColor];
+    [[self window] setBackgroundColor: theColor];
+}
 
 
 /**
@@ -118,7 +133,8 @@ CPPushOnPushOffButton = 1;
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>applicationDidFinishLaunching");
     'use strict';
     [[self window] setFullPlatformWindow: YES];
-    [[self window] setBackgroundColor: [CPColor colorWithWhite: 0.99 alpha: 1]];
+    [[self window] setBackgroundColor: [self windowBackgroundColor]];
+
     [CPMenu setMenuBarVisible: NO];
     addEventListener('error', function(e) {
         alert("An error occured, I'm sorry. Error message:\r\r" + e.message + "\r\rIf it recurs, please notify michael.bach@uni-freiburg.de, ideally relating the message, e.g. via a screeshot.\rI will look into it and endeavour to provide a fix ASAP.\r\rOn “Close”, the window will reload and you can retry.");
@@ -157,7 +173,7 @@ CPPushOnPushOffButton = 1;
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(buttonExportEnableYESorNO:) name: "buttonExportEnableYESorNO" object: nil];
     [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(copyForeBackColorsFromSettings:) name: "copyForeBackColorsFromSettings" object: nil];
-    //[[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
+    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
     [[CPUserDefaultsController sharedUserDefaultsController] addObserver: self forKeyPath: "values.nAlternativesIndex" options: CPKeyValueObservingOptionNew context: NULL]; // needed for the "oblique only" setting
     [self setIs4orientations: ([Settings nAlternatives] == 4)];
 
@@ -173,7 +189,9 @@ CPPushOnPushOffButton = 1;
 }
 
 
-- (void) defaultsDidChange: (CPNotification) aNotification {console.info("defaultsDidChange");}// not used
+- (void) defaultsDidChange: (CPNotification) aNotification { //console.info("defaultsDidChange");
+    [[self window] setBackgroundColor: [self windowBackgroundColor]];
+}
 
 
 
