@@ -10,7 +10,7 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2021-09-15"
+#define kVersionDateOfFrACT "2021-09-17"
 #define kVersionStringOfFract "Version 10.0"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
@@ -22,6 +22,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2021-09-17 simplify code to update isetIs4orientations (now in defaultsDidChange)
 2021-09-15 refined buttons; add option to change background color
 2021-08-16 button images needed more space left and right
 2021-08-15 add custom button to improve rendering of the large square buttons

@@ -174,22 +174,16 @@ CPPushOnPushOffButton = 1;
     [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(copyForeBackColorsFromSettings:) name: "copyForeBackColorsFromSettings" object: nil];
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
-    [[CPUserDefaultsController sharedUserDefaultsController] addObserver: self forKeyPath: "values.nAlternativesIndex" options: CPKeyValueObservingOptionNew context: NULL]; // needed for the "oblique only" setting
-    [self setIs4orientations: ([Settings nAlternatives] == 4)];
 
     [self buttonCheckContrast_action: null];
 }
 
 
 /**
- This observes some changes in the settings panel, making shure some dependencies are updated
+ This observes changes in the settings panel, making shure some dependencies are updated
  */
-- (void) observeValueForKeyPath: (CPString) aKeyPath ofObject: (id) anObject change: (CPDictionary) changes context: (id) context {
-    [self setIs4orientations: ([Settings nAlternatives] == 4)];
-}
-
-
 - (void) defaultsDidChange: (CPNotification) aNotification { //console.info("defaultsDidChange");
+    [self setIs4orientations: ([Settings nAlternatives] == 4)];
     [[self window] setBackgroundColor: [self windowBackgroundColor]];
 }
 
