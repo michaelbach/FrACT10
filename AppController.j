@@ -273,6 +273,9 @@ CPPushOnPushOffButton = 1;
     [self closeAllPanels];  [currentFractController release];
     currentFractController = [[allTestControllers[testID] alloc] initWithWindow: fractControllerWindow parent: self];
     [currentFractController setSound: sound];
+    if ([Settings autoFullScreen]) {
+        [Misc fullScreenOn: YES];
+    }
 }
 /**
  ok, so let's not run this test after all
@@ -284,6 +287,9 @@ CPPushOnPushOffButton = 1;
 
 - (void) runEnd { //console.info("AppController>runEnd");
     [currentFractController release];  currentFractController = nil;
+    if ([Settings autoFullScreen]) {
+        [Misc fullScreenOn: NO];
+    }
     if (!runAborted) {
         if ([Settings rewardPicturesWhenDone]) {
             [rewardsController drawRandom];
