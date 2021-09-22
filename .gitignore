@@ -7,3 +7,4 @@ _cappDevelop.xcodeproj/*
 Resources/MainMenu.cib*
 *.h
 *.m
+Build/

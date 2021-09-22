@@ -54,7 +54,7 @@ Misc.j
 + (void) fullScreenOn: (BOOL) onOff {
     var element = document.documentElement;
     if (onOff) {
-        if(element.requestFullscreen)
+        if (element.requestFullscreen)
             element.requestFullscreen();
         else if(element.mozRequestFullScreen)
             element.mozRequestFullScreen();
@@ -63,7 +63,7 @@ Misc.j
         else if(element.msRequestFullscreen)
             element.msRequestFullscreen();
     } else {
-        if(document.exitFullscreen)
+        if (document.exitFullscreen)
             document.exitFullscreen();
         else if(document.mozCancelFullScreen)
             document.mozCancelFullScreen();

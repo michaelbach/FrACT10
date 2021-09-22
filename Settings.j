@@ -10,7 +10,7 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2021-09-17"
+#define kVersionDateOfFrACT "2021-09-22"
 #define kVersionStringOfFract "Version 10.0"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
@@ -22,6 +22,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2021-09-22 try autoFullScreen. Problem: program looses focus to key input until once clicked. `document.body.focus()` etc. no help.
 2021-09-17 simplify code to update isetIs4orientations (now in defaultsDidChange)
 2021-09-15 refined buttons; add option to change background color
 2021-08-16 button images needed more space left and right
@@ -201,6 +202,8 @@ Created by mb on July 15, 2015.
     [self setEccentXInDeg: [self chckFlt: [self eccentXInDeg] def: 0 min: -99 max: 99 set: set]];
     [self setEccentYInDeg: [self chckFlt: [self eccentYInDeg] def: 0 min: -99 max: 99 set: set]];
     [self setEccentShowCenterFixMark: [self chckBool: [self eccentShowCenterFixMark] def: YES set: set]];
+
+    [self setAutoFullScreen: [self chckBool: [self autoFullScreen] def: NO set: set]];
 
     [self setMobileOrientation: [self chckBool: [self mobileOrientation] def: YES set: set]];
 
@@ -448,6 +451,15 @@ Created by mb on July 15, 2015.
 + (void) setMobileOrientation: (BOOL) value {
     [[CPUserDefaults standardUserDefaults] setBool: value forKey: "mobileOrientation"];
 }
+
+
++ (BOOL) autoFullScreen {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "autoFullScreen"];
+}
++ (void) setAutoFullScreen: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "autoFullScreen"];
+}
+
 
 
 + (int) displayTransform {
