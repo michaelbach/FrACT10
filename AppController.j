@@ -332,6 +332,13 @@ CPPushOnPushOffButton = 1;
 
 - (void) keyDown: (CPEvent) theEvent { //console.info("AppController>keyDown");
     switch([[[theEvent charactersIgnoringModifiers] characterAtIndex: 0] uppercaseString]) {
+        case "Q": case "X": // Quit or eXit
+            try {
+                process.exit(); // works in NODE
+            }
+            catch(e) { // avoid the global error catcher
+            }
+            break;
         case "S":
             [[CPRunLoop currentRunLoop] performSelector: @selector(buttonSettings_action:) target: self argument: nil order: 10000 modes:[CPDefaultRunLoopMode]];  break; // this complicated version avoids propagation of the "s"
         case "F":
