@@ -56,6 +56,7 @@ CPPushOnPushOffButton = 1;
     @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, resultDetailsPanel;
     @outlet MDBButton buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE;
     @outlet CPButton buttonExport;
+    @outlet CPButton buttonExit;
     @outlet GammaView gammaView;
     CPImageView rewardImageView;
     RewardsController rewardsController;
@@ -120,6 +121,17 @@ CPPushOnPushOffButton = 1;
 }
 
 
+function isNodejs() {  // this is a somewhat oblique check if we are running under Node
+    try {
+        typeof "process" !== "undefined" && process && process.versions && process.versions.node;
+        return true;
+    }
+    catch(e) { // avoid the global error catcher
+        return false;
+    }
+}
+
+
 /**
  Our main initialisation begins here
  */
@@ -134,7 +146,10 @@ CPPushOnPushOffButton = 1;
     'use strict';
     [[self window] setFullPlatformWindow: YES];
     [[self window] setBackgroundColor: [self windowBackgroundColor]];
+    gIsNode = isNodejs(); //alert(gIsNode);// console.info(gIsNode);
+    //[buttonExit setHidden: !gIsNode];
 
+    
     [CPMenu setMenuBarVisible: NO];
     addEventListener('error', function(e) {
         alert("An error occured, I'm sorry. Error message:\r\r" + e.message + "\r\rIf it recurs, please notify michael.bach@uni-freiburg.de, ideally relating the message, e.g. via a screeshot.\rI will look into it and endeavour to provide a fix ASAP.\r\rOn “Close”, the window will reload and you can retry.");
@@ -333,12 +348,7 @@ CPPushOnPushOffButton = 1;
 - (void) keyDown: (CPEvent) theEvent { //console.info("AppController>keyDown");
     switch([[[theEvent charactersIgnoringModifiers] characterAtIndex: 0] uppercaseString]) {
         case "Q": case "X": // Quit or eXit
-            try {
-                process.exit(); // works in NODE
-            }
-            catch(e) { // avoid the global error catcher
-            }
-            break;
+            [self  buttonDoExit_action: nil];  break;
         case "S":
             [[CPRunLoop currentRunLoop] performSelector: @selector(buttonSettings_action:) target: self argument: nil order: 10000 modes:[CPDefaultRunLoopMode]];  break; // this complicated version avoids propagation of the "s"
         case "F":
@@ -516,11 +526,15 @@ function existsUrl(url) {
 }
 
 
-- (IBAction) buttonExit_action: (id) sender { //console.info("AppController>buttonExit_action");
+- (IBAction) buttonDoExit_action: (id) sender { //console.info("AppController>buttonExit_action");
     if ([Misc isFullScreen]) {
         [Misc fullScreenOn: NO];
     }
     [[self window] close];  [CPApp terminate: nil];
+    if (gIsNode) {
+//       process.exit(); // works only in NODE
+    }
+
 }
 
 

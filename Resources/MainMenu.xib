@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="1060" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -88,7 +88,7 @@ Shortcut: s </string>
                         </connections>
                     </button>
                     <textField toolTip="Gist of important current settings" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RFV-zI-Z0H">
-                        <rect key="frame" x="44" y="128" width="592" height="26"/>
+                        <rect key="frame" x="255" y="129" width="300" height="26"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="keyTestSettingsString" id="pPK-bU-djf">
                             <font key="font" metaFont="system"/>
@@ -236,6 +236,17 @@ Shortcut: f </string>
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoAcuityLetters_action:" target="450" id="rlc-aP-8JW"/>
+                        </connections>
+                    </button>
+                    <button toolTip="This button only appears after a finished run and does what it says." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H63-sm-3gG">
+                        <rect key="frame" x="45" y="130" width="107" height="23"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="roundTextured" title="Quit" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GPt-7z-qAa">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="buttonDoExit_action:" target="450" id="t4f-l7-7Lm"/>
                         </connections>
                     </button>
                 </subviews>
@@ -575,6 +586,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                 <outlet property="buttonAcuityLett" destination="jHx-aa-MPC" id="tuh-WT-4uS"/>
                 <outlet property="buttonAcuityTAO" destination="6e2-Sj-gkY" id="wS5-ys-hpB"/>
                 <outlet property="buttonAcuityVernier" destination="8oB-kn-EbO" id="D7M-xX-xff"/>
+                <outlet property="buttonExit" destination="H63-sm-3gG" id="jIx-8v-AhU"/>
                 <outlet property="buttonExport" destination="L8d-bR-KqO" id="YCp-1H-vRB"/>
                 <outlet property="checkContrastWeberField1" destination="rpb-ue-CQK" id="6ZW-Oz-wpM"/>
                 <outlet property="checkContrastWeberField2" destination="4WO-rY-pis" id="Lcj-IY-0Np"/>

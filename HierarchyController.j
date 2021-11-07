@@ -26,6 +26,7 @@ HierarchyController.j
     CPString currentTestResultUnit @accessors;
     CPString currentTestResultExportString @accessors;
     CPString currentTestResultsHistoryExportString @accessors;
+    BOOL gIsNode;
 }
 
 
