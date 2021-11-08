@@ -2123,14 +2123,15 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                         </buttonCell>
                                                     </button>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uJM-h3-PcN">
-                                                        <rect key="frame" x="41" y="161" width="107" height="18"/>
+                                                        <rect key="frame" x="41" y="161" width="113" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">The result will include a “±0.xx” number to indicate the 95% confidence interval; based on resampling. Only works when LogMAR is enabled.</string>
-                                                        <buttonCell key="cell" type="check" title="show ±CI95/₂" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="v7r-tv-miZ">
+                                                        <buttonCell key="cell" type="check" title="show ± ½CI95" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="v7r-tv-miZ">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.acuityFormatLogMAR" id="XP0-eG-eSz"/>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.showCI95" id="LV2-yV-dfJ"/>
                                                         </connections>
                                                     </button>

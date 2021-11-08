@@ -66,7 +66,7 @@ function findMaxLlhInRange(df, r1, r2, delta) {
     return lMarMax;
 }
 /**
- The fit to the psychometric function is done in stages, because it can be VERY shallow
+ The fit to the psychometric function is done in stages, because its slope can be VERY shallow
  */
 function threshEstimate(df) { // console.info("threshEstimate");
     var delta = 0.5; // initial LogMAR precision for rough homing-in
