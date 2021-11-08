@@ -124,9 +124,10 @@ CPPushOnPushOffButton = 1;
 function isNodejs() {  // this is a somewhat oblique check if we are running under Node
     try {
         typeof "process" !== "undefined" && process && process.versions && process.versions.node;
+        window.process = process; // with this trick we can create a global object from within a function. Need it for Node exit.
         return true;
     }
-    catch(e) { // avoid the global error catcher
+    catch(e) { // the above is not defined w/o Node
         return false;
     }
 }
@@ -146,8 +147,8 @@ function isNodejs() {  // this is a somewhat oblique check if we are running und
     'use strict';
     [[self window] setFullPlatformWindow: YES];
     [[self window] setBackgroundColor: [self windowBackgroundColor]];
-    gIsNode = isNodejs(); //alert(gIsNode);// console.info(gIsNode);
-    //[buttonExit setHidden: !gIsNode];
+    gIsNodejs = isNodejs();
+    [buttonExit setHidden: !gIsNodejs];
 
     
     [CPMenu setMenuBarVisible: NO];
@@ -527,14 +528,17 @@ function existsUrl(url) {
 
 
 - (IBAction) buttonDoExit_action: (id) sender { //console.info("AppController>buttonExit_action");
+    if (!gIsNodejs) return; // let's do nothing unless Node – an empty browser window scares :)
     if ([Misc isFullScreen]) {
         [Misc fullScreenOn: NO];
     }
     [[self window] close];  [CPApp terminate: nil];
-    if (gIsNode) {
-//       process.exit(); // works only in NODE
+    try {
+        var p = window.process; // thus we can access Node's process object w/o syntax complaints of browsers
+        p.exit(); // works only in NODE.
     }
-
+    catch(e) {// let's avoid the useless global error catcher here
+    }
 }
 
 
