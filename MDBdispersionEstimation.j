@@ -100,7 +100,7 @@ function likelihoodFunc(thresh, df) {//console.info("MDBDispersionEstimation>lik
     var len = df.length
     //var llh = probCorrectGivenLogMAR(kGuess, thresh, kWorstLogMAR); // nearly 1. Fix right end.
     //llh = llh * (1 - probCorrectGivenLogMAR(kGuess, thresh, kBestLogMAR)); // guess prob. Fix left end.
-    //var llh = 1;
+    var llh = 1;
     for (var i = 0; i < len; i++) {
         var l = probCorrectGivenLogMAR(kGuess, thresh, df[i].lMar);
         if (df[i].correct) {llh *= l} else {llh *= (1 - l);}
