@@ -31,7 +31,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     char oldResponseKeyChar, responseKeyChar;
     unsigned short responseKeyCode;
     CGContext cgc;
-    float stimStrengthInThresholderUnits, stimStrengthInDeviceunits, viewWidth, viewHeight;
+    float stimStrengthInThresholderUnits, stimStrengthInDeviceunits, viewWidth, viewHeight, viewWidth2, viewHeight2;
     float gapMinimal, gapMaximal;
     float xEccInPix, yEccInPix; // eccentricity
     Thresholder thresholder;
@@ -57,7 +57,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         }
         [self setParentController: parent];
         [aWindow setDelegate: self];
-        viewWidth = CGRectGetWidth([aWindow frame]);  viewHeight = CGRectGetHeight([aWindow frame]);
+        viewWidth = CGRectGetWidth([aWindow frame]);  viewWidth2 = viewWidth / 2;
+        viewHeight = CGRectGetHeight([aWindow frame]);  viewHeight2 = viewHeight / 2;
         gapMinimal = 0.5;  gapMaximal = viewHeight / 5 - 2;
         state = kStateDrawBack;
         kRangeLimitDefault = "";  kRangeLimitOk = "rangeOK";  kRangeLimitValueAtFloor = "atFloor";
@@ -130,7 +131,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         CGContextSetFillColor(cgc, [CPColor whiteColor]); ;// contrast always 100% with TAO
     CGContextFillRect(cgc, [[self window] frame]);
     CGContextSaveGState(cgc);
-    CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2); // origin to center
+    CGContextTranslateCTM(cgc,  viewWidth2, viewHeight2); // origin to center
     CGContextTranslateCTM(cgc,  -xEccInPix, -yEccInPix); // eccentric if desired
     switch ([Settings displayTransform]) { // mirroring etc.
         case 1: CGContextScaleCTM(cgc, -1, 1);  break;
@@ -151,7 +152,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         case 2: CGContextScaleCTM(cgc, 1, -1);  break;
         case 3: CGContextScaleCTM(cgc, -1, -1);  break;
     }
-    CGContextTranslateCTM(cgc,  xEccInPix, yEccInPix);  CGContextTranslateCTM(cgc,  -viewWidth / 2, -viewHeight / 2);
+    CGContextTranslateCTM(cgc,  xEccInPix, yEccInPix);  CGContextTranslateCTM(cgc,  -viewWidth2, -viewHeight2);
 }
 
 

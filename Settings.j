@@ -10,7 +10,7 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2021-12-07"
+#define kVersionDateOfFrACT "2021-12-22"
 #define kVersionStringOfFract "Version 10.0"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
@@ -22,6 +22,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2021-12-22 Add "line-by-line" mode by request. Fix error in unused logMAR→VAdec conversion
 2021-12-07 Add field "minPossibleLogMAR" in Settings to complement "maxPossibleDecicmalAcuity"
 2021-11-08 Add Quit/Exit button and successfully implement process.exit() in Node with the same code as running in the browser
 2021-11-04 add Q / X treatment in preparation of Quit/Exit button in an upcoming NWjs version. Doesn't work in a browser.

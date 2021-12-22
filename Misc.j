@@ -171,7 +171,7 @@ Misc.j
  And the inverse
  */
 + (float) decVAfromLogMAR: (float) logMAR {
-    return -Math.pow(10, logMAR);
+    return Math.pow(10, -logMAR);
 }
 
 

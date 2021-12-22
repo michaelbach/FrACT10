@@ -55,7 +55,7 @@ Created by Bach on 08.08.2017.
 }
 
 
-- (int)responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerAcuityLetters>responseNumberFromChar: ", keyChar);
+- (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerAcuityLetters>responseNumberFromChar: ", keyChar);
     switch ([keyChar uppercaseString]) { // "CDHKNORSVZ"
         case "C": return 0;
         case "D": return 1;

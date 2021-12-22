@@ -18,6 +18,7 @@ Created by mb on 2017-07-12.
 @import "FractControllerContrastLett.j"
 @import "FractControllerContrastC.j"
 @import "FractControllerContrastE.j"
+@import "FractControllerAcuityLineByLine.j"
 @import "RewardsController.j"
 @import "TAOController.j"
 @import "Sound.j"
@@ -46,15 +47,15 @@ Created by mb on 2017-07-12.
  */
 
 @typedef TestIDType
-kTestAcuityLett = 0; kTestAcuityC = 1; kTestAcuityE = 2; kTestIDTAO = 3; kTestIDVernier = 4; kTestContrastLett = 5; kTestContrastC = 6; kTestContrastE = 7;
+kTestAcuityLett = 0; kTestAcuityC = 1; kTestAcuityE = 2; kTestIDTAO = 3; kTestIDVernier = 4; kTestContrastLett = 5; kTestContrastC = 6; kTestContrastE = 7, kTestAcuityLineByLine = 8;
 
 CPPushOnPushOffButton = 1;
 
 @implementation AppController : HierarchyController {
     @outlet CPWindow fractControllerWindow;
     @outlet CPColorWell checkContrastWeberField1, checkContrastWeberField2;
-    @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, resultDetailsPanel;
-    @outlet MDBButton buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE;
+    @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelAcuityLineByLine, resultDetailsPanel;
+    @outlet MDBButton buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttonAcuityLineByLine;
     @outlet CPButton buttonExport;
     @outlet CPButton buttonExit;
     @outlet GammaView gammaView;
@@ -164,12 +165,12 @@ function isNodejs() {  // this is a somewhat oblique check if we are running und
         }
     });
     
-    var allButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE];
+    var allButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttonAcuityLineByLine];
     for (var i = 0; i < allButtons.length; i++)  [Misc makeFrameSquareFromWidth: allButtons[i]];
     
-    allTestControllers = [FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE];
+    allTestControllers = [FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerAcuityLineByLine];
 
-    allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel];
+    allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelAcuityLineByLine, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel];
     for (var i = 0; i < allPanels.length; i++)  [allPanels[i] setFrameOrigin: CGPointMake(0, 0)];
     
     [[self window] setTitle: "FrACT10"];  [self setVersionDateString: [Settings versionFrACT] + "·" + [Settings versionDateFrACT]];
@@ -274,7 +275,8 @@ function isNodejs() {  // this is a somewhat oblique check if we are running und
                 [responseinfoPanelContrastC makeKeyAndOrderFront: self];  break;
             case kTestContrastE:
                 [responseinfoPanelContrastE makeKeyAndOrderFront: self];  break;
-                break;
+            case kTestAcuityLineByLine:
+                [responseinfoPanelAcuityLineByLine makeKeyAndOrderFront: self];  break;
         }
     } else {
         [self runFractController2_actionOK: nil];
@@ -381,6 +383,8 @@ function isNodejs() {  // this is a somewhat oblique check if we are running und
                 case 7: [self  buttonDoContrastC_action: nil];  break;
                 case 8: [self  buttonDoContrastE_action: nil];  break;
             } break;
+        case "4":
+            [self buttonDoAcuityLineByLine_action: nil];  break;
         //case "∆": [self runtimeError_action: nil];  break;
         //case "T": [self resultDetails_action: nil];  break;
         default:
@@ -416,10 +420,10 @@ function existsUrl(url) {
 
 
 /**
- This will, on purpose, cause a run-time error when entering ‘∆’. This tests behaviour on such conditions.
+ This will, on purpose, cause a run-time error when entering ‘∆’. This tests behaviour on such conditions. (but currently disabled, see above)
  */
 - (IBAction) runtimeError_action: (id) sender { //console.info("AppController>runtimeError_action");
-    alert("The (rarely) entered glyph ‘∆’ is my purposeful test for causing a runtime errror. So there will be an error now…")
+    alert("The (rarely) entered glyph ‘∆’ is my purposeful test for causing a runtime errror. So there will occur an error now…")
     [self abc];
 }
 
@@ -459,6 +463,9 @@ function existsUrl(url) {
 }
 - (IBAction) buttonDoContrastE_action: (id) sender { //console.info("AppController>buttonDoContrastC_action");
     testID = kTestContrastE;    [self runFractController];
+}
+- (IBAction) buttonDoAcuityLineByLine_action: (id) sender { //console.info("AppController>buttonDoAcuityLineByLine_action");
+    testID = kTestAcuityLineByLine;    [self runFractController];
 }
 
 
@@ -578,5 +585,6 @@ function existsUrl(url) {
     }
     [gammaView setNeedsDisplay: YES];
 }
- 
+
+
 @end

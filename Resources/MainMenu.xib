@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="1060" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,20 +15,20 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <window title="MainWindow" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371" userLabel="mainWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-            <rect key="contentRect" x="335" y="390" width="800" height="600"/>
+            <rect key="contentRect" x="335" y="390" width="797" height="599"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <value key="minFullScreenContentSize" type="size" width="800" height="600"/>
             <view key="contentView" id="372">
-                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                <rect key="frame" x="0.0" y="0.0" width="797" height="599"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a87-ja-bWZ">
-                        <rect key="frame" x="740" y="542" width="48" height="48"/>
+                        <rect key="frame" x="740" y="541" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FrACT_icon-390" id="PrW-IU-8O1"/>
                     </imageView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="joy-xW-5wZ">
-                        <rect key="frame" x="44" y="545" width="522" height="41"/>
+                        <rect key="frame" x="44" y="544" width="522" height="41"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="FrACT₁₀ – Freiburg Vision Test" allowsEditingTextAttributes="YES" id="zvc-iA-vcl">
                             <font key="font" size="31" name="TimesNewRomanPS-BoldMT"/>
@@ -37,11 +37,11 @@
                         </textFieldCell>
                     </textField>
                     <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Vch-Ov-elQ">
-                        <rect key="frame" x="12" y="521" width="776" height="5"/>
+                        <rect key="frame" x="12" y="520" width="776" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
                     <button toolTip="Acuity run using Landolt-Cs.  Shortcut: C" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWr-KV-CRJ" customClass="MDBButton">
-                        <rect key="frame" x="199" y="434" width="100" height="20"/>
+                        <rect key="frame" x="199" y="433" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityC" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="ivt-76-XPn">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -52,7 +52,7 @@
                         </connections>
                     </button>
                     <button toolTip="Acuity run using tumbling Es.  Shortcut: E" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Phl-6Z-YpU" customClass="MDBButton">
-                        <rect key="frame" x="351" y="434" width="100" height="20"/>
+                        <rect key="frame" x="351" y="433" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityE" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="gQo-pc-sRD">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -63,7 +63,7 @@
                         </connections>
                     </button>
                     <button toolTip="Acuity run using TAO (The Auckland Optotypes).  Shortcut: A" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6e2-Sj-gkY" customClass="MDBButton">
-                        <rect key="frame" x="503" y="434" width="100" height="20"/>
+                        <rect key="frame" x="503" y="433" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityTAO" imagePosition="only" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="nnv-n0-fGE">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -74,7 +74,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUU-sC-ci6">
-                        <rect key="frame" x="45" y="187" width="107" height="23"/>
+                        <rect key="frame" x="45" y="186" width="107" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Go to the Settings screen
 
@@ -88,7 +88,7 @@ Shortcut: s </string>
                         </connections>
                     </button>
                     <textField toolTip="Gist of important current settings" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RFV-zI-Z0H">
-                        <rect key="frame" x="255" y="134" width="300" height="26"/>
+                        <rect key="frame" x="255" y="133" width="300" height="26"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="keyTestSettingsString" id="pPK-bU-djf">
                             <font key="font" metaFont="system"/>
@@ -100,19 +100,19 @@ Shortcut: s </string>
                         </connections>
                     </textField>
                     <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="VTI-MS-JAu">
-                        <rect key="frame" x="12" y="109" width="776" height="5"/>
+                        <rect key="frame" x="12" y="108" width="776" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
                     <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Oxi-an-PcJ">
-                        <rect key="frame" x="12" y="234" width="776" height="5"/>
+                        <rect key="frame" x="12" y="233" width="776" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
                     <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="RYj-oG-Hiz">
-                        <rect key="frame" x="15" y="-1" width="776" height="5"/>
+                        <rect key="frame" x="15" y="-2" width="776" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
                     <button toolTip="Hyperacuity (Vernier) run.  Shortcut: V" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oB-kn-EbO" customClass="MDBButton">
-                        <rect key="frame" x="655" y="434" width="100" height="20"/>
+                        <rect key="frame" x="655" y="433" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityVernier" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="vzK-pu-pjy">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -123,7 +123,7 @@ Shortcut: s </string>
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IAa-NP-Kj2">
-                        <rect key="frame" x="498" y="523" width="292" height="17"/>
+                        <rect key="frame" x="498" y="522" width="292" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="versionDateString" id="OHh-EV-lga">
                             <font key="font" metaFont="system"/>
@@ -135,7 +135,7 @@ Shortcut: s </string>
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBn-1C-8cg">
-                        <rect key="frame" x="2" y="13" width="797" height="66"/>
+                        <rect key="frame" x="2" y="12" width="797" height="66"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="resultString" allowsEditingTextAttributes="YES" usesSingleLineMode="YES" id="eZN-cU-So4">
                             <font key="font" metaFont="system" size="28"/>
@@ -147,7 +147,7 @@ Shortcut: s </string>
                         </connections>
                     </textField>
                     <button toolTip="This button only appears after a finished run and does what it says." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L8d-bR-KqO">
-                        <rect key="frame" x="45" y="135" width="125" height="23"/>
+                        <rect key="frame" x="45" y="134" width="125" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="Result→Clipboard" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yIl-d4-aF3">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -158,7 +158,7 @@ Shortcut: s </string>
                         </connections>
                     </button>
                     <button toolTip="Contrast run using Sloan Letters.  Shortcut: 1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rNE-r4-ESi" customClass="MDBButton">
-                        <rect key="frame" x="46" y="299" width="100" height="20"/>
+                        <rect key="frame" x="46" y="298" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="butCntLett" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="g65-ae-fbX">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -169,7 +169,7 @@ Shortcut: s </string>
                         </connections>
                     </button>
                     <button toolTip="Contrast run using Tumbling E.  Shortcut: 3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0h-oh-O7H" customClass="MDBButton">
-                        <rect key="frame" x="351" y="299" width="100" height="20"/>
+                        <rect key="frame" x="351" y="298" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="butCntE" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="iBN-dd-rq2">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -180,7 +180,7 @@ Shortcut: s </string>
                         </connections>
                     </button>
                     <button toolTip="Contrast run using Landolt C.  Shortcut: 2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="teG-PN-Gq7" customClass="MDBButton">
-                        <rect key="frame" x="199" y="299" width="100" height="20"/>
+                        <rect key="frame" x="199" y="298" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="butCntC" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="RRU-h0-CYF">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -191,7 +191,7 @@ Shortcut: s </string>
                         </connections>
                     </button>
                     <button toolTip="Guess what this button does…" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CDI-8L-YSC">
-                        <rect key="frame" x="447" y="187" width="107" height="23"/>
+                        <rect key="frame" x="447" y="186" width="107" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="Help" bezelStyle="texturedRounded" image="iconHelp" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7qY-Pl-QqO">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -203,7 +203,7 @@ Shortcut: s </string>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHP-WN-mFO">
-                        <rect key="frame" x="250" y="187" width="107" height="23"/>
+                        <rect key="frame" x="250" y="186" width="107" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Toggle “fullscreen”
 
@@ -217,7 +217,7 @@ Shortcut: f </string>
                         </connections>
                     </button>
                     <button toolTip="Legal notice and more." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y5b-QD-e3x">
-                        <rect key="frame" x="649" y="187" width="107" height="23"/>
+                        <rect key="frame" x="649" y="186" width="107" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="About" bezelStyle="texturedRounded" image="iconAbout" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="duS-rs-9gg">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -228,7 +228,7 @@ Shortcut: f </string>
                         </connections>
                     </button>
                     <button toolTip="Acuity run using Sloan Letters.  Shortcut: L" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jHx-aa-MPC" customClass="MDBButton">
-                        <rect key="frame" x="46" y="434" width="100" height="20"/>
+                        <rect key="frame" x="46" y="433" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityLett" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="xw1-er-aQN">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -239,7 +239,7 @@ Shortcut: f </string>
                         </connections>
                     </button>
                     <button toolTip="This button only appears after a finished run and does what it says." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H63-sm-3gG">
-                        <rect key="frame" x="649" y="135" width="107" height="23"/>
+                        <rect key="frame" x="649" y="134" width="107" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="Quit / Exit" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GPt-7z-qAa">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -249,12 +249,23 @@ Shortcut: f </string>
                             <action selector="buttonDoExit_action:" target="450" id="t4f-l7-7Lm"/>
                         </connections>
                     </button>
+                    <button toolTip="Line of optypes, adjustable acuity grade.  Shortcut: 4" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-y6-Eca" customClass="MDBButton">
+                        <rect key="frame" x="655" y="298" width="100" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="roundTextured" title="Line-by-line" bezelStyle="texturedRounded" image="buttonAcuityLineByLine" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="KDf-Uw-FAZ">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="buttonDoAcuityLineByLine_action:" target="450" id="XMu-Rp-EiN"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="450" id="0rS-1d-7NY"/>
             </connections>
-            <point key="canvasLocation" x="-44" y="82"/>
+            <point key="canvasLocation" x="-45.5" y="81.5"/>
         </window>
         <window title="FrACT10 – About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="ErU-UN-jpI" userLabel="aboutPanel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
@@ -584,6 +595,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                 <outlet property="buttonAcuityC" destination="sWr-KV-CRJ" id="eJP-Al-Hhm"/>
                 <outlet property="buttonAcuityE" destination="Phl-6Z-YpU" id="obG-lD-sX0"/>
                 <outlet property="buttonAcuityLett" destination="jHx-aa-MPC" id="tuh-WT-4uS"/>
+                <outlet property="buttonAcuityLineByLine" destination="s1F-y6-Eca" id="mXW-qr-ZAe"/>
                 <outlet property="buttonAcuityTAO" destination="6e2-Sj-gkY" id="wS5-ys-hpB"/>
                 <outlet property="buttonAcuityVernier" destination="8oB-kn-EbO" id="D7M-xX-xff"/>
                 <outlet property="buttonExit" destination="H63-sm-3gG" id="jIx-8v-AhU"/>
@@ -597,6 +609,7 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                 <outlet property="responseinfoPanelAcuity8C" destination="UBW-u3-RSn" id="Gqz-Zw-DfA"/>
                 <outlet property="responseinfoPanelAcuityE" destination="TXq-Ap-CfY" id="g0E-03-G4D"/>
                 <outlet property="responseinfoPanelAcuityL" destination="1zz-Aw-bf2" id="s2s-G8-0wC"/>
+                <outlet property="responseinfoPanelAcuityLineByLine" destination="fK9-Iy-zEB" id="1IO-Vd-N4r"/>
                 <outlet property="responseinfoPanelAcuityTAO" destination="mal-zk-76C" id="AMZ-0a-rBi"/>
                 <outlet property="responseinfoPanelAcuityVernier" destination="aQE-yg-pvo" id="ujy-mj-Kc7"/>
                 <outlet property="responseinfoPanelContrastC" destination="Tf3-6J-w5e" id="Y68-5r-F1P"/>
@@ -3654,6 +3667,96 @@ Type 55, or &lt;esc&gt; to abort the run.
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
         </window>
+        <window title="Acuity Line-by-Line" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="fK9-Iy-zEB" userLabel="responseinfoPanelAcuityLineByLine" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
+            <rect key="contentRect" x="167" y="107" width="800" height="600"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+            <view key="contentView" id="bv1-mR-C40">
+                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4J9-C8-ok5">
+                        <rect key="frame" x="702" y="13" width="84" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ua5-O4-glS">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="runFractController2_actionOK:" target="450" id="k6q-G5-yxS"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NjC-jj-Mgz">
+                        <rect key="frame" x="618" y="13" width="84" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rpJ-3S-spT">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="runFractController2_actionCancel:" target="450" id="wti-XG-hCc"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HzC-NT-9Rf">
+                        <rect key="frame" x="30" y="206" width="383" height="329"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="RdJ-5E-648">
+                            <font key="font" metaFont="system" size="16"/>
+                            <mutableString key="title">A line of 5 letters will appear. Use the cursor keys, or digits on a keypad (↑ = 8,  ↓ = 2) to change their acuity grade.
+
+On touch devices, use the buttons around the screen (may need to enable).
+
+
+If you can't recognise the orientation, use your best guess.
+
+This is NOT a threshold test to access acuity, but rather for demonstration and refraction help.
+
+
+Type 55, or &lt;esc&gt; to abort the run.
+</mutableString>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BHH-Ke-3hx">
+                        <rect key="frame" x="28" y="146" width="342" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Enable Touch Controls (necessary without keyboard)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jXb-oM-QcR">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTouchControls" id="RsC-2y-RFT"/>
+                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="Rwy-tJ-Tdx"/>
+                        </connections>
+                    </button>
+                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YeQ-G7-k4b">
+                        <rect key="frame" x="28" y="114" width="491" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tgf-Kr-7Nd">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.responseInfoAtStart" id="uhH-wS-S5Y"/>
+                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="Mbu-WU-CUV"/>
+                        </connections>
+                    </button>
+                    <imageView toolTip="When 4 alternatives are selected, the keypad (see above) can be used, but also the cursor keys." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rgc-pV-Iyk">
+                        <rect key="frame" x="512" y="299" width="128" height="143"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMapUpDownOnly" id="2Lf-j2-UHe"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="131" y="2168"/>
+        </window>
         <window title="Result Details as saved" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="4qQ-tv-ydF" userLabel="resultDetailsPanel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
@@ -3689,6 +3792,7 @@ DQ
         <image name="buttonAcuityC" width="203.75999450683594" height="119.76000213623047"/>
         <image name="buttonAcuityE" width="158.8800048828125" height="101.76000213623047"/>
         <image name="buttonAcuityLett" width="208.55999755859375" height="119.51999664306641"/>
+        <image name="buttonAcuityLineByLine" width="496.79998779296875" height="331.67999267578125"/>
         <image name="buttonAcuityTAO" width="196.80000305175781" height="192"/>
         <image name="buttonAcuityVernier" width="124.31999969482422" height="195.83999633789062"/>
         <image name="iconAbout" width="396" height="396"/>
@@ -3698,6 +3802,7 @@ DQ
         <image name="keyMap4" width="533" height="420"/>
         <image name="keyMap4keysOnly" width="324" height="214"/>
         <image name="keyMap8" width="554" height="543"/>
+        <image name="keyMapUpDownOnly" width="106" height="214"/>
         <image name="optotypeE000" width="51.840000152587891" height="51.599998474121094"/>
         <image name="optotypeE090" width="51.599998474121094" height="51.840000152587891"/>
         <image name="optotypeE180" width="51.840000152587891" height="51.599998474121094"/>
