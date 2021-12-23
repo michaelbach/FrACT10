@@ -67,7 +67,7 @@ Created by mb on 2021-12-21.
                 //lineHeight = tInfo.emHeightAscent;// + tInfo.emHeightDescent;
             } catch(e) {}
             CGContextShowTextAtPoint(cgc, viewWidth2 - stringWidth, -viewHeight2 + lineHeight, s);
-            CGContextShowTextAtPoint(cgc, -viewWidth2, -viewHeight2 + lineHeight, " This is experimental. Use ↑↓, ⇄");
+            CGContextShowTextAtPoint(cgc, -viewWidth2, -viewHeight2 + lineHeight, " β-version; use ↑↓, ⇄");
             break;
         default: break;
     }

@@ -3100,7 +3100,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="4ks-UH-FmP">
                             <font key="font" metaFont="system" size="16"/>
-                            <string key="title">
+                            <mutableString key="title">
 “Tumbling Es“ will appear, how are they oriented?
 
 Use the cursor keys, or on a keypad:
@@ -3113,7 +3113,7 @@ If you can't recognise the orientation, use your best guess.
 
 
 Type 55, or &lt;esc&gt; to abort the run.
-</string>
+</mutableString>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -3704,21 +3704,22 @@ Gw
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HzC-NT-9Rf">
-                        <rect key="frame" x="30" y="206" width="383" height="329"/>
+                        <rect key="frame" x="30" y="206" width="389" height="347"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="RdJ-5E-648">
                             <font key="font" metaFont="system" size="16"/>
-                            <mutableString key="title">A line of 5 letters will appear. Use the cursor keys, or digits on a keypad (↑ = 8,  ↓ = 2) to change their acuity grade.
+                            <mutableString key="title">A line of 5 letters will appear. 
+
+Use the cursor keys, or digits on a keypad (↑ = 8,  ↓ = 2), to change their acuity grade.
+
+Use ← and → to create a new letter sample.
 
 On touch devices, use the buttons around the screen (may need to enable).
 
-
-If you can't recognise the orientation, use your best guess.
-
-This is NOT a threshold test to access acuity, but rather for demonstration and refraction help.
+This is NOT an automated threshold test to access acuity. It was created on request for fully manual operation and help refracting.
 
 
-Type 55, or &lt;esc&gt; to abort the run.
+Type any unused key to exit this module.
 </mutableString>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -3751,7 +3752,7 @@ Type 55, or &lt;esc&gt; to abort the run.
                     <imageView toolTip="When 4 alternatives are selected, the keypad (see above) can be used, but also the cursor keys." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rgc-pV-Iyk">
                         <rect key="frame" x="512" y="299" width="128" height="143"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMapUpDownOnly" id="2Lf-j2-UHe"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap4keysOnly" id="2Lf-j2-UHe"/>
                     </imageView>
                 </subviews>
             </view>
@@ -3792,7 +3793,7 @@ DQ
         <image name="buttonAcuityC" width="203.75999450683594" height="119.76000213623047"/>
         <image name="buttonAcuityE" width="158.8800048828125" height="101.76000213623047"/>
         <image name="buttonAcuityLett" width="208.55999755859375" height="119.51999664306641"/>
-        <image name="buttonAcuityLineByLine" width="496.79998779296875" height="331.67999267578125"/>
+        <image name="buttonAcuityLineByLine" width="516" height="350.8800048828125"/>
         <image name="buttonAcuityTAO" width="196.80000305175781" height="192"/>
         <image name="buttonAcuityVernier" width="124.31999969482422" height="195.83999633789062"/>
         <image name="iconAbout" width="396" height="396"/>
@@ -3802,7 +3803,6 @@ DQ
         <image name="keyMap4" width="533" height="420"/>
         <image name="keyMap4keysOnly" width="324" height="214"/>
         <image name="keyMap8" width="554" height="543"/>
-        <image name="keyMapUpDownOnly" width="106" height="214"/>
         <image name="optotypeE000" width="51.840000152587891" height="51.599998474121094"/>
         <image name="optotypeE090" width="51.599998474121094" height="51.840000152587891"/>
         <image name="optotypeE180" width="51.840000152587891" height="51.599998474121094"/>

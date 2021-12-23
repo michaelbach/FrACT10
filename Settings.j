@@ -10,7 +10,7 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2021-12-22"
+#define kVersionDateOfFrACT "2021-12-23"
 #define kVersionStringOfFract "Version 10.0"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
@@ -22,9 +22,10 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
-2021-12-22 Add "line-by-line" mode by request. Fix error in unused logMAR→VAdec conversion
-2021-12-07 Add field "minPossibleLogMAR" in Settings to complement "maxPossibleDecicmalAcuity"
-2021-11-08 Add Quit/Exit button and successfully implement process.exit() in Node with the same code as running in the browser
+2021-12-23 refinements of "line-by-line"
+2021-12-22 add "line-by-line" mode by request. Fix error in unused logMAR→VAdec conversion
+2021-12-07 add field "minPossibleLogMAR" in Settings to complement "maxPossibleDecicmalAcuity"
+2021-11-08 add Quit/Exit button and successfully implement process.exit() in Node with the same code as running in the browser
 2021-11-04 add Q / X treatment in preparation of Quit/Exit button in an upcoming NWjs version. Doesn't work in a browser.
 2021-09-22 try autoFullScreen. Problem: program looses focus to key input until once clicked. `document.body.focus()` etc. no help.
 2021-09-17 simplify code to update isetIs4orientations (now in defaultsDidChange)
