@@ -44,7 +44,6 @@ Created by Bach on 2020-08-17
 
 - (void) runStart { //console.info("FractControllerContrastLett>runStart");
     nAlternatives = 10;  nTrials = [Settings nTrials08];
-    [self setCurrentTestName: "Contrast_Letters"];
     [super runStart];
 }
 

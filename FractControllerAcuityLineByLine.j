@@ -88,7 +88,6 @@ Created by mb on 2021-12-21.
 
 - (void) runStart { //console.info("FractControllerAcuityLetters>runStart");
     nAlternatives = 10;  nTrials = 9999;
-    [self setCurrentTestName: "Acuity_LineByLine"];
     [self setCurrentTestResultUnit: "LogMAR"];
     [super runStart];
 }

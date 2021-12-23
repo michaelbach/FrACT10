@@ -123,7 +123,6 @@ Created by Bach on 14.08.2017.
 
 
 - (void) runStart { //console.info("FractControllerAcuityVernier>runStart");
-    [self setCurrentTestName: "Acuity_Vernier"];
     [self setCurrentTestResultUnit: "arcsec"];
     nAlternatives = 2;  nTrials = [Settings nTrials02];
     gapVernierMinimalArcSec = 0.5;  gapVernierMaximalArcSec = 3000.0;

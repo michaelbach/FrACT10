@@ -22,6 +22,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2021-12-23 global change: drop "currentTestName", replace by testID, thus removing double representation
 2021-12-23 refinements of "line-by-line"
 2021-12-22 add "line-by-line" mode by request. Fix error in unused logMAR→VAdec conversion
 2021-12-07 add field "minPossibleLogMAR" in Settings to complement "maxPossibleDecicmalAcuity"

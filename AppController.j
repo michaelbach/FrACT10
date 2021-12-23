@@ -46,8 +46,6 @@ Created by mb on 2017-07-12.
  if (window.orientation == 90
  */
 
-@typedef TestIDType
-kTestAcuityLett = 0; kTestAcuityC = 1; kTestAcuityE = 2; kTestIDTAO = 3; kTestIDVernier = 4; kTestContrastLett = 5; kTestContrastC = 6; kTestContrastE = 7, kTestAcuityLineByLine = 8;
 
 CPPushOnPushOffButton = 1;
 
@@ -64,7 +62,6 @@ CPPushOnPushOffButton = 1;
     TAOController taoController;
     FractController currentFractController;
     //float angleAlpha @accessors, angleBeta @accessors, angleGamma @accessors;
-    TestIDType testID;
     BOOL settingsNeededNewDefaults;
     BOOL runAborted @accessors;
     BOOL is4orientations @accessors;
@@ -251,12 +248,12 @@ function isNodejs() {  // this is a somewhat oblique check if we are running und
 
 
 /**
- The above prerequisites were met, so let's run the test specified in the class-global `testID`
+ The above prerequisites were met, so let's run the test specified in the class-global `currentTestID`
  */
 - (void) runFractController2 { //console.info("AppController>runFractController2  ");
     [self closeAllPanels];
     if ([Settings responseInfoAtStart]) {
-        switch (testID) {
+        switch (currentTestID) {
             case kTestAcuityLett: [responseinfoPanelAcuityL makeKeyAndOrderFront: self]; break;
             case kTestAcuityC:
                 switch ([Settings nAlternatives]) {
@@ -289,8 +286,10 @@ function isNodejs() {  // this is a somewhat oblique check if we are running und
  */
 - (IBAction) runFractController2_actionOK: (id) sender { //console.info("AppController>runFractController2_actionOK");
     [self closeAllPanels];  [currentFractController release];
-    currentFractController = [[allTestControllers[testID] alloc] initWithWindow: fractControllerWindow parent: self];
+    currentFractController = [[allTestControllers[currentTestID] alloc] initWithWindow: fractControllerWindow parent: self];
     [currentFractController setSound: sound];
+    [currentFractController setCurrentTestID: currentTestID]; // while it has inherited currentTestID, it hasn't inherited its value
+    [currentFractController runStart];
     if ([Settings autoFullScreen]) {
         [Misc fullScreenOn: YES];
     }
@@ -441,31 +440,31 @@ function existsUrl(url) {
 
 
 - (IBAction) buttonDoAcuityLetters_action: (id) sender { //console.info("AppController>buttonDoAcuityLetters_action");
-    testID = kTestAcuityLett;    [self runFractController];
+    currentTestID = kTestAcuityLett;    [self runFractController];
 }
 - (IBAction) buttonDoAcuityLandolt_action: (id) sender { //console.info("AppController>buttonDoAcuity_action");
-    testID = kTestAcuityC;    [self runFractController];
+    currentTestID = kTestAcuityC;    [self runFractController];
 }
 - (IBAction) buttonDoAcuityE_action: (id) sender { //console.info("AppController>buttonDoAcuityE_action");
-    testID = kTestAcuityE;    [self runFractController];
+    currentTestID = kTestAcuityE;    [self runFractController];
 }
 - (IBAction) buttonDoAcuityTAO_action: (id) sender { //console.info("AppController>buttonDoAcuityA_action");
-    testID = kTestIDTAO;    [self runFractController];
+    currentTestID = kTestIDTAO;    [self runFractController];
 }
 - (IBAction) buttonDoAcuityVernier_action: (id) sender { //console.info("AppController>buttonDoAcuityE_action");
-    testID = kTestIDVernier;    [self runFractController];
+    currentTestID = kTestIDVernier;    [self runFractController];
 }
 - (IBAction) buttonDoContrastLett_action: (id) sender { //console.info("AppController>buttonDoContrastLett_action");
-    testID = kTestContrastLett;    [self runFractController];
+    currentTestID = kTestContrastLett;    [self runFractController];
 }
 - (IBAction) buttonDoContrastC_action: (id) sender { //console.info("AppController>buttonDoContrastC_action");
-    testID = kTestContrastC;    [self runFractController];
+    currentTestID = kTestContrastC;    [self runFractController];
 }
 - (IBAction) buttonDoContrastE_action: (id) sender { //console.info("AppController>buttonDoContrastC_action");
-    testID = kTestContrastE;    [self runFractController];
+    currentTestID = kTestContrastE;    [self runFractController];
 }
 - (IBAction) buttonDoAcuityLineByLine_action: (id) sender { //console.info("AppController>buttonDoAcuityLineByLine_action");
-    testID = kTestAcuityLineByLine;    [self runFractController];
+    currentTestID = kTestAcuityLineByLine;    [self runFractController];
 }
 
 

@@ -71,9 +71,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         [[self parentController] setRunAborted: YES];
         [[self window] makeKeyAndOrderFront: self];  [[self window] makeFirstResponder: self];
         //[self performSelector: @selector(runStart) withObject: nil afterDelay: 0.01];//geht nicht mehr nach DEPLOY???
-        [self setCurrentTestName: "NOT ASSIGNED"];  [self setCurrentTestResultUnit: "NOT ASSIGNED"];
         [MDBdispersionEstimation initResultStatistics];  ci95String = "";
-        [self runStart];
+        //[self runStart];
         // [self testContrastDeviceThresholdConversion];
     }
     return self;
@@ -127,7 +126,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (void) prepareDrawing { // console.info("FractController>prepareDrawing");
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, colOptotypeBack);
-    if (currentTestName == "Acuity_TAO")
+    if (currentTestID == kTestIDTAO)
         CGContextSetFillColor(cgc, [CPColor whiteColor]); ;// contrast always 100% with TAO
     CGContextFillRect(cgc, [[self window] frame]);
     CGContextSaveGState(cgc);
@@ -253,7 +252,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [[self parentController] runEnd];
     
     if ([Settings showCI95] && (![[self parentController] runAborted])) {
-        if ((currentTestName == "Acuity_Letters") || (currentTestName == "Acuity_LandoltC") ||(currentTestName == "Acuity_TumblingE") || (currentTestName == "Acuity_TAO")) {
+        if ((currentTestID == kTestAcuityLett) || (currentTestID == kTestAcuityC) ||(currentTestID == kTestAcuityE) || (currentTestID == kTestIDTAO)) {
             timerCI95 = [CPTimer scheduledTimerWithTimeInterval: 0.02 target:self selector:@selector(onTimeoutCI95:) userInfo:nil repeats:NO];
         }
     }
@@ -332,6 +331,22 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
+- (CPString) testNameGivenTestID: (TestIDType) theTestID {
+    switch (theTestID) {
+        case kTestAcuityLett: return "Acuity_Letters";
+        case kTestAcuityC: return "Acuity_LandoltC";
+        case kTestAcuityE: return "Acuity_TumblingE";
+        case kTestIDTAO: return "Acuity_TAO";
+        case kTestIDVernier: return "Acuity_Vernier";
+        case kTestContrastLett: return "Contrast_Letters";
+        case kTestContrastC: return "Contrast_LandoltC";
+        case kTestContrastE: return "Contrast_TumblingE";
+        case kTestAcuityLineByLine: return "Acuity_LineByLine";
+    }
+    return "NOT ASSIGNED";
+}
+
+
 /**
  Generic part of the export string, used by both acuity & contrast
  */
@@ -342,7 +357,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     s += tab + "decimalMark" + tab + [Settings decimalMarkChar];
     s += tab + "date" + tab + [Misc date2YYYY_MM_DD: now];
     s += tab + "time" + tab + [Misc date2HH_MM_SS: now];
-    s += tab + "test" + tab + currentTestName;
+    s += tab + "test" + tab + [self testNameGivenTestID: currentTestID];
     return s;
 }
 

@@ -47,7 +47,6 @@ Created by Bach on 2020-08-17
 
 - (void) runStart { //console.info("FractControllerContrastLett>runStart");
     nAlternatives = [Settings nAlternatives];  nTrials = [Settings nTrials];
-    [self setCurrentTestName: "Contrast_LandoltC"];
     [super runStart];
 }
 

@@ -85,7 +85,7 @@ function randomiseArray(array) {
             default: console.log("nAlternatives=", nAlternatives, " should never occur!"); // needs to be logged
         }
 //        if (nAlternatives == 2) { // to discern between v and h
-//            if (currentTestName != "Acuity_Vernier") { // don't do this for Vernier
+//            if (current_TestName != "Acuity_Vernier") { // don't do this for Vernier
 //                if (Prefs.dir2.n == 2) {
 //                    for (i = 0; i < nAlternatives; ++i) possiblenAlternatives[i] += 2;
 //                }

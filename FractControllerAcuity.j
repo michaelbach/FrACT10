@@ -29,7 +29,7 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
     var temp = [Misc logMARfromDecVA: [Misc decVAFromGapPixels: stimStrengthInDeviceunits]];
     [trialHistoryController setValue: [Misc stringFromNumber: temp decimals: 3 localised: NO]];
     if ([Settings crowdingType] > 0) {
-        if (currentTestName != "Acuity_Vernier") { // don't do crowding with Vernier etc.
+        if (currentTestID != kTestIDVernier) { // don't do crowding with Vernier etc.
             CGContextSaveGState(cgc);
             CGContextTranslateCTM(cgc, viewWidth / 2, viewHeight / 2); // origin to center
             CGContextTranslateCTM(cgc, -xEccInPix, -yEccInPix);
@@ -86,13 +86,23 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 }
 
 
-- (void) runEnd { //console.info("FractController>runEnd");
-    if (currentTestName != "Acuity_Vernier") {
-        if (iTrial < nTrials) { //premature end
-            [self setResultString: @"Aborted"];
-        } else {
-            [self setResultString: [self acuityComposeResultString]];
-        }
+- (void) runEnd { //console.info("FractControllerAcuity>runEnd");
+    switch (currentTestID) {
+        case kTestAcuityLett:
+        case kTestAcuityC:
+        case kTestAcuityE:
+        case kTestIDTAO:
+            if (iTrial < nTrials) { //premature end
+                [self setResultString: "Aborted"];
+            } else {
+                [self setResultString: [self acuityComposeResultString]];
+            }
+            break;
+        case kTestIDVernier:
+            break;
+        case kTestAcuityLineByLine:
+            [self setResultString: "Line-by-line ended."];
+            break;
     }
     [super runEnd];
 }
@@ -231,7 +241,7 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
         case 3:
             returnVal = 10 * gap;  break;
     }
-    if (currentTestName == "Acuity_TAO") {
+    if (currentTestID == kTestIDVernier) {
         returnVal *= 6 / 5;
     }
     return returnVal;

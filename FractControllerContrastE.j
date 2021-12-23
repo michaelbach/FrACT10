@@ -45,7 +45,6 @@ Created by Bach on 2020-09-02
 
 - (void) runStart { //console.info("FractControllerContrastLett>runStart");
     nAlternatives = 4;  nTrials = [Settings nTrials04];
-    [self setCurrentTestName: "Contrast_TumblingE"];
     [super runStart];
 }
 

@@ -59,7 +59,6 @@ Created by Bach on 2020-05-21
 - (void) runStart { //console.info("FractControllerAcuityTAO>runStart");
     taoImages = [parentController taoImageArray];
     nAlternatives = 10;  nTrials = [Settings nTrials08];
-    [self setCurrentTestName: "Acuity_TAO"];
     [self setCurrentTestResultUnit: "LogMAR"];
     abortCharacter = "A";
     [super runStart];
