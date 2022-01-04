@@ -111,7 +111,7 @@ function updateApplicationSize() {
         totalBytes = {executable:0, data:0, mhtml:0};
 
     // Get the size of all framework executables and sprite data
-    var frameworksDir = "Frameworks";
+    var frameworksDir = "";// was "Frameworks"
 
     if (configuration === "Debug")
         frameworksDir = FILE.join(frameworksDir, "Debug");

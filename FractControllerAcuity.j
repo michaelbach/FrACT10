@@ -215,7 +215,7 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
     s += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
     s += tab + "crowding" + tab + [Settings crowdingType];
     //s += tab + "XX" + tab + YY;
-    s += crlf; //console.info("FractController>date: ", s);
+    //s += crlf; //console.info("FractController>date: ", s);
     return s;
 }
 

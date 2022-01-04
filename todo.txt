@@ -1,9 +1,12 @@
 To Dos
 
+• why is "Loading…" missing?
+• Line-by-line: 5→3→1 for low VA, setting for start value, add to "which on 5"
 • Add: contrast check (for acuity) ???
-• Improve/extend: About panel (recent history)
+• Improve/extend: About panel (recent history), Libraries used
 • Gratings
 
+√ add "silently" problems to manual
 √ improve wording after all defaulted, perhaps reload
 √ update tooltips after adding "automatic" to decimal mark char, update manual 
 √ measure of dispersion

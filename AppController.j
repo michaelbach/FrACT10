@@ -311,20 +311,25 @@ function isNodejs() {  // this is a somewhat oblique check if we are running und
         if ([Settings rewardPicturesWhenDone]) {
             [rewardsController drawRandom];
         }
-        var temp = currentTestResultExportString.replace(/,/g, "."); // in localStorage we don't want to localise
-        localStorage.setItem([Settings filenameResultStorage], temp);
-        temp = currentTestResultsHistoryExportString.replace(/,/g, ".");
-        localStorage.setItem([Settings filenameResultsHistoryStorage], temp);
-        
-        if ([Settings results2clipboard] > 0) {
-            if ([Settings results2clipboard] == 2) {
-                currentTestResultExportString += currentTestResultsHistoryExportString;
-            }
-            if ([Settings results2clipboardSilent]) {
-                [Misc copyString2Clipboard: currentTestResultExportString];
-            } else {
-                [Misc copyString2ClipboardWithDialog: currentTestResultExportString];
-            }
+        [self exportCurrentTestResult];
+    }
+}
+
+
+- (void) exportCurrentTestResult { //console.info("AppController>exportCurrentTestResult");
+    var temp = currentTestResultExportString.replace(/,/g, "."); // in localStorage we don't want to localise
+    localStorage.setItem([Settings filenameResultStorage], temp);
+    temp = currentTestResultsHistoryExportString.replace(/,/g, ".");
+    localStorage.setItem([Settings filenameResultsHistoryStorage], temp);
+    
+    if ([Settings results2clipboard] > 0) {
+        if ([Settings results2clipboard] == 2) {
+            currentTestResultExportString += currentTestResultsHistoryExportString;
+        }
+        if ([Settings results2clipboardSilent]) {
+            [Misc copyString2Clipboard: currentTestResultExportString];
+        } else {
+            [Misc copyString2ClipboardWithDialog: currentTestResultExportString];
         }
     }
     [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: ([currentTestResultExportString length] > 1)];

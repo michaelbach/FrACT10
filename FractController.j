@@ -39,7 +39,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     TrialHistoryController trialHistoryController;
     Optotypes optotypes;
     CPString trialInfoString @accessors;
-    CPTimer timerDisplay, timerResponse, timerFixMark, timerCI95;
+    CPTimer timerDisplay, timerResponse, timerFixMark, timerRunEnd2;
     CPString kRangeLimitDefault, kRangeLimitOk, kRangeLimitValueAtFloor, kRangeLimitValueAtCeiling, rangeLimitStatus, abortCharacter, ci95String;
     id sound @accessors;
     BOOL responseButtonsAdded;
@@ -244,27 +244,30 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [[self parentController] setRunAborted: (iTrial < nTrials)]; //premature end
     [[self parentController] setResultString: resultString];
     [[self parentController] setCurrentTestResultExportString: [self composeExportString]];
-    
-    [trialHistoryController runEnded];
+    // timer delay to give the screen time to update, thus giving immediate response feedback
+    timerRunEnd2 = [CPTimer scheduledTimerWithTimeInterval: 0.02 target:self selector:@selector(onRunEnd2:) userInfo:nil repeats:NO];
+}
 
+
+- (void) onRunEnd2: (CPTimer) timer { //console.info("FractController>onRunEnd2");
+    [trialHistoryController runEnded];
     [[self parentController] setCurrentTestResultsHistoryExportString: [trialHistoryController resultsHistoryString]];
     if ([Settings auditoryFeedbackWhenDone]) [sound play3];
-    [[self parentController] runEnd];
     
     if ([Settings showCI95] && (![[self parentController] runAborted])) {
-        if ((currentTestID == kTestAcuityLett) || (currentTestID == kTestAcuityC) ||(currentTestID == kTestAcuityE) || (currentTestID == kTestIDTAO)) {
-            timerCI95 = [CPTimer scheduledTimerWithTimeInterval: 0.02 target:self selector:@selector(onTimeoutCI95:) userInfo:nil repeats:NO];
+        if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestIDTAO].includes(currentTestID)) {
+            // the below causes a delay of < 1 s with 10,000 samples
+            var historyResults = [trialHistoryController composeInfo4CI];
+            var ciResults = [MDBdispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: 10000][0];
+            var halfCI95 = (ciResults.CI0975 - ciResults.CI0025) / 2;
+            ci95String = " ± " + [Misc stringFromNumber: halfCI95 decimals: 2 localised: YES];
+            [[self parentController] setResultString: [self acuityComposeResultString]]; // this will add CI95 info
+            
+            [[self parentController] setCurrentTestResultExportString: [[self parentController] currentTestResultExportString] + tab + "halfCI95" + tab + [Misc stringFromNumber: halfCI95 decimals: 3 localised: YES]];
         }
     }
-}
-/**
- After a brief delay, to allow redraw of the main window, we calculate the CI95.
- */
-- (void) onTimeoutCI95: (CPTimer) timer { //console.info("FractController>onTimeoutCI95");
-    var historyResults = [trialHistoryController composeInfo4CI];
-    var ciResults = [MDBdispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: 10000][0];
-    ci95String = " ± " + [Misc stringFromNumber: (ciResults.CI0975 - ciResults.CI0025) / 2 decimals: 2 localised: YES];
-    [[self parentController] setResultString: [self acuityComposeResultString]]; // this will redisplay with CI95 info
+    [[self parentController] setCurrentTestResultExportString: [[self parentController] currentTestResultExportString] + crlf];
+    [[self parentController] runEnd];
 }
 
 
