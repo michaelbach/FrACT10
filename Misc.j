@@ -194,7 +194,7 @@ Misc.j
     if (locd && ([Settings decimalMarkChar] != ".")) {
         str = [str stringByReplacingOccurrencesOfString:@"." withString:@","];
     }
-//    console.info("Misc>stringFromNumber", fmt, str);
+    //console.info("Misc>stringFromNumber ", fmt, ", ", [Settings decimalMarkChar], " ,", str);
     return str;
 }
 

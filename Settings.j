@@ -10,7 +10,7 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2022-01-06"
+#define kVersionDateOfFrACT "2022-01-06a"
 #define kVersionStringOfFract "Version 10.0"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
@@ -22,7 +22,9 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
-2022-01-06 fix »In "oblique only" the buttons must also be at the oblique positions«
+ 2022-01-06a renamed "decimal mark character" to "decimal separator" (term from Wikipedia)
+                localised the "maxPossibleAcuity + LogMAR" under the ruler
+fix »In "oblique only" the buttons must also be at the oblique positions«
 2022-01-04 add the "halfCI95" result to the export list; this entailed changes to deal with the computation delay
 2021-12-23 global change: drop "currentTestName", replace by testID, thus removing double representation
 2021-12-23 refinements of "line-by-line"
@@ -287,8 +289,8 @@ Created by mb on July 15, 2015.
     var maxPossibleAcuityVal = [Misc decVAFromGapPixels: 1.0];
     // Correction for threshold underestimation of ascending procedures (as opposed to our bracketing one)
     maxPossibleAcuityVal = [self threshCorrection] ? maxPossibleAcuityVal * 0.891 : maxPossibleAcuityVal;
-    [self setMaxPossibleDecimalAcuity: [Misc stringFromNumber: maxPossibleAcuityVal decimals: 2 localised: NO]];
-    [self setMinPossibleLogMAR: [Misc stringFromNumber: [Misc logMARfromDecVA: maxPossibleAcuityVal] decimals: 2 localised: NO]];
+    [self setMaxPossibleDecimalAcuityLocalisedString: [Misc stringFromNumber: maxPossibleAcuityVal decimals: 2 localised: YES]];
+    [self setMinPossibleLogMARLocalisedString: [Misc stringFromNumber: [Misc logMARfromDecVA: maxPossibleAcuityVal] decimals: 2 localised: YES]];
 }
 
 
@@ -604,12 +606,11 @@ function _decimalMarkCharFindHelper(currentValue) {
             catch(e) { // avoid global error catcher
                 console.log("Intl.NumberFormat throws error: ", e);
             }
-    }
-    //console.info("_decimalMarkChar: ", _decimalMarkChar)
+    }    //console.info("_decimalMarkChar: ", _decimalMarkChar)
     return _decimalMarkChar;
 }
-+ (void) setDecimalMarkChar: (char) mark {
-    var idx = 0;
++ (void) setDecimalMarkCharX: (char) mark {
+    var idx = 0; // auto
     if (mark == ".") idx = 1;
     if (mark == ",") idx = 2;
     [[CPUserDefaults standardUserDefaults] setInteger: idx forKey: "decimalMarkCharIndex"];
@@ -643,11 +644,24 @@ function _decimalMarkCharFindHelper(currentValue) {
 + (void) setMaxPossibleDecimalAcuity: (float) value {
     [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "maxPossibleDecimalAcuity"];
 }
++ (CPString) maxPossibleDecimalAcuityLocalisedString {
+    return [[CPUserDefaults standardUserDefaults] objectForKey: "maxPossibleDecimalAcuityLocalisedString"];
+}
++ (void) setMaxPossibleDecimalAcuityLocalisedString: (CPString) value {
+    [[CPUserDefaults standardUserDefaults] setObject: value forKey: "maxPossibleDecimalAcuityLocalisedString"];
+}
+
 + (float) minPossibleLogMAR {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "minPossibleLogMAR"];
 }
 + (void) setMinPossibleLogMAR: (float) value {
     [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "minPossibleLogMAR"];
+}
++ (float) minPossibleLogMARLocalisedString {
+    return [[CPUserDefaults standardUserDefaults] objectForKey: "minPossibleLogMARLocalisedString"];
+}
++ (void) setMinPossibleLogMARLocalisedString: (CPString) value {
+    [[CPUserDefaults standardUserDefaults] setObject: value forKey: "minPossibleLogMARLocalisedString"];
 }
 
 
