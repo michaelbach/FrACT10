@@ -17,7 +17,7 @@ Created by Bach on 08.08.2017.
     if ([Settings acuityEasyTrials]) [self modifyThresholderStimulusWithBonus];
 }
 - (void) modifyDeviceStimulus {[self acuityModifyDeviceStimulusDIN01_02_04_08];}
-- (float) stimDeviceunitsFromThresholderunits: (float) tPest {return [self acuitystimDeviceunitsFromThresholderunits: tPest];}
+- (float) stimDeviceunitsFromThresholderunits: (float) tPest {return [self acuityStimDeviceunitsFromThresholderunits: tPest];}
 - (float) stimThresholderunitsFromDeviceunits: (float) d {return [self acuityStimThresholderunitsFromDeviceunits: d];}
 - (float) resultValue4Export {return [self acuityResultValue4Export];}
 - (CPString) composeExportString {return [self acuityComposeExportString];}

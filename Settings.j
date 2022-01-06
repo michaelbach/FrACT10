@@ -10,7 +10,7 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2022-01-06a"
+#define kVersionDateOfFrACT "2022-01-06b"
 #define kVersionStringOfFract "Version 10.0"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
@@ -22,7 +22,8 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
- 2022-01-06a renamed "decimal mark character" to "decimal separator" (term from Wikipedia)
+2022-01-06b some renaming of variables for more consistency. Try unsuccessfully to make tooltips larger by adding cr
+2022-01-06a renamed "decimal mark character" to "decimal separator" (term from Wikipedia)
                 localised the "maxPossibleAcuity + LogMAR" under the ruler
 fix »In "oblique only" the buttons must also be at the oblique positions«
 2022-01-04 add the "halfCI95" result to the export list; this entailed changes to deal with the computation delay

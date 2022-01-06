@@ -33,6 +33,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     CGContext cgc;
     float stimStrengthInThresholderUnits, stimStrengthInDeviceunits, viewWidth, viewHeight, viewWidth2, viewHeight2;
     float gapMinimal, gapMaximal;
+    float optotypeSizeInPix;
     float xEccInPix, yEccInPix; // eccentricity
     Thresholder thresholder;
     AlternativesGenerator alternativesGenerator;
@@ -44,7 +45,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     id sound @accessors;
     BOOL responseButtonsAdded;
     CPColor colOptotypeFore, colOptotypeBack;
-    float optotypeSizeInPix;
 }
 
 
@@ -292,7 +292,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 /**
  "stimThresholderunits" are on a linear 0…1 scale
- "Deviceunits" are the corresponding pixels
+ "Deviceunits" are the corresponding pixels for acuity or logCSWeber for contrast
 */
 - (float) stimThresholderunitsFromDeviceunits: (float) ntve {
     console.info("FractController>stimThresholderunitsFromDeviceunits OVERRIDE THIS!");
