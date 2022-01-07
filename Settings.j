@@ -10,7 +10,7 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2022-01-06b"
+#define kVersionDateOfFrACT "2022-01-07"
 #define kVersionStringOfFract "Version 10.0"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
@@ -22,6 +22,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2022-01-07 ©→2022, fix regressen (setDecimalMarkChar(X)), slightly more yellow default
 2022-01-06b some renaming of variables for more consistency. Try unsuccessfully to make tooltips larger by adding cr
 2022-01-06a renamed "decimal mark character" to "decimal separator" (term from Wikipedia)
                 localised the "maxPossibleAcuity + LogMAR" under the ruler
@@ -191,7 +192,7 @@ fix »In "oblique only" the buttons must also be at the oblique positions«
     if (set) {
         [self setDateSettingsVersion: kDateOfCurrentSettingsVersion];
         [[CPUserDefaults standardUserDefaults] setInteger: 2 forKey: "nAlternativesIndex"]; // 8 alternatives
-        [self setWindowBackgroundColor: [CPColor colorWithRed: 1 green: 1 blue: 0.95 alpha: 1]];
+        [self setWindowBackgroundColor: [CPColor colorWithRed: 1 green: 1 blue: 0.9 alpha: 1]];
     }
 
     // for all tests
@@ -610,7 +611,7 @@ function _decimalMarkCharFindHelper(currentValue) {
     }    //console.info("_decimalMarkChar: ", _decimalMarkChar)
     return _decimalMarkChar;
 }
-+ (void) setDecimalMarkCharX: (char) mark {
++ (void) setDecimalMarkChar: (char) mark {
     var idx = 0; // auto
     if (mark == ".") idx = 1;
     if (mark == ",") idx = 2;

@@ -310,7 +310,7 @@ With ‘Best PEST’ and antialiasing.</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="IoN-VZ-cjE">
                             <font key="font" metaFont="system" size="16"/>
-                            <string key="title">©1993–2021
+                            <string key="title">©1993–2022
 
 Prof. Michael Bach
 Eye Center
@@ -326,6 +326,7 @@ This is free software. There is no warranty for anything.</string>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <string key="userLabel">©1993–2022  Prof. Michael Bach Eye Center University Clinical Center Freiburg Killianstr. 5 79106 Freiburg Germany.  https://michaelbach.de michael.bach@uni-freiburg.de  This is free software. There is no warranty for anything.</string>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mWG-7R-MZp">
                         <rect key="frame" x="733" y="18" width="47" height="23"/>
@@ -519,7 +520,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="8aG-i8-Dh8">
                             <rect key="frame" x="1" y="1" width="747" height="188"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="zNM-Gb-Jh9">
                                     <rect key="frame" x="0.0" y="0.0" width="747" height="406"/>
