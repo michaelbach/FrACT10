@@ -1,6 +1,14 @@
 {
-	"name": "FrACT10",
-	"dependencies": {
-		"cappuccino": "git://github.com/cappuccino/cappuccino.git"
-	}
+  "name": "FrACT10",
+  "version": "10.0.0",
+  "dependencies": {
+    "cappuccino": "git://github.com/cappuccino/cappuccino.git"
+  },
+  "author": {
+    "name": "Michael Bach",
+    "email": "michael.bach@uni-freiburg.de",
+    "url": "https://michaelbach.de"
+  },
+  "homepage": "https://michaelbach.de/fract",
+  "license": "GNU GPL"
 }
