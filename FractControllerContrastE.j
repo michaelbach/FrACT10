@@ -23,6 +23,7 @@ Created by Bach on 2020-09-02
             break;
         case kStateDrawFore2:
             [optotypes tumblingEWithGapInPx: optotypeSizeInPix direction: [alternativesGenerator currentAlternative]];
+            [self drawFixMark3];
             stimStrengthInDeviceunits = [optotypes getCurrentContrastLogCSWeber];
             trialInfoString = [self contrastComposeTrialInfoString];// compose here after colors are set
             break;

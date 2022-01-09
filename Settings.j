@@ -10,7 +10,7 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2022-01-07"
+#define kVersionDateOfFrACT "2022-01-09"
 #define kVersionStringOfFract "Version 10.0"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
@@ -22,6 +22,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2022-01-09 fix issue #6: Eccentric targets need better fixation mark presentation. Change neg. Webercontrast for acuity to -∞
 2022-01-07 ©→2022, fix regressen (setDecimalMarkChar(X)), slightly more yellow default
 2022-01-06b some renaming of variables for more consistency. Try unsuccessfully to make tooltips larger by adding cr
 2022-01-06a renamed "decimal mark character" to "decimal separator" (term from Wikipedia)

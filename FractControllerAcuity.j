@@ -14,7 +14,7 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 - (void) drawCenterFixMark { //console.info("FractController>drawCenterFixMarkIfEccentric");
     if (![Settings eccentShowCenterFixMark]) return;
     var eccRadiusInPix = Math.sqrt(xEccInPix * xEccInPix + yEccInPix * yEccInPix);
-    if ((stimStrengthInDeviceunits * 3.5) > eccRadiusInPix) return;
+    if ((stimStrengthInDeviceunits * 3.5) > eccRadiusInPix) return;// we don't want overlap between fixmark and optotype
     CGContextSaveGState(cgc);
     CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2);
     CGContextSetLineWidth(cgc, 1);

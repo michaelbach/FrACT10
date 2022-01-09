@@ -23,6 +23,7 @@ Created by Bach on 2020-08-17
             break;
         case kStateDrawFore2:
             [optotypes drawLandoltWithGapInPx: optotypeSizeInPix landoltDirection: [alternativesGenerator currentAlternative]];
+            [self drawFixMark3];// need to draw again
             stimStrengthInDeviceunits = [optotypes getCurrentContrastLogCSWeber];
             trialInfoString = [self contrastComposeTrialInfoString];// compose here after colors are set
             break;

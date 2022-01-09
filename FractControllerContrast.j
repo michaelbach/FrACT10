@@ -36,13 +36,27 @@ Created by Bach on 2020-09-02
 }
 
 
+// Strategy: draw fixmark, delay (onTimeoutFixMark) and draw optotype, erasing fixmark.
+// With eccentricity: Need to draw again right after optotype so it seamlessly stays put
+// No marked eccentricity: don't draw it again
+- (void) drawFixMark3 { // check marked eccentricity is set, otherwise don't draw it
+    var eccRadiusInPix = Math.sqrt(xEccInPix * xEccInPix + yEccInPix * yEccInPix);
+    if ((optotypeSizeInPix * 4) > eccRadiusInPix) return; // we don't want overlap between fixmark and optotype
+    [self drawFixMark2];
+}
+- (void) drawFixMark2 {
+    CGContextSaveGState(cgc);
+    CGContextSetStrokeColor(cgc, [CPColor colorWithRed: 0 green: 0 blue: 1 alpha: 0.7]);
+    CGContextSetLineWidth(cgc, 0.5);
+    //[optotypes setCgc: cgc colFore: [CPColor colorWithRed: 0 green: 0 blue: 1 alpha: 0.3] colBack: colOptotypeBack];
+    CGContextTranslateCTM(cgc,  +xEccInPix, +yEccInPix); // counter eccentricity
+    [optotypes strokeStarAtX: 0 y: 0 size: optotypeSizeInPix * 3];
+    CGContextRestoreGState(cgc);
+}
 - (void) drawFixMark {
-    var t = [Settings contrastTimeoutFixmark] / 1000;
+    var t = [Settings contrastTimeoutFixmark] / 1000; // ms → seconds
     if ([Settings contrastShowFixMark]) {
-        CGContextSetStrokeColor(cgc, [CPColor colorWithRed: 0 green: 0 blue: 1 alpha: 0.7]);
-        CGContextSetLineWidth(cgc, 0.5);
-        [optotypes setCgc: cgc colFore: [CPColor colorWithRed: 0 green: 0 blue: 1 alpha: 0.3] colBack: colOptotypeBack];
-        [optotypes strokeStarAtX: 0 y: 0 size: optotypeSizeInPix * 3];
+        [self drawFixMark2];
         timerFixMark = [CPTimer scheduledTimerWithTimeInterval: t target:self selector:@selector(onTimeoutFixMark:) userInfo:nil repeats:NO];
     } else {
         t = 0.02;
