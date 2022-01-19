@@ -74,7 +74,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUU-sC-ci6">
-                        <rect key="frame" x="45" y="186" width="107" height="23"/>
+                        <rect key="frame" x="45" y="186" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Go to the Settings screen
 
@@ -192,7 +192,7 @@ Shortcut: s
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CDI-8L-YSC">
-                        <rect key="frame" x="447" y="186" width="107" height="23"/>
+                        <rect key="frame" x="452" y="186" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Guess what this button does…
  </string>
@@ -206,7 +206,7 @@ Shortcut: s
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHP-WN-mFO">
-                        <rect key="frame" x="250" y="186" width="107" height="23"/>
+                        <rect key="frame" x="253" y="186" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Toggle “fullscreen”
 
@@ -221,7 +221,7 @@ Shortcut: f
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y5b-QD-e3x">
-                        <rect key="frame" x="649" y="186" width="107" height="23"/>
+                        <rect key="frame" x="654" y="186" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Legal notice and more.
  </string>
@@ -238,7 +238,7 @@ Shortcut: f
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Acuity run using Sloan Letters.  Shortcut: L
 </string>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityLett" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="xw1-er-aQN">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityLett" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="xw1-er-aQN">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -247,7 +247,7 @@ Shortcut: f
                         </connections>
                     </button>
                     <button toolTip="This button only appears after a finished run and does what it says." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H63-sm-3gG">
-                        <rect key="frame" x="649" y="134" width="107" height="23"/>
+                        <rect key="frame" x="654" y="134" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="Quit / Exit" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GPt-7z-qAa">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
