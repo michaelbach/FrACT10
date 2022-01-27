@@ -10,8 +10,8 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kVersionDateOfFrACT "2022-01-19"
-#define kVersionStringOfFract "Version 10.0"
+#define kVersionDateOfFrACT "2022-01-27"
+#define kVersionStringOfFract "Version 1.0"
 #define kVersionOfExportFormat "5"
 #define kDateOfCurrentSettingsVersion "2021-01-31"
 #define kDefaultDistanceInCM 399
@@ -22,6 +22,7 @@ Created by mb on July 15, 2015.
 /* History
    =======
 
+2022-01-27 add "line-by-line" to "which on 5", change version to 1.0
 2022-01-09 fix issue #6: Eccentric targets need better fixation mark presentation. Change neg. Webercontrast for acuity to -∞
 2022-01-07 ©→2022, fix regressen (setDecimalMarkChar(X)), slightly more yellow default
 2022-01-06b some renaming of variables for more consistency. Try unsuccessfully to make tooltips larger by adding cr
@@ -208,7 +209,7 @@ fix »In "oblique only" the buttons must also be at the oblique positions«
     [self setResponseInfoAtStart: [self chckBool: [self responseInfoAtStart] def: YES set: set]];
     [self setEnableTouchControls: [self chckBool: [self enableTouchControls] def: YES set: set]];
     
-    [self setTestOnFive: [self chckInt: [self testOnFive] def: 1 min: 0 max: 8 set: set]]; // 1: Sloan Letters
+    [self setTestOnFive: [self chckInt: [self testOnFive] def: 1 min: 0 max: 9 set: set]]; // 1: Sloan Letters
 
     [self setNOfRuns2Recall: [self chckInt: [self nOfRuns2Recall] def: 0 min: 0 max: 100 set: set]];
 

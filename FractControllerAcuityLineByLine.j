@@ -59,7 +59,7 @@ Created by mb on 2021-12-21.
             CGContextSetFillColor(cgc, [CPColor blueColor]);
             CGContextSetTextDrawingMode(cgc, kCGTextFill);
             CGContextSelectFont(cgc, "24px sans-serif"); // must be CSS
-            var s = [Misc stringFromNumber: localLogMAR decimals: 1 localised: YES] + " LogMAR "
+            var s = [Misc stringFromNumber: localLogMAR decimals: 1 localised: YES] + " LogMAR  "
             var stringWidth = 140, lineHeight = 24;
             try {
                 var tInfo = cgc.measureText(s);
@@ -67,7 +67,7 @@ Created by mb on 2021-12-21.
                 //lineHeight = tInfo.emHeightAscent;// + tInfo.emHeightDescent;
             } catch(e) {}
             CGContextShowTextAtPoint(cgc, viewWidth2 - stringWidth, -viewHeight2 + lineHeight, s);
-            CGContextShowTextAtPoint(cgc, -viewWidth2, -viewHeight2 + lineHeight, " β-version; use ↑↓, ⇄");
+            CGContextShowTextAtPoint(cgc, -viewWidth2, -viewHeight2 + lineHeight, " Use ↑↓, ⇄");
             break;
         default: break;
     }

@@ -376,6 +376,8 @@ function isNodejs() {  // this is a somewhat oblique check if we are running und
             [self  buttonDoContrastC_action: nil];  break;
         case "3":
             [self  buttonDoContrastE_action: nil];  break;
+        case "4":
+            [self buttonDoAcuityLineByLine_action: nil];  break;
         case "5" :
             switch([Settings testOnFive]) {
                 case 1: [self  buttonDoAcuityLetters_action: nil];  break;
@@ -386,9 +388,8 @@ function isNodejs() {  // this is a somewhat oblique check if we are running und
                 case 6: [self  buttonDoContrastLett_action: nil];  break;
                 case 7: [self  buttonDoContrastC_action: nil];  break;
                 case 8: [self  buttonDoContrastE_action: nil];  break;
+                case 9: [self  buttonDoAcuityLineByLine_action: nil];  break;
             } break;
-        case "4":
-            [self buttonDoAcuityLineByLine_action: nil];  break;
         //case "∆": [self runtimeError_action: nil];  break;
         //case "T": [self resultDetails_action: nil];  break;
         default:
