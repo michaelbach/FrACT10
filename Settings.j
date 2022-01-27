@@ -23,6 +23,7 @@ Created by mb on July 15, 2015.
    =======
 
 2022-01-27 add "line-by-line" to "which on 5", change version to 1.0
+ change version to 1.0 also in "About" panel (in future that text should be generated programmatically)
 2022-01-09 fix issue #6: Eccentric targets need better fixation mark presentation. Change neg. Webercontrast for acuity to -∞
 2022-01-07 ©→2022, fix regressen (setDecimalMarkChar(X)), slightly more yellow default
 2022-01-06b some renaming of variables for more consistency. Try unsuccessfully to make tooltips larger by adding cr
