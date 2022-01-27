@@ -3,6 +3,7 @@
     <dependencies>
         <deployment version="1060" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="19529"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -283,53 +284,8 @@ Shortcut: f
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="19G-8T-Bgw">
-                        <rect key="frame" x="20" y="251" width="372" height="329"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="H5V-2Z-rys">
-                            <font key="font" metaFont="system" size="16"/>
-                            <string key="title">FrACT10
-=======
-
-Freiburg Visual Acuity and Contrast Test 10, Vs 1.0
-
-
-Interactive measurement of visual acuities following DIN/ISO; also can assess contrast sensitivity.
-
-Optotypes: Sloan letters, Landolt C, Tumbling E, and TAO.
-
-Acuity results in decimal, LogMAR or Snellen notation.
-
-With ‘Best PEST’ and antialiasing.</string>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ke1-2Q-RJn">
-                        <rect key="frame" x="413" y="376" width="367" height="204"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="IoN-VZ-cjE">
-                            <font key="font" metaFont="system" size="16"/>
-                            <string key="title">©1993–2022
-
-Prof. Michael Bach
-Eye Center
-University Clinical Center Freiburg
-Killianstr. 5
-79106 Freiburg
-Germany.
-
-https://michaelbach.de
-michael.bach@uni-freiburg.de
-
-This is free software. There is no warranty for anything.</string>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <string key="userLabel">©1993–2022  Prof. Michael Bach Eye Center University Clinical Center Freiburg Killianstr. 5 79106 Freiburg Germany.  https://michaelbach.de michael.bach@uni-freiburg.de  This is free software. There is no warranty for anything.</string>
-                    </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mWG-7R-MZp">
-                        <rect key="frame" x="733" y="18" width="47" height="23"/>
+                        <rect key="frame" x="734" y="18" width="47" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="OK" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BhT-tL-ONO">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -375,17 +331,38 @@ DQ
                             <action selector="buttonHelpGetManual_action:" target="450" id="LZS-K2-pi0"/>
                         </connections>
                     </button>
-                    <button toolTip="This will open my home page in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mhi-G0-KpF">
-                        <rect key="frame" x="414" y="259" width="135" height="23"/>
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r8k-N3-354">
+                        <rect key="frame" x="20" y="220" width="372" height="360"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" title="→michaelbach.de" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="A2S-ZO-kQy">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" id="Jyw-sf-FMk">
                             <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonAboutWebsiteMB_action:" target="450" id="NHq-mp-IVL"/>
-                        </connections>
-                    </button>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="Pir-jU-vMH">
+                        <rect key="frame" x="413" y="220" width="372" height="360"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" id="JSI-Lp-5WK">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <webView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="68J-Vy-hV1">
+                        <rect key="frame" x="23" y="229" width="366" height="350"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
+                            <nil key="identifier"/>
+                        </webPreferences>
+                    </webView>
+                    <webView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nO5-T6-Njd">
+                        <rect key="frame" x="416" y="229" width="365" height="350"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
+                            <nil key="identifier"/>
+                        </webPreferences>
+                    </webView>
                 </subviews>
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
@@ -520,7 +497,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="8aG-i8-Dh8">
                             <rect key="frame" x="1" y="1" width="747" height="188"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="zNM-Gb-Jh9">
                                     <rect key="frame" x="0.0" y="0.0" width="747" height="406"/>
@@ -598,6 +575,9 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
         <customObject id="450" customClass="AppController">
             <connections>
                 <outlet property="aboutPanel" destination="ErU-UN-jpI" id="7Pz-ls-119"/>
+                <outlet property="aboutWebView" destination="68J-Vy-hV1" id="Qua-2K-10o"/>
+                <outlet property="aboutWebView1" destination="68J-Vy-hV1" id="Fya-Fx-HDc"/>
+                <outlet property="aboutWebView2" destination="nO5-T6-Njd" id="AgB-qE-OG6"/>
                 <outlet property="buttCntC" destination="teG-PN-Gq7" id="Vvz-oi-F4f"/>
                 <outlet property="buttCntE" destination="V0h-oh-O7H" id="mPS-2H-434"/>
                 <outlet property="buttCntLett" destination="rNE-r4-ESi" id="lAC-91-RlZ"/>
@@ -3796,6 +3776,16 @@ DQ
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
         </window>
+        <textField verticalHuggingPriority="750" id="qvL-wa-NVX">
+            <rect key="frame" x="0.0" y="0.0" width="96" height="22"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="b8l-WO-Lfp">
+                <font key="font" usesAppearanceFont="YES"/>
+                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+            </textFieldCell>
+            <point key="canvasLocation" x="31" y="1770"/>
+        </textField>
     </objects>
     <resources>
         <image name="FrACT_icon-390" width="390" height="390"/>

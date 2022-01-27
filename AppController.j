@@ -57,6 +57,7 @@ CPPushOnPushOffButton = 1;
     @outlet CPButton buttonExport;
     @outlet CPButton buttonExit;
     @outlet GammaView gammaView;
+    @outlet CPWebView aboutWebView1, aboutWebView2;
     CPImageView rewardImageView;
     RewardsController rewardsController;
     TAOController taoController;
@@ -516,9 +517,33 @@ function existsUrl(url) {
 }
 
 
+- (void) oneWebView: (CPWebView) theView htmlString: (CPString) htmlString {
+    [theView setBackgroundColor: [CPColor colorWithWhite: 0.95 alpha: 1]];
+    [theView setScrollMode:CPWebViewScrollNone];
+    var s = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'></head><body>";
+    s += htmlString + "<br>&nbsp;</body></html>"; // need trailing line, otherwise cut (bug)
+    [theView loadHTMLString: s];
+}
 - (IBAction) buttonAbout_action: (id) sender { //console.info("AppController>buttonAbout_action");
     [aboutPanel makeKeyAndOrderFront: self];
+    var s = "<h2 align='center'>FrACT<sub>10</sub></h2>";
+    s += "Freiburg Visual Acuity and Contrast Test 10, " + kVersionStringOfFract + ". <br><br>";
+    s += "Interactive measurement of visual acuities following DIN/ISO; also can assess contrast sensitivity.<br><br>Optotypes: Sloan letters, Landolt C, Tumbling E, and TAO.<br><br>Acuity results in decimal, LogMAR or Snellen notation.<br><br>With ‘Best PEST’ and antialiasing."
+    [self oneWebView: aboutWebView1 htmlString: s];
+
+    s = "©1993–2022<br><br>Prof. Michael Bach<br>";
+    s += "Eye Center, University Clinical Center<br>";
+    s += "Killianstr. 5, 79106 Freiburg, Germany.<br>";
+    s += "<a href='https://michaelbach.de' target='_blank'>https://michaelbach.de</a><br>";
+    s += "<a href='mailto:bach@uni-freiburg.de'>bach@uni-freiburg.de</a><br><br>";
+    s += "Source code: <a href='https://github.com/michaelbach/FrACT10/' target='_blank'>GitHub repository</a><br><br>";
+    s += "Frameworks/Libraries used:<br>";
+    s += "<a href='https://www.cappuccino.dev' target='_blank'>Cappuccino</a>, <a href='https://simplestatistics.org' target='_blank'>Simple Statistics</a><br><br><br>";
+    s += "This is free software. There is no warranty for anything.";
+    [self oneWebView: aboutWebView2 htmlString: s];
 }
+
+
 - (IBAction) buttonAboutWebsiteMB_action: (id) sender {
     window.open("https://michaelbach.de", "_blank");
 }
