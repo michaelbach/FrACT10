@@ -6,15 +6,14 @@ Globals.j
 
 */
 
-
 /**
- Since we do not have constants in Objective-J…
+ Since we do not have constants in Objective-J, we create global variables
  Created on 2021-01-07
  */
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "Vs 1.0";
-kVersionDateOfFrACT = "2022-01-28";
+kVersionDateOfFrACT = "2022-01-29";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -27,7 +26,8 @@ kFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
 /* History
    =======
 
-2022-01-27 Revamp 'About' pane → WebView, allowing styled text & links, add "Libraries used", move this local history to "Globals.j", move global constants from Settings here
+2022-01-29 Factor out to "PopulateAboutPanel", override default font in "About" with sans-serif. Also slight layout change in the "Response info" panes.
+2022-01-28 Revamp 'About' pane → WebView, allowing styled text & links, add "Libraries used", move this local history to "Globals.j", move global constants from Settings here
 2022-01-27 add "line-by-line" to "which on 5", change version to 1.0
  change version to 1.0 also in "About" panel (in future that text should be generated programmatically)
 2022-01-09 fix issue #6: Eccentric targets need better fixation mark presentation. Change neg. Webercontrast for acuity to -∞

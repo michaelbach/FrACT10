@@ -2864,7 +2864,7 @@ Gw
                         </connections>
                     </button>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6o4-T6-NsI">
-                        <rect key="frame" x="18" y="262" width="491" height="18"/>
+                        <rect key="frame" x="18" y="232" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nOb-QR-RMy">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2943,7 +2943,7 @@ Type 55, or &lt;esc&gt; to abort the run.</string>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap4" id="YOw-PI-MNZ"/>
                     </imageView>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ahk-gy-psf">
-                        <rect key="frame" x="28" y="166" width="491" height="18"/>
+                        <rect key="frame" x="28" y="136" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Flu-8c-Np5">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3036,7 +3036,7 @@ Gw
                         </connections>
                     </button>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gI2-uJ-d3q">
-                        <rect key="frame" x="18" y="133" width="491" height="18"/>
+                        <rect key="frame" x="18" y="103" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yp9-6V-pdS">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3148,7 +3148,7 @@ Type 55, or &lt;esc&gt; to abort the run.
                         </connections>
                     </button>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7dB-dL-Xce">
-                        <rect key="frame" x="28" y="114" width="491" height="18"/>
+                        <rect key="frame" x="28" y="84" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="x74-TQ-9o2">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3353,7 +3353,7 @@ Gw
                         </connections>
                     </button>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xJH-Vi-BPg">
-                        <rect key="frame" x="18" y="236" width="491" height="18"/>
+                        <rect key="frame" x="18" y="206" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="v2k-OW-crk">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3439,7 +3439,7 @@ Gw
                         </connections>
                     </button>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IlL-Qc-BHv">
-                        <rect key="frame" x="18" y="272" width="491" height="18"/>
+                        <rect key="frame" x="18" y="242" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nOj-Fc-rtx">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3532,7 +3532,7 @@ Gw
                         </connections>
                     </button>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vhj-Uu-joO">
-                        <rect key="frame" x="18" y="133" width="491" height="18"/>
+                        <rect key="frame" x="18" y="103" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="91b-Qr-OG1">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3644,7 +3644,7 @@ Type 55, or &lt;esc&gt; to abort the run.
                         </connections>
                     </button>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9hx-7G-0rB">
-                        <rect key="frame" x="28" y="114" width="491" height="18"/>
+                        <rect key="frame" x="28" y="84" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="1Me-af-wRA">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3730,7 +3730,7 @@ Type any unused key to exit this module.
                         </connections>
                     </button>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YeQ-G7-k4b">
-                        <rect key="frame" x="28" y="114" width="491" height="18"/>
+                        <rect key="frame" x="28" y="84" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tgf-Kr-7Nd">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
