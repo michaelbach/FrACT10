@@ -213,7 +213,7 @@ Shortcut: s
 
 Shortcut: f 
  </string>
-                        <buttonCell key="cell" type="roundTextured" title="Fullscreen" bezelStyle="texturedRounded" image="iconFullscreen" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cEz-jl-XIn">
+                        <buttonCell key="cell" type="roundTextured" title="Full…" bezelStyle="texturedRounded" image="iconFullscreen" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cEz-jl-XIn">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
