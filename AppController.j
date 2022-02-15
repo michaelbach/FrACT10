@@ -71,8 +71,9 @@ CPPushOnPushOffButton = 1;
     id allPanels, allTestControllers;
     CPColor checkContrastWeberFieldColor1 @accessors;
     CPColor checkContrastWeberFieldColor2 @accessors;
-    float checkContrastActualWeberPercent @accessors
-    float checkContrastActualMichelsonPercent @accessors
+    float checkContrastActualWeberPercent @accessors;
+    float checkContrastActualMichelsonPercent @accessors;
+    int settingsTabViewSelectedIndex @accessors;
 }
 
 
@@ -143,6 +144,7 @@ function isNodejs() {  // this is a somewhat oblique check if we are running und
 }
 
 
+/** runs after "init" above */
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>applicationDidFinishLaunching");
     'use strict';
     [[self window] setFullPlatformWindow: YES];
@@ -171,6 +173,7 @@ function isNodejs() {  // this is a somewhat oblique check if we are running und
 
     allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelAcuityLineByLine, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel];
     for (var i = 0; i < allPanels.length; i++)  [allPanels[i] setFrameOrigin: CGPointMake(0, 0)];
+    [self setSettingsTabViewSelectedIndex: 0]; // first time select the "General" tab in Settings
     
     [[self window] setTitle: "FrACT10"];  [self setVersionDateString: [Settings versionFrACT] + "·" + [Settings versionDateFrACT]];
     [Settings checkDefaults]; // what was the reason to put this here???
@@ -239,8 +242,11 @@ function isNodejs() {  // this is a somewhat oblique check if we are running und
                         informativeTextWithFormat: "\rCalibration is mandatory for valid results.\r\rGoto 'Settings' and enter appropriate values for \r«Length of blue ruler»\rand \r«Observer distance».\r\rThis will also avoid the present obnoxious warning dialog."];
         [alert runModalWithDidEndBlock: function(alert, returnCode) {
             switch (returnCode) {
-                case 1: [self buttonSettings_action: nil];  break;
-                case 0: [self runFractController2]; break;
+                case 1: // alternateButton
+                    [self setSettingsTabViewSelectedIndex: 0]; // ensure "General" tab
+                    [self buttonSettings_action: nil];  break;
+                case 0: // defaultButton
+                    [self runFractController2];  break;
             }
         }];
     } else {

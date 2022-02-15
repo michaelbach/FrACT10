@@ -2778,6 +2778,9 @@ CQ
                                 </view>
                             </tabViewItem>
                         </tabViewItems>
+                        <connections>
+                            <binding destination="450" name="selectedIndex" keyPath="settingsTabViewSelectedIndex" id="ShI-Nc-oE9"/>
+                        </connections>
                     </tabView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hQ5-7w-CmX">
                         <rect key="frame" x="552" y="18" width="134" height="23"/>
