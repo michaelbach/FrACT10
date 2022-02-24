@@ -13,7 +13,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "Vs 1.0";
-kVersionDateOfFrACT = "2022-02-15";
+kVersionDateOfFrACT = "2022-02-24";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -25,6 +25,7 @@ kFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
 
 /* History
    =======
+2022-02-24 "Line-by-line ended." → empty string
 2022-02-15 ensure "Settings>General" tab is selected when coming from the un-calibrated alert
 2022-02-13 shorten Fullscreen → Full to avoid crop
 2022-01-29 Factor out to "PopulateAboutPanel", override default font in "About" with sans-serif. Also slight layout change in the "Response info" panes.

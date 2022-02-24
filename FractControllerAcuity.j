@@ -101,7 +101,7 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
         case kTestIDVernier:
             break;
         case kTestAcuityLineByLine:
-            [self setResultString: "Line-by-line ended."];
+            [self setResultString: ""];
             break;
     }
     [super runEnd];
