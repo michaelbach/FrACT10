@@ -2264,10 +2264,10 @@ Gw
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kNy-th-SSm">
-                        <rect key="frame" x="328" y="305" width="145" height="21"/>
+                        <rect key="frame" x="246" y="289" width="309" height="37"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="Place Credit Card here." id="4LV-LG-a2Y">
-                            <font key="font" metaFont="system"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Place Credit Card here." id="4LV-LG-a2Y">
+                            <font key="font" metaFont="system" size="28"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textFieldCell>
