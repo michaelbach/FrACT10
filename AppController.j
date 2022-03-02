@@ -48,22 +48,22 @@ Created by mb on 2017-07-12.
  */
 
 
-CPPushOnPushOffButton = 1;
+//CPPushOnPushOffButton = 1;
 
 @implementation AppController : HierarchyController {
     @outlet CPWindow fractControllerWindow;
     @outlet CPColorWell checkContrastWeberField1, checkContrastWeberField2;
-    @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelAcuityLineByLine, resultDetailsPanel;
+    @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelAcuityLineByLine, resultDetailsPanel, creditcardPanel;
     @outlet MDBButton buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttonAcuityLineByLine;
     @outlet CPButton buttonExport;
     @outlet CPButton buttonExit;
     @outlet GammaView gammaView;
     @outlet CPWebView aboutWebView1, aboutWebView2;
+    @outlet CPImageView creditcardImageView;
     CPImageView rewardImageView;
     RewardsController rewardsController;
     TAOController taoController;
     FractController currentFractController;
-    //float angleAlpha @accessors, angleBeta @accessors, angleGamma @accessors;
     BOOL settingsNeededNewDefaults;
     BOOL runAborted @accessors;
     BOOL is4orientations @accessors;
@@ -74,6 +74,7 @@ CPPushOnPushOffButton = 1;
     float checkContrastActualWeberPercent @accessors;
     float checkContrastActualMichelsonPercent @accessors;
     int settingsTabViewSelectedIndex @accessors;
+    float calBarLengthInMMbefore;
 }
 
 
@@ -122,7 +123,10 @@ CPPushOnPushOffButton = 1;
 }
 
 
-function isNodejs() {  // this is a somewhat oblique check if we are running under Node
+/**
+ A somewhat kludgy test if we are running under Node
+ */
+function isNodejs() {
     try {
         typeof "process" !== "undefined" && process && process.versions && process.versions.node;
         window.process = process; // with this trick we can create a global object from within a function. Need it for Node exit.
@@ -152,7 +156,6 @@ function isNodejs() {  // this is a somewhat oblique check if we are running und
     gIsNodejs = isNodejs();
     [buttonExit setHidden: !gIsNodejs];
 
-    
     [CPMenu setMenuBarVisible: NO];
     addEventListener('error', function(e) {
         alert("An error occured, I'm sorry. Error message:\r\r" + e.message + "\r\rIf it recurs, please notify michael.bach@uni-freiburg.de, ideally relating the message, e.g. via a screeshot.\rI will look into it and endeavour to provide a fix ASAP.\r\rOn “Close”, the window will reload and you can retry.");
@@ -171,7 +174,7 @@ function isNodejs() {  // this is a somewhat oblique check if we are running und
     
     allTestControllers = [FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerAcuityLineByLine];
 
-    allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelAcuityLineByLine, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel];
+    allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelAcuityLineByLine, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel, creditcardPanel];
     for (var i = 0; i < allPanels.length; i++)  [allPanels[i] setFrameOrigin: CGPointMake(0, 0)];
     [self setSettingsTabViewSelectedIndex: 0]; // first time select the "General" tab in Settings
     
@@ -187,7 +190,6 @@ function isNodejs() {  // this is a somewhat oblique check if we are running und
     taoController = [[TAOController alloc] initWithButton2Enable: buttonAcuityTAO];
     sound = [[Sound alloc] init];
     for (var i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++); // ranomising the pseudorandom sequence
-
 
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(buttonExportEnableYESorNO:) name: "buttonExportEnableYESorNO" object: nil];
     [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
@@ -205,7 +207,6 @@ function isNodejs() {  // this is a somewhat oblique check if we are running und
     [self setIs4orientations: ([Settings nAlternatives] == 4)];
     [[self window] setBackgroundColor: [self windowBackgroundColor]];
 }
-
 
 
 - (void) buttonExportEnableYESorNO: (CPNotification) aNotification { //console.info("buttonExportEnableYESorNO");
@@ -598,5 +599,38 @@ function existsUrl(url) {
     [gammaView setNeedsDisplay: YES];
 }
 
+
+/**
+ Dealing with calibration via creditcard size
+ */
+- (void) creditCardUpdateSize {
+    var widthInPx = 92.4 * [Settings calBarLengthInPixel] / [Settings calBarLengthInMM];//magic number?
+    var hOverW = 53.98 / 85.6; // All credit cards are 85.6 mm wide and 53.98 mm high
+    var heightInPx = widthInPx * hOverW, xc = 400, yc = 300 - 24; // position in window, space for buttons
+    [creditcardImageView setFrame:
+      CGRectMake(xc - widthInPx / 2, yc - heightInPx / 2 , widthInPx, heightInPx)];
+}
+- (IBAction) buttonCreditcardUse_action: (id) sender {
+    calBarLengthInMMbefore = [Settings calBarLengthInMM];//for possible undo
+    [creditcardPanel makeKeyAndOrderFront: self];  [self creditCardUpdateSize];
+}
+- (IBAction) buttonCreditcardPlusMinus_action: (id) sender {
+    var f = 1;
+    switch ([sender tag]) {
+        case 0: f = 1.0 / 1.01;  break;
+        case 1: f = 1.0 / 1.1;  break;
+        case 2: f = 1.01;  break;
+        case 3: f = 1.1;  break;
+    }
+    [Settings setCalBarLengthInMM: [Settings calBarLengthInMM] * f];
+    [self creditCardUpdateSize];
+}
+- (IBAction) buttonCreditcardClosePanel_action: (id) sender {
+    if ([sender tag] == 1)  [Settings setCalBarLengthInMM: calBarLengthInMMbefore];//undo
+    var t = [Settings calBarLengthInMM];
+    if (t>= 100) t = Math.round(t); // don't need that much precision
+    [Settings setCalBarLengthInMM: t];
+    [creditcardPanel close];
+}
 
 @end
