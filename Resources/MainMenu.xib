@@ -2226,7 +2226,6 @@ Gw
                         <buttonCell key="cell" type="roundTextured" title="+ +." bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cJZ-f7-6eW">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent">+</string>
                         </buttonCell>
                         <connections>
                             <action selector="buttonCreditcardPlusMinus_action:" target="450" id="txE-ch-4zf"/>
@@ -2250,7 +2249,6 @@ Gw
                         <buttonCell key="cell" type="roundTextured" title="– –" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ODR-4n-aj3">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent">-</string>
                         </buttonCell>
                         <connections>
                             <action selector="buttonCreditcardPlusMinus_action:" target="450" id="bgj-gZ-b8r"/>
@@ -2263,6 +2261,15 @@ Gw
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kNy-th-SSm">
+                        <rect key="frame" x="328" y="305" width="145" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Place Credit Card here." id="4LV-LG-a2Y">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textFieldCell>
                     </textField>
                 </subviews>
