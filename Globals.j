@@ -13,7 +13,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "Vs 1.0";
-kVersionDateOfFrACT = "2022-03-02";
+kVersionDateOfFrACT = "2022-03-27";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -25,6 +25,7 @@ kFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
 
 /* History
    =======
+2022-03-27 tweaks in Settings texts & positions
 2022-03-02 add use of credit card for size calibration
 2022-02-24 "Line-by-line ended." → empty string
 2022-02-15 ensure "Settings>General" tab is selected when coming from the un-calibrated alert
