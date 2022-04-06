@@ -13,7 +13,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "Vs 1.0";
-kVersionDateOfFrACT = "2022-03-27";
+kVersionDateOfFrACT = "2022-04-06";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -25,6 +25,7 @@ kFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
 
 /* History
    =======
+2022-04-06 Settings>Tabcontainer: adjusted right edge. Not yet changed "OK" to push button (as will be needed for Aristo 3)
 2022-03-27 tweaks in Settings texts & positions
 2022-03-02 add use of credit card for size calibration
 2022-02-24 "Line-by-line ended." → empty string
