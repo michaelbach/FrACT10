@@ -291,7 +291,7 @@ function isNodejs() {
 
 
 /**
- Info panels (above) were not present, or oked, so lets now REALLY run the test.
+ Info panels (above) were not shown, or oked, so lets now REALLY run the test.
  */
 - (IBAction) runFractController2_actionOK: (id) sender { //console.info("AppController>runFractController2_actionOK");
     [self closeAllPanels];  [currentFractController release];
@@ -505,6 +505,12 @@ function existsUrl(url) {
 }
 - (IBAction) buttonSettingsTestSound_action: (id) sender { //console.info("AppController>buttonSettingsDefaults");
     [sound play3];
+}
+- (IBAction) buttonSettingsContrastAcuityMaxMin_action: (id) sender {
+    switch ([sender tag]) {
+    case 1: [Settings setContrastAcuityWeber: 100];  break;
+    case 2: [Settings setContrastAcuityWeber: -10000];  break;
+    }
 }
 
 

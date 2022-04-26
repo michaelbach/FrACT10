@@ -110,7 +110,7 @@ Created by mb on July 15, 2015.
     
     // Acuity stuff
     [self setObliqueOnly: [self chckBool: [self obliqueOnly] def: NO set: set]]; // only applies to acuity with 4 Landolt orienations
-    [self setContrastAcuityWeber: [self chckFlt: [self contrastAcuityWeber] def: 100 min: -100 max: 100 set: set]];
+    [self setContrastAcuityWeber: [self chckFlt: [self contrastAcuityWeber] def: 100 min: -1E6 max: 100 set: set]];
     [self calculateAcuityForeBackColorsFromContrast];
     [self setAcuityEasyTrials: [self chckBool: [self acuityEasyTrials] def: YES set: set]];
     [self setMaxDisplayedAcuity: [self chckFlt: [self maxDisplayedAcuity] def: 2 min: 1 max: 99 set: set]];

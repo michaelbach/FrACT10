@@ -581,9 +581,9 @@ Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysica
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="04J-Xh-PWS">
-                        <rect key="frame" x="740" y="18" width="47" height="23"/>
+                        <rect key="frame" x="740" y="14" width="53" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" title="OK" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bhn-3j-xKc">
+                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bhn-3j-xKc">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                             <string key="keyEquivalent" base64-UTF8="YES">
@@ -1231,7 +1231,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </connections>
                                         </button>
                                         <textField toolTip="If you don't want central fixation…" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qsu-PW-QQj">
-                                            <rect key="frame" x="566" y="166" width="168" height="22"/>
+                                            <rect key="frame" x="567" y="166" width="168" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Optotype eccentricity [°]" bezelStyle="round" id="tcE-lo-X54">
                                                 <font key="font" metaFont="system"/>
@@ -1704,7 +1704,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </textFieldCell>
                                         </textField>
                                         <textField toolTip="Contrast (in Weber %) of the acuity optotypes" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hes-HT-KtK">
-                                            <rect key="frame" x="17" y="324" width="40" height="21"/>
+                                            <rect key="frame" x="17" y="324" width="46" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="Contrast" placeholderString="Contrast" drawsBackground="YES" id="AyL-3q-wsa">
                                                 <font key="font" metaFont="system"/>
@@ -1718,14 +1718,36 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mmc-E5-4VD">
-                                            <rect key="frame" x="61" y="324" width="296" height="16"/>
+                                            <rect key="frame" x="174" y="324" width="299" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Optotype contrast (Weber units, –∞ … +100%)" id="KZk-ya-a9s">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Optotype contrast (%Weber units, –∞ … +100%)" id="KZk-ya-a9s">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <button toolTip="Set weber contrast for acuity optotype to 100% (black on white)" verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="qWj-W6-f6W">
+                                            <rect key="frame" x="70" y="322" width="46" height="23"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="roundTextured" title="max+" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ilt-gl-fCc">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="buttonSettingsContrastAcuityMaxMin_action:" target="450" id="aHP-kV-a3t"/>
+                                            </connections>
+                                        </button>
+                                        <button toolTip="Set weber contrast for acuity optotype to –10000% (white on black)" verticalHuggingPriority="750" fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="96z-9y-ktq">
+                                            <rect key="frame" x="123" y="322" width="46" height="23"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="roundTextured" title="max–" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9zq-sE-pGT">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="buttonSettingsContrastAcuityMaxMin_action:" target="450" id="TU6-Lf-9i8"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -2131,7 +2153,6 @@ CQ
         <customObject id="450" customClass="AppController">
             <connections>
                 <outlet property="aboutPanel" destination="ErU-UN-jpI" id="7Pz-ls-119"/>
-                <outlet property="aboutWebView" destination="68J-Vy-hV1" id="Qua-2K-10o"/>
                 <outlet property="aboutWebView1" destination="68J-Vy-hV1" id="Fya-Fx-HDc"/>
                 <outlet property="aboutWebView2" destination="nO5-T6-Njd" id="AgB-qE-OG6"/>
                 <outlet property="buttCntC" destination="teG-PN-Gq7" id="Vvz-oi-F4f"/>
