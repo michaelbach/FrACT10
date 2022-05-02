@@ -114,6 +114,7 @@ Created by mb on July 15, 2015.
     [self calculateAcuityForeBackColorsFromContrast];
     [self setAcuityEasyTrials: [self chckBool: [self acuityEasyTrials] def: YES set: set]];
     [self setMaxDisplayedAcuity: [self chckFlt: [self maxDisplayedAcuity] def: 2 min: 1 max: 99 set: set]];
+    [self setMargin4MaxOptotypeIndex: [self chckInt: [self margin4MaxOptotypeIndex] def: 1 min: 0 max: 4 set: set]];    
     [self setThreshCorrection: [self chckBool: [self threshCorrection] def: YES set: set]];
     [self setAcuityFormatDecimal: [self chckBool: [self acuityFormatDecimal] def: YES set: set]];
     [self setAcuityFormatLogMAR: [self chckBool: [self acuityFormatLogMAR] def: YES set: set]];
@@ -540,6 +541,14 @@ function _decimalMarkCharFindHelper(currentValue) {
 }
 + (void) setMaxDisplayedAcuity: (float) value {
     [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "maxDisplayedAcuity"];
+}
+
+
++ (int) margin4MaxOptotypeIndex {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "margin4MaxOptotypeIndex"];
+}
++ (void) setMargin4MaxOptotypeIndex: (int) value {
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "margin4MaxOptotypeIndex"];
 }
 
 
