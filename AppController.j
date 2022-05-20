@@ -25,6 +25,7 @@ Created by mb on 2017-07-12.
 @import "GammaView.j"
 @import "MDBButton.j"
 @import "PopulateAboutPanel.j"
+@import "Presets.j"
 
 
 /**
@@ -197,6 +198,8 @@ function isNodejs() {
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
 
     [self buttonCheckContrast_action: null];
+    
+    //[Presets applyPreset];
 }
 
 
