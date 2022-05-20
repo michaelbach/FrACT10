@@ -6,14 +6,14 @@ MDBdispersionEstimation.j
 
 */
 
-@import "MDBsimplestatistics.j"
+@import "MDBSimplestatistics.j"
 
 
 /**
  Calculate the CI95
  2021-04-22  begun
  */
-@implementation MDBdispersionEstimation
+@implementation MDBDispersionEstimation
 
 
 var kWorstLogMAR, kBestLogMAR, kGuess, testDF; // there are no class properties in Cappuccino

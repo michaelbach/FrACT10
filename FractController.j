@@ -11,7 +11,7 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 @import "Thresholder.j";
 @import "Optotypes.j";
 @import "TrialHistoryController.j"
-@import "MDBdispersionEstimation.j"
+@import "MDBDispersionEstimation.j"
 
 
 @typedef StateType
@@ -72,7 +72,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         [[self parentController] setRunAborted: YES];
         [[self window] makeKeyAndOrderFront: self];  [[self window] makeFirstResponder: self];
         //[self performSelector: @selector(runStart) withObject: nil afterDelay: 0.01];//geht nicht mehr nach DEPLOY???
-        [MDBdispersionEstimation initResultStatistics];  ci95String = "";
+        [MDBDispersionEstimation initResultStatistics];  ci95String = "";
         //[self runStart];
         // [self testContrastDeviceThresholdConversion];
     }
@@ -259,7 +259,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestIDTAO].includes(currentTestID)) {
             // the below causes a delay of < 1 s with 10,000 samples
             var historyResults = [trialHistoryController composeInfo4CI];
-            var ciResults = [MDBdispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: 10000][0];
+            var ciResults = [MDBDispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: 10000][0];
             var halfCI95 = (ciResults.CI0975 - ciResults.CI0025) / 2;
             ci95String = " ± " + [Misc stringFromNumber: halfCI95 decimals: 2 localised: YES];
             [[self parentController] setResultString: [self acuityComposeResultString]]; // this will add CI95 info
