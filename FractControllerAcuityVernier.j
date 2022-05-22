@@ -20,17 +20,17 @@ Created by Bach on 14.08.2017.
 
 
 - (float) stimDeviceunitsFromThresholderunits: (float) tPest { //console.info("FractControllerAcuityVernier>stimDeviceunitsFromThresholderunits");
-    gapMinimal = [Misc pixelFromDegree: gapVernierMinimalArcSec / 60.0 / 60.0];
-    gapMaximal = [Misc pixelFromDegree: gapVernierMaximalArcSec / 60.0 / 60.0];
-    var c1 = gapMinimal;
-    var c2 = -Math.log(gapMinimal / gapMaximal);
+    gStrokeMinimal = [Misc pixelFromDegree: gapVernierMinimalArcSec / 60.0 / 60.0];
+    gStrokeMaximal = [Misc pixelFromDegree: gapVernierMaximalArcSec / 60.0 / 60.0];
+    var c1 = gStrokeMinimal;
+    var c2 = -Math.log(gStrokeMinimal / gStrokeMaximal);
     var deviceVal = c1 * Math.exp(tPest * c2); //trace("Vernier.pest2native, tPest:", tPest, "native=", nativeVal);
-    if ([Misc areNearlyEqual: deviceVal and: gapMaximal]) {
+    if ([Misc areNearlyEqual: deviceVal and: gStrokeMaximal]) {
         if (!isBonusTrial) {
             rangeLimitStatus = kRangeLimitValueAtCeiling; //console.info("max gap size!")
         }
     } else {
-        if  ([Misc areNearlyEqual: deviceVal and: gapMinimal]) {
+        if  ([Misc areNearlyEqual: deviceVal and: gStrokeMinimal]) {
             rangeLimitStatus = kRangeLimitValueAtFloor; //console.info("min gap size!");
         } else {
             rangeLimitStatus = kRangeLimitOk;
@@ -39,10 +39,10 @@ Created by Bach on 14.08.2017.
     return deviceVal;
 }
 - (float) stimThresholderunitsFromDeviceunits: (float) d {
-    gapMinimal = [Misc pixelFromDegree: gapVernierMinimalArcSec / 60.0 / 60.0];
-    gapMaximal = [Misc pixelFromDegree: gapVernierMaximalArcSec / 60.0 / 60.0];
-    var c1 = gapMinimal;
-    var c2 = -Math.log(gapMinimal / gapMaximal);
+    gStrokeMinimal = [Misc pixelFromDegree: gapVernierMinimalArcSec / 60.0 / 60.0];
+    gStrokeMaximal = [Misc pixelFromDegree: gapVernierMaximalArcSec / 60.0 / 60.0];
+    var c1 = gStrokeMinimal;
+    var c2 = -Math.log(gStrokeMinimal / gStrokeMaximal);
     var retVal = Math.log(d / c1) / c2;
     return retVal;
 }

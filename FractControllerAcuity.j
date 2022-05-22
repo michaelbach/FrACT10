@@ -123,18 +123,18 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 
 /*	Transformation formula:   gap = c1 * exp(tPest * c2).
- Constants c1 and c2 are determined by thesse 2 contions: tPest==0 → gap=gapMinimal;  tPest==1 → gap=gapMaximal.
- =>c2 = ln(gapMinimal / gapMaximal)/(0 - 1);  c1 = gapMinimal / exp(0 * c2)  */
+ Constants c1 and c2 are determined by thesse 2 contions: tPest==0 → gap=gStrokeMinimal;  tPest==1 → gap=gStrokeMaximal.
+ =>c2 = ln(gStrokeMinimal / gStrokeMaximal)/(0 - 1);  c1 = gStrokeMinimal / exp(0 * c2)  */
 - (float) acuityStimDeviceunitsFromThresholderunits: (float) tPest { //console.info("FractControllerAcuityC>stimDeviceunitsFromThresholderunits");
-    var c2 = - Math.log(gapMinimal / gapMaximal), c1 = gapMinimal;
+    var c2 = - Math.log(gStrokeMinimal / gStrokeMaximal), c1 = gStrokeMinimal;
     var deviceVal = c1 * Math.exp(tPest * c2); //console.info("DeviceFromPest " + tPest + " " + deviceVal);
     // ROUNDING for realisable gap values? @@@
-    if ([Misc areNearlyEqual: deviceVal and: gapMaximal]) {
+    if ([Misc areNearlyEqual: deviceVal and: gStrokeMaximal]) {
         if (!isBonusTrial) {
             rangeLimitStatus = kRangeLimitValueAtCeiling; //console.info("max gap size!")
         }
     } else {
-        if  ([Misc areNearlyEqual: deviceVal and: gapMinimal]) {
+        if  ([Misc areNearlyEqual: deviceVal and: gStrokeMinimal]) {
             rangeLimitStatus = kRangeLimitValueAtFloor; //console.info("min gap size!");
         } else {
             rangeLimitStatus = kRangeLimitOk;
@@ -145,7 +145,7 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 
 - (float) acuityStimThresholderunitsFromDeviceunits: (float) d { //console.info("FractControllerAcuityC>stimThresholderunitsFromDeviceunits");
-    var c2 = - Math.log(gapMinimal / gapMaximal), c1 = gapMinimal;
+    var c2 = - Math.log(gStrokeMinimal / gStrokeMaximal), c1 = gStrokeMinimal;
     var retVal = Math.log(d / c1) / c2; //console.info("PestFromDevice " + d + " " + retVal);
     return retVal;
 }

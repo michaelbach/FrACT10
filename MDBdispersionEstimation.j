@@ -7,6 +7,7 @@ MDBdispersionEstimation.j
 */
 
 @import "MDBSimplestatistics.j"
+@import "Globals.j"
 
 
 /**
@@ -20,9 +21,8 @@ var kWorstLogMAR, kBestLogMAR, kGuess, testDF; // there are no class properties 
 
 
 + (void) initResultStatistics { //console.info("Entering initResultStatistics");
-    var viewHeight = 600, gapMinimal = 0.5, gapMaximal = viewHeight / 5 - 2; // improve: read viewHeight from window
-    kWorstLogMAR = [Misc logMARfromDecVA: [Misc decVAFromGapPixels: gapMaximal]];
-    kBestLogMAR =  [Misc logMARfromDecVA: [Misc decVAFromGapPixels: gapMinimal]];
+    kWorstLogMAR = [Misc logMARfromDecVA: [Misc decVAFromGapPixels: gStrokeMaximal]];
+    kBestLogMAR =  [Misc logMARfromDecVA: [Misc decVAFromGapPixels: gStrokeMinimal]];
     //console.info("kWorstLogMAR: ", kWorstLogMAR, ", kBestLogMAR: ", kBestLogMAR);
     kGuess = 0.125; // will be overridden
     

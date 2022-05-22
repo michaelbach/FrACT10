@@ -32,7 +32,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     unsigned short responseKeyCode;
     CGContext cgc;
     float stimStrengthInThresholderUnits, stimStrengthInDeviceunits, viewWidth, viewHeight, viewWidth2, viewHeight2;
-    float gapMinimal, gapMaximal;
     float optotypeSizeInPix;
     float xEccInPix, yEccInPix; // eccentricity
     Thresholder thresholder;
@@ -59,8 +58,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         [aWindow setDelegate: self];
         viewWidth = CGRectGetWidth([aWindow frame]);  viewWidth2 = viewWidth / 2;
         viewHeight = CGRectGetHeight([aWindow frame]);  viewHeight2 = viewHeight / 2;
-        gapMinimal = 0.5; // smallest possible gap is ½pixel. Make into a Setting?
-        gapMaximal = viewHeight / (5 + [Settings margin4MaxOptotypeIndex]); // this leaves a margin of ½·index around the largest optotype
+        gStrokeMinimal = 0.5; // smallest possible gap is ½pixel. Make into a Setting?
+        gStrokeMaximal = viewHeight / (5 + [Settings margin4MaxOptotypeIndex]); // this leaves a margin of ½·index around the largest optotype
         state = kStateDrawBack;
         kRangeLimitDefault = "";  kRangeLimitOk = "rangeOK";  kRangeLimitValueAtFloor = "atFloor";
         kRangeLimitValueAtCeiling = "atCeiling";  rangeLimitStatus = kRangeLimitDefault;

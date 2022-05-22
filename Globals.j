@@ -13,7 +13,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "Vs 1.0";
-kVersionDateOfFrACT = "2022-05-21";
+kVersionDateOfFrACT = "2022-05-22";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -22,11 +22,19 @@ kDefaultCalibrationBarLengthInMM = 149;
 kFilename4ResultStorage = "FRACT10-FINAL-RESULT-STRING";
 kFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
 
+/**
+ Global variables
+*/
+// minimal stroke/gap size (half a pixel). Maximal, depending on screen & margin.
+// Formerly named gapMinimal/gapMaximal.
+gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden
 
 /* History
    =======
+2022-05-22 cosmetic change: gaMinimal/Maximal → strokeMinmal/Maximal
+ gStrokeMinimal / gStrokeMaximal now global, so accessible from dispersion estim.
 2022-05-21 preparation for Presets
-2022-04-26 gapMaximal = viewHeight / (5 + 1); // this leaves ½gap margin around optotype
+2022-04-26 gStrokeMaximal = viewHeight / (5 + 1); // this leaves ½gap margin around optotype
 2022-04-26 fix incorrect range check for contrastAcuityWeber, add max+/max- buttons. Change the "OK" button of settings to the correct type.
 2022-04-06 Settings>Tabcontainer: adjusted right edge. Not yet changed "OK" to push button (as will be needed for Aristo 3)
 2022-03-27 tweaks in Settings texts & positions
