@@ -497,7 +497,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="8aG-i8-Dh8">
                             <rect key="frame" x="1" y="1" width="747" height="188"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="zNM-Gb-Jh9">
                                     <rect key="frame" x="0.0" y="0.0" width="747" height="406"/>
@@ -1356,7 +1356,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button toolTip="if checked, the 12th, 18th, 24th… trial will have an “easy” optotype for motivation" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Kp-gt-Eg5">
-                                            <rect key="frame" x="15" y="451" width="162" height="18"/>
+                                            <rect key="frame" x="17" y="451" width="162" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="occasional ‘easy trials’" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Gto-n0-omN">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1366,16 +1366,16 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.acuityEasyTrials" id="ghy-mX-Bb1"/>
                                             </connections>
                                         </button>
-                                        <colorWell fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eR-Ax-gL1">
-                                            <rect key="frame" x="17" y="387" width="40" height="23"/>
+                                        <colorWell toolTip="Color is only displayed here, changed via contrast setting." fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eR-Ax-gL1">
+                                            <rect key="frame" x="19" y="346" width="40" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <binding destination="450" name="value" keyPath="acuityForeColor" id="Sfr-Nl-xTH"/>
                                             </connections>
                                         </colorWell>
-                                        <colorWell fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSW-TH-Yop">
-                                            <rect key="frame" x="67" y="387" width="40" height="23"/>
+                                        <colorWell toolTip="Color is only displayed here, changed via contrast setting." fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSW-TH-Yop">
+                                            <rect key="frame" x="69" y="346" width="40" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -1383,7 +1383,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </connections>
                                         </colorWell>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3IW-SR-qta">
-                                            <rect key="frame" x="115" y="389" width="163" height="16"/>
+                                            <rect key="frame" x="117" y="348" width="163" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Fore- / background colour" id="4Cc-fv-th1">
                                                 <font key="font" metaFont="system"/>
@@ -1454,6 +1454,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                     <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JW2-QN-Paz">
                                                         <rect key="frame" x="20" y="32" width="52" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">Acuity can esaily be better than 0.3 LogMAR, but this may irritate. So it can be clipped for display, export values are left unchanged.</string>
                                                         <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="KWU-19-CiH">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1506,7 +1507,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="g1S-vJ-l5c">
-                                            <rect key="frame" x="15" y="3" width="378" height="101"/>
+                                            <rect key="frame" x="15" y="-7" width="378" height="101"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="o2b-PD-ZAj">
                                                 <rect key="frame" x="3" y="3" width="372" height="83"/>
@@ -1612,7 +1613,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </view>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k67-Qx-BFb">
-                                            <rect key="frame" x="38" y="74" width="150" height="22"/>
+                                            <rect key="frame" x="38" y="64" width="150" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Vernier Hyperacuity" bezelStyle="round" id="ICj-eq-Caf">
                                                 <font key="font" metaFont="system"/>
@@ -1621,14 +1622,14 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="NFT-iI-3o9">
-                                            <rect key="frame" x="15" y="139" width="314" height="86"/>
+                                            <rect key="frame" x="15" y="124" width="314" height="86"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="i3x-ok-Vlr">
                                                 <rect key="frame" x="3" y="3" width="308" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <popUpButton toolTip="Types of crowding" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFy-VR-55t" userLabel="Crowding type">
-                                                        <rect key="frame" x="18" y="23" width="130" height="25"/>
+                                                        <rect key="frame" x="18" y="22" width="130" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="CEr-tD-UxQ" id="Q94-l5-Nrk">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1664,7 +1665,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                         </connections>
                                                     </popUpButton>
                                                     <popUpButton toolTip="Distance of crowding elements" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6J-2A-7mk" userLabel="Crowding distance">
-                                                        <rect key="frame" x="162" y="23" width="130" height="25"/>
+                                                        <rect key="frame" x="162" y="22" width="130" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <popUpButtonCell key="cell" type="push" title="2·gap" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="mt7-ev-w6m" id="8J5-AI-Fsw" userLabel="2·gap etc.">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1695,7 +1696,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </view>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pbL-S0-XrG">
-                                            <rect key="frame" x="38" y="195" width="96" height="22"/>
+                                            <rect key="frame" x="38" y="180" width="96" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Crowding" bezelStyle="round" id="Rpe-YE-TbN">
                                                 <font key="font" metaFont="system"/>
@@ -1704,7 +1705,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </textFieldCell>
                                         </textField>
                                         <textField toolTip="Contrast (in Weber %) of the acuity optotypes" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hes-HT-KtK">
-                                            <rect key="frame" x="17" y="327" width="46" height="21"/>
+                                            <rect key="frame" x="19" y="394" width="46" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="Contrast" placeholderString="Contrast" drawsBackground="YES" id="AyL-3q-wsa">
                                                 <font key="font" metaFont="system"/>
@@ -1718,7 +1719,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mmc-E5-4VD">
-                                            <rect key="frame" x="174" y="327" width="299" height="16"/>
+                                            <rect key="frame" x="176" y="394" width="299" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Optotype contrast (%Weber units, –∞ … +100%)" id="KZk-ya-a9s">
                                                 <font key="font" metaFont="system"/>
@@ -1727,7 +1728,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1GB-4d-RW0">
-                                            <rect key="frame" x="122" y="266" width="173" height="16"/>
+                                            <rect key="frame" x="114" y="241" width="173" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Margin for biggest optotype" id="Dgc-eg-6MM">
                                                 <font key="font" metaFont="system"/>
@@ -1736,7 +1737,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </textFieldCell>
                                         </textField>
                                         <button toolTip="Set weber contrast for acuity optotype to 100% (black on white)" verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="qWj-W6-f6W">
-                                            <rect key="frame" x="70" y="325" width="46" height="23"/>
+                                            <rect key="frame" x="72" y="392" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="roundTextured" title="max+" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ilt-gl-fCc">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1747,7 +1748,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </connections>
                                         </button>
                                         <button toolTip="Set weber contrast for acuity optotype to –10000% (white on black)" verticalHuggingPriority="750" fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="96z-9y-ktq">
-                                            <rect key="frame" x="123" y="325" width="46" height="23"/>
+                                            <rect key="frame" x="125" y="392" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="roundTextured" title="max–" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9zq-sE-pGT">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1757,8 +1758,8 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                 <action selector="buttonSettingsContrastAcuityMaxMin_action:" target="450" id="TU6-Lf-9i8"/>
                                             </connections>
                                         </button>
-                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hOD-0i-CeR">
-                                            <rect key="frame" x="14" y="263" width="105" height="25"/>
+                                        <popUpButton toolTip="To avoid contact between the largest optotype and the screen edge. Margin in units of stroke (0 gap for Landolt C)." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hOD-0i-CeR">
+                                            <rect key="frame" x="16" y="238" width="95" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="no margin" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wkG-jG-jTL" id="sa5-f6-go7">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1766,10 +1767,10 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                 <menu key="menu" id="aGl-Qb-JFa">
                                                     <items>
                                                         <menuItem title="no margin" state="on" id="wkG-jG-jTL"/>
-                                                        <menuItem title="½ gap" id="90I-kV-WK1"/>
-                                                        <menuItem title="1 gap" id="7N3-nn-VcW"/>
-                                                        <menuItem title="1½ gaps" id="Mcr-DX-ikc"/>
-                                                        <menuItem title="2 gaps" id="Yyh-Gr-tfR"/>
+                                                        <menuItem title="½ stroke" id="90I-kV-WK1"/>
+                                                        <menuItem title="1 stroke" id="7N3-nn-VcW"/>
+                                                        <menuItem title="1½ stroke" id="Mcr-DX-ikc"/>
+                                                        <menuItem title="2 strokes" id="Yyh-Gr-tfR"/>
                                                     </items>
                                                 </menu>
                                             </popUpButtonCell>
@@ -1777,6 +1778,34 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                 <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.margin4MaxOptotypeIndex" id="MtX-hp-yhO"/>
                                             </connections>
                                         </popUpButton>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1KY-D0-MeM">
+                                            <rect key="frame" x="114" y="295" width="107" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Starting LogMAR" id="zLf-vn-4Dd">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <comboBox toolTip="DIN/ISO: 1.0,  For ultra low vision consider e.g. 2.5." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g4t-gF-2qk">
+                                            <rect key="frame" x="19" y="292" width="88" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="ECG-mx-vc8">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <objectValues>
+                                                    <string>0.5</string>
+                                                    <string>1.0</string>
+                                                    <string>1.5</string>
+                                                    <string>2.0</string>
+                                                    <string>2.5</string>
+                                                </objectValues>
+                                            </comboBoxCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="value" keyPath="values.acuityStartingLogMAR" id="WPL-bG-lxJ"/>
+                                            </connections>
+                                        </comboBox>
                                     </subviews>
                                 </view>
                             </tabViewItem>

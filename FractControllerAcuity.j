@@ -223,12 +223,14 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 - (void) acuityModifyDeviceStimulusDIN01_02_04_08 {
     responseWasCorrectCumulative = responseWasCorrectCumulative && responseWasCorrect;
+    var acuityStartDecimal = [Misc decVAfromLogMAR: [Settings acuityStartingLogMAR]];
     switch (iTrial) {
-        case 1:  stimStrengthInDeviceunits = [Misc gapPixelsFromDecVA: 0.1];  break;
-        case 2:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [Misc gapPixelsFromDecVA: 0.2];  break;
-        case 3:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [Misc gapPixelsFromDecVA: 0.4];  break;
-        case 4:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [Misc gapPixelsFromDecVA: 0.8];  break;
+        case 1:  stimStrengthInDeviceunits = [Misc gapPixelsFromDecVA: acuityStartDecimal];  break;
+        case 2:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [Misc gapPixelsFromDecVA: acuityStartDecimal * 2];  break;
+        case 3:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [Misc gapPixelsFromDecVA: acuityStartDecimal * 4];  break;
+        case 4:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [Misc gapPixelsFromDecVA: acuityStartDecimal * 8];  break;
     }
+    if (stimStrengthInDeviceunits > gStrokeMaximal) stimStrengthInDeviceunits = gStrokeMaximal;
 }
 
 
