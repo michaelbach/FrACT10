@@ -13,7 +13,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "Vs 1.0";
-kVersionDateOfFrACT = "2022-05-22";
+kVersionDateOfFrACT = "2022-05-24";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -32,6 +32,9 @@ gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden
 
 /* History
    =======
+ 
+2022-05-24 add Presets (ESU and ULV so far), some editing in CONTRIBUTING.md.
+    BIG addition: new "make-XcodeCapp_and_run.sh" to replace XcodeCapp
 2022-05-22 cosmetic change: gaMinimal/Maximal → strokeMinmal/Maximal
  gStrokeMinimal / gStrokeMaximal now global, so accessible from dispersion estim.
  Add "acuityStartingLogMAR" logic + GUI, good for ultra low vision

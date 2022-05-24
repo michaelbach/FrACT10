@@ -17,28 +17,28 @@ If anything is unclear, don't hesitate to contact me <michael.bach@uni-freiburg.
 
 ## Do I have to create an issue for a feature or a bug fix and discuss it with the existing contributors?
 
-Contact <michael.bach@uni-freiburg.de>
+Contact <michael.bach@uni-freiburg.de>.
 
 
 ## Should I just present a merge request with my modifications?
 
-Better get in touch with <michael.bach@uni-freiburg.de>
+Best get in touch with <michael.bach@uni-freiburg.de>.
 
 
 ## Should my changes be accompanied by documentation?
 
-Of course, but no need to go overboard
+Of course, but no need to go overboard.
 
 
 ## What are some short links I should be aware of?
 
-- I'm sure you know about visual testing
-- have perused <https://michaelbach.de/fract/> and the [manual](https://michaelbach.de/fract/manual.html).
+- I assume you know about visual testing
+- peruse <https://michaelbach.de/fract/>, follow <https://michaelbach.de/fract/checklist.html> and the [manual](https://michaelbach.de/fract/manual.html).
 
 
 ## How can I get in touch with the developer?
 
-<michael.bach@uni-freiburg.de>
+<michael.bach@uni-freiburg.de>.
 
 
 ## What are the code conventions?
@@ -46,21 +46,21 @@ Of course, but no need to go overboard
 - I like to put "{" on the end of the line _preceding_ the code block
 - I usually surround operators by blanks
 - I usually place 2 empty lines between functions
-- I strongly prefer camelCase over underlines
-- long variable/function names can take over much of the documentation
+- I prefer camelCase over underlines
+- long variable/function names can replace much documentation
 
 ## Does this repository follow a certain commit message pattern?
 
-No, I don't have enough experience for that yet.
+No.
 
 
 ## How do I set up the development environment for this project?
 
 Necessary directory structure:<br>
-`┳-misc/cappFrameworks/AppKit… etc. from Cappuccino`
+`┳-misc/cappFrameworks/AppKit… etc. from Cappuccino`<br>
 `┗FrACT10/_cappDevelop/… all project files`
 
 A different directory structure can be used by editing the 2 pertinent framework links in `index.html`. Currently they read `../../-misc/cappFrameworks` corresponding to the directory structure above, but both can be changed to correspond to your home of the Cappuccino build.
 
-Depending on the browser you use, you will need to disable cross-origin safety or it will not open using the file:// protocol. You can, of course, set up a local web server.<br>
+Depending on the browser you use, you will need to disable¹ cross-origin safety or it will not open using the file:// protocol. You can, of course, set up a local web server.<br>
 ¹Easy in FireFox & Safari, no longer easily possible with Chrome.

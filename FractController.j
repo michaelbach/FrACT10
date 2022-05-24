@@ -163,6 +163,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         CGContextSetTextPosition(cgc, 10, 10); // we assume here no transformed CGContext
         CGContextSetFillColor(cgc, colOptotypeFore);
         CGContextSetFillColor(cgc, [CPColor blackColor]);
+        CGContextSelectFont(cgc, [Settings trialInfoFontSize] + "px sans-serif");
         CGContextShowText(cgc, trialInfoString);
     }
 }

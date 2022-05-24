@@ -198,8 +198,6 @@ function isNodejs() {
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
 
     [self buttonCheckContrast_action: null];
-    
-    //[Presets applyPreset];
 }
 
 
@@ -514,6 +512,11 @@ function existsUrl(url) {
     case 1: [Settings setContrastAcuityWeber: 100];  break;
     case 2: [Settings setContrastAcuityWeber: -10000];  break;
     }
+}
+
+
+- (IBAction) popupPreset_action: (id) sender { //console.info("AppController>popupPreset_action", [sender indexOfSelectedItem]);
+    [Presets apply: [sender indexOfSelectedItem]];
 }
 
 

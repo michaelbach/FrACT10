@@ -83,7 +83,7 @@ Created by mb on July 15, 2015.
     [self setDisplayTransform: [self chckInt: [self displayTransform] def: 0 min: 0 max: 3 set: set]];
     
     [self setTrialInfo: [self chckBool: [self trialInfo] def: YES set: set]];
-    [self setTrialInfoFontSize: [self chckFlt: [self trialInfoFontSize] def: 9 min: 4 max: 48 set: set]];
+    [self setTrialInfoFontSize: [self chckFlt: [self trialInfoFontSize] def: 10 min: 4 max: 48 set: set]];
 
     [self setTimeoutResponseSeconds: [self chckFlt: [self timeoutResponseSeconds] def: 30 min: 0.1 max: 9999 set: set]];
     [self setTimeoutDisplaySeconds: [self chckFlt: [self timeoutDisplaySeconds] def: 30 min: 0.1 max: 9999 set: set]];

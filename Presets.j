@@ -1,12 +1,10 @@
 /*
-This file is part of FrACT10, a vision test battery.
-Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
-
-Presets.j
-
-*/
-
-@import "Presets.j"
+ This file is part of FrACT10, a vision test battery.
+ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
+ 
+ Presets.j
+ 
+ */
 
 
 /**
@@ -15,6 +13,7 @@ Presets.j
  */
 @implementation Presets {
     SEL gSelector;
+    CPAlert alert1, alert2;
 }
 
 
@@ -28,14 +27,69 @@ Presets.j
 }
 
 
-// this is only the beginning, testing the `performSelector` approach. It works!
-+ (void) applyPreset { //console.info("Presets>applyPreset");
-    var s = "distanceInCM";
-    s = [Presets capitalizeFirstLetter: s];
-    s = "set" + s + ":"; //console.info(s);
-    gSelector = CPSelectorFromString(s);
-    [Settings performSelector: gSelector withObject: [CPNumber numberWithInt: 99]];
+// testing the `performSelector` approach. It works!
+/*var s = "distanceInCM";
+ s = [Presets capitalizeFirstLetter: s];
+ s = "set" + s + ":"; //console.info(s);
+ gSelector = CPSelectorFromString(s);
+ [Settings performSelector: gSelector withObject: [CPNumber numberWithInt: 99]];*/
+
+
++ (void) apply: (int) p { //console.info("Presets>apply");
+    alert1 = [CPAlert alertWithMessageText: "Really apply this Preset?"
+                             defaultButton: "NO" alternateButton: "YES" otherButton: nil
+                 informativeTextWithFormat: "Many Settings will change. You should know what you are doing here. Luckily, you can always return to defaults in Settings."];
+    [alert1 runModalWithDidEndBlock: function(alert, returnCode) {
+        if (returnCode==1) [self apply2: p]; // alternateButton
+    }]
 }
 
 
++ (void) apply2: (int) p { //console.info("Presets>apply2");
+    switch (p) {
+        case 1: //console.info("ULV");
+            [self applyULV];  break;
+        case 2:
+            [self applyESU];  break;
+        default:
+            [Settings setDefaults];
+    }
+    alert2 = [CPAlert alertWithMessageText: "Preset was applied."
+                             defaultButton: "OK" alternateButton: nil otherButton: nil
+                 informativeTextWithFormat: ""];
+    [alert2 runModal];
+}
+
+
++ (void) applyULV { //console.info("ULV");
+    [Settings setDefaults];
+    [Settings setEnableTouchControls: NO];
+    [Settings setAcuityStartingLogMAR: 2.5];
+}
+
+
++ (void) applyESU { //console.info("ESU");
+    var calBarLengthInMM_prior = [Settings calBarLengthInMM];
+    [Settings setDefaults];
+    [Settings setCalBarLengthInMM: calBarLengthInMM_prior];
+    [Settings setDistanceInCM: 150];
+    
+    [[CPUserDefaults standardUserDefaults] setInteger: 1 forKey: "nAlternativesIndex"]; // 4 alternatives
+    [Settings setNTrials04: 18];
+    [Settings setTestOnFive: 2];
+    
+    [Settings setTimeoutResponseSeconds: 999]; [Settings setTimeoutDisplaySeconds: 999];
+    
+    [Settings setAuditoryFeedback: 0];
+    [Settings setRewardPicturesWhenDone: YES];
+    
+    [Settings setAcuityFormatLogMAR: NO];
+    [Settings setDecimalMarkChar: ","];
+    [Settings setResults2clipboard: 1];
+    
+    //    displayIncompleteRuns = true;
+    [Settings setTrialInfoFontSize: 24];
+    
+    [Settings setEnableTouchControls: NO]; [Settings setResponseInfoAtStart: NO];
+}
 @end
