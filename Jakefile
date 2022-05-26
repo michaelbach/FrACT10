@@ -6,25 +6,28 @@
  * Copyright 2015–2020, michaelbach.de All rights reserved.
  */
 
-var ENV = require("system").env,
-    FILE = require("file"),
-    JAKE = require("jake"),
+const path = require("path");
+const fs = require("fs");
+
+var ENV = process.env,
     task = JAKE.task,
     FileList = JAKE.FileList,
-    app = require("cappuccino/jake").app,
+    app = CAPPUCCINO.Jake.applicationtask.app,
     configuration = ENV["CONFIG"] || ENV["CONFIGURATION"] || ENV["c"] || "Debug",
     OS = require("os"),
     projectName = "capp";
 
+var buildDir = path.resolve(ENV["BUILD_PATH"] || ENV["CAPP_BUILD"] || "Build");
 
-app (projectName, function(task) {
-    ENV["OBJJ_INCLUDE_PATHS"] = "Frameworks";
+app (projectName, function(task)
+{
+    ENV["OBJJ_INCLUDE_PATHS"] = ["Frameworks"];
 
     if (configuration === "Debug")
-        ENV["OBJJ_INCLUDE_PATHS"] = FILE.join(ENV["OBJJ_INCLUDE_PATHS"], configuration);
+        ENV["OBJJ_INCLUDE_PATHS"] = path.join(ENV["OBJJ_INCLUDE_PATHS"], configuration);
 
-    task.setBuildIntermediatesPath(FILE.join("Build", "capp.build", configuration));
-    task.setBuildPath(FILE.join("Build", configuration));
+    task.setBuildIntermediatesPath(path.join(buildDir, "HelloWorld.build", configuration));
+    task.setBuildPath(path.join(buildDir, configuration));
 
     task.setProductName("capp");
     task.setIdentifier("de.michaelbach.FrACT10");
@@ -32,95 +35,71 @@ app (projectName, function(task) {
     task.setAuthor("michaelbach.de");
     task.setEmail("mike @nospam@ michaelbach.de");
     task.setSummary("capp");
-    task.setSources(new FileList("**/*.j").exclude(FILE.join("Build", "**")).exclude(FILE.join("Frameworks", "Source", "**")));
+    task.setSources(new FileList("**/*.j").exclude(path.join("Build", "**")).exclude(path.join("Frameworks", "Source", "**")));
     task.setResources(new FileList("Resources/**"));
     task.setIndexFilePath("index.html");
     task.setInfoPlistPath("Info.plist");
 
     if (configuration === "Debug")
-        task.setCompilerFlags("-DDEBUG -g");
+        task.setCompilerFlags("-DDEBUG -g -S --inline-msg-send");
     else
-        task.setCompilerFlags("-O");
+        task.setCompilerFlags("-O2");
 });
 
-
-task ("default", [projectName], function() {
+task ("default", [projectName], function()
+{
     printResults(configuration);
 });
 
-
-task ("build", ["default"], function() {
+task ("build", ["default"], function()
+{
     updateApplicationSize();
 });
 
-
-task ("debug", function() {
+task ("debug", function()
+{
     configuration = ENV["CONFIGURATION"] = "Debug";
     JAKE.subjake(["."], "build", ENV);
 });
 
-
-task ("release", function() {
+task ("release", function()
+{
     configuration = ENV["CONFIGURATION"] = "Release";
     JAKE.subjake(["."], "build", ENV);
 });
 
-
-task ("run", ["debug"], function() {
-    OS.system(["open", FILE.join("Build", "Debug", projectName, "index.html")]);
-});
-
-
-task ("run-release", ["release"], function() {
-    OS.system(["open", FILE.join("Build", "Release", projectName, "index.html")]);
-});
-
-
-task ("deploy", ["release"], function() {
-    FILE.mkdirs(FILE.join("Build", "Deployment", projectName));
-    OS.system(["press", "-f", FILE.join("Build", "Release", projectName), FILE.join("Build", "Deployment", projectName)]);
-    printResults("Deployment")
-});
-
-
-task ("desktop", ["release"], function() {
-    FILE.mkdirs(FILE.join("Build", "Desktop", projectName));
-    require("cappuccino/nativehost").buildNativeHost(FILE.join("Build", "Release", projectName), FILE.join("Build", "Desktop", projectName, "capp.app"));
-    printResults("Desktop")
-});
-
-
-task ("run-desktop", ["desktop"], function() {
-    OS.system([FILE.join("Build", "Desktop", projectName, "capp.app", "Contents", "MacOS", "NativeHost"), "-i"]);
-});
-
-
-function printResults(configuration) {
-    print("----------------------------");
-    print(configuration+" app built at path: "+FILE.join("Build", configuration, projectName));
-    print("----------------------------");
+function printResults(configuration)
+{
+    console.log("----------------------------");
+    console.log(configuration+" app built at path: "+path.join(buildDir, configuration, projectName));
+    console.log("----------------------------");
 }
 
+function updateApplicationSize()
+{
+    console.log("Calculating application file sizes...");
 
-function updateApplicationSize() {
-    print("Calculating application file sizes...");
-
-    var contents = FILE.read(FILE.join("Build", configuration, projectName, "Info.plist"), { charset:"UTF-8" }),
+    var contents = fs.readFileSync(path.join(buildDir, configuration, projectName, "Info.plist"), { encoding: "utf8" }),
         format = CFPropertyList.sniffedFormatOfString(contents),
         plist = CFPropertyList.propertyListFromString(contents),
         totalBytes = {executable:0, data:0, mhtml:0};
 
     // Get the size of all framework executables and sprite data
-    var frameworksDir = "";// was "Frameworks"
+    var frameworksDir = "Frameworks";
 
     if (configuration === "Debug")
-        frameworksDir = FILE.join(frameworksDir, "Debug");
+        frameworksDir = path.join(frameworksDir, "Debug");
 
-    var frameworks = FILE.list(frameworksDir);
+    var frameworks = [];
 
-    frameworks.forEach(function(framework) {
+    if (fs.existsSync(frameworksDir)) {
+        frameworks = fs.readdirSync(frameworksDir);
+    }
+
+    frameworks.forEach(function(framework)
+    {
         if (framework !== "Source")
-            addBundleFileSizes(FILE.join(frameworksDir, framework), totalBytes);
+            addBundleFileSizes(path.join(frameworksDir, framework), totalBytes);
     });
 
     // Read in the default theme name, and attempt to get its size
@@ -128,17 +107,17 @@ function updateApplicationSize() {
         themePath = nil;
 
     if (themeName === "Aristo" || themeName === "Aristo2")
-        themePath = FILE.join(frameworksDir, "AppKit", "Resources", themeName + ".blend");
+        themePath = path.join(frameworksDir, "AppKit", "Resources", themeName + ".blend");
     else
-        themePath = FILE.join("Frameworks", "Resources", themeName + ".blend");
+        themePath = path.join("Frameworks", "Resources", themeName + ".blend");
 
-    if (FILE.isDirectory(themePath))
+    if (fs.existsSync(themePath) && fs.lstatSync(themePath).isDirectory())
         addBundleFileSizes(themePath, totalBytes);
 
     // Add sizes for the app
-    addBundleFileSizes(FILE.join("Build", configuration, projectName), totalBytes);
+    addBundleFileSizes(path.join(buildDir, configuration, projectName), totalBytes);
 
-    print("Executables: " + totalBytes.executable + ", sprite data: " + totalBytes.data + ", total: " + (totalBytes.executable + totalBytes.data));
+    console.log("Executables: " + totalBytes.executable + ", sprite data: " + totalBytes.data + ", total: " + (totalBytes.executable + totalBytes.data));
 
     var dict = new CFMutableDictionary();
 
@@ -147,36 +126,37 @@ function updateApplicationSize() {
     dict.setValueForKey("mhtml", totalBytes.mhtml);
 
     plist.setValueForKey("CPApplicationSize", dict);
-
-    FILE.write(FILE.join("Build", configuration, projectName, "Info.plist"), CFPropertyList.stringFromPropertyList(plist, format), { charset:"UTF-8" });
+    fs.writeFileSync(path.join(buildDir, configuration, projectName, "Info.plist"), CFPropertyList.stringFromPropertyList(plist, format), { encoding: "utf8" });
 }
 
-
-function addBundleFileSizes(bundlePath, totalBytes) {
-    var bundleName = FILE.basename(bundlePath),
+function addBundleFileSizes(bundlePath, totalBytes)
+{
+    var bundleName = path.basename(bundlePath),
         environment = bundleName === "Foundation" ? "Objj" : "Browser",
-        bundlePath = FILE.join(bundlePath, environment + ".environment");
+        bundlePath = path.join(bundlePath, environment + ".environment");
 
-    if (FILE.isDirectory(bundlePath)) {
+    if (fs.existsSync(bundlePath) && fs.lstatSync(bundlePath).isDirectory())
+    {
         var filename = bundleName + ".sj",
-            filePath = new FILE.Path(FILE.join(bundlePath, filename));
+            filePath = path.join(bundlePath, filename);
 
-        if (filePath.exists())
-            totalBytes.executable += filePath.size();
+        if (fs.existsSync(filePath)) {
+            totalBytes.executable += fs.lstatSync(filePath).size;
+        }
 
-        filePath = new FILE.Path(FILE.join(bundlePath, "dataURLs.txt"));
+        filePath = path.join(bundlePath, "dataURLs.txt");
 
-        if (filePath.exists())
-            totalBytes.data += filePath.size();
+        if (fs.existsSync(filePath))
+            totalBytes.data += fs.lstatSync(filePath).size;
 
-        filePath = new FILE.Path(FILE.join(bundlePath, "MHTMLData.txt"));
+        filePath = path.join(bundlePath, "MHTMLData.txt");
 
-        if (filePath.exists())
-            totalBytes.mhtml += filePath.size();
+        if (fs.existsSync(filePath))
+            totalBytes.mhtml += fs.lstatSync(filePath).size;
 
-        filePath = new FILE.Path(FILE.join(bundlePath, "MHTMLPaths.txt"));
+        filePath = path.join(bundlePath, "MHTMLPaths.txt");
 
-        if (filePath.exists())
-            totalBytes.mhtml += filePath.size();
+        if (fs.existsSync(filePath))
+            totalBytes.mhtml += fs.lstatSync(filePath).size;
     }
 }

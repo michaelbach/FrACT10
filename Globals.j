@@ -8,6 +8,7 @@ Globals.j
 
 /**
  Since we do not have constants in Objective-J, we create global variables
+ (and #define does not work for me)
  Created on 2021-01-07
  */
 tab = "\t";  crlf = "\n";
@@ -32,7 +33,8 @@ gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden
 
 /* History
    =======
- 
+
+2022-05-26 improve "make-XcodeCappSimile.sh", improve Presets, worked on Documentation
 2022-05-24 add Presets (ESU and ULV so far), some editing in CONTRIBUTING.md.
     BIG addition: new "make-XcodeCapp_and_run.sh" to replace XcodeCapp
 2022-05-22 cosmetic change: gaMinimal/Maximal → strokeMinmal/Maximal

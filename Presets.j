@@ -1,6 +1,6 @@
 /*
  This file is part of FrACT10, a vision test battery.
- Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
+ Copyright © 2022 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
  
  Presets.j
  
@@ -14,6 +14,8 @@
 @implementation Presets {
     SEL gSelector;
     CPAlert alert1, alert2;
+    CPArray presetNames;
+    CPString currentPresetName;
 }
 
 
@@ -27,7 +29,8 @@
 }
 
 
-// testing the `performSelector` approach. It works!
+// Testing the `performSelector` approach. It works!
+// This is for a planned key-value format
 /*var s = "distanceInCM";
  s = [Presets capitalizeFirstLetter: s];
  s = "set" + s + ":"; //console.info(s);
@@ -35,16 +38,26 @@
  [Settings performSelector: gSelector withObject: [CPNumber numberWithInt: 99]];*/
 
 
+/**
+ Called by the action of the preset selection pop-up, shows to "Are you sure" dialog
+ */
 + (void) apply: (int) p { //console.info("Presets>apply");
-    alert1 = [CPAlert alertWithMessageText: "Really apply this Preset?"
+    presetNames = ["default", "ULV", "ESU"];
+    if ((p < 0) | (p > presetNames.length)) return;
+    currentPresetName = presetNames[p];
+    var s = "Really apply the preset “" + currentPresetName + "” ?"
+    alert1 = [CPAlert alertWithMessageText: s
                              defaultButton: "NO" alternateButton: "YES" otherButton: nil
-                 informativeTextWithFormat: "Many Settings will change. You should know what you are doing here. Luckily, you can always return to defaults in Settings."];
+                 informativeTextWithFormat: "Many Settings might change. You should know what you are doing here. Luckily, you can always return to defaults in Settings."];
     [alert1 runModalWithDidEndBlock: function(alert, returnCode) {
         if (returnCode==1) [self apply2: p]; // alternateButton
     }]
 }
 
 
+/**
+ Apply selected patch after "Are you sure" dialog
+ */
 + (void) apply2: (int) p { //console.info("Presets>apply2");
     switch (p) {
         case 1: //console.info("ULV");
@@ -54,24 +67,31 @@
         default:
             [Settings setDefaults];
     }
-    alert2 = [CPAlert alertWithMessageText: "Preset was applied."
+    var s = "Preset “" + currentPresetName + "” was applied."
+    alert2 = [CPAlert alertWithMessageText: s
                              defaultButton: "OK" alternateButton: nil otherButton: nil
                  informativeTextWithFormat: ""];
     [alert2 runModal];
 }
 
 
+/**
+ Apply ULV = Ultra Low Vision settings
+ */
 + (void) applyULV { //console.info("ULV");
-    [Settings setDefaults];
-    [Settings setEnableTouchControls: NO];
+    [self setStandardDefaultsKeepingCalBarLength];
+    [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
     [Settings setAcuityStartingLogMAR: 2.5];
 }
 
 
+/**
+ Apply ESU settings (secret project)
+ */
 + (void) applyESU { //console.info("ESU");
-    var calBarLengthInMM_prior = [Settings calBarLengthInMM];
-    [Settings setDefaults];
-    [Settings setCalBarLengthInMM: calBarLengthInMM_prior];
+    [self setStandardDefaultsKeepingCalBarLength];
+    [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
+
     [Settings setDistanceInCM: 150];
     
     [[CPUserDefaults standardUserDefaults] setInteger: 1 forKey: "nAlternativesIndex"]; // 4 alternatives
@@ -87,9 +107,14 @@
     [Settings setDecimalMarkChar: ","];
     [Settings setResults2clipboard: 1];
     
-    //    displayIncompleteRuns = true;
+    //displayIncompleteRuns = true; not implemented yet
     [Settings setTrialInfoFontSize: 24];
-    
-    [Settings setEnableTouchControls: NO]; [Settings setResponseInfoAtStart: NO];
+}
+
+
++ (void) setStandardDefaultsKeepingCalBarLength {
+    var calBarLengthInMM_prior = [Settings calBarLengthInMM];
+    [Settings setDefaults];
+    [Settings setCalBarLengthInMM: calBarLengthInMM_prior];
 }
 @end
