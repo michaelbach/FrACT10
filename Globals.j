@@ -14,7 +14,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "Vs 1.0";
-kVersionDateOfFrACT = "2022-05-26";
+kVersionDateOfFrACT = "2022-05-28";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -34,6 +34,8 @@ gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden
 /* History
    =======
 
+2022-05-28 move Presets pop-up to Settings (where it belongs),
+ IB "builds for" must be set to "10.12 and later" and NOT to anything later.
 2022-05-26 improve "make-XcodeCappSimile.sh", improve Presets, worked on Documentation
 2022-05-24 add Presets (ESU and ULV so far), some editing in CONTRIBUTING.md.
     BIG addition: new "make-XcodeCapp_and_run.sh" to replace XcodeCapp
