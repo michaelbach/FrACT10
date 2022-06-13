@@ -99,8 +99,9 @@ echo " "
 modificationTimeCib=0
 if [ -f "Resources/MainMenu.xib" ]; then
 	modificationTimeCib=$(stat -f %m Resources/MainMenu.cib)
+else
+	modificationTimeXib=$(stat -f %m Resources/MainMenu.xib)
 fi
-modificationTimeXib=$(stat -f %m Resources/MainMenu.xib)
 if [ $modificationTimeXib -ge $modificationTimeCib ]; then
 	echo "nib2cib Resources/MainMenu.xib"
 	nib2cib Resources/MainMenu.xib
