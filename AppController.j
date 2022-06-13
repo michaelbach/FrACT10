@@ -179,7 +179,12 @@ function isNodejs() {
     for (var i = 0; i < allPanels.length; i++)  [allPanels[i] setFrameOrigin: CGPointMake(0, 0)];
     [self setSettingsTabViewSelectedIndex: 0]; // first time select the "General" tab in Settings
     
-    [[self window] setTitle: "FrACT10"];  [self setVersionDateString: [Settings versionFrACT] + "·" + [Settings versionDateFrACT]];
+    [[self window] setTitle: "FrACT10"];
+    var infoDict = [[CPBundle bundleWithIdentifier:@"com.280n.Foundation"] infoDictionary];
+    var bundleVersion = [infoDict objectForKey:@"CPBundleVersion"];
+    console.info(bundleVersion)
+    [self setVersionDateString: [Settings versionFrACT] + "·" + [Settings versionDateFrACT] + " (Fw" + bundleVersion + ")"];
+    
     [Settings checkDefaults]; // what was the reason to put this here???
     /*var s = @"Current key test settings: " + [Settings distanceInCM] +" cm distance, ";
     s += [Settings nAlternatives] + " Landolt alternatives, " + [Settings nTrials] + " trials";
