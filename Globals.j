@@ -34,7 +34,8 @@ gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden
 /* History
    =======
 
-2022-06-13 add version of Cappuccino Framework (1.2.2 currently) and display
+2022-06-13 add version of Cappuccino Framework (1.2.2 currently) and display,
+            fix randomising the pseudorandom sequence
 2022-05-28 move Presets pop-up to Settings (where it belongs),
  IB "builds for" must be set to "10.12 and later" and NOT to anything later.
 2022-05-26 improve "make-XcodeCappSimile.sh", improve Presets, worked on Documentation

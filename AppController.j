@@ -195,7 +195,8 @@ function isNodejs() {
     rewardsController = [[RewardsController alloc] initWithView: rewardImageView];
     taoController = [[TAOController alloc] initWithButton2Enable: buttonAcuityTAO];
     sound = [[Sound alloc] init];
-    for (var i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++); // ranomising the pseudorandom sequence
+    for (var i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++)
+        Math.random(); // randomising the pseudorandom sequence
 
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(buttonExportEnableYESorNO:) name: "buttonExportEnableYESorNO" object: nil];
     [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
