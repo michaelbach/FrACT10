@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# 2022-06-14 corrected the logic for *.cip (re)creation
+# 2022-06-14 corrected the logic for *.cib (re)creation
 # 2022-05-27 separated into different sources, MAIN is here.  Ignore "main.*"
 # 2022-05-26 improve documentation
 # 2022-05-25 add automatic addition of all source files, automatic detection of changed source files
