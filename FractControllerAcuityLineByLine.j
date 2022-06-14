@@ -46,14 +46,14 @@ Created by mb on 2021-12-21.
             var usedAlternativesArray = [];
             for (var i = -2; i <= 2; i++) {
                 var tempX = i * stimStrengthInDeviceunits * 10;
-                CGContextTranslateCTM(cgc,  -tempX, 0);
+                CGContextTranslateCTM(cgc, -tempX, 0);
                 var currentAlternative = [Misc iRandom: nAlternatives];
                 while (usedAlternativesArray.includes(currentAlternative)) {
                     currentAlternative = [Misc iRandom: nAlternatives];
                 }
                 usedAlternativesArray.push(currentAlternative);
                 [optotypes drawLetterWithGapInPx: stimStrengthInDeviceunits letterNumber: currentAlternative];
-                CGContextTranslateCTM(cgc,  +tempX, 0);
+                CGContextTranslateCTM(cgc, +tempX, 0);
             }
 
             CGContextSetFillColor(cgc, [CPColor blueColor]);

@@ -76,6 +76,7 @@ Created by mb on 2017-07-12.
     float checkContrastActualMichelsonPercent @accessors;
     int settingsTabViewSelectedIndex @accessors;
     float calBarLengthInMMbefore;
+    CPColor colorOfBestPossibleAcuity @accessors;
 }
 
 
@@ -182,7 +183,6 @@ function isNodejs() {
     [[self window] setTitle: "FrACT10"];
     var infoDict = [[CPBundle bundleWithIdentifier:@"com.280n.Foundation"] infoDictionary];
     var bundleVersion = [infoDict objectForKey:@"CPBundleVersion"];
-    console.info(bundleVersion)
     [self setVersionDateString: [Settings versionFrACT] + "·" + [Settings versionDateFrACT] + " (Fw" + bundleVersion + ")"];
     
     [Settings checkDefaults]; // what was the reason to put this here???
@@ -208,11 +208,16 @@ function isNodejs() {
 
 
 /**
- This observes changes in the settings panel, making shure some dependencies are updated
+ This observes changes in the settings panel, making shure dependencies are updated
  */
 - (void) defaultsDidChange: (CPNotification) aNotification { //console.info("defaultsDidChange");
     [self setIs4orientations: ([Settings nAlternatives] == 4)];
     [[self window] setBackgroundColor: [self windowBackgroundColor]];
+    if ([Settings minPossibleLogMAR] > 0) { // red: not good enough for normal vision
+        [self setColorOfBestPossibleAcuity: [CPColor redColor]];
+    } else {
+        [self setColorOfBestPossibleAcuity: [CPColor colorWithRed: 0 green: 0.4 blue: 0 alpha: 1]];
+    }
 }
 
 

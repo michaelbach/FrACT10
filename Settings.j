@@ -154,7 +154,8 @@ Created by mb on July 15, 2015.
     // Correction for threshold underestimation of ascending procedures (as opposed to our bracketing one)
     maxPossibleAcuityVal = [self threshCorrection] ? maxPossibleAcuityVal * 0.891 : maxPossibleAcuityVal;
     [self setMaxPossibleDecimalAcuityLocalisedString: [Misc stringFromNumber: maxPossibleAcuityVal decimals: 2 localised: YES]];
-    [self setMinPossibleLogMARLocalisedString: [Misc stringFromNumber: [Misc logMARfromDecVA: maxPossibleAcuityVal] decimals: 2 localised: YES]];
+    [self setMinPossibleLogMAR: [Misc logMARfromDecVA: maxPossibleAcuityVal]]; // needed for color
+    [self setMinPossibleLogMARLocalisedString: [Misc stringFromNumber: [self minPossibleLogMAR] decimals: 2 localised: YES]];
 }
 
 
@@ -624,6 +625,7 @@ function _decimalMarkCharFindHelper(currentValue) {
 
 
 // CPColors are stored as hexString because the archiver does not work in Cappuccino. Why not??
+//https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/DrawColor/Tasks/StoringNSColorInDefaults.html
 + (CPColor) acuityForeColor { //console.info("Settings>acuityForeColor");
     var theData = [[CPUserDefaults standardUserDefaults] stringForKey: "acuityForeColor"];
 //    console.info("Settings>acuityForeColor>theData: ", theData)

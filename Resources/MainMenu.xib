@@ -1140,26 +1140,32 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pas-6M-sVy" userLabel="max. poss. decimal VA">
                                             <rect key="frame" x="711" y="2" width="44" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">This displays the maximal acuity that can be achieved, in decimal VA units. It depends on the pixel size of your VDU (in degrees), which is calculated from your two entries under the ruler.</string>
+                                            <string key="toolTip">This displays the maximal acuity that can be achieved, in decimal VA units. It depends on the pixel size of your VDU (in degrees), which is calculated from your two entries under the ruler.
+
+Red: not good to assess normal vision; green: ok.</string>
                                             <textFieldCell key="cell" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="Q7g-N1-ucl">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <connections>
+                                                <binding destination="450" name="textColor" keyPath="colorOfBestPossibleAcuity" id="ChK-VY-0FU"/>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.maxPossibleDecimalAcuityLocalisedString" id="JJl-bG-KKz"/>
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHb-FA-boY" userLabel="max. poss. decimal VA">
                                             <rect key="frame" x="711" y="-20" width="44" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">This displays the minimal LogMAR that can be achieved, in decimal VA units. It depends on the pixel size of your VDU (in degrees), which is calculated from your two entries under the ruler.</string>
+                                            <string key="toolTip">This displays the minimal LogMAR that can be achieved, in decimal VA units. It depends on the pixel size of your VDU (in degrees), which is calculated from your two entries under the ruler.
+
+Red: not good to assess normal vision; green: ok.</string>
                                             <textFieldCell key="cell" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="MPF-a1-hF1">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <connections>
+                                                <binding destination="450" name="textColor" keyPath="colorOfBestPossibleAcuity" id="4f6-h4-9EB"/>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.minPossibleLogMARLocalisedString" id="B1m-Cq-99H"/>
                                             </connections>
                                         </textField>
