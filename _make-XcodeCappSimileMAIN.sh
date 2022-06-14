@@ -1,7 +1,7 @@
 #!/bin/zsh
 
-# 2022-05-27 separated into different sources, MAIN is here
-#			ignore "main.*"
+# 2022-06-14 corrected the logic for *.cip (re)creation
+# 2022-05-27 separated into different sources, MAIN is here.  Ignore "main.*"
 # 2022-05-26 improve documentation
 # 2022-05-25 add automatic addition of all source files, automatic detection of changed source files
 # 2022-05-24 add subroutine, name array, and check for ".XcodeSupport"
@@ -95,13 +95,13 @@ for aFile in ${sourceArray[@]}; do
 done
 echo " "
 
-# Create the xib file if necessary (depending on file modification times)
+# (re)create the cib file if necessary (depending on file modification times)
+modificationTimeXib=$(stat -f %m Resources/MainMenu.xib)
 modificationTimeCib=0
-if [ -f "Resources/MainMenu.xib" ]; then
+if [ -f "Resources/MainMenu.cib" ]; then
 	modificationTimeCib=$(stat -f %m Resources/MainMenu.cib)
-else
-	modificationTimeXib=$(stat -f %m Resources/MainMenu.xib)
 fi
+#echo "modificationTimeXib: " $modificationTimeXibcho ",  modificationTimeCib: " $modificationTimeCib
 if [ $modificationTimeXib -ge $modificationTimeCib ]; then
 	echo "nib2cib Resources/MainMenu.xib"
 	nib2cib Resources/MainMenu.xib
