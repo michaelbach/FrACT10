@@ -13,8 +13,8 @@ Globals.j
  */
 tab = "\t";  crlf = "\n";
 
-kVersionStringOfFract = "Vs 1.0";
-kVersionDateOfFrACT = "2022-06-14";
+kVersionStringOfFract = "1.0";
+kVersionDateOfFrACT = "2022-06-15";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -30,10 +30,13 @@ kFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
 // Formerly named gapMinimal/gapMaximal. Poor naming in case of Vernier.
 gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden
 
+gCappucinoVersionString = ""; // initialised in AppController
+
 
 /* History
    =======
 
+2022-06-15 unclutter main screen: move Cappuccino version to About panel, kVersionStringOfFract w/o "Vs"; revamp About a little
 2022-06-13 add version of Cappuccino Framework (1.2.2 currently) and display,
             fix randomising the pseudorandom sequence
 2022-05-28 move Presets pop-up to Settings (where it belongs),

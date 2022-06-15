@@ -39,7 +39,7 @@ Populates the About panel with appropriate text using HTML
 + (void) populateAboutPanelView1: (WebView) aboutWebView1 view2: (WebView) aboutWebView2 { //console.info("PopulateAboutPanel>populateAboutPanel");
 
     s = "<h2 align='center'>FrACT<sub>10</sub></h2>";
-    s += "Freiburg Visual Acuity and Contrast Test 10, " + kVersionStringOfFract + ". <br><br>";
+    s += "Freiburg Visual Acuity and Contrast Test 10,<br>Vs " + kVersionStringOfFract + ". <br><br>";
     s += "Interactive measurement of visual acuities following DIN/ISO; also can assess contrast sensitivity.<br><br>Optotypes: Sloan letters, Landolt C, Tumbling E, and TAO.<br><br>Acuity results in decimal, LogMAR or Snellen notation.<br><br>With ‘Best PEST’ and antialiasing."
     [self oneWebView: aboutWebView1 htmlString: s];
 
@@ -48,12 +48,16 @@ Populates the About panel with appropriate text using HTML
     s += "Killianstr. 5, 79106 Freiburg, Germany.<br>";
     s += "<a href='https://michaelbach.de' target='_blank'>https://michaelbach.de</a><br>";
     s += "<a href='mailto:bach@uni-freiburg.de'>bach@uni-freiburg.de</a><br><br>";
-    s += "Source code: <a href='https://github.com/michaelbach/FrACT10/' target='_blank'>GitHub repository</a><br><br>";
+    s += "Sources: <a href='https://github.com/michaelbach/FrACT10/' target='_blank'>GitHub repository</a>, <a href='https://github.com/michaelbach/FrACT10/commits' target='_blank'>commit history</a><br><br>";
+    
     s += "Frameworks/Libraries used:<br>";
-    s += "<a href='https://www.cappuccino.dev' target='_blank'>Cappuccino</a>, <a href='https://simplestatistics.org' target='_blank'>Simple Statistics</a><br><br><br>";
+    s += "<a href='https://michaelbach.de/ot/-misc/cappFrameworks/index.html' target='_blank'>Cappuccino</a> ";
+    s += gCappucinoVersionString + ", ";
+    s += "<a href='https://simplestatistics.org' target='_blank'>Simple Statistics</a><br><br><br>";
     s += "This is free software. There is no warranty for anything.";
     [self oneWebView: aboutWebView2 htmlString: s];
 }
 
 
 @end
+

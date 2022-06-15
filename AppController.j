@@ -181,9 +181,9 @@ function isNodejs() {
     [self setSettingsTabViewSelectedIndex: 0]; // first time select the "General" tab in Settings
     
     [[self window] setTitle: "FrACT10"];
-    var infoDict = [[CPBundle bundleWithIdentifier:@"com.280n.Foundation"] infoDictionary];
-    var bundleVersion = [infoDict objectForKey:@"CPBundleVersion"];
-    [self setVersionDateString: [Settings versionFrACT] + "·" + [Settings versionDateFrACT] + " (Fw" + bundleVersion + ")"];
+    [self setVersionDateString: [Settings versionFrACT] + "·" + [Settings versionDateFrACT]];
+    
+    gCappucinoVersionString = [[[CPBundle bundleWithIdentifier:@"com.280n.Foundation"] infoDictionary] objectForKey:@"CPBundleVersion"];
     
     [Settings checkDefaults]; // what was the reason to put this here???
     /*var s = @"Current key test settings: " + [Settings distanceInCM] +" cm distance, ";
