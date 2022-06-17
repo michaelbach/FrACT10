@@ -14,7 +14,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0";
-kVersionDateOfFrACT = "2022-06-15";
+kVersionDateOfFrACT = "2022-06-16";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -36,6 +36,7 @@ gCappucinoVersionString = ""; // initialised in AppController
 /* History
    =======
 
+2022-06-17 improve webview in About (border not faked by textfield etc.)
 2022-06-15 unclutter main screen: move Cappuccino version to About panel, kVersionStringOfFract w/o "Vs"; revamp About a little
 2022-06-13 add version of Cappuccino Framework (1.2.2 currently) and display,
             fix randomising the pseudorandom sequence

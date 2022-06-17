@@ -28,9 +28,9 @@ Populates the About panel with appropriate text using HTML
 
 
 + (void) oneWebView: (CPWebView) theView htmlString: (CPString) htmlString {
-    [theView setBackgroundColor: [CPColor colorWithWhite: 0.95 alpha: 1]];
-    [theView setScrollMode:CPWebViewScrollNone];
-    s = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'> <style>body{font-family:sans-serif;line-height:1.2em}</style></head><body style='width:97%;'>";
+    [theView setBackgroundColor: [CPColor colorWithWhite: 0.93 alpha: 1]];
+    [theView setScrollMode: CPWebViewScrollNone];
+    s = "<html lang='en'><head><meta charset='UTF-8'> <style>body{ font-family:sans-serif; line-height:1.2em; padding: 8px; margin:0; border:1px solid black; border-radius:5px;}</style></head><body>";
     s += htmlString + "<br>&nbsp;</body></html>"; // need trailing line, otherwise cut (bug)
     [theView loadHTMLString: s];
 }
@@ -44,8 +44,7 @@ Populates the About panel with appropriate text using HTML
     [self oneWebView: aboutWebView1 htmlString: s];
 
     s = "©1993–2022<br><br>Prof. Michael Bach<br>";
-    s += "Eye Center, University Clinical Center<br>";
-    s += "Killianstr. 5, 79106 Freiburg, Germany.<br>";
+    s += "University of Freiburg, Germany.<br><br>";
     s += "<a href='https://michaelbach.de' target='_blank'>https://michaelbach.de</a><br>";
     s += "<a href='mailto:bach@uni-freiburg.de'>bach@uni-freiburg.de</a><br><br>";
     s += "Sources: <a href='https://github.com/michaelbach/FrACT10/' target='_blank'>GitHub repository</a>, <a href='https://github.com/michaelbach/FrACT10/commits' target='_blank'>commit history</a><br><br>";
