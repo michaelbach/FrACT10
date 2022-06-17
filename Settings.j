@@ -200,7 +200,7 @@ Created by mb on July 15, 2015.
 
 
 + (CPString) dateSettingsVersion { //console.info("Settings>dateSettingsVersion");
-    return [[CPUserDefaults standardUserDefaults] objectForKey: "dateSettingsVersion"];
+    return [[CPUserDefaults standardUserDefaults] stringForKey: "dateSettingsVersion"];
 }
 + (void) setDateSettingsVersion: (CPString) value { //console.info("Settings>setDatesettingsVersion");
     [[CPUserDefaults standardUserDefaults] setObject: value forKey: "dateSettingsVersion"];
@@ -293,7 +293,7 @@ Created by mb on July 15, 2015.
 }
 
 
-+ (int) nOfRuns2Recall {
++ (int) nOfRuns2Recall { // not yet used
     return [[CPUserDefaults standardUserDefaults] integerForKey: "nOfRuns2Recall"];
 }
 + (void) setNOfRuns2Recall: (float) value {
@@ -387,7 +387,7 @@ Created by mb on July 15, 2015.
 + (int) results2clipboard {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "results2clipboard"];
 }
-+ (void) setResults2clipboard: (float) value {
++ (void) setResults2clipboard: (int) value {
     [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "results2clipboard"];
 }
 + (BOOL) results2clipboardSilent {
@@ -401,7 +401,7 @@ Created by mb on July 15, 2015.
 + (int) auditoryFeedback {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "auditoryFeedback"];
 }
-+ (void) setAuditoryFeedback: (float) value {
++ (void) setAuditoryFeedback: (int) value {
     [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "auditoryFeedback"];
 }
 
@@ -409,7 +409,7 @@ Created by mb on July 15, 2015.
 + (int) visualFeedback {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "visualFeedback"];
 }
-+ (void) setVisualFeedback: (float) value {
++ (void) setVisualFeedback: (int) value {
     [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "visualFeedback"];
 }
 
@@ -456,9 +456,9 @@ Created by mb on July 15, 2015.
 
 
 function _decimalMarkCharFindHelper(currentValue) {
-    return (currentValue.type === "decimal"); // arrow syntax not work in Cappuccino, need helper fun
+    return (currentValue.type === "decimal"); // arrow syntax not work in Cappuccino, need helper function
 }
-+ (char) decimalMarkChar { //console.info("settings>decimalMarkChar");
++ (CPString) decimalMarkChar { //console.info("settings>decimalMarkChar");
     var _decimalMarkChar = ".";
     switch ([[CPUserDefaults standardUserDefaults] integerForKey: "decimalMarkCharIndex"]) {
         case 1: _decimalMarkChar = "."; break;
@@ -474,13 +474,12 @@ function _decimalMarkCharFindHelper(currentValue) {
     }    //console.info("_decimalMarkChar: ", _decimalMarkChar)
     return _decimalMarkChar;
 }
-+ (void) setDecimalMarkChar: (char) mark {
++ (void) setDecimalMarkChar: (CPString) mark {
     var idx = 0; // auto
     if (mark == ".") idx = 1;
     if (mark == ",") idx = 2;
     [[CPUserDefaults standardUserDefaults] setInteger: idx forKey: "decimalMarkCharIndex"];
 }
-
 
 
 + (BOOL) enableTouchControls {
@@ -510,7 +509,7 @@ function _decimalMarkCharFindHelper(currentValue) {
     [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "maxPossibleDecimalAcuity"];
 }
 + (CPString) maxPossibleDecimalAcuityLocalisedString {
-    return [[CPUserDefaults standardUserDefaults] objectForKey: "maxPossibleDecimalAcuityLocalisedString"];
+    return [[CPUserDefaults standardUserDefaults] stringForKey: "maxPossibleDecimalAcuityLocalisedString"];
 }
 + (void) setMaxPossibleDecimalAcuityLocalisedString: (CPString) value {
     [[CPUserDefaults standardUserDefaults] setObject: value forKey: "maxPossibleDecimalAcuityLocalisedString"];
@@ -522,8 +521,8 @@ function _decimalMarkCharFindHelper(currentValue) {
 + (void) setMinPossibleLogMAR: (float) value {
     [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "minPossibleLogMAR"];
 }
-+ (float) minPossibleLogMARLocalisedString {
-    return [[CPUserDefaults standardUserDefaults] objectForKey: "minPossibleLogMARLocalisedString"];
++ (CPString) minPossibleLogMARLocalisedString {
+    return [[CPUserDefaults standardUserDefaults] stringForKey: "minPossibleLogMARLocalisedString"];
 }
 + (void) setMinPossibleLogMARLocalisedString: (CPString) value {
     [[CPUserDefaults standardUserDefaults] setObject: value forKey: "minPossibleLogMARLocalisedString"];
@@ -573,7 +572,7 @@ function _decimalMarkCharFindHelper(currentValue) {
 + (int) crowdingDistanceCalculationType {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "crowdingDistanceCalculationType"];
 }
-+ (void) setCrowdingDistanceCalculationType: (float) value {
++ (void) setCrowdingDistanceCalculationType: (int) value {
     [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "crowdingDistanceCalculationType"];
 }
 
@@ -660,7 +659,7 @@ function _decimalMarkCharFindHelper(currentValue) {
 + (int) vernierType {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "vernierType"];
 }
-+ (void) setVernierType: (float) value {
++ (void) setVernierType: (int) value {
     [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "vernierType"];
 }
 
