@@ -459,23 +459,22 @@ function _decimalMarkCharFindHelper(currentValue) {
     return (currentValue.type === "decimal"); // arrow syntax not work in Cappuccino, need helper function
 }
 + (CPString) decimalMarkChar { //console.info("settings>decimalMarkChar");
-    var _decimalMarkChar = ".";
     switch ([[CPUserDefaults standardUserDefaults] integerForKey: "decimalMarkCharIndex"]) {
-        case 1: _decimalMarkChar = "."; break;
-        case 2: _decimalMarkChar = ","; break;
-        default:
-            try {
-                var tArray = Intl.NumberFormat().formatToParts(1.3); // "1.3" surely has a decimal mark
-                _decimalMarkChar = tArray.find(_decimalMarkCharFindHelper).value;
-            }
-            catch(e) { // avoid global error catcher
-                console.log("Intl.NumberFormat throws error: ", e);
-            }
-    }    //console.info("_decimalMarkChar: ", _decimalMarkChar)
+        case 1: return ".";
+        case 2: return ",";
+    } // from now on we deal with "Automatic"
+    var _decimalMarkChar = ".";
+    try {
+        var tArray = Intl.NumberFormat().formatToParts(1.3); // "1.3" surely has a decimal mark
+        _decimalMarkChar = tArray.find(_decimalMarkCharFindHelper).value;
+    }
+    catch(e) { // avoid global error catcher, but log the problem
+        console.log("“Intl.NumberFormat().formatToParts” throws error: ", e);
+    } //console.info("_decimalMarkChar: ", _decimalMarkChar)
     return _decimalMarkChar;
 }
 + (void) setDecimalMarkChar: (CPString) mark {
-    var idx = 0; // auto
+    var idx = 0; // "Automatic"
     if (mark == ".") idx = 1;
     if (mark == ",") idx = 2;
     [[CPUserDefaults standardUserDefaults] setInteger: idx forKey: "decimalMarkCharIndex"];

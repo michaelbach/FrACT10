@@ -91,7 +91,7 @@ Created by mb on 2017-07-12.
  Setting the foreground color for acuity optotypes
  @param theColor: foreground color
  */
-- (void) setAcuityForeColor: (CPColor) theColor { //console.info("AppController>
+- (void) setAcuityForeColor: (CPColor) theColor {//console.info("AppController>setAcuityForeColor");
     [Settings setAcuityForeColor: theColor];
 }
 /**

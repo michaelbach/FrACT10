@@ -37,7 +37,9 @@ gCappucinoVersionString = ""; // initialised in AppController
    =======
 
 2022-06-17 improve webview in About (border not faked by textfield etc.),
-    Help panel also with webview, share buttons between Help and About panels
+    Help panel also with webview, share buttons between Help and About panels,
+    fix type inconsistencies in Settings (just for code beauty, had no effect),
+    simplify "decimalMarkChar" in Settings
 2022-06-15 unclutter main screen: move Cappuccino version to About panel, kVersionStringOfFract w/o "Vs"; revamp About a little
 2022-06-13 add version of Cappuccino Framework (1.2.2 currently) and display,
             fix randomising the pseudorandom sequence
