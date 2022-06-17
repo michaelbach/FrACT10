@@ -59,7 +59,7 @@ Created by mb on 2017-07-12.
     @outlet CPButton buttonExport;
     @outlet CPButton buttonExit;
     @outlet GammaView gammaView;
-    @outlet CPWebView aboutWebView1, aboutWebView2;
+    @outlet CPWebView aboutWebView1, aboutWebView2, helpWebView1, helpWebView2, helpWebView3, helpWebView4;
     @outlet CPImageView creditcardImageView;
     CPImageView rewardImageView;
     RewardsController rewardsController;
@@ -533,34 +533,35 @@ function existsUrl(url) {
 
 - (IBAction) buttonHelp_action: (id) sender { //console.info("AppController>buttonHelp_action");
     [helpPanel makeKeyAndOrderFront: self];
-}
-- (IBAction) buttonHelpGetManual_action: (id) sender {
-    window.open("https://michaelbach.de/fract/manual.html", "_blank");
-}
-- (IBAction) buttonHelpGetChecklist_action: (id) sender {
-    window.open("https://michaelbach.de/fract/checklist.html", "_blank");
-}
-- (IBAction) buttonHelpCheats_action: (id) sender {
-    window.open("https://michaelbach.de/sci/acuity.html", "_blank");
+    [PopulateAboutPanel populateHelpPanelView1: helpWebView1 v2: helpWebView2 v3: helpWebView3 v4: helpWebView4];
 }
 - (IBAction) buttonHelpClose_action: (id) sender { //console.info("AppController>buttonHelpClose_action");
     [helpPanel close];
 }
-- (IBAction) buttonAbout_action: (id) sender { //console.info("AppController>buttonAbout_action");
+- (IBAction) buttonAbout_action: (id) sender {
     [aboutPanel makeKeyAndOrderFront: self];
     [PopulateAboutPanel populateAboutPanelView1: aboutWebView1 view2: aboutWebView2];
 }
-- (IBAction) buttonAboutWebsiteMB_action: (id) sender {
-    window.open("https://michaelbach.de", "_blank");
-}
-- (IBAction) buttonAboutWebsiteFractSite_action: (id) sender {
-    window.open("https://michaelbach.de/fract/", "_blank");
-}
-- (IBAction) buttonAboutWebsiteFractBlog_action: (id) sender {
-    window.open("https://michaelbach.de/fract/blog.html", "_blank");
-}
 - (IBAction) buttonAboutClose_action: (id) sender { //console.info("AppController>buttonAboutClose_action");
     [aboutPanel close];
+}
+- (IBAction) buttonGotoFractSite_action: (id) sender {
+    window.open("https://michaelbach.de/fract/", "_blank");
+}
+- (IBAction) buttonGotoFractBlog_action: (id) sender {
+    window.open("https://michaelbach.de/fract/blog.html", "_blank");
+}
+- (IBAction) buttonGotoFractManual_action: (id) sender {
+    window.open("https://michaelbach.de/fract/manual.html", "_blank");
+}
+- (IBAction) buttonGotoFractChecklist_action: (id) sender {
+    window.open("https://michaelbach.de/fract/checklist.html", "_blank");
+}
+- (IBAction) buttonGotoAcuityCheats_action: (id) sender {
+    window.open("https://michaelbach.de/sci/acuity.html", "_blank");
+}
+- (IBAction) buttonGotoMichaelbachDE_action: (id) sender {
+    window.open("https://michaelbach.de", "_blank");
 }
 
 

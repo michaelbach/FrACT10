@@ -306,18 +306,7 @@ DQ
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonAboutWebsiteFractBlog_action:" target="450" id="zSw-ah-haf"/>
-                        </connections>
-                    </button>
-                    <button toolTip="This will open the FrACT home page in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xo5-1y-fja">
-                        <rect key="frame" x="274" y="18" width="135" height="23"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" title="→FrACT site" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FmC-12-fbn">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonAboutWebsiteFractSite_action:" target="450" id="vS4-QP-THm"/>
+                            <action selector="buttonGotoFractBlog_action:" target="450" id="ZwD-NH-v1x"/>
                         </connections>
                     </button>
                     <button toolTip="This will open the manual in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eo3-yh-5sO">
@@ -328,7 +317,7 @@ DQ
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonHelpGetManual_action:" target="450" id="LZS-K2-pi0"/>
+                            <action selector="buttonGotoFractManual_action:" target="450" id="VSD-LV-7DS"/>
                         </connections>
                     </button>
                     <webView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="68J-Vy-hV1">
@@ -345,6 +334,17 @@ DQ
                             <nil key="identifier"/>
                         </webPreferences>
                     </webView>
+                    <button toolTip="This will open the FrACT home page in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xo5-1y-fja">
+                        <rect key="frame" x="274" y="18" width="135" height="23"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="roundTextured" title="→FrACT site" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FmC-12-fbn">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="buttonGotoFractSite_action:" target="450" id="0wl-C3-LrE"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
@@ -357,26 +357,27 @@ DQ
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Sn-ZQ-RqA">
-                        <rect key="frame" x="20" y="384" width="764" height="196"/>
+                    <webView id="eki-H2-z5T">
+                        <rect key="frame" x="20" y="390" width="764" height="202"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="2hy-q0-ZtW">
-                            <font key="font" size="12" name="HelveticaNeue"/>
-                            <string key="title">GENERAL
-
-• Make use of the tool tips!  (By hovering with the mouse over the pertinent interface element.)
-
-• Be sure to set the calibration bar width and the observation distance in Preferences correctly. Preferences are automatically saved.
-
-• This is a forced choice test – even when your subjects indicate that they cannot see a thing, encourages them to make their best guess; the software knows about the lucky guesses. Encourage your subjects to react swiftly, lengthy squinting at the optotype is not helpful.
-
-• Quality results requite knowledge in sensory testing. At least observe the Checklist (button below).
-
-• The Manual (button below) should cover everything. For open questions contact me.</string>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
+                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
+                            <nil key="identifier"/>
+                        </webPreferences>
+                    </webView>
+                    <webView id="27W-sb-xg0">
+                        <rect key="frame" x="20" y="266" width="367" height="116"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
+                            <nil key="identifier"/>
+                        </webPreferences>
+                    </webView>
+                    <webView id="xqp-kf-f7Y">
+                        <rect key="frame" x="417" y="266" width="367" height="116"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
+                            <nil key="identifier"/>
+                        </webPreferences>
+                    </webView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v4E-5P-uLh">
                         <rect key="frame" x="738" y="18" width="47" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -399,7 +400,7 @@ DQ
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonAboutWebsiteFractBlog_action:" target="450" id="QHu-ZT-iH3"/>
+                            <action selector="buttonGotoFractBlog_action:" target="450" id="4Ol-RO-9ql"/>
                         </connections>
                     </button>
                     <button toolTip="Opens the manual in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pig-bH-1jM">
@@ -410,7 +411,7 @@ DQ
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonHelpGetManual_action:" target="450" id="50a-Go-BeH"/>
+                            <action selector="buttonGotoFractManual_action:" target="450" id="phE-lI-WT6"/>
                         </connections>
                     </button>
                     <button toolTip="Opens the FrACT home page in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iza-6M-cRz">
@@ -421,37 +422,9 @@ DQ
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonHelpGetChecklist_action:" target="450" id="1l1-48-D3A"/>
+                            <action selector="buttonGotoFractChecklist_action:" target="450" id="sVb-BQ-QdS"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XDB-tT-AfF">
-                        <rect key="frame" x="417" y="270" width="367" height="92"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="9Tq-uu-N7t">
-                            <font key="font" size="12" name="HelveticaNeue"/>
-                            <string key="title">CONTRAST SENSITIVITY
-
-· Results in logCS(Weber). CS: “contrast sensitivity"
-
-• Gamma calibration (in Settings) necessary!</string>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aru-OX-XXi">
-                        <rect key="frame" x="20" y="270" width="367" height="92"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" allowsEditingTextAttributes="YES" id="4jh-qp-wtH">
-                            <font key="font" size="12" name="HelveticaNeue"/>
-                            <string key="title">VISUAL ACUITY
-
-• Results in logMAR, decimal acuity or Snellen format
-
-• LImited screen resolution (pixel size) may clip high acuity</string>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <button toolTip="Opens the “Acuity Cheat Sheet&quot; in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFU-iu-5G1">
                         <rect key="frame" x="453" y="18" width="126" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -460,7 +433,7 @@ DQ
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonHelpCheats_action:" target="450" id="wfk-D5-Hsd"/>
+                            <action selector="buttonGotoAcuityCheats_action:" target="450" id="Ajb-pF-dXD"/>
                         </connections>
                     </button>
                     <button toolTip="Opens a website which will read and display the test results exported by default" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SdT-ry-TcO">
@@ -474,63 +447,13 @@ DQ
                             <action selector="resultDetails_action:" target="450" id="eZ2-3l-yWR"/>
                         </connections>
                     </button>
-                    <scrollView fixedFrame="YES" borderType="line" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCB-G5-d1e">
-                        <rect key="frame" x="20" y="60" width="764" height="190"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="8aG-i8-Dh8">
-                            <rect key="frame" x="1" y="1" width="747" height="188"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="zNM-Gb-Jh9">
-                                    <rect key="frame" x="0.0" y="0.0" width="747" height="406"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="747" height="188"/>
-                                    <size key="maxSize" width="764" height="10000000"/>
-                                    <attributedString key="textStorage">
-                                        <fragment>
-                                            <mutableString key="content">REFERENCES
-
-Bach M, Schäfer K (2016) Visual acuity testing: feedback affects neither outcome nor reproducibility, but leaves participants happier. PLOS ONE 11(1):e0147803
-
-Bach M (2007) The Freiburg Visual Acuity Test – Variability unchanged by post-hoc re-analysis. Graefe’s Arch Clin Exp Ophthalmol 245:965–971
-
-Schulze-Bonsel K, Feltgen N, Burau H, Hansen LL, Bach M (2006) Visual acuities “Hand Motion” and “Counting Fingers” can be quantified using the Freiburg Visual Acuity Test. Invest Ophthalmol Vis Sci  47:1236–1240
-
-Neargarder SA, Stone ER, Cronin-Golomb A, Oross S 3rd (2003) The impact of acuity on performance of four clinical measures of contrast sensitivity in Alzheimer's disease. J Gerontol B Psychol Sci Soc Sci. 58:54–62
-
-Wesemann W (2002) [Visual acuity measured via the Freiburg visual acuity test (FVT), Bailey Lovie chart and Landolt Ring chart] Klin Monatsbl Augenheilkd 219:660–667
-
-Loumann KL (2003) Visual acuity testing in diabetic subjects: the decimal progression chart versus the Freiburg visual acuity test. Graefes Arch Clin Exp Ophthalmol
-
-Bach M, Kommerell G (1998) Sehschärfebestimmung nach Europäischer Norm – wissenschaftliche Grundlagen und Möglichkeiten der automatischen Messung. Klin Mbl Augenheilk 212:190–195 
-
-Bach M (1997) Anti-aliasing and dithering in the ‘Freiburg Visual Acuity Test’. Spatial Vision 11:85–89 
-
-Bach M (1996) The “Freiburg Visual Acuity Test” – Automatic measurement of visual acuity. Optometry &amp; Vision Sci 73:49–53 
-
-Lieberman HR, Pentland AP (1982) Microcomputer-based estimation of psychophysical thresholds: The Best PEST. Behavior Research Methods &amp; Instrumentation 14:21–25</mutableString>
-                                            <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" size="12" name="Helvetica"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                    <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                </textView>
-                            </subviews>
-                        </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="nkP-Z2-gFN">
-                            <rect key="frame" x="-100" y="-100" width="225" height="15"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="LUd-Wl-vo2">
-                            <rect key="frame" x="748" y="1" width="15" height="188"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
+                    <webView id="CEW-xu-zjz">
+                        <rect key="frame" x="20" y="53" width="764" height="205"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
+                            <nil key="identifier"/>
+                        </webPreferences>
+                    </webView>
                 </subviews>
             </view>
             <point key="canvasLocation" x="108" y="2386"/>
@@ -2243,6 +2166,10 @@ CQ
                 <outlet property="fractControllerWindow" destination="r6R-bh-Qyp" id="WQx-mH-JUh"/>
                 <outlet property="gammaView" destination="c7s-eX-XEN" id="fNv-bD-BRg"/>
                 <outlet property="helpPanel" destination="28C-lv-KIF" id="Uyw-Zc-Dhd"/>
+                <outlet property="helpWebView1" destination="eki-H2-z5T" id="cat-aa-Tx1"/>
+                <outlet property="helpWebView2" destination="27W-sb-xg0" id="j0c-Kw-xnU"/>
+                <outlet property="helpWebView3" destination="xqp-kf-f7Y" id="5Gb-3A-6NO"/>
+                <outlet property="helpWebView4" destination="CEW-xu-zjz" id="y0W-7j-jD9"/>
                 <outlet property="responseinfoPanelAcuity4C" destination="KH7-H9-rEd" id="9RI-zp-bV8"/>
                 <outlet property="responseinfoPanelAcuity8C" destination="UBW-u3-RSn" id="Gqz-Zw-DfA"/>
                 <outlet property="responseinfoPanelAcuityE" destination="TXq-Ap-CfY" id="g0E-03-G4D"/>
