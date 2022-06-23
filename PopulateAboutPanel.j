@@ -40,7 +40,7 @@ Populates the About panel with appropriate text using HTML
 
     s = "<h2 align='center'>FrACT<sub>10</sub></h2>";
     s += "Freiburg Visual Acuity and Contrast Test 10,<br>Vs " + kVersionStringOfFract + ",&nbsp; release date " + kVersionDateOfFrACT + ". <br><br>";
-    s += "Interactive measurement of visual acuities following DIN/ISO; also can assess contrast sensitivity.<br><br>Optotypes: Sloan letters, Landolt C, Tumbling E, and TAO.<br><br>Acuity results in decimal, LogMAR or Snellen notation.<br><br>With ‘Best PEST’ and antialiasing."
+    s += "Interactive assessment of visual acuities following DIN/ISO; also can assess contrast sensitivity.<br><br>Optotypes: Sloan letters, Landolt C, Tumbling E, and TAO.<br><br>Acuity results in decimal, LogMAR or Snellen notation.<br><br>With ‘Best PEST’ and antialiasing."
     [self oneWebView: aboutWebView1 htmlString: s];
 
     s = "©1993–2022<br><br>Prof. Michael Bach<br>";
@@ -52,7 +52,8 @@ Populates the About panel with appropriate text using HTML
     s += "<a href='https://michaelbach.de/ot/-misc/cappFrameworks/index.html' target='_blank'>Cappuccino</a> ";
     s += gCappucinoVersionString + ", ";
     s += "<a href='https://simplestatistics.org' target='_blank'>Simple Statistics</a><br><br><br>";
-    s += "This is free software. There is no warranty for anything.";
+    s += "This is free software. There is no warranty for anything.<br>";
+    s += "It is not certified for medical purposes.";
     [self oneWebView: aboutWebView2 htmlString: s];
 }
 

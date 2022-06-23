@@ -14,7 +14,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0";
-kVersionDateOfFrACT = "2022-06-16";
+kVersionDateOfFrACT = "2022-06-23";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -36,6 +36,7 @@ gCappucinoVersionString = ""; // initialised in AppController
 /* History
    =======
 
+2022-06-23 improve wording in About
 2022-06-17 improve webview in About (border not faked by textfield etc.),
     Help panel also with webview, share buttons between Help and About panels,
     fix type inconsistencies in Settings (just for code beauty, had no effect),
