@@ -50,7 +50,7 @@ Populates the About panel with appropriate text using HTML
     s += "Sources: <a href='https://github.com/michaelbach/FrACT10/' target='_blank'>GitHub repository</a>, <a href='https://github.com/michaelbach/FrACT10/commits' target='_blank'>commit history</a><br><br>";
     s += "Frameworks/Libraries used:<br>";
     s += "<a href='https://michaelbach.de/ot/-misc/cappFrameworks/index.html' target='_blank'>Cappuccino</a> ";
-    s += gCappucinoVersionString + ", ";
+    s += gCappucinoVersionString + ",&nbsp; ";
     s += "<a href='https://simplestatistics.org' target='_blank'>Simple Statistics</a><br><br><br>";
     s += "This is free software. There is no warranty for anything.<br>";
     s += "It is not certified for medical purposes.";

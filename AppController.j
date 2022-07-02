@@ -400,7 +400,7 @@ function isNodejs() {
         case "4":
             [self buttonDoAcuityLineByLine_action: nil];  break;
         case "5" :
-            switch([Settings testOnFive]) {
+            switch([Settings testOnFive]) { //0: ignore
                 case 1: [self  buttonDoAcuityLetters_action: nil];  break;
                 case 2: [self  buttonDoAcuityLandolt_action: nil];  break;
                 case 3: [self  buttonDoAcuityE_action: nil];  break;

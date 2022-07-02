@@ -246,7 +246,7 @@ Shortcut: f
                             <action selector="buttonDoExit_action:" target="450" id="t4f-l7-7Lm"/>
                         </connections>
                     </button>
-                    <button toolTip="Line of optypes, adjustable acuity grade.  Shortcut: 4" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-y6-Eca" customClass="MDBButton">
+                    <button toolTip="&quot;Line-by-line&quot;: Line of optypes, adjustable acuity grade.  Shortcut: 4" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-y6-Eca" customClass="MDBButton">
                         <rect key="frame" x="657" y="298" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="Line-by-line" bezelStyle="texturedRounded" image="buttonAcuityLineByLine" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="KDf-Uw-FAZ">
@@ -1524,7 +1524,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </view>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k67-Qx-BFb">
-                                            <rect key="frame" x="38" y="64" width="150" height="22"/>
+                                            <rect key="frame" x="38" y="64" width="147" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Vernier Hyperacuity" bezelStyle="round" id="ICj-eq-Caf">
                                                 <font key="font" metaFont="system"/>
@@ -1607,7 +1607,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </view>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pbL-S0-XrG">
-                                            <rect key="frame" x="38" y="180" width="96" height="22"/>
+                                            <rect key="frame" x="38" y="180" width="90" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Crowding" bezelStyle="round" id="Rpe-YE-TbN">
                                                 <font key="font" metaFont="system"/>
@@ -1717,6 +1717,55 @@ Red: not good to assess normal vision; green: ok.</string>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.acuityStartingLogMAR" id="WPL-bG-lxJ"/>
                                             </connections>
                                         </comboBox>
+                                        <box fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="dsj-Xn-diN">
+                                            <rect key="frame" x="510" y="-7" width="236" height="101"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <view key="contentView" id="hSN-vj-QjA">
+                                                <rect key="frame" x="3" y="3" width="230" height="83"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <popUpButton toolTip="Which optotypes to present in the &quot;Line of Optotypes&quot; / &quot;line-by-line&quot; mode" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JCI-tq-Dxr">
+                                                        <rect key="frame" x="17" y="19" width="155" height="26"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <popUpButtonCell key="cell" type="push" title="–" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="BNs-47-qLW" id="HXT-wA-3ir">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="menu"/>
+                                                            <menu key="menu" id="XEE-w1-gvj">
+                                                                <items>
+                                                                    <menuItem title="–" state="on" hidden="YES" enabled="NO" id="BNs-47-qLW">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="Sloan Letters" id="QJz-ye-aX8">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="Landolt-C" id="JwM-wv-wuO">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="Tumbling E" hidden="YES" enabled="NO" id="Dku-mY-oaj">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="TAO" hidden="YES" enabled="NO" id="pv4-rg-q87">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                </items>
+                                                            </menu>
+                                                        </popUpButtonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.testOnLineByLine" id="FKR-JI-GpW"/>
+                                                        </connections>
+                                                    </popUpButton>
+                                                </subviews>
+                                            </view>
+                                        </box>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yeH-Jv-eDF">
+                                            <rect key="frame" x="533" y="64" width="135" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Line of Optotypes" bezelStyle="round" id="80e-Xb-73c">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                 </view>
                             </tabViewItem>

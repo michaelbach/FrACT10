@@ -52,7 +52,11 @@ Created by mb on 2021-12-21.
                     currentAlternative = [Misc iRandom: nAlternatives];
                 }
                 usedAlternativesArray.push(currentAlternative);
-                [optotypes drawLetterWithGapInPx: stimStrengthInDeviceunits letterNumber: currentAlternative];
+                switch([Settings testOnLineByLine]) {
+                    case 1: [optotypes drawLetterWithGapInPx: stimStrengthInDeviceunits letterNumber: currentAlternative];  break;
+                    case 2: [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: currentAlternative];  break;
+                    default: console.log("Line-by-line: unsupported optotype-id: ", [Settings testOnLineByLine]);
+                }
                 CGContextTranslateCTM(cgc, +tempX, 0);
             }
 
@@ -87,7 +91,12 @@ Created by mb on 2021-12-21.
 
 
 - (void) runStart { //console.info("FractControllerAcuityLetters>runStart");
-    nAlternatives = 10;  nTrials = 9999;
+    nAlternatives = 10;
+    switch([Settings testOnLineByLine]) {
+        case 1: nAlternatives = 10;  break;
+        case 2: nAlternatives = 8;  break; // 4 Landolt orientations not supported
+    }
+    nTrials = 9999;
     [self setCurrentTestResultUnit: "LogMAR"];
     [super runStart];
 }

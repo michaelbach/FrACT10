@@ -128,6 +128,11 @@ Created by mb on July 15, 2015.
     [self setCrowdingType: [self chckInt: [self crowdingType] def: 0 min: 0 max: 6 set: set]];
     // 0 = 2·gap between rings, 1 = fixed 2.6 arcmin between rings, 2 = fixed 30', 3 = like ETDRS
     [self setCrowdingDistanceCalculationType: [self chckInt: [self crowdingDistanceCalculationType] def: 0 min: 0 max: 3 set: set]];
+    
+    [self setCrowdingDistanceCalculationType: [self chckInt: [self crowdingDistanceCalculationType] def: 0 min: 0 max: 3 set: set]];
+
+    [self setTestOnLineByLine: [self chckInt: [self testOnLineByLine] def: 1 min: 1 max: 4 set: set]]; // 1: Sloan Letters. 0: nicht erlaubt, 2: Landolt, 3…
+
 
     // Vernier stuff
     [self setVernierType: [self chckInt: [self vernierType] def: 0 min: 0 max: 1 set: set]]; // 2 or 3 bars
@@ -651,6 +656,14 @@ function _decimalMarkCharFindHelper(currentValue) {
 }
 + (void) setAcuityEasyTrials: (BOOL) value {
     [[CPUserDefaults standardUserDefaults] setBool: value forKey: "acuityEasyTrials"];
+}
+
+
++ (int) testOnLineByLine {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "testOnLineByLine"];
+}
++ (void) setTestOnLineByLine: (int) value {
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "testOnLineByLine"];
 }
 
 
