@@ -132,6 +132,7 @@ Created by mb on July 15, 2015.
     [self setCrowdingDistanceCalculationType: [self chckInt: [self crowdingDistanceCalculationType] def: 0 min: 0 max: 3 set: set]];
 
     [self setTestOnLineByLine: [self chckInt: [self testOnLineByLine] def: 1 min: 1 max: 4 set: set]]; // 1: Sloan Letters. 0: nicht erlaubt, 2: Landolt, 3…
+    [self setTestOnLineByLineDistanceType: [self chckInt: [self testOnLineByLineDistanceType] def: 0 min: 0 max: 1 set: set]]; // 0: DIN-EN-ISO, 1: ETDRS
 
 
     // Vernier stuff
@@ -664,6 +665,12 @@ function _decimalMarkCharFindHelper(currentValue) {
 }
 + (void) setTestOnLineByLine: (int) value {
     [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "testOnLineByLine"];
+}
++ (int) testOnLineByLineDistanceType {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "testOnLineByLineDistanceType"];
+}
++ (void) setTestOnLineByLineDistanceType: (int) value {
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "testOnLineByLineDistanceType"];
 }
 
 

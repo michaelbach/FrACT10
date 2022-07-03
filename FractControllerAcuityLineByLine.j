@@ -44,9 +44,19 @@ Created by mb on 2021-12-21.
         case kStateDrawBack: break;
         case kStateDrawFore:
             var usedAlternativesArray = [];
+            var optotypeDistance = 1; // according to ETDRS
+            if ([Settings testOnLineByLineDistanceType] == 0) {// according to DIN EN ISO 8596
+                optotypeDistance = 0.4;
+                var localDecVA = [Misc decVAfromLogMAR: localLogMAR];
+                if (localDecVA >= 0.06) optotypeDistance = 1;
+                if (localDecVA >= 0.16) optotypeDistance = 1.5;
+                if (localDecVA >= 0.4) optotypeDistance = 2;
+                if (localDecVA >= 1.0) optotypeDistance = 3;
+            }
+            optotypeDistance = (1 + optotypeDistance) * stimStrengthInDeviceunits * 5;
             for (var i = -2; i <= 2; i++) {
-                var tempX = i * stimStrengthInDeviceunits * 10;
-                CGContextTranslateCTM(cgc, -tempX, 0);
+                var tempX = i * optotypeDistance;
+                CGContextTranslateCTM(cgc, -tempX, -150);
                 var currentAlternative = [Misc iRandom: nAlternatives];
                 while (usedAlternativesArray.includes(currentAlternative)) {
                     currentAlternative = [Misc iRandom: nAlternatives];
@@ -57,7 +67,7 @@ Created by mb on 2021-12-21.
                     case 2: [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: currentAlternative];  break;
                     default: console.log("Line-by-line: unsupported optotype-id: ", [Settings testOnLineByLine]);
                 }
-                CGContextTranslateCTM(cgc, +tempX, 0);
+                CGContextTranslateCTM(cgc, +tempX, 150);
             }
 
             CGContextSetFillColor(cgc, [CPColor blueColor]);

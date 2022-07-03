@@ -14,7 +14,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0";
-kVersionDateOfFrACT = "2022-07-02";
+kVersionDateOfFrACT = "2022-07-03";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -36,6 +36,7 @@ gCappucinoVersionString = ""; // initialised in AppController
 /* History
    =======
 
+2022-07-03 <
 2022-07-02 Line-by-line to allow Landolt-Cs in addition to Sloan Letters
 2022-06-23 improve wording in About
 2022-06-17 improve webview in About (border not faked by textfield etc.),
