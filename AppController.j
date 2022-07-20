@@ -126,21 +126,6 @@ Created by mb on 2017-07-12.
 
 
 /**
- A somewhat kludgy test if we are running under Node
- */
-function isNodejs() {
-    try {
-        typeof "process" !== "undefined" && process && process.versions && process.versions.node;
-        window.process = process; // with this trick we can create a global object from within a function. Need it for Node exit.
-        return true;
-    }
-    catch(e) { // the above is not defined w/o Node
-        return false;
-    }
-}
-
-
-/**
  Our main initialisation begins here
  */
 - (id) init { // console.info("AppController>init");
@@ -155,8 +140,6 @@ function isNodejs() {
     'use strict';
     [[self window] setFullPlatformWindow: YES];
     [[self window] setBackgroundColor: [self windowBackgroundColor]];
-    gIsNodejs = isNodejs();
-    [buttonExit setHidden: !gIsNodejs];
 
     [CPMenu setMenuBarVisible: NO];
     addEventListener('error', function(e) {
@@ -572,17 +555,11 @@ function existsUrl(url) {
 
 
 - (IBAction) buttonDoExit_action: (id) sender { //console.info("AppController>buttonExit_action");
-    if (!gIsNodejs) return; // let's do nothing unless Node – an empty browser window scares :)
     if ([Misc isFullScreen]) {
         [Misc fullScreenOn: NO];
     }
     [[self window] close];  [CPApp terminate: nil];
-    try {
-        var p = window.process; // thus we can access Node's process object w/o syntax complaints of browsers
-        p.exit(); // works only in NODE.
-    }
-    catch(e) {// let's avoid the useless global error catcher here
-    }
+    window.close();
 }
 
 
