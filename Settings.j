@@ -60,9 +60,9 @@ Created by mb on July 15, 2015.
     [self setNTrials04: [self chckInt: [self nTrials04] def: 24 min: 1 max: 200 set: set]];
     [self setNTrials08: [self chckInt: [self nTrials08] def: 18 min: 1 max: 200 set: set]];
 
-    [self setDistanceInCM: [self chckFlt: [self distanceInCM] def: kDefaultDistanceInCM min: 1 max: 2000 set: set]];
+    [self setDistanceInCM: [self chckFlt: [self distanceInCM] def: kDefaultDistanceInCM min: 1 max: 5000 set: set]];
     [self setCalBarLengthInMM: [self chckFlt: [self calBarLengthInMM] def: kDefaultCalibrationBarLengthInMM min: 1 max: 2000 set: set]];
-    [self setCalBarLengthInPixel: [self chckFlt: [self calBarLengthInPixel] def: 700 min: 1 max: 2000 set: set]];
+    [self setCalBarLengthInPixel: [self chckFlt: [self calBarLengthInPixel] def: 700 min: 1 max: 4000 set: set]];
 
     [self setResponseInfoAtStart: [self chckBool: [self responseInfoAtStart] def: YES set: set]];
     [self setEnableTouchControls: [self chckBool: [self enableTouchControls] def: YES set: set]];
