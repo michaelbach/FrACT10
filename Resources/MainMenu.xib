@@ -2204,7 +2204,7 @@ CQ
                         </connections>
                     </button>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JgX-d5-6k1">
-                        <rect key="frame" x="191" y="18" width="139" height="25"/>
+                        <rect key="frame" x="191" y="18" width="151" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <popUpButtonCell key="cell" type="push" title="Preset to Standard" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="BRQ-on-tmW" id="JI4-Wi-eC6">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>

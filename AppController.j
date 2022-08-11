@@ -235,7 +235,7 @@ Created by mb on 2017-07-12.
     if ([Settings isNotCalibrated]) {
         var alert = [CPAlert alertWithMessageText: "WARNING"
                                     defaultButton: "I just want to try it out" alternateButton: "OK, take me to Settings" otherButton: nil
-                        informativeTextWithFormat: "\rCalibration is mandatory for valid results.\r\rGoto 'Settings' and enter appropriate values for \r«Length of blue ruler»\rand \r«Observer distance».\r\rThis will also avoid the present obnoxious warning dialog."];
+                        informativeTextWithFormat: "\rCalibration is mandatory for valid results.\r\rGoto 'Settings' and enter appropriate values for \r«Length of blue ruler» and «Observer distance»;\ror use the credit card sizing method.\r\rThis will also avoid the present obnoxious warning dialog."];
         [alert runModalWithDidEndBlock: function(alert, returnCode) {
             switch (returnCode) {
                 case 1: // alternateButton
