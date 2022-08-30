@@ -105,7 +105,7 @@
     
     [Settings setAcuityFormatLogMAR: NO];
     [Settings setDecimalMarkChar: ","];
-    [Settings setResults2clipboard: 1];
+    [Settings setResults2clipboard: 0];
     
     //displayIncompleteRuns = true; not implemented yet
     [Settings setTrialInfoFontSize: 24];

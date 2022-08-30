@@ -14,7 +14,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0";
-kVersionDateOfFrACT = "2022-08-29";
+kVersionDateOfFrACT = "2022-08-30";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -36,6 +36,7 @@ gCappucinoVersionString = ""; // initialised in AppController
 /* History
    =======
 
+2022-08-30 in "applyESU": set "no clipboard" to avoid nagging question
 2022-08-29 correct version from 10.0 to 1.0, improve / add several tooltips, add Electron refs
 2022-08-17 increase max value of `contrastOptotypeDiameter` from 500 to 1500
 2022-08-11 reword calibration warning, trivial button resizing
