@@ -123,10 +123,10 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 
 /*	Transformation formula:   gap = c1 * exp(tPest * c2).
- Constants c1 and c2 are determined by thesse 2 contions: tPest==0 → gap=gStrokeMinimal;  tPest==1 → gap=gStrokeMaximal.
+ Constants c1 and c2 are determined by these 2 condions: tPest==0 → gap=gStrokeMinimal;  tPest==1 → gap=gStrokeMaximal.
  =>c2 = ln(gStrokeMinimal / gStrokeMaximal)/(0 - 1);  c1 = gStrokeMinimal / exp(0 * c2)  */
-- (float) acuityStimDeviceunitsFromThresholderunits: (float) tPest { //console.info("FractControllerAcuityC>stimDeviceunitsFromThresholderunits");
-    var c2 = - Math.log(gStrokeMinimal / gStrokeMaximal), c1 = gStrokeMinimal;
+- (float) acuityStimDeviceunitsFromThresholderunits: (float) tPest { // console.info("FractControllerAcuityC>stimDeviceunitsFromThresholderunits");
+    const c2 = - Math.log(gStrokeMinimal / gStrokeMaximal), c1 = gStrokeMinimal;
     var deviceVal = c1 * Math.exp(tPest * c2); //console.info("DeviceFromPest " + tPest + " " + deviceVal);
     // ROUNDING for realisable gap values? @@@
     if ([Misc areNearlyEqual: deviceVal and: gStrokeMaximal]) {

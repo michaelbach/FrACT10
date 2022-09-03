@@ -7,6 +7,7 @@ Globals.j
 */
 
 /**
+ Global variables
  Since we do not have constants in Objective-J, we create global variables
  (and #define does not work for me)
  Created on 2021-01-07
@@ -14,7 +15,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0";
-kVersionDateOfFrACT = "2022-08-30";
+kVersionDateOfFrACT = "2022-09-02";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -23,9 +24,6 @@ kDefaultCalibrationBarLengthInMM = 149;
 kFilename4ResultStorage = "FRACT10-FINAL-RESULT-STRING";
 kFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
 
-/**
- Global variables
-*/
 // minimal stroke/gap size (half a pixel). Maximal, depending on screen & margin.
 // Formerly named gapMinimal/gapMaximal. Poor naming in case of Vernier.
 gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden
@@ -33,9 +31,16 @@ gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden
 gCappucinoVersionString = ""; // initialised in AppController
 
 
+/* switch to readable history?
+ devHistory = [];
+devHistory.push(["2022-09-02", 'increase max value of `contrastOptotypeDiameter` from 1500 to 2500']);
+devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to use them']);*/
+
 /* History
    =======
 
+2022-09-02 increase max value of `contrastOptotypeDiameter` from 1500 to 2500
+2022-09-01 new compiler allows "let" and "const", begin to use them
 2022-08-30 in "applyESU": set "no clipboard" to avoid nagging question
 2022-08-29 correct version from 10.0 to 1.0, improve / add several tooltips, add Electron refs
 2022-08-17 increase max value of `contrastOptotypeDiameter` from 500 to 1500

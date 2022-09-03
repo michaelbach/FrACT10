@@ -146,7 +146,7 @@ Created by mb on July 15, 2015.
     [self setGammaValue: [self chckFlt: [self gammaValue] def: 1.7 min: 0.8 max: 4 set: set]];
     [self setContrastEasyTrials: [self chckBool: [self contrastEasyTrials] def: YES set: set]];
     [self setContrastDarkOnLight: [self chckBool: [self contrastDarkOnLight] def: YES set: set]];
-    [self setContrastOptotypeDiameter: [self chckFlt: [self contrastOptotypeDiameter] def: 50 min: 1 max: 1500 set: set]];
+    [self setContrastOptotypeDiameter: [self chckFlt: [self contrastOptotypeDiameter] def: 50 min: 1 max: 2500 set: set]];
     [self setContrastShowFixMark: [self chckBool: [self contrastShowFixMark] def: YES set: set]];
     [self setContrastTimeoutFixmark: [self chckFlt: [self contrastTimeoutFixmark] def: 500 min: 20 max: 5000 set: set]];
     [self setContrastMaxLogCSWeber: [self chckFlt: [self contrastMaxLogCSWeber] def: 2.4 min: 1.5 max: 3 set: set]];
@@ -156,7 +156,7 @@ Created by mb on July 15, 2015.
 
 
 + (void) calculateMaxPossibleDecimalAcuity { //console.info("Settings>calculateMaxPossibleDecimalAcuity");
-    var maxPossibleAcuityVal = [Misc decVAFromGapPixels: 1.0];
+    let maxPossibleAcuityVal = [Misc decVAFromGapPixels: 1.0];
     // Correction for threshold underestimation of ascending procedures (as opposed to our bracketing one)
     maxPossibleAcuityVal = [self threshCorrection] ? maxPossibleAcuityVal * 0.891 : maxPossibleAcuityVal;
     [self setMaxPossibleDecimalAcuityLocalisedString: [Misc stringFromNumber: maxPossibleAcuityVal decimals: 2 localised: YES]];
@@ -167,9 +167,9 @@ Created by mb on July 15, 2015.
 
 // contrast in %. 100%: background fully white, foreground fully dark. -100%: inverted
 + (void) calculateAcuityForeBackColorsFromContrast { //console.info("Settings>calculateAcuityForeBackColorsFromContrast");
-    var cnt = [Misc contrastMichelsonFromWeberPercent: [self contrastAcuityWeber]];
+    const cnt = [Misc contrastMichelsonFromWeberPercent: [self contrastAcuityWeber]];
 
-    var temp = [Misc lowerLuminanceFromContrastMilsn: cnt];  temp = [Misc devicegrayFromLuminance: temp];
+    let temp = [Misc lowerLuminanceFromContrastMilsn: cnt];  temp = [Misc devicegrayFromLuminance: temp];
     [self setAcuityForeColor: [CPColor colorWithWhite: temp alpha: 1]];
 
     temp = [Misc upperLuminanceFromContrastMilsn: cnt];  temp = [Misc devicegrayFromLuminance: temp];
@@ -185,7 +185,7 @@ Created by mb on July 15, 2015.
 }
 + (void) checkDefaults { //console.info("Settings>checkDefaults");
     if ([self needNewDefaults]) {
-// var alert = [CPAlert alertWithMessageText: "»FrACT«: First run or major version change" defaultButton: "OK" alternateButton: nil otherButton: nil informativeTextWithFormat: "\rAll Settings are reset to their default values, please check them.\r\n\r\n[If all Settings are empty, simply reload, next time they'll be fine.]"]; [alert runModal];
+// const alert = [CPAlert alertWithMessageText: "»FrACT«: First run or major version change" defaultButton: "OK" alternateButton: nil otherButton: nil informativeTextWithFormat: "\rAll Settings are reset to their default values, please check them.\r\n\r\n[If all Settings are empty, simply reload, next time they'll be fine.]"]; [alert runModal];
         [self setDefaults];
     } else {
         [self allNotCheckButSet: NO];
@@ -224,7 +224,7 @@ Created by mb on July 15, 2015.
 }
 
 + (int) nTrials02 { //console.info("Settings>nTrials02");
-    var t = [[CPUserDefaults standardUserDefaults] integerForKey: "nTrials02"]; //console.info(t);
+    const t = [[CPUserDefaults standardUserDefaults] integerForKey: "nTrials02"]; //console.info(t);
     return t;
 }
 + (void) setNTrials02: (int) value { //console.info("Settings>nTrials02");
@@ -429,7 +429,7 @@ Created by mb on July 15, 2015.
 
 
 + (float) soundVolume { // from 1 to 100%.
-    var theValue = [[CPUserDefaults standardUserDefaults] floatForKey: "soundVolume"];
+    let theValue = [[CPUserDefaults standardUserDefaults] floatForKey: "soundVolume"];
     if (theValue < 1) { // really need this???
         theValue = 20;  // if 0 then it did not go through defaulting; 0 not allowed
         [self setSoundVolume: theValue];
@@ -469,9 +469,9 @@ function _decimalMarkCharFindHelper(currentValue) {
         case 1: return ".";
         case 2: return ",";
     } // from now on we deal with "Automatic"
-    var _decimalMarkChar = ".";
+    let _decimalMarkChar = ".";
     try {
-        var tArray = Intl.NumberFormat().formatToParts(1.3); // "1.3" surely has a decimal mark
+        const tArray = Intl.NumberFormat().formatToParts(1.3); // "1.3" surely has a decimal mark
         _decimalMarkChar = tArray.find(_decimalMarkCharFindHelper).value;
     }
     catch(e) { // avoid global error catcher, but log the problem
@@ -480,7 +480,7 @@ function _decimalMarkCharFindHelper(currentValue) {
     return _decimalMarkChar;
 }
 + (void) setDecimalMarkChar: (CPString) mark {
-    var idx = 0; // "Automatic"
+    let idx = 0; // "Automatic"
     if (mark == ".") idx = 1;
     if (mark == ",") idx = 2;
     [[CPUserDefaults standardUserDefaults] setInteger: idx forKey: "decimalMarkCharIndex"];
@@ -496,9 +496,9 @@ function _decimalMarkCharFindHelper(currentValue) {
 
 
 + (CPColor) windowBackgroundColor { //console.info("Settings>windowBackgroundColor");
-    var theData = [[CPUserDefaults standardUserDefaults] stringForKey: "windowBackgroundColor"];
+    let theData = [[CPUserDefaults standardUserDefaults] stringForKey: "windowBackgroundColor"];
     if (theData == nil) theData = "FFFFEE"; // safety measure and default
-    var c = [CPColor colorWithHexString: theData]; //console.info("Settings>windowBackgroundColor:", c);
+    const c = [CPColor colorWithHexString: theData]; //console.info("Settings>windowBackgroundColor:", c);
     //console.info("Settings>windowBackgroundColor", c);
     return c;
 }
@@ -631,20 +631,20 @@ function _decimalMarkCharFindHelper(currentValue) {
 // CPColors are stored as hexString because the archiver does not work in Cappuccino. Why not??
 //https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/DrawColor/Tasks/StoringNSColorInDefaults.html
 + (CPColor) acuityForeColor { //console.info("Settings>acuityForeColor");
-    var theData = [[CPUserDefaults standardUserDefaults] stringForKey: "acuityForeColor"];
+    let theData = [[CPUserDefaults standardUserDefaults] stringForKey: "acuityForeColor"];
 //    console.info("Settings>acuityForeColor>theData: ", theData)
     if (theData == nil) theData = "FFFFFF"; // safety measure
-    var c = [CPColor colorWithHexString: theData]; //console.info("Settings>acuityForeColor:", c);
+    const c = [CPColor colorWithHexString: theData]; //console.info("Settings>acuityForeColor:", c);
     return c;
 }
 + (void) setAcuityForeColor: (CPColor) theColor { //console.info("Settings>setAcuityBackColor:", theColor);
     [[CPUserDefaults standardUserDefaults] setObject: [theColor hexString] forKey: "acuityForeColor"];
 }
 + (CPColor) acuityBackColor { //console.info("Settings>acuityBackColor");
-    var theData = [[CPUserDefaults standardUserDefaults] stringForKey: "acuityBackColor"];
+    let theData = [[CPUserDefaults standardUserDefaults] stringForKey: "acuityBackColor"];
     //console.info("Settings>acuityBackColor>theData: ", theData)
     if (theData == nil) theData = "000000"; // safety measure
-    var c = [CPColor colorWithHexString: theData]; //console.info("Settings>acuityBackColor:", c);
+    const c = [CPColor colorWithHexString: theData]; //console.info("Settings>acuityBackColor:", c);
     return c;
 }
 + (void) setAcuityBackColor: (CPColor) theColor { //console.info("Settings>setAcuityBackColor:", theColor);
