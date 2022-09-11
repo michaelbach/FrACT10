@@ -187,6 +187,8 @@ Created by mb on 2017-07-12.
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
 
     [self buttonCheckContrast_action: null];
+    
+    if ([navigator.platform hasPrefix:@"Mac"])  [buttonExit setTitle: "Quit"];// OS: Quit or Exit
 }
 
 
