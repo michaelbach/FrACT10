@@ -237,7 +237,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 - (void) runEnd { //console.info("FractController>runEnd");
     var sv = [[[self window] contentView] subviews];
-    for (var i = 0; i < sv.length; i++) [sv[i] removeFromSuperview];
+    for (const svi of sv) [svi removeFromSuperview];
 
     [timerDisplay invalidate];  timerDisplay = nil;
     [timerResponse invalidate];  timerResponse = nil;

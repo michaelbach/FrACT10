@@ -155,12 +155,12 @@ Created by mb on 2017-07-12.
     });
     
     var allButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttonAcuityLineByLine];
-    for (var i = 0; i < allButtons.length; i++)  [Misc makeFrameSquareFromWidth: allButtons[i]];
-    
+    for (const b of allButtons)  [Misc makeFrameSquareFromWidth: b];
+
     allTestControllers = [FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerAcuityLineByLine];
 
     allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelAcuityLineByLine, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel, creditcardPanel];
-    for (var i = 0; i < allPanels.length; i++)  [allPanels[i] setFrameOrigin: CGPointMake(0, 0)];
+    for (const p of allPanels)  [p setFrameOrigin: CGPointMake(0, 0)];
     [self setSettingsTabViewSelectedIndex: 0]; // first time select the "General" tab in Settings
     
     [[self window] setTitle: "FrACT10"];
@@ -218,7 +218,7 @@ Created by mb on 2017-07-12.
 
 
 - (void) closeAllPanels {
-    for (var i = 0; i < allPanels.length; i++)  [allPanels[i] close];
+    for (const p of allPanels)  [p close];
 }
 
 

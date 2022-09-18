@@ -73,8 +73,8 @@ TrialHistoryController.j
  */
 - (id) composeInfo4CI {
     var trialsDF = [];
-    for (var i = 0; i < _trialHistory.length; ++i) {
-        trialsDF.push({lMar: _trialHistory[i].value, correct: _trialHistory[i].correct});
+    for (const thi of _trialHistory) {
+        trialsDF.push({lMar: thi.value, correct: thi.correct});
     }
     return trialsDF;
 }
