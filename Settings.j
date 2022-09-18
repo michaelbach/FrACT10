@@ -461,9 +461,6 @@ Created by mb on July 15, 2015.
 ////////////////////////
 
 
-function _decimalMarkCharFindHelper(currentValue) {
-    return (currentValue.type === "decimal"); // arrow syntax not work in Cappuccino, need helper function
-}
 + (CPString) decimalMarkChar { //console.info("settings>decimalMarkChar");
     switch ([[CPUserDefaults standardUserDefaults] integerForKey: "decimalMarkCharIndex"]) {
         case 1: return ".";
@@ -472,7 +469,7 @@ function _decimalMarkCharFindHelper(currentValue) {
     let _decimalMarkChar = ".";
     try {
         const tArray = Intl.NumberFormat().formatToParts(1.3); // "1.3" surely has a decimal mark
-        _decimalMarkChar = tArray.find(_decimalMarkCharFindHelper).value;
+        _decimalMarkChar = tArray.find(currentValue => currentValue.type === "decimal").value;
     }
     catch(e) { // avoid global error catcher, but log the problem
         console.log("“Intl.NumberFormat().formatToParts” throws error: ", e);

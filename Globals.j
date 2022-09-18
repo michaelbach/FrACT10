@@ -15,7 +15,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0";
-kVersionDateOfFrACT = "2022-09-11";
+kVersionDateOfFrACT = "2022-09-18";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -39,7 +39,8 @@ devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to 
 /* History
    =======
 
-2022-09-11 make Quit/Exit button titel depend on operating system (Mac: Quit)
+2022-09-18 the new "es2022" compiler allows modern JavaScript, so simplify code with an arrow fun
+2022-09-11 make Quit/Exit button title depend on operating system (Mac: Quit)
 2022-09-02 increase max value of `contrastOptotypeDiameter` from 1500 to 2500
 2022-09-01 new compiler allows "let" and "const", begin to use them
 2022-08-30 in "applyESU": set "no clipboard" to avoid nagging question
