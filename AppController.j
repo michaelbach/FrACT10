@@ -186,7 +186,7 @@ Created by mb on 2017-07-12.
 
     [self buttonCheckContrast_action: null];
     
-    if ([navigator.platform hasPrefix:@"Mac"])  [buttonExit setTitle: "Quit"];// OS: Quit or Exit
+    if ([window.navigator.platform hasPrefix:@"Mac"])  [buttonExit setTitle: "Quit"];// OS: Quit or Exit
 }
 
 

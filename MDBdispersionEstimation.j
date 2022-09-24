@@ -17,7 +17,7 @@ MDBdispersionEstimation.j
 @implementation MDBDispersionEstimation
 
 
-var kWorstLogMAR, kBestLogMAR, kGuess, testDF; // there are no class properties in Cappuccino
+let kWorstLogMAR, kBestLogMAR, kGuess, testDF; // there are no class properties in Cappuccino
 
 
 + (void) initResultStatistics { //console.info("Entering initResultStatistics");
@@ -40,13 +40,13 @@ var kWorstLogMAR, kBestLogMAR, kGuess, testDF; // there are no class properties 
 + (id) calculateCIfromDF: (id) df guessingProbability: (float) guessingProbability nSamples: (int) nSamples {
     kGuess = guessingProbability; // as global parameter to speed up
     nSamples = nSamples || 1000; // default value
-    var threshSamples = [nSamples]; // this array will hold all bootstrap results
-    for (var i = 0; i < nSamples; i++) threshSamples[i] = threshEstimate(sampleWithReplacement(df, df.length));
+    const threshSamples = [nSamples]; // this array will hold all bootstrap results
+    for (let i = 0; i < nSamples; i++) threshSamples[i] = threshEstimate(sampleWithReplacement(df, df.length));
     //console.info(threshSamples);
     //console.info("extent: ", extent(threshSamples));
-    var med = median(threshSamples), CI0025 = quantile(threshSamples, 0.025), CI0975 = quantile(threshSamples, 0.975);
+    const med = median(threshSamples), CI0025 = quantile(threshSamples, 0.025), CI0975 = quantile(threshSamples, 0.975);
     //console.info("med: ", med, ", CI0025: ", CI0025, ", CI0975", CI0975, ", Bland-Altman-equiv: ±", (CI0025 - CI0975) / 2);
-    /*var s = ""; // outputting all estimates on the clipboard for further workup in R
+    /*let s = ""; // outputting all estimates on the clipboard for further workup in R
     for (i =0; i<threshSamples.length; i++) s += threshSamples[i]+ "\n";
     [Misc copyString2ClipboardWithDialog: s];*/
     return [{median: med, CI0025: CI0025, CI0975: CI0975}];
@@ -57,9 +57,9 @@ var kWorstLogMAR, kBestLogMAR, kGuess, testDF; // there are no class properties 
  A naive maximumfinder. Gradient climbers can fail because of very low likelihood values
  */
 function findMaxLlhInRange(df, r1, r2, delta) {
-    var lMax = -1, lMarMax, lMar = r1;
+    let lMax = -1, lMarMax, lMar = r1;
     while (lMar < r2) {
-        var ll = likelihoodFunc(lMar, df); //console.info(lMar, ll);
+        const ll = likelihoodFunc(lMar, df); //console.info(lMar, ll);
         if (ll > lMax) {lMax = ll;  lMarMax = lMar;}
         lMar += delta;
     }
@@ -69,8 +69,8 @@ function findMaxLlhInRange(df, r1, r2, delta) {
  The fit to the psychometric function is done in stages, because its slope can be VERY shallow
  */
 function threshEstimate(df) { // console.info("threshEstimate");
-    var delta = 0.5; // initial LogMAR precision for rough homing-in
-    var lMarMax = findMaxLlhInRange(df, kBestLogMAR, kWorstLogMAR, delta);
+    let delta = 0.5; // initial LogMAR precision for rough homing-in
+    let lMarMax = findMaxLlhInRange(df, kBestLogMAR, kWorstLogMAR, delta);
     lMarMax = findMaxLlhInRange(df, lMarMax - delta, lMarMax + delta, delta / 5); // now precise to ±0.1 LogMAR
     delta /= 10;
     lMarMax = findMaxLlhInRange(df, lMarMax - delta, lMarMax + delta, delta / 5); // now precise to ±0.02 LogMAR
@@ -92,17 +92,16 @@ function logMAR2pest(lmar) {
 }
 
 
-
 /**
  likelihood stuff
  */
 function likelihoodFunc(thresh, df) {//console.info("MDBDispersionEstimation>likelihoodFunc");
-    var len = df.length
-    //var llh = probCorrectGivenLogMAR(kGuess, thresh, kWorstLogMAR); // nearly 1. Fix right end.
+    const len = df.length
+    //let llh = probCorrectGivenLogMAR(kGuess, thresh, kWorstLogMAR); // nearly 1. Fix right end.
     //llh = llh * (1 - probCorrectGivenLogMAR(kGuess, thresh, kBestLogMAR)); // guess prob. Fix left end.
-    var llh = 1;
-    for (var i = 0; i < len; i++) {
-        var l = probCorrectGivenLogMAR(kGuess, thresh, df[i].lMar);
+    let llh = 1;
+    for (let i = 0; i < len; i++) {
+        const l = probCorrectGivenLogMAR(kGuess, thresh, df[i].lMar);
         if (df[i].correct) {llh *= l} else {llh *= (1 - l);}
     }
     return llh;
@@ -119,17 +118,16 @@ function probCorrectGivenLogMAR(guessingProbability, inflectionPoint, lMar) {
 }
 
 
-
 /**
 Logistic function for nAFC tasks, x on a linear 0…1 scale
 x=0: below threshold, =guess; x=1: above threshold, =1
  */
 function testLogistic(guessingProbability) {
-    for (var i = 0; i < 10; i++)  console.info(i / 10, logisticFun(0.125, 0.5, i / 10));
+    for (let i = 0; i < 10; i++)  console.info(i / 10, logisticFun(0.125, 0.5, i / 10));
 }
 function logisticFun(guessingProbability, inflectionPoint, x) {
     //console.log("guessingProbability: ", guessingProbability, ", inflectionPoint: ", inflectionPoint);
-    var slope = 0.1;
+    const slope = 0.1;
     x = 1 - x;  inflectionPoint = 1 - inflectionPoint;
     return guessingProbability + (1 - guessingProbability) / (1 + Math.exp(-(x - inflectionPoint) / slope));
 }
