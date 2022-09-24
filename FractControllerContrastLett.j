@@ -31,8 +31,8 @@ Created by Bach on 2020-08-17
     }
     
     if ([Settings enableTouchControls] && (!responseButtonsAdded)) {
-        var size = viewWidth / ((nAlternatives+1) * 1.4 + 1);
-        for (var i = 0; i < nAlternatives+1; i++){
+        const size = viewWidth / ((nAlternatives+1) * 1.4 + 1);
+        for (let i = 0; i < nAlternatives+1; i++){
             [self buttonCenteredAtX: (i + 0.9) * 1.4 * size y: viewHeight/2 - size / 2 - 4
                                size: size title: [@"CDHKNORSVZØ" characterAtIndex: i]];
         }

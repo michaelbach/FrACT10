@@ -28,8 +28,8 @@ A wrapper for whatever thresholding algorithm is used (currently only BestPEST)
 
 
 - (void) unitTest {
-    for (var i = 0; i < 10; ++i) {
-        var stim = [self nextStim2apply];
+    for (let i = 0; i < 10; ++i) {
+        const stim = [self nextStim2apply];
         console.info(i + " " + stim);
         [self enterTrialOutcomeWithAppliedStim: stim wasCorrect: NO];
     }
@@ -37,7 +37,7 @@ A wrapper for whatever thresholding algorithm is used (currently only BestPEST)
 
 
 - (float) nextStim2apply {
-    var retVal = [currentThresholder nextStim2apply];
+    const retVal = [currentThresholder nextStim2apply];
     //console.info("Thresholder>NextStim2apply: ", retVal);
     return retVal;
 }

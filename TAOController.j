@@ -29,10 +29,10 @@ TAOController.j
         _button = button;
         [_button setEnabled: NO];
         [self setNImages: 0];
-        var _taoImageNames = ["butterfly", "car", "duck", "flower", "heart", "house", "moon", "rabbit", "rocket", "tree"];
+        const _taoImageNames = ["butterfly", "car", "duck", "flower", "heart", "house", "moon", "rabbit", "rocket", "tree"];
         _taoImages = [];
         _nTAOImagesLoaded = 0;
-        for (var i=0; i < _taoImageNames.length; i++) {
+        for (let i=0; i < _taoImageNames.length; i++) {
             _taoImages[i] = [[CPImage alloc] initWithContentsOfFile: [[CPBundle mainBundle] pathForResource: "TAOs/" + _taoImageNames[i] + ".png"]];
             [_taoImages[i] setDelegate: self];
         }

@@ -41,12 +41,12 @@ Created by Bach on 18.07.2017.
         default: break;
     }
     if ([Settings enableTouchControls] && (!responseButtonsAdded)) {
-        var sze = 50, sze2 = sze / 2, radius = 0.5 * Math.min(viewWidth, viewHeight) - sze2 - 1;
-        for (var i = 0; i < 8; i++) {
+        const sze = 50, sze2 = sze / 2, radius = 0.5 * Math.min(viewWidth, viewHeight) - sze2 - 1;
+        for (let i = 0; i < 8; i++) {
             if ( ([Settings nAlternatives] > 4)  || (![Misc isOdd: i])) {
-                var iConsiderObliqueOnly = i;
+                let iConsiderObliqueOnly = i;
                 if (([Settings nAlternatives] == 4) && [Settings obliqueOnly])  iConsiderObliqueOnly++;
-                var ang = iConsiderObliqueOnly / 8 * 2 * Math.PI;
+                const ang = iConsiderObliqueOnly / 8 * 2 * Math.PI;
                 [self buttonCenteredAtX: viewWidth / 2 + Math.cos(ang) * radius y:  Math.sin(ang) * radius size: sze title: [@"632147899" characterAtIndex: iConsiderObliqueOnly]];
             }
         }

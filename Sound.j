@@ -22,7 +22,7 @@ Sound.j
 // sound1: “tink” for correct response
 - (void) loadSound1 { //console.info("Sound>loadSound");
     buffer1 = null;
-    var request = new XMLHttpRequest();
+    const request = new XMLHttpRequest();
     request.open('GET', "Resources/sounds/trialYes.mp3", true);
     request.responseType = 'arraybuffer';
     request.onload = function() {  // Decode asynchronously
@@ -35,7 +35,7 @@ Sound.j
 // sound2: whistle for incorrect responses
 - (void) loadSound2 { //console.info("Sound>loadSound");
     buffer2 = null;
-    var request = new XMLHttpRequest();
+    const request = new XMLHttpRequest();
     request.open('GET', "Resources/sounds/trialNo.mp3", true);
     request.responseType = 'arraybuffer';
     request.onload = function() {  // Decode asynchronously
@@ -48,7 +48,7 @@ Sound.j
 // sound3, gong, for end of run
 - (void) loadSound3 { //console.info("Sound>loadSound");
     buffer3 = null;
-    var request = new XMLHttpRequest();
+    const request = new XMLHttpRequest();
     request.open('GET', "Resources/sounds/runEnd.mp3", true);
     request.responseType = 'arraybuffer';
     request.onload = function() {  // Decode asynchronously
@@ -60,7 +60,7 @@ Sound.j
 
 - (void) playSoundFromBuffer: (id) buffer { //console.info("Sound>playSoundFromBuffer");
     if (buffer == nil) return;
-    var source = audioContext.createBufferSource();
+    const source = audioContext.createBufferSource();
     source.buffer = buffer;
     source.connect(volumeNode);
     volumeNode.gain.value = Math.pow([Settings soundVolume] / 100.0, 2); // a more physiologic transfer function IMHO

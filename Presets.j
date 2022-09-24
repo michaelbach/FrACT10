@@ -23,15 +23,15 @@
 + (CPString) capitalizeFirstLetter: (CPString) s {
     if (s.length < 1)  return @"";
     else if (s.length == 1)  return [s capitalizedString];
-    var firstChar = [[s substringToIndex: 1] uppercaseString];
-    var otherChars = [s substringWithRange: CPMakeRange(1, s.length - 1)];
+    const firstChar = [[s substringToIndex: 1] uppercaseString];
+    const otherChars = [s substringWithRange: CPMakeRange(1, s.length - 1)];
     return firstChar + otherChars;
 }
 
 
 // Testing the `performSelector` approach. It works!
 // This is for a planned key-value format
-/*var s = "distanceInCM";
+/*let s = "distanceInCM";
  s = [Presets capitalizeFirstLetter: s];
  s = "set" + s + ":"; //console.info(s);
  gSelector = CPSelectorFromString(s);
@@ -39,13 +39,13 @@
 
 
 /**
- Called by the action of the preset selection pop-up, shows to "Are you sure" dialog
+ Called by the action of the preset selection pop-up, shows the "Are you sure" dialog
  */
 + (void) apply: (int) p { //console.info("Presets>apply");
     presetNames = ["default", "ULV", "ESU"];
     if ((p < 0) | (p > presetNames.length)) return;
     currentPresetName = presetNames[p];
-    var s = "Really apply the preset “" + currentPresetName + "” ?"
+    const s = "Really apply the preset “" + currentPresetName + "” ?"
     alert1 = [CPAlert alertWithMessageText: s
                              defaultButton: "NO" alternateButton: "YES" otherButton: nil
                  informativeTextWithFormat: "Many Settings might change. You should know what you are doing here. Luckily, you can always return to defaults in Settings."];
@@ -67,7 +67,7 @@
         default:
             [Settings setDefaults];
     }
-    var s = "Preset “" + currentPresetName + "” was applied."
+    const s = "Preset “" + currentPresetName + "” was applied."
     alert2 = [CPAlert alertWithMessageText: s
                              defaultButton: "OK" alternateButton: nil otherButton: nil
                  informativeTextWithFormat: ""];
@@ -113,7 +113,7 @@
 
 
 + (void) setStandardDefaultsKeepingCalBarLength {
-    var calBarLengthInMM_prior = [Settings calBarLengthInMM];
+    const calBarLengthInMM_prior = [Settings calBarLengthInMM];
     [Settings setDefaults];
     [Settings setCalBarLengthInMM: calBarLengthInMM_prior];
 }

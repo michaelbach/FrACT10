@@ -46,8 +46,8 @@ Optotypes.j
 // problem here: 0 % contrast will end in finite logCSWeber. But since this is now clamped at 4.0,
 // after rounding this will still read 0%.
 - (float) getCurrentContrastLogCSWeber {
-    var michelsonPercent = [self getCurrentContrastMichelsonPercent];
-    var weberPercent = [Misc contrastWeberFromMichelsonPercent: michelsonPercent];
+    const michelsonPercent = [self getCurrentContrastMichelsonPercent];
+    const weberPercent = [Misc contrastWeberFromMichelsonPercent: michelsonPercent];
     return [Misc contrastLogCSWeberFromWeberPercent: weberPercent];
 }
 
@@ -125,7 +125,7 @@ Optotypes.j
     CGContextSetFillColor(_cgc, _colOptotypeFore);
     CGContextBeginPath(_cgc);
     CGContextMoveToPoint(_cgc, d * p[0][0], -d * p[0][1]);
-    for (var i = 1; i < p.length; ++i) {
+    for (let i = 1; i < p.length; ++i) {
         CGContextAddLineToPoint(_cgc, d * p[i][0], -d * p[i][1]);
     }
     CGContextAddLineToPoint(_cgc, d * p[0][0], -d * p[0][1]);
@@ -141,8 +141,8 @@ Optotypes.j
     [self fillCircleAtX: 0 y: 0 radius: 2.5 * gap];
     CGContextSetFillColor(_cgc, _colOptotypeBack);
     [self fillCircleAtX: 0 y: 0 radius: 1.5 * gap];
-    var rct = CGRectMake(gap * 1.4 - 1, -gap / 2, 1.3 * gap + 1, gap); //console.info(gap, " ", rct);
-    var rot = Math.PI / 180.0 * (7 - (direction - 1)) / 8.0 * 360.0;
+    const rct = CGRectMake(gap * 1.4 - 1, -gap / 2, 1.3 * gap + 1, gap); //console.info(gap, " ", rct);
+    const rot = Math.PI / 180.0 * (7 - (direction - 1)) / 8.0 * 360.0;
     CGContextRotateCTM(_cgc, rot);
     if (direction >= 0) CGContextFillRect(_cgc, rct);
     CGContextRotateCTM(_cgc, -rot);
@@ -154,7 +154,7 @@ Optotypes.j
 }
 - (void)drawSloanDWithGapInPx: (float) d { //console.info("optotypes>drawSloanDWithGapInPx");
     d *= 0.5;
-    var gxf = 1.0, gyf = 1.0;
+    const gxf = 1.0, gyf = 1.0;
     CGContextBeginPath(_cgc);
     CGContextMoveToPoint(_cgc, -d * 5 * gxf, -d * 5 * gyf);
     CGContextAddLineToPoint(_cgc, d * 1 * gxf, -d * 5 * gyf);
@@ -177,25 +177,25 @@ Optotypes.j
     CGContextFillPath(_cgc);
 }
 - (void)drawSloanHWithGapInPx: (float) d { //console.info("optotypes>drawSloanHWithGapInPx");
-    var pnts = [[-5,-5], [-3,-5], [-3,-1], [+3,-1], [+3,-5], [+5,-5], [+5,+5], [+3,+5], [+3,+1], [-3,+1], [-3,+5], [-5,+5], [-5, -5]];
+    const pnts = [[-5,-5], [-3,-5], [-3,-1], [+3,-1], [+3,-5], [+5,-5], [+5,+5], [+3,+5], [+3,+1], [-3,+1], [-3,+5], [-5,+5], [-5, -5]];
     [self drawPolygon: pnts withD: d * 0.5];
 }
 - (void)drawSloanKWithGapInPx: (float) d {
-    var pnts = [[-5,-5], [-3,-5], [-3,-0.82], [-0.98,0.69], [+2.43,-5], [+5,-5], [+0.74,+1.98], [+5,+5], [+1.66,+5], [-3,+1.68], [-3,+5], [-5,+5], [-5,-5]];
+    const pnts = [[-5,-5], [-3,-5], [-3,-0.82], [-0.98,0.69], [+2.43,-5], [+5,-5], [+0.74,+1.98], [+5,+5], [+1.66,+5], [-3,+1.68], [-3,+5], [-5,+5], [-5,-5]];
     [self drawPolygon: pnts withD: d * 0.5];
 }
 - (void)drawSloanNWithGapInPx: (float) d {
-    var pnts = [[-5,-5], [-3,-5], [-3,1.9], [+3,-5], [+5,-5], [+5,+5], [+3,+5], [+3,-1.9], [-3,+5], [-5,+5], [-5,-5]];
+    const pnts = [[-5,-5], [-3,-5], [-3,1.9], [+3,-5], [+5,-5], [+5,+5], [+3,+5], [+3,-1.9], [-3,+5], [-5,+5], [-5,-5]];
     [self drawPolygon: pnts withD: d * 0.5];
 }
 - (void)drawSloanOWithGapInPx: (float) d {
-    var r = 2.5 * d;
+    let r = 2.5 * d;
     CGContextFillEllipseInRect(_cgc, CGRectMake(-r, -r, 2*r, 2*r));
     r = 1.5 * d;
     CGContextSetFillColor(_cgc, _colOptotypeBack);  CGContextFillEllipseInRect(_cgc, CGRectMake(-r, -r, 2*r, 2*r));
 }
 - (void)drawSloanRWithGapInPx: (float) d {
-    var p1 = [[-5,-5], [-3,-5], [-3,-1], [+2,-1], [+2,+5], [-5,+5], [-5,-5]],
+    const p1 = [[-5,-5], [-3,-5], [-3,-1], [+2,-1], [+2,+5], [-5,+5], [-5,-5]],
     p2 = [[0.7,0], [2.8,-5], [5,-5], [+2.85,0], [0.7,0]],
     d5 = d * 0.5;
     CGContextBeginPath(_cgc);  [self drawPolygon: p1 withD: d5];  CGContextFillPath(_cgc);
@@ -229,11 +229,11 @@ Optotypes.j
     //[self strokeXAtX: 0 y: 0 size: 3];
 }
 - (void)drawSloanVWithGapInPx: (float) d {
-    var pnts = [[-5,+5], [-1,-5], [+1,-5], [+5,+5], [+3,+5], [0,-2.1], [-3,+5], [-5,+5], [-5,+5]];
+    const pnts = [[-5,+5], [-1,-5], [+1,-5], [+5,+5], [+3,+5], [0,-2.1], [-3,+5], [-5,+5], [-5,+5]];
     CGContextBeginPath(_cgc);  [self drawPolygon: pnts withD: d / 2];  CGContextFillPath(_cgc);
 }
 - (void)drawSloanZWithGapInPx: (float) d {
-    var pnts = [[-5,-5], [+5,-5], [+5,-3], [-1.9,-3], [+5,+3], [+5,+5], [-5,+5], [-5,+3], [+1.9,+3], [-5,-3], [-5,-5]];
+    const pnts = [[-5,-5], [+5,-5], [+5,-3], [-1.9,-3], [+5,+3], [+5,+5], [-5,+5], [-5,+3], [+1.9,+3], [-5,-3], [-5,-5]];
     CGContextBeginPath(_cgc);  [self drawPolygon: pnts withD: d / 2];  CGContextFillPath(_cgc);
 }
 
@@ -270,17 +270,18 @@ Optotypes.j
 
 - (void) tumblingEWithGapInPx: (float) d direction: (int) theDirection { //console.info("Optotypes>tumblingEWithGapInPx");
     //theDirection = directionIfMirrored(theDirection);
+    let p;
     switch (theDirection) {
         case 0: "E"
-            var p = [[5, -5], [-5, -5], [-5, 5], [5, 5], [5, 3], [-3, 3], [-3, 1], [5, 1], [5, -1], [-3, -1], [-3, -3], [5, -3]];  break;
+            p = [[5, -5], [-5, -5], [-5, 5], [5, 5], [5, 3], [-3, 3], [-3, 1], [5, 1], [5, -1], [-3, -1], [-3, -3], [5, -3]];  break;
         case 2:
-            var p = [[-5, 5], [-5, -5], [5, -5], [5, 5], [3, 5], [3, -3], [1, -3], [1, 5], [-1, 5], [-1, -3], [-3, -3], [-3, 5]];  break;
+            p = [[-5, 5], [-5, -5], [5, -5], [5, 5], [3, 5], [3, -3], [1, -3], [1, 5], [-1, 5], [-1, -3], [-3, -3], [-3, 5]];  break;
         case 4:
-            var p = [[-5, -5], [5, -5], [5, 5], [-5, 5], [-5, 3], [3, 3], [3, 1], [-5, 1], [-5, -1], [3, -1], [3, -3], [-5, -3]];  break;
+            p = [[-5, -5], [5, -5], [5, 5], [-5, 5], [-5, 3], [3, 3], [3, 1], [-5, 1], [-5, -1], [3, -1], [3, -3], [-5, -3]];  break;
         case 6:
-            var p = [[5, -5], [5, 5], [-5, 5], [-5, -5], [-3, -5], [-3, 3], [-1, 3], [-1, -5], [1, -5], [1, 3], [3, 3], [3, -5]];  break;
+            p = [[5, -5], [5, 5], [-5, 5], [-5, -5], [-3, -5], [-3, 3], [-1, 3], [-1, -5], [1, -5], [1, 3], [3, 3], [3, -5]];  break;
         default:    // hollow square (for flanker)
-            var p = [[5, -5], [-5, -5], [-5, 5], [5, 5], [5, -5], [3, -3], [-3, -3], [-3, 3], [3, 3], [3, -3]];
+            p = [[5, -5], [-5, -5], [-5, 5], [5, 5], [5, -5], [3, -3], [-3, -3], [-3, 3], [3, 3], [3, -3]];
     }
     [self drawPolygon: p withD: d * 0.5];
 }

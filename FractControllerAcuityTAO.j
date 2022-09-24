@@ -31,14 +31,14 @@ Created by Bach on 2020-05-21
     switch(state) {
         case kStateDrawBack: break;
         case kStateDrawFore:
-            var sizeInPix = stimStrengthInDeviceunits * 5 * 8.172 / 5;// correction for stroke width (Dakin)
+            const sizeInPix = stimStrengthInDeviceunits * 5 * 8.172 / 5;// correction for stroke width (Dakin)
             imageRect = CGRectMake(-sizeInPix / 2, -sizeInPix / 2, sizeInPix, sizeInPix);
             CGContextDrawImage(cgc, imageRect, taoImages[[alternativesGenerator currentAlternative]]);
             [self prepareDrawingTransformUndo]; // otherwise the button numbers are subject to "display transform"
-            var size = viewWidth / (nAlternatives * 2 + 2), button;
+            const size = viewWidth / (nAlternatives * 2 + 2)
             if (!responseButtonsAdded) {
-                for (var i = 0; i < (nAlternatives); i++) {
-                    button = [self buttonCenteredAtX: (i + 0.75) * 2 * size y: viewHeight/2 - 0.5 * size size: size title: "" keyEquivalent: [@"1234567890" characterAtIndex: i]];
+                for (let i = 0; i < (nAlternatives); i++) {
+                    const button = [self buttonCenteredAtX: (i + 0.75) * 2 * size y: viewHeight/2 - 0.5 * size size: size title: "" keyEquivalent: [@"1234567890" characterAtIndex: i]];
                     [button setImage: taoImages[i]];
                     [button setImageScaling: CPImageScaleProportionallyDown];
                 }
@@ -46,7 +46,7 @@ Created by Bach on 2020-05-21
             }
             CGContextSetTextDrawingMode(cgc, kCGTextFill);
             CGContextSelectFont(cgc, "36px sans-serif"); // this, surprisingly, must be CSS
-            for (var i = 0; i < (nAlternatives); i++)
+            for (let i = 0; i < (nAlternatives); i++)
                 CGContextShowTextAtPoint(cgc, (i + 0.5) * 2 * size + size / 2 - 8, viewHeight - 1.4 * size, [Misc stringFromInteger: (i + 1) % 10]);
             break;
         default: break;

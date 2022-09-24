@@ -22,9 +22,9 @@ Created by Bach on 14.08.2017.
 - (float) stimDeviceunitsFromThresholderunits: (float) tPest { //console.info("FractControllerAcuityVernier>stimDeviceunitsFromThresholderunits");
     gStrokeMinimal = [Misc pixelFromDegree: gapVernierMinimalArcSec / 60.0 / 60.0];
     gStrokeMaximal = [Misc pixelFromDegree: gapVernierMaximalArcSec / 60.0 / 60.0];
-    var c1 = gStrokeMinimal;
-    var c2 = -Math.log(gStrokeMinimal / gStrokeMaximal);
-    var deviceVal = c1 * Math.exp(tPest * c2); //trace("Vernier.pest2native, tPest:", tPest, "native=", nativeVal);
+    const c1 = gStrokeMinimal;
+    const c2 = -Math.log(gStrokeMinimal / gStrokeMaximal);
+    const deviceVal = c1 * Math.exp(tPest * c2); //trace("Vernier.pest2native, tPest:", tPest, "native=", nativeVal);
     if ([Misc areNearlyEqual: deviceVal and: gStrokeMaximal]) {
         if (!isBonusTrial) {
             rangeLimitStatus = kRangeLimitValueAtCeiling; //console.info("max gap size!")
@@ -41,24 +41,23 @@ Created by Bach on 14.08.2017.
 - (float) stimThresholderunitsFromDeviceunits: (float) d {
     gStrokeMinimal = [Misc pixelFromDegree: gapVernierMinimalArcSec / 60.0 / 60.0];
     gStrokeMaximal = [Misc pixelFromDegree: gapVernierMaximalArcSec / 60.0 / 60.0];
-    var c1 = gStrokeMinimal;
-    var c2 = -Math.log(gStrokeMinimal / gStrokeMaximal);
-    var retVal = Math.log(d / c1) / c2;
+    const c1 = gStrokeMinimal;
+    const c2 = -Math.log(gStrokeMinimal / gStrokeMaximal);
+    const retVal = Math.log(d / c1) / c2;
     return retVal;
 }
 
 
 //Draw a vertical line with gaussian profile. x-position (floating point) approximated by center of gravity on discrete raster
 - (void) drawLineGaussProfileVerticalAtX: (float) x0 y0: (float) y0 y1: (float) y1 sigma: (float) sigma { //console.info("FractControllerAcuityVernier>>DrawLineGaussianProfileVertical ", x0, y0, y1);
-    var ix0 = Math.round(x0);
-    var iSigma = Math.round(Math.max(5, Math.min(sigma * 4, 30))); //trace(sigma, iSigma);
+    const ix0 = Math.round(x0);
+    const iSigma = Math.round(Math.max(5, Math.min(sigma * 4, 30))); //trace(sigma, iSigma);
     CGContextSetLineWidth(cgc, 1);
-    var backGray = [Misc upperLuminanceFromContrastMilsn: [Misc contrastMichelsonFromWeberPercent: [Settings contrastAcuityWeber]]];
-    var cnt = [Settings contrastAcuityWeber] / 100;
-    var grayValue, gaussValue;
-    for (var ix = ix0 - iSigma; ix <= ix0 + iSigma; ix++) {
-        gaussValue = Math.exp(-Math.pow(x0 - ix, 2) / sigma);
-        grayValue = backGray - cnt * gaussValue;
+    const backGray = [Misc upperLuminanceFromContrastMilsn: [Misc contrastMichelsonFromWeberPercent: [Settings contrastAcuityWeber]]];
+    const cnt = [Settings contrastAcuityWeber] / 100;
+    for (let ix = ix0 - iSigma; ix <= ix0 + iSigma; ix++) {
+        const gaussValue = Math.exp(-Math.pow(x0 - ix, 2) / sigma);
+        let grayValue = backGray - cnt * gaussValue;
         grayValue = [Misc devicegrayFromLuminance: grayValue];
         CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: grayValue alpha: 1]);
         CGContextBeginPath(cgc);
@@ -71,13 +70,13 @@ Created by Bach on 14.08.2017.
 
 - (void) drawVernierAtX: (float) xCent y: (float) yCent vLength: (float) vLength sigma: (float) sigma gapHeight: (float) gapHeight offsetSize: (float) offsetSize offsetIsTopRight: (BOOL) offsetIsTopRight { //console.info("FractControllerAcuityVernier>drawVernierAtX", offsetSize);
     xCent += (Math.random() < 0.5 ? 1 : -1) + 2 * (2 * Math.random() - 1.0);
-    var theSign = offsetIsTopRight ? +1 : -1;
-    var xPos0 = xCent + theSign * offsetSize / 2.0, xPos1 = xCent - theSign * offsetSize / 2.0;
-    var vLength2 = vLength / 2.0;
+    const theSign = offsetIsTopRight ? +1 : -1;
+    const xPos0 = xCent + theSign * offsetSize / 2.0, xPos1 = xCent - theSign * offsetSize / 2.0;
+    const vLength2 = vLength / 2.0;
     switch([Settings vernierType]) {
         case 1: // 3 bars
             // lower
-            var yTemp = yCent + vLength2 + gapHeight;
+            let yTemp = yCent + vLength2 + gapHeight;
             [self drawLineGaussProfileVerticalAtX: xPos0 y0: yTemp y1: yTemp + vLength sigma: sigma];
             // middle
             [self drawLineGaussProfileVerticalAtX: xPos1 y0: yCent - vLength2 y1: yCent + vLength2 sigma: sigma];
@@ -86,7 +85,7 @@ Created by Bach on 14.08.2017.
             [self drawLineGaussProfileVerticalAtX: xPos0 y0: yTemp y1: yTemp - vLength sigma: sigma];
             break;
         default: // case 0, 2 bars
-            var gapHeight2 = gapHeight / 2.0;
+            const gapHeight2 = gapHeight / 2.0;
             // lower
             [self drawLineGaussProfileVerticalAtX: xPos0 y0: yCent + gapHeight2 y1: yCent + gapHeight2 + vLength sigma: sigma];
             // upper
@@ -112,7 +111,7 @@ Created by Bach on 14.08.2017.
         default: break;
     }
     if ([Settings enableTouchControls] && (!responseButtonsAdded)) {
-        var sze = 50, sze2 = sze / 2;
+        const sze = 50, sze2 = sze / 2;
         [self buttonCenteredAtX: viewWidth-sze2 y: 0 size: sze title: "6"];
         [self buttonCenteredAtX: sze2 y: 0 size: sze title: "4"];
         [self buttonCenteredAtX: viewWidth - sze2 y: viewHeight / 2 - sze2 size: sze title: "Ø"];
@@ -157,9 +156,9 @@ Created by Bach on 14.08.2017.
 
 
 - (CPString) composeResultString {
-    var rslt = [self resultValue4Export];
-    var dcs = rslt > 100 ? 0 : 1;
-    var s = "Vernier threshold" + [self rangeStatusIndicatorStringInverted: NO];
+    const rslt = [self resultValue4Export];
+    const dcs = rslt > 100 ? 0 : 1;
+    let s = "Vernier threshold" + [self rangeStatusIndicatorStringInverted: NO];
     s += [Misc stringFromNumber: rslt decimals: dcs localised: YES] + " arcsec";
     return s;
 }

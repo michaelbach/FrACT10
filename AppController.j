@@ -154,7 +154,7 @@ Created by mb on 2017-07-12.
         }
     });
     
-    var allButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttonAcuityLineByLine];
+    const allButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttonAcuityLineByLine];
     for (const b of allButtons)  [Misc makeFrameSquareFromWidth: b];
 
     allTestControllers = [FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerAcuityLineByLine];
@@ -165,11 +165,9 @@ Created by mb on 2017-07-12.
     
     [[self window] setTitle: "FrACT10"];
     [self setVersionDateString: [Settings versionFrACT] + "·" + [Settings versionDateFrACT]];
-    
-    gCappucinoVersionString = [[[CPBundle bundleWithIdentifier:@"com.280n.Foundation"] infoDictionary] objectForKey:@"CPBundleVersion"];
-    
+        
     [Settings checkDefaults]; // what was the reason to put this here???
-    /*var s = @"Current key test settings: " + [Settings distanceInCM] +" cm distance, ";
+    /*let s = @"Current key test settings: " + [Settings distanceInCM] +" cm distance, ";
     s += [Settings nAlternatives] + " Landolt alternatives, " + [Settings nTrials] + " trials";
     [self setKeyTestSettingsString: s];*/
     
@@ -178,7 +176,7 @@ Created by mb on 2017-07-12.
     rewardsController = [[RewardsController alloc] initWithView: rewardImageView];
     taoController = [[TAOController alloc] initWithButton2Enable: buttonAcuityTAO];
     sound = [[Sound alloc] init];
-    for (var i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++)
+    for (let i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++)
         Math.random(); // randomising the pseudorandom sequence
 
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(buttonExportEnableYESorNO:) name: "buttonExportEnableYESorNO" object: nil];
@@ -235,7 +233,7 @@ Created by mb on 2017-07-12.
  */
 - (void) runFractController { //console.info("AppController>runFractController");
     if ([Settings isNotCalibrated]) {
-        var alert = [CPAlert alertWithMessageText: "WARNING"
+        const alert = [CPAlert alertWithMessageText: "WARNING"
                                     defaultButton: "I just want to try it out" alternateButton: "OK, take me to Settings" otherButton: nil
                         informativeTextWithFormat: "\rCalibration is mandatory for valid results.\r\rGoto 'Settings' and enter appropriate values for \r«Length of blue ruler» and «Observer distance»;\ror use the credit card sizing method.\r\rThis will also avoid the present obnoxious warning dialog."];
         [alert runModalWithDidEndBlock: function(alert, returnCode) {
@@ -323,7 +321,7 @@ Created by mb on 2017-07-12.
 
 
 - (void) exportCurrentTestResult { //console.info("AppController>exportCurrentTestResult");
-    var temp = currentTestResultExportString.replace(/,/g, "."); // in localStorage we don't want to localise
+    let temp = currentTestResultExportString.replace(/,/g, "."); // in localStorage we don't want to localise
     localStorage.setItem([Settings filenameResultStorage], temp);
     temp = currentTestResultsHistoryExportString.replace(/,/g, ".");
     localStorage.setItem([Settings filenameResultsHistoryStorage], temp);
@@ -408,7 +406,7 @@ Created by mb on 2017-07-12.
  Helper function: Find out if this URL exists
  */
 function existsUrl(url) {
-    var request;
+    let request;
     if(window.XMLHttpRequest)
         request = new XMLHttpRequest();
     else
@@ -423,7 +421,7 @@ function existsUrl(url) {
     return true;
 }
 - (IBAction) resultDetails_action: (id) sender {
-    var path = "../readResultString.html";
+    const path = "../readResultString.html";
     if (existsUrl(path)) {
         window.open(path, "_blank");
     }
@@ -440,12 +438,12 @@ function existsUrl(url) {
 
 
 - (IBAction) buttonFullScreen_action: (id) sender { //console.info("AppController>buttonFullScreen");
-    var full = [Misc isFullScreen];
+    const full = [Misc isFullScreen];
     if (full) {
         [Misc fullScreenOn: NO];  [[[self window] contentView] setFrameOrigin: CGPointMake(0, 0)];
     } else {
         [Misc fullScreenOn: YES];
-        var point = CGPointMake((window.screen.width - 800) / 2, (window.screen.height - 600) / 2);
+        const point = CGPointMake((window.screen.width - 800) / 2, (window.screen.height - 600) / 2);
         [[[self window] contentView] setFrameOrigin: point];
     }
 }
@@ -484,7 +482,7 @@ function existsUrl(url) {
     [Settings checkDefaults];  [settingsPanel makeKeyAndOrderFront: self];
     if (settingsNeededNewDefaults) {
         settingsNeededNewDefaults = NO;
-        var alert = [CPAlert alertWithMessageText: "WARNING"
+        const alert = [CPAlert alertWithMessageText: "WARNING"
                                     defaultButton: "OK" alternateButton: nil otherButton: nil
                         informativeTextWithFormat: "\r\rAll settings were (re)set to their default values.\r\r"];
         [alert runModalWithDidEndBlock: function(alert, returnCode) {}];
@@ -566,26 +564,26 @@ function existsUrl(url) {
 
 
 - (IBAction) buttonCheckContrast_action: (id) sender { //console.info("AppController>buttonCheckContrast_action");
-    var tag = [sender tag], contrastsPercent = [1, 3, 10, 30, 90], contrastPercent = 0;
+    const tag = [sender tag], contrastsPercent = [1, 3, 10, 30, 90], contrastPercent = 0;
     if ((tag > 0) && (tag <= 5))  contrastPercent = contrastsPercent[tag - 1];
-    var contrastLogCSWeber = [Misc contrastLogCSWeberFromWeberPercent: contrastPercent];
+    const contrastLogCSWeber = [Misc contrastLogCSWeberFromWeberPercent: contrastPercent];
     //    console.log(tag, contrastPercent, contrastLogCSWeber)
-    var gray1 = [Misc lowerLuminanceFromContrastLogCSWeber: contrastLogCSWeber];
+    let gray1 = [Misc lowerLuminanceFromContrastLogCSWeber: contrastLogCSWeber];
     gray1 = [Misc devicegrayFromLuminance: gray1];
-    var gray2 = [Misc upperLuminanceFromContrastLogCSWeber: contrastLogCSWeber];
+    let gray2 = [Misc upperLuminanceFromContrastLogCSWeber: contrastLogCSWeber];
     gray2 = [Misc devicegrayFromLuminance: gray2];
     if (![Settings contrastDarkOnLight]) {
-        var gray = gray1; gray1 = gray2; gray2 = gray;
+        const gray = gray1; gray1 = gray2; gray2 = gray;
     }
     //    console.log("Wperc ", contrastPercent, ", lgCSW ", contrastLogCSWeber, ", g1 ", gray1, ", g2 ", gray2);
     
-    var c1 = [CPColor colorWithWhite: gray1 alpha: 1], c2 = [CPColor colorWithWhite: gray2 alpha: 1];
+    const c1 = [CPColor colorWithWhite: gray1 alpha: 1], c2 = [CPColor colorWithWhite: gray2 alpha: 1];
     [self setCheckContrastWeberFieldColor1: c1];   [self setCheckContrastWeberFieldColor2: c2];
     
-    var actualMichelsonPerc = [Misc contrastMichelsonPercentFromColor1: c1 color2: c2];
+    const actualMichelsonPerc = [Misc contrastMichelsonPercentFromColor1: c1 color2: c2];
     [self setCheckContrastActualMichelsonPercent: Math.round(actualMichelsonPerc * 10) / 10];
     
-    var actualWeberPerc = [Misc contrastWeberFromMichelsonPercent: actualMichelsonPerc];
+    const actualWeberPerc = [Misc contrastWeberFromMichelsonPercent: actualMichelsonPerc];
     [self setCheckContrastActualWeberPercent:  Math.round(actualWeberPerc * 10) / 10];
 }
 
@@ -607,9 +605,9 @@ function existsUrl(url) {
  Dealing with calibration via creditcard size
  */
 - (void) creditCardUpdateSize {
-    var widthInPx = 92.4 * [Settings calBarLengthInPixel] / [Settings calBarLengthInMM];//magic number?
-    var hOverW = 53.98 / 85.6; // All credit cards are 85.6 mm wide and 53.98 mm high
-    var heightInPx = widthInPx * hOverW, xc = 400, yc = 300 - 24; // position in window, space for buttons
+    const widthInPx = 92.4 * [Settings calBarLengthInPixel] / [Settings calBarLengthInMM];//magic number?
+    const hOverW = 53.98 / 85.6; // All credit cards are 85.6 mm wide and 53.98 mm high
+    const heightInPx = widthInPx * hOverW, xc = 400, yc = 300 - 24; // position in window, space for buttons
     [creditcardImageView setFrame:
       CGRectMake(xc - widthInPx / 2, yc - heightInPx / 2 , widthInPx, heightInPx)];
 }
@@ -618,7 +616,7 @@ function existsUrl(url) {
     [creditcardPanel makeKeyAndOrderFront: self];  [self creditCardUpdateSize];
 }
 - (IBAction) buttonCreditcardPlusMinus_action: (id) sender {
-    var f = 1;
+    let f = 1;
     switch ([sender tag]) {
         case 0: f = 1.0 / 1.01;  break;
         case 1: f = 1.0 / 1.1;  break;
@@ -630,8 +628,8 @@ function existsUrl(url) {
 }
 - (IBAction) buttonCreditcardClosePanel_action: (id) sender {
     if ([sender tag] == 1)  [Settings setCalBarLengthInMM: calBarLengthInMMbefore];//undo
-    var t = [Settings calBarLengthInMM];
-    if (t>= 100) t = Math.round(t); // don't need that much precision
+    let t = [Settings calBarLengthInMM];
+    if (t >= 100) t = Math.round(t); // don't need that much precision
     [Settings setCalBarLengthInMM: t];
     [creditcardPanel close];
 }

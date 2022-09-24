@@ -54,9 +54,9 @@ TrialHistoryController.j
 
 
 - (void) runEnded {  //console.info("TrialHistoryController>trialEnded");
-    var s = "trial" + tab + "value" + tab + "choicePresented" + tab + "choiceResponded" + tab + "correct" + tab + "reactionTimeInMs" + crlf;
-    for (var i = 0; i < _trialHistory.length; ++i) {
-        var th = _trialHistory[i];
+    let s = "trial" + tab + "value" + tab + "choicePresented" + tab + "choiceResponded" + tab + "correct" + tab + "reactionTimeInMs" + crlf;
+    for (let i = 0; i < _trialHistory.length; ++i) {
+        const th = _trialHistory[i];
         s += [Misc stringFromInteger: i + 1] + tab;
         s += [Misc stringFromNumber: th.value decimals: 3 localised: YES]  + tab;
         s += th.presented + tab;
@@ -72,7 +72,7 @@ TrialHistoryController.j
  Here we collect all info in a dataframe that is needed for the CI95 calculation
  */
 - (id) composeInfo4CI {
-    var trialsDF = [];
+    const trialsDF = [];
     for (const thi of _trialHistory) {
         trialsDF.push({lMar: thi.value, correct: thi.correct});
     }

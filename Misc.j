@@ -14,7 +14,7 @@ Misc.j
 
 /**
  A collection of "miscellaneous" function.
- All a class variables for easy global access
+ All a class  iables for easy global access
  */
 @implementation Misc: CPObject {
 }
@@ -52,7 +52,7 @@ Misc.j
  Switching to/from fullscreen. That was quite difficult to figure out
  */
 + (void) fullScreenOn: (BOOL) onOff {
-    var element = document.documentElement;
+    const element = document.documentElement;
     if (onOff) {
         if (element.requestFullscreen)
             element.requestFullscreen();
@@ -74,7 +74,7 @@ Misc.j
     }
 }
 + (BOOL) isFullScreen {
-    var full_screen_element = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement || null;
+    const full_screen_element = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement || null;
     if(full_screen_element === null)// If no element is in full-screen
         return false;
     else
@@ -83,7 +83,7 @@ Misc.j
 
 
 + (void) copyString2ClipboardWithDialog: (CPString) s { //console.info("AppController>copyString2ClipboardWithDialog");
-    var alert = [CPAlert alertWithMessageText: "Question:"
+    const alert = [CPAlert alertWithMessageText: "Question:"
     defaultButton: "Yes, put result → clipboard" alternateButton: "No" otherButton: nil
                 informativeTextWithFormat: "\rShall we place the result details into the clipboard?\r(So you can paste them into a spreadsheet.)\r"];
     [alert setAlertStyle: CPInformationalAlertStyle];
@@ -128,7 +128,7 @@ Misc.j
  Convert degrees to pixels
  */
 + (float) pixelFromDegree: (float) degs { //console.info("pixelFromDegree");
-    var mm = Math.tan(degs * Math.PI / 180.0) * 10.0 * [Settings distanceInCM];
+    const mm = Math.tan(degs * Math.PI / 180.0) * 10.0 * [Settings distanceInCM];
     return [self pixelFromMillimeter: mm];
 }
 /**
@@ -182,8 +182,8 @@ Misc.j
 
 + (CPString) stringFromNumber: (float) num decimals: (int) decs localised: (BOOL) locd { //console.info("Misc>stringFromNumber");
     if (decs < 1)  return [self stringFromInteger: num];
-    var fmt = @"%6." + [CPString stringWithFormat:@"%d", decs] + "f";
-    var str = [CPString stringWithFormat: fmt, num];
+    const fmt = @"%6." + [CPString stringWithFormat:@"%d", decs] + "f";
+    let str = [CPString stringWithFormat: fmt, num];
     while ([str hasPrefix:@" "] && [str length] > 1) {
         str = [str substringFromIndex:1];
     }
@@ -203,13 +203,13 @@ Misc.j
  Given an epsilon, we test for "equality" of 2 floating point numbers
  */
 + (BOOL) areNearlyEqual: (float)a and: (float) b {
-    var epsilon = 1e-9, diff = Math.abs(a - b), magnitude = Math.abs(a) + Math.abs(b);
+    const epsilon = 1e-9, diff = Math.abs(a - b), magnitude = Math.abs(a) + Math.abs(b);
     return (diff / magnitude) < epsilon;
 }
 
 
 + (void) makeFrameSquareFromWidth: (CPView) view {
-    var rect1 = [view frame];
+    const rect1 = [view frame];
     [view setFrame: CGRectMake(rect1.origin.x, rect1.origin.y - (rect1.size.width - 16) / 2, rect1.size.width, rect1.size.width)];
 }
 
@@ -226,7 +226,7 @@ Misc.j
  Transform Michelson → Weber
  */
 + (float) contrastWeberFromMichelsonPercent: (float) inMichelsonPercent {
-    var inMichelson = inMichelsonPercent /= 100,  outWeber;
+    let inMichelson = inMichelsonPercent /= 100,  outWeber;
     if (inMichelson >= 0) {
         outWeber = 2.0 * inMichelson / (1.0 + inMichelson);
     } else {
@@ -241,30 +241,25 @@ Misc.j
  And the inverse
  */
 + (float) contrastMichelsonFromWeberPercent: (float) inWeberPercent {
-    var inWeber = inWeberPercent /= 100;
-    var outMichelson = inWeber / (2 - inWeber);
+    const inWeber = inWeberPercent /= 100;
+    const outMichelson = inWeber / (2 - inWeber);
     return outMichelson * 100;
 }
     
 
 /**
- Transform Weber → logCSWeber
+ Transform Weber% → logCSWeber
  */
 + (float) contrastLogCSWeberFromWeberPercent: (float) weberPercent {
     weberPercent /= 100;
-    var logCS;
-    if (weberPercent > 0.0001) { // avoid log of zero
-       logCS = Math.log10(1 / weberPercent);
-    } else {
-        logCS = 4.0;
-    }
-    return logCS;
+    const logCS = (weberPercent > 0.0001) ? Math.log10(1 / weberPercent) : 4.0
+    return logCS;     // avoid log of zero
 }
 /**
  And the inverse
  */
 + (float) contrastWeberPercentFromLogCSWeber: (float) logCS {
-    var weberPercent = 100 * Math.pow(10, -logCS);
+    const weberPercent = 100 * Math.pow(10, -logCS);
     return weberPercent;
 }
 
@@ -278,8 +273,8 @@ Misc.j
 
                                
 + (void) testContrastConversion {
-    for (var i = -100; i <= 100; i += 10) {
-        var w = [Misc contrastWeberFromMichelsonPercent: i];
+    for (let i = -100; i <= 100; i += 10) {
+        const w = [Misc contrastWeberFromMichelsonPercent: i];
         console.info("contrastM: ", i, ", W: ", w, ", M: ", [Misc contrastMichelsonFromWeberPercent: w]);
     }
 }
@@ -308,23 +303,23 @@ Misc.j
 
 
 + (float) lowerLuminanceFromContrastLogCSWeber: (float) logCSW {
-    var weberPercent = [Misc contrastWeberPercentFromLogCSWeber: logCSW];
-    var michelson = [self contrastMichelsonFromWeberPercent: weberPercent];
+    const weberPercent = [Misc contrastWeberPercentFromLogCSWeber: logCSW];
+    const michelson = [self contrastMichelsonFromWeberPercent: weberPercent];
     return [self lowerLuminanceFromContrastMilsn: michelson];
 }
 + (float) upperLuminanceFromContrastLogCSWeber: (float) logCSW {
-    var weberPercent = [Misc contrastWeberPercentFromLogCSWeber: logCSW];
-    var michelson = [self contrastMichelsonFromWeberPercent: weberPercent];
+    const weberPercent = [Misc contrastWeberPercentFromLogCSWeber: logCSW];
+    const michelson = [self contrastMichelsonFromWeberPercent: weberPercent];
     return [self upperLuminanceFromContrastMilsn: michelson];
 }
 
 
 + (float) contrastMichelsonPercentFromDevicegray1: (float) g1 g2: g2 {
-    var l1 = [self luminanceFromDevicegray: g1], l2 = [self luminanceFromDevicegray: g2];
+    const l1 = [self luminanceFromDevicegray: g1], l2 = [self luminanceFromDevicegray: g2];
     return [self contrastMichelsonPercentFromL1: l1 l2: l2];
 }
 + (float) contrastMichelsonPercentFromColor1: (float) c1 color2: c2 {
-    var g1 = [self getBrightnessViaCSSfromColor: c1], g2 = [self getBrightnessViaCSSfromColor: c2];
+    const g1 = [self getBrightnessViaCSSfromColor: c1], g2 = [self getBrightnessViaCSSfromColor: c2];
     return [self contrastMichelsonPercentFromDevicegray1: g1 g2: g2];
 }
 
@@ -353,13 +348,13 @@ return 30.0 / (Math.pow(10, logMAR));
  // formats a number to given precision
 + (CPString) rStrFromNumber: num precision: (int) precision {
     if (isNaN(precision)) {
-        var precision=0;
+        let precision=0;
     }
     if (precision <= 0)	 {	// no decimal points
         return String(Math.round(num));
     }
     //return String(Math.floor(num) + "." + Math.floor(num * Math.pow(10, precision)).toString().substr(-precision));//this is from Macromedia, but wrong all the same… 15.12.2003
-    var temp = Math.pow(10, precision);
+    let temp = Math.pow(10, precision);
     temp = Math.round(num * temp) / temp;
     return String(temp);
 }
@@ -367,7 +362,7 @@ return 30.0 / (Math.pow(10, logMAR));
 
 // formats a number to a “sensible” precision
 static public  function rStr(theValue:Number):String {
-    var precision:int=1,theValueAbs:Number=Math.abs(theValue);
+    let precision:int=1,theValueAbs:Number=Math.abs(theValue);
     if (theValueAbs < 0.0001) { // this could be easier using log10…
         precision=7;
     } else {

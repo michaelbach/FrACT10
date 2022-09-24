@@ -13,7 +13,7 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 - (void) drawCenterFixMark { //console.info("FractController>drawCenterFixMarkIfEccentric");
     if (![Settings eccentShowCenterFixMark]) return;
-    var eccRadiusInPix = Math.sqrt(xEccInPix * xEccInPix + yEccInPix * yEccInPix);
+    const eccRadiusInPix = Math.sqrt(xEccInPix * xEccInPix + yEccInPix * yEccInPix);
     if ((stimStrengthInDeviceunits * 3.5) > eccRadiusInPix) return;// we don't want overlap between fixmark and optotype
     CGContextSaveGState(cgc);
     CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2);
@@ -26,33 +26,33 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 // this manages stuff after the optotypes have been drawn, e.g. crowding
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
-    var temp = [Misc logMARfromDecVA: [Misc decVAFromGapPixels: stimStrengthInDeviceunits]];
+    const temp = [Misc logMARfromDecVA: [Misc decVAFromGapPixels: stimStrengthInDeviceunits]];
     [trialHistoryController setValue: [Misc stringFromNumber: temp decimals: 3 localised: NO]];
     if ([Settings crowdingType] > 0) {
         if (currentTestID != kTestIDVernier) { // don't do crowding with Vernier etc.
             CGContextSaveGState(cgc);
             CGContextTranslateCTM(cgc, viewWidth / 2, viewHeight / 2); // origin to center
             CGContextTranslateCTM(cgc, -xEccInPix, -yEccInPix);
-            var i, crowdingDistance = [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits];
+            const crowdingDistance = [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits];
             switch ([Settings crowdingType]) {
                 case 0:  break; // should not occur here
                 case 1: // flanking bars
-                    var distance2 = 1.5 * crowdingDistance / 2;
-                    var length2 = stimStrengthInDeviceunits * 2.5;
+                    let distance2 = 1.5 * crowdingDistance / 2;
+                    let length2 = stimStrengthInDeviceunits * 2.5;
                     CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
                     [optotypes strokeVLineAtX: -distance2 y0: -length2 y1: length2];
                     [optotypes strokeVLineAtX: distance2 y0: -length2 y1: length2];
                     break;
                 case 2:    // flanking rings
-                    for (i = -1; i <= 1; i++) { //console.info(i);
-                        var tempX = i * crowdingDistance;
+                    for (let i = -1; i <= 1; i++) { //console.info(i);
+                        const tempX = i * crowdingDistance;
                         CGContextTranslateCTM(cgc,  -tempX, 0);
                         if (i != 0)  [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: -1];
                         CGContextTranslateCTM(cgc,  +tempX, 0);
                     }  break;
                 case 3:    // surounding bars
-                    var distance2 = 1.5 * crowdingDistance / 2;
-                    var length2 = stimStrengthInDeviceunits * 4;
+                    distance2 = 1.5 * crowdingDistance / 2;
+                    length2 = stimStrengthInDeviceunits * 4;
                     CGContextSetLineCap(cgc,  kCGLineCapRound);
                     CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
                     [optotypes strokeVLineAtX: -distance2 y0: -length2 y1: length2];
@@ -65,14 +65,14 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
                     [optotypes strokeCircleAtX: 0 y: 0 radius: 1.5 * crowdingDistance / 2];
                     break;
                 case 5: // surrunding square
-                    var frameSize = 1.5 * crowdingDistance, frameSize2 = frameSize / 2;
+                    const frameSize = 1.5 * crowdingDistance, frameSize2 = frameSize / 2;
                     CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
                     CGContextStrokeRect(cgc, CGRectMake(-frameSize2, -frameSize2, frameSize, frameSize));
                     break;
                 case 6:    // row of optotypes
                     for (i = -2; i <= 2; i++) {
-                        var directionPresentedX = [Misc iRandom: nAlternatives];
-                        var tempX = i * crowdingDistance;
+                        const directionPresentedX = [Misc iRandom: nAlternatives];
+                        const tempX = i * crowdingDistance;
                         CGContextTranslateCTM(cgc,  -tempX, 0);
                         if (i != 0)  [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: directionPresentedX];
                         CGContextTranslateCTM(cgc,  +tempX, 0);
@@ -109,15 +109,15 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 
 - (CPString) format4SnellenInFeet: (float) decVA {
-    var distanceInMetres = [Settings distanceInCM] / 100.0;
-    var distanceInFeet = distanceInMetres * 3.28084;
+    const distanceInMetres = [Settings distanceInCM] / 100.0;
+    const distanceInFeet = distanceInMetres * 3.28084;
     if ([Settings forceSnellen20])  distanceInFeet = 20;
-    var s = [Misc stringFromNumber: distanceInFeet decimals: 0 localised: YES] + "/";
+    let s = [Misc stringFromNumber: distanceInFeet decimals: 0 localised: YES] + "/";
     s += [Misc stringFromNumber: (distanceInFeet / decVA) decimals: 0 localised: YES];
     return s;
 }
 /*private function format4SnellenInMeter(theAcuityResult):String {
- var distanceInMetres=Prefs.distanceInCM.n / 100.0, distanceInFeet=distanceInMetres * 3.28084;
+ let distanceInMetres=Prefs.distanceInCM.n / 100.0, distanceInFeet=distanceInMetres * 3.28084;
  return Utils.DeleteTrailing_PointZero(Utils.rStrNInt(distanceInMetres, 1, Prefs.decimalPointChar)) + "/" + Utils.DeleteTrailing_PointZero(Utils.rStrNInt(distanceInMetres / theAcuityResult,1,Prefs.decimalPointChar));
  }*/
 
@@ -127,7 +127,7 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
  =>c2 = ln(gStrokeMinimal / gStrokeMaximal)/(0 - 1);  c1 = gStrokeMinimal / exp(0 * c2)  */
 - (float) acuityStimDeviceunitsFromThresholderunits: (float) tPest { // console.info("FractControllerAcuityC>stimDeviceunitsFromThresholderunits");
     const c2 = - Math.log(gStrokeMinimal / gStrokeMaximal), c1 = gStrokeMinimal;
-    var deviceVal = c1 * Math.exp(tPest * c2); //console.info("DeviceFromPest " + tPest + " " + deviceVal);
+    const deviceVal = c1 * Math.exp(tPest * c2); //console.info("DeviceFromPest " + tPest + " " + deviceVal);
     // ROUNDING for realisable gap values? @@@
     if ([Misc areNearlyEqual: deviceVal and: gStrokeMaximal]) {
         if (!isBonusTrial) {
@@ -145,22 +145,22 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 
 - (float) acuityStimThresholderunitsFromDeviceunits: (float) d { //console.info("FractControllerAcuityC>stimThresholderunitsFromDeviceunits");
-    var c2 = - Math.log(gStrokeMinimal / gStrokeMaximal), c1 = gStrokeMinimal;
-    var retVal = Math.log(d / c1) / c2; //console.info("PestFromDevice " + d + " " + retVal);
+    const c2 = - Math.log(gStrokeMinimal / gStrokeMaximal), c1 = gStrokeMinimal;
+    const retVal = Math.log(d / c1) / c2; //console.info("PestFromDevice " + d + " " + retVal);
     return retVal;
 }
 
 
 - (CPString) acuityComposeTrialInfoString {
-    var s = iTrial + "/" + nTrials + " ";
+    let s = iTrial + "/" + nTrials + " ";
     s += [Misc stringFromNumber: [Misc decVAFromGapPixels: stimStrengthInDeviceunits] decimals: 2 localised: NO];
     return s;
 }
 
 
 - (float) acuityResultInDecVA {
-    var resultInGapPx = stimStrengthInDeviceunits;
-    var resultInDecVA = [Misc decVAFromGapPixels: resultInGapPx];
+    const resultInGapPx = stimStrengthInDeviceunits;
+    let resultInDecVA = [Misc decVAFromGapPixels: resultInGapPx];
     resultInDecVA *= ([Settings threshCorrection]) ? 0.891 : 1.0;// Correction for underestimation by ascending method
     //console.info("FractControllerAcuity>acuityResultInDecVA: ", resultInDecVA);
     return resultInDecVA;
@@ -178,9 +178,9 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 
 - (CPString) acuityComposeResultString { // 2021-05-02: now all formats are "ceilinged"
-    var resultInDecVACeilinged = Math.min([Settings maxDisplayedAcuity], [self acuityResultInDecVA]);
-    var resultInLogMARCeilinged = [Misc logMARfromDecVA: resultInDecVACeilinged];
-    var s = "";
+    const resultInDecVACeilinged = Math.min([Settings maxDisplayedAcuity], [self acuityResultInDecVA]);
+    const resultInLogMARCeilinged = [Misc logMARfromDecVA: resultInDecVACeilinged];
+    let s = "";
     if ([Settings acuityFormatLogMAR]) {
         if (s.length > 1) s += ",  ";
         s += "LogMAR:" + [self rangeStatusIndicatorStringInverted: YES];
@@ -205,8 +205,8 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 - (CPString) acuityComposeExportString { //console.info("FractController>acuityComposeExportString");
     if ([[self parentController] runAborted]) return "";
-    var s = [self generalComposeExportString];
-    var nDigits = 3;
+    let s = [self generalComposeExportString];
+    const nDigits = 3;
     s += tab + "value" + tab + [Misc stringFromNumber: [self resultValue4Export] decimals: nDigits localised: YES];
     s += tab + "unit1" + tab + currentTestResultUnit
     s += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 1 localised: YES];
@@ -223,7 +223,7 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 - (void) acuityModifyDeviceStimulusDIN01_02_04_08 {
     responseWasCorrectCumulative = responseWasCorrectCumulative && responseWasCorrect;
-    var acuityStartDecimal = [Misc decVAfromLogMAR: [Settings acuityStartingLogMAR]];
+    const acuityStartDecimal = [Misc decVAfromLogMAR: [Settings acuityStartingLogMAR]];
     switch (iTrial) {
         case 1:  stimStrengthInDeviceunits = [Misc gapPixelsFromDecVA: acuityStartDecimal];  break;
         case 2:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [Misc gapPixelsFromDecVA: acuityStartDecimal * 2];  break;
@@ -235,7 +235,7 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 
 - (float) acuityCrowdingDistanceFromGap: (float) gap {
-    var returnVal = 5 * gap + 2 * gap; // case 0
+    let returnVal = 5 * gap + 2 * gap; // case 0
     switch ([Settings crowdingDistanceCalculationType]) {
         case 1:
             returnVal = 5 * gap + [Misc pixelFromDegree: 2.6 / 60.0];  break;

@@ -24,14 +24,13 @@ Implementation of BestPEST
     if (self) { // Code below is really really old, but at least long proven
         kRange = 5000;  kRange1 = kRange - 1;  kRange2 = kRange * 2
         probability = new Array(kRange);  plgit = new Array(kRange * 2);  mlgit = new Array(kRange * 2);
-        for (var i = 0; i < kRange; i++) {
+        for (let i = 0; i < kRange; i++) {
             probability[i] = 0.0;
         }
-        var slope = kRange / 10.0; // this is a major choice, should be parametrized
-        var guessProb = 1.0 / numAlternatives;
-        var logistic;
-        for (var i = 0; i < kRange2; i++) {
-            logistic = guessProb + (1.0 - guessProb) / (1.0 + Math.exp((kRange - i) / slope));
+        const slope = kRange / 10.0; // this is a major choice, should be parametrized
+        const guessProb = 1.0 / numAlternatives;
+        for (let i = 0; i < kRange2; i++) {
+            const logistic = guessProb + (1.0 - guessProb) / (1.0 + Math.exp((kRange - i) / slope));
             plgit[i] = Math.log10(logistic);
             mlgit[i] = Math.log10(1.0 - logistic);
         }
@@ -44,8 +43,8 @@ Implementation of BestPEST
 
 
 - (void) unitTest {
-    for (var i = 0; i < 10; ++i) {
-        var stim = [self nextStim2apply];
+    for (let i = 0; i < 10; ++i) {
+        const stim = [self nextStim2apply];
         console.info(i + " " + stim);
         [self enterTrialOutcomeWithAppliedStim: stim wasCorrect: NO];
     }
@@ -65,10 +64,10 @@ Implementation of BestPEST
 
 
 - (float) nextStimGivenAppliedStim: (float) appliedStim wasCorrect: (BOOL) wasCorrect {
-    var intStim = [self externalStim2internalStimGiven: appliedStim];
-    var p1 = -10000, p2 = -10000, maxP = -10000;
-    for (var i = 0; i < kRange; i++) {
-        var p = probability[i], ii = kRange + intStim - i;
+    const intStim = [self externalStim2internalStimGiven: appliedStim];
+    let p1 = -10000, p2 = -10000, maxP = -10000;
+    for (let i = 0; i < kRange; i++) {
+        let p = probability[i], ii = kRange + intStim - i;
         if (ii < 0) ii = 0;
         if (ii >= kRange2)  ii=kRange2 - 1;
         p = p + (wasCorrect ? plgit[ii] : mlgit[ii]);
@@ -80,14 +79,14 @@ Implementation of BestPEST
         }
         probability[i] = p;
     }
-    var internalStim = Math.round((p1 + p2) / 2.0);
-    var retVal = [self internalStim2externalStimGiven: internalStim];
+    const internalStim = Math.round((p1 + p2) / 2.0);
+    const retVal = [self internalStim2externalStimGiven: internalStim];
     return retVal;
 }
 
 
 - (int) externalStim2internalStimGiven: (float) extStim {
-    var iTemp = Math.round(extStim * kRange1);
+    const iTemp = Math.round(extStim * kRange1);
     return Math.min(Math.max(iTemp, 0), kRange - 1);
 }
 

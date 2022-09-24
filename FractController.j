@@ -174,8 +174,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 - (CPButton) buttonCenteredAtX: (float) x y: (float) y size: (float) size title: (CPString) title keyEquivalent: (CPString) keyEquivalent { //console.info("FractControllerAcuityE>buttonAtX…", x, y, size, title, keyEquivalent);
     y = y + viewHeight / 2 // contentView is not affected by CGContextTranslateCTM, so I'm shifting y here to 0 at center
-    var sze2 = size / 2;
-    var button = [[CPButton alloc] initWithFrame: CGRectMake(x - sze2, y - sze2, size, size)];
+    const sze2 = size / 2;
+    const button = [[CPButton alloc] initWithFrame: CGRectMake(x - sze2, y - sze2, size, size)];
     [button setTitle: title];  [button setKeyEquivalent: keyEquivalent];
     [button setTarget: self];  [button setAction: @selector(responseButton_action:)];
     [button setBezelStyle: CPRoundRectBezelStyle];
@@ -208,7 +208,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) processKeyDownEvent { //console.info("FractController>processKeyDownEvent");
-    var r = [self responseNumberFromChar: responseKeyChar];
+    const r = [self responseNumberFromChar: responseKeyChar];
     responseWasCorrect = (r == [alternativesGenerator currentAlternative]);
     [trialHistoryController setResponded: r];
     [trialHistoryController setPresented: [alternativesGenerator currentAlternative]];
@@ -236,7 +236,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) runEnd { //console.info("FractController>runEnd");
-    var sv = [[[self window] contentView] subviews];
+    const sv = [[[self window] contentView] subviews];
     for (const svi of sv) [svi removeFromSuperview];
 
     [timerDisplay invalidate];  timerDisplay = nil;
@@ -258,9 +258,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if ([Settings showCI95] && (![[self parentController] runAborted])) {
         if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestIDTAO].includes(currentTestID)) {
             // the below causes a delay of < 1 s with 10,000 samples
-            var historyResults = [trialHistoryController composeInfo4CI];
-            var ciResults = [MDBDispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: 10000][0];
-            var halfCI95 = (ciResults.CI0975 - ciResults.CI0025) / 2;
+            const historyResults = [trialHistoryController composeInfo4CI];
+            const ciResults = [MDBDispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: 10000][0];
+            const halfCI95 = (ciResults.CI0975 - ciResults.CI0025) / 2;
             ci95String = " ± " + [Misc stringFromNumber: halfCI95 decimals: 2 localised: YES];
             [[self parentController] setResultString: [self acuityComposeResultString]]; // this will add CI95 info
             
@@ -318,9 +318,10 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
  Calculate ≤ or ≥ as needed. Needs to be inverted for LogMAR
  */
 - (CPString) rangeStatusIndicatorStringInverted: (BOOL) invert {
-    var sFloor = kRangeLimitValueAtFloor, sCeil = kRangeLimitValueAtCeiling, s = "";
+    //console.info("FractController>rangeStatusIndicatorStringInverted");
+    let sFloor = kRangeLimitValueAtFloor, sCeil = kRangeLimitValueAtCeiling, s = "";
     if (invert) {
-        var sTemp = sCeil;  sCeil = sFloor;  sFloor = sTemp;
+        let sTemp = sCeil;  sCeil = sFloor;  sFloor = sTemp;
     }
     if (rangeLimitStatus == sFloor) {
         s += " ≥ ";
@@ -331,6 +332,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             s += " ";
         }
     }
+    //console.info(s);
     return s;
 }
 
@@ -355,7 +357,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
  Generic part of the export string, used by both acuity & contrast
  */
 - (CPString) generalComposeExportString { //console.info("FractController>generalComposeExportString");
-    var s = "", now = [CPDate date];
+    let s = "", now = [CPDate date];
     s += "Vs" + tab + [Settings versionExportFormat];
     s += tab + "vsFrACT" + tab + [Settings versionDateFrACT];
     s += tab + "decimalMark" + tab + [Settings decimalMarkChar];

@@ -39,7 +39,7 @@ Created by Bach on 14.08.2017.
         default: break;
     }
     if ([Settings enableTouchControls] && (!responseButtonsAdded)) {
-        var sze = 50, sze2 = sze / 2;
+        const sze = 50, sze2 = sze / 2;
         [self buttonCenteredAtX: viewWidth-sze2 y: 0 size: sze title: "6"];
         [self buttonCenteredAtX: sze2 y: 0 size: sze title: "4"];
         [self buttonCenteredAtX: viewWidth / 2 y: -viewHeight / 2 + sze2 size: sze title: "8"];

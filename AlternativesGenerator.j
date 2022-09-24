@@ -33,17 +33,19 @@ Generates "alternatives" (e.g. Landolt-C directions) from 0 to (nAlternatives-1)
 /**
  * randomiseArray
  *
- * Randomises the sequence of the input array.
+ * Randomises the sequence of the input array in an unbiased way
+ *  https://blog.codinghorror.com/the-danger-of-naivete/
  *
  * Method: exchange every item with a random other one.
  * If you want to pre-randomize, simply do this before calling here.
  */
 function randomiseArray(array) {
-    for (i = array.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        let temp = array[i];
         array[i] = array[j];
         array[j] = temp;
+        // [array[i], array[j]] = [array[j], array[i]];//ES6 allows to assign 2 variables at once
     }
     return(array);
 }
@@ -70,7 +72,7 @@ function randomiseArray(array) {
             console.log("AlternativesGenerator>initWithNumAlternatives TOO LARGE: ", nAlternatives);
             nAlternatives = 10;
         }
-        var possibleAlternatives = [nAlternatives];
+        let possibleAlternatives = [nAlternatives];
         for (i = 0; i < nAlternatives; ++i) possibleAlternatives[i] = i;
         //console.info(nAlternatives);
         switch(nAlternatives) {

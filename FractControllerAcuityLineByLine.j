@@ -43,21 +43,21 @@ Created by mb on 2021-12-21.
     switch(state) {
         case kStateDrawBack: break;
         case kStateDrawFore:
-            var usedAlternativesArray = [];
-            var optotypeDistance = 1; // according to ETDRS
+            const usedAlternativesArray = [];
+            let optotypeDistance = 1; // according to ETDRS
             if ([Settings testOnLineByLineDistanceType] == 0) {// according to DIN EN ISO 8596
                 optotypeDistance = 0.4;
-                var localDecVA = [Misc decVAfromLogMAR: localLogMAR];
+                const localDecVA = [Misc decVAfromLogMAR: localLogMAR];
                 if (localDecVA >= 0.06) optotypeDistance = 1;
                 if (localDecVA >= 0.16) optotypeDistance = 1.5;
                 if (localDecVA >= 0.4) optotypeDistance = 2;
                 if (localDecVA >= 1.0) optotypeDistance = 3;
             }
             optotypeDistance = (1 + optotypeDistance) * stimStrengthInDeviceunits * 5;
-            for (var i = -2; i <= 2; i++) {
-                var tempX = i * optotypeDistance;
+            for (let i = -2; i <= 2; i++) {
+                const tempX = i * optotypeDistance;
                 CGContextTranslateCTM(cgc, -tempX, -150);
-                var currentAlternative = [Misc iRandom: nAlternatives];
+                let currentAlternative = [Misc iRandom: nAlternatives];
                 while (usedAlternativesArray.includes(currentAlternative)) {
                     currentAlternative = [Misc iRandom: nAlternatives];
                 }
@@ -73,10 +73,10 @@ Created by mb on 2021-12-21.
             CGContextSetFillColor(cgc, [CPColor blueColor]);
             CGContextSetTextDrawingMode(cgc, kCGTextFill);
             CGContextSelectFont(cgc, "24px sans-serif"); // must be CSS
-            var s = [Misc stringFromNumber: localLogMAR decimals: 1 localised: YES] + " LogMAR  "
-            var stringWidth = 140, lineHeight = 24;
+            const s = [Misc stringFromNumber: localLogMAR decimals: 1 localised: YES] + " LogMAR  "
+            let stringWidth = 140, lineHeight = 24;
             try {
-                var tInfo = cgc.measureText(s);
+                const tInfo = cgc.measureText(s);
                 stringWidth = tInfo.width;
                 //lineHeight = tInfo.emHeightAscent;// + tInfo.emHeightDescent;
             } catch(e) {}
@@ -87,7 +87,7 @@ Created by mb on 2021-12-21.
     }
     
     if ([Settings enableTouchControls] && (!responseButtonsAdded)) {
-        var sze = 50, sze2 = sze / 2;
+        const sze = 50, sze2 = sze / 2;
         [self buttonCenteredAtX: viewWidth-sze2 y: 0 size: sze title: "6"];
         [self buttonCenteredAtX: sze2 y: 0 size: sze title: "4"];
         [self buttonCenteredAtX: viewWidth / 2 y: -viewHeight / 2 + sze2 size: sze title: "8"];

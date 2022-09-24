@@ -15,7 +15,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0";
-kVersionDateOfFrACT = "2022-09-18";
+kVersionDateOfFrACT = "2022-09-24";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -28,7 +28,7 @@ kFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
 // Formerly named gapMinimal/gapMaximal. Poor naming in case of Vernier.
 gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden
 
-gCappucinoVersionString = ""; // initialised in AppController
+gCappucinoVersionString = [[[CPBundle bundleWithIdentifier:@"com.280n.Foundation"] infoDictionary] objectForKey:@"CPBundleVersion"];; // initialised in AppController
 
 
 /* switch to readable history?
@@ -39,6 +39,7 @@ devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to 
 /* History
    =======
 
+2022-09-24 all "var" → "const" (where possible) or at least "let" (modernising JavaScript)
 2022-09-18 the new "es2022" compiler allows modern JavaScript, so simplify code with an arrow func
  more fun with "es2022", implement some "for x of <array>"
 2022-09-11 make Quit/Exit button title depend on operating system (Mac: Quit)

@@ -31,10 +31,10 @@ Created by Bach on 2020-08-17
     }
     
     if ([Settings enableTouchControls] && (!responseButtonsAdded)) {
-        var sze = 50, sze2 = sze / 2, radius = 0.5 * Math.min(viewWidth, viewHeight) - sze2 - 1;
-        for (var i = 0; i < 8; i++) {
+        const sze = 50, sze2 = sze / 2, radius = 0.5 * Math.min(viewWidth, viewHeight) - sze2 - 1;
+        for (let i = 0; i < 8; i++) {
             if ( ([Settings nAlternatives] > 4)  || (![Misc isOdd: i])) {
-                var ang = i / 8 * 2 * Math.PI;
+                const ang = i / 8 * 2 * Math.PI;
                 [self buttonCenteredAtX: viewWidth / 2 + Math.cos(ang) * radius y:  Math.sin(ang) * radius size: sze title: [@"632147899" characterAtIndex: i]];
             }
         }

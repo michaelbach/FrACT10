@@ -24,12 +24,12 @@ Created by Bach on 2020-09-02
 
 
 - (void) calculateForeBackColors {
-    var gray1 = [Misc lowerLuminanceFromContrastLogCSWeber: stimStrengthInDeviceunits];
+    let gray1 = [Misc lowerLuminanceFromContrastLogCSWeber: stimStrengthInDeviceunits];
     gray1 = [Misc devicegrayFromLuminance: gray1];
-    var gray2 = [Misc upperLuminanceFromContrastLogCSWeber: stimStrengthInDeviceunits];
+    let gray2 = [Misc upperLuminanceFromContrastLogCSWeber: stimStrengthInDeviceunits];
     gray2 = [Misc devicegrayFromLuminance: gray2];
     if (![Settings contrastDarkOnLight]) {
-        var gray = gray1; gray1 = gray2; gray2 = gray;
+        const gray = gray1; gray1 = gray2; gray2 = gray;
     }
     colOptotypeFore = [CPColor colorWithWhite: gray1 alpha: 1];//console.info(colOptotypeFore);
     colOptotypeBack = [CPColor colorWithWhite: gray2 alpha: 1];//console.info(colOptotypeBack);
@@ -40,7 +40,7 @@ Created by Bach on 2020-09-02
 // With eccentricity: Need to draw again right after optotype so it seamlessly stays put
 // No marked eccentricity: don't draw it again
 - (void) drawFixMark3 { // check marked eccentricity is set, otherwise don't draw it
-    var eccRadiusInPix = Math.sqrt(xEccInPix * xEccInPix + yEccInPix * yEccInPix);
+    const eccRadiusInPix = Math.sqrt(xEccInPix * xEccInPix + yEccInPix * yEccInPix);
     if ((optotypeSizeInPix * 4) > eccRadiusInPix) return; // we don't want overlap between fixmark and optotype
     [self drawFixMark2];
 }
@@ -54,7 +54,7 @@ Created by Bach on 2020-09-02
     CGContextRestoreGState(cgc);
 }
 - (void) drawFixMark {
-    var t = [Settings contrastTimeoutFixmark] / 1000; // ms → seconds
+    let t = [Settings contrastTimeoutFixmark] / 1000; // ms → seconds
     if ([Settings contrastShowFixMark]) {
         [self drawFixMark2];
         timerFixMark = [CPTimer scheduledTimerWithTimeInterval: t target:self selector:@selector(onTimeoutFixMark:) userInfo:nil repeats:NO];
@@ -108,25 +108,25 @@ basic flow:
 // deviceUnits are in logCSWeber
 // logCSW: 2 … 0, thresholder: 0 … 1 */
 - (float) stimDeviceunitsFromThresholderunits: (float) thresholderunit { //console.info("FractControllerAcuityC>stimDeviceunitsFromThresholderunits");
-    var logCSWMaximal = [Settings contrastMaxLogCSWeber];
-    var deviceVal = logCSWMaximal - logCSWMaximal * thresholderunit; // logCSWMinimal = 0 anyway
+    const logCSWMaximal = [Settings contrastMaxLogCSWeber];
+    const deviceVal = logCSWMaximal - logCSWMaximal * thresholderunit; // logCSWMinimal = 0 anyway
     return deviceVal;
 }
 - (float) stimThresholderunitsFromDeviceunits: (float) d { //console.info("FractControllerAcuityC>stimThresholderunitsFromDeviceunits");
     //console.info("d: ", d, ",  retVal: ", retVal)
-    var logCSWMaximal = [Settings contrastMaxLogCSWeber];
-    var retVal = (logCSWMaximal - d) / logCSWMaximal
+    const logCSWMaximal = [Settings contrastMaxLogCSWeber];
+    const retVal = (logCSWMaximal - d) / logCSWMaximal
     return retVal;
 }
 - (void) testContrastDeviceThresholdConversion {
-    for (var i = 0; i <= 1.0; i += 0.1) {
-        var d = [self contrastStimDeviceunitsFromThresholderunits: i];
+    for (let i = 0; i <= 1.0; i += 0.1) {
+        const d = [self contrastStimDeviceunitsFromThresholderunits: i];
         console.info("threshh: ", i, ", devUnits: ", d, ", threshh: ", [self stimThresholderunitsFromDeviceunits: d]);
     }
 }
 
 - (CPString) contrastComposeTrialInfoString {
-    var s = "trial: " + iTrial + "/" + nTrials;
+    let s = "trial: " + iTrial + "/" + nTrials;
     s +=  ", contrast: " + [Misc stringFromNumber: [Misc contrastWeberPercentFromLogCSWeber: stimStrengthInDeviceunits] decimals: 1 localised: YES] + "%";
     s += ", logCSW: " + [Misc stringFromNumber: stimStrengthInDeviceunits decimals: 2 localised: YES];
     s += ", alternative: " + [alternativesGenerator currentAlternative];
@@ -140,7 +140,7 @@ basic flow:
     if (stimStrengthInDeviceunits >= 2.0) { // todo: do this while testing
         rangeLimitStatus = kRangeLimitValueAtCeiling;
     }
-    var s = "Contrast threshold: \n";
+    let s = "Contrast threshold: \n";
     s += [self rangeStatusIndicatorStringInverted: YES];
     s += [Misc stringFromNumber: stimStrengthInDeviceunits decimals: 2 localised: YES];
     s += " logCS(Weber) ≘ ";
@@ -153,8 +153,8 @@ basic flow:
 
 - (CPString) contrastComposeExportString { //console.info("FractController>contrastComposeExportString");
     if ([[self parentController] runAborted]) return "";
-    var s = [self generalComposeExportString];
-    var nDigits = 3;
+    let s = [self generalComposeExportString];
+    const nDigits = 3;
     s += tab + "value" + tab + [Misc stringFromNumber: stimStrengthInDeviceunits decimals: nDigits localised: YES];
     s += tab + "unit1" + tab + currentTestResultUnit
     s += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 2 localised: YES];
