@@ -110,7 +110,7 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 - (CPString) format4SnellenInFeet: (float) decVA {
     const distanceInMetres = [Settings distanceInCM] / 100.0;
-    const distanceInFeet = distanceInMetres * 3.28084;
+    let distanceInFeet = distanceInMetres * 3.28084;
     if ([Settings forceSnellen20])  distanceInFeet = 20;
     let s = [Misc stringFromNumber: distanceInFeet decimals: 0 localised: YES] + "/";
     s += [Misc stringFromNumber: (distanceInFeet / decVA) decimals: 0 localised: YES];

@@ -15,7 +15,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0";
-kVersionDateOfFrACT = "2022-09-24";
+kVersionDateOfFrACT = "2022-09-29";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -39,6 +39,7 @@ devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to 
 /* History
    =======
 
+2022-09-29 fix regression: "var" → "const", should be "let"
 2022-09-24 fix rewardPictures: first one offset by half a picture width and always same
 2022-09-24 all "var" → "const" (where possible) or at least "let" (modernising JavaScript)
 2022-09-18 the new "es2022" compiler allows modern JavaScript, so simplify code with an arrow func
