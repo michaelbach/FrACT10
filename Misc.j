@@ -75,7 +75,7 @@ Misc.j
 }
 + (BOOL) isFullScreen {
     const full_screen_element = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement || null;
-    if(full_screen_element === null)// If no element is in full-screen
+    if (full_screen_element === null)// If no element is in full-screen
         return false;
     else
         return true;

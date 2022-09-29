@@ -564,7 +564,8 @@ function existsUrl(url) {
 
 
 - (IBAction) buttonCheckContrast_action: (id) sender { //console.info("AppController>buttonCheckContrast_action");
-    const tag = [sender tag], contrastsPercent = [1, 3, 10, 30, 90], contrastPercent = 0;
+    const tag = [sender tag], contrastsPercent = [1, 3, 10, 30, 90];
+    let contrastPercent = 0;
     if ((tag > 0) && (tag <= 5))  contrastPercent = contrastsPercent[tag - 1];
     const contrastLogCSWeber = [Misc contrastLogCSWeberFromWeberPercent: contrastPercent];
     //    console.log(tag, contrastPercent, contrastLogCSWeber)
