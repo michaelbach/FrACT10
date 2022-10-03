@@ -6,14 +6,14 @@ AlternativesGenerator.j
 
 Created by Bach on 23.07.2017.
 
-Generates "alternatives" (e.g. Landolt-C directions) from 0 to (nAlternatives-1)
+Generates "alternatives" (e.g. Landolt C directions) from 0 to (nAlternatives-1)
  
 */
 
 /**
  * AlternativesGenerator
  *
- * Generates "alternatives" (e.g. Landolt-C directions) from 0 to (nAlternatives-1)
+ * Generates "alternatives" (e.g. Landolt C directions) from 0 to (nAlternatives-1)
  *
  * */
 

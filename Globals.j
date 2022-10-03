@@ -15,7 +15,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0";
-kVersionDateOfFrACT = "2022-09-29";
+kVersionDateOfFrACT = "2022-10-03";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -39,6 +39,7 @@ devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to 
 /* History
    =======
 
+2022-10-03 "Landolt-C" → "Landolt C"
 2022-09-29 fix regression: "var" → "const", should be "let" at two places
 2022-09-24 fix rewardPictures: first one offset by half a picture width and always same
 2022-09-24 all "var" → "const" (where possible) or at least "let" (modernising JavaScript)
@@ -54,7 +55,7 @@ devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to 
 2022-08-03 allow larger distance (50 m, for presentations in halls), rename Quit/Exit → Exit/Quit
 2022-07-18 make Quit/Exit always available (no longer only in Node), also easier because no nw/electron discriminatin necessary
 2022-07-03 select Line-by-line distance between optotypes either ISO or ETDRS
-2022-07-02 Line-by-line to allow Landolt-Cs in addition to Sloan Letters
+2022-07-02 Line-by-line to allow Landolt Cs in addition to Sloan Letters
 2022-06-23 improve wording in About
 2022-06-17 improve webview in About (border not faked by textfield etc.),
     Help panel also with webview, share buttons between Help and About panels,

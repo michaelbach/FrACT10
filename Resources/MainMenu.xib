@@ -41,7 +41,7 @@
                         <rect key="frame" x="12" y="520" width="776" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
-                    <button toolTip="Acuity run using Landolt-Cs.  Shortcut: C      " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWr-KV-CRJ" customClass="MDBButton">
+                    <button toolTip="Acuity run using Landolt Cs.  Shortcut: C      " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWr-KV-CRJ" customClass="MDBButton">
                         <rect key="frame" x="198" y="433" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityC" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="ivt-76-XPn">
@@ -693,7 +693,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                         <menuItem title="Sloan Letters" id="QkU-ga-vLd">
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
-                                                        <menuItem title="Landolt-C" id="BXA-eo-iGt">
+                                                        <menuItem title="Landolt C" id="BXA-eo-iGt">
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
                                                         <menuItem title="Tumbling E" id="2Sc-p1-NW5">
@@ -867,7 +867,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wrj-XQ-Ter">
                                                         <rect key="frame" x="13" y="48" width="54" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes (TAO).  For Landolt-Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.</string>
+                                                        <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes (TAO).  For Landolt Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.</string>
                                                         <popUpButtonCell key="cell" type="push" title="2" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="MNg-IJ-MqA" id="jUX-2m-CLf">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="menu"/>
@@ -896,7 +896,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                             <outlet property="nextKeyView" destination="9PX-pe-3kM" id="6iv-gn-omW"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField toolTip="The number of trials presented when 4 choices are possible (e.g. tumbling E. or Landolt-Cs set for 4)." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9PX-pe-3kM">
+                                                    <textField toolTip="The number of trials presented when 4 choices are possible (e.g. tumbling E. or Landolt Cs set for 4)." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9PX-pe-3kM">
                                                         <rect key="frame" x="49" y="15" width="34" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="iyE-mY-Vwd">
@@ -909,7 +909,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                             <outlet property="nextKeyView" destination="xWr-Q3-BrM" id="ele-gj-hew"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField toolTip="The number of trials presented when 8 or 10 choices are possible (e.g. Sloan Letters or Landolt-Cs set for 8)." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xWr-Q3-BrM">
+                                                    <textField toolTip="The number of trials presented when 8 or 10 choices are possible (e.g. Sloan Letters or Landolt Cs set for 8)." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xWr-Q3-BrM">
                                                         <rect key="frame" x="83" y="15" width="34" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="5t6-Le-phN">
@@ -923,10 +923,10 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                         </connections>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LJd-oY-MqO">
-                                                        <rect key="frame" x="70" y="51" width="343" height="16"/>
+                                                        <rect key="frame" x="70" y="51" width="341" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes (TAO).  For Landolt-Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.</string>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of choices for Landolt-Cs. Letters always 10, Vernier 2" id="2kS-jg-XcS">
+                                                        <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes (TAO).  For Landolt Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.</string>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of choices for Landolt Cs. Letters always 10, Vernier 2" id="2kS-jg-XcS">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -944,7 +944,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cEj-Jr-YXR">
                                                         <rect key="frame" x="390" y="50" width="102" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <string key="toolTip">Applies only to Landolt-Cs with 4 orientations.
+                                                        <string key="toolTip">Applies only to Landolt Cs with 4 orientations.
 
 The response keys are NOT updated (yet) by can be guessed :).</string>
                                                         <buttonCell key="cell" type="check" title="Oblique only" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ybg-Vb-Abm">
@@ -1751,7 +1751,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                                                     <menuItem title="Sloan Letters" id="QJz-ye-aX8">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
-                                                                    <menuItem title="Landolt-C" id="JwM-wv-wuO">
+                                                                    <menuItem title="Landolt C" id="JwM-wv-wuO">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
                                                                     <menuItem title="Tumbling E" hidden="YES" enabled="NO" id="Dku-mY-oaj">
@@ -3105,7 +3105,7 @@ Gw
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
         </window>
-        <window title="Landolt-C acuity – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="KH7-H9-rEd" userLabel="responseinfoPanelAcuity4C" customClass="NSPanel">
+        <window title="Landolt C acuity – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="KH7-H9-rEd" userLabel="responseinfoPanelAcuity4C" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
@@ -3184,7 +3184,7 @@ Type 55, or &lt;esc&gt; to abort the run.</string>
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
         </window>
-        <window title="Landolt-C acuity – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="UBW-u3-RSn" userLabel="responseinfoPanelAcuity8C" customClass="NSPanel">
+        <window title="Landolt C acuity – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="UBW-u3-RSn" userLabel="responseinfoPanelAcuity8C" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
@@ -3244,7 +3244,7 @@ Gw
                             <action selector="runFractController2_actionCancel:" target="450" id="6hQ-3P-KXt"/>
                         </connections>
                     </button>
-                    <imageView toolTip="For a Landolt-C, when 8 alternatives are selected, the response keys correspond &quot;geographically&quot; to the position of the gap." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2HV-bd-tDr">
+                    <imageView toolTip="For a Landolt C, when 8 alternatives are selected, the response keys correspond &quot;geographically&quot; to the position of the gap." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2HV-bd-tDr">
                         <rect key="frame" x="516" y="360" width="180" height="180"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap8" id="HQF-UM-Wbw"/>
@@ -3740,7 +3740,7 @@ Gw
                             <action selector="runFractController2_actionCancel:" target="450" id="YvV-Jx-fN0"/>
                         </connections>
                     </button>
-                    <imageView toolTip="For a Landolt-C, when 8 alternatives are selected, the response keys correspond &quot;geographically&quot; to the position of the gap." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EZp-il-3C3">
+                    <imageView toolTip="For a Landolt C, when 8 alternatives are selected, the response keys correspond &quot;geographically&quot; to the position of the gap." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EZp-il-3C3">
                         <rect key="frame" x="516" y="360" width="180" height="180"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap8" id="iy7-db-b7L"/>
