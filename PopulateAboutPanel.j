@@ -44,16 +44,16 @@ Populates the About panel with appropriate text using HTML
     [self oneWebView: aboutWebView1 htmlString: s];
 
     s = "©1993–2022<br><br>Prof. Michael Bach<br>";
-    s += "University of Freiburg, Germany.<br><br>";
+    s += "University of Freiburg, Germany<br>";
     s += "<a href='https://michaelbach.de' target='_blank'>https://michaelbach.de</a><br>";
     s += "<a href='mailto:bach@uni-freiburg.de'>bach@uni-freiburg.de</a><br><br>";
-    s += "Sources: <a href='https://github.com/michaelbach/FrACT10/' target='_blank'>GitHub repository</a>, <a href='https://github.com/michaelbach/FrACT10/commits' target='_blank'>commit history</a><br><br>";
+    s += "<a href='https://michaelbach.de/fract/' target='_blank'>FrACT₁₀ homepage</a><br><br>";
+    s += "Sources: <a href='https://github.com/michaelbach/FrACT10/#fract' target='_blank'>GitHub repository</a>, <a href='https://github.com/michaelbach/FrACT10/commits' target='_blank'>commit history</a><br><br>"
     s += "Frameworks/Libraries used:<br>";
     s += "<a href='https://michaelbach.de/ot/-misc/cappFrameworks/index.html' target='_blank'>Cappuccino " + gCappucinoVersionString + "</a>,&nbsp; ";
-    s += "<a href='https://simplestatistics.org' target='_blank'>Simple Statistics</a>, <a href='https://nodejs.org/' target='_blank'>Node.js</a><br>";
+    s += "<a href='https://simplestatistics.org' target='_blank'>Simple Statistics</a>, <a href='https://nodejs.org/' target='_blank'>Node.js,</a><br>";
     s += "<a href='https://www.electronjs.org' target='_blank'>Electron</a>, <a href='https://www.electron.build' target='_blank'>electron-builder</a><br><br><br>";
-    s += "This is free software. There is no warranty for anything.<br>";
-    s += "It is not certified for medical purposes.";
+    s += "This is free software, there is no warranty for anything (<a href='https://github.com/michaelbach/FrACT10/blob/main/LICENSE.md' target='_blank'>GNU GPL licence</a>); it is not certified for medical purposes."
     [self oneWebView: aboutWebView2 htmlString: s];
 }
 

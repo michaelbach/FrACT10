@@ -15,7 +15,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0";
-kVersionDateOfFrACT = "2022-10-03";
+kVersionDateOfFrACT = "2022-10-12";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -39,6 +39,7 @@ devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to 
 /* History
    =======
 
+2022-10-12 add license in About
 2022-10-03 "Landolt-C" → "Landolt C"
 2022-09-29 fix regression: "var" → "const", should be "let" at two places
 2022-09-24 fix rewardPictures: first one offset by half a picture width and always same
