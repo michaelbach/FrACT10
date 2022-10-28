@@ -15,7 +15,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0";
-kVersionDateOfFrACT = "2022-10-27";
+kVersionDateOfFrACT = "2022-10-28";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -39,6 +39,7 @@ devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to 
 /* History
    =======
 
+2022-10-28 add field with calculated inch value for distance, slight shifts in GUI
 2022-10-27 rename `credit card` to `plastic card`, shift related fields in GUI a little
 2022-10-12 add license in About
 2022-10-03 "Landolt-C" → "Landolt C"

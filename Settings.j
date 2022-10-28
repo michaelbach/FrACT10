@@ -162,6 +162,7 @@ Created by mb on July 15, 2015.
     [self setMaxPossibleDecimalAcuityLocalisedString: [Misc stringFromNumber: maxPossibleAcuityVal decimals: 2 localised: YES]];
     [self setMinPossibleLogMAR: [Misc logMARfromDecVA: maxPossibleAcuityVal]]; // needed for color
     [self setMinPossibleLogMARLocalisedString: [Misc stringFromNumber: [self minPossibleLogMAR] decimals: 2 localised: YES]];
+    [self setDistanceInInchFromCM: [self distanceInCM]];
 }
 
 
@@ -264,8 +265,19 @@ Created by mb on July 15, 2015.
 + (float) distanceInCM {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "distanceInCM"];
 }
-+ (void)setDistanceInCM: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "distanceInCM"];
++ (void) setDistanceInCM: (float) cm {
+    [[CPUserDefaults standardUserDefaults] setFloat: cm forKey: "distanceInCM"];
+    [self setDistanceInInchFromCM: cm];
+}
++ (void) setDistanceInInchFromCM: (float) cm {
+    const inch = [Misc stringFromNumber: cm / 2.54 decimals: 1 localised: YES];
+    [self setDistanceInInchLocalisedString: inch];
+}
++ (CPString) distanceInInchLocalisedString { //console.info("Settings>distanceInInchLocalisedString");
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "distanceInInchLocalisedString"];
+}
++ (void) setDistanceInInchLocalisedString: (CPString) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "distanceInInchLocalisedString"];
 }
 
 + (float) calBarLengthInMM {
