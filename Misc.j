@@ -51,6 +51,7 @@ Misc.j
 /**
  Switching to/from fullscreen. That was quite difficult to figure out
  */
+// https://hacks.mozilla.org/2012/01/using-the-fullscreen-api-in-web-browsers/
 + (void) fullScreenOn: (BOOL) onOff {
     const element = document.documentElement;
     if (onOff) {
