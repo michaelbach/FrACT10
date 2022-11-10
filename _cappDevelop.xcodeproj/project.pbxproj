@@ -67,7 +67,6 @@
 		856F4B1AA111E0F21404D2EB /* AppController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppController.m; path = .XcodeSupport/AppController.m; sourceTree = SOURCE_ROOT; };
 		8A8BFD81283837D800DD61BB /* Presets.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets.j; sourceTree = "<group>"; };
 		8ABDA6D4291A501000D68E3C /* capp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = capp; sourceTree = BUILT_PRODUCTS_DIR; };
-		8ABDA6D7291A501000D68E3C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		90444B1A970FC75C0FF93DB7 /* FractControllerContrastE.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerContrastE.j; sourceTree = SOURCE_ROOT; };
 		91844612BA04B04966D2045C /* AlternativesGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AlternativesGenerator.h; path = .XcodeSupport/AlternativesGenerator.h; sourceTree = SOURCE_ROOT; };
 		91B445DC96A0E8A06A4740E5 /* FractControllerAcuity.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerAcuity.j; sourceTree = SOURCE_ROOT; };
@@ -172,14 +171,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8ABDA6D6291A501000D68E3C /* capp */ = {
-			isa = PBXGroup;
-			children = (
-				8ABDA6D7291A501000D68E3C /* main.m */,
-			);
-			path = capp;
-			sourceTree = "<group>";
-		};
 		A9994B45B2AC6ED08434DFD6 /* Cocoa Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,7 +252,6 @@
 				E164FE29172185F500263CE3 /* Resources */,
 				A9994B45B2AC6ED08434DFD6 /* Cocoa Classes */,
 				094343208F2D20D343755E34 /* Cappuccino Source */,
-				8ABDA6D6291A501000D68E3C /* capp */,
 				8ABDA6D5291A501000D68E3C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -333,7 +323,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "/Users/bach/Library/Mobile\\ Documents/com\\~apple\\~CloudDocs/Bach/Projekte/Websites/WWW-michaelbach-de/fract/FrACT10/_cappDevelop/_make-XcodeCappSimile.sh \n";
+			shellScript = "/${SRCROOT}/_make-XcodeCappSimile.sh\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
