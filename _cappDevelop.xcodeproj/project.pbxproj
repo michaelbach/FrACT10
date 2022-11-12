@@ -264,7 +264,7 @@
 			buildConfigurationList = 8ABDA6D9291A501000D68E3C /* Build configuration list for PBXNativeTarget "capp" */;
 			buildPhases = (
 				8ABDA6D2291A501000D68E3C /* CopyFiles */,
-				8ABDA6DF291A559600D68E3C /* ShellScript */,
+				8ABDA6DF291A559600D68E3C /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -307,7 +307,7 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8ABDA6DF291A559600D68E3C /* ShellScript */ = {
+		8ABDA6DF291A559600D68E3C /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -317,13 +317,14 @@
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "/${SRCROOT}/_make-XcodeCappSimile.sh\n";
+			shellScript = "#set -x # log every step in log\nexport PATH=\"$HOME/.npm/bin:$PATH\"\ncd $SRCROOT\n./_make-XcodeCappSimile.sh\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

@@ -15,7 +15,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0";
-kVersionDateOfFrACT = "2022-11-10";
+kVersionDateOfFrACT = "2022-11-11";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -39,6 +39,7 @@ devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to 
 /* History
    =======
 
+2022-11-11 fix missing path in build script call, don't show Terminal – now it really works :)
 2022-11-10 make path to build script project-relative
 2022-11-08 fix a typo in tooltips, add the `XcodeCapp`-emulating shell script to project (runs via ⌘-B), add `*.xcodeproj` to git
 2022-10-28 add field with calculated inch value for distance, slight shifts in GUI

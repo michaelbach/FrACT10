@@ -74,7 +74,8 @@ END
 echo " "
 
 # To show feedback what's happening
-open -a Terminal
+# But does not work when called directly as build script from Xcode
+#open -a Terminal
 
 # Create xcodeSupportDirectory if necessary
 if [ ! -d "$xcodeSupportDirectory" ]; then
