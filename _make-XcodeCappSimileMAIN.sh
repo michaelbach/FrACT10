@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+# 2022-11-12 no more "open terminal", because empty when script in child of Xcode
 # 2022-06-14 corrected the logic for *.cib (re)creation
 # 2022-05-27 separated into different sources, MAIN is here.  Ignore "main.*"
 # 2022-05-26 improve documentation
@@ -74,7 +75,7 @@ END
 echo " "
 
 # To show feedback what's happening
-# But does not work when called directly as build script from Xcode
+# But remains empty when calling directly as build script from Xcode
 #open -a Terminal
 
 # Create xcodeSupportDirectory if necessary
