@@ -324,7 +324,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "#set -x # log every step in log\nexport PATH=\"$HOME/.npm/bin:$PATH\"\ncd $SRCROOT\n./_make-XcodeCappSimile.sh\n";
+			shellScript = "# logs _every_ step in build log, no more needed\n#set -x\n# enable access to nib2cib… (Cappuccino tools) in child shell\nexport PATH=\"$HOME/.npm/bin:$PATH\"\n# cd to project source root\ncd $SRCROOT\n# now all set to run the XcodeCapp-like script\n./_make-XcodeCappSimile.sh\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
