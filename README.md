@@ -11,10 +11,10 @@ The program is mostly written in Objective-J, a language implemented by <https:/
 
 For more see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-<div width=74 height=21>
+<div width=74>
 <form action="https://www.paypal.com/donate" method="post" target="_top">
 <input type="hidden" name="hosted_button_id" value="Z9ERGF97E67AJ" />
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" width=74 height=21 name="submit" title="PayPal" alt="Donate with PayPal button" />
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" width="74" height="21" name="submit" title="PayPal" alt="Donate with PayPal button" />
 <img alt="" border="0" src="https://www.paypal.com/en_DE/i/scr/pixel.gif" width="1" height="1" />
 </form>
 </div>
