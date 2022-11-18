@@ -2,6 +2,7 @@
 Frameworks/*
 Cocoa Classes/*
 .XcodeSupport/*
+_cappDevelop.xcodeproj/project.xcworkspace/xcuserdata/bach.xcuserdatad/UserInterfaceState.xcuserstate
 Resources/MainMenu.cib*
 *.h
 *.m

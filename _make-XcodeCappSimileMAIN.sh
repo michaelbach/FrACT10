@@ -31,7 +31,7 @@
 # - new source files (*.j) need to be added manually to Xcode
 # - assumes only a single XIB file "MainMenu.xib"
 # - very Apple-oriented: uses AppleScript & Safari. Obvious: Xcode
-# - not obvious where to obtain the initial NAME.xcodeproj (AppleScript?)
+# - does not generate the initial NAME.xcodeproj (clone from another project or generate with Xcode)
 # - the delay times in the AppleScript code are rather arbitrary
 # - might be better to use a server
 
@@ -75,7 +75,7 @@ END
 echo " "
 
 # To show feedback what's happening
-# But remains empty when calling directly as build script from Xcode
+# But remains empty when calling directly as build script from Xcode (child shell)
 #open -a Terminal
 
 # Create xcodeSupportDirectory if necessary
