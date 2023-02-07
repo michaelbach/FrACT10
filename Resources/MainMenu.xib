@@ -1382,9 +1382,9 @@ Red: not good to assess normal vision; green: ok.</string>
                                                         </connections>
                                                     </button>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qsd-g5-eto">
-                                                        <rect key="frame" x="74" y="34" width="160" height="16"/>
+                                                        <rect key="frame" x="74" y="34" width="139" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="max. reported decimal VA" id="osW-YR-Yfx">
+                                                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="max. reported dec. VA" id="osW-YR-Yfx">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1570,12 +1570,12 @@ Red: not good to assess normal vision; green: ok.</string>
                                                     <popUpButton toolTip="Types of crowding" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFy-VR-55t" userLabel="Crowding type">
                                                         <rect key="frame" x="18" y="20" width="130" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <popUpButtonCell key="cell" type="push" title="none" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="CEr-tD-UxQ" id="Q94-l5-Nrk">
+                                                        <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="CEr-tD-UxQ" id="Q94-l5-Nrk">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="menu"/>
                                                             <menu key="menu" id="JBV-Xo-VBB">
                                                                 <items>
-                                                                    <menuItem title="none" state="on" id="CEr-tD-UxQ">
+                                                                    <menuItem title="None" state="on" id="CEr-tD-UxQ">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
                                                                     <menuItem title="flanking bars" id="ewM-ce-701">
@@ -1700,12 +1700,12 @@ Red: not good to assess normal vision; green: ok.</string>
                                         <popUpButton toolTip="To avoid contact between the largest optotype and the screen edge. Margin in units of stroke (0 gap for Landolt C)." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hOD-0i-CeR">
                                             <rect key="frame" x="17" y="273" width="107" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <popUpButtonCell key="cell" type="push" title="no margin" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wkG-jG-jTL" id="sa5-f6-go7">
+                                            <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wkG-jG-jTL" id="sa5-f6-go7">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="menu"/>
                                                 <menu key="menu" id="aGl-Qb-JFa">
                                                     <items>
-                                                        <menuItem title="no margin" state="on" id="wkG-jG-jTL"/>
+                                                        <menuItem title="None" state="on" id="wkG-jG-jTL"/>
                                                         <menuItem title="½ stroke" id="90I-kV-WK1"/>
                                                         <menuItem title="1 stroke" id="7N3-nn-VcW"/>
                                                         <menuItem title="1½ stroke" id="Mcr-DX-ikc"/>
@@ -1720,12 +1720,12 @@ Red: not good to assess normal vision; green: ok.</string>
                                         <popUpButton toolTip="To avoid contact between the largest optotype and the screen edge. Margin in units of stroke (0 gap for Landolt C)." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cpx-7K-rQR">
                                             <rect key="frame" x="17" y="222" width="107" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <popUpButtonCell key="cell" type="push" title="off" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ojh-ZS-2dd" id="MsF-Py-9nb">
+                                            <popUpButtonCell key="cell" type="push" title="Off" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ojh-ZS-2dd" id="MsF-Py-9nb">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="menu"/>
                                                 <menu key="menu" id="257-ZE-Mjs">
                                                     <items>
-                                                        <menuItem title="off" state="on" id="ojh-ZS-2dd"/>
+                                                        <menuItem title="Off" state="on" id="ojh-ZS-2dd"/>
                                                         <menuItem title="0.3 LogMAR" id="pDz-ZI-K45">
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
