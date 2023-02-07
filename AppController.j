@@ -187,6 +187,8 @@ Created by mb on 2017-07-12.
     [self buttonCheckContrast_action: null];
     
     if ([window.navigator.platform hasPrefix:@"Mac"])  [buttonExit setTitle: "Quit"];// OS: Quit or Exit
+    
+    [Settings setAutoRunIndex: 0]; // make sure it's not accidentally on
 }
 
 
