@@ -725,7 +725,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                             </connections>
                                         </popUpButton>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LJT-Mq-fdZ">
-                                            <rect key="frame" x="125" y="154" width="107" height="16"/>
+                                            <rect key="frame" x="125" y="153" width="107" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Which test on ‘5’" id="v8V-gO-yyX">
                                                 <font key="font" metaFont="system"/>
@@ -1306,7 +1306,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </connections>
                                         </button>
                                         <colorWell toolTip="Color is only displayed here, changed via contrast setting." fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eR-Ax-gL1">
-                                            <rect key="frame" x="19" y="346" width="40" height="23"/>
+                                            <rect key="frame" x="19" y="366" width="40" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -1314,7 +1314,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </connections>
                                         </colorWell>
                                         <colorWell toolTip="Color is only displayed here, changed via contrast setting." fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSW-TH-Yop">
-                                            <rect key="frame" x="69" y="346" width="40" height="23"/>
+                                            <rect key="frame" x="69" y="366" width="40" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -1322,7 +1322,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </connections>
                                         </colorWell>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3IW-SR-qta">
-                                            <rect key="frame" x="117" y="348" width="163" height="16"/>
+                                            <rect key="frame" x="117" y="368" width="163" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Fore- / background colour" id="4Cc-fv-th1">
                                                 <font key="font" metaFont="system"/>
@@ -1561,7 +1561,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="NFT-iI-3o9">
-                                            <rect key="frame" x="15" y="124" width="314" height="86"/>
+                                            <rect key="frame" x="15" y="114" width="314" height="86"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="i3x-ok-Vlr">
                                                 <rect key="frame" x="4" y="5" width="306" height="66"/>
@@ -1635,7 +1635,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </view>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pbL-S0-XrG">
-                                            <rect key="frame" x="38" y="180" width="90" height="22"/>
+                                            <rect key="frame" x="38" y="170" width="90" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Crowding" bezelStyle="round" id="Rpe-YE-TbN">
                                                 <font key="font" metaFont="system"/>
@@ -1644,7 +1644,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </textFieldCell>
                                         </textField>
                                         <textField toolTip="Contrast (in Weber %) of the acuity optotypes" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hes-HT-KtK">
-                                            <rect key="frame" x="19" y="394" width="46" height="21"/>
+                                            <rect key="frame" x="19" y="404" width="46" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="Contrast" placeholderString="Contrast" drawsBackground="YES" id="AyL-3q-wsa">
                                                 <font key="font" metaFont="system"/>
@@ -1658,7 +1658,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mmc-E5-4VD">
-                                            <rect key="frame" x="176" y="394" width="299" height="16"/>
+                                            <rect key="frame" x="176" y="404" width="299" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Optotype contrast (%Weber units, –∞ … +100%)" id="KZk-ya-a9s">
                                                 <font key="font" metaFont="system"/>
@@ -1667,7 +1667,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1GB-4d-RW0">
-                                            <rect key="frame" x="114" y="241" width="173" height="16"/>
+                                            <rect key="frame" x="126" y="275" width="173" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Margin for biggest optotype" id="Dgc-eg-6MM">
                                                 <font key="font" metaFont="system"/>
@@ -1676,7 +1676,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </textFieldCell>
                                         </textField>
                                         <button toolTip="Set weber contrast for acuity optotype to 100% (black on white)" verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="qWj-W6-f6W">
-                                            <rect key="frame" x="72" y="392" width="46" height="23"/>
+                                            <rect key="frame" x="72" y="402" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="roundTextured" title="max+" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ilt-gl-fCc">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1687,7 +1687,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </connections>
                                         </button>
                                         <button toolTip="Set weber contrast for acuity optotype to –10000% (white on black)" verticalHuggingPriority="750" fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="96z-9y-ktq">
-                                            <rect key="frame" x="125" y="392" width="46" height="23"/>
+                                            <rect key="frame" x="125" y="402" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="roundTextured" title="max–" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9zq-sE-pGT">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1698,7 +1698,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </connections>
                                         </button>
                                         <popUpButton toolTip="To avoid contact between the largest optotype and the screen edge. Margin in units of stroke (0 gap for Landolt C)." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hOD-0i-CeR">
-                                            <rect key="frame" x="16" y="238" width="95" height="25"/>
+                                            <rect key="frame" x="17" y="273" width="107" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="no margin" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wkG-jG-jTL" id="sa5-f6-go7">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1717,8 +1717,29 @@ Red: not good to assess normal vision; green: ok.</string>
                                                 <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.margin4MaxOptotypeIndex" id="MtX-hp-yhO"/>
                                             </connections>
                                         </popUpButton>
+                                        <popUpButton toolTip="To avoid contact between the largest optotype and the screen edge. Margin in units of stroke (0 gap for Landolt C)." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cpx-7K-rQR">
+                                            <rect key="frame" x="17" y="222" width="107" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <popUpButtonCell key="cell" type="push" title="off" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ojh-ZS-2dd" id="MsF-Py-9nb">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" id="257-ZE-Mjs">
+                                                    <items>
+                                                        <menuItem title="off" state="on" id="ojh-ZS-2dd"/>
+                                                        <menuItem title="0.3 LogMAR" id="pDz-ZI-K45">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                        <menuItem title="0.0 LogMAR" id="m0C-76-289"/>
+                                                        <menuItem title="–0.3 LogMAR" id="j8L-Gp-DjS"/>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.autoRunIndex" id="6an-1w-79G"/>
+                                            </connections>
+                                        </popUpButton>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1KY-D0-MeM">
-                                            <rect key="frame" x="114" y="295" width="107" height="16"/>
+                                            <rect key="frame" x="126" y="325" width="107" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Starting LogMAR" id="zLf-vn-4Dd">
                                                 <font key="font" metaFont="system"/>
@@ -1727,7 +1748,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </textFieldCell>
                                         </textField>
                                         <comboBox toolTip="DIN/ISO: 1.0,  For ultra low vision consider e.g. 2.5." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g4t-gF-2qk">
-                                            <rect key="frame" x="19" y="292" width="88" height="25"/>
+                                            <rect key="frame" x="19" y="322" width="101" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="ECG-mx-vc8">
                                                 <font key="font" metaFont="system"/>
@@ -1828,6 +1849,15 @@ Red: not good to assess normal vision; green: ok.</string>
                                             <rect key="frame" x="533" y="64" width="135" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Line of Optotypes" bezelStyle="round" id="80e-Xb-73c">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="slt-nt-8wc">
+                                            <rect key="frame" x="126" y="224" width="148" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Autorun to target acuity" id="foF-BC-pcW">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

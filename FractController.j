@@ -39,7 +39,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     TrialHistoryController trialHistoryController;
     Optotypes optotypes;
     CPString trialInfoString @accessors;
-    CPTimer timerDisplay, timerResponse, timerFixMark, timerRunEnd2;
+    CPTimer timerDisplay, timerResponse, timerFixMark, timerRunEnd2, timerAutoResponse;
     CPString kRangeLimitDefault, kRangeLimitOk, kRangeLimitValueAtFloor, kRangeLimitValueAtCeiling, rangeLimitStatus, abortCharacter, ci95String;
     id sound @accessors;
     BOOL responseButtonsAdded;
@@ -116,6 +116,11 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [alternativesGenerator nextAlternative];
     timerDisplay = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutDisplaySeconds] target:self selector:@selector(onTimeoutDisplay:) userInfo:nil repeats:NO];
     timerResponse = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutResponseSeconds] target:self selector:@selector(onTimeoutResponse:) userInfo:nil repeats:NO];
+    if ([Settings autoRunIndex] > 0) {
+        if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestIDTAO].includes(currentTestID)) {
+            timerAutoResponse = [CPTimer scheduledTimerWithTimeInterval: 0.5 target:self selector:@selector(onTimeoutAutoResponse:) userInfo:nil repeats:NO];
+        }
+    }
     state = kStateDrawFore;  [[[self window] contentView] setNeedsDisplay: YES];
 }
 
@@ -207,18 +212,36 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
+- (void) onTimeoutAutoResponse: (CPTimer) timer { //console.info("FractController>onTimeoutAutoResponse");
+    const logMARcurrent = [Misc logMARfromDecVA: [Misc decVAFromGapPixels: stimStrengthInDeviceunits]];
+    let logMARtarget = +0.3;
+    switch ([Settings autoRunIndex]) {
+        case 2: logMARtarget = 0.0; break;
+        case 3: logMARtarget = -0.3; break;
+    }
+    if ([Settings threshCorrection]) logMARtarget += Math.log10(gThresholdCorrection4Ascending);
+    responseWasCorrect = logMARcurrent > logMARtarget;
+    [self trialEnd];
+}
+
+
 - (void) processKeyDownEvent { //console.info("FractController>processKeyDownEvent");
     const r = [self responseNumberFromChar: responseKeyChar];
     responseWasCorrect = (r == [alternativesGenerator currentAlternative]);
     [trialHistoryController setResponded: r];
     [trialHistoryController setPresented: [alternativesGenerator currentAlternative]];
-    [trialHistoryController setCorrect: responseWasCorrect];
     [self trialEnd];
 }
 
 
+- (void) invalidateTrialTimers {
+    [timerDisplay invalidate];  timerDisplay = nil;
+    [timerResponse invalidate];  timerResponse = nil;
+    [timerAutoResponse invalidate];  timerAutoResponse = nil;
+}
 - (void) trialEnd { //console.info("FractController>trialEnd");
-    [timerDisplay invalidate];  timerDisplay = nil;  [timerResponse invalidate];  timerResponse = nil;//nötig?
+    [self invalidateTrialTimers];
+    [trialHistoryController setCorrect: responseWasCorrect]; // placed here so reached by "onTimeoutAutoResponse"
     [thresholder enterTrialOutcomeWithAppliedStim: [self stimThresholderunitsFromDeviceunits: stimStrengthInDeviceunits] wasCorrect: responseWasCorrect];
     switch ([Settings auditoryFeedback]) { // case 0: nothing
         case 1:
@@ -236,11 +259,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) runEnd { //console.info("FractController>runEnd");
+    [self invalidateTrialTimers];
     const sv = [[[self window] contentView] subviews];
     for (const svi of sv) [svi removeFromSuperview];
-
-    [timerDisplay invalidate];  timerDisplay = nil;
-    [timerResponse invalidate];  timerResponse = nil;
     [[self window] close];
     [[self parentController] setRunAborted: (iTrial < nTrials)]; //premature end
     [[self parentController] setResultString: resultString];

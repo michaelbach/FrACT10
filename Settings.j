@@ -116,6 +116,7 @@ Created by mb on July 15, 2015.
     [self setMaxDisplayedAcuity: [self chckFlt: [self maxDisplayedAcuity] def: 2 min: 1 max: 99 set: set]];
     [self setAcuityStartingLogMAR: [self chckFlt: [self acuityStartingLogMAR] def: 1 min: 0.3 max: 2.5 set: set]];
     [self setMargin4MaxOptotypeIndex: [self chckInt: [self margin4MaxOptotypeIndex] def: 1 min: 0 max: 4 set: set]];
+    [self setAutoRunIndex: [self chckInt: [self autoRunIndex] def: 0 min: 0 max: 3 set: set]];
     [self setThreshCorrection: [self chckBool: [self threshCorrection] def: YES set: set]];
     [self setAcuityFormatDecimal: [self chckBool: [self acuityFormatDecimal] def: YES set: set]];
     [self setAcuityFormatLogMAR: [self chckBool: [self acuityFormatLogMAR] def: YES set: set]];
@@ -143,7 +144,7 @@ Created by mb on July 15, 2015.
 
     
     // Contrast stuff
-    [self setGammaValue: [self chckFlt: [self gammaValue] def: 1.7 min: 0.8 max: 4 set: set]];
+    [self setGammaValue: [self chckFlt: [self gammaValue] def: 1.8 min: 0.8 max: 4 set: set]];
     [self setContrastEasyTrials: [self chckBool: [self contrastEasyTrials] def: YES set: set]];
     [self setContrastDarkOnLight: [self chckBool: [self contrastDarkOnLight] def: YES set: set]];
     [self setContrastOptotypeDiameter: [self chckFlt: [self contrastOptotypeDiameter] def: 50 min: 1 max: 2500 set: set]];
@@ -572,6 +573,14 @@ Created by mb on July 15, 2015.
 }
 + (void) setMargin4MaxOptotypeIndex: (int) value {
     [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "margin4MaxOptotypeIndex"];
+}
+
+
++ (int) autoRunIndex {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "autoRunIndex"];
+}
++ (void) setAutoRunIndex: (int) value {
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "autoRunIndex"];
 }
 
 

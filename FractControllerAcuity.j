@@ -161,7 +161,7 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 - (float) acuityResultInDecVA {
     const resultInGapPx = stimStrengthInDeviceunits;
     let resultInDecVA = [Misc decVAFromGapPixels: resultInGapPx];
-    resultInDecVA *= ([Settings threshCorrection]) ? 0.891 : 1.0;// Correction for underestimation by ascending method
+    if ([Settings threshCorrection]) resultInDecVA *= gThresholdCorrection4Ascending;
     //console.info("FractControllerAcuity>acuityResultInDecVA: ", resultInDecVA);
     return resultInDecVA;
 }
