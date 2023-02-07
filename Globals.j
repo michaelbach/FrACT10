@@ -15,7 +15,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0";
-kVersionDateOfFrACT = "2022-11-11";
+kVersionDateOfFrACT = "2023-02-07";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -28,6 +28,10 @@ kFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
 // Formerly named gapMinimal/gapMaximal. Poor naming in case of Vernier.
 gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden
 
+// slope parameter for the CI95 dispersion estimation
+gSlopeCI95 = 15; // this value approximates test-retest variability
+
+// version info for the About screen
 gCappucinoVersionString = [[[CPBundle bundleWithIdentifier:@"com.280n.Foundation"] infoDictionary] objectForKey:@"CPBundleVersion"];; // initialised in AppController
 
 
@@ -39,6 +43,7 @@ devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to 
 /* History
    =======
 
+2023-02-07 correct slope "polarity" for the dispersion estimation
 2022-11-11 fix missing path in build script call, don't show Terminal – now it really works :)
 2022-11-10 make path to build script project-relative
 2022-11-08 fix a typo in tooltips, add the `XcodeCapp`-emulating shell script to project (runs via ⌘-B), add `*.xcodeproj` to git

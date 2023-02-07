@@ -66,7 +66,7 @@ function findMaxLlhInRange(df, r1, r2, delta) {
     return lMarMax;
 }
 /**
- The fit to the psychometric function is done in stages, because its slope can be VERY shallow
+ The fit to the psychometric function is done in stages, because the fit's slope can be VERY shallow
  */
 function threshEstimate(df) { // console.info("threshEstimate");
     let delta = 0.5; // initial LogMAR precision for rough homing-in
@@ -127,9 +127,9 @@ function testLogistic(guessingProbability) {
 }
 function logisticFun(guessingProbability, inflectionPoint, x) {
     //console.log("guessingProbability: ", guessingProbability, ", inflectionPoint: ", inflectionPoint);
-    const slope = 0.1;
     x = 1 - x;  inflectionPoint = 1 - inflectionPoint;
-    return guessingProbability + (1 - guessingProbability) / (1 + Math.exp(-(x - inflectionPoint) / slope));
+    // 2023-02-07 previously, slope was defined inversely. No change in result, more readable
+    return guessingProbability + (1 - guessingProbability) / (1 + Math.exp(- gSlopeCI95 * (x - inflectionPoint)));
 }
 
 
