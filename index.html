@@ -21,8 +21,11 @@ FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-        <link rel="apple-touch-icon" href="Resources/icon.png">
+        <link rel="apple-touch-icon" href="Resources/icons/icon.png">
         <link rel="apple-touch-startup-image" href="Resources/default.png">
+        
+        <link rel="manifest" href="webApp.webmanifest">
+        <meta name="description" content="Freiburg Vision Test Battery ©michael.bach@uni-freiburg.de.">
 
         <title>FrACT10</title>
 
@@ -171,5 +174,17 @@ FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
                 </div>
             </noscript>
         </div>
+        <script defer>
+		  if ("serviceWorker" in navigator) {
+			  navigator.serviceWorker.register("webAppServiceWorker.js").then((registration) => {
+				  /*console.info('Service worker registration succeeded:', registration);*/
+				}, /*catch*/ (error) => {
+				  console.error(`Service worker registration failed: ${error}`);
+				});
+			  navigator.serviceWorker.addEventListener('message', (event) => {
+				console.log(`Received message from service worker: ${event.data}`);
+			  });
+		  }
+        </script>
     </body>
 </html>

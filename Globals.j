@@ -46,6 +46,7 @@ devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to 
 /* History
    =======
 
+2023-03-04 no change in the cappuccino code, but modifications for WebApp
 2023-02-07 add AutoTest for VA;  gThresholdCorrection4Ascending→global
 2023-02-07 correct slope "polarity" for the dispersion estimation, gSlopeCI95→global
 2022-11-11 fix missing path in build script call, don't show Terminal – now it really works :)
