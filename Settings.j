@@ -475,19 +475,23 @@ Created by mb on July 15, 2015.
 
 
 + (CPString) decimalMarkChar { //console.info("settings>decimalMarkChar");
+    let _mark = ".";
     switch ([[CPUserDefaults standardUserDefaults] integerForKey: "decimalMarkCharIndex"]) {
-        case 1: return ".";
-        case 2: return ",";
-    } // from now on we deal with "Automatic"
-    let _decimalMarkChar = ".";
-    try {
-        const tArray = Intl.NumberFormat().formatToParts(1.3); // "1.3" surely has a decimal mark
-        _decimalMarkChar = tArray.find(currentValue => currentValue.type === "decimal").value;
+        case 0: // "Automatic"
+            try {
+                const tArray = Intl.NumberFormat().formatToParts(1.3); // "1.3" has a decimal mark
+                _mark = tArray.find(currentValue => currentValue.type === "decimal").value;
+            }
+            catch(e) { // avoid global error catcher, but log the problem
+                console.log("“Intl.NumberFormat().formatToParts” throws error: ", e);
+            } //console.info("_decimalMarkChar: ", _decimalMarkChar)
+            break;
+        case 2: // comma
+            _mark = ",";
+            break;
     }
-    catch(e) { // avoid global error catcher, but log the problem
-        console.log("“Intl.NumberFormat().formatToParts” throws error: ", e);
-    } //console.info("_decimalMarkChar: ", _decimalMarkChar)
-    return _decimalMarkChar;
+    [[CPUserDefaults standardUserDefaults] setObject: _mark forKey: "decimalMarkChar"];
+    return _mark;
 }
 + (void) setDecimalMarkChar: (CPString) mark {
     let idx = 0; // "Automatic"

@@ -15,7 +15,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0";
-kVersionDateOfFrACT = "2023-02-07";
+kVersionDateOfFrACT = "2023-03-05";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -46,6 +46,7 @@ devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to 
 /* History
    =======
 
+2023-03-05 more WebApp mods, add field for current value of decimalMarkChar
 2023-03-04 no change in the cappuccino code, but modifications for WebApp
 2023-02-07 add AutoTest for VA;  gThresholdCorrection4Ascending→global
 2023-02-07 correct slope "polarity" for the dispersion estimation, gSlopeCI95→global
@@ -115,7 +116,7 @@ fix »In "oblique only" the buttons must also be at the oblique positions«
 2021-11-08 add Quit/Exit button and successfully implement process.exit() in Node with the same code as running in the browser
 2021-11-04 add Q / X treatment in preparation of Quit/Exit button in an upcoming NWjs version. Doesn't work in a browser.
 2021-09-22 try autoFullScreen. Problem: program looses focus to key input until once clicked. `document.body.focus()` etc. no help.
-2021-09-17 simplify code to update isetIs4orientations (now in defaultsDidChange)
+2021-09-17 simplify code to update isetIs4orientations (now in settingssDidChange)
 2021-09-15 refined buttons; add option to change background color
 2021-08-16 button images needed more space left and right
 2021-08-15 add custom button to improve rendering of the large square buttons

@@ -174,8 +174,9 @@ FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
                 </div>
             </noscript>
         </div>
-        <script defer>
-		  if ("serviceWorker" in navigator) {
+        <script defer> // try to activate the service worker
+		  try {
+			if ("serviceWorker" in navigator) {
 			  navigator.serviceWorker.register("webAppServiceWorker.js").then((registration) => {
 				  /*console.info('Service worker registration succeeded:', registration);*/
 				}, /*catch*/ (error) => {
@@ -184,6 +185,8 @@ FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
 			  navigator.serviceWorker.addEventListener('message', (event) => {
 				console.log(`Received message from service worker: ${event.data}`);
 			  });
+			}
+		  } catch(error) {
 		  }
         </script>
     </body>

@@ -1,0 +1,24 @@
+{
+  "short_name": "FrACT10 webApp",
+  "name": "Freiburg Vision Tests webApp",
+  "description": "Vision Test Battery (acuities, contrast, …)",
+  "icons": [
+    {
+      "src": "Resources/icons/FrACT_icon-390.png",
+      "sizes": "390x390",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "Resources/icons/FrACT_icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "index.html",
+  "id": "/fract/FrACT10/webApp/index.html",
+  "theme_color": "#33B",
+  "background_color": "#777",
+  "display": "standalone",
+  "orientation": "landscape"
+}

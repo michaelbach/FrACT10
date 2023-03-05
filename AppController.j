@@ -182,7 +182,7 @@ Created by mb on 2017-07-12.
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(buttonExportEnableYESorNO:) name: "buttonExportEnableYESorNO" object: nil];
     [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(copyForeBackColorsFromSettings:) name: "copyForeBackColorsFromSettings" object: nil];
-    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
+    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
 
     [self buttonCheckContrast_action: null];
     
@@ -195,7 +195,7 @@ Created by mb on 2017-07-12.
 /**
  This observes changes in the settings panel, making shure dependencies are updated
  */
-- (void) defaultsDidChange: (CPNotification) aNotification { //console.info("defaultsDidChange");
+- (void) settingsDidChange: (CPNotification) aNotification { //console.info("settingsDidChange");
     [self setIs4orientations: ([Settings nAlternatives] == 4)];
     [[self window] setBackgroundColor: [self windowBackgroundColor]];
     if ([Settings minPossibleLogMAR] > 0) { // red: not good enough for normal vision

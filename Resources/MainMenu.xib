@@ -569,6 +569,15 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                 <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.decimalMarkCharIndex" id="lHe-4g-dbh"/>
                                             </connections>
                                         </popUpButton>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qMH-Kz-jR5">
+                                            <rect key="frame" x="125" y="78" width="115" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Decimal separator" id="aPd-Pg-2d0">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YNd-5j-KRz">
                                             <rect key="frame" x="14" y="113" width="110" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -594,15 +603,6 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                 <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.results2clipboard" id="1cE-mh-MU0"/>
                                             </connections>
                                         </popUpButton>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qMH-Kz-jR5">
-                                            <rect key="frame" x="125" y="78" width="115" height="16"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Decimal separator" id="aPd-Pg-2d0">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
                                         <box fixedFrame="YES" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4PI-eF-GR8">
                                             <rect key="frame" x="33" y="37" width="700" height="3"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -952,7 +952,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="450" name="hidden" keyPath="self.is4orientations" id="Ibo-Ua-c4e">
+                                                            <binding destination="450" name="hidden" keyPath="is4orientations" id="Xb3-Hu-0Vp">
                                                                 <dictionary key="options">
                                                                     <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                                                                     <string key="NSValueTransformerName">NSNegateBoolean</string>
@@ -1287,6 +1287,18 @@ No money transfer involved, just for size!     </string>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FoD-Bg-sIb">
+                                            <rect key="frame" x="234" y="78" width="26" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="UuG-0h-cVb">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="value" keyPath="values.decimalMarkChar" id="rQT-rQ-Kme"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                 </view>
