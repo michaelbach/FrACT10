@@ -43,7 +43,8 @@ Populates the About panel with appropriate text using HTML
     s += "Interactive assessment of visual acuities following DIN/ISO; also can assess contrast sensitivity.<br><br>Optotypes: Sloan letters, Landolt C, Tumbling E, and TAO.<br><br>Acuity results in decimal, LogMAR or Snellen notation.<br><br>With ‘Best PEST’ and antialiasing."
     [self oneWebView: aboutWebView1 htmlString: s];
 
-    s = "©1993–2022<br><br>Prof. Michael Bach<br>";
+    s = "©1993–" + [kVersionDateOfFrACT substringWithRange: CPMakeRange(0, 4)];
+    s += "<br><br>Prof. Michael Bach<br>";
     s += "University of Freiburg, Germany<br>";
     s += "<a href='https://michaelbach.de' target='_blank'>https://michaelbach.de</a><br>";
     s += "<a href='mailto:bach@uni-freiburg.de'>bach@uni-freiburg.de</a><br><br>";

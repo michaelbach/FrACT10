@@ -46,6 +46,7 @@ devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to 
 /* History
    =======
 
+2023-03-07 automatic copyright end year from versionstring in About
 2023-03-05 more WebApp mods, add field for current value of decimalMarkChar
 2023-03-04 no change in the cappuccino code, but modifications for WebApp
 2023-02-07 add AutoTest for VA;  gThresholdCorrection4Ascending→global

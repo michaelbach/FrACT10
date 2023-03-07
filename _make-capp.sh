@@ -13,4 +13,6 @@ rm -R Build/Release/capp/CommonJS.environment # nor this
 mv Build/Release/capp ../ # move it up, creating the "capp" folder
 rm -R Build # and get rid of the rest of the built items
 
+cp webApp.webmanifest ../capp/
+
 osascript -e 'display notification "Done."'
