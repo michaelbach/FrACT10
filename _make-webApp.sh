@@ -13,7 +13,6 @@ rm -R Build/Release/webApp/CommonJS.environment # nor this
 mv Build/Release/webApp ../ # move it up, creating the "webApp" folder
 rm -R Build # and get rid of the rest of the built items
 
-cp webApp.webmanifest ../webApp/
 cp webAppServiceWorker.js ../webApp/
 
 

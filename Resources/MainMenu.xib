@@ -1164,7 +1164,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </connections>
                                         </button>
                                         <popUpButton toolTip="Transformations are necessary if you increase viewing distance with mirrors." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NH7-ys-bRe">
-                                            <rect key="frame" x="352" y="76" width="156" height="25"/>
+                                            <rect key="frame" x="309" y="151" width="199" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="Display transformation normal" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="fzq-C7-Daz" id="4HI-Hd-6YM">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1191,7 +1191,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </connections>
                                         </popUpButton>
                                         <button toolTip="Redraw when changing orientation of a tablet between landscape and portrait." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BdA-0d-0v5">
-                                            <rect key="frame" x="353" y="249" width="183" height="18"/>
+                                            <rect key="frame" x="310" y="249" width="183" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Use mobile orientation" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ioU-bC-45H">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1228,7 +1228,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lSV-fU-yD5">
-                                            <rect key="frame" x="353" y="219" width="116" height="18"/>
+                                            <rect key="frame" x="310" y="219" width="116" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="auto fullscreen" bezelStyle="regularSquare" imagePosition="left" enabled="NO" state="on" inset="2" id="8Hr-IM-bbi">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1248,7 +1248,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="luN-q6-f3X">
-                                            <rect key="frame" x="354" y="28" width="192" height="23"/>
+                                            <rect key="frame" x="311" y="28" width="194" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Click to enter a dialog to use a plastic card for calibration (credit card or similar). 
 No money transfer involved, just for size!     </string>
@@ -2276,7 +2276,7 @@ CQ
                         </connections>
                     </button>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JgX-d5-6k1">
-                        <rect key="frame" x="361" y="18" width="157" height="25"/>
+                        <rect key="frame" x="318" y="18" width="157" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <popUpButtonCell key="cell" type="push" title="Preset to: Standard" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="BRQ-on-tmW" id="JI4-Wi-eC6">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
