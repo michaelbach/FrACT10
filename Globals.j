@@ -15,7 +15,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0";
-kVersionDateOfFrACT = "2023-03-18";
+kVersionDateOfFrACT = "2023-03-24";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -46,6 +46,7 @@ devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to 
 /* History
    =======
 
+2023-03-24 add "Test" to presets to make life easier for me
 2023-03-18 slight GUI layout adjustments
 2023-03-07 automatic copyright end year from versionstring in About
 2023-03-05 more WebApp mods, add field for current value of decimalMarkChar

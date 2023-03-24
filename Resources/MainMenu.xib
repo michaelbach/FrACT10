@@ -2292,6 +2292,9 @@ CQ
                                     <menuItem title="Preset to: ESU" id="RUc-ID-IOk">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
+                                    <menuItem title="Preset to: Test" id="arD-ii-nPY">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
                                 </items>
                             </menu>
                         </popUpButtonCell>

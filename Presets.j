@@ -42,7 +42,7 @@
  Called by the action of the preset selection pop-up, shows the "Are you sure" dialog
  */
 + (void) apply: (int) p { //console.info("Presets>apply");
-    presetNames = ["default", "ULV", "ESU"];
+    presetNames = ["default", "ULV", "ESU", "Test"];
     if ((p < 0) | (p > presetNames.length)) return;
     currentPresetName = presetNames[p];
     const s = "Really apply the preset “" + currentPresetName + "” ?"
@@ -55,6 +55,13 @@
 }
 
 
++ (void) setStandardDefaultsKeepingCalBarLength {
+    const calBarLengthInMM_prior = [Settings calBarLengthInMM];
+    [Settings setDefaults];
+    [Settings setCalBarLengthInMM: calBarLengthInMM_prior];
+}
+
+
 /**
  Apply selected patch after "Are you sure" dialog
  */
@@ -64,6 +71,8 @@
             [self applyULV];  break;
         case 2:
             [self applyESU];  break;
+        case 3:
+            [self applyTest];  break;
         default:
             [Settings setDefaults];
     }
@@ -112,9 +121,15 @@
 }
 
 
-+ (void) setStandardDefaultsKeepingCalBarLength {
-    const calBarLengthInMM_prior = [Settings calBarLengthInMM];
-    [Settings setDefaults];
-    [Settings setCalBarLengthInMM: calBarLengthInMM_prior];
+/**
+ Apply Test: easier testing
+ */
++ (void) applyTest { //console.info("Test");
+    [self setStandardDefaultsKeepingCalBarLength];
+    [Settings setDistanceInCM: 400];
+    [Settings setCalBarLengthInMM: 150];
+    [Settings setResponseInfoAtStart: NO];
+    [Settings setShowCI95: YES];
 }
+
 @end
