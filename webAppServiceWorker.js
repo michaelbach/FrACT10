@@ -1,7 +1,7 @@
 /* file "webAppServiceWorker.js" */
 
 
-const cacheName = 'FrACT10-sw-v5';
+const cacheName = 'FrACT10-sw-v6';
 
 
 /* Fetching content using Service Worker */
@@ -26,13 +26,13 @@ self.addEventListener('install', (event) => {
     caches.open(cacheName).then((cache) => {
       return cache.addAll([ /* Cache all these files */
   	    './',
-      	'./index.html',
-        './Info.plist',
-        './Browser.environment/capp.sj',
         './Browser.environment/dataURLs.txt',
         './Browser.environment/MHTMLData.txt',
         './Browser.environment/MHTMLPaths.txt',
         './Browser.environment/MHTMLTest.txt',
+        './Browser.environment/webApp.sj',
+      	'./index.html',
+        './Info.plist',
         './Resources/allRewards4800x200.png',
         './Resources/CreditcardPlus2x50.png',
         './Resources/MainMenu.cib',
@@ -54,17 +54,31 @@ self.addEventListener('install', (event) => {
 		'./Resources/icons/FrACT_icon-512.png',
 		'./Resources/icons/FrACT3icon.ico',
 		'./Resources/icons/icon.png',
-      ]);
+		'./Resources/keyMaps/keyMap4.png',
+		'./Resources/keyMaps/keyMap4keysOnly.png',
+		'./Resources/keyMaps/keyMap8.png',
+		'./Resources/keyMaps/keyMapUpDownOnly.png',
+		'./Resources/optotypeEs/optotypeE000.png',
+		'./Resources/optotypeEs/optotypeE090.png',
+		'./Resources/optotypeEs/optotypeE180.png',
+		'./Resources/optotypeEs/optotypeE270.png',
+		'./Resources/sounds/runEnd.mp3',
+		'./Resources/sounds/trialNo.mp3',
+		'./Resources/sounds/trialYes.mp3',
+		'./Resources/TAOs/butterfly.png',
+		'./Resources/TAOs/car.png',
+		'./Resources/TAOs/duck.png',
+		'./Resources/TAOs/flower.png',
+		'./Resources/TAOs/heart.png',
+		'./Resources/TAOs/house.png',
+		'./Resources/TAOs/moon.png',
+		'./Resources/TAOs/rabbit.png',
+		'./Resources/TAOs/rocket.png',
+		'./Resources/TAOs/tree.png',
+		]);
     })
   );
 });
-/*  to be done…
-dither
-keyMaps
-optotypeEs
-sounds
-TAOs
-*/
 
 
 self.addEventListener('activate', function(event) {
