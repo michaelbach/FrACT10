@@ -15,7 +15,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "index.html",
+  "start_url": "../index.html",
   "id": "/fract/FrACT10/webApp/index.html",
   "theme_color": "#33B",
   "background_color": "#777",

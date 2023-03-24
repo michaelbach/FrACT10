@@ -9,13 +9,6 @@ FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
     <head>
         <meta charset="utf-8">
 
-        <!--[if lte IE 8]>
-        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7, chrome=1">
-        <![endif]-->
-        <!--[if gte IE 9]>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <![endif]-->
-
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -24,8 +17,11 @@ FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
         <link rel="apple-touch-icon" href="Resources/icons/icon.png">
         <link rel="apple-touch-startup-image" href="Resources/default.png">
         
+        <link rel="icon" href="Resources/icons/FrACT3icon.ico" type="image/x-icon"c>
+        
         <link rel="manifest" href="Resources/webApp.webmanifest">
-        <meta name="description" content="Freiburg Vision Test Battery ©michael.bach@uni-freiburg.de.">
+        
+        <meta name="description" content="Freiburg Vision Test Battery ©michael.bach@uni-freiburg.de">
 
         <title>FrACT10</title>
 
@@ -36,19 +32,11 @@ FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
         	OBJJ_INCLUDE_PATHS = ["../../../ot/-misc/cappFrameworks"];
             OBJJ_MAIN_FILE = "main.j";
             // The below will tell the compiler to not generate debug symbols but will generate type signatures and inline objj_msgSend functions.
-            // This will affect only Objective-J code that is compiled when loading the application. It will not affect precompiled
-            // code like the Cappuccino frameworks.
-            // Uncomment or comment on the line below to change the flags
-            //
-            // Macros for the precompiler can also be added. It is 100% compatible with the Macros and Conditionals preprocessor
-            // directives defined in the GNU C 11.0 Preprocessor User Guide. (https://gcc.gnu.org/onlinedocs/gcc-11.2.0/cpp/)
-            // Example: OBJJ_COMPILER_FLAGS = [..., "-DMyMax(x,y)=((x)>(y))?(x):(y)]", "-DMYMACRO", "-DMYMACRO2=42"];
             OBJJ_COMPILER_FLAGS = [/*"IncludeDebugSymbols",*/ "IncludeTypeSignatures"/*, "SourceMap"*/, "InlineMsgSend"];
 
             var progressBar = null;
 
-            OBJJ_PROGRESS_CALLBACK = function(percent, appSize, path)
-            {
+            OBJJ_PROGRESS_CALLBACK = function(percent, appSize, path) {
                 percent = percent * 100;
 
                 if (!progressBar)

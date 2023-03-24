@@ -25,36 +25,41 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(cacheName).then((cache) => {
       return cache.addAll([ /* Cache all these files */
-        'index.html',
-        'Info.plist',
-        'Browser.environment/capp.sj',
-        'Browser.environment/dataURLs.txt',
-        'Browser.environment/MHTMLData.txt',
-        'Browser.environment/MHTMLPaths.txt',
-        'Browser.environment/MHTMLTest.txt',
-        'Resources/allRewards4800x200.png',
-        'Resources/CreditcardPlus2x50.png',
-        'Resources/MainMenu.cib',
-        'Resources/buttons/butCntC.png',
-		'Resources/buttons/butCntE.png',
-		'Resources/buttons/butCntLett.png',
-		'Resources/buttons/buttonAcuityC.png',
-		'Resources/buttons/buttonAcuityE.png',
-		'Resources/buttons/buttonAcuityLett.png',
-		'Resources/buttons/buttonAcuityLineByLine.png',
-		'Resources/buttons/buttonAcuityTAO.png',
-		'Resources/buttons/buttonAcuityVernier.png',
-		'Resources/buttons/iconAbout.png',
-		'Resources/buttons/iconFullscreen.png',
-		'Resources/buttons/iconHelp.png',
-		'Resources/buttons/iconSettings.png'
+  	    './',
+      	'./index.html',
+        './Info.plist',
+        './Browser.environment/capp.sj',
+        './Browser.environment/dataURLs.txt',
+        './Browser.environment/MHTMLData.txt',
+        './Browser.environment/MHTMLPaths.txt',
+        './Browser.environment/MHTMLTest.txt',
+        './Resources/allRewards4800x200.png',
+        './Resources/CreditcardPlus2x50.png',
+        './Resources/MainMenu.cib',
+        './Resources/buttons/butCntC.png',
+		'./Resources/buttons/butCntE.png',
+		'./Resources/buttons/butCntLett.png',
+		'./Resources/buttons/buttonAcuityC.png',
+		'./Resources/buttons/buttonAcuityE.png',
+		'./Resources/buttons/buttonAcuityLett.png',
+		'./Resources/buttons/buttonAcuityLineByLine.png',
+		'./Resources/buttons/buttonAcuityTAO.png',
+		'./Resources/buttons/buttonAcuityVernier.png',
+		'./Resources/buttons/iconAbout.png',
+		'./Resources/buttons/iconFullscreen.png',
+		'./Resources/buttons/iconHelp.png',
+		'./Resources/buttons/iconSettings.png',
+		'./Resources/icons/FrACT_icon-128.png',
+		'./Resources/icons/FrACT_icon-390.png',
+		'./Resources/icons/FrACT_icon-512.png',
+		'./Resources/icons/FrACT3icon.ico',
+		'./Resources/icons/icon.png',
       ]);
     })
   );
 });
 /*  to be done…
 dither
-icons
 keyMaps
 optotypeEs
 sounds
