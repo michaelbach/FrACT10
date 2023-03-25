@@ -91,8 +91,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     thresholder = [[Thresholder alloc] initWithNumAlternatives: nAlternatives];
     trialHistoryController = [[TrialHistoryController alloc] initWithNumTrials: nTrials];
     responseWasCorrect = YES;  responseWasCorrectCumulative = YES;
-    xEccInPix = -[Misc pixelFromDegree: [Settings eccentXInDeg]];  yEccInPix = [Misc pixelFromDegree: [Settings eccentYInDeg]]; //pos y: ↑
-    optotypeSizeInPix = [Misc pixelFromDegree: [Settings contrastOptotypeDiameter] / 60] / 5;
+    xEccInPix = -[MiscSpace pixelFromDegree: [Settings eccentXInDeg]];  yEccInPix = [MiscSpace pixelFromDegree: [Settings eccentYInDeg]]; //pos y: ↑
+    optotypeSizeInPix = [MiscSpace pixelFromDegree: [Settings contrastOptotypeDiameter] / 60] / 5;
     [self trialStart];
 }
 
@@ -213,7 +213,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) onTimeoutAutoResponse: (CPTimer) timer { //console.info("FractController>onTimeoutAutoResponse");
-    const logMARcurrent = [Misc logMARfromDecVA: [Misc decVAFromGapPixels: stimStrengthInDeviceunits]];
+    const logMARcurrent = [MiscSpace logMARfromDecVA: [MiscSpace decVAFromGapPixels: stimStrengthInDeviceunits]];
     let logMARtarget = +0.3;
     switch ([Settings autoRunIndex]) {
         case 2: logMARtarget = 0.0; break;

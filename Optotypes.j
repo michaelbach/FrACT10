@@ -38,17 +38,17 @@ Optotypes.j
 
 
 - (float) getCurrentContrastMichelsonPercent {
-    return [Misc contrastMichelsonPercentFromColor1: _colOptotypeFore color2: _colOptotypeBack];
+    return [MiscLight contrastMichelsonPercentFromColor1: _colOptotypeFore color2: _colOptotypeBack];
 }
 - (float) getCurrentContrastWeberPercent {
-    return [Misc contrastWeberFromMichelsonPercent: [self getCurrentContrastMichelsonPercent]];
+    return [MiscLight contrastWeberFromMichelsonPercent: [self getCurrentContrastMichelsonPercent]];
 }
 // problem here: 0 % contrast will end in finite logCSWeber. But since this is now clamped at 4.0,
 // after rounding this will still read 0%.
 - (float) getCurrentContrastLogCSWeber {
     const michelsonPercent = [self getCurrentContrastMichelsonPercent];
-    const weberPercent = [Misc contrastWeberFromMichelsonPercent: michelsonPercent];
-    return [Misc contrastLogCSWeberFromWeberPercent: weberPercent];
+    const weberPercent = [MiscLight contrastWeberFromMichelsonPercent: michelsonPercent];
+    return [MiscLight contrastLogCSWeberFromWeberPercent: weberPercent];
 }
 
 

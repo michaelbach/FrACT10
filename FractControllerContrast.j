@@ -24,10 +24,10 @@ Created by Bach on 2020-09-02
 
 
 - (void) calculateForeBackColors {
-    let gray1 = [Misc lowerLuminanceFromContrastLogCSWeber: stimStrengthInDeviceunits];
-    gray1 = [Misc devicegrayFromLuminance: gray1];
-    let gray2 = [Misc upperLuminanceFromContrastLogCSWeber: stimStrengthInDeviceunits];
-    gray2 = [Misc devicegrayFromLuminance: gray2];
+    let gray1 = [MiscLight lowerLuminanceFromContrastLogCSWeber: stimStrengthInDeviceunits];
+    gray1 = [MiscLight devicegrayFromLuminance: gray1];
+    let gray2 = [MiscLight upperLuminanceFromContrastLogCSWeber: stimStrengthInDeviceunits];
+    gray2 = [MiscLight devicegrayFromLuminance: gray2];
     if (![Settings contrastDarkOnLight]) {
         const gray = gray1; gray1 = gray2; gray2 = gray;
     }
@@ -127,7 +127,7 @@ basic flow:
 
 - (CPString) contrastComposeTrialInfoString {
     let s = "trial: " + iTrial + "/" + nTrials;
-    s +=  ", contrast: " + [Misc stringFromNumber: [Misc contrastWeberPercentFromLogCSWeber: stimStrengthInDeviceunits] decimals: 1 localised: YES] + "%";
+    s +=  ", contrast: " + [Misc stringFromNumber: [MiscLight contrastWeberPercentFromLogCSWeber: stimStrengthInDeviceunits] decimals: 1 localised: YES] + "%";
     s += ", logCSW: " + [Misc stringFromNumber: stimStrengthInDeviceunits decimals: 2 localised: YES];
     s += ", alternative: " + [alternativesGenerator currentAlternative];
     return s;
@@ -145,7 +145,7 @@ basic flow:
     s += [Misc stringFromNumber: stimStrengthInDeviceunits decimals: 2 localised: YES];
     s += " logCS(Weber) ≘ ";
     s += [self rangeStatusIndicatorStringInverted: NO];
-    s += [Misc stringFromNumber: [Misc contrastWeberPercentFromLogCSWeber: stimStrengthInDeviceunits] decimals: 2 localised: YES];
+    s += [Misc stringFromNumber: [MiscLight contrastWeberPercentFromLogCSWeber: stimStrengthInDeviceunits] decimals: 2 localised: YES];
     s += "%";
     return s;
 }

@@ -32,7 +32,7 @@ Created by mb on 2021-12-21.
 
 - (void) trialStart { //console.info("FractControllerAcuityLineByLine>trialStart");
     iTrial = 1;
-    stimStrengthInDeviceunits = [Misc gapPixelsFromDecVA: [Misc decVAfromLogMAR: localLogMAR]];
+    stimStrengthInDeviceunits = [MiscSpace gapPixelsFromDecVA: [MiscSpace decVAfromLogMAR: localLogMAR]];
     state = kStateDrawFore;
     [[[self window] contentView] setNeedsDisplay: YES];
 }
@@ -47,7 +47,7 @@ Created by mb on 2021-12-21.
             let optotypeDistance = 1; // according to ETDRS
             if ([Settings testOnLineByLineDistanceType] == 0) {// according to DIN EN ISO 8596
                 optotypeDistance = 0.4;
-                const localDecVA = [Misc decVAfromLogMAR: localLogMAR];
+                const localDecVA = [MiscSpace decVAfromLogMAR: localLogMAR];
                 if (localDecVA >= 0.06) optotypeDistance = 1;
                 if (localDecVA >= 0.16) optotypeDistance = 1.5;
                 if (localDecVA >= 0.4) optotypeDistance = 2;

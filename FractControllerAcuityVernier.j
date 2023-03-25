@@ -20,8 +20,8 @@ Created by Bach on 14.08.2017.
 
 
 - (float) stimDeviceunitsFromThresholderunits: (float) tPest { //console.info("FractControllerAcuityVernier>stimDeviceunitsFromThresholderunits");
-    gStrokeMinimal = [Misc pixelFromDegree: gapVernierMinimalArcSec / 60.0 / 60.0];
-    gStrokeMaximal = [Misc pixelFromDegree: gapVernierMaximalArcSec / 60.0 / 60.0];
+    gStrokeMinimal = [MiscSpace pixelFromDegree: gapVernierMinimalArcSec / 60.0 / 60.0];
+    gStrokeMaximal = [MiscSpace pixelFromDegree: gapVernierMaximalArcSec / 60.0 / 60.0];
     const c1 = gStrokeMinimal;
     const c2 = -Math.log(gStrokeMinimal / gStrokeMaximal);
     const deviceVal = c1 * Math.exp(tPest * c2); //trace("Vernier.pest2native, tPest:", tPest, "native=", nativeVal);
@@ -39,8 +39,8 @@ Created by Bach on 14.08.2017.
     return deviceVal;
 }
 - (float) stimThresholderunitsFromDeviceunits: (float) d {
-    gStrokeMinimal = [Misc pixelFromDegree: gapVernierMinimalArcSec / 60.0 / 60.0];
-    gStrokeMaximal = [Misc pixelFromDegree: gapVernierMaximalArcSec / 60.0 / 60.0];
+    gStrokeMinimal = [MiscSpace pixelFromDegree: gapVernierMinimalArcSec / 60.0 / 60.0];
+    gStrokeMaximal = [MiscSpace pixelFromDegree: gapVernierMaximalArcSec / 60.0 / 60.0];
     const c1 = gStrokeMinimal;
     const c2 = -Math.log(gStrokeMinimal / gStrokeMaximal);
     const retVal = Math.log(d / c1) / c2;
@@ -53,12 +53,12 @@ Created by Bach on 14.08.2017.
     const ix0 = Math.round(x0);
     const iSigma = Math.round(Math.max(5, Math.min(sigma * 4, 30))); //trace(sigma, iSigma);
     CGContextSetLineWidth(cgc, 1);
-    const backGray = [Misc upperLuminanceFromContrastMilsn: [Misc contrastMichelsonFromWeberPercent: [Settings contrastAcuityWeber]]];
+    const backGray = [MiscLight upperLuminanceFromContrastMilsn: [MiscLight contrastMichelsonFromWeberPercent: [Settings contrastAcuityWeber]]];
     const cnt = [Settings contrastAcuityWeber] / 100;
     for (let ix = ix0 - iSigma; ix <= ix0 + iSigma; ix++) {
         const gaussValue = Math.exp(-Math.pow(x0 - ix, 2) / sigma);
         let grayValue = backGray - cnt * gaussValue;
-        grayValue = [Misc devicegrayFromLuminance: grayValue];
+        grayValue = [MiscLight devicegrayFromLuminance: grayValue];
         CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: grayValue alpha: 1]);
         CGContextBeginPath(cgc);
         CGContextMoveToPoint(cgc, ix, y0);
@@ -102,9 +102,9 @@ Created by Bach on 14.08.2017.
         case kStateDrawBack:  break;
         case kStateDrawFore: //console.info("kStateDrawFore");
             [self  drawVernierAtX: 0 y: 0
-                          vLength: [Misc pixelFromDegree: [Settings vernierLength] / 60.0]
-                            sigma: [Misc pixelFromDegree: [Settings vernierWidth] / 60.0]
-                        gapHeight: [Misc pixelFromDegree: [Settings vernierGap] / 60.0]
+                          vLength: [MiscSpace pixelFromDegree: [Settings vernierLength] / 60.0]
+                            sigma: [MiscSpace pixelFromDegree: [Settings vernierWidth] / 60.0]
+                        gapHeight: [MiscSpace pixelFromDegree: [Settings vernierGap] / 60.0]
                        offsetSize: stimStrengthInDeviceunits
                  offsetIsTopRight: [alternativesGenerator currentAlternative] != 0]
             break;

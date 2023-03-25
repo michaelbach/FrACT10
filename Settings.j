@@ -18,7 +18,8 @@ Created by mb on July 15, 2015.
 @import <Foundation/CPUserDefaults.j>
 @import "HierarchyController.j"
 @import "Misc.j"
-
+@import "MiscLight.j"
+@import "MiscSpace.j"
 
 @implementation Settings: CPUserDefaultsController
 
@@ -157,11 +158,11 @@ Created by mb on July 15, 2015.
 
 
 + (void) calculateMaxPossibleDecimalAcuity { //console.info("Settings>calculateMaxPossibleDecimalAcuity");
-    let maxPossibleAcuityVal = [Misc decVAFromGapPixels: 1.0];
+    let maxPossibleAcuityVal = [MiscSpace decVAFromGapPixels: 1.0];
     // Correction for threshold underestimation of ascending procedures (as opposed to our bracketing one)
     maxPossibleAcuityVal = [self threshCorrection] ? maxPossibleAcuityVal * 0.891 : maxPossibleAcuityVal;
     [self setMaxPossibleDecimalAcuityLocalisedString: [Misc stringFromNumber: maxPossibleAcuityVal decimals: 2 localised: YES]];
-    [self setMinPossibleLogMAR: [Misc logMARfromDecVA: maxPossibleAcuityVal]]; // needed for color
+    [self setMinPossibleLogMAR: [MiscSpace logMARfromDecVA: maxPossibleAcuityVal]]; // needed for color
     [self setMinPossibleLogMARLocalisedString: [Misc stringFromNumber: [self minPossibleLogMAR] decimals: 2 localised: YES]];
     [self setDistanceInInchFromCM: [self distanceInCM]];
 }
@@ -169,12 +170,12 @@ Created by mb on July 15, 2015.
 
 // contrast in %. 100%: background fully white, foreground fully dark. -100%: inverted
 + (void) calculateAcuityForeBackColorsFromContrast { //console.info("Settings>calculateAcuityForeBackColorsFromContrast");
-    const cnt = [Misc contrastMichelsonFromWeberPercent: [self contrastAcuityWeber]];
+    const cnt = [MiscLight contrastMichelsonFromWeberPercent: [self contrastAcuityWeber]];
 
-    let temp = [Misc lowerLuminanceFromContrastMilsn: cnt];  temp = [Misc devicegrayFromLuminance: temp];
+    let temp = [MiscLight lowerLuminanceFromContrastMilsn: cnt];  temp = [MiscLight devicegrayFromLuminance: temp];
     [self setAcuityForeColor: [CPColor colorWithWhite: temp alpha: 1]];
 
-    temp = [Misc upperLuminanceFromContrastMilsn: cnt];  temp = [Misc devicegrayFromLuminance: temp];
+    temp = [MiscLight upperLuminanceFromContrastMilsn: cnt];  temp = [MiscLight devicegrayFromLuminance: temp];
     [self setAcuityBackColor: [CPColor colorWithWhite: temp alpha: 1]];
     
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyForeBackColorsFromSettings" object: nil];

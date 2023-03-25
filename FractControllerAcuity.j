@@ -19,14 +19,14 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
     CGContextTranslateCTM(cgc,  viewWidth / 2, viewHeight / 2);
     CGContextSetLineWidth(cgc, 1);
     CGContextSetStrokeColor(cgc, [CPColor colorWithRed: 0 green: 0 blue: 1 alpha: 0.5]);
-    [optotypes strokeStarAtX: 0 y: 0 size: Math.max(stimStrengthInDeviceunits * 2.5, [Misc pixelFromDegree: 1 / 6])];
+    [optotypes strokeStarAtX: 0 y: 0 size: Math.max(stimStrengthInDeviceunits * 2.5, [MiscSpace pixelFromDegree: 1 / 6])];
     CGContextRestoreGState(cgc);
 }
 
 
 // this manages stuff after the optotypes have been drawn, e.g. crowding
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
-    const temp = [Misc logMARfromDecVA: [Misc decVAFromGapPixels: stimStrengthInDeviceunits]];
+    const temp = [MiscSpace logMARfromDecVA: [MiscSpace decVAFromGapPixels: stimStrengthInDeviceunits]];
     [trialHistoryController setValue: [Misc stringFromNumber: temp decimals: 3 localised: NO]];
     if ([Settings crowdingType] > 0) {
         if (currentTestID != kTestIDVernier) { // don't do crowding with Vernier etc.
@@ -153,14 +153,14 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 - (CPString) acuityComposeTrialInfoString {
     let s = iTrial + "/" + nTrials + " ";
-    s += [Misc stringFromNumber: [Misc decVAFromGapPixels: stimStrengthInDeviceunits] decimals: 2 localised: NO];
+    s += [Misc stringFromNumber: [MiscSpace decVAFromGapPixels: stimStrengthInDeviceunits] decimals: 2 localised: NO];
     return s;
 }
 
 
 - (float) acuityResultInDecVA {
     const resultInGapPx = stimStrengthInDeviceunits;
-    let resultInDecVA = [Misc decVAFromGapPixels: resultInGapPx];
+    let resultInDecVA = [MiscSpace decVAFromGapPixels: resultInGapPx];
     if ([Settings threshCorrection]) resultInDecVA *= gThresholdCorrection4Ascending;
     //console.info("FractControllerAcuity>acuityResultInDecVA: ", resultInDecVA);
     return resultInDecVA;
@@ -168,7 +168,7 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 
 - (float) acuityResultInLogMAR {
-    return [Misc logMARfromDecVA: [self acuityResultInDecVA]];
+    return [MiscSpace logMARfromDecVA: [self acuityResultInDecVA]];
 }
 
 
@@ -179,7 +179,7 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 - (CPString) acuityComposeResultString { // 2021-05-02: now all formats are "ceilinged"
     const resultInDecVACeilinged = Math.min([Settings maxDisplayedAcuity], [self acuityResultInDecVA]);
-    const resultInLogMARCeilinged = [Misc logMARfromDecVA: resultInDecVACeilinged];
+    const resultInLogMARCeilinged = [MiscSpace logMARfromDecVA: resultInDecVACeilinged];
     let s = "";
     if ([Settings acuityFormatLogMAR]) {
         if (s.length > 1) s += ",  ";
@@ -223,12 +223,12 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
 
 - (void) acuityModifyDeviceStimulusDIN01_02_04_08 {
     responseWasCorrectCumulative = responseWasCorrectCumulative && responseWasCorrect;
-    const acuityStartDecimal = [Misc decVAfromLogMAR: [Settings acuityStartingLogMAR]];
+    const acuityStartDecimal = [MiscSpace decVAfromLogMAR: [Settings acuityStartingLogMAR]];
     switch (iTrial) {
-        case 1:  stimStrengthInDeviceunits = [Misc gapPixelsFromDecVA: acuityStartDecimal];  break;
-        case 2:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [Misc gapPixelsFromDecVA: acuityStartDecimal * 2];  break;
-        case 3:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [Misc gapPixelsFromDecVA: acuityStartDecimal * 4];  break;
-        case 4:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [Misc gapPixelsFromDecVA: acuityStartDecimal * 8];  break;
+        case 1:  stimStrengthInDeviceunits = [MiscSpace gapPixelsFromDecVA: acuityStartDecimal];  break;
+        case 2:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [MiscSpace gapPixelsFromDecVA: acuityStartDecimal * 2];  break;
+        case 3:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [MiscSpace gapPixelsFromDecVA: acuityStartDecimal * 4];  break;
+        case 4:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [MiscSpace gapPixelsFromDecVA: acuityStartDecimal * 8];  break;
     }
     if (stimStrengthInDeviceunits > gStrokeMaximal) stimStrengthInDeviceunits = gStrokeMaximal;
 }
@@ -238,9 +238,9 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
     let returnVal = 5 * gap + 2 * gap; // case 0
     switch ([Settings crowdingDistanceCalculationType]) {
         case 1:
-            returnVal = 5 * gap + [Misc pixelFromDegree: 2.6 / 60.0];  break;
+            returnVal = 5 * gap + [MiscSpace pixelFromDegree: 2.6 / 60.0];  break;
         case 2:
-            returnVal = [Misc pixelFromDegree: 30 / 60.0];  break;
+            returnVal = [MiscSpace pixelFromDegree: 30 / 60.0];  break;
         case 3:
             returnVal = 10 * gap;  break;
     }

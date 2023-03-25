@@ -35,21 +35,16 @@ Created by mb on 2017-07-12.
  to make communication with some classes with do not inherit from AppController easier.
  */
 
-/*window.ondeviceorientation = function(event) {
+
+/* We don't need the below, just in case we need it in future…
+ window.ondeviceorientation = function(event) {
  [setAngleAlpha: Math.round(event.alpha)]; [setAngleAlpha: Math.round(event.beta)]; [setAngleAlpha: Math.round(event.gamma)];
- }*/
-/*
+ }
  ScreenOrientation.addEventListener('change', function(e) { ... })
  ScreenOrientation.onchange = function(e) { ... }
- */
-/*
  window.addEventListener("orientationchange", centerLoginBox);
- …
- if (window.orientation == 90
- */
+ if (window.orientation == 90… */
 
-
-//CPPushOnPushOffButton = 1;
 
 @implementation AppController : HierarchyController {
     @outlet CPWindow fractControllerWindow;
@@ -361,40 +356,40 @@ Created by mb on 2017-07-12.
 - (void) keyDown: (CPEvent) theEvent { //console.info("AppController>keyDown");
     switch([[[theEvent charactersIgnoringModifiers] characterAtIndex: 0] uppercaseString]) {
         case "Q": case "X": // Quit or eXit
-            [self  buttonDoExit_action: nil];  break;
+            [self buttonDoExit_action: nil];  break;
         case "S":
             [[CPRunLoop currentRunLoop] performSelector: @selector(buttonSettings_action:) target: self argument: nil order: 10000 modes:[CPDefaultRunLoopMode]];  break; // this complicated version avoids propagation of the "s"
         case "F":
-            [self  buttonFullScreen_action: nil];  break;
+            [self buttonFullScreen_action: nil];  break;
         case "L":
-            [self  buttonDoAcuityLetters_action: nil];  break;
+            [self buttonDoAcuityLetters_action: nil];  break;
         case "C":
-            [self  buttonDoAcuityLandolt_action: nil];  break;
+            [self buttonDoAcuityLandolt_action: nil];  break;
         case "E":
-            [self  buttonDoAcuityE_action: nil];  break;
+            [self buttonDoAcuityE_action: nil];  break;
         case "A":
-            [self  buttonDoAcuityTAO_action: nil];  break;
+            [self buttonDoAcuityTAO_action: nil];  break;
         case "V":
-            [self  buttonDoAcuityVernier_action: nil];  break;
+            [self buttonDoAcuityVernier_action: nil];  break;
         case "1":
-            [self  buttonDoContrastLett_action: nil];  break;
+            [self buttonDoContrastLett_action: nil];  break;
         case "2":
-            [self  buttonDoContrastC_action: nil];  break;
+            [self buttonDoContrastC_action: nil];  break;
         case "3":
-            [self  buttonDoContrastE_action: nil];  break;
+            [self buttonDoContrastE_action: nil];  break;
         case "4":
             [self buttonDoAcuityLineByLine_action: nil];  break;
         case "5" :
             switch([Settings testOnFive]) { //0: ignore
-                case 1: [self  buttonDoAcuityLetters_action: nil];  break;
-                case 2: [self  buttonDoAcuityLandolt_action: nil];  break;
-                case 3: [self  buttonDoAcuityE_action: nil];  break;
-                case 4: [self  buttonDoAcuityTAO_action: nil];  break;
-                case 5: [self  buttonDoAcuityVernier_action: nil];  break;
-                case 6: [self  buttonDoContrastLett_action: nil];  break;
-                case 7: [self  buttonDoContrastC_action: nil];  break;
-                case 8: [self  buttonDoContrastE_action: nil];  break;
-                case 9: [self  buttonDoAcuityLineByLine_action: nil];  break;
+                case 1: [self buttonDoAcuityLetters_action: nil];  break;
+                case 2: [self buttonDoAcuityLandolt_action: nil];  break;
+                case 3: [self buttonDoAcuityE_action: nil];  break;
+                case 4: [self buttonDoAcuityTAO_action: nil];  break;
+                case 5: [self buttonDoAcuityVernier_action: nil];  break;
+                case 6: [self buttonDoContrastLett_action: nil];  break;
+                case 7: [self buttonDoContrastC_action: nil];  break;
+                case 8: [self buttonDoContrastE_action: nil];  break;
+                case 9: [self buttonDoAcuityLineByLine_action: nil];  break;
             } break;
         //case "∆": [self runtimeError_action: nil];  break;
         //case "T": [self resultDetails_action: nil];  break;
@@ -404,27 +399,9 @@ Created by mb on 2017-07-12.
 }
 
 
-/**
- Helper function: Find out if this URL exists
- */
-function existsUrl(url) {
-    let request;
-    if(window.XMLHttpRequest)
-        request = new XMLHttpRequest();
-    else
-        request = new ActiveXObject("Microsoft.XMLHTTP");
-    request.open('GET', url, false);
-    request.send(); // there will be a 'pause' here until the response to come.
-    // the object request will be modified
-    if (request.status === 404) {
-        alert("The page you are trying to reach is not available.");
-        return false;
-    }
-    return true;
-}
 - (IBAction) resultDetails_action: (id) sender {
     const path = "../readResultString.html";
-    if (existsUrl(path)) {
+    if ([Misc existsUrl: path]) {
         window.open(path, "_blank");
     }
 }
@@ -560,8 +537,7 @@ function existsUrl(url) {
     if ([Misc isFullScreen]) {
         [Misc fullScreenOn: NO];
     }
-    [[self window] close];  [CPApp terminate: nil];
-    window.close();
+    [[self window] close];  [CPApp terminate: nil];  window.close();
 }
 
 
@@ -569,12 +545,12 @@ function existsUrl(url) {
     const tag = [sender tag], contrastsPercent = [1, 3, 10, 30, 90];
     let contrastPercent = 0;
     if ((tag > 0) && (tag <= 5))  contrastPercent = contrastsPercent[tag - 1];
-    const contrastLogCSWeber = [Misc contrastLogCSWeberFromWeberPercent: contrastPercent];
+    const contrastLogCSWeber = [MiscLight contrastLogCSWeberFromWeberPercent: contrastPercent];
     //    console.log(tag, contrastPercent, contrastLogCSWeber)
-    let gray1 = [Misc lowerLuminanceFromContrastLogCSWeber: contrastLogCSWeber];
-    gray1 = [Misc devicegrayFromLuminance: gray1];
-    let gray2 = [Misc upperLuminanceFromContrastLogCSWeber: contrastLogCSWeber];
-    gray2 = [Misc devicegrayFromLuminance: gray2];
+    let gray1 = [MiscLight lowerLuminanceFromContrastLogCSWeber: contrastLogCSWeber];
+    gray1 = [MiscLight devicegrayFromLuminance: gray1];
+    let gray2 = [MiscLight upperLuminanceFromContrastLogCSWeber: contrastLogCSWeber];
+    gray2 = [MiscLight devicegrayFromLuminance: gray2];
     if (![Settings contrastDarkOnLight]) {
         const gray = gray1; gray1 = gray2; gray2 = gray;
     }
@@ -582,11 +558,9 @@ function existsUrl(url) {
     
     const c1 = [CPColor colorWithWhite: gray1 alpha: 1], c2 = [CPColor colorWithWhite: gray2 alpha: 1];
     [self setCheckContrastWeberFieldColor1: c1];   [self setCheckContrastWeberFieldColor2: c2];
-    
-    const actualMichelsonPerc = [Misc contrastMichelsonPercentFromColor1: c1 color2: c2];
+    const actualMichelsonPerc = [MiscLight contrastMichelsonPercentFromColor1: c1 color2: c2];
     [self setCheckContrastActualMichelsonPercent: Math.round(actualMichelsonPerc * 10) / 10];
-    
-    const actualWeberPerc = [Misc contrastWeberFromMichelsonPercent: actualMichelsonPerc];
+    const actualWeberPerc = [MiscLight contrastWeberFromMichelsonPercent: actualMichelsonPerc];
     [self setCheckContrastActualWeberPercent:  Math.round(actualWeberPerc * 10) / 10];
 }
 

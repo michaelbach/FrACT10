@@ -15,7 +15,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0";
-kVersionDateOfFrACT = "2023-03-24";
+kVersionDateOfFrACT = "2023-03-25";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -38,7 +38,7 @@ gSlopeCI95 = 15; // this value approximates test-retest variability
 gCappucinoVersionString = [[[CPBundle bundleWithIdentifier:@"com.280n.Foundation"] infoDictionary] objectForKey:@"CPBundleVersion"]; // initialised in AppController
 
 
-/* switch to readable history?
+/* switch to readable history? Given up for now.
  devHistory = [];
 devHistory.push(["2022-09-02", 'increase max value of `contrastOptotypeDiameter` from 1500 to 2500']);
 devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to use them']);*/
@@ -46,6 +46,7 @@ devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to 
 /* History
    =======
 
+2023-03-25 factorisation: separate MiscLight & MiscSpace from Misc; move "existsUrl" to Misc
 2023-03-24 add "Test" to presets to make life easier for me
 2023-03-18 slight GUI layout adjustments
 2023-03-07 automatic copyright end year from versionstring in About
