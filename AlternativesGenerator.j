@@ -42,7 +42,7 @@ Generates "alternatives" (e.g. Landolt C directions) from 0 to (nAlternatives-1)
 function randomiseArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        let temp = array[i];
+        const temp = array[i];
         array[i] = array[j];
         array[j] = temp;
         // [array[i], array[j]] = [array[j], array[i]];//ES6 allows to assign 2 variables at once

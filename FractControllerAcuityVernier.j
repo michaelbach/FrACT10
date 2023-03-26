@@ -57,8 +57,7 @@ Created by Bach on 14.08.2017.
     const cnt = [Settings contrastAcuityWeber] / 100;
     for (let ix = ix0 - iSigma; ix <= ix0 + iSigma; ix++) {
         const gaussValue = Math.exp(-Math.pow(x0 - ix, 2) / sigma);
-        let grayValue = backGray - cnt * gaussValue;
-        grayValue = [MiscLight devicegrayFromLuminance: grayValue];
+        const grayValue = [MiscLight devicegrayFromLuminance: backGray - cnt * gaussValue];
         CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: grayValue alpha: 1]);
         CGContextBeginPath(cgc);
         CGContextMoveToPoint(cgc, ix, y0);
@@ -158,14 +157,14 @@ Created by Bach on 14.08.2017.
 - (CPString) composeResultString {
     const rslt = [self resultValue4Export];
     const dcs = rslt > 100 ? 0 : 1;
-    let s = "Vernier threshold" + [self rangeStatusIndicatorStringInverted: NO];
+    let s = "Vernier threshold" + [self rangeStatusIndicatorStringInverted: YESw];
     s += [Misc stringFromNumber: rslt decimals: dcs localised: YES] + " arcsec";
     return s;
 }
 
 
 - (floag) reportFromNative: (float) t {
-    return ([Misc degreeFromPixel: t] * 60.0 * 60.0);
+    return ([MiscSpace degreeFromPixel: t] * 60.0 * 60.0);
 }
 
 

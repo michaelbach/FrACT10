@@ -35,17 +35,6 @@ Created by mb on 2017-07-12.
  to make communication with some classes with do not inherit from AppController easier.
  */
 
-
-/* We don't need the below, just in case we need it in future…
- window.ondeviceorientation = function(event) {
- [setAngleAlpha: Math.round(event.alpha)]; [setAngleAlpha: Math.round(event.beta)]; [setAngleAlpha: Math.round(event.gamma)];
- }
- ScreenOrientation.addEventListener('change', function(e) { ... })
- ScreenOrientation.onchange = function(e) { ... }
- window.addEventListener("orientationchange", centerLoginBox);
- if (window.orientation == 90… */
-
-
 @implementation AppController : HierarchyController {
     @outlet CPWindow fractControllerWindow;
     @outlet CPColorWell checkContrastWeberField1, checkContrastWeberField2;

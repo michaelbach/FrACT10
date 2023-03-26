@@ -15,7 +15,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0";
-kVersionDateOfFrACT = "2023-03-25";
+kVersionDateOfFrACT = "2023-03-26";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -46,6 +46,7 @@ devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to 
 /* History
    =======
 
+2023-03-26 default gamma value now 2.0, formerly 1.8; fix regression from MiscSpace factorisation; fix inverted ">" sign in vernier overflow
 2023-03-25 factorisation: separate MiscLight & MiscSpace from Misc; move "existsUrl" to Misc
 2023-03-24 add "Test" to presets to make life easier for me
 2023-03-18 slight GUI layout adjustments
