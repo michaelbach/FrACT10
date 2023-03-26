@@ -157,7 +157,7 @@ Created by Bach on 14.08.2017.
 - (CPString) composeResultString {
     const rslt = [self resultValue4Export];
     const dcs = rslt > 100 ? 0 : 1;
-    let s = "Vernier threshold" + [self rangeStatusIndicatorStringInverted: YESw];
+    let s = "Vernier threshold" + [self rangeStatusIndicatorStringInverted: YES];
     s += [Misc stringFromNumber: rslt decimals: dcs localised: YES] + " arcsec";
     return s;
 }
