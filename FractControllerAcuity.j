@@ -1,9 +1,9 @@
 /*
-This file is part of FrACT10, a vision test battery.
-Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
-
-2020-11-09 created, class "FractControllerAcuity" inheriting from "FractController"
-*/
+ This file is part of FrACT10, a vision test battery.
+ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
+ 
+ 2020-11-09 created, class "FractControllerAcuity" inheriting from "FractController"
+ */
 
 
 @import "FractController.j"
@@ -37,13 +37,13 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
             switch ([Settings crowdingType]) {
                 case 0:  break; // should not occur here
                 case 1: // flanking bars
-                    let distance2 = 1.5 * crowdingDistance / 2;
-                    let length2 = stimStrengthInDeviceunits * 2.5;
+                    const distance2 = 1.5 * crowdingDistance / 2;
+                    const length2 = stimStrengthInDeviceunits * 2.5;
                     CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
                     [optotypes strokeVLineAtX: -distance2 y0: -length2 y1: length2];
                     [optotypes strokeVLineAtX: distance2 y0: -length2 y1: length2];
                     break;
-                case 2:    // flanking rings
+                case 2: // flanking rings
                     for (let i = -1; i <= 1; i++) { //console.info(i);
                         const tempX = i * crowdingDistance;
                         CGContextTranslateCTM(cgc,  -tempX, 0);
@@ -51,14 +51,14 @@ Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelba
                         CGContextTranslateCTM(cgc,  +tempX, 0);
                     }  break;
                 case 3:    // surounding bars
-                    distance2 = 1.5 * crowdingDistance / 2;
-                    length2 = stimStrengthInDeviceunits * 4;
+                    const distance4 = 1.5 * crowdingDistance / 2;
+                    const length4 = stimStrengthInDeviceunits * 4;
                     CGContextSetLineCap(cgc,  kCGLineCapRound);
                     CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
-                    [optotypes strokeVLineAtX: -distance2 y0: -length2 y1: length2];
-                    [optotypes strokeVLineAtX: distance2 y0: -length2 y1: length2];
-                    [optotypes strokeHLineAtX0: -length2 y: -distance2 x1: length2];
-                    [optotypes strokeHLineAtX0: -length2 y: distance2 x1: length2];
+                    [optotypes strokeVLineAtX: -distance4 y0: -length4 y1: length4];
+                    [optotypes strokeVLineAtX: distance4 y0: -length4 y1: length4];
+                    [optotypes strokeHLineAtX0: -length4 y: -distance4 x1: length4];
+                    [optotypes strokeHLineAtX0: -length4 y: distance4 x1: length4];
                     break;
                 case 4:  // surounding ring
                     CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
