@@ -263,6 +263,17 @@ Shortcut: f
                             <binding destination="450" name="value" keyPath="resultString" id="R5j-xh-4nd"/>
                         </connections>
                     </textField>
+                    <button toolTip="Contrast run using Tumbling E.  Shortcut: 3       " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aRI-1u-jl3" customClass="MDBButton">
+                        <rect key="frame" x="503" y="298" width="100" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="butCntGrating" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="IV3-56-IkQ">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="buttonDoContrastG_action:" target="450" id="S55-OS-Cwb"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <connections>
@@ -1886,7 +1897,7 @@ No money transfer involved, just for size!     </string>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button toolTip="if checked, the 12th, 18th, 24th… trial will have an “easy” optotype for motivation" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G1n-TZ-USP">
-                                            <rect key="frame" x="15" y="426" width="165" height="35"/>
+                                            <rect key="frame" x="15" y="436" width="165" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="occasional ‘easy trials’" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="8rt-0N-FfV">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1897,7 +1908,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </button>
                                         <button toolTip="Contrast polarity for the optotype" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lcc-Iq-YtQ">
-                                            <rect key="frame" x="272" y="426" width="123" height="35"/>
+                                            <rect key="frame" x="272" y="354" width="123" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Dark on light" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="W2N-2I-sCS">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1908,7 +1919,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </button>
                                         <textField toolTip="Diameter of the optotype" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q2Y-AR-KXh">
-                                            <rect key="frame" x="17" y="337" width="45" height="21"/>
+                                            <rect key="frame" x="17" y="362" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="Znx-Pa-tgb">
                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="nuG-MA-6ZM"/>
@@ -1925,9 +1936,18 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WRa-Gy-4ku">
-                                            <rect key="frame" x="68" y="338" width="114" height="16"/>
+                                            <rect key="frame" x="68" y="363" width="114" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Diameter [arcmin]" id="k8n-UU-dxq">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tmj-TY-MC1">
+                                            <rect key="frame" x="68" y="41" width="96" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Diameter [deg]" id="u25-xm-19g">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1937,6 +1957,24 @@ No money transfer involved, just for size!     </string>
                                             <rect key="frame" x="519" y="470" width="186" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Checking Contrast Calibration" id="1ks-bV-U8w">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rUq-cH-HsL">
+                                            <rect key="frame" x="146" y="124" width="86" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="— Gratings —" id="Osd-1m-d0J">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0SR-dy-Iee">
+                                            <rect key="frame" x="146" y="395" width="98" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="— Optotypes —" id="o5N-Yc-Xcv">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1961,7 +1999,7 @@ No money transfer involved, just for size!     </string>
                                             </textFieldCell>
                                         </textField>
                                         <textField toolTip="Duration the brief blue fisation star is visible." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7g6-ZC-0RB">
-                                            <rect key="frame" x="17" y="235" width="45" height="21"/>
+                                            <rect key="frame" x="17" y="305" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="7Hj-2n-DFq">
                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="rCY-X3-393"/>
@@ -1978,7 +2016,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="APZ-Gr-9ge">
-                                            <rect key="frame" x="68" y="236" width="167" height="16"/>
+                                            <rect key="frame" x="68" y="306" width="167" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Fixation mark timeout [ms]" id="Y30-RA-8mH">
                                                 <font key="font" metaFont="system"/>
@@ -1987,7 +2025,7 @@ No money transfer involved, just for size!     </string>
                                             </textFieldCell>
                                         </textField>
                                         <textField toolTip="Gamma value to correct for display non-linearity" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VtL-41-f6x">
-                                            <rect key="frame" x="17" y="133" width="45" height="21"/>
+                                            <rect key="frame" x="17" y="248" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="8S2-DM-aFk">
                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="1Ld-kJ-3lP"/>
@@ -2004,7 +2042,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jmI-Rj-0PL">
-                                            <rect key="frame" x="68" y="134" width="218" height="16"/>
+                                            <rect key="frame" x="68" y="249" width="218" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Gamma (calibration in the next tab)" id="GhE-2Z-zHS">
                                                 <font key="font" metaFont="system"/>
@@ -2013,7 +2051,7 @@ No money transfer involved, just for size!     </string>
                                             </textFieldCell>
                                         </textField>
                                         <textField toolTip="Best not change it…" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AQw-jE-a5x">
-                                            <rect key="frame" x="17" y="32" width="45" height="21"/>
+                                            <rect key="frame" x="17" y="192" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="B2m-gD-gKI">
                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="pup-Xh-JKp"/>
@@ -2030,7 +2068,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Syd-WZ-yVY">
-                                            <rect key="frame" x="68" y="33" width="288" height="16"/>
+                                            <rect key="frame" x="68" y="193" width="288" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Maximal logCSWeber (careful when changing!)" id="mUy-h3-BZW">
                                                 <font key="font" metaFont="system"/>
@@ -2038,8 +2076,17 @@ No money transfer involved, just for size!     </string>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yqh-UQ-Cwo">
+                                            <rect key="frame" x="80" y="90" width="288" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Grating cyc/deg" id="V1j-MO-9PP">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n1N-DA-kHl">
-                                            <rect key="frame" x="272" y="228" width="162" height="35"/>
+                                            <rect key="frame" x="272" y="298" width="162" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">If unchecked, the raw=psychometric threshold is caculated. If checked (default), it's descending-corrected, thus reflecting DIN/ISO values.</string>
                                             <buttonCell key="cell" type="check" title="Show fixation mark " bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="a9c-xr-Q7f">
@@ -2157,6 +2204,52 @@ No money transfer involved, just for size!     </string>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                        </textField>
+                                        <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="FfY-NG-DT6">
+                                            <rect key="frame" x="14" y="153" width="397" height="5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        </box>
+                                        <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="svH-Hh-Wf7">
+                                            <rect key="frame" x="16" y="88" width="64" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <string key="toolTip">Acuity can esaily be better than 0.3 LogMAR, but this may irritate. So it can be clipped for display, export values are left unchanged.</string>
+                                            <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="e3j-aj-9zz">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <objectValues>
+                                                    <string>1.0</string>
+                                                    <string>1.3</string>
+                                                    <string>3.0</string>
+                                                    <string>5.0</string>
+                                                    <string>6.0</string>
+                                                    <string>7.0</string>
+                                                    <string>9.0</string>
+                                                    <string>11.0</string>
+                                                    <string>13.0</string>
+                                                    <string>15.0</string>
+                                                    <string>18.0</string>
+                                                </objectValues>
+                                            </comboBoxCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="value" keyPath="values.gratingCPD" id="r0n-C5-ZhW"/>
+                                            </connections>
+                                        </comboBox>
+                                        <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Mfm-5P-fbz">
+                                            <rect key="frame" x="17" y="423" width="397" height="5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        </box>
+                                        <textField toolTip="Diameter of the circular grating patch." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CU5-JY-4Mh">
+                                            <rect key="frame" x="17" y="40" width="45" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" id="W8N-Rb-Zmn">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="value" keyPath="values.gratingDiaInDeg" id="bVY-CZ-Ii1"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                 </view>
@@ -2313,6 +2406,7 @@ CQ
                 <outlet property="aboutWebView2" destination="nO5-T6-Njd" id="AgB-qE-OG6"/>
                 <outlet property="buttCntC" destination="teG-PN-Gq7" id="Vvz-oi-F4f"/>
                 <outlet property="buttCntE" destination="V0h-oh-O7H" id="mPS-2H-434"/>
+                <outlet property="buttCntG" destination="aRI-1u-jl3" id="yJu-4E-H1I"/>
                 <outlet property="buttCntLett" destination="rNE-r4-ESi" id="lAC-91-RlZ"/>
                 <outlet property="buttonAcuityC" destination="sWr-KV-CRJ" id="eJP-Al-Hhm"/>
                 <outlet property="buttonAcuityE" destination="Phl-6Z-YpU" id="obG-lD-sX0"/>
@@ -4115,6 +4209,7 @@ Red: not good to assess normal vision; green: ok.</string>
         <image name="FrACT_icon-390" width="390" height="390"/>
         <image name="butCntC" width="1160" height="772"/>
         <image name="butCntE" width="970" height="652"/>
+        <image name="butCntGrating" width="83" height="83"/>
         <image name="butCntLett" width="1097" height="658"/>
         <image name="buttonAcuityC" width="203.75999450683594" height="119.76000213623047"/>
         <image name="buttonAcuityE" width="158.8800048828125" height="101.76000213623047"/>

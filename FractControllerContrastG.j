@@ -20,13 +20,13 @@
 }
 - (void) gratingSineWithPeriodInPx:  (float) periodInPx direction: (int) theDirection {
     //console.info("optotypes>gratingSineWithPeriodInPx: ", periodInPx, theDirection);
-    let contrastMichelson = 0.3;
     const l2 = 2 * Math.round(0.5 * 1.42 * Math.max(viewWidth2, viewHeight2));
     const trigFactor = 1.0 / periodInPx * 180 / Math.PI;
     CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180);
     CGContextSetLineWidth(cgc, 1.3);
     let l;
     for (let ix = -l2; ix <= l2; ++ix) {
+        const contrastMichelson = [MiscLight contrastMichelsonFromWeberPercent: [MiscLight contrastWeberPercentFromLogCSWeber: stimStrengthInDeviceunits]] / 100;
         l = 0.5 + 0.5 * contrastMichelson * Math.sin((ix % periodInPx) * trigFactor);
         l = [MiscLight devicegrayFromLuminance: l];
         CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: l alpha: 1]);
@@ -34,9 +34,8 @@
         CGContextMoveToPoint(cgc, ix, -l2);  CGContextAddLineToPoint(cgc, ix, l2);
         CGContextStrokePath(cgc);
     }
-    //let r = 0.5 * [MiscSpace pixelFromDegree: [Settings gratingDiaInDeg]];
-    let r = 0.5 * 200;
-    let w = 4;
+    const r = 0.5 * [MiscSpace pixelFromDegree: [Settings gratingDiaInDeg]];
+    const w = r / 20;
     l = [MiscLight devicegrayFromLuminance: 0.5];
     [self annulusWithRadius: r - 2 * w width: w grey: l alpha: 0.125];
     [self annulusWithRadius: r - w width: w grey: l alpha: 0.25];
@@ -56,8 +55,8 @@
             [self drawFixMark];
             break;
         case kStateDrawFore2:
-            let period = 2 * Math.round(optotypeSizeInPix);
-            [self gratingSineWithPeriodInPx: 4*period direction: [alternativesGenerator currentAlternative]];
+            let period = [MiscSpace pixelFromDegree: 1.0 / [Settings gratingCPD]];
+            [self gratingSineWithPeriodInPx: period direction: [alternativesGenerator currentAlternative]];
             [self drawFixMark3];
             stimStrengthInDeviceunits = [optotypes getCurrentContrastLogCSWeber];
             trialInfoString = [self contrastComposeTrialInfoString];// compose here after colors are set

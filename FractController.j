@@ -368,6 +368,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         case kTestContrastLett: return "Contrast_Letters";
         case kTestContrastC: return "Contrast_LandoltC";
         case kTestContrastE: return "Contrast_TumblingE";
+        case kTestContrastG: return "Contrast_Grating";
         case kTestAcuityLineByLine: return "Acuity_LineByLine";
     }
     return "NOT ASSIGNED";

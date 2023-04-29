@@ -23,13 +23,13 @@
 /**
  Michelson ←→ Weber contrast.
  both contrasts are defined on a -100…100 scale
- Weber is modified so it is also point-symmetric to zero like Michelson
+ Weber is modified so it is also point-symmetric around zero like Michelson
  */
 + (float) contrastMichelsonPercentFromL1: (float) l1 l2: (float) l2 {
     return -(l1 - l2) / (l1 + l2) * 100;
 }
 /**
- Transform Michelson → Weber
+ Transform Michelson → Weber, in & out in %
  */
 + (float) contrastWeberFromMichelsonPercent: (float) inMichelsonPercent {
     let inMichelson = inMichelsonPercent /= 100,  outWeber;
