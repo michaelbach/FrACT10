@@ -18,6 +18,7 @@ Created by mb on 2017-07-12.
 @import "FractControllerContrastLett.j"
 @import "FractControllerContrastC.j"
 @import "FractControllerContrastE.j"
+@import "FractControllerContrastG.j"
 @import "FractControllerAcuityLineByLine.j"
 @import "RewardsController.j"
 @import "TAOController.j"
@@ -141,7 +142,7 @@ Created by mb on 2017-07-12.
     const allButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttonAcuityLineByLine];
     for (const b of allButtons)  [Misc makeFrameSquareFromWidth: b];
 
-    allTestControllers = [FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerAcuityLineByLine];
+    allTestControllers = [FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine];
 
     allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelAcuityLineByLine, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel, creditcardPanel];
     for (const p of allPanels)  [p setFrameOrigin: CGPointMake(0, 0)];
@@ -240,7 +241,7 @@ Created by mb on 2017-07-12.
 /**
  The above prerequisites were met, so let's run the test specified in the class-global `currentTestID`
  */
-- (void) runFractController2 { //console.info("AppController>runFractController2  ");
+- (void) runFractController2 { //   console.info("AppController>runFractController2  ");
     [self closeAllPanels];
     if ([Settings responseInfoAtStart]) {
         switch (currentTestID) {
@@ -261,6 +262,8 @@ Created by mb on 2017-07-12.
             case kTestContrastC:
                 [responseinfoPanelContrastC makeKeyAndOrderFront: self];  break;
             case kTestContrastE:
+                [responseinfoPanelContrastE makeKeyAndOrderFront: self];  break;
+            case kTestContrastG:
                 [responseinfoPanelContrastE makeKeyAndOrderFront: self];  break;
             case kTestAcuityLineByLine:
                 [responseinfoPanelAcuityLineByLine makeKeyAndOrderFront: self];  break;
@@ -366,6 +369,8 @@ Created by mb on 2017-07-12.
             [self buttonDoContrastC_action: nil];  break;
         case "3":
             [self buttonDoContrastE_action: nil];  break;
+        case "G":
+            [self buttonDoContrastG_action: nil];  break;
         case "4":
             [self buttonDoAcuityLineByLine_action: nil];  break;
         case "5" :
@@ -438,8 +443,11 @@ Created by mb on 2017-07-12.
 - (IBAction) buttonDoContrastC_action: (id) sender { //console.info("AppController>buttonDoContrastC_action");
     currentTestID = kTestContrastC;    [self runFractController];
 }
-- (IBAction) buttonDoContrastE_action: (id) sender { //console.info("AppController>buttonDoContrastC_action");
+- (IBAction) buttonDoContrastE_action: (id) sender { //console.info("AppController>buttonDoContrastE_action");
     currentTestID = kTestContrastE;    [self runFractController];
+}
+- (IBAction) buttonDoContrastG_action: (id) sender { //console.info("AppController>buttonDoContrastG_action");
+    currentTestID = kTestContrastG;    [self runFractController];
 }
 - (IBAction) buttonDoAcuityLineByLine_action: (id) sender { //console.info("AppController>buttonDoAcuityLineByLine_action");
     currentTestID = kTestAcuityLineByLine;    [self runFractController];

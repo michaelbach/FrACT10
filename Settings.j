@@ -153,6 +153,10 @@ Created by mb on July 15, 2015.
     [self setContrastTimeoutFixmark: [self chckFlt: [self contrastTimeoutFixmark] def: 500 min: 20 max: 5000 set: set]];
     [self setContrastMaxLogCSWeber: [self chckFlt: [self contrastMaxLogCSWeber] def: 2.4 min: 1.5 max: 3 set: set]];
     
+    // Grating stuff
+    [self setGratingCPD: [self chckFlt: [self gratingCPD] def: 2.0 min: 1.0 max: 18 set: set]];
+    [self setGratingDiaInDeg: [self chckFlt: [self gratingDiaInDeg] def: 10.0 min: 1.0 max: 50 set: set]];
+    
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -775,6 +779,22 @@ Created by mb on July 15, 2015.
 }
 + (void) setGammaValue: (float) value {
     [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "gammaValue"];
+}
+
+
+// Grating stuff
++ (float) gratingCPD {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "gratingCPD"];
+}
++ (void) setGratingCPD: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "gratingCPD"];
+}
+
++ (float) gratingDiaInDeg {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "gratingDiaInDeg"];
+}
++ (void) setGratingDiaInDeg: (float) value {
+    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "gratingDiaInDeg"];
 }
 
 
