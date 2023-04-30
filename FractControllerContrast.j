@@ -163,8 +163,6 @@ basic flow:
     s += tab + "nTrials" + tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
     s += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
     s += tab + "crowding" + tab + 0; // does not apply, but let's not NaN this
-    //s += tab + "XX" + tab + YY;
-    //s += crlf; //console.info("FractController>contrastComposeExportString: ", s);
     return s;
 }
 

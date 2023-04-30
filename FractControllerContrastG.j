@@ -29,15 +29,17 @@
     const trigFactor = 1.0 / periodInPx * 2 * Math.PI; // calculate only once
     CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180); // rotato to desired angle
     CGContextSetLineWidth(cgc, 1.3);
-    let l, lError = 0;
+    let l, lError = 0, lDiscrete;
     for (let ix = -l2; ix <= l2; ++ix) {
         l = 0.5 + 0.5 * contrastMichelson * Math.sin((ix % periodInPx) * trigFactor);
         l = [MiscLight devicegrayFromLuminance: l]; // apply gamma correction
-        l = lError + 255 * l; // begin error diffusion
-        let lDiscrete = Math.round(l); // discrete values 0…255
-        lError = l - lDiscrete; // keep residual (what was lost by rounding) for next time
-        lDiscrete = lDiscrete / 255; // remap to 0…1
-        //console.info(l, lError)
+        lDiscrete = l;
+        if ([Settings gratingUseErrorDiffusion]) { console.info("gratingUseErrorDiffusion");
+            l = lError + 255 * l; // apply previous residual
+            lDiscrete = Math.round(l); // discrete values 0…255
+            lError = l - lDiscrete; // keep residual (what was lost by rounding) for next time
+            lDiscrete = lDiscrete / 255; // remap to 0…1
+        }
         CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: lDiscrete alpha: 1]);
         CGContextBeginPath(cgc);
         CGContextMoveToPoint(cgc, ix, -l2);  CGContextAddLineToPoint(cgc, ix, l2);
@@ -147,7 +149,6 @@
     s += tab + "nTrials" + tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
     s += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
     s += tab + "crowding" + tab + 0; // does not apply, but let's not NaN this
-    //s += crlf; //console.info("FractController>contrastComposeExportString: ", s);
     return s;
 }
 

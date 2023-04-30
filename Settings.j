@@ -156,6 +156,7 @@ Created by mb on July 15, 2015.
     // Grating stuff
     [self setGratingCPD: [self chckFlt: [self gratingCPD] def: 2.0 min: 1.0 max: 18 set: set]];
     [self setGratingDiaInDeg: [self chckFlt: [self gratingDiaInDeg] def: 10.0 min: 1.0 max: 50 set: set]];
+    [self setGratingUseErrorDiffusion: [self chckBool: [self gratingUseErrorDiffusion] def: YES set: set]];
     
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
@@ -795,6 +796,13 @@ Created by mb on July 15, 2015.
 }
 + (void) setGratingDiaInDeg: (float) value {
     [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "gratingDiaInDeg"];
+}
+
++ (BOOL) gratingUseErrorDiffusion {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "gratingUseErrorDiffusion"];
+}
++ (void) setGratingUseErrorDiffusion: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "gratingUseErrorDiffusion"];
 }
 
 

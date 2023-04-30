@@ -215,8 +215,6 @@
     s += tab + "nTrials" + tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
     s += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
     s += tab + "crowding" + tab + [Settings crowdingType];
-    //s += tab + "XX" + tab + YY;
-    //s += crlf; //console.info("FractController>date: ", s);
     return s;
 }
 
