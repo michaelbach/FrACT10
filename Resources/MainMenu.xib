@@ -2436,6 +2436,7 @@ CQ
                 <outlet property="responseinfoPanelAcuityVernier" destination="aQE-yg-pvo" id="ujy-mj-Kc7"/>
                 <outlet property="responseinfoPanelContrastC" destination="Tf3-6J-w5e" id="Y68-5r-F1P"/>
                 <outlet property="responseinfoPanelContrastE" destination="XVY-wU-ZJF" id="4nI-Wi-dhf"/>
+                <outlet property="responseinfoPanelContrastG" destination="6tH-lc-nrw" id="hdZ-lu-dgD"/>
                 <outlet property="responseinfoPanelContrastLett" destination="FJ1-4N-r6U" id="Veo-hD-u3i"/>
                 <outlet property="resultDetailsPanel" destination="4qQ-tv-ydF" id="0nl-o2-I67"/>
                 <outlet property="settingsPanel" destination="MF5-y3-Ol0" id="6RV-5t-pXs"/>
@@ -3337,11 +3338,6 @@ Type 55, or &lt;esc&gt; to abort the run.</string>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <imageView toolTip="When 4 alternatives are selected, the keypad (see above) can be used, but also the cursor keys." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fHp-1d-RpN">
-                        <rect key="frame" x="512" y="308" width="181" height="201"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap4" id="YOw-PI-MNZ"/>
-                    </imageView>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ahk-gy-psf">
                         <rect key="frame" x="28" y="136" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -3354,6 +3350,104 @@ Type 55, or &lt;esc&gt; to abort the run.</string>
                             <outlet property="nextKeyView" destination="WCS-rL-YCa" id="rX6-7r-Ck5"/>
                         </connections>
                     </button>
+                    <imageView toolTip="When 4 alternatives are selected, the keypad (see above) can be used, but also the cursor keys." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fHp-1d-RpN">
+                        <rect key="frame" x="514" y="329" width="181" height="201"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap4" id="YOw-PI-MNZ"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="131" y="2168"/>
+        </window>
+        <window title="Landolt C contrast assessment – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Tf3-6J-w5e" userLabel="responseinfoPanelContrastC" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
+            <rect key="contentRect" x="167" y="107" width="800" height="600"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
+            <view key="contentView" id="eXA-SD-gZy">
+                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wuy-LM-xFv">
+                        <rect key="frame" x="20" y="250" width="383" height="290"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="IVT-G0-6uZ">
+                            <font key="font" metaFont="system" size="16"/>
+                            <string key="title">
+Rings with gaps will appear, where is the gap?
+
+Use the number keys on number pad of your keyboard or an external numeric keypad.
+
+[In a pinch, you can use the normal numeric keys if you memorize their arrangement.]
+
+On touch devices, use the buttons around the screen (may need to enable).
+
+
+If you can't recognise the direction of the gap, use your best guess.
+
+
+Type 55, or &lt;esc&gt; to abort the run.
+</string>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bPc-J3-NVg">
+                        <rect key="frame" x="702" y="13" width="84" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HbQ-9D-Bw7">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="runFractController2_actionOK:" target="450" id="BDc-mZ-vHh"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kzv-eP-sWX">
+                        <rect key="frame" x="618" y="13" width="84" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nLv-i7-VUJ">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="runFractController2_actionCancel:" target="450" id="YvV-Jx-fN0"/>
+                        </connections>
+                    </button>
+                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J4R-GT-rGS">
+                        <rect key="frame" x="18" y="165" width="342" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Enable Touch Controls (necessary without keyboard)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="FiF-L1-asW">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTouchControls" id="B0h-EH-kfY"/>
+                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="q4N-BW-AQd"/>
+                        </connections>
+                    </button>
+                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vhj-Uu-joO">
+                        <rect key="frame" x="18" y="103" width="491" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="91b-Qr-OG1">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.responseInfoAtStart" id="tlf-xa-5WV"/>
+                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="y3y-cH-5le"/>
+                        </connections>
+                    </button>
+                    <imageView toolTip="For a Landolt C, when 8 alternatives are selected, the response keys correspond &quot;geographically&quot; to the position of the gap." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EZp-il-3C3">
+                        <rect key="frame" x="515" y="305" width="180" height="180"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap8" id="iy7-db-b7L"/>
+                    </imageView>
                 </subviews>
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
@@ -3418,11 +3512,6 @@ Gw
                             <action selector="runFractController2_actionCancel:" target="450" id="6hQ-3P-KXt"/>
                         </connections>
                     </button>
-                    <imageView toolTip="For a Landolt C, when 8 alternatives are selected, the response keys correspond &quot;geographically&quot; to the position of the gap." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2HV-bd-tDr">
-                        <rect key="frame" x="516" y="360" width="180" height="180"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap8" id="HQF-UM-Wbw"/>
-                    </imageView>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GQg-6w-eLT">
                         <rect key="frame" x="18" y="165" width="342" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -3447,6 +3536,11 @@ Gw
                             <outlet property="nextKeyView" destination="WCS-rL-YCa" id="jed-LZ-G7t"/>
                         </connections>
                     </button>
+                    <imageView toolTip="For a Landolt C, when 8 alternatives are selected, the response keys correspond &quot;geographically&quot; to the position of the gap." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2HV-bd-tDr">
+                        <rect key="frame" x="515" y="305" width="180" height="180"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap8" id="HQF-UM-Wbw"/>
+                    </imageView>
                 </subviews>
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
@@ -3490,51 +3584,12 @@ Gw
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tLX-Wp-TQ9">
                         <rect key="frame" x="30" y="206" width="383" height="329"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="4ks-UH-FmP">
+                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="z" allowsEditingTextAttributes="YES" id="4ks-UH-FmP">
                             <font key="font" metaFont="system" size="16"/>
-                            <string key="title">
-“Tumbling Es“ will appear, how are they oriented?
-
-Use the cursor keys, or on a keypad:
-→ = 6,  ↑ = 8,  ← = 4,  ↓ = 2.
-
-On touch devices, use the buttons around the screen (may need to enable).
-
-
-If you can't recognise the orientation, use your best guess.
-
-
-Type 55, or &lt;esc&gt; to abort the run.
-</string>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <imageView toolTip="When 4 alternatives are selected, the keypad (see above) can be used, but also the cursor keys." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dkr-U6-QPx">
-                        <rect key="frame" x="584" y="314" width="37" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="optotypeE270" id="EU7-wx-Uwf"/>
-                    </imageView>
-                    <imageView toolTip="When 4 alternatives are selected, the keypad (see above) can be used, but also the cursor keys." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BpY-da-DNo">
-                        <rect key="frame" x="692" y="375" width="37" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="optotypeE000" id="peX-fo-v20"/>
-                    </imageView>
-                    <imageView toolTip="When 4 alternatives are selected, the keypad (see above) can be used, but also the cursor keys." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GhK-AG-UAZ">
-                        <rect key="frame" x="584" y="474" width="37" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="optotypeE090" id="8Sp-eQ-HE2"/>
-                    </imageView>
-                    <imageView toolTip="When 4 alternatives are selected, the keypad (see above) can be used, but also the cursor keys." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jkq-qm-UCy">
-                        <rect key="frame" x="484" y="375" width="37" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="optotypeE180" id="EK6-XF-1tN"/>
-                    </imageView>
-                    <imageView toolTip="When 4 alternatives are selected, the keypad (see above) can be used, but also the cursor keys." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y3e-YF-qdK">
-                        <rect key="frame" x="540" y="341" width="128" height="143"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap4keysOnly" id="ofJ-Lh-BMN"/>
-                    </imageView>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tfq-df-vdX">
                         <rect key="frame" x="28" y="146" width="342" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -3559,24 +3614,6 @@ Type 55, or &lt;esc&gt; to abort the run.
                             <outlet property="nextKeyView" destination="WCS-rL-YCa" id="xze-Et-a4O"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eWk-ni-jvA">
-                        <rect key="frame" x="596" y="279" width="12" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="2" id="99Y-JS-gp7">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gVq-un-aUT">
-                        <rect key="frame" x="596" y="519" width="12" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="8" id="Ta6-Zp-bXQ">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W6s-5N-Jqz">
                         <rect key="frame" x="746" y="382" width="12" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -3586,8 +3623,51 @@ Type 55, or &lt;esc&gt; to abort the run.
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <imageView toolTip="When 4 alternatives are selected, the keypad (see above) can be used, but also the cursor keys." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dkr-U6-QPx">
+                        <rect key="frame" x="581" y="291" width="37" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="optotypeE270" id="EU7-wx-Uwf"/>
+                    </imageView>
+                    <imageView toolTip="When 4 alternatives are selected, the keypad (see above) can be used, but also the cursor keys." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BpY-da-DNo">
+                        <rect key="frame" x="689" y="352" width="37" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="optotypeE000" id="peX-fo-v20"/>
+                    </imageView>
+                    <imageView toolTip="When 4 alternatives are selected, the keypad (see above) can be used, but also the cursor keys." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GhK-AG-UAZ">
+                        <rect key="frame" x="581" y="451" width="37" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="optotypeE090" id="8Sp-eQ-HE2"/>
+                    </imageView>
+                    <imageView toolTip="When 4 alternatives are selected, the keypad (see above) can be used, but also the cursor keys." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jkq-qm-UCy">
+                        <rect key="frame" x="481" y="352" width="37" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="optotypeE180" id="EK6-XF-1tN"/>
+                    </imageView>
+                    <imageView toolTip="When 4 alternatives are selected, the keypad (see above) can be used, but also the cursor keys." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y3e-YF-qdK">
+                        <rect key="frame" x="537" y="318" width="128" height="143"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap4keysOnly" id="ofJ-Lh-BMN"/>
+                    </imageView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eWk-ni-jvA">
+                        <rect key="frame" x="593" y="256" width="12" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="2" id="99Y-JS-gp7">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gVq-un-aUT">
+                        <rect key="frame" x="593" y="496" width="12" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="8" id="Ta6-Zp-bXQ">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MVU-wT-P0T">
-                        <rect key="frame" x="451" y="382" width="12" height="16"/>
+                        <rect key="frame" x="448" y="359" width="12" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="4" id="3oQ-oI-h9I">
                             <font key="font" metaFont="system"/>
@@ -3768,6 +3848,95 @@ Gw
             </view>
             <point key="canvasLocation" x="131" y="2168"/>
         </window>
+        <window title="Landolt C contrast assessment – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="6tH-lc-nrw" userLabel="responseinfoPanelContrastG" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
+            <rect key="contentRect" x="167" y="107" width="800" height="600"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
+            <view key="contentView" id="BkM-Ff-taW">
+                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sfc-nb-zrj">
+                        <rect key="frame" x="20" y="250" width="383" height="290"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="Cyx-sR-ukJ">
+                            <font key="font" metaFont="system" size="16"/>
+                            <string key="title">
+Gratings will appear, how are they oriented?
+
+On touch devices, use the buttons around the screen (may need to enable).
+
+
+If you can't recognise the orientation, use your best guess.
+
+
+Type 55, or &lt;esc&gt; to abort the run.
+</string>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KhA-BP-3z3">
+                        <rect key="frame" x="702" y="13" width="84" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FMV-8N-luv">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="runFractController2_actionOK:" target="450" id="MDj-P2-frP"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upz-ex-1aD">
+                        <rect key="frame" x="618" y="13" width="84" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HlW-da-d5x">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="runFractController2_actionCancel:" target="450" id="uHw-e9-bH1"/>
+                        </connections>
+                    </button>
+                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aay-Bt-VWX">
+                        <rect key="frame" x="18" y="165" width="342" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Enable Touch Controls (necessary without keyboard)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yPT-8o-jkn">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTouchControls" id="xVY-GT-GIr"/>
+                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="klc-JP-a2q"/>
+                        </connections>
+                    </button>
+                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ypf-xX-C6S">
+                        <rect key="frame" x="18" y="103" width="491" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="gBy-B7-bWW">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.responseInfoAtStart" id="hEm-f1-euN"/>
+                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="dP3-7V-TvQ"/>
+                        </connections>
+                    </button>
+                    <imageView toolTip="For a Landolt C, when 8 alternatives are selected, the response keys correspond &quot;geographically&quot; to the position of the gap." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Qv-0S-pbh">
+                        <rect key="frame" x="483" y="284" width="242" height="221"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap8gratings" id="qYm-mF-bxW"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="131" y="2168"/>
+        </window>
         <window title="Letter contrast assessment – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="FJ1-4N-r6U" userLabel="responseinfoPanelContrastLett" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
@@ -3848,99 +4017,6 @@ Gw
                         <connections>
                             <binding destination="izh-pU-csC" name="value" keyPath="values.responseInfoAtStart" id="Nxm-TX-xKe"/>
                             <outlet property="nextKeyView" destination="WCS-rL-YCa" id="hnX-nN-X3Q"/>
-                        </connections>
-                    </button>
-                </subviews>
-            </view>
-            <point key="canvasLocation" x="131" y="2168"/>
-        </window>
-        <window title="Landolt C contrast assessment – How to operate the test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Tf3-6J-w5e" userLabel="responseinfoPanelContrastC" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
-            <rect key="contentRect" x="167" y="107" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
-            <view key="contentView" id="eXA-SD-gZy">
-                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wuy-LM-xFv">
-                        <rect key="frame" x="20" y="250" width="383" height="290"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="IVT-G0-6uZ">
-                            <font key="font" metaFont="system" size="16"/>
-                            <string key="title">
-Rings with gaps will appear, where is the gap?
-
-Use the number keys on number pad of your keyboard or an external numeric keypad.
-
-[In a pinch, you can use the normal numeric keys if you memorize their arrangement.]
-
-On touch devices, use the buttons around the screen (may need to enable).
-
-
-If you can't recognise the direction of the gap, use your best guess.
-
-
-Type 55, or &lt;esc&gt; to abort the run.
-</string>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bPc-J3-NVg">
-                        <rect key="frame" x="702" y="13" width="84" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HbQ-9D-Bw7">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="runFractController2_actionOK:" target="450" id="BDc-mZ-vHh"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kzv-eP-sWX">
-                        <rect key="frame" x="618" y="13" width="84" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nLv-i7-VUJ">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="runFractController2_actionCancel:" target="450" id="YvV-Jx-fN0"/>
-                        </connections>
-                    </button>
-                    <imageView toolTip="For a Landolt C, when 8 alternatives are selected, the response keys correspond &quot;geographically&quot; to the position of the gap." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EZp-il-3C3">
-                        <rect key="frame" x="516" y="360" width="180" height="180"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap8" id="iy7-db-b7L"/>
-                    </imageView>
-                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J4R-GT-rGS">
-                        <rect key="frame" x="18" y="165" width="342" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Enable Touch Controls (necessary without keyboard)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="FiF-L1-asW">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTouchControls" id="B0h-EH-kfY"/>
-                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="q4N-BW-AQd"/>
-                        </connections>
-                    </button>
-                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vhj-Uu-joO">
-                        <rect key="frame" x="18" y="103" width="491" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Always show operating info at start of each run (the dialog you are looking at)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="91b-Qr-OG1">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <binding destination="izh-pU-csC" name="value" keyPath="values.responseInfoAtStart" id="tlf-xa-5WV"/>
-                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="y3y-cH-5le"/>
                         </connections>
                     </button>
                 </subviews>
@@ -4224,6 +4300,7 @@ Red: not good to assess normal vision; green: ok.</string>
         <image name="keyMap4" width="533" height="420"/>
         <image name="keyMap4keysOnly" width="324" height="214"/>
         <image name="keyMap8" width="554" height="543"/>
+        <image name="keyMap8gratings" width="471" height="463"/>
         <image name="optotypeE000" width="51.840000152587891" height="51.599998474121094"/>
         <image name="optotypeE090" width="51.599998474121094" height="51.840000152587891"/>
         <image name="optotypeE180" width="51.840000152587891" height="51.599998474121094"/>
