@@ -15,7 +15,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0";
-kVersionDateOfFrACT = "2023-05-01";
+kVersionDateOfFrACT = "2023-05-02";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -46,6 +46,7 @@ devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to 
 /* History
    =======
 
+2023-05-02 simplify TrialHistoryController value entries, improve some names concerned with contrast
 2023-04-30 error diffusion for contrast grating optional
 2023-04-30 contrast grating looking good
 2023-04-22 fix crashing bug with crowding "surounding bars" introduced by "modernising" Javascript

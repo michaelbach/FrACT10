@@ -15,7 +15,7 @@ var ENV = process.env,
     app = CAPPUCCINO.Jake.applicationtask.app,
     configuration = ENV["CONFIG"] || ENV["CONFIGURATION"] || ENV["c"] || "Debug",
     OS = require("os"),
-    projectName = "webApp";
+    projectName = "capp";
 
 var buildDir = path.resolve(ENV["BUILD_PATH"] || ENV["CAPP_BUILD"] || "Build");
 
@@ -29,12 +29,12 @@ app (projectName, function(task)
     task.setBuildIntermediatesPath(path.join(buildDir, "HelloWorld.build", configuration));
     task.setBuildPath(path.join(buildDir, configuration));
 
-    task.setProductName("webApp");
+    task.setProductName("capp");
     task.setIdentifier("de.michaelbach.FrACT10");
     task.setVersion("1.0");
     task.setAuthor("michaelbach.de");
     task.setEmail("mike @nospam@ michaelbach.de");
-    task.setSummary("webApp");
+    task.setSummary("capp");
     task.setSources(new FileList("**/*.j").exclude(path.join("Build", "**")).exclude(path.join("Frameworks", "Source", "**")));
     task.setResources(new FileList("Resources/**"));
     task.setIndexFilePath("index.html");

@@ -175,7 +175,7 @@ Created by mb on July 15, 2015.
 
 // contrast in %. 100%: background fully white, foreground fully dark. -100%: inverted
 + (void) calculateAcuityForeBackColorsFromContrast { //console.info("Settings>calculateAcuityForeBackColorsFromContrast");
-    const cnt = [MiscLight contrastMichelsonFromWeberPercent: [self contrastAcuityWeber]];
+    const cnt = [MiscLight contrastMichelsonPercentFromWeberPercent: [self contrastAcuityWeber]];
 
     let temp = [MiscLight lowerLuminanceFromContrastMilsn: cnt];  temp = [MiscLight devicegrayFromLuminance: temp];
     [self setAcuityForeColor: [CPColor colorWithWhite: temp alpha: 1]];

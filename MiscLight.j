@@ -46,7 +46,7 @@
 /**
  And the inverse
  */
-+ (float) contrastMichelsonFromWeberPercent: (float) inWeberPercent {
++ (float) contrastMichelsonPercentFromWeberPercent: (float) inWeberPercent {
     const inWeber = inWeberPercent /= 100;
     const outMichelson = inWeber / (2 - inWeber);
     return outMichelson * 100;
@@ -81,7 +81,7 @@
 + (void) testContrastConversion {
     for (let i = -100; i <= 100; i += 10) {
         const w = [MiscLight contrastWeberFromMichelsonPercent: i];
-        console.info("contrastM: ", i, ", W: ", w, ", M: ", [MiscLight contrastMichelsonFromWeberPercent: w]);
+        console.info("contrastM: ", i, ", W: ", w, ", M: ", [MiscLight contrastMichelsonPercentFromWeberPercent: w]);
     }
 }
 
@@ -115,7 +115,7 @@
 
 + (float) lowerLuminanceFromContrastLogCSWeber: (float) logCSW {
     const weberPercent = [MiscLight contrastWeberPercentFromLogCSWeber: logCSW];
-    const michelson = [self contrastMichelsonFromWeberPercent: weberPercent];
+    const michelson = [self contrastMichelsonPercentFromWeberPercent: weberPercent];
     return [self lowerLuminanceFromContrastMilsn: michelson];
 }
 /**
@@ -123,7 +123,7 @@
  */
 + (float) upperLuminanceFromContrastLogCSWeber: (float) logCSW {
     const weberPercent = [MiscLight contrastWeberPercentFromLogCSWeber: logCSW];
-    const michelson = [self contrastMichelsonFromWeberPercent: weberPercent];
+    const michelson = [self contrastMichelsonPercentFromWeberPercent: weberPercent];
     return [self upperLuminanceFromContrastMilsn: michelson];
 }
 

@@ -69,21 +69,20 @@ Created by Bach on 2020-09-02
 }
 
 
-- (void) runStart { //console.info("FractControllerContrastLett>runStart");
+- (void) runStart { //console.info("FractControllerContrast>runStart");
     [super runStart];
     [self setCurrentTestResultUnit: "logCSWeber"];
 }
 
 
 // this manages stuff after the optotypes have been drawn
-- (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractControllerContrastLett>drawStimulusInRect");
-    [trialHistoryController setValue: [Misc stringFromNumber: stimStrengthInDeviceunits decimals: 2 localised: YES]];
-
+- (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractControllerContrast>drawStimulusInRect");
+    [trialHistoryController setValue: stimStrengthInDeviceunits ];
     [super drawStimulusInRect: dirtyRect];
 }
 
 
-- (void) runEnd { //console.info("FractControllerContrastLett>runEnd");
+- (void) runEnd { //console.info("FractControllerContrast>runEnd");
     if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {
@@ -105,7 +104,7 @@ basic flow:
  
 
 // contrast: 0.1 … 100, thresholder: 0 … 1
-// deviceUnits are in logCSWeber
+// deviceUnits are in logCSWeber for all contrast tests; for gratings that is converted to Michelson%
 // logCSW: 2 … 0, thresholder: 0 … 1 */
 - (float) stimDeviceunitsFromThresholderunits: (float) thresholderunit { //console.info("FractControllerAcuityC>stimDeviceunitsFromThresholderunits");
     const logCSWMaximal = [Settings contrastMaxLogCSWeber];

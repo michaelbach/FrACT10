@@ -26,8 +26,7 @@
 
 // this manages stuff after the optotypes have been drawn, e.g. crowding
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
-    const temp = [MiscSpace logMARfromDecVA: [MiscSpace decVAFromGapPixels: stimStrengthInDeviceunits]];
-    [trialHistoryController setValue: [Misc stringFromNumber: temp decimals: 3 localised: NO]];
+    [trialHistoryController setValue: [MiscSpace logMARfromDecVA: [MiscSpace decVAFromGapPixels: stimStrengthInDeviceunits]]];
     if ([Settings crowdingType] > 0) {
         if (currentTestID != kTestIDVernier) { // don't do crowding with Vernier etc.
             CGContextSaveGState(cgc);

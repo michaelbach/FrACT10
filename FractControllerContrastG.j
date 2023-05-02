@@ -10,12 +10,12 @@
 
 @import "FractControllerContrast.j"
 @implementation FractControllerContrastG: FractControllerContrast {
-    float contrastMichelson;
+    float contrastMichelsonPercent;
 }
 
 
-- (float) gratingContrastMichelsonFromDeviceunits: (float) deviceUnits {
-    return [MiscLight contrastMichelsonFromWeberPercent: [MiscLight contrastWeberPercentFromLogCSWeber: deviceUnits]] / 100;
+- (float) gratingContrastMichelsonPercentFromDeviceunits: (float) deviceUnits {
+    return [MiscLight contrastMichelsonPercentFromWeberPercent: [MiscLight contrastWeberPercentFromLogCSWeber: deviceUnits]];
 }
 
 - (void) annulusWithRadius: (float) r width: (float) w grey: (float) g alpha: (float) a {
@@ -31,7 +31,7 @@
     CGContextSetLineWidth(cgc, 1.3);
     let l, lError = 0, lDiscrete;
     for (let ix = -l2; ix <= l2; ++ix) {
-        l = 0.5 + 0.5 * contrastMichelson * Math.sin((ix % periodInPx) * trigFactor);
+        l = 0.5 + 0.5 * contrastMichelsonPercent / 100 * Math.sin((ix % periodInPx) * trigFactor);
         l = [MiscLight devicegrayFromLuminance: l]; // apply gamma correction
         lDiscrete = l;
         if ([Settings gratingUseErrorDiffusion]) { console.info("gratingUseErrorDiffusion");
@@ -66,7 +66,7 @@
             [self drawFixMark];
             break;
         case kStateDrawFore2:
-            contrastMichelson = [self gratingContrastMichelsonFromDeviceunits: stimStrengthInDeviceunits];
+            contrastMichelsonPercent = [self gratingContrastMichelsonPercentFromDeviceunits: stimStrengthInDeviceunits];
             let period = [MiscSpace pixelFromDegree: 1.0 / [Settings gratingCPD]];
             [self gratingSineWithPeriodInPx: period direction: [alternativesGenerator currentAlternative]];
             [self drawFixMark3];
@@ -88,7 +88,7 @@
     
     CGContextRestoreGState(cgc);
     [super drawStimulusInRect: dirtyRect];
-    [trialHistoryController setValue: contrastMichelson * 100];
+    [trialHistoryController setValue: contrastMichelsonPercent];
 }
 
 
@@ -123,16 +123,16 @@
     
     // taking into account the result of final trial
     stimStrengthInDeviceunits = [self stimDeviceunitsFromThresholderunits: [thresholder nextStim2apply]];
-    contrastMichelson = [self gratingContrastMichelsonFromDeviceunits: stimStrengthInDeviceunits];
+    contrastMichelsonPercent = [self gratingContrastMichelsonPercentFromDeviceunits: stimStrengthInDeviceunits];
     
     rangeLimitStatus = kRangeLimitOk;
-    if (contrastMichelson < 1 / 512) // 2 × 256
+    if (contrastMichelsonPercent < 100 / 512) // 2 × 256
         rangeLimitStatus = kRangeLimitValueAtFloor;
-    if (contrastMichelson >= 1.0)
+    if (contrastMichelsonPercent >= 100)
         rangeLimitStatus = kRangeLimitValueAtCeiling;
     let s = "Grating threshold contrast: ";
     s += [self rangeStatusIndicatorStringInverted: YES];
-    s += [Misc stringFromNumber: contrastMichelson * 100 decimals: 2 localised: YES];
+    s += [Misc stringFromNumber: contrastMichelsonPercent decimals: 2 localised: YES];
     s += "% (Michelson)";
     return s;
 }
@@ -141,7 +141,7 @@
 - (CPString) contrastComposeExportString {
     if ([[self parentController] runAborted]) return "";
     let s = [self generalComposeExportString];
-    s += tab + "value" + tab + [Misc stringFromNumber: contrastMichelson * 100 decimals: 3 localised: YES];
+    s += tab + "value" + tab + [Misc stringFromNumber: contrastMichelsonPercent decimals: 3 localised: YES];
     s += tab + "unit1" + tab + currentTestResultUnit
     s += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 2 localised: YES];
     s += tab + "spatFreq" + tab + [Misc stringFromNumber: [Settings gratingCPD] decimals: 1 localised: YES];

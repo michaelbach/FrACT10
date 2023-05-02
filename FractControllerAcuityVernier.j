@@ -53,7 +53,7 @@ Created by Bach on 14.08.2017.
     const ix0 = Math.round(x0);
     const iSigma = Math.round(Math.max(5, Math.min(sigma * 4, 30))); //trace(sigma, iSigma);
     CGContextSetLineWidth(cgc, 1);
-    const backGray = [MiscLight upperLuminanceFromContrastMilsn: [MiscLight contrastMichelsonFromWeberPercent: [Settings contrastAcuityWeber]]];
+    const backGray = [MiscLight upperLuminanceFromContrastMilsn: [MiscLight contrastMichelsonPercentFromWeberPercent: [Settings contrastAcuityWeber]]];
     const cnt = [Settings contrastAcuityWeber] / 100;
     for (let ix = ix0 - iSigma; ix <= ix0 + iSigma; ix++) {
         const gaussValue = Math.exp(-Math.pow(x0 - ix, 2) / sigma);
