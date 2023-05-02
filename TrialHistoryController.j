@@ -40,7 +40,7 @@ TrialHistoryController.j
 }
 
 
-- (void) trialEnded {  console.info("TrialHistoryController>trialEnded, value: ", value);
+- (void) trialEnded {  //console.info("TrialHistoryController>trialEnded, value: ", value);
     if (_currentIndex > _nTrials) return;  // just for safety, should not occur
     _trialHistory[_currentIndex] = {};
     _trialHistory[_currentIndex].value = value;

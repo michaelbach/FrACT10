@@ -34,7 +34,7 @@
         l = 0.5 + 0.5 * contrastMichelsonPercent / 100 * Math.sin((ix % periodInPx) * trigFactor);
         l = [MiscLight devicegrayFromLuminance: l]; // apply gamma correction
         lDiscrete = l;
-        if ([Settings gratingUseErrorDiffusion]) { console.info("gratingUseErrorDiffusion");
+        if ([Settings gratingUseErrorDiffusion]) {
             l = lError + 255 * l; // apply previous residual
             lDiscrete = Math.round(l); // discrete values 0…255
             lError = l - lDiscrete; // keep residual (what was lost by rounding) for next time
