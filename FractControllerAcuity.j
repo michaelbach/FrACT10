@@ -28,7 +28,7 @@
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
     [trialHistoryController setValue: [MiscSpace logMARfromDecVA: [MiscSpace decVAFromGapPixels: stimStrengthInDeviceunits]]];
     if ([Settings crowdingType] > 0) {
-        if (currentTestID != kTestIDVernier) { // don't do crowding with Vernier etc.
+        if (currentTestID != kTestAcuityVernier) { // don't do crowding with Vernier etc.
             CGContextSaveGState(cgc);
             CGContextTranslateCTM(cgc, viewWidth / 2, viewHeight / 2); // origin to center
             CGContextTranslateCTM(cgc, -xEccInPix, -yEccInPix);
@@ -90,14 +90,14 @@
         case kTestAcuityLett:
         case kTestAcuityC:
         case kTestAcuityE:
-        case kTestIDTAO:
+        case kTestAcuityTAO:
             if (iTrial < nTrials) { //premature end
                 [self setResultString: "Aborted"];
             } else {
                 [self setResultString: [self acuityComposeResultString]];
             }
             break;
-        case kTestIDVernier:
+        case kTestAcuityVernier:
             break;
         case kTestAcuityLineByLine:
             [self setResultString: ""];
@@ -241,7 +241,7 @@
         case 3:
             returnVal = 10 * gap;  break;
     }
-    if (currentTestID == kTestIDVernier) {
+    if (currentTestID == kTestAcuityVernier) {
         returnVal *= 6 / 5;
     }
     return returnVal;

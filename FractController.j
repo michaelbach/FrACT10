@@ -117,7 +117,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     timerDisplay = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutDisplaySeconds] target:self selector:@selector(onTimeoutDisplay:) userInfo:nil repeats:NO];
     timerResponse = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutResponseSeconds] target:self selector:@selector(onTimeoutResponse:) userInfo:nil repeats:NO];
     if ([Settings autoRunIndex] > 0) {
-        if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestIDTAO, kTestContrastLett, kTestContrastC, kTestContrastE, kTestContrastG].includes(currentTestID)) {
+        if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO, kTestContrastLett, kTestContrastC, kTestContrastE, kTestContrastG].includes(currentTestID)) {
             timerAutoResponse = [CPTimer scheduledTimerWithTimeInterval: 0.5 target:self selector:@selector(onTimeoutAutoResponse:) userInfo:nil repeats:NO];
         }
     }
@@ -131,7 +131,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (void) prepareDrawing { // console.info("FractController>prepareDrawing");
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, colOptotypeBack);
-    if (currentTestID == kTestIDTAO)
+    if (currentTestID == kTestAcuityTAO)
         CGContextSetFillColor(cgc, [CPColor whiteColor]); ;// contrast always 100% with TAO
     CGContextFillRect(cgc, [[self window] frame]);
     CGContextSaveGState(cgc);
@@ -220,7 +220,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         case 3: logMARtarget = -0.3; logCStarget = 1.6; contrastMichelsonPercentTarget = 0.3;
             break;
     }
-    if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestIDTAO].includes(currentTestID)) {
+    if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO].includes(currentTestID)) {
         const logMARcurrent = [MiscSpace logMARfromDecVA: [MiscSpace decVAFromGapPixels: stimStrengthInDeviceunits]];
         if ([Settings threshCorrection]) logMARtarget += Math.log10(gThresholdCorrection4Ascending);
         responseWasCorrect = logMARcurrent > logMARtarget;
@@ -288,7 +288,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if ([Settings auditoryFeedbackWhenDone]) [sound play3];
     
     if ([Settings showCI95] && (![[self parentController] runAborted])) {
-        if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestIDTAO].includes(currentTestID)) {
+        if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO].includes(currentTestID)) {
             // the below causes a delay of < 1 s with 10,000 samples
             const historyResults = [trialHistoryController composeInfo4CI];
             const ciResults = [MDBDispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: 10000][0];
@@ -374,8 +374,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         case kTestAcuityLett: return "Acuity_Letters";
         case kTestAcuityC: return "Acuity_LandoltC";
         case kTestAcuityE: return "Acuity_TumblingE";
-        case kTestIDTAO: return "Acuity_TAO";
-        case kTestIDVernier: return "Acuity_Vernier";
+        case kTestAcuityTAO: return "Acuity_TAO";
+        case kTestAcuityVernier: return "Acuity_Vernier";
         case kTestContrastLett: return "Contrast_Letters";
         case kTestContrastC: return "Contrast_LandoltC";
         case kTestContrastE: return "Contrast_TumblingE";

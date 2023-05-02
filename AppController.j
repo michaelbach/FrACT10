@@ -253,9 +253,9 @@ Created by mb on 2017-07-12.
                 }  break;
             case kTestAcuityE:
                 [responseinfoPanelAcuityE makeKeyAndOrderFront: self];  break;
-            case kTestIDTAO:
+            case kTestAcuityTAO:
                 [responseinfoPanelAcuityTAO makeKeyAndOrderFront: self];  break;
-            case kTestIDVernier:
+            case kTestAcuityVernier:
                 [responseinfoPanelAcuityVernier makeKeyAndOrderFront: self];  break;
             case kTestContrastLett:
                 [responseinfoPanelContrastLett makeKeyAndOrderFront: self];  break;
@@ -432,10 +432,10 @@ Created by mb on 2017-07-12.
     currentTestID = kTestAcuityE;    [self runFractController];
 }
 - (IBAction) buttonDoAcuityTAO_action: (id) sender { //console.info("AppController>buttonDoAcuityA_action");
-    currentTestID = kTestIDTAO;    [self runFractController];
+    currentTestID = kTestAcuityTAO;    [self runFractController];
 }
 - (IBAction) buttonDoAcuityVernier_action: (id) sender { //console.info("AppController>buttonDoAcuityE_action");
-    currentTestID = kTestIDVernier;    [self runFractController];
+    currentTestID = kTestAcuityVernier;    [self runFractController];
 }
 - (IBAction) buttonDoContrastLett_action: (id) sender { //console.info("AppController>buttonDoContrastLett_action");
     currentTestID = kTestContrastLett;    [self runFractController];

@@ -18,7 +18,7 @@ HierarchyController.j
  Created on 18.07.2017
  */
 @typedef TestIDType
-kTestAcuityLett = 0; kTestAcuityC = 1; kTestAcuityE = 2; kTestIDTAO = 3; kTestIDVernier = 4; kTestContrastLett = 5; kTestContrastC = 6; kTestContrastE = 7, kTestContrastG = 8, kTestAcuityLineByLine = 9;
+kTestAcuityLett = 0; kTestAcuityC = 1; kTestAcuityE = 2; kTestAcuityTAO = 3; kTestAcuityVernier = 4; kTestContrastLett = 5; kTestContrastC = 6; kTestContrastE = 7, kTestContrastG = 8, kTestAcuityLineByLine = 9;
 
 @implementation HierarchyController: CPWindowController {
     HierarchyController parentController @accessors;
@@ -26,7 +26,6 @@ kTestAcuityLett = 0; kTestAcuityC = 1; kTestAcuityE = 2; kTestIDTAO = 3; kTestID
     CPString resultString @accessors;
     CPString versionDateString @accessors;
     CPString keyTestSettingsString @accessors;
-    //CPString currentTestName @accessors;
     CPString currentTestResultUnit @accessors;
     CPString currentTestResultExportString @accessors;
     CPString currentTestResultsHistoryExportString @accessors;
