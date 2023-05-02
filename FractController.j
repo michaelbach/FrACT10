@@ -117,7 +117,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     timerDisplay = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutDisplaySeconds] target:self selector:@selector(onTimeoutDisplay:) userInfo:nil repeats:NO];
     timerResponse = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutResponseSeconds] target:self selector:@selector(onTimeoutResponse:) userInfo:nil repeats:NO];
     if ([Settings autoRunIndex] > 0) {
-        if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestIDTAO].includes(currentTestID)) {
+        if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestIDTAO, kTestContrastLett, kTestContrastC, kTestContrastE, kTestContrastG].includes(currentTestID)) {
             timerAutoResponse = [CPTimer scheduledTimerWithTimeInterval: 0.5 target:self selector:@selector(onTimeoutAutoResponse:) userInfo:nil repeats:NO];
         }
     }
@@ -213,14 +213,25 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) onTimeoutAutoResponse: (CPTimer) timer { //console.info("FractController>onTimeoutAutoResponse");
-    const logMARcurrent = [MiscSpace logMARfromDecVA: [MiscSpace decVAFromGapPixels: stimStrengthInDeviceunits]];
-    let logMARtarget = +0.3;
+    let logMARtarget = +0.3, logCStarget = 1.0, contrastMichelsonPercentTarget = 3;
     switch ([Settings autoRunIndex]) {
-        case 2: logMARtarget = 0.0; break;
-        case 3: logMARtarget = -0.3; break;
+        case 2: logMARtarget = 0.0; logCStarget = 1.3; contrastMichelsonPercentTarget = 1;
+            break;
+        case 3: logMARtarget = -0.3; logCStarget = 1.6; contrastMichelsonPercentTarget = 0.3;
+            break;
     }
-    if ([Settings threshCorrection]) logMARtarget += Math.log10(gThresholdCorrection4Ascending);
-    responseWasCorrect = logMARcurrent > logMARtarget;
+    if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestIDTAO].includes(currentTestID)) {
+        const logMARcurrent = [MiscSpace logMARfromDecVA: [MiscSpace decVAFromGapPixels: stimStrengthInDeviceunits]];
+        if ([Settings threshCorrection]) logMARtarget += Math.log10(gThresholdCorrection4Ascending);
+        responseWasCorrect = logMARcurrent > logMARtarget;
+    }
+    if ([kTestContrastLett, kTestContrastC, kTestContrastE].includes(currentTestID)) {
+        responseWasCorrect = stimStrengthInDeviceunits < logCStarget;
+    }
+    if ([kTestContrastG].includes(currentTestID)) {
+        const contrastMichelsonPercentCurrent = [self gratingContrastMichelsonPercentFromDeviceunits: stimStrengthInDeviceunits];
+        responseWasCorrect = contrastMichelsonPercentCurrent > contrastMichelsonPercentTarget;
+    }
     [self trialEnd];
 }
 
