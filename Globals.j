@@ -46,6 +46,7 @@ devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to 
 /* History
    =======
 
+2023-05-03 refactor: centralise draw touch controls to avoid repeating myself
 2023-05-02 add autoRun for optotype & grating contrasts
 2023-05-02 simplify TrialHistoryController value entries, improve some names concerned with contrast
 2023-04-30 error diffusion for contrast grating optional

@@ -40,18 +40,7 @@ Created by Bach on 18.07.2017.
             break;
         default: break;
     }
-    if ([Settings enableTouchControls] && (!responseButtonsAdded)) {
-        const sze = 50, sze2 = sze / 2, radius = 0.5 * Math.min(viewWidth, viewHeight) - sze2 - 1;
-        for (let i = 0; i < 8; i++) {
-            if ( ([Settings nAlternatives] > 4)  || (![Misc isOdd: i])) {
-                let iConsiderObliqueOnly = i;
-                if (([Settings nAlternatives] == 4) && [Settings obliqueOnly])  iConsiderObliqueOnly++;
-                const ang = iConsiderObliqueOnly / 8 * 2 * Math.PI;
-                [self buttonCenteredAtX: viewWidth / 2 + Math.cos(ang) * radius y:  Math.sin(ang) * radius size: sze title: [@"632147899" characterAtIndex: iConsiderObliqueOnly]];
-            }
-        }
-        [self buttonCenteredAtX: viewWidth - sze2 - 1 y: viewHeight / 2 - sze2 - 1 size: sze title: "Ø"];
-    }
+    [self drawTouchControls];
     CGContextRestoreGState(cgc);
     [super drawStimulusInRect: dirtyRect];
 }

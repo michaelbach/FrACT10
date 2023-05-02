@@ -118,7 +118,11 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     timerResponse = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutResponseSeconds] target:self selector:@selector(onTimeoutResponse:) userInfo:nil repeats:NO];
     if ([Settings autoRunIndex] > 0) {
         if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO, kTestContrastLett, kTestContrastC, kTestContrastE, kTestContrastG].includes(currentTestID)) {
-            timerAutoResponse = [CPTimer scheduledTimerWithTimeInterval: 0.5 target:self selector:@selector(onTimeoutAutoResponse:) userInfo:nil repeats:NO];
+            let time = 0.4;
+            if ([kTestContrastLett, kTestContrastC, kTestContrastE, kTestContrastG].includes(currentTestID)) {
+                time += [Settings contrastTimeoutFixmark] / 1000;
+            }
+            timerAutoResponse = [CPTimer scheduledTimerWithTimeInterval: 0.8 target:self selector:@selector(onTimeoutAutoResponse:) userInfo:nil repeats:NO];
         }
     }
     state = kStateDrawFore;  [[[self window] contentView] setNeedsDisplay: YES];
@@ -161,7 +165,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 /**
- Drawing the trial info after everything else has been drawn
+ Draw the trial info after everything else has been drawn
  */
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
     if ([Settings trialInfo]) {
@@ -174,7 +178,40 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
-- (CPButton) buttonCenteredAtX: (float) x y: (float) y size: (float) size title: (CPString) title { //console.info("FractControllerAcuityE>buttonAtX", x, y, size, title);
+/**
+ Draw touch controls
+ */
+- (void) drawTouchControls { // kTestAcuityTAO, kTestAcuityVernier: done in instance
+    if ((![Settings enableTouchControls]) || (responseButtonsAdded)) return;
+    let sze = 52, sze2 = sze / 2;
+    switch  (currentTestID) {
+        case kTestAcuityLett: case kTestContrastLett:
+            sze = viewWidth / ((nAlternatives+1) * 1.4 + 1);
+            for (let i = 0; i < nAlternatives; i++){
+                [self buttonCenteredAtX: (i + 0.9) * 1.4 * sze y: viewHeight/2 - sze / 2 - 1
+                                   size: sze title: [@"CDHKNORSVZØ" characterAtIndex: i]];
+            }
+            break;
+        case kTestAcuityC: case kTestContrastC: case kTestContrastG:
+            const radius = 0.5 * Math.min(viewWidth, viewHeight) - sze2 - 1;
+            for (let i = 0; i < 8; i++) {
+                if ( ([Settings nAlternatives] > 4)  || (![Misc isOdd: i])) {
+                    let iConsiderObliqueOnly = i;
+                    if (([Settings nAlternatives] == 4) && [Settings obliqueOnly])  iConsiderObliqueOnly++;
+                    const ang = iConsiderObliqueOnly / 8 * 2 * Math.PI;
+                    [self buttonCenteredAtX: viewWidth / 2 + Math.cos(ang) * radius y:  Math.sin(ang) * radius size: sze title: [@"632147899" characterAtIndex: iConsiderObliqueOnly]];
+                }
+            }
+            break;
+        case kTestAcuityE: case kTestContrastE:
+            [self buttonCenteredAtX: viewWidth-sze2 y: 0 size: sze title: "6"];
+            [self buttonCenteredAtX: sze2 y: 0 size: sze title: "4"];
+            [self buttonCenteredAtX: viewWidth / 2 y: -viewHeight / 2 + sze2 size: sze title: "8"];
+            [self buttonCenteredAtX: viewWidth / 2 y: viewHeight / 2 - sze2 size: sze title: "2"];
+    }
+    [self buttonCenteredAtX: viewWidth - sze2 - 1 y: viewHeight / 2 - sze2 - 1 size: sze title: "Ø"];
+}
+- (CPButton) buttonCenteredAtX: (float) x y: (float) y size: (float) size title: (CPString) title {
     [self buttonCenteredAtX: x y: y size: size title: title keyEquivalent: title];
 }
 - (CPButton) buttonCenteredAtX: (float) x y: (float) y size: (float) size title: (CPString) title keyEquivalent: (CPString) keyEquivalent { //console.info("FractControllerAcuityE>buttonAtX…", x, y, size, title, keyEquivalent);
@@ -188,18 +225,11 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     responseButtonsAdded = YES;
     return button;
 }
-- (IBAction) responseButton_action: (id) sender { //console.info("FractControllerAcuityE>responseButton_action");
-    responseKeyChar = [sender keyEquivalent];
-    //console.info("<",responseKeyChar,">");
-    if (responseKeyChar == "Ø") {
-        [self runEnd];
-    } else [super processKeyDownEvent];
+- (IBAction) responseButton_action: (id) sender { //console.info("FractController>responseButton_action");
+    responseKeyChar = [sender keyEquivalent]; //console.info("<",responseKeyChar,">");
+    if (responseKeyChar == "Ø") [self runEnd];
+    else [super processKeyDownEvent];
 }
-
-
-/*-(void) onTimeoutFirstResponder: (CPTimer) timer { //console.info("FractController>onTimerFirstResponder");
-    [[self window] makeFirstResponder: self];
-}*/
 
 
 - (void) onTimeoutDisplay: (CPTimer) timer { //console.info("FractController>onTimeoutDisplay");
@@ -213,24 +243,19 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) onTimeoutAutoResponse: (CPTimer) timer { //console.info("FractController>onTimeoutAutoResponse");
-    let logMARtarget = +0.3, logCStarget = 1.0, contrastMichelsonPercentTarget = 3;
-    switch ([Settings autoRunIndex]) {
-        case 2: logMARtarget = 0.0; logCStarget = 1.3; contrastMichelsonPercentTarget = 1;
-            break;
-        case 3: logMARtarget = -0.3; logCStarget = 1.6; contrastMichelsonPercentTarget = 0.3;
-            break;
-    }
+    const arIndex = [Settings autoRunIndex] - 1;
     if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO].includes(currentTestID)) {
         const logMARcurrent = [MiscSpace logMARfromDecVA: [MiscSpace decVAFromGapPixels: stimStrengthInDeviceunits]];
+        let logMARtarget = [0.3, 0.0, -0.3][arIndex];
         if ([Settings threshCorrection]) logMARtarget += Math.log10(gThresholdCorrection4Ascending);
         responseWasCorrect = logMARcurrent > logMARtarget;
     }
     if ([kTestContrastLett, kTestContrastC, kTestContrastE].includes(currentTestID)) {
-        responseWasCorrect = stimStrengthInDeviceunits < logCStarget;
+        responseWasCorrect = stimStrengthInDeviceunits < [1.0, 1.3, 1.6][arIndex];
     }
     if ([kTestContrastG].includes(currentTestID)) {
         const contrastMichelsonPercentCurrent = [self gratingContrastMichelsonPercentFromDeviceunits: stimStrengthInDeviceunits];
-        responseWasCorrect = contrastMichelsonPercentCurrent > contrastMichelsonPercentTarget;
+        responseWasCorrect = contrastMichelsonPercentCurrent > [10.0, 1.0, 0.3][arIndex];
     }
     [self trialEnd];
 }
