@@ -47,6 +47,12 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
+- (void) updateViewWidthHeight {
+    viewWidth = CGRectGetWidth([[self window] frame]);  viewWidth2 = viewWidth / 2;
+    viewHeight = CGRectGetHeight([[self window] frame]);  viewHeight2 = viewHeight / 2;
+}
+
+
 - (id) initWithWindow: (CPWindow) aWindow parent: (HierarchyController) parent { //console.info("FractController>initWithWindow");
     self = [super initWithWindow: aWindow];
     if (self) {
@@ -56,8 +62,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         }
         [self setParentController: parent];
         [aWindow setDelegate: self];
-        viewWidth = CGRectGetWidth([aWindow frame]);  viewWidth2 = viewWidth / 2;
-        viewHeight = CGRectGetHeight([aWindow frame]);  viewHeight2 = viewHeight / 2;
+        [self updateViewWidthHeight];
         state = kStateDrawBack;
         kRangeLimitDefault = "";  kRangeLimitOk = "rangeOK";  kRangeLimitValueAtFloor = "atFloor";
         kRangeLimitValueAtCeiling = "atCeiling";  rangeLimitStatus = kRangeLimitDefault;
@@ -78,6 +83,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) runStart { //console.info("FractController>runStart");
+    [self updateViewWidthHeight];
     gStrokeMinimal = 0.5; // smallest possible gap is ½pixel. Make into a Setting?
     gStrokeMaximal = viewHeight / (5 + [Settings margin4MaxOptotypeIndex]); // this leaves a margin of ½·index around the largest optotype
     if (!([Settings acuityFormatLogMAR] || [Settings acuityFormatDecimal] ||  [Settings acuityFormatSnellenFractionFoot])) {

@@ -15,7 +15,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0.1";
-kVersionDateOfFrACT = "2023-05-02";
+kVersionDateOfFrACT = "2023-05-03";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -46,6 +46,7 @@ devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to 
 /* History
    =======
 
+2023-05-03 ensure that view witdth/height is correct after window resizing
 2023-05-03 refactor: centralise draw touch controls to avoid repeating myself
 2023-05-02 add autoRun for optotype & grating contrasts
 2023-05-02 simplify TrialHistoryController value entries, improve some names concerned with contrast
