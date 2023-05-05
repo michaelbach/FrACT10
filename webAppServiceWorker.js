@@ -1,7 +1,7 @@
 /* file "webAppServiceWorker.js" */
 
 
-const cacheName = 'FrACT10-sw-2023-05-01';
+const cacheName = 'FrACT10-sw-2023-05-05';
 
 
 /* Fetching content using Service Worker */
@@ -30,7 +30,7 @@ self.addEventListener('install', (event) => {
         './Browser.environment/MHTMLData.txt',
         './Browser.environment/MHTMLPaths.txt',
         './Browser.environment/MHTMLTest.txt',
-        './Browser.environment/webApp.sj',
+        './Browser.environment/capp.sj',
       	'./index.html',
         './Info.plist',
         './Resources/allRewards4800x200.png',

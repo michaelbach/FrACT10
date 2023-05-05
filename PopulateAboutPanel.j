@@ -40,7 +40,7 @@ Populates the About panel with appropriate text using HTML
 
     s = "<h2 align='center'>FrACT<sub>10</sub></h2>";
     s += "Freiburg Visual Acuity and Contrast Test 10,<br>Vs " + kVersionStringOfFract + ",&nbsp; release date " + kVersionDateOfFrACT + ". <br><br>";
-    s += "Interactive assessment of visual acuities following DIN/ISO; also can assess contrast sensitivity.<br><br>Optotypes: Sloan letters, Landolt C, Tumbling E, and TAO.<br><br>Acuity results in decimal, LogMAR or Snellen notation.<br><br>With ‘Best PEST’ and antialiasing."
+    s += "Interactive assessment of visual acuities following DIN/ISO; also can assess contrast sensitivity.<br><br>Optotypes: Sloan letters, Landolt C, Tumbling E, TAO, gratings.<br><br>Acuity results in decimal, LogMAR or Snellen notation.<br><br>With ‘Best PEST’ and antialiasing."
     [self oneWebView: aboutWebView1 htmlString: s];
 
     s = "©1993–" + [kVersionDateOfFrACT substringWithRange: CPMakeRange(0, 4)];
@@ -52,9 +52,12 @@ Populates the About panel with appropriate text using HTML
     s += "Sources: <a href='https://github.com/michaelbach/FrACT10/#fract' target='_blank'>GitHub repository</a>, <a href='https://github.com/michaelbach/FrACT10/commits' target='_blank'>commit history</a><br><br>"
     s += "Frameworks/Libraries used:<br>";
     s += "<a href='https://michaelbach.de/ot/-misc/cappFrameworks/index.html' target='_blank'>Cappuccino " + gCappucinoVersionString + "</a>,&nbsp; ";
-    s += "<a href='https://simplestatistics.org' target='_blank'>Simple Statistics</a>, <a href='https://nodejs.org/' target='_blank'>Node.js,</a><br>";
-    s += "<a href='https://www.electronjs.org' target='_blank'>Electron</a>, <a href='https://www.electron.build' target='_blank'>electron-builder</a><br><br><br>";
-    s += "This is free software, there is no warranty for anything (<a href='https://github.com/michaelbach/FrACT10/blob/main/LICENSE.md' target='_blank'>GNU GPL licence</a>); it is not certified for medical purposes."
+    s += "<a href='https://simplestatistics.org' target='_blank'>Simple Statistics</a>.";
+    //s += "<a href='https://nodejs.org/' target='_blank'>Node.js,</a><br>";
+    //s += "<a href='https://www.electronjs.org' target='_blank'>Electron</a>, <a href='https://www.electron.build' target='_blank'>electron-builder</a>";
+    s += "<br><br><br><br>";
+    s += "This is free software, there is no warranty for anything: <a href='https://github.com/michaelbach/FrACT10/blob/main/LICENSE.md' target='_blank'>GNU GPL licence</a>. ";
+    s += "It is not formally certified for medical purposes."
     [self oneWebView: aboutWebView2 htmlString: s];
 }
 

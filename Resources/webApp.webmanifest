@@ -1,6 +1,6 @@
 {
-  "short_name": "FrACT10 webApp",
-  "name": "Freiburg Vision Tests webApp",
+  "short_name": "FrACT10",
+  "name": "FrACT10",
   "description": "Vision Test Battery (acuities, contrast, …)",
   "icons": [
     {
@@ -16,7 +16,7 @@
     }
   ],
   "start_url": "../index.html",
-  "id": "/fract/FrACT10/webApp/index.html",
+  "id": "/fract/capp/index.html",
   "theme_color": "#33B",
   "background_color": "#777",
   "display": "standalone",

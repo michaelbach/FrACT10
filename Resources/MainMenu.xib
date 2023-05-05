@@ -3627,8 +3627,21 @@ Gw
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tLX-Wp-TQ9">
                         <rect key="frame" x="30" y="206" width="383" height="329"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="z" allowsEditingTextAttributes="YES" id="4ks-UH-FmP">
+                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="4ks-UH-FmP">
                             <font key="font" metaFont="system" size="16"/>
+                            <mutableString key="title">
+“Tumbling Es“ will appear, how are they oriented?
+
+Use the cursor keys, or on a keypad:
+→ = 6,  ↑ = 8,  ← = 4,  ↓ = 2.
+
+On touch devices, use the buttons around the screen (may need to enable).
+
+
+If you can't recognise the orientation, use your best guess.
+
+
+Type 55, or &lt;esc&gt; to abort the run.</mutableString>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
