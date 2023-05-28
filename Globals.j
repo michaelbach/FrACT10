@@ -15,7 +15,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0.1";
-kVersionDateOfFrACT = "2023-05-14";
+kVersionDateOfFrACT = "2023-05-25";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -46,6 +46,8 @@ devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to 
 /* History
    =======
 
+2023-05-28 need to increase limits for distance and calibration bar (demo in lecture hall)
+            renaming of files (capp→FrACT), now only webApp
 2023-05-14 remove setting for window background color (not really needed, crowds) and rearrange some GUI elements
 2023-05-05 →webApp only, no more mention of Electron and helpers. Also fix regression with lost text in Acuity-E expl.
 2023-05-03 ensure that view witdth/height is correct after window resizing
