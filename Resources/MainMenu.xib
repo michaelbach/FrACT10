@@ -934,10 +934,12 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                         </connections>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LJd-oY-MqO">
-                                                        <rect key="frame" x="70" y="49" width="341" height="16"/>
+                                                        <rect key="frame" x="70" y="49" width="168" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes (TAO).  For Landolt Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.</string>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of choices for Landolt Cs. Letters always 10, Vernier 2" id="2kS-jg-XcS">
+                                                        <string key="toolTip">Some optotypes have a fixed number of choices, or variants: Always 10 for Sloan Letters and Auckland Optotypes (TAO); Vernier 2. 
+For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
+</string>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of choices for Landolt Cs" id="2kS-jg-XcS">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -953,7 +955,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                         </textFieldCell>
                                                     </textField>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cEj-Jr-YXR">
-                                                        <rect key="frame" x="390" y="48" width="102" height="18"/>
+                                                        <rect key="frame" x="305" y="48" width="102" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Applies only to Landolt Cs with 4 orientations.
 
