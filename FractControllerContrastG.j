@@ -27,7 +27,7 @@
     //console.info("optotypes>gratingSineWithPeriodInPx: ", periodInPx, theDirection);
     const l2 = 2 * Math.round(0.5 * 1.42 * Math.max(viewWidth2, viewHeight2));
     const trigFactor = 1.0 / periodInPx * 2 * Math.PI; // calculate only once
-    CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180); // rotato to desired angle
+    CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180); // rotate to desired angle
     CGContextSetLineWidth(cgc, 1.3);
     let l, lError = 0, lDiscrete;
     for (let ix = -l2; ix <= l2; ++ix) {
@@ -35,8 +35,8 @@
         l = [MiscLight devicegrayFromLuminance: l]; // apply gamma correction
         lDiscrete = l;
         if ([Settings gratingUseErrorDiffusion]) {
-            l = lError + 255 * l; // apply previous residual
-            lDiscrete = Math.round(l); // discrete values 0…255
+            l = lError + 255 * l; // map to 0…255 and apply previous residual
+            lDiscrete = Math.round(l); // discrete integer values 0…255
             lError = l - lDiscrete; // keep residual (what was lost by rounding) for next time
             lDiscrete = lDiscrete / 255; // remap to 0…1
         }
