@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A061F5A2A273350006B5CAD /* webAppServiceWorker.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A061F592A273350006B5CAD /* webAppServiceWorker.js */; };
+		8A061F5C2A273406006B5CAD /* History.md in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A061F5B2A273406006B5CAD /* History.md */; };
+		8A061F5D2A2737F8006B5CAD /* AlternativesGenerator.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5139419A9E317C413C110C0F /* AlternativesGenerator.j */; };
+		8A061F5E2A2737FC006B5CAD /* AppController.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6F8642B1B93603A5A204CC32 /* AppController.j */; };
+		8A061F5F2A273800006B5CAD /* FractController.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9ADC4C46A65D7794540F1808 /* FractController.j */; };
+		8A061F602A273809006B5CAD /* Globals.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7F842D1A68D8C133FA29CF9 /* Globals.j */; };
 		8A48269329CF4F260035607A /* MiscLight.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A48269229CF4F260035607A /* MiscLight.j */; };
 		8A48269529CF58F30035607A /* MiscSpace.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A48269429CF58F30035607A /* MiscSpace.j */; };
 /* End PBXBuildFile section */
@@ -18,8 +24,14 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
+				8A061F5F2A273800006B5CAD /* FractController.j in CopyFiles */,
 				8A48269329CF4F260035607A /* MiscLight.j in CopyFiles */,
 				8A48269529CF58F30035607A /* MiscSpace.j in CopyFiles */,
+				8A061F5A2A273350006B5CAD /* webAppServiceWorker.js in CopyFiles */,
+				8A061F5D2A2737F8006B5CAD /* AlternativesGenerator.j in CopyFiles */,
+				8A061F602A273809006B5CAD /* Globals.j in CopyFiles */,
+				8A061F5E2A2737FC006B5CAD /* AppController.j in CopyFiles */,
+				8A061F5C2A273406006B5CAD /* History.md in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -72,6 +84,8 @@
 		80FE46B397440BDDC8F91389 /* FractControllerAcuityLineByLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractControllerAcuityLineByLine.h; path = .XcodeSupport/FractControllerAcuityLineByLine.h; sourceTree = SOURCE_ROOT; };
 		83704BCBB6703D9E573D12C0 /* Presets.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Presets.m; path = .XcodeSupport/Presets.m; sourceTree = SOURCE_ROOT; };
 		856F4B1AA111E0F21404D2EB /* AppController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppController.m; path = .XcodeSupport/AppController.m; sourceTree = SOURCE_ROOT; };
+		8A061F592A273350006B5CAD /* webAppServiceWorker.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = webAppServiceWorker.js; sourceTree = "<group>"; };
+		8A061F5B2A273406006B5CAD /* History.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = History.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.markdown; };
 		8A48269229CF4F260035607A /* MiscLight.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MiscLight.j; sourceTree = "<group>"; };
 		8A48269429CF58F30035607A /* MiscSpace.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MiscSpace.j; sourceTree = "<group>"; };
 		8A574A8F29FAE30F00D28C1B /* FractControllerContrastG.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = FractControllerContrastG.j; sourceTree = SOURCE_ROOT; };
@@ -155,6 +169,7 @@
 				F71043F69484B3E36875B5AE /* FractView.j */,
 				C61449039211562F0283776F /* GammaView.j */,
 				D7F842D1A68D8C133FA29CF9 /* Globals.j */,
+				8A061F5B2A273406006B5CAD /* History.md */,
 				2BD24D7590B3A2C0CF356A87 /* HierarchyController.j */,
 				46EC4178BBFDF502EFF4AF49 /* MDBButton.j */,
 				581D49B198E0C8221471FA5D /* MDBDispersionEstimation.j */,
@@ -172,6 +187,7 @@
 				E6F94F1D968592E61A4C192B /* Thresholder.j */,
 				BA8E410483A87F38EB021188 /* ThresholderPest.j */,
 				4A5547F8854B1200466F770F /* TrialHistoryController.j */,
+				8A061F592A273350006B5CAD /* webAppServiceWorker.js */,
 			);
 			name = "Cappuccino Source";
 			sourceTree = "<group>";
