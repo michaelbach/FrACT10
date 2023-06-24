@@ -176,7 +176,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
     if ([Settings trialInfo]) {
         CGContextSetTextPosition(cgc, 10, 10); // we assume here no transformed CGContext
-        CGContextSetFillColor(cgc, colOptotypeFore);
+        //CGContextSetFillColor(cgc, colOptotypeFore); would be unreadable with low contrast
         CGContextSetFillColor(cgc, [CPColor blackColor]);
         CGContextSelectFont(cgc, [Settings trialInfoFontSize] + "px sans-serif");
         CGContextShowText(cgc, trialInfoString);

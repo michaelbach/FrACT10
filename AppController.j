@@ -68,6 +68,9 @@ Created by mb on 2017-07-12.
 /**
  Accessing the foreground color for acuity optotypes as saved in settings.
  @return the current foreground color
+ Colors not be saved as object in userdefaults, probably serialiser not implemented
+ NSUnarchiveFromData, Error message [CPData encodeWithCoder:] unrecognized selector
+ https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/DrawColor/Tasks/StoringNSColorInDefaults.html
  */
 - (CPColor) acuityForeColor { //console.info("AppController>acuityForeColor");
     return [Settings acuityForeColor];

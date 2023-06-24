@@ -518,13 +518,25 @@ Created by mb on July 15, 2015.
 + (CPColor) windowBackgroundColor { //console.info("Settings>windowBackgroundColor");
     let theData = [[CPUserDefaults standardUserDefaults] stringForKey: "windowBackgroundColor"];
     if (theData == nil) theData = "FFFFEE"; // safety measure and default
-    const c = [CPColor colorWithHexString: theData]; //console.info("Settings>windowBackgroundColor:", c);
-    //console.info("Settings>windowBackgroundColor", c);
-    return c;
+    const theColor = [CPColor colorWithHexString: theData];
+    return theColor;
 }
 + (void) setWindowBackgroundColor: (CPColor) theColor { //console.info("Settings>setWindowBackgroundColor:", theColor);
     [[CPUserDefaults standardUserDefaults] setObject: [theColor hexString] forKey: "windowBackgroundColor"];
 }
+/* can't use `CPKeyedUnarchiver unarchiveObjectWithData:`, missing `CPData encodeWithCoder:`
++ (CPColor) windowBackgroundColor { //console.info("Settings>windowBackgroundColor");
+    let theColor = nil;
+    let theData = [[CPUserDefaults standardUserDefaults] dataForKey: "windowBackgroundColor"];
+    if (theData != nil)
+ theColor = [CPKeyedUnarchiver unarchiveObjectWithData: theData];
+    return theColor;
+}
++ (void) setWindowBackgroundColor: (CPColor) theColor {
+    let theData=[CPKeyedArchiver archivedDataWithRootObject: theColor];
+    [[CPUserDefaults standardUserDefaults] setObject: theData forKey: "windowBackgroundColor"];
+}
+*/
 
 
 + (float) maxPossibleDecimalAcuity {
