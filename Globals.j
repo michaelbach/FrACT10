@@ -15,7 +15,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0.2";
-kVersionDateOfFrACT = "2023-06-25";
+kVersionDateOfFrACT = "2023-06-26";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;

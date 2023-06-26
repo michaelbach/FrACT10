@@ -1913,7 +1913,7 @@ No money transfer involved, just for size!     </string>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <button toolTip="Optotypes/Background in black/white or grey, their grey values defined by the Weber contrast. " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PDt-dH-Qlh">
+                                        <button toolTip="Optotypes/Background in black/white or gray, their gray values defined by the Weber contrast. " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PDt-dH-Qlh">
                                             <rect key="frame" x="28" y="416" width="48" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="radio" title="b/w" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="MMR-XS-16S">

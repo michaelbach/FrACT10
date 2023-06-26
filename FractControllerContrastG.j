@@ -18,7 +18,7 @@
     return [MiscLight contrastMichelsonPercentFromWeberPercent: [MiscLight contrastWeberPercentFromLogCSWeber: deviceUnits]];
 }
 
-- (void) annulusWithRadius: (float) r width: (float) w grey: (float) g alpha: (float) a {
+- (void) annulusWithRadius: (float) r width: (float) w gray: (float) g alpha: (float) a {
     CGContextSetLineWidth(cgc, w + 0.1);
     CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: g alpha: a]);
     CGContextStrokeEllipseInRect(cgc, CGRectMake(0 - r, 0 - r, 2 * r, 2 * r));
@@ -48,12 +48,12 @@
     const r = 0.5 * [MiscSpace pixelFromDegree: [Settings gratingDiaInDeg]];
     const w = r / 20;
     l = [MiscLight devicegrayFromLuminance: 0.5];
-    [self annulusWithRadius: r - 2 * w width: w grey: l alpha: 0.125];
-    [self annulusWithRadius: r - w width: w grey: l alpha: 0.25];
-    [self annulusWithRadius: r width: w grey: l alpha: 0.5];
-    [self annulusWithRadius: r + w width: w grey: l alpha: 0.75];
-    [self annulusWithRadius: r + 2 * w width: w grey: l alpha: 0.875];
-    [self annulusWithRadius: r + 400 width: 780 grey: l alpha: 1];
+    [self annulusWithRadius: r - 2 * w width: w gray: l alpha: 0.125];
+    [self annulusWithRadius: r - w width: w gray: l alpha: 0.25];
+    [self annulusWithRadius: r width: w gray: l alpha: 0.5];
+    [self annulusWithRadius: r + w width: w gray: l alpha: 0.75];
+    [self annulusWithRadius: r + 2 * w width: w gray: l alpha: 0.875];
+    [self annulusWithRadius: r + 400 width: 780 gray: l alpha: 1];
 }
 
 

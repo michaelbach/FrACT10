@@ -330,6 +330,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             [[self parentController] setCurrentTestResultExportString: [[self parentController] currentTestResultExportString] + tab + "halfCI95" + tab + [Misc stringFromNumber: halfCI95 decimals: 3 localised: YES]];
         }
     }
+    if ([Settings isAcuityColor] && (![[self parentController] runAborted])) {
+        [[self parentController] setCurrentTestResultExportString: [[self parentController] currentTestResultExportString] + tab + "colorForeBack" + tab + [colOptotypeFore hexString] + tab + [colOptotypeBack hexString]];
+    }
     [[self parentController] setCurrentTestResultExportString: [[self parentController] currentTestResultExportString] + crlf];
     [[self parentController] runEnd];
 }
