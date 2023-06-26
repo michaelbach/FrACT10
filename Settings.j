@@ -110,6 +110,7 @@ Created by mb on July 15, 2015.
 
     
     // Acuity stuff
+    [self setIsAcuityColor: [self chckBool: [self isAcuityColor] def: NO set: set]];
     [self setObliqueOnly: [self chckBool: [self obliqueOnly] def: NO set: set]]; // only applies to acuity with 4 Landolt orienations
     [self setContrastAcuityWeber: [self chckFlt: [self contrastAcuityWeber] def: 100 min: -1E6 max: 100 set: set]];
     [self calculateAcuityForeBackColorsFromContrast];
@@ -175,14 +176,13 @@ Created by mb on July 15, 2015.
 
 // contrast in %. 100%: background fully white, foreground fully dark. -100%: inverted
 + (void) calculateAcuityForeBackColorsFromContrast { //console.info("Settings>calculateAcuityForeBackColorsFromContrast");
+    if ([self isAcuityColor])  return;
+    
     const cnt = [MiscLight contrastMichelsonPercentFromWeberPercent: [self contrastAcuityWeber]];
-
     let temp = [MiscLight lowerLuminanceFromContrastMilsn: cnt];  temp = [MiscLight devicegrayFromLuminance: temp];
     [self setAcuityForeColor: [CPColor colorWithWhite: temp alpha: 1]];
-
     temp = [MiscLight upperLuminanceFromContrastMilsn: cnt];  temp = [MiscLight devicegrayFromLuminance: temp];
     [self setAcuityBackColor: [CPColor colorWithWhite: temp alpha: 1]];
-    
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyForeBackColorsFromSettings" object: nil];
 }
 
@@ -538,6 +538,12 @@ Created by mb on July 15, 2015.
 }
 */
 
++ (BOOL) isAcuityColor {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "isAcuityColor"];
+}
++ (void) setIsAcuityColor: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "isAcuityColor"];
+}
 
 + (float) maxPossibleDecimalAcuity {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "maxPossibleDecimalAcuity"];

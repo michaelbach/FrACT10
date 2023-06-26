@@ -41,8 +41,8 @@ Created by mb on 2017-07-12.
     @outlet CPColorWell checkContrastWeberField1, checkContrastWeberField2;
     @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, resultDetailsPanel, creditcardPanel;
     @outlet MDBButton buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine;
-    @outlet CPButton buttonExport;
-    @outlet CPButton buttonExit;
+    @outlet CPButton buttonExport, buttonExit;
+    @outlet CPButton radioButtonAcuityBW, radioButtonAcuityColor;
     @outlet GammaView gammaView;
     @outlet CPWebView aboutWebView1, aboutWebView2, helpWebView1, helpWebView2, helpWebView3, helpWebView4;
     @outlet CPImageView creditcardImageView;
@@ -171,9 +171,10 @@ Created by mb on 2017-07-12.
     [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(copyForeBackColorsFromSettings:) name: "copyForeBackColorsFromSettings" object: nil];
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
-
-    [self buttonCheckContrast_action: null];
     
+    [self radioButtonsAcuityBwOrColor_action: null];
+    [self buttonCheckContrast_action: null];
+
     if ([window.navigator.platform hasPrefix:@"Mac"])  [buttonExit setTitle: "Quit"];// OS: Quit or Exit
     
     [Settings setAutoRunIndex: 0]; // make sure it's not accidentally on
@@ -191,6 +192,7 @@ Created by mb on 2017-07-12.
     } else {
         [self setColorOfBestPossibleAcuity: [CPColor colorWithRed: 0 green: 0.4 blue: 0 alpha: 1]];
     }
+    [self radioButtonsAcuityBwOrColor_action: null];
 }
 
 
@@ -199,7 +201,7 @@ Created by mb on 2017-07-12.
 }
 
 
-// mirroring is necessary, because the Settingspanel cannot read the stored colours, because the Archiver does not work
+// mirroring is necessary, because the Settingspanel cannot read the stored colors, because the Archiver does not work
 - (void) copyForeBackColorsFromSettings: (CPNotification) aNotification { //console.info("mirrorForeBackColors");
     [self setAcuityForeColor: [Settings acuityForeColor]];  [self setAcuityBackColor: [Settings acuityBackColor]];
 }
@@ -538,6 +540,16 @@ Created by mb on 2017-07-12.
         [Misc fullScreenOn: NO];
     }
     [[self window] close];  [CPApp terminate: nil];  window.close();
+}
+
+
+- (IBAction) radioButtonsAcuityBwOrColor_action: (id) sender {
+    if (sender != null)
+        [Settings setIsAcuityColor: [sender tag] == 1];
+    else { // this is to preset the radio buttons
+        [radioButtonAcuityBW setState: ([Settings isAcuityColor] ? CPOffState : CPOnState)];
+        [radioButtonAcuityColor setState: ([Settings isAcuityColor] ? CPOnState : CPOffState)];
+    }
 }
 
 

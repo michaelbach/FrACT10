@@ -1,5 +1,7 @@
 #  History
 
++ 2023-06-25 begin color for acuity optotypes
++ 2023-06-24 improve the webApp manifest (e.g. added type in header), no more stray Apple icon, re-check on storing CPColor in userdefaults (missing CPData component), improve make script
 + 2023-05-31 History → separate file
 + 2023-05-29 fix regression: GUI had overlap in an optionally hidden element
 + 2023-05-28 need to increase limits for distance and calibration bar (for demo in lecture hall)

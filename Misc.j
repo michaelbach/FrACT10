@@ -14,7 +14,7 @@ Misc.j
 
 /**
  A collection of "miscellaneous" functions.
- All a class variables for easy global access
+ All are class variables for easy global access
  */
 @implementation Misc: CPObject {
 }
