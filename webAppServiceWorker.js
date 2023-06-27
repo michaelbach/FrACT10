@@ -1,7 +1,7 @@
 /* file "webAppServiceWorker.js" */
 
 
-const cacheName = 'FrACT10-sw-2023-06-26';
+const cacheName = 'FrACT10-sw-2023-06-27';
 
 /* Fetching content using Service Worker */
 self.addEventListener('fetch', (e) => {

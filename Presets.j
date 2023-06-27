@@ -42,7 +42,7 @@
  Called by the action of the preset selection pop-up, shows the "Are you sure" dialog
  */
 + (void) apply: (int) p { //console.info("Presets>apply");
-    presetNames = ["default", "ULV", "ESU", "Test"];
+    presetNames = ["default", "ULV", "ESU", "Test", "Test Color Equiluminance"];
     if ((p < 0) | (p > presetNames.length)) return;
     currentPresetName = presetNames[p];
     const s = "Really apply the preset “" + currentPresetName + "” ?"
@@ -73,6 +73,8 @@
             [self applyESU];  break;
         case 3:
             [self applyTest];  break;
+        case 4:
+            [self applyTestColorEquiluminance];  break;
         default:
             [Settings setDefaults];
     }
@@ -97,7 +99,7 @@
 /**
  Apply ESU settings (secret project)
  */
-+ (void) applyESU { //console.info("ESU");
++ (void) applyESU {
     [self setStandardDefaultsKeepingCalBarLength];
     [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
 
@@ -124,12 +126,25 @@
 /**
  Apply Test: easier testing
  */
-+ (void) applyTest { //console.info("Test");
++ (void) applyTest {
     [self setStandardDefaultsKeepingCalBarLength];
     [Settings setDistanceInCM: 400];
     [Settings setCalBarLengthInMM: 150];
     [Settings setResponseInfoAtStart: NO];
     [Settings setShowCI95: YES];
+}
+
+
+/**
+ Apply near equiluminant color acuity
+ */
++ (void) applyTestColorEquiluminance {
+    [self applyTest];
+    [Settings setIsAcuityColor: YES];
+    [Settings setAcuityForeColor: [CPColor redColor]];
+    // the below gives a darker green, near equiluminant to red
+    [Settings setAcuityBackColor: [CPColor colorWithRed: 0 green: 0.70 blue: 0 alpha: 1]];
+    [[CPNotificationCenter defaultCenter] postNotificationName: "copyForeBackColorsFromSettings" object: nil];
 }
 
 @end
