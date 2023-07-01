@@ -338,33 +338,32 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 - (void) onRunEnd2: (CPTimer) timer { //console.info("FractController>onRunEnd2");
     [trialHistoryController runEnded];
-    [[self parentController] setCurrentTestResultsHistoryExportString: [trialHistoryController resultsHistoryString]];
+    const _parentController = [self parentController];
+    [_parentController setCurrentTestResultsHistoryExportString: [trialHistoryController resultsHistoryString]];
     if ([Settings auditoryFeedbackWhenDone]) [sound play3];
     
-    if ([Settings showCI95] && (![[self parentController] runAborted])) {
-        if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO].includes(currentTestID)) {
+    let _currentTestResultExportString = [_parentController currentTestResultExportString];
+    if ([Settings showCI95] && (![_parentController runAborted])) {
+        if (currentTestID in [kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO]) {
             // the below causes a delay of < 1 s with 10,000 samples
             const historyResults = [trialHistoryController composeInfo4CI];
             const ciResults = [MDBDispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: 10000][0];
             const halfCI95 = (ciResults.CI0975 - ciResults.CI0025) / 2;
             ci95String = " ± " + [Misc stringFromNumber: halfCI95 decimals: 2 localised: YES];
-            [[self parentController] setResultString: [self acuityComposeResultString]]; // this will add CI95 info
-            
-            [[self parentController] setCurrentTestResultExportString: [[self parentController] currentTestResultExportString] + tab + "halfCI95" + tab + [Misc stringFromNumber: halfCI95 decimals: 3 localised: YES]];
+            [_parentController setResultString: [self acuityComposeResultString]]; // this will add CI95 info
+            _currentTestResultExportString += tab + "halfCI95" + tab + [Misc stringFromNumber: halfCI95 decimals: 3 localised: YES];
         }
     }
-    if ([Settings isAcuityColor] && (![[self parentController] runAborted])) {
-        [[self parentController] setCurrentTestResultExportString: [[self parentController] currentTestResultExportString] + tab + "colorForeBack" + tab + [colOptotypeFore hexString] + tab + [colOptotypeBack hexString]];
+    if ([Settings isAcuityColor]) {
+        _currentTestResultExportString += tab + "colorForeBack" + tab + [colOptotypeFore hexString] + tab + [colOptotypeBack hexString];
     }
-    
-    if ([Settings embedInNoise] && (![[self parentController] runAborted])) {
+    if ([Settings embedInNoise]) {
         if (currentTestID in [kTestAcuityLett, kTestAcuityC, kTestAcuityE]) {
-            [[self parentController] setCurrentTestResultExportString: [[self parentController] currentTestResultExportString] + tab + "noiseContrast" + tab + [Misc stringFromInteger: [Settings noiseContrast]]];
+            _currentTestResultExportString += tab + "noiseContrast" + tab + [Misc stringFromInteger: [Settings noiseContrast]];
         }
     }
-    
-    [[self parentController] setCurrentTestResultExportString: [[self parentController] currentTestResultExportString] + crlf];
-    [[self parentController] runEnd];
+    [_parentController setCurrentTestResultExportString: _currentTestResultExportString + crlf];
+    [_parentController runEnd];
 }
 
 
