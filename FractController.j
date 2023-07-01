@@ -188,21 +188,20 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
  */
 - (void) embedInNoise {
     if (![Settings embedInNoise]) return;
-    if (currentTestID in [kTestAcuityLett, kTestAcuityC, kTestAcuityE]) {
-        const checksize = Math.ceil(stimStrengthInDeviceunits / 5);
-        const aCheck = CGRectMake(0, 0, checksize, checksize);
-        const nx = Math.min(Math.ceil(viewWidth2 / checksize), 16 * 5);
-        const ny = Math.min(Math.ceil(viewHeight2 / checksize), 16 * 5);
-        const _alpha = [Settings noiseContrast] / 100;
-        for (let ix = -nx; ix < nx; ix++) {
-            for (let iy = -ny; iy < ny; iy++) {
-                aCheck.origin.x = checksize * ix;
-                aCheck.origin.y = checksize * iy;
-                const lum = [MiscLight devicegrayFromLuminance: Math.random()];
-                const col = [CPColor colorWithWhite: lum alpha: _alpha];
-                CGContextSetFillColor(cgc, col);
-                CGContextFillRect(cgc, aCheck);
-            }
+    if (!(currentTestID in [kTestAcuityLett, kTestAcuityC, kTestAcuityE])) return;
+    const checksize = Math.ceil(stimStrengthInDeviceunits / 5);
+    const aCheck = CGRectMake(0, 0, checksize, checksize);
+    const nx = Math.min(Math.ceil(viewWidth2 / checksize), 16 * 5);
+    const ny = Math.min(Math.ceil(viewHeight2 / checksize), 16 * 5);
+    const _alpha = [Settings noiseContrast] / 100;
+    for (let ix = -nx; ix < nx; ix++) {
+        for (let iy = -ny; iy < ny; iy++) {
+            aCheck.origin.x = checksize * ix;
+            aCheck.origin.y = checksize * iy;
+            const lum = [MiscLight devicegrayFromLuminance: Math.random()];
+            const col = [CPColor colorWithWhite: lum alpha: _alpha];
+            CGContextSetFillColor(cgc, col);
+            CGContextFillRect(cgc, aCheck);
         }
     }
 }
@@ -359,7 +358,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     }
     
     if ([Settings embedInNoise] && (![[self parentController] runAborted])) {
-        [[self parentController] setCurrentTestResultExportString: [[self parentController] currentTestResultExportString] + tab + "noiseContrast" + tab + [Misc stringFromInteger: [Settings noiseContrast]]];
+        if (currentTestID in [kTestAcuityLett, kTestAcuityC, kTestAcuityE]) {
+            [[self parentController] setCurrentTestResultExportString: [[self parentController] currentTestResultExportString] + tab + "noiseContrast" + tab + [Misc stringFromInteger: [Settings noiseContrast]]];
+        }
     }
     
     [[self parentController] setCurrentTestResultExportString: [[self parentController] currentTestResultExportString] + crlf];

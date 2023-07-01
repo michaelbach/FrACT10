@@ -9,7 +9,8 @@ cd ${0:a:h} # go to the starting directory
 # pwd
 
 #rm -R ../FrACT
-mv ../FrACT $HOME"/Library/Mobile Documents/com~apple~CloudDocs/.Trash"
+# below doesn't work if "FrACT" exists in Trash
+mv -fv ../FrACT $HOME"/Library/Mobile Documents/com~apple~CloudDocs/.Trash/FrACT"
 jake release
 rm -R Build/Release/FrACT/Frameworks # we don't need this
 rm -R Build/Release/FrACT/CommonJS.environment # nor this
