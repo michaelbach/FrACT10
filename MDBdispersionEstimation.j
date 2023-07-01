@@ -128,7 +128,7 @@ function testLogistic(guessingProbability) {
 function logisticFun(guessingProbability, inflectionPoint, x) {
     //console.log("guessingProbability: ", guessingProbability, ", inflectionPoint: ", inflectionPoint);
     x = 1 - x;  inflectionPoint = 1 - inflectionPoint;
-    // 2023-02-07 previously, slope was defined inversely. No change in result, more readable
+    // 2023-02-07 previously, slope was defined inversely. No change in result, now more readable
     return guessingProbability + (1 - guessingProbability) / (1 + Math.exp(-gSlopeCI95 * (x - inflectionPoint)));
 }
 

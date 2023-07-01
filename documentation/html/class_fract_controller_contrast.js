@@ -1,11 +1,12 @@
 var class_fract_controller_contrast =
 [
     [ "calculateForeBackColors", "class_fract_controller_contrast.html#a510334b331ef7ca7b404690ff0819938", null ],
-    [ "composeExportString", "class_fract_controller_contrast.html#a3dfa06467710c4d196794f5f3ed55c39", null ],
     [ "contrastComposeExportString", "class_fract_controller_contrast.html#a6bf28345d7efedfc620cfe22c25b8c5c", null ],
     [ "contrastComposeResultString", "class_fract_controller_contrast.html#a0f6f7ff844b1fa23d7407cc5c701d2f2", null ],
     [ "contrastComposeTrialInfoString", "class_fract_controller_contrast.html#a1dd5b23eeb738d9ac1588bb1270de1a9", null ],
     [ "drawFixMark", "class_fract_controller_contrast.html#a698ab87ce7136873b70240779c5ecaee", null ],
+    [ "drawFixMark2", "class_fract_controller_contrast.html#a2269cf3ffbfe103799236fd0241b9997", null ],
+    [ "drawFixMark3", "class_fract_controller_contrast.html#a2f12114ec5eab5e1a0bbba982e0d20f0", null ],
     [ "drawStimulusInRect:", "class_fract_controller_contrast.html#aa1a554271824ee0eab014d88c1157c22", null ],
     [ "modifyThresholderStimulus", "class_fract_controller_contrast.html#a2dc59f8965b40703eea7b8c9f8d914d6", null ],
     [ "onTimeoutFixMark:", "class_fract_controller_contrast.html#a71e1876ab048657726e86179c0e0934f", null ],

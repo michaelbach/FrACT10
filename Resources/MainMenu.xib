@@ -110,7 +110,7 @@ Shortcut: s
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
                     <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="RYj-oG-Hiz">
-                        <rect key="frame" x="15" y="-2" width="776" height="5"/>
+                        <rect key="frame" x="12" y="-2" width="776" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
                     <button toolTip="Hyperacuity (Vernier) run.  Shortcut: V      " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oB-kn-EbO" customClass="MDBButton">
@@ -279,7 +279,7 @@ Shortcut: f
             <connections>
                 <outlet property="delegate" destination="450" id="0rS-1d-7NY"/>
             </connections>
-            <point key="canvasLocation" x="-45.5" y="81.5"/>
+            <point key="canvasLocation" x="-102" y="77"/>
         </window>
         <window title="FrACT10 – About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="ErU-UN-jpI" userLabel="aboutPanel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>

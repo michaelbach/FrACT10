@@ -26,6 +26,7 @@ var class_optotypes =
     [ "strokeLineDeltaX:deltaY:", "class_optotypes.html#ab1bf5f3b1d0ec0d4ca47a7c79f29309d", null ],
     [ "strokeLineToX:y:", "class_optotypes.html#a4b214ea9bbba794e6d2f2380c102d71a", null ],
     [ "strokeLineX0:y0:x1:y1:", "class_optotypes.html#ad37969f3b0d0104b98b09f26c77f6dd9", null ],
+    [ "strokeStarAtX:y:size:", "class_optotypes.html#ae294cd2e5aec3f8dcc0c9b3a203db29e", null ],
     [ "strokeVLineAtX:y0:y1:", "class_optotypes.html#a3224d083caed5624484e2a06fe4f96be", null ],
     [ "strokeXAtX:y:size:", "class_optotypes.html#a4bde9d3c142987df9639a119a344cca9", null ],
     [ "tumblingEWithGapInPx:direction:", "class_optotypes.html#a13347af172402e8d3278753d9759a2f9", null ]

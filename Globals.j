@@ -9,7 +9,7 @@ Globals.j
 /**
  Global variables
  Since we do not have constants in Objective-J, we create global variables
- (and #define does not work for me)
+ (and # define does not work for me)
  Created on 2021-01-07
  */
 tab = "\t";  crlf = "\n";

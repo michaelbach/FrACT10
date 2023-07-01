@@ -24,12 +24,32 @@
 */
 var NAVTREE =
 [
-  [ "FrACT10", "index.html", ]
+  [ "FrACT10", "index.html", [
+    [ "Classes", "annotated.html", [
+      [ "Class List", "annotated.html", "annotated_dup" ],
+      [ "Class Index", "classes.html", null ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", "functions_dup" ],
+        [ "Functions", "functions_func.html", "functions_func" ]
+      ] ]
+    ] ],
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
+        [ "Macros", "globals_defs.html", null ]
+      ] ]
+    ] ]
+  ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"index.html"
+"_alternatives_generator_8j.html",
+"class_app_controller.html#a189672ff76b35fd36256b01a333f5b57",
+"class_optotypes.html#a61c9bec799950cc730c0fd3d7e94a420"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
