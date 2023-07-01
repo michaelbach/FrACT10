@@ -108,7 +108,9 @@ Created by mb on July 15, 2015.
     [self setRewardPicturesWhenDone: [self chckBool: [self rewardPicturesWhenDone] def: NO set: set]];
     [self setTimeoutRewardPicturesInSeconds: [self chckFlt: [self timeoutRewardPicturesInSeconds] def: 5 min: 0.1 max: 999 set: set]];
 
-    
+    [self setEmbedInNoise: [self chckBool: [self embedInNoise] def: NO set: set]];
+    [self setNoiseContrast: [self chckInt: [self noiseContrast] def: 50 min: 0 max: 100 set: set]];
+
     // Acuity stuff
     [self setIsAcuityColor: [self chckBool: [self isAcuityColor] def: NO set: set]];
     [self setObliqueOnly: [self chckBool: [self obliqueOnly] def: NO set: set]]; // only applies to acuity with 4 Landolt orienations
@@ -474,6 +476,20 @@ Created by mb on July 15, 2015.
 }
 + (void) setTimeoutRewardPicturesInSeconds: (float) value { //console.info("Settings>setTimeoutRewardPicturesInSeconds");
     [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "timeoutRewardPicturesInSeconds"];
+}
+
+
++ (BOOL) embedInNoise {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "embedInNoise"];
+}
++ (void)setEmbedInNoise: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "embedInNoise"];
+}
++ (int) noiseContrast {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "noiseContrast"];
+}
++ (void) setNoiseContrast: (int) value {
+    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "noiseContrast"];
 }
 
 

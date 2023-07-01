@@ -34,6 +34,7 @@ Created by Bach on 08.08.2017.
         default: break;
     }
     
+    [self embedInNoise];
     [self drawTouchControls];
     CGContextRestoreGState(cgc);
     [super drawStimulusInRect: dirtyRect];

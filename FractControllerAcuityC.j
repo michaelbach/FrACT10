@@ -40,6 +40,7 @@ Created by Bach on 18.07.2017.
             break;
         default: break;
     }
+    [self embedInNoise];
     [self drawTouchControls];
     CGContextRestoreGState(cgc);
     [super drawStimulusInRect: dirtyRect];
