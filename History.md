@@ -1,6 +1,6 @@
 #  History
 
-+ 2023-07-01 begin "embed in noise"
++ 2023-07-01 begin "embed in noise", Version → 1.0.3
 + 2023-06-27 add preset for color
 + 2023-06-26 add export for color, "gray" → "grey"
 + 2023-06-25 begin color for acuity optotypes
