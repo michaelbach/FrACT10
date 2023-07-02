@@ -263,7 +263,7 @@ Shortcut: f
                             <binding destination="450" name="value" keyPath="resultString" id="R5j-xh-4nd"/>
                         </connections>
                     </textField>
-                    <button toolTip="Contrast run using Tumbling E.  Shortcut: 3       " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aRI-1u-jl3" customClass="MDBButton">
+                    <button toolTip="Contrast run using gratings. Settings&gt;Contrast to set spatial frequency and diameter. Shortcut: g       " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aRI-1u-jl3" customClass="MDBButton">
                         <rect key="frame" x="508" y="293" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="butCntGrating" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="IV3-56-IkQ">

@@ -8,10 +8,13 @@
 cd ${0:a:h} # go to the starting directory
 # pwd
 
-#rm -R ../FrACT
-# below doesn't work if "FrACT" exists in Trash
-mv -fv ../FrACT $HOME"/Library/Mobile Documents/com~apple~CloudDocs/.Trash/FrACT"
+#rm -R ../FrACT ← this would give the iCloud services a hiccup, so mv to trash
+pathFractTrash=$HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs/.Trash/FrACT
+rm -R $pathFractTrash # need to delete first, otherwise mv doesn't work
+mv -fv ../FrACT $pathFractTrash
+
 jake release
+
 rm -R Build/Release/FrACT/Frameworks # we don't need this
 rm -R Build/Release/FrACT/CommonJS.environment # nor this
 mv Build/Release/FrACT ../ # move it up, creating the "capp" folder
