@@ -30,6 +30,7 @@ Created by Bach on 2020-08-17
         default: break;
     }
     
+    [self embedInNoise];
     [self drawTouchControls];
     CGContextRestoreGState(cgc);
     [super drawStimulusInRect: dirtyRect];

@@ -32,4 +32,44 @@ kTestAcuityLett = 0; kTestAcuityC = 1; kTestAcuityE = 2; kTestAcuityTAO = 3; kTe
 }
 
 
+/**
+ helpers
+ */
+- (CPString) testNameGivenTestID: (TestIDType) theTestID {
+    switch (theTestID) {
+        case kTestAcuityLett: return "Acuity_Letters";
+        case kTestAcuityC: return "Acuity_LandoltC";
+        case kTestAcuityE: return "Acuity_TumblingE";
+        case kTestAcuityTAO: return "Acuity_TAO";
+        case kTestAcuityVernier: return "Acuity_Vernier";
+        case kTestContrastLett: return "Contrast_Letters";
+        case kTestContrastC: return "Contrast_LandoltC";
+        case kTestContrastE: return "Contrast_TumblingE";
+        case kTestContrastG: return "Contrast_Grating";
+        case kTestAcuityLineByLine: return "Acuity_LineByLine";
+    }
+    return "NOT ASSIGNED";
+}
+
+
+- (BOOL) isAcuityTAO {
+    return [kTestAcuityTAO].includes(currentTestID);
+}
+- (BOOL) isAcuityOptotype {
+    return [kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO].includes(currentTestID);
+}
+- (BOOL) isAcuityAny {
+    return ([self isAcuityOptotype] || (currentTestID == kTestAcuityVernier))
+}
+- (BOOL) isContrastG {
+    return [kTestContrastG].includes(currentTestID);
+}
+- (BOOL) isContrastOptotype { //console.info("isContrastOptotype ", currentTestID);
+    return [kTestContrastLett, kTestContrastC, kTestContrastE].includes(currentTestID);
+}
+- (BOOL) isContrastAny {
+    return ([self isContrastOptotype] || (currentTestID == kTestContrastG))
+}
+
+
 @end

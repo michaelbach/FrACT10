@@ -66,7 +66,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         state = kStateDrawBack;
         kRangeLimitDefault = "";  kRangeLimitOk = "rangeOK";  kRangeLimitValueAtFloor = "atFloor";
         kRangeLimitValueAtCeiling = "atCeiling";  rangeLimitStatus = kRangeLimitDefault;
-
+        
         optotypes = [[Optotypes alloc] init];
         [Settings checkDefaults];
         colOptotypeFore = [Settings acuityForeColor];  colOptotypeBack = [Settings acuityBackColor];
@@ -123,9 +123,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     timerDisplay = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutDisplaySeconds] target:self selector:@selector(onTimeoutDisplay:) userInfo:nil repeats:NO];
     timerResponse = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutResponseSeconds] target:self selector:@selector(onTimeoutResponse:) userInfo:nil repeats:NO];
     if ([Settings autoRunIndex] > 0) {
-        if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO, kTestContrastLett, kTestContrastC, kTestContrastE, kTestContrastG].includes(currentTestID)) {
+        if ([self isAcuityOptotype] || [self isContrastAny]) {
             let time = 0.4;
-            if ([kTestContrastLett, kTestContrastC, kTestContrastE, kTestContrastG].includes(currentTestID)) {
+            if ([self isContrastAny]) {
                 time += [Settings contrastTimeoutFixmark] / 1000;
             }
             timerAutoResponse = [CPTimer scheduledTimerWithTimeInterval: 0.8 target:self selector:@selector(onTimeoutAutoResponse:) userInfo:nil repeats:NO];
@@ -141,7 +141,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (void) prepareDrawing { // console.info("FractController>prepareDrawing");
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, colOptotypeBack);
-    if (currentTestID == kTestAcuityTAO)
+    if ([self isAcuityTAO])
         CGContextSetFillColor(cgc, [CPColor whiteColor]); ;// contrast always 100% with TAO
     CGContextFillRect(cgc, [[self window] frame]);
     CGContextSaveGState(cgc);
@@ -183,13 +183,15 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     }
 }
 
+
 /**
  Embed in noise
  */
 - (void) embedInNoise {
     if (![Settings embedInNoise]) return;
-    if (!(currentTestID in [kTestAcuityLett, kTestAcuityC, kTestAcuityE])) return;
-    const checksize = Math.ceil(stimStrengthInDeviceunits / 5);
+    if (!([self isAcuityOptotype] || [self isContrastOptotype])) return;
+    let checksize = [self isContrastAny] ? optotypeSizeInPix : stimStrengthInDeviceunits;
+    checksize = Math.ceil(checksize / 5);
     const aCheck = CGRectMake(0, 0, checksize, checksize);
     const nx = Math.min(Math.ceil(viewWidth2 / checksize), 16 * 5);
     const ny = Math.min(Math.ceil(viewHeight2 / checksize), 16 * 5);
@@ -273,16 +275,16 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 - (void) onTimeoutAutoResponse: (CPTimer) timer { //console.info("FractController>onTimeoutAutoResponse");
     const arIndex = [Settings autoRunIndex] - 1;
-    if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO].includes(currentTestID)) {
+    if ([self isAcuityOptotype]) {
         const logMARcurrent = [MiscSpace logMARfromDecVA: [MiscSpace decVAFromGapPixels: stimStrengthInDeviceunits]];
         let logMARtarget = [0.3, 0.0, -0.3][arIndex];
         if ([Settings threshCorrection]) logMARtarget += Math.log10(gThresholdCorrection4Ascending);
         responseWasCorrect = logMARcurrent > logMARtarget;
     }
-    if ([kTestContrastLett, kTestContrastC, kTestContrastE].includes(currentTestID)) {
+    if ([self isContrastOptotype]) {
         responseWasCorrect = stimStrengthInDeviceunits < [1.0, 1.3, 1.6][arIndex];
     }
-    if ([kTestContrastG].includes(currentTestID)) {
+    if ([self isContrastG]) {
         const contrastMichelsonPercentCurrent = [self gratingContrastMichelsonPercentFromDeviceunits: stimStrengthInDeviceunits];
         responseWasCorrect = contrastMichelsonPercentCurrent > [10.0, 1.0, 0.3][arIndex];
     }
@@ -344,7 +346,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     
     let _currentTestResultExportString = [_parentController currentTestResultExportString];
     if ([Settings showCI95] && (![_parentController runAborted])) {
-        if (currentTestID in [kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO]) {
+        if ([self isAcuityOptotype]) {
             // the below causes a delay of < 1 s with 10,000 samples
             const historyResults = [trialHistoryController composeInfo4CI];
             const ciResults = [MDBDispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: 10000][0];
@@ -355,10 +357,12 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         }
     }
     if ([Settings isAcuityColor]) {
-        _currentTestResultExportString += tab + "colorForeBack" + tab + [colOptotypeFore hexString] + tab + [colOptotypeBack hexString];
+        if ([self isAcuityOptotype] && (![self isAcuityTAO])) {
+            _currentTestResultExportString += tab + "colorForeBack" + tab + [colOptotypeFore hexString] + tab + [colOptotypeBack hexString];
+        }
     }
     if ([Settings embedInNoise]) {
-        if (currentTestID in [kTestAcuityLett, kTestAcuityC, kTestAcuityE]) {
+        if (([self isAcuityOptotype] || [self isContrastOptotype]) && (![self isAcuityTAO])) {
             _currentTestResultExportString += tab + "noiseContrast" + tab + [Misc stringFromInteger: [Settings noiseContrast]];
         }
     }
@@ -389,7 +393,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 /**
  "stimThresholderunits" are on a linear 0…1 scale
  "Deviceunits" are the corresponding pixels for acuity or logCSWeber for contrast
-*/
+ */
 - (float) stimThresholderunitsFromDeviceunits: (float) ntve {
     console.info("FractController>stimThresholderunitsFromDeviceunits OVERRIDE THIS!");
     return ntve;
@@ -429,23 +433,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     }
     //console.info(s);
     return s;
-}
-
-
-- (CPString) testNameGivenTestID: (TestIDType) theTestID {
-    switch (theTestID) {
-        case kTestAcuityLett: return "Acuity_Letters";
-        case kTestAcuityC: return "Acuity_LandoltC";
-        case kTestAcuityE: return "Acuity_TumblingE";
-        case kTestAcuityTAO: return "Acuity_TAO";
-        case kTestAcuityVernier: return "Acuity_Vernier";
-        case kTestContrastLett: return "Contrast_Letters";
-        case kTestContrastC: return "Contrast_LandoltC";
-        case kTestContrastE: return "Contrast_TumblingE";
-        case kTestContrastG: return "Contrast_Grating";
-        case kTestAcuityLineByLine: return "Acuity_LineByLine";
-    }
-    return "NOT ASSIGNED";
 }
 
 

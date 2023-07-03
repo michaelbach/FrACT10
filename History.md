@@ -1,5 +1,6 @@
 #  History
 
++ 2023-07-03 noise also for contrast, simpler decisions on test category with "isContrast/isAcuity"
 + 2023-07-02 correct a tooltip, improve make script
 + 2023-07-01 begin "embed in noise", Version → 1.0.3
 + 2023-06-27 add preset for color

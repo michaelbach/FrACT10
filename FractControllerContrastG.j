@@ -75,6 +75,7 @@
         default: break;
     }
     
+    [self embedInNoise];
     [self drawTouchControls];
     CGContextRestoreGState(cgc);
     [super drawStimulusInRect: dirtyRect];
