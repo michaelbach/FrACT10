@@ -42,7 +42,7 @@
  Called by the action of the preset selection pop-up, shows the "Are you sure" dialog
  */
 + (void) apply: (int) p { //console.info("Presets>apply");
-    presetNames = ["default", "ULV", "ESU", "Test", "Test Color Equiluminance"];
+    presetNames = ["default", "ULV", "ESU", "Test", "Test Color Equiluminance", "BCM_RonB", "BCM_BonY"];
     if ((p < 0) | (p > presetNames.length)) return;
     currentPresetName = presetNames[p];
     const s = "Really apply the preset “" + currentPresetName + "” ?"
@@ -75,6 +75,10 @@
             [self applyTest];  break;
         case 4:
             [self applyTestColorEquiluminance];  break;
+        case 5:
+            [self applyTestBCM_RonB]; break;
+        case 6:
+            [self applyTestBCM_BonY]; break;
         default:
             [Settings setDefaults];
     }
@@ -102,7 +106,7 @@
 + (void) applyESU {
     [self setStandardDefaultsKeepingCalBarLength];
     [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
-
+    
     [Settings setDistanceInCM: 150];
     
     [[CPUserDefaults standardUserDefaults] setInteger: 1 forKey: "nAlternativesIndex"]; // 4 alternatives
@@ -146,5 +150,28 @@
     [Settings setAcuityBackColor: [CPColor colorWithRed: 0 green: 0.70 blue: 0 alpha: 1]];
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyForeBackColorsFromSettings" object: nil];
 }
+
+
+/**
+ Apply RCM-RonB/BonY
+ */
++ (void) applyBCM {
+    [self applyTest];
+}
++ (void) applyTestBCM_RonB {
+    [self applyBCM];
+    [Settings setIsAcuityColor: YES];
+    [Settings setAcuityForeColor: [CPColor colorWithRed: 255 green: 0 blue: 0 alpha: 1]];
+    [Settings setAcuityBackColor: [CPColor colorWithRed: 0 green: 0 blue: 255 alpha: 1]];
+    [[CPNotificationCenter defaultCenter] postNotificationName: "copyForeBackColorsFromSettings" object: nil];
+}
++ (void) applyTestBCM_BonY {
+    [self applyBCM];
+    [Settings setIsAcuityColor: YES];
+    [Settings setAcuityForeColor: [CPColor colorWithRed: 0 green: 0 blue: 255 alpha: 1]];
+    [Settings setAcuityBackColor: [CPColor colorWithRed: 200 green: 200 blue: 0 alpha: 1]];
+    [[CPNotificationCenter defaultCenter] postNotificationName: "copyForeBackColorsFromSettings" object: nil];
+}
+
 
 @end
