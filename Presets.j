@@ -1,6 +1,6 @@
 /*
  This file is part of FrACT10, a vision test battery.
- Copyright © 2022 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
+ Copyright © 2022 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
  
  Presets.j
  

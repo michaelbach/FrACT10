@@ -1,6 +1,6 @@
 /*
 This file is part of FrACT10, a vision test battery.
-Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
+Copyright © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
 AppController.j
 
@@ -131,7 +131,7 @@ Created by mb on 2017-07-12.
 
     [CPMenu setMenuBarVisible: NO];
     window.addEventListener('error', function(e) {
-        alert("An error occured, I'm sorry. Error message:\r\r" + e.message + "\r\rIf it recurs, please notify michael.bach@uni-freiburg.de, ideally relating the message, e.g. via a screeshot.\rI will look into it and endeavour to provide a fix ASAP.\r\rOn “Close”, the window will reload and you can retry.");
+        alert("An error occured, I'm sorry. Error message:\r\r" + e.message + "\r\rIf it recurs, please notify bach@uni-freiburg.de, ideally relating the message, e.g. via a screeshot.\rI will look into it and endeavour to provide a fix ASAP.\r\rOn “Close”, the window will reload and you can retry.");
         window.location.reload(false);
     });
 
