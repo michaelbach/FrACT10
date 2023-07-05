@@ -2491,7 +2491,7 @@ CQ
                                             </view>
                                         </box>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lz5-Nz-CsQ">
-                                            <rect key="frame" x="24" y="442" width="93" height="22"/>
+                                            <rect key="frame" x="26" y="442" width="93" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Windowcolor" bezelStyle="round" id="eky-z1-NOZ">
                                                 <font key="font" metaFont="system"/>
@@ -2553,7 +2553,7 @@ CQ
                                             </view>
                                         </box>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Upt-gW-HXb">
-                                            <rect key="frame" x="25" y="332" width="93" height="22"/>
+                                            <rect key="frame" x="26" y="332" width="93" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Noise" bezelStyle="round" id="lSm-aI-d2L">
                                                 <font key="font" metaFont="system"/>
@@ -2562,24 +2562,24 @@ CQ
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ois-tI-5Ud">
-                                            <rect key="frame" x="14" y="133" width="480" height="109"/>
+                                            <rect key="frame" x="14" y="170" width="393" height="72"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="aXC-Yj-JOx">
-                                                <rect key="frame" x="4" y="5" width="472" height="101"/>
+                                                <rect key="frame" x="4" y="5" width="385" height="64"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="b1J-gq-L5p">
-                                            <rect key="frame" x="24" y="229" width="120" height="22"/>
+                                            <rect key="frame" x="26" y="229" width="165" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Gratings color" bezelStyle="round" id="trq-xL-WZb">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Grating colors for BCM" bezelStyle="round" id="trq-xL-WZb">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="unemphasizedSelectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                         <colorWell toolTip="Color well, foreground color" fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nb0-4a-rbM">
-                                            <rect key="frame" x="113" y="195" width="46" height="23"/>
+                                            <rect key="frame" x="124" y="195" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -2588,7 +2588,7 @@ CQ
                                             </connections>
                                         </colorWell>
                                         <colorWell toolTip="Color well, background color" fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGC-SX-eDp">
-                                            <rect key="frame" x="173" y="195" width="46" height="23"/>
+                                            <rect key="frame" x="185" y="195" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -2597,7 +2597,7 @@ CQ
                                             </connections>
                                         </colorWell>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cel-7f-fnY">
-                                            <rect key="frame" x="222" y="199" width="163" height="16"/>
+                                            <rect key="frame" x="237" y="199" width="163" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Fore- / background color" id="lTo-Cc-6yg">
                                                 <font key="font" metaFont="system"/>
