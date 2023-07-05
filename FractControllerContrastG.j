@@ -55,10 +55,37 @@
     [self annulusWithRadius: r + 2 * w width: w gray: l alpha: 0.875];
     [self annulusWithRadius: r + 400 width: 780 gray: l alpha: 1];
 }
+- (void) gratingSineColorWithPeriodInPx: (float) periodInPx direction: (int) theDirection {
+    const l2 = 2 * Math.round(0.5 * 1.42 * Math.max(viewWidth2, viewHeight2));
+    const trigFactor = 1.0 / periodInPx * 2 * Math.PI; // calculate only once
+    CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180); // rotate to desired angle
+    CGContextSetLineWidth(cgc, 1.3);
+    let l;
+    for (let ix = -l2; ix <= l2; ++ix) {
+        const a = 0.5 + 0.5 * contrastMichelsonPercent / 100 * Math.sin((ix % periodInPx) * trigFactor);
+        CGContextSetStrokeColor(cgc, [colOptotypeFore colorWithAlphaComponent: a]);
+        CGContextBeginPath(cgc);
+        CGContextMoveToPoint(cgc, ix, -l2);  CGContextAddLineToPoint(cgc, ix, l2);
+        CGContextStrokePath(cgc);
+    }
+    const r = 0.5 * [MiscSpace pixelFromDegree: [Settings gratingDiaInDeg]];
+    const w = r / 20;
+    l = [MiscLight devicegrayFromLuminance: 0.5];
+    [self annulusWithRadius: r - 2 * w width: w gray: l alpha: 0.125];
+    [self annulusWithRadius: r - w width: w gray: l alpha: 0.25];
+    [self annulusWithRadius: r width: w gray: l alpha: 0.5];
+    [self annulusWithRadius: r + w width: w gray: l alpha: 0.75];
+    [self annulusWithRadius: r + 2 * w width: w gray: l alpha: 0.875];
+    [self annulusWithRadius: r + 400 width: 780 gray: l alpha: 1];
+}
 
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerContrastG>drawStimulusInRect");
-    [self calculateForeBackColors];
+    if ([Settings isGratingColor]) {
+        colOptotypeFore = [Settings gratingForeColor]; colOptotypeBack = [Settings gratingBackColor];
+    } else {
+        [self calculateForeBackColors];
+    }
     [self prepareDrawing];
     switch(state) {
         case kStateDrawBack: break;
@@ -68,7 +95,13 @@
         case kStateDrawFore2:
             contrastMichelsonPercent = [self gratingContrastMichelsonPercentFromDeviceunits: stimStrengthInDeviceunits];
             let period = [MiscSpace pixelFromDegree: 1.0 / [Settings gratingCPD]];
-            [self gratingSineWithPeriodInPx: period direction: [alternativesGenerator currentAlternative]];
+            if ([Settings isGratingColor]) {
+                CGContextSetFillColor(cgc, colOptotypeBack);
+                CGContextFillRect(cgc, [[self window] frame]);
+                [self gratingSineColorWithPeriodInPx: period direction: [alternativesGenerator currentAlternative]];
+            } else {
+                [self gratingSineWithPeriodInPx: period direction: [alternativesGenerator currentAlternative]];
+            }
             [self drawFixMark3];
             trialInfoString = [self contrastComposeTrialInfoString];// compose here after colors are set
             break;

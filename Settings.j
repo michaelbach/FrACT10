@@ -160,6 +160,7 @@ Created by mb on July 15, 2015.
     [self setGratingCPD: [self chckFlt: [self gratingCPD] def: 2.0 min: 1.0 max: 18 set: set]];
     [self setGratingDiaInDeg: [self chckFlt: [self gratingDiaInDeg] def: 10.0 min: 1.0 max: 50 set: set]];
     [self setGratingUseErrorDiffusion: [self chckBool: [self gratingUseErrorDiffusion] def: YES set: set]];
+    [self setIsGratingColor: [self chckBool: [self isGratingColor] def: NO set: set]];
     
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
@@ -837,6 +838,29 @@ Created by mb on July 15, 2015.
 }
 + (void) setGratingUseErrorDiffusion: (BOOL) value {
     [[CPUserDefaults standardUserDefaults] setBool: value forKey: "gratingUseErrorDiffusion"];
+}
+
++ (BOOL) isGratingColor {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "isGratingColor"];
+}
++ (void) setIsGratingColor: (BOOL) value {
+    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "isGratingColor"];
+}
++ (CPColor) gratingForeColor { //console.info("Settings>gratingForeColor");
+    let theData = [[CPUserDefaults standardUserDefaults] stringForKey: "gratingForeColor"];
+    if (theData == nil) theData = "FFFFFF"; // safety measure
+    return [CPColor colorWithHexString: theData];
+}
++ (void) setGratingForeColor: (CPColor) col { //console.info("Settings>setGratingForeColor:", theColor);
+    [[CPUserDefaults standardUserDefaults] setObject: [col hexString] forKey: "gratingForeColor"];
+}
++ (CPColor) gratingBackColor { //console.info("Settings>acuityBackColor");
+    let theData = [[CPUserDefaults standardUserDefaults] stringForKey: "gratingBackColor"];
+    if (theData == nil) theData = "000000"; // safety measure
+    return [CPColor colorWithHexString: theData];
+}
++ (void) setGratingBackColor: (CPColor) col { //console.info("Settings>setAcuityBackColor:", theColor);
+    [[CPUserDefaults standardUserDefaults] setObject: [col hexString] forKey: "gratingBackColor"];
 }
 
 

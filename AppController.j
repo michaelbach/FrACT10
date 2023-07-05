@@ -66,7 +66,7 @@ Created by mb on 2017-07-12.
 
 
 /**
- Accessing the foreground color for acuity optotypes as saved in settings.
+ Accessing the foreground/background color for acuity optotypes as saved in settings.
  @return the current foreground color
  Colors not be saved as object in userdefaults, probably serialiser not implemented
  NSUnarchiveFromData, Error message [CPData encodeWithCoder:] unrecognized selector
@@ -75,27 +75,24 @@ Created by mb on 2017-07-12.
 - (CPColor) acuityForeColor { //console.info("AppController>acuityForeColor");
     return [Settings acuityForeColor];
 }
-/**
- Setting the foreground color for acuity optotypes
- @param theColor: foreground color
- */
-- (void) setAcuityForeColor: (CPColor) theColor {//console.info("AppController>setAcuityForeColor");
-    [Settings setAcuityForeColor: theColor];
+- (void) setAcuityForeColor: (CPColor) col {//console.info("AppController>setAcuityForeColor");
+    [Settings setAcuityForeColor: col];
 }
-/**
- Accessing the background color for acuity optotypes as saved in settings.
- @return the current background color
- */
 - (CPColor) acuityBackColor { //console.info("AppController>acuityBackColor");
     return [Settings acuityBackColor];
 }
-/**
- Setting the background color for acuity optotypes
- @param theColor: background color
- */
-- (void) setAcuityBackColor: (CPColor) theColor { //console.info("AppController>setAcuityBackColor");
-    [Settings setAcuityBackColor: theColor];
+- (void) setAcuityBackColor: (CPColor) col { //console.info("AppController>setAcuityBackColor");
+    [Settings setAcuityBackColor: col];
 }
+
+/**
+ Accessing the foreground /background color for gratings
+ */
+- (void) setGratingForeColor: (CPColor) col {[Settings setGratingForeColor: col];}
+- (CPColor) gratingForeColor {return [Settings gratingForeColor];}
+- (void) setGratingBackColor: (CPColor) col {[Settings setGratingBackColor: col];}
+- (CPColor) gratingBackColor {return [Settings gratingBackColor];}
+
 /**
  Accessing the window background color
  @return the current background color
@@ -107,9 +104,9 @@ Created by mb on 2017-07-12.
  Setting the window background color
  @param theColor: background color
  */
-- (void) setWindowBackgroundColor: (CPColor) theColor { //console.info("AppController>setAcuityBackColor");
-    [Settings setWindowBackgroundColor: theColor];
-    [[self window] setBackgroundColor: theColor];
+- (void) setWindowBackgroundColor: (CPColor) col { //console.info("AppController>setAcuityBackColor");
+    [Settings setWindowBackgroundColor: col];
+    [[self window] setBackgroundColor: col];
 }
 
 
