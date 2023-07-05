@@ -2583,8 +2583,8 @@ CQ
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <binding destination="izh-pU-csC" name="enabled" keyPath="values.isGratingColor" id="tKk-z6-C4t"/>
                                                 <binding destination="450" name="value" keyPath="gratingForeColor" id="Hhy-Ya-leh"/>
+                                                <binding destination="izh-pU-csC" name="enabled" keyPath="values.isGratingColor" id="tKk-z6-C4t"/>
                                             </connections>
                                         </colorWell>
                                         <colorWell toolTip="Color well, background color" fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGC-SX-eDp">
@@ -2592,8 +2592,8 @@ CQ
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <binding destination="izh-pU-csC" name="enabled" keyPath="values.isGratingColor" id="SOA-Zf-iim"/>
                                                 <binding destination="450" name="value" keyPath="gratingBackColor" id="7ZN-PN-JAe"/>
+                                                <binding destination="izh-pU-csC" name="enabled" keyPath="values.isGratingColor" id="SOA-Zf-iim"/>
                                             </connections>
                                         </colorWell>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cel-7f-fnY">
