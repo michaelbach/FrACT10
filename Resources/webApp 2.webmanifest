@@ -1,0 +1,24 @@
+{
+  "short_name": "FrACT10",
+  "name": "FrACT10",
+  "description": "Vision Test Battery (acuities, contrast, …)",
+  "icons": [
+    {
+      "src": "icons/FrACT_icon-390.png",
+      "sizes": "390x390",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/FrACT_icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "../index.html",
+  "id": "/fract/FrACT10/FrACT/index.html",
+  "theme_color": "#44C",
+  "background_color": "#777",
+  "display": "standalone",
+  "orientation": "landscape"
+}
