@@ -1,5 +1,6 @@
 #  History
 
++ 2023-07-06 fix regression in acuity GUI
 + 2023-07-05 BCM: colored grating 1st try
 + 2023-07-04 begin additions for the BCM project
 + 2023-07-03 noise also for contrast, simpler decisions on test category with "isContrast/isAcuity"

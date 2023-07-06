@@ -1345,6 +1345,14 @@ No money transfer involved, just for size!     </string>
                                     <rect key="frame" x="10" y="33" width="760" height="489"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
+                                        <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="6mR-iR-6Co">
+                                            <rect key="frame" x="15" y="354" width="480" height="109"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <view key="contentView" id="eWA-9A-7HW">
+                                                <rect key="frame" x="4" y="5" width="472" height="101"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                        </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="vQg-Pw-FeU">
                                             <rect key="frame" x="34" y="449" width="200" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1354,14 +1362,6 @@ No money transfer involved, just for size!     </string>
                                                 <color key="backgroundColor" name="unemphasizedSelectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="6mR-iR-6Co">
-                                            <rect key="frame" x="15" y="354" width="480" height="109"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView" id="eWA-9A-7HW">
-                                                <rect key="frame" x="4" y="5" width="472" height="101"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            </view>
-                                        </box>
                                         <colorWell toolTip="Color well, foreground color" fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eR-Ax-gL1">
                                             <rect key="frame" x="91" y="374" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
