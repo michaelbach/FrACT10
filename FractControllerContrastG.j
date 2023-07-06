@@ -25,12 +25,12 @@
 }
 - (void) gratingSineWithPeriodInPx: (float) periodInPx direction: (int) theDirection {
     //console.info("optotypes>gratingSineWithPeriodInPx: ", periodInPx, theDirection);
-    const l2 = 2 * Math.round(0.5 * 1.42 * Math.max(viewWidth2, viewHeight2));
+    const s2 = 2 * Math.round(0.5 * 1.42 * Math.max(viewWidth2, viewHeight2));
     const trigFactor = 1.0 / periodInPx * 2 * Math.PI; // calculate only once
     CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180); // rotate to desired angle
     CGContextSetLineWidth(cgc, 1.3);
     let l, lError = 0, lDiscrete;
-    for (let ix = -l2; ix <= l2; ++ix) {
+    for (let ix = -s2; ix <= s2; ++ix) {
         l = 0.5 + 0.5 * contrastMichelsonPercent / 100 * Math.sin((ix % periodInPx) * trigFactor);
         l = [MiscLight devicegrayFromLuminance: l]; // apply gamma correction
         lDiscrete = l;
@@ -42,7 +42,7 @@
         }
         CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: lDiscrete alpha: 1]);
         CGContextBeginPath(cgc);
-        CGContextMoveToPoint(cgc, ix, -l2);  CGContextAddLineToPoint(cgc, ix, l2);
+        CGContextMoveToPoint(cgc, ix, -s2);  CGContextAddLineToPoint(cgc, ix, s2);
         CGContextStrokePath(cgc);
     }
     const r = 0.5 * [MiscSpace pixelFromDegree: [Settings gratingDiaInDeg]];
@@ -56,21 +56,20 @@
     [self annulusWithRadius: r + 400 width: 780 gray: l alpha: 1];
 }
 - (void) gratingSineColorWithPeriodInPx: (float) periodInPx direction: (int) theDirection {
-    const l2 = 2 * Math.round(0.5 * 1.42 * Math.max(viewWidth2, viewHeight2));
+    const s2 = 2 * Math.round(0.5 * 1.42 * Math.max(viewWidth2, viewHeight2));
     const trigFactor = 1.0 / periodInPx * 2 * Math.PI; // calculate only once
     CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180); // rotate to desired angle
     CGContextSetLineWidth(cgc, 1.3);
-    let l;
-    for (let ix = -l2; ix <= l2; ++ix) {
+    for (let ix = -s2; ix <= s2; ++ix) {
         const a = 0.5 + 0.5 * contrastMichelsonPercent / 100 * Math.sin((ix % periodInPx) * trigFactor);
         CGContextSetStrokeColor(cgc, [colOptotypeFore colorWithAlphaComponent: a]);
         CGContextBeginPath(cgc);
-        CGContextMoveToPoint(cgc, ix, -l2);  CGContextAddLineToPoint(cgc, ix, l2);
+        CGContextMoveToPoint(cgc, ix, -s2);  CGContextAddLineToPoint(cgc, ix, s2);
         CGContextStrokePath(cgc);
     }
     const r = 0.5 * [MiscSpace pixelFromDegree: [Settings gratingDiaInDeg]];
     const w = r / 20;
-    l = [MiscLight devicegrayFromLuminance: 0.5];
+    let l = [MiscLight devicegrayFromLuminance: 0.5];
     [self annulusWithRadius: r - 2 * w width: w gray: l alpha: 0.125];
     [self annulusWithRadius: r - w width: w gray: l alpha: 0.25];
     [self annulusWithRadius: r width: w gray: l alpha: 0.5];
