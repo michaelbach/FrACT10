@@ -1,5 +1,6 @@
 #  History
 
++ 2023-07-24 improve more in help panel
 + 2023-07-21 improve help panel
 + 2023-07-06 fix regression in acuity GUI
 + 2023-07-05 BCM: colored grating 1st try
