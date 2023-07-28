@@ -55,11 +55,18 @@
     [self annulusWithRadius: r + 2 * w width: w gray: l alpha: 0.875];
     [self annulusWithRadius: r + 400 width: 780 gray: l alpha: 1];
 }
+
+
+- (void) annulusWithRadius: (float) r width: (float) w andColor: (CPColor) col {
+    CGContextSetLineWidth(cgc, w + 0.1);
+    CGContextSetStrokeColor(cgc, col);
+    CGContextStrokeEllipseInRect(cgc, CGRectMake(0 - r, 0 - r, 2 * r, 2 * r));
+}
 - (void) gratingSineColorWithPeriodInPx: (float) periodInPx direction: (int) theDirection {
     const s2 = 2 * Math.round(0.5 * 1.42 * Math.max(viewWidth2, viewHeight2));
     const trigFactor = 1.0 / periodInPx * 2 * Math.PI; // calculate only once
     CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180); // rotate to desired angle
-    CGContextSetLineWidth(cgc, 1.3);
+    CGContextSetLineWidth(cgc, 1.35); // still an artifact on oblique
     for (let ix = -s2; ix <= s2; ++ix) {
         const a = 0.5 + 0.5 * contrastMichelsonPercent / 100 * Math.sin((ix % periodInPx) * trigFactor);
         CGContextSetStrokeColor(cgc, [colOptotypeFore colorWithAlphaComponent: a]);
@@ -69,13 +76,12 @@
     }
     const r = 0.5 * [MiscSpace pixelFromDegree: [Settings gratingDiaInDeg]];
     const w = r / 20;
-    let l = [MiscLight devicegrayFromLuminance: 0.5];
-    [self annulusWithRadius: r - 2 * w width: w gray: l alpha: 0.125];
-    [self annulusWithRadius: r - w width: w gray: l alpha: 0.25];
-    [self annulusWithRadius: r width: w gray: l alpha: 0.5];
-    [self annulusWithRadius: r + w width: w gray: l alpha: 0.75];
-    [self annulusWithRadius: r + 2 * w width: w gray: l alpha: 0.875];
-    [self annulusWithRadius: r + 400 width: 780 gray: l alpha: 1];
+    [self annulusWithRadius: r - 2 * w width: w andColor: [colOptotypeBack colorWithAlphaComponent: 0.125]];
+    [self annulusWithRadius: r - w width: w andColor: [colOptotypeBack colorWithAlphaComponent: 0.25]];
+    [self annulusWithRadius: r width: w andColor: [colOptotypeBack colorWithAlphaComponent: 0.5]];
+    [self annulusWithRadius: r + w width: w andColor: [colOptotypeBack colorWithAlphaComponent: 0.75]];
+    [self annulusWithRadius: r + 2 * w width: w andColor: [colOptotypeBack colorWithAlphaComponent: 0.875]];
+    [self annulusWithRadius: r + 400 width: 780 andColor: [colOptotypeBack colorWithAlphaComponent: 1]];
 }
 
 
