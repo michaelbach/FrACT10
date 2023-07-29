@@ -22,19 +22,20 @@
 
 @implementation MDBButton: CPButton {
 }
+
+- (void) drawRect: (CGRect) dirtyRect { //console.info("MDBButton>drawRect");
+    const cgc = [[CPGraphicsContext currentContext] graphicsPort];
+    const f1 = CGRectInset([self bounds], 1, 1), radius = 8; // frame a little smaller  to fit into visibleRect
+    //console.log(_isHighlighted, [self isHighlighted], [self hasThemeState:CPThemeStateHighlighted]);
     
-    - (void) drawRect: (CGRect) dirtyRect { //console.info("MDBButton>drawRect");
-        const cgc = [[CPGraphicsContext currentContext] graphicsPort];
-        const f1 = CGRectInset([self bounds], 1, 1), radius = 8; // frame a little smaller  to fit into visibleRect
-        //console.log(_isHighlighted, [self isHighlighted], [self hasThemeState:CPThemeStateHighlighted]);
-        
-        const grayFillValue = _isHighlighted ? 0.85 : 0.98; // unselected or selected fill color
-        CGContextSetFillColor(cgc, [CPColor colorWithWhite: grayFillValue alpha: 1]);
-        CGContextFillRoundedRectangleInRect(cgc, f1, radius, YES, YES, YES, YES);
-        
-        CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: 0.3 alpha: 1]); // border, darker than any fill
-        CGContextSetLineWidth(cgc, 3);
-        CGContextStrokeRoundedRectangleInRect(cgc, f1, radius, YES, YES, YES, YES);
-    }
+    const grayFillValue = _isHighlighted ? 0.85 : 0.98; // unselected or selected fill color
+    CGContextSetFillColor(cgc, [CPColor colorWithWhite: grayFillValue alpha: 1]);
+    CGContextFillRoundedRectangleInRect(cgc, f1, radius, YES, YES, YES, YES);
     
+    CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: 0.3 alpha: 1]); // border, darker than any fill
+    CGContextSetLineWidth(cgc, 3);
+    CGContextStrokeRoundedRectangleInRect(cgc, f1, radius, YES, YES, YES, YES);
+}
+
+
 @end

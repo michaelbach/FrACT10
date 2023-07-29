@@ -11,7 +11,7 @@ Created by mb on July 15, 2015.
 */
 
 #define kDateOfCurrentSettingsVersion "2021-01-31"
-
+// kVersionStringOfFract & kVersionDateOfFrACT are in "Globals.j"
 
 @import <Foundation/Foundation.j>
 @import <AppKit/AppKit.j>

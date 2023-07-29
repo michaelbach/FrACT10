@@ -14,24 +14,39 @@
 }
 
 
-- (float) gratingContrastMichelsonPercentFromDeviceunits: (float) deviceUnits {
-    return [MiscLight contrastMichelsonPercentFromWeberPercent: [MiscLight contrastWeberPercentFromLogCSWeber: deviceUnits]];
+- (void) freqFromThresholderunits: (float) thresholderunit {
+    thresholderunit = 1 - thresholderunit; // 0: strong stimulus=low spatFreq
+    const logFreqMax = Math.log10(30);
+    const logFreqMin = Math.log10(0.5);
+    const logFreq = logFreqMin + thresholderunit *(logFreqMax - logFreqMin);
+    const freq = Math.pow(10, logFreq);
+    return freq;
 }
 
-- (void) annulusWithRadius: (float) r width: (float) w gray: (float) g alpha: (float) a {
-    CGContextSetLineWidth(cgc, w + 0.1);
-    CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: g alpha: a]);
-    CGContextStrokeEllipseInRect(cgc, CGRectMake(0 - r, 0 - r, 2 * r, 2 * r));
+
+- (void) maskWithColor: (CPColor) col {
+    const r = 0.5 * [MiscSpace pixelFromDegree: [Settings gratingDiaInDeg]];
+    const w = r / 20;
+    let radii = [r - 2 * w, r - w, r, r + w, r + 2 * w, r + 400];
+    let widths = [w, w, w, w, w, 780];
+    let alphas = [0.125, 0.25, 0.5, 0.75, 0.875, 1];
+    for (let i=0; i < 6; i++) {
+        CGContextSetLineWidth(cgc, widths[i] + 0.1);
+        CGContextSetStrokeColor(cgc, [col colorWithAlphaComponent: alphas[i]]);
+        const r = radii[i];
+        CGContextStrokeEllipseInRect(cgc, CGRectMake(0 - r, 0 - r, 2 * r, 2 * r));
+    }
 }
-- (void) gratingSineWithPeriodInPx: (float) periodInPx direction: (int) theDirection {
-    //console.info("optotypes>gratingSineWithPeriodInPx: ", periodInPx, theDirection);
+
+
+- (void) gratingSineWithPeriodInPx: (float) periodInPx direction: (int) theDirection contrast: (float) contrast {
     const s2 = 2 * Math.round(0.5 * 1.42 * Math.max(viewWidth2, viewHeight2));
     const trigFactor = 1.0 / periodInPx * 2 * Math.PI; // calculate only once
-    CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180); // rotate to desired angle
+    CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180);
     CGContextSetLineWidth(cgc, 1.3);
     let l, lError = 0, lDiscrete;
     for (let ix = -s2; ix <= s2; ++ix) {
-        l = 0.5 + 0.5 * contrastMichelsonPercent / 100 * Math.sin((ix % periodInPx) * trigFactor);
+        l = 0.5 + 0.5 * contrast / 100 * Math.sin((ix % periodInPx) * trigFactor);
         l = [MiscLight devicegrayFromLuminance: l]; // apply gamma correction
         lDiscrete = l;
         if ([Settings gratingUseErrorDiffusion]) {
@@ -41,55 +56,32 @@
             lDiscrete = lDiscrete / 255; // remap to 0…1
         }
         CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: lDiscrete alpha: 1]);
-        CGContextBeginPath(cgc);
-        CGContextMoveToPoint(cgc, ix, -s2);  CGContextAddLineToPoint(cgc, ix, s2);
-        CGContextStrokePath(cgc);
+        [optotypes strokeVLineAtX: ix y0: -s2 y1: s2];
     }
-    const r = 0.5 * [MiscSpace pixelFromDegree: [Settings gratingDiaInDeg]];
-    const w = r / 20;
-    l = [MiscLight devicegrayFromLuminance: 0.5];
-    [self annulusWithRadius: r - 2 * w width: w gray: l alpha: 0.125];
-    [self annulusWithRadius: r - w width: w gray: l alpha: 0.25];
-    [self annulusWithRadius: r width: w gray: l alpha: 0.5];
-    [self annulusWithRadius: r + w width: w gray: l alpha: 0.75];
-    [self annulusWithRadius: r + 2 * w width: w gray: l alpha: 0.875];
-    [self annulusWithRadius: r + 400 width: 780 gray: l alpha: 1];
+    [self maskWithColor: [CPColor colorWithWhite: [MiscLight devicegrayFromLuminance: 0.5] alpha: 1]];
 }
 
 
-- (void) annulusWithRadius: (float) r width: (float) w andColor: (CPColor) col {
-    CGContextSetLineWidth(cgc, w + 0.1);
-    CGContextSetStrokeColor(cgc, col);
-    CGContextStrokeEllipseInRect(cgc, CGRectMake(0 - r, 0 - r, 2 * r, 2 * r));
-}
-- (void) gratingSineColorWithPeriodInPx: (float) periodInPx direction: (int) theDirection {
+- (void) gratingSineColorWithPeriodInPx: (float) periodInPx direction: (int) theDirection contrast: (float) contrast {
     const s2 = 2 * Math.round(0.5 * 1.42 * Math.max(viewWidth2, viewHeight2));
     const trigFactor = 1.0 / periodInPx * 2 * Math.PI; // calculate only once
-    CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180); // rotate to desired angle
+    CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180);
     CGContextSetLineWidth(cgc, 1.35); // still an artifact on oblique
     for (let ix = -s2; ix <= s2; ++ix) {
-        const a = 0.5 + 0.5 * contrastMichelsonPercent / 100 * Math.sin((ix % periodInPx) * trigFactor);
+        const a = 0.5 + 0.5 * contrast / 100 * Math.sin((ix % periodInPx) * trigFactor);
         CGContextSetStrokeColor(cgc, [colOptotypeFore colorWithAlphaComponent: a]);
-        CGContextBeginPath(cgc);
-        CGContextMoveToPoint(cgc, ix, -s2);  CGContextAddLineToPoint(cgc, ix, s2);
-        CGContextStrokePath(cgc);
+        [optotypes strokeVLineAtX: ix y0: -s2 y1: s2];
     }
-    const r = 0.5 * [MiscSpace pixelFromDegree: [Settings gratingDiaInDeg]];
-    const w = r / 20;
-    [self annulusWithRadius: r - 2 * w width: w andColor: [colOptotypeBack colorWithAlphaComponent: 0.125]];
-    [self annulusWithRadius: r - w width: w andColor: [colOptotypeBack colorWithAlphaComponent: 0.25]];
-    [self annulusWithRadius: r width: w andColor: [colOptotypeBack colorWithAlphaComponent: 0.5]];
-    [self annulusWithRadius: r + w width: w andColor: [colOptotypeBack colorWithAlphaComponent: 0.75]];
-    [self annulusWithRadius: r + 2 * w width: w andColor: [colOptotypeBack colorWithAlphaComponent: 0.875]];
-    [self annulusWithRadius: r + 400 width: 780 andColor: [colOptotypeBack colorWithAlphaComponent: 1]];
+    [self maskWithColor: colOptotypeBack];
 }
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerContrastG>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView {
+    //console.info(stimStrengthInThresholderUnits)
+    [self calculateForeBackColors];
     if ([Settings isGratingColor]) {
-        colOptotypeFore = [Settings gratingForeColor]; colOptotypeBack = [Settings gratingBackColor];
-    } else {
-        [self calculateForeBackColors];
+        colOptotypeFore = [Settings gratingForeColor];
+        colOptotypeBack = [Settings gratingBackColor];
     }
     [self prepareDrawing];
     switch(state) {
@@ -98,14 +90,14 @@
             [self drawFixMark];
             break;
         case kStateDrawFore2:
-            contrastMichelsonPercent = [self gratingContrastMichelsonPercentFromDeviceunits: stimStrengthInDeviceunits];
+            contrastMichelsonPercent = [MiscLight contrastMichelsonPercentFromLogCSWeber: stimStrengthInDeviceunits];
             let period = [MiscSpace pixelFromDegree: 1.0 / [Settings gratingCPD]];
             if ([Settings isGratingColor]) {
                 CGContextSetFillColor(cgc, colOptotypeBack);
                 CGContextFillRect(cgc, [[self window] frame]);
-                [self gratingSineColorWithPeriodInPx: period direction: [alternativesGenerator currentAlternative]];
+                [self gratingSineColorWithPeriodInPx: period direction: [alternativesGenerator currentAlternative] contrast: contrastMichelsonPercent];
             } else {
-                [self gratingSineWithPeriodInPx: period direction: [alternativesGenerator currentAlternative]];
+                [self gratingSineWithPeriodInPx: period direction: [alternativesGenerator currentAlternative] contrast: contrastMichelsonPercent];
             }
             [self drawFixMark3];
             trialInfoString = [self contrastComposeTrialInfoString];// compose here after colors are set
@@ -149,11 +141,9 @@
 
 
 - (CPString) contrastComposeResultString {
-    
     // taking into account the result of final trial
     stimStrengthInDeviceunits = [self stimDeviceunitsFromThresholderunits: [thresholder nextStim2apply]];
-    contrastMichelsonPercent = [self gratingContrastMichelsonPercentFromDeviceunits: stimStrengthInDeviceunits];
-    
+    contrastMichelsonPercent = [MiscLight contrastMichelsonPercentFromLogCSWeber: stimStrengthInDeviceunits];
     rangeLimitStatus = kRangeLimitOk;
     if (contrastMichelsonPercent < 100 / 512) // 2 × 256
         rangeLimitStatus = kRangeLimitValueAtFloor;

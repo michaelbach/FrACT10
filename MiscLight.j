@@ -141,4 +141,8 @@
 }
 
 
++ (float) contrastMichelsonPercentFromLogCSWeber: (float) logCSWeber {
+    return [MiscLight contrastMichelsonPercentFromWeberPercent: [MiscLight contrastWeberPercentFromLogCSWeber: logCSWeber]];
+}
+
 @end

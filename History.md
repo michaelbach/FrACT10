@@ -1,5 +1,6 @@
 #  History
 
++ 2023-07-29 refactor gratings (prepare frequency sweep for BCM)
 + 2023-07-28 fix colorgrating background
 + 2023-07-24 improve more in help panel
 + 2023-07-21 improve help panel
