@@ -35,6 +35,19 @@
 }
 
 
+/**
+ Convert period from spatial frequency
+ */
++ (float) periodInPixelFromSpatialFrequency: (float) f {
+    let p = [MiscSpace pixelFromDegree: 1.0 / f];
+    return p;
+}
++ (float) spatialFrequencyFromPeriodInPixel: (float) p {
+    let f = 1 / [MiscSpace degreeFromPixel: p];
+    return f;
+}
+
+
 + (float) millimeterFromPixel: (float) pixel {
     return pixel * [Settings calBarLengthInMM] / [Settings calBarLengthInPixel];
 }

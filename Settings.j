@@ -6,11 +6,13 @@ Settings.j
 
 Provides a getter/setter interface to all settings (preferences)
 All values are checked for sensible ranges for robustness.
+All values are checked for sensible ranges for robustness.
 Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
 #define kDateOfCurrentSettingsVersion "2021-01-31"
+// kVersionStringOfFract & kVersionDateOfFrACT are in "Globals.j"
 // kVersionStringOfFract & kVersionDateOfFrACT are in "Globals.j"
 
 @import <Foundation/Foundation.j>
@@ -161,6 +163,11 @@ Created by mb on July 15, 2015.
     [self setGratingDiaInDeg: [self chckFlt: [self gratingDiaInDeg] def: 10.0 min: 1.0 max: 50 set: set]];
     [self setGratingUseErrorDiffusion: [self chckBool: [self gratingUseErrorDiffusion] def: YES set: set]];
     [self setIsGratingColor: [self chckBool: [self isGratingColor] def: NO set: set]];
+    [self setWhat2SweepIndex: [self chckInt: [self what2SweepIndex] def: 0 min: 0 max: 1 set: set]]; // 0: sweep contrast, 1: sweep spatial frequency
+    [self setGratingCPDmin: [self chckFlt: [self gratingCPDmin] def: 0.5 min: 0.1 max: 60 set: set]];
+    [self setGratingCPDmax: [self chckFlt: [self gratingCPDmax] def: 30 min: 0.1 max: 60 set: set]];
+    [self setGratingContrastMichelsonPercent: [self chckFlt: [self gratingContrastMichelsonPercent] def: 95 min: 0.3 max: 99 set: set]];
+
     
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
@@ -219,8 +226,8 @@ Created by mb on July 15, 2015.
 + (CPString) dateSettingsVersion { //console.info("Settings>dateSettingsVersion");
     return [[CPUserDefaults standardUserDefaults] stringForKey: "dateSettingsVersion"];
 }
-+ (void) setDateSettingsVersion: (CPString) value { //console.info("Settings>setDatesettingsVersion");
-    [[CPUserDefaults standardUserDefaults] setObject: value forKey: "dateSettingsVersion"];
++ (void) setDateSettingsVersion: (CPString) val { //console.info("Settings>setDatesettingsVersion");
+    [[CPUserDefaults standardUserDefaults] setObject: val forKey: "dateSettingsVersion"];
 }
 
 
@@ -238,22 +245,22 @@ Created by mb on July 15, 2015.
     const t = [[CPUserDefaults standardUserDefaults] integerForKey: "nTrials02"]; //console.info(t);
     return t;
 }
-+ (void) setNTrials02: (int) value { //console.info("Settings>nTrials02");
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "nTrials02"];
++ (void) setNTrials02: (int) val { //console.info("Settings>nTrials02");
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "nTrials02"];
 }
 
 + (int) nTrials04 { //console.info("Settings>nTrials04");
     return [[CPUserDefaults standardUserDefaults] integerForKey: "nTrials04"];
 }
-+ (void) setNTrials04: (int) value {
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "nTrials04"];
++ (void) setNTrials04: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "nTrials04"];
 }
 
 + (int) nTrials08 {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "nTrials08"];
 }
-+ (void) setNTrials08: (int) value {
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "nTrials08"];
++ (void) setNTrials08: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "nTrials08"];
 }
 
 + (int) nAlternatives { //console.info("Settings>nAlternatives");
@@ -267,8 +274,8 @@ Created by mb on July 15, 2015.
 + (BOOL) obliqueOnly {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "obliqueOnly"];
 }
-+ (void) setObliqueOnly: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "obliqueOnly"];
++ (void) setObliqueOnly: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "obliqueOnly"];
 }
 
 
@@ -286,82 +293,82 @@ Created by mb on July 15, 2015.
 + (CPString) distanceInInchLocalisedString { //console.info("Settings>distanceInInchLocalisedString");
     return [[CPUserDefaults standardUserDefaults] floatForKey: "distanceInInchLocalisedString"];
 }
-+ (void) setDistanceInInchLocalisedString: (CPString) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "distanceInInchLocalisedString"];
++ (void) setDistanceInInchLocalisedString: (CPString) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "distanceInInchLocalisedString"];
 }
 
 + (float) calBarLengthInMM {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "calBarLengthInMM"];
 }
-+ (void)setCalBarLengthInMM: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "calBarLengthInMM"];
++ (void)setCalBarLengthInMM: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "calBarLengthInMM"];
 }
 
 + (float) calBarLengthInPixel {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "calBarLengthInPixel"];
 }
-+ (void)setCalBarLengthInPixel: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "calBarLengthInPixel"];
++ (void)setCalBarLengthInPixel: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "calBarLengthInPixel"];
 }
 
 
 + (BOOL) responseInfoAtStart {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "responseInfoAtStart"];
 }
-+ (void) setResponseInfoAtStart: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "responseInfoAtStart"];
++ (void) setResponseInfoAtStart: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "responseInfoAtStart"];
 }
 
 
 + (int) testOnFive {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "testOnFive"];
 }
-+ (void) setTestOnFive: (int) value {
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "testOnFive"];
++ (void) setTestOnFive: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "testOnFive"];
 }
 
 
 + (int) nOfRuns2Recall { // not yet used
     return [[CPUserDefaults standardUserDefaults] integerForKey: "nOfRuns2Recall"];
 }
-+ (void) setNOfRuns2Recall: (float) value {
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "nOfRuns2Recall"];
++ (void) setNOfRuns2Recall: (float) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "nOfRuns2Recall"];
 }
 
 
 + (float) eccentXInDeg {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "eccentXInDeg"];
 }
-+ (void) setEccentXInDeg: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "eccentXInDeg"];
++ (void) setEccentXInDeg: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "eccentXInDeg"];
 }
 + (float) eccentYInDeg {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "eccentYInDeg"];
 }
-+ (void) setEccentYInDeg: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "eccentYInDeg"];
++ (void) setEccentYInDeg: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "eccentYInDeg"];
 }
 + (BOOL) eccentShowCenterFixMark {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "eccentShowCenterFixMark"];
 }
-+ (void) setEccentShowCenterFixMark: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "eccentShowCenterFixMark"];
++ (void) setEccentShowCenterFixMark: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "eccentShowCenterFixMark"];
 }
 
 
 + (BOOL) mobileOrientation {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "mobileOrientation"];
 }
-+ (void) setMobileOrientation: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "mobileOrientation"];
++ (void) setMobileOrientation: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "mobileOrientation"];
 }
 
 
 + (BOOL) autoFullScreen {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "autoFullScreen"];
 }
-+ (void) setAutoFullScreen: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "autoFullScreen"];
++ (void) setAutoFullScreen: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "autoFullScreen"];
 }
 
 
@@ -369,84 +376,84 @@ Created by mb on July 15, 2015.
 + (int) displayTransform {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "displayTransform"];
 }
-+ (void) setDisplayTransform: (int) value {
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "displayTransform"];
++ (void) setDisplayTransform: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "displayTransform"];
 }
 
 
 + (BOOL) trialInfo {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "trialInfo"];
 }
-+ (void) setTrialInfo: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "trialInfo"];
++ (void) setTrialInfo: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "trialInfo"];
 }
 
 
 + (int) trialInfoFontSize {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "trialInfoFontSize"];
 }
-+ (void) setTrialInfoFontSize: (float) value {
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "trialInfoFontSize"];
++ (void) setTrialInfoFontSize: (float) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "trialInfoFontSize"];
 }
 
 
 + (float) timeoutResponseSeconds {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "timeoutResponseSeconds"];
 }
-+ (void) setTimeoutResponseSeconds: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "timeoutResponseSeconds"];
++ (void) setTimeoutResponseSeconds: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "timeoutResponseSeconds"];
 }
 
 + (float) timeoutDisplaySeconds {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "timeoutDisplaySeconds"];
 }
-+ (void) setTimeoutDisplaySeconds: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "timeoutDisplaySeconds"];
++ (void) setTimeoutDisplaySeconds: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "timeoutDisplaySeconds"];
 }
 
 + (float) maskTimeOnResponseInMS {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "maskTimeOnResponseInMS"];
 }
-+ (void)setMaskTimeOnResponseInMS: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "maskTimeOnResponseInMS"];
++ (void)setMaskTimeOnResponseInMS: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "maskTimeOnResponseInMS"];
 }
 
 
 + (int) results2clipboard {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "results2clipboard"];
 }
-+ (void) setResults2clipboard: (int) value {
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "results2clipboard"];
++ (void) setResults2clipboard: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "results2clipboard"];
 }
 + (BOOL) results2clipboardSilent {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "results2clipboardSilent"];
 }
-+ (void) setResults2clipboardSilent: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "results2clipboardSilent"];
++ (void) setResults2clipboardSilent: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "results2clipboardSilent"];
 }
 
 
 + (int) auditoryFeedback {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "auditoryFeedback"];
 }
-+ (void) setAuditoryFeedback: (int) value {
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "auditoryFeedback"];
++ (void) setAuditoryFeedback: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "auditoryFeedback"];
 }
 
 
 + (int) visualFeedback {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "visualFeedback"];
 }
-+ (void) setVisualFeedback: (int) value {
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "visualFeedback"];
++ (void) setVisualFeedback: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "visualFeedback"];
 }
 
 
 + (BOOL) auditoryFeedbackWhenDone {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "auditoryFeedbackWhenDone"];
 }
-+ (void) setAuditoryFeedbackWhenDone: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "auditoryFeedbackWhenDone"];
++ (void) setAuditoryFeedbackWhenDone: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "auditoryFeedbackWhenDone"];
 }
 
 
@@ -461,36 +468,36 @@ Created by mb on July 15, 2015.
     }
     return theValue;
 }
-+ (void) setSoundVolume: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "soundVolume"];
++ (void) setSoundVolume: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "soundVolume"];
 }
 
 
 + (BOOL) rewardPicturesWhenDone {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "rewardPicturesWhenDone"];
 }
-+ (void)setRewardPicturesWhenDone: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "rewardPicturesWhenDone"];
++ (void)setRewardPicturesWhenDone: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "rewardPicturesWhenDone"];
 }
 + (float) timeoutRewardPicturesInSeconds {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "timeoutRewardPicturesInSeconds"];
 }
-+ (void) setTimeoutRewardPicturesInSeconds: (float) value { //console.info("Settings>setTimeoutRewardPicturesInSeconds");
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "timeoutRewardPicturesInSeconds"];
++ (void) setTimeoutRewardPicturesInSeconds: (float) val { //console.info("Settings>setTimeoutRewardPicturesInSeconds");
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "timeoutRewardPicturesInSeconds"];
 }
 
 
 + (BOOL) embedInNoise {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "embedInNoise"];
 }
-+ (void)setEmbedInNoise: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "embedInNoise"];
++ (void)setEmbedInNoise: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "embedInNoise"];
 }
 + (int) noiseContrast {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "noiseContrast"];
 }
-+ (void) setNoiseContrast: (int) value {
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "noiseContrast"];
++ (void) setNoiseContrast: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "noiseContrast"];
 }
 
 
@@ -527,8 +534,8 @@ Created by mb on July 15, 2015.
 + (BOOL) enableTouchControls {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "enableTouchControls"];
 }
-+ (void) setEnableTouchControls: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "enableTouchControls"];
++ (void) setEnableTouchControls: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "enableTouchControls"];
 }
 
 
@@ -558,136 +565,136 @@ Created by mb on July 15, 2015.
 + (BOOL) isAcuityColor {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "isAcuityColor"];
 }
-+ (void) setIsAcuityColor: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "isAcuityColor"];
++ (void) setIsAcuityColor: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "isAcuityColor"];
 }
 
 + (float) maxPossibleDecimalAcuity {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "maxPossibleDecimalAcuity"];
 }
-+ (void) setMaxPossibleDecimalAcuity: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "maxPossibleDecimalAcuity"];
++ (void) setMaxPossibleDecimalAcuity: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "maxPossibleDecimalAcuity"];
 }
 + (CPString) maxPossibleDecimalAcuityLocalisedString {
     return [[CPUserDefaults standardUserDefaults] stringForKey: "maxPossibleDecimalAcuityLocalisedString"];
 }
-+ (void) setMaxPossibleDecimalAcuityLocalisedString: (CPString) value {
-    [[CPUserDefaults standardUserDefaults] setObject: value forKey: "maxPossibleDecimalAcuityLocalisedString"];
++ (void) setMaxPossibleDecimalAcuityLocalisedString: (CPString) val {
+    [[CPUserDefaults standardUserDefaults] setObject: val forKey: "maxPossibleDecimalAcuityLocalisedString"];
 }
 
 + (float) minPossibleLogMAR {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "minPossibleLogMAR"];
 }
-+ (void) setMinPossibleLogMAR: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "minPossibleLogMAR"];
++ (void) setMinPossibleLogMAR: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "minPossibleLogMAR"];
 }
 + (CPString) minPossibleLogMARLocalisedString {
     return [[CPUserDefaults standardUserDefaults] stringForKey: "minPossibleLogMARLocalisedString"];
 }
-+ (void) setMinPossibleLogMARLocalisedString: (CPString) value {
-    [[CPUserDefaults standardUserDefaults] setObject: value forKey: "minPossibleLogMARLocalisedString"];
++ (void) setMinPossibleLogMARLocalisedString: (CPString) val {
+    [[CPUserDefaults standardUserDefaults] setObject: val forKey: "minPossibleLogMARLocalisedString"];
 }
 
 
 + (BOOL) threshCorrection {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "threshCorrection"];
 }
-+ (void)setThreshCorrection: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "threshCorrection"];
++ (void)setThreshCorrection: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "threshCorrection"];
 }
 
 
 + (float) maxDisplayedAcuity {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "maxDisplayedAcuity"];
 }
-+ (void) setMaxDisplayedAcuity: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "maxDisplayedAcuity"];
++ (void) setMaxDisplayedAcuity: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "maxDisplayedAcuity"];
 }
 
 
 + (float) acuityStartingLogMAR {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "acuityStartingLogMAR"];
 }
-+ (void) setAcuityStartingLogMAR: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "acuityStartingLogMAR"];
++ (void) setAcuityStartingLogMAR: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "acuityStartingLogMAR"];
 }
 
 
 + (int) margin4MaxOptotypeIndex {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "margin4MaxOptotypeIndex"];
 }
-+ (void) setMargin4MaxOptotypeIndex: (int) value {
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "margin4MaxOptotypeIndex"];
++ (void) setMargin4MaxOptotypeIndex: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "margin4MaxOptotypeIndex"];
 }
 
 
 + (int) autoRunIndex {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "autoRunIndex"];
 }
-+ (void) setAutoRunIndex: (int) value {
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "autoRunIndex"];
++ (void) setAutoRunIndex: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "autoRunIndex"];
 }
 
 
 + (int) crowdingType {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "crowdingType"];
 }
-+ (void) setCrowdingType: (int) value {
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "crowdingType"];
++ (void) setCrowdingType: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "crowdingType"];
 }
 
 
 + (int) crowdingDistanceCalculationType {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "crowdingDistanceCalculationType"];
 }
-+ (void) setCrowdingDistanceCalculationType: (int) value {
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "crowdingDistanceCalculationType"];
++ (void) setCrowdingDistanceCalculationType: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "crowdingDistanceCalculationType"];
 }
 
 
 + (BOOL) acuityFormatDecimal {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "acuityFormatDecimal"];
 }
-+ (void) setAcuityFormatDecimal: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "acuityFormatDecimal"];
++ (void) setAcuityFormatDecimal: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "acuityFormatDecimal"];
 }
 
 
 + (BOOL) acuityFormatLogMAR {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "acuityFormatLogMAR"];
 }
-+ (void) setAcuityFormatLogMAR: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "acuityFormatLogMAR"];
++ (void) setAcuityFormatLogMAR: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "acuityFormatLogMAR"];
 }
 
 
 + (BOOL) acuityFormatSnellenFractionFoot {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "acuityFormatSnellenFractionFoot"];
 }
-+ (void) setAcuityFormatSnellenFractionFoot: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "acuityFormatSnellenFractionFoot"];
++ (void) setAcuityFormatSnellenFractionFoot: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "acuityFormatSnellenFractionFoot"];
 }
 + (BOOL) forceSnellen20 {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "forceSnellen20"];
 }
-+ (void) setForceSnellen20: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "forceSnellen20"];
++ (void) setForceSnellen20: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "forceSnellen20"];
 }
 
 
 + (BOOL) showCI95 {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "showCI95"];
 }
-+ (void) setShowCI95: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "showCI95"];
++ (void) setShowCI95: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "showCI95"];
 }
 
 
 + (float) contrastAcuityWeber { //console.info("Settings>contrastAcuityWeber: ", [[CPUserDefaults standardUserDefaults] floatForKey: "contrastAcuityWeber"]);
     return [[CPUserDefaults standardUserDefaults] floatForKey: "contrastAcuityWeber"];
 }
-+ (void) setContrastAcuityWeber: (float) value { //console.info("Settings>setContrastAcuityWeber: ", value);
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "contrastAcuityWeber"];
++ (void) setContrastAcuityWeber: (float) val { //console.info("Settings>setContrastAcuityWeber: ", value);
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "contrastAcuityWeber"];
 }
 
 
@@ -718,22 +725,22 @@ Created by mb on July 15, 2015.
 + (BOOL) acuityEasyTrials {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "acuityEasyTrials"];
 }
-+ (void) setAcuityEasyTrials: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "acuityEasyTrials"];
++ (void) setAcuityEasyTrials: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "acuityEasyTrials"];
 }
 
 
 + (int) testOnLineByLine {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "testOnLineByLine"];
 }
-+ (void) setTestOnLineByLine: (int) value {
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "testOnLineByLine"];
++ (void) setTestOnLineByLine: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "testOnLineByLine"];
 }
 + (int) testOnLineByLineDistanceType {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "testOnLineByLineDistanceType"];
 }
-+ (void) setTestOnLineByLineDistanceType: (int) value {
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "testOnLineByLineDistanceType"];
++ (void) setTestOnLineByLineDistanceType: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "testOnLineByLineDistanceType"];
 }
 
 
@@ -741,29 +748,29 @@ Created by mb on July 15, 2015.
 + (int) vernierType {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "vernierType"];
 }
-+ (void) setVernierType: (int) value {
-    [[CPUserDefaults standardUserDefaults] setInteger: value forKey: "vernierType"];
++ (void) setVernierType: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "vernierType"];
 }
 
 + (float) vernierWidth {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "vernierWidth"];
 }
-+ (void) setVernierWidth: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "vernierWidth"];
++ (void) setVernierWidth: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "vernierWidth"];
 }
 
 + (float) vernierLength {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "vernierLength"];
 }
-+ (void) setVernierLength: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "vernierLength"];
++ (void) setVernierLength: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "vernierLength"];
 }
 
 + (float) vernierGap {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "vernierGap"];
 }
-+ (void) setVernierGap: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "vernierGap"];
++ (void) setVernierGap: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "vernierGap"];
 }
 
 
@@ -771,50 +778,50 @@ Created by mb on July 15, 2015.
 + (BOOL) contrastEasyTrials {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "contrastEasyTrials"];
 }
-+ (void) setContrastEasyTrials: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "contrastEasyTrials"];
++ (void) setContrastEasyTrials: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "contrastEasyTrials"];
 }
 
 + (BOOL) contrastDarkOnLight {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "contrastDarkOnLight"];
 }
-+ (void) setContrastDarkOnLight: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "contrastDarkOnLight"];
++ (void) setContrastDarkOnLight: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "contrastDarkOnLight"];
 }
 
 + (float) contrastOptotypeDiameter {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "contrastOptotypeDiameter"];
 }
-+ (void) setContrastOptotypeDiameter: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "contrastOptotypeDiameter"];
++ (void) setContrastOptotypeDiameter: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "contrastOptotypeDiameter"];
 }
 
 + (BOOL) contrastShowFixMark {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "contrastShowFixMark"];
 }
-+ (void) setContrastShowFixMark: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "contrastShowFixMark"];
++ (void) setContrastShowFixMark: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "contrastShowFixMark"];
 }
 
 + (float) contrastTimeoutFixmark {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "contrastTimeoutFixmark"];
 }
-+ (void) setContrastTimeoutFixmark: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "contrastTimeoutFixmark"];
++ (void) setContrastTimeoutFixmark: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "contrastTimeoutFixmark"];
 }
 
 + (float) contrastMaxLogCSWeber {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "contrastMaxLogCSWeber"];
 }
-+ (void) setContrastMaxLogCSWeber: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "contrastMaxLogCSWeber"];
++ (void) setContrastMaxLogCSWeber: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "contrastMaxLogCSWeber"];
 }
 
 + (float) gammaValue {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "gammaValue"];
 }
-+ (void) setGammaValue: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "gammaValue"];
++ (void) setGammaValue: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "gammaValue"];
 }
 
 
@@ -822,29 +829,29 @@ Created by mb on July 15, 2015.
 + (float) gratingCPD {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "gratingCPD"];
 }
-+ (void) setGratingCPD: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "gratingCPD"];
++ (void) setGratingCPD: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "gratingCPD"];
 }
 
 + (float) gratingDiaInDeg {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "gratingDiaInDeg"];
 }
-+ (void) setGratingDiaInDeg: (float) value {
-    [[CPUserDefaults standardUserDefaults] setFloat: value forKey: "gratingDiaInDeg"];
++ (void) setGratingDiaInDeg: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "gratingDiaInDeg"];
 }
 
 + (BOOL) gratingUseErrorDiffusion {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "gratingUseErrorDiffusion"];
 }
-+ (void) setGratingUseErrorDiffusion: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "gratingUseErrorDiffusion"];
++ (void) setGratingUseErrorDiffusion: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "gratingUseErrorDiffusion"];
 }
 
 + (BOOL) isGratingColor {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "isGratingColor"];
 }
-+ (void) setIsGratingColor: (BOOL) value {
-    [[CPUserDefaults standardUserDefaults] setBool: value forKey: "isGratingColor"];
++ (void) setIsGratingColor: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "isGratingColor"];
 }
 + (CPColor) gratingForeColor { //console.info("Settings>gratingForeColor");
     let theData = [[CPUserDefaults standardUserDefaults] stringForKey: "gratingForeColor"];
@@ -861,6 +868,32 @@ Created by mb on July 15, 2015.
 }
 + (void) setGratingBackColor: (CPColor) col { //console.info("Settings>setAcuityBackColor:", theColor);
     [[CPUserDefaults standardUserDefaults] setObject: [col hexString] forKey: "gratingBackColor"];
+}
+
++ (int) what2SweepIndex {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "what2SweepIndex"];
+}
++ (void) setWhat2SweepIndex: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "what2SweepIndex"];
+}
+
++ (float) gratingCPDmin {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "gratingCPDmin"];
+}
++ (void) setGratingCPDmin: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "gratingCPDmin"];
+}
++ (float) gratingCPDmax {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "gratingCPDmax"];
+}
++ (void) setGratingCPDmax: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "gratingCPDmax"];
+}
++ (float) gratingContrastMichelsonPercent {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "gratingContrastMichelsonPercent"];
+}
++ (void) setGratingContrastMichelsonPercent: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "gratingContrastMichelsonPercent"];
 }
 
 

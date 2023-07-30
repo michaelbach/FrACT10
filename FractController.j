@@ -285,7 +285,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         responseWasCorrect = stimStrengthInDeviceunits < [1.0, 1.3, 1.6][arIndex];
     }
     if ([self isContrastG]) {
-        const contrastMichelsonPercentCurrent = [self gratingContrastMichelsonPercentFromDeviceunits: stimStrengthInDeviceunits];
+        const contrastMichelsonPercentCurrent = [MiscLight contrastMichelsonPercentFromLogCSWeber: stimStrengthInDeviceunits]
         responseWasCorrect = contrastMichelsonPercentCurrent > [10.0, 1.0, 0.3][arIndex];
     }
     [self trialEnd];

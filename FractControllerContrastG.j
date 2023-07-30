@@ -10,17 +10,16 @@
 
 @import "FractControllerContrast.j"
 @implementation FractControllerContrastG: FractControllerContrast {
-    float contrastMichelsonPercent;
+    float contrastMichelsonPercent, periodInPixel, spatialFreqCPD;
 }
 
 
-- (void) freqFromThresholderunits: (float) thresholderunit {
+- (float) freqFromThresholderunits: (float) thresholderunit {
     thresholderunit = 1 - thresholderunit; // 0: strong stimulus=low spatFreq
-    const logFreqMax = Math.log10(30);
-    const logFreqMin = Math.log10(0.5);
+    const logFreqMin = Math.log10([Settings gratingCPDmin]);
+    const logFreqMax = Math.log10([Settings gratingCPDmax]);
     const logFreq = logFreqMin + thresholderunit *(logFreqMax - logFreqMin);
-    const freq = Math.pow(10, logFreq);
-    return freq;
+    return Math.pow(10, logFreq);
 }
 
 
@@ -90,14 +89,21 @@
             [self drawFixMark];
             break;
         case kStateDrawFore2:
-            contrastMichelsonPercent = [MiscLight contrastMichelsonPercentFromLogCSWeber: stimStrengthInDeviceunits];
-            let period = [MiscSpace pixelFromDegree: 1.0 / [Settings gratingCPD]];
+            if ([Settings what2SweepIndex] == 0) {
+                contrastMichelsonPercent = [MiscLight contrastMichelsonPercentFromLogCSWeber: stimStrengthInDeviceunits];
+                spatialFreqCPD = [Settings gratingCPD];
+            } else {
+                contrastMichelsonPercent = [Settings gratingContrastMichelsonPercent];
+                spatialFreqCPD = [self freqFromThresholderunits: stimStrengthInThresholderUnits];
+            }
+            periodInPixel = Math.max([MiscSpace periodInPixelFromSpatialFrequency: spatialFreqCPD], 2);
+
             if ([Settings isGratingColor]) {
                 CGContextSetFillColor(cgc, colOptotypeBack);
                 CGContextFillRect(cgc, [[self window] frame]);
-                [self gratingSineColorWithPeriodInPx: period direction: [alternativesGenerator currentAlternative] contrast: contrastMichelsonPercent];
+                [self gratingSineColorWithPeriodInPx: periodInPixel direction: [alternativesGenerator currentAlternative] contrast: contrastMichelsonPercent];
             } else {
-                [self gratingSineWithPeriodInPx: period direction: [alternativesGenerator currentAlternative] contrast: contrastMichelsonPercent];
+                [self gratingSineWithPeriodInPx: periodInPixel direction: [alternativesGenerator currentAlternative] contrast: contrastMichelsonPercent];
             }
             [self drawFixMark3];
             trialInfoString = [self contrastComposeTrialInfoString];// compose here after colors are set
@@ -109,7 +115,11 @@
     [self drawTouchControls];
     CGContextRestoreGState(cgc);
     [super drawStimulusInRect: dirtyRect];
-    [trialHistoryController setValue: contrastMichelsonPercent];
+    if ([Settings what2SweepIndex] == 0) {
+        [trialHistoryController setValue: contrastMichelsonPercent];
+    } else {
+        [trialHistoryController setValue: spatialFreqCPD];
+    }    
 }
 
 
@@ -140,19 +150,38 @@
 }
 
 
+- (CPString) contrastComposeTrialInfoString {
+    let s = "trial: " + iTrial + "/" + nTrials;
+    s +=  ", contrast: " + [Misc stringFromNumber: contrastMichelsonPercent decimals: 1 localised: YES] + "%";
+    s += ", frequency: " + [Misc stringFromNumber: spatialFreqCPD decimals: 1 localised: YES];
+    s += ", alternative: " + [alternativesGenerator currentAlternative];
+    return s;
+}
+
+
 - (CPString) contrastComposeResultString {
+    rangeLimitStatus = kRangeLimitOk;
     // taking into account the result of final trial
     stimStrengthInDeviceunits = [self stimDeviceunitsFromThresholderunits: [thresholder nextStim2apply]];
-    contrastMichelsonPercent = [MiscLight contrastMichelsonPercentFromLogCSWeber: stimStrengthInDeviceunits];
-    rangeLimitStatus = kRangeLimitOk;
+    
+    if ([Settings what2SweepIndex] == 0) {
+        contrastMichelsonPercent = [MiscLight contrastMichelsonPercentFromLogCSWeber: stimStrengthInDeviceunits];
+        spatialFreqCPD = [Settings gratingCPD];
+    } else {
+        contrastMichelsonPercent = [Settings gratingContrastMichelsonPercent];
+        spatialFreqCPD = [self freqFromThresholderunits: stimStrengthInThresholderUnits];
+    }
+/* needs work for frequency sweep
     if (contrastMichelsonPercent < 100 / 512) // 2 × 256
         rangeLimitStatus = kRangeLimitValueAtFloor;
     if (contrastMichelsonPercent >= 100)
-        rangeLimitStatus = kRangeLimitValueAtCeiling;
-    let s = "Grating threshold contrast: ";
+        rangeLimitStatus = kRangeLimitValueAtCeiling; */
+    let s = "Grating contrast: ";
     s += [self rangeStatusIndicatorStringInverted: YES];
     s += [Misc stringFromNumber: contrastMichelsonPercent decimals: 2 localised: YES];
-    s += "% (Michelson)";
+    s += "%, spatial frequency: ";
+    s += [Misc stringFromNumber: spatialFreqCPD decimals: 1 localised: YES];
+    s += " cpd";
     return s;
 }
 
