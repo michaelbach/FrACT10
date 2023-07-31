@@ -168,7 +168,6 @@ Created by mb on July 15, 2015.
     [self setGratingCPDmax: [self chckFlt: [self gratingCPDmax] def: 30 min: 0.1 max: 60 set: set]];
     [self setGratingContrastMichelsonPercent: [self chckFlt: [self gratingContrastMichelsonPercent] def: 95 min: 0.3 max: 99 set: set]];
 
-    
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -186,8 +185,7 @@ Created by mb on July 15, 2015.
 
 // contrast in %. 100%: background fully white, foreground fully dark. -100%: inverted
 + (void) calculateAcuityForeBackColorsFromContrast { //console.info("Settings>calculateAcuityForeBackColorsFromContrast");
-    if ([self isAcuityColor])  return;
-    
+    if ([self isAcuityColor]) return;
     const cnt = [MiscLight contrastMichelsonPercentFromWeberPercent: [self contrastAcuityWeber]];
     let temp = [MiscLight lowerLuminanceFromContrastMilsn: cnt];  temp = [MiscLight devicegrayFromLuminance: temp];
     [self setAcuityForeColor: [CPColor colorWithWhite: temp alpha: 1]];

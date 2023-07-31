@@ -2359,7 +2359,7 @@ No money transfer involved, just for size!     </string>
                                                         <menuItem title="Contrast" state="on" id="grk-FJ-Z1K">
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
-                                                        <menuItem title="Spatial frequency" id="gdg-2O-swt">
+                                                        <menuItem title="Spatial frequency, “Acuity”" id="gdg-2O-swt">
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
                                                     </items>

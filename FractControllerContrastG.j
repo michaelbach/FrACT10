@@ -89,10 +89,10 @@
             [self drawFixMark];
             break;
         case kStateDrawFore2:
-            if ([Settings what2SweepIndex] == 0) {
+            if ([self isContrastG]) {
                 contrastMichelsonPercent = [MiscLight contrastMichelsonPercentFromLogCSWeber: stimStrengthInDeviceunits];
                 spatialFreqCPD = [Settings gratingCPD];
-            } else {
+            } else { // acuity_grating
                 contrastMichelsonPercent = [Settings gratingContrastMichelsonPercent];
                 spatialFreqCPD = [self freqFromThresholderunits: stimStrengthInThresholderUnits];
             }
@@ -115,9 +115,9 @@
     [self drawTouchControls];
     CGContextRestoreGState(cgc);
     [super drawStimulusInRect: dirtyRect];
-    if ([Settings what2SweepIndex] == 0) {
+    if ([self isContrastG]) {
         [trialHistoryController setValue: contrastMichelsonPercent];
-    } else {
+    } else { // acuity_grating
         [trialHistoryController setValue: spatialFreqCPD];
     }    
 }
@@ -163,11 +163,10 @@
     rangeLimitStatus = kRangeLimitOk;
     // taking into account the result of final trial
     stimStrengthInDeviceunits = [self stimDeviceunitsFromThresholderunits: [thresholder nextStim2apply]];
-    
-    if ([Settings what2SweepIndex] == 0) {
+    if ([self isContrastG]) {
         contrastMichelsonPercent = [MiscLight contrastMichelsonPercentFromLogCSWeber: stimStrengthInDeviceunits];
         spatialFreqCPD = [Settings gratingCPD];
-    } else {
+    } else { // acuity_grating
         contrastMichelsonPercent = [Settings gratingContrastMichelsonPercent];
         spatialFreqCPD = [self freqFromThresholderunits: stimStrengthInThresholderUnits];
     }

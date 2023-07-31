@@ -45,7 +45,9 @@ kTestAcuityLett = 0; kTestAcuityC = 1; kTestAcuityE = 2; kTestAcuityTAO = 3; kTe
         case kTestContrastLett: return "Contrast_Letters";
         case kTestContrastC: return "Contrast_LandoltC";
         case kTestContrastE: return "Contrast_TumblingE";
-        case kTestContrastG: return "Contrast_Grating";
+        case kTestContrastG:
+            if ([self isContrastG]) return "Contrast_Grating";
+            return "Acuity_Grating";
         case kTestAcuityLineByLine: return "Acuity_LineByLine";
     }
     return "NOT ASSIGNED";
@@ -58,17 +60,20 @@ kTestAcuityLett = 0; kTestAcuityC = 1; kTestAcuityE = 2; kTestAcuityTAO = 3; kTe
 - (BOOL) isAcuityOptotype {
     return [kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO].includes(currentTestID);
 }
+- (BOOL) isAcuityGrating {
+    return (currentTestID == kTestContrastG) && ([Settings what2SweepIndex] == 1);
+}
 - (BOOL) isAcuityAny {
-    return ([self isAcuityOptotype] || (currentTestID == kTestAcuityVernier))
+    return ([self isAcuityOptotype] || (currentTestID == kTestAcuityVernier) || [self isAcuityGrating]);
 }
 - (BOOL) isContrastG {
-    return [kTestContrastG].includes(currentTestID);
+    return [kTestContrastG].includes(currentTestID) && (![self isAcuityGrating]);
 }
 - (BOOL) isContrastOptotype { //console.info("isContrastOptotype ", currentTestID);
     return [kTestContrastLett, kTestContrastC, kTestContrastE].includes(currentTestID);
 }
 - (BOOL) isContrastAny {
-    return ([self isContrastOptotype] || (currentTestID == kTestContrastG))
+    return [self isContrastOptotype] || (currentTestID == kTestContrastG);
 }
 
 
