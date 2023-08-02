@@ -75,6 +75,9 @@ kTestAcuityLett = 0; kTestAcuityC = 1; kTestAcuityE = 2; kTestAcuityTAO = 3; kTe
 - (BOOL) isContrastAny {
     return [self isContrastOptotype] || (currentTestID == kTestContrastG);
 }
+- (BOOL) isGratingAny {
+    return currentTestID == kTestContrastG;
+}
 
 
 @end

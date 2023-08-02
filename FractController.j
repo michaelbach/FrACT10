@@ -93,7 +93,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     iTrial = 0;
     oldResponseKeyChar = " ";
     state = kStateDrawBack;
-    const obliqueOnlyG = [self isContrastG] && [Settings gratingObliqueOnly];
+    const obliqueOnlyG = [self isGratingAny] && [Settings gratingObliqueOnly];
     alternativesGenerator = [[AlternativesGenerator alloc] initWithNumAlternatives: nAlternatives andNTrials: nTrials obliqueOnly: obliqueOnlyG];
     thresholder = [[Thresholder alloc] initWithNumAlternatives: nAlternatives];
     trialHistoryController = [[TrialHistoryController alloc] initWithNumTrials: nTrials];
@@ -230,7 +230,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
                 if ( ([Settings nAlternatives] > 4)  || (![Misc isOdd: i])) {
                     let iConsiderObliqueOnly = i;
                     if ((([Settings nAlternatives] == 4) && [Settings obliqueOnly])
-                        || ([self isContrastG] && [Settings gratingObliqueOnly])) iConsiderObliqueOnly++;
+                        || ([self isGratingAny] && [Settings gratingObliqueOnly])) iConsiderObliqueOnly++;
                     const ang = iConsiderObliqueOnly / 8 * 2 * Math.PI;
                     [self buttonCenteredAtX: viewWidth / 2 + Math.cos(ang) * radius y:  Math.sin(ang) * radius size: sze title: [@"632147899" characterAtIndex: iConsiderObliqueOnly]];
                 }
