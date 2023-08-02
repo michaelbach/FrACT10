@@ -1,7 +1,6 @@
 # FrACT₁₀
 
-A Cappuccino implementation of [FrACT](https://michaelbach.de/fract/), a semiautomated vision test battery.
-For full details see <https://michaelbach.de/fract/>.
+[FrACT](https://michaelbach.de/fract/) is a semiautomated vision test battery. FrACT₁₀ is a version that runs in browsers on all plattforms or as webApp. For full details see <https://michaelbach.de/fract/>.
 
 This file is part of FrACT10.
 Copyright © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>

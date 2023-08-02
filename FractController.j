@@ -218,8 +218,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     switch  (currentTestID) {// kTestAcuityTAO, kTestAcuityVernier: done in instance
         case kTestAcuityLett: case kTestContrastLett:
             sze = viewWidth / ((nAlternatives+1) * 1.4 + 1);
-            for (let i = 0; i < nAlternatives; i++){
-                [self buttonCenteredAtX: (i + 0.9) * 1.4 * sze y: viewHeight/2 - sze / 2 - 1
+            for (let i = 0; i < nAlternatives; i++) {
+                [self buttonCenteredAtX: (i + 0.9) * 1.4 * sze y: viewHeight / 2 - sze / 2 - 1
                                    size: sze title: [@"CDHKNORSVZØ" characterAtIndex: i]];
             }
             break;

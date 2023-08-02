@@ -39,7 +39,7 @@
 
 
 - (void) gratingSineWithPeriodInPx: (float) periodInPx direction: (int) theDirection contrast: (float) contrast {
-    const s2 = 2 * Math.round(0.5 * 1.42 * Math.max(viewWidth2, viewHeight2));
+    const s2 = 0.6 * [MiscSpace pixelFromDegree: [Settings gratingDiaInDeg]];
     const trigFactor = 1.0 / periodInPx * 2 * Math.PI; // calculate only once
     CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180);
     CGContextSetLineWidth(cgc, 1.3);
@@ -62,7 +62,7 @@
 
 
 - (void) gratingSineColorWithPeriodInPx: (float) periodInPx direction: (int) theDirection contrast: (float) contrast {
-    const s2 = 2 * Math.round(0.5 * 1.42 * Math.max(viewWidth2, viewHeight2));
+    const s2 = 0.6 * [MiscSpace pixelFromDegree: [Settings gratingDiaInDeg]];
     const trigFactor = 1.0 / periodInPx * 2 * Math.PI; // calculate only once
     CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180);
     CGContextSetLineWidth(cgc, 1.35); // still an artifact on oblique
@@ -97,13 +97,14 @@
                 spatialFreqCPD = [self freqFromThresholderunits: stimStrengthInThresholderUnits];
             }
             periodInPixel = Math.max([MiscSpace periodInPixelFromSpatialFrequency: spatialFreqCPD], 2);
-
+            let dir = [alternativesGenerator currentAlternative];
+            //if ([Settings obliqueOnly]) dir += 2;
             if ([Settings isGratingColor]) {
                 CGContextSetFillColor(cgc, colOptotypeBack);
                 CGContextFillRect(cgc, [[self window] frame]);
-                [self gratingSineColorWithPeriodInPx: periodInPixel direction: [alternativesGenerator currentAlternative] contrast: contrastMichelsonPercent];
+                [self gratingSineColorWithPeriodInPx: periodInPixel direction: dir contrast: contrastMichelsonPercent];
             } else {
-                [self gratingSineWithPeriodInPx: periodInPixel direction: [alternativesGenerator currentAlternative] contrast: contrastMichelsonPercent];
+                [self gratingSineWithPeriodInPx: periodInPixel direction: dir contrast: contrastMichelsonPercent];
             }
             [self drawFixMark3];
             trialInfoString = [self contrastComposeTrialInfoString];// compose here after colors are set
@@ -124,7 +125,8 @@
 
 
 - (void) runStart { //console.info("FractControllerContrastLett>runStart");
-    nAlternatives = 4;  nTrials = [Settings nTrials04];
+    nAlternatives = Math.min([Settings nAlternatives], 4);
+    nTrials = nAlternatives == 4 ? [Settings nTrials04] : [Settings nTrials02];
     [super runStart];
     [self setCurrentTestResultUnit: "MichelsonPercent"];
 }
