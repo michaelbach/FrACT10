@@ -54,11 +54,13 @@ Created by mb on July 15, 2015.
     [[CPUserDefaults standardUserDefaults] synchronize];
     if (set) {
         [self setDateSettingsVersion: kDateOfCurrentSettingsVersion];
-        [[CPUserDefaults standardUserDefaults] setInteger: 2 forKey: "nAlternativesIndex"]; // 8 alternatives
         [self setWindowBackgroundColor: [CPColor colorWithRed: 1 green: 1 blue: 0.9 alpha: 1]];
     }
 
+    // needs to before setNAlternativesIndex 'cause oblique might force to index=0
+    [self setGratingObliqueOnly: [self chckBool: [self gratingObliqueOnly] def: NO set: set]];
     // for all tests
+    [self setNAlternativesIndex: [self chckInt: [self nAlternativesIndex] def: 2 min: 0 max: 2 set:set]];//def:8
     [self setNTrials02: [self chckInt: [self nTrials02] def: 32 min: 1 max: 200 set: set]];
     [self setNTrials04: [self chckInt: [self nTrials04] def: 24 min: 1 max: 200 set: set]];
     [self setNTrials08: [self chckInt: [self nTrials08] def: 18 min: 1 max: 200 set: set]];
@@ -231,6 +233,16 @@ Created by mb on July 15, 2015.
 
 ///////////////////////////////////////////////////////////
 // for all tests
+
++ (int) nAlternativesIndex { // 0: 2; 1: 4; 2: 8+
+    const t = [[CPUserDefaults standardUserDefaults] integerForKey: "nAlternativesIndex"]; //console.info(t);
+    return t;
+}
++ (void) setNAlternativesIndex: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "nAlternativesIndex"];
+}
+
+
 + (int) nTrials { //console.info("Settings>nTrials");
     switch ([self nAlternatives]) {
         case 2:  return [self nTrials02];  break;
@@ -892,6 +904,13 @@ Created by mb on July 15, 2015.
 }
 + (void) setGratingContrastMichelsonPercent: (float) val {
     [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "gratingContrastMichelsonPercent"];
+}
+
++ (BOOL) gratingObliqueOnly {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "gratingObliqueOnly"];
+}
++ (void) setGratingObliqueOnly: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "gratingObliqueOnly"];
 }
 
 

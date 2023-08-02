@@ -40,7 +40,7 @@ gCappucinoVersionString = [[[CPBundle bundleWithIdentifier:@"com.280n.Foundation
 /*
  #  History
 
-+ 2023-08-02 fix: grating no longer visible beyond mask, improve Readme
++ 2023-08-02 fix: grating no longer visible beyond mask, improve Readme, gratings "oblique only"
 + 2023-07-31 add "acuity_grating" to export string
 + 2023-07-30 implement what2Sweep stuff (contrast or spatial frequency): working, improve GUI, needs better export
 + 2023-07-29 refactor gratings (prepare frequency sweep for BCM)

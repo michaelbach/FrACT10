@@ -27,6 +27,7 @@ Generates "alternatives" (e.g. Landolt C directions) from 0 to (nAlternatives-1)
     int currentAlternative @accessors;
     id alternatives2present;
     int i;
+    BOOL _obliqueOnly;// only gratings for now
 }
 
 
@@ -56,9 +57,9 @@ function randomiseArray(array) {
  @param nAlternatives: (int) 2, 4, 8, 10
  @param nTrials: (int) number of trials
  @return class instance
- 
+    
  */
-- (id) initWithNumAlternatives: (int) nAlternatives andNTrials: (int) nTrials { //console.info("AlternativesGenerator>initWithNumAlternatives");
+- (id) initWithNumAlternatives: (int) nAlternatives andNTrials: (int) nTrials obliqueOnly: (BOOL) obliqueOnly { //console.info("AlternativesGenerator>initWithNumAlternatives");
     self = [super init];
     if (self) {
         for (i = 0; i < (([CPDate date].getSeconds()) % 10); ++i) Math.random(); // truly random
@@ -99,6 +100,7 @@ function randomiseArray(array) {
         }
         alternatives2present = randomiseArray(alternatives2present);
         _currentTrial = 0;
+        _obliqueOnly = obliqueOnly;
     }
     return self;
 }
@@ -111,7 +113,8 @@ function randomiseArray(array) {
  */
 - (int) nextAlternative { //console.info("AlternativesGenerator>nextAlternative");
     [self setCurrentAlternative: alternatives2present[_currentTrial]];
-    //console.info(_currentTrial, " ", currentAlternative);
+    if (_obliqueOnly)
+        [self setCurrentAlternative: currentAlternative + 2];
     _currentTrial++;
     return currentAlternative;
 }
