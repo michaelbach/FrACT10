@@ -42,7 +42,7 @@
  Called by the action of the preset selection pop-up, shows the "Are you sure" dialog
  */
 + (void) apply: (int) p { //console.info("Presets>apply");
-    presetNames = ["default", "ULV", "ESU", "Test", "Test Color Equiluminance", "BCM_RonB", "BCM_BonY"];
+    presetNames = ["default", "ULV", "ESU", "Testing", "Test Color Equiluminance", "BCM_RonB", "BCM_BonY"];
     if ((p < 0) | (p > presetNames.length)) return;
     currentPresetName = presetNames[p];
     const s = "Really apply the preset “" + currentPresetName + "” ?"
@@ -72,7 +72,7 @@
         case 2:
             [self applyESU];  break;
         case 3:
-            [self applyTest];  break;
+            [self applyTesting];  break;
         case 4:
             [self applyTestColorEquiluminance];  break;
         case 5:
@@ -130,7 +130,7 @@
 /**
  Apply Test: easier testing
  */
-+ (void) applyTest {
++ (void) applyTesting {
     [self setStandardDefaultsKeepingCalBarLength];
     [Settings setDistanceInCM: 400];
     [Settings setCalBarLengthInMM: 150];
@@ -156,7 +156,7 @@
  Apply RCM-RonB/BonY
  */
 + (void) applyBCM {
-    [self applyTest];
+    [self applyTesting];
 }
 + (void) applyTestBCM_RonB {
     [self applyBCM];
