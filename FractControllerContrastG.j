@@ -170,7 +170,6 @@
         spatialFreqCPD = [Settings gratingCPD];
     } else { // acuity_grating
         contrastMichelsonPercent = [Settings gratingContrastMichelsonPercent];
-        spatialFreqCPD = [self freqFromThresholderunits: stimStrengthInThresholderUnits];
     }
 /* needs work for frequency sweep
     if (contrastMichelsonPercent < 100 / 512) // 2 × 256
@@ -193,7 +192,7 @@
     s += tab + "value" + tab + [Misc stringFromNumber: contrastMichelsonPercent decimals: 3 localised: YES];
     s += tab + "unit1" + tab + currentTestResultUnit
     s += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 2 localised: YES];
-    s += tab + "spatFreq" + tab + [Misc stringFromNumber: [Settings gratingCPD] decimals: 1 localised: YES];
+    s += tab + "spatFreq" + tab + [Misc stringFromNumber: spatialFreqCPD decimals: 1 localised: YES];
     s += tab + "unit2" + tab + "cpd";
     s += tab + "nTrials" + tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
     s += tab + "rangeLimitStatus" + tab + rangeLimitStatus;

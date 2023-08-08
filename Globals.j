@@ -14,7 +14,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0.4";
-kVersionDateOfFrACT = "2023-08-08";
+kVersionDateOfFrACT = "2023-08-08a";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -40,6 +40,7 @@ gCappucinoVersionString = [[[CPBundle bundleWithIdentifier:@"com.280n.Foundation
 /*
  #  History
 
++ 2023-08-08a fix export string for grating acuity
 + 2023-08-08 extend gratings lowest spat freq, add tooltips
 + 2023-08-03 rename preset "Test" to "Testing"; add Shortcuts link
 + 2023-08-02a fix: oblique logic for all grating types

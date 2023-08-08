@@ -120,6 +120,7 @@ Optotypes.j
 
 /**
  Draw optotypes (letters and Es) on a -5…+5 coordinate system
+ should be called "fillPolygon"
 */
 - (void) drawPolygon: (float) p withD: (float) d { //console.info("optotypes>drawPolygon");
     CGContextSetFillColor(_cgc, _colOptotypeFore);
