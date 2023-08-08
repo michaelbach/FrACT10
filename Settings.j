@@ -161,12 +161,12 @@ Created by mb on July 15, 2015.
     [self setContrastMaxLogCSWeber: [self chckFlt: [self contrastMaxLogCSWeber] def: 2.4 min: 1.5 max: 3 set: set]];
     
     // Grating stuff
-    [self setGratingCPD: [self chckFlt: [self gratingCPD] def: 2.0 min: 1.0 max: 18 set: set]];
+    [self setGratingCPD: [self chckFlt: [self gratingCPD] def: 2.0 min: 0.01 max: 18 set: set]];
     [self setGratingDiaInDeg: [self chckFlt: [self gratingDiaInDeg] def: 10.0 min: 1.0 max: 50 set: set]];
     [self setGratingUseErrorDiffusion: [self chckBool: [self gratingUseErrorDiffusion] def: YES set: set]];
     [self setIsGratingColor: [self chckBool: [self isGratingColor] def: NO set: set]];
     [self setWhat2SweepIndex: [self chckInt: [self what2SweepIndex] def: 0 min: 0 max: 1 set: set]]; // 0: sweep contrast, 1: sweep spatial frequency
-    [self setGratingCPDmin: [self chckFlt: [self gratingCPDmin] def: 0.5 min: 0.1 max: 60 set: set]];
+    [self setGratingCPDmin: [self chckFlt: [self gratingCPDmin] def: 0.5 min: 0.01 max: 60 set: set]];
     [self setGratingCPDmax: [self chckFlt: [self gratingCPDmax] def: 30 min: 0.1 max: 60 set: set]];
     [self setGratingContrastMichelsonPercent: [self chckFlt: [self gratingContrastMichelsonPercent] def: 95 min: 0.3 max: 99 set: set]];
 
