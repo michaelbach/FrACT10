@@ -24,6 +24,7 @@
 
 
 - (void) maskWithColor: (CPColor) col {
+    if (![Settings isGratingMasked]) return;
     const r = 0.5 * [MiscSpace pixelFromDegree: [Settings gratingDiaInDeg]];
     const w = r / 20;
     let radii = [r - 2 * w, r - w, r, r + w, r + 2 * w, r + 400];
@@ -39,7 +40,10 @@
 
 
 - (void) gratingSineWithPeriodInPx: (float) periodInPx direction: (int) theDirection contrast: (float) contrast {
-    const s2 = 0.6 * [MiscSpace pixelFromDegree: [Settings gratingDiaInDeg]];
+    let s2 = Math.max(viewHeight, viewWidth) / 2 * 1.43;
+    if ([Settings isGratingMasked]) {
+        s2 = 0.6 * [MiscSpace pixelFromDegree: [Settings gratingDiaInDeg]];
+    }
     const trigFactor = 1.0 / periodInPx * 2 * Math.PI; // calculate only once
     CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180);
     CGContextSetLineWidth(cgc, 1.3);

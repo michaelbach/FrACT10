@@ -2274,7 +2274,7 @@ No money transfer involved, just for size!     </string>
                                             </textFieldCell>
                                         </textField>
                                         <textField toolTip="Duration the brief blue fixation star is visible." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5wI-LE-Ld6">
-                                            <rect key="frame" x="178" y="393" width="45" height="21"/>
+                                            <rect key="frame" x="178" y="389" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="zoH-ba-UrM">
                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="z5r-QG-ZD4"/>
@@ -2289,7 +2289,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </textField>
                                         <textField toolTip="Duration the brief blue fixation star is visible." horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hZM-uL-nCM">
-                                            <rect key="frame" x="229" y="394" width="88" height="16"/>
+                                            <rect key="frame" x="229" y="390" width="88" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Duration [ms]" id="UGE-Cp-3gm">
                                                 <font key="font" metaFont="system"/>
@@ -2298,7 +2298,7 @@ No money transfer involved, just for size!     </string>
                                             </textFieldCell>
                                         </textField>
                                         <button toolTip="lets a blue star appear before grating; otherwise unclear if something has happened at all. " fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZzJ-Vk-cFB">
-                                            <rect key="frame" x="15" y="386" width="162" height="35"/>
+                                            <rect key="frame" x="15" y="382" width="162" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Show fixation mark " bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Ls9-Nh-jv8">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2327,7 +2327,7 @@ No money transfer involved, just for size!     </string>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </box>
                                         <textField toolTip="Diameter of the circular grating patch." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LmQ-Fz-Lv8">
-                                            <rect key="frame" x="17" y="345" width="45" height="21"/>
+                                            <rect key="frame" x="178" y="345" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" id="zHM-jD-mTU">
                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="N8N-Lo-XLR"/>
@@ -2336,14 +2336,15 @@ No money transfer involved, just for size!     </string>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <connections>
+                                                <binding destination="izh-pU-csC" name="enabled" keyPath="values.isGratingMasked" id="U01-bJ-pWF"/>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.gratingDiaInDeg" id="uZU-Sf-EZy"/>
                                                 <outlet property="nextKeyView" destination="90M-mp-MA9" id="62G-E9-Uht"/>
                                             </connections>
                                         </textField>
                                         <textField toolTip="Diameter of the circular grating patch." horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pvM-K3-tHf">
-                                            <rect key="frame" x="68" y="346" width="181" height="16"/>
+                                            <rect key="frame" x="229" y="346" width="99" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Grating patch diameter [deg]" id="yVa-cn-gFR">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title=" Diameter [deg]" id="yVa-cn-gFR">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -2603,6 +2604,17 @@ No money transfer involved, just for size!     </string>
                                             </buttonCell>
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.isGratingColor" id="JLF-w2-Bke"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PTu-3U-QD8">
+                                            <rect key="frame" x="15" y="345" width="109" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Circular mask" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="cKH-mc-mUi">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="value" keyPath="values.isGratingMasked" id="jkc-Jy-5sm"/>
                                             </connections>
                                         </button>
                                     </subviews>
