@@ -40,6 +40,7 @@ gCappucinoVersionString = [[[CPBundle bundleWithIdentifier:@"com.280n.Foundation
 /*
  #  History
 
++ 2023-08-09 increase default range for CPD, increase significant digits in results
 + 2023-08-09 add "cancel" to not-calibrated alert, change wording a little
 + 2023-08-08a fix export string for grating acuity
 + 2023-08-08 extend gratings lowest spat freq, add tooltips

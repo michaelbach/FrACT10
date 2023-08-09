@@ -155,7 +155,7 @@
 - (CPString) contrastComposeTrialInfoString {
     let s = "trial: " + iTrial + "/" + nTrials;
     s +=  ", contrast: " + [Misc stringFromNumber: contrastMichelsonPercent decimals: 1 localised: YES] + "%";
-    s += ", frequency: " + [Misc stringFromNumber: spatialFreqCPD decimals: 1 localised: YES];
+    s += ", frequency: " + [Misc stringFromNumber: spatialFreqCPD decimals: 2 localised: YES];
     s += ", alternative: " + [alternativesGenerator currentAlternative];
     return s;
 }
@@ -180,7 +180,7 @@
     s += [self rangeStatusIndicatorStringInverted: YES];
     s += [Misc stringFromNumber: contrastMichelsonPercent decimals: 2 localised: YES];
     s += "%, spatial frequency: ";
-    s += [Misc stringFromNumber: spatialFreqCPD decimals: 1 localised: YES];
+    s += [Misc stringFromNumber: spatialFreqCPD decimals: 2 localised: YES];
     s += " cpd";
     return s;
 }
@@ -192,7 +192,7 @@
     s += tab + "value" + tab + [Misc stringFromNumber: contrastMichelsonPercent decimals: 3 localised: YES];
     s += tab + "unit1" + tab + currentTestResultUnit
     s += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 2 localised: YES];
-    s += tab + "spatFreq" + tab + [Misc stringFromNumber: spatialFreqCPD decimals: 1 localised: YES];
+    s += tab + "spatFreq" + tab + [Misc stringFromNumber: spatialFreqCPD decimals: 2 localised: YES];
     s += tab + "unit2" + tab + "cpd";
     s += tab + "nTrials" + tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
     s += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
