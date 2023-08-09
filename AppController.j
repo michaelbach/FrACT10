@@ -224,9 +224,9 @@ Created by mb on 2017-07-12.
  */
 - (void) runFractController { //console.info("AppController>runFractController");
     if ([Settings isNotCalibrated]) {
-        const alert = [CPAlert alertWithMessageText: "WARNING"
-                                    defaultButton: "I just want to try it out" alternateButton: "OK, take me to Settings" otherButton: nil
-                        informativeTextWithFormat: "\rCalibration is mandatory for valid results.\r\rGoto 'Settings' and enter appropriate values for \r«Length of blue ruler» and «Observer distance»;\ror use the credit card sizing method.\r\rThis will also avoid the present obnoxious warning dialog."];
+        const alert = [CPAlert alertWithMessageText: "Calibration is mandatory for valid results!"
+                                    defaultButton: "I just want to try…" alternateButton: "OK, go to Settings" otherButton: "Cancel"
+                        informativeTextWithFormat: "\rGoto 'Settings' and enter appropriate values for \r«Length of blue ruler» and «Observer distance»;\ror use the credit card sizing method.\r\rThis will also avoid the present obnoxious warning dialog."];
         [alert runModalWithDidEndBlock: function(alert, returnCode) {
             switch (returnCode) {
                 case 1: // alternateButton
