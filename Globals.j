@@ -14,7 +14,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0.4";
-kVersionDateOfFrACT = "2023-08-09c";
+kVersionDateOfFrACT = "2023-08-11";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -40,6 +40,7 @@ gCappucinoVersionString = [[[CPBundle bundleWithIdentifier:@"com.280n.Foundation
 /*
  #  History
 
++ 2023-08-11 fix regression with number of choices, gratings circular mask now via clip [now default off, (bug in current Safari)], "viewWidth/2"→viewWidth2 etc.
 + 2023-08-09 gratings circular mask optional
 + 2023-08-09 increase default range for CPD, increase significant digits in results
 + 2023-08-09 add "cancel" to not-calibrated alert, change wording a little

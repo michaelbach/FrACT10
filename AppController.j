@@ -182,8 +182,6 @@ Created by mb on 2017-07-12.
  This observes changes in the settings panel, making shure dependencies are updated
  */
 - (void) settingsDidChange: (CPNotification) aNotification { //console.info("settingsDidChange");
-    if ([Settings gratingObliqueOnly] && ([Settings nAlternativesIndex] != 0))
-        [Settings setNAlternativesIndex: 0];
     [self setIs4orientations: ([Settings nAlternatives] == 4)];
     [[self window] setBackgroundColor: [self windowBackgroundColor]];
     if ([Settings minPossibleLogMAR] > 0) { // red: not good enough for normal vision

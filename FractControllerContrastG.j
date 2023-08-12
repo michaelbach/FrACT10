@@ -11,6 +11,7 @@
 @import "FractControllerContrast.j"
 @implementation FractControllerContrastG: FractControllerContrast {
     float contrastMichelsonPercent, periodInPixel, spatialFreqCPD;
+    BOOL isGratingColor, isErrorDiffusion;
 }
 
 
@@ -23,73 +24,45 @@
 }
 
 
-- (void) maskWithColor: (CPColor) col {
-    if (![Settings isGratingMasked]) return;
-    const r = 0.5 * [MiscSpace pixelFromDegree: [Settings gratingDiaInDeg]];
-    const w = r / 20;
-    let radii = [r - 2 * w, r - w, r, r + w, r + 2 * w, r + 400];
-    let widths = [w, w, w, w, w, 780];
-    let alphas = [0.125, 0.25, 0.5, 0.75, 0.875, 1];
-    for (let i=0; i < 6; i++) {
-        CGContextSetLineWidth(cgc, widths[i] + 0.1);
-        CGContextSetStrokeColor(cgc, [col colorWithAlphaComponent: alphas[i]]);
-        const r = radii[i];
-        CGContextStrokeEllipseInRect(cgc, CGRectMake(0 - r, 0 - r, 2 * r, 2 * r));
-    }
-}
-
-
 - (void) gratingSineWithPeriodInPx: (float) periodInPx direction: (int) theDirection contrast: (float) contrast {
-    let s2 = Math.max(viewHeight, viewWidth) / 2 * 1.43;
-    if ([Settings isGratingMasked]) {
-        s2 = 0.6 * [MiscSpace pixelFromDegree: [Settings gratingDiaInDeg]];
-    }
+    let s2 = Math.round(Math.max(viewHeight2, viewWidth2) / 2 * 1.2) * 2;
     const trigFactor = 1.0 / periodInPx * 2 * Math.PI; // calculate only once
     CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180);
-    CGContextSetLineWidth(cgc, 1.3);
+    CGContextSetLineWidth(cgc, 1.3); // still an artifact on oblique
     let l, lError = 0, lDiscrete;
     for (let ix = -s2; ix <= s2; ++ix) {
         l = 0.5 + 0.5 * contrast / 100 * Math.sin((ix % periodInPx) * trigFactor);
-        l = [MiscLight devicegrayFromLuminance: l]; // apply gamma correction
-        lDiscrete = l;
-        if ([Settings gratingUseErrorDiffusion]) {
-            l = lError + 255 * l; // map to 0…255 and apply previous residual
-            lDiscrete = Math.round(l); // discrete integer values 0…255
-            lError = l - lDiscrete; // keep residual (what was lost by rounding) for next time
-            lDiscrete = lDiscrete / 255; // remap to 0…1
+        if (isGratingColor) {
+            CGContextSetStrokeColor(cgc, [colOptotypeFore colorWithAlphaComponent: l]);
+        } else {
+            l = [MiscLight devicegrayFromLuminance: l]; // apply gamma correction
+            lDiscrete = l;
+            if (isErrorDiffusion) {
+                l = lError + 255 * l; // map to 0…255 and apply previous residual
+                lDiscrete = Math.round(l); // discrete integer values 0…255
+                lError = l - lDiscrete; // keep residual (what was lost by rounding)
+                lDiscrete = lDiscrete / 255; // remap to 0…1
+            }
+            CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: lDiscrete alpha: 1]);
         }
-        CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: lDiscrete alpha: 1]);
         [optotypes strokeVLineAtX: ix y0: -s2 y1: s2];
     }
-    [self maskWithColor: [CPColor colorWithWhite: [MiscLight devicegrayFromLuminance: 0.5] alpha: 1]];
-}
-
-
-- (void) gratingSineColorWithPeriodInPx: (float) periodInPx direction: (int) theDirection contrast: (float) contrast {
-    let s2 = Math.max(viewHeight, viewWidth) / 2 * 1.43;
-    if ([Settings isGratingMasked]) {
-        s2 = 0.6 * [MiscSpace pixelFromDegree: [Settings gratingDiaInDeg]];
-    }
-    const trigFactor = 1.0 / periodInPx * 2 * Math.PI; // calculate only once
-    CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180);
-    CGContextSetLineWidth(cgc, 1.35); // still an artifact on oblique
-    for (let ix = -s2; ix <= s2; ++ix) {
-        const a = 0.5 + 0.5 * contrast / 100 * Math.sin((ix % periodInPx) * trigFactor);
-        CGContextSetStrokeColor(cgc, [colOptotypeFore colorWithAlphaComponent: a]);
-        [optotypes strokeVLineAtX: ix y0: -s2 y1: s2];
-    }
-    [self maskWithColor: colOptotypeBack];
 }
 
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView {
-    //console.info(stimStrengthInThresholderUnits)
+    isGratingColor = [Settings isGratingColor];
+    isErrorDiffusion = [Settings gratingUseErrorDiffusion];
     [self calculateForeBackColors];
-    if ([Settings isGratingColor]) {
+    if (isGratingColor) {
         colOptotypeFore = [Settings gratingForeColor];
         colOptotypeBack = [Settings gratingBackColor];
     }
     [self prepareDrawing];
+    if (!isGratingColor) {
+        CGContextSetFillColor(cgc, [CPColor colorWithWhite: [MiscLight devicegrayFromLuminance: 0.5] alpha: 1]);
+        CGContextFillRect(cgc, CGRectMake(-viewWidth2, +viewHeight2, viewWidth, -viewHeight));
+    }
     switch(state) {
         case kStateDrawBack: break;
         case kStateDrawFore:
@@ -105,20 +78,18 @@
             }
             periodInPixel = Math.max([MiscSpace periodInPixelFromSpatialFrequency: spatialFreqCPD], 2);
             let dir = [alternativesGenerator currentAlternative];
-            //if ([Settings obliqueOnly]) dir += 2;
-            if ([Settings isGratingColor]) {
-                CGContextSetFillColor(cgc, colOptotypeBack);
-                CGContextFillRect(cgc, [[self window] frame]);
-                [self gratingSineColorWithPeriodInPx: periodInPixel direction: dir contrast: contrastMichelsonPercent];
-            } else {
-                [self gratingSineWithPeriodInPx: periodInPixel direction: dir contrast: contrastMichelsonPercent];
+            if ([Settings isGratingMasked]) {
+                CGContextBeginPath(cgc);
+                const r = 0.5 * [MiscSpace pixelFromDegree: [Settings gratingDiaInDeg]];
+                CGContextAddEllipseInRect(cgc, CGRectMake(0 - r, 0 - r, 2 * r, 2 * r));
+                CGContextClosePath(cgc);  CGContextClip(cgc);
             }
+            [self gratingSineWithPeriodInPx: periodInPixel direction: dir contrast: contrastMichelsonPercent];
             [self drawFixMark3];
-            trialInfoString = [self contrastComposeTrialInfoString];// compose here after colors are set
+            trialInfoString = [self contrastComposeTrialInfoString];
             break;
         default: break;
     }
-    
     [self embedInNoise];
     [self drawTouchControls];
     CGContextRestoreGState(cgc);

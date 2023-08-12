@@ -2336,8 +2336,8 @@ No money transfer involved, just for size!     </string>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <connections>
-                                                <binding destination="izh-pU-csC" name="enabled" keyPath="values.isGratingMasked" id="U01-bJ-pWF"/>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.gratingDiaInDeg" id="uZU-Sf-EZy"/>
+                                                <binding destination="izh-pU-csC" name="enabled" keyPath="values.isGratingMasked" id="U01-bJ-pWF"/>
                                                 <outlet property="nextKeyView" destination="90M-mp-MA9" id="62G-E9-Uht"/>
                                             </connections>
                                         </textField>
@@ -2617,6 +2617,37 @@ No money transfer involved, just for size!     </string>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.isGratingMasked" id="jkc-Jy-5sm"/>
                                             </connections>
                                         </button>
+                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ED5-xZ-XLE">
+                                            <rect key="frame" x="173" y="297" width="54" height="26"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes (TAO).  For Landolt Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.</string>
+                                            <popUpButtonCell key="cell" type="push" title="2" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ITp-K5-C2i" id="UgL-WR-pL8">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" id="07F-qr-7e9">
+                                                    <items>
+                                                        <menuItem title="2" state="on" id="ITp-K5-C2i"/>
+                                                        <menuItem title="4" id="dWW-Ag-xit"/>
+                                                        <menuItem title="8" id="DBI-ez-al2"/>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.nAlternativesIndex" id="2J5-ip-RTl"/>
+                                            </connections>
+                                        </popUpButton>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mcv-EH-86K">
+                                            <rect key="frame" x="229" y="299" width="104" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <string key="toolTip">Some optotypes have a fixed number of choices, or variants: Always 10 for Sloan Letters and Auckland Optotypes (TAO); Vernier 2. 
+For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
+</string>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of orientations" id="JPi-TN-Wrt">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                 </view>
                             </tabViewItem>

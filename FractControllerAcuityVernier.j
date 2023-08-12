@@ -113,7 +113,7 @@ Created by Bach on 14.08.2017.
         const sze = 50, sze2 = sze / 2;
         [self buttonCenteredAtX: viewWidth-sze2 y: 0 size: sze title: "6"];
         [self buttonCenteredAtX: sze2 y: 0 size: sze title: "4"];
-        [self buttonCenteredAtX: viewWidth - sze2 y: viewHeight / 2 - sze2 size: sze title: "Ø"];
+        [self buttonCenteredAtX: viewWidth - sze2 y: viewHeight2 - sze2 size: sze title: "Ø"];
     }
     CGContextRestoreGState(cgc);
     [super drawStimulusInRect: dirtyRect];
