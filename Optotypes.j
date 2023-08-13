@@ -43,8 +43,8 @@ Optotypes.j
 - (float) getCurrentContrastWeberPercent {
     return [MiscLight contrastWeberFromMichelsonPercent: [self getCurrentContrastMichelsonPercent]];
 }
-// problem here: 0 % contrast will end in finite logCSWeber. But since this is now clamped at 4.0,
-// after rounding this will still read 0%.
+// problem here: 0 % contrast corresponds to infinite logCSWeber.
+// But since the latter is now clamped at 4.0, after rounding this will still read 0%.
 - (float) getCurrentContrastLogCSWeber {
     const michelsonPercent = [self getCurrentContrastMichelsonPercent];
     const weberPercent = [MiscLight contrastWeberFromMichelsonPercent: michelsonPercent];
@@ -95,7 +95,7 @@ Optotypes.j
 
 
 - (void) addCrossAtX: (float) x y: (float) y size: (float) s {
-    s /= 2.0;
+    s /= 2;
     CGContextMoveToPoint(_cgc, x - s, y);  CGContextAddLineToPoint(_cgc, x + s, y);
     CGContextMoveToPoint(_cgc, x, y - s);  CGContextAddLineToPoint(_cgc, x, y + s);
 }
@@ -120,9 +120,8 @@ Optotypes.j
 
 /**
  Draw optotypes (letters and Es) on a -5…+5 coordinate system
- should be called "fillPolygon"
 */
-- (void) drawPolygon: (float) p withD: (float) d { //console.info("optotypes>drawPolygon");
+- (void) fillPolygon: (float) p withD: (float) d { //console.info("optotypes>fillPolygon");
     CGContextSetFillColor(_cgc, _colOptotypeFore);
     CGContextBeginPath(_cgc);
     CGContextMoveToPoint(_cgc, d * p[0][0], -d * p[0][1]);
@@ -130,9 +129,6 @@ Optotypes.j
         CGContextAddLineToPoint(_cgc, d * p[i][0], -d * p[i][1]);
     }
     CGContextAddLineToPoint(_cgc, d * p[0][0], -d * p[0][1]);
-//    console.info(_cgc);
-//    console.info(_colOptotypeFore, _colOptotypeBack);
-//    console.info([_colOptotypeFore brightnessComponent], [_colOptotypeBack brightnessComponent]);
     CGContextFillPath(_cgc);
 }
 
@@ -143,7 +139,7 @@ Optotypes.j
     CGContextSetFillColor(_cgc, _colOptotypeBack);
     [self fillCircleAtX: 0 y: 0 radius: 1.5 * gap];
     const rct = CGRectMake(gap * 1.4 - 1, -gap / 2, 1.3 * gap + 1, gap); //console.info(gap, " ", rct);
-    const rot = Math.PI / 180.0 * (7 - (direction - 1)) / 8.0 * 360.0;
+    const rot = Math.PI / 180 * (7 - (direction - 1)) / 8 * 360;
     CGContextRotateCTM(_cgc, rot);
     if (direction >= 0) CGContextFillRect(_cgc, rct);
     CGContextRotateCTM(_cgc, -rot);
@@ -155,7 +151,7 @@ Optotypes.j
 }
 - (void)drawSloanDWithGapInPx: (float) d { //console.info("optotypes>drawSloanDWithGapInPx");
     d *= 0.5;
-    const gxf = 1.0, gyf = 1.0;
+    const gxf = 1, gyf = 1;
     CGContextBeginPath(_cgc);
     CGContextMoveToPoint(_cgc, -d * 5 * gxf, -d * 5 * gyf);
     CGContextAddLineToPoint(_cgc, d * 1 * gxf, -d * 5 * gyf);
@@ -165,7 +161,7 @@ Optotypes.j
     CGContextAddLineToPoint(_cgc, -d * 5 * gxf, d * 5 * gyf);
     CGContextAddLineToPoint(_cgc, -d * 5 * gxf, -d * 5 * gyf);
     CGContextFillPath(_cgc);
-    d *= 3.0 / 5.0;
+    d *= 3 / 5;
     CGContextSetFillColor(_cgc, _colOptotypeBack);
     CGContextBeginPath(_cgc);
     CGContextMoveToPoint(_cgc, -d * 5 * gxf, -d * 5 * gyf);
@@ -179,15 +175,15 @@ Optotypes.j
 }
 - (void)drawSloanHWithGapInPx: (float) d { //console.info("optotypes>drawSloanHWithGapInPx");
     const pnts = [[-5,-5], [-3,-5], [-3,-1], [+3,-1], [+3,-5], [+5,-5], [+5,+5], [+3,+5], [+3,+1], [-3,+1], [-3,+5], [-5,+5], [-5, -5]];
-    [self drawPolygon: pnts withD: d * 0.5];
+    [self fillPolygon: pnts withD: d * 0.5];
 }
 - (void)drawSloanKWithGapInPx: (float) d {
     const pnts = [[-5,-5], [-3,-5], [-3,-0.82], [-0.98,0.69], [+2.43,-5], [+5,-5], [+0.74,+1.98], [+5,+5], [+1.66,+5], [-3,+1.68], [-3,+5], [-5,+5], [-5,-5]];
-    [self drawPolygon: pnts withD: d * 0.5];
+    [self fillPolygon: pnts withD: d * 0.5];
 }
 - (void)drawSloanNWithGapInPx: (float) d {
     const pnts = [[-5,-5], [-3,-5], [-3,1.9], [+3,-5], [+5,-5], [+5,+5], [+3,+5], [+3,-1.9], [-3,+5], [-5,+5], [-5,-5]];
-    [self drawPolygon: pnts withD: d * 0.5];
+    [self fillPolygon: pnts withD: d * 0.5];
 }
 - (void)drawSloanOWithGapInPx: (float) d {
     let r = 2.5 * d;
@@ -199,8 +195,8 @@ Optotypes.j
     const p1 = [[-5,-5], [-3,-5], [-3,-1], [+2,-1], [+2,+5], [-5,+5], [-5,-5]],
     p2 = [[0.7,0], [2.8,-5], [5,-5], [+2.85,0], [0.7,0]],
     d5 = d * 0.5;
-    CGContextBeginPath(_cgc);  [self drawPolygon: p1 withD: d5];  CGContextFillPath(_cgc);
-    CGContextBeginPath(_cgc);  [self drawPolygon: p2 withD: d5];  CGContextFillPath(_cgc);
+    CGContextBeginPath(_cgc);  [self fillPolygon: p1 withD: d5];  CGContextFillPath(_cgc);
+    CGContextBeginPath(_cgc);  [self fillPolygon: p2 withD: d5];  CGContextFillPath(_cgc);
     [self fillCircleAtX: d y: -d radius: 3 * d5];
     CGContextSetFillColor(_cgc, _colOptotypeBack);
     [self fillCircleAtX: d y: -d radius: d5];
@@ -231,11 +227,11 @@ Optotypes.j
 }
 - (void)drawSloanVWithGapInPx: (float) d {
     const pnts = [[-5,+5], [-1,-5], [+1,-5], [+5,+5], [+3,+5], [0,-2.1], [-3,+5], [-5,+5], [-5,+5]];
-    CGContextBeginPath(_cgc);  [self drawPolygon: pnts withD: d / 2];  CGContextFillPath(_cgc);
+    CGContextBeginPath(_cgc);  [self fillPolygon: pnts withD: d / 2];  CGContextFillPath(_cgc);
 }
 - (void)drawSloanZWithGapInPx: (float) d {
     const pnts = [[-5,-5], [+5,-5], [+5,-3], [-1.9,-3], [+5,+3], [+5,+5], [-5,+5], [-5,+3], [+1.9,+3], [-5,-3], [-5,-5]];
-    CGContextBeginPath(_cgc);  [self drawPolygon: pnts withD: d / 2];  CGContextFillPath(_cgc);
+    CGContextBeginPath(_cgc);  [self fillPolygon: pnts withD: d / 2];  CGContextFillPath(_cgc);
 }
 
 
@@ -284,7 +280,7 @@ Optotypes.j
         default:    // hollow square (for flanker)
             p = [[5, -5], [-5, -5], [-5, 5], [5, 5], [5, -5], [3, -3], [-3, -3], [-3, 3], [3, 3], [3, -3]];
     }
-    [self drawPolygon: p withD: d * 0.5];
+    [self fillPolygon: p withD: d * 0.5];
 }
 
 

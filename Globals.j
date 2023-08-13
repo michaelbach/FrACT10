@@ -40,6 +40,7 @@ gCappucinoVersionString = [[[CPBundle bundleWithIdentifier:@"com.280n.Foundation
 /*
  #  History
 
++ 2023-08-13 rename strokePolygon→fillPolygon, fix *.0 → * (all Numbers are floats)
 + 2023-08-11 fix regression with number of choices, gratings circular mask now via clip [now default off, (bug in current Safari)], "viewWidth/2"→viewWidth2 etc.
 + 2023-08-09 gratings circular mask optional
 + 2023-08-09 increase default range for CPD, increase significant digits in results
