@@ -68,10 +68,10 @@ Created by Bach on 14.08.2017.
 
 
 - (void) drawVernierAtX: (float) xCent y: (float) yCent vLength: (float) vLength sigma: (float) sigma gapHeight: (float) gapHeight offsetSize: (float) offsetSize offsetIsTopRight: (BOOL) offsetIsTopRight { //console.info("FractControllerAcuityVernier>drawVernierAtX", offsetSize);
-    xCent += (Math.random() < 0.5 ? 1 : -1) + 2 * (2 * Math.random() - 1.0);
+    xCent += (Math.random() < 0.5 ? 1 : -1) + 2 * (2 * Math.random() - 1);
     const theSign = offsetIsTopRight ? +1 : -1;
-    const xPos0 = xCent + theSign * offsetSize / 2.0, xPos1 = xCent - theSign * offsetSize / 2.0;
-    const vLength2 = vLength / 2.0;
+    const xPos0 = xCent + theSign * offsetSize / 2, xPos1 = xCent - theSign * offsetSize / 2;
+    const vLength2 = vLength / 2;
     switch([Settings vernierType]) {
         case 1: // 3 bars
             // lower
@@ -80,11 +80,11 @@ Created by Bach on 14.08.2017.
             // middle
             [self drawLineGaussProfileVerticalAtX: xPos1 y0: yCent - vLength2 y1: yCent + vLength2 sigma: sigma];
             // upper
-            yTemp = yCent - vLength / 2 - gapHeight;
+            yTemp = yCent - vLength2 - gapHeight;
             [self drawLineGaussProfileVerticalAtX: xPos0 y0: yTemp y1: yTemp - vLength sigma: sigma];
             break;
         default: // case 0, 2 bars
-            const gapHeight2 = gapHeight / 2.0;
+            const gapHeight2 = gapHeight / 2;
             // lower
             [self drawLineGaussProfileVerticalAtX: xPos0 y0: yCent + gapHeight2 y1: yCent + gapHeight2 + vLength sigma: sigma];
             // upper

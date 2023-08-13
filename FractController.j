@@ -220,7 +220,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         case kTestAcuityLett: case kTestContrastLett:
             sze = viewWidth / ((nAlternatives+1) * 1.4 + 1);
             for (let i = 0; i < nAlternatives; i++) {
-                [self buttonCenteredAtX: (i + 0.9) * 1.4 * sze y: viewHeight2 - sze / 2 - 1
+                [self buttonCenteredAtX: (i + 0.9) * 1.4 * sze y: viewHeight2 - sze2 - 1
                                    size: sze title: [@"CDHKNORSVZØ" characterAtIndex: i]];
             }
             break;
@@ -242,7 +242,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             [self buttonCenteredAtX: viewWidth2 y: -viewHeight2 + sze2 size: sze title: "8"];
             [self buttonCenteredAtX: viewWidth2 y: viewHeight2 - sze2 size: sze title: "2"];
     }
-    [self buttonCenteredAtX: viewWidth - sze2 - 1 y: viewHeight / 2 - sze2 - 1 size: sze title: "Ø"];
+    [self buttonCenteredAtX: viewWidth - sze2 - 1 y: viewHeight2 - sze2 - 1 size: sze title: "Ø"];
 }
 - (CPButton) buttonCenteredAtX: (float) x y: (float) y size: (float) size title: (CPString) title {
     [self buttonCenteredAtX: x y: y size: size title: title keyEquivalent: title];

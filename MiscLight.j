@@ -34,10 +34,10 @@
 + (float) contrastWeberFromMichelsonPercent: (float) inMichelsonPercent {
     let inMichelson = inMichelsonPercent /= 100,  outWeber;
     if (inMichelson >= 0) {
-        outWeber = 2.0 * inMichelson / (1.0 + inMichelson);
+        outWeber = 2 * inMichelson / (1 + inMichelson);
     } else {
         inMichelson *= -1;
-        outWeber = 2.0 * inMichelson / (1.0 + inMichelson);
+        outWeber = 2 * inMichelson / (1 + inMichelson);
         outWeber *= 1;
     }
     // console.info("contrastWeberFromMichelsonPercent: ", inMichelson * 100, outWeber * 100);
@@ -93,7 +93,7 @@
  "luminance": (0…1) a "normalised" luminance as would be measured in cd/m²
  */
 + (float) devicegrayFromLuminance: (float) luminance {
-    return Math.pow(luminance, 1.0 / [Settings gammaValue]);
+    return Math.pow(luminance, 1 / [Settings gammaValue]);
 }
 /**
  And the inverse

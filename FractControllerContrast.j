@@ -17,7 +17,7 @@ Created by Bach on 2020-09-02
 
 - (void) modifyThresholderStimulus {
     if (iTrial == 1) // make the first more visible
-        stimStrengthInThresholderUnits = Math.min(stimStrengthInThresholderUnits + 0.3, 1.0);
+        stimStrengthInThresholderUnits = Math.min(stimStrengthInThresholderUnits + 0.3, 1);
     if ([Settings contrastEasyTrials]) // don't forget bonus
         [self modifyThresholderStimulusWithBonus];
 }

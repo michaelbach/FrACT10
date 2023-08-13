@@ -24,14 +24,14 @@
  Convert degrees to pixels
  */
 + (float) pixelFromDegree: (float) degs { //console.info("pixelFromDegree");
-    const mm = Math.tan(degs * Math.PI / 180.0) * 10.0 * [Settings distanceInCM];
+    const mm = Math.tan(degs * Math.PI / 180) * 10 * [Settings distanceInCM];
     return [self pixelFromMillimeter: mm];
 }
 /**
  Convert pixels to degrees
  */
 + (float) degreeFromPixel: (float) pixel { //console.info("Misc>pixelFromDegree");
-    return 180.0 / Math.PI * Math.atan2([self millimeterFromPixel: pixel], [Settings distanceInCM] * 10.0);
+    return 180 / Math.PI * Math.atan2([self millimeterFromPixel: pixel], [Settings distanceInCM] * 10);
 }
 
 
@@ -39,7 +39,7 @@
  Convert period from spatial frequency
  */
 + (float) periodInPixelFromSpatialFrequency: (float) f {
-    let p = [MiscSpace pixelFromDegree: 1.0 / f];
+    let p = [MiscSpace pixelFromDegree: 1 / f];
     return p;
 }
 + (float) spatialFrequencyFromPeriodInPixel: (float) p {
@@ -60,13 +60,13 @@
  Given gap size in pixels, calculates decimla VA
  */
 + (float) decVAFromGapPixels: (float) pixels { // "decVA": visual acuity in decimal format
-    return 1.0 / 60.0 / [self degreeFromPixel: pixels];
+    return 1 / 60 / [self degreeFromPixel: pixels];
 }
 /**
  And the inverse
  */
 + (float) gapPixelsFromDecVA: (float) decVA {
-    return [self pixelFromDegree: (1.0 / 60.0 / decVA)];
+    return [self pixelFromDegree: (1 / 60 / decVA)];
 }
 
 
@@ -88,7 +88,7 @@
 
 /*
  static public function spatFreq2periodInPix(spatFreqInCPD:Number):Number {
- return 2.0 * PixelFromDegree(1.0 / spatFreqInCPD / 2.0)
+ return 2 * PixelFromDegree(1.0 / spatFreqInCPD / 2)
  }
  
  static public function periodInPix2spatFreq(periodInPix:Number):Number {

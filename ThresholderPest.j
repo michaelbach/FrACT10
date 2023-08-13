@@ -79,7 +79,7 @@ Implementation of BestPEST
         }
         probability[i] = p;
     }
-    const internalStim = Math.round((p1 + p2) / 2.0);
+    const internalStim = Math.round((p1 + p2) / 2);
     const retVal = [self internalStim2externalStimGiven: internalStim];
     return retVal;
 }

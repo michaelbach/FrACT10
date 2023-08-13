@@ -30,7 +30,7 @@
     if ([Settings crowdingType] > 0) {
         if (currentTestID != kTestAcuityVernier) { // don't do crowding with Vernier etc.
             CGContextSaveGState(cgc);
-            CGContextTranslateCTM(cgc, viewWidth2, viewHeight / 2); // origin to center
+            CGContextTranslateCTM(cgc, viewWidth2, viewHeight2); // origin to center
             CGContextTranslateCTM(cgc, -xEccInPix, -yEccInPix);
             const crowdingDistance = [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits];
             switch ([Settings crowdingType]) {

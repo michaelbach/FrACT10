@@ -26,7 +26,7 @@
 
 - (void) gratingSineWithPeriodInPx: (float) periodInPx direction: (int) theDirection contrast: (float) contrast {
     let s2 = Math.round(Math.max(viewHeight2, viewWidth2) / 2 * 1.2) * 2;
-    const trigFactor = 1.0 / periodInPx * 2 * Math.PI; // calculate only once
+    const trigFactor = 1 / periodInPx * 2 * Math.PI; // calculate only once
     CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180);
     CGContextSetLineWidth(cgc, 1.3); // still an artifact on oblique
     let l, lError = 0, lDiscrete;
