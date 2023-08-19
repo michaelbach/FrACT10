@@ -17,21 +17,36 @@
 
 - (float) freqFromThresholderunits: (float) thresholderunit {
     thresholderunit = 1 - thresholderunit; // 0: strong stimulus=low spatFreq
-    const logFreqMin = Math.log10([Settings gratingCPDmin]);
-    const logFreqMax = Math.log10([Settings gratingCPDmax]);
-    const logFreq = logFreqMin + thresholderunit *(logFreqMax - logFreqMin);
-    return Math.pow(10, logFreq);
+
+    // exponential mapping for psychometric function to frequency. Does NOT work well.
+    /*const expFreqMin = Math.pow(10, [Settings gratingCPDmin]);
+    const expFreqMax = Math.pow(10, [Settings gratingCPDmax]);
+    const expFreq = expFreqMin + thresholderunit * (expFreqMax - expFreqMin);
+    return Math.log10(expFreq);*/
+
+    // linear mapping for psychometric function to frequency
+    const freqMin = [Settings gratingCPDmin], freqMax = [Settings gratingCPDmax];
+    const freq = freqMin + thresholderunit * (freqMax - freqMin);
+    return freq;
+    
+    // log mapping for psychometric function to frequency
+    /*    const logFreqMin = Math.log10([Settings gratingCPDmin]);
+     const logFreqMax = Math.log10([Settings gratingCPDmax]);
+     const logFreq = logFreqMin + thresholderunit * (logFreqMax - logFreqMin);
+     return Math.pow(10, logFreq);*/
 }
 
 
 - (void) gratingSineWithPeriodInPx: (float) periodInPx direction: (int) theDirection contrast: (float) contrast {
-    let s2 = Math.round(Math.max(viewHeight2, viewWidth2) / 2 * 1.2) * 2;
+    let s2 = Math.round(Math.max(viewHeight2, viewWidth2) / 2 * 1.25) * 2;
     const trigFactor = 1 / periodInPx * 2 * Math.PI; // calculate only once
     CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180);
     CGContextSetLineWidth(cgc, 1.3); // still an artifact on oblique
     let l, lError = 0, lDiscrete;
     for (let ix = -s2; ix <= s2; ++ix) {
-        l = 0.5 + 0.5 * contrast / 100 * Math.sin((ix % periodInPx) * trigFactor);
+        l = Math.sin((ix % periodInPx) * trigFactor);
+        //l = l >= 0 ? 1 : -1; // sine → square wave grating
+        l = 0.5 + 0.5 * contrast / 100 * l;
         if (isGratingColor) {
             CGContextSetStrokeColor(cgc, [colOptotypeFore colorWithAlphaComponent: l]);
         } else {

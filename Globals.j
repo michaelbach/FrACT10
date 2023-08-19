@@ -14,7 +14,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0.4";
-kVersionDateOfFrACT = "2023-08-19";
+kVersionDateOfFrACT = "2023-08-20";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -40,6 +40,7 @@ gCappucinoVersionString = [[[CPBundle bundleWithIdentifier:@"com.280n.Foundation
 /*
  #  History
 
++ 2023-08-19 linear mapping of psychometric function to grating frequency
 + 2023-08-19 add autorun to gratings, fix wrong result value for gratingAcuity
 + 2023-08-13 rename strokePolygon→fillPolygon, fix *.0 → * (all Numbers are floats)
 + 2023-08-11 fix regression with number of choices, gratings circular mask now via clip [now default off, (bug in current Safari)], "viewWidth/2"→viewWidth2 etc.

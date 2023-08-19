@@ -292,7 +292,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         responseWasCorrect = contrastMichelsonPercent > [30.0, 3.0, 0.3][arIndex];
     }
     if ([self isAcuityGrating]) {
-        responseWasCorrect = spatialFreqCPD < [0.1, 1, 10][arIndex];
+        responseWasCorrect = spatialFreqCPD < [0.3, 1, 10][arIndex];
     }
     
     [self trialEnd];

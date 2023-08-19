@@ -2657,7 +2657,7 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                                 <menu key="menu" id="ZIm-DU-7v5">
                                                     <items>
                                                         <menuItem title="Off" state="on" id="AcH-ef-uvd"/>
-                                                        <menuItem title="30% / 0.1 cpd" id="jrK-Ts-MSX">
+                                                        <menuItem title="30% / 0.3 cpd" id="jrK-Ts-MSX">
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
                                                         <menuItem title="3% / 1 cpd" id="TE1-VK-zwW"/>

@@ -204,7 +204,6 @@ Created by mb on July 15, 2015.
 }
 + (void) checkDefaults { //console.info("Settings>checkDefaults");
     if ([self needNewDefaults]) {
-// const alert = [CPAlert alertWithMessageText: "»FrACT«: First run or major version change" defaultButton: "OK" alternateButton: nil otherButton: nil informativeTextWithFormat: "\rAll Settings are reset to their default values, please check them.\r\n\r\n[If all Settings are empty, simply reload, next time they'll be fine.]"]; [alert runModal];
         [self setDefaults];
     } else {
         [self allNotCheckButSet: NO];
