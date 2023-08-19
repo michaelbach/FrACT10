@@ -32,7 +32,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     unsigned short responseKeyCode;
     CGContext cgc;
     float stimStrengthInThresholderUnits, stimStrengthInDeviceunits, viewWidth, viewHeight, viewWidth2, viewHeight2;
-    float optotypeSizeInPix;
+    float optotypeSizeInPix, spatialFreqCPD, contrastMichelsonPercent;
     float xEccInPix, yEccInPix; // eccentricity
     Thresholder thresholder;
     AlternativesGenerator alternativesGenerator;
@@ -124,7 +124,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     timerDisplay = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutDisplaySeconds] target:self selector:@selector(onTimeoutDisplay:) userInfo:nil repeats:NO];
     timerResponse = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutResponseSeconds] target:self selector:@selector(onTimeoutResponse:) userInfo:nil repeats:NO];
     if ([Settings autoRunIndex] > 0) {
-        if ([self isAcuityOptotype] || [self isContrastAny]) {
+        if ([self isAcuityOptotype] || [self isContrastAny] || [self isAcuityGrating]) {
             let time = 0.4;
             if ([self isContrastAny]) {
                 time += [Settings contrastTimeoutFixmark] / 1000;
@@ -287,9 +287,14 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         responseWasCorrect = stimStrengthInDeviceunits < [1.0, 1.3, 1.6][arIndex];
     }
     if ([self isContrastG]) {
-        const contrastMichelsonPercentCurrent = [MiscLight contrastMichelsonPercentFromLogCSWeber: stimStrengthInDeviceunits]
-        responseWasCorrect = contrastMichelsonPercentCurrent > [10.0, 1.0, 0.3][arIndex];
+        //const contrastMichelsonPercentCurrent = [MiscLight contrastMichelsonPercentFromLogCSWeber: stimStrengthInDeviceunits]
+        //responseWasCorrect = contrastMichelsonPercentCurrent > [30.0, 3.0, 0.3][arIndex];
+        responseWasCorrect = contrastMichelsonPercent > [30.0, 3.0, 0.3][arIndex];
     }
+    if ([self isAcuityGrating]) {
+        responseWasCorrect = spatialFreqCPD < [0.1, 1, 10][arIndex];
+    }
+    
     [self trialEnd];
 }
 

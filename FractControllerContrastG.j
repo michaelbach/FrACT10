@@ -10,7 +10,7 @@
 
 @import "FractControllerContrast.j"
 @implementation FractControllerContrastG: FractControllerContrast {
-    float contrastMichelsonPercent, periodInPixel, spatialFreqCPD;
+    float periodInPixel;
     BOOL isGratingColor, isErrorDiffusion;
 }
 
@@ -147,6 +147,7 @@
         contrastMichelsonPercent = [MiscLight contrastMichelsonPercentFromLogCSWeber: stimStrengthInDeviceunits];
         spatialFreqCPD = [Settings gratingCPD];
     } else { // acuity_grating
+        spatialFreqCPD = [self freqFromThresholderunits: stimStrengthInThresholderUnits];
         contrastMichelsonPercent = [Settings gratingContrastMichelsonPercent];
     }
 /* needs work for frequency sweep

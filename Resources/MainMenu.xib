@@ -2265,7 +2265,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gY0-Kn-fAg">
-                                            <rect key="frame" x="434" y="175" width="4" height="16"/>
+                                            <rect key="frame" x="434" y="130" width="4" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" id="Qhl-ms-Dj8">
                                                 <font key="font" metaFont="system"/>
@@ -2323,7 +2323,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </button>
                                         <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="itu-xS-0Lk">
-                                            <rect key="frame" x="9" y="269" width="696" height="5"/>
+                                            <rect key="frame" x="9" y="224" width="696" height="5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </box>
                                         <textField toolTip="Diameter of the circular grating patch." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LmQ-Fz-Lv8">
@@ -2362,7 +2362,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </button>
                                         <popUpButton toolTip="Switches between the two alternatives below. " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8er-Ta-td0" userLabel="what2sweep">
-                                            <rect key="frame" x="165" y="221" width="386" height="25"/>
+                                            <rect key="frame" x="165" y="176" width="386" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="Contrast" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="grk-FJ-Z1K" id="yjR-qI-kBp" userLabel="what2sweep">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -2383,7 +2383,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </popUpButton>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UvB-8w-Mlb">
-                                            <rect key="frame" x="66" y="224" width="113" height="16"/>
+                                            <rect key="frame" x="66" y="179" width="113" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="left" title="What to sweep:" id="1OV-35-QTH">
                                                 <font key="font" metaFont="system"/>
@@ -2392,7 +2392,7 @@ No money transfer involved, just for size!     </string>
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" title="Sweep contrast – spatial frequency fixed" translatesAutoresizingMaskIntoConstraints="NO" id="hvu-6D-Flv">
-                                            <rect key="frame" x="59" y="30" width="300" height="168"/>
+                                            <rect key="frame" x="59" y="-15" width="300" height="168"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="IZB-Mx-hCZ">
                                                 <rect key="frame" x="4" y="5" width="292" height="148"/>
@@ -2476,7 +2476,7 @@ No money transfer involved, just for size!     </string>
                                             </view>
                                         </box>
                                         <box fixedFrame="YES" title="Sweep spatial frequency – contrast fixed" translatesAutoresizingMaskIntoConstraints="NO" id="yCk-z8-utP">
-                                            <rect key="frame" x="390" y="30" width="300" height="168"/>
+                                            <rect key="frame" x="390" y="-15" width="300" height="168"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="gWO-qi-Y3m">
                                                 <rect key="frame" x="4" y="5" width="292" height="148"/>
@@ -2643,6 +2643,36 @@ No money transfer involved, just for size!     </string>
 For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
 </string>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of orientations" id="JPi-TN-Wrt">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <popUpButton toolTip="Automatic run, targeting this contrast sensitivity. For testing." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TlA-dW-ZGE">
+                                            <rect key="frame" x="14" y="249" width="107" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <popUpButtonCell key="cell" type="push" title="Off" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="AcH-ef-uvd" id="Ocx-GM-WQO">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" id="ZIm-DU-7v5">
+                                                    <items>
+                                                        <menuItem title="Off" state="on" id="AcH-ef-uvd"/>
+                                                        <menuItem title="30% / 0.1 cpd" id="jrK-Ts-MSX">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                        <menuItem title="3% / 1 cpd" id="TE1-VK-zwW"/>
+                                                        <menuItem title="0.3% / 10 cpd" id="rM0-Ne-6we"/>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.autoRunIndex" id="Sog-7a-kpt"/>
+                                            </connections>
+                                        </popUpButton>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hbr-5F-BTO">
+                                            <rect key="frame" x="123" y="251" width="158" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Autorun to target % / cpd" id="FAI-Vk-nyI">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
