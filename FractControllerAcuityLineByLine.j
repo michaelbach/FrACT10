@@ -55,7 +55,8 @@ Created by mb on 2021-12-21.
                 if (localDecVA >= 1.0) optotypeDistance = 3;
             }
             optotypeDistance = (1 + optotypeDistance) * stimStrengthInDeviceunits * 5;
-            for (let i = -2; i <= 2; i++) {
+            const iRange = [Settings lineByLineHeadcountIndex];
+            for (let i = -iRange; i <= iRange; i++) {//iDex 0…3 → 1, 3, 5, 7
                 const tempX = i * optotypeDistance;
                 CGContextTranslateCTM(cgc, -tempX, -verticalOffset);
                 let currentAlternative = [Misc iRandom: nAlternatives];

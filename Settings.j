@@ -142,6 +142,7 @@ Created by mb on July 15, 2015.
 
     [self setTestOnLineByLine: [self chckInt: [self testOnLineByLine] def: 1 min: 1 max: 4 set: set]]; // 1: Sloan Letters. 0: nicht erlaubt, 2: Landolt, 3…
     [self setTestOnLineByLineDistanceType: [self chckInt: [self testOnLineByLineDistanceType] def: 0 min: 0 max: 1 set: set]]; // 0: DIN-EN-ISO, 1: ETDRS
+    [self setLineByLineHeadcountIndex: [self chckInt: [self lineByLineHeadcountIndex] def: 2 min: 0 max: 4 set: set]]; // 0: "1", 2: "3", 3: "5", 4: "7"
 
 
     // Vernier stuff
@@ -740,6 +741,7 @@ Created by mb on July 15, 2015.
 }
 
 
+// Line-by-line stuff
 + (int) testOnLineByLine {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "testOnLineByLine"];
 }
@@ -752,7 +754,12 @@ Created by mb on July 15, 2015.
 + (void) setTestOnLineByLineDistanceType: (int) val {
     [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "testOnLineByLineDistanceType"];
 }
-
++ (int) lineByLineHeadcountIndex {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "lineByLineHeadcountIndex"];
+}
++ (void) setLineByLineHeadcountIndex: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "lineByLineHeadcountIndex"];
+}
 
 // Vernier stuff
 + (int) vernierType {

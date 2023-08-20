@@ -1863,14 +1863,14 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </comboBox>
                                         <box fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="dsj-Xn-diN">
-                                            <rect key="frame" x="510" y="-17" width="236" height="101"/>
+                                            <rect key="frame" x="510" y="28" width="236" height="134"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="hSN-vj-QjA">
-                                                <rect key="frame" x="4" y="5" width="228" height="81"/>
+                                                <rect key="frame" x="4" y="5" width="228" height="114"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ISM-iO-FiM">
-                                                        <rect key="frame" x="17" y="44" width="89" height="16"/>
+                                                        <rect key="frame" x="17" y="77" width="89" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" enabled="NO" sendsActionOnEndEditing="YES" title="Optotype" id="eKO-dD-pZk">
                                                             <font key="font" metaFont="system"/>
@@ -1879,7 +1879,7 @@ No money transfer involved, just for size!     </string>
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YnV-xX-KHx">
-                                                        <rect key="frame" x="118" y="44" width="89" height="16"/>
+                                                        <rect key="frame" x="118" y="77" width="89" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" enabled="NO" sendsActionOnEndEditing="YES" title="Distance" id="nag-2J-Iq5">
                                                             <font key="font" metaFont="system"/>
@@ -1887,8 +1887,17 @@ No money transfer involved, just for size!     </string>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RIq-gM-491">
+                                                        <rect key="frame" x="118" y="18" width="89" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" enabled="NO" sendsActionOnEndEditing="YES" title="Headcount" id="3a4-Rd-jN6">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
                                                     <popUpButton toolTip="Which optotypes to present in the &quot;Line of Optotypes&quot; / &quot;line-by-line&quot; mode" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JCI-tq-Dxr">
-                                                        <rect key="frame" x="17" y="17" width="97" height="26"/>
+                                                        <rect key="frame" x="17" y="50" width="97" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <popUpButtonCell key="cell" type="push" title="–" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="BNs-47-qLW" id="HXT-wA-3ir">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1918,7 +1927,7 @@ No money transfer involved, just for size!     </string>
                                                         </connections>
                                                     </popUpButton>
                                                     <popUpButton toolTip="Distance between optotypes, international norm or ETDRS" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H3u-od-Aga">
-                                                        <rect key="frame" x="117" y="17" width="97" height="26"/>
+                                                        <rect key="frame" x="117" y="50" width="97" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <popUpButtonCell key="cell" type="push" title="EN-DIN-ISO" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="TMO-F2-t8u" id="Nrt-m0-dMu">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1938,11 +1947,38 @@ No money transfer involved, just for size!     </string>
                                                             <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.testOnLineByLineDistanceType" id="7oE-1f-NdU"/>
                                                         </connections>
                                                     </popUpButton>
+                                                    <popUpButton toolTip="Distance between optotypes, international norm or ETDRS" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YdS-Tu-7XG" userLabel="Headcount">
+                                                        <rect key="frame" x="17" y="15" width="97" height="26"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <popUpButtonCell key="cell" type="push" title="1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="JL1-OY-GDI" id="1zx-GW-LFM" userLabel="Headcount">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="menu"/>
+                                                            <menu key="menu" id="H8F-8e-Giu">
+                                                                <items>
+                                                                    <menuItem title="1" id="JL1-OY-GDI">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="3" id="MHF-Wn-f1j" userLabel="3">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="5" state="on" id="8Re-o2-FHj" userLabel="5">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="7" id="TKc-nt-ZS5" userLabel="7">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                </items>
+                                                            </menu>
+                                                        </popUpButtonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.lineByLineHeadcountIndex" id="4jv-X1-tFW"/>
+                                                        </connections>
+                                                    </popUpButton>
                                                 </subviews>
                                             </view>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yeH-Jv-eDF">
-                                            <rect key="frame" x="533" y="54" width="135" height="22"/>
+                                            <rect key="frame" x="533" y="132" width="135" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Line of Optotypes" bezelStyle="round" id="80e-Xb-73c">
                                                 <font key="font" metaFont="system"/>
@@ -1960,7 +1996,7 @@ No money transfer involved, just for size!     </string>
                                             </textFieldCell>
                                         </textField>
                                         <button toolTip="if checked, the 12th, 18th, 24th… trial will have an “easy” optotype for motivation" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Kp-gt-Eg5">
-                                            <rect key="frame" x="511" y="120" width="165" height="18"/>
+                                            <rect key="frame" x="511" y="-13" width="165" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Occasional ‘easy trials’" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Gto-n0-omN">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
