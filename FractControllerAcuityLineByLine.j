@@ -4,7 +4,7 @@ Copyright © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
 FractControllerAcuityLineByLine.j
 
-This module draws a 5-optotype line for aid in refraction.
+This module draws a 5-optotype line to aid in refraction.
 It's task does not really fit the testing via trial/run, but whatever
 Created by mb on 2021-12-21.
 */
@@ -39,6 +39,7 @@ Created by mb on 2021-12-21.
 
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerAcuityLetters>drawStimulusInRect");
+    const verticalOffset = 150;
     [self prepareDrawing];
     switch(state) {
         case kStateDrawBack: break;
@@ -56,7 +57,7 @@ Created by mb on 2021-12-21.
             optotypeDistance = (1 + optotypeDistance) * stimStrengthInDeviceunits * 5;
             for (let i = -2; i <= 2; i++) {
                 const tempX = i * optotypeDistance;
-                CGContextTranslateCTM(cgc, -tempX, -150);
+                CGContextTranslateCTM(cgc, -tempX, -verticalOffset);
                 let currentAlternative = [Misc iRandom: nAlternatives];
                 while (usedAlternativesArray.includes(currentAlternative)) {
                     currentAlternative = [Misc iRandom: nAlternatives];
@@ -67,7 +68,7 @@ Created by mb on 2021-12-21.
                     case 2: [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: currentAlternative];  break;
                     default: console.log("Line-by-line: unsupported optotype-id: ", [Settings testOnLineByLine]);
                 }
-                CGContextTranslateCTM(cgc, +tempX, 150);
+                CGContextTranslateCTM(cgc, +tempX, verticalOffset);
             }
 
             CGContextSetFillColor(cgc, [CPColor blueColor]);
@@ -96,7 +97,8 @@ Created by mb on 2021-12-21.
     }
 
     CGContextRestoreGState(cgc);
-    //[super drawStimulusInRect: dirtyRect];
+    CGContextTranslateCTM(cgc, 0, -verticalOffset);//so crowding is also offset
+    [super drawStimulusInRect: dirtyRect];
 }
 
 

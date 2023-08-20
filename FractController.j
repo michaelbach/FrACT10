@@ -172,7 +172,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 /**
- Draw the trial info after everything else has been drawn
+ Draw the trial info (top left) after everything else has been drawn
  */
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
     if ([Settings trialInfo]) {
