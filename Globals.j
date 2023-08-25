@@ -14,7 +14,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0.4";
-kVersionDateOfFrACT = "2023-08-20b";
+kVersionDateOfFrACT = "2023-08-25";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -40,6 +40,7 @@ gCappucinoVersionString = [[[CPBundle bundleWithIdentifier:@"com.280n.Foundation
 /*
  #  History
 
++ 2023-08-25 refactor `Presets`to use `sender`, add preset "BCM@Scheie"
 + 2023-08-20b add "headcount" to line-by-line
 + 2023-08-20a crowding also with line-by-line
 + 2023-08-20 linear mapping of psychometric function to grating frequency

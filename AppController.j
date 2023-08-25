@@ -490,7 +490,7 @@ Created by mb on 2017-07-12.
 
 
 - (IBAction) popupPreset_action: (id) sender { //console.info("AppController>popupPreset_action", [sender indexOfSelectedItem]);
-    [Presets apply: [sender indexOfSelectedItem]];
+    [Presets apply: sender];
 }
 
 

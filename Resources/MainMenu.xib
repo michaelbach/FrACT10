@@ -546,6 +546,9 @@ DQ
                                     <menuItem title="Preset to: BCO-BonY" id="poo-DG-u5a">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
+                                    <menuItem title="Preset to: BCO@Scheie" id="WSk-qq-2gP">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
                                 </items>
                             </menu>
                         </popUpButtonCell>

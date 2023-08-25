@@ -14,10 +14,8 @@
 @implementation Presets {
     SEL gSelector;
     CPAlert alert1, alert2;
-    CPArray presetNames;
     CPString currentPresetName;
 }
-
 
 
 + (CPString) capitalizeFirstLetter: (CPString) s {
@@ -41,11 +39,10 @@
 /**
  Called by the action of the preset selection pop-up, shows the "Are you sure" dialog
  */
-+ (void) apply: (int) p { //console.info("Presets>apply");
-    presetNames = ["default", "ULV", "ESU", "Testing", "Test Color Equiluminance", "BCM_RonB", "BCM_BonY"];
-    if ((p < 0) | (p > presetNames.length)) return;
-    currentPresetName = presetNames[p];
-    const s = "Really apply the preset “" + currentPresetName + "” ?"
++ (void) apply: (id) sender { //console.info("Presets>apply");
+    const p = [sender indexOfSelectedItem];
+    currentPresetName = [sender itemTitleAtIndex: p];
+    const s = "Really apply “" + currentPresetName + "” ?"
     alert1 = [CPAlert alertWithMessageText: s
                              defaultButton: "NO" alternateButton: "YES" otherButton: nil
                  informativeTextWithFormat: "Many Settings might change. You should know what you are doing here. Luckily, you can always return to defaults in Settings."];
@@ -53,15 +50,6 @@
         if (returnCode==1) [self apply2: p]; // alternateButton
     }]
 }
-
-
-+ (void) setStandardDefaultsKeepingCalBarLength {
-    const calBarLengthInMM_prior = [Settings calBarLengthInMM];
-    [Settings setDefaults];
-    [Settings setCalBarLengthInMM: calBarLengthInMM_prior];
-}
-
-
 /**
  Apply selected patch after "Are you sure" dialog
  */
@@ -79,6 +67,8 @@
             [self applyTestBCM_RonB]; break;
         case 6:
             [self applyTestBCM_BonY]; break;
+        case 7:
+            [self applyTestBCMAtScheie]; break;
         default:
             [Settings setDefaults];
     }
@@ -87,6 +77,13 @@
                              defaultButton: "OK" alternateButton: nil otherButton: nil
                  informativeTextWithFormat: ""];
     [alert2 runModal];
+}
+
+
++ (void) setStandardDefaultsKeepingCalBarLength {
+    const calBarLengthInMM_prior = [Settings calBarLengthInMM];
+    [Settings setDefaults];
+    [Settings setCalBarLengthInMM: calBarLengthInMM_prior];
 }
 
 
@@ -171,6 +168,31 @@
     [Settings setAcuityForeColor: [CPColor colorWithRed: 0 green: 0 blue: 255 alpha: 1]];
     [Settings setAcuityBackColor: [CPColor colorWithRed: 200 green: 200 blue: 0 alpha: 1]];
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyForeBackColorsFromSettings" object: nil];
+}
++ (void) applyTestBCMAtScheie {
+    [Settings setDefaults];
+    // general pane
+    [Settings setNAlternativesIndex: 0];  [Settings setNTrials02: 10];
+    [Settings setTimeoutResponseSeconds: 120]; [Settings setTimeoutDisplaySeconds: 120];
+    [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
+    [Settings setMobileOrientation: NO];
+    [Settings setResults2clipboard: 2];
+    [Settings setAuditoryFeedback: 0];
+    [Settings setCalBarLengthInMM: 189];  [Settings setDistanceInCM: 100];
+    // acuity pane
+    [Settings setContrastAcuityWeber: -1E6];
+    [Settings setTestOnLineByLineDistanceType: 1];  [Settings setLineByLineHeadcountIndex: 0];
+    [Settings setAcuityEasyTrials: NO];
+    // gratings pane
+    [Settings setContrastEasyTrials: NO];
+    [Settings setGratingObliqueOnly: YES];
+    [Settings setIsGratingColor: YES];
+    [Settings setGratingForeColor: [CPColor colorWithRed: 255 green: 0 blue: 255 alpha: 1]];
+    [Settings setGratingBackColor: [CPColor colorWithRed: 0 green: 0 blue: 255 alpha: 1]];
+    [Settings setWhat2SweepIndex: 1];
+    [Settings setGratingContrastMichelsonPercent: 99];
+    [Settings setGratingCPDmin: 1];
+    [Settings setGratingCPDmax: 7];
 }
 
 
