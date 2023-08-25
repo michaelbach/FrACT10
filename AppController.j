@@ -175,6 +175,8 @@ Created by mb on 2017-07-12.
     if ([window.navigator.platform hasPrefix:@"Mac"])  [buttonExit setTitle: "Quit"];// OS: Quit or Exit
     
     [Settings setAutoRunIndex: 0]; // make sure it's not accidentally on
+    
+    [[self window] orderFront:self]; //← this ensures that it will receive clicks w/o activating
 }
 
 
@@ -481,8 +483,8 @@ Created by mb on 2017-07-12.
 }
 - (IBAction) buttonSettingsContrastAcuityMaxMin_action: (id) sender {
     switch ([sender tag]) {
-    case 1: [Settings setContrastAcuityWeber: 100];  break;
-    case 2: [Settings setContrastAcuityWeber: -10000];  break;
+        case 1: [Settings setContrastAcuityWeber: 100];  break;
+        case 2: [Settings setContrastAcuityWeber: -10000];  break;
     }
 }
 

@@ -49,7 +49,7 @@ Populates the About panel with appropriate text using HTML
     s += "<a href='https://michaelbach.de' target='_blank'>https://michaelbach.de</a><br>";
     s += "<a href='mailto:bach@uni-freiburg.de'>bach@uni-freiburg.de</a><br><br>";
     s += "<a href='https://michaelbach.de/fract/' target='_blank'>FrACT₁₀ homepage</a><br><br>";
-    s += "Sources: <a href='https://github.com/michaelbach/FrACT10/#fract' target='_blank'>GitHub repository</a>, <a href='https://github.com/michaelbach/FrACT10/commits' target='_blank'>commit history</a><br><br>"
+    s += "Sources: <a href='https://github.com/michaelbach/FrACT10/#fract' target='_blank'>GitHub repository</a>, <a href='https://github.com/michaelbach/FrACT10/commits' target='_blank'>Commit history</a><br><br>"
     s += "Frameworks/Libraries used:<br>";
     s += "<a href='https://michaelbach.de/ot/-misc/cappFrameworks/index.html' target='_blank'>Cappuccino " + gCappucinoVersionString + "</a>,&nbsp; ";
     s += "<a href='https://simplestatistics.org' target='_blank'>Simple Statistics</a>.";

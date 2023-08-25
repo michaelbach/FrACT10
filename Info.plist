@@ -11,7 +11,7 @@
 	<key>CPBundleIdentifier</key>
 	<string>de.michaelbach.FrACT10</string>
 	<key>CPHumanReadableCopyright</key>
-	<string>Copyright © 1993–2022, Michael Bach, all rights reserved.</string>
+	<string>Copyright © 1993–2023, Michael Bach, all rights reserved.</string>
     <key>CPDefaultTheme</key>
     <string>Aristo2</string>
 </dict>

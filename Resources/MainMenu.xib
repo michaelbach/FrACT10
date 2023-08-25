@@ -1929,12 +1929,12 @@ No money transfer involved, just for size!     </string>
                                                     <popUpButton toolTip="Distance between optotypes, international norm or ETDRS" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H3u-od-Aga">
                                                         <rect key="frame" x="117" y="50" width="97" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <popUpButtonCell key="cell" type="push" title="EN-DIN-ISO" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="TMO-F2-t8u" id="Nrt-m0-dMu">
+                                                        <popUpButtonCell key="cell" type="push" title="ISO-EN-DIN" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="TMO-F2-t8u" id="Nrt-m0-dMu">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="menu"/>
                                                             <menu key="menu" id="EYS-fO-VUu">
                                                                 <items>
-                                                                    <menuItem title="EN-DIN-ISO" state="on" id="TMO-F2-t8u">
+                                                                    <menuItem title="ISO-EN-DIN" state="on" id="TMO-F2-t8u">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
                                                                     <menuItem title="ETDRS" id="ruL-Ix-w8y">
@@ -1950,18 +1950,18 @@ No money transfer involved, just for size!     </string>
                                                     <popUpButton toolTip="Distance between optotypes, international norm or ETDRS" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YdS-Tu-7XG" userLabel="Headcount">
                                                         <rect key="frame" x="17" y="15" width="97" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <popUpButtonCell key="cell" type="push" title="1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="JL1-OY-GDI" id="1zx-GW-LFM" userLabel="Headcount">
+                                                        <popUpButtonCell key="cell" type="push" title="1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="JL1-OY-GDI" id="1zx-GW-LFM" userLabel="Headcount">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="menu"/>
                                                             <menu key="menu" id="H8F-8e-Giu">
                                                                 <items>
-                                                                    <menuItem title="1" id="JL1-OY-GDI">
+                                                                    <menuItem title="1" state="on" id="JL1-OY-GDI">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
                                                                     <menuItem title="3" id="MHF-Wn-f1j" userLabel="3">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
-                                                                    <menuItem title="5" state="on" id="8Re-o2-FHj" userLabel="5">
+                                                                    <menuItem title="5" id="8Re-o2-FHj" userLabel="5">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
                                                                     <menuItem title="7" id="TKc-nt-ZS5" userLabel="7">
