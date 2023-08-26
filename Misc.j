@@ -187,6 +187,16 @@ Misc.j
 /* ///////////////////////////////////// OLD, not in use (yet) */
 
 /*
+
++ (CPString) capitalizeFirstLetter: (CPString) s {
+ if (s.length < 1)  return @"";
+ else if (s.length == 1)  return [s capitalizedString];
+ const firstChar = [[s substringToIndex: 1] uppercaseString];
+ const otherChars = [s substringWithRange: CPMakeRange(1, s.length - 1)];
+ return firstChar + otherChars;
+}
+
+ 
  // formats a number to given precision
 + (CPString) rStrFromNumber: num precision: (int) precision {
     if (isNaN(precision)) {

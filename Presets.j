@@ -11,72 +11,41 @@
  Allow presets of settings
  2022-05-20  begun
  */
-@implementation Presets {
-    SEL gSelector;
-    CPAlert alert1, alert2;
-    CPString currentPresetName;
+@implementation Presets: CPObject {
 }
-
-
-+ (CPString) capitalizeFirstLetter: (CPString) s {
-    if (s.length < 1)  return @"";
-    else if (s.length == 1)  return [s capitalizedString];
-    const firstChar = [[s substringToIndex: 1] uppercaseString];
-    const otherChars = [s substringWithRange: CPMakeRange(1, s.length - 1)];
-    return firstChar + otherChars;
-}
-
-
-// Testing the `performSelector` approach. It works!
-// This is for a planned key-value format
-/*let s = "distanceInCM";
- s = [Presets capitalizeFirstLetter: s];
- s = "set" + s + ":"; //console.info(s);
- gSelector = CPSelectorFromString(s);
- [Settings performSelector: gSelector withObject: [CPNumber numberWithInt: 99]];*/
 
 
 /**
  Called by the action of the preset selection pop-up, shows the "Are you sure" dialog
  */
 + (void) apply: (id) sender { //console.info("Presets>apply");
-    const p = [sender indexOfSelectedItem];
-    currentPresetName = [sender itemTitleAtIndex: p];
-    const s = "Really apply “" + currentPresetName + "” ?"
-    alert1 = [CPAlert alertWithMessageText: s
+    const selectedPresetIndex = [sender indexOfSelectedItem];
+    const selectedPresetName = [sender itemTitleAtIndex: selectedPresetIndex];
+    const messageText = "Really “" + selectedPresetName + "” ?"
+    const alert1 = [CPAlert alertWithMessageText: messageText
                              defaultButton: "NO" alternateButton: "YES" otherButton: nil
                  informativeTextWithFormat: "Many Settings might change. You should know what you are doing here. Luckily, you can always return to defaults in Settings."];
     [alert1 runModalWithDidEndBlock: function(alert, returnCode) {
-        if (returnCode==1) [self apply2: p]; // alternateButton
+        if (returnCode==1) [self apply2: selectedPresetIndex]; // alternateButton
     }]
 }
 /**
  Apply selected patch after "Are you sure" dialog
  */
 + (void) apply2: (int) p { //console.info("Presets>apply2");
-    switch (p) {
-        case 1: //console.info("ULV");
-            [self applyULV];  break;
-        case 2:
-            [self applyESU];  break;
-        case 3:
-            [self applyTesting];  break;
-        case 4:
-            [self applyTestColorEquiluminance];  break;
-        case 5:
-            [self applyTestBCM_RonB]; break;
-        case 6:
-            [self applyTestBCM_BonY]; break;
-        case 7:
-            [self applyTestBCMAtScheie]; break;
-        default:
-            [Settings setDefaults];
-    }
-    const s = "Preset “" + currentPresetName + "” was applied."
-    alert2 = [CPAlert alertWithMessageText: s
+    const allPresets = ["StandardDefaults", "ULV", "ESU", "Testing", "ColorEquiluminance", "BCM_RonB", "BCM_BonY", "BCMatScheie"];
+    const selectedPresetName = allPresets[p];
+    [self performSelector: CPSelectorFromString("apply" + selectedPresetName)];
+    const messageText = "Preset “" + selectedPresetName + "” was applied."
+    const alert2 = [CPAlert alertWithMessageText: messageText
                              defaultButton: "OK" alternateButton: nil otherButton: nil
                  informativeTextWithFormat: ""];
     [alert2 runModal];
+}
+
+
++ (void) applyStandardDefaults {
+    [Settings setDefaults];
 }
 
 
@@ -90,7 +59,7 @@
 /**
  Apply ULV = Ultra Low Vision settings
  */
-+ (void) applyULV { //console.info("ULV");
++ (void) applyULV { //console.info("applyULV");
     [self setStandardDefaultsKeepingCalBarLength];
     [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
     [Settings setAcuityStartingLogMAR: 2.5];
@@ -139,8 +108,8 @@
 /**
  Apply near equiluminant color acuity
  */
-+ (void) applyTestColorEquiluminance {
-    [self applyTest];
++ (void) applyColorEquiluminance {
+    [self applyTesting];
     [Settings setIsAcuityColor: YES];
     [Settings setAcuityForeColor: [CPColor redColor]];
     // the below gives a darker green, near equiluminant to red
@@ -155,21 +124,21 @@
 + (void) applyBCM {
     [self applyTesting];
 }
-+ (void) applyTestBCM_RonB {
++ (void) applyBCM_RonB {
     [self applyBCM];
     [Settings setIsAcuityColor: YES];
     [Settings setAcuityForeColor: [CPColor colorWithRed: 255 green: 0 blue: 0 alpha: 1]];
     [Settings setAcuityBackColor: [CPColor colorWithRed: 0 green: 0 blue: 255 alpha: 1]];
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyForeBackColorsFromSettings" object: nil];
 }
-+ (void) applyTestBCM_BonY {
++ (void) applyBCM_BonY {
     [self applyBCM];
     [Settings setIsAcuityColor: YES];
     [Settings setAcuityForeColor: [CPColor colorWithRed: 0 green: 0 blue: 255 alpha: 1]];
     [Settings setAcuityBackColor: [CPColor colorWithRed: 200 green: 200 blue: 0 alpha: 1]];
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyForeBackColorsFromSettings" object: nil];
 }
-+ (void) applyTestBCMAtScheie {
++ (void) applyBCMatScheie {
     [Settings setDefaults];
     // general pane
     [Settings setNAlternativesIndex: 0];  [Settings setNTrials02: 10];
