@@ -14,7 +14,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0.4";
-kVersionDateOfFrACT = "2023-08-26";
+kVersionDateOfFrACT = "2023-08-26a";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -40,6 +40,7 @@ gCappucinoVersionString = [[[CPBundle bundleWithIdentifier:@"com.280n.Foundation
 /*
  #  History
 
++ 2023-08-26a ensure gratingColors are initialised
 + 2023-08-26 refactor `Presets`to use `performSelector` (much more elegant :)
 + 2023-08-25 refactor `Presets`to use `sender`, add preset "BCM@Scheie"
 + 2023-08-20b add "headcount" to line-by-line

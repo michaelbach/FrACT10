@@ -55,6 +55,8 @@ Created by mb on July 15, 2015.
     if (set) {
         [self setDateSettingsVersion: kDateOfCurrentSettingsVersion];
         [self setWindowBackgroundColor: [CPColor colorWithRed: 1 green: 1 blue: 0.9 alpha: 1]];
+        [self setGratingForeColor: [CPColor lightGrayColor]];
+        [self setGratingBackColor: [CPColor darkGrayColor]];
     }
 
     // needs to before setNAlternativesIndex 'cause oblique might force to index=0
