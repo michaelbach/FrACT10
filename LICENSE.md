@@ -1,3 +1,6 @@
+  GNU GENERAL PUBLIC LICENSE
+                       Version 3, 29 June 2007
+
 # FrACT10/LICENSE
 
 Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, <https://michaelbach.de>
