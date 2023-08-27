@@ -145,7 +145,9 @@ Created by mb on 2017-07-12.
     allTestControllers = [FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine];
     
     allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel, creditcardPanel];
-    for (const p of allPanels)  [p setFrameOrigin: CGPointMake(0, 0)];
+    for (const p of allPanels) {
+        [p setFrameOrigin: CGPointMake(0, 0)];  [p setMovable: NO];
+    }
     [self setSettingsTabViewSelectedIndex: 0]; // first time select the "General" tab in Settings
     
     [[self window] setTitle: "FrACT10"];
