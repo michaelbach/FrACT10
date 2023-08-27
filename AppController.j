@@ -166,7 +166,7 @@ Created by mb on 2017-07-12.
     
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(buttonExportEnableYESorNO:) name: "buttonExportEnableYESorNO" object: nil];
     [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
-    [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(copyForeBackColorsFromSettings:) name: "copyForeBackColorsFromSettings" object: nil];
+    [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(copyColorsFromSettings:) name: "copyColorsFromSettings" object: nil];
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
     
     [self radioButtonsAcuityBwOrColor_action: null];
@@ -200,9 +200,14 @@ Created by mb on 2017-07-12.
 }
 
 
-// mirroring is necessary, because the Settingspanel cannot read the stored colors, because the Archiver does not work
-- (void) copyForeBackColorsFromSettings: (CPNotification) aNotification { //console.info("mirrorForeBackColors");
+/**
+ Synchronising userdefaults & Appcontroller
+ THis mirroring is necessary, because the Settingspanel cannot read the stored colors, because the Archiver does not work
+ */
+- (void) copyColorsFromSettings: (CPNotification) aNotification { //console.info("mirrorForeBackColors");
     [self setAcuityForeColor: [Settings acuityForeColor]];  [self setAcuityBackColor: [Settings acuityBackColor]];
+    [self setGratingForeColor: [Settings gratingForeColor]];  [self setGratingBackColor: [Settings gratingBackColor]];
+    [self setWindowBackgroundColor: [Settings windowBackgroundColor]];
 }
 
 
@@ -244,7 +249,7 @@ Created by mb on 2017-07-12.
 
 
 /**
- The above prerequisites were met, so let's run the test specified in the class-global `currentTestID`
+ The above prerequisites were met, so let's run the test specified in the class-global`currentTestID`
  */
 - (void) runFractController2 { //   console.info("AppController>runFractController2  ");
     [self closeAllPanels];
@@ -435,6 +440,9 @@ Created by mb on 2017-07-12.
 }
 
 
+/**
+ Deal with the Settings panel
+ */
 - (IBAction) buttonSettings_action: (id) sender { //console.info("AppController>buttonSettings");
     [Settings checkDefaults];  [settingsPanel makeKeyAndOrderFront: self];
     if (settingsNeededNewDefaults) {
@@ -444,12 +452,10 @@ Created by mb on 2017-07-12.
                         informativeTextWithFormat: "\r\rAll settings were (re)set to their default values.\r\r"];
         [alert runModalWithDidEndBlock: function(alert, returnCode) {}];
     }
-    [[CPNotificationCenter defaultCenter] postNotificationName: "copyForeBackColorsFromSettings" object: nil];
+    [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil];
 }
 - (IBAction) buttonSettingsClose_action: (id) sender { //console.info("AppController>buttonSettingsClose");
     [Settings checkDefaults];  [settingsPanel close];
-    // below the idea was to keep e.g. red optotypes – but they do not appear. Ah, they cannot appear – only gray values there
-    //[Settings setAcuityForeColor: [self acuityForeColor]];  [Settings setAcuityBackColor: [self acuityBackColor]];
 }
 - (IBAction) buttonSettingsDefaults_action: (id) sender { //console.info("AppController>buttonSettingsDefaults");
     [Settings setDefaults];  [settingsPanel close];  [Settings setDefaults];  [settingsPanel makeKeyAndOrderFront: self];
@@ -464,13 +470,14 @@ Created by mb on 2017-07-12.
         case 2: [Settings setContrastAcuityWeber: -10000];  break;
     }
 }
-
-
 - (IBAction) popupPreset_action: (id) sender {
     [Presets apply: sender];
 }
 
 
+/**
+ Deal with the Help/About panels
+ */
 - (IBAction) buttonHelp_action: (id) sender { //console.info("AppController>buttonHelp_action");
     [helpPanel makeKeyAndOrderFront: self];
     [PopulateAboutPanel populateHelpPanelView1: helpWebView1 v2: helpWebView2 v3: helpWebView3 v4: helpWebView4];
@@ -502,6 +509,9 @@ Created by mb on 2017-07-12.
 }
 
 
+/**
+ And more buttons…
+ */
 - (IBAction) buttonExport_action: (id) sender { //console.info("AppController>buttonExport_action");
     [Misc copyString2Clipboard: currentTestResultExportString];
     [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];

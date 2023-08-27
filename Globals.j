@@ -14,7 +14,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0.4";
-kVersionDateOfFrACT = "2023-08-27";
+kVersionDateOfFrACT = "2023-08-27b";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -40,6 +40,8 @@ gCappucinoVersionString = [[[CPBundle bundleWithIdentifier:@"com.280n.Foundation
 /*
  #  History
 
++ 2023-08-27b colors now folly synchronised between Presets, userdefaults and the GUI representation; remove unnecessary Presets
++ 2023-08-27a correction for "applyBCMatScheie", remove 2 unused presets, in About "Semi-automatic"
 + 2023-08-27 refactor `runFractController` → `runFractControllerTest:…`: 7 action routines less
 + 2023-08-26a ensure gratingColors are initialised
 + 2023-08-26 refactor `Presets`to use `performSelector` (much more elegant :)

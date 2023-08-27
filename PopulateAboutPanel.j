@@ -40,7 +40,7 @@ Populates the About panel with appropriate text using HTML
 
     s = "<h2 align='center'>FrACT<sub>10</sub></h2>";
     s += "Freiburg Visual Acuity and Contrast Test 10,<br>Vs " + kVersionStringOfFract + ",&nbsp; release date " + kVersionDateOfFrACT + ". <br><br>";
-    s += "Interactive assessment of visual acuities following DIN/ISO; also can assess contrast sensitivity.<br><br>Optotypes: Sloan letters, Landolt C, Tumbling E, TAO, gratings.<br><br>Acuity results in decimal, LogMAR or Snellen notation.<br><br>With ‘Best PEST’ and antialiasing."
+    s += "Semi-automatic assessment of visual acuities following DIN/ISO; also can assess contrast sensitivity.<br><br>Optotypes: Sloan letters, Landolt C, Tumbling E, TAO, gratings.<br><br>Acuity results in decimal, LogMAR or Snellen notation.<br><br>With ‘Best PEST’ and antialiasing."
     [self oneWebView: aboutWebView1 htmlString: s];
 
     s = "©1993–" + [kVersionDateOfFrACT substringWithRange: CPMakeRange(0, 4)];

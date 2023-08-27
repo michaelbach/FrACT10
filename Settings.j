@@ -197,7 +197,7 @@ Created by mb on July 15, 2015.
     [self setAcuityForeColor: [CPColor colorWithWhite: temp alpha: 1]];
     temp = [MiscLight upperLuminanceFromContrastMilsn: cnt];  temp = [MiscLight devicegrayFromLuminance: temp];
     [self setAcuityBackColor: [CPColor colorWithWhite: temp alpha: 1]];
-    [[CPNotificationCenter defaultCenter] postNotificationName: "copyForeBackColorsFromSettings" object: nil];
+    [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil];
 }
 
 

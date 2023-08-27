@@ -540,13 +540,7 @@ DQ
                                     <menuItem title="Preset to: Color Equiluminance" id="9FI-6j-9ZQ">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
-                                    <menuItem title="Preset to: BCO-RonB" id="2Mb-al-W5B">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="Preset to: BCO-BonY" id="poo-DG-u5a">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="Preset to: BCO@Scheie" id="WSk-qq-2gP">
+                                    <menuItem title="Preset to: BCM@Scheie" id="WSk-qq-2gP">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
                                 </items>
