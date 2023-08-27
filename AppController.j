@@ -398,6 +398,7 @@ Created by mb on 2017-07-12.
                 case 8: [self runFractControllerTest: kTestContrastE];  break;
                 case 9: [self runFractControllerTest: kTestAcuityLineByLine];  break;
             } break;
+        case "R": [Settings setAutoRunIndex: 2];  break;
             //case "∆": [self runtimeError_action: nil];  break;
         default:
             [super keyDown: theEvent];  break;

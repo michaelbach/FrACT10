@@ -38,7 +38,7 @@
 
 
 - (void) gratingSineWithPeriodInPx: (float) periodInPx direction: (int) theDirection contrast: (float) contrast {
-    let s2 = Math.round(Math.max(viewHeight2, viewWidth2) / 2 * 1.25) * 2;
+    let s2 = Math.round(Math.max(viewHeight2, viewWidth2) / 2 * 1.3) * 2;
     const trigFactor = 1 / periodInPx * 2 * Math.PI; // calculate only once
     CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180);
     CGContextSetLineWidth(cgc, 1.3); // still an artifact on oblique
@@ -180,18 +180,22 @@
 }
 
 
-- (CPString) contrastComposeExportString {
-    if ([[self parentController] runAborted]) return "";
-    let s = [self generalComposeExportString];
-    s += tab + "value" + tab + [Misc stringFromNumber: contrastMichelsonPercent decimals: 3 localised: YES];
-    s += tab + "unit1" + tab + currentTestResultUnit
-    s += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 2 localised: YES];
-    s += tab + "spatFreq" + tab + [Misc stringFromNumber: spatialFreqCPD decimals: 2 localised: YES];
-    s += tab + "unit2" + tab + "cpd";
-    s += tab + "nTrials" + tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
-    s += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
-    s += tab + "crowding" + tab + 0; // does not apply, but let's not NaN this
-    return s;
+- (CPString) contrastComposeExportString {    if ([[self parentController] runAborted]) return "";
+    let _testExportString = [self generalComposeExportString];
+    _testExportString += tab + "value" + tab + [Misc stringFromNumber: contrastMichelsonPercent decimals: 3 localised: YES];
+    _testExportString += tab + "unit1" + tab + currentTestResultUnit
+    _testExportString += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 2 localised: YES];
+    _testExportString += tab + "spatFreq" + tab + [Misc stringFromNumber: spatialFreqCPD decimals: 2 localised: YES];
+    _testExportString += tab + "unit2" + tab + "cpd";
+    _testExportString += tab + "nTrials" + tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
+    _testExportString += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
+    _testExportString += tab + "crowding" + tab + 0; // does not apply, but let's not NaN this
+    if (isGratingColor) {
+        _testExportString += tab + "colorForeBack" + tab + [colOptotypeFore hexString] + tab + [colOptotypeBack hexString];
+        _testExportString += tab + "cpdMin" + tab + [Misc stringFromNumber: [Settings gratingCPDmin] decimals: 3 localised: YES];
+        _testExportString += tab + "cpdMax" + tab + [Misc stringFromNumber: [Settings gratingCPDmax] decimals: 2 localised: YES];
+    }
+    return _testExportString;
 }
 
 @end

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment version="101200" identifier="macosx"/>
+        <deployment version="101202" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
         <plugIn identifier="com.apple.WebKitIBPlugin" version="21701"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
@@ -273,6 +273,27 @@ Shortcut: f
                             <action selector="buttonDoTest_action:" target="450" id="ijC-aJ-7dO"/>
                         </connections>
                     </button>
+                    <popUpButton toolTip="Automatic run, targeting this acuity. For testing." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KcI-ws-Dhl">
+                        <rect key="frame" x="341" y="182" width="120" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="Autorun Off" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Eg0-co-ecm" id="3tm-qQ-uSh">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" id="X9t-wa-fsO">
+                                <items>
+                                    <menuItem title="Autorun Off" state="on" id="Eg0-co-ecm"/>
+                                    <menuItem title="Autorun hi" id="W3Q-XT-Tgo">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="Autorun mid" id="Wwq-9z-igw"/>
+                                    <menuItem title="Autorun low" id="Zs5-zC-20Z"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.autoRunIndex" id="9Nl-Ih-LZF"/>
+                        </connections>
+                    </popUpButton>
                 </subviews>
             </view>
             <connections>
