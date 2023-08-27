@@ -85,7 +85,7 @@ Misc.j
 
 + (void) copyString2ClipboardWithDialog: (CPString) s { //console.info("AppController>copyString2ClipboardWithDialog");
     const alert = [CPAlert alertWithMessageText: "Question:"
-    defaultButton: "Yes, put result → clipboard" alternateButton: "No" otherButton: nil
+    defaultButton: "Yes, put result → clipboard" alternateButton: "Cancel" otherButton: nil
                 informativeTextWithFormat: "\rShall we place the result details into the clipboard?\r(So you can paste them into a spreadsheet.)\r"];
     [alert setAlertStyle: CPInformationalAlertStyle];
     [[alert window] setFrameOrigin: CGPointMake(200, 200)];
