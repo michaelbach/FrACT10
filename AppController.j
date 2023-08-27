@@ -125,13 +125,13 @@ Created by mb on 2017-07-12.
     'use strict';
     [[self window] setFullPlatformWindow: YES];
     [[self window] setBackgroundColor: [self windowBackgroundColor]];
-
+    
     [CPMenu setMenuBarVisible: NO];
     window.addEventListener('error', function(e) {
         alert("An error occured, I'm sorry. Error message:\r\r" + e.message + "\r\rIf it recurs, please notify bach@uni-freiburg.de, ideally relating the message, e.g. via a screeshot.\rI will look into it and endeavour to provide a fix ASAP.\r\rOn “Close”, the window will reload and you can retry.");
         window.location.reload(false);
     });
-
+    
     window.addEventListener("orientationchange", function(e) {
         if ([Settings mobileOrientation]) {
             //alert("Orientation change, now "+e.target.screen.orientation.angle+"°.\r\rOn “Close”, the window will reload to fit.");
@@ -141,20 +141,20 @@ Created by mb on 2017-07-12.
     
     const allButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];
     for (const b of allButtons)  [Misc makeFrameSquareFromWidth: b];
-
+    
     allTestControllers = [FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine];
-
+    
     allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel, creditcardPanel];
     for (const p of allPanels)  [p setFrameOrigin: CGPointMake(0, 0)];
     [self setSettingsTabViewSelectedIndex: 0]; // first time select the "General" tab in Settings
     
     [[self window] setTitle: "FrACT10"];
     [self setVersionDateString: [Settings versionFrACT] + "·" + [Settings versionDateFrACT]];
-        
+    
     [Settings checkDefaults]; // what was the reason to put this here???
     /*let s = @"Current key test settings: " + [Settings distanceInCM] +" cm distance, ";
-    s += [Settings nAlternatives] + " Landolt alternatives, " + [Settings nTrials] + " trials";
-    [self setKeyTestSettingsString: s];*/
+     s += [Settings nAlternatives] + " Landolt alternatives, " + [Settings nTrials] + " trials";
+     [self setKeyTestSettingsString: s];*/
     
     rewardImageView = [[CPImageView alloc] initWithFrame: CGRectMake(100, 0, 600, 600)];
     [[[self window] contentView] addSubview: rewardImageView];
@@ -163,7 +163,7 @@ Created by mb on 2017-07-12.
     sound = [[Sound alloc] init];
     for (let i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++)
         Math.random(); // randomising the pseudorandom sequence
-
+    
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(buttonExportEnableYESorNO:) name: "buttonExportEnableYESorNO" object: nil];
     [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(copyForeBackColorsFromSettings:) name: "copyForeBackColorsFromSettings" object: nil];
@@ -171,7 +171,7 @@ Created by mb on 2017-07-12.
     
     [self radioButtonsAcuityBwOrColor_action: null];
     [self buttonCheckContrast_action: null];
-
+    
     if ([window.navigator.platform hasPrefix:@"Mac"])  [buttonExit setTitle: "Quit"];// OS: Quit or Exit
     
     [Settings setAutoRunIndex: 0]; // make sure it's not accidentally on
@@ -222,11 +222,12 @@ Created by mb on 2017-07-12.
 /**
  One of the tests should run, but let's test some prerequisites first
  */
-- (void) runFractController { //console.info("AppController>runFractController");
+- (void) runFractControllerTest: (int) testNr { //console.info("AppController>runFractController");
+    currentTestID = testNr;
     if ([Settings isNotCalibrated]) {
         const alert = [CPAlert alertWithMessageText: "Calibration is mandatory for valid results!"
-                                    defaultButton: "I just want to try…" alternateButton: "OK, go to Settings" otherButton: "Cancel"
-                        informativeTextWithFormat: "\rGoto 'Settings' and enter appropriate values for \r«Length of blue ruler» and «Observer distance»;\ror use the credit card sizing method.\r\rThis will also avoid the present obnoxious warning dialog."];
+                                      defaultButton: "I just want to try…" alternateButton: "OK, go to Settings" otherButton: "Cancel"
+                          informativeTextWithFormat: "\rGoto 'Settings' and enter appropriate values for \r«Length of blue ruler» and «Observer distance»;\ror use the credit card sizing method.\r\rThis will also avoid the present obnoxious warning dialog."];
         [alert runModalWithDidEndBlock: function(alert, returnCode) {
             switch (returnCode) {
                 case 1: // alternateButton
@@ -358,39 +359,38 @@ Created by mb on 2017-07-12.
         case "F":
             [self buttonFullScreen_action: nil];  break;
         case "L":
-            [self buttonDoAcuityLetters_action: nil];  break;
+            [self runFractControllerTest: kTestAcuityLett];  break;
         case "C":
-            [self buttonDoAcuityLandolt_action: nil];  break;
+            [self runFractControllerTest: kTestAcuityC];  break;
         case "E":
-            [self buttonDoAcuityE_action: nil];  break;
+            [self runFractControllerTest: kTestAcuityE];  break;
         case "A":
-            [self buttonDoAcuityTAO_action: nil];  break;
+            [self runFractControllerTest: kTestAcuityTAO];  break;
         case "V":
-            [self buttonDoAcuityVernier_action: nil];  break;
+            [self runFractControllerTest: kTestAcuityVernier];  break;
         case "1":
-            [self buttonDoContrastLett_action: nil];  break;
+            [self runFractControllerTest: kTestContrastLett];  break;
         case "2":
-            [self buttonDoContrastC_action: nil];  break;
+            [self runFractControllerTest: kTestContrastC];  break;
         case "3":
-            [self buttonDoContrastE_action: nil];  break;
+            [self runFractControllerTest: kTestContrastE];  break;
         case "G":
-            [self buttonDoContrastG_action: nil];  break;
+            [self runFractControllerTest: kTestContrastG];  break;
         case "4":
-            [self buttonDoAcuityLineByLine_action: nil];  break;
+            [self runFractControllerTest: kTestAcuityLineByLine];  break;
         case "5" :
             switch([Settings testOnFive]) { //0: ignore
-                case 1: [self buttonDoAcuityLetters_action: nil];  break;
-                case 2: [self buttonDoAcuityLandolt_action: nil];  break;
-                case 3: [self buttonDoAcuityE_action: nil];  break;
-                case 4: [self buttonDoAcuityTAO_action: nil];  break;
-                case 5: [self buttonDoAcuityVernier_action: nil];  break;
-                case 6: [self buttonDoContrastLett_action: nil];  break;
-                case 7: [self buttonDoContrastC_action: nil];  break;
-                case 8: [self buttonDoContrastE_action: nil];  break;
-                case 9: [self buttonDoAcuityLineByLine_action: nil];  break;
+                case 1: [self runFractControllerTest: kTestAcuityLett];  break;
+                case 2: [self runFractControllerTest: kTestAcuityC];  break;
+                case 3: [self runFractControllerTest: kTestAcuityE];  break;
+                case 4: [self runFractControllerTest: kTestAcuityTAO];  break;
+                case 5: [self runFractControllerTest: kTestAcuityVernier];  break;
+                case 6: [self runFractControllerTest: kTestContrastLett];  break;
+                case 7: [self runFractControllerTest: kTestContrastC];  break;
+                case 8: [self runFractControllerTest: kTestContrastE];  break;
+                case 9: [self runFractControllerTest: kTestAcuityLineByLine];  break;
             } break;
-        //case "∆": [self runtimeError_action: nil];  break;
-        //case "T": [self resultDetails_action: nil];  break;
+            //case "∆": [self runtimeError_action: nil];  break;
         default:
             [super keyDown: theEvent];  break;
     }
@@ -426,35 +426,12 @@ Created by mb on 2017-07-12.
 }
 
 
-- (IBAction) buttonDoAcuityLetters_action: (id) sender { //console.info("AppController>buttonDoAcuityLetters_action");
-    currentTestID = kTestAcuityLett;    [self runFractController];
-}
-- (IBAction) buttonDoAcuityLandolt_action: (id) sender { //console.info("AppController>buttonDoAcuity_action");
-    currentTestID = kTestAcuityC;    [self runFractController];
-}
-- (IBAction) buttonDoAcuityE_action: (id) sender { //console.info("AppController>buttonDoAcuityE_action");
-    currentTestID = kTestAcuityE;    [self runFractController];
-}
-- (IBAction) buttonDoAcuityTAO_action: (id) sender { //console.info("AppController>buttonDoAcuityA_action");
-    currentTestID = kTestAcuityTAO;    [self runFractController];
-}
-- (IBAction) buttonDoAcuityVernier_action: (id) sender { //console.info("AppController>buttonDoAcuityE_action");
-    currentTestID = kTestAcuityVernier;    [self runFractController];
-}
-- (IBAction) buttonDoContrastLett_action: (id) sender { //console.info("AppController>buttonDoContrastLett_action");
-    currentTestID = kTestContrastLett;    [self runFractController];
-}
-- (IBAction) buttonDoContrastC_action: (id) sender { //console.info("AppController>buttonDoContrastC_action");
-    currentTestID = kTestContrastC;    [self runFractController];
-}
-- (IBAction) buttonDoContrastE_action: (id) sender { //console.info("AppController>buttonDoContrastE_action");
-    currentTestID = kTestContrastE;    [self runFractController];
-}
-- (IBAction) buttonDoContrastG_action: (id) sender { //console.info("AppController>buttonDoContrastG_action");
-    currentTestID = kTestContrastG;    [self runFractController];
-}
-- (IBAction) buttonDoAcuityLineByLine_action: (id) sender { //console.info("AppController>buttonDoAcuityLineByLine_action");
-    currentTestID = kTestAcuityLineByLine;    [self runFractController];
+/**
+ All test buttons land here, discriminated by the tag values
+ kTestAcuityLett = 0; kTestAcuityC = 1; kTestAcuityE = 2; kTestAcuityTAO = 3; kTestAcuityVernier = 4; kTestContrastLett = 5; kTestContrastC = 6; kTestContrastE = 7, kTestContrastG = 8, kTestAcuityLineByLine = 9;← set these tag values
+ */
+- (IBAction) buttonDoTest_action: (id) sender {
+    [self runFractControllerTest: [sender tag]];
 }
 
 
@@ -489,7 +466,7 @@ Created by mb on 2017-07-12.
 }
 
 
-- (IBAction) popupPreset_action: (id) sender { //console.info("AppController>popupPreset_action", [sender indexOfSelectedItem]);
+- (IBAction) popupPreset_action: (id) sender {
     [Presets apply: sender];
 }
 
@@ -505,7 +482,7 @@ Created by mb on 2017-07-12.
     [aboutPanel makeKeyAndOrderFront: self];
     [PopulateAboutPanel populateAboutPanelView1: aboutWebView1 view2: aboutWebView2];
 }
-- (IBAction) buttonAboutClose_action: (id) sender { //console.info("AppController>buttonAboutClose_action");
+- (IBAction) buttonAboutClose_action: (id) sender {
     [aboutPanel close];
 }
 - (IBAction) buttonGotoFractSite_action: (id) sender {
@@ -522,9 +499,6 @@ Created by mb on 2017-07-12.
 }
 - (IBAction) buttonGotoAcuityCheats_action: (id) sender {
     window.open("https://michaelbach.de/sci/acuity.html", "_blank");
-}
-- (IBAction) buttonGotoMichaelbachDE_action: (id) sender {
-    window.open("https://michaelbach.de", "_blank");
 }
 
 
@@ -563,7 +537,7 @@ Created by mb on 2017-07-12.
     let gray2 = [MiscLight upperLuminanceFromContrastLogCSWeber: contrastLogCSWeber];
     gray2 = [MiscLight devicegrayFromLuminance: gray2];
     if (![Settings contrastDarkOnLight]) {
-        const gray = gray1; gray1 = gray2; gray2 = gray;
+        [gray1, gray2] = [gray2, gray1]; // "modern" swapping of variables
     }
     //    console.log("Wperc ", contrastPercent, ", lgCSW ", contrastLogCSWeber, ", g1 ", gray1, ", g2 ", gray2);
     
