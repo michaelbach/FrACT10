@@ -14,7 +14,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <window title="MainWindow" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" releasedWhenClosed="NO" animationBehavior="default" id="371" userLabel="mainWindow">
+        <window title="selfWindow" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" releasedWhenClosed="NO" animationBehavior="default" id="371" userLabel="selfWindow">
             <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="335" y="390" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
@@ -549,7 +549,7 @@ DQ
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
-                            <tabViewItem label=" General " identifier="1" id="Ppw-we-9iU">
+                            <tabViewItem label=" General " identifier="GeneralTab" id="Ppw-we-9iU">
                                 <view key="view" id="0Bl-gJ-kre">
                                     <rect key="frame" x="10" y="33" width="760" height="489"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1331,7 +1331,7 @@ No money transfer involved, just for size!     </string>
                                     </subviews>
                                 </view>
                             </tabViewItem>
-                            <tabViewItem label=" Acuity " identifier="2" id="sLg-ud-med">
+                            <tabViewItem label=" Acuity " identifier=" AcuityTab" id="sLg-ud-med">
                                 <view key="view" id="qlS-6b-dAU">
                                     <rect key="frame" x="10" y="33" width="760" height="489"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2000,7 +2000,7 @@ No money transfer involved, just for size!     </string>
                                     </subviews>
                                 </view>
                             </tabViewItem>
-                            <tabViewItem label=" Contrast " identifier="" id="SIp-H0-0sU">
+                            <tabViewItem label=" Contrast " identifier=" ContrastTab" id="SIp-H0-0sU">
                                 <view key="view" id="iV6-r5-6h3">
                                     <rect key="frame" x="10" y="33" width="760" height="489"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2275,7 +2275,7 @@ No money transfer involved, just for size!     </string>
                                     </subviews>
                                 </view>
                             </tabViewItem>
-                            <tabViewItem label="Gratings" identifier="" id="0gq-mI-b5K">
+                            <tabViewItem label="Gratings" identifier="GratingsTab" id="0gq-mI-b5K">
                                 <view key="view" id="Td8-CT-9rf">
                                     <rect key="frame" x="10" y="33" width="760" height="489"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2708,7 +2708,7 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                     </subviews>
                                 </view>
                             </tabViewItem>
-                            <tabViewItem label=" Gamma " identifier="" id="yrl-49-Lje">
+                            <tabViewItem label=" Gamma " identifier="GammaTab" id="yrl-49-Lje">
                                 <view key="view" id="ReO-OR-ZYQ">
                                     <rect key="frame" x="10" y="33" width="760" height="489"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2803,7 +2803,7 @@ CQ
                                     </subviews>
                                 </view>
                             </tabViewItem>
-                            <tabViewItem label=" Misc " identifier="" id="y49-Ly-CCM">
+                            <tabViewItem label=" Misc " identifier=" MiscTab" id="y49-Ly-CCM">
                                 <view key="view" id="fn7-9w-6zV">
                                     <rect key="frame" x="10" y="33" width="760" height="489"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

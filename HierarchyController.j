@@ -29,6 +29,7 @@ kTestAcuityLett = 0; kTestAcuityC = 1; kTestAcuityE = 2; kTestAcuityTAO = 3; kTe
     CPString currentTestResultUnit @accessors;
     CPString currentTestResultExportString @accessors;
     CPString currentTestResultsHistoryExportString @accessors;
+    CPWindow selfWindow;
 }
 
 

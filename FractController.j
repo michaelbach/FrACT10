@@ -48,17 +48,18 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) updateViewWidthHeight {
-    viewWidth = CGRectGetWidth([[self window] frame]);  viewWidth2 = viewWidth / 2;
-    viewHeight = CGRectGetHeight([[self window] frame]);  viewHeight2 = viewHeight / 2;
+    viewWidth = CGRectGetWidth([selfWindow frame]);  viewWidth2 = viewWidth / 2;
+    viewHeight = CGRectGetHeight([selfWindow frame]);  viewHeight2 = viewHeight / 2;
 }
 
 
 - (id) initWithWindow: (CPWindow) aWindow parent: (HierarchyController) parent { //console.info("FractController>initWithWindow");
     self = [super initWithWindow: aWindow];
     if (self) {
-        [[self window] setFullPlatformWindow: YES];
+        selfWindow = [self window];
+        [selfWindow setFullPlatformWindow: YES];
         if ([Misc isFullScreen]) {
-            [[self window] setFrame: CGRectMake(0, 0, window.screen.width, window.screen.height)];
+            [selfWindow setFrame: CGRectMake(0, 0, window.screen.width, window.screen.height)];
         }
         [self setParentController: parent];
         [aWindow setDelegate: self];
@@ -72,7 +73,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         colOptotypeFore = [Settings acuityForeColor];  colOptotypeBack = [Settings acuityBackColor];
         abortCharacter = "5";
         [[self parentController] setRunAborted: YES];
-        [[self window] makeKeyAndOrderFront: self];  [[self window] makeFirstResponder: self];
+        [selfWindow makeKeyAndOrderFront: self];  [selfWindow makeFirstResponder: self];
         //[self performSelector: @selector(runStart) withObject: nil afterDelay: 0.01];//geht nicht mehr nach DEPLOY???
         [MDBDispersionEstimation initResultStatistics];  ci95String = "";
         //[self runStart];
@@ -132,7 +133,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             timerAutoResponse = [CPTimer scheduledTimerWithTimeInterval: 0.8 target:self selector:@selector(onTimeoutAutoResponse:) userInfo:nil repeats:NO];
         }
     }
-    state = kStateDrawFore;  [[[self window] contentView] setNeedsDisplay: YES];
+    state = kStateDrawFore;  [[selfWindow contentView] setNeedsDisplay: YES];
 }
 
 
@@ -144,7 +145,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     CGContextSetFillColor(cgc, colOptotypeBack);
     if ([self isAcuityTAO])
         CGContextSetFillColor(cgc, [CPColor whiteColor]); ;// contrast always 100% with TAO
-    CGContextFillRect(cgc, [[self window] frame]);
+    CGContextFillRect(cgc, [selfWindow frame]);
     CGContextSaveGState(cgc);
     CGContextTranslateCTM(cgc,  viewWidth2, viewHeight2); // origin to center
     CGContextTranslateCTM(cgc,  -xEccInPix, -yEccInPix); // eccentric if desired
@@ -254,7 +255,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [button setTitle: title];  [button setKeyEquivalent: keyEquivalent];
     [button setTarget: self];  [button setAction: @selector(responseButton_action:)];
     [button setBezelStyle: CPRoundRectBezelStyle];
-    [[[self window] contentView] addSubview: button];
+    [[selfWindow contentView] addSubview: button];
     responseButtonsAdded = YES;
     return button;
 }
@@ -266,7 +267,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) onTimeoutDisplay: (CPTimer) timer { //console.info("FractController>onTimeoutDisplay");
-    state = kStateDrawBack;  [[[self window] contentView] setNeedsDisplay: YES];
+    state = kStateDrawBack;  [[selfWindow contentView] setNeedsDisplay: YES];
 }
 
 
@@ -334,9 +335,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 - (void) runEnd { //console.info("FractController>runEnd");
     [self invalidateTrialTimers];
-    const sv = [[[self window] contentView] subviews];
+    const sv = [[selfWindow contentView] subviews];
     for (const svi of sv) [svi removeFromSuperview];
-    [[self window] close];
+    [selfWindow close];
     [[self parentController] setRunAborted: (iTrial < nTrials)]; //premature end
     [[self parentController] setResultString: resultString];
     [[self parentController] setCurrentTestResultExportString: [self composeExportString]];

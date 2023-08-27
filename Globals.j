@@ -40,6 +40,7 @@ gCappucinoVersionString = [[[CPBundle bundleWithIdentifier:@"com.280n.Foundation
 /*
  #  History
 
+ refactor: lots of `[self window]` → `selfWindow`
 + 2023-08-27d more sensible settings for all panels (no close-"x", not movable etc.)
 + 2023-08-27b colors now folly synchronised between Presets, userdefaults and the GUI representation; remove unnecessary Presets
 + 2023-08-27a correction for "applyBCMatScheie", remove 2 unused presets, in About "Semi-automatic"

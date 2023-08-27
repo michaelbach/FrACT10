@@ -106,7 +106,7 @@ Created by mb on 2017-07-12.
  */
 - (void) setWindowBackgroundColor: (CPColor) col { //console.info("AppController>setAcuityBackColor");
     [Settings setWindowBackgroundColor: col];
-    [[self window] setBackgroundColor: col];
+    [selfWindow setBackgroundColor: col];
 }
 
 
@@ -123,8 +123,9 @@ Created by mb on 2017-07-12.
 /** runs after "init" above */
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>applicationDidFinishLaunching");
     'use strict';
-    [[self window] setFullPlatformWindow: YES];
-    [[self window] setBackgroundColor: [self windowBackgroundColor]];
+    selfWindow = [self window];
+    [selfWindow setFullPlatformWindow: YES];
+    [selfWindow setBackgroundColor: [self windowBackgroundColor]];
     
     [CPMenu setMenuBarVisible: NO];
     window.addEventListener('error', function(e) {
@@ -150,7 +151,7 @@ Created by mb on 2017-07-12.
     }
     [self setSettingsTabViewSelectedIndex: 0]; // first time select the "General" tab in Settings
     
-    [[self window] setTitle: "FrACT10"];
+    [selfWindow setTitle: "FrACT10"];
     [self setVersionDateString: [Settings versionFrACT] + "·" + [Settings versionDateFrACT]];
     
     [Settings checkDefaults]; // what was the reason to put this here???
@@ -159,7 +160,7 @@ Created by mb on 2017-07-12.
      [self setKeyTestSettingsString: s];*/
     
     rewardImageView = [[CPImageView alloc] initWithFrame: CGRectMake(100, 0, 600, 600)];
-    [[[self window] contentView] addSubview: rewardImageView];
+    [[selfWindow contentView] addSubview: rewardImageView];
     rewardsController = [[RewardsController alloc] initWithView: rewardImageView];
     taoController = [[TAOController alloc] initWithButton2Enable: buttonAcuityTAO];
     sound = [[Sound alloc] init];
@@ -178,7 +179,7 @@ Created by mb on 2017-07-12.
     
     [Settings setAutoRunIndex: 0]; // make sure it's not accidentally on
     
-    [[self window] orderFront:self]; //← this ensures that it will receive clicks w/o activating
+    [selfWindow orderFront:self]; //← this ensures that it will receive clicks w/o activating
 }
 
 
@@ -187,7 +188,7 @@ Created by mb on 2017-07-12.
  */
 - (void) settingsDidChange: (CPNotification) aNotification { //console.info("settingsDidChange");
     [self setIs4orientations: ([Settings nAlternatives] == 4)];
-    [[self window] setBackgroundColor: [self windowBackgroundColor]];
+    [selfWindow setBackgroundColor: [self windowBackgroundColor]];
     if ([Settings minPossibleLogMAR] > 0) { // red: not good enough for normal vision
         [self setColorOfBestPossibleAcuity: [CPColor redColor]];
     } else {
@@ -424,11 +425,11 @@ Created by mb on 2017-07-12.
 - (IBAction) buttonFullScreen_action: (id) sender { //console.info("AppController>buttonFullScreen");
     const full = [Misc isFullScreen];
     if (full) {
-        [Misc fullScreenOn: NO];  [[[self window] contentView] setFrameOrigin: CGPointMake(0, 0)];
+        [Misc fullScreenOn: NO];  [[selfWindow contentView] setFrameOrigin: CGPointMake(0, 0)];
     } else {
         [Misc fullScreenOn: YES];
         const point = CGPointMake((window.screen.width - 800) / 2, (window.screen.height - 600) / 2);
-        [[[self window] contentView] setFrameOrigin: point];
+        [[selfWindow contentView] setFrameOrigin: point];
     }
 }
 
@@ -524,7 +525,7 @@ Created by mb on 2017-07-12.
     if ([Misc isFullScreen]) {
         [Misc fullScreenOn: NO];
     }
-    [[self window] close];  [CPApp terminate: nil];  window.close();
+    [selfWindow close];  [CPApp terminate: nil];  window.close();
 }
 
 
