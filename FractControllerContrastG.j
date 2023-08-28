@@ -192,8 +192,10 @@
     _testExportString += tab + "crowding" + tab + 0; // does not apply, but let's not NaN this
     if (isGratingColor) {
         _testExportString += tab + "colorForeBack" + tab + [colOptotypeFore hexString] + tab + [colOptotypeBack hexString];
-        _testExportString += tab + "cpdMin" + tab + [Misc stringFromNumber: [Settings gratingCPDmin] decimals: 3 localised: YES];
-        _testExportString += tab + "cpdMax" + tab + [Misc stringFromNumber: [Settings gratingCPDmax] decimals: 2 localised: YES];
+        if ([self isAcuityGrating]) {
+            _testExportString += tab + "cpdMin" + tab + [Misc stringFromNumber: [Settings gratingCPDmin] decimals: 3 localised: YES];
+            _testExportString += tab + "cpdMax" + tab + [Misc stringFromNumber: [Settings gratingCPDmax] decimals: 2 localised: YES];
+        }
     }
     return _testExportString;
 }
