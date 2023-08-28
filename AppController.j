@@ -66,47 +66,23 @@ Created by mb on 2017-07-12.
 
 
 /**
- Accessing the foreground/background color for acuity optotypes as saved in settings.
+ Accessing the foreground/background color for acuity optotypes & gratings as saved in settings.
  @return the current foreground color
- Colors not be saved as object in userdefaults, probably serialiser not implemented
+ Colors cannot be saved as object in userdefaults, probably because serialiser not implemented
  NSUnarchiveFromData, Error message [CPData encodeWithCoder:] unrecognized selector
  https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/DrawColor/Tasks/StoringNSColorInDefaults.html
  */
-- (CPColor) acuityForeColor { //console.info("AppController>acuityForeColor");
-    return [Settings acuityForeColor];
-}
-- (void) setAcuityForeColor: (CPColor) col {//console.info("AppController>setAcuityForeColor");
-    [Settings setAcuityForeColor: col];
-}
-- (CPColor) acuityBackColor { //console.info("AppController>acuityBackColor");
-    return [Settings acuityBackColor];
-}
-- (void) setAcuityBackColor: (CPColor) col { //console.info("AppController>setAcuityBackColor");
-    [Settings setAcuityBackColor: col];
-}
-
-/**
- Accessing the foreground /background color for gratings
- */
+- (CPColor) acuityForeColor {return [Settings acuityForeColor];}
+- (void) setAcuityForeColor: (CPColor) col {[Settings setAcuityForeColor: col];}
+- (CPColor) acuityBackColor {return [Settings acuityBackColor];}
+- (void) setAcuityBackColor: (CPColor) col {[Settings setAcuityBackColor: col];}
 - (void) setGratingForeColor: (CPColor) col {[Settings setGratingForeColor: col];}
 - (CPColor) gratingForeColor {return [Settings gratingForeColor];}
 - (void) setGratingBackColor: (CPColor) col {[Settings setGratingBackColor: col];}
 - (CPColor) gratingBackColor {return [Settings gratingBackColor];}
-
-/**
- Accessing the window background color
- @return the current background color
- */
-- (CPColor) windowBackgroundColor { //console.info("AppController>acuityBackColor");
-    return [Settings windowBackgroundColor];
-}
-/**
- Setting the window background color
- @param theColor: background color
- */
+- (CPColor) windowBackgroundColor {return [Settings windowBackgroundColor];}
 - (void) setWindowBackgroundColor: (CPColor) col { //console.info("AppController>setAcuityBackColor");
-    [Settings setWindowBackgroundColor: col];
-    [selfWindow setBackgroundColor: col];
+    [Settings setWindowBackgroundColor: col];  [selfWindow setBackgroundColor: col];
 }
 
 
@@ -115,24 +91,22 @@ Created by mb on 2017-07-12.
  */
 - (id) init { // console.info("AppController>init");
     settingsNeededNewDefaults = [Settings needNewDefaults];
-    [Settings checkDefaults]; //important to do this very early, before nib loading, otherwise the updates don't populate the settings panel – DOES NOT HELP, unfortunately
+    [Settings checkDefaults]; //important to do this very early, before nib loading, otherwise the updates don't populate the settings panel
     return self;
 }
 
 
 /** runs after "init" above */
-- (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>applicationDidFinishLaunching");
+- (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>…Launching");
     'use strict';
     selfWindow = [self window];
-    [selfWindow setFullPlatformWindow: YES];
-    [selfWindow setBackgroundColor: [self windowBackgroundColor]];
+    [selfWindow setFullPlatformWindow: YES];  [selfWindow setBackgroundColor: [self windowBackgroundColor]];
     
     [CPMenu setMenuBarVisible: NO];
     window.addEventListener('error', function(e) {
         alert("An error occured, I'm sorry. Error message:\r\r" + e.message + "\r\rIf it recurs, please notify bach@uni-freiburg.de, ideally relating the message, e.g. via a screeshot.\rI will look into it and endeavour to provide a fix ASAP.\r\rOn “Close”, the window will reload and you can retry.");
         window.location.reload(false);
     });
-    
     window.addEventListener("orientationchange", function(e) {
         if ([Settings mobileOrientation]) {
             //alert("Orientation change, now "+e.target.screen.orientation.angle+"°.\r\rOn “Close”, the window will reload to fit.");
@@ -149,7 +123,7 @@ Created by mb on 2017-07-12.
     for (const p of allPanels) {
         [p setFrameOrigin: CGPointMake(0, 0)];  [p setMovable: NO];
     }
-    [self setSettingsTabViewSelectedIndex: 0]; // first time select the "General" tab in Settings
+    [self setSettingsTabViewSelectedIndex: 0]; // select the "General" tab in Settings
     
     [selfWindow setTitle: "FrACT10"];
     [self setVersionDateString: [Settings versionFrACT] + "·" + [Settings versionDateFrACT]];
@@ -179,7 +153,7 @@ Created by mb on 2017-07-12.
     
     [Settings setAutoRunIndex: 0]; // make sure it's not accidentally on
     
-    [selfWindow orderFront:self]; //← this ensures that it will receive clicks w/o activating
+    [selfWindow orderFront: self]; //← this ensures that it will receive clicks w/o activating
 }
 
 
