@@ -14,7 +14,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0.4";
-kVersionDateOfFrACT = "2023-08-30";
+kVersionDateOfFrACT = "2023-08-31";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -25,7 +25,7 @@ kFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
 
 // minimal stroke/gap size (half a pixel). Maximal, depending on screen & margin.
 // Formerly named gapMinimal/gapMaximal. Poor naming in case of Vernier.
-gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden
+gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden via Setting and screen size
 
 // Correction for threshold underestimation by ascending method (in VAdecimal)
 gThresholdCorrection4Ascending = 0.891;
@@ -40,6 +40,7 @@ gCappucinoVersionString = [[[CPBundle bundleWithIdentifier:@"com.280n.Foundation
 /*
  #  History
 
++ 2023-08-31 make Setting for gStrokeMinimal=minStrokeAcuity on request
 + 2023-08-30 delete superfluous Autorun popup in Settings>Gratings, slightly correct gui positions on main,
     combine `_make-XcodeCappSimile.sh` and `_make-XcodeCappSimileMAIN.sh` into `_make-XcodeCapp.sh`
     add fields to webmanifest based on: <https://www.w3.org/TR/appmanifest/>

@@ -85,7 +85,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 - (void) runStart { //console.info("FractController>runStart");
     [self updateViewWidthHeight];
-    gStrokeMinimal = 0.5; // smallest possible gap is ½pixel. Make into a Setting?
+    gStrokeMinimal = [Settings minStrokeAcuity]; // smallest possible gap is ½pixel. Made into a Setting.
     gStrokeMaximal = viewHeight / (5 + [Settings margin4MaxOptotypeIndex]); // this leaves a margin of ½·index around the largest optotype
     if (!([Settings acuityFormatLogMAR] || [Settings acuityFormatDecimal] ||  [Settings acuityFormatSnellenFractionFoot])) {
         [Settings setAcuityFormatLogMAR: YES];  [Settings setAcuityFormatDecimal: YES]; // make sure not all formats are de-selected

@@ -124,6 +124,7 @@ Created by mb on July 15, 2015.
     [self calculateAcuityForeBackColorsFromContrast];
     [self setAcuityEasyTrials: [self chckBool: [self acuityEasyTrials] def: YES set: set]];
     [self setMaxDisplayedAcuity: [self chckFlt: [self maxDisplayedAcuity] def: 2 min: 1 max: 99 set: set]];
+    [self setMinStrokeAcuity: [self chckFlt: [self minStrokeAcuity] def: 0.5 min: 0.5 max: 5 set: set]];
     [self setAcuityStartingLogMAR: [self chckFlt: [self acuityStartingLogMAR] def: 1 min: 0.3 max: 2.5 set: set]];
     [self setMargin4MaxOptotypeIndex: [self chckInt: [self margin4MaxOptotypeIndex] def: 1 min: 0 max: 4 set: set]];
     [self setAutoRunIndex: [self chckInt: [self autoRunIndex] def: 0 min: 0 max: 3 set: set]];
@@ -622,6 +623,14 @@ Created by mb on July 15, 2015.
 }
 + (void) setMaxDisplayedAcuity: (float) val {
     [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "maxDisplayedAcuity"];
+}
+
+
++ (float) minStrokeAcuity {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "minStrokeAcuity"];
+}
++ (void) setMinStrokeAcuity: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "minStrokeAcuity"];
 }
 
 
