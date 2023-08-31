@@ -13,7 +13,7 @@ Globals.j
  */
 tab = "\t";  crlf = "\n";
 
-kVersionStringOfFract = "1.0.4";
+kVersionStringOfFract = "1.0.5";
 kVersionDateOfFrACT = "2023-08-31";
 kVersionOfExportFormat = "5";
 
@@ -40,7 +40,7 @@ gCappucinoVersionString = [[[CPBundle bundleWithIdentifier:@"com.280n.Foundation
 /*
  #  History
 
-+ 2023-08-31 make Setting for gStrokeMinimal=minStrokeAcuity on request
++ 2023-08-31 make Setting for gStrokeMinimal=minStrokeAcuity on request, up version to 1.0.5
 + 2023-08-30 delete superfluous Autorun popup in Settings>Gratings, slightly correct gui positions on main,
     combine `_make-XcodeCappSimile.sh` and `_make-XcodeCappSimileMAIN.sh` into `_make-XcodeCapp.sh`
     add fields to webmanifest based on: <https://www.w3.org/TR/appmanifest/>
