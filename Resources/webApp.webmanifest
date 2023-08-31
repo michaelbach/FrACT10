@@ -1,7 +1,13 @@
 {
-  "short_name": "FrACT10",
+  "dir": "ltr",
+  "lang": "en",
   "name": "FrACT10",
-  "description": "Vision Test Battery (acuities, contrast, …)",
+  "short_name": "FrACT10",
+  "start_url": "../index.html",
+  "id": "/fract/FrACT10/FrACT/index.html",
+  "theme_color": "#44C",
+  "background_color": "#3050C0",
+  "display": "standalone",
   "icons": [
     {
       "src": "icons/FrACT_icon-390.png",
@@ -15,10 +21,6 @@
       "type": "image/png"
     }
   ],
-  "start_url": "../index.html",
-  "id": "/fract/FrACT10/FrACT/index.html",
-  "theme_color": "#44C",
-  "background_color": "#777",
-  "display": "standalone",
-  "orientation": "landscape"
+  "orientation": "landscape",
+  "description": "Vision Test Battery (acuities, contrast, …)"
 }

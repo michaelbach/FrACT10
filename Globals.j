@@ -14,7 +14,7 @@ Globals.j
 tab = "\t";  crlf = "\n";
 
 kVersionStringOfFract = "1.0.4";
-kVersionDateOfFrACT = "2023-08-28";
+kVersionDateOfFrACT = "2023-08-30";
 kVersionOfExportFormat = "5";
 
 kDefaultDistanceInCM = 399;
@@ -40,6 +40,9 @@ gCappucinoVersionString = [[[CPBundle bundleWithIdentifier:@"com.280n.Foundation
 /*
  #  History
 
++ 2023-08-30 delete superfluous Autorun popup in Settings>Gratings, slightly correct gui positions on main,
+    combine `_make-XcodeCappSimile.sh` and `_make-XcodeCappSimileMAIN.sh` into `_make-XcodeCapp.sh`
+    add fields to webmanifest based on: <https://www.w3.org/TR/appmanifest/>
 + 2023-08-28 add "and gratings" to Settings>General># choices…
 + 2023-08-27e add colors & min/maxCPD to color gratings export; add `autoRun` to main screen, shortcut "r"; refactor: lots of `[self window]` → `selfWindow`
 + 2023-08-27d more sensible settings for all panels (no close-"x", not movable etc.)
