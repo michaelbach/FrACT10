@@ -228,6 +228,7 @@
         case 4:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [MiscSpace gapPixelsFromDecVA: acuityStartDecimal * 8];  break;
     }
     if (stimStrengthInDeviceunits > gStrokeMaximal) stimStrengthInDeviceunits = gStrokeMaximal;
+    if (stimStrengthInDeviceunits < gStrokeMinimal) stimStrengthInDeviceunits = gStrokeMinimal;
 }
 
 

@@ -13,6 +13,8 @@ Globals.j
  */
 
 gVersionDateOfFrACT = "2023-09-01";
+//gVersionStringOfFract = [[[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] infoDictionary] objectForKey:@"CPBundleVersion"]; Doesn't work, bug in Cappuccino, always returns 1.0
+gVersionStringOfFract = "1.0.5";
 gVersionOfExportFormat = "5";
 
 gDefaultDistanceInCM = 399;
@@ -30,8 +32,6 @@ gThresholdCorrection4Ascending = 0.891;
 // slope parameter for the CI95 dispersion estimation; strongly affects CI95
 gSlopeCI95 = 15; // this value approximates test-retest variability
 
-// version info for Title & About screen
-gVersionStringOfFract = [[[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] infoDictionary] objectForKey:@"CPBundleVersion"];
 
 tab = "\t";  crlf = "\n";
 
@@ -39,7 +39,8 @@ tab = "\t";  crlf = "\n";
  #  History
 
 + 2023-09-01 simplify: use values from Info.plist, some globals replace Setting stuff,
-    update LICENSE.md, reference "what's new" in About
+    update LICENSE.md, reference "what's new" in About,
+    correct minor minStroke issue.
 + 2023-08-31 make Setting for gStrokeMinimal=minStrokeAcuity on request, up version to 1.0.5
 + 2023-08-30 delete superfluous Autorun popup in Settings>Gratings, slightly correct gui positions on main,
     combine `_make-XcodeCappSimile.sh` and `_make-XcodeCappSimileMAIN.sh` into `_make-XcodeCapp.sh`

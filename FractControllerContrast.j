@@ -139,7 +139,7 @@ basic flow:
     if (stimStrengthInDeviceunits >= 2.0) { // todo: do this while testing
         rangeLimitStatus = kRangeLimitValueAtCeiling;
     }
-    let s = "Contrast threshold: \n";
+    let s = "Contrast threshold: " + crlf;
     s += [self rangeStatusIndicatorStringInverted: YES];
     s += [Misc stringFromNumber: stimStrengthInDeviceunits decimals: 2 localised: YES];
     s += " logCS(Weber) ≘ ";
