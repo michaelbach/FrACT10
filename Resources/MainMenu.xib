@@ -2021,7 +2021,7 @@ No money transfer involved, just for size!     </string>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LER-FX-oqj">
                                             <rect key="frame" x="459" y="304" width="32" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">For letters and tumbling E the minimal stroke size, for Landolt-Cs the minimal gap size, in pixel. Can be below 1.0 via aliasing. Know what you're doing when changing. Maximum: 5px. </string>
+                                            <string key="toolTip">For letters and tumbling E the minimal stroke width, for Landolt-Cs the minimal gap size, in pixel. Can be below 1.0 via aliasing. Know what you're doing when changing. Maximum: 5px. </string>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" id="WIn-vg-rCT">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>

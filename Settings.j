@@ -12,8 +12,7 @@ Created by mb on July 15, 2015.
 */
 
 #define kDateOfCurrentSettingsVersion "2021-01-31"
-// kVersionStringOfFract & kVersionDateOfFrACT are in "Globals.j"
-// kVersionStringOfFract & kVersionDateOfFrACT are in "Globals.j"
+
 
 @import <Foundation/Foundation.j>
 @import <AppKit/AppKit.j>
@@ -24,13 +23,6 @@ Created by mb on July 15, 2015.
 @import "MiscSpace.j"
 
 @implementation Settings: CPUserDefaultsController
-
-
-+ (CPString) versionFrACT {return kVersionStringOfFract;}
-+ (CPString) versionExportFormat {return kVersionOfExportFormat;}
-+ (CPString) versionDateFrACT {return kVersionDateOfFrACT;}
-+ (CPString) filenameResultStorage {return kFilename4ResultStorage;}
-+ (CPString) filenameResultsHistoryStorage {return kFilename4ResultsHistoryStorage;}
 
 
 // helpers:
@@ -67,8 +59,8 @@ Created by mb on July 15, 2015.
     [self setNTrials04: [self chckInt: [self nTrials04] def: 24 min: 1 max: 200 set: set]];
     [self setNTrials08: [self chckInt: [self nTrials08] def: 18 min: 1 max: 200 set: set]];
 
-    [self setDistanceInCM: [self chckFlt: [self distanceInCM] def: kDefaultDistanceInCM min: 1 max: 2500 set: set]];
-    [self setCalBarLengthInMM: [self chckFlt: [self calBarLengthInMM] def: kDefaultCalibrationBarLengthInMM min: 1 max: 10000 set: set]];
+    [self setDistanceInCM: [self chckFlt: [self distanceInCM] def: gDefaultDistanceInCM min: 1 max: 2500 set: set]];
+    [self setCalBarLengthInMM: [self chckFlt: [self calBarLengthInMM] def: gDefaultCalibrationBarLengthInMM min: 1 max: 10000 set: set]];
     [self setCalBarLengthInPixel: [self chckFlt: [self calBarLengthInPixel] def: 700 min: 700 max: 700 set: set]];
 
     [self setResponseInfoAtStart: [self chckBool: [self responseInfoAtStart] def: YES set: set]];
@@ -223,7 +215,7 @@ Created by mb on July 15, 2015.
 
 + (BOOL) isNotCalibrated {
     [self checkDefaults];
-    return (([self distanceInCM]==kDefaultDistanceInCM) || ([self calBarLengthInMM] == kDefaultCalibrationBarLengthInMM));
+    return (([self distanceInCM] == gDefaultDistanceInCM) || ([self calBarLengthInMM] == gDefaultCalibrationBarLengthInMM));
 }
 
 

@@ -449,8 +449,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
  */
 - (CPString) generalComposeExportString { //console.info("FractController>generalComposeExportString");
     let s = "", now = [CPDate date];
-    s += "Vs" + tab + [Settings versionExportFormat];
-    s += tab + "vsFrACT" + tab + [Settings versionDateFrACT];
+    s += "Vs" + tab + gVersionOfExportFormat;
+    s += tab + "vsFrACT" + tab + gVersionDateOfFrACT;
     s += tab + "decimalMark" + tab + [Settings decimalMarkChar];
     s += tab + "date" + tab + [Misc date2YYYY_MM_DD: now];
     s += tab + "time" + tab + [Misc date2HH_MM_SS: now];

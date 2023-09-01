@@ -126,7 +126,7 @@ Created by mb on 2017-07-12.
     [self setSettingsTabViewSelectedIndex: 0]; // select the "General" tab in Settings
     
     [selfWindow setTitle: "FrACT10"];
-    [self setVersionDateString: [Settings versionFrACT] + "·" + [Settings versionDateFrACT]];
+    [self setVersionDateString: gVersionStringOfFract + "·" + gVersionDateOfFrACT];
     
     [Settings checkDefaults]; // what was the reason to put this here???
     /*let s = @"Current key test settings: " + [Settings distanceInCM] +" cm distance, ";
@@ -298,9 +298,9 @@ Created by mb on 2017-07-12.
 
 - (void) exportCurrentTestResult { //console.info("AppController>exportCurrentTestResult");
     let temp = currentTestResultExportString.replace(/,/g, "."); // in localStorage we don't want to localise
-    localStorage.setItem([Settings filenameResultStorage], temp);
+    localStorage.setItem(gFilename4ResultStorage, temp);
     temp = currentTestResultsHistoryExportString.replace(/,/g, ".");
-    localStorage.setItem([Settings filenameResultsHistoryStorage], temp);
+    localStorage.setItem(gFilename4ResultsHistoryStorage, temp);
     
     if ([Settings results2clipboard] > 0) {
         if ([Settings results2clipboard] == 2) {

@@ -39,11 +39,13 @@ Populates the About panel with appropriate text using HTML
 + (void) populateAboutPanelView1: (WebView) aboutWebView1 view2: (WebView) aboutWebView2 { //console.info("PopulateAboutPanel>populateAboutPanel");
 
     s = "<h2 align='center'>FrACT<sub>10</sub></h2>";
-    s += "Freiburg Visual Acuity and Contrast Test 10,<br>Vs " + kVersionStringOfFract + ",&nbsp; release date " + kVersionDateOfFrACT + ". <br><br>";
-    s += "Semi-automatic assessment of visual acuities following DIN/ISO; also can assess contrast sensitivity.<br><br>Optotypes: Sloan letters, Landolt C, Tumbling E, TAO, gratings.<br><br>Acuity results in decimal, LogMAR or Snellen notation.<br><br>With ‘Best PEST’ and antialiasing."
+    s += "Freiburg Visual Acuity and Contrast Test 10, ";
+    s += "<a href='https://michaelbach.de/fract/index.html#anchorWhatsNew' target='_blank'>" + "Vs " + gVersionStringOfFract + "</a>, <br>";
+    s += "release date " + gVersionDateOfFrACT + ".<br><br>";
+    s += "Semi-automatic assessment of visual acuities following ISO and contrast thresholds.<br><br>Optotypes: Sloan letters, Landolt C, Tumbling E, TAO, gratings.<br><br>Acuity results in decimal, LogMAR or Snellen notation.<br><br>With ‘Best PEST’ and antialiasing."
     [self oneWebView: aboutWebView1 htmlString: s];
 
-    s = "©1993–" + [kVersionDateOfFrACT substringWithRange: CPMakeRange(0, 4)];
+    s = "©1993–" + [gVersionDateOfFrACT substringWithRange: CPMakeRange(0, 4)];
     s += "<br><br>Prof. Michael Bach<br>";
     s += "University of Freiburg, Germany<br>";
     s += "<a href='https://michaelbach.de' target='_blank'>https://michaelbach.de</a><br>";
@@ -51,7 +53,8 @@ Populates the About panel with appropriate text using HTML
     s += "<a href='https://michaelbach.de/fract/' target='_blank'>FrACT₁₀ homepage</a><br><br>";
     s += "Sources: <a href='https://github.com/michaelbach/FrACT10/#fract' target='_blank'>GitHub repository</a>, <a href='https://github.com/michaelbach/FrACT10/commits' target='_blank'>Commit history</a><br><br>"
     s += "Frameworks/Libraries used:<br>";
-    s += "<a href='https://michaelbach.de/ot/-misc/cappFrameworks/index.html' target='_blank'>Cappuccino " + gCappucinoVersionString + "</a>,&nbsp; ";
+    const cappucinoVersion = [[[CPBundle bundleWithIdentifier: "com.280n.Foundation"] infoDictionary] objectForKey:@"CPBundleVersion"]; // initialised in AppController
+    s += "<a href='https://michaelbach.de/ot/-misc/cappFrameworks/index.html' target='_blank'>Cappuccino " + cappucinoVersion + "</a>,&nbsp; ";
     s += "<a href='https://simplestatistics.org' target='_blank'>Simple Statistics</a>.";
     //s += "<a href='https://nodejs.org/' target='_blank'>Node.js,</a><br>";
     //s += "<a href='https://www.electronjs.org' target='_blank'>Electron</a>, <a href='https://www.electron.build' target='_blank'>electron-builder</a>";

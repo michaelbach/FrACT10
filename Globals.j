@@ -11,20 +11,17 @@ Globals.j
  (and # define does not work for me)
  Created on 2021-01-07
  */
-tab = "\t";  crlf = "\n";
 
-kVersionStringOfFract = "1.0.5";
-kVersionDateOfFrACT = "2023-08-31";
-kVersionOfExportFormat = "5";
+gVersionDateOfFrACT = "2023-09-01";
+gVersionOfExportFormat = "5";
 
-kDefaultDistanceInCM = 399;
-kDefaultCalibrationBarLengthInMM = 149;
+gDefaultDistanceInCM = 399;
+gDefaultCalibrationBarLengthInMM = 149;
 
-kFilename4ResultStorage = "FRACT10-FINAL-RESULT-STRING";
-kFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
+gFilename4ResultStorage = "FRACT10-FINAL-RESULT-STRING";
+gFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
 
-// minimal stroke/gap size (half a pixel). Maximal, depending on screen & margin.
-// Formerly named gapMinimal/gapMaximal. Poor naming in case of Vernier.
+// minimal stroke/gap size (half a pixel). Maximal, depending on screen & margin. Poor naming in case of Vernier.
 gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden via Setting and screen size
 
 // Correction for threshold underestimation by ascending method (in VAdecimal)
@@ -33,13 +30,16 @@ gThresholdCorrection4Ascending = 0.891;
 // slope parameter for the CI95 dispersion estimation; strongly affects CI95
 gSlopeCI95 = 15; // this value approximates test-retest variability
 
-// version info for the About screen
-gCappucinoVersionString = [[[CPBundle bundleWithIdentifier:@"com.280n.Foundation"] infoDictionary] objectForKey:@"CPBundleVersion"]; // initialised in AppController
+// version info for Title & About screen
+gVersionStringOfFract = [[[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] infoDictionary] objectForKey:@"CPBundleVersion"];
 
+tab = "\t";  crlf = "\n";
 
 /*
  #  History
 
++ 2023-09-01 simplify: use values from Info.plist, some globals replace Setting stuff,
+    update LICENSE.md, reference "what's new" in About
 + 2023-08-31 make Setting for gStrokeMinimal=minStrokeAcuity on request, up version to 1.0.5
 + 2023-08-30 delete superfluous Autorun popup in Settings>Gratings, slightly correct gui positions on main,
     combine `_make-XcodeCappSimile.sh` and `_make-XcodeCappSimileMAIN.sh` into `_make-XcodeCapp.sh`

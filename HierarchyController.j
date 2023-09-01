@@ -24,7 +24,7 @@ kTestAcuityLett = 0; kTestAcuityC = 1; kTestAcuityE = 2; kTestAcuityTAO = 3; kTe
     HierarchyController parentController @accessors;
     TestIDType currentTestID @accessors;
     CPString resultString @accessors;
-    CPString versionDateString @accessors;
+    CPString versionDateString @accessors; // for the Xib top right
     CPString keyTestSettingsString @accessors;
     CPString currentTestResultUnit @accessors;
     CPString currentTestResultExportString @accessors;
