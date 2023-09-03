@@ -14,6 +14,7 @@ Sound.j
 
 @implementation Sound: CPObject {
     id audioContext, buffer1, buffer2, buffer3, volumeNode;
+    BOOL needsAudioContext;
 }
 
 
@@ -59,6 +60,7 @@ Sound.j
 
 
 - (void) playSoundFromBuffer: (id) buffer { //console.info("Sound>playSoundFromBuffer");
+    if (needsAudioContext)  [self initAfterUserinteraction];
     if (buffer == nil) return;
     const source = audioContext.createBufferSource();
     source.buffer = buffer;
@@ -79,18 +81,26 @@ Sound.j
 }
 
 
+- (void) initAfterUserinteraction {
+    if (!needsAudioContext)  return;
+    needsAudioContext = NO;
+    if ('webkitAudioContext' in window) {
+        audioContext = new window.webkitAudioContext();
+    } else {
+        audioContext = new window.AudioContext();
+    }
+    volumeNode = audioContext.createGain();
+    volumeNode.gain.value = 0;
+    volumeNode.connect(audioContext.destination);
+    [self loadSound1];  [self loadSound2];  [self loadSound3];
+}
+
+
 - (id) init { //console.info("Sound>init");
     self = [super init];
     if (self) {
-        if ('webkitAudioContext' in window) {
-            audioContext = new window.webkitAudioContext();
-        } else {
-            audioContext = new window.AudioContext();
-        }
-        volumeNode = audioContext.createGain();
-        volumeNode.gain.value = 0;
-        volumeNode.connect(audioContext.destination);
-        [self loadSound1];  [self loadSound2];  [self loadSound3];
+        // starting the AudioContext is not allowed unless by user interaction
+        needsAudioContext = YES;
     }
     return self;
 }

@@ -205,6 +205,7 @@ Created by mb on 2017-07-12.
  One of the tests should run, but let's test some prerequisites first
  */
 - (void) runFractControllerTest: (int) testNr { //console.info("AppController>runFractController");
+    [sound initAfterUserinteraction];
     currentTestID = testNr;
     if ([Settings isNotCalibrated]) {
         const alert = [CPAlert alertWithMessageText: "Calibration is mandatory for valid results!"
@@ -422,6 +423,7 @@ Created by mb on 2017-07-12.
  Deal with the Settings panel
  */
 - (IBAction) buttonSettings_action: (id) sender { //console.info("AppController>buttonSettings");
+    [sound initAfterUserinteraction];
     [Settings checkDefaults];  [settingsPanel makeKeyAndOrderFront: self];
     if (settingsNeededNewDefaults) {
         settingsNeededNewDefaults = NO;

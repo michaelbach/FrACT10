@@ -38,6 +38,7 @@ tab = "\t";  crlf = "\n";
 /*
  #  History
 
++ 2023-09-03 ensure sound>AudioContext is only set up after user interaction
 + 2023-09-03 no succes in automically pasting value of `gVersionDateOfFrACT` into the service worker so far.
     Cleared up sequence when service worker is called (before ("AppController>init")
     Prettify syntax in the service worker.
