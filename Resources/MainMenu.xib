@@ -566,6 +566,7 @@ DQ
                         </popUpButtonCell>
                         <connections>
                             <action selector="popupPreset_action:" target="450" id="s9a-Hy-zVf"/>
+                            <binding destination="450" name="selectedIndex" keyPath="settingsPanePresetSelectedIndex" id="k6V-S2-8bC"/>
                         </connections>
                     </popUpButton>
                     <tabView fixedFrame="YES" initialItem="Ppw-we-9iU" translatesAutoresizingMaskIntoConstraints="NO" id="S1X-kS-Zwg">
@@ -2904,7 +2905,7 @@ CQ
                             </tabViewItem>
                         </tabViewItems>
                         <connections>
-                            <binding destination="450" name="selectedIndex" keyPath="settingsTabViewSelectedIndex" id="ShI-Nc-oE9"/>
+                            <binding destination="450" name="selectedIndex" keyPath="settingsPaneTabViewSelectedIndex" id="YRW-UH-Yg8"/>
                         </connections>
                     </tabView>
                 </subviews>

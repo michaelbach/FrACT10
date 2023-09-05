@@ -59,7 +59,8 @@ Created by mb on 2017-07-12.
     CPColor checkContrastWeberFieldColor2 @accessors;
     float checkContrastActualWeberPercent @accessors;
     float checkContrastActualMichelsonPercent @accessors;
-    int settingsTabViewSelectedIndex @accessors;
+    int settingsPaneTabViewSelectedIndex @accessors;
+    int settingsPanePresetSelectedIndex @accessors;
     float calBarLengthInMMbefore;
     CPColor colorOfBestPossibleAcuity @accessors;
 }
@@ -123,7 +124,7 @@ Created by mb on 2017-07-12.
     for (const p of allPanels) {
         [p setFrameOrigin: CGPointMake(0, 0)];  [p setMovable: NO];
     }
-    [self setSettingsTabViewSelectedIndex: 0]; // select the "General" tab in Settings
+    [self setSettingsPaneTabViewSelectedIndex: 0]; // select the "General" tab in Settings
     
     [selfWindow setTitle: "FrACT10"];
     [self setVersionDateString: gVersionStringOfFract + "·" + gVersionDateOfFrACT];
@@ -214,7 +215,7 @@ Created by mb on 2017-07-12.
         [alert runModalWithDidEndBlock: function(alert, returnCode) {
             switch (returnCode) {
                 case 1: // alternateButton
-                    [self setSettingsTabViewSelectedIndex: 0]; // ensure "General" tab
+                    [self setSettingsPaneTabViewSelectedIndex: 0]; // ensure "General" tab
                     [self buttonSettings_action: nil];  break;
                 case 0: // defaultButton
                     [self runFractController2];  break;
@@ -424,6 +425,7 @@ Created by mb on 2017-07-12.
  */
 - (IBAction) buttonSettings_action: (id) sender { //console.info("AppController>buttonSettings");
     [sound initAfterUserinteraction];
+    [self setSettingsPanePresetSelectedIndex: 0];
     [Settings checkDefaults];  [settingsPanel makeKeyAndOrderFront: self];
     if (settingsNeededNewDefaults) {
         settingsNeededNewDefaults = NO;
