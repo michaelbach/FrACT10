@@ -535,12 +535,15 @@ DQ
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Common sets of settings 
  </string>
-                        <popUpButtonCell key="cell" type="push" title="Preset to: Standard" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="BRQ-on-tmW" id="JI4-Wi-eC6">
+                        <popUpButtonCell key="cell" type="push" title="Select a Preset ↓" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="BRQ-on-tmW" id="JI4-Wi-eC6">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
                             <menu key="menu" id="xFl-9u-ikI">
                                 <items>
-                                    <menuItem title="Preset to: Standard" state="on" id="BRQ-on-tmW">
+                                    <menuItem title="Select a Preset ↓" state="on" id="BRQ-on-tmW">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="Preset to: Standard" id="E6d-3W-JNL">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
                                     <menuItem title="Preset to: ULV" id="K63-wD-Ybp">

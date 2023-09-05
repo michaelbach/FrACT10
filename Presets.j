@@ -20,6 +20,10 @@
  */
 + (void) apply: (id) sender { //console.info("Presets>apply");
     const selectedPresetIndex = [sender indexOfSelectedItem];
+    if (selectedPresetIndex == 0) {
+        console.info("selectedPresetIndex == 0");
+        return;
+    }
     const selectedPresetName = [sender itemTitleAtIndex: selectedPresetIndex];
     const messageText = "Really “" + selectedPresetName + "” ?"
     const alert1 = [CPAlert alertWithMessageText: messageText
@@ -27,7 +31,9 @@
                  informativeTextWithFormat: "Many Settings might change. You should know what you are doing here. Luckily, you can always return to defaults in Settings."];
     [[alert1 buttons][0] setKeyEquivalent:"y"]; // the "Yes" butten selected by "y"
     [alert1 runModalWithDidEndBlock: function(alert, returnCode) {
-        if (returnCode==1) [self apply2: selectedPresetIndex]; // alternateButton
+        if (returnCode==1) { // alternateButton
+            [self apply2: selectedPresetIndex - 1];
+        }
     }]
 }
 /**
