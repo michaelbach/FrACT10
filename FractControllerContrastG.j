@@ -40,12 +40,13 @@
 - (void) gratingSineWithPeriodInPx: (float) periodInPx direction: (int) theDirection contrast: (float) contrast {
     let s2 = Math.round(Math.max(viewHeight2, viewWidth2) / 2 * 1.3) * 2;
     const trigFactor = 1 / periodInPx * 2 * Math.PI; // calculate only once
+    const notGratingSineNotSquare = ![Settings gratingSineNotSquare]
     CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180);
     CGContextSetLineWidth(cgc, 1.3); // still an artifact on oblique
     let l, lError = 0, lDiscrete;
     for (let ix = -s2; ix <= s2; ++ix) {
         l = Math.sin((ix % periodInPx) * trigFactor);
-        //l = l >= 0 ? 1 : -1; // sine → square wave grating
+        if (notGratingSineNotSquare) l = l >= 0 ? 1 : -1; // sine → square wave grating
         l = 0.5 + 0.5 * contrast / 100 * l;
         if (isGratingColor) {
             CGContextSetStrokeColor(cgc, [colOptotypeFore colorWithAlphaComponent: l]);

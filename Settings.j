@@ -161,6 +161,7 @@ Created by mb on July 15, 2015.
     [self setIsGratingMasked: [self chckBool: [self isGratingMasked] def: NO set: set]];
     [self setGratingDiaInDeg: [self chckFlt: [self gratingDiaInDeg] def: 10.0 min: 1.0 max: 50 set: set]];
     [self setGratingUseErrorDiffusion: [self chckBool: [self gratingUseErrorDiffusion] def: YES set: set]];
+    [self setGratingSineNotSquare: [self chckBool: [self gratingSineNotSquare] def: YES set: set]];
     [self setIsGratingColor: [self chckBool: [self isGratingColor] def: NO set: set]];
     [self setWhat2SweepIndex: [self chckInt: [self what2SweepIndex] def: 0 min: 0 max: 1 set: set]]; // 0: sweep contrast, 1: sweep spatial frequency
     [self setGratingCPDmin: [self chckFlt: [self gratingCPDmin] def: 0.5 min: 0.01 max: 60 set: set]];
@@ -928,6 +929,16 @@ Created by mb on July 15, 2015.
 + (void) setGratingObliqueOnly: (BOOL) val {
     [[CPUserDefaults standardUserDefaults] setBool: val forKey: "gratingObliqueOnly"];
 }
+
++ (BOOL) gratingSineNotSquare {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "gratingSineNotSquare"];
+}
++ (void) setGratingSineNotSquare: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "gratingSineNotSquare"];
+}
+
+
+
 
 
 @end
