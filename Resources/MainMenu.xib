@@ -2383,9 +2383,10 @@ No money transfer involved, just for size!     </string>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.contrastShowFixMark" id="ezW-l6-uXg"/>
                                             </connections>
                                         </button>
-                                        <button toolTip="Only allows oblique, not hor/vertical gratings. Also automaticall presets the number of alternatives to 2 (in “General”). " fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fbu-h6-ePZ">
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fbu-h6-ePZ">
                                             <rect key="frame" x="15" y="294" width="162" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <string key="toolTip">Only allows oblique, not hor/vertical gratings. Only works if you also set the number of orientations to 2 (right next to this). </string>
                                             <buttonCell key="cell" type="check" title="Oblique only" bezelStyle="regularSquare" imagePosition="left" inset="2" id="KpO-hF-P4I">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -2482,7 +2483,7 @@ No money transfer involved, just for size!     </string>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <comboBox toolTip="Spatial frequency of the grating whose threshold contrast is to be assessed. Unit: Cycles per degree." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oxA-rK-pLZ" userLabel="gratingCPD">
+                                                    <comboBox toolTip="Spatial frequency of the grating whose threshold contrast is to be assessed. Unit: Cycles per degree (cpd)." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oxA-rK-pLZ" userLabel="gratingCPD">
                                                         <rect key="frame" x="19" y="99" width="64" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="KLX-2y-6kP">
