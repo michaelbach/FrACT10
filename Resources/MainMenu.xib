@@ -532,7 +532,7 @@ DQ
                                     <menuItem title="Select a Preset ↓" state="on" id="BRQ-on-tmW">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
-                                    <menuItem title="All defaults" id="E6d-3W-JNL">
+                                    <menuItem title="ALL DEFAULTS" id="E6d-3W-JNL">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
                                     <menuItem title="ULV" id="K63-wD-Ybp">

@@ -12,7 +12,7 @@ Globals.j
  Created on 2021-01-07
  */
 
-gVersionDateOfFrACT = "2023-09-10";
+gVersionDateOfFrACT = "2023-09-15";
 //gVersionStringOfFract = [[[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] infoDictionary] objectForKey:@"CPBundleVersion"]; Doesn't work, bug in Cappuccino, always returns 1.0
 gVersionStringOfFract = "1.0.5";
 gVersionOfExportFormat = "5";
@@ -38,6 +38,8 @@ tab = "\t";  crlf = "\n";
 /*
  #  History
 
++ 2023-09-15 Simplify: "Set all to defaults" button deleted, the entry in Presets does it already;
+    also deleted pertinent action procedure; simplify text, clean up GUI (overlayed text in contrast)
 + 2023-09-10 gratings: option for sinusoidal / square wave
 + 2023-09-08 alway set Preset index → 0 (avoids possibly confusing Popup title)
 + 2023-09-05 1st entry in Presets is neutral
