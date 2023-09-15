@@ -25,7 +25,7 @@
         return;
     }
     const selectedPresetName = [sender itemTitleAtIndex: selectedPresetIndex];
-    const messageText = "Really “" + selectedPresetName + "” ?"
+    const messageText = "Really all Settings to “" + selectedPresetName + "” ?"
     const alert1 = [CPAlert alertWithMessageText: messageText
                              defaultButton: "NO" alternateButton: "YES" otherButton: nil
                  informativeTextWithFormat: "Many Settings might change. You should know what you are doing here. Luckily, you can always return to defaults in Settings."];
