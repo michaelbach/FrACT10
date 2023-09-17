@@ -12,7 +12,7 @@ Globals.j
  Created on 2021-01-07
  */
 
-gVersionDateOfFrACT = "2023-09-15";
+gVersionDateOfFrACT = "2023-09-18";
 //gVersionStringOfFract = [[[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] infoDictionary] objectForKey:@"CPBundleVersion"]; Doesn't work, bug in Cappuccino, always returns 1.0
 gVersionStringOfFract = "1.0.5";
 gVersionOfExportFormat = "5";
@@ -38,6 +38,7 @@ tab = "\t";  crlf = "\n";
 /*
  #  History
 
++ 2023-09-17 optimize: all images with "ImageOptim"
 + 2023-09-15 Simplify: "Set all to defaults" button deleted, the entry in Presets does it already;
     also deleted pertinent action procedure; simplify text, clean up GUI (overlayed text in contrast)
 + 2023-09-10 gratings: option for sinusoidal / square wave
