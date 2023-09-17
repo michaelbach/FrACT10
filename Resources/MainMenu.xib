@@ -4161,23 +4161,23 @@ DQ
         <image name="butCntE" width="970" height="652"/>
         <image name="butCntGrating" width="83" height="83"/>
         <image name="butCntLett" width="1097" height="658"/>
-        <image name="buttonAcuityC" width="203.75999450683594" height="119.76000213623047"/>
-        <image name="buttonAcuityE" width="158.8800048828125" height="101.76000213623047"/>
-        <image name="buttonAcuityLett" width="208.55999755859375" height="119.51999664306641"/>
-        <image name="buttonAcuityLineByLine" width="516" height="350.8800048828125"/>
-        <image name="buttonAcuityTAO" width="196.80000305175781" height="192"/>
-        <image name="buttonAcuityVernier" width="124.31999969482422" height="195.83999633789062"/>
+        <image name="buttonAcuityC" width="849" height="499"/>
+        <image name="buttonAcuityE" width="662" height="424"/>
+        <image name="buttonAcuityLett" width="869" height="498"/>
+        <image name="buttonAcuityLineByLine" width="1075" height="731"/>
+        <image name="buttonAcuityTAO" width="820" height="800"/>
+        <image name="buttonAcuityVernier" width="518" height="816"/>
         <image name="iconAbout" width="396" height="396"/>
         <image name="iconFullscreen" width="356" height="356"/>
         <image name="iconHelp" width="356" height="356"/>
         <image name="iconSettings" width="276" height="276"/>
-        <image name="keyMap4" width="533" height="420"/>
-        <image name="keyMap4keysOnly" width="324" height="214"/>
-        <image name="keyMap8" width="554" height="543"/>
-        <image name="keyMap8gratings" width="471" height="463"/>
-        <image name="optotypeE000" width="51.840000152587891" height="51.599998474121094"/>
-        <image name="optotypeE090" width="51.599998474121094" height="51.840000152587891"/>
-        <image name="optotypeE180" width="51.840000152587891" height="51.599998474121094"/>
-        <image name="optotypeE270" width="51.599998474121094" height="51.840000152587891"/>
+        <image name="keyMap4" width="1066" height="840"/>
+        <image name="keyMap4keysOnly" width="648" height="428"/>
+        <image name="keyMap8" width="1108" height="1086"/>
+        <image name="keyMap8gratings" width="942" height="926"/>
+        <image name="optotypeE000" width="216" height="215"/>
+        <image name="optotypeE090" width="215" height="216"/>
+        <image name="optotypeE180" width="216" height="215"/>
+        <image name="optotypeE270" width="215" height="216"/>
     </resources>
 </document>
