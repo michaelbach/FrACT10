@@ -5,6 +5,7 @@
 # Workflow of Cappuccino nib development with Xcode without XcodeCapp
 
 ## History"
+# 2023-09-23 add FileModTime to simplify modification date access
 # 2023-08-31 combined `_make-XcodeCappSimile.sh` and `_make-XcodeCappSimileMAIN.sh`into this
 # 2022-11-12 no more "open terminal", because empty when script in child of Xcode
 # 2022-06-14 corrected the logic for *.cib (re)creation
@@ -31,27 +32,34 @@
 
 ## Current limitations
 # - new source files (*.j) need to be added manually to Xcode
-# - assumes only a single XIB file "MainMenu.xib"
-# - very Apple-oriented: uses AppleScript & Safari. Obvious: Xcode
-# - does not generate the initial NAME.xcodeproj (clone from another project or generate with Xcode)
+# - assumes a single XIB file called "MainMenu.xib"
+# - very Apple-oriented: uses AppleScript & Safari. Also (obviously): Xcode
+# - does not generate the initial NAME.xcodeproj (clone it from another project or generate with Xcode)
 # - the delay times in the AppleScript code are rather arbitrary
-# - might be better to use a server
+# - might be better to use a local http server
 
 
-## Subroutine for processing a single source file (´.j´)
-OneObjj2objcskeleton() {
-	mFilePath=$xcodeSupportDirectory"/"$1".m"
-	modificationTimeMFile=0
-	if [ -f $mFilePath ]; then
-		modificationTimeMFile=$(stat -f %m $mFilePath)
+## Subroutine for file modification time, 0 if file not exists
+FileModTime() {
+	local modificationTime=0
+	if [ -f $1 ]; then
+		modificationTime=$(stat -f %m $1)
 	fi
+	# below "fakes" return value, to be captured with $()
+	echo $modificationTime
+}
+
+## Subroutine to process a single source file (´.j´)
+OneObjj2objcskeleton() {
+	local mFilePath=$xcodeSupportDirectory"/"$1".m"
+	l ocal modificationTimeMFile=$(FileModTime $mFilePath)
 	jFilePath=$1".j"
-	modificationTimeJFile=$(stat -f %m $jFilePath)
+	local modificationTimeJFile=$(FileModTime $jFilePath)
 	if [ $modificationTimeJFile -ge $modificationTimeMFile ]; then
 		echo "objj2objcskeleton $jFilePath $xcodeSupportDirectory"
 		objj2objcskeleton $jFilePath $xcodeSupportDirectory
 	else
-#		echo "$jFilePath is current."# faster w/o echo
+		echo "$jFilePath is current."
 	fi
 }
 
@@ -60,7 +68,7 @@ OneObjj2objcskeleton() {
 xcodeSupportDirectory='.XcodeSupport'
 
 
-## Here starts the main code
+## Here starts main
 #
 cd ${0:a:h} # go to starting directory
 workingDirectory=$(pwd) # save it for later
@@ -76,10 +84,6 @@ tell application "System Events" to keystroke "s" using {command down, option do
 END
 echo " "
 
-# To show feedback what's happening
-# But remains empty when calling directly as build script from Xcode (child shell)
-#open -a Terminal
-
 # Create xcodeSupportDirectory if necessary
 if [ ! -d "$xcodeSupportDirectory" ]; then
 	echo "Creating xcodeSupportDirectory."
@@ -87,7 +91,7 @@ if [ ! -d "$xcodeSupportDirectory" ]; then
 	echo " "
 fi
 
-# Check all source files; if newer then recreate the pertinent *.h/*.m files
+# Check all source files; for newer ones recreate the pertinent *.h/*.m files
 sourceArray=(*.j)
 for aFile in ${sourceArray[@]}; do
 	# drop the trailing `.j`
@@ -99,13 +103,10 @@ for aFile in ${sourceArray[@]}; do
 done
 echo " "
 
-# (re)create the cib file if necessary (depending on file modification times)
-modificationTimeXib=$(stat -f %m Resources/MainMenu.xib)
-modificationTimeCib=0
-if [ -f "Resources/MainMenu.cib" ]; then
-	modificationTimeCib=$(stat -f %m Resources/MainMenu.cib)
-fi
-#echo "modificationTimeXib: " $modificationTimeXibcho ",  modificationTimeCib: " $modificationTimeCib
+# (re)create the cib file when necessary (depending on file modification times)
+modificationTimeXib=$(FileModTime Resources/MainMenu.xib)
+modificationTimeCib=$(FileModTime Resources/MainMenu.cib)
+#echo "modificationTimeXib: " $modificationTimeXib ",  modificationTimeCib: " $modificationTimeCib
 if [ $modificationTimeXib -ge $modificationTimeCib ]; then
 	echo "nib2cib Resources/MainMenu.xib"
 	nib2cib Resources/MainMenu.xib
@@ -121,6 +122,3 @@ delay 0.2
 tell application "System Events" to keystroke "e" using {command down, option down}
 END
 open -a Safari $workingDirectory"/index.html"
-
-# If all went well, we don't need the terminal window any more
-#osascript -e 'tell application "Terminal" to close front window'

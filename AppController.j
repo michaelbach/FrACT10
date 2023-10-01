@@ -336,7 +336,7 @@ Created by mb on 2017-07-12.
 
 - (void) keyDown: (CPEvent) theEvent { //console.info("AppController>keyDown");
     switch([[[theEvent charactersIgnoringModifiers] characterAtIndex: 0] uppercaseString]) {
-        case "Q": case "X": // Quit or eXit
+        case "Q": case "X": case "-": // Quit or eXit
             [self buttonDoExit_action: nil];  break;
         case "S":
             [[CPRunLoop currentRunLoop] performSelector: @selector(buttonSettings_action:) target: self argument: nil order: 10000 modes:[CPDefaultRunLoopMode]];  break; // this complicated version avoids propagation of the "s"

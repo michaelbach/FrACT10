@@ -26,7 +26,7 @@ app (projectName, function(task)
     if (configuration === "Debug")
         ENV["OBJJ_INCLUDE_PATHS"] = path.join(ENV["OBJJ_INCLUDE_PATHS"], configuration);
 
-    task.setBuildIntermediatesPath(path.join(buildDir, "HelloWorld.build", configuration));
+    task.setBuildIntermediatesPath(path.join(buildDir, "FrACT.build", configuration));
     task.setBuildPath(path.join(buildDir, configuration));
 
     task.setProductName("FrACT");
