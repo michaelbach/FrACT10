@@ -142,7 +142,7 @@ basic flow:
     let s = "Contrast threshold: " + crlf;
     s += [self rangeStatusIndicatorStringInverted: YES];
     s += [Misc stringFromNumber: stimStrengthInDeviceunits decimals: 2 localised: YES];
-    s += " logCS(Weber) ≘ ";
+    s += " logCS(Weber) ≙ ";
     s += [self rangeStatusIndicatorStringInverted: NO];
     s += [Misc stringFromNumber: [MiscLight contrastWeberPercentFromLogCSWeber: stimStrengthInDeviceunits] decimals: 2 localised: YES];
     s += "%";
