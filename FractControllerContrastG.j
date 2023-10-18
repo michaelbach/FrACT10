@@ -43,21 +43,21 @@
     const notGratingSineNotSquare = ![Settings gratingSineNotSquare]
     CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180);
     CGContextSetLineWidth(cgc, 1.3); // still an artifact on oblique
-    let l, lError = 0, lDiscrete;
+    let lFloat, lDiscrete, lError = 0;
     for (let ix = -s2; ix <= s2; ++ix) {
-        l = Math.sin((ix % periodInPx) * trigFactor);
-        if (notGratingSineNotSquare) l = l >= 0 ? 1 : -1; // sine → square wave grating
-        l = 0.5 + 0.5 * contrast / 100 * l;
+        lFloat = Math.sin((ix % periodInPx) * trigFactor);
+        if (notGratingSineNotSquare) lFloat = lFloat >= 0 ? 1 : -1; // sine → square wave grating
+        lFloat = 0.5 + 0.5 * contrast / 100 * lFloat;  // contrast, map [-1, 1] → [0,1]
         if (isGratingColor) {
-            CGContextSetStrokeColor(cgc, [colOptotypeFore colorWithAlphaComponent: l]);
+            CGContextSetStrokeColor(cgc, [colOptotypeFore colorWithAlphaComponent: lFloat]);
         } else {
-            l = [MiscLight devicegrayFromLuminance: l]; // apply gamma correction
-            lDiscrete = l;
+            lFloat = [MiscLight devicegrayFromLuminance: lFloat]; // gamma correction
+            lDiscrete = lFloat;
             if (isErrorDiffusion) {
-                l = lError + 255 * l; // map to 0…255 and apply previous residual
-                lDiscrete = Math.round(l); // discrete integer values 0…255
-                lError = l - lDiscrete; // keep residual (what was lost by rounding)
-                lDiscrete = lDiscrete / 255; // remap to 0…1
+                lFloat = lFloat * 255 + lError; // map → [0, 255], apply previous residual
+                lDiscrete = Math.round(lFloat); // discrete integer values [0, 255]
+                lError = lFloat - lDiscrete; // keep residual (what was lost by rounding)
+                lDiscrete /= 255; // remap → [0, 1]
             }
             CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: lDiscrete alpha: 1]);
         }
