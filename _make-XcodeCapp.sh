@@ -38,6 +38,7 @@
 # - the delay times in the AppleScript code are rather arbitrary
 # - might be better to use a local http server
 
+set -e # ensure stop on error
 
 ## Subroutine for file modification time, 0 if file not exists
 FileModTime() {
@@ -51,8 +52,8 @@ FileModTime() {
 
 ## Subroutine to process a single source file (´.j´)
 OneObjj2objcskeleton() {
-	local mFilePath=$xcodeSupportDirectory"/"$1".m"
-	l ocal modificationTimeMFile=$(FileModTime $mFilePath)
+	local mFilePath=$xcodeSupportDirectory/"$1".m
+	local modificationTimeMFile=$(FileModTime $mFilePath)
 	jFilePath=$1".j"
 	local modificationTimeJFile=$(FileModTime $jFilePath)
 	if [ $modificationTimeJFile -ge $modificationTimeMFile ]; then
@@ -62,6 +63,8 @@ OneObjj2objcskeleton() {
 		echo "$jFilePath is current."
 	fi
 }
+
+set -e # ensure stop on error
 
 
 ## Global variables
@@ -81,6 +84,7 @@ osascript <<'END'
 tell application "Xcode" to activate
 delay 0.2
 tell application "System Events" to keystroke "s" using {command down, option down}
+tell application "Terminal" to activate
 END
 echo " "
 
@@ -93,7 +97,7 @@ fi
 
 # Check all source files; for newer ones recreate the pertinent *.h/*.m files
 sourceArray=(*.j)
-for aFile in ${sourceArray[@]}; do
+for aFile in "${sourceArray[@]}"; do
 	# drop the trailing `.j`
 	temp=${aFile:0:-2}
 	# process all files but `main.j`

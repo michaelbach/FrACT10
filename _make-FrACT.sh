@@ -5,19 +5,21 @@
 # 2021-08-01 moved "rm …capp" before "jake…"
 # 2021-02-04 begun
 
-cd ${0:a:h} # go to the starting directory
+
+cd "${0:a:h}" # go to the starting directory
 # pwd
 
 #rm -R ../FrACT ← this would give the iCloud services a hiccup, so mv to trash
-pathFractTrash=$HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs/.Trash/FrACT
-rm -R $pathFractTrash # need to delete first, otherwise mv doesn't work
-mv -fv ../FrACT $pathFractTrash
+pathFractTrash=$HOME/Library/Mobile\ Documents/.Trash/FrACT
+rm -R "$pathFractTrash" # need to delete first, otherwise mv doesn't work
+mv -fv ../FrACT "$pathFractTrash"
+
+set -e # ensure stop on error
 
 jake release
 
-rm -R Build/Release/FrACT/Frameworks # we don't need this
-rm -R Build/Release/FrACT/CommonJS.environment # nor this
-mv Build/Release/FrACT ../ # move it up, creating the "capp" folder
+rm -R Build/Release/FrACT/CommonJS.environment # we don't need this
+mv Build/Release/FrACT ../ # move it up, creating the "FrACT" folder
 rm -R Build # and get rid of the rest of the built items
 
 cp webAppServiceWorker.js ../FrACT/
