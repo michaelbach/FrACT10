@@ -12,7 +12,7 @@ Globals.j
  Created on 2021-01-07
  */
 
-gVersionDateOfFrACT = "2023-10-18";
+gVersionDateOfFrACT = "2023-11-11";
 //gVersionStringOfFract = [[[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] infoDictionary] objectForKey:@"CPBundleVersion"]; Doesn't work, bug in Cappuccino, always returns 1.0
 gVersionStringOfFract = "1.0.5";
 gVersionOfExportFormat = "5";
@@ -38,6 +38,7 @@ tab = "\t";  crlf = "\n";
 /*
  #  History
 
++ 2023-11-11 fix tooltips for main buttons: parts missing, added empty line (Cappucino bug?)
 + 2023-10-18 prettify code for sinusoidal grating (for presentation)
 + 2023-10-15 replace ≘ with ≙
 + 2023-10-01 add exit via "-" (for number keyboards). Also "_make-XcodeCapp.sh" more "elegant" :)
@@ -61,7 +62,7 @@ tab = "\t";  crlf = "\n";
 + 2023-08-28 add "and gratings" to Settings>General># choices…
 + 2023-08-27e add colors & min/maxCPD to color gratings export; add `autoRun` to main screen, shortcut "r"; refactor: lots of `[self window]` → `selfWindow`
 + 2023-08-27d more sensible settings for all panels (no close-"x", not movable etc.)
-+ 2023-08-27b colors now folly synchronised between Presets, userdefaults and the GUI representation; remove unnecessary Presets
++ 2023-08-27b colors now fully synchronised between Presets, userdefaults and the GUI representation; remove unnecessary Presets
 + 2023-08-27a correction for "applyBCMatScheie", remove 2 unused presets, in About "Semi-automatic"
 + 2023-08-27 refactor `runFractController` → `runFractControllerTest:…`: 7 action routines less
 + 2023-08-26a ensure gratingColors are initialised

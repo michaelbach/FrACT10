@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22155" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="101202" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22154"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="22154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22155"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="22155"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,9 +40,12 @@
                         <rect key="frame" x="12" y="521" width="776" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
-                    <button toolTip="Acuity assessment using Landolt Cs.  Shortcut: C      " tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWr-KV-CRJ" customClass="MDBButton">
+                    <button tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWr-KV-CRJ" customClass="MDBButton">
                         <rect key="frame" x="191" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">Acuity assessment using Landolt Cs. 
+Shortcut: C 
+  </string>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityC" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="ivt-76-XPn">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -51,9 +54,11 @@
                             <action selector="buttonDoTest_action:" target="450" id="RTQ-4L-1gq"/>
                         </connections>
                     </button>
-                    <button toolTip="Acuity assessment using tumbling Es.  Shortcut: E      " tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Phl-6Z-YpU" customClass="MDBButton">
+                    <button tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Phl-6Z-YpU" customClass="MDBButton">
                         <rect key="frame" x="350" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">Acuity assessment using tumbling Es.  Shortcut: E
+ </string>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityE" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="gQo-pc-sRD">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -62,9 +67,12 @@
                             <action selector="buttonDoTest_action:" target="450" id="uK9-3u-byo"/>
                         </connections>
                     </button>
-                    <button toolTip="Acuity assessment using TAO (The Auckland Optotypes).  Shortcut: A      " tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6e2-Sj-gkY" customClass="MDBButton">
+                    <button tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6e2-Sj-gkY" customClass="MDBButton">
                         <rect key="frame" x="508" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">Acuity assessment using TAO (The Auckland Optotypes).
+Shortcut: A
+ </string>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityTAO" imagePosition="only" alignment="center" enabled="NO" tag="3" imageScaling="proportionallyDown" inset="2" id="nnv-n0-fGE">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -112,9 +120,12 @@ Shortcut: s
                         <rect key="frame" x="12" y="-1" width="776" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
-                    <button toolTip="Hyperacuity (Vernier) assessment.  Shortcut: V      " tag="4" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oB-kn-EbO" customClass="MDBButton">
+                    <button tag="4" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oB-kn-EbO" customClass="MDBButton">
                         <rect key="frame" x="666" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">Hyperacuity (Vernier) assessment.
+Shortcut: V      
+ </string>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityVernier" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="vzK-pu-pjy">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -146,9 +157,11 @@ Shortcut: s
                             <action selector="buttonExport_action:" target="450" id="aIb-Nf-ia3"/>
                         </connections>
                     </button>
-                    <button toolTip="Contrast assessment using Sloan Letters.  Shortcut: 1        " tag="5" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rNE-r4-ESi" customClass="MDBButton">
+                    <button tag="5" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rNE-r4-ESi" customClass="MDBButton">
                         <rect key="frame" x="33" y="294" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">Contrast assessment using Sloan Letters.  Shortcut: 1 
+ </string>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="butCntLett" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="g65-ae-fbX">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -157,9 +170,11 @@ Shortcut: s
                             <action selector="buttonDoTest_action:" target="450" id="xsc-1M-0UT"/>
                         </connections>
                     </button>
-                    <button toolTip="Contrast assessment using Tumbling E.  Shortcut: 3       " tag="7" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0h-oh-O7H" customClass="MDBButton">
+                    <button tag="7" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0h-oh-O7H" customClass="MDBButton">
                         <rect key="frame" x="350" y="294" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">Contrast assessment using Tumbling E.  Shortcut: 3
+ </string>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="butCntE" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="iBN-dd-rq2">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -168,9 +183,11 @@ Shortcut: s
                             <action selector="buttonDoTest_action:" target="450" id="XMH-r3-u8z"/>
                         </connections>
                     </button>
-                    <button toolTip="Contrast assessment using Landolt C.  Shortcut: 2      " tag="6" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="teG-PN-Gq7" customClass="MDBButton">
+                    <button tag="6" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="teG-PN-Gq7" customClass="MDBButton">
                         <rect key="frame" x="191" y="294" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">Contrast assessment using Landolt C.  Shortcut: 2
+ </string>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="butCntC" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="RRU-h0-CYF">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -217,9 +234,11 @@ Shortcut: f
                             <action selector="buttonAbout_action:" target="450" id="yEc-1I-cem"/>
                         </connections>
                     </button>
-                    <button toolTip="Acuity assessment using Sloan Letters. Shortcut: L      " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jHx-aa-MPC" customClass="MDBButton">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jHx-aa-MPC" customClass="MDBButton">
                         <rect key="frame" x="33" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">Acuity assessment using Sloan Letters. Shortcut: L
+ </string>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityLett" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="xw1-er-aQN">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -239,9 +258,12 @@ Shortcut: f
                             <action selector="buttonDoExit_action:" target="450" id="t4f-l7-7Lm"/>
                         </connections>
                     </button>
-                    <button toolTip="&quot;Line-by-line&quot;: Line of optypes, adjustable acuity grade.  Shortcut: 4      " tag="9" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-y6-Eca" customClass="MDBButton">
-                        <rect key="frame" x="666" y="294" width="100" height="20"/>
+                    <button tag="9" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-y6-Eca" customClass="MDBButton">
+                        <rect key="frame" x="662" y="294" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">"Line-by-line": Line of optypes, adjustable acuity grade.
+Shortcut: 4
+ </string>
                         <buttonCell key="cell" type="roundTextured" title="Line-by-line" bezelStyle="texturedRounded" image="buttonAcuityLineByLine" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="KDf-Uw-FAZ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -262,9 +284,11 @@ Shortcut: f
                             <binding destination="450" name="value" keyPath="resultString" id="R5j-xh-4nd"/>
                         </connections>
                     </textField>
-                    <button toolTip="Contrast assessment using gratings. Settings&gt;Contrast to set spatial frequency and diameter. Shortcut: g       " tag="8" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aRI-1u-jl3" customClass="MDBButton">
+                    <button tag="8" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aRI-1u-jl3" customClass="MDBButton">
                         <rect key="frame" x="508" y="294" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">Contrast assessment using gratings. Settings&gt;Contrast to set spatial frequency and diameter. Shortcut: g
+ </string>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="butCntGrating" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="IV3-56-IkQ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
