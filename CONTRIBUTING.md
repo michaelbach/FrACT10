@@ -63,4 +63,4 @@ Necessary directory structure:<br>
 A different directory structure can be used by editing the 2 pertinent framework links in `index.html`. Currently they read `../../-misc/cappFrameworks` corresponding to the directory structure above, but both can be changed to correspond to your home of the Cappuccino build.
 
 Depending on the browser you use, you will need to disable¹ cross-origin safety or it will not open using the file:// protocol. You can, of course, set up a local web server.<br>
-¹Easy in FireFox & Safari, no longer easily possible with Chrome.
+¹Easy in Firefox & Safari, no longer easily possible with Chrome.

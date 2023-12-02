@@ -42,7 +42,7 @@ Populates the About panel with appropriate text using HTML
     s += "Freiburg Visual Acuity and Contrast Test 10, ";
     s += "<a href='https://michaelbach.de/fract/index.html#anchorWhatsNew' target='_blank'>" + "Vs " + gVersionStringOfFract + "</a>, <br>";
     s += "release date " + gVersionDateOfFrACT + ".<br><br>";
-    s += "Semi-automatic assessment of visual acuities following ISO and contrast thresholds.<br><br>Optotypes: Sloan letters, Landolt C, Tumbling E, TAO, gratings.<br><br>Acuity results in decimal, LogMAR or Snellen notation.<br><br>With ‘Best PEST’ and antialiasing."
+    s += "Semi-automatic assessment of visual acuities following ISO, and contrast thresholds.<br><br>Optotypes: Sloan letters, Landolt C, Tumbling E, TAO, gratings.<br><br>Acuity results in decimal, LogMAR or Snellen notation.<br><br>With ‘Best PEST’ and antialiasing."
     [self oneWebView: aboutWebView1 htmlString: s];
 
     s = "©1993–" + [gVersionDateOfFrACT substringWithRange: CPMakeRange(0, 4)];
@@ -66,7 +66,7 @@ Populates the About panel with appropriate text using HTML
 
 
 + (void) populateHelpPanelView1: (WebView) v1 v2: (WebView) v2 v3: (WebView) v3 v4: (WebView) v4 {
-    s = "<h4>General</h4> <ul><li><b>Make use of the tool tips</b> by hovering with the mouse over the pertinent interface element.</li> <li>Be sure to calibrate (→Settings) for correct results. Preferences are automatically saved.</li> <li>This is a forced choice test – even when your observers indicate that they cannot see a thing, encourage them to make their best guess; the software knows about the lucky guesses. Motivate them to react swiftly, lengthy squinting at the optotype is not helpful.</li> <li>Quality results require knowledge in sensory testing. At least observe the <a href='https://michaelbach.de/fract/checklist.html' target='_blank'>Checklist</a>.</li> <li>The <a href='https://michaelbach.de/fract/manual.html' target='_blank'>Manual</a> should cover everything, also don't hesitate to contact me: <a href='mailto:bach@uni-freiburg.de'>bach@uni-freiburg.de</a>.</li> <li>Speed up testing with <a href='https://michaelbach.de/fract/manual.html#anchor_Shortcuts' target='_blank'>Shortcuts</a>.</li></ul>";
+    s = "<h4>General</h4> <ul><li><b>Make use of the tool tips</b> by hovering with the mouse over the pertinent interface element.</li> <li>Be sure to calibrate (→Settings) for correct results. Preferences are automatically saved.</li> <li>This is a forced choice test – even when your observers indicate that they cannot see a thing, encourage them to make their best guess; the software knows about the lucky guesses. Motivate them to react swiftly, lengthy squinting at the optotype is not helpful.</li> <li>Quality results require knowledge in sensory testing. At least observe the <a href='https://michaelbach.de/fract/checklist.html' target='_blank'>Checklist</a>.</li> <li>The <a href='https://michaelbach.de/fract/manual.html' target='_blank'>Manual</a> should cover everything, also don't hesitate to contact me: <a href='mailto:bach@uni-freiburg.de'>bach@uni-freiburg.de</a>.</li> <li>Speed up operation with <a href='https://michaelbach.de/fract/manual.html#anchor_Shortcuts' target='_blank'>Shortcuts</a>.</li></ul>";
     [self oneWebView: v1 htmlString: s];
     
     s = "<h4>Visual Acuity</h4> <ul><li>Results in logMAR, decimal acuity or Snellen format</li><li>Limited screen resolution (pixel size) may clip high acuity</ul>";

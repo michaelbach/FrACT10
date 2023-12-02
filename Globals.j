@@ -12,7 +12,7 @@ Globals.j
  Created on 2021-01-07
  */
 
-gVersionDateOfFrACT = "2023-11-11";
+gVersionDateOfFrACT = "2023-11-30";
 //gVersionStringOfFract = [[[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] infoDictionary] objectForKey:@"CPBundleVersion"]; Doesn't work, bug in Cappuccino, always returns 1.0
 gVersionStringOfFract = "1.0.5";
 gVersionOfExportFormat = "5";
@@ -38,6 +38,7 @@ tab = "\t";  crlf = "\n";
 /*
  #  History
 
++ 2023-11-30 FireFox→Firefox. Tried to make more tooltips visible, not fully successful.
 + 2023-11-11 fix tooltips for main buttons: parts missing, added empty line (Cappucino bug?)
 + 2023-10-18 prettify code for sinusoidal grating (for presentation)
 + 2023-10-15 replace ≘ with ≙
@@ -303,7 +304,7 @@ crowding largely done
 + 2020-05-22 added Auckland Optotypes
 ## ↑TAO added
 
-+ 2020-05-21 →clipboard for exporting works in Safari & FireFox,
++ 2020-05-21 →clipboard for exporting works in Safari & Firefox,
 reward pictures
 + 2020-05-19 new buttons with images; alerted at less obnoxious stages;
 the empty default window fields still not saved, but with an appropriate alert.
@@ -311,7 +312,7 @@ the empty default window fields still not saved, but with an appropriate alert.
 + 2020-05-09 modifyDeviceStimulus now acuityModifyDeviceStimulusDIN01_02_04_08]; like FrACT,
 alternatives now initialised appropriately,
 all 10 letters in letters
-+ 2020-05-08 Fixed input problems with FireFox
++ 2020-05-08 Fixed input problems with Firefox
 2017-08-05 Acuity working
 2017-07-18 serious restart with design help by PM
 ## ↑Restart
