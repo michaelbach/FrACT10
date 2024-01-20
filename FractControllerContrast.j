@@ -29,10 +29,11 @@ Created by Bach on 2020-09-02
     let gray2 = [MiscLight upperLuminanceFromContrastLogCSWeber: stimStrengthInDeviceunits];
     gray2 = [MiscLight devicegrayFromLuminance: gray2];
     if (![Settings contrastDarkOnLight]) {
-        const gray = gray1; gray1 = gray2; gray2 = gray;
+        [gray1, gray2] = [gray2, gray1]; // "modern" swapping of variables
     }
-    colOptotypeFore = [CPColor colorWithWhite: gray1 alpha: 1];//console.info(colOptotypeFore);
-    colOptotypeBack = [CPColor colorWithWhite: gray2 alpha: 1];//console.info(colOptotypeBack);
+    colOptotypeFore = [MiscLight colorFromGreyBitStealed: gray1];//console.info(colOptotypeFore);
+    colOptotypeBack = [MiscLight colorFromGreyBitStealed: gray2];//console.info(colOptotypeBack);
+    //console.info(colOptotypeFore._cssString, colOptotypeBack._cssString);
 }
 
 

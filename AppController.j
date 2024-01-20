@@ -529,7 +529,8 @@ Created by mb on 2017-07-12.
     }
     //    console.log("Wperc ", contrastPercent, ", lgCSW ", contrastLogCSWeber, ", g1 ", gray1, ", g2 ", gray2);
     
-    const c1 = [CPColor colorWithWhite: gray1 alpha: 1], c2 = [CPColor colorWithWhite: gray2 alpha: 1];
+    //const c1 = [CPColor colorWithWhite: gray1 alpha: 1], c2 = [CPColor colorWithWhite: gray2 alpha: 1];
+    const c1 = [MiscLight colorFromGreyBitStealed: gray1], c2 = [MiscLight colorFromGreyBitStealed: gray2];
     [self setCheckContrastWeberFieldColor1: c1];   [self setCheckContrastWeberFieldColor2: c2];
     const actualMichelsonPerc = [MiscLight contrastMichelsonPercentFromColor1: c1 color2: c2];
     [self setCheckContrastActualMichelsonPercent: Math.round(actualMichelsonPerc * 10) / 10];

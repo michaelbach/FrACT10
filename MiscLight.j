@@ -145,4 +145,27 @@
     return [MiscLight contrastMichelsonPercentFromWeberPercent: [MiscLight contrastWeberPercentFromLogCSWeber: logCSWeber]];
 }
 
+
++ (CPColor) colorFromGreyBitStealed: (float) greyLevel { //console.info("calcColorFromGrey");
+    if ([Settings contrastBitStealing]) {
+        const gDiscrete = Math.floor(greyLevel * 256);
+        const fraction = greyLevel - gDiscrete / 256;
+        const fractionIdx = Math.floor(8 * fraction * 256);
+        let r = 0, g = 0, b = 0;
+        switch(fractionIdx) {
+            case 1: b = 1; break;
+            case 2: r = 1; break;
+            case 3: b = 1; r = 1; break;
+            case 4: g = 1; break;
+            case 5: b = 1; g = 1; break;
+            case 6: r = 1; g = 1; break;
+            case 7: b = 1; r = 1; g = 1; break;
+        }
+        //console.info(fractionIdx);
+        r = (gDiscrete + r) / 256; g = (gDiscrete + g) / 256; b = (gDiscrete + b) / 256;
+        return [CPColor colorWithRed: r green: g blue: b alpha: 1];
+    }
+    return [CPColor colorWithWhite: greyLevel alpha: 1]
+}
+
 @end

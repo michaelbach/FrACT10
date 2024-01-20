@@ -12,9 +12,9 @@ Globals.j
  Created on 2021-01-07
  */
 
-gVersionDateOfFrACT = "2024-01-18";
+gVersionDateOfFrACT = "2024-01-20";
 //gVersionStringOfFract = [[[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] infoDictionary] objectForKey:@"CPBundleVersion"]; Doesn't work, bug in Cappuccino, always returns 1.0
-gVersionStringOfFract = "1.0.5";
+gVersionStringOfFract = "1.0.6";
 gVersionOfExportFormat = "5";
 
 gDefaultDistanceInCM = 399;
@@ -38,7 +38,8 @@ tab = "\t";  crlf = "\n";
 /*
  #  History
 
-+ 2024-01-18 slight rewwording in GUI
++ 2024-01-20 first go at color bit stealing
++ 2024-01-18 slight rewording in GUI
 + 2024-01-16 fix more incompletely visible tooltips
 + 2023-11-30 FireFox→Firefox. Tried to make more tooltips visible, not fully successful.
 + 2023-11-11 fix tooltips for main buttons: parts missing, added empty line (Cappucino bug?)

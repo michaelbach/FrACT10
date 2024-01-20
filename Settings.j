@@ -155,7 +155,8 @@ Created by mb on July 15, 2015.
     [self setContrastShowFixMark: [self chckBool: [self contrastShowFixMark] def: YES set: set]];
     [self setContrastTimeoutFixmark: [self chckFlt: [self contrastTimeoutFixmark] def: 500 min: 20 max: 5000 set: set]];
     [self setContrastMaxLogCSWeber: [self chckFlt: [self contrastMaxLogCSWeber] def: 2.4 min: 1.5 max: 3 set: set]];
-    
+    [self setContrastBitStealing: [self chckBool: [self contrastBitStealing] def: NO set: set]];
+
     // Grating stuff
     [self setGratingCPD: [self chckFlt: [self gratingCPD] def: 2.0 min: 0.01 max: 18 set: set]];
     [self setIsGratingMasked: [self chckBool: [self isGratingMasked] def: NO set: set]];
@@ -843,6 +844,13 @@ Created by mb on July 15, 2015.
 }
 + (void) setGammaValue: (float) val {
     [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "gammaValue"];
+}
+
++ (float) contrastBitStealing {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "contrastBitStealing"];
+}
++ (void) setContrastBitStealing: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "contrastBitStealing"];
 }
 
 
