@@ -40,7 +40,7 @@
  Apply selected patch after "Are you sure" dialog
  */
 + (void) apply2: (int) p { //console.info("Presets>apply2");
-    const allPresets = ["StandardDefaults", "ULV", "ESU", "Testing", "ColorEquiluminance", "BCMatScheie"];
+    const allPresets = ["StandardDefaults", "ULV", "ESU", "Testing", "ColorEquiluminance", "BCMatScheie", "CNSatFreiburg"];
     const selectedPresetName = allPresets[p];
     [self performSelector: CPSelectorFromString("apply" + selectedPresetName)];
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil]; // this synchronises the color settings between userdefaults & AppController
@@ -154,6 +154,21 @@
     [Settings setGratingCPDmin: 1];
     [Settings setGratingCPDmax: 7];
 }
+
+
++ (void) applyCNSatFreiburg {
+    [Settings setDefaults];
+    // general pane
+    [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
+    [Settings setMobileOrientation: NO];
+    [Settings setResults2clipboard: 1];
+    [Settings setCalBarLengthInMM: 189];  [Settings setDistanceInCM: 200];
+    [Settings setTestOnFive: 2];
+    
+    // acuity pane
+    // gratings pane
+}
+
 
 
 @end
