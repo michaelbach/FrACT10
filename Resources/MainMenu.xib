@@ -40,7 +40,7 @@
                         <rect key="frame" x="12" y="521" width="776" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
-                    <button tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWr-KV-CRJ" customClass="MDBButton">
+                    <button tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWr-KV-CRJ" customClass="MDBButton">
                         <rect key="frame" x="191" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Acuity assessment using Landolt Cs. 
@@ -54,7 +54,7 @@ Shortcut: C 
                             <action selector="buttonDoTest_action:" target="450" id="RTQ-4L-1gq"/>
                         </connections>
                     </button>
-                    <button tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Phl-6Z-YpU" customClass="MDBButton">
+                    <button tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Phl-6Z-YpU" customClass="MDBButton">
                         <rect key="frame" x="350" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Acuity assessment using tumbling Es.  Shortcut: E
@@ -67,7 +67,7 @@ Shortcut: C 
                             <action selector="buttonDoTest_action:" target="450" id="uK9-3u-byo"/>
                         </connections>
                     </button>
-                    <button tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6e2-Sj-gkY" customClass="MDBButton">
+                    <button tag="4" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6e2-Sj-gkY" customClass="MDBButton">
                         <rect key="frame" x="508" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Acuity assessment using TAO (The Auckland Optotypes).
@@ -122,7 +122,7 @@ Shortcut: A
                         <rect key="frame" x="12" y="-1" width="776" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
-                    <button tag="4" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oB-kn-EbO" customClass="MDBButton">
+                    <button tag="5" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oB-kn-EbO" customClass="MDBButton">
                         <rect key="frame" x="666" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Hyperacuity (Vernier) assessment.
@@ -161,7 +161,7 @@ Shortcut: V      
                             <action selector="buttonExport_action:" target="450" id="aIb-Nf-ia3"/>
                         </connections>
                     </button>
-                    <button tag="5" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rNE-r4-ESi" customClass="MDBButton">
+                    <button tag="6" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rNE-r4-ESi" customClass="MDBButton">
                         <rect key="frame" x="33" y="294" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Contrast assessment using Sloan Letters.  Shortcut: 1 
@@ -174,7 +174,7 @@ Shortcut: V      
                             <action selector="buttonDoTest_action:" target="450" id="xsc-1M-0UT"/>
                         </connections>
                     </button>
-                    <button tag="7" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0h-oh-O7H" customClass="MDBButton">
+                    <button tag="8" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0h-oh-O7H" customClass="MDBButton">
                         <rect key="frame" x="350" y="294" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Contrast assessment using Tumbling E.  Shortcut: 3
@@ -187,7 +187,7 @@ Shortcut: V      
                             <action selector="buttonDoTest_action:" target="450" id="XMH-r3-u8z"/>
                         </connections>
                     </button>
-                    <button tag="6" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="teG-PN-Gq7" customClass="MDBButton">
+                    <button tag="7" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="teG-PN-Gq7" customClass="MDBButton">
                         <rect key="frame" x="191" y="294" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Contrast assessment using Landolt C.  Shortcut: 2
@@ -241,12 +241,12 @@ Shortcut: f
                             <action selector="buttonAbout_action:" target="450" id="yEc-1I-cem"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jHx-aa-MPC" customClass="MDBButton">
+                    <button tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jHx-aa-MPC" customClass="MDBButton">
                         <rect key="frame" x="33" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Acuity assessment using Sloan Letters. Shortcut: L
  </string>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityLett" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="xw1-er-aQN">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityLett" imagePosition="overlaps" alignment="center" tag="1" imageScaling="proportionallyDown" inset="2" id="xw1-er-aQN">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -267,7 +267,7 @@ Shortcuts: "Q", "X" or "-" (Minus)</string>
                             <action selector="buttonDoExit_action:" target="450" id="t4f-l7-7Lm"/>
                         </connections>
                     </button>
-                    <button tag="9" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-y6-Eca" customClass="MDBButton">
+                    <button tag="10" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-y6-Eca" customClass="MDBButton">
                         <rect key="frame" x="662" y="294" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">"Line-by-line": Line of optypes, adjustable acuity grade.
@@ -293,7 +293,7 @@ Shortcut: 4
                             <binding destination="450" name="value" keyPath="resultString" id="R5j-xh-4nd"/>
                         </connections>
                     </textField>
-                    <button tag="8" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aRI-1u-jl3" customClass="MDBButton">
+                    <button tag="9" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aRI-1u-jl3" customClass="MDBButton">
                         <rect key="frame" x="508" y="294" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Contrast assessment using gratings. Settings&gt;Contrast to set spatial frequency and diameter. Shortcut: g
@@ -2927,11 +2927,11 @@ CQ
                             </tabViewItem>
                             <tabViewItem label=" Misc " identifier=" MiscTab" id="y49-Ly-CCM">
                                 <view key="view" id="fn7-9w-6zV">
-                                    <rect key="frame" x="10" y="33" width="760" height="489"/>
+                                    <rect key="frame" x="10" y="33" width="760" height="493"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="a5R-k1-Tfd">
-                                            <rect key="frame" x="14" y="398" width="113" height="58"/>
+                                            <rect key="frame" x="14" y="402" width="113" height="58"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="VfV-xS-jWR">
                                                 <rect key="frame" x="4" y="5" width="105" height="50"/>
@@ -2939,7 +2939,7 @@ CQ
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lz5-Nz-CsQ">
-                                            <rect key="frame" x="26" y="442" width="93" height="22"/>
+                                            <rect key="frame" x="26" y="446" width="93" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Windowcolor" bezelStyle="round" id="eky-z1-NOZ">
                                                 <font key="font" metaFont="system"/>
@@ -2948,7 +2948,7 @@ CQ
                                             </textFieldCell>
                                         </textField>
                                         <colorWell toolTip="The background color of the entire window can be selected here." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F1l-7N-EPO">
-                                            <rect key="frame" x="40" y="412" width="61" height="23"/>
+                                            <rect key="frame" x="40" y="416" width="61" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -2956,7 +2956,7 @@ CQ
                                             </connections>
                                         </colorWell>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="P7G-M5-Pjw">
-                                            <rect key="frame" x="14" y="288" width="239" height="58"/>
+                                            <rect key="frame" x="14" y="292" width="239" height="58"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="Ye2-rS-NGY">
                                                 <rect key="frame" x="4" y="5" width="231" height="50"/>
@@ -3001,7 +3001,7 @@ CQ
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Upt-gW-HXb">
-                                            <rect key="frame" x="26" y="332" width="93" height="22"/>
+                                            <rect key="frame" x="26" y="336" width="93" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Noise" bezelStyle="round" id="lSm-aI-d2L">
                                                 <font key="font" metaFont="system"/>
@@ -3017,6 +3017,18 @@ CQ
                             <binding destination="450" name="selectedIndex" keyPath="settingsPaneTabViewSelectedIndex" id="YRW-UH-Yg8"/>
                         </connections>
                     </tabView>
+                    <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N8d-dZ-cuN">
+                        <rect key="frame" x="197" y="19" width="133" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="s7j-e4-6de">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="underPageBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.presetName" id="S9j-xO-fXG"/>
+                        </connections>
+                    </textField>
                 </subviews>
             </view>
             <point key="canvasLocation" x="-101" y="759"/>

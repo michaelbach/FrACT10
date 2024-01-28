@@ -49,6 +49,7 @@ Created by mb on July 15, 2015.
         [self setWindowBackgroundColor: [CPColor colorWithRed: 1 green: 1 blue: 0.9 alpha: 1]];
         [self setGratingForeColor: [CPColor lightGrayColor]];
         [self setGratingBackColor: [CPColor darkGrayColor]];
+        [self setPresetName: "Standard Defaults"];
     }
 
     // needs to before setNAlternativesIndex 'cause oblique might force to index=0
@@ -88,8 +89,7 @@ Created by mb on July 15, 2015.
     [self setTimeoutDisplaySeconds: [self chckFlt: [self timeoutDisplaySeconds] def: 30 min: 0.1 max: 9999 set: set]];
     [self setMaskTimeOnResponseInMS: [self chckFlt: [self timeoutDisplaySeconds] def: 0 min: 0 max: 9999 set: set]];
 
-    // 0: no, 1: final only, 2: full history
-    [self setResults2clipboard: [self chckInt: [self results2clipboard] def: 0 min: 0 max: 2 set: set]];
+    [self setResults2clipboard: [self chckInt: [self results2clipboard] def: kResults2ClipNone min: kResults2ClipNone max: kResults2ClipFullHistory set: set]];
     [self setResults2clipboardSilent: [self chckBool: [self results2clipboardSilent] def: NO set: set]];
 
     if (set) {
@@ -506,6 +506,14 @@ Created by mb on July 15, 2015.
 }
 + (void) setNoiseContrast: (int) val {
     [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "noiseContrast"];
+}
+
+
++ (CPString) presetName {
+    return [[CPUserDefaults standardUserDefaults] stringForKey: "presetName"];
+}
++ (void) setPresetName: (CPString) val {
+    [[CPUserDefaults standardUserDefaults] setObject: val forKey: "presetName"];
 }
 
 

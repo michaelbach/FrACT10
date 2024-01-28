@@ -12,6 +12,7 @@
  2022-05-20  begun
  */
 @implementation Presets: CPObject {
+    CPString presetNameInGUI;
 }
 
 
@@ -24,8 +25,8 @@
         console.info("selectedPresetIndex == 0");
         return;
     }
-    const selectedPresetName = [sender itemTitleAtIndex: selectedPresetIndex];
-    const messageText = "Really all Settings to “" + selectedPresetName + "” ?"
+    presetNameInGUI = [sender itemTitleAtIndex: selectedPresetIndex];
+    const messageText = "Really all Settings to “" + presetNameInGUI + "” ?";
     const alert1 = [CPAlert alertWithMessageText: messageText
                              defaultButton: "NO" alternateButton: "YES" otherButton: nil
                  informativeTextWithFormat: "Many Settings might change. You should know what you are doing here. Luckily, you can always return to defaults in Settings."];
@@ -34,7 +35,7 @@
         if (returnCode==1) { // alternateButton
             [self apply2: selectedPresetIndex - 1];
         }
-    }]
+    }];
 }
 /**
  Apply selected patch after "Are you sure" dialog
@@ -49,6 +50,7 @@
                              defaultButton: "OK" alternateButton: nil otherButton: nil
                  informativeTextWithFormat: ""];
     [alert2 runModal];
+    [Settings setPresetName: presetNameInGUI];
 }
 
 
@@ -94,7 +96,7 @@
     
     [Settings setAcuityFormatLogMAR: NO];
     [Settings setDecimalMarkChar: ","];
-    [Settings setResults2clipboard: 0];
+    [Settings setResults2clipboard: kResults2ClipNone];
     
     //displayIncompleteRuns = true; not implemented yet
     [Settings setTrialInfoFontSize: 24];
@@ -136,7 +138,7 @@
     [Settings setTimeoutResponseSeconds: 120]; [Settings setTimeoutDisplaySeconds: 120];
     [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
     [Settings setMobileOrientation: NO];
-    [Settings setResults2clipboard: 2];
+    [Settings setResults2clipboard: kResults2ClipFullHistory];
     [Settings setAuditoryFeedback: 0];
     [Settings setCalBarLengthInMM: 189];  [Settings setDistanceInCM: 100];
     // acuity pane
@@ -161,7 +163,7 @@
     // general pane
     [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
     [Settings setMobileOrientation: NO];
-    [Settings setResults2clipboard: 1];
+    [Settings setResults2clipboard: kResults2ClipFinalOnly];
     [Settings setDistanceInCM: 200];
     [Settings setTestOnFive: kTestAcuityLett];
     

@@ -38,6 +38,8 @@ tab = "\t";  crlf = "\n";
 /*
  #  History
 
++ 2024-01-28 add preset text name in GUI, fix button relation to started test (via tag)
++ 2024-01-28 results2clipboard with constants rather than numbers
 + 2024-01-28 all back to this morning, with consistent numbering
 + 2024-01-28 test numbering consistent: 0 also in the constant list (hierarchyC.), several changes ensued
 + 2024-01-24 add preset "CNSatFreiburg"

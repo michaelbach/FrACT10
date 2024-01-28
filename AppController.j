@@ -304,8 +304,8 @@ Created by mb on 2017-07-12.
     temp = currentTestResultsHistoryExportString.replace(/,/g, ".");
     localStorage.setItem(gFilename4ResultsHistoryStorage, temp);
     
-    if ([Settings results2clipboard] > 0) {
-        if ([Settings results2clipboard] == 2) {
+    if ([Settings results2clipboard] > kResults2ClipNone) {
+        if ([Settings results2clipboard] == kResults2ClipFullHistory) {
             currentTestResultExportString += currentTestResultsHistoryExportString;
         }
         if ([Settings results2clipboardSilent]) {
