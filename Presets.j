@@ -85,7 +85,7 @@
     
     [[CPUserDefaults standardUserDefaults] setInteger: 1 forKey: "nAlternativesIndex"]; // 4 alternatives
     [Settings setNTrials04: 18];
-    [Settings setTestOnFive: 2];
+    [Settings setTestOnFive: kTestAcuityC];
     
     [Settings setTimeoutResponseSeconds: 999]; [Settings setTimeoutDisplaySeconds: 999];
     
@@ -162,8 +162,8 @@
     [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
     [Settings setMobileOrientation: NO];
     [Settings setResults2clipboard: 1];
-    [Settings setCalBarLengthInMM: 189];  [Settings setDistanceInCM: 200];
-    [Settings setTestOnFive: 2];
+    [Settings setDistanceInCM: 200];
+    [Settings setTestOnFive: kTestAcuityLett];
     
     // acuity pane
     // gratings pane

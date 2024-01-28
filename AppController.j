@@ -118,7 +118,7 @@ Created by mb on 2017-07-12.
     const allButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];
     for (const b of allButtons)  [Misc makeFrameSquareFromWidth: b];
     
-    allTestControllers = [FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine];
+    allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine];
     
     allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel, creditcardPanel];
     for (const p of allPanels) {
@@ -363,17 +363,9 @@ Created by mb on 2017-07-12.
         case "4":
             [self runFractControllerTest: kTestAcuityLineByLine];  break;
         case "5" :
-            switch([Settings testOnFive]) { //0: ignore
-                case 1: [self runFractControllerTest: kTestAcuityLett];  break;
-                case 2: [self runFractControllerTest: kTestAcuityC];  break;
-                case 3: [self runFractControllerTest: kTestAcuityE];  break;
-                case 4: [self runFractControllerTest: kTestAcuityTAO];  break;
-                case 5: [self runFractControllerTest: kTestAcuityVernier];  break;
-                case 6: [self runFractControllerTest: kTestContrastLett];  break;
-                case 7: [self runFractControllerTest: kTestContrastC];  break;
-                case 8: [self runFractControllerTest: kTestContrastE];  break;
-                case 9: [self runFractControllerTest: kTestAcuityLineByLine];  break;
-            } break;
+            const sto5 = [Settings testOnFive];
+            if (sto5 > 0) [self runFractControllerTest: sto5];
+            break;
         case "R": [Settings setAutoRunIndex: 2];  break;
             //case "∆": [self runtimeError_action: nil];  break;
         default:

@@ -12,7 +12,7 @@ Globals.j
  Created on 2021-01-07
  */
 
-gVersionDateOfFrACT = "2024-01-24";
+gVersionDateOfFrACT = "2024-01-28";
 //gVersionStringOfFract = [[[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] infoDictionary] objectForKey:@"CPBundleVersion"]; Doesn't work, bug in Cappuccino, always returns 1.0
 gVersionStringOfFract = "1.0.6";
 gVersionOfExportFormat = "5";
@@ -38,6 +38,7 @@ tab = "\t";  crlf = "\n";
 /*
  #  History
 
++ 2024-01-28 test numbering consistent: 0 also in the constant list (hierarchyC.), several changes ensued
 + 2024-01-24 add preset "CNSatFreiburg"
 + 2024-01-20 first go at color bit stealing
 + 2024-01-18 slight rewording in GUI

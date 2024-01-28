@@ -18,7 +18,8 @@ HierarchyController.j
  Created on 18.07.2017
  */
 @typedef TestIDType
-kTestAcuityLett = 0; kTestAcuityC = 1; kTestAcuityE = 2; kTestAcuityTAO = 3; kTestAcuityVernier = 4; kTestContrastLett = 5; kTestContrastC = 6; kTestContrastE = 7, kTestContrastG = 8, kTestAcuityLineByLine = 9;
+kTestNone = 0; kTestAcuityLett = 1; kTestAcuityC = 2; kTestAcuityE = 3; kTestAcuityTAO = 4; kTestAcuityVernier = 5; kTestContrastLett = 6; kTestContrastC = 7; kTestContrastE = 8;
+    kTestContrastG = 9; kTestAcuityLineByLine = 10;
 
 @implementation HierarchyController: CPWindowController {
     HierarchyController parentController @accessors;

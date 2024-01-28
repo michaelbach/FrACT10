@@ -66,7 +66,7 @@ Created by mb on July 15, 2015.
     [self setResponseInfoAtStart: [self chckBool: [self responseInfoAtStart] def: YES set: set]];
     [self setEnableTouchControls: [self chckBool: [self enableTouchControls] def: YES set: set]];
     
-    [self setTestOnFive: [self chckInt: [self testOnFive] def: 1 min: 0 max: 9 set: set]]; // 1: Sloan Letters
+    [self setTestOnFive: [self chckInt: [self testOnFive] def: kTestAcuityLett min: kTestNone max: kTestAcuityLineByLine set: set]]; // 1: Sloan Letters
 
     [self setNOfRuns2Recall: [self chckInt: [self nOfRuns2Recall] def: 0 min: 0 max: 100 set: set]];
 
