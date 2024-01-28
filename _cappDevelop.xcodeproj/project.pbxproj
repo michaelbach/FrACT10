@@ -12,7 +12,6 @@
 		8A061F5E2A2737FC006B5CAD /* AppController.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6F8642B1B93603A5A204CC32 /* AppController.j */; };
 		8A061F5F2A273800006B5CAD /* FractController.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9ADC4C46A65D7794540F1808 /* FractController.j */; };
 		8A061F602A273809006B5CAD /* Globals.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7F842D1A68D8C133FA29CF9 /* Globals.j */; };
-		8A3384C72AA11B3B000325D0 /* Info.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A3384C62AA11B3B000325D0 /* Info.plist */; };
 		8A48269329CF4F260035607A /* MiscLight.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A48269229CF4F260035607A /* MiscLight.j */; };
 		8A48269529CF58F30035607A /* MiscSpace.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A48269429CF58F30035607A /* MiscSpace.j */; };
 		8A891B7E2A5585AE00ACEFDF /* MDBDispersionEstimation.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A891B7D2A5585AE00ACEFDF /* MDBDispersionEstimation.j */; };
@@ -73,7 +72,6 @@
 				8AAB43822A55825500825E47 /* FractControllerAcuityVernier.j in CopyFiles */,
 				8AAB437D2A55824900825E47 /* FractControllerContrastLett.j in CopyFiles */,
 				8A48269529CF58F30035607A /* MiscSpace.j in CopyFiles */,
-				8A3384C72AA11B3B000325D0 /* Info.plist in CopyFiles */,
 				8AAB43892A55826800825E47 /* Misc.j in CopyFiles */,
 				8AAB43912A55826800825E47 /* RewardsController.j in CopyFiles */,
 				8A061F5A2A273350006B5CAD /* webAppServiceWorker.js in CopyFiles */,
@@ -141,13 +139,12 @@
 		80FE46B397440BDDC8F91389 /* FractControllerAcuityLineByLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractControllerAcuityLineByLine.h; path = .XcodeSupport/FractControllerAcuityLineByLine.h; sourceTree = SOURCE_ROOT; };
 		83704BCBB6703D9E573D12C0 /* Presets.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Presets.m; path = .XcodeSupport/Presets.m; sourceTree = SOURCE_ROOT; };
 		856F4B1AA111E0F21404D2EB /* AppController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppController.m; path = .XcodeSupport/AppController.m; sourceTree = SOURCE_ROOT; };
-		8A061F592A273350006B5CAD /* webAppServiceWorker.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = webAppServiceWorker.js; sourceTree = SOURCE_ROOT; };
-		8A3384C62AA11B3B000325D0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
-		8A48269229CF4F260035607A /* MiscLight.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MiscLight.j; sourceTree = SOURCE_ROOT; };
-		8A48269429CF58F30035607A /* MiscSpace.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MiscSpace.j; sourceTree = SOURCE_ROOT; };
+		8A061F592A273350006B5CAD /* webAppServiceWorker.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = webAppServiceWorker.js; sourceTree = "<group>"; };
+		8A48269229CF4F260035607A /* MiscLight.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MiscLight.j; sourceTree = "<group>"; };
+		8A48269429CF58F30035607A /* MiscSpace.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MiscSpace.j; sourceTree = "<group>"; };
 		8A574A8F29FAE30F00D28C1B /* FractControllerContrastG.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = FractControllerContrastG.j; sourceTree = SOURCE_ROOT; };
 		8A891B7D2A5585AE00ACEFDF /* MDBDispersionEstimation.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MDBDispersionEstimation.j; sourceTree = SOURCE_ROOT; };
-		8A8BFD81283837D800DD61BB /* Presets.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets.j; sourceTree = SOURCE_ROOT; };
+		8A8BFD81283837D800DD61BB /* Presets.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets.j; sourceTree = "<group>"; };
 		8ABDA6D4291A501000D68E3C /* capp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = capp; sourceTree = BUILT_PRODUCTS_DIR; };
 		90444B1A970FC75C0FF93DB7 /* FractControllerContrastE.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerContrastE.j; sourceTree = SOURCE_ROOT; };
 		91844612BA04B04966D2045C /* AlternativesGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AlternativesGenerator.h; path = .XcodeSupport/AlternativesGenerator.h; sourceTree = SOURCE_ROOT; };
@@ -186,7 +183,7 @@
 		DED842598DD16F0DDDE21618 /* AlternativesGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AlternativesGenerator.m; path = .XcodeSupport/AlternativesGenerator.m; sourceTree = SOURCE_ROOT; };
 		DEF24C8DA94A1A3BC22D7F49 /* AppController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = .XcodeSupport/AppController.h; sourceTree = SOURCE_ROOT; };
 		E0D243D6B04D4B913A7D62D3 /* MDBSimplestatistics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MDBSimplestatistics.h; path = .XcodeSupport/MDBSimplestatistics.h; sourceTree = SOURCE_ROOT; };
-		E164FE29172185F500263CE3 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = SOURCE_ROOT; };
+		E164FE29172185F500263CE3 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
 		E3A24F13A6BDD7C5E2A0466B /* FractControllerAcuityL.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerAcuityL.j; sourceTree = SOURCE_ROOT; };
 		E3DF42A2891D0F2FB72E5C73 /* Globals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Globals.h; path = .XcodeSupport/Globals.h; sourceTree = SOURCE_ROOT; };
 		E3F54729979408ABEB6C731C /* RewardsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RewardsController.h; path = .XcodeSupport/RewardsController.h; sourceTree = SOURCE_ROOT; };
@@ -247,7 +244,7 @@
 				8A061F592A273350006B5CAD /* webAppServiceWorker.js */,
 			);
 			name = "Cappuccino Source";
-			sourceTree = SOURCE_ROOT;
+			sourceTree = "<group>";
 		};
 		8ABDA6D5291A501000D68E3C /* Products */ = {
 			isa = PBXGroup;
@@ -330,12 +327,11 @@
 				17214E91B17E0D03AD1D26FA /* TrialHistoryController.m */,
 			);
 			name = "Cocoa Classes";
-			sourceTree = SOURCE_ROOT;
+			sourceTree = "<group>";
 		};
 		E164FE221721857400263CE3 = {
 			isa = PBXGroup;
 			children = (
-				8A3384C62AA11B3B000325D0 /* Info.plist */,
 				E164FE29172185F500263CE3 /* Resources */,
 				A9994B45B2AC6ED08434DFD6 /* Cocoa Classes */,
 				094343208F2D20D343755E34 /* Cappuccino Source */,
@@ -368,8 +364,7 @@
 		E164FE231721857400263CE3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1430;
-				ORGANIZATIONNAME = de.michaelbach;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					8ABDA6D3291A501000D68E3C = {
 						CreatedOnToolsVersion = 14.1;
@@ -412,7 +407,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "# logs _every_ step in build log, no more needed\nset -x\n# enable access to nib2cib… (Cappuccino tools) in child shell\nexport PATH=\"$HOME/.npm/bin:$PATH\"\n# cd to project source root\ncd $SRCROOT\n# now all set to run the XcodeCapp-like script\n#./_make-XcodeCappSimile.sh # old\n./_make-XcodeCapp.sh\n";
+			shellScript = "# logs _every_ step in build log, no more needed\n#set -x\n# enable access to nib2cib… (Cappuccino tools) in child shell\nexport PATH=\"$HOME/.npm/bin:$PATH\"\n# cd to project source root\ncd $SRCROOT\n# now all set to run the XcodeCapp-like script\n./_make-XcodeCappSimile.sh\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -421,33 +416,6 @@
 		8ABDA6DD291A534900D68E3C /* CAPP */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 			};
 			name = CAPP;
@@ -505,12 +473,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = de.michaelbach.FrACT10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
