@@ -38,6 +38,7 @@ tab = "\t";  crlf = "\n";
 /*
  #  History
 
++ 2024-01-28 all back to this morning, with consistent numbering
 + 2024-01-28 test numbering consistent: 0 also in the constant list (hierarchyC.), several changes ensued
 + 2024-01-24 add preset "CNSatFreiburg"
 + 2024-01-20 first go at color bit stealing

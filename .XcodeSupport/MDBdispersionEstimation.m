@@ -1,4 +1,4 @@
-#import "MDBdispersionEstimation.h"
+#import "MDBDispersionEstimation.h"
 
 @implementation MDBDispersionEstimation
 @end
