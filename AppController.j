@@ -145,7 +145,7 @@ Created by mb on 2017-07-12.
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(buttonExportEnableYESorNO:) name: "buttonExportEnableYESorNO" object: nil];
     [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(copyColorsFromSettings:) name: "copyColorsFromSettings" object: nil];
-    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:CPUserDefaultsDidChangeNotification object:nil];
+    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:CPUserDefaultsDidChangeNotification object: nil];
     
     [self radioButtonsAcuityBwOrColor_action: null];
     [self buttonCheckContrast_action: null];

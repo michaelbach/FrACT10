@@ -12,7 +12,7 @@ Globals.j
  Created on 2021-01-07
  */
 
-gVersionDateOfFrACT = "2024-01-28";
+gVersionDateOfFrACT = "2024-01-30";
 //gVersionStringOfFract = [[[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] infoDictionary] objectForKey:@"CPBundleVersion"]; Doesn't work, bug in Cappuccino, always returns 1.0
 gVersionStringOfFract = "1.0.6";
 gVersionOfExportFormat = "5";
@@ -38,6 +38,7 @@ tab = "\t";  crlf = "\n";
 /*
  #  History
 
++ 2024-01-30 begin implementation of "specialBcm"
 + 2024-01-28 add preset text name in GUI, fix button relation to started test (via tag)
 + 2024-01-28 results2clipboard with constants rather than numbers
 + 2024-01-28 all back to this morning, with consistent numbering

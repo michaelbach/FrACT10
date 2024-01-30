@@ -84,7 +84,7 @@ Created by Bach on 2020-09-02
 
 
 - (void) runEnd { //console.info("FractControllerContrast>runEnd");
-    if (iTrial < nTrials) { //premature end
+    if ((iTrial < nTrials) && (currentTestID != kTestContrastG)) { //premature end
         [self setResultString: @"Aborted"];
     } else {
         [self setResultString: [self contrastComposeResultString]];

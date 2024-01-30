@@ -20,8 +20,10 @@ HierarchyController.j
 @typedef TestIDType
 kTestNone = 0; kTestAcuityLett = 1; kTestAcuityC = 2; kTestAcuityE = 3; kTestAcuityTAO = 4; kTestAcuityVernier = 5; kTestContrastLett = 6; kTestContrastC = 7; kTestContrastE = 8;
     kTestContrastG = 9; kTestAcuityLineByLine = 10;
-@typedef ResultsClipboardChoiceType
+
+@typedef Results2ClipChoiceType
 kResults2ClipNone = 0; kResults2ClipFinalOnly = 1; kResults2ClipFullHistory = 2;
+
 
 @implementation HierarchyController: CPWindowController {
     HierarchyController parentController @accessors;

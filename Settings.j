@@ -169,6 +169,10 @@ Created by mb on July 15, 2015.
     [self setGratingCPDmax: [self chckFlt: [self gratingCPDmax] def: 30 min: 0.01 max: 60 set: set]];
     [self setGratingContrastMichelsonPercent: [self chckFlt: [self gratingContrastMichelsonPercent] def: 95 min: 0.3 max: 99 set: set]];
 
+    // specialBcm
+    [self setSpecialBcmOn: [self chckBool: [self specialBcmOn] def: NO set: set]];
+
+    
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -954,6 +958,13 @@ Created by mb on July 15, 2015.
 }
 
 
+// specialBcm
++ (BOOL) specialBcmOn {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "specialBcmOn"];
+}
++ (void) setSpecialBcmOn: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "specialBcmOn"];
+}
 
 
 

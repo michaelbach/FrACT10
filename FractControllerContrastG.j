@@ -12,6 +12,40 @@
 @implementation FractControllerContrastG: FractControllerContrast {
     float periodInPixel;
     BOOL isGratingColor, isErrorDiffusion;
+    float specialBcmFreq;
+    int specialBcmCountAtStep, specialBcmCountAtStepCorrect;
+}
+
+// Method of limits
+const specialBcmStepsize = 0.1;
+- (void) modifyDeviceStimulus { //console.info("FractControllerContrastG>modifyDeviceStimulus");
+    responseWasCorrectCumulative = responseWasCorrectCumulative && responseWasCorrect;
+    if (![Settings specialBcmOn]) return;
+    if (iTrial == 1) {
+        nTrials = 200;
+        alternativesGenerator = nil;
+        alternativesGenerator = [[AlternativesGenerator alloc] initWithNumAlternatives: 2 andNTrials: nTrials obliqueOnly: YES];
+        trialHistoryController = nil;
+        trialHistoryController = [[TrialHistoryController alloc] initWithNumTrials: nTrials];
+
+        specialBcmFreq = [Settings gratingCPDmin];
+        specialBcmCountAtStep = 1;
+        specialBcmCountAtStepCorrect = 0;
+
+    } else {
+        if (responseWasCorrect) specialBcmCountAtStepCorrect++;
+        specialBcmCountAtStep++;
+        if (specialBcmCountAtStep > 10) {
+            if (specialBcmCountAtStepCorrect > 7) {
+                specialBcmFreq *= Math.pow(10, specialBcmStepsize);
+                specialBcmCountAtStep = 1;
+                specialBcmCountAtStepCorrect = 0;
+            } else {
+                nTrials = iTrial;
+                iTrial = 999;
+            }
+         }
+     }
 }
 
 
@@ -91,6 +125,9 @@
             } else { // acuity_grating
                 contrastMichelsonPercent = [Settings gratingContrastMichelsonPercent];
                 spatialFreqCPD = [self freqFromThresholderunits: stimStrengthInThresholderUnits];
+                if ([Settings specialBcmOn]) {
+                    spatialFreqCPD = specialBcmFreq;
+                }
             }
             periodInPixel = Math.max([MiscSpace periodInPixelFromSpatialFrequency: spatialFreqCPD], 2);
             let dir = [alternativesGenerator currentAlternative];
@@ -163,7 +200,9 @@
         contrastMichelsonPercent = [MiscLight contrastMichelsonPercentFromLogCSWeber: stimStrengthInDeviceunits];
         spatialFreqCPD = [Settings gratingCPD];
     } else { // acuity_grating
-        spatialFreqCPD = [self freqFromThresholderunits: stimStrengthInThresholderUnits];
+        if (![Settings specialBcmOn]) {
+            spatialFreqCPD = [self freqFromThresholderunits: stimStrengthInThresholderUnits];
+        }
         contrastMichelsonPercent = [Settings gratingContrastMichelsonPercent];
     }
 /* needs work for frequency sweep

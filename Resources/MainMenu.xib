@@ -115,7 +115,7 @@ Shortcut: A
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
                     <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Oxi-an-PcJ">
-                        <rect key="frame" x="12" y="229" width="776" height="5"/>
+                        <rect key="frame" x="12" y="228" width="776" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
                     <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="RYj-oG-Hiz">
@@ -2407,11 +2407,11 @@ No money transfer involved, just for size!     </string>
                             </tabViewItem>
                             <tabViewItem label="Gratings" identifier="GratingsTab" id="0gq-mI-b5K">
                                 <view key="view" id="Td8-CT-9rf">
-                                    <rect key="frame" x="10" y="33" width="760" height="489"/>
+                                    <rect key="frame" x="10" y="33" width="760" height="493"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button toolTip="if checked, the 12th, 18th, 24th… trial will have an “easy” optotype for motivation" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gdj-N6-flx">
-                                            <rect key="frame" x="15" y="431" width="165" height="35"/>
+                                            <rect key="frame" x="15" y="435" width="165" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Occasional ‘easy trials’" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="C95-fW-8a1">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2422,7 +2422,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </button>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gY0-Kn-fAg">
-                                            <rect key="frame" x="434" y="130" width="4" height="16"/>
+                                            <rect key="frame" x="434" y="134" width="4" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" id="Qhl-ms-Dj8">
                                                 <font key="font" metaFont="system"/>
@@ -2431,7 +2431,7 @@ No money transfer involved, just for size!     </string>
                                             </textFieldCell>
                                         </textField>
                                         <textField toolTip="Duration the brief blue fixation star is visible." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5wI-LE-Ld6">
-                                            <rect key="frame" x="178" y="389" width="45" height="21"/>
+                                            <rect key="frame" x="178" y="393" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="zoH-ba-UrM">
                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="z5r-QG-ZD4"/>
@@ -2446,7 +2446,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </textField>
                                         <textField toolTip="Duration the brief blue fixation star is visible." focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hZM-uL-nCM">
-                                            <rect key="frame" x="229" y="390" width="88" height="16"/>
+                                            <rect key="frame" x="229" y="394" width="88" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Duration [ms]" id="UGE-Cp-3gm">
                                                 <font key="font" metaFont="system"/>
@@ -2455,7 +2455,7 @@ No money transfer involved, just for size!     </string>
                                             </textFieldCell>
                                         </textField>
                                         <button toolTip="lets a blue star appear before grating; otherwise unclear if something has happened at all. " fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZzJ-Vk-cFB">
-                                            <rect key="frame" x="15" y="382" width="162" height="35"/>
+                                            <rect key="frame" x="15" y="386" width="162" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Show fixation mark " bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Ls9-Nh-jv8">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2466,7 +2466,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fbu-h6-ePZ">
-                                            <rect key="frame" x="15" y="294" width="162" height="35"/>
+                                            <rect key="frame" x="15" y="298" width="162" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Only allows oblique, not hor/vertical gratings. Only works if you also set the number of orientations to 2 (right next to this). </string>
                                             <buttonCell key="cell" type="check" title="Oblique only" bezelStyle="regularSquare" imagePosition="left" inset="2" id="KpO-hF-P4I">
@@ -2481,11 +2481,11 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </button>
                                         <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="itu-xS-0Lk">
-                                            <rect key="frame" x="9" y="224" width="696" height="5"/>
+                                            <rect key="frame" x="9" y="228" width="696" height="5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </box>
                                         <textField toolTip="Diameter of the circular grating patch." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LmQ-Fz-Lv8">
-                                            <rect key="frame" x="178" y="345" width="45" height="21"/>
+                                            <rect key="frame" x="178" y="349" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" id="zHM-jD-mTU">
                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="N8N-Lo-XLR"/>
@@ -2500,7 +2500,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </textField>
                                         <textField toolTip="Diameter of the circular grating patch." focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pvM-K3-tHf">
-                                            <rect key="frame" x="229" y="346" width="99" height="16"/>
+                                            <rect key="frame" x="229" y="350" width="99" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title=" Diameter [deg]" id="yVa-cn-gFR">
                                                 <font key="font" metaFont="system"/>
@@ -2509,7 +2509,7 @@ No money transfer involved, just for size!     </string>
                                             </textFieldCell>
                                         </textField>
                                         <button toolTip="If checked, very low contrast gratings are better defined by using &quot;error diffusion&quot;, akin to dithering." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YfI-9f-dKI">
-                                            <rect key="frame" x="176" y="439" width="140" height="18"/>
+                                            <rect key="frame" x="176" y="443" width="140" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Use error diffusion" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="N3X-Gw-gcK">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2520,7 +2520,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </button>
                                         <popUpButton toolTip="Switches between the two alternatives below. " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8er-Ta-td0" userLabel="what2sweep">
-                                            <rect key="frame" x="165" y="176" width="386" height="25"/>
+                                            <rect key="frame" x="165" y="180" width="386" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="Contrast" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="grk-FJ-Z1K" id="yjR-qI-kBp" userLabel="what2sweep">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -2541,7 +2541,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </popUpButton>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UvB-8w-Mlb">
-                                            <rect key="frame" x="66" y="179" width="113" height="16"/>
+                                            <rect key="frame" x="66" y="183" width="113" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="left" title="What to sweep:" id="1OV-35-QTH">
                                                 <font key="font" metaFont="system"/>
@@ -2550,7 +2550,7 @@ No money transfer involved, just for size!     </string>
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" title="Sweep contrast – spatial frequency fixed" translatesAutoresizingMaskIntoConstraints="NO" id="hvu-6D-Flv">
-                                            <rect key="frame" x="59" y="-15" width="300" height="168"/>
+                                            <rect key="frame" x="59" y="-11" width="300" height="168"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="IZB-Mx-hCZ">
                                                 <rect key="frame" x="4" y="5" width="292" height="148"/>
@@ -2599,7 +2599,7 @@ No money transfer involved, just for size!     </string>
                                             </view>
                                         </box>
                                         <box fixedFrame="YES" title="Sweep spatial frequency – contrast fixed" translatesAutoresizingMaskIntoConstraints="NO" id="yCk-z8-utP">
-                                            <rect key="frame" x="390" y="-15" width="300" height="168"/>
+                                            <rect key="frame" x="390" y="-11" width="300" height="168"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="gWO-qi-Y3m">
                                                 <rect key="frame" x="4" y="5" width="292" height="148"/>
@@ -2684,7 +2684,7 @@ No money transfer involved, just for size!     </string>
                                             </view>
                                         </box>
                                         <box fixedFrame="YES" title="Alpha modulation for BCM" translatesAutoresizingMaskIntoConstraints="NO" id="Ls3-x0-Lad">
-                                            <rect key="frame" x="390" y="319" width="300" height="137"/>
+                                            <rect key="frame" x="390" y="323" width="300" height="137"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="G3f-Gq-TKT">
                                                 <rect key="frame" x="4" y="5" width="292" height="117"/>
@@ -2692,7 +2692,7 @@ No money transfer involved, just for size!     </string>
                                             </view>
                                         </box>
                                         <colorWell toolTip="Color well, foreground color" fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHP-iN-i0V">
-                                            <rect key="frame" x="413" y="349" width="46" height="23"/>
+                                            <rect key="frame" x="413" y="353" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -2701,7 +2701,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </colorWell>
                                         <colorWell toolTip="Color well, background color" fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3K9-fA-5PA">
-                                            <rect key="frame" x="474" y="349" width="46" height="23"/>
+                                            <rect key="frame" x="474" y="353" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -2710,7 +2710,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </colorWell>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BKg-g2-B0t">
-                                            <rect key="frame" x="526" y="353" width="163" height="16"/>
+                                            <rect key="frame" x="526" y="357" width="163" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Fore- / background color" id="8g7-YS-1n7">
                                                 <font key="font" metaFont="system"/>
@@ -2719,7 +2719,7 @@ No money transfer involved, just for size!     </string>
                                             </textFieldCell>
                                         </textField>
                                         <button toolTip="Grating in color? " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ysm-ie-p3K">
-                                            <rect key="frame" x="414" y="399" width="74" height="18"/>
+                                            <rect key="frame" x="414" y="403" width="74" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Colored" bezelStyle="regularSquare" imagePosition="left" inset="2" id="r2y-Cq-syN">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2730,7 +2730,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PTu-3U-QD8">
-                                            <rect key="frame" x="15" y="345" width="109" height="18"/>
+                                            <rect key="frame" x="15" y="349" width="109" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Circular mask" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="cKH-mc-mUi">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2741,7 +2741,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </button>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ED5-xZ-XLE">
-                                            <rect key="frame" x="173" y="297" width="54" height="26"/>
+                                            <rect key="frame" x="173" y="301" width="54" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes (TAO).  For Landolt Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.</string>
                                             <popUpButtonCell key="cell" type="push" title="2" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ITp-K5-C2i" id="UgL-WR-pL8">
@@ -2760,7 +2760,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </popUpButton>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mcv-EH-86K">
-                                            <rect key="frame" x="229" y="299" width="104" height="16"/>
+                                            <rect key="frame" x="229" y="303" width="104" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Some optotypes have a fixed number of choices, or variants: Always 10 for Sloan Letters and Auckland Optotypes (TAO); Vernier 2. 
 For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
@@ -2772,7 +2772,7 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                             </textFieldCell>
                                         </textField>
                                         <popUpButton toolTip="Automatic run, targeting this contrast sensitivity. For testing." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TlA-dW-ZGE">
-                                            <rect key="frame" x="14" y="249" width="107" height="25"/>
+                                            <rect key="frame" x="14" y="253" width="107" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="Off" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="AcH-ef-uvd" id="Ocx-GM-WQO">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -2793,7 +2793,7 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                             </connections>
                                         </popUpButton>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hbr-5F-BTO">
-                                            <rect key="frame" x="123" y="251" width="158" height="16"/>
+                                            <rect key="frame" x="123" y="255" width="158" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Autorun to target % / cpd" id="FAI-Vk-nyI">
                                                 <font key="font" metaFont="system"/>
@@ -2802,7 +2802,7 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sMA-Qr-CTs">
-                                            <rect key="frame" x="395" y="250" width="99" height="18"/>
+                                            <rect key="frame" x="395" y="254" width="99" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="radio" title="Sinusoidal…" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="GoR-QS-HwF">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2813,7 +2813,7 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iEY-Gl-dR3">
-                                            <rect key="frame" x="496" y="250" width="152" height="18"/>
+                                            <rect key="frame" x="496" y="254" width="152" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="radio" title="Square-wave grating" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6lw-zX-LgI">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2931,15 +2931,15 @@ CQ
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="a5R-k1-Tfd">
-                                            <rect key="frame" x="14" y="402" width="113" height="58"/>
+                                            <rect key="frame" x="14" y="402" width="118" height="58"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="VfV-xS-jWR">
-                                                <rect key="frame" x="4" y="5" width="105" height="50"/>
+                                                <rect key="frame" x="4" y="5" width="110" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lz5-Nz-CsQ">
-                                            <rect key="frame" x="26" y="446" width="93" height="22"/>
+                                            <rect key="frame" x="26" y="446" width="94" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Windowcolor" bezelStyle="round" id="eky-z1-NOZ">
                                                 <font key="font" metaFont="system"/>
@@ -2948,7 +2948,7 @@ CQ
                                             </textFieldCell>
                                         </textField>
                                         <colorWell toolTip="The background color of the entire window can be selected here." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F1l-7N-EPO">
-                                            <rect key="frame" x="40" y="416" width="61" height="23"/>
+                                            <rect key="frame" x="41" y="416" width="61" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -3004,6 +3004,36 @@ CQ
                                             <rect key="frame" x="26" y="336" width="93" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Noise" bezelStyle="round" id="lSm-aI-d2L">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="wk1-2Q-0TD">
+                                            <rect key="frame" x="14" y="183" width="239" height="58"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <view key="contentView" id="Zq0-Ut-2pJ">
+                                                <rect key="frame" x="4" y="5" width="231" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <button toolTip="Acuity optotypes will be overlaid with static visual noise." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y4T-w7-sUH">
+                                                        <rect key="frame" x="18" y="13" width="113" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="specialBcmOn" bezelStyle="regularSquare" imagePosition="left" inset="2" id="a9c-XH-bKQ">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.specialBcmOn" id="sC6-Ad-NZ6"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </view>
+                                        </box>
+                                        <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vrU-9s-v0O">
+                                            <rect key="frame" x="26" y="227" width="120" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="specialBCM" bezelStyle="round" id="6zX-X5-bZb">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
