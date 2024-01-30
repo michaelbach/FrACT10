@@ -18,7 +18,7 @@ Sound.j
 }
 
 
-// the below is clumsy (doing it 3 times), but the closure didn't take the provided buffer in early attempts.
+// the below is clumsy (doing it 3 times), but the closure didn't take the provided buffer in my attempts.
 
 // sound1: “tink” for correct response
 - (void) loadSound1 { //console.info("Sound>loadSound");

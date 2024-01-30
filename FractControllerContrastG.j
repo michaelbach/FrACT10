@@ -12,9 +12,10 @@
 @implementation FractControllerContrastG: FractControllerContrast {
     float periodInPixel;
     BOOL isGratingColor, isErrorDiffusion;
-    float specialBcmFreq;
-    int specialBcmCountAtStep, specialBcmCountAtStepCorrect;
+    float specialBcmFreq, specialBcmFreqPrevious;
+    int specialBcmCountAtStep, specialBcmCountAtStepError;
 }
+
 
 // Method of limits
 const specialBcmStepsize = 0.1;
@@ -23,29 +24,30 @@ const specialBcmStepsize = 0.1;
     if (![Settings specialBcmOn]) return;
     if (iTrial == 1) {
         nTrials = 200;
-        alternativesGenerator = nil;
         alternativesGenerator = [[AlternativesGenerator alloc] initWithNumAlternatives: 2 andNTrials: nTrials obliqueOnly: YES];
-        trialHistoryController = nil;
         trialHistoryController = [[TrialHistoryController alloc] initWithNumTrials: nTrials];
-
+        
         specialBcmFreq = [Settings gratingCPDmin];
+        specialBcmFreqPrevious = 0;
         specialBcmCountAtStep = 1;
-        specialBcmCountAtStepCorrect = 0;
-
+        specialBcmCountAtStepError = 0;
     } else {
-        if (responseWasCorrect) specialBcmCountAtStepCorrect++;
-        specialBcmCountAtStep++;
-        if (specialBcmCountAtStep > 10) {
-            if (specialBcmCountAtStepCorrect > 7) {
+        if (!responseWasCorrect) specialBcmCountAtStepError++;
+        if (specialBcmCountAtStepError >= 2) {
+            spatialFreqCPD = specialBcmFreqPrevious;
+            nTrials = iTrial - 1;  iTrial = 9999;
+            [self runEnd];
+        } else {
+            specialBcmCountAtStep++;
+            if (specialBcmCountAtStep > 10) {
+                specialBcmFreqPrevious = specialBcmFreq;
                 specialBcmFreq *= Math.pow(10, specialBcmStepsize);
                 specialBcmCountAtStep = 1;
-                specialBcmCountAtStepCorrect = 0;
-            } else {
-                nTrials = iTrial;
-                iTrial = 999;
+                specialBcmCountAtStepError = 0;
             }
-         }
-     }
+        }
+    }
+    [super modifyDeviceStimulus];
 }
 
 
