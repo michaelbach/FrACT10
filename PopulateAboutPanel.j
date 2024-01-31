@@ -46,7 +46,7 @@ Populates the About panel with appropriate text using HTML
     [self oneWebView: aboutWebView1 htmlString: s];
 
     s = "©1993–" + [gVersionDateOfFrACT substringWithRange: CPMakeRange(0, 4)];
-    s += "<br><br>Prof. Michael Bach<br>";
+    s += "<br>Prof. Michael Bach<br>";
     s += "University of Freiburg, Germany<br>";
     s += "<a href='https://michaelbach.de' target='_blank'>https://michaelbach.de</a><br>";
     s += "<a href='mailto:bach@uni-freiburg.de'>bach@uni-freiburg.de</a><br><br>";
@@ -58,9 +58,14 @@ Populates the About panel with appropriate text using HTML
     s += "<a href='https://simplestatistics.org' target='_blank'>Simple Statistics</a>.";
     //s += "<a href='https://nodejs.org/' target='_blank'>Node.js,</a><br>";
     //s += "<a href='https://www.electronjs.org' target='_blank'>Electron</a>, <a href='https://www.electron.build' target='_blank'>electron-builder</a>";
-    s += "<br><br><br><br>";
+    s += "<br><br><br>";
+    s += "Two “cookies” are placed on your computer:<br>";
+    s += "– One containing the settings<br>";
+    s += "– Another contains the last results for exporting.";
+    s += "<br><br><br>";
     s += "This is free software, there is no warranty for anything: <a href='https://github.com/michaelbach/FrACT10/blob/main/LICENSE.md' target='_blank'>GNU GPL licence</a>. ";
     s += "It is not formally certified for medical purposes."
+
     [self oneWebView: aboutWebView2 htmlString: s];
 }
 

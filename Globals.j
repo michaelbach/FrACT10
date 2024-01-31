@@ -38,6 +38,7 @@ tab = "\t";  crlf = "\n";
 /*
  #  History
 
++ 2024-01-31 add info on cookies
 + 2024-01-31 publishing this version now after positiv feedback.
 + 2024-01-30a more "specialBcm" based on first feedback
 + 2024-01-30 move "cappFrameworks" into "Resources", change index.html accordingly. Disentangles OT and FrACT10 framework.

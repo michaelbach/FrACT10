@@ -28,9 +28,7 @@ const specialBcmStepsize = 0.1;
         trialHistoryController = [[TrialHistoryController alloc] initWithNumTrials: nTrials];
         
         specialBcmFreq = [Settings gratingCPDmin];
-        specialBcmFreqPrevious = 0;
-        specialBcmCountAtStep = 1;
-        specialBcmCountAtStepError = 0;
+        specialBcmFreqPrevious = 0;  specialBcmCountAtStep = 1;  specialBcmCountAtStepError = 0;
     } else {
         if (!responseWasCorrect) specialBcmCountAtStepError++;
         if (specialBcmCountAtStepError >= 2) {
@@ -42,8 +40,12 @@ const specialBcmStepsize = 0.1;
             if (specialBcmCountAtStep > 10) {
                 specialBcmFreqPrevious = specialBcmFreq;
                 specialBcmFreq *= Math.pow(10, specialBcmStepsize);
-                specialBcmCountAtStep = 1;
-                specialBcmCountAtStepError = 0;
+                if (specialBcmFreq > [Settings gratingCPDmax]) {
+                    spatialFreqCPD = specialBcmFreqPrevious;
+                    nTrials = iTrial - 1;  iTrial = 9999;
+                    [self runEnd];
+                }
+                specialBcmCountAtStep = 1;  specialBcmCountAtStepError = 0;
             }
         }
     }
