@@ -40,7 +40,7 @@
 
 set -e # ensure stop on error
 
-## Subroutine for file modification time, 0 if file not exists
+## Subroutine for file modification time, returns 0 if file does not exist
 FileModTime() {
 	local modificationTime=0
 	if [ -f $1 ]; then

@@ -12,7 +12,7 @@ Globals.j
  Created on 2021-01-07
  */
 
-gVersionDateOfFrACT = "2024-01-30a";
+gVersionDateOfFrACT = "2024-01-31";
 //gVersionStringOfFract = [[[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] infoDictionary] objectForKey:@"CPBundleVersion"]; Doesn't work, bug in Cappuccino, always returns 1.0
 gVersionStringOfFract = "1.0.6";
 gVersionOfExportFormat = "5";
@@ -38,6 +38,7 @@ tab = "\t";  crlf = "\n";
 /*
  #  History
 
++ 2024-01-31 publishing this version now after positiv feedback.
 + 2024-01-30a more "specialBcm" based on first feedback
 + 2024-01-30 move "cappFrameworks" into "Resources", change index.html accordingly. Disentangles OT and FrACT10 framework.
 + 2024-01-30 add  1.5 and 12 cpd on request of Nic Reus
