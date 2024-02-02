@@ -32,24 +32,26 @@ const specialBcmStepsize = 0.1;
     } else {
         if (!responseWasCorrect) specialBcmCountAtStepError++;
         if (specialBcmCountAtStepError >= 2) {
-            spatialFreqCPD = specialBcmFreqPrevious;
-            nTrials = iTrial - 1;  iTrial = 9999;
-            [self runEnd];
+            [self specialBcmDone];
         } else {
             specialBcmCountAtStep++;
             if (specialBcmCountAtStep > 10) {
                 specialBcmFreqPrevious = specialBcmFreq;
                 specialBcmFreq *= Math.pow(10, specialBcmStepsize);
                 if (specialBcmFreq > [Settings gratingCPDmax]) {
-                    spatialFreqCPD = specialBcmFreqPrevious;
-                    nTrials = iTrial - 1;  iTrial = 9999;
-                    [self runEnd];
+                    [self specialBcmDone];
                 }
                 specialBcmCountAtStep = 1;  specialBcmCountAtStepError = 0;
             }
         }
     }
     [super modifyDeviceStimulus];
+}
+- (void) specialBcmDone {
+    spatialFreqCPD = specialBcmFreqPrevious;
+    nTrials = iTrial - 1;  iTrial = 9999;
+    gSpecialBcmDone = YES;
+    [self runEnd];
 }
 
 

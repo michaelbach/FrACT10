@@ -67,7 +67,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         state = kStateDrawBack;
         kRangeLimitDefault = "";  kRangeLimitOk = "rangeOK";  kRangeLimitValueAtFloor = "atFloor";
         kRangeLimitValueAtCeiling = "atCeiling";  rangeLimitStatus = kRangeLimitDefault;
-        
+        gSpecialBcmDone = NO;
+
         optotypes = [[Optotypes alloc] init];
         [Settings checkDefaults];
         colOptotypeFore = [Settings acuityForeColor];  colOptotypeBack = [Settings acuityBackColor];
@@ -121,6 +122,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         [self runEnd];  return;
     }
     [self modifyDeviceStimulus];// e.g. let the first 4 follow DIN
+    if (gSpecialBcmDone) return;
+    
     [alternativesGenerator nextAlternative];
     timerDisplay = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutDisplaySeconds] target:self selector:@selector(onTimeoutDisplay:) userInfo:nil repeats:NO];
     timerResponse = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutResponseSeconds] target:self selector:@selector(onTimeoutResponse:) userInfo:nil repeats:NO];

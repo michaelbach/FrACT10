@@ -12,7 +12,7 @@ Globals.j
  Created on 2021-01-07
  */
 
-gVersionDateOfFrACT = "2024-01-31";
+gVersionDateOfFrACT = "2024-02-02";
 //gVersionStringOfFract = [[[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] infoDictionary] objectForKey:@"CPBundleVersion"]; Doesn't work, bug in Cappuccino, always returns 1.0
 gVersionStringOfFract = "1.0.6";
 gVersionOfExportFormat = "5";
@@ -32,12 +32,14 @@ gThresholdCorrection4Ascending = 0.891;
 // slope parameter for the CI95 dispersion estimation; strongly affects CI95
 gSlopeCI95 = 15; // this value approximates test-retest variability
 
+gSpecialBcmDone = NO;
 
 tab = "\t";  crlf = "\n";
 
 /*
  #  History
 
++ 2024-02-02 slight change in logic of specialBcm-done situation
 + 2024-01-31 add info on cookies
 + 2024-01-31 publishing this version now after positiv feedback.
 + 2024-01-30a more "specialBcm" based on first feedback
