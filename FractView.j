@@ -22,7 +22,7 @@ FractView.j
 
 /**
  This is never called. Why is it here? And how can the drawRect work if never instantated?
- Ah, not it comes: that is done by IB
+ Ah, now I understand: that is done by IB
  */
 - (id)initWithFrame:(CGRect)frame { //console.info("FractView>initWithFrame");
     self = [super initWithFrame:frame];

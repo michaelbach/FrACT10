@@ -14,7 +14,7 @@
 
 /**
  A collection of "miscellaneous" function for light / contrast / color.
- All a class variables for easy global access
+ All a class variables for easy global access,
  */
 @implementation MiscLight: CPObject {
 }

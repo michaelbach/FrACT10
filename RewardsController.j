@@ -36,6 +36,7 @@ RewardsController.j
         [_rewardView setImage: _rewardImages];
         // not clear while the below is necessary (but it is to fix erroneous first image)
         [_rewardView setBounds: CGRectMake(0, 0, (-12 + [Misc iRandom: 24]) * 1200, 600)];
+        _oldRandom = -1;
     }
     return self;
 }

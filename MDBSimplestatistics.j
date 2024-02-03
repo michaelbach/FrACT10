@@ -18,7 +18,6 @@ MDBSimplestatistics.j
    a permissive license leting people do anything with the code with proper attribution and without warranty…
    
    Changes: @example → @ example
-   
 */
 
 

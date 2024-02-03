@@ -29,7 +29,7 @@ Optotypes.j
 
 
 /**
- this will be called from all tests and informs us here about the context
+ this will be called from all tests and sets context & colors
  */
 - (void) setCgc: (CGContext) cgc colFore: (CPColor) colFore colBack: (CPColor) colBack { //console.info("setCgc");
     _cgc = cgc;

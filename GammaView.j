@@ -10,7 +10,7 @@ GammaView.m
 
 
 /**
- This draws the patterns for the psychophysical gamma estimation.
+ This draws the checkerboard patterns for the psychophysical gamma estimation.
  Created on 31.01.21.
  */
 @implementation GammaView: CPView {

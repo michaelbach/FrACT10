@@ -33,7 +33,7 @@ Sound.j
 }
 
 
-// sound2: whistle for incorrect responses
+// sound2: “whistle” for incorrect responses
 - (void) loadSound2 { //console.info("Sound>loadSound");
     buffer2 = null;
     const request = new XMLHttpRequest();
@@ -46,7 +46,7 @@ Sound.j
 }
 
 
-// sound3, gong, for end of run
+// sound3, “gong” for end of run
 - (void) loadSound3 { //console.info("Sound>loadSound");
     buffer3 = null;
     const request = new XMLHttpRequest();

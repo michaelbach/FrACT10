@@ -12,8 +12,8 @@
 @import "HierarchyController.j"
 
 /**
- Custom button to make the large square buttons look nicer
- With rounded corners and 2px border width
+ Custom button to make the large square buttons look nicer,
+ with rounded corners and 2px border width
  Created on 2021-08-16
  
  Works with many button types.

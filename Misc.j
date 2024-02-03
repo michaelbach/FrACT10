@@ -14,27 +14,27 @@ Misc.j
 
 /**
  A collection of "miscellaneous" functions.
- All are class variables for easy global access
+ All are class variables for easy global access.
  */
 @implementation Misc: CPObject {
 }
 
 
 /**
- Returns random integer from 0 to i-1 */
+ Return random integer from 0 to i-1 */
 + (int) iRandom: (int) i {
     return Math.floor(Math.random() * i);
 }
 
 
 /**
- limits the input value to lie between 0 and 1
+ Limit the input value to lie between 0 and 1
  */
 + (float) limit01: (float) theValue {
     return [self limit: theValue lo: 0 hi: 1];
 }
 /**
- limits the input value to lie between 2 values
+ Limit the input value to lie between 2 values
  */
 + (float) limit: (float) theValue lo: (float) lo hi: (float) hi { // limit the input value to lie between lo and hi
     if (theValue < lo) return lo;
@@ -49,7 +49,7 @@ Misc.j
 
 
 /**
- Switching to/from fullscreen. That was quite difficult to figure out
+ Toggle fullscreen. That was quite difficult to figure out :).
  */
 // https://hacks.mozilla.org/2012/01/using-the-fullscreen-api-in-web-browsers/
 + (void) fullScreenOn: (BOOL) onOff {

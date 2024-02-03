@@ -14,7 +14,7 @@
 
 /**
  A collection of "miscellaneous" function for spatial aspects (degrees, acuity, …).
- All a class variables for easy global access
+ All a class variables for easy global access,
  */
 @implementation MiscSpace: CPObject {
 }

@@ -63,6 +63,7 @@ Implementation of BestPEST
 }
 
 
+// this is very old code … don't change a winning team :)
 - (float) nextStimGivenAppliedStim: (float) appliedStim wasCorrect: (BOOL) wasCorrect {
     const intStim = [self externalStim2internalStimGiven: appliedStim];
     let p1 = -10000, p2 = -10000, maxP = -10000;

@@ -6,8 +6,8 @@ TAOController.j
  
 2020-05-23
  This class loads the 10 Auckland Optotype (TAO) images.
- When all are loaded, the referenced button is enabled
- imageArray returns an id pointing at the image array
+ When all are loaded, the referenced button is enabled.
+ imageArray returns an id pointing at the image array.
 */
 
 

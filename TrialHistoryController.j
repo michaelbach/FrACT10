@@ -40,7 +40,7 @@ TrialHistoryController.j
 }
 
 
-- (void) trialEnded {  //console.info("TrialHistoryController>trialEnded, value: ", value);
+- (void) trialEnded { //console.info("TrialHistoryController>trialEnded, value: ", value);
     if (_currentIndex > _nTrials) return;  // just for safety, should not occur
     _trialHistory[_currentIndex] = {};
     _trialHistory[_currentIndex].value = value;
@@ -53,7 +53,7 @@ TrialHistoryController.j
 }
 
 
-- (void) runEnded {  //console.info("TrialHistoryController>trialEnded");
+- (void) runEnded { //console.info("TrialHistoryController>trialEnded");
     let s = "trial" + tab + "value" + tab + "choicePresented" + tab + "choiceResponded" + tab + "correct" + tab + "reactionTimeInMs" + crlf;
     for (let i = 0; i < _trialHistory.length; ++i) {
         const th = _trialHistory[i];

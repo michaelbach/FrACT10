@@ -17,7 +17,7 @@ MDBDispersionEstimation.j
 @implementation MDBDispersionEstimation
 
 
-let kWorstLogMAR, kBestLogMAR, kGuess, testDF; // there are no class properties in Cappuccino
+let kWorstLogMAR, kBestLogMAR, kGuess, testDF; // there are no class properties in Cappuccino, so use JavaScript
 
 
 + (void) initResultStatistics { //console.info("Entering initResultStatistics");
