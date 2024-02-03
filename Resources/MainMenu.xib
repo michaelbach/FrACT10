@@ -3018,9 +3018,11 @@ CQ
                                                 <rect key="frame" x="4" y="5" width="231" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <button toolTip="Acuity optotypes will be overlaid with static visual noise." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y4T-w7-sUH">
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y4T-w7-sUH">
                                                         <rect key="frame" x="18" y="13" width="113" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">Very specific setting for the BCM@Scheie project. Don't use unless…
+</string>
                                                         <buttonCell key="cell" type="check" title="specialBcmOn" bezelStyle="regularSquare" imagePosition="left" inset="2" id="a9c-XH-bKQ">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>

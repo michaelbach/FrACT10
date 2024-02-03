@@ -39,6 +39,7 @@ tab = "\t";  crlf = "\n";
 /*
  #  History
 
++ 2024-02-03 correct a tooltip
 + 2024-02-02 slight change in logic of specialBcm-done situation
 + 2024-01-31 add info on cookies
 + 2024-01-31 publishing this version now after positiv feedback.
