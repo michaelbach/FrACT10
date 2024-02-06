@@ -24,7 +24,7 @@ const specialBcmStepsize = 0.1;
     if (![Settings specialBcmOn]) return;
     if (iTrial == 1) {
         nTrials = 200;
-        alternativesGenerator = [[AlternativesGenerator alloc] initWithNumAlternatives: 2 andNTrials: nTrials obliqueOnly: YES];
+        alternativesGenerator = [[AlternativesGenerator alloc] initWithNumAlternatives: 2 andNTrials: nTrials obliqueOnly: [Settings gratingObliqueOnly]];
         trialHistoryController = [[TrialHistoryController alloc] initWithNumTrials: nTrials];
         
         specialBcmFreq = [Settings gratingCPDmin];

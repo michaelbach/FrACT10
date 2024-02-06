@@ -12,7 +12,7 @@ Globals.j
  Created on 2021-01-07
  */
 
-gVersionDateOfFrACT = "2024-02-02";
+gVersionDateOfFrACT = "2024-02-04";
 //gVersionStringOfFract = [[[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] infoDictionary] objectForKey:@"CPBundleVersion"]; Doesn't work, bug in Cappuccino, always returns 1.0
 gVersionStringOfFract = "1.0.6";
 gVersionOfExportFormat = "5";
@@ -39,6 +39,7 @@ tab = "\t";  crlf = "\n";
 /*
  #  History
 
++ 2024-02-06 fix regression (oblique only) in specialBcm
 + 2024-02-03 correct a tooltip, comments a little more systematic
 + 2024-02-02 slight change in logic of specialBcm-done situation
 + 2024-01-31 add info on cookies
