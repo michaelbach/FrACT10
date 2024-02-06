@@ -41,7 +41,7 @@
  Apply selected patch after "Are you sure" dialog
  */
 + (void) apply2: (int) p { //console.info("Presets>apply2");
-    const allPresets = ["StandardDefaults", "ULV", "ESU", "Testing", "ColorEquiluminance", "BCMatScheie", "CNSatFreiburg"];
+    const allPresets = ["StandardDefaults", "ULV", "ESU", "Testing", "Demo", "ColorEquiluminance", "BCMatScheie", "CNSatFreiburg"];
     const selectedPresetName = allPresets[p];
     [self performSelector: CPSelectorFromString("apply" + selectedPresetName)];
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil]; // this synchronises the color settings between userdefaults & AppController
@@ -112,6 +112,15 @@
     [Settings setCalBarLengthInMM: 150];
     [Settings setResponseInfoAtStart: NO];
     [Settings setShowCI95: YES];
+}
+
+
+/**
+ Apply Demo: Auto run etc.
+ */
++ (void) applyDemo {
+    [self applyTesting];
+    [Settings setAutoRunIndex: kAutoRunIndexMid];
 }
 
 

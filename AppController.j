@@ -152,7 +152,7 @@ Created by mb on 2017-07-12.
     
     if ([window.navigator.platform hasPrefix:@"Mac"])  [buttonExit setTitle: "Quit"];// OS: Quit or Exit
     
-    [Settings setAutoRunIndex: 0]; // make sure it's not accidentally on
+    [Settings setAutoRunIndex: kAutoRunIndexNone]; // make sure it's not accidentally on
     
     [selfWindow orderFront: self]; //← this ensures that it will receive clicks w/o activating
 }
@@ -366,7 +366,7 @@ Created by mb on 2017-07-12.
             const sto5 = [Settings testOnFive];
             if (sto5 > 0) [self runFractControllerTest: sto5];
             break;
-        case "R": [Settings setAutoRunIndex: 2];  break;
+        case "R": [Settings setAutoRunIndex: kAutoRunIndexMid];  break;
             //case "∆": [self runtimeError_action: nil];  break;
         default:
             [super keyDown: theEvent];  break;

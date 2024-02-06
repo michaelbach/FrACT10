@@ -127,7 +127,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [alternativesGenerator nextAlternative];
     timerDisplay = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutDisplaySeconds] target:self selector:@selector(onTimeoutDisplay:) userInfo:nil repeats:NO];
     timerResponse = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutResponseSeconds] target:self selector:@selector(onTimeoutResponse:) userInfo:nil repeats:NO];
-    if ([Settings autoRunIndex] > 0) {
+    if ([Settings autoRunIndex] != kAutoRunIndexNone) {
         if ([self isAcuityOptotype] || [self isContrastAny] || [self isAcuityGrating]) {
             let time = 0.4;
             if ([self isContrastAny]) {

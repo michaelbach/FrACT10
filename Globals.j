@@ -40,6 +40,7 @@ tab = "\t";  crlf = "\n";
  #  History
 
 + 2024-02-06 fix regression (oblique only) in specialBcm
+    introduce preset "Demo", autoRunIndex symbolic constants
 + 2024-02-03 correct a tooltip, comments a little more systematic
 + 2024-02-02 slight change in logic of specialBcm-done situation
 + 2024-01-31 add info on cookies

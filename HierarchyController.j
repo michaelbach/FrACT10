@@ -24,6 +24,8 @@ kTestNone = 0; kTestAcuityLett = 1; kTestAcuityC = 2; kTestAcuityE = 3; kTestAcu
 @typedef Results2ClipChoiceType
 kResults2ClipNone = 0; kResults2ClipFinalOnly = 1; kResults2ClipFullHistory = 2;
 
+@typedef AutoRunIndexType
+    kAutoRunIndexNone = 0; kAutoRunIndexHi = 1; kAutoRunIndexMid = 2; kAutoRunIndexLow = 3;
 
 @implementation HierarchyController: CPWindowController {
     HierarchyController parentController @accessors;
