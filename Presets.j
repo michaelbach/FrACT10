@@ -29,7 +29,7 @@
     const messageText = "Really all Settings to “" + presetNameInGUI + "” ?";
     const alert1 = [CPAlert alertWithMessageText: messageText
                              defaultButton: "NO" alternateButton: "YES" otherButton: nil
-                 informativeTextWithFormat: "Many Settings might change. You should know what you are doing here. Luckily, you can always return to defaults in Settings."];
+                 informativeTextWithFormat: "Many Settings might change. You should know what you are doing here. Luckily, you can always return to defaults."];
     [[alert1 buttons][0] setKeyEquivalent:"y"]; // the "Yes" butten selected by "y"
     [alert1 runModalWithDidEndBlock: function(alert, returnCode) {
         if (returnCode==1) { // alternateButton

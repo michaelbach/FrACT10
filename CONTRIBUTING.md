@@ -2,12 +2,12 @@
 
 This file is part of FrACT10.
 
-If anything is unclear, don't hesitate to contact me <michael.bach@uni-freiburg.de>.
+If anything is unclear, don't hesitate to contact me <bach@uni-freiburg.de>.
 
 
 ## What’s the development workflow?
 
-- Install Cappuccino <https://www.cappuccino.dev>. This, in principle, also runs in Unix/Linux, but all my explanation pertain to a MacOS environment. You should be fluent with the terminal. The Framework, built by the install, needs to be referred to appropriately in `ìndex.html`, see "directory structure" below. A good place to start: [Cappucino Wiki](https://github.com/cappuccino/cappuccino/wiki).
+- Install Cappuccino <https://www.cappuccino.dev>. This, in principle, also runs in Unix/Linux, but all my explanation pertains to a MacOS environment. You should be fluent with the terminal. The Framework, built by the install processs, needs to be referred to appropriately in `ìndex.html`, see "directory structure" below. A good place to start: [Cappucino Wiki](https://github.com/cappuccino/cappuccino/wiki).
 
 - run `XcodeCapp`
 - add the folder containing all FrACT₁₀ files to XcodeCapp and use the hammer symbol to open this project in Xcode
@@ -17,12 +17,12 @@ If anything is unclear, don't hesitate to contact me <michael.bach@uni-freiburg.
 
 ## Do I have to create an issue for a feature or a bug fix and discuss it with the existing contributors?
 
-Contact <michael.bach@uni-freiburg.de>.
+Contact <bach@uni-freiburg.de>.
 
 
 ## Should I just present a merge request with my modifications?
 
-Best get in touch with <michael.bach@uni-freiburg.de>.
+Best get in touch with <bach@uni-freiburg.de>.
 
 
 ## Should my changes be accompanied by documentation?
@@ -38,7 +38,7 @@ Of course, but no need to go overboard.
 
 ## How can I get in touch with the developer?
 
-<michael.bach@uni-freiburg.de>.
+<bach@uni-freiburg.de>.
 
 
 ## What are the code conventions?
@@ -48,6 +48,7 @@ Of course, but no need to go overboard.
 - I usually place 2 empty lines between functions
 - I prefer camelCase over underlines
 - long variable/function names can replace much documentation
+
 
 ## Does this repository follow a certain commit message pattern?
 
