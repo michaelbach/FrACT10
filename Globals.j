@@ -34,6 +34,8 @@ gSlopeCI95 = 15; // this value approximates test-retest variability
 
 gSpecialBcmDone = NO;
 
+gMeter2FeetMultiplier = 3.28084
+
 tab = "\t";  crlf = "\n";
 
 /*
