@@ -27,6 +27,9 @@ A wrapper for whatever thresholding algorithm is used (currently only BestPEST)
 }
 
 
+/**
+ For testing only
+ */
 - (void) unitTest {
     for (let i = 0; i < 10; ++i) {
         const stim = [self nextStim2apply];
@@ -36,6 +39,9 @@ A wrapper for whatever thresholding algorithm is used (currently only BestPEST)
 }
 
 
+/**
+ Calculate the stimulus strength to apply next
+ */
 - (float) nextStim2apply {
     const retVal = [currentThresholder nextStim2apply];
     //console.info("Thresholder>NextStim2apply: ", retVal);
@@ -43,23 +49,36 @@ A wrapper for whatever thresholding algorithm is used (currently only BestPEST)
 }
 
 
+/**
+ Tell the algorith (1) was stimulus strength was applied, and (2) the outcome
+ */
 - (void) enterTrialOutcomeWithAppliedStim: (float) appliedStim wasCorrect: (BOOL) wasCorrect {
-    appliedStim = [Misc limit01: appliedStim]; // makes sure that contrast after converting to logCS is in range
+    appliedStim = [Misc limit01: appliedStim]; // ensure that contrast after converting to logCS is in range
     // console.info("Thresholder>enterTrialOutcomeWithAppliedStim", appliedStim, ", wasCorrect: ", wasCorrect);
     [currentThresholder enterTrialOutcomeWithAppliedStim: appliedStim wasCorrect: wasCorrect];
 }
 
 
+/**
+ Calculate the next stimulus given actuall stimulus and its result
+ */
 - (float) nextStimGivenAppliedStim: (float) appliedStim wasCorrect: (BOOL) wasCorrect {
     return [currentThresholder nextStimGivenAppliedStim: appliedStim wasCorrect: wasCorrect];
 }
 
 
+/**
+ Convert between the "external stimulus" on whatever scale and the 0…1 scale the thresholder
+ The actual conversion is done within the current thresholder (which is only bestPEST so far).
+ */
 - (int) externalStim2internalStimGiven: (float) extStim {
     return [currentThresholder externalStim2internalStimGiven: extStim];
 }
 
 
+/**
+ Convert the other way round
+ */
 - (float) internalStim2externalStimGiven: (int) intStim {
     return [currentThresholder internalStim2externalStimGiven: intStim];
 }
