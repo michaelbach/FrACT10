@@ -32,7 +32,7 @@ Generates "alternatives" (e.g. Landolt C directions) from 0 to (nAlternatives-1)
 
 
 /**
- * randomiseArray
+ * randomiseArray (local function)
  *
  * Randomises the sequence of the input array in an unbiased way
  *  https://blog.codinghorror.com/the-danger-of-naivete/
@@ -43,7 +43,7 @@ Generates "alternatives" (e.g. Landolt C directions) from 0 to (nAlternatives-1)
 function randomiseArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[j], array[i]] = [array[i], array[j]]; //ES6 allows to assign 2 variables at once
+        [array[j], array[i]] = [array[i], array[j]]; //ES6 allows to assign 2 variables at once: flip
     }
     return(array);
 }
@@ -104,7 +104,7 @@ function randomiseArray(array) {
 
 
 /**
- Call to retrieve next alternative to present as optotype
+ Retrieve next alternative to present as optotype
  
  @return (int) number within the range given when instantiating
  */
