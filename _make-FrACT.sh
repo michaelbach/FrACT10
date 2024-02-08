@@ -6,22 +6,29 @@
 # 2021-02-04 begun
 
 
-cd "${0:a:h}" # go to the starting directory
+# go to the starting directory
+cd "${0:a:h}"
 # pwd
 
-#rm -R ../FrACT ← this would give the iCloud services a hiccup, so mv to trash
+# delete old version
+#rm -R ../FrACT ← this would give the iCloud services a hiccup, so instead mv to trash
 pathFractTrash=$HOME/Library/Mobile\ Documents/.Trash/FrACT
-rm -R "$pathFractTrash" # need to delete first, otherwise mv doesn't work
+rm -R "$pathFractTrash" # need to delete first, otherwise mv doesn't work in spite of "-f"
 mv -fv ../FrACT "$pathFractTrash"
 
-set -e # ensure stop on error
+# ensure stop on error
+set -e
 
+# "compile"
 jake release
 
+# delete unnecessary build products
 rm -R Build/Release/FrACT/CommonJS.environment # we don't need this
 mv Build/Release/FrACT ../ # move it up, creating the "FrACT" folder
 rm -R Build # and get rid of the rest of the built items
 
+# need to copy this too, could be added to jake?
 cp webAppServiceWorker.js ../FrACT/
 
+# finally…
 osascript -e 'display notification "Done."'
