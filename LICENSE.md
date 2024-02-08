@@ -3,7 +3,7 @@
 
 # FrACT10 / LICENSE
 
-Copyright © 2021 Michael Bach, michael.bach@uni-freiburg.de, [https://michaelbach.de](https://michaelbach.de).
+Copyright © 2021 Michael Bach, bach@uni-freiburg.de, [https://michaelbach.de](https://michaelbach.de).
 
 This file is part of FrACT10.
 

@@ -11,4 +11,4 @@ currently being supported with security updates.
 
 ## Reporting a Vulnerability
 
-email me <michael.bach@uni-freiburg.de>
+email me <bach@uni-freiburg.de>
