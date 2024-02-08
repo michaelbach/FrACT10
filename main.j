@@ -2,7 +2,7 @@
  * AppController.j
  * FrACT10
  *
- * Created by You on July 15, 2015.
+ * Created by bach@uni-freiburg.de on July 15, 2015.
  * Copyright 2015, Your Company All rights reserved.
  */
 
