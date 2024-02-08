@@ -3,7 +3,7 @@
  * FrACT10
  *
  * Created by Michael Bach on July 15, 2015.
- * Copyright 2015–2020, michaelbach.de All rights reserved.
+ * Copyright 2015–2024, michaelbach.de All rights reserved.
  */
 
 const path = require("path");
