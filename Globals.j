@@ -12,7 +12,7 @@ Globals.j
  Created on 2021-01-07
  */
 
-gVersionDateOfFrACT = "2024-02-04";
+gVersionDateOfFrACT = "2024-02-10";
 //gVersionStringOfFract = [[[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] infoDictionary] objectForKey:@"CPBundleVersion"]; Doesn't work, bug in Cappuccino, always returns 1.0
 gVersionStringOfFract = "1.0.6";
 gVersionOfExportFormat = "5";
@@ -41,6 +41,7 @@ tab = "\t";  crlf = "\n";
 /*
  #  History
 
++ 2024-02-10 crowding with curront optotype, not always C (TAO tbd)
 + 2024-02-06 fix regression (oblique only) in specialBcm
     introduce preset "Demo", autoRunIndex symbolic constants
 + 2024-02-03 correct a tooltip, comments a little more systematic

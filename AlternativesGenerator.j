@@ -109,7 +109,8 @@ function randomiseArray(array) {
  @return (int) number within the range given when instantiating
  */
 - (int) nextAlternative { //console.info("AlternativesGenerator>nextAlternative");
-    [self setCurrentAlternative: alternatives2present[_currentTrial]];
+    const _trial = _currentTrial % alternatives2present.length; // to catch 5 Es with crowding
+    [self setCurrentAlternative: alternatives2present[_trial]];
     if (_obliqueOnly)
         [self setCurrentAlternative: currentAlternative + 2];
     _currentTrial++;

@@ -8,6 +8,7 @@
 
 @import "FractController.j"
 @implementation FractControllerAcuity: FractController {
+    int rowDirectionPres;
 }
 
 
@@ -27,7 +28,7 @@
 // this manages stuff after the optotypes have been drawn, e.g. crowding
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
     [trialHistoryController setValue: [MiscSpace logMARfromDecVA: [MiscSpace decVAFromGapPixels: stimStrengthInDeviceunits]]];
-    if ([Settings crowdingType] > 0) {
+    if (([Settings crowdingType] > 0) && (currentTestID != kTestAcuityLineByLine)) {
         if (currentTestID != kTestAcuityVernier) { // don't do crowding with Vernier etc.
             CGContextSaveGState(cgc);
             CGContextTranslateCTM(cgc, viewWidth2, viewHeight2); // origin to center
@@ -69,11 +70,23 @@
                     CGContextStrokeRect(cgc, CGRectMake(-frameSize2, -frameSize2, frameSize, frameSize));
                     break;
                 case 6:    // row of optotypes
-                    for (i = -2; i <= 2; i++) {
-                        const directionPresentedX = [Misc iRandom: nAlternatives];
+                    let rowAlternatives = [[AlternativesGenerator alloc] initWithNumAlternatives: nAlternatives andNTrials: 5 obliqueOnly: NO];
+                    for (let i = -2; i <= 2; i++) {
                         const tempX = i * crowdingDistance;
                         CGContextTranslateCTM(cgc,  -tempX, 0);
-                        if (i != 0)  [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: directionPresentedX];
+                        if (i != 0)  {
+                            rowDirectionPres = [rowAlternatives nextAlternative];
+                            if (rowDirectionPres == [alternativesGenerator currentAlternative])
+                                rowDirectionPres = [rowAlternatives nextAlternative];
+                            switch (currentTestID) {
+                                case kTestAcuityLett:
+                                    [optotypes drawLetterWithGapInPx: stimStrengthInDeviceunits letterNumber: rowDirectionPres];  break;
+                                case kTestAcuityE:
+                                    [optotypes tumblingEWithGapInPx: stimStrengthInDeviceunits direction: rowDirectionPres];  break;
+                                default:
+                                    [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: rowDirectionPres];
+                            }
+                        }
                         CGContextTranslateCTM(cgc,  +tempX, 0);
                     }  break;
             }
