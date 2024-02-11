@@ -195,10 +195,10 @@ Created by mb on 2017-07-12.
 
 
 /**
- We will need this in FractControllerAcuityTAO, it's an intermediate calling point accessed via parent.
+ We will need this in FractControllerAcuityTAO, it will be accessed via `parent`.
  */
-- (id) taoImageArray {
-    return [taoController imageArray];
+- (id) gTaoController {
+    return taoController;
 }
 
 

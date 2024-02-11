@@ -9,6 +9,7 @@
 @import "FractController.j"
 @implementation FractControllerAcuity: FractController {
     int rowDirectionPres;
+    id myTaoController;
 }
 
 
