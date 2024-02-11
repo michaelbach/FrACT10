@@ -69,7 +69,7 @@ Created by mb on July 15, 2015.
     
     [self setTestOnFive: [self chckInt: [self testOnFive] def: kTestAcuityLett min: kTestNone max: kTestAcuityLineByLine set: set]]; // 1: Sloan Letters
 
-    [self setNOfRuns2Recall: [self chckInt: [self nOfRuns2Recall] def: 0 min: 0 max: 100 set: set]];
+    //[self setNOfRuns2Recall: [self chckInt: [self nOfRuns2Recall] def: 0 min: 0 max: 100 set: set]];
 
     [self setEccentXInDeg: [self chckFlt: [self eccentXInDeg] def: 0 min: -99 max: 99 set: set]];
     [self setEccentYInDeg: [self chckFlt: [self eccentYInDeg] def: 0 min: -99 max: 99 set: set]];
@@ -135,9 +135,11 @@ Created by mb on July 15, 2015.
     
     [self setCrowdingDistanceCalculationType: [self chckInt: [self crowdingDistanceCalculationType] def: 0 min: 0 max: 3 set: set]];
 
+    // Line-by-line stuff
     [self setTestOnLineByLine: [self chckInt: [self testOnLineByLine] def: 1 min: 1 max: 4 set: set]]; // 1: Sloan Letters. 0: nicht erlaubt, 2: Landolt, 3…
     [self setTestOnLineByLineDistanceType: [self chckInt: [self testOnLineByLineDistanceType] def: 0 min: 0 max: 1 set: set]]; // 0: DIN-EN-ISO, 1: ETDRS
     [self setLineByLineHeadcountIndex: [self chckInt: [self lineByLineHeadcountIndex] def: 2 min: 0 max: 4 set: set]]; // 0: "1", 2: "3", 3: "5", 4: "7"
+    [self setLineByLineChartMode: [self chckBool: [self lineByLineChartMode] def: NO set: set]];
 
 
     // Vernier stuff
@@ -777,6 +779,13 @@ Created by mb on July 15, 2015.
 + (void) setLineByLineHeadcountIndex: (int) val {
     [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "lineByLineHeadcountIndex"];
 }
++ (BOOL) lineByLineChartMode {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "lineByLineChartMode"];
+}
++ (void) setLineByLineChartMode: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "lineByLineChartMode"];
+}
+
 
 // Vernier stuff
 + (int) vernierType {

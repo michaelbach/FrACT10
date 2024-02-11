@@ -1949,14 +1949,14 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </comboBox>
                                         <box fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="dsj-Xn-diN">
-                                            <rect key="frame" x="525" y="-18" width="236" height="134"/>
+                                            <rect key="frame" x="525" y="-18" width="236" height="169"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="hSN-vj-QjA">
-                                                <rect key="frame" x="4" y="5" width="228" height="114"/>
+                                                <rect key="frame" x="4" y="5" width="228" height="149"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ISM-iO-FiM">
-                                                        <rect key="frame" x="17" y="77" width="89" height="16"/>
+                                                        <rect key="frame" x="17" y="112" width="89" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" enabled="NO" sendsActionOnEndEditing="YES" title="Optotype" id="eKO-dD-pZk">
                                                             <font key="font" metaFont="system"/>
@@ -1965,7 +1965,7 @@ No money transfer involved, just for size!     </string>
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YnV-xX-KHx">
-                                                        <rect key="frame" x="118" y="77" width="89" height="16"/>
+                                                        <rect key="frame" x="118" y="112" width="89" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" enabled="NO" sendsActionOnEndEditing="YES" title="Distance" id="nag-2J-Iq5">
                                                             <font key="font" metaFont="system"/>
@@ -1974,7 +1974,7 @@ No money transfer involved, just for size!     </string>
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RIq-gM-491">
-                                                        <rect key="frame" x="118" y="18" width="89" height="16"/>
+                                                        <rect key="frame" x="118" y="53" width="89" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Number of optotypes in the line.
                                     </string>
@@ -1985,7 +1985,7 @@ No money transfer involved, just for size!     </string>
                                                         </textFieldCell>
                                                     </textField>
                                                     <popUpButton toolTip="Which optotypes to present in the &quot;Line of Optotypes&quot; / &quot;line-by-line&quot; mode" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JCI-tq-Dxr">
-                                                        <rect key="frame" x="17" y="50" width="97" height="26"/>
+                                                        <rect key="frame" x="17" y="85" width="97" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <popUpButtonCell key="cell" type="push" title="–" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="BNs-47-qLW" id="HXT-wA-3ir">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -2015,7 +2015,7 @@ No money transfer involved, just for size!     </string>
                                                         </connections>
                                                     </popUpButton>
                                                     <popUpButton toolTip="Distance between optotypes, international norm or ETDRS" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H3u-od-Aga">
-                                                        <rect key="frame" x="117" y="50" width="97" height="26"/>
+                                                        <rect key="frame" x="117" y="85" width="97" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <popUpButtonCell key="cell" type="push" title="ISO-EN-DIN" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="TMO-F2-t8u" id="Nrt-m0-dMu">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -2036,7 +2036,7 @@ No money transfer involved, just for size!     </string>
                                                         </connections>
                                                     </popUpButton>
                                                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YdS-Tu-7XG" userLabel="Headcount">
-                                                        <rect key="frame" x="17" y="15" width="97" height="26"/>
+                                                        <rect key="frame" x="17" y="50" width="97" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Number of optotypes in the line.
                                     </string>
@@ -2064,11 +2064,22 @@ No money transfer involved, just for size!     </string>
                                                             <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.lineByLineHeadcountIndex" id="4jv-X1-tFW"/>
                                                         </connections>
                                                     </popUpButton>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aam-cb-JOL">
+                                                        <rect key="frame" x="18" y="19" width="149" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="chart mode (3 lines)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nlH-u0-tfg">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.lineByLineChartMode" id="5pO-zF-x1d"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                             </view>
                                         </box>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yeH-Jv-eDF">
-                                            <rect key="frame" x="548" y="86" width="135" height="22"/>
+                                            <rect key="frame" x="548" y="123" width="135" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Line of Optotypes" bezelStyle="round" id="80e-Xb-73c">
                                                 <font key="font" metaFont="system"/>

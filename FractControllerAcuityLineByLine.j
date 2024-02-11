@@ -13,6 +13,7 @@ Created by mb on 2021-12-21.
 @import "FractControllerAcuity.j"
 @implementation FractControllerAcuityLineByLine: FractControllerAcuity {
     float localLogMAR;
+    BOOL chartmode;
 }
 
 
@@ -44,34 +45,45 @@ Created by mb on 2021-12-21.
     switch(state) {
         case kStateDrawBack: break;
         case kStateDrawFore:
-            const usedAlternativesArray = [];
-            let optotypeDistance = 1; // according to ETDRS
-            if ([Settings testOnLineByLineDistanceType] == 0) {// according to DIN EN ISO 8596
-                optotypeDistance = 0.4;
-                const localDecVA = [MiscSpace decVAfromLogMAR: localLogMAR];
-                if (localDecVA >= 0.06) optotypeDistance = 1;
-                if (localDecVA >= 0.16) optotypeDistance = 1.5;
-                if (localDecVA >= 0.4) optotypeDistance = 2;
-                if (localDecVA >= 1.0) optotypeDistance = 3;
+            chartmode = [Settings lineByLineChartMode];
+            CGContextSaveGState(cgc);
+            let lineRange = 0;
+            if (chartmode) {
+                stimStrengthInDeviceunits *= Math.pow(2, 1/10);
+                lineRange = 1;
             }
-            optotypeDistance = (1 + optotypeDistance) * stimStrengthInDeviceunits * 5;
-            const iRange = [Settings lineByLineHeadcountIndex];
-            for (let i = -iRange; i <= iRange; i++) {//iDex 0…3 → 1, 3, 5, 7
-                const tempX = i * optotypeDistance;
-                CGContextTranslateCTM(cgc, -tempX, -verticalOffset);
-                let currentAlternative = [Misc iRandom: nAlternatives];
-                while (usedAlternativesArray.includes(currentAlternative)) {
-                    currentAlternative = [Misc iRandom: nAlternatives];
+            for (let iLine = -lineRange; iLine <= lineRange; iLine++) {
+                const usedAlternativesArray = [];
+                let optotypeDistance = 1; // according to ETDRS
+                if ([Settings testOnLineByLineDistanceType] == 0) {// according to DIN EN ISO 8596
+                    optotypeDistance = 0.4;
+                    const localDecVA = [MiscSpace decVAfromLogMAR: localLogMAR];
+                    if (localDecVA >= 0.06) optotypeDistance = 1;
+                    if (localDecVA >= 0.16) optotypeDistance = 1.5;
+                    if (localDecVA >= 0.4) optotypeDistance = 2;
+                    if (localDecVA >= 1.0) optotypeDistance = 3;
                 }
-                usedAlternativesArray.push(currentAlternative);
-                switch([Settings testOnLineByLine]) {
-                    case 1: [optotypes drawLetterWithGapInPx: stimStrengthInDeviceunits letterNumber: currentAlternative];  break;
-                    case 2: [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: currentAlternative];  break;
-                    default: console.log("Line-by-line: unsupported optotype-id: ", [Settings testOnLineByLine]);
+                optotypeDistance = (1 + optotypeDistance) * stimStrengthInDeviceunits * 5;
+                if (chartmode && (iLine >= 0)) CGContextTranslateCTM(cgc, 0, optotypeDistance);
+                const iRange = [Settings lineByLineHeadcountIndex];
+                for (let i = -iRange; i <= iRange; i++) {//iDex 0…3 → 1, 3, 5, 7
+                    const tempX = i * optotypeDistance;
+                    CGContextTranslateCTM(cgc, -tempX, -verticalOffset);
+                    let currentAlternative = [Misc iRandom: nAlternatives];
+                    while (usedAlternativesArray.includes(currentAlternative)) {
+                        currentAlternative = [Misc iRandom: nAlternatives];
+                    }
+                    usedAlternativesArray.push(currentAlternative);
+                    switch([Settings testOnLineByLine]) {
+                        case 1: [optotypes drawLetterWithGapInPx: stimStrengthInDeviceunits letterNumber: currentAlternative];  break;
+                        case 2: [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: currentAlternative];  break;
+                        default: console.log("Line-by-line: unsupported optotype-id: ", [Settings testOnLineByLine]);
+                    }
+                    CGContextTranslateCTM(cgc, +tempX, verticalOffset);
                 }
-                CGContextTranslateCTM(cgc, +tempX, verticalOffset);
+                stimStrengthInDeviceunits *= Math.pow(2, 1/10);
             }
-
+            CGContextRestoreGState(cgc);
             CGContextSetFillColor(cgc, [CPColor blueColor]);
             CGContextSetTextDrawingMode(cgc, kCGTextFill);
             CGContextSelectFont(cgc, "24px sans-serif"); // must be CSS
@@ -83,6 +95,9 @@ Created by mb on 2021-12-21.
                 //lineHeight = tInfo.emHeightAscent;// + tInfo.emHeightDescent;
             } catch(e) {}
             CGContextShowTextAtPoint(cgc, viewWidth2 - stringWidth, -viewHeight2 + lineHeight, s);
+            if (chartmode) {
+                CGContextShowTextAtPoint(cgc, viewWidth2 - stringWidth, -viewHeight2 + 2 * lineHeight, "(middle line)");
+            }
             CGContextShowTextAtPoint(cgc, -viewWidth2, -viewHeight2 + lineHeight, " Use ↑↓, ⇄");
             break;
         default: break;
