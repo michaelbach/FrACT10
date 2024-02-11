@@ -8,7 +8,7 @@
 
 @import "FractController.j"
 @implementation FractControllerAcuity: FractController {
-    int rowDirectionPres;
+    int directionInRow;
     id myTaoController;
 }
 
@@ -76,16 +76,18 @@
                         const tempX = i * crowdingDistance;
                         CGContextTranslateCTM(cgc,  -tempX, 0);
                         if (i != 0)  {
-                            rowDirectionPres = [rowAlternatives nextAlternative];
-                            if (rowDirectionPres == [alternativesGenerator currentAlternative])
-                                rowDirectionPres = [rowAlternatives nextAlternative];
+                            directionInRow = [rowAlternatives nextAlternative];
+                            if (directionInRow == [alternativesGenerator currentAlternative])
+                                directionInRow = [rowAlternatives nextAlternative];
                             switch (currentTestID) {
                                 case kTestAcuityLett:
-                                    [optotypes drawLetterWithGapInPx: stimStrengthInDeviceunits letterNumber: rowDirectionPres];  break;
+                                    [optotypes drawLetterWithGapInPx: stimStrengthInDeviceunits letterNumber: directionInRow];  break;
                                 case kTestAcuityE:
-                                    [optotypes tumblingEWithGapInPx: stimStrengthInDeviceunits direction: rowDirectionPres];  break;
+                                    [optotypes tumblingEWithGapInPx: stimStrengthInDeviceunits direction: directionInRow];  break;
+                                case kTestAcuityTAO:
+                                    [myTaoController drawTaoWithStrokeInPx: stimStrengthInDeviceunits taoNumber: directionInRow];  break;
                                 default:
-                                    [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: rowDirectionPres];
+                                    [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: directionInRow];
                             }
                         }
                         CGContextTranslateCTM(cgc,  +tempX, 0);
