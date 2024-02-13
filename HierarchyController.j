@@ -31,7 +31,7 @@ kResults2ClipNone = 0; kResults2ClipFinalOnly = 1; kResults2ClipFullHistory = 2;
     HierarchyController parentController @accessors;
     TestIDType currentTestID @accessors;
     CPString resultString @accessors;
-    CPString versionDateString @accessors; // for the Xib top right
+    CPString versionDateString @accessors; // for the main Xib window top right
     CPString keyTestSettingsString @accessors;
     CPString currentTestResultUnit @accessors;
     CPString currentTestResultExportString @accessors;
