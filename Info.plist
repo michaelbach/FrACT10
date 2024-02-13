@@ -14,5 +14,7 @@
 	<string>Copyright © 1993–2024, Michael Bach, all rights reserved.</string>
 	<key>Main cib file base name</key>
 	<string>MainMenu.cib</string>
+	<key>VersionDate</key>
+	<string>2024-02-13b</string>
 </dict>
 </plist>

@@ -12,8 +12,13 @@ Globals.j
  Created on 2021-01-07
  */
 
+
+/* Below doesn't work after "jake deploy" because values are not copied to `info.plist`
+ const bundleDict = [[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] infoDictionary];
+ gVersionDateOfFrACT = [bundleDict objectForKey:@"VersionDate"];
+ gVersionStringOfFract = [bundleDict objectForKey:@"CPBundleVersion"];*/
+
 gVersionDateOfFrACT = "2024-02-13a";
-//gVersionStringOfFract = [[[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] infoDictionary] objectForKey:@"CPBundleVersion"]; Doesn't work, bug in Cappuccino, always returns 1.0
 gVersionStringOfFract = "1.0.6";
 gVersionOfExportFormat = "5";
 
