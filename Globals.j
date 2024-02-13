@@ -18,7 +18,7 @@ Globals.j
  gVersionDateOfFrACT = [bundleDict objectForKey:@"VersionDate"];
  gVersionStringOfFract = [bundleDict objectForKey:@"CPBundleVersion"];*/
 
-gVersionDateOfFrACT = "2024-02-13a";
+gVersionDateOfFrACT = "2024-02-14";
 gVersionStringOfFract = "1.0.6";
 gVersionOfExportFormat = "5";
 
@@ -46,6 +46,7 @@ tab = "\t";  crlf = "\n";
 /*
  #  History
 
++ 2024-02-14 freeze w/o code changes
 + 2024-02-13a add "lineByLineChartModeConstantVA"
 + 2024-02-13 rearrange presets
 + 2024-02-11 refactor TAO, crowding with TAO
