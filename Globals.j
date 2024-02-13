@@ -13,13 +13,9 @@ Globals.j
  */
 
 
-/* Below doesn't work after "jake deploy" because values are not copied to `info.plist`
- const bundleDict = [[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] infoDictionary];
- gVersionDateOfFrACT = [bundleDict objectForKey:@"VersionDate"];
- gVersionStringOfFract = [bundleDict objectForKey:@"CPBundleVersion"];*/
-
-gVersionDateOfFrACT = "2024-02-14";
-gVersionStringOfFract = "1.0.6";
+const bundleDict = [[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] infoDictionary];
+gVersionDateOfFrACT = [bundleDict objectForKey:@"VersionDate"];
+gVersionStringOfFract = [bundleDict objectForKey:@"VersionNumberString"];//CPBundleVersion mangled by jake
 gVersionOfExportFormat = "5";
 
 gDefaultDistanceInCM = 399;
@@ -39,13 +35,14 @@ gSlopeCI95 = 15; // this value approximates test-retest variability
 
 gSpecialBcmDone = NO;
 
-gMeter2FeetMultiplier = 3.28084
+gMeter2FeetMultiplier = 3.28084;
 
 tab = "\t";  crlf = "\n";
 
 /*
  #  History
 
++ 2024-02-15 read version number from info.plist (avoiding CPBundleVersion, which is mangled)
 + 2024-02-14 freeze w/o code changes
 + 2024-02-13a add "lineByLineChartModeConstantVA"
 + 2024-02-13 rearrange presets

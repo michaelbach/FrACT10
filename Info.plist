@@ -7,7 +7,7 @@
 	<key>CPBundleName</key>
 	<string>FrACT10</string>
 	<key>CPBundleVersion</key>
-	<string>1.0.6</string>
+	<string>1.0</string>
 	<key>CPDefaultTheme</key>
 	<string>Aristo2</string>
 	<key>CPHumanReadableCopyright</key>
@@ -15,6 +15,8 @@
 	<key>Main cib file base name</key>
 	<string>MainMenu.cib</string>
 	<key>VersionDate</key>
-	<string>2024-02-13b</string>
+	<string>2024-02-15</string>
+	<key>VersionNumberString</key>
+	<string>1.0.6</string>
 </dict>
 </plist>
