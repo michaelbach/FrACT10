@@ -12,8 +12,9 @@ Created by mb on 2021-12-21.
 
 @import "FractControllerAcuity.j"
 @implementation FractControllerAcuityLineByLine: FractControllerAcuity {
+    int lineRange;
     float localLogMAR;
-    BOOL chartmode;
+    BOOL chartmode, chartmodeNotConstVA;
 }
 
 
@@ -46,10 +47,13 @@ Created by mb on 2021-12-21.
         case kStateDrawBack: break;
         case kStateDrawFore:
             chartmode = [Settings lineByLineChartMode];
+            chartmodeNotConstVA = ![Settings lineByLineChartModeConstantVA];
             CGContextSaveGState(cgc);
-            let lineRange = 0;
+            lineRange = 0;
             if (chartmode) {
-                stimStrengthInDeviceunits /= Math.pow(2, 1/10);
+                if (chartmodeNotConstVA) {
+                    stimStrengthInDeviceunits /= Math.pow(2, 1/10);
+                }
                 lineRange = 1;
             }
             for (let iLine = -lineRange; iLine <= lineRange; iLine++) {
@@ -81,7 +85,9 @@ Created by mb on 2021-12-21.
                     }
                     CGContextTranslateCTM(cgc, +tempX, verticalOffset);
                 }
-                stimStrengthInDeviceunits /= Math.pow(2, 1/10);
+                if (chartmodeNotConstVA) {
+                    stimStrengthInDeviceunits /= Math.pow(2, 1/10);
+                }
             }
             CGContextRestoreGState(cgc);
             CGContextSetFillColor(cgc, [CPColor blueColor]);

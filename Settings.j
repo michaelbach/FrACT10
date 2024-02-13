@@ -140,7 +140,7 @@ Created by mb on July 15, 2015.
     [self setTestOnLineByLineDistanceType: [self chckInt: [self testOnLineByLineDistanceType] def: 1 min: 0 max: 1 set: set]]; // 0: DIN-EN-ISO, 1: ETDRS
     [self setLineByLineHeadcountIndex: [self chckInt: [self lineByLineHeadcountIndex] def: 2 min: 0 max: 4 set: set]]; // 0: "1", 2: "3", 3: "5", 4: "7"
     [self setLineByLineChartMode: [self chckBool: [self lineByLineChartMode] def: NO set: set]];
-
+    [self setLineByLineChartModeConstantVA: [self chckBool: [self lineByLineChartModeConstantVA] def: NO set: set]];
 
     // Vernier stuff
     [self setVernierType: [self chckInt: [self vernierType] def: 0 min: 0 max: 1 set: set]]; // 2 or 3 bars
@@ -784,6 +784,12 @@ Created by mb on July 15, 2015.
 }
 + (void) setLineByLineChartMode: (BOOL) val {
     [[CPUserDefaults standardUserDefaults] setBool: val forKey: "lineByLineChartMode"];
+}
++ (BOOL) lineByLineChartModeConstantVA {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "lineByLineChartModeConstantVA"];
+}
++ (void) setLineByLineChartModeConstantVA: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "lineByLineChartModeConstantVA"];
 }
 
 
