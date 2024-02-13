@@ -25,6 +25,7 @@ jake release
 # delete unnecessary build products
 rm -R Build/Release/FrACT/CommonJS.environment # we don't need this
 mv Build/Release/FrACT ../ # move it up, creating the "FrACT" folder
+#would preserve date, but jake messes them up… cp -Rp Build/Release/FrACT ../ # move it up, creating the "FrACT" folder
 rm -R Build # and get rid of the rest of the built items
 
 # need to copy this too, could be added to jake?

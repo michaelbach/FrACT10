@@ -595,16 +595,16 @@ DQ
                                     <menuItem title="ALL DEFAULTS" id="E6d-3W-JNL">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
-                                    <menuItem title="ULV" id="K63-wD-Ybp">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="ESU" id="RUc-ID-IOk">
+                                    <menuItem title="Demo" id="d14-Br-wci">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
                                     <menuItem title="Testing" id="arD-ii-nPY">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
-                                    <menuItem title="Demo" id="d14-Br-wci">
+                                    <menuItem title="ESU" id="RUc-ID-IOk">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="ULV" id="K63-wD-Ybp">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
                                     <menuItem title="Color Equiluminance" id="9FI-6j-9ZQ">
@@ -2065,9 +2065,14 @@ No money transfer involved, just for size!     </string>
                                                         </connections>
                                                     </popUpButton>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aam-cb-JOL">
-                                                        <rect key="frame" x="18" y="19" width="149" height="18"/>
+                                                        <rect key="frame" x="18" y="19" width="151" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="chart mode (3 lines)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nlH-u0-tfg">
+                                                        <string key="toolTip">Create 3 lines, akin to an acuity chart.
+The indicated LogMAR refers to the middle line. 
+Instruct to read the middle line, and when 3 of 5 correct press ↓.
+    
+ </string>
+                                                        <buttonCell key="cell" type="check" title="Chart mode (3 lines)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nlH-u0-tfg">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>

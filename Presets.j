@@ -41,7 +41,8 @@
  Apply selected patch after "Are you sure" dialog
  */
 + (void) apply2: (int) p { //console.info("Presets>apply2");
-    const allPresets = ["StandardDefaults", "ULV", "ESU", "Testing", "Demo", "ColorEquiluminance", "BCMatScheie", "CNSatFreiburg"];
+    const allPresets = ["StandardDefaults", "Demo", "Testing", "ESU", "ULV", "ColorEquiluminance", "BCMatScheie", "CNSatFreiburg"];
+    // ↑ should be improved: not having these names in the GUI _and_ here #todo
     const selectedPresetName = allPresets[p];
     [self performSelector: CPSelectorFromString("apply" + selectedPresetName)];
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil]; // this synchronises the color settings between userdefaults & AppController
@@ -71,7 +72,9 @@
  */
 + (void) applyULV { //console.info("applyULV");
     [self setStandardDefaultsKeepingCalBarLength];
+    // general pane
     [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
+    // acuity pane
     [Settings setAcuityStartingLogMAR: 2.5];
 }
 
@@ -81,25 +84,22 @@
  */
 + (void) applyESU {
     [self setStandardDefaultsKeepingCalBarLength];
+    // general pane
     [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
-    
     [Settings setDistanceInCM: 150];
-    
     [[CPUserDefaults standardUserDefaults] setInteger: 1 forKey: "nAlternativesIndex"]; // 4 alternatives
     [Settings setNTrials04: 18];
     [Settings setTestOnFive: kTestAcuityC];
-    
     [Settings setTimeoutResponseSeconds: 999]; [Settings setTimeoutDisplaySeconds: 999];
-    
     [Settings setAuditoryFeedback: 0];
     [Settings setRewardPicturesWhenDone: YES];
-    
-    [Settings setAcuityFormatLogMAR: NO];
     [Settings setDecimalMarkChar: ","];
     [Settings setResults2clipboard: kResults2ClipNone];
-    
-    //displayIncompleteRuns = true; not implemented yet
+    // acuity pane
+    [Settings setAcuityFormatLogMAR: NO];
+    // other
     [Settings setTrialInfoFontSize: 24];
+    //displayIncompleteRuns = true; not implemented yet
 }
 
 
@@ -108,9 +108,11 @@
  */
 + (void) applyTesting {
     [self setStandardDefaultsKeepingCalBarLength];
+    // general pane
     [Settings setDistanceInCM: 400];
     [Settings setCalBarLengthInMM: 150];
     [Settings setResponseInfoAtStart: NO];
+    // acuity pane
     [Settings setShowCI95: YES];
 }
 
@@ -119,6 +121,7 @@
  Apply Demo: Auto run etc.
  */
 + (void) applyDemo {
+    [self applyStandardDefaults];
     [self applyTesting];
     [Settings setAutoRunIndex: kAutoRunIndexMid];
 }
@@ -141,7 +144,7 @@
  Apply applyBCMatScheie
  */
 + (void) applyBCMatScheie {
-    [Settings setDefaults];
+    [self applyStandardDefaults];
     // general pane
     [Settings setNAlternativesIndex: 0];  [Settings setNTrials02: 10];
     [Settings setTimeoutResponseSeconds: 120]; [Settings setTimeoutDisplaySeconds: 120];
@@ -168,7 +171,7 @@
 
 
 + (void) applyCNSatFreiburg {
-    [Settings setDefaults];
+    [self applyStandardDefaults];
     // general pane
     [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
     [Settings setMobileOrientation: NO];
