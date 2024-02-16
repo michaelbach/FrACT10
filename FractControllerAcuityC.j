@@ -32,7 +32,6 @@ Created by Bach on 18.07.2017.
     switch(state) {
         case kStateDrawBack: break;
         case kStateDrawFore: //console.info("kStateDrawFore");
-            [optotypes setCgc: cgc colFore: colOptotypeFore colBack: colOptotypeBack];
             if (([Settings nAlternatives] == 4) && ([Settings obliqueOnly])) {
                 [alternativesGenerator setCurrentAlternative: [alternativesGenerator currentAlternative] + 1];
             }

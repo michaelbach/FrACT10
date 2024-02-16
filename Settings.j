@@ -195,9 +195,11 @@ Created by mb on July 15, 2015.
     if ([self isAcuityColor]) return;
     const cnt = [MiscLight contrastMichelsonPercentFromWeberPercent: [self contrastAcuityWeber]];
     let temp = [MiscLight lowerLuminanceFromContrastMilsn: cnt];  temp = [MiscLight devicegrayFromLuminance: temp];
-    [self setAcuityForeColor: [CPColor colorWithWhite: temp alpha: 1]];
+    gColorFore = [CPColor colorWithWhite: temp alpha: 1];
+    [self setAcuityForeColor: gColorFore];
     temp = [MiscLight upperLuminanceFromContrastMilsn: cnt];  temp = [MiscLight devicegrayFromLuminance: temp];
-    [self setAcuityBackColor: [CPColor colorWithWhite: temp alpha: 1]];
+    gColorBack = [CPColor colorWithWhite: temp alpha: 1];
+    [self setAcuityBackColor: gColorBack];
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil];
 }
 
@@ -562,6 +564,8 @@ Created by mb on July 15, 2015.
 
 
 + (CPColor) windowBackgroundColor { //console.info("Settings>windowBackgroundColor");
+    // CPColors are stored as hexString because the archiver does not work in Cappuccino. Why not??
+    //https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/DrawColor/Tasks/StoringNSColorInDefaults.html
     let theData = [[CPUserDefaults standardUserDefaults] stringForKey: "windowBackgroundColor"];
     if (theData == nil) theData = "FFFFEE"; // safety measure and default
     const theColor = [CPColor colorWithHexString: theData];
@@ -570,19 +574,7 @@ Created by mb on July 15, 2015.
 + (void) setWindowBackgroundColor: (CPColor) theColor { //console.info("Settings>setWindowBackgroundColor:", theColor);
     [[CPUserDefaults standardUserDefaults] setObject: [theColor hexString] forKey: "windowBackgroundColor"];
 }
-/* can't use `CPKeyedUnarchiver unarchiveObjectWithData:`, missing `CPData encodeWithCoder:`
-+ (CPColor) windowBackgroundColor { //console.info("Settings>windowBackgroundColor");
-    let theColor = nil;
-    let theData = [[CPUserDefaults standardUserDefaults] dataForKey: "windowBackgroundColor"];
-    if (theData != nil)
- theColor = [CPKeyedUnarchiver unarchiveObjectWithData: theData];
-    return theColor;
-}
-+ (void) setWindowBackgroundColor: (CPColor) theColor {
-    let theData=[CPKeyedArchiver archivedDataWithRootObject: theColor];
-    [[CPUserDefaults standardUserDefaults] setObject: theData forKey: "windowBackgroundColor"];
-}
-*/
+
 
 + (BOOL) isAcuityColor {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "isAcuityColor"];
@@ -728,11 +720,9 @@ Created by mb on July 15, 2015.
 }
 
 
-// CPColors are stored as hexString because the archiver does not work in Cappuccino. Why not??
-//https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/DrawColor/Tasks/StoringNSColorInDefaults.html
+// these settings keeps optotype colors between restarts. Within FrACT use globals gColorFore/gColorBack
 + (CPColor) acuityForeColor { //console.info("Settings>acuityForeColor");
     let theData = [[CPUserDefaults standardUserDefaults] stringForKey: "acuityForeColor"];
-//    console.info("Settings>acuityForeColor>theData: ", theData)
     if (theData == nil) theData = "FFFFFF"; // safety measure
     const c = [CPColor colorWithHexString: theData]; //console.info("Settings>acuityForeColor:", c);
     return c;
@@ -750,7 +740,7 @@ Created by mb on July 15, 2015.
 + (void) setAcuityBackColor: (CPColor) theColor { //console.info("Settings>setAcuityBackColor:", theColor);
     [[CPUserDefaults standardUserDefaults] setObject: [theColor hexString] forKey: "acuityBackColor"];
 }
-
+    
 
 + (BOOL) acuityEasyTrials {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "acuityEasyTrials"];

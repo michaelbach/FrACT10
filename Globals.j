@@ -6,26 +6,21 @@ Globals.j
 */
 
 /**
- Global variables
+ Global constants & variables
  Since we do not have constants in Objective-J, we create global variables
  (and # define does not work for me)
  Created on 2021-01-07
  */
 
 
+//// global Constants
 const bundleDict = [[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] infoDictionary];
 gVersionDateOfFrACT = [bundleDict objectForKey:@"VersionDate"];
 gVersionStringOfFract = [bundleDict objectForKey:@"VersionNumberString"];//CPBundleVersion mangled by jake
 gVersionOfExportFormat = "5";
 
-gDefaultDistanceInCM = 399;
-gDefaultCalibrationBarLengthInMM = 149;
-
 gFilename4ResultStorage = "FRACT10-FINAL-RESULT-STRING";
 gFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
-
-// minimal stroke/gap size (half a pixel). Maximal, depending on screen & margin. Poor naming in case of Vernier.
-gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden via Setting and screen size
 
 // Correction for threshold underestimation by ascending method (in VAdecimal)
 gThresholdCorrection4Ascending = 0.891;
@@ -33,15 +28,24 @@ gThresholdCorrection4Ascending = 0.891;
 // slope parameter for the CI95 dispersion estimation; strongly affects CI95
 gSlopeCI95 = 15; // this value approximates test-retest variability
 
+gMeter2FeetMultiplier = 3.28084;  tab = "\t";  crlf = "\n";
+
+
+//// global Variables
+gDefaultDistanceInCM = 399;
+gDefaultCalibrationBarLengthInMM = 149;
+
+cgc = [[CPGraphicsContext currentContext] graphicsPort]; // global makes for easy access in Optotypes and contrast calcs
+gColorFore = [CPColor whiteColor];  gColorBack = [CPColor blackColor];
 gSpecialBcmDone = NO;
+// minimal stroke/gap size (half a pixel). Maximal, depending on screen & margin. Poor naming for Vernier.
+gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden via Setting and screen size
 
-gMeter2FeetMultiplier = 3.28084;
-
-tab = "\t";  crlf = "\n";
 
 /*
  #  History
 
++ 2024-02-16 simplify color/contrast/graphicsport management by going global with gColorFore, gColorBack & cgc
 + 2024-02-15 read version number from info.plist (avoiding CPBundleVersion, which is mangled)
 + 2024-02-14 freeze w/o code changes
 + 2024-02-13a add "lineByLineChartModeConstantVA"

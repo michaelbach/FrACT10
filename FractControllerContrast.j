@@ -31,9 +31,9 @@ Created by Bach on 2020-09-02
     if (![Settings contrastDarkOnLight]) {
         [gray1, gray2] = [gray2, gray1]; // "modern" swapping of variables
     }
-    colOptotypeFore = [MiscLight colorFromGreyBitStealed: gray1];//console.info(colOptotypeFore);
-    colOptotypeBack = [MiscLight colorFromGreyBitStealed: gray2];//console.info(colOptotypeBack);
-    //console.info(colOptotypeFore._cssString, colOptotypeBack._cssString);
+    gColorFore = [MiscLight colorFromGreyBitStealed: gray1];//console.info(gColorFore);
+    gColorBack = [MiscLight colorFromGreyBitStealed: gray2];//console.info(gColorBack);
+    //console.info(gColorFore._cssString, gColorBack._cssString);
 }
 
 
@@ -49,7 +49,6 @@ Created by Bach on 2020-09-02
     CGContextSaveGState(cgc);
     CGContextSetStrokeColor(cgc, [CPColor colorWithRed: 0 green: 0 blue: 1 alpha: 0.7]);
     CGContextSetLineWidth(cgc, 0.5);
-    //[optotypes setCgc: cgc colFore: [CPColor colorWithRed: 0 green: 0 blue: 1 alpha: 0.3] colBack: colOptotypeBack];
     CGContextTranslateCTM(cgc,  +xEccInPix, +yEccInPix); // counter eccentricity
     [optotypes strokeStarAtX: 0 y: 0 size: optotypeSizeInPix * 3];
     CGContextRestoreGState(cgc);

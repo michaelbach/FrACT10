@@ -89,7 +89,7 @@ const specialBcmStepsize = 0.1;
         if (notGratingSineNotSquare) lFloat = lFloat >= 0 ? 1 : -1; // sine → square wave grating
         lFloat = 0.5 + 0.5 * contrast / 100 * lFloat;  // contrast, map [-1, 1] → [0,1]
         if (isGratingColor) {
-            CGContextSetStrokeColor(cgc, [colOptotypeFore colorWithAlphaComponent: lFloat]);
+            CGContextSetStrokeColor(cgc, [gColorFore colorWithAlphaComponent: lFloat]);
         } else {
             lFloat = [MiscLight devicegrayFromLuminance: lFloat]; // gamma correction
             lDiscrete = lFloat;
@@ -111,8 +111,7 @@ const specialBcmStepsize = 0.1;
     isErrorDiffusion = [Settings gratingUseErrorDiffusion];
     [self calculateForeBackColors];
     if (isGratingColor) {
-        colOptotypeFore = [Settings gratingForeColor];
-        colOptotypeBack = [Settings gratingBackColor];
+        gColorFore = [Settings gratingForeColor];  gColorBack = [Settings gratingBackColor];
     }
     [self prepareDrawing];
     if (!isGratingColor) {
@@ -237,7 +236,7 @@ const specialBcmStepsize = 0.1;
     _testExportString += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
     _testExportString += tab + "crowding" + tab + 0; // does not apply, but let's not NaN this
     if (isGratingColor) {
-        _testExportString += tab + "colorForeBack" + tab + [colOptotypeFore hexString] + tab + [colOptotypeBack hexString];
+        _testExportString += tab + "colorForeBack" + tab + [gColorFore hexString] + tab + [gColorBack hexString];
         if ([self isAcuityGrating]) {
             _testExportString += tab + "cpdMin" + tab + [Misc stringFromNumber: [Settings gratingCPDmin] decimals: 3 localised: YES];
             _testExportString += tab + "cpdMax" + tab + [Misc stringFromNumber: [Settings gratingCPDmax] decimals: 2 localised: YES];

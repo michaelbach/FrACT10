@@ -30,7 +30,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     BOOL isBonusTrial, responseWasCorrect, responseWasCorrectCumulative;
     char oldResponseKeyChar, responseKeyChar;
     unsigned short responseKeyCode;
-    CGContext cgc;
     float stimStrengthInThresholderUnits, stimStrengthInDeviceunits, viewWidth, viewHeight, viewWidth2, viewHeight2;
     float optotypeSizeInPix, spatialFreqCPD, contrastMichelsonPercent;
     float xEccInPix, yEccInPix; // eccentricity
@@ -43,7 +42,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     CPString kRangeLimitDefault, kRangeLimitOk, kRangeLimitValueAtFloor, kRangeLimitValueAtCeiling, rangeLimitStatus, abortCharacter, ci95String;
     id sound @accessors;
     BOOL responseButtonsAdded;
-    CPColor colOptotypeFore, colOptotypeBack;
 }
 
 
@@ -71,7 +69,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
         optotypes = [[Optotypes alloc] init];
         [Settings checkDefaults];
-        colOptotypeFore = [Settings acuityForeColor];  colOptotypeBack = [Settings acuityBackColor];
         abortCharacter = "5";
         [[self parentController] setRunAborted: YES];
         [selfWindow makeKeyAndOrderFront: self];  [selfWindow makeFirstResponder: self];
@@ -145,7 +142,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
  */
 - (void) prepareDrawing { // console.info("FractController>prepareDrawing");
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
-    CGContextSetFillColor(cgc, colOptotypeBack);
+    CGContextSetFillColor(cgc, gColorBack);
     if ([self isAcuityTAO])
         CGContextSetFillColor(cgc, [CPColor whiteColor]); ;// contrast always 100% with TAO
     CGContextFillRect(cgc, [selfWindow frame]);
@@ -157,8 +154,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         case 2: CGContextScaleCTM(cgc, 1, -1);  break;
         case 3: CGContextScaleCTM(cgc, -1, -1);  break;
     }
-    CGContextSetFillColor(cgc, colOptotypeFore);
-    [optotypes setCgc: cgc colFore: colOptotypeFore colBack: colOptotypeBack];
+    CGContextSetFillColor(cgc, gColorFore);
 }
 
 
@@ -369,7 +365,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     }
     if ([Settings isAcuityColor]) {
         if ([self isAcuityOptotype] && (![self isAcuityTAO])) {
-            _currentTestResultExportString += tab + "colorForeBack" + tab + [colOptotypeFore hexString] + tab + [colOptotypeBack hexString];
+            _currentTestResultExportString += tab + "colorForeBack" + tab + [gColorFore hexString] + tab + [gColorBack hexString];
         }
     }
     if ([Settings embedInNoise]) {

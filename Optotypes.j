@@ -12,8 +12,6 @@ Optotypes.j
  Begun: 2020-08-17
  */
 @implementation Optotypes: CPObject {
-    CPColor _colOptotypeFore, _colOptotypeBack;
-    CGContext _cgc;
     float kPi, kPi2;
     float currentX, currentY; // for drawing
 }
@@ -28,17 +26,8 @@ Optotypes.j
 }
 
 
-/**
- this will be called from all tests and sets context & colors
- */
-- (void) setCgc: (CGContext) cgc colFore: (CPColor) colFore colBack: (CPColor) colBack { //console.info("setCgc");
-    _cgc = cgc;
-    _colOptotypeFore = colFore;  _colOptotypeBack = colBack;
-}
-
-
 - (float) getCurrentContrastMichelsonPercent {
-    return [MiscLight contrastMichelsonPercentFromColor1: _colOptotypeFore color2: _colOptotypeBack];
+    return [MiscLight contrastMichelsonPercentFromColor1: gColorFore color2: gColorBack];
 }
 - (float) getCurrentContrastWeberPercent {
     return [MiscLight contrastWeberFromMichelsonPercent: [self getCurrentContrastMichelsonPercent]];
@@ -56,33 +45,33 @@ Optotypes.j
  A number of general drawing helpers
  */
 - (void) strokeCircleAtX: (float)x y: (float)y radius: (float) r { //console.info("MBIllus>strokeCircleAtX");
-    CGContextStrokeEllipseInRect(_cgc, CGRectMake(x - r, y - r, 2 * r, 2 * r));
+    CGContextStrokeEllipseInRect(cgc, CGRectMake(x - r, y - r, 2 * r, 2 * r));
 }
 
 
 - (void) fillCircleAtX: (float)x y: (float)y radius: (float) r { //console.info("MBIllus>fillCircleAtX");
-    CGContextFillEllipseInRect(_cgc, CGRectMake(x - r, y - r, 2 * r, 2 * r));
+    CGContextFillEllipseInRect(cgc, CGRectMake(x - r, y - r, 2 * r, 2 * r));
 }
 
 
 - (void) strokeLineX0: (float) x0 y0: (float) y0 x1: (float) x1 y1: (float) y1 { //console.info("strokeLineX0");
-    CGContextBeginPath(_cgc);
-    CGContextMoveToPoint(_cgc, x0, y0);  CGContextAddLineToPoint(_cgc, x1, y1);
-    CGContextStrokePath(_cgc);
+    CGContextBeginPath(cgc);
+    CGContextMoveToPoint(cgc, x0, y0);  CGContextAddLineToPoint(cgc, x1, y1);
+    CGContextStrokePath(cgc);
     currentX = x1;  currentY = y1;
 }
 - (void) strokeLineToX: (float) xxx y: (float) yyy { //console.info("strokeLineX0");
-    CGContextBeginPath(_cgc);
-    CGContextMoveToPoint(_cgc, currentX, currentY);  CGContextAddLineToPoint(_cgc, xxx, yyy);
-    CGContextStrokePath(_cgc);
+    CGContextBeginPath(cgc);
+    CGContextMoveToPoint(cgc, currentX, currentY);  CGContextAddLineToPoint(cgc, xxx, yyy);
+    CGContextStrokePath(cgc);
     currentX = xxx;  currentY = yyy;
 }
 - (void) strokeLineDeltaX: (float) xxx deltaY: (float) yyy { //console.info("strokeLineX0");
-    CGContextBeginPath(_cgc);
-    CGContextMoveToPoint(_cgc, currentX, currentY);
+    CGContextBeginPath(cgc);
+    CGContextMoveToPoint(cgc, currentX, currentY);
     currentX = currentX + xxx;  currentY = currentY + yyy;
-    CGContextAddLineToPoint(_cgc, currentX, currentY);
-    CGContextStrokePath(_cgc);
+    CGContextAddLineToPoint(cgc, currentX, currentY);
+    CGContextStrokePath(cgc);
 }
 - (void) strokeVLineAtX: (float) x y0: (float) y0 y1: (float) y1 {
     [self strokeLineX0: x y0: y0 x1: x y1: y1];
@@ -96,13 +85,13 @@ Optotypes.j
 
 - (void) addCrossAtX: (float) x y: (float) y size: (float) s {
     s /= 2;
-    CGContextMoveToPoint(_cgc, x - s, y);  CGContextAddLineToPoint(_cgc, x + s, y);
-    CGContextMoveToPoint(_cgc, x, y - s);  CGContextAddLineToPoint(_cgc, x, y + s);
+    CGContextMoveToPoint(cgc, x - s, y);  CGContextAddLineToPoint(cgc, x + s, y);
+    CGContextMoveToPoint(cgc, x, y - s);  CGContextAddLineToPoint(cgc, x, y + s);
 }
 
 
 - (void) strokeCrossAtX: (float) x y: (float) y size: (float) s {
-    CGContextBeginPath(_cgc);  [self addCrossAtX: x y: y size: s];  CGContextStrokePath(_cgc);
+    CGContextBeginPath(cgc);  [self addCrossAtX: x y: y size: s];  CGContextStrokePath(cgc);
 }
 
 
@@ -114,6 +103,7 @@ Optotypes.j
 
 
 - (void) strokeStarAtX: (float) x y: (float) y size: (float) s { //console.info("optotypes>strokeStarAtX");
+    cgc = [[CPGraphicsContext currentContext] graphicsPort]; // probably no longer necessary
     [self strokeXAtX: x y: y size: s];  [self strokeCrossAtX: x y: y size: s];
 }
 
@@ -122,27 +112,28 @@ Optotypes.j
  Draw optotypes (letters and Es) on a -5…+5 coordinate system
 */
 - (void) fillPolygon: (float) p withD: (float) d { //console.info("optotypes>fillPolygon");
-    CGContextSetFillColor(_cgc, _colOptotypeFore);
-    CGContextBeginPath(_cgc);
-    CGContextMoveToPoint(_cgc, d * p[0][0], -d * p[0][1]);
+    CGContextSetFillColor(cgc, gColorFore);
+    CGContextBeginPath(cgc);
+    CGContextMoveToPoint(cgc, d * p[0][0], -d * p[0][1]);
     for (let i = 1; i < p.length; ++i) {
-        CGContextAddLineToPoint(_cgc, d * p[i][0], -d * p[i][1]);
+        CGContextAddLineToPoint(cgc, d * p[i][0], -d * p[i][1]);
     }
-    CGContextAddLineToPoint(_cgc, d * p[0][0], -d * p[0][1]);
-    CGContextFillPath(_cgc);
+    CGContextAddLineToPoint(cgc, d * p[0][0], -d * p[0][1]);
+    CGContextFillPath(cgc);
 }
 
 
 - (void) drawLandoltWithGapInPx: (float) gap landoltDirection: (int) direction { //console.info("optotypes>drawLandoltWithGapInPx", gap, direction);
-    CGContextSetFillColor(_cgc, _colOptotypeFore);
+    cgc = [[CPGraphicsContext currentContext] graphicsPort];
+    CGContextSetFillColor(cgc, gColorFore);
     [self fillCircleAtX: 0 y: 0 radius: 2.5 * gap];
-    CGContextSetFillColor(_cgc, _colOptotypeBack);
+    CGContextSetFillColor(cgc, gColorBack);
     [self fillCircleAtX: 0 y: 0 radius: 1.5 * gap];
     const rct = CGRectMake(gap * 1.4 - 1, -gap / 2, 1.3 * gap + 1, gap); //console.info(gap, " ", rct);
     const rot = Math.PI / 180 * (7 - (direction - 1)) / 8 * 360;
-    CGContextRotateCTM(_cgc, rot);
-    if (direction >= 0) CGContextFillRect(_cgc, rct);
-    CGContextRotateCTM(_cgc, -rot);
+    CGContextRotateCTM(cgc, rot);
+    if (direction >= 0) CGContextFillRect(cgc, rct);
+    CGContextRotateCTM(cgc, -rot);
 }
 
 
@@ -152,26 +143,26 @@ Optotypes.j
 - (void)drawSloanDWithGapInPx: (float) d { //console.info("optotypes>drawSloanDWithGapInPx");
     d *= 0.5;
     const gxf = 1, gyf = 1;
-    CGContextBeginPath(_cgc);
-    CGContextMoveToPoint(_cgc, -d * 5 * gxf, -d * 5 * gyf);
-    CGContextAddLineToPoint(_cgc, d * 1 * gxf, -d * 5 * gyf);
-    CGContextAddArc(_cgc, d * 1 * gxf, -d * 1 * gyf, 4 * d, -kPi2, 0, YES);
-    CGContextAddLineToPoint(_cgc, d * 5 * gxf, +d * 1 * gyf);
-    CGContextAddArc(_cgc, d * 1 * gxf, +d * 1 * gyf, 4 * d, 0, kPi2, YES);
-    CGContextAddLineToPoint(_cgc, -d * 5 * gxf, d * 5 * gyf);
-    CGContextAddLineToPoint(_cgc, -d * 5 * gxf, -d * 5 * gyf);
-    CGContextFillPath(_cgc);
+    CGContextBeginPath(cgc);
+    CGContextMoveToPoint(cgc, -d * 5 * gxf, -d * 5 * gyf);
+    CGContextAddLineToPoint(cgc, d * 1 * gxf, -d * 5 * gyf);
+    CGContextAddArc(cgc, d * 1 * gxf, -d * 1 * gyf, 4 * d, -kPi2, 0, YES);
+    CGContextAddLineToPoint(cgc, d * 5 * gxf, +d * 1 * gyf);
+    CGContextAddArc(cgc, d * 1 * gxf, +d * 1 * gyf, 4 * d, 0, kPi2, YES);
+    CGContextAddLineToPoint(cgc, -d * 5 * gxf, d * 5 * gyf);
+    CGContextAddLineToPoint(cgc, -d * 5 * gxf, -d * 5 * gyf);
+    CGContextFillPath(cgc);
     d *= 3 / 5;
-    CGContextSetFillColor(_cgc, _colOptotypeBack);
-    CGContextBeginPath(_cgc);
-    CGContextMoveToPoint(_cgc, -d * 5 * gxf, -d * 5 * gyf);
-    CGContextAddLineToPoint(_cgc, d * 1 * gxf, -d * 5 * gyf);
-    CGContextAddArc(_cgc, d * 1 * gxf, -d * 1 * gyf, 4 * d, -kPi2, 0, YES);
-    CGContextAddLineToPoint(_cgc, d * 5 * gxf, +d * 1 * gyf);
-    CGContextAddArc(_cgc, d * 1 * gxf, +d * 1 * gyf, 4 * d, 0, kPi2, YES);
-    CGContextAddLineToPoint(_cgc, -d * 5 * gxf, d * 5 * gyf);
-    CGContextAddLineToPoint(_cgc, -d * 5 * gxf, -d * 5 * gyf);
-    CGContextFillPath(_cgc);
+    CGContextSetFillColor(cgc, gColorBack);
+    CGContextBeginPath(cgc);
+    CGContextMoveToPoint(cgc, -d * 5 * gxf, -d * 5 * gyf);
+    CGContextAddLineToPoint(cgc, d * 1 * gxf, -d * 5 * gyf);
+    CGContextAddArc(cgc, d * 1 * gxf, -d * 1 * gyf, 4 * d, -kPi2, 0, YES);
+    CGContextAddLineToPoint(cgc, d * 5 * gxf, +d * 1 * gyf);
+    CGContextAddArc(cgc, d * 1 * gxf, +d * 1 * gyf, 4 * d, 0, kPi2, YES);
+    CGContextAddLineToPoint(cgc, -d * 5 * gxf, d * 5 * gyf);
+    CGContextAddLineToPoint(cgc, -d * 5 * gxf, -d * 5 * gyf);
+    CGContextFillPath(cgc);
 }
 - (void)drawSloanHWithGapInPx: (float) d { //console.info("optotypes>drawSloanHWithGapInPx");
     const pnts = [[-5,-5], [-3,-5], [-3,-1], [+3,-1], [+3,-5], [+5,-5], [+5,+5], [+3,+5], [+3,+1], [-3,+1], [-3,+5], [-5,+5], [-5, -5]];
@@ -187,56 +178,57 @@ Optotypes.j
 }
 - (void)drawSloanOWithGapInPx: (float) d {
     let r = 2.5 * d;
-    CGContextFillEllipseInRect(_cgc, CGRectMake(-r, -r, 2*r, 2*r));
+    CGContextFillEllipseInRect(cgc, CGRectMake(-r, -r, 2*r, 2*r));
     r = 1.5 * d;
-    CGContextSetFillColor(_cgc, _colOptotypeBack);  CGContextFillEllipseInRect(_cgc, CGRectMake(-r, -r, 2*r, 2*r));
+    CGContextSetFillColor(cgc, gColorBack);  CGContextFillEllipseInRect(cgc, CGRectMake(-r, -r, 2*r, 2*r));
 }
 - (void)drawSloanRWithGapInPx: (float) d {
     const p1 = [[-5,-5], [-3,-5], [-3,-1], [+2,-1], [+2,+5], [-5,+5], [-5,-5]],
     p2 = [[0.7,0], [2.8,-5], [5,-5], [+2.85,0], [0.7,0]],
     d5 = d * 0.5;
-    CGContextBeginPath(_cgc);  [self fillPolygon: p1 withD: d5];  CGContextFillPath(_cgc);
-    CGContextBeginPath(_cgc);  [self fillPolygon: p2 withD: d5];  CGContextFillPath(_cgc);
+    CGContextBeginPath(cgc);  [self fillPolygon: p1 withD: d5];  CGContextFillPath(cgc);
+    CGContextBeginPath(cgc);  [self fillPolygon: p2 withD: d5];  CGContextFillPath(cgc);
     [self fillCircleAtX: d y: -d radius: 3 * d5];
-    CGContextSetFillColor(_cgc, _colOptotypeBack);
+    CGContextSetFillColor(cgc, gColorBack);
     [self fillCircleAtX: d y: -d radius: d5];
-    CGContextFillRect(_cgc, CGRectMake(-3 * d5, -3 * d5, 5 * d5, d));
+    CGContextFillRect(cgc, CGRectMake(-3 * d5, -3 * d5, 5 * d5, d));
 }
 - (void)drawSloanSWithGapInPx: (float) d {
     d = d * 0.5;
-    CGContextBeginPath(_cgc);
-    CGContextMoveToPoint(_cgc, -5 * d, 2 * d);
-    CGContextAddArc(_cgc, -2 * d, 2 * d, 3 * d, kPi, kPi2, NO);// unten links
-    CGContextAddLineToPoint(_cgc, 2 * d, 5 * d);
-    CGContextAddArc(_cgc, 2 * d, 2 * d, 3 * d, kPi2, -kPi2, NO);// unten rechts außen
-    CGContextAddLineToPoint(_cgc, -2 * d, -1 * d);
-    CGContextAddArc(_cgc, -2 * d, -2 * d, d, kPi2, -kPi2, YES);// oben links innen
-    CGContextAddLineToPoint(_cgc, 2 * d, -3 * d);
-    CGContextAddArc(_cgc, 2 * d, -2 * d, d, -kPi2, 0, YES);// oben rechts innen
-    CGContextAddLineToPoint(_cgc, 5 * d, -2 * d);
-    CGContextAddArc(_cgc, 2 * d, -2 * d, 3 * d, 0, -kPi2, NO);// oben rechts außen
-    CGContextAddLineToPoint(_cgc, -2 * d, -5 * d);
-    CGContextAddArc(_cgc, -2 * d, -2 * d, 3 * d, -kPi2, kPi2, NO);// oben links außen
-    CGContextAddLineToPoint(_cgc, 2 * d, 1 * d);
-    CGContextAddArc(_cgc, 2 * d, 2 * d, d, -kPi2, kPi2, YES);// unten rechts innen
-    CGContextAddLineToPoint(_cgc, -2 * d, 3 * d);
-    CGContextAddArc(_cgc, -2 * d, 2 * d, d, kPi2, kPi, YES);// unten rechts innen
-    CGContextAddLineToPoint(_cgc, -5 * d, 2 * d);
-    CGContextFillPath(_cgc);
+    CGContextBeginPath(cgc);
+    CGContextMoveToPoint(cgc, -5 * d, 2 * d);
+    CGContextAddArc(cgc, -2 * d, 2 * d, 3 * d, kPi, kPi2, NO);// unten links
+    CGContextAddLineToPoint(cgc, 2 * d, 5 * d);
+    CGContextAddArc(cgc, 2 * d, 2 * d, 3 * d, kPi2, -kPi2, NO);// unten rechts außen
+    CGContextAddLineToPoint(cgc, -2 * d, -1 * d);
+    CGContextAddArc(cgc, -2 * d, -2 * d, d, kPi2, -kPi2, YES);// oben links innen
+    CGContextAddLineToPoint(cgc, 2 * d, -3 * d);
+    CGContextAddArc(cgc, 2 * d, -2 * d, d, -kPi2, 0, YES);// oben rechts innen
+    CGContextAddLineToPoint(cgc, 5 * d, -2 * d);
+    CGContextAddArc(cgc, 2 * d, -2 * d, 3 * d, 0, -kPi2, NO);// oben rechts außen
+    CGContextAddLineToPoint(cgc, -2 * d, -5 * d);
+    CGContextAddArc(cgc, -2 * d, -2 * d, 3 * d, -kPi2, kPi2, NO);// oben links außen
+    CGContextAddLineToPoint(cgc, 2 * d, 1 * d);
+    CGContextAddArc(cgc, 2 * d, 2 * d, d, -kPi2, kPi2, YES);// unten rechts innen
+    CGContextAddLineToPoint(cgc, -2 * d, 3 * d);
+    CGContextAddArc(cgc, -2 * d, 2 * d, d, kPi2, kPi, YES);// unten rechts innen
+    CGContextAddLineToPoint(cgc, -5 * d, 2 * d);
+    CGContextFillPath(cgc);
     //[self strokeXAtX: 0 y: 0 size: 3];
 }
 - (void)drawSloanVWithGapInPx: (float) d {
     const pnts = [[-5,+5], [-1,-5], [+1,-5], [+5,+5], [+3,+5], [0,-2.1], [-3,+5], [-5,+5], [-5,+5]];
-    CGContextBeginPath(_cgc);  [self fillPolygon: pnts withD: d / 2];  CGContextFillPath(_cgc);
+    CGContextBeginPath(cgc);  [self fillPolygon: pnts withD: d / 2];  CGContextFillPath(cgc);
 }
 - (void)drawSloanZWithGapInPx: (float) d {
     const pnts = [[-5,-5], [+5,-5], [+5,-3], [-1.9,-3], [+5,+3], [+5,+5], [-5,+5], [-5,+3], [+1.9,+3], [-5,-3], [-5,-5]];
-    CGContextBeginPath(_cgc);  [self fillPolygon: pnts withD: d / 2];  CGContextFillPath(_cgc);
+    CGContextBeginPath(cgc);  [self fillPolygon: pnts withD: d / 2];  CGContextFillPath(cgc);
 }
 
 
 - (void)drawLetterWithGapInPx: (float) gap letterNumber: (int) letterNumber { //console.info("Optotypes>drawLetterWithGapInPx")
-    CGContextSetFillColor(_cgc, _colOptotypeFore);
+    cgc = [[CPGraphicsContext currentContext] graphicsPort];
+    CGContextSetFillColor(cgc, gColorFore);
     switch (letterNumber) { //"CDHKNORSVZ"
         case 0:
             [self drawSloanCWithGapInPx: gap];  break;
@@ -267,6 +259,7 @@ Optotypes.j
 
 - (void) tumblingEWithGapInPx: (float) d direction: (int) theDirection { //console.info("Optotypes>tumblingEWithGapInPx");
     //theDirection = directionIfMirrored(theDirection);
+    cgc = [[CPGraphicsContext currentContext] graphicsPort];
     let p;
     switch (theDirection) {
         case 0: "E"

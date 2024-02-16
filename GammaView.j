@@ -14,7 +14,7 @@ GammaView.m
  Created on 31.01.21.
  */
 @implementation GammaView: CPView {
-    CGContext cgc;
+    CGContext _cgc; // differs from the global `cgc`
     CPColor grayHalf, grayPlus, grayMinus;
     int checkSize, iLeft, iRight, iBottom, iTop, ix, iy, xm, ym;
     BOOL polarity;
@@ -29,15 +29,15 @@ GammaView.m
 
 - (void) drawRect: (CGRect) dirtyRect { //console.info("GammaView>drawRect");
     [super drawRect: dirtyRect];
-    cgc = [[CPGraphicsContext currentContext] graphicsPort];
+    _cgc = [[CPGraphicsContext currentContext] graphicsPort];
     xm = CGRectGetWidth([self bounds]) / 2;
     ym = CGRectGetHeight([self bounds]) / 2;
     
-    CGContextSetLineWidth(cgc, 1);
+    CGContextSetLineWidth(_cgc, 1);
     grayHalf = [CPColor colorWithWhite: [MiscLight devicegrayFromLuminance: 0.5] alpha: 1];
-    CGContextSetFillColor(cgc, grayHalf);    CGContextFillRect(cgc, [self bounds]);
+    CGContextSetFillColor(_cgc, grayHalf);    CGContextFillRect(_cgc, [self bounds]);
 
-    CGContextTranslateCTM(cgc, xm, ym); // origin to center
+    CGContextTranslateCTM(_cgc, xm, ym); // origin to center
     grayPlus = [CPColor colorWithWhite: [MiscLight devicegrayFromLuminance: 0.05] alpha: 1];
     grayMinus = [CPColor colorWithWhite: [MiscLight devicegrayFromLuminance: 0.95] alpha: 1];
     iLeft = Math.round(-xm/4.0), iRight = Math.round(xm/4.0), iBottom = Math.round(-ym/4.0), iTop = Math.round(ym/4.0);
@@ -47,8 +47,8 @@ GammaView.m
         polarity = !polarity;
         for (ix = iLeft; ix < iRight; ix += checkSize) {
             polarity = !polarity;
-            if (polarity) CGContextSetFillColor(cgc, grayPlus); else CGContextSetFillColor(cgc, grayMinus);
-            CGContextFillRect(cgc, CGRectMake(ix, iy, checkSize, checkSize));
+            if (polarity) CGContextSetFillColor(_cgc, grayPlus); else CGContextSetFillColor(_cgc, grayMinus);
+            CGContextFillRect(_cgc, CGRectMake(ix, iy, checkSize, checkSize));
         }
     }
 }

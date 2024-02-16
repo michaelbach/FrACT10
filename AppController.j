@@ -67,16 +67,28 @@ Created by mb on 2017-07-12.
 
 
 /**
- Accessing the foreground/background color for acuity optotypes & gratings as saved in settings.
+ Accessing the foreground/background color for acuity optotypes as saved across restart in Settings.
+ Within FrACT use globals gColorFore/gColorBack; need to synchronise [Gratings have their own].
  @return the current foreground color
- Colors cannot be saved as object in userdefaults, probably because serialiser not implemented
+ Colors cannot be saved as objects in userdefaults, probably because serialiser not implemented
  NSUnarchiveFromData, Error message [CPData encodeWithCoder:] unrecognized selector
  https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/DrawColor/Tasks/StoringNSColorInDefaults.html
  */
-- (CPColor) acuityForeColor {return [Settings acuityForeColor];}
-- (void) setAcuityForeColor: (CPColor) col {[Settings setAcuityForeColor: col];}
-- (CPColor) acuityBackColor {return [Settings acuityBackColor];}
-- (void) setAcuityBackColor: (CPColor) col {[Settings setAcuityBackColor: col];}
+- (CPColor) acuityForeColor {
+    gColorFore = [Settings acuityForeColor];
+    return gColorFore;}
+- (void) setAcuityForeColor: (CPColor) col {
+    gColorFore = col;
+    [Settings setAcuityForeColor: gColorFore];
+}
+- (CPColor) acuityBackColor {
+    gColorBack = [Settings acuityBackColor];
+    return gColorBack;
+}
+- (void) setAcuityBackColor: (CPColor) col {
+    gColorBack = col;
+    [Settings setAcuityBackColor: gColorBack];
+}
 - (void) setGratingForeColor: (CPColor) col {[Settings setGratingForeColor: col];}
 - (CPColor) gratingForeColor {return [Settings gratingForeColor];}
 - (void) setGratingBackColor: (CPColor) col {[Settings setGratingBackColor: col];}
@@ -90,7 +102,7 @@ Created by mb on 2017-07-12.
 /**
  Our main initialisation begins here
  */
-- (id) init { // console.info("AppController>init");
+- (id) init { //console.info("AppController>init");
     settingsNeededNewDefaults = [Settings needNewDefaults];
     [Settings checkDefaults]; //important to do this very early, before nib loading, otherwise the updates don't populate the settings panel
     return self;
@@ -182,8 +194,9 @@ Created by mb on 2017-07-12.
  Synchronising userdefaults & Appcontroller
  THis mirroring is necessary, because the Settingspanel cannot read the stored colors, because the Archiver does not work
  */
-- (void) copyColorsFromSettings: (CPNotification) aNotification { //console.info("mirrorForeBackColors");
-    [self setAcuityForeColor: [Settings acuityForeColor]];  [self setAcuityBackColor: [Settings acuityBackColor]];
+- (void) copyColorsFromSettings: (CPNotification) aNotification { console.info("mirrorForeBackColors");
+    gColorFore = [Settings acuityForeColor];  [self setAcuityForeColor: gColorFore];
+    gColorBack = [Settings acuityBackColor];  [self setAcuityBackColor: gColorBack];
     [self setGratingForeColor: [Settings gratingForeColor]];  [self setGratingBackColor: [Settings gratingBackColor]];
     [self setWindowBackgroundColor: [Settings windowBackgroundColor]];
 }
