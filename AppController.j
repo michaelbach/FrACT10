@@ -194,7 +194,7 @@ Created by mb on 2017-07-12.
  Synchronising userdefaults & Appcontroller
  THis mirroring is necessary, because the Settingspanel cannot read the stored colors, because the Archiver does not work
  */
-- (void) copyColorsFromSettings: (CPNotification) aNotification { console.info("mirrorForeBackColors");
+- (void) copyColorsFromSettings: (CPNotification) aNotification { //console.info("mirrorForeBackColors");
     gColorFore = [Settings acuityForeColor];  [self setAcuityForeColor: gColorFore];
     gColorBack = [Settings acuityBackColor];  [self setAcuityBackColor: gColorBack];
     [self setGratingForeColor: [Settings gratingForeColor]];  [self setGratingBackColor: [Settings gratingBackColor]];

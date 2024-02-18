@@ -35,12 +35,11 @@
     let inMichelson = inMichelsonPercent /= 100,  outWeber;
     if (inMichelson >= 0) {
         outWeber = 2 * inMichelson / (1 + inMichelson);
-    } else {
-        inMichelson *= -1;
-        outWeber = 2 * inMichelson / (1 + inMichelson);
-        outWeber *= 1;
+    } else {//console.info("in neg Michelson range")
+        const inMichelsonInverted = -inMichelson;
+        outWeber = 2 * inMichelsonInverted / (1 + inMichelsonInverted);
     }
-    // console.info("contrastWeberPercentFromMichelsonPercent: ", inMichelson * 100, outWeber * 100);
+    //console.info("contrastWeberPercentFromMichelsonPercent:", Math.round(outWeber * 1000)/10, Math.round(inMichelson * 1000)/10);
     return outWeber * 100;
 }
 /**
