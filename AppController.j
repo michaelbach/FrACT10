@@ -539,7 +539,7 @@ Created by mb on 2017-07-12.
     [self setCheckContrastWeberFieldColor1: c1];   [self setCheckContrastWeberFieldColor2: c2];
     const actualMichelsonPerc = [MiscLight contrastMichelsonPercentFromColor1: c1 color2: c2];
     [self setCheckContrastActualMichelsonPercent: Math.round(actualMichelsonPerc * 10) / 10];
-    const actualWeberPerc = [MiscLight contrastWeberFromMichelsonPercent: actualMichelsonPerc];
+    const actualWeberPerc = [MiscLight contrastWeberPercentFromMichelsonPercent: actualMichelsonPerc];
     [self setCheckContrastActualWeberPercent:  Math.round(actualWeberPerc * 10) / 10];
 }
 

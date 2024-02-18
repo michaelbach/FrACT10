@@ -31,7 +31,7 @@
 /**
  Transform Michelson → Weber, in & out in %
  */
-+ (float) contrastWeberFromMichelsonPercent: (float) inMichelsonPercent {
++ (float) contrastWeberPercentFromMichelsonPercent: (float) inMichelsonPercent {
     let inMichelson = inMichelsonPercent /= 100,  outWeber;
     if (inMichelson >= 0) {
         outWeber = 2 * inMichelson / (1 + inMichelson);
@@ -40,7 +40,7 @@
         outWeber = 2 * inMichelson / (1 + inMichelson);
         outWeber *= 1;
     }
-    // console.info("contrastWeberFromMichelsonPercent: ", inMichelson * 100, outWeber * 100);
+    // console.info("contrastWeberPercentFromMichelsonPercent: ", inMichelson * 100, outWeber * 100);
     return outWeber * 100;
 }
 /**
@@ -80,7 +80,7 @@
 
 + (void) testContrastConversion {
     for (let i = -100; i <= 100; i += 10) {
-        const w = [MiscLight contrastWeberFromMichelsonPercent: i];
+        const w = [MiscLight contrastWeberPercentFromMichelsonPercent: i];
         console.info("contrastM: ", i, ", W: ", w, ", M: ", [MiscLight contrastMichelsonPercentFromWeberPercent: w]);
     }
 }
