@@ -41,7 +41,7 @@
  Apply selected patch after "Are you sure" dialog
  */
 + (void) apply2: (int) p { //console.info("Presets>apply2");
-    const allPresets = ["StandardDefaults", "Demo", "Testing", "ESU", "ULV", "ColorEquiluminance", "BCMatScheie", "CNSatFreiburg"];
+    const allPresets = ["StandardDefaults", "Demo", "Testing", "ESU", "ULV", "ColorEquiluminance", "BCMatScheie", "CNSatFreiburg", "Mclight"];
     // ↑ should be improved: not having these names in the GUI _and_ here #todo
     const selectedPresetName = allPresets[p];
     [self performSelector: CPSelectorFromString("apply" + selectedPresetName)];
@@ -178,11 +178,22 @@
     [Settings setResults2clipboard: kResults2ClipFinalOnly];
     [Settings setDistanceInCM: 200];
     [Settings setTestOnFive: kTestAcuityLett];
-    
     // acuity pane
     // gratings pane
 }
 
 
++ (void) applyMclight {
+    [self applyStandardDefaults];
+    // general pane
+    [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
+    [Settings setResults2clipboard: kResults2ClipFinalOnly];
+    [Settings setDistanceInCM: 150];
+    [Settings setTestOnFive: kTestAcuityLett];
+    // acuity pane
+    // contrast pane
+    [Settings setContrastOptotypeDiameter: 170];
+    // gratings pane
+}
 
 @end

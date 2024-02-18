@@ -379,8 +379,14 @@ Created by mb on 2017-07-12.
             const sto5 = [Settings testOnFive];
             if (sto5 > 0) [self runFractControllerTest: sto5];
             break;
-        case "R": [Settings setAutoRunIndex: kAutoRunIndexMid];  break;
-            //case "∆": [self runtimeError_action: nil];  break;
+        case "R": 
+            if ([Settings autoRunIndex] == kAutoRunIndexNone) { //toggle
+                [Settings setAutoRunIndex: kAutoRunIndexMid];
+            } else {
+                [Settings setAutoRunIndex: kAutoRunIndexNone];
+            }
+            break;
+        //case "∆": [self runtimeError_action: nil];  break;
         default:
             [super keyDown: theEvent];  break;
     }
