@@ -45,6 +45,7 @@ gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden via S
 /*
  #  History
 
++ 2024-03-02 trivial GUI changes
 + 2024-02-16 simplify color/contrast/graphicsport management by going global with gColorFore, gColorBack & cgc
 + 2024-02-15 read version number from info.plist (avoiding CPBundleVersion, which is mangled)
 + 2024-02-14 freeze w/o code changes

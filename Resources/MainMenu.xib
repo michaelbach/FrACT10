@@ -582,16 +582,16 @@ DQ
                         </connections>
                     </button>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JgX-d5-6k1">
-                        <rect key="frame" x="6" y="18" width="187" height="25"/>
+                        <rect key="frame" x="7" y="18" width="135" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Common sets of settings 
  </string>
-                        <popUpButtonCell key="cell" type="push" title="Select Preset ↓" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="BRQ-on-tmW" id="JI4-Wi-eC6">
+                        <popUpButtonCell key="cell" type="push" title="Presets" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="BRQ-on-tmW" id="JI4-Wi-eC6">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
                             <menu key="menu" id="xFl-9u-ikI">
                                 <items>
-                                    <menuItem title="Select Preset ↓" state="on" id="BRQ-on-tmW">
+                                    <menuItem title="Presets" state="on" id="BRQ-on-tmW">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
                                     <menuItem title="ALL DEFAULTS" id="E6d-3W-JNL">
@@ -3090,7 +3090,7 @@ CQ
                         </connections>
                     </tabView>
                     <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N8d-dZ-cuN">
-                        <rect key="frame" x="197" y="19" width="133" height="22"/>
+                        <rect key="frame" x="146" y="19" width="128" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="s7j-e4-6de">
                             <font key="font" metaFont="system"/>
