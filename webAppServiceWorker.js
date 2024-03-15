@@ -2,21 +2,22 @@
 // file "webAppServiceWorker.js"
 //
 
-const cacheName = "FrACT10·2024-03-02";
-//const cacheNameRoot = "FrACT10·";
+let cacheName = "FrACT10·2024-03-02";
+const cacheNameRoot = "FrACT10·";
 //let cacheName = cacheNameRoot;
 
 
 // doesn't work yet, because the function calling this proceeds while this waits for fetch etc.
 async function getCacheNameGlobal() {
-	const response = await fetch("Info.plist");
-	const plistText = await response.text();
-	// now "parse" Info.plist
-	let pos = plistText.search("VersionDate") + 11 + 2;
-	let len = Number(plistText.substr(pos, 2));
-	let versionDate = plistText.substr(pos + 3, len);
-	cacheName = cacheNameRoot + versionDate;
-//	console.info("in CacheNameGlobal:", cacheName);
+    console.info("enter CacheNameGlobal:", cacheName);
+    const response = await fetch("Info.plist");
+    const plistText = await response.text();
+    // now "parse" Info.plist
+    let pos = plistText.search("VersionDate") + 11 + 2;
+    let len = Number(plistText.substr(pos, 2));
+    let versionDate = plistText.substr(pos + 3, len);
+    cacheName = cacheNameRoot + versionDate;
+    console.info("exit CacheNameGlobal:", cacheName);
 }
 
 
@@ -39,8 +40,8 @@ self.addEventListener('fetch', (event) => {
 
 // Installing Service Worker, this is called first, before"AppController>init"
 self.addEventListener('install', (event) => {
-	//console.info("webAppServiceWorker responding to install event…");
-    //getCacheNameGlobal();
+    //console.info("webAppServiceWorker responding to install event…");
+    //await getCacheNameGlobal();
     event.waitUntil(
                     caches.open(cacheName).then((cache) => {
                         return cache.addAll([ // Cache all these files
@@ -114,10 +115,4 @@ self.addEventListener('activate', function(event) {
                         }));
                     })
                     )
-});
-
-
-// not currently using this
-self.addEventListener('message', (event) => {
-  console.log(`Received message from main thread: ${event.data}`);
 });
