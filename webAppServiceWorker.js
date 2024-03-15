@@ -3,10 +3,27 @@
 //
 
 const cacheName = "FrACT10·2024-03-02";
+//const cacheNameRoot = "FrACT10·";
+//let cacheName = cacheNameRoot;
+
+
+// doesn't work yet, because the function calling this proceeds while this waits for fetch etc.
+async function getCacheNameGlobal() {
+	const response = await fetch("Info.plist");
+	const plistText = await response.text();
+	// now "parse" Info.plist
+	let pos = plistText.search("VersionDate") + 11 + 2;
+	let len = Number(plistText.substr(pos, 2));
+	let versionDate = plistText.substr(pos + 3, len);
+	cacheName = cacheNameRoot + versionDate;
+//	console.info("in CacheNameGlobal:", cacheName);
+}
+
 
 // Fetching content using Service Worker, this is called on reload. If cache name has changed `install` is next
 self.addEventListener('fetch', (event) => {
-    // console.info("webAppServiceWorker responding to fetch event…");
+    //console.info("webAppServiceWorker responding to fetch event…");
+    //getCacheNameGlobal();
     event.respondWith((async () => {
         const response1 = await caches.match(event.request);
         // console.info(`webAppServiceWorker Fetching resource: ${event.request.url}`);
@@ -22,7 +39,8 @@ self.addEventListener('fetch', (event) => {
 
 // Installing Service Worker, this is called first, before"AppController>init"
 self.addEventListener('install', (event) => {
-    // console.info("webAppServiceWorker responding to install event…");
+	//console.info("webAppServiceWorker responding to install event…");
+    //getCacheNameGlobal();
     event.waitUntil(
                     caches.open(cacheName).then((cache) => {
                         return cache.addAll([ // Cache all these files
@@ -84,7 +102,8 @@ self.addEventListener('install', (event) => {
 
 // Activate Service Worker, this is called after the `install` event
 self.addEventListener('activate', function(event) {
-    // console.info("webAppServiceWorker responding to activate event…");
+    //console.info("webAppServiceWorker responding to activate event…");
+    //getCacheNameGlobal();
     var cacheWhitelist = [cacheName];
     event.waitUntil(
                     caches.keys().then(function(keyList) {
@@ -95,4 +114,10 @@ self.addEventListener('activate', function(event) {
                         }));
                     })
                     )
+});
+
+
+// not currently using this
+self.addEventListener('message', (event) => {
+  console.log(`Received message from main thread: ${event.data}`);
 });
