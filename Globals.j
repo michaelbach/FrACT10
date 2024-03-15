@@ -45,6 +45,7 @@ gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden via S
 /*
  #  History
 
++ 2024-03-15 add close/exit button top right. The webapp doesn't close on iOS though – javascript cannot close windows it didn't open.
 + 2024-03-02 trivial GUI changes
 + 2024-02-16 simplify color/contrast/graphicsport management by going global with gColorFore, gColorBack & cgc
 + 2024-02-15 read version number from info.plist (avoiding CPBundleVersion, which is mangled)
