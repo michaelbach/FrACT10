@@ -326,11 +326,11 @@ For testing.
                         </connections>
                     </popUpButton>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9X3-mm-3Mb">
-                        <rect key="frame" x="763" y="565" width="26" height="23"/>
+                        <rect key="frame" x="765" y="565" width="24" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Exit.         
 Shortcuts: "Q", "X" or "-" (Minus)</string>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="iconClose" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9Z8-We-9II">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="iconCross" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9Z8-We-9II">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -4358,7 +4358,7 @@ DQ
         <image name="buttonAcuityTAO" width="820" height="800"/>
         <image name="buttonAcuityVernier" width="518" height="816"/>
         <image name="iconAbout" width="396" height="396"/>
-        <image name="iconClose" width="512" height="512"/>
+        <image name="iconCross" width="482" height="480"/>
         <image name="iconFullscreen" width="356" height="356"/>
         <image name="iconHelp" width="356" height="356"/>
         <image name="iconSettings" width="276" height="276"/>
