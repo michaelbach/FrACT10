@@ -7,8 +7,9 @@ FractControllerContrast.j
 Created by Bach on 2020-09-02
 */
 
+@import "Dithering.j"
 
-@import "FractControllerContrast.j"
+
 @implementation FractControllerContrast: FractController {
 }
 
@@ -33,6 +34,9 @@ Created by Bach on 2020-09-02
     }
     gColorFore = [MiscLight colorFromGreyBitStealed: gray1];//console.info(gColorFore);
     gColorBack = [MiscLight colorFromGreyBitStealed: gray2];//console.info(gColorBack);
+    //console.info(gray1, gray2);
+    //gColorFore = [CPColor colorWithPatternImage: [Dithering image2x2byte: gray1 * 255]];
+    //gColorBack = [CPColor colorWithPatternImage: [Dithering image2x2byte: gray2 * 255]];
     //console.info(gColorFore._cssString, gColorBack._cssString);
 }
 
@@ -77,7 +81,7 @@ Created by Bach on 2020-09-02
 
 // this manages stuff after the optotypes have been drawn
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractControllerContrast>drawStimulusInRect");
-    [trialHistoryController setValue: stimStrengthInDeviceunits ];
+    [trialHistoryController setValue: stimStrengthInDeviceunits];
     [super drawStimulusInRect: dirtyRect];
 }
 
@@ -106,12 +110,28 @@ basic flow:
 // contrast: 0.1 … 100, thresholder: 0 … 1
 // deviceUnits are in logCSWeber for all contrast tests; for gratings that is converted to Michelson%
 // logCSW: 2 … 0, thresholder: 0 … 1 */
-- (float) stimDeviceunitsFromThresholderunits: (float) thresholderunit { //console.info("FractControllerAcuityC>stimDeviceunitsFromThresholderunits");
+
+- (float) getCurrentContrastMichelsonPercent {
+    return [MiscLight contrastMichelsonPercentFromColor1: gColorFore color2: gColorBack];
+}
+/*- (float) getCurrentContrastWeberPercent {
+    return [MiscLight contrastWeberPercentFromMichelsonPercent: [self getCurrentContrastMichelsonPercent]];
+}*/
+// Problem here: 0% weber contrast corresponds to infinite logCSWeber.
+// But since the latter is clamped at gMaxAllowedLogCSWeber, after rounding this will still read 0%. Solved.
+- (float) getCurrentContrastLogCSWeber {
+    const michelsonPercent = [self getCurrentContrastMichelsonPercent];
+    const weberPercent = [MiscLight contrastWeberPercentFromMichelsonPercent: michelsonPercent];
+    return [MiscLight contrastLogCSWeberFromWeberPercent: weberPercent];
+}
+
+
+- (float) stimDeviceunitsFromThresholderunits: (float) thresholderunit { //console.info("FractControllerContrast>stimDeviceunitsFromThresholderunits");
     const logCSWMaximal = [Settings contrastMaxLogCSWeber];
     const deviceVal = logCSWMaximal - logCSWMaximal * thresholderunit; // logCSWMinimal = 0 anyway
     return deviceVal;
 }
-- (float) stimThresholderunitsFromDeviceunits: (float) d { //console.info("FractControllerAcuityC>stimThresholderunitsFromDeviceunits");
+- (float) stimThresholderunitsFromDeviceunits: (float) d { //console.info("FractControllerContrast>stimThresholderunitsFromDeviceunits");
     //console.info("d: ", d, ",  retVal: ", retVal)
     const logCSWMaximal = [Settings contrastMaxLogCSWeber];
     const retVal = (logCSWMaximal - d) / logCSWMaximal
@@ -126,7 +146,7 @@ basic flow:
 
 - (CPString) contrastComposeTrialInfoString {
     let s = "trial: " + iTrial + "/" + nTrials;
-    s +=  ", contrast: " + [Misc stringFromNumber: [MiscLight contrastWeberPercentFromLogCSWeber: stimStrengthInDeviceunits] decimals: 1 localised: YES] + "%";
+    s +=  ", contrast: " + [Misc stringFromNumber: [MiscLight contrastWeberPercentFromLogCSWeber: stimStrengthInDeviceunits] decimals: 2 localised: YES] + "%";
     s += ", logCSW: " + [Misc stringFromNumber: stimStrengthInDeviceunits decimals: 2 localised: YES];
     s += ", alternative: " + [alternativesGenerator currentAlternative];
     return s;

@@ -13,6 +13,7 @@
 		8A061F5F2A273800006B5CAD /* FractController.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9ADC4C46A65D7794540F1808 /* FractController.j */; };
 		8A061F602A273809006B5CAD /* Globals.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7F842D1A68D8C133FA29CF9 /* Globals.j */; };
 		8A3384C72AA11B3B000325D0 /* Info.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A3384C62AA11B3B000325D0 /* Info.plist */; };
+		8A438B3A2BAF77FE00B33287 /* Dithering.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A438B392BAF77FE00B33287 /* Dithering.j */; };
 		8A48269329CF4F260035607A /* MiscLight.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A48269229CF4F260035607A /* MiscLight.j */; };
 		8A48269529CF58F30035607A /* MiscSpace.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A48269429CF58F30035607A /* MiscSpace.j */; };
 		8A891B7E2A5585AE00ACEFDF /* MDBDispersionEstimation.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A891B7D2A5585AE00ACEFDF /* MDBDispersionEstimation.j */; };
@@ -56,6 +57,7 @@
 				8A061F5F2A273800006B5CAD /* FractController.j in CopyFiles */,
 				8AAB43852A55825C00825E47 /* FractControllerAcuityL.j in CopyFiles */,
 				8AAB43862A55826300825E47 /* FractControllerAcuity.j in CopyFiles */,
+				8A438B3A2BAF77FE00B33287 /* Dithering.j in CopyFiles */,
 				8AAB43812A55825200825E47 /* FractControllerContrast.j in CopyFiles */,
 				8AAB438B2A55826800825E47 /* PopulateAboutPanel.j in CopyFiles */,
 				8AAB43792A55821300825E47 /* MDBSimplestatistics.j in CopyFiles */,
@@ -143,6 +145,7 @@
 		856F4B1AA111E0F21404D2EB /* AppController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppController.m; path = .XcodeSupport/AppController.m; sourceTree = SOURCE_ROOT; };
 		8A061F592A273350006B5CAD /* webAppServiceWorker.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = webAppServiceWorker.js; sourceTree = SOURCE_ROOT; };
 		8A3384C62AA11B3B000325D0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		8A438B392BAF77FE00B33287 /* Dithering.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Dithering.j; sourceTree = "<group>"; };
 		8A48269229CF4F260035607A /* MiscLight.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MiscLight.j; sourceTree = SOURCE_ROOT; };
 		8A48269429CF58F30035607A /* MiscSpace.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MiscSpace.j; sourceTree = SOURCE_ROOT; };
 		8A574A8F29FAE30F00D28C1B /* FractControllerContrastG.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = FractControllerContrastG.j; sourceTree = SOURCE_ROOT; };
@@ -211,6 +214,7 @@
 			children = (
 				5139419A9E317C413C110C0F /* AlternativesGenerator.j */,
 				6F8642B1B93603A5A204CC32 /* AppController.j */,
+				8A438B392BAF77FE00B33287 /* Dithering.j */,
 				9ADC4C46A65D7794540F1808 /* FractController.j */,
 				91B445DC96A0E8A06A4740E5 /* FractControllerAcuity.j */,
 				9E274E63BAB08347A029E633 /* FractControllerAcuityC.j */,

@@ -57,8 +57,8 @@
  */
 + (float) contrastLogCSWeberFromWeberPercent: (float) weberPercent {
     weberPercent /= 100;
-    const logCS = (weberPercent > 0.0001) ? Math.log10(1 / weberPercent) : 4.0
-    return logCS;     // avoid log of zero
+    const logCS = (weberPercent > 0.0001) ? Math.log10(1 / weberPercent) : gMaxAllowedLogCSWeber;
+    return logCS;
 }
 /**
  And the inverse

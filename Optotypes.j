@@ -26,21 +26,6 @@ Optotypes.j
 }
 
 
-- (float) getCurrentContrastMichelsonPercent {
-    return [MiscLight contrastMichelsonPercentFromColor1: gColorFore color2: gColorBack];
-}
-- (float) getCurrentContrastWeberPercent {
-    return [MiscLight contrastWeberPercentFromMichelsonPercent: [self getCurrentContrastMichelsonPercent]];
-}
-// problem here: 0 % contrast corresponds to infinite logCSWeber.
-// But since the latter is now clamped at 4.0, after rounding this will still read 0%.
-- (float) getCurrentContrastLogCSWeber {
-    const michelsonPercent = [self getCurrentContrastMichelsonPercent];
-    const weberPercent = [MiscLight contrastWeberPercentFromMichelsonPercent: michelsonPercent];
-    return [MiscLight contrastLogCSWeberFromWeberPercent: weberPercent];
-}
-
-
 /**
  A number of general drawing helpers
  */
