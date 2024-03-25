@@ -36,33 +36,36 @@ Created by Bach on 2024-03-23.
 
 
 function setPixelRGBA(imageData, x, y, r, g, b, a=255) {
-    var index = 4 * (x + y * imageData.width);
+    const index = 4 * (x + y * imageData.width);
     imageData.data[index] = r;
     imageData.data[index+1] = g;
     imageData.data[index+2] = b;
     imageData.data[index+3] = a;
 }
 function setPixelRGB(imageData, x, y, r, g, b) {
-    var index = 4 * (x + y * imageData.width);
+    const index = 4 * (x + y * imageData.width);
     imageData.data[index] = r;
     imageData.data[index+1] = g;
     imageData.data[index+2] = b;    //imageData.data[index+3] = 255;
 }
 
 
-+ (CPImage) image2x2byte: (int) b { //console.log("Dithering>image2x2byte");
+// TBD: use fractional part of luminance*256 for dithering
++ (CPImage) image2x2byte: (int) b { console.log("Dithering>image2x2byte");
     const t = typeof(offCanvas);
     if (t == 'undefined') [self init];
-    const imageData = offContext.createImageData(2, 2);// all0 = transparent
+    const imageData = offContext.createImageData(2, 2);// preset all 0 = transparent
     for (let i=0; i < 4; i++) imageData.data[3 + i * 4] = 255; // set alpha
     setPixelRGB(imageData, 0, 0, b, b, b);
     setPixelRGB(imageData, 1, 0, b, b, b);
     setPixelRGB(imageData, 0, 1, b, b, b);
     setPixelRGB(imageData, 1, 1, b, b, b);
     offContext.putImageData(imageData, 0, 0);
-    const dataURL = offContext.canvas.toDataURL("image/png");// need to drop "data:image/png;base64,"
-    patternImage = [[CPImage alloc] initWithData: [CPData dataWithBase64: dataURL.substring(22)]];
+    let dataURL = [CPString stringWithString: offContext.canvas.toDataURL("image/png")];
+    dataURL = [dataURL substringFromIndex: 22]; // need to drop "data:image/png;base64,"
+    patternImage = [[CPImage alloc] initWithData: [CPData dataWithBase64: dataURL]];
     return patternImage;
 }
+
 
 @end

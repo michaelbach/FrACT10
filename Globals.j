@@ -28,7 +28,7 @@ gThresholdCorrection4Ascending = 0.891;
 // slope parameter for the CI95 dispersion estimation; strongly affects CI95
 gSlopeCI95 = 15; // this value approximates test-retest variability
 
-// Clamping the max possible logCSWeber value to avoid log of zero during conversions. Value way beyond physiologically possible.
+// Clamping the max logCSWeber value to avoid log of zero during conversions. Value way beyond physiologically possible.
 gMaxAllowedLogCSWeber = 4.0;
 
 gMeter2FeetMultiplier = 3.28084;  tab = "\t";  crlf = "\n";

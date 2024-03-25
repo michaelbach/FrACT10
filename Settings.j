@@ -158,6 +158,7 @@ Created by mb on July 15, 2015.
     [self setContrastTimeoutFixmark: [self chckFlt: [self contrastTimeoutFixmark] def: 500 min: 20 max: 5000 set: set]];
     [self setContrastMaxLogCSWeber: [self chckFlt: [self contrastMaxLogCSWeber] def: 2.4 min: 1.5 max: 3 set: set]];
     [self setContrastBitStealing: [self chckBool: [self contrastBitStealing] def: NO set: set]];
+    [self setContrastDithering: [self chckBool: [self contrastDithering] def: NO set: set]];
 
     // Grating stuff
     [self setGratingCPD: [self chckFlt: [self gratingCPD] def: 2.0 min: 0.01 max: 18 set: set]];
@@ -863,12 +864,20 @@ Created by mb on July 15, 2015.
     [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "gammaValue"];
 }
 
-+ (float) contrastBitStealing {
-    return [[CPUserDefaults standardUserDefaults] floatForKey: "contrastBitStealing"];
++ (float) contrastBitStealing {//console.info("Settings>contrastBitStealing");
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "contrastBitStealing"];
 }
-+ (void) setContrastBitStealing: (float) val {
-    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "contrastBitStealing"];
++ (void) setContrastBitStealing: (BOOL) val {//console.info("Settings>setContrastBitStealing", val);
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "contrastBitStealing"];
 }
+
++ (BOOL) contrastDithering {//console.info("Settings>contrastDithering");
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "contrastDithering"];
+}
++ (void) setContrastDithering: (BOOL) val {//console.info("Settings>setContrastDithering", val);
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "contrastDithering"];
+}
+
 
 
 // Grating stuff

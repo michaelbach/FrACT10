@@ -35,7 +35,9 @@ Created by Bach on 2020-09-02
     gColorFore = [MiscLight colorFromGreyBitStealed: gray1];//console.info(gColorFore);
     gColorBack = [MiscLight colorFromGreyBitStealed: gray2];//console.info(gColorBack);
     //console.info(gray1, gray2);
-    //gColorFore = [CPColor colorWithPatternImage: [Dithering image2x2byte: gray1 * 255]];
+    if ([Settings contrastDithering]) {
+        gColorFore = [CPColor colorWithPatternImage: [Dithering image2x2byte: gray1 * 255]];
+    }
     //gColorBack = [CPColor colorWithPatternImage: [Dithering image2x2byte: gray2 * 255]];
     //console.info(gColorFore._cssString, gColorBack._cssString);
 }
