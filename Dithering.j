@@ -2,11 +2,11 @@
 This file is part of FrACT10, a vision test battery.
 Copyright © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
-PopulateAboutPanel.j
+Dithering.j
 
 Created by Bach on 2024-03-23.
 
- Deals with dither patterns
+Creates dither patterns
  
 */
 
@@ -35,13 +35,13 @@ Created by Bach on 2024-03-23.
 }
 
 
-function setPixelRGBA(imageData, x, y, r, g, b, a=255) {
+/*function setPixelRGBA(imageData, x, y, r, g, b, a=255) {
     const index = 4 * (x + y * imageData.width);
     imageData.data[index] = r;
     imageData.data[index+1] = g;
     imageData.data[index+2] = b;
     imageData.data[index+3] = a;
-}
+}*/
 function setPixelRGB(imageData, x, y, r, g, b) {
     const index = 4 * (x + y * imageData.width);
     imageData.data[index] = r;
