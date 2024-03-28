@@ -2,12 +2,12 @@
 // file "webAppServiceWorker.js"
 //
 
-let cacheName = "FrACT10·2024-03-16a";
+let cacheName = "FrACT10·2024-03-28";
 const cacheNameRoot = "FrACT10·";
 //let cacheName = cacheNameRoot;
 
 
-// doesn't work yet, because the function calling this proceeds while this waits for fetch etc.
+// doesn't work (yet?), because the function calling this proceeds while this waits for fetch etc.
 async function getCacheNameGlobal() {
     console.info("enter CacheNameGlobal:", cacheName);
     const response = await fetch("Info.plist");
@@ -21,7 +21,7 @@ async function getCacheNameGlobal() {
 }
 
 
-// Fetching content using Service Worker, this is called on reload. If cache name has changed `install` is next
+// Fetching content using Service Worker, this is called on reload. If cache name has changed, `install` is next
 self.addEventListener('fetch', (event) => {
     //console.info("webAppServiceWorker responding to fetch event…");
     //getCacheNameGlobal();

@@ -527,10 +527,10 @@ Created by mb on 2017-07-12.
 
 - (IBAction) buttonCheckContrast_action: (id) sender { //console.info("AppController>buttonCheckContrast_action");
     const tag = [sender tag], contrastsPercent = [1, 3, 10, 30, 90];
-    let contrastPercent = 0;
-    if ((tag > 0) && (tag <= 5))  contrastPercent = contrastsPercent[tag - 1];
-    const contrastLogCSWeber = [MiscLight contrastLogCSWeberFromWeberPercent: contrastPercent];
-    //    console.log(tag, contrastPercent, contrastLogCSWeber)
+    let contrastWeberPercent = 0;
+    if ((tag > 0) && (tag <= 5))  contrastWeberPercent = contrastsPercent[tag - 1];
+    const contrastLogCSWeber = [MiscLight contrastLogCSWeberFromWeberPercent: contrastWeberPercent];
+    //    console.log(tag, contrastWeberPercent, contrastLogCSWeber)
     let gray1 = [MiscLight lowerLuminanceFromContrastLogCSWeber: contrastLogCSWeber];
     gray1 = [MiscLight devicegrayFromLuminance: gray1];
     let gray2 = [MiscLight upperLuminanceFromContrastLogCSWeber: contrastLogCSWeber];
@@ -538,14 +538,22 @@ Created by mb on 2017-07-12.
     if (![Settings contrastDarkOnLight]) {
         [gray1, gray2] = [gray2, gray1]; // "modern" swapping of variables
     }
-    //    console.log("Wperc ", contrastPercent, ", lgCSW ", contrastLogCSWeber, ", g1 ", gray1, ", g2 ", gray2);
+    //    console.log("Wperc ", contrastWeberPercent, ", lgCSW ", contrastLogCSWeber, ", g1 ", gray1, ", g2 ", gray2);
     
     //const c1 = [CPColor colorWithWhite: gray1 alpha: 1], c2 = [CPColor colorWithWhite: gray2 alpha: 1];
-    const c1 = [MiscLight colorFromGreyBitStealed: gray1], c2 = [MiscLight colorFromGreyBitStealed: gray2];
+    let c1 = [MiscLight colorFromGreyBitStealed: gray1], c2 = [MiscLight colorFromGreyBitStealed: gray2];
+    if ([Settings contrastDithering]) {
+        c1 = [CPColor colorWithPatternImage: [Dithering image3x3withGray: gray1]];
+        c2 = [CPColor colorWithPatternImage: [Dithering image3x3withGray: gray2]];
+    }
     [self setCheckContrastWeberFieldColor1: c1];   [self setCheckContrastWeberFieldColor2: c2];
-    const actualMichelsonPerc = [MiscLight contrastMichelsonPercentFromColor1: c1 color2: c2];
+    let actualMichelsonPerc = [MiscLight contrastMichelsonPercentFromColor1: c1 color2: c2];
+    let actualWeberPerc = [MiscLight contrastWeberPercentFromMichelsonPercent: actualMichelsonPerc];
+    if ([Settings contrastDithering]) {
+        actualMichelsonPerc = [MiscLight contrastMichelsonPercentFromWeberPercent: contrastWeberPercent];
+        actualWeberPerc = contrastWeberPercent;
+    }
     [self setCheckContrastActualMichelsonPercent: Math.round(actualMichelsonPerc * 10) / 10];
-    const actualWeberPerc = [MiscLight contrastWeberPercentFromMichelsonPercent: actualMichelsonPerc];
     [self setCheckContrastActualWeberPercent:  Math.round(actualWeberPerc * 10) / 10];
 }
 

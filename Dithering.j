@@ -5,15 +5,14 @@ Copyright © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 Dithering.j
 
 Created by Bach on 2024-03-23.
-
-Creates dither patterns
  
 */
 
 /**
  * Dithering
  *
- * Deals with dither patterns
+ * Creates images with desired dither patterns, can be used to fill, e.g.:
+ * `[CPColor colorWithPatternImage: [Dithering image3x3withGray: gray1]];`
  *
  * */
 
@@ -24,47 +23,78 @@ Creates dither patterns
 
 @implementation Dithering: CPObject {
     CPImage patternImage;
-    id offCanvas, offContext;
 }
 
-
-+ (void) init { // console.log("Dithering>init");
-    offCanvas = document.createElement('canvas');
-    offCanvas.width = 2;  offCanvas.height = 2;
-    offContext = offCanvas.getContext('2d');
-}
-
-
+// https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas
 /*function setPixelRGBA(imageData, x, y, r, g, b, a=255) {
-    const index = 4 * (x + y * imageData.width);
-    imageData.data[index] = r;
-    imageData.data[index+1] = g;
-    imageData.data[index+2] = b;
-    imageData.data[index+3] = a;
+    const idx = 4 * (x + y * imageData.width);
+    imageData.data[idx] = r;
+    imageData.data[idx+1] = g;
+    imageData.data[idx+2] = b;
+    imageData.data[idx+3] = a;
+}
+function setPixelRGB(imageData, x, y, r, g, b) { // assuming alpha already set
+    const idx = 4 * (x + y * imageData.width);
+    imageData.data[idx] = r;
+    imageData.data[idx+1] = g;
+    imageData.data[idx+2] = b;    //imageData.data[idx+3] = 255;
 }*/
-function setPixelRGB(imageData, x, y, r, g, b) {
-    const index = 4 * (x + y * imageData.width);
-    imageData.data[index] = r;
-    imageData.data[index+1] = g;
-    imageData.data[index+2] = b;    //imageData.data[index+3] = 255;
+function setPixelGray(imageData, x, y, g) { // assuming alpha already set
+    // console.info(x, y, g)
+    const idx = 4 * (x + y * imageData.width);
+    imageData.data[idx] = g;
+    imageData.data[idx+1] = g;
+    imageData.data[idx+2] = g;
 }
 
 
-// TBD: use fractional part of luminance*256 for dithering
-+ (CPImage) image2x2byte: (int) b { console.log("Dithering>image2x2byte");
-    const t = typeof(offCanvas);
-    if (t == 'undefined') [self init];
-    const imageData = offContext.createImageData(2, 2);// preset all 0 = transparent
-    for (let i=0; i < 4; i++) imageData.data[3 + i * 4] = 255; // set alpha
-    setPixelRGB(imageData, 0, 0, b, b, b);
-    setPixelRGB(imageData, 1, 0, b, b, b);
-    setPixelRGB(imageData, 0, 1, b, b, b);
-    setPixelRGB(imageData, 1, 1, b, b, b);
-    offContext.putImageData(imageData, 0, 0);
+/* 2x2:  1 3     3x3:  7  9  5
+         4 2           2  1  4
+                       6  3  8 */
++ (CPImage) image3x3withGray: (int) g { //console.log("Dithering>image3x3withGray");
+    g *= 255; // 0…1 → 0…255
+    const integerPart = Math.floor(g);
+    const fractionalPart = Math.round((g - integerPart) * 9); //console.info(integerPart, fractionalPart)
+    const offCanvas = document.createElement('canvas');  offCanvas.width = 3;  offCanvas.height = 3;
+    const offContext = offCanvas.getContext('2d');
+    const imageData = offContext.createImageData(3, 3);// this presets all to 0 = transparent black
+    for (let i=0; i < 4 * 9; i++) imageData.data[i] = integerPart; // set all to non-dithered gray level
+    for (let i=0; i < 9; i++) imageData.data[3 + i * 4] = 255; // set alpha to opaque
+    const f = integerPart + 1; // one bit higher than the average gray level
+    if (fractionalPart >= 1) { // check which pixels need to be set one index higher
+        setPixelGray(imageData, 1, 1, f);
+        if (fractionalPart >= 2) {// console.info("≥2")
+            setPixelGray(imageData, 0, 1, f);
+            if (fractionalPart >= 3) {// console.info("≥3")
+                setPixelGray(imageData, 1, 2, f);
+                if (fractionalPart >= 4) {// console.info("≥4")
+                    setPixelGray(imageData, 2, 1, f);
+                    if (fractionalPart >= 5) {// console.info("≥5")
+                        setPixelGray(imageData, 2, 0, f);
+                        if (fractionalPart >= 6) {// console.info("≥6")
+                            setPixelGray(imageData, 0, 2, f);
+                            if (fractionalPart >= 7) {// console.info("≥7")
+                                setPixelGray(imageData, 0, 0, f);
+                                if (fractionalPart >= 8) {// console.info("≥8")
+                                    setPixelGray(imageData, 2, 2, f);
+                                    if (fractionalPart >= 9) {// console.info("≥9")
+                                        setPixelGray(imageData,  1, 0, f);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    offContext.putImageData(imageData, 0, 0); // write the generated dither pattern to offscreen
     let dataURL = [CPString stringWithString: offContext.canvas.toDataURL("image/png")];
     dataURL = [dataURL substringFromIndex: 22]; // need to drop "data:image/png;base64,"
     patternImage = [[CPImage alloc] initWithData: [CPData dataWithBase64: dataURL]];
     return patternImage;
+    // return [patternImage copy];
+    // As written now, ↑ can only store one patternImage, but seems to be ok.
 }
 
 

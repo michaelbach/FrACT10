@@ -11,6 +11,7 @@ Created by Bach on 2020-09-02
 
 
 @implementation FractControllerContrast: FractController {
+    float stimStrengthInDeviceunitsUnquantised;
 }
 
 - (CPString) composeExportString {return [self contrastComposeExportString];}
@@ -34,12 +35,13 @@ Created by Bach on 2020-09-02
     }
     gColorFore = [MiscLight colorFromGreyBitStealed: gray1];//console.info(gColorFore);
     gColorBack = [MiscLight colorFromGreyBitStealed: gray2];//console.info(gColorBack);
-    //console.info(gray1, gray2);
+    colorForeUndithered = gColorFore;  colorBackUndithered = gColorBack;
+    stimStrengthInDeviceunitsUnquantised = stimStrengthInDeviceunits;
+
     if ([Settings contrastDithering]) {
-        gColorFore = [CPColor colorWithPatternImage: [Dithering image2x2byte: gray1 * 255]];
+        gColorFore = [CPColor colorWithPatternImage: [Dithering image3x3withGray: gray1]];
+        gColorBack = [CPColor colorWithPatternImage: [Dithering image3x3withGray: gray2]];
     }
-    //gColorBack = [CPColor colorWithPatternImage: [Dithering image2x2byte: gray2 * 255]];
-    //console.info(gColorFore._cssString, gColorBack._cssString);
 }
 
 
@@ -83,6 +85,9 @@ Created by Bach on 2020-09-02
 
 // this manages stuff after the optotypes have been drawn
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractControllerContrast>drawStimulusInRect");
+    if ([Settings contrastDithering]) {
+        stimStrengthInDeviceunits = stimStrengthInDeviceunitsUnquantised;
+    }
     [trialHistoryController setValue: stimStrengthInDeviceunits];
     [super drawStimulusInRect: dirtyRect];
 }
@@ -114,7 +119,7 @@ basic flow:
 // logCSW: 2 … 0, thresholder: 0 … 1 */
 
 - (float) getCurrentContrastMichelsonPercent {
-    return [MiscLight contrastMichelsonPercentFromColor1: gColorFore color2: gColorBack];
+    return [MiscLight contrastMichelsonPercentFromColor1: colorForeUndithered color2: colorBackUndithered];
 }
 /*- (float) getCurrentContrastWeberPercent {
     return [MiscLight contrastWeberPercentFromMichelsonPercent: [self getCurrentContrastMichelsonPercent]];
@@ -145,6 +150,7 @@ basic flow:
         console.info("threshh: ", i, ", devUnits: ", d, ", threshh: ", [self stimThresholderunitsFromDeviceunits: d]);
     }
 }
+
 
 - (CPString) contrastComposeTrialInfoString {
     let s = "trial: " + iTrial + "/" + nTrials;

@@ -42,6 +42,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     CPString kRangeLimitDefault, kRangeLimitOk, kRangeLimitValueAtFloor, kRangeLimitValueAtCeiling, rangeLimitStatus, abortCharacter, ci95String;
     id sound @accessors;
     BOOL responseButtonsAdded;
+    CPColor colorForeUndithered, colorBackUndithered;
 }
 
 
@@ -138,13 +139,18 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 /**
- Standard things for all tests, including the display transform
+ Standard things for all tests, includes the display transform
  */
 - (void) prepareDrawing { // console.info("FractController>prepareDrawing");
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, gColorBack);
     if ([self isAcuityTAO])
-        CGContextSetFillColor(cgc, [CPColor whiteColor]); ;// contrast always 100% with TAO
+        CGContextSetFillColor(cgc, [CPColor whiteColor]); // contrast always 100% with TAO
+    if ([self isContrastOptotype] && [Settings contrastDithering]) {
+        CGContextSetFillColor(cgc, colorBackUndithered); // else black background briefly visible, dithering delay
+        CGContextFillRect(cgc, [selfWindow frame]);
+        CGContextSetFillColor(cgc, gColorBack);
+    }
     CGContextFillRect(cgc, [selfWindow frame]);
     CGContextSaveGState(cgc);
     CGContextTranslateCTM(cgc,  viewWidth2, viewHeight2); // origin to center
@@ -284,7 +290,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         responseWasCorrect = logMARcurrent > logMARtarget;
     }
     if ([self isContrastOptotype]) {
-        responseWasCorrect = stimStrengthInDeviceunits < [1.0, 1.3, 1.6][arIndex];
+        responseWasCorrect = stimStrengthInDeviceunits < [1.0, 1.4, 1.8][arIndex];
     }
     if ([self isContrastG]) {
         //const contrastMichelsonPercentCurrent = [MiscLight contrastMichelsonPercentFromLogCSWeber: stimStrengthInDeviceunits]
