@@ -54,10 +54,13 @@ function setPixelGray(imageData, x, y, g) { // assuming alpha already set
 + (CPImage) image3x3withGray: (int) g { //console.log("Dithering>image3x3withGray");
     g *= 255; // 0…1 → 0…255
     const integerPart = Math.floor(g);
-    const fractionalPart = Math.round((g - integerPart) * 9); //console.info(integerPart, fractionalPart)
+    let fractionalPart = g - integerPart;
+    fractionalPart = Math.round(fractionalPart * 9); //console.info(g, integerPart, fractionalPart)
+    // use only 0…8, 9 would be 1 bit higher for the intPart
     const offCanvas = document.createElement('canvas');  offCanvas.width = 3;  offCanvas.height = 3;
     const offContext = offCanvas.getContext('2d');
     const imageData = offContext.createImageData(3, 3);// this presets all to 0 = transparent black
+    //console.info(offCanvas, offContext, imageData)
     for (let i=0; i < 4 * 9; i++) imageData.data[i] = integerPart; // set all to non-dithered gray level
     for (let i=0; i < 9; i++) imageData.data[3 + i * 4] = 255; // set alpha to opaque
     const f = integerPart + 1; // one bit higher than the average gray level
@@ -78,6 +81,7 @@ function setPixelGray(imageData, x, y, g) { // assuming alpha already set
                                 if (fractionalPart >= 8) {// console.info("≥8")
                                     setPixelGray(imageData, 2, 2, f);
                                     if (fractionalPart >= 9) {// console.info("≥9")
+                                        //console.info("Dithering>image3x3withGray, 9 should not occur");
                                         setPixelGray(imageData,  1, 0, f);
                                     }
                                 }
@@ -92,6 +96,7 @@ function setPixelGray(imageData, x, y, g) { // assuming alpha already set
     let dataURL = [CPString stringWithString: offContext.canvas.toDataURL("image/png")];
     dataURL = [dataURL substringFromIndex: 22]; // need to drop "data:image/png;base64,"
     patternImage = [[CPImage alloc] initWithData: [CPData dataWithBase64: dataURL]];
+    //console.info(patternImage);
     return patternImage;
     // return [patternImage copy];
     // As written now, ↑ can only store one patternImage, but seems to be ok.

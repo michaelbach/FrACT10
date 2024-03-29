@@ -19,6 +19,7 @@ Created by mb on 2017-07-12.
 @import "FractControllerContrastC.j"
 @import "FractControllerContrastE.j"
 @import "FractControllerContrastG.j"
+@import "FractControllerContrastDitherTest.j"
 @import "FractControllerAcuityLineByLine.j"
 @import "RewardsController.j"
 @import "TAOController.j"
@@ -130,7 +131,7 @@ Created by mb on 2017-07-12.
     const allButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];
     for (const b of allButtons)  [Misc makeFrameSquareFromWidth: b];
     
-    allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine];
+    allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherTest]; // sequence like Hierachy kTest#s
     
     allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel, creditcardPanel];
     for (const p of allPanels) {
@@ -269,6 +270,7 @@ Created by mb on 2017-07-12.
                 [responseinfoPanelContrastG makeKeyAndOrderFront: self];  break;
             case kTestAcuityLineByLine:
                 [responseinfoPanelAcuityLineByLine makeKeyAndOrderFront: self];  break;
+            case kTestContrastDitherTest:  break;
         }
     } else {
         [self runFractController2_actionOK: nil];
@@ -373,6 +375,8 @@ Created by mb on 2017-07-12.
             [self runFractControllerTest: kTestContrastE];  break;
         case "G":
             [self runFractControllerTest: kTestContrastG];  break;
+        case "0":
+            [self runFractControllerTest: kTestContrastDitherTest];  break;
         case "4":
             [self runFractControllerTest: kTestAcuityLineByLine];  break;
         case "5" :

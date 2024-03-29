@@ -16,6 +16,7 @@
 		8A438B3A2BAF77FE00B33287 /* Dithering.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A438B392BAF77FE00B33287 /* Dithering.j */; };
 		8A48269329CF4F260035607A /* MiscLight.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A48269229CF4F260035607A /* MiscLight.j */; };
 		8A48269529CF58F30035607A /* MiscSpace.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A48269429CF58F30035607A /* MiscSpace.j */; };
+		8A6D06A12BB6DA9A00364974 /* FractControllerContrastDitherTest.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A6D06A02BB6DA9A00364974 /* FractControllerContrastDitherTest.j */; };
 		8A891B7E2A5585AE00ACEFDF /* MDBDispersionEstimation.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A891B7D2A5585AE00ACEFDF /* MDBDispersionEstimation.j */; };
 		8AAB43782A55820F00825E47 /* MDBButton.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46EC4178BBFDF502EFF4AF49 /* MDBButton.j */; };
 		8AAB43792A55821300825E47 /* MDBSimplestatistics.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = FB4A479E9000040026E0D65B /* MDBSimplestatistics.j */; };
@@ -54,6 +55,7 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
+				8A6D06A12BB6DA9A00364974 /* FractControllerContrastDitherTest.j in CopyFiles */,
 				8A061F5F2A273800006B5CAD /* FractController.j in CopyFiles */,
 				8AAB43852A55825C00825E47 /* FractControllerAcuityL.j in CopyFiles */,
 				8AAB43862A55826300825E47 /* FractControllerAcuity.j in CopyFiles */,
@@ -149,6 +151,7 @@
 		8A48269229CF4F260035607A /* MiscLight.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MiscLight.j; sourceTree = SOURCE_ROOT; };
 		8A48269429CF58F30035607A /* MiscSpace.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MiscSpace.j; sourceTree = SOURCE_ROOT; };
 		8A574A8F29FAE30F00D28C1B /* FractControllerContrastG.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = FractControllerContrastG.j; sourceTree = SOURCE_ROOT; };
+		8A6D06A02BB6DA9A00364974 /* FractControllerContrastDitherTest.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = FractControllerContrastDitherTest.j; sourceTree = "<group>"; };
 		8A891B7D2A5585AE00ACEFDF /* MDBDispersionEstimation.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MDBDispersionEstimation.j; sourceTree = SOURCE_ROOT; };
 		8A8BFD81283837D800DD61BB /* Presets.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets.j; sourceTree = SOURCE_ROOT; };
 		8ABDA6D4291A501000D68E3C /* capp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = capp; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,6 +231,7 @@
 				90444B1A970FC75C0FF93DB7 /* FractControllerContrastE.j */,
 				8A574A8F29FAE30F00D28C1B /* FractControllerContrastG.j */,
 				7EED432AB6B14FFDE0AEE426 /* FractControllerContrastLett.j */,
+				8A6D06A02BB6DA9A00364974 /* FractControllerContrastDitherTest.j */,
 				F71043F69484B3E36875B5AE /* FractView.j */,
 				C61449039211562F0283776F /* GammaView.j */,
 				D7F842D1A68D8C133FA29CF9 /* Globals.j */,

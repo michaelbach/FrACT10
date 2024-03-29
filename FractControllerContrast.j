@@ -63,7 +63,7 @@ Created by Bach on 2020-09-02
 }
 - (void) drawFixMark {
     let t = [Settings contrastTimeoutFixmark] / 1000; // ms → seconds
-    if ([Settings contrastShowFixMark]) {
+    if ([Settings contrastShowFixMark] && (currentTestID != kTestContrastDitherTest)) {
         [self drawFixMark2];
         timerFixMark = [CPTimer scheduledTimerWithTimeInterval: t target:self selector:@selector(onTimeoutFixMark:) userInfo:nil repeats:NO];
     } else {

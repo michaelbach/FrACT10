@@ -16,7 +16,7 @@ For testing.
   
 S;80;Automatic run, targeting this acuity. For testing. 
                             S;64;Automatic run, targeting this contrast sensitivity. For testing.S;19;Best not change it…S;136;Click to enter a dialog to use a plastic card for calibration (credit card or similar). 
-No money transfer involved, just for size!     S;116;Color Bit Stealing: Invented by Chris Tyler. Borrows color bits across RGB to better approximat a target luminance. S;28;Color well, background colorS;28;Color well, foreground colorS;26;Common sets of settings 
+No money transfer involved, just for size!     S;117;Color Bit Stealing: Invented by Chris Tyler. Borrows color bits across RGB to better approximate a target luminance. S;28;Color well, background colorS;28;Color well, foreground colorS;26;Common sets of settings 
  S;45;Contrast (in Weber %) of the acuity optotypesS;51;Contrast assessment using Landolt C.  Shortcut: 2
  S;56;Contrast assessment using Sloan Letters.  Shortcut: 1 
  S;52;Contrast assessment using Tumbling E.  Shortcut: 3

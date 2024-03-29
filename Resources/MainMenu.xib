@@ -2416,7 +2416,7 @@ Maximum: 5px. </string>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.contrastShowFixMark" id="BgG-5U-YZz"/>
                                             </connections>
                                         </button>
-                                        <button toolTip="Color Bit Stealing: Invented by Chris Tyler. Borrows color bits across RGB to better approximat a target luminance. " fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TIh-uw-rMc">
+                                        <button toolTip="Color Bit Stealing: Invented by Chris Tyler. Borrows color bits across RGB to better approximate a target luminance. " fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TIh-uw-rMc">
                                             <rect key="frame" x="15" y="213" width="223" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Color Bit Stealing (don't use yet)" bezelStyle="regularSquare" imagePosition="left" inset="2" id="j1U-UL-glo">
