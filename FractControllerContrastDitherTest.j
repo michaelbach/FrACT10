@@ -2,7 +2,7 @@
 This file is part of FrACT10, a vision test battery.
 Copyright © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
-FractControllerContrastLett.j
+ FractControllerContrastDitherTest.j
  
 Created by Bach on 2020-08-17
 */
