@@ -26,9 +26,7 @@ Created by Bach on 2020-08-17
             const xWidth = 3;  let xPos = -400, xPos1 = -300;
             CGContextSetFillColor(cgc, [CPColor whiteColor]);
             //gColorFore = [CPColor colorWithPatternImage: [[CPImage alloc] initWithContentsOfFile: [[CPBundle mainBundle] pathForResource: "allRewards4800x200.png"]]];
-            // for some reason, ↓ is not a working pattern color when draw… is called for the first time
-            gColorFore = [CPColor colorWithPatternImage: [Dithering image3x3withGray: 0.5]];
-            CGContextSetFillColor(cgc, gColorFore);
+            // for some reason, the ditherimage is not a working pattern color when draw… is called for the first time…
             for (let g1 = 127-10; g1 <= 127 + 10; g1++) {
                 for (let g2 = 0; g2 < 9; g2++) {
                     const g = (g1 + g2 / 9) / 255;//console.info("g * 255", g * 255)
