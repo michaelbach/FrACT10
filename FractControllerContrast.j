@@ -97,6 +97,7 @@ Created by Bach on 2020-09-02
     if (iTrial < nTrials) { //premature end
         [self setResultString: @"Aborted"];
     } else {
+        stimStrengthInDeviceunits = Math.min(stimStrengthInDeviceunits, gMaxResultLogCSWeber);
         [self setResultString: [self contrastComposeResultString]];
     }
     [super runEnd];
@@ -164,7 +165,7 @@ basic flow:
 - (CPString) contrastComposeResultString { //console.info("contrastComposeResultString");
     // console.info("rangeLimitStatus: ", rangeLimitStatus);
     rangeLimitStatus = kRangeLimitOk;
-    if (stimStrengthInDeviceunits >= 2.0) { // todo: do this while testing
+    if (stimStrengthInDeviceunits >= gMaxResultLogCSWeber) { // todo: do this while testing
         rangeLimitStatus = kRangeLimitValueAtCeiling;
     }
     let s = "Contrast threshold: " + crlf;

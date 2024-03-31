@@ -2433,7 +2433,7 @@ Maximum: 5px. </string>
                                             <string key="toolTip">Dithering increases luminance resolution on the cost of spatial resolution. Good for contrast testing!
 Don't go too close or you can resolve the pattern.
 </string>
-                                            <buttonCell key="cell" type="check" title="Dithering (being verified)" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Axs-9M-nH3">
+                                            <buttonCell key="cell" type="check" title="Dithering" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Axs-9M-nH3">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>

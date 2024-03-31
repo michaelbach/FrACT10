@@ -156,9 +156,9 @@ Created by mb on July 15, 2015.
     [self setContrastOptotypeDiameter: [self chckFlt: [self contrastOptotypeDiameter] def: 50 min: 1 max: 2500 set: set]];
     [self setContrastShowFixMark: [self chckBool: [self contrastShowFixMark] def: YES set: set]];
     [self setContrastTimeoutFixmark: [self chckFlt: [self contrastTimeoutFixmark] def: 500 min: 20 max: 5000 set: set]];
-    [self setContrastMaxLogCSWeber: [self chckFlt: [self contrastMaxLogCSWeber] def: 2.4 min: 1.5 max: 3 set: set]];
+    [self setContrastMaxLogCSWeber: [self chckFlt: [self contrastMaxLogCSWeber] def: 3.0 min: 1.5 max: gMaxAllowedLogCSWeber set: set]];
     [self setContrastBitStealing: [self chckBool: [self contrastBitStealing] def: NO set: set]];
-    [self setContrastDithering: [self chckBool: [self contrastDithering] def: NO set: set]];
+    [self setContrastDithering: [self chckBool: [self contrastDithering] def: YES set: set]];
 
     // Grating stuff
     [self setGratingCPD: [self chckFlt: [self gratingCPD] def: 2.0 min: 0.01 max: 18 set: set]];
