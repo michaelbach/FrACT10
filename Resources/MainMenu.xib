@@ -2228,8 +2228,7 @@ Maximum: 5px. </string>
                                         <textField toolTip="Best not change it…" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AQw-jE-a5x">
                                             <rect key="frame" x="17" y="104" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="B2m-gD-gKI">
-                                                <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="pup-Xh-JKp"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="0.0" drawsBackground="YES" id="B2m-gD-gKI">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -3151,9 +3150,11 @@ CQ
                 <outlet property="buttonExport" destination="L8d-bR-KqO" id="YCp-1H-vRB"/>
                 <outlet property="checkContrastWeberField1" destination="rpb-ue-CQK" id="6ZW-Oz-wpM"/>
                 <outlet property="checkContrastWeberField2" destination="4WO-rY-pis" id="Lcj-IY-0Np"/>
+                <outlet property="contrastMaxLogCSWeberField" destination="AQw-jE-a5x" id="gGe-Qj-bic"/>
                 <outlet property="creditcardImageView" destination="pj2-Gh-qNp" id="oh4-e6-pjq"/>
                 <outlet property="creditcardPanel" destination="Wcf-tk-C3n" id="vmt-db-Kmp"/>
                 <outlet property="fractControllerWindow" destination="r6R-bh-Qyp" id="WQx-mH-JUh"/>
+                <outlet property="gammaValueField" destination="jv4-5m-hDh" id="Luz-7v-gyX"/>
                 <outlet property="gammaView" destination="c7s-eX-XEN" id="fNv-bD-BRg"/>
                 <outlet property="helpPanel" destination="28C-lv-KIF" id="Uyw-Zc-Dhd"/>
                 <outlet property="helpWebView1" destination="eki-H2-z5T" id="cat-aa-Tx1"/>

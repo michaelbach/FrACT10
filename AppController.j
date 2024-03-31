@@ -64,6 +64,9 @@ Created by mb on 2017-07-12.
     int settingsPanePresetSelectedIndex @accessors;
     float calBarLengthInMMbefore;
     CPColor colorOfBestPossibleAcuity @accessors;
+    CPNumberFormatter numberFormatter;
+    @outlet CPTextField contrastMaxLogCSWeberField;
+    @outlet CPTextField gammaValueField;
 }
 
 
@@ -168,6 +171,12 @@ Created by mb on 2017-07-12.
     [Settings setAutoRunIndex: kAutoRunIndexNone]; // make sure it's not accidentally on
     
     [selfWindow orderFront: self]; //← this ensures that it will receive clicks w/o activating
+    
+    numberFormatter = [[CPNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle: CPNumberFormatterDecimalStyle];
+    [numberFormatter setMinimumFractionDigits: 1];
+    [contrastMaxLogCSWeberField setFormatter: numberFormatter];
+    [gammaValueField setFormatter: numberFormatter];
 }
 
 
@@ -454,7 +463,7 @@ Created by mb on 2017-07-12.
 - (IBAction) buttonSettingsClose_action: (id) sender { //console.info("AppController>buttonSettingsClose");
     [Settings checkDefaults];  [settingsPanel close];
 }
-- (IBAction) buttonSettingsTestSound_action: (id) sender { //console.info("AppController>buttonSettingsDefaults");
+- (IBAction) buttonSettingsTestSound_action: (id) sender {
     [sound play3];
 }
 - (IBAction) buttonSettingsContrastAcuityMaxMin_action: (id) sender {
@@ -565,11 +574,9 @@ Created by mb on 2017-07-12.
 - (IBAction) buttonGamma_action: (id) sender { //console.info("AppController>buttonGamma_action");
     switch ([sender tag]) {
         case 1:
-            [Settings setGammaValue: [Settings gammaValue] + 0.1];
-        break;
+            [Settings setGammaValue: [Settings gammaValue] + 0.1];  break;
         case 2:
-            [Settings setGammaValue: [Settings gammaValue] - 0.1];
-        break;
+            [Settings setGammaValue: [Settings gammaValue] - 0.1];  break;
     }
     [gammaView setNeedsDisplay: YES];
 }

@@ -49,6 +49,7 @@ gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden via S
 /*
  #  History
 
++ 2024-03-31 added number formatter with 1 fractional digit to 2 fields – but only apparent when/after editing???
 + 2024-03-31 Dithering default on. Max logCSWeber for result: gMaxResultLogCSWeber = 2.0 (does not makes sense to display better). Default contrastMaxLogCSWeber 3.0 (now after early error there's a chance to return to sensible value, was 2.4)
 + 2024-03-29 add DitherTest (type zero to run it), fix non-monotony in the gray→ditherpattern transform
 + 2024-03-28 add Dithering
