@@ -62,7 +62,6 @@ Created by mb on July 15, 2015.
 
     [self setDistanceInCM: [self chckFlt: [self distanceInCM] def: gDefaultDistanceInCM min: 1 max: 2500 set: set]];
     [self setCalBarLengthInMM: [self chckFlt: [self calBarLengthInMM] def: gDefaultCalibrationBarLengthInMM min: 1 max: 10000 set: set]];
-    [self setCalBarLengthInPixel: [self chckFlt: [self calBarLengthInPixel] def: 700 min: 700 max: 700 set: set]];
 
     [self setResponseInfoAtStart: [self chckBool: [self responseInfoAtStart] def: YES set: set]];
     [self setEnableTouchControls: [self chckBool: [self enableTouchControls] def: YES set: set]];
@@ -319,13 +318,6 @@ Created by mb on July 15, 2015.
 }
 + (void)setCalBarLengthInMM: (float) val {
     [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "calBarLengthInMM"];
-}
-
-+ (float) calBarLengthInPixel {
-    return [[CPUserDefaults standardUserDefaults] floatForKey: "calBarLengthInPixel"];
-}
-+ (void)setCalBarLengthInPixel: (float) val {
-    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "calBarLengthInPixel"];
 }
 
 

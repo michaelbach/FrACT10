@@ -3267,9 +3267,9 @@ Gw
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nyq-Ks-EJ5">
-                        <rect key="frame" x="258" y="21" width="285" height="16"/>
+                        <rect key="frame" x="258" y="21" width="290" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="Use the ± buttons to fit a standard credit card." id="Wfw-08-xS0">
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Use the ± buttons to fit a standard plastic card." id="Wfw-08-xS0">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

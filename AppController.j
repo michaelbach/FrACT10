@@ -586,11 +586,10 @@ Created by mb on 2017-07-12.
  Dealing with calibration via creditcard size
  */
 - (void) creditCardUpdateSize {
-    const widthInPx = 92.4 * [Settings calBarLengthInPixel] / [Settings calBarLengthInMM];//magic number?
-    const hOverW = 53.98 / 85.6; // All credit cards are 85.6 mm wide and 53.98 mm high
-    const heightInPx = widthInPx * hOverW, xc = 400, yc = 300 - 24; // position in window, space for buttons
-    [creditcardImageView setFrame:
-      CGRectMake(xc - widthInPx / 2, yc - heightInPx / 2 , widthInPx, heightInPx)];
+    const wInPx = [MiscSpace pixelFromMillimeter: 92.4]; //magic number, why not 85.6?
+    const hOverW = 53.98 / 85.6; // All bank cards are 85.6 mm wide and 53.98 mm high
+    const hInPx = wInPx * hOverW, xc = 400, yc = 300 - 24; // position in window, space for buttons
+    [creditcardImageView setFrame: CGRectMake(xc - wInPx / 2, yc - hInPx / 2, wInPx, hInPx)];
 }
 - (IBAction) buttonCreditcardUse_action: (id) sender {
     calBarLengthInMMbefore = [Settings calBarLengthInMM];//for possible undo

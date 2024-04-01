@@ -49,15 +49,15 @@
 
 
 + (float) millimeterFromPixel: (float) pixel {
-    return pixel * [Settings calBarLengthInMM] / [Settings calBarLengthInPixel];
+    return pixel * [Settings calBarLengthInMM] / gCalBarLengthInPixel;
 }
 + (float) pixelFromMillimeter: (float) inMM { //console.info("pixelFromMillimeter");
-    return inMM * [Settings calBarLengthInPixel] / [Settings calBarLengthInMM];
+    return inMM * gCalBarLengthInPixel / [Settings calBarLengthInMM];
 }
 
 
 /**
- Given gap size in pixels, calculates decimla VA
+ Given gap size in pixels, calculates decimal VA
  */
 + (float) decVAFromGapPixels: (float) pixels { // "decVA": visual acuity in decimal format
     return 1 / 60 / [self degreeFromPixel: pixels];
