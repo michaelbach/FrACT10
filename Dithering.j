@@ -11,8 +11,13 @@ Created by Bach on 2024-03-23.
 /**
  * Dithering
  *
- * Creates images with desired dither patterns, can be used to fill, e.g.:
- * `[CPColor colorWithPatternImage: [Dithering image3x3withGray: gray1]];`
+ * Creates 3×3 images programmatically with desired dither patterns which can be used to fill, e.g.:
+ * `[CPColor colorWithPatternImage: [Dithering image3x3withGray: g]];
+ *  g ∈ [0, 1]
+ *  g it is multiplied by 255, the integer part is the`greyvalue across all 9 pixels.
+ *  The remainder is then used to set 1 to 8 pixesl one bit higher.
+ *  The result is a resolution increase by a factor of 9.
+ *  The patterns differ only by 1 bit between pixels and are all but invisible.
  *
  * */
 
@@ -40,7 +45,6 @@ function setPixelRGB(imageData, x, y, r, g, b) { // assuming alpha already set
     imageData.data[idx+2] = b;    //imageData.data[idx+3] = 255;
 }*/
 function setPixelGray(imageData, x, y, g) { // assuming alpha already set
-    // console.info(x, y, g)
     const idx = 4 * (x + y * imageData.width);
     imageData.data[idx] = g;
     imageData.data[idx+1] = g;
@@ -48,7 +52,8 @@ function setPixelGray(imageData, x, y, g) { // assuming alpha already set
 }
 
 
-/* 2x2:  1 3     3x3:  7  9  5
+/* Dither patterns used:
+   2x2:  1 3     3x3:  7  9  5
          4 2           2  1  4
                        6  3  8 */
 + (CPImage) image3x3withGray: (int) g { //console.log("Dithering>image3x3withGray");
@@ -66,22 +71,22 @@ function setPixelGray(imageData, x, y, g) { // assuming alpha already set
     const f = integerPart + 1; // one bit higher than the average gray level
     if (fractionalPart >= 1) { // check which pixels need to be set one index higher
         setPixelGray(imageData, 1, 1, f);
-        if (fractionalPart >= 2) {// console.info("≥2")
+        if (fractionalPart >= 2) {
             setPixelGray(imageData, 0, 1, f);
-            if (fractionalPart >= 3) {// console.info("≥3")
+            if (fractionalPart >= 3) {
                 setPixelGray(imageData, 1, 2, f);
-                if (fractionalPart >= 4) {// console.info("≥4")
+                if (fractionalPart >= 4) {
                     setPixelGray(imageData, 2, 1, f);
-                    if (fractionalPart >= 5) {// console.info("≥5")
+                    if (fractionalPart >= 5) {
                         setPixelGray(imageData, 2, 0, f);
-                        if (fractionalPart >= 6) {// console.info("≥6")
+                        if (fractionalPart >= 6) {
                             setPixelGray(imageData, 0, 2, f);
-                            if (fractionalPart >= 7) {// console.info("≥7")
+                            if (fractionalPart >= 7) {
                                 setPixelGray(imageData, 0, 0, f);
-                                if (fractionalPart >= 8) {// console.info("≥8")
+                                if (fractionalPart >= 8) {
                                     setPixelGray(imageData, 2, 2, f);
-                                    if (fractionalPart >= 9) {// console.info("≥9")
-                                        //console.info("Dithering>image3x3withGray, 9 should not occur");
+                                    if (fractionalPart >= 9) {
+                                        //console.info("Dithering>image3x3withGray, ≥9 should not occur");
                                         setPixelGray(imageData,  1, 0, f);
                                     }
                                 }
@@ -96,7 +101,6 @@ function setPixelGray(imageData, x, y, g) { // assuming alpha already set
     let dataURL = [CPString stringWithString: offContext.canvas.toDataURL("image/png")];
     dataURL = [dataURL substringFromIndex: 22]; // need to drop "data:image/png;base64,"
     patternImage = [[CPImage alloc] initWithData: [CPData dataWithBase64: dataURL]];
-    //console.info(patternImage);
     return patternImage;
     // return [patternImage copy];
     // As written now, ↑ can only store one patternImage, but seems to be ok.
