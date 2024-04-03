@@ -12,12 +12,12 @@ Created by Bach on 2024-03-23.
  * Dithering
  *
  * Creates 3×3 images programmatically with desired dither patterns which can be used to fill, e.g.:
- * `[CPColor colorWithPatternImage: [Dithering image3x3withGray: g]];
- *  g ∈ [0, 1]
- *  g it is multiplied by 255, the integer part is the`greyvalue across all 9 pixels.
- *  The remainder is then used to set 1 to 8 pixesl one bit higher.
- *  The result is a resolution increase by a factor of 9.
- *  The patterns differ only by 1 bit between pixels and are all but invisible.
+ * `[CPColor colorWithPatternImage: [Dithering image3x3withGray: g]];`
+ * g ∈ [0, 1]
+ * g it is multiplied by 255, the integer part is the`greyvalue across all 9 pixels.
+ * The remainder is then used to set 1 to 8 pixesl one bit higher.
+ * The result is a resolution increase by a factor of 9.
+ * The patterns differ only by 1 bit between pixels and are all but invisible.
  *
  * */
 

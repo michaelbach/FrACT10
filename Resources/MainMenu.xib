@@ -326,7 +326,7 @@ For testing.
                         </connections>
                     </popUpButton>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9X3-mm-3Mb">
-                        <rect key="frame" x="765" y="565" width="24" height="14"/>
+                        <rect key="frame" x="765" y="557" width="24" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Exit.         
 Shortcuts: "Q", "X" or "-" (Minus)</string>
@@ -339,10 +339,10 @@ Shortcuts: "Q", "X" or "-" (Minus)</string>
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="joy-xW-5wZ">
-                        <rect key="frame" x="144" y="545" width="522" height="41"/>
+                        <rect key="frame" x="140" y="540" width="530" height="44"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="FrACT₁₀ – Freiburg Vision Test" allowsEditingTextAttributes="YES" id="zvc-iA-vcl">
-                            <font key="font" size="31" name="TimesNewRomanPS-BoldMT"/>
+                            <font key="font" size="28" name="Arial-BoldMT"/>
                             <color key="textColor" red="0.270588249" green="0.30196079609999998" blue="0.8078432083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
