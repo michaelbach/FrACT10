@@ -109,10 +109,6 @@ Shortcut: A
                         <rect key="frame" x="12" y="228" width="776" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
-                    <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="RYj-oG-Hiz">
-                        <rect key="frame" x="12" y="-1" width="776" height="5"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    </box>
                     <button tag="5" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oB-kn-EbO" customClass="MDBButton">
                         <rect key="frame" x="666" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -245,7 +241,7 @@ Shortcut: f
                             <action selector="buttonDoTest_action:" target="450" id="NLI-ne-nVY"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H63-sm-3gG">
+                    <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H63-sm-3gG">
                         <rect key="frame" x="665" y="130" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">This button does what it says.         
