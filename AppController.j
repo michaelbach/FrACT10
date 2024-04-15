@@ -196,7 +196,7 @@ Created by mb on 2017-07-12.
 
 
 - (void) buttonExportEnableYESorNO: (CPNotification) aNotification { //console.info("buttonExportEnableYESorNO");
-    [buttonExport setHidden: [aNotification object] == 0];
+    [buttonExport setEnabled: !([aNotification object] == 0)];
 }
 
 
