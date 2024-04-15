@@ -726,7 +726,11 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YNd-5j-KRz">
                                             <rect key="frame" x="14" y="117" width="110" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Optionally, after the test the results can be placed on the clipboard. A dialog will appear asking if ok (usually necessary for safety reasons). Then you could switch (e.g. with the task switcher) to a spreadsheet running in the background and paste the results for record keeping and statistical processing.</string>
+                                            <string key="toolTip">The results can be placed on the clipboard. A dialog will appear asking if ok (usually necessary for safety reasons). Then you could switch (e.g. with the task switcher) to a spreadsheet running in the background and paste the results for record keeping and statistical processing.
+ 
+"Full history" keeps every single trial.
+ 
+</string>
                                             <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="o1v-C2-qAT" id="FXQ-q8-3FM">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="menu"/>
@@ -1349,7 +1353,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                                 <outlet property="nextKeyView" destination="WCS-rL-YCa" id="hP4-Te-I6S"/>
                                             </connections>
                                         </button>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lSV-fU-yD5">
+                                        <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lSV-fU-yD5">
                                             <rect key="frame" x="310" y="223" width="116" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="auto fullscreen" bezelStyle="regularSquare" imagePosition="left" enabled="NO" state="on" inset="2" id="8Hr-IM-bbi">
