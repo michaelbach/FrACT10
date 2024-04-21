@@ -51,6 +51,9 @@ gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden via S
 /*
  #  History
 
++ 2024-04-21 clibpoard button invisible/visible → disabled/enabled; improve wording in clipboard dialog;
+        improve a tool tip, completely hide "auto fullscreen" – doesn't work well anyway;
+        slight GUI shifts in the main window; complete address
 + 2024-04-12 changes in the Maculight preset
 + 2024-04-01 calBarLengthInPixel did not belong in Settings → gCalBarLengthInPixel. Release.
 + 2024-03-31 added number formatter with 1 fractional digit to 2 fields – but only apparent when/after editing???

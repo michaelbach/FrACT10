@@ -46,12 +46,12 @@ Populates the About panel with appropriate text using HTML
     [self oneWebView: aboutWebView1 htmlString: s];
 
     s = "©1993–" + [gVersionDateOfFrACT substringWithRange: CPMakeRange(0, 4)];
-    s += "<br>Prof. Michael Bach<br>";
-    s += "University of Freiburg, Germany<br>";
+    s += "<br>Prof. Michael Bach, Eye Center, Medical Center<br>"
+    s += "Faculty of Medicine, University of Freiburg, Germany<br>";
     s += "<a href='https://michaelbach.de' target='_blank'>https://michaelbach.de</a><br>";
     s += "<a href='mailto:bach@uni-freiburg.de'>bach@uni-freiburg.de</a><br><br>";
     s += "<a href='https://michaelbach.de/fract/' target='_blank'>FrACT₁₀ homepage</a><br><br>";
-    s += "Sources: <a href='https://github.com/michaelbach/FrACT10/#fract' target='_blank'>GitHub repository</a>, <a href='https://github.com/michaelbach/FrACT10/commits' target='_blank'>Commit history</a><br><br>"
+    s += "Sources: <a href='https://github.com/michaelbach/FrACT10/#fract' target='_blank'>GitHub repository</a>, <a href='https://github.com/michaelbach/FrACT10/commits' target='_blank'>Commit history</a><br>"
     s += "Frameworks/Libraries used:<br>";
     const cappucinoVersion = [[[CPBundle bundleWithIdentifier: "com.280n.Foundation"] infoDictionary] objectForKey:@"CPBundleVersion"]; // initialised in AppController
     s += "<a href='https://michaelbach.de/ot/-misc/cappFrameworks/index.html' target='_blank'>Cappuccino " + cappucinoVersion + "</a>,&nbsp; ";
