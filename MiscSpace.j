@@ -57,15 +57,15 @@
 
 
 /**
- Given gap size in pixels, calculates decimal VA
+ Given stroke size in pixels, calculates decimal VA
  */
-+ (float) decVAFromGapPixels: (float) pixels { // "decVA": visual acuity in decimal format
++ (float) decVAFromStrokePixels: (float) pixels { // "decVA": visual acuity in decimal format
     return 1 / 60 / [self degreeFromPixel: pixels];
 }
 /**
  And the inverse
  */
-+ (float) gapPixelsFromDecVA: (float) decVA {
++ (float) strokePixelsFromDecVA: (float) decVA {
     return [self pixelFromDegree: (1 / 60 / decVA)];
 }
 

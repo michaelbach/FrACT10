@@ -129,7 +129,7 @@ Created by mb on July 15, 2015.
 
     // Crowding, crowdingType: 0 = none, 1: flanking bars, 2 = flanking rings, 3 = surounding bars, 4: surounding ring, 5 = surounding square, 6 = row of optotypes
     [self setCrowdingType: [self chckInt: [self crowdingType] def: 0 min: 0 max: 6 set: set]];
-    // 0 = 2·gap between rings, 1 = fixed 2.6 arcmin between rings, 2 = fixed 30', 3 = like ETDRS
+    // 0 = 2·stroke between rings, 1 = fixed 2.6 arcmin between rings, 2 = fixed 30', 3 = like ETDRS
     [self setCrowdingDistanceCalculationType: [self chckInt: [self crowdingDistanceCalculationType] def: 0 min: 0 max: 3 set: set]];
     
     [self setCrowdingDistanceCalculationType: [self chckInt: [self crowdingDistanceCalculationType] def: 0 min: 0 max: 3 set: set]];
@@ -180,7 +180,7 @@ Created by mb on July 15, 2015.
 
 
 + (void) calculateMaxPossibleDecimalAcuity { //console.info("Settings>calculateMaxPossibleDecimalAcuity");
-    let maxPossibleAcuityVal = [MiscSpace decVAFromGapPixels: 1.0];
+    let maxPossibleAcuityVal = [MiscSpace decVAFromStrokePixels: 1.0];
     // Correction for threshold underestimation of ascending procedures (as opposed to our bracketing one)
     maxPossibleAcuityVal = [self threshCorrection] ? maxPossibleAcuityVal * 0.891 : maxPossibleAcuityVal;
     [self setMaxPossibleDecimalAcuityLocalisedString: [Misc stringFromNumber: maxPossibleAcuityVal decimals: 2 localised: YES]];

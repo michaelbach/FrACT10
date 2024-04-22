@@ -1786,15 +1786,15 @@ No money transfer involved, just for size!     </string>
                                                             <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.crowdingType" id="pUP-54-tjJ"/>
                                                         </connections>
                                                     </popUpButton>
-                                                    <popUpButton toolTip="Distance of crowding elements" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6J-2A-7mk" userLabel="Crowding distance">
+                                                    <popUpButton toolTip="Distance of crowders" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6J-2A-7mk" userLabel="Crowding distance">
                                                         <rect key="frame" x="185" y="20" width="152" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <popUpButtonCell key="cell" type="push" title="2·gap" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="mt7-ev-w6m" id="8J5-AI-Fsw" userLabel="2·gap etc.">
+                                                        <popUpButtonCell key="cell" type="push" title="2·stroke" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="mt7-ev-w6m" id="8J5-AI-Fsw" userLabel="2·gap etc.">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="menu"/>
                                                             <menu key="menu" id="z7D-2p-Kha">
                                                                 <items>
-                                                                    <menuItem title="2·gap" state="on" id="mt7-ev-w6m">
+                                                                    <menuItem title="2·stroke" state="on" id="mt7-ev-w6m">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
                                                                     <menuItem title="2.6 arcmin" id="sF6-rS-Nzp">

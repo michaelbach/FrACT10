@@ -22,7 +22,7 @@ Created by Bach on 2020-08-17
             [self drawFixMark];
             break;
         case kStateDrawFore2:
-            [optotypes drawLandoltWithGapInPx: optotypeSizeInPix landoltDirection: [alternativesGenerator currentAlternative]];
+            [optotypes drawLandoltWithStrokeInPx: strokeSizeInPix landoltDirection: [alternativesGenerator currentAlternative]];
             [self drawFixMark3];// need to draw again
             stimStrengthInDeviceunits = [self getCurrentContrastLogCSWeber];
             trialInfoString = [self contrastComposeTrialInfoString];// compose here after colors are set

@@ -33,7 +33,7 @@ Created by Bach on 14.08.2017.
     switch(state) {
         case kStateDrawBack:  break;
         case kStateDrawFore: //console.info("kStateDrawFore");
-            [optotypes tumblingEWithGapInPx: stimStrengthInDeviceunits direction: [alternativesGenerator currentAlternative]];
+            [optotypes tumblingEWithStrokeInPx: stimStrengthInDeviceunits direction: [alternativesGenerator currentAlternative]];
             break;
         default: break;
     }

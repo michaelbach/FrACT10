@@ -108,13 +108,13 @@ Optotypes.j
 }
 
 
-- (void) drawLandoltWithGapInPx: (float) gap landoltDirection: (int) direction { //console.info("optotypes>drawLandoltWithGapInPx", gap, direction);
+- (void) drawLandoltWithStrokeInPx: (float) stroke landoltDirection: (int) direction { //console.info("optotypes>drawLandoltWithStrokeInPx", stroke, direction);
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, gColorFore);
-    [self fillCircleAtX: 0 y: 0 radius: 2.5 * gap];
+    [self fillCircleAtX: 0 y: 0 radius: 2.5 * stroke];
     CGContextSetFillColor(cgc, gColorBack);
-    [self fillCircleAtX: 0 y: 0 radius: 1.5 * gap];
-    const rct = CGRectMake(gap * 1.4 - 1, -gap / 2, 1.3 * gap + 1, gap); //console.info(gap, " ", rct);
+    [self fillCircleAtX: 0 y: 0 radius: 1.5 * stroke];
+    const rct = CGRectMake(stroke * 1.4 - 1, -stroke / 2, 1.3 * stroke + 1, stroke); //console.info(stroke, " ", rct);
     const rot = Math.PI / 180 * (7 - (direction - 1)) / 8 * 360;
     CGContextRotateCTM(cgc, rot);
     if (direction >= 0) CGContextFillRect(cgc, rct);
@@ -122,10 +122,10 @@ Optotypes.j
 }
 
 
-- (void)drawSloanCWithGapInPx: (float) gap { //console.info("optotypes>drawSloanCWithGapInPx");
-    [self drawLandoltWithGapInPx: gap landoltDirection: 0];
+- (void)drawSloanCWithStrokeInPx: (float) stroke { //console.info("optotypes>drawSloanCWithStrokeInPx");
+    [self drawLandoltWithStrokeInPx: stroke landoltDirection: 0];
 }
-- (void)drawSloanDWithGapInPx: (float) d { //console.info("optotypes>drawSloanDWithGapInPx");
+- (void)drawSloanDWithStrokeInPx: (float) d { //console.info("optotypes>drawSloanDWithStrokeInPx");
     d *= 0.5;
     const gxf = 1, gyf = 1;
     CGContextBeginPath(cgc);
@@ -149,25 +149,25 @@ Optotypes.j
     CGContextAddLineToPoint(cgc, -d * 5 * gxf, -d * 5 * gyf);
     CGContextFillPath(cgc);
 }
-- (void)drawSloanHWithGapInPx: (float) d { //console.info("optotypes>drawSloanHWithGapInPx");
+- (void)drawSloanHWithStrokeInPx: (float) d { //console.info("optotypes>drawSloanHWithStrokeInPx");
     const pnts = [[-5,-5], [-3,-5], [-3,-1], [+3,-1], [+3,-5], [+5,-5], [+5,+5], [+3,+5], [+3,+1], [-3,+1], [-3,+5], [-5,+5], [-5, -5]];
     [self fillPolygon: pnts withD: d * 0.5];
 }
-- (void)drawSloanKWithGapInPx: (float) d {
+- (void)drawSloanKWithStrokeInPx: (float) d {
     const pnts = [[-5,-5], [-3,-5], [-3,-0.82], [-0.98,0.69], [+2.43,-5], [+5,-5], [+0.74,+1.98], [+5,+5], [+1.66,+5], [-3,+1.68], [-3,+5], [-5,+5], [-5,-5]];
     [self fillPolygon: pnts withD: d * 0.5];
 }
-- (void)drawSloanNWithGapInPx: (float) d {
+- (void)drawSloanNWithStrokeInPx: (float) d {
     const pnts = [[-5,-5], [-3,-5], [-3,1.9], [+3,-5], [+5,-5], [+5,+5], [+3,+5], [+3,-1.9], [-3,+5], [-5,+5], [-5,-5]];
     [self fillPolygon: pnts withD: d * 0.5];
 }
-- (void)drawSloanOWithGapInPx: (float) d {
+- (void)drawSloanOWithStrokeInPx: (float) d {
     let r = 2.5 * d;
     CGContextFillEllipseInRect(cgc, CGRectMake(-r, -r, 2*r, 2*r));
     r = 1.5 * d;
     CGContextSetFillColor(cgc, gColorBack);  CGContextFillEllipseInRect(cgc, CGRectMake(-r, -r, 2*r, 2*r));
 }
-- (void)drawSloanRWithGapInPx: (float) d {
+- (void)drawSloanRWithStrokeInPx: (float) d {
     const p1 = [[-5,-5], [-3,-5], [-3,-1], [+2,-1], [+2,+5], [-5,+5], [-5,-5]],
     p2 = [[0.7,0], [2.8,-5], [5,-5], [+2.85,0], [0.7,0]],
     d5 = d * 0.5;
@@ -178,7 +178,7 @@ Optotypes.j
     [self fillCircleAtX: d y: -d radius: d5];
     CGContextFillRect(cgc, CGRectMake(-3 * d5, -3 * d5, 5 * d5, d));
 }
-- (void)drawSloanSWithGapInPx: (float) d {
+- (void)drawSloanSWithStrokeInPx: (float) d {
     d = d * 0.5;
     CGContextBeginPath(cgc);
     CGContextMoveToPoint(cgc, -5 * d, 2 * d);
@@ -201,40 +201,40 @@ Optotypes.j
     CGContextFillPath(cgc);
     //[self strokeXAtX: 0 y: 0 size: 3];
 }
-- (void)drawSloanVWithGapInPx: (float) d {
+- (void)drawSloanVWithStrokeInPx: (float) d {
     const pnts = [[-5,+5], [-1,-5], [+1,-5], [+5,+5], [+3,+5], [0,-2.1], [-3,+5], [-5,+5], [-5,+5]];
     CGContextBeginPath(cgc);  [self fillPolygon: pnts withD: d / 2];  CGContextFillPath(cgc);
 }
-- (void)drawSloanZWithGapInPx: (float) d {
+- (void)drawSloanZWithStrokeInPx: (float) d {
     const pnts = [[-5,-5], [+5,-5], [+5,-3], [-1.9,-3], [+5,+3], [+5,+5], [-5,+5], [-5,+3], [+1.9,+3], [-5,-3], [-5,-5]];
     CGContextBeginPath(cgc);  [self fillPolygon: pnts withD: d / 2];  CGContextFillPath(cgc);
 }
 
 
-- (void)drawLetterWithGapInPx: (float) gap letterNumber: (int) letterNumber { //console.info("Optotypes>drawLetterWithGapInPx")
+- (void)drawLetterWithStriokeInPx: (float) stroke letterNumber: (int) letterNumber { //console.info("Optotypes>drawLetterWithStriokeInPx")
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, gColorFore);
     switch (letterNumber) { //"CDHKNORSVZ"
         case 0:
-            [self drawSloanCWithGapInPx: gap];  break;
+            [self drawSloanCWithStrokeInPx: stroke];  break;
         case 1:
-            [self drawSloanDWithGapInPx: gap];  break;
+            [self drawSloanDWithStrokeInPx: stroke];  break;
         case 2:
-            [self drawSloanHWithGapInPx: gap];  break;
+            [self drawSloanHWithStrokeInPx: stroke];  break;
         case 3:
-            [self drawSloanKWithGapInPx: gap];  break;
+            [self drawSloanKWithStrokeInPx: stroke];  break;
         case 4:
-            [self drawSloanNWithGapInPx: gap];  break;
+            [self drawSloanNWithStrokeInPx: stroke];  break;
         case 5:
-            [self drawSloanOWithGapInPx: gap];  break;
+            [self drawSloanOWithStrokeInPx: stroke];  break;
         case 6:
-            [self drawSloanRWithGapInPx: gap];  break;
+            [self drawSloanRWithStrokeInPx: stroke];  break;
         case 7:
-            [self drawSloanSWithGapInPx: gap];  break;
+            [self drawSloanSWithStrokeInPx: stroke];  break;
         case 8:
-            [self drawSloanVWithGapInPx: gap];  break;
+            [self drawSloanVWithStrokeInPx: stroke];  break;
         case 9:
-            [self drawSloanZWithGapInPx: gap];  break;
+            [self drawSloanZWithStrokeInPx: stroke];  break;
     }
 }
 
@@ -242,7 +242,7 @@ Optotypes.j
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-- (void) tumblingEWithGapInPx: (float) d direction: (int) theDirection { //console.info("Optotypes>tumblingEWithGapInPx");
+- (void) tumblingEWithStrokeInPx: (float) d direction: (int) theDirection { //console.info("Optotypes>tumblingEWithStrokeInPx");
     //theDirection = directionIfMirrored(theDirection);
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     let p;

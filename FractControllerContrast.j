@@ -50,7 +50,7 @@ Created by Bach on 2020-09-02
 // No marked eccentricity: don't draw it again
 - (void) drawFixMark3 { // check marked eccentricity is set, otherwise don't draw it
     const eccRadiusInPix = Math.sqrt(xEccInPix * xEccInPix + yEccInPix * yEccInPix);
-    if ((optotypeSizeInPix * 4) > eccRadiusInPix) return; // we don't want overlap between fixmark and optotype
+    if ((strokeSizeInPix * 4) > eccRadiusInPix) return; // we don't want overlap between fixmark and optotype
     [self drawFixMark2];
 }
 - (void) drawFixMark2 {
@@ -58,7 +58,7 @@ Created by Bach on 2020-09-02
     CGContextSetStrokeColor(cgc, [CPColor colorWithRed: 0 green: 0 blue: 1 alpha: 0.7]);
     CGContextSetLineWidth(cgc, 0.5);
     CGContextTranslateCTM(cgc,  +xEccInPix, +yEccInPix); // counter eccentricity
-    [optotypes strokeStarAtX: 0 y: 0 size: optotypeSizeInPix * 3];
+    [optotypes strokeStarAtX: 0 y: 0 size: strokeSizeInPix * 3];
     CGContextRestoreGState(cgc);
 }
 - (void) drawFixMark {

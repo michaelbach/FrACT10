@@ -15,7 +15,9 @@
 	<key>Main cib file base name</key>
 	<string>MainMenu.cib</string>
 	<key>VersionDate</key>
-	<string>2024-04-21</string>
+	<string>2024-04-22</string>
+	<key>CFBundleIdentifier</key>
+	<string></string>
 	<key>VersionNumberString</key>
 	<string>1.1</string>
 </dict>

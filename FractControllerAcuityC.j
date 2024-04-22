@@ -35,7 +35,7 @@ Created by Bach on 18.07.2017.
             if (([Settings nAlternatives] == 4) && ([Settings obliqueOnly])) {
                 [alternativesGenerator setCurrentAlternative: [alternativesGenerator currentAlternative] + 1];
             }
-            [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: [alternativesGenerator currentAlternative]];
+            [optotypes drawLandoltWithStrokeInPx: stimStrengthInDeviceunits landoltDirection: [alternativesGenerator currentAlternative]];
             break;
         default: break;
     }

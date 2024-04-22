@@ -28,13 +28,13 @@
 
 // this manages stuff after the optotypes have been drawn, e.g. crowding
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
-    [trialHistoryController setValue: [MiscSpace logMARfromDecVA: [MiscSpace decVAFromGapPixels: stimStrengthInDeviceunits]]];
+    [trialHistoryController setValue: [MiscSpace logMARfromDecVA: [MiscSpace decVAFromStrokePixels: stimStrengthInDeviceunits]]];
     if (([Settings crowdingType] > 0) && (currentTestID != kTestAcuityLineByLine) && (currentTestID != kTestContrastDitherTest)) {
         if (currentTestID != kTestAcuityVernier) { // don't do crowding with Vernier etc.
             CGContextSaveGState(cgc);
             CGContextTranslateCTM(cgc, viewWidth2, viewHeight2); // origin to center
             CGContextTranslateCTM(cgc, -xEccInPix, -yEccInPix);
-            const crowdingDistance = [self acuityCrowdingDistanceFromGap: stimStrengthInDeviceunits];
+            const crowdingDistance = [self acuityCrowdingDistanceFromStroke: stimStrengthInDeviceunits];
             switch ([Settings crowdingType]) {
                 case 0:  break; // should not occur here
                 case 1: // flanking bars
@@ -48,7 +48,7 @@
                     for (let i = -1; i <= 1; i++) { //console.info(i);
                         const tempX = i * crowdingDistance;
                         CGContextTranslateCTM(cgc,  -tempX, 0);
-                        if (i != 0)  [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: -1];
+                        if (i != 0)  [optotypes drawLandoltWithStrokeInPx: stimStrengthInDeviceunits landoltDirection: -1];
                         CGContextTranslateCTM(cgc,  +tempX, 0);
                     }  break;
                 case 3:    // surounding bars
@@ -81,13 +81,13 @@
                                 directionInRow = [rowAlternatives nextAlternative];
                             switch (currentTestID) {
                                 case kTestAcuityLett:
-                                    [optotypes drawLetterWithGapInPx: stimStrengthInDeviceunits letterNumber: directionInRow];  break;
+                                    [optotypes drawLetterWithStriokeInPx: stimStrengthInDeviceunits letterNumber: directionInRow];  break;
                                 case kTestAcuityE:
-                                    [optotypes tumblingEWithGapInPx: stimStrengthInDeviceunits direction: directionInRow];  break;
+                                    [optotypes tumblingEWithStrokeInPx: stimStrengthInDeviceunits direction: directionInRow];  break;
                                 case kTestAcuityTAO:
                                     [myTaoController drawTaoWithStrokeInPx: stimStrengthInDeviceunits taoNumber: directionInRow];  break;
                                 default:
-                                    [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: directionInRow];
+                                    [optotypes drawLandoltWithStrokeInPx: stimStrengthInDeviceunits landoltDirection: directionInRow];
                             }
                         }
                         CGContextTranslateCTM(cgc,  +tempX, 0);
@@ -137,20 +137,20 @@
  }*/
 
 
-/*	Transformation formula:   gap = c1 * exp(tPest * c2).
- Constants c1 and c2 are determined by these 2 condions: tPest==0 → gap=gStrokeMinimal;  tPest==1 → gap=gStrokeMaximal.
+/*    Transformation formula:   stroke = c1 * exp(tPest * c2).
+ Constants c1 and c2 are determined by these 2 condions: tPest==0 → stroke=gStrokeMinimal;  tPest==1 → stroke=gStrokeMaximal.
  =>c2 = ln(gStrokeMinimal / gStrokeMaximal)/(0 - 1);  c1 = gStrokeMinimal / exp(0 * c2)  */
 - (float) acuityStimDeviceunitsFromThresholderunits: (float) tPest { //console.info("FractControllerAcuityC>stimDeviceunitsFromThresholderunits");
     const c2 = - Math.log(gStrokeMinimal / gStrokeMaximal), c1 = gStrokeMinimal;
     const deviceVal = c1 * Math.exp(tPest * c2); //console.info("DeviceFromPest " + tPest + " " + deviceVal);
-    // ROUNDING for realisable gap values? @@@
+    // ROUNDING for realisable stroke values? @@@
     if ([Misc areNearlyEqual: deviceVal and: gStrokeMaximal]) {
         if (!isBonusTrial) {
-            rangeLimitStatus = kRangeLimitValueAtCeiling; //console.info("max gap size!")
+            rangeLimitStatus = kRangeLimitValueAtCeiling; //console.info("max stroke size!")
         }
     } else {
         if  ([Misc areNearlyEqual: deviceVal and: gStrokeMinimal]) {
-            rangeLimitStatus = kRangeLimitValueAtFloor; //console.info("min gap size!");
+            rangeLimitStatus = kRangeLimitValueAtFloor; //console.info("min stroke size!");
         } else {
             rangeLimitStatus = kRangeLimitOk;
         }
@@ -168,14 +168,14 @@
 
 - (CPString) acuityComposeTrialInfoString {
     let s = iTrial + "/" + nTrials + " ";
-    s += [Misc stringFromNumber: [MiscSpace decVAFromGapPixels: stimStrengthInDeviceunits] decimals: 2 localised: NO];
+    s += [Misc stringFromNumber: [MiscSpace decVAFromStrokePixels: stimStrengthInDeviceunits] decimals: 2 localised: NO];
     return s;
 }
 
 
 - (float) acuityResultInDecVA {
-    const resultInGapPx = stimStrengthInDeviceunits;
-    let resultInDecVA = [MiscSpace decVAFromGapPixels: resultInGapPx];
+    const resultInStrokePx = stimStrengthInDeviceunits;
+    let resultInDecVA = [MiscSpace decVAFromStrokePixels: resultInStrokePx];
     if ([Settings threshCorrection]) resultInDecVA *= gThresholdCorrection4Ascending;
     //console.info("FractControllerAcuity>acuityResultInDecVA: ", resultInDecVA);
     return resultInDecVA;
@@ -238,25 +238,25 @@
     responseWasCorrectCumulative = responseWasCorrectCumulative && responseWasCorrect;
     const acuityStartDecimal = [MiscSpace decVAfromLogMAR: [Settings acuityStartingLogMAR]];
     switch (iTrial) {
-        case 1:  stimStrengthInDeviceunits = [MiscSpace gapPixelsFromDecVA: acuityStartDecimal];  break;
-        case 2:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [MiscSpace gapPixelsFromDecVA: acuityStartDecimal * 2];  break;
-        case 3:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [MiscSpace gapPixelsFromDecVA: acuityStartDecimal * 4];  break;
-        case 4:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [MiscSpace gapPixelsFromDecVA: acuityStartDecimal * 8];  break;
+        case 1:  stimStrengthInDeviceunits = [MiscSpace strokePixelsFromDecVA: acuityStartDecimal];  break;
+        case 2:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [MiscSpace strokePixelsFromDecVA: acuityStartDecimal * 2];  break;
+        case 3:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [MiscSpace strokePixelsFromDecVA: acuityStartDecimal * 4];  break;
+        case 4:  if (responseWasCorrectCumulative) stimStrengthInDeviceunits = [MiscSpace strokePixelsFromDecVA: acuityStartDecimal * 8];  break;
     }
     if (stimStrengthInDeviceunits > gStrokeMaximal) stimStrengthInDeviceunits = gStrokeMaximal;
     if (stimStrengthInDeviceunits < gStrokeMinimal) stimStrengthInDeviceunits = gStrokeMinimal;
 }
 
 
-- (float) acuityCrowdingDistanceFromGap: (float) gap {
-    let returnVal = 5 * gap + 2 * gap; // case 0
+- (float) acuityCrowdingDistanceFromStroke: (float) stroke {
+    let returnVal = 5 * stroke + 2 * stroke; // case 0
     switch ([Settings crowdingDistanceCalculationType]) {
         case 1:
-            returnVal = 5 * gap + [MiscSpace pixelFromDegree: 2.6 / 60.0];  break;
+            returnVal = 5 * stroke + [MiscSpace pixelFromDegree: 2.6 / 60.0];  break;
         case 2:
             returnVal = [MiscSpace pixelFromDegree: 30 / 60.0];  break;
         case 3:
-            returnVal = 10 * gap;  break;
+            returnVal = 10 * stroke;  break;
     }
     if (currentTestID == kTestAcuityVernier) {
         returnVal *= 6 / 5;

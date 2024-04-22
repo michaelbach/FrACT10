@@ -44,13 +44,14 @@ gDefaultCalibrationBarLengthInMM = 149;
 cgc = [[CPGraphicsContext currentContext] graphicsPort]; // global makes for easy access in Optotypes and contrast calcs
 gColorFore = [CPColor whiteColor];  gColorBack = [CPColor blackColor];
 gSpecialBcmDone = NO;
-// minimal stroke/gap size (half a pixel). Maximal, depending on screen & margin. Poor naming for Vernier.
+// minimal stroke size (half a pixel). Maximal, depending on screen & margin. Poor naming for Vernier.
 gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden via Setting and screen size
 
 
 /*
  #  History
 
++ 2024-04-22 rename "gap" → "stroke", Vernier TBD
 + 2024-04-21 clibpoard button invisible/visible → disabled/enabled; improve wording in clipboard dialog;
         improve a tool tip, completely hide "auto fullscreen" – doesn't work well anyway;
         slight GUI shifts in the main window; complete address
@@ -218,7 +219,7 @@ BIG addition: new "make-XcodeCapp_and_run.sh" to replace XcodeCapp
 gStrokeMinimal / gStrokeMaximal now global, so accessible from dispersion estim.
 Add "acuityStartingLogMAR" logic + GUI, good for ultra low vision
 + 2022-05-21 preparation for Presets
-+ 2022-04-26 gStrokeMaximal = viewHeight / (5 + 1); // this leaves ½gap margin around optotype
++ 2022-04-26 gStrokeMaximal = viewHeight / (5 + 1); // this leaves ½stroke margin around optotype
 + 2022-04-26 fix incorrect range check for contrastAcuityWeber, add max+/max- buttons. Change the "OK" button of settings to the correct type.
 + 2022-04-06 Settings>Tabcontainer: adjusted right edge. Not yet changed "OK" to push button (as will be needed for Aristo 3)
 + 2022-03-27 tweaks in Settings texts & positions

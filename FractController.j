@@ -31,7 +31,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     char oldResponseKeyChar, responseKeyChar;
     unsigned short responseKeyCode;
     float stimStrengthInThresholderUnits, stimStrengthInDeviceunits, viewWidth, viewHeight, viewWidth2, viewHeight2;
-    float optotypeSizeInPix, spatialFreqCPD, contrastMichelsonPercent;
+    float strokeSizeInPix, spatialFreqCPD, contrastMichelsonPercent;
     float xEccInPix, yEccInPix; // eccentricity
     Thresholder thresholder;
     AlternativesGenerator alternativesGenerator;
@@ -84,7 +84,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 - (void) runStart { //console.info("FractController>runStart");
     [self updateViewWidthHeight];
-    gStrokeMinimal = [Settings minStrokeAcuity]; // smallest possible gap is ½pixel. Made into a Setting.
+    gStrokeMinimal = [Settings minStrokeAcuity]; // smallest possible stroke is ½pixel. Made into a Setting.
     gStrokeMaximal = viewHeight / (5 + [Settings margin4MaxOptotypeIndex]); // this leaves a margin of ½·index around the largest optotype
     if (!([Settings acuityFormatLogMAR] || [Settings acuityFormatDecimal] ||  [Settings acuityFormatSnellenFractionFoot])) {
         [Settings setAcuityFormatLogMAR: YES];  [Settings setAcuityFormatDecimal: YES]; // make sure not all formats are de-selected
@@ -99,7 +99,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     trialHistoryController = [[TrialHistoryController alloc] initWithNumTrials: nTrials];
     responseWasCorrect = YES;  responseWasCorrectCumulative = YES;
     xEccInPix = -[MiscSpace pixelFromDegree: [Settings eccentXInDeg]];  yEccInPix = [MiscSpace pixelFromDegree: [Settings eccentYInDeg]]; //pos y: ↑
-    optotypeSizeInPix = [MiscSpace pixelFromDegree: [Settings contrastOptotypeDiameter] / 60] / 5;
+    strokeSizeInPix = [MiscSpace pixelFromDegree: [Settings contrastOptotypeDiameter] / 60] / 5;
     [self trialStart];
 }
 
@@ -197,7 +197,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (void) embedInNoise {
     if (![Settings embedInNoise]) return;
     if (!([self isAcuityOptotype] || [self isContrastOptotype])) return;
-    let checksize = [self isContrastAny] ? optotypeSizeInPix : stimStrengthInDeviceunits;
+    let checksize = [self isContrastAny] ? strokeSizeInPix : stimStrengthInDeviceunits;
     checksize = Math.ceil(checksize / 5);
     const aCheck = CGRectMake(0, 0, checksize, checksize);
     const nx = Math.min(Math.ceil(viewWidth2 / checksize), 16 * 5);
@@ -284,7 +284,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (void) onTimeoutAutoResponse: (CPTimer) timer { //console.info("FractController>onTimeoutAutoResponse");
     const arIndex = [Settings autoRunIndex] - 1;
     if ([self isAcuityOptotype]) {
-        const logMARcurrent = [MiscSpace logMARfromDecVA: [MiscSpace decVAFromGapPixels: stimStrengthInDeviceunits]];
+        const logMARcurrent = [MiscSpace logMARfromDecVA: [MiscSpace decVAFromStrokePixels: stimStrengthInDeviceunits]];
         let logMARtarget = [0.3, 0.0, -0.3][arIndex];
         if ([Settings threshCorrection]) logMARtarget += Math.log10(gThresholdCorrection4Ascending);
         responseWasCorrect = logMARcurrent > logMARtarget;

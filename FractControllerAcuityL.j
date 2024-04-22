@@ -29,7 +29,7 @@ Created by Bach on 08.08.2017.
     switch(state) {
         case kStateDrawBack: break;
         case kStateDrawFore:
-            [optotypes drawLetterWithGapInPx: stimStrengthInDeviceunits letterNumber: [alternativesGenerator currentAlternative]];
+            [optotypes drawLetterWithStriokeInPx: stimStrengthInDeviceunits letterNumber: [alternativesGenerator currentAlternative]];
             break;
         default: break;
     }

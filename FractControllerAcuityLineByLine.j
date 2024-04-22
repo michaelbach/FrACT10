@@ -34,7 +34,7 @@ Created by mb on 2021-12-21.
 
 - (void) trialStart { //console.info("FractControllerAcuityLineByLine>trialStart");
     iTrial = 1;
-    stimStrengthInDeviceunits = [MiscSpace gapPixelsFromDecVA: [MiscSpace decVAfromLogMAR: localLogMAR]];
+    stimStrengthInDeviceunits = [MiscSpace strokePixelsFromDecVA: [MiscSpace decVAfromLogMAR: localLogMAR]];
     state = kStateDrawFore;
     [[selfWindow contentView] setNeedsDisplay: YES];
 }
@@ -79,8 +79,8 @@ Created by mb on 2021-12-21.
                     }
                     usedAlternativesArray.push(currentAlternative);
                     switch([Settings testOnLineByLine]) {
-                        case 1: [optotypes drawLetterWithGapInPx: stimStrengthInDeviceunits letterNumber: currentAlternative];  break;
-                        case 2: [optotypes drawLandoltWithGapInPx: stimStrengthInDeviceunits landoltDirection: currentAlternative];  break;
+                        case 1: [optotypes drawLetterWithStriokeInPx: stimStrengthInDeviceunits letterNumber: currentAlternative];  break;
+                        case 2: [optotypes drawLandoltWithStrokeInPx: stimStrengthInDeviceunits landoltDirection: currentAlternative];  break;
                         default: console.log("Line-by-line: unsupported optotype-id: ", [Settings testOnLineByLine]);
                     }
                     CGContextTranslateCTM(cgc, +tempX, verticalOffset);

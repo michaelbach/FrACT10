@@ -21,8 +21,8 @@ let kWorstLogMAR, kBestLogMAR, kGuess, testDF; // there are no class properties 
 
 
 + (void) initResultStatistics { //console.info("Entering initResultStatistics");
-    kWorstLogMAR = [MiscSpace logMARfromDecVA: [MiscSpace decVAFromGapPixels: gStrokeMaximal]];
-    kBestLogMAR =  [MiscSpace logMARfromDecVA: [MiscSpace decVAFromGapPixels: gStrokeMinimal]];
+    kWorstLogMAR = [MiscSpace logMARfromDecVA: [MiscSpace decVAFromStrokePixels: gStrokeMaximal]];
+    kBestLogMAR =  [MiscSpace logMARfromDecVA: [MiscSpace decVAFromStrokePixels: gStrokeMinimal]];
     //console.info("kWorstLogMAR: ", kWorstLogMAR, ", kBestLogMAR: ", kBestLogMAR);
     kGuess = 0.125; // will be overridden
     
