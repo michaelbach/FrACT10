@@ -7,12 +7,14 @@ If anything is unclear, don't hesitate to contact me <bach@uni-freiburg.de>.
 
 ## What’s the development workflow?
 
-- Install Cappuccino <https://www.cappuccino.dev>. This, in principle, also runs in Unix/Linux, but all my explanation pertains to a MacOS environment. You should be fluent with the terminal. The Framework, built by the install processs, needs to be referred to appropriately in `ìndex.html`, see "directory structure" below. A good place to start: [Cappucino Wiki](https://github.com/cappuccino/cappuccino/wiki).
+It is not necessary to install Cappuccino, nor to compile. Just download the entire project from Github (e.g. ZIP), unzip, serve with a local server (or disable local file restrictions, see below), and open `index.htm`. That should run FrACT10 on all platforms. You can modify any `*.j` file with a source editor and see results immediately on reload. To edit the GUI you need Xcode (sorry, MacOS only) and open `_cappDevelop.xcodeproj`.
 
-- run `XcodeCapp`
-- add the folder containing all FrACT₁₀ files to XcodeCapp and use the hammer symbol to open this project in Xcode
-- to test your changes, save the pertinent Xcode file, wait until the XcodeCapp menu item is no longer blue (done processing), and open `index.html` (may need to flush browser cache)
-- when all is working well, run `jake release` to produce the directory `capp` with all *.j files aggregated. I use the shell script `make.sh` to do this and get rid of all extranous files produced in the process. But look at the script first if it does the right things for you before running it.
+- `_make-XcodeCapp.sh` (can be started within Xcode ⌘B) creates the `.XcodeSupport` folder and compiles the GUI – but that does requires Xcode and a Cappuccino Node installation for the tools.
+- Best not run `_make-FrACT.sh` unless you really know what you're doing.
+- I find it easiest to run directly from the files. Depending on your preferred browser, you will need to disable¹ "local file restrictions" or "cross-origin safety" or it will not open using the file:// protocol.<br>
+¹Easy in Firefox & Safari, no longer possible with Chrome.
+- Should you want to install Cappuccino <https://www.cappuccino.dev>: A good place to start is the [Cappucino Wiki](https://github.com/cappuccino/cappuccino/wiki). The Cappuccino frameworks are already in the Resources folder, so you don't need them. But you do need Cappuccino's tools for GUI compilation.
+
 
 
 ## Do I have to create an issue for a feature or a bug fix and discuss it with the existing contributors?
@@ -27,7 +29,7 @@ Best get in touch with <bach@uni-freiburg.de>.
 
 ## Should my changes be accompanied by documentation?
 
-Of course, but no need to go overboard.
+Of course, but no need to go overboard. Use highly descriptive variable/function naming.
 
 
 ## What are some short links I should be aware of?
@@ -38,7 +40,7 @@ Of course, but no need to go overboard.
 
 ## How can I get in touch with the developer?
 
-<bach@uni-freiburg.de>.
+<bach@uni-freiburg.de>. Looking forward…
 
 
 ## What are the code conventions?
@@ -53,9 +55,3 @@ Of course, but no need to go overboard.
 ## Does this repository follow a certain commit message pattern?
 
 No.
-
-
-## How do I set up the development environment for this project?
-
-I find it easiest to run directly from the files. Depending on the browser you use, you will need to disable¹ cross-origin safety or it will not open using the file:// protocol. You can, of course, set up a local web server.<br>
-¹Easy in Firefox & Safari, no longer easily possible with Chrome.
