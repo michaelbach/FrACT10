@@ -1,17 +1,15 @@
-# CONTRIBUTING guidelines (2021-05-30)
+# CONTRIBUTING guidelines
 
-This file is part of FrACT10.
-
-If anything is unclear, don't hesitate to contact me <bach@uni-freiburg.de>.
+This file is part of FrACT10. Quesitions? Don't hesitate to contact me <bach@uni-freiburg.de>.
 
 
 ## What’s the development workflow?
 
-It is not necessary to install Cappuccino, nor to compile. Just download the entire project from Github (e.g. ZIP), unzip, serve with a local server (or disable local file restrictions, see below), and open `index.htm`. That should run FrACT10 on all platforms. You can modify any `*.j` file with a source editor and see results immediately on reload. To edit the GUI you need Xcode (sorry, MacOS only) and open `_cappDevelop.xcodeproj`.
+It is not necessary to install Cappuccino, nor to compile. Just download the entire project from Github (e.g. ZIP), unzip, serve with a local server (or disable local file restrictions, see below), and open `index.html`. That should run FrACT10 on all platforms. You can modify any `*.j` file with a source editor and see results immediately on reload. To edit the GUI you need Xcode (sorry, MacOS only) and open `_cappDevelop.xcodeproj`.
 
 - `_make-XcodeCapp.sh` (can be started within Xcode ⌘B) creates the `.XcodeSupport` folder and compiles the GUI – but that does requires Xcode and a Cappuccino Node installation for the tools.
 - Best not run `_make-FrACT.sh` unless you really know what you're doing.
-- I find it easiest to run directly from the files. Depending on your preferred browser, you will need to disable¹ "local file restrictions" or "cross-origin safety" or it will not open using the file:// protocol.<br>
+- I find it easiest to run directly from the files. Depending on your preferred browser, you will need to disable¹ "local file restrictions" or "cross-origin safety", or it will not open using the file:// protocol.<br>
 ¹Easy in Firefox & Safari, no longer possible with Chrome.
 - Should you want to install Cappuccino <https://www.cappuccino.dev>: A good place to start is the [Cappucino Wiki](https://github.com/cappuccino/cappuccino/wiki). The Cappuccino frameworks are already in the Resources folder, so you don't need them. But you do need Cappuccino's tools for GUI compilation.
 
