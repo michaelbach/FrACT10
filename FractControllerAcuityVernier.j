@@ -10,7 +10,7 @@ Created by Bach on 14.08.2017.
 
 @import "FractControllerAcuity.j"
 @implementation FractControllerAcuityVernier: FractControllerAcuity {
-    float gapVernierMinimalArcSec, gapVernierMaximalArcSec;
+    float offsetVernierMinimalArcSec, offsetVernierMaximalArcSec;
 }
 
 
@@ -20,18 +20,18 @@ Created by Bach on 14.08.2017.
 
 
 - (float) stimDeviceunitsFromThresholderunits: (float) tPest { //console.info("FractControllerAcuityVernier>stimDeviceunitsFromThresholderunits");
-    gStrokeMinimal = [MiscSpace pixelFromDegree: gapVernierMinimalArcSec / 60.0 / 60.0];
-    gStrokeMaximal = [MiscSpace pixelFromDegree: gapVernierMaximalArcSec / 60.0 / 60.0];
+    gStrokeMinimal = [MiscSpace pixelFromDegree: offsetVernierMinimalArcSec / 60.0 / 60.0];
+    gStrokeMaximal = [MiscSpace pixelFromDegree: offsetVernierMaximalArcSec / 60.0 / 60.0];
     const c1 = gStrokeMinimal;
     const c2 = -Math.log(gStrokeMinimal / gStrokeMaximal);
     const deviceVal = c1 * Math.exp(tPest * c2); //trace("Vernier.pest2native, tPest:", tPest, "native=", nativeVal);
     if ([Misc areNearlyEqual: deviceVal and: gStrokeMaximal]) {
         if (!isBonusTrial) {
-            rangeLimitStatus = kRangeLimitValueAtCeiling; //console.info("max gap size!")
+            rangeLimitStatus = kRangeLimitValueAtCeiling; //console.info("max shift size!")
         }
     } else {
         if  ([Misc areNearlyEqual: deviceVal and: gStrokeMinimal]) {
-            rangeLimitStatus = kRangeLimitValueAtFloor; //console.info("min gap size!");
+            rangeLimitStatus = kRangeLimitValueAtFloor; //console.info("min shift size!");
         } else {
             rangeLimitStatus = kRangeLimitOk;
         }
@@ -39,8 +39,8 @@ Created by Bach on 14.08.2017.
     return deviceVal;
 }
 - (float) stimThresholderunitsFromDeviceunits: (float) d {
-    gStrokeMinimal = [MiscSpace pixelFromDegree: gapVernierMinimalArcSec / 60.0 / 60.0];
-    gStrokeMaximal = [MiscSpace pixelFromDegree: gapVernierMaximalArcSec / 60.0 / 60.0];
+    gStrokeMinimal = [MiscSpace pixelFromDegree: offsetVernierMinimalArcSec / 60.0 / 60.0];
+    gStrokeMaximal = [MiscSpace pixelFromDegree: offsetVernierMaximalArcSec / 60.0 / 60.0];
     const c1 = gStrokeMinimal;
     const c2 = -Math.log(gStrokeMinimal / gStrokeMaximal);
     const retVal = Math.log(d / c1) / c2;
@@ -123,7 +123,7 @@ Created by Bach on 14.08.2017.
 - (void) runStart { //console.info("FractControllerAcuityVernier>runStart");
     [self setCurrentTestResultUnit: "arcsec"];
     nAlternatives = 2;  nTrials = [Settings nTrials02];
-    gapVernierMinimalArcSec = 0.5;  gapVernierMaximalArcSec = 3000.0;
+    offsetVernierMinimalArcSec = 0.5;  offsetVernierMaximalArcSec = 3000.0;
     [super runStart];
 }
 
