@@ -5,7 +5,7 @@ This file is part of FrACT10. Quesitions? Don't hesitate to contact me <bach@uni
 
 ## What’s the development workflow?
 
-It is not necessary to install Cappuccino, nor to compile. Just download the entire project from Github (e.g. ZIP), unzip, serve with a local server (or disable local file restrictions, see below), and open `index.html`. That should run FrACT10 on all platforms. You can modify any `*.j` file with a source editor and see results immediately on reload. To edit the GUI you need Xcode (sorry, MacOS only) and open `_cappDevelop.xcodeproj`.
+It is not necessary to install Cappuccino, nor to compile. Just download the entire project from Github (e.g. ZIP), unzip, serve with a local server (or disable local file restrictions, see below), and open `index.html`. That should run FrACT10 on all platforms. You can modify any `*.j` file with a source editor and see results immediately on reload. To edit the GUI you need Xcode (sorry, MacOS only) and open `_cappDevelop.xcodeproj` with it.
 
 - `_make-XcodeCapp.sh` (can be started within Xcode ⌘B) creates the `.XcodeSupport` folder and compiles the GUI – but that does requires Xcode and a Cappuccino Node installation for the tools.
 - Best not run `_make-FrACT.sh` unless you really know what you're doing.

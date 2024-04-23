@@ -3,7 +3,7 @@
 [FrACT](https://michaelbach.de/fract/) is a semiautomated vision test battery. FrACT₁₀ is a version that runs in browsers on all plattforms or as webApp. For full details see <https://michaelbach.de/fract/>.
 
 ## Programming overview
-The program is mostly written in Objective-J, a language implemented by <https://www.cappuccino.dev>, and compiled by Cappuccino into JavaScript. [While the Cappuccino site looks a bit lazy, there is a small, select and active community working on it, communicating via Gitter.] Objective-J is modeled on Objective-C and implements much of Apple's GUI tools. Some parts of FrACT₁₀ are also pure JavaScript. Apple's Xcode is used as the development environment. The program is started by opening the project-relative top-level `index.html` in a browser.
+The program is mostly written in Objective-J, a language implemented by <https://www.cappuccino.dev>, and compiled by Cappuccino into JavaScript. [While the Cappuccino site looks a bit lazy, there is a small, select and active community working on it, communicating via Gitter.] Objective-J is modeled on Objective-C and implements much of Apple's GUI. Some parts of FrACT₁₀ are also pure JavaScript. Apple's Xcode is used as the development environment. The program is started by opening the project-relative top-level `index.html` in a browser.
 
 For more see [CONTRIBUTING.md](CONTRIBUTING.md).
 
