@@ -51,6 +51,7 @@ gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden via S
 /*
  #  History
 
++ 2024-04-30 Contrast values verified with luminance meter. Code no change, just a "freeze"
 + 2024-04-22 rename "gap" → "stroke", Vernier TBD
 + 2024-04-21 clibpoard button invisible/visible → disabled/enabled; improve wording in clipboard dialog;
         improve a tool tip, completely hide "auto fullscreen" – doesn't work well anyway;
