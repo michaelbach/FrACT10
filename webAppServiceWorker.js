@@ -105,7 +105,7 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', function(event) {
     //console.info("webAppServiceWorker responding to activate event…");
     //getCacheNameGlobal();
-    var cacheWhitelist = [cacheName];
+    const cacheWhitelist = [cacheName];
     event.waitUntil(
                     caches.keys().then(function(keyList) {
                         return Promise.all(keyList.map(function(key) {
