@@ -62,6 +62,7 @@ Created by mb on 2017-07-12.
     float checkContrastActualMichelsonPercent @accessors;
     int settingsPaneTabViewSelectedIndex @accessors;
     int settingsPanePresetSelectedIndex @accessors;
+    @outlet CPPopUpButton settingsPanePresetsPopUpButton;
     float calBarLengthInMMbefore;
     CPColor colorOfBestPossibleAcuity @accessors;
     CPNumberFormatter numberFormatter;
@@ -177,11 +178,13 @@ Created by mb on 2017-07-12.
     [numberFormatter setMinimumFractionDigits: 1];
     [contrastMaxLogCSWeberField setFormatter: numberFormatter];
     [gammaValueField setFormatter: numberFormatter];
+        
+    [Presets populatePresetsGivenPopup: settingsPanePresetsPopUpButton];
 }
 
 
 /**
- This observes changes in the settings panel, making shure dependencies are updated
+ Observe changes in the settings panel, making sure dependencies are updated
  */
 - (void) settingsDidChange: (CPNotification) aNotification { //console.info("settingsDidChange");
     [self setIs4orientations: ([Settings nAlternatives] == 4)];
@@ -449,7 +452,7 @@ Created by mb on 2017-07-12.
  */
 - (IBAction) buttonSettings_action: (id) sender { //console.info("AppController>buttonSettings");
     [sound initAfterUserinteraction];
-    [self setSettingsPanePresetSelectedIndex: 0];
+    [self setSettingsPanePresetSelectedIndex: 0]; // Always show "PRESETS"
     [Settings checkDefaults];  [settingsPanel makeKeyAndOrderFront: self];
     if (settingsNeededNewDefaults) {
         settingsNeededNewDefaults = NO;

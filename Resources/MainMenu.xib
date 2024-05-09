@@ -595,41 +595,12 @@ DQ
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Common sets of settings 
  </string>
-                        <popUpButtonCell key="cell" type="push" title="Presets" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="BRQ-on-tmW" id="JI4-Wi-eC6">
+                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="lkr-61-A7f" id="JI4-Wi-eC6">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
                             <menu key="menu" id="xFl-9u-ikI">
                                 <items>
-                                    <menuItem title="Presets" state="on" id="BRQ-on-tmW">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="ALL DEFAULTS" id="E6d-3W-JNL">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="Demo" id="d14-Br-wci">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="Testing" id="arD-ii-nPY">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="ESU" id="RUc-ID-IOk">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="ULV" id="K63-wD-Ybp">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="Color Equiluminance" id="9FI-6j-9ZQ">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="BCM@Scheie" id="WSk-qq-2gP">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="CNS@Freiburg" id="LCU-d4-iMN">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="Maculight" id="oka-5b-q2D">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
+                                    <menuItem title="Item 1" state="on" id="lkr-61-A7f"/>
                                 </items>
                             </menu>
                         </popUpButtonCell>
@@ -3175,6 +3146,7 @@ CQ
                 <outlet property="responseinfoPanelContrastG" destination="6tH-lc-nrw" id="hdZ-lu-dgD"/>
                 <outlet property="responseinfoPanelContrastLett" destination="FJ1-4N-r6U" id="Veo-hD-u3i"/>
                 <outlet property="resultDetailsPanel" destination="4qQ-tv-ydF" id="0nl-o2-I67"/>
+                <outlet property="settingsPanePresetsPopUpButton" destination="JgX-d5-6k1" id="N2S-lI-dCM"/>
                 <outlet property="settingsPanel" destination="MF5-y3-Ol0" id="6RV-5t-pXs"/>
                 <outlet property="window" destination="371" id="OB7-Tk-Lov"/>
             </connections>
