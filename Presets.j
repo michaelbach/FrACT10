@@ -13,39 +13,46 @@
  2022-05-20 begun
  */
 @implementation Presets: CPObject {
-    CPString presetNameSelected;
+    CPString _presetName;
+    CPPopUpButton _popUpButton;
 }
 
 
 /**
- Add all preset names to the Presets popup in Settings
+ Init and add all preset names to the Presets popup in the Settings pane
  */
-+ (void) populatePresetsGivenPopup: (CPPopUpButton) thePopUpButton {
-    
-    const allPresets = ["PRESETS", "Standard Defaults", "Demo", "Testing", "ESU", "ULV", "Color Equiluminance", "BCM@Scheie", "CNS@Freiburg", "Maculight"];
-    
-    [thePopUpButton removeAllItems];
-    for (const aPreset of allPresets) [thePopUpButton addItemWithTitle: aPreset];
+- (id) initWithPopup: (CPPopUpButton) thePopUpButton { //console.info("Presets>initWithPopup");
+    self = [super init];
+    if (self) {
+
+        const allPresets = ["PRESETS", "Standard Defaults", "Demo", "Testing", "ESU", "ULV", "Color Equiluminance", "BCM@Scheie", "CNS@Freiburg", "Maculight"];
+
+        _popUpButton = thePopUpButton; // local copy for later
+        [_popUpButton removeAllItems];
+        for (const aPreset of allPresets) [_popUpButton addItemWithTitle: aPreset];
+        [_popUpButton setSelectedIndex: 0]; // always show "PRESETS"
+    }
+    return self;
 }
 
 
 /**
- Called by the action of the preset selection pop-up, shows the "Are you sure" dialog
+ Called by the action of the preset selection pop-up, "Are you sure" dialog before applying
  */
-+ (void) apply: (id) sender { //console.info("Presets>apply");
-    const selectedPresetIndex = [sender indexOfSelectedItem];
-    if (selectedPresetIndex == 0) {//console.info("selectedPresetIndex == 0");
+- (void) apply: (id) sender { //console.info("Presets>apply");
+    const _presetIndex = [sender indexOfSelectedItem];
+    if (_presetIndex == 0) {//console.info("_presetIndex == 0");
         return;
     }
-    presetNameSelected = [sender itemTitleAtIndex: selectedPresetIndex];
-    const messageText = "Really all Settings to “" + presetNameSelected + "” ?";
+    _presetName = [sender itemTitleAtIndex: _presetIndex];
+    const messageText = "Really all Settings to “" + _presetName + "” ?";
     const alert1 = [CPAlert alertWithMessageText: messageText
                                    defaultButton: "NO" alternateButton: "YES" otherButton: nil
-                       informativeTextWithFormat: "Many Settings might change. You should know what you are doing here. Luckily, you can always return to defaults."];
+                       informativeTextWithFormat: "Many Settings will change. You should know what you are doing here. Luckily, you can always return to defaults."];
     [[alert1 buttons][0] setKeyEquivalent: "y"]; // the "Yes" button selected by "y"
     [alert1 runModalWithDidEndBlock: function(alert, returnCode) {
         if (returnCode==1) { // alternateButton
-            [self apply2: selectedPresetIndex];
+            [self apply2];
         }
     }];
 }
@@ -54,28 +61,28 @@
 /**
  Apply selected preset after "Are you sure" dialog
  */
-+ (void) apply2: (int) p { //console.info("Presets>apply2");
+- (void) apply2 { //console.info("Presets>apply2");
     let presetFound = NO;
     
     // the "needless" if-stacking↓ allows for easy re-arrangment in `allPresets` above
-    if (presetNameSelected == "Standard Defaults") {
+    if (_presetName == "Standard Defaults") {
         [Settings setDefaults];
         presetFound = YES;
     }
     
-    if (presetNameSelected == "Demo") {
+    if (_presetName == "Demo") {
         [Settings setDefaults];
-        [self applyTesting];
+        [self applyTestingPreset];
         [Settings setAutoRunIndex: kAutoRunIndexMid];
         presetFound = YES;
     }
     
-    if (presetNameSelected == "Testing") {// easier testing
-        [self applyTesting];
+    if (_presetName == "Testing") {// easier testing
+        [self applyTestingPreset];
         presetFound = YES;
     }
     
-    if (presetNameSelected == "ESU") { // secret project :)
+    if (_presetName == "ESU") { // secret project :)
         [self setStandardDefaultsKeepingCalBarLength];
         // general pane
         [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
@@ -96,7 +103,7 @@
         presetFound = YES;
     }
     
-    if (presetNameSelected == "ULV") { // Ultra Low Vision settings
+    if (_presetName == "ULV") { // Ultra Low Vision settings
         [self setStandardDefaultsKeepingCalBarLength];
         // general pane
         [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
@@ -105,8 +112,8 @@
         presetFound = YES;
     }
     
-    if (presetNameSelected == "Color Equiluminance") { // near equiluminant color acuity
-        [self applyTesting];
+    if (_presetName == "Color Equiluminance") { // near equiluminant color acuity
+        [self applyTestingPreset];
         [Settings setIsAcuityColor: YES];
         [Settings setAcuityForeColor: [CPColor redColor]];
         // ↓ dark green, near equiluminant to red
@@ -115,7 +122,7 @@
         presetFound = YES;
     }
     
-    if (presetNameSelected == "BCM@Scheie") {
+    if (_presetName == "BCM@Scheie") {
         [Settings setDefaults];
         // general pane
         [Settings setNAlternativesIndex: 0];  [Settings setNTrials02: 10];
@@ -142,7 +149,7 @@
         presetFound = YES;
     }
     
-    if (presetNameSelected == "CNS@Freiburg") {
+    if (_presetName == "CNS@Freiburg") {
         [Settings setDefaults];
         // general pane
         [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
@@ -155,7 +162,7 @@
         presetFound = YES;
     }
     
-    if (presetNameSelected == "Maculight") {
+    if (_presetName == "Maculight") {
         [self setStandardDefaultsKeepingCalBarLength];
         // general pane
         [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
@@ -172,16 +179,17 @@
     if (!presetFound) return;  // should never occur
     
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil]; // this synchronises the color settings between userdefaults & AppController
-    const messageText = "Preset “" + presetNameSelected + "” was applied."
+    const messageText = "Preset  »" + _presetName + "«  was applied."
     const alert2 = [CPAlert alertWithMessageText: messageText
                                    defaultButton: "OK" alternateButton: nil otherButton: nil
                        informativeTextWithFormat: ""];
     [alert2 runModal];
-    [Settings setPresetName: presetNameSelected];
+    [Settings setPresetName: _presetName];
+    [_popUpButton setSelectedIndex: 0]; // always show "PRESETS"
 }
 
 
-+ (void) applyTesting { // used several times, so it has its own function
+- (void) applyTestingPreset { // used several times, so it has its own function
     [self setStandardDefaultsKeepingCalBarLength];
     // general pane
     [Settings setDistanceInCM: 400];
@@ -192,7 +200,7 @@
 }
 
 
-+ (void) setStandardDefaultsKeepingCalBarLength {
+- (void) setStandardDefaultsKeepingCalBarLength {
     const calBarLengthInMM_prior = [Settings calBarLengthInMM];
     [Settings setDefaults];
     [Settings setCalBarLengthInMM: calBarLengthInMM_prior];

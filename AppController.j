@@ -47,6 +47,7 @@ Created by mb on 2017-07-12.
     @outlet GammaView gammaView;
     @outlet CPWebView aboutWebView1, aboutWebView2, helpWebView1, helpWebView2, helpWebView3, helpWebView4;
     @outlet CPImageView creditcardImageView;
+    @outlet CPPopUpButton settingsPanePresetsPopUpButton; Presets presets;
     CPImageView rewardImageView;
     RewardsController rewardsController;
     TAOController taoController;
@@ -61,8 +62,6 @@ Created by mb on 2017-07-12.
     float checkContrastActualWeberPercent @accessors;
     float checkContrastActualMichelsonPercent @accessors;
     int settingsPaneTabViewSelectedIndex @accessors;
-    int settingsPanePresetSelectedIndex @accessors;
-    @outlet CPPopUpButton settingsPanePresetsPopUpButton;
     float calBarLengthInMMbefore;
     CPColor colorOfBestPossibleAcuity @accessors;
     CPNumberFormatter numberFormatter;
@@ -156,6 +155,8 @@ Created by mb on 2017-07-12.
     rewardsController = [[RewardsController alloc] initWithView: rewardImageView];
     taoController = [[TAOController alloc] initWithButton2Enable: buttonAcuityTAO];
     sound = [[Sound alloc] init];
+    presets = [[Presets alloc] initWithPopup: settingsPanePresetsPopUpButton];
+
     for (let i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++)
         Math.random(); // randomising the pseudorandom sequence
     
@@ -178,8 +179,6 @@ Created by mb on 2017-07-12.
     [numberFormatter setMinimumFractionDigits: 1];
     [contrastMaxLogCSWeberField setFormatter: numberFormatter];
     [gammaValueField setFormatter: numberFormatter];
-        
-    [Presets populatePresetsGivenPopup: settingsPanePresetsPopUpButton];
 }
 
 
@@ -452,7 +451,6 @@ Created by mb on 2017-07-12.
  */
 - (IBAction) buttonSettings_action: (id) sender { //console.info("AppController>buttonSettings");
     [sound initAfterUserinteraction];
-    [self setSettingsPanePresetSelectedIndex: 0]; // Always show "PRESETS"
     [Settings checkDefaults];  [settingsPanel makeKeyAndOrderFront: self];
     if (settingsNeededNewDefaults) {
         settingsNeededNewDefaults = NO;
@@ -476,7 +474,7 @@ Created by mb on 2017-07-12.
     }
 }
 - (IBAction) popupPreset_action: (id) sender {
-    [Presets apply: sender];
+    [presets apply: sender];
 }
 
 
