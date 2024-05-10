@@ -215,9 +215,9 @@
 		094343208F2D20D343755E34 /* Cappuccino Source */ = {
 			isa = PBXGroup;
 			children = (
-				5139419A9E317C413C110C0F /* AlternativesGenerator.j */,
+				D7F842D1A68D8C133FA29CF9 /* Globals.j */,
+				2BD24D7590B3A2C0CF356A87 /* HierarchyController.j */,
 				6F8642B1B93603A5A204CC32 /* AppController.j */,
-				8A438B392BAF77FE00B33287 /* Dithering.j */,
 				9ADC4C46A65D7794540F1808 /* FractController.j */,
 				91B445DC96A0E8A06A4740E5 /* FractControllerAcuity.j */,
 				9E274E63BAB08347A029E633 /* FractControllerAcuityC.j */,
@@ -234,8 +234,7 @@
 				8A6D06A02BB6DA9A00364974 /* FractControllerContrastDitherTest.j */,
 				F71043F69484B3E36875B5AE /* FractView.j */,
 				C61449039211562F0283776F /* GammaView.j */,
-				D7F842D1A68D8C133FA29CF9 /* Globals.j */,
-				2BD24D7590B3A2C0CF356A87 /* HierarchyController.j */,
+				5139419A9E317C413C110C0F /* AlternativesGenerator.j */,
 				46EC4178BBFDF502EFF4AF49 /* MDBButton.j */,
 				8A891B7D2A5585AE00ACEFDF /* MDBDispersionEstimation.j */,
 				FB4A479E9000040026E0D65B /* MDBSimplestatistics.j */,
@@ -243,6 +242,7 @@
 				8A48269429CF58F30035607A /* MiscSpace.j */,
 				8A48269229CF4F260035607A /* MiscLight.j */,
 				3FC749C28C919101C41788D1 /* Optotypes.j */,
+				8A438B392BAF77FE00B33287 /* Dithering.j */,
 				DDE3442DAC3ED6499B7FFC75 /* PopulateAboutPanel.j */,
 				8A8BFD81283837D800DD61BB /* Presets.j */,
 				29834A62A925E37F8057FF9A /* RewardsController.j */,

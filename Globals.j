@@ -51,6 +51,7 @@ gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden via S
 /*
  #  History
 
++ 2024-05-10 improve about / help text, tooltips
 + 2024-05-09 complete rewrite of Presets for easier extension
 + 2024-04-30 Contrast values verified with luminance meter. Code no change, just a "freeze"
 + 2024-04-22 rename "gap" → "stroke", Vernier TBD

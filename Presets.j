@@ -25,6 +25,7 @@
     self = [super init];
     if (self) {
 
+        /* first entry: Header, all others need corresponding code in the “if orgy” further down. */
         const allPresets = ["PRESETS", "Standard Defaults", "Demo", "Testing", "ESU", "ULV", "Color Equiluminance", "BCM@Scheie", "CNS@Freiburg", "Maculight"];
 
         _popUpButton = thePopUpButton; // local copy for later
@@ -66,8 +67,7 @@
     
     // the "needless" if-stacking↓ allows for easy re-arrangment in `allPresets` above
     if (_presetName == "Standard Defaults") {
-        [Settings setDefaults];
-        presetFound = YES;
+        [Settings setDefaults];  presetFound = YES;
     }
     
     if (_presetName == "Demo") {
@@ -78,8 +78,7 @@
     }
     
     if (_presetName == "Testing") {// easier testing
-        [self applyTestingPreset];
-        presetFound = YES;
+        [self applyTestingPreset];  presetFound = YES;
     }
     
     if (_presetName == "ESU") { // secret project :)
@@ -122,7 +121,7 @@
         presetFound = YES;
     }
     
-    if (_presetName == "BCM@Scheie") {
+    if (_presetName == "BCM@Scheie") { // a clinical study
         [Settings setDefaults];
         // general pane
         [Settings setNAlternativesIndex: 0];  [Settings setNTrials02: 10];
@@ -149,7 +148,7 @@
         presetFound = YES;
     }
     
-    if (_presetName == "CNS@Freiburg") {
+    if (_presetName == "CNS@Freiburg") { // a clinical study
         [Settings setDefaults];
         // general pane
         [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
@@ -162,7 +161,7 @@
         presetFound = YES;
     }
     
-    if (_presetName == "Maculight") {
+    if (_presetName == "Maculight") { // a clinical study
         [self setStandardDefaultsKeepingCalBarLength];
         // general pane
         [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
