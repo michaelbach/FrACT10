@@ -332,6 +332,7 @@ Shortcuts: "Q", "X" or "-" (Minus)</string>
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoExit_action:" target="450" id="g6R-u3-FII"/>
+                            <binding destination="izh-pU-csC" name="hidden" keyPath="values.hideExitButton" id="tzn-UR-dLC"/>
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="joy-xW-5wZ">
@@ -3211,7 +3212,7 @@ CQ
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKl-qE-MnI">
-                                            <rect key="frame" x="37" y="133" width="298" height="18"/>
+                                            <rect key="frame" x="35" y="133" width="298" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">When "Line of optotypes" is set to “Chart mode”, here you can select that all 3 lines have the same acuty grade.
  
@@ -3222,6 +3223,20 @@ CQ
                                             </buttonCell>
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.lineByLineChartModeConstantVA" id="qN3-Mh-aOQ"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Woj-eV-bwS">
+                                            <rect key="frame" x="35" y="88" width="124" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <string key="toolTip">When "Line of optotypes" is set to “Chart mode”, here you can select that all 3 lines have the same acuty grade.
+ 
+</string>
+                                            <buttonCell key="cell" type="check" title="Hide Exit button" bezelStyle="regularSquare" imagePosition="left" inset="2" id="GGV-EW-Keb">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="value" keyPath="values.hideExitButton" id="rx4-JS-9Ql"/>
                                             </connections>
                                         </button>
                                     </subviews>

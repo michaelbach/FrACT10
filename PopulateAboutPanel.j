@@ -42,7 +42,7 @@ Populates the About panel with appropriate text using HTML
     s += "Freiburg Visual Acuity and Contrast Test 10, ";
     s += "<a href='https://michaelbach.de/fract/index.html#anchorWhatsNew' target='_blank'>" + "Vs " + gVersionStringOfFract + "</a>, <br>";
     s += "release date " + gVersionDateOfFrACT + ".<br><br>";
-    s += "Semi-automatic assessment of visual acuities following ISO, and contrast thresholds.<br><br>Optotypes: Sloan letters, Landolt C, Tumbling E, TAO, gratings, and hyperacuity targets.<br><br>Acuity results in decimal, LogMAR or Snellen notation; export options for data management systems.<br><br>With ‘Best PEST’, antialiasing and dithering."
+    s += "Semi-automatic assessment of visual acuities following ISO, and contrast thresholds.<br><br>Optotypes: Sloan letters, Landolt C, Tumbling E, TAO, gratings, and hyperacuity targets.<br><br>Acuity results in LogMAR, decimal or Snellen notation; ∃  export options for data management systems.<br><br>With ‘Best PEST’, antialiasing and dithering."
     [self oneWebView: aboutWebView1 htmlString: s];
 
     s = "©1993–" + [gVersionDateOfFrACT substringWithRange: CPMakeRange(0, 4)];
