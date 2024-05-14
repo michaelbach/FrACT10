@@ -175,6 +175,17 @@
         presetFound = YES;
     }
     
+    if (_presetName == "Generic Template") { // xx
+        [Settings setDefaults];
+        // General pane
+        // Acuity pane
+        // Contrast pane
+        // Gratings pane
+        // Gamma pane
+        // Misc pane
+        presetFound = YES;
+    }
+
     if (!presetFound) return;  // should never occur
     
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil]; // this synchronises the color settings between userdefaults & AppController
