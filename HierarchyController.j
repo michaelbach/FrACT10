@@ -26,7 +26,11 @@ kTestContrastG = 9; kTestAcuityLineByLine = 10; kTestContrastDitherTest = 11;
 kResults2ClipNone = 0; kResults2ClipFinalOnly = 1; kResults2ClipFullHistory = 2;
 
 @typedef AutoRunIndexType
-    kAutoRunIndexNone = 0; kAutoRunIndexHi = 1; kAutoRunIndexMid = 2; kAutoRunIndexLow = 3;
+kAutoRunIndexNone = 0; kAutoRunIndexHi = 1; kAutoRunIndexMid = 2; kAutoRunIndexLow = 3;
+
+@typedef VernierTypeType
+kVernierType2bars = 0; kVernierType3bars = 1;
+
 
 @implementation HierarchyController: CPWindowController {
     HierarchyController parentController @accessors;

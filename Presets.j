@@ -26,7 +26,7 @@
     if (self) {
 
         /* first entry: Header, all others need corresponding code in the “if orgy” further down. */
-        const allPresets = ["PRESETS", "Standard Defaults", "Demo", "Testing", "ESU", "ULV", "Color Equiluminance", "BCM@Scheie", "CNS@Freiburg", "Maculight"];
+        const allPresets = ["PRESETS", "Standard Defaults", "Demo", "Testing", "ESU", "ULV", "Color Equiluminance", "BCM@Scheie", "CNS@Freiburg", "Maculight", "Hyper@TUDo"];
 
         _popUpButton = thePopUpButton; // local copy for later
         [_popUpButton removeAllItems];
@@ -175,7 +175,27 @@
         presetFound = YES;
     }
     
-    if (_presetName == "Generic Template") { // xx
+    if (_presetName == "Hyper@TUDo") {
+        [Settings setDefaults];
+        // General pane
+        [Settings setTimeoutResponseSeconds: 600]; [Settings setTimeoutDisplaySeconds: 90];
+        [Settings setDistanceInCM: 147]; [Settings setCalBarLengthInMM: 134];
+        [Settings setResponseInfoAtStart: NO];
+        [Settings setTestOnFive: kTestNone];
+        [Settings setResults2clipboard: kResults2ClipFullHistory];
+        [Settings setResults2clipboardSilent: YES];
+        // Acuity pane
+        [Settings setVernierType: kVernierType3bars];
+        [Settings setVernierWidth: 1.5]; [Settings setVernierLength: 40]; [Settings setVernierGap: 0.2];
+        [Settings setShowCI95: YES];
+        // Gamma pane
+        [Settings setGammaValue: 2.2];
+        // Misc pane
+        [Settings setWindowBackgroundColor: [CPColor whiteColor]];
+        presetFound = YES;
+    }
+
+    if (_presetName == "Generic Template") { // only as template for new entries
         [Settings setDefaults];
         // General pane
         // Acuity pane
