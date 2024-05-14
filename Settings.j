@@ -41,6 +41,18 @@ Helpers
 }
 
 
+// CPColors are stored as hexString because the archiver does not work in Cappuccino. Why not??
+//https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/DrawColor/Tasks/StoringNSColorInDefaults.html
++ (CPColor) colorForKey: (CPString) keyString fallbackInHex: (CPString) fallbackInHex {
+    let theData = [[CPUserDefaults standardUserDefaults] stringForKey: keyString];
+    if (theData == nil) theData = fallbackInHex; // safety measure and default
+    return [CPColor colorWithHexString: theData];
+}
++ (void) setColor: (CPColor) theColor forKey: (CPString) keyString {
+    [[CPUserDefaults standardUserDefaults] setObject: [theColor hexString] forKey: keyString];
+}
+
+
 /**
  Test all settings for in-range (set==NO) or set the to defaults (set==YES)
  */
@@ -569,20 +581,6 @@ Helpers
     [[CPUserDefaults standardUserDefaults] setBool: val forKey: "enableTouchControls"];
 }
 
-
-+ (CPColor) windowBackgroundColor { //console.info("Settings>windowBackgroundColor");
-    // CPColors are stored as hexString because the archiver does not work in Cappuccino. Why not??
-    //https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/DrawColor/Tasks/StoringNSColorInDefaults.html
-    let theData = [[CPUserDefaults standardUserDefaults] stringForKey: "windowBackgroundColor"];
-    if (theData == nil) theData = "FFFFEE"; // safety measure and default
-    const theColor = [CPColor colorWithHexString: theData];
-    return theColor;
-}
-+ (void) setWindowBackgroundColor: (CPColor) theColor { //console.info("Settings>setWindowBackgroundColor:", theColor);
-    [[CPUserDefaults standardUserDefaults] setObject: [theColor hexString] forKey: "windowBackgroundColor"];
-}
-
-
 + (BOOL) isAcuityColor {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "isAcuityColor"];
 }
@@ -728,26 +726,19 @@ Helpers
 
 
 // these settings keeps optotype colors between restarts. Within FrACT use globals gColorFore/gColorBack
-+ (CPColor) acuityForeColor { //console.info("Settings>acuityForeColor");
-    let theData = [[CPUserDefaults standardUserDefaults] stringForKey: "acuityForeColor"];
-    if (theData == nil) theData = "FFFFFF"; // safety measure
-    const c = [CPColor colorWithHexString: theData]; //console.info("Settings>acuityForeColor:", c);
-    return c;
++ (CPColor) acuityForeColor {
+    return [self colorForKey: "acuityForeColor" fallbackInHex: "FFFFFF"];
 }
-+ (void) setAcuityForeColor: (CPColor) theColor { //console.info("Settings>setAcuityBackColor:", theColor);
-    [[CPUserDefaults standardUserDefaults] setObject: [theColor hexString] forKey: "acuityForeColor"];
++ (void) setAcuityForeColor: (CPColor) theColor {
+    [self setColor: theColor forKey: "acuityForeColor"];
 }
-+ (CPColor) acuityBackColor { //console.info("Settings>acuityBackColor");
-    let theData = [[CPUserDefaults standardUserDefaults] stringForKey: "acuityBackColor"];
-    //console.info("Settings>acuityBackColor>theData: ", theData)
-    if (theData == nil) theData = "000000"; // safety measure
-    const c = [CPColor colorWithHexString: theData]; //console.info("Settings>acuityBackColor:", c);
-    return c;
++ (CPColor) acuityBackColor {
+    return [self colorForKey: "acuityBackColor" fallbackInHex: "000000"];
 }
-+ (void) setAcuityBackColor: (CPColor) theColor { //console.info("Settings>setAcuityBackColor:", theColor);
-    [[CPUserDefaults standardUserDefaults] setObject: [theColor hexString] forKey: "acuityBackColor"];
++ (void) setAcuityBackColor: (CPColor) theColor {
+    [self setColor: theColor forKey: "acuityBackColor"];
 }
-    
+
 
 + (BOOL) acuityEasyTrials {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "acuityEasyTrials"];
@@ -920,21 +911,17 @@ Helpers
 + (void) setIsGratingColor: (BOOL) val {
     [[CPUserDefaults standardUserDefaults] setBool: val forKey: "isGratingColor"];
 }
-+ (CPColor) gratingForeColor { //console.info("Settings>gratingForeColor");
-    let theData = [[CPUserDefaults standardUserDefaults] stringForKey: "gratingForeColor"];
-    if (theData == nil) theData = "FFFFFF"; // safety measure
-    return [CPColor colorWithHexString: theData];
++ (CPColor) gratingForeColor {
+    return [self colorForKey: "gratingForeColor" fallbackInHex: "FFFFFF"];
 }
-+ (void) setGratingForeColor: (CPColor) col { //console.info("Settings>setGratingForeColor:", theColor);
-    [[CPUserDefaults standardUserDefaults] setObject: [col hexString] forKey: "gratingForeColor"];
++ (void) setGratingForeColor: (CPColor) theColor {
+    [self setColor: theColor forKey: "gratingForeColor"];
 }
-+ (CPColor) gratingBackColor { //console.info("Settings>acuityBackColor");
-    let theData = [[CPUserDefaults standardUserDefaults] stringForKey: "gratingBackColor"];
-    if (theData == nil) theData = "000000"; // safety measure
-    return [CPColor colorWithHexString: theData];
++ (CPColor) gratingBackColor {
+    return [self colorForKey: "gratingBackColor" fallbackInHex: "000000"];
 }
-+ (void) setGratingBackColor: (CPColor) col { //console.info("Settings>setAcuityBackColor:", theColor);
-    [[CPUserDefaults standardUserDefaults] setObject: [col hexString] forKey: "gratingBackColor"];
++ (void) setGratingBackColor: (CPColor) theColor {
+    [self setColor: theColor forKey: "gratingBackColor"];
 }
 
 + (int) what2SweepIndex {
@@ -979,6 +966,14 @@ Helpers
 
 
 // Misc stuff
++ (CPColor) windowBackgroundColor {
+    return [self colorForKey: "windowBackgroundColor" fallbackInHex: "FFFFEE"];
+}
++ (void) setWindowBackgroundColor: (CPColor) theColor {
+    [self setColor: theColor forKey: "windowBackgroundColor"];
+}
+
+
 + (BOOL) specialBcmOn {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "specialBcmOn"];
 }
