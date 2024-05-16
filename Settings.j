@@ -190,7 +190,6 @@ Helpers
     [self setSpecialBcmOn: [self checkBool: [self specialBcmOn] dflt: NO set: set]];
     [self setHideExitButton: [self checkBool: [self hideExitButton] dflt: NO set: set]];
 
-
     
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
@@ -261,7 +260,7 @@ Helpers
 
 
 /**
- indivisual getters / setters for all settings
+ individual getters / setters for all settings
  */
 ///////////////////////////////////////////////////////////
 // for all tests
@@ -271,6 +270,7 @@ Helpers
     return t;
 }
 + (void) setNAlternativesIndex: (int) val {
+    //[self setDfltIntForKey: "nAlternativesIndex"];
     [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "nAlternativesIndex"];
 }
 
@@ -306,10 +306,10 @@ Helpers
 }
 
 + (int) nAlternatives { //console.info("Settings>nAlternatives");
-    switch ([[CPUserDefaults standardUserDefaults] integerForKey: "nAlternativesIndex"]) {
+    switch ([self nAlternativesIndex]) {
         case 0:  return 2;  break;
         case 1:  return 4;  break;
-        case 2:  return 8;  break;
+        default:  return 8; // case 2
     }
 }
 
