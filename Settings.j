@@ -65,6 +65,7 @@ Helpers
         [self setGratingForeColor: [CPColor lightGrayColor]];
         [self setGratingBackColor: [CPColor darkGrayColor]];
         [self setPresetName: "Standard Defaults"];// synchronise with corresponding item in Presets!
+        [self setSoundTrialNoFileName: "trialNo.mp3"];
     }
 
     // need to check before setNAlternativesIndex 'cause oblique might force to index=0
@@ -988,5 +989,15 @@ Helpers
     [[CPUserDefaults standardUserDefaults] setBool: val forKey: "hideExitButton"];
 }
 
+
++ (CPString) soundTrialNoFileName {
+    let soundFile = [[CPUserDefaults standardUserDefaults] stringForKey: "soundTrialNoFileName"];
+    if (!(soundFile != nil) || (soundFile.length < 2)) soundFile = "trialNo.mp3";
+    //console.info("Settings>soundFile", soundFile);
+    return soundFile;
+}
++ (void) setSoundTrialNoFileName: (CPString) val {
+    [[CPUserDefaults standardUserDefaults] setObject: val forKey: "soundTrialNoFileName"];
+}
 
 @end

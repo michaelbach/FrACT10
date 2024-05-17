@@ -51,6 +51,7 @@ gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden via S
 /*
  #  History
 
++ 2024-05-17 add an alternate "trialNo" sound, selected by @TUdo based on suggestion by Anna B.
 + 2024-05-14 add new Preset
 + 2024-05-14 simplify, rename, refactor Settings for readability, no change in function
 + 2024-05-13 add `hideExitButton` on request

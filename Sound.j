@@ -14,7 +14,13 @@ Sound.j
 
 @implementation Sound: CPObject {
     id audioContext, buffer1, buffer2, buffer3, volumeNode;
-    BOOL needsAudioContext;
+    BOOL needsInitAfterUserinteraction;
+}
+
+
+- (void) updateSoundFiles: (CPNotification) aNotification { //console.info("Sound>updateSoundFiles");
+    needsInitAfterUserinteraction = YES;
+    [self initAfterUserinteraction];
 }
 
 
@@ -27,7 +33,7 @@ Sound.j
     request.open('GET', "Resources/sounds/trialYes.mp3", true);
     request.responseType = 'arraybuffer';
     request.onload = function() {  // Decode asynchronously
-            audioContext.decodeAudioData(request.response, function(buff) {buffer1 = buff;});
+        audioContext.decodeAudioData(request.response, function(buff) {buffer1 = buff;});
     }
     request.send();
 }
@@ -37,10 +43,11 @@ Sound.j
 - (void) loadSound2 { //console.info("Sound>loadSound");
     buffer2 = null;
     const request = new XMLHttpRequest();
-    request.open('GET', "Resources/sounds/trialNo.mp3", true);
+    const soundFile = [Settings soundTrialNoFileName];
+    request.open('GET', "Resources/sounds/" + soundFile, true);
     request.responseType = 'arraybuffer';
     request.onload = function() {  // Decode asynchronously
-            audioContext.decodeAudioData(request.response, function(buff) {buffer2 = buff;});
+        audioContext.decodeAudioData(request.response, function(buff) {buffer2 = buff;});
     }
     request.send();
 }
@@ -60,7 +67,7 @@ Sound.j
 
 
 - (void) playSoundFromBuffer: (id) buffer { //console.info("Sound>playSoundFromBuffer");
-    if (needsAudioContext)  [self initAfterUserinteraction];
+    if (needsInitAfterUserinteraction)  [self initAfterUserinteraction];
     if (buffer == nil) return;
     const source = audioContext.createBufferSource();
     source.buffer = buffer;
@@ -82,8 +89,8 @@ Sound.j
 
 
 - (void) initAfterUserinteraction {
-    if (!needsAudioContext)  return;
-    needsAudioContext = NO;
+    if (!needsInitAfterUserinteraction)  return;
+    needsInitAfterUserinteraction = NO;
     if ('webkitAudioContext' in window) {
         audioContext = new window.webkitAudioContext();
     } else {
@@ -100,7 +107,8 @@ Sound.j
     self = [super init];
     if (self) {
         // starting the AudioContext is not allowed unless by user interaction
-        needsAudioContext = YES;
+        needsInitAfterUserinteraction = YES;
+        [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(updateSoundFiles:) name: "updateSoundFiles" object: nil]; // needed when changing sounds in Presets
     }
     return self;
 }

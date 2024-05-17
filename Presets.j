@@ -192,6 +192,7 @@
         [Settings setGammaValue: 2.2];
         // Misc pane
         [Settings setWindowBackgroundColor: [CPColor whiteColor]];
+        [Settings setSoundTrialNoFileName: "2_error.mp3"];
         presetFound = YES;
     }
 
@@ -208,6 +209,7 @@
 
     if (!presetFound) return;  // should never occur
     
+    [[CPNotificationCenter defaultCenter] postNotificationName: "updateSoundFiles" object: nil];
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil]; // this synchronises the color settings between userdefaults & AppController
     const messageText = "Preset  »" + _presetName + "«  was applied."
     const alert2 = [CPAlert alertWithMessageText: messageText
