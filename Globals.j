@@ -47,9 +47,10 @@ gSpecialBcmDone = NO;
 // minimal stroke size (half a pixel). Maximal, depending on screen & margin. Poor naming for Vernier.
 gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden via Setting and screen size
 
-gSoundsTrialYES = ["tink.mp3", "miniPop.mp3"];
-gSoundsTrialNO = ["whistle.mp3", "2_error.mp3"];
+gSoundsTrialYes = ["tink.mp3", "miniPop.mp3"];
+gSoundsTrialNo = ["whistle.mp3", "error2.mp3"];
 gSoundsRunEnd = ["gong.mp3", "cute level up.mp3"];
+
 
 /*
  #  History

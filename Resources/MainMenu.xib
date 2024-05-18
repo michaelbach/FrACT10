@@ -3101,7 +3101,7 @@ CQ
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="P7G-M5-Pjw">
-                                            <rect key="frame" x="492" y="391" width="239" height="58"/>
+                                            <rect key="frame" x="492" y="388" width="239" height="58"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="Ye2-rS-NGY">
                                                 <rect key="frame" x="4" y="5" width="231" height="50"/>
@@ -3146,7 +3146,7 @@ CQ
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Upt-gW-HXb">
-                                            <rect key="frame" x="565" y="435" width="93" height="22"/>
+                                            <rect key="frame" x="565" y="432" width="93" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Noise" bezelStyle="round" id="lSm-aI-d2L">
                                                 <font key="font" metaFont="system"/>
@@ -3155,7 +3155,7 @@ CQ
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="wk1-2Q-0TD">
-                                            <rect key="frame" x="492" y="282" width="239" height="58"/>
+                                            <rect key="frame" x="492" y="279" width="239" height="58"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="Zq0-Ut-2pJ">
                                                 <rect key="frame" x="4" y="5" width="231" height="50"/>
@@ -3178,7 +3178,7 @@ CQ
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vrU-9s-v0O">
-                                            <rect key="frame" x="551" y="326" width="120" height="22"/>
+                                            <rect key="frame" x="551" y="323" width="120" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="specialBCM" bezelStyle="round" id="6zX-X5-bZb">
                                                 <font key="font" metaFont="system"/>
@@ -3232,13 +3232,13 @@ CQ
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="TaC-8z-ATT">
-                                            <rect key="frame" x="492" y="50" width="239" height="180"/>
+                                            <rect key="frame" x="492" y="47" width="239" height="180"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="SHV-oL-MQO">
                                                 <rect key="frame" x="4" y="5" width="231" height="172"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LG4-aN-i05">
+                                                    <popUpButton tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LG4-aN-i05">
                                                         <rect key="frame" x="20" y="112" width="135" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Select a soundfile giving feedback on "Correct".
@@ -3254,7 +3254,8 @@ CQ
                                                             </menu>
                                                         </popUpButtonCell>
                                                         <connections>
-                                                            <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.soundTrialYesIndex" id="hGi-d5-zbB"/>
+                                                            <action selector="buttonSettingsTestSound_action:" target="450" id="Da9-5g-gBW"/>
+                                                            <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.soundTrialYesIndex" id="YFW-kL-lQ7"/>
                                                         </connections>
                                                     </popUpButton>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yDr-o5-85R">
@@ -3266,7 +3267,7 @@ CQ
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mWY-c6-Jrm">
+                                                    <popUpButton tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mWY-c6-Jrm">
                                                         <rect key="frame" x="20" y="67" width="135" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Select a soundfile giving feedback on "Incorrect".
@@ -3282,6 +3283,7 @@ CQ
                                                             </menu>
                                                         </popUpButtonCell>
                                                         <connections>
+                                                            <action selector="buttonSettingsTestSound_action:" target="450" id="p3Q-O3-xft"/>
                                                             <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.soundTrialNoIndex" id="Eqe-hP-JEP"/>
                                                         </connections>
                                                     </popUpButton>
@@ -3310,6 +3312,7 @@ CQ
                                                             </menu>
                                                         </popUpButtonCell>
                                                         <connections>
+                                                            <action selector="buttonSettingsTestSound_action:" target="450" id="lYW-z4-PD1"/>
                                                             <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.soundRunEndIndex" id="A0N-ki-dVB"/>
                                                         </connections>
                                                     </popUpButton>
@@ -3326,7 +3329,7 @@ CQ
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oi1-uI-HB5">
-                                            <rect key="frame" x="543" y="216" width="135" height="22"/>
+                                            <rect key="frame" x="543" y="213" width="135" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Feedback Sounds" bezelStyle="round" id="NZY-ji-TCC">
                                                 <font key="font" metaFont="system"/>

@@ -31,6 +31,9 @@ kAutoRunIndexNone = 0; kAutoRunIndexHi = 1; kAutoRunIndexMid = 2; kAutoRunIndexL
 @typedef VernierTypeType
 kVernierType2bars = 0; kVernierType3bars = 1;
 
+@typedef SoundTypeType
+kSoundRunEnd = 0; kSoundTrialYes = 1; kSoundTrialNo = 2;
+
 
 @implementation HierarchyController: CPWindowController {
     HierarchyController parentController @accessors;

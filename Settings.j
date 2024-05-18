@@ -190,8 +190,8 @@ Created by mb on July 15, 2015.
     [self setSpecialBcmOn: [self checkBool: [self specialBcmOn] dflt: NO set: set]];
     [self setHideExitButton: [self checkBool: [self hideExitButton] dflt: NO set: set]];
 
-    [self setSoundTrialYesIndex: [self checkNum: [self soundTrialYesIndex] dflt: 0 min: 0 max: gSoundsTrialYES.length-1 set: set]];
-    [self setSoundTrialNoIndex: [self checkNum: [self soundTrialNoIndex] dflt: 0 min: 0 max: gSoundsTrialNO.length-1 set: set]];
+    [self setSoundTrialYesIndex: [self checkNum: [self soundTrialYesIndex] dflt: 0 min: 0 max: gSoundsTrialYes.length-1 set: set]];
+    [self setSoundTrialNoIndex: [self checkNum: [self soundTrialNoIndex] dflt: 0 min: 0 max: gSoundsTrialNo.length-1 set: set]];
     [self setSoundRunEndIndex: [self checkNum: [self soundRunEndIndex] dflt: 0 min: 0 max: gSoundsRunEnd.length-1 set: set]];
 
     [[CPUserDefaults standardUserDefaults] synchronize];
@@ -995,14 +995,14 @@ Created by mb on July 15, 2015.
     return [[CPUserDefaults standardUserDefaults] integerForKey: "soundTrialYesIndex"];
 }
 + (void) setSoundTrialYesIndex: (int) val { //console.info("setSoundTrialYesIndex", val);
-    if ((val < 0 ) || (val >= gSoundsTrialYES.length)) val = 0;
+    if ((val < 0 ) || (val >= gSoundsTrialYes.length)) val = 0;
     [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "soundTrialYesIndex"];
 }
 + (int) soundTrialNoIndex {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "soundTrialNoIndex"];
 }
 + (void) setSoundTrialNoIndex: (int) val { //console.info("setSoundTrialNoIndex", val);
-    if ((val < 0 ) || (val >= gSoundsTrialNO.length)) val = 0;
+    if ((val < 0 ) || (val >= gSoundsTrialNo.length)) val = 0;
     [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "soundTrialNoIndex"];
 }
 + (int) soundRunEndIndex {
@@ -1011,6 +1011,19 @@ Created by mb on July 15, 2015.
 + (void) setSoundRunEndIndex: (int) val { //console.info("setSoundRunEndIndex", val);
     if ((val < 0 ) || (val >= gSoundsRunEnd.length)) val = 0;
     [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "soundRunEndIndex"];
+}
++ (void) setupSoundPopupTrialYes: (id) trialYesPopup trialNoPopup: (id) trialNoPopup runEndPopUp: (id) runEndPopup {
+    [trialYesPopup removeAllItems];
+    for (const soundName of gSoundsTrialYes) [trialYesPopup addItemWithTitle: soundName];
+    [trialYesPopup setSelectedIndex: [self soundTrialYesIndex]]; // lost after remove
+
+    [trialNoPopup removeAllItems];
+    for (const soundName of gSoundsTrialNo) [trialNoPopup addItemWithTitle: soundName];
+    [trialNoPopup setSelectedIndex: [self soundTrialNoIndex]]; // lost after remove
+
+    [runEndPopup removeAllItems];
+    for (const soundName of gSoundsRunEnd) [runEndPopup addItemWithTitle: soundName];
+    [runEndPopup setSelectedIndex: [self soundRunEndIndex]]; // lost after remove
 }
 
 @end

@@ -325,12 +325,12 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [thresholder enterTrialOutcomeWithAppliedStim: [self stimThresholderunitsFromDeviceunits: stimStrengthInDeviceunits] wasCorrect: responseWasCorrect];
     switch ([Settings auditoryFeedback]) { // case 0: nothing
         case 1:
-            [sound play1];  break;
+            [sound playNumber: kSoundTrialYes];  break;
         case 2:
-            if (responseWasCorrect) [sound play1];  break;
+            if (responseWasCorrect) [sound playNumber: kSoundTrialYes];  break;
         case 3:
-            if (responseWasCorrect) [sound play1];
-            else [sound play2];
+            if (responseWasCorrect) [sound playNumber: kSoundTrialYes];
+            else [sound playNumber: kSoundTrialNo];
             break;
     }
     [trialHistoryController trialEnded];
@@ -355,7 +355,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [trialHistoryController runEnded];
     const _parentController = [self parentController];
     [_parentController setCurrentTestResultsHistoryExportString: [trialHistoryController resultsHistoryString]];
-    if ([Settings auditoryFeedbackWhenDone]) [sound play3];
+    if ([Settings auditoryFeedbackWhenDone]) [sound playNumber: kSoundRunEnd];
     
     let _currentTestResultExportString = [_parentController currentTestResultExportString];
     if ([Settings showCI95] && (![_parentController runAborted])) {

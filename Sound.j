@@ -13,8 +13,9 @@ Sound.j
 
 
 @implementation Sound: CPObject {
-    id audioContext, buffer1, buffer2, buffer3, volumeNode;
+    id audioContext, bufferTrialYes, bufferTrialNo, bufferRunEnd, volumeNode;
     BOOL needsInitAfterUserinteraction;
+    CPTimer _timer;
 }
 
 
@@ -26,47 +27,47 @@ Sound.j
 
 // the below is clumsy (doing it 3 times), but the closure didn't take the provided buffer in my attempts.
 
-// SoundTrialYES for correct response
-- (void) loadSoundTrialYES { //console.info("Sound>loadSound");
-    buffer1 = null;
+// for correct response
+- (void) loadSoundTrialYes { //console.info("Sound>loadSound");
+    bufferTrialYes = null;
     const request = new XMLHttpRequest();
-    request.open('GET', "Resources/sounds/trialYES/" + gSoundsTrialYES[[Settings soundTrialYesIndex]], true);
+    request.open('GET', "Resources/sounds/trialYes/" + gSoundsTrialYes[[Settings soundTrialYesIndex]], true);
     request.responseType = 'arraybuffer';
     request.onload = function() {  // Decode asynchronously
-        audioContext.decodeAudioData(request.response, function(buff) {buffer1 = buff;});
+        audioContext.decodeAudioData(request.response, function(buff) {bufferTrialYes = buff;});
     }
     request.send();
 }
 
 
-// SoundTrialNO for incorrect responses
-- (void) loadSoundTrialNO { //console.info("Sound>loadSound");
-    buffer2 = null;
+// for incorrect responses
+- (void) loadSoundTrialNo { //console.info("Sound>loadSound");
+    bufferTrialNo = null;
     const request = new XMLHttpRequest();
-    request.open('GET', "Resources/sounds/trialNO/" + gSoundsTrialNO[[Settings soundTrialNoIndex]], true);
+    request.open('GET', "Resources/sounds/trialNo/" + gSoundsTrialNo[[Settings soundTrialNoIndex]], true);
     request.responseType = 'arraybuffer';
     request.onload = function() {  // Decode asynchronously
-        audioContext.decodeAudioData(request.response, function(buff) {buffer2 = buff;});
+        audioContext.decodeAudioData(request.response, function(buff) {bufferTrialNo = buff;});
     }
     request.send();
 }
 
 
-// SoundRunEnd for end of run
+// for end of run
 - (void) loadSoundRunEnd { //console.info("Sound>loadSound");
-    buffer3 = null;
+    bufferRunEnd = null;
     const request = new XMLHttpRequest();
     request.open('GET', "Resources/sounds/runEnd/" + gSoundsRunEnd[[Settings soundRunEndIndex]], true);
     request.responseType = 'arraybuffer';
     request.onload = function() {  // Decode asynchronously
-        audioContext.decodeAudioData(request.response, function(buff) {buffer3 = buff;});
+        audioContext.decodeAudioData(request.response, function(buff) {bufferRunEnd = buff;});
     }
     request.send();
 }
 
 
 - (void) playSoundFromBuffer: (id) buffer { //console.info("Sound>playSoundFromBuffer");
-    if (needsInitAfterUserinteraction)  [self initAfterUserinteraction];
+    if (needsInitAfterUserinteraction) [self initAfterUserinteraction];
     if (buffer == nil) return;
     const source = audioContext.createBufferSource();
     source.buffer = buffer;
@@ -76,18 +77,22 @@ Sound.j
 }
 
 
-- (void) play1 { //console.info("Sound>playSoundTrialYES");
-    [self playSoundFromBuffer: buffer1];
+- (void) playNumber: (int) number {
+    switch (number) {
+        case kSoundTrialYes: [self playSoundFromBuffer: bufferTrialYes];  break;
+        case kSoundTrialNo: [self playSoundFromBuffer: bufferTrialNo];  break;
+        default: [self playSoundFromBuffer: bufferRunEnd]; // kSoundRunEnd
+    }
 }
-- (void) play2 { //console.info("Sound>playSoundTrialNO");
-    [self playSoundFromBuffer: buffer2];
+- (void) playDelayedNumber: (int) number {
+    _timer = [CPTimer scheduledTimerWithTimeInterval: 0.1 target: self selector: @selector(onTimeout:) userInfo:number repeats: NO];
 }
-- (void) play3 { //console.info("Sound>playSoundRunEnd");
-    [self playSoundFromBuffer: buffer3];
+- (void) onTimeout: (CPTimer) timer { //console.info("FractController>onTimeoutDisplay");
+    [self playNumber: [timer userInfo]];
 }
 
 
-- (void) initAfterUserinteraction {
+- (void) initAfterUserinteraction { //console.info("Sound>initAfterUserinteraction");
     if (!needsInitAfterUserinteraction)  return;
     needsInitAfterUserinteraction = NO;
     if ('webkitAudioContext' in window) {
@@ -98,7 +103,7 @@ Sound.j
     volumeNode = audioContext.createGain();
     volumeNode.gain.value = 0;
     volumeNode.connect(audioContext.destination);
-    [self loadSoundTrialYES];  [self loadSoundTrialNO];  [self loadSoundRunEnd];
+    [self loadSoundTrialYes];  [self loadSoundTrialNo];  [self loadSoundRunEnd];
 }
 
 

@@ -183,12 +183,7 @@ Created by mb on 2017-07-12.
     [contrastMaxLogCSWeberField setFormatter: numberFormatter];
     [gammaValueField setFormatter: numberFormatter];
 
-    [settingsPaneMiscSoundsTrialYesPopUp removeAllItems];
-    for (const soundName of gSoundsTrialYES) [settingsPaneMiscSoundsTrialYesPopUp addItemWithTitle: soundName];
-    [settingsPaneMiscSoundsTrialNoPopUp removeAllItems];
-    for (const soundName of gSoundsTrialNO) [settingsPaneMiscSoundsTrialNoPopUp addItemWithTitle: soundName];
-    [settingsPaneMiscSoundsRunEndPopUp removeAllItems];
-    for (const soundName of gSoundsRunEnd) [settingsPaneMiscSoundsRunEndPopUp addItemWithTitle: soundName];
+    [Settings setupSoundPopupTrialYes: settingsPaneMiscSoundsTrialYesPopUp trialNoPopup: settingsPaneMiscSoundsTrialNoPopUp runEndPopUp: settingsPaneMiscSoundsRunEndPopUp];
 }
 
 
@@ -471,18 +466,23 @@ Created by mb on 2017-07-12.
     }
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil];
 }
+
 - (IBAction) buttonSettingsClose_action: (id) sender { //console.info("AppController>buttonSettingsClose");
     [Settings checkDefaults];  [settingsPanel close];
 }
+
 - (IBAction) buttonSettingsTestSound_action: (id) sender {
-    [sound play3];
+    [[CPNotificationCenter defaultCenter] postNotificationName: "updateSoundFiles" object: nil];
+    [sound playDelayedNumber: [sender tag]]; // delay because new buffer to be loaded; 0.02 would be enough.
 }
+
 - (IBAction) buttonSettingsContrastAcuityMaxMin_action: (id) sender {
     switch ([sender tag]) {
         case 1: [Settings setContrastAcuityWeber: 100];  break;
         case 2: [Settings setContrastAcuityWeber: -10000];  break;
     }
 }
+
 - (IBAction) popupPreset_action: (id) sender {
     [presets apply: sender];
 }

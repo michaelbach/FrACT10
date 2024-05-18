@@ -230,7 +230,7 @@
     // acuity pane
     [Settings setShowCI95: YES];
     // Misc pane
-    [Settings setSoundTrialYesIndex: 1]; [Settings setSoundTrialNoIndex: 1]; [Settings setSoundRunEndIndex: 1];
+    [Settings setSoundTrialYesIndex: 0]; [Settings setSoundTrialNoIndex: 1]; [Settings setSoundRunEndIndex: 1];
 }
 
 
@@ -241,3 +241,4 @@
 }
 
 @end
+
