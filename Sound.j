@@ -26,11 +26,11 @@ Sound.j
 
 // the below is clumsy (doing it 3 times), but the closure didn't take the provided buffer in my attempts.
 
-// sound1: “tink” for correct response
-- (void) loadSound1 { //console.info("Sound>loadSound");
+// SoundTrialYES for correct response
+- (void) loadSoundTrialYES { //console.info("Sound>loadSound");
     buffer1 = null;
     const request = new XMLHttpRequest();
-    request.open('GET', "Resources/sounds/trialYes.mp3", true);
+    request.open('GET', "Resources/sounds/trialYES/" + gSoundsTrialYES[[Settings soundTrialYesIndex]], true);
     request.responseType = 'arraybuffer';
     request.onload = function() {  // Decode asynchronously
         audioContext.decodeAudioData(request.response, function(buff) {buffer1 = buff;});
@@ -39,12 +39,11 @@ Sound.j
 }
 
 
-// sound2: “whistle” for incorrect responses
-- (void) loadSound2 { //console.info("Sound>loadSound");
+// SoundTrialNO for incorrect responses
+- (void) loadSoundTrialNO { //console.info("Sound>loadSound");
     buffer2 = null;
     const request = new XMLHttpRequest();
-    const soundFile = [Settings soundTrialNoFileName];
-    request.open('GET', "Resources/sounds/" + soundFile, true);
+    request.open('GET', "Resources/sounds/trialNO/" + gSoundsTrialNO[[Settings soundTrialNoIndex]], true);
     request.responseType = 'arraybuffer';
     request.onload = function() {  // Decode asynchronously
         audioContext.decodeAudioData(request.response, function(buff) {buffer2 = buff;});
@@ -53,11 +52,11 @@ Sound.j
 }
 
 
-// sound3, “gong” for end of run
-- (void) loadSound3 { //console.info("Sound>loadSound");
+// SoundRunEnd for end of run
+- (void) loadSoundRunEnd { //console.info("Sound>loadSound");
     buffer3 = null;
     const request = new XMLHttpRequest();
-    request.open('GET', "Resources/sounds/runEnd.mp3", true);
+    request.open('GET', "Resources/sounds/runEnd/" + gSoundsRunEnd[[Settings soundRunEndIndex]], true);
     request.responseType = 'arraybuffer';
     request.onload = function() {  // Decode asynchronously
         audioContext.decodeAudioData(request.response, function(buff) {buffer3 = buff;});
@@ -77,13 +76,13 @@ Sound.j
 }
 
 
-- (void) play1 { //console.info("Sound>playSound1");
+- (void) play1 { //console.info("Sound>playSoundTrialYES");
     [self playSoundFromBuffer: buffer1];
 }
-- (void) play2 { //console.info("Sound>playSound2");
+- (void) play2 { //console.info("Sound>playSoundTrialNO");
     [self playSoundFromBuffer: buffer2];
 }
-- (void) play3 { //console.info("Sound>playSound3");
+- (void) play3 { //console.info("Sound>playSoundRunEnd");
     [self playSoundFromBuffer: buffer3];
 }
 
@@ -99,7 +98,7 @@ Sound.j
     volumeNode = audioContext.createGain();
     volumeNode.gain.value = 0;
     volumeNode.connect(audioContext.destination);
-    [self loadSound1];  [self loadSound2];  [self loadSound3];
+    [self loadSoundTrialYES];  [self loadSoundTrialNO];  [self loadSoundRunEnd];
 }
 
 

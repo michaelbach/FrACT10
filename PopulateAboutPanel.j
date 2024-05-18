@@ -55,9 +55,10 @@ Populates the About panel with appropriate text using HTML
     s += "Frameworks/Libraries used:<br>";
     const cappucinoVersion = [[[CPBundle bundleWithIdentifier: "com.280n.Foundation"] infoDictionary] objectForKey:@"CPBundleVersion"]; // initialised in AppController
     s += "<a href='https://michaelbach.de/ot/-misc/cappFrameworks/index.html' target='_blank'>Cappuccino " + cappucinoVersion + "</a>,&nbsp; ";
-    s += "<a href='https://simplestatistics.org' target='_blank'>Simple Statistics</a>.";
+    s += "<a href='https://simplestatistics.org' target='_blank'>Simple Statistics</a>.<br>";
     //s += "<a href='https://nodejs.org/' target='_blank'>Node.js,</a><br>";
     //s += "<a href='https://www.electronjs.org' target='_blank'>Electron</a>, <a href='https://www.electron.build' target='_blank'>electron-builder</a>";
+    s += "Some sounds from <a href='https://pixabay.com/' target='_blank'>pixabay</a>."
     s += "<br><br><br>";
     s += "FrACT₁₀ places “cookies” on your computer:<br>";
     s += "– Two for saving the web app and its settings across sessions<br>";

@@ -72,13 +72,13 @@
     
     if (_presetName == "Demo") {
         [Settings setDefaults];
-        [self applyTestingPreset];
+        [self applyTestingPresets];
         [Settings setAutoRunIndex: kAutoRunIndexMid];
         presetFound = YES;
     }
     
     if (_presetName == "Testing") {// easier testing
-        [self applyTestingPreset];  presetFound = YES;
+        [self applyTestingPresets];  presetFound = YES;
     }
     
     if (_presetName == "ESU") { // secret project :)
@@ -112,7 +112,7 @@
     }
     
     if (_presetName == "Color Equiluminance") { // near equiluminant color acuity
-        [self applyTestingPreset];
+        [self applyTestingPresets];
         [Settings setIsAcuityColor: YES];
         [Settings setAcuityForeColor: [CPColor redColor]];
         // ↓ dark green, near equiluminant to red
@@ -192,7 +192,7 @@
         [Settings setGammaValue: 2.2];
         // Misc pane
         [Settings setWindowBackgroundColor: [CPColor whiteColor]];
-        [Settings setSoundTrialNoFileName: "2_error.mp3"];
+        [Settings setSoundTrialNoIndex: 1];
         presetFound = YES;
     }
 
@@ -211,17 +211,17 @@
     
     [[CPNotificationCenter defaultCenter] postNotificationName: "updateSoundFiles" object: nil];
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil]; // this synchronises the color settings between userdefaults & AppController
+    [Settings setPresetName: _presetName];
+    [_popUpButton setSelectedIndex: 0]; // always show "PRESETS"
     const messageText = "Preset  »" + _presetName + "«  was applied."
     const alert2 = [CPAlert alertWithMessageText: messageText
                                    defaultButton: "OK" alternateButton: nil otherButton: nil
                        informativeTextWithFormat: ""];
     [alert2 runModal];
-    [Settings setPresetName: _presetName];
-    [_popUpButton setSelectedIndex: 0]; // always show "PRESETS"
 }
 
 
-- (void) applyTestingPreset { // used several times, so it has its own function
+- (void) applyTestingPresets { // used several times, so it has its own function
     [self setStandardDefaultsKeepingCalBarLength];
     // general pane
     [Settings setDistanceInCM: 400];
@@ -229,6 +229,8 @@
     [Settings setResponseInfoAtStart: NO];
     // acuity pane
     [Settings setShowCI95: YES];
+    // Misc pane
+    [Settings setSoundTrialYesIndex: 1]; [Settings setSoundTrialNoIndex: 1]; [Settings setSoundRunEndIndex: 1];
 }
 
 

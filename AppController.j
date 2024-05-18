@@ -47,7 +47,11 @@ Created by mb on 2017-07-12.
     @outlet GammaView gammaView;
     @outlet CPWebView aboutWebView1, aboutWebView2, helpWebView1, helpWebView2, helpWebView3, helpWebView4;
     @outlet CPImageView creditcardImageView;
-    @outlet CPPopUpButton settingsPanePresetsPopUpButton; Presets presets;
+    @outlet CPPopUpButton settingsPanePresetsPopUpButton;  Presets presets;
+    @outlet CPPopUpButton settingsPaneMiscSoundsTrialYesPopUp;
+    @outlet CPPopUpButton settingsPaneMiscSoundsTrialNoPopUp;
+    @outlet CPPopUpButton settingsPaneMiscSoundsRunEndPopUp;
+    Sound sound;
     CPImageView rewardImageView;
     RewardsController rewardsController;
     TAOController taoController;
@@ -55,7 +59,6 @@ Created by mb on 2017-07-12.
     BOOL settingsNeededNewDefaults;
     BOOL runAborted @accessors;
     BOOL is4orientations @accessors;
-    Sound sound;
     id allPanels, allTestControllers;
     CPColor checkContrastWeberFieldColor1 @accessors;
     CPColor checkContrastWeberFieldColor2 @accessors;
@@ -179,6 +182,13 @@ Created by mb on 2017-07-12.
     [numberFormatter setMinimumFractionDigits: 1];
     [contrastMaxLogCSWeberField setFormatter: numberFormatter];
     [gammaValueField setFormatter: numberFormatter];
+
+    [settingsPaneMiscSoundsTrialYesPopUp removeAllItems];
+    for (const soundName of gSoundsTrialYES) [settingsPaneMiscSoundsTrialYesPopUp addItemWithTitle: soundName];
+    [settingsPaneMiscSoundsTrialNoPopUp removeAllItems];
+    for (const soundName of gSoundsTrialNO) [settingsPaneMiscSoundsTrialNoPopUp addItemWithTitle: soundName];
+    [settingsPaneMiscSoundsRunEndPopUp removeAllItems];
+    for (const soundName of gSoundsRunEnd) [settingsPaneMiscSoundsRunEndPopUp addItemWithTitle: soundName];
 }
 
 

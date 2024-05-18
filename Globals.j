@@ -47,10 +47,14 @@ gSpecialBcmDone = NO;
 // minimal stroke size (half a pixel). Maximal, depending on screen & margin. Poor naming for Vernier.
 gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden via Setting and screen size
 
+gSoundsTrialYES = ["tink.mp3", "miniPop.mp3"];
+gSoundsTrialNO = ["whistle.mp3", "2_error.mp3"];
+gSoundsRunEnd = ["gong.mp3", "cute level up.mp3"];
 
 /*
  #  History
 
++ 2024-05-18 make feedback sounds selectable
 + 2024-05-17 add an alternate "trialNo" sound, selected by @TUdo based on suggestion by Anna B.
 + 2024-05-14 add new Preset
 + 2024-05-14 simplify, rename, refactor Settings for readability, no change in function

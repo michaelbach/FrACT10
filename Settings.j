@@ -25,10 +25,10 @@ Created by mb on July 15, 2015.
 
 
 /**
-Helpers
-  If `set` is true, the default `dflt` is set,
-    otherwise check if outside of range or nil, if so set to default.
-  A little chatty since no overloading available, also: BOOL/int/float are all of class CPNumber.
+ Helpers
+ If `set` is true, the default `dflt` is set,
+ otherwise check if outside of range or nil, if so set to default.
+ A little chatty since no overloading available, also: BOOL/int/float are all of class CPNumber.
  */
 + (BOOL) checkBool: (BOOL) val dflt: (BOOL) def set: (BOOL) set {
     //console.info("chckBool ", val, "set: ", set);
@@ -65,7 +65,6 @@ Helpers
         [self setGratingForeColor: [CPColor lightGrayColor]];
         [self setGratingBackColor: [CPColor darkGrayColor]];
         [self setPresetName: "Standard Defaults"];// synchronise with corresponding item in Presets!
-        [self setSoundTrialNoFileName: "trialNo.mp3"];
     }
 
     // need to check before setNAlternativesIndex 'cause oblique might force to index=0
@@ -81,7 +80,7 @@ Helpers
 
     [self setResponseInfoAtStart: [self checkBool: [self responseInfoAtStart] dflt: YES set: set]];
     [self setEnableTouchControls: [self checkBool: [self enableTouchControls] dflt: YES set: set]];
-    
+
     [self setTestOnFive: [self checkNum: [self testOnFive] dflt: kTestAcuityLett min: kTestNone max: kTestAcuityLineByLine set: set]]; // 1: Sloan Letters
 
     //[self setNOfRuns2Recall: [self checkNum: [self nOfRuns2Recall] dflt: 0 min: 0 max: 100 set: set]];
@@ -96,7 +95,7 @@ Helpers
 
     // 0=normal, 1=mirror horizontally, 2=mirror vertically, 3=both=rot180°
     [self setDisplayTransform: [self checkNum: [self displayTransform] dflt: 0 min: 0 max: 3 set: set]];
-    
+
     [self setTrialInfo: [self checkBool: [self trialInfo] dflt: YES set: set]];
     [self setTrialInfoFontSize: [self checkNum: [self trialInfoFontSize] dflt: 10 min: 4 max: 48 set: set]];
 
@@ -147,7 +146,7 @@ Helpers
     [self setCrowdingType: [self checkNum: [self crowdingType] dflt: 0 min: 0 max: 6 set: set]];
     // 0 = 2·stroke between rings, 1 = fixed 2.6 arcmin between rings, 2 = fixed 30', 3 = like ETDRS
     [self setCrowdingDistanceCalculationType: [self checkNum: [self crowdingDistanceCalculationType] dflt: 0 min: 0 max: 3 set: set]];
-    
+
     [self setCrowdingDistanceCalculationType: [self checkNum: [self crowdingDistanceCalculationType] dflt: 0 min: 0 max: 3 set: set]];
 
     // Line-by-line stuff
@@ -163,7 +162,7 @@ Helpers
     [self setVernierLength: [self checkNum: [self vernierLength] dflt: 15.0 min: 0.1 max: 1200 set: set]];
     [self setVernierGap: [self checkNum: [self vernierGap] dflt: 0.2 min: 0.0 max: 120 set: set]];
 
-    
+
     // Contrast stuff
     [self setGammaValue: [self checkNum: [self gammaValue] dflt: 2.0 min: 0.8 max: 4 set: set]];
     [self setContrastEasyTrials: [self checkBool: [self contrastEasyTrials] dflt: YES set: set]];
@@ -191,7 +190,10 @@ Helpers
     [self setSpecialBcmOn: [self checkBool: [self specialBcmOn] dflt: NO set: set]];
     [self setHideExitButton: [self checkBool: [self hideExitButton] dflt: NO set: set]];
 
-    
+    [self setSoundTrialYesIndex: [self checkNum: [self soundTrialYesIndex] dflt: 0 min: 0 max: gSoundsTrialYES.length-1 set: set]];
+    [self setSoundTrialNoIndex: [self checkNum: [self soundTrialNoIndex] dflt: 0 min: 0 max: gSoundsTrialNO.length-1 set: set]];
+    [self setSoundRunEndIndex: [self checkNum: [self soundRunEndIndex] dflt: 0 min: 0 max: gSoundsRunEnd.length-1 set: set]];
+
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -223,7 +225,7 @@ Helpers
 
 /**
  Test if we neet to set all Settings to defaults
-    When new defaults are added, kDateOfCurrentSettingsVersion is updated. That tells FrACT that all settings need to be defaulted.
+ When new defaults are added, kDateOfCurrentSettingsVersion is updated. That tells FrACT that all settings need to be defaulted.
  */
 + (BOOL) needNewDefaults {
     return [self dateSettingsVersion] != kDateOfCurrentSettingsVersion;
@@ -989,15 +991,26 @@ Helpers
     [[CPUserDefaults standardUserDefaults] setBool: val forKey: "hideExitButton"];
 }
 
-
-+ (CPString) soundTrialNoFileName {
-    let soundFile = [[CPUserDefaults standardUserDefaults] stringForKey: "soundTrialNoFileName"];
-    if (!(soundFile != nil) || (soundFile.length < 2)) soundFile = "trialNo.mp3";
-    //console.info("Settings>soundFile", soundFile);
-    return soundFile;
++ (int) soundTrialYesIndex {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "soundTrialYesIndex"];
 }
-+ (void) setSoundTrialNoFileName: (CPString) val {
-    [[CPUserDefaults standardUserDefaults] setObject: val forKey: "soundTrialNoFileName"];
++ (void) setSoundTrialYesIndex: (int) val { //console.info("setSoundTrialYesIndex", val);
+    if ((val < 0 ) || (val >= gSoundsTrialYES.length)) val = 0;
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "soundTrialYesIndex"];
+}
++ (int) soundTrialNoIndex {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "soundTrialNoIndex"];
+}
++ (void) setSoundTrialNoIndex: (int) val { //console.info("setSoundTrialNoIndex", val);
+    if ((val < 0 ) || (val >= gSoundsTrialNO.length)) val = 0;
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "soundTrialNoIndex"];
+}
++ (int) soundRunEndIndex {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "soundRunEndIndex"];
+}
++ (void) setSoundRunEndIndex: (int) val { //console.info("setSoundRunEndIndex", val);
+    if ((val < 0 ) || (val >= gSoundsRunEnd.length)) val = 0;
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "soundRunEndIndex"];
 }
 
 @end

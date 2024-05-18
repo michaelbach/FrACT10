@@ -3100,33 +3100,8 @@ CQ
                                     <rect key="frame" x="10" y="33" width="760" height="493"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="a5R-k1-Tfd">
-                                            <rect key="frame" x="14" y="402" width="118" height="58"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView" id="VfV-xS-jWR">
-                                                <rect key="frame" x="4" y="5" width="110" height="50"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            </view>
-                                        </box>
-                                        <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lz5-Nz-CsQ">
-                                            <rect key="frame" x="26" y="446" width="94" height="22"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Windowcolor" bezelStyle="round" id="eky-z1-NOZ">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                        <colorWell toolTip="The background color of the entire window can be selected here." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F1l-7N-EPO">
-                                            <rect key="frame" x="41" y="416" width="61" height="23"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <binding destination="450" name="value" keyPath="windowBackgroundColor" id="mV8-qk-8hN"/>
-                                            </connections>
-                                        </colorWell>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="P7G-M5-Pjw">
-                                            <rect key="frame" x="14" y="292" width="239" height="58"/>
+                                            <rect key="frame" x="492" y="391" width="239" height="58"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="Ye2-rS-NGY">
                                                 <rect key="frame" x="4" y="5" width="231" height="50"/>
@@ -3171,7 +3146,7 @@ CQ
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Upt-gW-HXb">
-                                            <rect key="frame" x="26" y="336" width="93" height="22"/>
+                                            <rect key="frame" x="565" y="435" width="93" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Noise" bezelStyle="round" id="lSm-aI-d2L">
                                                 <font key="font" metaFont="system"/>
@@ -3180,7 +3155,7 @@ CQ
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="wk1-2Q-0TD">
-                                            <rect key="frame" x="14" y="183" width="239" height="58"/>
+                                            <rect key="frame" x="492" y="282" width="239" height="58"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="Zq0-Ut-2pJ">
                                                 <rect key="frame" x="4" y="5" width="231" height="50"/>
@@ -3203,7 +3178,7 @@ CQ
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vrU-9s-v0O">
-                                            <rect key="frame" x="26" y="227" width="120" height="22"/>
+                                            <rect key="frame" x="551" y="326" width="120" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="specialBCM" bezelStyle="round" id="6zX-X5-bZb">
                                                 <font key="font" metaFont="system"/>
@@ -3212,7 +3187,7 @@ CQ
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKl-qE-MnI">
-                                            <rect key="frame" x="35" y="133" width="298" height="18"/>
+                                            <rect key="frame" x="35" y="328" width="298" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">When "Line of optotypes" is set to “Chart mode”, here you can select that all 3 lines have the same acuty grade.
  
@@ -3226,7 +3201,7 @@ CQ
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Woj-eV-bwS">
-                                            <rect key="frame" x="35" y="88" width="124" height="18"/>
+                                            <rect key="frame" x="35" y="253" width="124" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">When "Line of optotypes" is set to “Chart mode”, here you can select that all 3 lines have the same acuty grade.
  
@@ -3239,6 +3214,126 @@ CQ
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.hideExitButton" id="rx4-JS-9Ql"/>
                                             </connections>
                                         </button>
+                                        <colorWell toolTip="The background color of the entire window can be selected here." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPx-4F-4Cr">
+                                            <rect key="frame" x="34" y="407" width="61" height="23"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <binding destination="450" name="value" keyPath="windowBackgroundColor" id="5ZB-1E-Xxc"/>
+                                            </connections>
+                                        </colorWell>
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ngk-rr-VCS">
+                                            <rect key="frame" x="101" y="409" width="83" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Windowcolor" id="R1D-PV-saB">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="TaC-8z-ATT">
+                                            <rect key="frame" x="492" y="50" width="239" height="180"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <view key="contentView" id="SHV-oL-MQO">
+                                                <rect key="frame" x="4" y="5" width="231" height="172"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LG4-aN-i05">
+                                                        <rect key="frame" x="20" y="112" width="135" height="25"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">Select a soundfile giving feedback on "Correct".
+                                              
+</string>
+                                                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="LiR-sh-xxq" id="FEy-mm-2GC">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="menu"/>
+                                                            <menu key="menu" id="Bin-J4-pCa">
+                                                                <items>
+                                                                    <menuItem title="Item 1" state="on" id="LiR-sh-xxq"/>
+                                                                </items>
+                                                            </menu>
+                                                        </popUpButtonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.soundTrialYesIndex" id="hGi-d5-zbB"/>
+                                                        </connections>
+                                                    </popUpButton>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yDr-o5-85R">
+                                                        <rect key="frame" x="157" y="114" width="50" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Correct" id="zUl-BP-Ho4">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mWY-c6-Jrm">
+                                                        <rect key="frame" x="20" y="67" width="135" height="25"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">Select a soundfile giving feedback on "Incorrect".
+                                               
+</string>
+                                                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="44O-uQ-H0W" id="UiF-cy-gaW">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="menu"/>
+                                                            <menu key="menu" id="R7M-jL-fmL">
+                                                                <items>
+                                                                    <menuItem title="Item 1" state="on" id="44O-uQ-H0W"/>
+                                                                </items>
+                                                            </menu>
+                                                        </popUpButtonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.soundTrialNoIndex" id="Eqe-hP-JEP"/>
+                                                        </connections>
+                                                    </popUpButton>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ele-Us-qcy">
+                                                        <rect key="frame" x="157" y="70" width="59" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Incorrect" id="HFc-TQ-ZXI">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0wa-1C-3dD">
+                                                        <rect key="frame" x="20" y="23" width="135" height="25"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">Select a soundfile giving feedback on end of run.
+                                              
+</string>
+                                                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="JG8-82-CQO" id="C6r-8A-Sme">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="menu"/>
+                                                            <menu key="menu" id="fp7-pp-xoi">
+                                                                <items>
+                                                                    <menuItem title="Item 1" state="on" id="JG8-82-CQO"/>
+                                                                </items>
+                                                            </menu>
+                                                        </popUpButtonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.soundRunEndIndex" id="A0N-ki-dVB"/>
+                                                        </connections>
+                                                    </popUpButton>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OBb-NE-cnC">
+                                                        <rect key="frame" x="157" y="26" width="67" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="End of run" id="df0-sa-HTN">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                            </view>
+                                        </box>
+                                        <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oi1-uI-HB5">
+                                            <rect key="frame" x="543" y="216" width="135" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Feedback Sounds" bezelStyle="round" id="NZY-ji-TCC">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -3310,6 +3405,9 @@ CQ
                 <outlet property="responseinfoPanelContrastG" destination="6tH-lc-nrw" id="hdZ-lu-dgD"/>
                 <outlet property="responseinfoPanelContrastLett" destination="FJ1-4N-r6U" id="Veo-hD-u3i"/>
                 <outlet property="resultDetailsPanel" destination="4qQ-tv-ydF" id="0nl-o2-I67"/>
+                <outlet property="settingsPaneMiscSoundsRunEndPopUp" destination="0wa-1C-3dD" id="ao3-Ph-yeo"/>
+                <outlet property="settingsPaneMiscSoundsTrialNoPopUp" destination="mWY-c6-Jrm" id="HN9-re-Pwr"/>
+                <outlet property="settingsPaneMiscSoundsTrialYesPopUp" destination="LG4-aN-i05" id="AVc-o7-tXf"/>
                 <outlet property="settingsPanePresetsPopUpButton" destination="JgX-d5-6k1" id="N2S-lI-dCM"/>
                 <outlet property="settingsPanel" destination="MF5-y3-Ol0" id="6RV-5t-pXs"/>
                 <outlet property="window" destination="371" id="OB7-Tk-Lov"/>
