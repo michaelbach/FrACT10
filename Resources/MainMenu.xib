@@ -621,7 +621,7 @@ DQ
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField toolTip="For CALIBRATION: enter the distance between observer and screen here in CENTIMETERS." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNX-f3-PL9">
-                                            <rect key="frame" x="240" y="6" width="40" height="22"/>
+                                            <rect key="frame" x="240" y="4" width="40" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" usesSingleLineMode="YES" id="mSo-Pg-7e1">
                                                 <font key="font" metaFont="system"/>
@@ -635,7 +635,7 @@ DQ
                                             </connections>
                                         </textField>
                                         <textField toolTip="For CALIBRATION: measure the length of the blue “ruler” here, and enter its value in millimeters." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aXw-Ht-RMk">
-                                            <rect key="frame" x="17" y="6" width="40" height="22"/>
+                                            <rect key="frame" x="17" y="4" width="40" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="aeQ-iq-4hD">
                                                 <font key="font" metaFont="system"/>
@@ -649,18 +649,18 @@ DQ
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LFN-en-1hJ">
-                                            <rect key="frame" x="60" y="9" width="180" height="16"/>
+                                            <rect key="frame" x="60" y="7" width="180" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Length of ↑ blue ruler, in mm" id="Y2A-Yd-GvF">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Length of ↑ blue ruler, in mm" id="Y2A-Yd-GvF">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PMY-4u-bWa">
-                                            <rect key="frame" x="283" y="9" width="155" height="16"/>
+                                            <rect key="frame" x="283" y="7" width="155" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Observer distance, in cm" id="Cau-YW-4o6">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Observer distance, in cm" id="Cau-YW-4o6">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -688,7 +688,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                             </connections>
                                         </popUpButton>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qMH-Kz-jR5">
-                                            <rect key="frame" x="125" y="82" width="115" height="16"/>
+                                            <rect key="frame" x="125" y="83" width="115" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Decimal separator" id="aPd-Pg-2d0">
                                                 <font key="font" metaFont="system"/>
@@ -726,7 +726,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                             </connections>
                                         </popUpButton>
                                         <box fixedFrame="YES" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4PI-eF-GR8">
-                                            <rect key="frame" x="33" y="41" width="700" height="3"/>
+                                            <rect key="frame" x="33" y="39" width="700" height="3"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="Itc-rv-ck6">
                                                 <rect key="frame" x="1" y="1" width="698" height="1"/>
@@ -736,7 +736,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                             <color key="fillColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </box>
                                         <box fixedFrame="YES" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="NYw-lp-ui0">
-                                            <rect key="frame" x="33" y="37" width="3" height="12"/>
+                                            <rect key="frame" x="33" y="35" width="3" height="12"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="F2O-4Y-ugx">
                                                 <rect key="frame" x="1" y="1" width="1" height="10"/>
@@ -746,7 +746,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                             <color key="fillColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </box>
                                         <box fixedFrame="YES" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="c3I-kf-NBt">
-                                            <rect key="frame" x="731" y="37" width="3" height="12"/>
+                                            <rect key="frame" x="731" y="35" width="3" height="12"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="kqD-gL-3di">
                                                 <rect key="frame" x="1" y="1" width="1" height="10"/>
@@ -852,7 +852,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                             </connections>
                                         </popUpButton>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LJT-Mq-fdZ">
-                                            <rect key="frame" x="125" y="157" width="107" height="16"/>
+                                            <rect key="frame" x="125" y="158" width="107" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Which test on ‘5’" id="v8V-gO-yyX">
                                                 <font key="font" metaFont="system"/>
@@ -880,7 +880,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                         </connections>
                                                     </button>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TdC-iT-hRA">
-                                                        <rect key="frame" x="22" y="20" width="76" height="16"/>
+                                                        <rect key="frame" x="70" y="20" width="76" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Duration [s]" id="tjD-PX-7eX">
                                                             <font key="font" metaFont="system"/>
@@ -889,7 +889,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField toolTip="How long the “rewarding” picture will stay on screen (it obscures the buttons)." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w75-A9-ahy">
-                                                        <rect key="frame" x="98" y="17" width="40" height="22"/>
+                                                        <rect key="frame" x="24" y="17" width="40" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="mkh-ZL-yhq">
                                                             <font key="font" metaFont="system"/>
@@ -987,14 +987,14 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="8AU-kb-15P">
-                                            <rect key="frame" x="14" y="371" width="425" height="105"/>
+                                            <rect key="frame" x="13" y="371" width="425" height="105"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="qqp-Oy-oZv">
                                                 <rect key="frame" x="4" y="5" width="417" height="85"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wrj-XQ-Ter">
-                                                        <rect key="frame" x="13" y="46" width="54" height="26"/>
+                                                        <rect key="frame" x="12" y="46" width="54" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes (TAO).  For Landolt Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.</string>
                                                         <popUpButtonCell key="cell" type="push" title="2" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="MNg-IJ-MqA" id="jUX-2m-CLf">
@@ -1052,7 +1052,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LJd-oY-MqO">
-                                                        <rect key="frame" x="70" y="49" width="247" height="16"/>
+                                                        <rect key="frame" x="69" y="49" width="247" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Some optotypes have a fixed number of choices, or variants: Always 10 for Sloan Letters and Auckland Optotypes (TAO); Vernier 2. 
 For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
@@ -1097,14 +1097,14 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </view>
                                         </box>
                                         <box fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="Lyg-sn-7fZ">
-                                            <rect key="frame" x="14" y="288" width="425" height="74"/>
+                                            <rect key="frame" x="13" y="288" width="425" height="74"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="Qcg-KZ-L0s">
                                                 <rect key="frame" x="4" y="5" width="417" height="54"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField toolTip="The optotypes will be presented for a limited time only [seconds]." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lf9-G7-Nrh">
-                                                        <rect key="frame" x="110" y="15" width="40" height="22"/>
+                                                        <rect key="frame" x="20" y="15" width="40" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="RoV-oa-d4Z">
                                                             <font key="font" metaFont="system"/>
@@ -1117,25 +1117,25 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aAA-HG-qTm">
-                                                        <rect key="frame" x="8" y="17" width="98" height="16"/>
+                                                        <rect key="frame" x="65" y="17" width="98" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Display timeout" id="olc-4P-YrK">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Display timeout" id="olc-4P-YrK">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jBB-qK-9hK">
-                                                        <rect key="frame" x="235" y="17" width="114" height="16"/>
+                                                        <rect key="frame" x="307" y="17" width="114" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Response timeout" id="omv-Zw-aaf">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Response timeout" id="omv-Zw-aaf">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField toolTip="After this time, an incorrect response will be recorded [seconds]." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ojh-w9-WzR">
-                                                        <rect key="frame" x="352" y="15" width="40" height="22"/>
+                                                        <rect key="frame" x="262" y="15" width="40" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="rKN-Fo-nEr">
                                                             <font key="font" metaFont="system"/>
@@ -1160,7 +1160,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </textFieldCell>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ltj-KO-hkh">
-                                            <rect key="frame" x="133" y="447" width="187" height="22"/>
+                                            <rect key="frame" x="132" y="447" width="187" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="# of choices and # of trials" bezelStyle="round" id="YAU-7j-hx8">
                                                 <font key="font" metaFont="system"/>
@@ -1169,7 +1169,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </textFieldCell>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pas-6M-sVy" userLabel="max. poss. decimal VA">
-                                            <rect key="frame" x="711" y="6" width="44" height="22"/>
+                                            <rect key="frame" x="711" y="4" width="44" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">This displays the maximal acuity that can be achieved, in decimal VA units. It depends on the pixel size of your VDU (in degrees), which is calculated from your two entries under the ruler.
 
@@ -1185,7 +1185,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHb-FA-boY" userLabel="max. poss. decimal VA">
-                                            <rect key="frame" x="711" y="-16" width="44" height="22"/>
+                                            <rect key="frame" x="711" y="-18" width="44" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">This displays the minimal LogMAR that can be achieved, in decimal VA units. It depends on the pixel size of your VDU (in degrees), which is calculated from your two entries under the ruler.
 
@@ -1206,7 +1206,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RdI-3Q-nit">
-                                            <rect key="frame" x="522" y="9" width="186" height="16"/>
+                                            <rect key="frame" x="522" y="7" width="186" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="→max possible decimal acuity" id="JpO-3M-x0P">
                                                 <font key="font" metaFont="system"/>
@@ -1256,7 +1256,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Noj-5S-zHu">
-                                                        <rect key="frame" x="59" y="48" width="97" height="17"/>
+                                                        <rect key="frame" x="59" y="49" width="97" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="←hor      vert→" id="rVX-3B-Vbh">
                                                             <font key="font" metaFont="system"/>
@@ -1279,7 +1279,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </connections>
                                         </button>
                                         <textField toolTip="If you don't want central fixation…" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qsu-PW-QQj">
-                                            <rect key="frame" x="567" y="159" width="168" height="22"/>
+                                            <rect key="frame" x="566" y="159" width="168" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Optotype eccentricity [°]" bezelStyle="round" id="tcE-lo-X54">
                                                 <font key="font" metaFont="system"/>
@@ -1328,9 +1328,9 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </connections>
                                         </popUpButton>
                                         <button toolTip="Redraw when changing orientation of a tablet between landscape and portrait." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BdA-0d-0v5">
-                                            <rect key="frame" x="310" y="253" width="183" height="18"/>
+                                            <rect key="frame" x="310" y="253" width="208" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="Use mobile orientation" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ioU-bC-45H">
+                                            <buttonCell key="cell" type="check" title="Respond to mobile orientation" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ioU-bC-45H">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
@@ -1351,7 +1351,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </connections>
                                         </button>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V7m-3A-ROS">
-                                            <rect key="frame" x="562" y="-14" width="146" height="16"/>
+                                            <rect key="frame" x="562" y="-16" width="146" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="→min possible LogMAR" id="3b7-Di-ZPm">
                                                 <font key="font" metaFont="system"/>
@@ -1360,7 +1360,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="luN-q6-f3X">
-                                            <rect key="frame" x="311" y="32" width="194" height="23"/>
+                                            <rect key="frame" x="311" y="30" width="194" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Click to enter a dialog to use a plastic card for calibration (credit card or similar). 
 No money transfer involved, just for size!     </string>
@@ -1373,7 +1373,7 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </button>
                                         <textField toolTip="This displays the Observer distance converted from centimetres to inch" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" id="fkv-fu-ees" userLabel="max. poss. decimal VA">
-                                            <rect key="frame" x="237" y="-16" width="46" height="22"/>
+                                            <rect key="frame" x="237" y="-18" width="46" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="4HD-Fz-O2P">
                                                 <font key="font" metaFont="system"/>
@@ -1392,16 +1392,16 @@ No money transfer involved, just for size!     </string>
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iyX-cL-ojn">
-                                            <rect key="frame" x="286" y="-13" width="56" height="16"/>
+                                            <rect key="frame" x="286" y="-15" width="56" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="→in inch" id="Eaz-iA-evj">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="→in inch" id="Eaz-iA-evj">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FoD-Bg-sIb">
-                                            <rect key="frame" x="234" y="82" width="26" height="22"/>
+                                            <rect key="frame" x="234" y="81" width="26" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Current decimal separator.
  
@@ -2202,7 +2202,7 @@ Maximum: 5px.
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G1n-TZ-USP">
-                                            <rect key="frame" x="15" y="434" width="165" height="35"/>
+                                            <rect key="frame" x="16" y="434" width="165" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">if checked, the 12th, 18th, 24th… trial will have an “easy” optotype for motivation.
  
@@ -2216,7 +2216,7 @@ Maximum: 5px.
                                             </connections>
                                         </button>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q2Y-AR-KXh">
-                                            <rect key="frame" x="17" y="159" width="45" height="21"/>
+                                            <rect key="frame" x="18" y="134" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Diameter of the optotype.
  
@@ -2233,7 +2233,7 @@ Maximum: 5px.
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WRa-Gy-4ku">
-                                            <rect key="frame" x="68" y="160" width="173" height="16"/>
+                                            <rect key="frame" x="68" y="135" width="173" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Optotype diameter [arcmin]" id="k8n-UU-dxq">
                                                 <font key="font" metaFont="system"/>
@@ -2269,7 +2269,7 @@ Maximum: 5px.
                                             </textFieldCell>
                                         </textField>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AQw-jE-a5x">
-                                            <rect key="frame" x="17" y="104" width="45" height="21"/>
+                                            <rect key="frame" x="18" y="74" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Best not change it…
  
@@ -2284,7 +2284,7 @@ Maximum: 5px.
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Syd-WZ-yVY">
-                                            <rect key="frame" x="68" y="105" width="288" height="16"/>
+                                            <rect key="frame" x="68" y="75" width="288" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Maximal logCSWeber (careful when changing!)" id="mUy-h3-BZW">
                                                 <font key="font" metaFont="system"/>
@@ -2293,7 +2293,7 @@ Maximum: 5px.
                                             </textFieldCell>
                                         </textField>
                                         <box horizontalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Gry-my-fXc">
-                                            <rect key="frame" x="444" y="-5" width="5" height="476"/>
+                                            <rect key="frame" x="444" y="-15" width="5" height="480"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </box>
                                         <colorWell toolTip="Measure luminance in these 2 fields to calculate actual contrast." fixedFrame="YES" bordered="NO" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4WO-rY-pis">
@@ -2341,7 +2341,7 @@ Maximum: 5px.
                                             </connections>
                                         </button>
                                         <button tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="79G-4d-smM">
-                                            <rect key="frame" x="590" y="428" width="46" height="23"/>
+                                            <rect key="frame" x="589" y="428" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Set the fields below to 10% Weber contrast.
  
@@ -2383,7 +2383,7 @@ Maximum: 5px.
                                             </connections>
                                         </button>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="B51-it-99X" userLabel="actual contrast">
-                                            <rect key="frame" x="711" y="382" width="44" height="22"/>
+                                            <rect key="frame" x="711" y="383" width="44" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">This displays the realisable Michelson contrast, depending on color discreteness and gamma value.
  
@@ -2398,16 +2398,16 @@ Maximum: 5px.
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eau-sb-iUa">
-                                            <rect key="frame" x="551" y="401" width="124" height="16"/>
+                                            <rect key="frame" x="539" y="401" width="146" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="center" title="Realisable contrast" id="unR-3S-tER">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="center" title="– Realisable contrast –" id="unR-3S-tER">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2jb-Fx-woN">
-                                            <rect key="frame" x="14" y="49" width="107" height="25"/>
+                                            <rect key="frame" x="15" y="14" width="107" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Automatic run, targeting this contrast sensitivity. For testing.
  
@@ -2431,7 +2431,7 @@ Maximum: 5px.
                                             </connections>
                                         </popUpButton>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nNq-xc-7ag">
-                                            <rect key="frame" x="123" y="51" width="148" height="16"/>
+                                            <rect key="frame" x="123" y="17" width="148" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Autorun to target logCS" id="sQa-Wz-SbV">
                                                 <font key="font" metaFont="system"/>
@@ -2455,7 +2455,7 @@ Maximum: 5px.
                                             </connections>
                                         </textField>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lcc-Iq-YtQ">
-                                            <rect key="frame" x="15" y="324" width="123" height="35"/>
+                                            <rect key="frame" x="16" y="314" width="123" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Contrast polarity for the optotype.
  
@@ -2469,7 +2469,7 @@ Maximum: 5px.
                                             </connections>
                                         </button>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Ya-Ka-mo9">
-                                            <rect key="frame" x="222" y="385" width="88" height="16"/>
+                                            <rect key="frame" x="225" y="382" width="88" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Duration [ms]" id="jvL-kO-9E9">
                                                 <font key="font" metaFont="system"/>
@@ -2478,7 +2478,7 @@ Maximum: 5px.
                                             </textFieldCell>
                                         </textField>
                                         <button toolTip="lets a blue star appear before optotype; otherwise unclear if something has happened at all. " fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V4a-x9-twk">
-                                            <rect key="frame" x="16" y="379" width="162" height="35"/>
+                                            <rect key="frame" x="16" y="374" width="162" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Show fixation mark " bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kUu-ro-bQC">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2489,7 +2489,7 @@ Maximum: 5px.
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TIh-uw-rMc">
-                                            <rect key="frame" x="15" y="213" width="223" height="35"/>
+                                            <rect key="frame" x="16" y="193" width="223" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Color Bit Stealing: Invented by Chris Tyler. Borrows color bits across RGB to better approximate a target luminance.
  
@@ -2503,7 +2503,7 @@ Maximum: 5px.
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6qg-wc-7SL">
-                                            <rect key="frame" x="15" y="267" width="223" height="35"/>
+                                            <rect key="frame" x="16" y="252" width="223" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Dithering increases luminance resolution on the cost of spatial resolution. Good for contrast testing!
 Don't go too close or you can resolve the pattern.
@@ -2517,7 +2517,7 @@ Don't go too close or you can resolve the pattern.
                                             </connections>
                                         </button>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="56f-od-lIR">
-                                            <rect key="frame" x="176" y="384" width="45" height="21"/>
+                                            <rect key="frame" x="176" y="381" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Duration the brief blue fisation star is visible.
  
@@ -2586,7 +2586,7 @@ Don't go too close or you can resolve the pattern.
                                             <string key="toolTip">Duration the brief blue fixation star is visible.
  
 </string>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Duration [ms]" id="UGE-Cp-3gm">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="left" title="Duration [ms]" id="UGE-Cp-3gm">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -2644,12 +2644,12 @@ Don't go too close or you can resolve the pattern.
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pvM-K3-tHf">
-                                            <rect key="frame" x="229" y="350" width="99" height="16"/>
+                                            <rect key="frame" x="229" y="350" width="96" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Diameter of the circular grating patch.
  
 </string>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title=" Diameter [deg]" id="yVa-cn-gFR">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="left" title="Diameter [deg]" id="yVa-cn-gFR">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -2776,9 +2776,9 @@ Don't go too close or you can resolve the pattern.
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4f-1p-ouL">
-                                                        <rect key="frame" x="71" y="66" width="174" height="16"/>
+                                                        <rect key="frame" x="72" y="66" width="174" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Min. spatial frequency [cpd]" id="VUO-Pv-UfV">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="left" title="Min. spatial frequency [cpd]" id="VUO-Pv-UfV">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -2788,9 +2788,9 @@ Don't go too close or you can resolve the pattern.
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SVX-0A-0LO">
-                                                        <rect key="frame" x="71" y="28" width="178" height="16"/>
+                                                        <rect key="frame" x="72" y="28" width="178" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Max. spatial frequency [cpd]" id="saD-Ir-zsH">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="left" title="Max. spatial frequency [cpd]" id="saD-Ir-zsH">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -2817,14 +2817,14 @@ Don't go too close or you can resolve the pattern.
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="stP-0s-NAS">
                                                         <rect key="frame" x="72" y="102" width="128" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Grating contrast [%]" id="ieo-dc-gnw">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="left" title="Grating contrast [%]" id="ieo-dc-gnw">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="90M-mp-MA9">
-                                                        <rect key="frame" x="21" y="101" width="45" height="21"/>
+                                                        <rect key="frame" x="20" y="101" width="45" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Fixed contrast where the spatial frequency upper limit is to be assessed. Maximum: 99%. Unit: %Michelson contrast. 
  
@@ -2908,7 +2908,7 @@ Don't go too close or you can resolve the pattern.
                                             </connections>
                                         </button>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ED5-xZ-XLE">
-                                            <rect key="frame" x="173" y="301" width="54" height="26"/>
+                                            <rect key="frame" x="175" y="301" width="54" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes (TAO).  For Landolt Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.
 
@@ -2930,7 +2930,7 @@ For gratings: 2 or 4.
                                             </connections>
                                         </popUpButton>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mcv-EH-86K">
-                                            <rect key="frame" x="229" y="303" width="104" height="16"/>
+                                            <rect key="frame" x="231" y="304" width="104" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Some optotypes have a fixed number of choices, or variants: Always 10 for Sloan Letters and Auckland Optotypes (TAO); Vernier 2. 
 For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
@@ -2997,6 +2997,15 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                                 </binding>
                                             </connections>
                                         </button>
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E46-NP-8NX">
+                                            <rect key="frame" x="36" y="334" width="249" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="(causes line artifacts on some browsers)" id="Gey-Mk-E0I">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="quaternaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -3203,7 +3212,7 @@ CQ
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Woj-eV-bwS">
                                             <rect key="frame" x="35" y="253" width="124" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">When "Line of optotypes" is set to “Chart mode”, here you can select that all 3 lines have the same acuty grade.
+                                            <string key="toolTip">For some contexts (e.g., embeddng FrACT in a larger project) the Exit button may be detrimental – so disable it here.
  
 </string>
                                             <buttonCell key="cell" type="check" title="Hide Exit button" bezelStyle="regularSquare" imagePosition="left" inset="2" id="GGV-EW-Keb">
