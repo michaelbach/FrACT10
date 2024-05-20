@@ -81,6 +81,8 @@ Created by mb on July 15, 2015.
     [self setResponseInfoAtStart: [self checkBool: [self responseInfoAtStart] dflt: YES set: set]];
     [self setEnableTouchControls: [self checkBool: [self enableTouchControls] dflt: YES set: set]];
 
+    [self setDecimalMarkCharIndex: [self checkNum: [self decimalMarkCharIndex] dflt: kDecimalMarkCharIndexAuto min: kDecimalMarkCharIndexAuto max: kDecimalMarkCharIndexComma set: set]];
+
     [self setTestOnFive: [self checkNum: [self testOnFive] dflt: kTestAcuityLett min: kTestNone max: kTestAcuityLineByLine set: set]]; // 1: Sloan Letters
 
     //[self setNOfRuns2Recall: [self checkNum: [self nOfRuns2Recall] dflt: 0 min: 0 max: 100 set: set]];
@@ -105,10 +107,6 @@ Created by mb on July 15, 2015.
 
     [self setResults2clipboard: [self checkNum: [self results2clipboard] dflt: kResults2ClipNone min: kResults2ClipNone max: kResults2ClipFullHistory set: set]];
     [self setResults2clipboardSilent: [self checkBool: [self results2clipboardSilent] dflt: NO set: set]];
-
-    if (set) {
-        [self setDecimalMarkChar: "auto"]; // will select index 0
-    }
 
     // 0: none, 1: always, 2: on correct, 3: w/ info
     [self setAuditoryFeedback: [self checkNum: [self auditoryFeedback] dflt: 3 min: 0 max: 3 set: set]];
@@ -549,10 +547,15 @@ Created by mb on July 15, 2015.
 
 ////////////////////////
 
-
++ (int) decimalMarkCharIndex {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "decimalMarkCharIndex"];
+}
++ (void) setDecimalMarkCharIndex: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "decimalMarkCharIndex"];
+}
 + (CPString) decimalMarkChar { //console.info("settings>decimalMarkChar");
     let _mark = ".";
-    switch ([[CPUserDefaults standardUserDefaults] integerForKey: "decimalMarkCharIndex"]) {
+    switch ([self decimalMarkCharIndex]) {
         case 0: // "Automatic"
             try {
                 const tArray = Intl.NumberFormat().formatToParts(1.3); // "1.3" has a decimal mark
@@ -563,19 +566,14 @@ Created by mb on July 15, 2015.
             } //console.info("_decimalMarkChar: ", _decimalMarkChar)
             break;
         case 2: // comma
-            _mark = ",";
-            break;
+            _mark = ","; break;
     }
-    [[CPUserDefaults standardUserDefaults] setObject: _mark forKey: "decimalMarkChar"];
+    [self setDecimalMarkChar: _mark];
     return _mark;
 }
-+ (void) setDecimalMarkChar: (CPString) mark {
-    let idx = 0; // "Automatic"
-    if (mark == ".") idx = 1;
-    if (mark == ",") idx = 2;
-    [[CPUserDefaults standardUserDefaults] setInteger: idx forKey: "decimalMarkCharIndex"];
++ (void) setDecimalMarkChar: (CPString) val {
+    [[CPUserDefaults standardUserDefaults] setObject: val forKey: "decimalMarkChar"];
 }
-
 
 + (BOOL) enableTouchControls {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "enableTouchControls"];

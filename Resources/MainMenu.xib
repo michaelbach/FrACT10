@@ -1057,7 +1057,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                         <string key="toolTip">Some optotypes have a fixed number of choices, or variants: Always 10 for Sloan Letters and Auckland Optotypes (TAO); Vernier 2. 
 For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
 </string>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of choices for Landolt Cs and gratings" id="2kS-jg-XcS">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="# of choices for Landolt Cs and gratings" id="2kS-jg-XcS">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1401,12 +1401,12 @@ No money transfer involved, just for size!     </string>
                                             </textFieldCell>
                                         </textField>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FoD-Bg-sIb">
-                                            <rect key="frame" x="234" y="81" width="26" height="22"/>
+                                            <rect key="frame" x="232" y="84" width="30" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Current decimal separator.
  
  </string>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="UuG-0h-cVb">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" drawsBackground="YES" id="UuG-0h-cVb">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -3395,6 +3395,7 @@ CQ
                 <outlet property="contrastMaxLogCSWeberField" destination="AQw-jE-a5x" id="gGe-Qj-bic"/>
                 <outlet property="creditcardImageView" destination="pj2-Gh-qNp" id="oh4-e6-pjq"/>
                 <outlet property="creditcardPanel" destination="Wcf-tk-C3n" id="vmt-db-Kmp"/>
+                <outlet property="decimalMarkCharField" destination="FoD-Bg-sIb" id="mCX-RN-Jxx"/>
                 <outlet property="fractControllerWindow" destination="r6R-bh-Qyp" id="WQx-mH-JUh"/>
                 <outlet property="gammaValueField" destination="jv4-5m-hDh" id="Luz-7v-gyX"/>
                 <outlet property="gammaView" destination="c7s-eX-XEN" id="fNv-bD-BRg"/>

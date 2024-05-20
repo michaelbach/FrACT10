@@ -34,6 +34,9 @@ kVernierType2bars = 0; kVernierType3bars = 1;
 @typedef SoundTypeType
 kSoundRunEnd = 0; kSoundTrialYes = 1; kSoundTrialNo = 2;
 
+@typedef decimalMarkCharIndexType
+kDecimalMarkCharIndexAuto = 0; kDecimalMarkCharIndexDot = 1; kDecimalMarkCharIndexComma = 2;
+
 
 @implementation HierarchyController: CPWindowController {
     HierarchyController parentController @accessors;

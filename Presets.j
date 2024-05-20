@@ -92,7 +92,7 @@
         [Settings setTimeoutResponseSeconds: 999]; [Settings setTimeoutDisplaySeconds: 999];
         [Settings setAuditoryFeedback: 0];
         [Settings setRewardPicturesWhenDone: YES];
-        [Settings setDecimalMarkChar: ","];
+        [Settings setDecimalMarkCharIndex: kDecimalMarkCharIndexComma];
         [Settings setResults2clipboard: kResults2ClipNone];
         // acuity pane
         [Settings setAcuityFormatLogMAR: NO];

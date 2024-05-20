@@ -70,6 +70,8 @@ Created by mb on 2017-07-12.
     CPNumberFormatter numberFormatter;
     @outlet CPTextField contrastMaxLogCSWeberField;
     @outlet CPTextField gammaValueField;
+    int decimalMarkCharIndexPrevious;
+    @outlet CPTextField decimalMarkCharField;
 }
 
 
@@ -199,6 +201,15 @@ Created by mb on 2017-07-12.
         [self setColorOfBestPossibleAcuity: [CPColor colorWithRed: 0 green: 0.4 blue: 0 alpha: 1]];
     }
     [self radioButtonsAcuityBwOrColor_action: null];
+    // ↓ complicated to ensure the character is updated (and well visible) in the GUI
+    const decimalMarkCharIndexCurrent = [Settings decimalMarkCharIndex];// check for change
+    if (decimalMarkCharIndexCurrent != decimalMarkCharIndexPrevious) {// startup value is always null
+        decimalMarkCharIndexPrevious = decimalMarkCharIndexCurrent;//save for next time
+        [Settings setDecimalMarkChar: [Settings decimalMarkChar]];// this updates in GUI
+        [decimalMarkCharField setTextColor: [CPColor blueColor]];// while we're here…
+        [decimalMarkCharField setFont: [CPFont systemFontOfSize: 24]];
+        [decimalMarkCharField sizeToFit];// can't change font size of CPTextField, so →Label, need more visibility
+    }
 }
 
 
