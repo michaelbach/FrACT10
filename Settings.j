@@ -1010,18 +1010,16 @@ Created by mb on July 15, 2015.
     if ((val < 0 ) || (val >= gSoundsRunEnd.length)) val = 0;
     [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "soundRunEndIndex"];
 }
-+ (void) setupSoundPopupTrialYes: (id) trialYesPopup trialNoPopup: (id) trialNoPopup runEndPopUp: (id) runEndPopup {
-    [trialYesPopup removeAllItems];
-    for (const soundName of gSoundsTrialYes) [trialYesPopup addItemWithTitle: soundName];
-    [trialYesPopup setSelectedIndex: [self soundTrialYesIndex]]; // lost after remove
 
-    [trialNoPopup removeAllItems];
-    for (const soundName of gSoundsTrialNo) [trialNoPopup addItemWithTitle: soundName];
-    [trialNoPopup setSelectedIndex: [self soundTrialNoIndex]]; // lost after remove
-
-    [runEndPopup removeAllItems];
-    for (const soundName of gSoundsRunEnd) [runEndPopup addItemWithTitle: soundName];
-    [runEndPopup setSelectedIndex: [self soundRunEndIndex]]; // lost after remove
++ (void) setupSoundPopups: (id) popupsArray {
+    const allSounds = [gSoundsTrialYes, gSoundsTrialNo, gSoundsRunEnd];
+    for (let i = 0; i < popupsArray.length; i++) {
+        const p = popupsArray[i];
+        [p removeAllItems];
+        for (const soundName of allSounds[i]) [p addItemWithTitle: soundName];
+        [p setSelectedIndex: [self soundTrialYesIndex]]; // lost after remove
+    }
 }
+
 
 @end

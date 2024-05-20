@@ -176,16 +176,16 @@ Created by mb on 2017-07-12.
     if ([window.navigator.platform hasPrefix:@"Mac"])  [buttonExit setTitle: "Quit"];// OS: Quit or Exit
     
     [Settings setAutoRunIndex: kAutoRunIndexNone]; // make sure it's not accidentally on
-    
-    [selfWindow orderFront: self]; //← this ensures that it will receive clicks w/o activating
-    
+
     numberFormatter = [[CPNumberFormatter alloc] init];
     [numberFormatter setNumberStyle: CPNumberFormatterDecimalStyle];
     [numberFormatter setMinimumFractionDigits: 1];
     [contrastMaxLogCSWeberField setFormatter: numberFormatter];
     [gammaValueField setFormatter: numberFormatter];
 
-    [Settings setupSoundPopupTrialYes: settingsPaneMiscSoundsTrialYesPopUp trialNoPopup: settingsPaneMiscSoundsTrialNoPopUp runEndPopUp: settingsPaneMiscSoundsRunEndPopUp];
+    [Settings setupSoundPopups: [settingsPaneMiscSoundsTrialYesPopUp, settingsPaneMiscSoundsTrialNoPopUp, settingsPaneMiscSoundsRunEndPopUp]];
+
+    [selfWindow orderFront: self]; // ensures that it will receive clicks w/o activating
 }
 
 
