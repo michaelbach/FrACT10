@@ -1013,11 +1013,12 @@ Created by mb on July 15, 2015.
 
 + (void) setupSoundPopups: (id) popupsArray {
     const allSounds = [gSoundsTrialYes, gSoundsTrialNo, gSoundsRunEnd];
+    const allIndexes = [[self soundTrialYesIndex], [self soundTrialNoIndex], [self soundRunEndIndex]];
     for (let i = 0; i < popupsArray.length; i++) {
         const p = popupsArray[i];
         [p removeAllItems];
         for (const soundName of allSounds[i]) [p addItemWithTitle: soundName];
-        [p setSelectedIndex: [self soundTrialYesIndex]]; // lost after remove
+        [p setSelectedIndex: allIndexes[i]]; // lost after remove
     }
 }
 
