@@ -26,6 +26,7 @@ Created by mb on 2017-07-12.
 @import "Sound.j"
 @import "GammaView.j"
 @import "MDBButton.j"
+@import "MDBTextField.j"
 @import "PopulateAboutPanel.j"
 @import "Presets.j"
 
@@ -71,7 +72,7 @@ Created by mb on 2017-07-12.
     @outlet CPTextField contrastMaxLogCSWeberField;
     @outlet CPTextField gammaValueField;
     int decimalMarkCharIndexPrevious;
-    @outlet CPTextField decimalMarkCharField;
+    @outlet MDBTextField decimalMarkCharField;
 }
 
 
@@ -207,8 +208,10 @@ Created by mb on 2017-07-12.
         decimalMarkCharIndexPrevious = decimalMarkCharIndexCurrent;//save for next time
         [Settings setDecimalMarkChar: [Settings decimalMarkChar]];// this updates in GUI
         [decimalMarkCharField setTextColor: [CPColor blueColor]];// while we're here…
-        [decimalMarkCharField setFont: [CPFont systemFontOfSize: 24]];
-        [decimalMarkCharField sizeToFit];// can't change font size of CPTextField, so →Label, need more visibility
+        [decimalMarkCharField setFont: [CPFont systemFontOfSize: 24]];//need more visibility
+        [decimalMarkCharField sizeToFit];// can't change font size of CPTextField, so →MDBTextField,
+        let r = [decimalMarkCharField bounds]; r.size.height = 30; r.origin.y = 12;
+        [decimalMarkCharField setBounds: r];
     }
 }
 
