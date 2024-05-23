@@ -21,8 +21,10 @@
 - (void) drawRect: (CGRect) dirtyRect { //console.info("MDBTextField>drawRect");
     const cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSaveGState(cgc);
+    CGContextSetFillColor(cgc, [CPColor whiteColor]);
+    CGContextFillRect(cgc, [self bounds]);
     CGContextSetStrokeColor(cgc, [CPColor grayColor]);
-    CGContextSetLineWidth(cgc, 1);
+    CGContextSetLineWidth(cgc, 0.5);
     CGContextStrokeRect(cgc, [self bounds]);
     CGContextRestoreGState(cgc);
 }
