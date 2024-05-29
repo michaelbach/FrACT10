@@ -582,12 +582,14 @@ Created by mb on 2017-07-12.
     //    console.log("Wperc ", contrastWeberPercent, ", lgCSW ", contrastLogCSWeber, ", g1 ", gray1, ", g2 ", gray2);
     
     //const c1 = [CPColor colorWithWhite: gray1 alpha: 1], c2 = [CPColor colorWithWhite: gray2 alpha: 1];
-    let c1 = [MiscLight colorFromGreyBitStealed: gray1], c2 = [MiscLight colorFromGreyBitStealed: gray2];
+    let c1 = [MiscLight colorFromGreyBitStealed: gray1];
+    let c2 = [MiscLight colorFromGreyBitStealed: gray2];
     if ([Settings contrastDithering]) {
         c1 = [CPColor colorWithPatternImage: [Dithering image3x3withGray: gray1]];
         c2 = [CPColor colorWithPatternImage: [Dithering image3x3withGray: gray2]];
     }
-    [self setCheckContrastWeberFieldColor1: c1];   [self setCheckContrastWeberFieldColor2: c2];
+    [self setCheckContrastWeberFieldColor1: c1];
+    [self setCheckContrastWeberFieldColor2: c2];
     let actualMichelsonPerc = [MiscLight contrastMichelsonPercentFromColor1: c1 color2: c2];
     let actualWeberPerc = [MiscLight contrastWeberPercentFromMichelsonPercent: actualMichelsonPerc];
     if ([Settings contrastDithering]) {
@@ -595,17 +597,12 @@ Created by mb on 2017-07-12.
         actualWeberPerc = contrastWeberPercent;
     }
     [self setCheckContrastActualMichelsonPercent: Math.round(actualMichelsonPerc * 10) / 10];
-    [self setCheckContrastActualWeberPercent:  Math.round(actualWeberPerc * 10) / 10];
+    [self setCheckContrastActualWeberPercent: Math.round(actualWeberPerc * 10) / 10];
 }
 
 
-- (IBAction) buttonGamma_action: (id) sender { //console.info("AppController>buttonGamma_action");
-    switch ([sender tag]) {
-        case 1:
-            [Settings setGammaValue: [Settings gammaValue] + 0.1];  break;
-        case 2:
-            [Settings setGammaValue: [Settings gammaValue] - 0.1];  break;
-    }
+- (IBAction) buttonGamma_action: (id) sender {
+    [Settings setGammaValue: [Settings gammaValue] + ([sender tag] == 1 ? 0.1 : -0.1)];
     [gammaView setNeedsDisplay: YES];
 }
 

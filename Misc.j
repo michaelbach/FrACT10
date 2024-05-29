@@ -83,7 +83,7 @@ Misc.j
 }
 
 
-+ (void) copyString2ClipboardWithDialog: (CPString) s { //console.info("AppController>copyString2ClipboardWithDialog");
++ (void) copyString2ClipboardWithDialog: (CPString) s { //console.info("Misc>copyString2ClipboardWithDialog");
     const alert = [CPAlert alertWithMessageText: "Done."
     defaultButton: "Yes, put result → clipboard" alternateButton: "Cancel" otherButton: nil
                 informativeTextWithFormat: "\rShall we place the result details into the clipboard?\r\r(So you can paste them into a spreadsheet.)\r"];
@@ -102,7 +102,7 @@ Misc.j
 /**
  Utility to copy a string to the clipboard which surprisingly now works in all(?) modern browsers
  */
-+ (void) copyString2Clipboard: (CPString) s { //console.info("AppController>copyString2Clipboard: ", s);
++ (void) copyString2Clipboard: (CPString) s { //console.info("Misc>copyString2Clipboard: ", s);
     try {
         navigator.clipboard.writeText(s); // only over https
     }
