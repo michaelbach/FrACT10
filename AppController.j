@@ -35,7 +35,7 @@ Created by mb on 2017-07-12.
  AppController
  
  The main controller. It inherits from HierarchyController
- to make communication with some classes with do not inherit from AppController easier.
+ to make communication with some classes which do not inherit from AppController easier.
  */
 
 @implementation AppController : HierarchyController {
