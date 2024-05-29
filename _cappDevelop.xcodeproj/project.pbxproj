@@ -47,6 +47,7 @@
 		8AAB43912A55826800825E47 /* RewardsController.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 29834A62A925E37F8057FF9A /* RewardsController.j */; };
 		8AAB43922A55826800825E47 /* TrialHistoryController.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4A5547F8854B1200466F770F /* TrialHistoryController.j */; };
 		8AAB43932A55826800825E47 /* Presets.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A8BFD81283837D800DD61BB /* Presets.j */; };
+		8ACD7D522C0362BD00FE90C6 /* ThresholderNupMdown.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8ACD7D512C0362BD00FE90C6 /* ThresholderNupMdown.j */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,6 +78,7 @@
 				8AAB43902A55826800825E47 /* Sound.j in CopyFiles */,
 				8AAB43822A55825500825E47 /* FractControllerAcuityVernier.j in CopyFiles */,
 				8AAB437D2A55824900825E47 /* FractControllerContrastLett.j in CopyFiles */,
+				8ACD7D522C0362BD00FE90C6 /* ThresholderNupMdown.j in CopyFiles */,
 				8A48269529CF58F30035607A /* MiscSpace.j in CopyFiles */,
 				8A3384C72AA11B3B000325D0 /* Info.plist in CopyFiles */,
 				8AAB43892A55826800825E47 /* Misc.j in CopyFiles */,
@@ -158,6 +160,7 @@
 		8A8BFD81283837D800DD61BB /* Presets.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets.j; sourceTree = SOURCE_ROOT; };
 		8A9C705F2BFE496000DD5E76 /* MDBTextField.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MDBTextField.j; sourceTree = "<group>"; };
 		8ABDA6D4291A501000D68E3C /* capp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = capp; sourceTree = BUILT_PRODUCTS_DIR; };
+		8ACD7D512C0362BD00FE90C6 /* ThresholderNupMdown.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = ThresholderNupMdown.j; sourceTree = "<group>"; };
 		90444B1A970FC75C0FF93DB7 /* FractControllerContrastE.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerContrastE.j; sourceTree = SOURCE_ROOT; };
 		91844612BA04B04966D2045C /* AlternativesGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AlternativesGenerator.h; path = .XcodeSupport/AlternativesGenerator.h; sourceTree = SOURCE_ROOT; };
 		91B445DC96A0E8A06A4740E5 /* FractControllerAcuity.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerAcuity.j; sourceTree = SOURCE_ROOT; };
@@ -255,6 +258,7 @@
 				B226486EA66367A84C81FBFF /* TAOController.j */,
 				E6F94F1D968592E61A4C192B /* Thresholder.j */,
 				BA8E410483A87F38EB021188 /* ThresholderPest.j */,
+				8ACD7D512C0362BD00FE90C6 /* ThresholderNupMdown.j */,
 				4A5547F8854B1200466F770F /* TrialHistoryController.j */,
 				8A061F592A273350006B5CAD /* webAppServiceWorker.js */,
 			);

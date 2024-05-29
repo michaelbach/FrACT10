@@ -119,6 +119,7 @@ Created by mb on 2017-07-12.
 }
 
 
+#pragma mark
 /** runs after "init" above */
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>…Launching");
     'use strict';
@@ -379,6 +380,7 @@ Created by mb on 2017-07-12.
 }
 
 
+#pragma mark
 - (void) keyDown: (CPEvent) theEvent { //console.info("AppController>keyDown");
     switch([[[theEvent charactersIgnoringModifiers] characterAtIndex: 0] uppercaseString]) {
         case "Q": case "X": case "-": // Quit or eXit
@@ -536,6 +538,7 @@ Created by mb on 2017-07-12.
 }
 
 
+#pragma mark
 /**
  And more buttons…
  */
