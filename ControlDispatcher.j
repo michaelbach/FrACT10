@@ -20,7 +20,7 @@ Dispatcher for HTML communication messages to control FrACT
 
 // often used, shortens code
 + (void) post: (CPString) aNotificationName object: (id) anObject {
-    [[CPNotificationCenter defaultCenter] post: aNotificationName object: anObject];
+    [[CPNotificationCenter defaultCenter] postNotificationName: aNotificationName object: anObject];
 }
 
 
