@@ -55,6 +55,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 /*
  #  History
 
++ 2024-06-02 begin message communications with FrACT10 when embedded as iframe
 + 2024-05-20 make `decimalMarkChar` responsive & more visible in GUI
 + 2024-05-18 make feedback sounds selectable
 + 2024-05-17 add an alternate "trialNo" sound, selected by @TUdo based on suggestion by Anna B.

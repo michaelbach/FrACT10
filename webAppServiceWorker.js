@@ -2,7 +2,7 @@
 // file "webAppServiceWorker.js"
 //
 
-let cacheName = "FrACT10·2024-05-23";
+let cacheName = "FrACT10·2024-06-02";
 const cacheNameRoot = "FrACT10·";
 //let cacheName = cacheNameRoot;
 
@@ -38,7 +38,7 @@ self.addEventListener('fetch', (event) => {
 });
 
 
-// Installing Service Worker, this is called first, before"AppController>init"
+// Installing Service Worker, this is called first, before "AppController>init"
 self.addEventListener('install', (event) => {
     //console.info("webAppServiceWorker responding to install event…");
     //await getCacheNameGlobal();

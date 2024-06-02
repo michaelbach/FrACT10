@@ -32,6 +32,8 @@
         [_popUpButton removeAllItems];
         for (const aPreset of allPresets) [_popUpButton addItemWithTitle: aPreset];
         [_popUpButton setSelectedIndex: 0]; // always show "PRESETS"
+
+        [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(applyPresetNamed:) name: "applyPresetNamed" object: nil];
     }
     return self;
 }
@@ -53,16 +55,22 @@
     [[alert1 buttons][0] setKeyEquivalent: "y"]; // the "Yes" button selected by "y"
     [alert1 runModalWithDidEndBlock: function(alert, returnCode) {
         if (returnCode==1) { // alternateButton
-            [self apply2];
+            [self apply2withFeedBack: YES];
         }
     }];
+}
+
+
+- (void) applyPresetNamed: (CPNotification) aNotification { //console.info("Presets>applyPresetNamed");
+    _presetName = [aNotification object];
+    [self apply2withFeedBack: NO];
 }
 
 
 /**
  Apply selected preset after "Are you sure" dialog
  */
-- (void) apply2 { //console.info("Presets>apply2");
+- (void) apply2withFeedBack: (BOOL) withFeedBack { //console.info("Presets>apply2", _presetName);
     let presetFound = NO;
     
     // the "needless" if-stacking↓ allows for easy re-arrangment in `allPresets` above
@@ -206,18 +214,19 @@
         // Misc pane
         presetFound = YES;
     }
-
     if (!presetFound) return;  // should never occur
     
     [[CPNotificationCenter defaultCenter] postNotificationName: "updateSoundFiles" object: nil];
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil]; // this synchronises the color settings between userdefaults & AppController
     [Settings setPresetName: _presetName];
     [_popUpButton setSelectedIndex: 0]; // always show "PRESETS"
-    const messageText = "Preset  »" + _presetName + "«  was applied."
-    const alert2 = [CPAlert alertWithMessageText: messageText
-                                   defaultButton: "OK" alternateButton: nil otherButton: nil
-                       informativeTextWithFormat: ""];
-    [alert2 runModal];
+    if (withFeedBack) {
+        const messageText = "Preset  »" + _presetName + "«  was applied."
+        const alert2 = [CPAlert alertWithMessageText: messageText
+                                       defaultButton: "OK" alternateButton: nil otherButton: nil
+                           informativeTextWithFormat: ""];
+        [alert2 runModal];
+    }
 }
 
 

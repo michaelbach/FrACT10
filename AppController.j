@@ -137,7 +137,7 @@ Created by mb on 2017-07-12.
             window.location.reload(false);
         }
     });
-    
+
     const allButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];
     for (const b of allButtons)  [Misc makeFrameSquareFromWidth: b];
     
@@ -186,6 +186,26 @@ Created by mb on 2017-07-12.
     [gammaValueField setFormatter: numberFormatter];
 
     [Settings setupSoundPopups: [settingsPaneMiscSoundsTrialYesPopUp, settingsPaneMiscSoundsTrialNoPopUp, settingsPaneMiscSoundsRunEndPopUp]];
+
+    // set up message listeners to communicate with FrACT10 when embedded as iframe
+    [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationRunFractControllerTest:) name: "notificationRunFractControllerTest" object: nil];
+    window.addEventListener("message", (e) => { //console.info("In addEventListener>message: ", e.data);
+        if (e.data.length > 100) return; // avoid overruns from nasty senders
+        if (e.origin !== window.location.origin) return; // only from embedding window
+        switch (e.data) {
+            case "Settings>Presets>Demo":
+                [[CPNotificationCenter defaultCenter] postNotificationName: "applyPresetNamed" object: "Demo"];
+                break;
+            case "Settings>Presets>Defaults":
+                [[CPNotificationCenter defaultCenter] postNotificationName: "applyPresetNamed" object: "Standard Defaults"];
+                break;
+            case "App>Run>Acuity>Letters":
+                [[CPNotificationCenter defaultCenter] postNotificationName: "notificationRunFractControllerTest" object: kTestAcuityLett];
+                break;
+            default:
+                console.log("FrACT10 received this unexpected message.data: " + e.data);
+        }
+    });
 
     [selfWindow orderFront: self]; // ensures that it will receive clicks w/o activating
 }
@@ -250,6 +270,9 @@ Created by mb on 2017-07-12.
 /**
  One of the tests should run, but let's test some prerequisites first
  */
+- (void) notificationRunFractControllerTest: (CPNotification) aNotification { //console.info("buttonExportEnableYESorNO");
+    [self runFractControllerTest: [aNotification object]];
+}
 - (void) runFractControllerTest: (int) testNr { //console.info("AppController>runFractController");
     [sound initAfterUserinteraction];
     currentTestID = testNr;
@@ -499,7 +522,7 @@ Created by mb on 2017-07-12.
     }
 }
 
-- (IBAction) popupPreset_action: (id) sender {
+- (IBAction) popupPreset_action: (id) sender {//console.info("popupPreset_action: ", sender)
     [presets apply: sender];
 }
 
