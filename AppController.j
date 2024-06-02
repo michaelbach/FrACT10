@@ -1,11 +1,11 @@
 /*
-This file is part of FrACT10, a vision test battery.
-Copyright © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
+ This file is part of FrACT10, a vision test battery.
+ Copyright © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
-AppController.j
+ AppController.j
 
-Created by mb on 2017-07-12.
-*/
+ Created by mb on 2017-07-12.
+ */
 
 @import "HierarchyController.j"
 @import "FractView.j"
@@ -33,7 +33,7 @@ Created by mb on 2017-07-12.
 
 /**
  AppController
- 
+
  The main controller. It inherits from HierarchyController
  to make communication with some classes which do not inherit from AppController easier.
  */
@@ -125,7 +125,7 @@ Created by mb on 2017-07-12.
     'use strict';
     selfWindow = [self window];
     [selfWindow setFullPlatformWindow: YES];  [selfWindow setBackgroundColor: [self windowBackgroundColor]];
-    
+
     [CPMenu setMenuBarVisible: NO];
     window.addEventListener('error', function(e) {
         alert("An error occured, I'm sorry. Error message:\r\r" + e.message + "\r\rIf it recurs, please notify bach@uni-freiburg.de, ideally relating the message, e.g. via a screeshot.\rI will look into it and endeavour to provide a fix ASAP.\r\rOn “Close”, the window will reload and you can retry.");
@@ -140,23 +140,23 @@ Created by mb on 2017-07-12.
 
     const allButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];
     for (const b of allButtons)  [Misc makeFrameSquareFromWidth: b];
-    
+
     allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherTest]; // sequence like Hierachy kTest#s
-    
+
     allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel, creditcardPanel];
     for (const p of allPanels) {
         [p setFrameOrigin: CGPointMake(0, 0)];  [p setMovable: NO];
     }
     [self setSettingsPaneTabViewSelectedIndex: 0]; // select the "General" tab in Settings
-    
+
     [selfWindow setTitle: "FrACT10"];
     [self setVersionDateString: gVersionStringOfFract + "·" + gVersionDateOfFrACT];
-    
+
     [Settings checkDefaults]; // what was the reason to put this here???
     /*let s = @"Current key test settings: " + [Settings distanceInCM] +" cm distance, ";
      s += [Settings nAlternatives] + " Landolt alternatives, " + [Settings nTrials] + " trials";
      [self setKeyTestSettingsString: s];*/
-    
+
     rewardImageView = [[CPImageView alloc] initWithFrame: CGRectMake(100, 0, 600, 600)];
     [[selfWindow contentView] addSubview: rewardImageView];
     rewardsController = [[RewardsController alloc] initWithView: rewardImageView];
@@ -166,17 +166,17 @@ Created by mb on 2017-07-12.
 
     for (let i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++)
         Math.random(); // randomising the pseudorandom sequence
-    
+
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(buttonExportEnableYESorNO:) name: "buttonExportEnableYESorNO" object: nil];
-    [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
+    [self postNotificationName: "buttonExportEnableYESorNO" object: 0];
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(copyColorsFromSettings:) name: "copyColorsFromSettings" object: nil];
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:CPUserDefaultsDidChangeNotification object: nil];
-    
+
     [self radioButtonsAcuityBwOrColor_action: null];
     [self buttonCheckContrast_action: null];
-    
+
     if ([window.navigator.platform hasPrefix:@"Mac"])  [buttonExit setTitle: "Quit"];// OS: Quit or Exit
-    
+
     [Settings setAutoRunIndex: kAutoRunIndexNone]; // make sure it's not accidentally on
 
     numberFormatter = [[CPNumberFormatter alloc] init];
@@ -187,25 +187,65 @@ Created by mb on 2017-07-12.
 
     [Settings setupSoundPopups: [settingsPaneMiscSoundsTrialYesPopUp, settingsPaneMiscSoundsTrialNoPopUp, settingsPaneMiscSoundsRunEndPopUp]];
 
-    // set up message listeners to communicate with FrACT10 when embedded as iframe
-    [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationRunFractControllerTest:) name: "notificationRunFractControllerTest" object: nil];
+    // set up listener to dispatch control messages to FrACT10 when embedded as iframe
     window.addEventListener("message", (e) => { //console.info("In addEventListener>message: ", e.data);
         if (e.data.length > 100) return; // avoid overruns from nasty senders
+        if (Object.keys(e.data).length > 100) return; // also if object
         if (e.origin !== window.location.origin) return; // only from embedding window
-        switch (e.data) {
-            case "Settings>Presets>Demo":
-                [[CPNotificationCenter defaultCenter] postNotificationName: "applyPresetNamed" object: "Demo"];
-                break;
-            case "Settings>Presets>Defaults":
-                [[CPNotificationCenter defaultCenter] postNotificationName: "applyPresetNamed" object: "Standard Defaults"];
-                break;
-            case "App>Run>Acuity>Letters":
-                [[CPNotificationCenter defaultCenter] postNotificationName: "notificationRunFractControllerTest" object: kTestAcuityLett];
+        const m1 = e.data.m1, m2 = e.data.m2, m3 = e.data.m3;
+        switch (m1) {
+            case "Settings":
+                switch(m2) {
+                    case "Presets":
+                        [self postNotificationName: "applyPresetNamed" object: m3];
+                        break;
+                    default:
+                        console.log("FrACT10 received this unexpected message.data: ", m1, m2, m3);
+                }
+            case "Run":
+                switch(m2) {
+                    case "TestNumber":
+                        const allowedNumbers = Array.from({length: 10}, (v, k) => k + 1); //constructs [1,2…]
+                        if ((allowedNumbers.includes(m3)))
+                            [self postNotificationName: "notificationRunFractControllerTest" object: m3];
+                        else
+                            console.log("FrACT10 received this unexpected message.data: ", m1, m2, m3);
+                        break;
+                    case "Acuity":
+                        switch(m3) {
+                            case "Letters":
+                                [self postNotificationName: "notificationRunFractControllerTest" object: kTestAcuityLett];
+                                break;
+                            case "LandoltC":
+                                [self postNotificationName: "notificationRunFractControllerTest" object: kTestAcuityC];
+                                break;
+                            case "TumblingE":
+                                [self postNotificationName: "notificationRunFractControllerTest" object: kTestAcuityE];
+                                break;
+                            default:
+                                console.log("FrACT10 received this unexpected message.data: ", m1, m2, m3);
+                        }
+                    case "Contrast":
+                        switch(m3) {
+                            case "Letters":
+                                [self postNotificationName: "notificationRunFractControllerTest" object: kTestContrastLett];
+                                break;
+                            case "LandoltC":
+                                [self postNotificationName: "notificationRunFractControllerTest" object: kTestContrastC];
+                                break;
+                            case "TumblingE":
+                                [self postNotificationName: "notificationRunFractControllerTest" object: kTestContrastE];
+                                break;
+                            default:
+                                console.log("FrACT10 received this unexpected message.data: ", m1, m2, m3);
+                        }
+                }
                 break;
             default:
-                console.log("FrACT10 received this unexpected message.data: " + e.data);
+                console.log("FrACT10 received this unexpected message.data: ", m1, m2, m3);
         }
     });
+    [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationRunFractControllerTest:) name: "notificationRunFractControllerTest" object: nil];
 
     [selfWindow orderFront: self]; // ensures that it will receive clicks w/o activating
 }
@@ -244,7 +284,7 @@ Created by mb on 2017-07-12.
 
 /**
  Synchronising userdefaults & Appcontroller
- THis mirroring is necessary, because the Settingspanel cannot read the stored colors, because the Archiver does not work
+ This mirroring is necessary, because the Settingspanel cannot read the stored colors, because the Archiver does not work
  */
 - (void) copyColorsFromSettings: (CPNotification) aNotification { //console.info("mirrorForeBackColors");
     gColorFore = [Settings acuityForeColor];  [self setAcuityForeColor: gColorFore];
@@ -270,7 +310,7 @@ Created by mb on 2017-07-12.
 /**
  One of the tests should run, but let's test some prerequisites first
  */
-- (void) notificationRunFractControllerTest: (CPNotification) aNotification { //console.info("buttonExportEnableYESorNO");
+- (void) notificationRunFractControllerTest: (CPNotification) aNotification {
     [self runFractControllerTest: [aNotification object]];
 }
 - (void) runFractControllerTest: (int) testNr { //console.info("AppController>runFractController");
@@ -372,7 +412,7 @@ Created by mb on 2017-07-12.
     localStorage.setItem(gFilename4ResultStorage, temp);
     temp = currentTestResultsHistoryExportString.replace(/,/g, ".");
     localStorage.setItem(gFilename4ResultsHistoryStorage, temp);
-    
+
     if ([Settings results2clipboard] > kResults2ClipNone) {
         if ([Settings results2clipboard] == kResults2ClipFullHistory) {
             currentTestResultExportString += currentTestResultsHistoryExportString;
@@ -383,7 +423,7 @@ Created by mb on 2017-07-12.
             [Misc copyString2ClipboardWithDialog: currentTestResultExportString];
         }
     }
-    [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: ([currentTestResultExportString length] > 1)];
+    [self postNotificationName: "buttonExportEnableYESorNO" object: ([currentTestResultExportString length] > 1)];
 }
 
 
@@ -438,14 +478,14 @@ Created by mb on 2017-07-12.
             const sto5 = [Settings testOnFive];
             if (sto5 > 0) [self runFractControllerTest: sto5];
             break;
-        case "R": 
+        case "R":
             if ([Settings autoRunIndex] == kAutoRunIndexNone) { //toggle
                 [Settings setAutoRunIndex: kAutoRunIndexMid];
             } else {
                 [Settings setAutoRunIndex: kAutoRunIndexNone];
             }
             break;
-        //case "∆": [self runtimeError_action: nil];  break;
+            //case "∆": [self runtimeError_action: nil];  break;
         default:
             [super keyDown: theEvent];  break;
     }
@@ -499,11 +539,11 @@ Created by mb on 2017-07-12.
     if (settingsNeededNewDefaults) {
         settingsNeededNewDefaults = NO;
         const alert = [CPAlert alertWithMessageText: "WARNING"
-                                    defaultButton: "OK" alternateButton: nil otherButton: nil
-                        informativeTextWithFormat: "\r\rAll settings were (re)set to their default values.\r\r"];
+                                      defaultButton: "OK" alternateButton: nil otherButton: nil
+                          informativeTextWithFormat: "\r\rAll settings were (re)set to their default values.\r\r"];
         [alert runModalWithDidEndBlock: function(alert, returnCode) {}];
     }
-    [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil];
+    [self postNotificationName: "copyColorsFromSettings" object: nil];
 }
 
 - (IBAction) buttonSettingsClose_action: (id) sender { //console.info("AppController>buttonSettingsClose");
@@ -511,7 +551,7 @@ Created by mb on 2017-07-12.
 }
 
 - (IBAction) buttonSettingsTestSound_action: (id) sender {
-    [[CPNotificationCenter defaultCenter] postNotificationName: "updateSoundFiles" object: nil];
+    [self postNotificationName: "updateSoundFiles" object: nil];
     [sound playDelayedNumber: [sender tag]]; // delay because new buffer to be loaded; 0.02 would be enough.
 }
 
@@ -567,7 +607,7 @@ Created by mb on 2017-07-12.
  */
 - (IBAction) buttonExport_action: (id) sender { //console.info("AppController>buttonExport_action");
     [Misc copyString2Clipboard: currentTestResultExportString];
-    [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
+    [self postNotificationName: "buttonExportEnableYESorNO" object: 0];
 }
 
 
@@ -603,7 +643,7 @@ Created by mb on 2017-07-12.
         [gray1, gray2] = [gray2, gray1]; // "modern" swapping of variables
     }
     //    console.log("Wperc ", contrastWeberPercent, ", lgCSW ", contrastLogCSWeber, ", g1 ", gray1, ", g2 ", gray2);
-    
+
     //const c1 = [CPColor colorWithWhite: gray1 alpha: 1], c2 = [CPColor colorWithWhite: gray2 alpha: 1];
     let c1 = [MiscLight colorFromGreyBitStealed: gray1];
     let c2 = [MiscLight colorFromGreyBitStealed: gray2];

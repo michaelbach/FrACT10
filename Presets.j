@@ -79,7 +79,7 @@
             [Settings setAutoRunIndex: kAutoRunIndexMid];
             break;
         case "Testing": // easier testing
-            [self applyTestingPresets];  presetFound = YES;  break;
+            [self applyTestingPresets];  break;
         case "ESU": // secret project :)
             [self setStandardDefaultsKeepingCalBarLength];
             // general pane

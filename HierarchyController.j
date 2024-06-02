@@ -54,6 +54,13 @@ kDecimalMarkCharIndexAuto = 0; kDecimalMarkCharIndexDot = 1; kDecimalMarkCharInd
 /**
  helpers
  */
+
+// often used, to shorten code
+- (void) postNotificationName: (CPString) aNotificationName object: (id) anObject {
+    [[CPNotificationCenter defaultCenter] postNotificationName: aNotificationName object: anObject];
+}
+
+
 - (CPString) testNameGivenTestID: (TestIDType) theTestID {
     switch (theTestID) {
         case kTestAcuityLett: return "Acuity_Letters";
