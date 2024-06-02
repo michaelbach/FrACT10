@@ -16,6 +16,8 @@
 	<string>MainMenu.cib</string>
 	<key>VersionDate</key>
 	<string>2024-06-02</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
 	<key>CFBundleExecutable</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>

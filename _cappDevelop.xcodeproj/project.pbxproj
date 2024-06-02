@@ -47,6 +47,7 @@
 		8AAB43912A55826800825E47 /* RewardsController.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 29834A62A925E37F8057FF9A /* RewardsController.j */; };
 		8AAB43922A55826800825E47 /* TrialHistoryController.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4A5547F8854B1200466F770F /* TrialHistoryController.j */; };
 		8AAB43932A55826800825E47 /* Presets.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A8BFD81283837D800DD61BB /* Presets.j */; };
+		8AAFB6022C0C8F5800E3BBEC /* ControlDispatcher.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AAFB6012C0C8F5800E3BBEC /* ControlDispatcher.j */; };
 		8ACD7D522C0362BD00FE90C6 /* ThresholderNupMdown.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8ACD7D512C0362BD00FE90C6 /* ThresholderNupMdown.j */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 				8AAB43862A55826300825E47 /* FractControllerAcuity.j in CopyFiles */,
 				8A438B3A2BAF77FE00B33287 /* Dithering.j in CopyFiles */,
 				8AAB43812A55825200825E47 /* FractControllerContrast.j in CopyFiles */,
+				8AAFB6022C0C8F5800E3BBEC /* ControlDispatcher.j in CopyFiles */,
 				8AAB438B2A55826800825E47 /* PopulateAboutPanel.j in CopyFiles */,
 				8AAB43792A55821300825E47 /* MDBSimplestatistics.j in CopyFiles */,
 				8A48269329CF4F260035607A /* MiscLight.j in CopyFiles */,
@@ -159,6 +161,7 @@
 		8A891B7D2A5585AE00ACEFDF /* MDBDispersionEstimation.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MDBDispersionEstimation.j; sourceTree = SOURCE_ROOT; };
 		8A8BFD81283837D800DD61BB /* Presets.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets.j; sourceTree = SOURCE_ROOT; };
 		8A9C705F2BFE496000DD5E76 /* MDBTextField.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MDBTextField.j; sourceTree = "<group>"; };
+		8AAFB6012C0C8F5800E3BBEC /* ControlDispatcher.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = ControlDispatcher.j; sourceTree = "<group>"; };
 		8ABDA6D4291A501000D68E3C /* capp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = capp; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACD7D512C0362BD00FE90C6 /* ThresholderNupMdown.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = ThresholderNupMdown.j; sourceTree = "<group>"; };
 		90444B1A970FC75C0FF93DB7 /* FractControllerContrastE.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerContrastE.j; sourceTree = SOURCE_ROOT; };
@@ -245,6 +248,7 @@
 				8A9C705F2BFE496000DD5E76 /* MDBTextField.j */,
 				8A891B7D2A5585AE00ACEFDF /* MDBDispersionEstimation.j */,
 				FB4A479E9000040026E0D65B /* MDBSimplestatistics.j */,
+				8AAFB6012C0C8F5800E3BBEC /* ControlDispatcher.j */,
 				BDC7432CBD70CCD5236EC4E7 /* Misc.j */,
 				8A48269429CF58F30035607A /* MiscSpace.j */,
 				8A48269229CF4F260035607A /* MiscLight.j */,

@@ -29,6 +29,7 @@
 @import "MDBTextField.j"
 @import "PopulateAboutPanel.j"
 @import "Presets.j"
+@import "ControlDispatcher.j"
 
 
 /**
@@ -187,65 +188,9 @@
 
     [Settings setupSoundPopups: [settingsPaneMiscSoundsTrialYesPopUp, settingsPaneMiscSoundsTrialNoPopUp, settingsPaneMiscSoundsRunEndPopUp]];
 
-    // set up listener to dispatch control messages to FrACT10 when embedded as iframe
-    window.addEventListener("message", (e) => { //console.info("In addEventListener>message: ", e.data);
-        if (e.data.length > 100) return; // avoid overruns from nasty senders
-        if (Object.keys(e.data).length > 100) return; // also if object
-        if (e.origin !== window.location.origin) return; // only from embedding window
-        const m1 = e.data.m1, m2 = e.data.m2, m3 = e.data.m3;
-        switch (m1) {
-            case "Settings":
-                switch(m2) {
-                    case "Presets":
-                        [self postNotificationName: "applyPresetNamed" object: m3];
-                        break;
-                    default:
-                        console.log("FrACT10 received this unexpected message.data: ", m1, m2, m3);
-                }
-            case "Run":
-                switch(m2) {
-                    case "TestNumber":
-                        const allowedNumbers = Array.from({length: 10}, (v, k) => k + 1); //constructs [1,2…]
-                        if ((allowedNumbers.includes(m3)))
-                            [self postNotificationName: "notificationRunFractControllerTest" object: m3];
-                        else
-                            console.log("FrACT10 received this unexpected message.data: ", m1, m2, m3);
-                        break;
-                    case "Acuity":
-                        switch(m3) {
-                            case "Letters":
-                                [self postNotificationName: "notificationRunFractControllerTest" object: kTestAcuityLett];
-                                break;
-                            case "LandoltC":
-                                [self postNotificationName: "notificationRunFractControllerTest" object: kTestAcuityC];
-                                break;
-                            case "TumblingE":
-                                [self postNotificationName: "notificationRunFractControllerTest" object: kTestAcuityE];
-                                break;
-                            default:
-                                console.log("FrACT10 received this unexpected message.data: ", m1, m2, m3);
-                        }
-                    case "Contrast":
-                        switch(m3) {
-                            case "Letters":
-                                [self postNotificationName: "notificationRunFractControllerTest" object: kTestContrastLett];
-                                break;
-                            case "LandoltC":
-                                [self postNotificationName: "notificationRunFractControllerTest" object: kTestContrastC];
-                                break;
-                            case "TumblingE":
-                                [self postNotificationName: "notificationRunFractControllerTest" object: kTestContrastE];
-                                break;
-                            default:
-                                console.log("FrACT10 received this unexpected message.data: ", m1, m2, m3);
-                        }
-                }
-                break;
-            default:
-                console.log("FrACT10 received this unexpected message.data: ", m1, m2, m3);
-        }
-    });
+    // set up control dispatcher (HTML messages to FrACT10 when embedded as iframe)
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationRunFractControllerTest:) name: "notificationRunFractControllerTest" object: nil];
+    [ControlDispatcher init];
 
     [selfWindow orderFront: self]; // ensures that it will receive clicks w/o activating
 }
