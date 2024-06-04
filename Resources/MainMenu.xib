@@ -3198,7 +3198,7 @@ CQ
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKl-qE-MnI">
                                             <rect key="frame" x="35" y="328" width="298" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">When "Line of optotypes" is set to “Chart mode”, here you can select that all 3 lines have the same acuty grade.
+                                            <string key="toolTip">If "Line of optotypes" is set to “Chart mode”, here you can select that all 3 lines have the same acuity grade.
  
 </string>
                                             <buttonCell key="cell" type="check" title="&quot;Line of optotypes&quot; Chart Mode: ConstantVA" bezelStyle="regularSquare" imagePosition="left" inset="2" id="3nO-1o-wRI">
