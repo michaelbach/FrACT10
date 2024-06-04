@@ -12,6 +12,11 @@
  2024-05-09 major rewrite to avoid repeated information
  2022-05-20 begun
  */
+
+@typedef feedbackTypeType
+kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
+
+
 @implementation Presets: CPObject {
     CPString _presetName;
     CPPopUpButton _popUpButton;
@@ -24,7 +29,7 @@
 - (id) initWithPopup: (CPPopUpButton) thePopUpButton { //console.info("Presets>initWithPopup");
     self = [super init];
     if (self) {
-        /* first entry: Header, all others need corresponding code in the “if orgy” further down. */
+        /* first entry: Header, all others need corresponding code in the “switch orgy” further down. */
         const allPresets = ["PRESETS", "Standard Defaults", "Demo", "Testing", "ESU", "ULV", "Color Equiluminance", "BCM@Scheie", "CNS@Freiburg", "Maculight", "Hyper@TUDo"];
 
         _popUpButton = thePopUpButton; // local copy for later
@@ -54,22 +59,25 @@
     [[alert1 buttons][0] setKeyEquivalent: "y"]; // the "Yes" button selected by "y"
     [alert1 runModalWithDidEndBlock: function(alert, returnCode) {
         if (returnCode==1) { // alternateButton
-            [self apply2withFeedBack: YES];
+            [self apply2withFeedbackType: kFeedbackTypeGUI];
         }
     }];
 }
 
 
+/**
+ Called by by ControlDispatcher after receiving a pertinent HTMLMessage
+ */
 - (void) applyPresetNamed: (CPNotification) aNotification { //console.info("Presets>applyPresetNamed");
     _presetName = [aNotification object];
-    [self apply2withFeedBack: NO];
+    [self apply2withFeedbackType: kFeedbackTypeHTMLMessage];
 }
 
 
 /**
  Apply selected preset after successful "Are you sure" dialog
  */
-- (void) apply2withFeedBack: (BOOL) withFeedBack { //console.info("Presets>apply2", _presetName);
+- (void) apply2withFeedbackType: (feedbackTypeType) feedbackType { //console.info("Presets>apply2", _presetName);
     switch (_presetName) {
         case "Standard Defaults":
             [Settings setDefaults];  break;
@@ -192,18 +200,27 @@
             break;
         default:
             console.log("Frac10>Presets>unknown preset: ", _presetName);
+            if (feedbackType == kFeedbackTypeHTMLMessage) {
+                window.parent.postMessage({m1: "Settings", m2: "Preset", m3: _presetName, success: false}, "*");
+            }
             return;
     }
     [[CPNotificationCenter defaultCenter] postNotificationName: "updateSoundFiles" object: nil];
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil]; // this synchronises the color settings between userdefaults & AppController
     [Settings setPresetName: _presetName];
     [_popUpButton setSelectedIndex: 0]; // always show "PRESETS"
-    if (withFeedBack) {
-        const messageText = "Preset  »" + _presetName + "«  was applied."
-        const alert2 = [CPAlert alertWithMessageText: messageText
+
+    switch (feedbackType) {
+        case kFeedbackTypeGUI:
+            const messageText = "Preset  »" + _presetName + "«  was applied."
+            const alert2 = [CPAlert alertWithMessageText: messageText
                                        defaultButton: "OK" alternateButton: nil otherButton: nil
                            informativeTextWithFormat: ""];
-        [alert2 runModal];
+            [alert2 runModal];
+            break;
+        case kFeedbackTypeHTMLMessage:
+            window.parent.postMessage({m1: "Settings", m2: "Preset", m3: _presetName, success: true}, "*");
+            break;
     }
 }
 

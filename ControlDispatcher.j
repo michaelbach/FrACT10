@@ -35,9 +35,9 @@ Dispatcher for HTML communication messages to control FrACT
  */
 + (void) init { //console.info("ControlDispatcher>init")
     window.addEventListener("message", (e) => { //console.info("In addEventListener>message: ", e.data);
-        if (e.origin !== window.location.origin) return; // only from embedding window
-        if (e.data.length > 100) return; // avoid overruns from malicious senders
-        if (Object.keys(e.data).length > 100) return; // also if data is an object
+        if (e.origin !== window.location.origin) return; // only from embedding window (or if(e.source!==parent)return;?)
+        if (e.data.length > 50) return; // avoid overruns from possibly malicious senders
+        if (Object.keys(e.data).length > 50) return; // also if data is an object
         _eventData = e.data;
         const m1 = e.data.m1, m2 = e.data.m2, m3 = e.data.m3;
         switch (m1) {
