@@ -14,7 +14,6 @@ Dispatcher for HTML communication messages to control FrACT
 
 
 @implementation ControlDispatcher: CPObject {
-    id _eventData;
 }
 
 
@@ -25,8 +24,9 @@ Dispatcher for HTML communication messages to control FrACT
 
 
 // often used, shortens code
-+ (void) logProblem {
-    console.log("FrACT10 received unexpected message.data: ", _eventData);
++ (void) logProblem: (id) data {
+    console.log("FrACT10 received unexpected message.data: ", data);
+    window.parent.postMessage({data: data, success: false}, "*");
 }
 
 
@@ -34,12 +34,14 @@ Dispatcher for HTML communication messages to control FrACT
  set up listener to dispatch control messages to FrACT10 when embedded as iframe
  */
 + (void) init { //console.info("ControlDispatcher>init")
-    window.addEventListener("message", (e) => { //console.info("In addEventListener>message: ", e.data);
-        if (e.origin !== window.location.origin) return; // only from embedding window (or if(e.source!==parent)return;?)
-        if (e.data.length > 50) return; // avoid overruns from possibly malicious senders
-        if (Object.keys(e.data).length > 50) return; // also if data is an object
-        _eventData = e.data;
+    window.addEventListener("message", (e) => { //console.info("In addEventListener>message: ", e);
+        if (e.source !== window.parent) return; // only from embedding window
+        if (e.origin !== window.location.origin) return; // same
+        if (Object.keys(e.data).length !== 3) return; // avoid overruns from possibly malicious senders
         const m1 = e.data.m1, m2 = e.data.m2, m3 = e.data.m3;
+        if ((m1 === undefined) || (m1.length > 50))  return;
+        if ((m2 === undefined) || (m2.length > 50))  return;
+        if ((m3 === undefined) || (m3.length > 50))  return;
         switch (m1) {
             case "Settings":
                 switch(m2) {
@@ -47,7 +49,7 @@ Dispatcher for HTML communication messages to control FrACT
                         [self post: "applyPresetNamed" object: m3];
                         break;
                     default:
-                        [self logProblem];
+                        [self logProblem: e.data];
                 }
                 break;
             case "Run":
@@ -57,7 +59,7 @@ Dispatcher for HTML communication messages to control FrACT
                         if ((allowedNumbers.includes(m3)))
                             [self post: "notificationRunFractControllerTest" object: m3];
                         else
-                            [self logProblem];
+                            [self logProblem: e.data];
                         break;
                     case "Acuity":
                         switch(m3) {
@@ -71,7 +73,7 @@ Dispatcher for HTML communication messages to control FrACT
                                 [self post: "notificationRunFractControllerTest" object: kTestAcuityE];
                                 break;
                             default:
-                                [self logProblem];
+                                [self logProblem: e.data];
                         }
                         break;
                     case "Contrast":
@@ -86,15 +88,15 @@ Dispatcher for HTML communication messages to control FrACT
                                 [self post: "notificationRunFractControllerTest" object: kTestContrastE];
                                 break;
                             default:
-                                [self logProblem];
+                                [self logProblem: e.data];
                         }
                         break;
                     default:
-                        [self logProblem];
+                        [self logProblem: e.data];
                 }
                 break;
             default:
-                [self logProblem];
+                [self logProblem: e.data];
         }
     });
 }
