@@ -11,6 +11,7 @@ Dispatcher for HTML communication messages to control FrACT
 
 @import <Foundation/Foundation.j>
 @import <AppKit/AppKit.j>
+@import "Globals.j"
 
 
 @implementation ControlDispatcher: CPObject {
@@ -19,6 +20,7 @@ Dispatcher for HTML communication messages to control FrACT
 
 // often used, shortens code
 + (void) post: (CPString) aNotificationName object: (id) anObject {
+    [[gAppController window] orderFront: self]; // otherwise we would crash here
     [[CPNotificationCenter defaultCenter] postNotificationName: aNotificationName object: anObject];
 }
 
@@ -56,10 +58,11 @@ Dispatcher for HTML communication messages to control FrACT
                 switch(m2) {
                     case "TestNumber":
                         const allowedNumbers = Array.from({length: 10}, (v, k) => k + 1); //constructs [1,2…]
-                        if ((allowedNumbers.includes(m3)))
+                        if ((allowedNumbers.includes(m3))) {
                             [self post: "notificationRunFractControllerTest" object: m3];
-                        else
+                        } else {
                             [self logProblem: e.data];
+                        }
                         break;
                     case "Acuity":
                         switch(m3) {

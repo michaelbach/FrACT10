@@ -42,6 +42,8 @@ gDefaultDistanceInCM = 399;
 gDefaultCalibrationBarLengthInMM = 149;
 
 cgc = [[CPGraphicsContext currentContext] graphicsPort]; // global makes for easy access in Optotypes and contrast calcs
+gAppController = nil; // need to set context when receiving HTMLMessages
+
 gColorFore = [CPColor whiteColor];  gColorBack = [CPColor blackColor];
 gSpecialBcmDone = NO;
 // minimal stroke size (half a pixel). Maximal, depending on screen & margin. Poor naming for Vernier.

@@ -125,6 +125,7 @@
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>…Launching");
     'use strict';
     selfWindow = [self window];
+    gAppController = self; // for setting context when receiving HTMLMessages
     [selfWindow setFullPlatformWindow: YES];  [selfWindow setBackgroundColor: [self windowBackgroundColor]];
 
     [CPMenu setMenuBarVisible: NO];
@@ -192,6 +193,7 @@
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationRunFractControllerTest:) name: "notificationRunFractControllerTest" object: nil];
     [ControlDispatcher init];
 
+    gAppController = self;
     [selfWindow orderFront: self]; // ensures that it will receive clicks w/o activating
 }
 
