@@ -351,6 +351,11 @@
         }
         [self exportCurrentTestResult];
     }
+    if (gSendHTMLMessageOnRunDone) {
+        gSendHTMLMessageOnRunDone = NO;
+        window.parent.postMessage({m1: gHTMLMessage1, m2: gHTMLMessage2, m3: gHTMLMessage3, success: !runAborted}, "*");
+    }
+
 }
 
 

@@ -42,7 +42,11 @@ gDefaultDistanceInCM = 399;
 gDefaultCalibrationBarLengthInMM = 149;
 
 cgc = [[CPGraphicsContext currentContext] graphicsPort]; // global makes for easy access in Optotypes and contrast calcs
+
+// for ControlDispatcher
 gAppController = nil; // need to set context when receiving HTMLMessages
+gSendHTMLMessageOnRunDone = NO;
+gHTMLMessage1 = "";  gHTMLMessage2 = "";  gHTMLMessage3 = "";
 
 gColorFore = [CPColor whiteColor];  gColorBack = [CPColor blackColor];
 gSpecialBcmDone = NO;
@@ -56,7 +60,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 
 /*
  #  History
-
++ 2024-06-09 add HTMLMessage when Run done
 + 2024-06-04 add feedback (success/nonsuccess) return messages to HTMLMessages for Presets
 + 2024-06-02 begin message communications with FrACT10 when embedded as iframe
 + 2024-05-20 make `decimalMarkChar` responsive & more visible in GUI
