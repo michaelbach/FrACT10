@@ -1,12 +1,12 @@
 /*
-This file is part of FrACT10, a vision test battery.
-Copyright © 2024 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
+ This file is part of FrACT10, a vision test battery.
+ Copyright © 2024 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
-ControlDispatcher.j
+ ControlDispatcher.j
 
-Dispatcher for HTML communication messages to control FrACT
+ Dispatcher for HTML communication messages to control FrACT
 
-*/
+ */
 
 
 @import <Foundation/Foundation.j>
@@ -48,6 +48,10 @@ Dispatcher for HTML communication messages to control FrACT
         if ((m2 === undefined) || (m2.length > 50))  return;
         if ((m3 === undefined) || (m3.length > 50))  return;
         switch (m1) {
+            case "Version":
+                window.parent.postMessage({m1: "Version", m2: gVersionStringOfFract, m3: gVersionDateOfFrACT, success: true}, "*");
+                gSendHTMLMessageOnRunDone = NO;
+                break;
             case "Settings":
                 switch(m2) {
                     case "Presets":

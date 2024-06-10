@@ -60,6 +60,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 
 /*
  #  History
++ 2024-06-10 add `Version` to HTMLMessages. This state of HTMLMessages deserves minor version increase.
 + 2024-06-09 add HTMLMessage when Run done
 + 2024-06-04 add feedback (success/nonsuccess) return messages to HTMLMessages for Presets
 + 2024-06-02 begin message communications with FrACT10 when embedded as iframe

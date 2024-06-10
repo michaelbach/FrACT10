@@ -15,7 +15,7 @@
 	<key>Main cib file base name</key>
 	<string>MainMenu.cib</string>
 	<key>VersionDate</key>
-	<string>2024-06-09</string>
+	<string>2024-06-10</string>
 	<key>CFBundleName</key>
 	<string></string>
 	<key>LSApplicationCategoryType</key>
@@ -27,6 +27,6 @@
 	<key>CFBundleIdentifier</key>
 	<string></string>
 	<key>VersionNumberString</key>
-	<string>1.2</string>
+	<string>1.3</string>
 </dict>
 </plist>
