@@ -16,29 +16,16 @@
 
 @implementation ControlDispatcher: CPObject {
     CPString m1, m2, m3;
-}
-
-
-// often used, shortens code
-+ (void) post: (CPString) aNotificationName object: (id) anObject {
-    [[gAppController window] orderFront: self]; // otherwise we would crash here
-    [[CPNotificationCenter defaultCenter] postNotificationName: aNotificationName object: anObject];
-    gHTMLMessage1 = m1;  gHTMLMessage2 = m2;  gHTMLMessage3 = m3;
-}
-
-
-// often used, shortens code
-+ (void) logProblem: (id) data {
-    console.log("FrACT10 received unexpected message.data: ", data);
-    window.parent.postMessage({data: data, success: false}, "*");
-    gSendHTMLMessageOnRunDone = NO;
+    BOOL _sendHTMLMessageOnRunDone;
+    id _appController;
 }
 
 
 /**
  set up listener to dispatch control messages to FrACT10 when embedded as iframe
  */
-+ (void) init { //console.info("ControlDispatcher>init")
++ (void) initWithAppController: (id) appController { //console.info("ControlDispatcher>init")
+    _appController = appController;
     window.addEventListener("message", (e) => { //console.info("In addEventListener>message: ", e);
         if (e.source !== window.parent) return; // only from embedding window
         if (e.origin !== window.location.origin) return; // same
@@ -49,67 +36,93 @@
         if ((m3 === undefined) || (m3.length > 50))  return;
         switch (m1) {
             case "Version":
-                window.parent.postMessage({m1: "Version", m2: gVersionStringOfFract, m3: gVersionDateOfFrACT, success: true}, "*");
-                gSendHTMLMessageOnRunDone = NO;
+                [self post2parentM1: "Version" m2: gVersionStringOfFract m3: gVersionDateOfFrACT success: YES];
+                _sendHTMLMessageOnRunDone = NO;
                 break;
             case "Settings":
                 switch(m2) {
                     case "Presets":
-                        [self post: "applyPresetNamed" object: m3];
+                        [self _notify: "applyPresetNamed" object: m3];
                         break;
                     default:
-                        [self logProblem: e.data];
+                        [self _logProblem: e.data];
                 }
                 break;
             case "Run":
-                gSendHTMLMessageOnRunDone = YES;// need to switch off if parsing below fails
+                _sendHTMLMessageOnRunDone = YES;// need to switch again off if parsing below fails
                 switch(m2) {
                     case "TestNumber":
-                        const allowedNumbers = Array.from({length: 10}, (v, k) => k + 1); //constructs [1,2…]
+                        //const allowedNumbers = Array.from({length: 10}, (v, k) => k + 1); //too complicated
+                        const allowedNumbers = [1,2, 3, 4, 5, 6, 7, 8, 9, 10];
                         if ((allowedNumbers.includes(m3))) {
-                            [self post: "notificationRunFractControllerTest" object: m3];
+                            [self _notify: "notificationRunFractControllerTest" object: m3];
                         } else {
-                            [self logProblem: e.data];
+                            [self _logProblem: e.data];
                         }
                         break;
                     case "Acuity":
                         switch(m3) {
                             case "Letters":
-                                [self post: "notificationRunFractControllerTest" object: kTestAcuityLett];
+                                [self _notify: "notificationRunFractControllerTest" object: kTestAcuityLett];
                                 break;
                             case "LandoltC":
-                                [self post: "notificationRunFractControllerTest" object: kTestAcuityC];
+                                [self _notify: "notificationRunFractControllerTest" object: kTestAcuityC];
                                 break;
                             case "TumblingE":
-                                [self post: "notificationRunFractControllerTest" object: kTestAcuityE];
+                                [self _notify: "notificationRunFractControllerTest" object: kTestAcuityE];
                                 break;
                             default:
-                                [self logProblem: e.data];
+                                [self _logProblem: e.data];
                         }
                         break;
                     case "Contrast":
                         switch(m3) {
                             case "Letters":
-                                [self post: "notificationRunFractControllerTest" object: kTestContrastLett];
+                                [self _notify: "notificationRunFractControllerTest" object: kTestContrastLett];
                                 break;
                             case "LandoltC":
-                                [self post: "notificationRunFractControllerTest" object: kTestContrastC];
+                                [self _notify: "notificationRunFractControllerTest" object: kTestContrastC];
                                 break;
                             case "TumblingE":
-                                [self post: "notificationRunFractControllerTest" object: kTestContrastE];
+                                [self _notify: "notificationRunFractControllerTest" object: kTestContrastE];
                                 break;
                             default:
-                                [self logProblem: e.data];
+                                [self _logProblem: e.data];
                         }
                         break;
                     default:
-                        [self logProblem: e.data];
+                        [self _logProblem: e.data];
                 }
                 break;
             default:
-                [self logProblem: e.data];
+                [self _logProblem: e.data];
         }
     });
+}
+
+
++ (void) post2parentM1: (CPString) m1 m2: (CPString) m2 m3: (CPString) m3 success: (BOOL) success {
+    window.parent.postMessage({m1: m1, m2: m2, m3: m3, success: success}, "*");
+}
+
+
++  (void) runDoneSuccessful: (BOOL) success {
+    if (!_sendHTMLMessageOnRunDone) return;
+    _sendHTMLMessageOnRunDone = NO;
+    [self post2parentM1: m1 m2: m2 m3: m3 success: success];
+}
+
+
++ (void) _notify: (CPString) aNotificationName object: (id) anObject {
+    [[_appController window] orderFront: self]; // otherwise we would crash here
+    [[CPNotificationCenter defaultCenter] postNotificationName: aNotificationName object: anObject];
+}
+
+
++ (void) _logProblem: (id) data {
+    console.log("FrACT10 received unexpected message.data: ", data);
+    window.parent.postMessage({data: data, success: NO}, "*");
+    _sendHTMLMessageOnRunDone = NO;
 }
 
 

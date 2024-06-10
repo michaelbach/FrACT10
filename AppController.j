@@ -125,7 +125,6 @@
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>…Launching");
     'use strict';
     selfWindow = [self window];
-    gAppController = self; // for setting context when receiving HTMLMessages
     [selfWindow setFullPlatformWindow: YES];  [selfWindow setBackgroundColor: [self windowBackgroundColor]];
 
     [CPMenu setMenuBarVisible: NO];
@@ -191,9 +190,8 @@
 
     // set up control dispatcher (HTML messages to FrACT10 when embedded as iframe)
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationRunFractControllerTest:) name: "notificationRunFractControllerTest" object: nil];
-    [ControlDispatcher init];
+    [ControlDispatcher initWithAppController: self];
 
-    gAppController = self;
     [selfWindow orderFront: self]; // ensures that it will receive clicks w/o activating
 }
 
@@ -351,11 +349,7 @@
         }
         [self exportCurrentTestResult];
     }
-    if (gSendHTMLMessageOnRunDone) {
-        gSendHTMLMessageOnRunDone = NO;
-        window.parent.postMessage({m1: gHTMLMessage1, m2: gHTMLMessage2, m3: gHTMLMessage3, success: !runAborted}, "*");
-    }
-
+    [ControlDispatcher runDoneSuccessful: !runAborted];
 }
 
 

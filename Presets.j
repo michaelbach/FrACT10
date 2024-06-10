@@ -13,6 +13,9 @@
  2022-05-20 begun
  */
 
+@import "ControlDispatcher.j"
+
+
 @typedef feedbackTypeType
 kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
 
@@ -201,7 +204,7 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
         default:
             console.log("Frac10>Presets>unknown preset: ", _presetName);
             if (feedbackType == kFeedbackTypeHTMLMessage) {
-                window.parent.postMessage({m1: "Settings", m2: "Preset", m3: _presetName, success: false}, "*");
+                [ControlDispatcher post2parentM1: "Settings" m2: "Preset" m3: _presetName success: false];
             }
             return;
     }
@@ -219,7 +222,7 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [alert2 runModal];
             break;
         case kFeedbackTypeHTMLMessage:
-            window.parent.postMessage({m1: "Settings", m2: "Preset", m3: _presetName, success: true}, "*");
+            [ControlDispatcher post2parentM1: "Settings" m2: "Preset" m3: _presetName success: true];
             break;
     }
 }

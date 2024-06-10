@@ -41,12 +41,8 @@ gMeter2FeetMultiplier = 3.28084;  tab = "\t";  crlf = "\n";
 gDefaultDistanceInCM = 399;
 gDefaultCalibrationBarLengthInMM = 149;
 
-cgc = [[CPGraphicsContext currentContext] graphicsPort]; // global makes for easy access in Optotypes and contrast calcs
-
-// for ControlDispatcher
-gAppController = nil; // need to set context when receiving HTMLMessages
-gSendHTMLMessageOnRunDone = NO;
-gHTMLMessage1 = "";  gHTMLMessage2 = "";  gHTMLMessage3 = "";
+// cgc as global makes for easy access in Optotypes and contrast calcs
+cgc = [[CPGraphicsContext currentContext] graphicsPort];
 
 gColorFore = [CPColor whiteColor];  gColorBack = [CPColor blackColor];
 gSpecialBcmDone = NO;
