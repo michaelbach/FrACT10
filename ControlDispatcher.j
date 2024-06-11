@@ -24,7 +24,8 @@
 /**
  set up listener to dispatch control messages to FrACT10 when embedded as iframe
  */
-+ (void) initWithAppController: (id) appController { //console.info("ControlDispatcher>init")
++ (void) initWithAppController: (id) appController { //console.info("ControlDispatcher>initWithAppController")
+    _sendHTMLMessageOnRunDone = NO;
     _appController = appController;
     window.addEventListener("message", (e) => { //console.info("In addEventListener>message: ", e);
         if (e.source !== window.parent) return; // only from embedding window
@@ -41,8 +42,17 @@
                 break;
             case "Settings":
                 switch(m2) {
+                    case "Preset":
                     case "Presets":
                         [self _notify: "applyPresetNamed" object: m3];
+                        break;
+                    case "nTrials08":
+                        const aNumber = Number(m3);
+                        if (isNaN(aNumber)) {
+                            [self _logProblemM123];
+                        } else {
+                            [Settings setNTrials08: aNumber];
+                        }
                         break;
                     default:
                         [self _logProblem: e.data];
@@ -106,7 +116,7 @@
 }
 
 
-+  (void) runDoneSuccessful: (BOOL) success {
++  (void) runDoneSuccessful: (BOOL) success { //console.info("ControlDispatcher>runDoneSuccessful")
     if (!_sendHTMLMessageOnRunDone) return;
     _sendHTMLMessageOnRunDone = NO;
     [self post2parentM1: m1 m2: m2 m3: m3 success: success];
@@ -116,6 +126,14 @@
 + (void) _notify: (CPString) aNotificationName object: (id) anObject {
     [[_appController window] orderFront: self]; // otherwise we would crash here
     [[CPNotificationCenter defaultCenter] postNotificationName: aNotificationName object: anObject];
+}
+
+
++ (void) _logProblemM123 {
+    const data = {m1: m1, m2: m2, m3: m3, success: false};
+    console.log("FrACT10 received unexpected message.data: ", data);
+    window.parent.postMessage(data, "*");
+    _sendHTMLMessageOnRunDone = NO;
 }
 
 
