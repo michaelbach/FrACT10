@@ -35,6 +35,7 @@
         if ((m1 === undefined) || (m1.length > 50))  return;
         if ((m2 === undefined) || (m2.length > 50))  return;
         if ((m3 === undefined) || (m3.length > 50))  return;
+        const m3AsNumber = Number(m3);
         switch (m1) {
             case "Version":
                 [self post2parentM1: "Version" m2: gVersionStringOfFract m3: gVersionDateOfFrACT success: YES];
@@ -47,27 +48,30 @@
                         [self _notify: "applyPresetNamed" object: m3];
                         break;
                     case "nTrials08":
-                        const aNumber = Number(m3);
-                        if (isNaN(aNumber)) {
+                        if (isNaN(m3AsNumber)) {
                             [self _logProblemM123];
                         } else {
-                            [Settings setNTrials08: aNumber];
+                            const setterCapped = m2.charAt(0).toUpperCase() + m2.slice(1);
+                            let setter = CPSelectorFromString("set" + setterCapped + ":");
+                            [Settings performSelector: setter withObject: m3AsNumber];
+                            [Settings allNotCheckButSet: NO]; // check whether we were in range
+                            const m3Now = [Settings performSelector: CPSelectorFromString(m2)];
+                            [self post2parentM1: m1 m2: m2 m3: m3Now success: m3AsNumber===m3Now];
                         }
                         break;
                     default:
-                        [self _logProblem: e.data];
+                        [self _logProblemM123];
                 }
                 break;
             case "Run":
                 _sendHTMLMessageOnRunDone = YES;// need to switch again off if parsing below fails
                 switch(m2) {
                     case "TestNumber":
-                        //const allowedNumbers = Array.from({length: 10}, (v, k) => k + 1); //too complicated
                         const allowedNumbers = [1,2, 3, 4, 5, 6, 7, 8, 9, 10];
-                        if ((allowedNumbers.includes(m3))) {
+                        if ((allowedNumbers.includes(m3AsNumber))) {
                             [self _notify: "notificationRunFractControllerTest" object: m3];
                         } else {
-                            [self _logProblem: e.data];
+                            [self _logProblemM123];
                         }
                         break;
                     case "Acuity":
@@ -82,7 +86,7 @@
                                 [self _notify: "notificationRunFractControllerTest" object: kTestAcuityE];
                                 break;
                             default:
-                                [self _logProblem: e.data];
+                                [self _logProblemM123];
                         }
                         break;
                     case "Contrast":
@@ -97,11 +101,11 @@
                                 [self _notify: "notificationRunFractControllerTest" object: kTestContrastE];
                                 break;
                             default:
-                                [self _logProblem: e.data];
+                                [self _logProblemM123];
                         }
                         break;
                     default:
-                        [self _logProblem: e.data];
+                        [self _logProblemM123];
                 }
                 break;
             default:

@@ -302,7 +302,7 @@ Created by mb on July 15, 2015.
 + (int) nTrials08 {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "nTrials08"];
 }
-+ (void) setNTrials08: (int) val {
++ (void) setNTrials08: (int) val { //console.info("Settings>nTrials08");
     [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "nTrials08"];
 }
 
