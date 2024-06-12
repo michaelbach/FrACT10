@@ -741,7 +741,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                             </connections>
                                         </popUpButton>
                                         <box fixedFrame="YES" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4PI-eF-GR8">
-                                            <rect key="frame" x="33" y="39" width="700" height="3"/>
+                                            <rect key="frame" x="33" y="44" width="700" height="3"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="Itc-rv-ck6">
                                                 <rect key="frame" x="1" y="1" width="698" height="1"/>
@@ -751,7 +751,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                             <color key="fillColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </box>
                                         <box fixedFrame="YES" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="NYw-lp-ui0">
-                                            <rect key="frame" x="33" y="35" width="3" height="12"/>
+                                            <rect key="frame" x="33" y="40" width="3" height="12"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="F2O-4Y-ugx">
                                                 <rect key="frame" x="1" y="1" width="1" height="10"/>
@@ -761,7 +761,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                             <color key="fillColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </box>
                                         <box fixedFrame="YES" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="c3I-kf-NBt">
-                                            <rect key="frame" x="731" y="35" width="3" height="12"/>
+                                            <rect key="frame" x="731" y="40" width="3" height="12"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="kqD-gL-3di">
                                                 <rect key="frame" x="1" y="1" width="1" height="10"/>
@@ -1184,7 +1184,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </textFieldCell>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pas-6M-sVy" userLabel="max. poss. decimal VA">
-                                            <rect key="frame" x="711" y="4" width="44" height="22"/>
+                                            <rect key="frame" x="710" y="-2" width="44" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">This displays the maximal acuity that can be achieved, in decimal VA units. It depends on the pixel size of your VDU (in degrees), which is calculated from your two entries under the ruler.
 
@@ -1200,7 +1200,7 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHb-FA-boY" userLabel="max. poss. decimal VA">
-                                            <rect key="frame" x="711" y="-18" width="44" height="22"/>
+                                            <rect key="frame" x="659" y="-2" width="44" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">This displays the minimal LogMAR that can be achieved, in decimal VA units. It depends on the pixel size of your VDU (in degrees), which is calculated from your two entries under the ruler.
 
@@ -1221,9 +1221,27 @@ Red: not good to assess normal vision; green: ok.</string>
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RdI-3Q-nit">
-                                            <rect key="frame" x="522" y="7" width="186" height="16"/>
+                                            <rect key="frame" x="521" y="1" width="137" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="→max possible decimal acuity" id="JpO-3M-x0P">
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="→best possible acuity" id="JpO-3M-x0P">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V7m-3A-ROS">
+                                            <rect key="frame" x="653" y="20" width="55" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="LogMAR" id="3b7-Di-ZPm">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xLR-aQ-mWY">
+                                            <rect key="frame" x="706" y="20" width="52" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="decimal" id="IJ1-uG-50b">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1365,17 +1383,8 @@ Red: not good to assess normal vision; green: ok.</string>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.autoFullScreen" id="Ujn-aa-srf"/>
                                             </connections>
                                         </button>
-                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V7m-3A-ROS">
-                                            <rect key="frame" x="562" y="-16" width="146" height="16"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="→min possible LogMAR" id="3b7-Di-ZPm">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="luN-q6-f3X">
-                                            <rect key="frame" x="311" y="30" width="194" height="23"/>
+                                            <rect key="frame" x="311" y="35" width="194" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Click to enter a dialog to use a plastic card for calibration (credit card or similar). 
 No money transfer involved, just for size!     </string>
