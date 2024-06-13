@@ -105,7 +105,8 @@ S;38;Opens the manual in your browser. 
  
  S;94;Optotypes/Background in black/white or gray, their gray values defined by the Weber contrast. S;77;Optotypes/Background in color as selected by the neighboring color wells.
  
- S;30;Preset a sets of settings.
+ S;122;Preset a set of settings.
+This is useful for studies / clinical trials for standardisation across time and/or centers.
  
  S;76;Redraw when changing orientation of a tablet between landscape and portrait.S;96;Select a soundfile giving feedback on "Correct".
                                               

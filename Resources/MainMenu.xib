@@ -594,7 +594,8 @@ DQ
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JgX-d5-6k1">
                         <rect key="frame" x="7" y="18" width="135" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Preset a sets of settings.
+                        <string key="toolTip">Preset a set of settings.
+This is useful for studies / clinical trials for standardisation across time and/or centers.
  
  </string>
                         <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="lkr-61-A7f" id="JI4-Wi-eC6">
