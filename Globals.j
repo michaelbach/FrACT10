@@ -22,7 +22,7 @@ gVersionOfExportFormat = "5";
 gFilename4ResultStorage = "FRACT10-FINAL-RESULT-STRING";
 gFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
 
-// Correction for threshold underestimation by ascending method (in VAdecimal)
+// Correction for threshold underestimation by DIN-ascending method (in VAdecimal)
 gThresholdCorrection4Ascending = 0.891;
 
 // slope parameter for the CI95 dispersion estimation; strongly affects CI95
@@ -56,6 +56,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 
 /*
  #  History
++ 2024-06-14 add "worst possible acuity" fields with associated code in Settings
 + 2024-06-12 add "nTrials08" to HTMLMessages, written for general case; rearrange "best poss. acuity" fields
 + 2024-06-11 fix regrssion (initialise `_sendHTMLMessageOnRunDone`), add HTMLMessage "Settings>nTrials08"
 + 2024-06-10 add `Version` to HTMLMessages. This state of HTMLMessages deserves minor version increase.

@@ -378,13 +378,13 @@
 }
 
 
-/*- (void) controlTextDidChange: (CPNotification) notification { //console.info(@"controlTextDidChange: stringValue == %@", [[notification object] stringValue]);[Settings calculateMaxPossibleDecimalAcuity];
+/*- (void) controlTextDidChange: (CPNotification) notification { //console.info(@"controlTextDidChange: stringValue == %@", [[notification object] stringValue]);[Settings calculateMinMaxPossibleDecimalAcuity];
  }*/
 /**
  Called from some text fields in the Settings panel, to update dependencies
  */
 - (void) controlTextDidEndEditing: (CPNotification) notification { //console.info(@"controlTextDidChange: stringValue == %@", [[notification object] stringValue]);
-    [Settings calculateMaxPossibleDecimalAcuity];
+    [Settings calculateMinMaxPossibleDecimalAcuity];
     [Settings calculateAcuityForeBackColorsFromContrast];
 }
 

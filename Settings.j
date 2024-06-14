@@ -138,7 +138,7 @@ Created by mb on July 15, 2015.
     [self setAcuityFormatSnellenFractionFoot: [self checkBool: [self acuityFormatSnellenFractionFoot] dflt: NO set: set]];
     [self setForceSnellen20: [self checkBool: [self forceSnellen20] dflt: NO set: set]];
     [self setShowCI95: [self checkBool: [self showCI95] dflt: NO set: set]];
-    [self calculateMaxPossibleDecimalAcuity];
+    [self calculateMinMaxPossibleDecimalAcuity];
 
     // Crowding, crowdingType: 0 = none, 1: flanking bars, 2 = flanking rings, 3 = surounding bars, 4: surounding ring, 5 = surounding square, 6 = row of optotypes
     [self setCrowdingType: [self checkNum: [self crowdingType] dflt: 0 min: 0 max: 6 set: set]];
@@ -196,10 +196,19 @@ Created by mb on July 15, 2015.
 }
 
 
-+ (void) calculateMaxPossibleDecimalAcuity { //console.info("Settings>calculateMaxPossibleDecimalAcuity");
++ (void) calculateMinMaxPossibleDecimalAcuity { //console.info("Settings>calculateMinMaxPossibleDecimalAcuity");
     let maxPossibleAcuityVal = [MiscSpace decVAFromStrokePixels: 1.0];
+    const screenSize = Math.min(window.screen.availHeight, window.screen.availWidth);
+    const strokeMaximal = screenSize / (5 + [self margin4MaxOptotypeIndex]); // leave a margin of ½·index around the largest optotype
+    let minPossibleAcuityVal = [MiscSpace decVAFromStrokePixels: strokeMaximal];
     // Correction for threshold underestimation of ascending procedures (as opposed to our bracketing one)
-    maxPossibleAcuityVal = [self threshCorrection] ? maxPossibleAcuityVal * 0.891 : maxPossibleAcuityVal;
+    minPossibleAcuityVal = [self threshCorrection] ? minPossibleAcuityVal * gThresholdCorrection4Ascending : maxPossibleAcuityVal;
+    [self setMinPossibleDecimalAcuityLocalisedString: [Misc stringFromNumber: minPossibleAcuityVal decimals: 3 localised: YES]];
+    [self setMaxPossibleLogMAR: [MiscSpace logMARfromDecVA: minPossibleAcuityVal]]; // needed for color
+    [self setMaxPossibleLogMARLocalisedString: [Misc stringFromNumber: [self maxPossibleLogMAR] decimals: 2 localised: YES]];
+
+    // Correction for threshold underestimation of ascending procedures (as opposed to our bracketing one)
+    maxPossibleAcuityVal = [self threshCorrection] ? maxPossibleAcuityVal * gThresholdCorrection4Ascending : maxPossibleAcuityVal;
     [self setMaxPossibleDecimalAcuityLocalisedString: [Misc stringFromNumber: maxPossibleAcuityVal decimals: 2 localised: YES]];
     [self setMinPossibleLogMAR: [MiscSpace logMARfromDecVA: maxPossibleAcuityVal]]; // needed for color
     [self setMinPossibleLogMARLocalisedString: [Misc stringFromNumber: [self minPossibleLogMAR] decimals: 2 localised: YES]];
@@ -602,6 +611,19 @@ Created by mb on July 15, 2015.
     [[CPUserDefaults standardUserDefaults] setObject: val forKey: "maxPossibleDecimalAcuityLocalisedString"];
 }
 
++ (float) minPossibleDecimalAcuity {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "minPossibleDecimalAcuity"];
+}
++ (void) setMinPossibleDecimalAcuity: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "minPossibleDecimalAcuity"];
+}
++ (CPString) minPossibleDecimalAcuityLocalisedString {
+    return [[CPUserDefaults standardUserDefaults] stringForKey: "minPossibleDecimalAcuityLocalisedString"];
+}
++ (void) setMinPossibleDecimalAcuityLocalisedString: (CPString) val {
+    [[CPUserDefaults standardUserDefaults] setObject: val forKey: "minPossibleDecimalAcuityLocalisedString"];
+}
+
 + (float) minPossibleLogMAR {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "minPossibleLogMAR"];
 }
@@ -613,6 +635,19 @@ Created by mb on July 15, 2015.
 }
 + (void) setMinPossibleLogMARLocalisedString: (CPString) val {
     [[CPUserDefaults standardUserDefaults] setObject: val forKey: "minPossibleLogMARLocalisedString"];
+}
+
++ (float) maxPossibleLogMAR {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "maxPossibleLogMAR"];
+}
++ (void) setMaxPossibleLogMAR: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "maxPossibleLogMAR"];
+}
++ (CPString) maxPossibleLogMARLocalisedString {
+    return [[CPUserDefaults standardUserDefaults] stringForKey: "maxPossibleLogMARLocalisedString"];
+}
++ (void) setMaxPossibleLogMARLocalisedString: (CPString) val {
+    [[CPUserDefaults standardUserDefaults] setObject: val forKey: "maxPossibleLogMARLocalisedString"];
 }
 
 
