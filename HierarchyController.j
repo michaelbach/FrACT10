@@ -22,6 +22,11 @@ kTestNone = 0; kTestAcuityLett = 1; kTestAcuityC = 2; kTestAcuityE = 3; kTestAcu
 kTestAcuityVernier = 5; kTestContrastLett = 6; kTestContrastC = 7; kTestContrastE = 8;
 kTestContrastG = 9; kTestAcuityLineByLine = 10; kTestContrastDitherTest = 11;
 
+gShortcutKeys4Tests = {"L": kTestAcuityLett, "C": kTestAcuityC, "E": kTestAcuityE,
+    "A": kTestAcuityTAO, "V": kTestAcuityVernier,
+    "1": kTestContrastLett, "2": kTestContrastC, "3": kTestContrastE,
+    "G": kTestContrastG, "0": kTestContrastDitherTest, "4": kTestAcuityLineByLine};
+
 @typedef Results2ClipChoiceType
 kResults2ClipNone = 0; kResults2ClipFinalOnly = 1; kResults2ClipFullHistory = 2;
 

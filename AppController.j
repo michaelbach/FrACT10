@@ -44,7 +44,7 @@
     @outlet CPColorWell checkContrastWeberField1, checkContrastWeberField2;
     @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, resultDetailsPanel, creditcardPanel;
     @outlet MDBButton buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine;
-    @outlet CPButton buttonExport, buttonExit;
+    @outlet CPButton buttonExport;
     @outlet CPButton radioButtonAcuityBW, radioButtonAcuityColor;
     @outlet GammaView gammaView;
     @outlet CPWebView aboutWebView1, aboutWebView2, helpWebView1, helpWebView2, helpWebView3, helpWebView4;
@@ -154,9 +154,6 @@
     [self setVersionDateString: gVersionStringOfFract + "·" + gVersionDateOfFrACT];
 
     [Settings checkDefaults]; // what was the reason to put this here???
-    /*let s = @"Current key test settings: " + [Settings distanceInCM] +" cm distance, ";
-     s += [Settings nAlternatives] + " Landolt alternatives, " + [Settings nTrials] + " trials";
-     [self setKeyTestSettingsString: s];*/
 
     rewardImageView = [[CPImageView alloc] initWithFrame: CGRectMake(100, 0, 600, 600)];
     [[selfWindow contentView] addSubview: rewardImageView];
@@ -175,8 +172,6 @@
 
     [self radioButtonsAcuityBwOrColor_action: null];
     [self buttonCheckContrast_action: null];
-
-    if ([window.navigator.platform hasPrefix:@"Mac"])  [buttonExit setTitle: "Quit"];// OS: Quit or Exit
 
     [Settings setAutoRunIndex: kAutoRunIndexNone]; // make sure it's not accidentally on
 
@@ -318,7 +313,7 @@
 
 
 /**
- Info panels (above) were not shown, or oked, so lets now REALLY run the test.
+ Info panels (above) were not shown, or OKed, so lets now REALLY run the test.
  */
 - (IBAction) runFractController2_actionOK: (id) sender { //console.info("AppController>runFractController2_actionOK");
     [self closeAllPanels];  [currentFractController release];
@@ -391,47 +386,25 @@
 
 #pragma mark
 - (void) keyDown: (CPEvent) theEvent { //console.info("AppController>keyDown");
-    switch([[[theEvent charactersIgnoringModifiers] characterAtIndex: 0] uppercaseString]) {
+    key = [[[theEvent charactersIgnoringModifiers] characterAtIndex: 0] uppercaseString];
+    if (gShortcutKeys4Tests[key]) {
+        [self runFractControllerTest: gShortcutKeys4Tests[key]];  return;
+    }
+    switch(key) {
         case "Q": case "X": case "-": // Quit or eXit
             [self buttonDoExit_action: nil];  break;
-        case "S":
-            [[CPRunLoop currentRunLoop] performSelector: @selector(buttonSettings_action:) target: self argument: nil order: 10000 modes:[CPDefaultRunLoopMode]];  break; // this complicated version avoids propagation of the "s"
+        case "S": // Settings
+            // this complicated version avoids propagation of the "s"
+            [[CPRunLoop currentRunLoop] performSelector: @selector(buttonSettings_action:) target: self argument: nil order: 10000 modes: [CPDefaultRunLoopMode]];  break;
         case "F":
             [self buttonFullScreen_action: nil];  break;
-        case "L":
-            [self runFractControllerTest: kTestAcuityLett];  break;
-        case "C":
-            [self runFractControllerTest: kTestAcuityC];  break;
-        case "E":
-            [self runFractControllerTest: kTestAcuityE];  break;
-        case "A":
-            [self runFractControllerTest: kTestAcuityTAO];  break;
-        case "V":
-            [self runFractControllerTest: kTestAcuityVernier];  break;
-        case "1":
-            [self runFractControllerTest: kTestContrastLett];  break;
-        case "2":
-            [self runFractControllerTest: kTestContrastC];  break;
-        case "3":
-            [self runFractControllerTest: kTestContrastE];  break;
-        case "G":
-            [self runFractControllerTest: kTestContrastG];  break;
-        case "0":
-            [self runFractControllerTest: kTestContrastDitherTest];  break;
-        case "4":
-            [self runFractControllerTest: kTestAcuityLineByLine];  break;
-        case "5" :
+        case "5":
             const sto5 = [Settings testOnFive];
             if (sto5 > 0) [self runFractControllerTest: sto5];
             break;
         case "R":
-            if ([Settings autoRunIndex] == kAutoRunIndexNone) { //toggle
-                [Settings setAutoRunIndex: kAutoRunIndexMid];
-            } else {
-                [Settings setAutoRunIndex: kAutoRunIndexNone];
-            }
-            break;
-            //case "∆": [self runtimeError_action: nil];  break;
+            [Settings toggleAutoRunIndex];  break;
+        //case "∆": [self runtimeError_action: nil];  break;
         default:
             [super keyDown: theEvent];  break;
     }
@@ -468,8 +441,7 @@
 
 
 /**
- All test buttons land here, discriminated by the tag values
- kTestAcuityLett = 0; kTestAcuityC = 1; kTestAcuityE = 2; kTestAcuityTAO = 3; kTestAcuityVernier = 4; kTestContrastLett = 5; kTestContrastC = 6; kTestContrastE = 7, kTestContrastG = 8, kTestAcuityLineByLine = 9;← set these tag values
+ All test buttons land here, discriminated by their tag values (→HierarchyController for `TestIDType`)
  */
 - (IBAction) buttonDoTest_action: (id) sender {
     [self runFractControllerTest: [sender tag]];
@@ -588,7 +560,7 @@
     if (![Settings contrastDarkOnLight]) {
         [gray1, gray2] = [gray2, gray1]; // "modern" swapping of variables
     }
-    //    console.log("Wperc ", contrastWeberPercent, ", lgCSW ", contrastLogCSWeber, ", g1 ", gray1, ", g2 ", gray2);
+    //console.log("Wperc ", contrastWeberPercent, ", lgCSW ", contrastLogCSWeber, ", g1 ", gray1, ", g2 ", gray2);
 
     //const c1 = [CPColor colorWithWhite: gray1 alpha: 1], c2 = [CPColor colorWithWhite: gray2 alpha: 1];
     let c1 = [MiscLight colorFromGreyBitStealed: gray1];
@@ -637,8 +609,7 @@
         case 2: f = 1.01;  break;
         case 3: f = 1.1;  break;
     }
-    [Settings setCalBarLengthInMM: [Settings calBarLengthInMM] * f];
-    [self creditCardUpdateSize];
+    [Settings setCalBarLengthInMM: [Settings calBarLengthInMM] * f];  [self creditCardUpdateSize];
 }
 - (IBAction) buttonCreditcardClosePanel_action: (id) sender {
     if ([sender tag] == 1)  [Settings setCalBarLengthInMM: calBarLengthInMMbefore];//undo

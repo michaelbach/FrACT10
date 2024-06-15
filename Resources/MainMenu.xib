@@ -3445,7 +3445,6 @@ CQ
                 <outlet property="buttonAcuityLineByLine" destination="s1F-y6-Eca" id="mXW-qr-ZAe"/>
                 <outlet property="buttonAcuityTAO" destination="6e2-Sj-gkY" id="wS5-ys-hpB"/>
                 <outlet property="buttonAcuityVernier" destination="8oB-kn-EbO" id="D7M-xX-xff"/>
-                <outlet property="buttonExit" destination="H63-sm-3gG" id="jIx-8v-AhU"/>
                 <outlet property="buttonExport" destination="L8d-bR-KqO" id="YCp-1H-vRB"/>
                 <outlet property="checkContrastWeberField1" destination="rpb-ue-CQK" id="6ZW-Oz-wpM"/>
                 <outlet property="checkContrastWeberField2" destination="4WO-rY-pis" id="Lcj-IY-0Np"/>

@@ -697,6 +697,9 @@ Created by mb on July 15, 2015.
 + (void) setAutoRunIndex: (int) val {
     [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "autoRunIndex"];
 }
++ (void) toggleAutoRunIndex {
+    [self setAutoRunIndex: [self autoRunIndex] === kAutoRunIndexNone ? kAutoRunIndexMid : kAutoRunIndexNone];
+}
 
 
 + (int) crowdingType {
