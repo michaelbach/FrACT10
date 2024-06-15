@@ -2372,7 +2372,7 @@ Maximum: 5px.
                                         <button tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hIy-ej-UZL">
                                             <rect key="frame" x="529" y="428" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Set the fields below to 3% Weber contrast (possibly too small to render correctly).
+                                            <string key="toolTip">Sets the fields below to 3% Weber contrast (possibly too small to render correctly).
  
  </string>
                                             <buttonCell key="cell" type="roundTextured" title="3%" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1P6-vF-hoz">
@@ -2386,7 +2386,7 @@ Maximum: 5px.
                                         <button tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0BV-zZ-cWy">
                                             <rect key="frame" x="470" y="428" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Set the fields below to 1% Weber contrast (too small to render).
+                                            <string key="toolTip">Sets the fields below to 1% Weber contrast (too small to render).
  
 </string>
                                             <buttonCell key="cell" type="roundTextured" title="1%" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AB1-ng-QrF">
@@ -2400,7 +2400,7 @@ Maximum: 5px.
                                         <button tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="79G-4d-smM">
                                             <rect key="frame" x="589" y="428" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Set the fields below to 10% Weber contrast.
+                                            <string key="toolTip">Sets the fields below to 10% Weber contrast.
  
  </string>
                                             <buttonCell key="cell" type="roundTextured" title="10%" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CmE-75-uwu">
@@ -2414,7 +2414,7 @@ Maximum: 5px.
                                         <button tag="4" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PK9-fk-lXd">
                                             <rect key="frame" x="651" y="428" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Set the fields below to 30% Weber contrast.
+                                            <string key="toolTip">Sets the fields below to 30% Weber contrast.
  
  </string>
                                             <buttonCell key="cell" type="roundTextured" title="30%" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gbk-mY-cce">
@@ -2428,7 +2428,7 @@ Maximum: 5px.
                                         <button tag="5" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TKw-fV-GSt">
                                             <rect key="frame" x="710" y="428" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Set the fields below to 90% Weber contrast.
+                                            <string key="toolTip">Sets the fields below to 90% Weber contrast.
  
  </string>
                                             <buttonCell key="cell" type="roundTextured" title="90%" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2PE-y0-Q2V">

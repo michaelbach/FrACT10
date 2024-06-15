@@ -22,7 +22,7 @@
 }
 
 
-+ (void) manageSettingNamed: (CPString) s {
++ (void) setSettingNamed: (CPString) s {
     if (isNaN(m3AsNumber)) {
         [self _logProblemM123];  return;
     }
@@ -55,14 +55,13 @@
                 [self post2parentM1: "Version" m2: gVersionStringOfFract m3: gVersionDateOfFrACT success: YES];
                 _sendHTMLMessageOnRunDone = NO;
                 break;
-            case "Settings":
+            case "setSetting": case "Setting": // 2 versions for compatibility, 2nd is deprecated
                 switch(m2) {
-                    case "Preset":
-                    case "Presets":
+                    case "Preset": case "Presets": // 2 versions for compatibility, 2nd is deprecated
                         [self _notify: "applyPresetNamed" object: m3];
                         break;
-                    case "nTrials08": case "distanceInCM": case "calBarLengthInMM":
-                        [self manageSettingNamed: m2];
+                    case "nTrials08": case "distanceInCM": case "calBarLengthInMM": case "autoRunIndex":
+                        [self setSettingNamed: m2];
                         break;
                     default:
                         [self _logProblemM123];

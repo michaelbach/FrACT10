@@ -56,6 +56,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 
 /*
  #  History
++ 2024-06-15 rename Settings → setSetting, Presets → Preset, add setSettings>autoRunIndex
 + 2024-06-14 add "worst possible acuity" fields with associated code in Settings
 + 2024-06-12 add "nTrials08" to HTMLMessages, written for general case; rearrange "best poss. acuity" fields
 + 2024-06-11 fix regrssion (initialise `_sendHTMLMessageOnRunDone`), add HTMLMessage "Settings>nTrials08"
