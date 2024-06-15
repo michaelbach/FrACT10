@@ -55,7 +55,7 @@
                 [self post2parentM1: "Version" m2: gVersionStringOfFract m3: gVersionDateOfFrACT success: YES];
                 _sendHTMLMessageOnRunDone = NO;
                 break;
-            case "setSetting": case "Setting": // 2 versions for compatibility, 2nd is deprecated
+            case "setSetting": case "Settings": // 2 versions for compatibility, 2nd is deprecated
                 switch(m2) {
                     case "Preset": case "Presets": // 2 versions for compatibility, 2nd is deprecated
                         [self _notify: "applyPresetNamed" object: m3];
@@ -72,7 +72,7 @@
                 switch(m2) {
                     case "TestNumber":
                         const allowedNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-                        if ((allowedNumbers.includes(m3AsNumber))) {
+                        if (allowedNumbers.includes(m3AsNumber)) {
                             [self _notify: "notificationRunFractControllerTest" object: m3];
                         } else {
                             [self _logProblemM123];
