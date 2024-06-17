@@ -22,19 +22,6 @@
 }
 
 
-+ (void) setSettingNamed: (CPString) s {
-    if (isNaN(m3AsNumber)) {
-        [self _logProblemM123];  return;
-    }
-    const sCapped = s.charAt(0).toUpperCase() + s.slice(1);
-    let setter = CPSelectorFromString("set" + sCapped + ":");
-    [Settings performSelector: setter withObject: m3AsNumber];
-    [Settings allNotCheckButSet: NO]; // check whether we were in range
-    const m3Now = [Settings performSelector: CPSelectorFromString(s)]; // read back
-    [self post2parentM1: m1 m2: m2 m3: m3Now success: m3AsNumber===m3Now];
-}
-
-
 /**
  set up listener to dispatch control messages to FrACT10 when embedded as iframe
  */
@@ -46,9 +33,8 @@
         if (e.origin !== window.location.origin) return; // same
         if (Object.keys(e.data).length !== 3) return; // avoid overruns from possibly malicious senders
         m1 = e.data.m1, m2 = e.data.m2, m3 = e.data.m3;
-        if ((m1 === undefined) || (m1.length > 50))  return;
-        if ((m2 === undefined) || (m2.length > 50))  return;
-        if ((m3 === undefined) || (m3.length > 50))  return;
+        if ((m1 === undefined) || (m2 === undefined) || (m3 === undefined)) return;
+        if (m1.length + m2.length + m3.length > 100) return;
         m3AsNumber = Number(m3);
         switch (m1) {
             case "Version":
@@ -67,55 +53,85 @@
                         [self _logProblemM123];
                 }
                 break;
+            case "getSetting":
+                [self manageGetSetting];  break;
             case "Run":
-                _sendHTMLMessageOnRunDone = YES;// need to switch again off if parsing below fails
-                switch(m2) {
-                    case "TestNumber":
-                        const allowedNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-                        if (allowedNumbers.includes(m3AsNumber)) {
-                            [self _notify: "notificationRunFractControllerTest" object: m3];
-                        } else {
-                            [self _logProblemM123];
-                        }
-                        break;
-                    case "Acuity":
-                        switch(m3) {
-                            case "Letters":
-                                [self _notify: "notificationRunFractControllerTest" object: kTestAcuityLett];
-                                break;
-                            case "LandoltC":
-                                [self _notify: "notificationRunFractControllerTest" object: kTestAcuityC];
-                                break;
-                            case "TumblingE":
-                                [self _notify: "notificationRunFractControllerTest" object: kTestAcuityE];
-                                break;
-                            default:
-                                [self _logProblemM123];
-                        }
-                        break;
-                    case "Contrast":
-                        switch(m3) {
-                            case "Letters":
-                                [self _notify: "notificationRunFractControllerTest" object: kTestContrastLett];
-                                break;
-                            case "LandoltC":
-                                [self _notify: "notificationRunFractControllerTest" object: kTestContrastC];
-                                break;
-                            case "TumblingE":
-                                [self _notify: "notificationRunFractControllerTest" object: kTestContrastE];
-                                break;
-                            default:
-                                [self _logProblemM123];
-                        }
-                        break;
-                    default:
-                        [self _logProblemM123];
-                }
-                break;
+                [self manageRun];  break;
             default:
                 [self _logProblem: e.data];
         }
     });
+}
+
+
++ (void) manageGetSetting {
+    if (m2 === "allKeys") {
+        const allKeys = [[[CPUserDefaults standardUserDefaults]._domains objectForKey: CPApplicationDomain] allKeys];
+        [self post2parentM1: m1 m2: m2 m3: allKeys success: YES];
+        return;
+    }
+    const sttng = [[CPUserDefaults standardUserDefaults] objectForKey: m2];
+    [self post2parentM1: m1 m2: m3 m3: sttng success: (sttng !== null)];
+}
+
+
++ (void) manageRun {
+    _sendHTMLMessageOnRunDone = YES;// need to switch off again if parsing below fails
+    switch(m2) {
+        case "TestNumber":
+            const allowedNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            if (allowedNumbers.includes(m3AsNumber)) {
+                [self _notify: "notificationRunFractControllerTest" object: m3];
+            } else {
+                [self _logProblemM123];
+            }
+            break;
+        case "Acuity":
+            switch(m3) {
+                case "Letters":
+                    [self _notify: "notificationRunFractControllerTest" object: kTestAcuityLett];
+                    break;
+                case "LandoltC":
+                    [self _notify: "notificationRunFractControllerTest" object: kTestAcuityC];
+                    break;
+                case "TumblingE":
+                    [self _notify: "notificationRunFractControllerTest" object: kTestAcuityE];
+                    break;
+                default:
+                    [self _logProblemM123];
+            }
+            break;
+        case "Contrast":
+            switch(m3) {
+                case "Letters":
+                    [self _notify: "notificationRunFractControllerTest" object: kTestContrastLett];
+                    break;
+                case "LandoltC":
+                    [self _notify: "notificationRunFractControllerTest" object: kTestContrastC];
+                    break;
+                case "TumblingE":
+                    [self _notify: "notificationRunFractControllerTest" object: kTestContrastE];
+                    break;
+                default:
+                    [self _logProblemM123];
+            }
+            break;
+        default:
+            [self _logProblemM123];
+    }
+}
+
+
++ (void) setSettingNamed: (CPString) sName {
+    if (isNaN(m3AsNumber)) {
+        [self _logProblemM123];  return;
+    }
+    const sNameCapped = sName.charAt(0).toUpperCase() + sName.slice(1);
+    let setter = CPSelectorFromString("set" + sNameCapped + ":");
+    [Settings performSelector: setter withObject: m3AsNumber];
+    [Settings allNotCheckButSet: NO]; // check whether we were in range
+    const m3Now = [Settings performSelector: CPSelectorFromString(sName)]; // read back
+    [self post2parentM1: m1 m2: m2 m3: m3Now success: m3AsNumber === m3Now];
 }
 
 

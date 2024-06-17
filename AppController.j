@@ -386,7 +386,7 @@
 
 #pragma mark
 - (void) keyDown: (CPEvent) theEvent { //console.info("AppController>keyDown");
-    key = [[[theEvent charactersIgnoringModifiers] characterAtIndex: 0] uppercaseString];
+    const key = [[[theEvent charactersIgnoringModifiers] characterAtIndex: 0] uppercaseString];
     if (gShortcutKeys4Tests[key]) {
         [self runFractControllerTest: gShortcutKeys4Tests[key]];  return;
     }
