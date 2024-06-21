@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Test sending of html-messages to FrACT₁₀</title>
+	</head>
+	<body>
+
+	<h1>Test sending of HTML Messages to FrACT₁₀</h1>
+	<label for="messageStringField">Return messages:</label><br>
+	<textarea id="messageStringField" rows="4" cols="103" style="overflow: scroll;"></textarea>
+	<br>
+
+
+    <script>
+	   'use strict';
+	   function tellIframe(message) {
+		   document.getElementById("messageStringField").value = ""; // clear
+		   const iframe = document.getElementById('fractFrame');
+		   iframe.contentWindow.postMessage(message, "*");
+	   }
+	   function runDemoWith3trials() {
+		   tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Demo'});
+		   tellIframe({m1: 'setSetting', m2: 'nTrials08', m3: 3});
+		   tellIframe({m1: 'Run', m2: 'Acuity', m3: 'Letters'});
+	   }
+
+	   // Send a message to the iframe and return a promise
+	   function tellIframeReturningPromise(message, timeout = 1000) {
+		 return new Promise((resolve, reject) => {
+		   const iframe = document.getElementById('fractFrame');
+		   const messageListener = (event) => { // Create a message listener
+			 if (event.source === iframe.contentWindow) {
+			   window.removeEventListener('message', messageListener);
+			   if (event.data.error) {
+			     reject(new Error(event.data.error));
+			   } else {
+			     resolve(event.data);
+			   }
+			 }
+		   };
+		   window.addEventListener('message', messageListener);
+		   iframe.contentWindow.postMessage(message, '*');
+		   setTimeout(() => { // Set a timeout to reject the promise if no response is received
+			 window.removeEventListener('message', messageListener);
+			 reject(new Error('Timeout: No response from iframe within ' + timeout + "ms."));
+		   }, timeout); // timeout in ms
+		 });
+	   }
+
+
+
+	   async function sendAsyncMessageChain01() {
+		   let response = await tellIframeReturningPromise({m1: 'getSetting', m2: 'distanceInCM', m3: ''});
+		   if (!response.success) return;
+		   const distanceInCM = response.m3;
+		   response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'distanceInCM', m3: 100});
+		   if (!response.success) return; // these many success tests may be an overkill…
+
+		   response = await tellIframeReturningPromise({m1: 'getSetting', m2: 'calBarLengthInMM', m3: ''});
+		   if (!response.success) return;
+		   const calBarLengthInMM = response.m3;
+		   response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'calBarLengthInMM', m3: 170});
+		   if (!response.success) return;
+
+		   response = await tellIframeReturningPromise({m1: 'getSetting', m2: 'nTrials08', m3: ''});
+		   if (!response.success) return;
+		   const nTrials08 = response.m3;
+		   response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'nTrials08', m3: 18});
+		   if (!response.success) return;
+
+		   response = await tellIframeReturningPromise({m1: 'getSetting', m2: 'responseInfoAtStart', m3: ''});
+		   if (!response.success) return;
+		   const responseInfoAtStart = response.m3;
+		   response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'responseInfoAtStart', m3: 0});
+		   if (!response.success) return;
+
+		   response = await tellIframeReturningPromise({m1: 'getSetting', m2: 'autoRunIndex', m3: ''});
+		   if (!response.success) return;
+		   const autoRunIndex = response.m3;
+		   response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'autoRunIndex', m3: 2});
+		   if (!response.success) return;
+
+		   response = await tellIframeReturningPromise({m1: 'Run', m2: 'Acuity', m3: 'Letters'}, 20000);
+		   //if (!response.success) return; in case of error we also want to restore
+
+		   // restore settings
+		   response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'distanceInCM', m3: distanceInCM});
+		   response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'calBarLengthInMM', m3: calBarLengthInMM});
+   		   response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'nTrials08', m3: nTrials08});
+		   response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'responseInfoAtStart', m3: responseInfoAtStart});
+		   response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'autoRunIndex', m3: autoRunIndex});
+
+			console.info("sucessfully ran and restored.");
+		}
+
+
+		window.addEventListener('message', function(e) {
+			//console.info('TESTER received message: ', e.data);
+			const tf = document.getElementById("messageStringField");
+			tf.value += "\n" + "m1: " + e.data.m1 + ", m2: " + e.data.m2;
+			tf.value += ", m3: " + e.data.m3 + ", success: " + e.data.success;
+			tf.scrollTop = tf.scrollHeight;
+		});
+    </script>
+
+	<br>
+    <button onclick="tellIframe('xx');">Send 'xx'</button>
+    <button onclick="tellIframe({m1: 'm1', m2: 'm2', m3: 'm3'});">Send unknown message</button>
+    <br>
+    <button onclick="tellIframe({m1: 'Version', m2: '', m3: ''});">Version</button>
+    <br>
+    <button onclick="tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Standard Defaults'});">setSetting Preset Defaults</button>
+    <button onclick="tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Testing'});">setSetting Preset Testing</button>
+    <button onclick="tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Demo'});">setSetting Preset Demo</button>
+    <button onclick="tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'NOTAPRESET'});">setSetting Preset NOTAPRESET</button>
+    <br>
+    <button onclick="tellIframe({m1: 'setSetting', m2: 'nTrials08', m3: '3'});">setSetting nTrials08: 3</button>
+    <button onclick="tellIframe({m1: 'setSetting', m2: 'nTrials08', m3: '999'});">setSetting nTrials08: 999</button>
+    <button onclick="tellIframe({m1: 'setSetting', m2: 'distanceInCM', m3: '57'});">setSetting distanceInCM: 57</button>
+    <button onclick="tellIframe({m1: 'setSetting', m2: 'calBarLengthInMM', m3: '145'});">setSetting calBarLengthInMM: 145</button>
+    <button onclick="tellIframe({m1: 'setSetting', m2: 'autoRunIndex', m3: '0'});">setSetting autoRunIndex: 0</button>
+    <br>
+    <button onclick="tellIframe({m1: 'getSetting', m2: 'nTrials08', m3: ''});">getSetting nTrials08</button>
+    <button onclick="tellIframe({m1: 'getSetting', m2: 'allKeys', m3: ''});">getSetting allKeys</button>
+    <br>
+    <button onclick="tellIframe({m1: 'Run', m2: 'Acuity', m3: 'Letters'});">Run Acuity Letters</button>
+    <button onclick="tellIframe({m1: 'Run', m2: 'Acuity', m3: 'LandoltC'});">Run Acuity LandoltC</button>
+    <button onclick="tellIframe({m1: 'Run', m2: 'Contrast', m3: 'LandoltC'});">Run Contrast LandoltC</button>
+    <br>
+    <button onclick="tellIframe({m1: 'Run', m2: 'TestNumber', m3: 3});">Run TestNumber 3</button>
+    <br>
+    <button onclick="runDemoWith3trials();">Run short Demo with only 3 trials</button>
+    <br>
+    <button onclick="sendAsyncMessageChain01()">sendAsyncMessageChain based on promises / await. Will do a demo run and restore settings.</button>
+    <br>
+
+
+    <br>
+    <iframe id="fractFrame" src="index.html" scrolling="yes" allow="clipboard-write" style="width: 800px; height: 628px; border: 1px solid #3050C0; padding:0px; margin:0px;"></iframe>
+
+	</body>
+</html>
