@@ -46,7 +46,8 @@
                     case "Preset": case "Presets": // 2 versions for compatibility, 2nd is deprecated
                         [self _notify: "applyPresetNamed" object: m3];
                         break;
-                    case "nTrials08": case "distanceInCM": case "calBarLengthInMM": case "autoRunIndex":
+                    case "nTrials08": case "distanceInCM": case "calBarLengthInMM": 
+                    case "responseInfoAtStart": case "autoRunIndex":
                         [self setSettingNamed: m2];
                         break;
                     default:
@@ -71,7 +72,7 @@
         return;
     }
     const sttng = [[CPUserDefaults standardUserDefaults] objectForKey: m2];
-    [self post2parentM1: m1 m2: m3 m3: sttng success: (sttng !== null)];
+    [self post2parentM1: m1 m2: m2 m3: sttng success: (sttng !== null)];
 }
 
 
@@ -122,7 +123,7 @@
 }
 
 
-+ (void) setSettingNamed: (CPString) sName {
++ (void) setSettingNamed: (CPString) sName { //console.info("setSettingNamed: ", sName);
     if (isNaN(m3AsNumber)) {
         [self _logProblemM123];  return;
     }
@@ -130,13 +131,16 @@
     let setter = CPSelectorFromString("set" + sNameCapped + ":");
     [Settings performSelector: setter withObject: m3AsNumber];
     [Settings allNotCheckButSet: NO]; // check whether we were in range
-    const m3Now = [Settings performSelector: CPSelectorFromString(sName)]; // read back
+    let m3Now = [Settings performSelector: CPSelectorFromString(sName)]; // read back
+    if (typeof(m3Now) === "boolean") {
+        m3Now = Number(m3Now);
+    }
     [self post2parentM1: m1 m2: m2 m3: m3Now success: m3AsNumber === m3Now];
 }
 
 
 + (void) post2parentM1: (CPString) m1 m2: (CPString) m2 m3: (CPString) m3 success: (BOOL) success {
-    window.parent.postMessage({m1: m1, m2: m2, m3: m3, success: success}, "*");
+    window.parent.postMessage({m1, m2, m3, success: success}, "*");
 }
 
 
@@ -154,7 +158,7 @@
 
 
 + (void) _logProblemM123 {
-    const data = {m1: m1, m2: m2, m3: m3, success: false};
+    const data = {m1, m2, m3, success: false};
     console.log("FrACT10 received unexpected message.data: ", data);
     window.parent.postMessage(data, "*");
     _sendHTMLMessageOnRunDone = NO;
