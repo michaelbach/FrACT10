@@ -925,7 +925,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.auditoryFeedbackWhenDone" id="xxU-m2-eaZ"/>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.auditoryFeedback4run" id="Qrz-iU-NZZ"/>
                                                         </connections>
                                                     </button>
                                                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BOr-fJ-CY3">
@@ -953,7 +953,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                             </menu>
                                                         </popUpButtonCell>
                                                         <connections>
-                                                            <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.auditoryFeedback" id="38v-cx-OZA"/>
+                                                            <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.auditoryFeedback4trial" id="i0l-Mh-oqL"/>
                                                         </connections>
                                                     </popUpButton>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9pa-WZ-evv">
@@ -2744,7 +2744,7 @@ Don't go too close or you can resolve the pattern.
                                                 </menu>
                                             </popUpButtonCell>
                                             <connections>
-                                                <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.what2SweepIndex" id="dU8-ab-lZx"/>
+                                                <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.what2sweepIndex" id="UqD-cw-W4m"/>
                                             </connections>
                                         </popUpButton>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UvB-8w-Mlb">

@@ -92,7 +92,7 @@ kDecimalMarkCharIndexAuto = 0; kDecimalMarkCharIndexDot = 1; kDecimalMarkCharInd
     return [kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO].includes(currentTestID);
 }
 - (BOOL) isAcuityGrating {
-    return (currentTestID == kTestContrastG) && ([Settings what2SweepIndex] == 1);
+    return (currentTestID == kTestContrastG) && ([Settings what2sweepIndex] == 1);
 }
 - (BOOL) isAcuityAny {
     return ([self isAcuityOptotype] || (currentTestID == kTestAcuityVernier) || [self isAcuityGrating]);

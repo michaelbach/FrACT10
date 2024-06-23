@@ -54,7 +54,7 @@
 		   let response = await tellIframeReturningPromise({m1: 'getSetting', m2: 'distanceInCM', m3: ''});
 		   if (!response.success) return;
 		   const distanceInCM = response.m3;
-		   response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'distanceInCM', m3: 100});
+		   response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'distanceInCM', m3: 400});
 		   if (!response.success) return; // these many success tests may be an overkill…
 
 		   response = await tellIframeReturningPromise({m1: 'getSetting', m2: 'calBarLengthInMM', m3: ''});
@@ -66,7 +66,7 @@
 		   response = await tellIframeReturningPromise({m1: 'getSetting', m2: 'nTrials08', m3: ''});
 		   if (!response.success) return;
 		   const nTrials08 = response.m3;
-		   response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'nTrials08', m3: 18});
+		   response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'nTrials08', m3: 12});
 		   if (!response.success) return;
 
 		   response = await tellIframeReturningPromise({m1: 'getSetting', m2: 'responseInfoAtStart', m3: ''});
@@ -133,7 +133,7 @@
     <br>
     <button onclick="runDemoWith3trials();">Run short Demo with only 3 trials</button>
     <br>
-    <button onclick="sendAsyncMessageChain01()">sendAsyncMessageChain based on promises / await. Will do a demo run and restore settings.</button>
+    <button onclick="sendAsyncMessageChain01()">sendAsyncMessageChain based on promises / await. Will do a 12-trial demo run and restore settings.</button>
     <br>
 
 

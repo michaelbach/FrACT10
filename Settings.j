@@ -109,10 +109,10 @@ Created by mb on July 15, 2015.
     [self setResults2clipboardSilent: [self checkBool: [self results2clipboardSilent] dflt: NO set: set]];
 
     // 0: none, 1: always, 2: on correct, 3: w/ info
-    [self setAuditoryFeedback: [self checkNum: [self auditoryFeedback] dflt: 3 min: 0 max: 3 set: set]];
+    [self setAuditoryFeedback4trial: [self checkNum: [self auditoryFeedback4trial] dflt: 3 min: 0 max: 3 set: set]];
     // 0: none, 1: always, 2: on correct, 3: w/ info
     [self setVisualFeedback: [self checkNum: [self visualFeedback] dflt: 0 min: 0 max: 3 set: set]]; // NOT IN USE
-    [self setAuditoryFeedbackWhenDone: [self checkBool: [self auditoryFeedbackWhenDone] dflt: YES set: set]];
+    [self setAuditoryFeedback4run: [self checkBool: [self auditoryFeedback4run] dflt: YES set: set]];
     [self setSoundVolume: [self checkNum: [self soundVolume] dflt: 20 min: 1 max: 100 set: set]];
 
     [self setRewardPicturesWhenDone: [self checkBool: [self rewardPicturesWhenDone] dflt: NO set: set]];
@@ -179,7 +179,7 @@ Created by mb on July 15, 2015.
     [self setGratingUseErrorDiffusion: [self checkBool: [self gratingUseErrorDiffusion] dflt: YES set: set]];
     [self setGratingSineNotSquare: [self checkBool: [self gratingSineNotSquare] dflt: YES set: set]];
     [self setIsGratingColor: [self checkBool: [self isGratingColor] dflt: NO set: set]];
-    [self setWhat2SweepIndex: [self checkNum: [self what2SweepIndex] dflt: 0 min: 0 max: 1 set: set]]; // 0: sweep contrast, 1: sweep spatial frequency
+    [self setWhat2sweepIndex: [self checkNum: [self what2sweepIndex] dflt: 0 min: 0 max: 1 set: set]]; // 0: sweep contrast, 1: sweep spatial frequency
     [self setGratingCPDmin: [self checkNum: [self gratingCPDmin] dflt: 0.5 min: 0.01 max: 60 set: set]];
     [self setGratingCPDmax: [self checkNum: [self gratingCPDmax] dflt: 30 min: 0.01 max: 60 set: set]];
     [self setGratingContrastMichelsonPercent: [self checkNum: [self gratingContrastMichelsonPercent] dflt: 95 min: 0.3 max: 99 set: set]];
@@ -478,11 +478,11 @@ Created by mb on July 15, 2015.
 }
 
 
-+ (int) auditoryFeedback {
-    return [[CPUserDefaults standardUserDefaults] integerForKey: "auditoryFeedback"];
++ (int) auditoryFeedback4trial {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "auditoryFeedback4trial"];
 }
-+ (void) setAuditoryFeedback: (int) val {
-    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "auditoryFeedback"];
++ (void) setAuditoryFeedback4trial: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "auditoryFeedback4trial"];
 }
 
 
@@ -494,11 +494,11 @@ Created by mb on July 15, 2015.
 }
 
 
-+ (BOOL) auditoryFeedbackWhenDone {
-    return [[CPUserDefaults standardUserDefaults] boolForKey: "auditoryFeedbackWhenDone"];
++ (BOOL) auditoryFeedback4run {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "auditoryFeedback4run"];
 }
-+ (void) setAuditoryFeedbackWhenDone: (BOOL) val {
-    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "auditoryFeedbackWhenDone"];
++ (void) setAuditoryFeedback4run: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "auditoryFeedback4run"];
 }
 
 
@@ -963,11 +963,11 @@ Created by mb on July 15, 2015.
     [self setColor: theColor forKey: "gratingBackColor"];
 }
 
-+ (int) what2SweepIndex {
-    return [[CPUserDefaults standardUserDefaults] integerForKey: "what2SweepIndex"];
++ (int) what2sweepIndex {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "what2sweepIndex"];
 }
-+ (void) setWhat2SweepIndex: (int) val {
-    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "what2SweepIndex"];
++ (void) setWhat2sweepIndex: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "what2sweepIndex"];
 }
 
 + (float) gratingCPDmin {

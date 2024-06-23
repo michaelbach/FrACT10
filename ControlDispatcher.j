@@ -83,7 +83,7 @@
         case "nTrials08": case "distanceInCM": case "calBarLengthInMM":
         case "responseInfoAtStart": case "enableTouchControls":
         case "results2clipboard": case "testOnFive":
-        case "auditoryFeedback": case "auditoryFeedbackWhenDone":
+        case "auditoryFeedback4trial": case "auditoryFeedback4run":
         case "autoRunIndex":
             [self setSettingNamed: m2];
             break;

@@ -323,7 +323,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [self invalidateTrialTimers];
     [trialHistoryController setCorrect: responseWasCorrect]; // placed here so reached by "onTimeoutAutoResponse"
     [thresholder enterTrialOutcomeWithAppliedStim: [self stimThresholderunitsFromDeviceunits: stimStrengthInDeviceunits] wasCorrect: responseWasCorrect];
-    switch ([Settings auditoryFeedback]) { // case 0: nothing
+    switch ([Settings auditoryFeedback4trial]) { // case 0: nothing
         case 1:
             [sound playNumber: kSoundTrialYes];  break;
         case 2:
@@ -355,7 +355,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [trialHistoryController runEnded];
     const _parentController = [self parentController];
     [_parentController setCurrentTestResultsHistoryExportString: [trialHistoryController resultsHistoryString]];
-    if ([Settings auditoryFeedbackWhenDone]) [sound playNumber: kSoundRunEnd];
+    if ([Settings auditoryFeedback4run]) [sound playNumber: kSoundRunEnd];
     
     let _currentTestResultExportString = [_parentController currentTestResultExportString];
     if ([Settings showCI95] && (![_parentController runAborted])) {
