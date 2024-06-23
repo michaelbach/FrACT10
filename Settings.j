@@ -130,7 +130,7 @@ Created by mb on July 15, 2015.
     [self setMaxDisplayedAcuity: [self checkNum: [self maxDisplayedAcuity] dflt: 2 min: 1 max: 99 set: set]];
     [self setMinStrokeAcuity: [self checkNum: [self minStrokeAcuity] dflt: 0.5 min: 0.5 max: 5 set: set]];
     [self setAcuityStartingLogMAR: [self checkNum: [self acuityStartingLogMAR] dflt: 1 min: 0.3 max: 2.5 set: set]];
-    [self setMargin4MaxOptotypeIndex: [self checkNum: [self margin4MaxOptotypeIndex] dflt: 1 min: 0 max: 4 set: set]];
+    [self setMargin4maxOptotypeIndex: [self checkNum: [self margin4maxOptotypeIndex] dflt: 1 min: 0 max: 4 set: set]];
     [self setAutoRunIndex: [self checkNum: [self autoRunIndex] dflt: kAutoRunIndexNone min: kAutoRunIndexNone max: kAutoRunIndexLow set: set]];
     [self setThreshCorrection: [self checkBool: [self threshCorrection] dflt: YES set: set]];
     [self setAcuityFormatDecimal: [self checkBool: [self acuityFormatDecimal] dflt: YES set: set]];
@@ -199,7 +199,7 @@ Created by mb on July 15, 2015.
 + (void) calculateMinMaxPossibleDecimalAcuity { //console.info("Settings>calculateMinMaxPossibleDecimalAcuity");
     let maxPossibleAcuityVal = [MiscSpace decVAFromStrokePixels: 1.0];
     const screenSize = Math.min(window.screen.availHeight, window.screen.availWidth);
-    const strokeMaximal = screenSize / (5 + [self margin4MaxOptotypeIndex]); // leave a margin of ½·index around the largest optotype
+    const strokeMaximal = screenSize / (5 + [self margin4maxOptotypeIndex]); // leave a margin of ½·index around the largest optotype
     let minPossibleAcuityVal = [MiscSpace decVAFromStrokePixels: strokeMaximal];
     // Correction for threshold underestimation of ascending procedures (as opposed to our bracketing one)
     minPossibleAcuityVal = [self threshCorrection] ? minPossibleAcuityVal * gThresholdCorrection4Ascending : maxPossibleAcuityVal;
@@ -683,11 +683,11 @@ Created by mb on July 15, 2015.
 }
 
 
-+ (int) margin4MaxOptotypeIndex {
-    return [[CPUserDefaults standardUserDefaults] integerForKey: "margin4MaxOptotypeIndex"];
++ (int) margin4maxOptotypeIndex {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "margin4maxOptotypeIndex"];
 }
-+ (void) setMargin4MaxOptotypeIndex: (int) val {
-    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "margin4MaxOptotypeIndex"];
++ (void) setMargin4maxOptotypeIndex: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "margin4maxOptotypeIndex"];
 }
 
 
