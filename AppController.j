@@ -41,7 +41,6 @@
 
 @implementation AppController : HierarchyController {
     @outlet CPWindow fractControllerWindow;
-    @outlet CPColorWell checkContrastWeberField1, checkContrastWeberField2;
     @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, resultDetailsPanel, creditcardPanel;
     @outlet MDBButton buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine;
     @outlet CPButton buttonExport;
@@ -250,7 +249,7 @@
 /**
  One of the tests should run, but let's test some prerequisites first
  */
-- (void) notificationRunFractControllerTest: (CPNotification) aNotification {
+- (void) notificationRunFractControllerTest: (CPNotification) aNotification { // called from ControlDispatcher
     [self runFractControllerTest: [aNotification object]];
 }
 - (void) runFractControllerTest: (int) testNr { //console.info("AppController>runFractController");
@@ -313,7 +312,7 @@
 
 
 /**
- Info panels (above) were not shown, or OKed, so lets now REALLY run the test.
+ Info panels (above) were not needed, or OKed, so lets now REALLY run the test.
  */
 - (IBAction) runFractController2_actionOK: (id) sender { //console.info("AppController>runFractController2_actionOK");
     [self closeAllPanels];  [currentFractController release];

@@ -37,31 +37,30 @@
         if (m1.length + m2.length + m3.length > 100) return;
         m3AsNumber = Number(m3);
         switch (m1) {
-            case "Version":
-                [self post2parentM1: "Version" m2: gVersionStringOfFract m3: gVersionDateOfFrACT success: YES];
+            case "getVersion": case "Version": // 2 versions for compatibility, 2nd is deprecated
+                [self post2parentM1: "getVersion" m2: gVersionStringOfFract m3: gVersionDateOfFrACT success: YES];
                 _sendHTMLMessageOnRunDone = NO;
-                break;
-            case "setSetting": case "Settings": // 2 versions for compatibility, 2nd is deprecated
-                switch(m2) {
-                    case "Preset": case "Presets": // 2 versions for compatibility, 2nd is deprecated
-                        [self _notify: "applyPresetNamed" object: m3];
-                        break;
-                    case "nTrials08": case "distanceInCM": case "calBarLengthInMM": 
-                    case "responseInfoAtStart": case "autoRunIndex":
-                        [self setSettingNamed: m2];
-                        break;
-                    default:
-                        [self _logProblemM123];
-                }
                 break;
             case "getSetting":
                 [self manageGetSetting];  break;
+            case "setSetting": case "Settings": // 2 versions for compatibility, 2nd is deprecated
+                [self manageSetSetting];  break;
             case "Run":
                 [self manageRun];  break;
             default:
                 [self _logProblem: e.data];
         }
     });
+}
+
+
+/**
+ called from AppController
+ */
++  (void) runDoneSuccessful: (BOOL) success { //console.info("ControlDispatcher>runDoneSuccessful")
+    if (!_sendHTMLMessageOnRunDone) return;
+    _sendHTMLMessageOnRunDone = NO;
+    [self post2parentM1: m1 m2: m2 m3: m3 success: success];
 }
 
 
@@ -73,6 +72,24 @@
     }
     const sttng = [[CPUserDefaults standardUserDefaults] objectForKey: m2];
     [self post2parentM1: m1 m2: m2 m3: sttng success: (sttng !== null)];
+}
+
+
++ (void) manageSetSetting {
+    switch(m2) {
+        case "Preset": case "Presets": // 2 versions for compatibility, 2nd deprecated
+            [self _notify: "applyPresetNamed" object: m3];
+            break;
+        case "nTrials08": case "distanceInCM": case "calBarLengthInMM":
+        case "responseInfoAtStart": case "enableTouchControls":
+        case "results2clipboard": case "testOnFive":
+        case "auditoryFeedback": case "auditoryFeedbackWhenDone":
+        case "autoRunIndex":
+            [self setSettingNamed: m2];
+            break;
+        default:
+            [self _logProblemM123];
+    }
 }
 
 
@@ -139,26 +156,19 @@
 }
 
 
-+ (void) post2parentM1: (CPString) m1 m2: (CPString) m2 m3: (CPString) m3 success: (BOOL) success {
-    window.parent.postMessage({m1, m2, m3, success: success}, "*");
-}
-
-
-+  (void) runDoneSuccessful: (BOOL) success { //console.info("ControlDispatcher>runDoneSuccessful")
-    if (!_sendHTMLMessageOnRunDone) return;
-    _sendHTMLMessageOnRunDone = NO;
-    [self post2parentM1: m1 m2: m2 m3: m3 success: success];
-}
-
-
 + (void) _notify: (CPString) aNotificationName object: (id) anObject {
     [[_appController window] orderFront: self]; // otherwise we would crash here
     [[CPNotificationCenter defaultCenter] postNotificationName: aNotificationName object: anObject];
 }
 
 
++ (void) post2parentM1: (CPString) m1 m2: (CPString) m2 m3: (CPString) m3 success: (BOOL) success {
+    window.parent.postMessage({success: success, m1, m2, m3}, "*");
+}
+
+
 + (void) _logProblemM123 {
-    const data = {m1, m2, m3, success: false};
+    const data = {success: NO, m1, m2, m3};
     console.log("FrACT10 received unexpected message.data: ", data);
     window.parent.postMessage(data, "*");
     _sendHTMLMessageOnRunDone = NO;
@@ -167,7 +177,7 @@
 
 + (void) _logProblem: (id) data {
     console.log("FrACT10 received unexpected message.data: ", data);
-    window.parent.postMessage({data: data, success: NO}, "*");
+    window.parent.postMessage({success: NO, data: data}, "*");
     _sendHTMLMessageOnRunDone = NO;
 }
 
