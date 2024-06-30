@@ -403,6 +403,7 @@
             break;
         case "R":
             [Settings toggleAutoRunIndex];  break;
+        case "W": [rewardsController test];  break;
         //case "∆": [self runtimeError_action: nil];  break;
         default:
             [super keyDown: theEvent];  break;
