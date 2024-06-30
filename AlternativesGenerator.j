@@ -91,6 +91,8 @@ function randomiseArray(array) {
 //                }
 //            }
 //        }
+        possibleAlternatives = randomiseArray(possibleAlternatives); // in case nTrials<nAlternatives
+
         alternatives2present = [nTrials];
         for (i=0; i < nTrials; ++i) {
             alternatives2present[i] = possibleAlternatives[i % (nAlternatives)];
