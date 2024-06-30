@@ -56,6 +56,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 
 /*
  #  History
++ 2024-06-30 refactor `RewardsController`: easier expansion, test mode, more & better images
 + 2024-06-17 add getSettings to HTMLMessaging, refactor `ControlDispatcher`
 + 2024-06-15 rename Settings → setSetting, Presets → Preset, add setSettings>autoRunIndex
 + 2024-06-14 add "worst possible acuity" fields with associated code in Settings

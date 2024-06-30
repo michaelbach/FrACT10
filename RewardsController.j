@@ -5,6 +5,15 @@ Copyright © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 RewardsController.j
 
 2020-05-23 This class manages the reward images sprite
+
+🤓🤗🐻🐹🍒🐸🐥🐞
+👻😻🎸🦎🐇🐿️🐬🦉
+🐝🦋🐢🐙🦞🦜🦘🦚
+🦭🐠🐳🦕🦖🐜🦔⛄️
+
+To be done:
+🦆🦎🏓🛼🥕🍎🌈🪷
+
 */
 
 
@@ -13,9 +22,13 @@ RewardsController.j
 @import "Misc.j"
 @import "Settings.j"
 
-kNImages = 24;
+
+kNImages = 32;
 kSize = 200;
 kScale = 3;
+kSizeScaled = kSize * kScale;
+kSpriteFile = "allRewardSprites.png";
+
 
 @implementation RewardsController: CPObject {
     CPImage _rewardImageStrip;
@@ -29,13 +42,13 @@ kScale = 3;
 - (id) initWithView: (CPImageView) view { //console.info("RewardsController>initWithView", view);
     self = [super init];
     if (self) {
-        _rewardImageStrip = [[CPImage alloc] initWithContentsOfFile: [[CPBundle mainBundle] pathForResource: "allRewards4800x200.png"]];
+        _rewardImageStrip = [[CPImage alloc] initWithContentsOfFile: [[CPBundle mainBundle] pathForResource: kSpriteFile]];
         _rewardView = view;
         [_rewardView setImageAlignment: CPImageAlignCenter]; // is already the default
         [_rewardView setImageScaling: CPImageScaleNone];
-        [_rewardView setAlphaValue: 0.95];
+        [_rewardView setAlphaValue: 0.98];
         [_rewardView setHitTests: NO]; // allows "click through"
-        [_rewardImageStrip setSize: CGSizeMake(kNImages * kSize * kScale, kSize * kScale)];
+        [_rewardImageStrip setSize: CGSizeMake(kNImages * kSizeScaled, kSizeScaled)];
         _oldImage = -1;
         _testing = NO;
     }
@@ -67,7 +80,7 @@ kScale = 3;
     [_rewardView setImage: _rewardImageStrip];
 
     // don't really understand why this bounds setting works to select a single sprite
-    [_rewardView setBounds: CGRectMake(0, 0, (_currentImage - 11) * 2 * kSize * kScale, kSize * kScale)];
+    [_rewardView setBounds: CGRectMake(0, 0, (2 * _currentImage - kNImages + 2) * kSizeScaled, kSizeScaled)];
 
     _timerRewardsController = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutRewardPicturesInSeconds] target: self selector: @selector(onTimeoutRewardsController:) userInfo: nil repeats: NO];
 }
