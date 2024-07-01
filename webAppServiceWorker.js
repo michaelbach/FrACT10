@@ -2,7 +2,7 @@
 // file "webAppServiceWorker.js"
 //
 
-let cacheName = "FrACT10·2024-06-30";
+let cacheName = "FrACT10·2024-06-30b";
 const cacheNameRoot = "FrACT10·";
 //let cacheName = cacheNameRoot;
 
@@ -53,7 +53,7 @@ self.addEventListener('install', (event) => {
                             './Browser.environment/FrACT.sj',
                             './index.html',
                             './Info.plist',
-                            './Resources/allRewards4800x200.png',
+                            './Resources/allRewardSprites.png',
                             './Resources/CreditcardPlus2x50.png',
                             './Resources/MainMenu.cib',
                             './Resources/buttons/butCntC.png',

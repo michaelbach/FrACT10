@@ -7,12 +7,12 @@ RewardsController.j
 2020-05-23 This class manages the reward images sprite
 
 🤓🤗🐻🐹🍒🐸🐥🐞
-👻😻🎸🦎🐇🐿️🐬🦉
+👻😻🐭🦎🐇🐿️🐬🦉
 🐝🦋🐢🐙🦞🦜🦘🦚
 🦭🐠🐳🦕🦖🐜🦔⛄️
 
 To be done:
-🦆🦎🏓🛼🥕🍎🌈🪷
+🦆🦎🏓🛼🥕🍎🌈🪷🐁🫎
 
 */
 
@@ -36,6 +36,7 @@ kSpriteFile = "allRewardSprites.png";
     CPImageView _rewardView;
     int _oldImage, _currentImage;
     BOOL _testing;
+    fload _savedTimeout;
 }
 
 
@@ -51,6 +52,7 @@ kSpriteFile = "allRewardSprites.png";
         [_rewardImageStrip setSize: CGSizeMake(kNImages * kSizeScaled, kSizeScaled)];
         _oldImage = -1;
         _testing = NO;
+        _savedTimeout = [Settings timeoutRewardPicturesInSeconds]
     }
     return self;
 }
@@ -59,6 +61,8 @@ kSpriteFile = "allRewardSprites.png";
 - (void) test { console.info("RewardsController>test");
     _testing = YES;
     _currentImage = 0;
+    _savedTimeout = [Settings timeoutRewardPicturesInSeconds]
+    [Settings setTimeoutRewardPicturesInSeconds: 0.5];
     [self drawImage];
 }
 
@@ -92,6 +96,7 @@ kSpriteFile = "allRewardSprites.png";
 
     if (++_currentImage >= kNImages) {
         _testing = NO;
+        [Settings setTimeoutRewardPicturesInSeconds: _savedTimeout];
         return;
     }
     [self drawImage];
