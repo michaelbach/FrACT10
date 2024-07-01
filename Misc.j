@@ -21,6 +21,17 @@ Misc.j
 
 
 /**
+ Delay for seconds
+ */
+function _pause(ms) { //console.info("Misc>_pause");
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
++ (async void) asyncDelaySeconds: (float) secs { //console.info("Misc>delaySeconds");
+    await _pause(secs * 1000);
+}
+
+
+/**
  Return random integer from 0 to i-1 */
 + (int) iRandom: (int) i {
     return Math.floor(Math.random() * i);

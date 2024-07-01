@@ -338,7 +338,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
-- (void) runEnd { //console.info("FractController>runEnd");
+- (async void) runEnd { //console.info("FractController>runEnd");
     [self invalidateTrialTimers];
     const sv = [[selfWindow contentView] subviews];
     for (const svi of sv) [svi removeFromSuperview];
@@ -346,12 +346,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [[self parentController] setRunAborted: (iTrial < nTrials)]; //premature end
     [[self parentController] setResultString: resultString];
     [[self parentController] setCurrentTestResultExportString: [self composeExportString]];
-    // timer delay to give the screen time to update, thus giving immediate response feedback
-    timerRunEnd2 = [CPTimer scheduledTimerWithTimeInterval: 0.02 target:self selector:@selector(onRunEnd2:) userInfo:nil repeats:NO];
-}
-
-
-- (void) onRunEnd2: (CPTimer) timer { //console.info("FractController>onRunEnd2");
+    // delay to give the screen time to update for immediate response feedback
+    await [Misc asyncDelaySeconds: 0.03];
     [trialHistoryController runEnded];
     const _parentController = [self parentController];
     [_parentController setCurrentTestResultsHistoryExportString: [trialHistoryController resultsHistoryString]];
