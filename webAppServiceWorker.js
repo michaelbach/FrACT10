@@ -2,7 +2,7 @@
 // file "webAppServiceWorker.js"
 //
 
-let cacheName = "FrACT10·2024-06-30b";
+let cacheName = "FrACT10·2024-06-30c";
 const cacheNameRoot = "FrACT10·";
 //let cacheName = cacheNameRoot;
 

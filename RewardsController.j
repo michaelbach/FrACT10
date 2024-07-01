@@ -36,7 +36,7 @@ kSpriteFile = "allRewardSprites.png";
     CPImageView _rewardView;
     int _oldImage, _currentImage;
     BOOL _testing;
-    fload _savedTimeout;
+    float _savedTimeout;
 }
 
 
