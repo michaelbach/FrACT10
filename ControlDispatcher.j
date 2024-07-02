@@ -147,6 +147,8 @@
         case "RewardImages": // ignore m3
             [_appController.rewardsController test];
             break;
+        case "Error":
+            throw new Error("Runtime error on purpose for testing.");
         default:
             [self _logProblemM123];
     }

@@ -403,8 +403,6 @@
             break;
         case "R":
             [Settings toggleAutoRunIndex];  break;
-        //case "W": [rewardsController test];  break;
-        //case "∆": [self runtimeError_action: nil];  break;
         default:
             [super keyDown: theEvent];  break;
     }
@@ -416,15 +414,6 @@
     if ([Misc existsUrl: path]) {
         window.open(path, "_blank");
     }
-}
-
-
-/**
- This will, on purpose, cause a run-time error when entering ‘∆’. This tests behaviour on such conditions. (but currently disabled, see above)
- */
-- (IBAction) runtimeError_action: (id) sender { //console.info("AppController>runtimeError_action");
-    alert("The (rarely) entered glyph ‘∆’ is my purposeful test for causing a runtime errror. So there will occur an error now…")
-    [self abc];
 }
 
 
