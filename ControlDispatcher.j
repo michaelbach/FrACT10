@@ -47,6 +47,8 @@
                 [self manageSetSetting];  break;
             case "Run":
                 [self manageRun];  break;
+            case "Test":
+                [self manageTests];  break;
             default:
                 [self _logProblem: e.data];
         }
@@ -134,14 +136,17 @@
                     [self _logProblemM123];
             }
             break;
-        case "RewardImages":
-            switch(m3) {
-                case "Test":
-                    [_appController.rewardsController test];
-                    break;
-                default:
-                    [self _logProblemM123];
-            }
+        default:
+            [self _logProblemM123];
+    }
+}
+
+
++ (void) manageTests {
+    switch(m2) {
+        case "RewardImages": // ignore m3
+            [_appController.rewardsController test];
+            break;
         default:
             [self _logProblemM123];
     }

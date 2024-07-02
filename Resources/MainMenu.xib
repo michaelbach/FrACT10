@@ -2796,12 +2796,12 @@ Don't go too close or you can resolve the pattern.
                                                             </objectValues>
                                                         </comboBoxCell>
                                                         <connections>
-                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.gratingCPD" id="fDe-4V-A9P"/>
-                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.what2SweepIndex" id="IS9-fi-uMC">
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.what2sweepIndex" id="amV-1Z-A7K">
                                                                 <dictionary key="options">
                                                                     <string key="NSValueTransformerName">NSNegateBoolean</string>
                                                                 </dictionary>
                                                             </binding>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.gratingCPD" id="fDe-4V-A9P"/>
                                                         </connections>
                                                     </comboBox>
                                                 </subviews>
@@ -2827,8 +2827,8 @@ Don't go too close or you can resolve the pattern.
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.what2sweepIndex" id="Clo-sg-1ei"/>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.gratingCPDmin" id="aXD-5S-huz"/>
-                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.what2SweepIndex" id="dPz-hU-2Nh"/>
                                                             <outlet property="nextKeyView" destination="9rY-ds-9po" id="BjZ-FP-zz0"/>
                                                         </connections>
                                                     </textField>
@@ -2866,8 +2866,8 @@ Don't go too close or you can resolve the pattern.
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.what2sweepIndex" id="ah8-pB-e8N"/>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.gratingCPDmax" id="tEw-aO-mdb"/>
-                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.what2SweepIndex" id="kac-lr-4qE"/>
                                                             <outlet property="nextKeyView" destination="5wI-LE-Ld6" id="tPg-hg-G0B"/>
                                                         </connections>
                                                     </textField>
@@ -2893,8 +2893,8 @@ Don't go too close or you can resolve the pattern.
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.what2sweepIndex" id="PdM-SS-Kts"/>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.gratingContrastMichelsonPercent" id="LT9-95-1ns"/>
-                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.what2SweepIndex" id="YJh-Tz-TZM"/>
                                                             <outlet property="nextKeyView" destination="yA5-aY-rzg" id="NeB-ec-iO5"/>
                                                         </connections>
                                                     </textField>
