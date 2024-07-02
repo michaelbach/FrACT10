@@ -108,33 +108,45 @@
     <button onclick="tellIframe('xx');">Send 'xx'</button>
     <button onclick="tellIframe({m1: 'm1', m2: 'm2', m3: 'm3'});">Send unknown message</button>
     <br>
-    <button onclick="tellIframe({m1: 'getVersion', m2: '', m3: ''});">getVersion</button>
     <br>
+
+    <button onclick="tellIframe({m1: 'getVersion', m2: '', m3: ''});">getVersion</button>
     <button onclick="tellIframe({m1: 'getSetting', m2: 'UNKNOWN', m3: ''});">getSetting UNKNOWN</button>
     <button onclick="tellIframe({m1: 'getSetting', m2: 'nTrials08', m3: ''});">getSetting nTrials08</button>
     <button onclick="tellIframe({m1: 'getSetting', m2: 'allKeys', m3: ''});">getSetting allKeys</button>
     <br>
-    <button onclick="tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'NOTAPRESET'});">setSetting Preset NOTAPRESET</button>
+    <br>
+
+    <button onclick="tellIframe({m1: 'setSetting', m2: 'Preset', m3: 	'NOTAPRESET'});">setSetting Preset NOTAPRESET</button>
     <button onclick="tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Standard Defaults'});">setSetting Preset Defaults</button>
     <button onclick="tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Testing'});">setSetting Preset Testing</button>
     <button onclick="tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Demo'});">setSetting Preset Demo</button>
     <br>
+
     <button onclick="tellIframe({m1: 'setSetting', m2: 'nTrials08', m3: '3'});">setSetting nTrials08: 3</button>
     <button onclick="tellIframe({m1: 'setSetting', m2: 'nTrials08', m3: '999'});">setSetting nTrials08: 999</button>
     <button onclick="tellIframe({m1: 'setSetting', m2: 'distanceInCM', m3: '57'});">setSetting distanceInCM: 57</button>
     <button onclick="tellIframe({m1: 'setSetting', m2: 'calBarLengthInMM', m3: '145'});">setSetting calBarLengthInMM: 145</button>
     <button onclick="tellIframe({m1: 'setSetting', m2: 'autoRunIndex', m3: '0'});">setSetting autoRunIndex: 0</button>
     <br>
+    <br>
+
     <button onclick="tellIframe({m1: 'Run', m2: 'UNKNOWN2', m3: 'UNKNOWN3'});">Run UNKNOWN</button>
     <button onclick="tellIframe({m1: 'Run', m2: 'Acuity', m3: 'Letters'});">Run Acuity Letters</button>
     <button onclick="tellIframe({m1: 'Run', m2: 'Acuity', m3: 'LandoltC'});">Run Acuity LandoltC</button>
     <button onclick="tellIframe({m1: 'Run', m2: 'Contrast', m3: 'LandoltC'});">Run Contrast LandoltC</button>
     <button onclick="tellIframe({m1: 'Run', m2: 'TestNumber', m3: 3});">Run TestNumber 3</button>
     <br>
+
     <button onclick="runDemoWith3trials();">Run short Demo with only 3 trials</button>
+    <button onclick="tellIframe({m1: 'Run', m2: 'RewardImages', m3: 'Test'});">Run RewardImages-Test</button>
     <br>
+    <br>
+
     <button onclick="sendAsyncMessageChain01()">sendAsyncMessageChain based on promises / await. Will do a 12-trial demo run and restore settings.</button>
     <br>
+
+
 
 
     <br>

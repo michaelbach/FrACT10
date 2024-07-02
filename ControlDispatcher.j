@@ -134,6 +134,14 @@
                     [self _logProblemM123];
             }
             break;
+        case "RewardImages":
+            switch(m3) {
+                case "Test":
+                    [_appController.rewardsController test];
+                    break;
+                default:
+                    [self _logProblemM123];
+            }
         default:
             [self _logProblemM123];
     }
