@@ -76,7 +76,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         //[self performSelector: @selector(runStart) withObject: nil afterDelay: 0.01];//geht nicht mehr nach DEPLOY???
         [MDBDispersionEstimation initResultStatistics];  ci95String = "";
         //[self runStart];
-        // [self testContrastDeviceThresholdConversion];
+        // [self unittestContrastDeviceThresholdConversion];
     }
     return self;
 }

@@ -29,7 +29,7 @@
 // this manages stuff after the optotypes have been drawn, e.g. crowding
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
     [trialHistoryController setValue: [MiscSpace logMARfromDecVA: [MiscSpace decVAFromStrokePixels: stimStrengthInDeviceunits]]];
-    if (([Settings crowdingType] > 0) && (currentTestID != kTestAcuityLineByLine) && (currentTestID != kTestContrastDitherTest)) {
+    if (([Settings crowdingType] > 0) && (currentTestID != kTestAcuityLineByLine) && (currentTestID != kTestContrastDitherUnittest)) {
         if (currentTestID != kTestAcuityVernier) { // don't do crowding with Vernier etc.
             CGContextSaveGState(cgc);
             CGContextTranslateCTM(cgc, viewWidth2, viewHeight2); // origin to center

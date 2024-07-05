@@ -2,18 +2,18 @@
 This file is part of FrACT10, a vision test battery.
 Copyright © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
- FractControllerContrastDitherTest.j
+ FractControllerContrastDitherUnittest.j
  
 Created by Bach on 2020-08-17
 */
 
 
 @import "FractControllerContrast.j"
-@implementation FractControllerContrastDitherTest: FractControllerContrast {
+@implementation FractControllerContrastDitherUnittest: FractControllerContrast {
 }
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerContrastDitherTest>drawStimulusInRect", state);
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerContrastDitherUnittest>drawStimulusInRect", state);
     stimStrengthInDeviceunits = 0.5;  stimStrengthInDeviceunitsUnquantised = stimStrengthInDeviceunits;
     [self calculateForeBackColors];
     gColorBack = [Settings windowBackgroundColor];

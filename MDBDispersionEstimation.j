@@ -122,7 +122,7 @@ function probCorrectGivenLogMAR(guessingProbability, inflectionPoint, lMar) {
 Logistic function for nAFC tasks, x on a linear 0…1 scale
 x=0: below threshold, =guess; x=1: above threshold, =1
  */
-function testLogistic(guessingProbability) {
+function unittestLogistic(guessingProbability) {
     for (let i = 0; i < 10; i++)  console.info(i / 10, logisticFun(0.125, 0.5, i / 10));
 }
 function logisticFun(guessingProbability, inflectionPoint, x) {

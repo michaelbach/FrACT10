@@ -77,7 +77,7 @@
 }
 
 
-+ (void) testContrastConversion {
++ (void) unittestContrastConversion {
     for (let i = -100; i <= 100; i += 10) {
         const w = [MiscLight contrastWeberPercentFromMichelsonPercent: i];
         console.info("contrastM: ", i, ", W: ", w, ", M: ", [MiscLight contrastMichelsonPercentFromWeberPercent: w]);

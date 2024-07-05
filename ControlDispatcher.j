@@ -47,8 +47,8 @@
                 [self manageSetSetting];  break;
             case "Run":
                 [self manageRun];  break;
-            case "Test":
-                [self manageTests];  break;
+            case "Unittest":
+                [self manageUnittests];  break;
             default:
                 [self _logProblem: e.data];
         }
@@ -142,10 +142,10 @@
 }
 
 
-+ (void) manageTests {
++ (void) manageUnittests {
     switch(m2) {
         case "RewardImages": // ignore m3
-            [_appController.rewardsController test];
+            [_appController.rewardsController unittest];
             break;
         case "Error":
             throw new Error("Runtime error on purpose for testing.");

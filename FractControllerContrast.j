@@ -63,7 +63,7 @@ Created by Bach on 2020-09-02
 }
 - (void) drawFixMark {
     let t = [Settings contrastTimeoutFixmark] / 1000; // ms → seconds
-    if ([Settings contrastShowFixMark] && (currentTestID != kTestContrastDitherTest)) {
+    if ([Settings contrastShowFixMark] && (currentTestID != kTestContrastDitherUnittest)) {
         [self drawFixMark2];
         timerFixMark = [CPTimer scheduledTimerWithTimeInterval: t target:self selector:@selector(onTimeoutFixMark:) userInfo:nil repeats:NO];
     } else {
@@ -145,7 +145,7 @@ basic flow:
     const retVal = (logCSWMaximal - d) / logCSWMaximal
     return retVal;
 }
-- (void) testContrastDeviceThresholdConversion {
+- (void) unittestContrastDeviceThresholdConversion {
     for (let i = 0; i <= 1.0; i += 0.1) {
         const d = [self contrastStimDeviceunitsFromThresholderunits: i];
         console.info("threshh: ", i, ", devUnits: ", d, ", threshh: ", [self stimThresholderunitsFromDeviceunits: d]);

@@ -58,7 +58,7 @@ kSpriteFile = "allRewardSprites.png";
 }
 
 
-- (void) test { console.info("RewardsController>test");
+- (void) unittest { console.info("RewardsController>test");
     _testing = YES;
     _currentImage = 0;
     _savedTimeout = [Settings timeoutRewardPicturesInSeconds]

@@ -19,7 +19,7 @@
 @import "FractControllerContrastC.j"
 @import "FractControllerContrastE.j"
 @import "FractControllerContrastG.j"
-@import "FractControllerContrastDitherTest.j"
+@import "FractControllerContrastDitherUnittest.j"
 @import "FractControllerAcuityLineByLine.j"
 @import "RewardsController.j"
 @import "TAOController.j"
@@ -141,7 +141,7 @@
     const allButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];
     for (const b of allButtons)  [Misc makeFrameSquareFromWidth: b];
 
-    allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherTest]; // sequence like Hierachy kTest#s
+    allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherUnittest]; // sequence like Hierachy kTest#s
 
     allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel, creditcardPanel];
     for (const p of allPanels) {
@@ -303,7 +303,7 @@
                 [responseinfoPanelContrastG makeKeyAndOrderFront: self];  break;
             case kTestAcuityLineByLine:
                 [responseinfoPanelAcuityLineByLine makeKeyAndOrderFront: self];  break;
-            case kTestContrastDitherTest:  break;
+            case kTestContrastDitherUnittest:  break;
         }
     } else {
         [self runFractController2_actionOK: nil];
