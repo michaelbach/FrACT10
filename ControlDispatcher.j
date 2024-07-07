@@ -47,8 +47,14 @@
                 [self manageGetSetting];  break;
             case "setSetting": case "Settings": // 2 versions for compatibility, 2nd is deprecated
                 [self manageSetSetting];  break;
+            case "getValue":
+                [self manageGetValue];  break;
             case "Run":
                 [self manageRun];  break;
+            case "respondWithChar":
+                const e = [CPEvent keyEventWithType:CPKeyDown location:CGPointMakeZero() modifierFlags:0 timestamp:0 windowNumber:0 context:nil characters:m2 charactersIgnoringModifiers:m2 isARepeat:NO keyCode:0];
+                [_appController.currentFractController performSelector: @selector(keyDown:) withObject: e];
+                [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;
             case "Unittest":
                 [self manageUnittests];  break;
             default:
@@ -95,6 +101,27 @@
 }
 
 
++ (void) manageGetValue {
+    m3 = null;
+    if ((_appController.currentFractController === null) ||
+         (_appController.currentFractController.alternativesGenerator === null)) {
+        [self _logProblemM123];  return;
+    }
+    switch(m2) {
+        case "currentAlternative":
+            m3 = [_appController.currentFractController.alternativesGenerator currentAlternative]
+            [self post2parentM1: m1 m2: m2 m3: m3 success: (m3 !== null)];
+            break;
+        case "iTrial":
+            m3 = _appController.currentFractController.iTrial;
+            [self post2parentM1: m1 m2: m2 m3: m3 success: (m3 !== null)];
+            break;
+        default:
+            [self _logProblemM123];
+    }
+}
+
+
 + (void) manageRun {
     _sendHTMLMessageOnRunDone = YES;// need to switch off again if parsing below fails
     switch(m2) {
@@ -116,6 +143,9 @@
                     break;
                 case "TumblingE":
                     [self _notify: "notificationRunFractControllerTest" object: kTestAcuityE];
+                    break;
+                case "Vernier":
+                    [self _notify: "notificationRunFractControllerTest" object: kTestAcuityVernier];
                     break;
                 default:
                     [self _logProblemM123];
@@ -149,6 +179,7 @@
             break;
         case "Error":
             throw new Error("Runtime error on purpose for testing.");
+            break;
         default:
             [self _logProblemM123];
     }

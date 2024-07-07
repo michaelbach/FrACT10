@@ -91,7 +91,26 @@
 		   response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'responseInfoAtStart', m3: responseInfoAtStart});
 		   response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'autoRunIndex', m3: autoRunIndex});
 
-			console.info("sucessfully ran and restored.");
+		   console.info("sucessfully ran and restored.");
+		}
+
+
+		async function runResponding() {
+			let response, rChar;
+			tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Testing'});
+			tellIframe({m1: 'Run', m2: 'Acuity', m3: 'Vernier'});
+			for (let i = 0; i < 1; i++){
+				response = await tellIframeReturningPromise({m1: 'getValue', m2: 'iTrial', m3: ''});
+				if (!response.success) return;
+				response = await tellIframeReturningPromise({m1: 'getValue', m2: 'currentAlternative', m3: ''});
+				if (!response.success) return;
+				rChar = response.m3 !== 0 ? "4" : "6";
+				response = await tellIframeReturningPromise({m1: 'respondWithChar', m2: rChar, m3: ''});
+				if (!response.success) return;
+			}
+		    // todo: enter correct response
+			response = await tellIframeReturningPromise({m1: 'getValue', m2: 'iTrial', m3: ''});
+		    response = await tellIframeReturningPromise({m1: 'getValue', m2: 'currentAlternative', m3: ''});
 		}
 
 
@@ -117,7 +136,7 @@
     <br>
     <br>
 
-    <button onclick="tellIframe({m1: 'setSetting', m2: 'Preset', m3: 	'NOTAPRESET'});">setSetting Preset NOTAPRESET</button>
+    <button onclick="tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'NOTAPRESET'});">setSetting Preset NOTAPRESET</button>
     <button onclick="tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Standard Defaults'});">setSetting Preset Defaults</button>
     <button onclick="tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Testing'});">setSetting Preset Testing</button>
     <button onclick="tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Demo'});">setSetting Preset Demo</button>
@@ -141,7 +160,13 @@
     <br>
     <br>
 
-    <button onclick="sendAsyncMessageChain01()">sendAsyncMessageChain based on promises / await: It will do a 12-trial demo run and then restore settings.</button>
+    <button onclick="sendAsyncMessageChain01()">sendAsyncMessageChain: Do a 12-trial demo run and then restore settings.</button>
+    <button onclick="runResponding()">runResponding</button>
+    <button onclick="tellIframe({m1: 'respondWithChar', m2: '2', m3: 3});">respond "2"</button>
+    <button onclick="tellIframe({m1: 'respondWithChar', m2: '4', m3: 3});">respond "4"</button>
+    <button onclick="tellIframe({m1: 'respondWithChar', m2: '6', m3: 3});">respond "6"</button>
+    <button onclick="tellIframe({m1: 'respondWithChar', m2: '8', m3: 3});">respond "8"</button>
+
     <br>
     <br>
 
@@ -149,6 +174,7 @@
     <button onclick="tellIframe({m1: 'Unittest', m2: 'RewardImages', m3: ''});">Unittest RewardImages</button>
     <br>
     <br>
+    <button onclick="tellIframe({m1: 'getValue', m2: 'currentAlternative', m3: ''});">getValue</button>
 
 
 

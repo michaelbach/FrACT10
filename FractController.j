@@ -29,7 +29,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     StateType state;
     BOOL isBonusTrial, responseWasCorrect, responseWasCorrectCumulative;
     char oldResponseKeyChar, responseKeyChar;
-    unsigned short responseKeyCode;
     float stimStrengthInThresholderUnits, stimStrengthInDeviceunits, viewWidth, viewHeight, viewWidth2, viewHeight2;
     float strokeSizeInPix, spatialFreqCPD, contrastMichelsonPercent;
     float xEccInPix, yEccInPix; // eccentricity
@@ -38,7 +37,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     TrialHistoryController trialHistoryController;
     Optotypes optotypes;
     CPString trialInfoString @accessors;
-    CPTimer timerDisplay, timerResponse, timerFixMark, timerRunEnd2, timerAutoResponse;
+    CPTimer timerDisplay, timerResponse, timerFixMark, timerAutoResponse;
     CPString kRangeLimitDefault, kRangeLimitOk, kRangeLimitValueAtFloor, kRangeLimitValueAtCeiling, rangeLimitStatus, abortCharacter, ci95String;
     id sound @accessors;
     BOOL responseButtonsAdded;
@@ -390,7 +389,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
  */
 - (void) keyDown: (CPEvent) theEvent { //console.info("FractController>keyDown");
     responseKeyChar = [[[theEvent characters] characterAtIndex: 0] uppercaseString];
-    responseKeyCode = [theEvent keyCode];
+    const responseKeyCode = [theEvent keyCode];
     if ((responseKeyCode == CPEscapeKeyCode) || ((responseKeyChar == abortCharacter) && (oldResponseKeyChar == abortCharacter))) {
         [self runEnd];  return;
     }
