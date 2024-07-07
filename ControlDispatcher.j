@@ -29,8 +29,10 @@
     _sendHTMLMessageOnRunDone = NO;
     _appController = appController;
     window.addEventListener("message", (e) => { //console.info("In addEventListener>message: ", e);
-        if (e.source !== window.parent) return; // only from embedding window
-        if (e.origin !== window.location.origin) return; // same
+        if (e.origin !== "http://localhost:4000") { // only from local host (for unittesting)
+            if (e.source !== window.parent) return; // or from embedding window
+            if (e.origin !== window.location.origin) return; // same
+        }
         if (Object.keys(e.data).length !== 3) return; // avoid overruns from possibly malicious senders
         m1 = e.data.m1, m2 = e.data.m2, m3 = e.data.m3;
         if ((m1 === undefined) || (m2 === undefined) || (m3 === undefined)) return;
@@ -78,20 +80,18 @@
 
 
 + (void) manageSetSetting {
-    switch(m2) {
-        case "Preset": case "Presets": // 2 versions for compatibility, 2nd deprecated
-            [self _notify: "applyPresetNamed" object: m3];
-            break;
-        case "nTrials08": case "distanceInCM": case "calBarLengthInMM":
-        case "responseInfoAtStart": case "enableTouchControls":
-        case "results2clipboard": case "testOnFive":
-        case "auditoryFeedback4trial": case "auditoryFeedback4run":
-        case "autoRunIndex":
-            [self setSettingNamed: m2];
-            break;
-        default:
-            [self _logProblemM123];
+    if (m2 === "Preset") {
+        [self _notify: "applyPresetNamed" object: m3];  return;
     }
+    allowedBoolSettings = ["gratingObliqueOnly", "responseInfoAtStart", "enableTouchControls", "eccentShowCenterFixMark", "mobileOrientation", "trialInfo", "results2clipboard", "results2clipboardSilent", "rewardPicturesWhenDone", "embedInNoise", "isAcuityColor", "obliqueOnly", "acuityEasyTrials", "acuityFormatDecimal", "acuityFormatLogMAR", "acuityFormatSnellenFractionFoot", "forceSnellen20", "showCI95", "lineByLineChartMode", "lineByLineChartModeConstantVA", "contrastEasyTrials", "contrastDarkOnLight", "contrastShowFixMark", "contrastDithering", "isGratingMasked", "gratingUseErrorDiffusion", "gratingSineNotSquare", "isGratingColor", "specialBcmOn", "hideExitButton", "auditoryFeedback4trial", "auditoryFeedback4run"];
+    if (allowedBoolSettings.includes(m2)) {
+        [self setSettingNamed: m2];  return;
+    }
+    allowedNumberSettings = ["nAlternativesIndex", "nTrials02", "nTrials04", "nTrials08", "distanceInCM", "calBarLengthInMM", "testOnFive", "decimalMarkCharIndex", "testOnFive", "eccentXInDeg", "eccentYInDeg", "displayTransform", "trialInfoFontSize", "timeoutResponseSeconds", "timeoutDisplaySeconds", "soundVolume", "timeoutRewardPicturesInSeconds", "noiseContrast", "checkNum", "maxDisplayedAcuity", "minStrokeAcuity", "acuityStartingLogMAR", "margin4maxOptotypeIndex", "autoRunIndex", "crowdingType", "crowdingDistanceCalculationType", "crowdingDistanceCalculationType", "testOnLineByLine", "testOnLineByLineDistanceType", "lineByLineHeadcountIndex", "vernierType", "vernierWidth", "vernierLength", "vernierGap", "gammaValue", "contrastOptotypeDiameter", "contrastTimeoutFixmark", "contrastMaxLogCSWeber", "gratingCPD", "gratingDiaInDeg", "what2sweepIndex", "gratingCPDmin", "gratingCPDmax", "gratingContrastMichelsonPercent", "soundTrialYesIndex", "soundTrialNoIndex", "soundRunEndIndex"];
+    if (allowedNumberSettings.includes(m2)) {
+        [self setSettingNamed: m2];  return;
+    }
+    [self _logProblemM123];
 }
 
 

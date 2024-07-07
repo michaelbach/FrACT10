@@ -56,6 +56,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 
 /*
  #  History
++ 2024-07-06 rename "test" → "unittest" where applicable (avoid name clash), for testing with Cypress: allow local htmlMessage source; add (nearly) all settings
 + 2024-06-30 refactor `RewardsController`: easier expansion, test mode, more & better images
 + 2024-06-17 add getSettings to HTMLMessaging, refactor `ControlDispatcher`
 + 2024-06-15 rename Settings → setSetting, Presets → Preset, add setSettings>autoRunIndex

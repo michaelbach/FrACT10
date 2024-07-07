@@ -8,3 +8,7 @@ Resources/MainMenu.cib*
 *.h
 *.m
 Build/
+
+# for unit testing, experimental right now 2024-07-05
+cypress*
+
