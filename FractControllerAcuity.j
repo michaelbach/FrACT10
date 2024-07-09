@@ -34,47 +34,44 @@
             CGContextSaveGState(cgc);
             CGContextTranslateCTM(cgc, viewWidth2, viewHeight2); // origin to center
             CGContextTranslateCTM(cgc, -xEccInPix, -yEccInPix);
-            const crowdingDistance = [self acuityCrowdingDistanceFromStroke: stimStrengthInDeviceunits];
+            const crowdingGap = [self acuityCrowdingGapFromStrokeWidth: stimStrengthInDeviceunits];
+            const distance4bars = crowdingGap + (0.5 + 2.5) * stimStrengthInDeviceunits;
+            const distance4optotypes = crowdingGap + 5 * stimStrengthInDeviceunits;
+            CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
             switch ([Settings crowdingType]) {
-                case 0:  break; // should not occur here
+                case 0:  break; // should not occur here anyway
                 case 1: // flanking bars
-                    const distance2 = 1.5 * crowdingDistance / 2;
                     const length2 = stimStrengthInDeviceunits * 2.5;
-                    CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
-                    [optotypes strokeVLineAtX: -distance2 y0: -length2 y1: length2];
-                    [optotypes strokeVLineAtX: distance2 y0: -length2 y1: length2];
+                    [optotypes strokeVLineAtX: -distance4bars y0: -length2 y1: length2];
+                    [optotypes strokeVLineAtX: distance4bars y0: -length2 y1: length2];
                     break;
                 case 2: // flanking rings
                     for (let i = -1; i <= 1; i++) { //console.info(i);
-                        const tempX = i * crowdingDistance;
+                        const tempX = i * distance4optotypes;
                         CGContextTranslateCTM(cgc,  -tempX, 0);
                         if (i != 0)  [optotypes drawLandoltWithStrokeInPx: stimStrengthInDeviceunits landoltDirection: -1];
                         CGContextTranslateCTM(cgc,  +tempX, 0);
                     }  break;
                 case 3:    // surounding bars
-                    const distance4 = 1.5 * crowdingDistance / 2;
                     const length4 = stimStrengthInDeviceunits * 4;
                     CGContextSetLineCap(cgc,  kCGLineCapRound);
-                    CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
-                    [optotypes strokeVLineAtX: -distance4 y0: -length4 y1: length4];
-                    [optotypes strokeVLineAtX: distance4 y0: -length4 y1: length4];
-                    [optotypes strokeHLineAtX0: -length4 y: -distance4 x1: length4];
-                    [optotypes strokeHLineAtX0: -length4 y: distance4 x1: length4];
+                    [optotypes strokeVLineAtX: -distance4bars y0: -length4 y1: length4];
+                    [optotypes strokeVLineAtX: distance4bars y0: -length4 y1: length4];
+                    [optotypes strokeHLineAtX0: -length4 y: -distance4bars x1: length4];
+                    [optotypes strokeHLineAtX0: -length4 y: distance4bars x1: length4];
                     break;
-                case 4:  // surounding ring
-                    CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
-                    [optotypes strokeCircleAtX: 0 y: 0 radius: 1.5 * crowdingDistance / 2];
+                case 4:  // surounding ring: gap + 2.5 strokes + ½ stroke for stroke width
+                    [optotypes strokeCircleAtX: 0 y: 0 radius: distance4bars];
                     break;
-                case 5: // surrunding square
-                    const frameSize = 1.5 * crowdingDistance, frameSize2 = frameSize / 2;
-                    CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
-                    CGContextStrokeRect(cgc, CGRectMake(-frameSize2, -frameSize2, frameSize, frameSize));
+                case 5: // surrounding square
+                    const frameSizeX2 = 2 * distance4bars, frameSize = distance4bars;
+                    CGContextStrokeRect(cgc, CGRectMake(-frameSize, -frameSize, frameSizeX2, frameSizeX2));
                     break;
                 case 6:    // row of optotypes
                     let rowAlternatives = [[AlternativesGenerator alloc] initWithNumAlternatives: nAlternatives andNTrials: 5 obliqueOnly: NO];
                     for (let i = -2; i <= 2; i++) {
-                        const tempX = i * crowdingDistance;
-                        CGContextTranslateCTM(cgc,  -tempX, 0);
+                        const tempX = i * distance4optotypes;
+                        CGContextTranslateCTM(cgc, -tempX, 0);
                         if (i != 0)  {
                             directionInRow = [rowAlternatives nextAlternative];
                             if (directionInRow == [alternativesGenerator currentAlternative])
@@ -90,7 +87,7 @@
                                     [optotypes drawLandoltWithStrokeInPx: stimStrengthInDeviceunits landoltDirection: directionInRow];
                             }
                         }
-                        CGContextTranslateCTM(cgc,  +tempX, 0);
+                        CGContextTranslateCTM(cgc, +tempX, 0);
                     }  break;
             }
             CGContextRestoreGState(cgc);
@@ -248,18 +245,16 @@
 }
 
 
-- (float) acuityCrowdingDistanceFromStroke: (float) stroke {
-    let returnVal = 5 * stroke + 2 * stroke; // case 0
+// gap between optotype border and border of the crowder
+- (float) acuityCrowdingGapFromStrokeWidth: (float) stroke {
+    let returnVal = 2 * stroke; // case 0
     switch ([Settings crowdingDistanceCalculationType]) {
         case 1:
-            returnVal = 5 * stroke + [MiscSpace pixelFromDegree: 2.6 / 60.0];  break;
+            returnVal = [MiscSpace pixelFromDegree: 2.6 / 60.0];  break;
         case 2:
             returnVal = [MiscSpace pixelFromDegree: 30 / 60.0];  break;
-        case 3:
-            returnVal = 10 * stroke;  break;
-    }
-    if (currentTestID == kTestAcuityVernier) {
-        returnVal *= 6 / 5;
+        case 3: // 1 optotype (like ETDRS)
+            returnVal = 5 * stroke;  break;
     }
     return returnVal;
 }

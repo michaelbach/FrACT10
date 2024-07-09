@@ -1859,7 +1859,7 @@ No money transfer involved, just for size!     </string>
                                                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6J-2A-7mk" userLabel="Crowding distance">
                                                         <rect key="frame" x="185" y="20" width="152" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <string key="toolTip">Distance of crowders.
+                                                        <string key="toolTip">Distance to crowders = gap between optotye and crowder.
  
  </string>
                                                         <popUpButtonCell key="cell" type="push" title="2·stroke" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="mt7-ev-w6m" id="8J5-AI-Fsw" userLabel="2·gap etc.">
@@ -2796,12 +2796,12 @@ Don't go too close or you can resolve the pattern.
                                                             </objectValues>
                                                         </comboBoxCell>
                                                         <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.gratingCPD" id="fDe-4V-A9P"/>
                                                             <binding destination="izh-pU-csC" name="enabled" keyPath="values.what2sweepIndex" id="amV-1Z-A7K">
                                                                 <dictionary key="options">
                                                                     <string key="NSValueTransformerName">NSNegateBoolean</string>
                                                                 </dictionary>
                                                             </binding>
-                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.gratingCPD" id="fDe-4V-A9P"/>
                                                         </connections>
                                                     </comboBox>
                                                 </subviews>
@@ -2827,8 +2827,8 @@ Don't go too close or you can resolve the pattern.
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.what2sweepIndex" id="Clo-sg-1ei"/>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.gratingCPDmin" id="aXD-5S-huz"/>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.what2sweepIndex" id="Clo-sg-1ei"/>
                                                             <outlet property="nextKeyView" destination="9rY-ds-9po" id="BjZ-FP-zz0"/>
                                                         </connections>
                                                     </textField>
@@ -2866,8 +2866,8 @@ Don't go too close or you can resolve the pattern.
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.what2sweepIndex" id="ah8-pB-e8N"/>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.gratingCPDmax" id="tEw-aO-mdb"/>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.what2sweepIndex" id="ah8-pB-e8N"/>
                                                             <outlet property="nextKeyView" destination="5wI-LE-Ld6" id="tPg-hg-G0B"/>
                                                         </connections>
                                                     </textField>
@@ -2893,8 +2893,8 @@ Don't go too close or you can resolve the pattern.
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.what2sweepIndex" id="PdM-SS-Kts"/>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.gratingContrastMichelsonPercent" id="LT9-95-1ns"/>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.what2sweepIndex" id="PdM-SS-Kts"/>
                                                             <outlet property="nextKeyView" destination="yA5-aY-rzg" id="NeB-ec-iO5"/>
                                                         </connections>
                                                     </textField>

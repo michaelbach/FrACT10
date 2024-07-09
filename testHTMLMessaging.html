@@ -25,6 +25,7 @@
 		   tellIframe({m1: 'Run', m2: 'Acuity', m3: 'Letters'});
 	   }
 
+
 	   // Send a message to the iframe and return a promise
 	   function tellIframeReturningPromise(message, timeout = 1000) {
 		 return new Promise((resolve, reject) => {
@@ -47,7 +48,6 @@
 		   }, timeout); // timeout in ms
 		 });
 	   }
-
 
 
 	   async function sendAsyncMessageChain01() {
@@ -97,20 +97,32 @@
 
 		async function runResponding() {
 			let response, rChar;
-			tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Testing'});
-			tellIframe({m1: 'Run', m2: 'Acuity', m3: 'Vernier'});
-			for (let i = 0; i < 1; i++){
+			response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'Preset', m3: 'Testing'});
+			tellIframe({m1: 'Run', m2: 'Acuity', m3: 'LandoltC'});
+			while (true) {
 				response = await tellIframeReturningPromise({m1: 'getValue', m2: 'iTrial', m3: ''});
-				if (!response.success) return;
+				if (!response.success) return; // when run done, iTrial==0 & no success
 				response = await tellIframeReturningPromise({m1: 'getValue', m2: 'currentAlternative', m3: ''});
 				if (!response.success) return;
-				rChar = response.m3 !== 0 ? "4" : "6";
+				switch (response.m3) {
+					case 7: rChar = "3";  break;
+					case 6: rChar = "2";  break; // ↓
+					case 5: rChar = "1";  break;
+					case 4: rChar = "4";  break; // ←
+					case 3: rChar = "7";  break;
+					case 2: rChar = "8";  break; // ↑
+					case 1: rChar = "9";  break;
+					default: rChar = "6"; // 0, angle 0°: →
+				}
+				await pauseMilliseconds(100); // otherwise blindingly fast
 				response = await tellIframeReturningPromise({m1: 'respondWithChar', m2: rChar, m3: ''});
 				if (!response.success) return;
 			}
-		    // todo: enter correct response
-			response = await tellIframeReturningPromise({m1: 'getValue', m2: 'iTrial', m3: ''});
-		    response = await tellIframeReturningPromise({m1: 'getValue', m2: 'currentAlternative', m3: ''});
+		}
+
+
+		function pauseMilliseconds(ms) {
+		    return new Promise(resolve => setTimeout(resolve, ms));
 		}
 
 
@@ -123,9 +135,9 @@
 		});
     </script>
 
-	<br>
+
     <button onclick="tellIframe('xx');">Send 'xx'</button>
-    <button onclick="tellIframe({m1: 'm1', m2: 'm2', m3: 'm3'});">Send unknown message</button>
+    <button onclick="tellIframe({m1: 'm1', m2: 'm2', m3: 'm3'});">Send well formed, but unknown message</button>
     <br>
     <br>
 
@@ -142,8 +154,8 @@
     <button onclick="tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Demo'});">setSetting Preset Demo</button>
     <br>
 
-    <button onclick="tellIframe({m1: 'setSetting', m2: 'nTrials08', m3: '3'});">setSetting nTrials08: 3</button>
     <button onclick="tellIframe({m1: 'setSetting', m2: 'nTrials08', m3: '999'});">setSetting nTrials08: 999</button>
+    <button onclick="tellIframe({m1: 'setSetting', m2: 'nTrials08', m3: '3'});">setSetting nTrials08: 3</button>
     <button onclick="tellIframe({m1: 'setSetting', m2: 'distanceInCM', m3: '57'});">setSetting distanceInCM: 57</button>
     <button onclick="tellIframe({m1: 'setSetting', m2: 'calBarLengthInMM', m3: '145'});">setSetting calBarLengthInMM: 145</button>
     <button onclick="tellIframe({m1: 'setSetting', m2: 'autoRunIndex', m3: '0'});">setSetting autoRunIndex: 0</button>
@@ -156,17 +168,16 @@
     <button onclick="tellIframe({m1: 'Run', m2: 'Contrast', m3: 'LandoltC'});">Run Contrast LandoltC</button>
     <button onclick="tellIframe({m1: 'Run', m2: 'TestNumber', m3: 3});">Run TestNumber 3</button>
     <br>
-    <button onclick="runDemoWith3trials();">Run short Demo with only 3 trials</button>
+    <button onclick="runDemoWith3trials();">Run short Letters demo with only 3 trials</button>
     <br>
     <br>
 
-    <button onclick="sendAsyncMessageChain01()">sendAsyncMessageChain: Do a 12-trial demo run and then restore settings.</button>
+    <button onclick="sendAsyncMessageChain01()">sendAsyncMessageChain: 12-trial demo run, then restore.</button>
     <button onclick="runResponding()">runResponding</button>
     <button onclick="tellIframe({m1: 'respondWithChar', m2: '2', m3: 3});">respond "2"</button>
     <button onclick="tellIframe({m1: 'respondWithChar', m2: '4', m3: 3});">respond "4"</button>
     <button onclick="tellIframe({m1: 'respondWithChar', m2: '6', m3: 3});">respond "6"</button>
     <button onclick="tellIframe({m1: 'respondWithChar', m2: '8', m3: 3});">respond "8"</button>
-
     <br>
     <br>
 
@@ -174,13 +185,8 @@
     <button onclick="tellIframe({m1: 'Unittest', m2: 'RewardImages', m3: ''});">Unittest RewardImages</button>
     <br>
     <br>
-    <button onclick="tellIframe({m1: 'getValue', m2: 'currentAlternative', m3: ''});">getValue</button>
 
 
-
-
-
-    <br>
     <iframe id="fractFrame" src="index.html" scrolling="yes" allow="clipboard-write" style="width: 800px; height: 628px; border: 1px solid #3050C0; padding:0px; margin:0px;"></iframe>
 
 	</body>

@@ -55,7 +55,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
  
 S;29;Diameter of the optotype.
  
- S;55;Distance between optotypes, international norm or ETDRSS;25;Distance of crowders.
+ S;55;Distance between optotypes, international norm or ETDRSS;59;Distance to crowders = gap between optotye and crowder.
  
  S;154;Dithering increases luminance resolution on the cost of spatial resolution. Good for contrast testing!
 Don't go too close or you can resolve the pattern.
