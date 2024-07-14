@@ -56,6 +56,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 
 /*
  #  History
++ 2024-07-14 refactor `ControlDispatcher`, add "isInRun"
 + 2024-07-09 correct gap calculation for crowding (& simplify)
 + 2024-07-06 rename "test" → "unittest" where applicable (avoid name clash), for testing with Cypress: allow local htmlMessage source; add (nearly) all settings
 + 2024-06-30 refactor `RewardsController`: easier expansion, test mode, more & better images

@@ -102,9 +102,14 @@
 
 
 + (void) manageGetValue {
-    m3 = null;
-    if ((_appController.currentFractController === null) ||
-         (_appController.currentFractController.alternativesGenerator === null)) {
+    m3 = null;  const _inRun = [self _isInRun];
+    if (m2 == "isInRun") {
+        const currTestID = _appController.currentTestID;
+        const s = [_appController performSelector: @selector(testNameGivenTestID:) withObject: currTestID];
+        [self post2parentM1: m1 m2: _inRun m3: s success: YES];
+        return;
+    }
+    if (!_inRun) {
         [self _logProblemM123];  return;
     }
     switch(m2) {
@@ -199,6 +204,12 @@
         m3Now = Number(m3Now);
     }
     [self post2parentM1: m1 m2: m2 m3: m3Now success: m3AsNumber === m3Now];
+}
+
+
++ (BOOL) _isInRun {
+    if (_appController.currentFractController === null) return NO;
+    return _appController.currentFractController.alternativesGenerator !== null;
 }
 
 

@@ -58,7 +58,7 @@ kSpriteFile = "allRewardSprites.png";
 }
 
 
-- (void) unittest { console.info("RewardsController>test");
+- (void) unittest { //console.info("RewardsController>test");
     _testing = YES;
     _currentImage = 0;
     _savedTimeout = [Settings timeoutRewardPicturesInSeconds]
@@ -69,7 +69,7 @@ kSpriteFile = "allRewardSprites.png";
 
 - (id) drawRandom { //console.info("RewardsController>drawRandom");
     _currentImage = [Misc iRandom: kNImages];
-    // avoid immediate repeats
+    // no immediate repeats
     while (_currentImage == _oldImage)  _currentImage = [Misc iRandom: kNImages];
     _oldImage = _currentImage;
     //_currentImage = 0;
