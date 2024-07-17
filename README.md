@@ -1,5 +1,4 @@
-<img src="https://michaelbach.de/fract/FrACT10/FrACT/Resources/icons/FrACT_icon-390.png" style="width:65px; position:relative; top:24px; float:right;">
-# FrACT₁₀
+# <img src="https://michaelbach.de/fract/FrACT10/FrACT/Resources/icons/FrACT_icon-390.png" style="width:65px;"> &nbsp; FrACT₁₀
 
 <br>
 
