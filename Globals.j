@@ -56,6 +56,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 
 /*
  #  History
++ 2024-08-02 reading `Info.plist` in service worker proved not useful: doesn't notice the update. Instead: `updateServiceWorkerDateFromInfoPlist.js` copies versionDate from plist whenever necessary
 + 2024-07-14 refactor `ControlDispatcher`, add "isInRun"
 + 2024-07-09 correct gap calculation for crowding (& simplify)
 + 2024-07-06 rename "test" → "unittest" where applicable (avoid name clash), for testing with Cypress: allow local htmlMessage source; add (nearly) all settings

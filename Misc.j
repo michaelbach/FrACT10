@@ -188,7 +188,7 @@ function _pause(ms) { //console.info("Misc>_pause");
     request.send(); // there will be a 'pause' here until the response to come.
     // the object request will be modified
     if (request.status === 404) {
-        alert("The page you are trying to reach is not available.");
+        alert("The page you are trying to reach is not available in this context.");
         return false;
     }
     return true;

@@ -1,15 +1,21 @@
 #!/bin/zsh
 
+# 2024-08-02 add "updateServiceWorkerDateFromInfoPlist…"
 # 2024-02-18 add "sleep 1" hoping to give iCloud time to catch up a little
-# 2023-06-24 mv rather than rm avoids creation of the *2 files 
-# 2023-03-04 added jakefile creation to cooperate with the webApp
-# 2021-08-01 moved "rm …capp" before "jake…"
+# 2023-06-24 mv rather than rm avoids creation of the *2 files
+# 2023-03-04 add jakefile creation to cooperate with the webApp
+# 2021-08-01 move "rm …capp" before "jake…"
 # 2021-02-04 begun
 
 
 # go to the starting directory
 cd "${0:a:h}"
 # pwd
+
+
+# Check version date in service worker, update if necessary
+node ./updateServiceWorkerDateFromInfoPlist.js
+
 
 # delete old version
 #rm -R ../FrACT ← this would give the iCloud services a hiccup, so instead mv to trash

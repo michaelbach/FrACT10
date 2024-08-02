@@ -2,32 +2,14 @@
 // file "webAppServiceWorker.js"
 //
 
-let cacheName = "FrACT10·2024-07-14";
-const cacheNameRoot = "FrACT10·";
-//let cacheName = cacheNameRoot;
-
-
-// doesn't work (yet?), because the function calling this proceeds while this waits for fetch etc.
-async function getCacheNameGlobal() {
-    console.info("enter CacheNameGlobal:", cacheName);
-    const response = await fetch("Info.plist");
-    const plistText = await response.text();
-    // now "parse" Info.plist
-    let pos = plistText.search("VersionDate") + 11 + 2;
-    let len = Number(plistText.substr(pos, 2));
-    let versionDate = plistText.substr(pos + 3, len);
-    cacheName = cacheNameRoot + versionDate;
-    console.info("exit CacheNameGlobal:", cacheName);
-}
+const cacheName = "FrACT10·2024-08-02";
 
 
 // Fetching content using Service Worker, this is called on reload. If cache name has changed, `install` is next
 self.addEventListener('fetch', (event) => {
     //console.info("webAppServiceWorker responding to fetch event…");
-    //getCacheNameGlobal();
     event.respondWith((async () => {
         const response1 = await caches.match(event.request);
-        // console.info(`webAppServiceWorker Fetching resource: ${event.request.url}`);
         if (response1) return response1;
         const response2 = await fetch(event.request);
         const cache = await caches.open(cacheName);
@@ -41,7 +23,6 @@ self.addEventListener('fetch', (event) => {
 // Installing Service Worker, this is called first, before "AppController>init"
 self.addEventListener('install', (event) => {
     //console.info("webAppServiceWorker responding to install event…");
-    //await getCacheNameGlobal();
     event.waitUntil(
                     caches.open(cacheName).then((cache) => {
                         return cache.addAll([ // Cache all these files
@@ -107,7 +88,6 @@ self.addEventListener('install', (event) => {
 // Activate Service Worker, this is called after the `install` event
 self.addEventListener('activate', function(event) {
     //console.info("webAppServiceWorker responding to activate event…");
-    //getCacheNameGlobal();
     const cacheWhitelist = [cacheName];
     event.waitUntil(
                     caches.keys().then(function(keyList) {
