@@ -51,7 +51,7 @@ Implementation of a n-up-m-down staircase
 - (float) nextStimGivenAppliedStim: (float) appliedStim wasCorrect: (BOOL) wasCorrect {
     const intStim = [self externalStim2internalStimGiven: appliedStim];
 
-    const retVal = [self internalStim2externalStimGiven: internalStim];
+    const retVal = [self internalStim2externalStimGiven: intStim];
     return retVal;
 }
 

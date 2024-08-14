@@ -97,7 +97,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     thresholder = [[Thresholder alloc] initWithNumAlternatives: nAlternatives];
     trialHistoryController = [[TrialHistoryController alloc] initWithNumTrials: nTrials];
     responseWasCorrect = YES;  responseWasCorrectCumulative = YES;
-    xEccInPix = -[MiscSpace pixelFromDegree: [Settings eccentXInDeg]];  yEccInPix = [MiscSpace pixelFromDegree: [Settings eccentYInDeg]]; //pos y: ↑
     strokeSizeInPix = [MiscSpace pixelFromDegree: [Settings contrastOptotypeDiameter] / 60] / 5;
     [self trialStart];
 }
@@ -133,6 +132,13 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             timerAutoResponse = [CPTimer scheduledTimerWithTimeInterval: 0.8 target:self selector:@selector(onTimeoutAutoResponse:) userInfo:nil repeats:NO];
         }
     }
+
+    xEccInPix = -[MiscSpace pixelFromDegree: [Settings eccentXInDeg]];
+    yEccInPix = [MiscSpace pixelFromDegree: [Settings eccentYInDeg]]; //pos y: ↑
+    if ([Settings eccentRandomizeX]) {
+        if (Math.random() >= 0.5)  xEccInPix = -xEccInPix;
+    }
+
     state = kStateDrawFore;  [[selfWindow contentView] setNeedsDisplay: YES];
 }
 

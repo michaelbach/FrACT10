@@ -90,6 +90,7 @@ Created by mb on July 15, 2015.
     [self setEccentXInDeg: [self checkNum: [self eccentXInDeg] dflt: 0 min: -99 max: 99 set: set]];
     [self setEccentYInDeg: [self checkNum: [self eccentYInDeg] dflt: 0 min: -99 max: 99 set: set]];
     [self setEccentShowCenterFixMark: [self checkBool: [self eccentShowCenterFixMark] dflt: YES set: set]];
+    [self setEccentRandomizeX: [self checkBool: [self eccentRandomizeX] dflt: NO set: set]];
 
     [self setAutoFullScreen: [self checkBool: [self autoFullScreen] dflt: NO set: set]];
 
@@ -398,6 +399,12 @@ Created by mb on July 15, 2015.
 }
 + (void) setEccentShowCenterFixMark: (BOOL) val {
     [[CPUserDefaults standardUserDefaults] setBool: val forKey: "eccentShowCenterFixMark"];
+}
++ (BOOL) eccentRandomizeX {
+    return [[CPUserDefaults standardUserDefaults] boolForKey: "eccentRandomizeX"];
+}
++ (void) setEccentRandomizeX: (BOOL) val {
+    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "eccentRandomizeX"];
 }
 
 

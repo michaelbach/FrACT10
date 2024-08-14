@@ -3267,7 +3267,7 @@ CQ
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Woj-eV-bwS">
-                                            <rect key="frame" x="35" y="253" width="124" height="18"/>
+                                            <rect key="frame" x="35" y="178" width="124" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">For some contexts (e.g., embeddng FrACT in a larger project) the Exit button may be detrimental – so disable it here.
  
@@ -3278,6 +3278,20 @@ CQ
                                             </buttonCell>
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.hideExitButton" id="rx4-JS-9Ql"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VtB-h9-XQq">
+                                            <rect key="frame" x="35" y="253" width="224" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <string key="toolTip">For some contexts (e.g., embeddng FrACT in a larger project) the Exit button may be detrimental – so disable it here.
+ 
+</string>
+                                            <buttonCell key="cell" type="check" title="Randomize eccentricity right/left" bezelStyle="regularSquare" imagePosition="left" inset="2" id="gcZ-p8-SZP">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="value" keyPath="values.eccentRandomizeX" id="jbd-FM-uhs"/>
                                             </connections>
                                         </button>
                                         <colorWell toolTip="The background color of the entire window can be selected here." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPx-4F-4Cr">
