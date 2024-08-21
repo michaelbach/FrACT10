@@ -33,7 +33,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     float strokeSizeInPix, spatialFreqCPD, contrastMichelsonPercent;
     float xEccInPix, yEccInPix; // eccentricity
     Thresholder thresholder;
-    AlternativesGenerator alternativesGenerator;
+    AlternativesGenerator alternativesGenerator, alternativesGeneratorEccentRandomizeX;
     TrialHistoryController trialHistoryController;
     Optotypes optotypes;
     CPString trialInfoString @accessors;
@@ -94,6 +94,10 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     state = kStateDrawBack;
     const obliqueOnlyG = [self isGratingAny] && [Settings gratingObliqueOnly];
     alternativesGenerator = [[AlternativesGenerator alloc] initWithNumAlternatives: nAlternatives andNTrials: nTrials obliqueOnly: obliqueOnlyG];
+    alternativesGenerator = [[AlternativesGenerator alloc] initWithNumAlternatives: nAlternatives andNTrials: nTrials obliqueOnly: obliqueOnlyG];
+    if ([Settings eccentRandomizeX]) {
+        alternativesGeneratorEccentRandomizeX = [[AlternativesGenerator alloc] initWithNumAlternatives: 2 andNTrials: nTrials obliqueOnly: NO];
+    }
     thresholder = [[Thresholder alloc] initWithNumAlternatives: nAlternatives];
     trialHistoryController = [[TrialHistoryController alloc] initWithNumTrials: nTrials];
     responseWasCorrect = YES;  responseWasCorrectCumulative = YES;
@@ -119,7 +123,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     }
     [self modifyDeviceStimulus];// e.g. let the first 4 follow DIN
     if (gSpecialBcmDone) return;
-    
+
     [alternativesGenerator nextAlternative];
     timerDisplay = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutDisplaySeconds] target:self selector:@selector(onTimeoutDisplay:) userInfo:nil repeats:NO];
     timerResponse = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutResponseSeconds] target:self selector:@selector(onTimeoutResponse:) userInfo:nil repeats:NO];
@@ -136,7 +140,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     xEccInPix = -[MiscSpace pixelFromDegree: [Settings eccentXInDeg]];
     yEccInPix = [MiscSpace pixelFromDegree: [Settings eccentYInDeg]]; //pos y: ↑
     if ([Settings eccentRandomizeX]) {
-        if (Math.random() >= 0.5)  xEccInPix = -xEccInPix;
+        if ([alternativesGeneratorEccentRandomizeX nextAlternative] != 0)  {
+            xEccInPix *= -1;
+        }
     }
 
     state = kStateDrawFore;  [[selfWindow contentView] setNeedsDisplay: YES];
@@ -305,7 +311,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if ([self isAcuityGrating]) {
         responseWasCorrect = spatialFreqCPD < [0.3, 1, 10][arIndex];
     }
-    
+
     [self trialEnd];
 }
 
@@ -357,7 +363,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     const _parentController = [self parentController];
     [_parentController setCurrentTestResultsHistoryExportString: [trialHistoryController resultsHistoryString]];
     if ([Settings auditoryFeedback4run]) [sound playNumber: kSoundRunEnd];
-    
+
     let _currentTestResultExportString = [_parentController currentTestResultExportString];
     if ([Settings showCI95] && (![_parentController runAborted])) {
         if ([self isAcuityOptotype]) {
@@ -463,6 +469,12 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     s += tab + "test" + tab + [self testNameGivenTestID: currentTestID];
     return s;
 }
-
+// in order to not mangle parameter sequence I'm tucking this addition at the end
+- (CPString) generalComposeExportStringFinalize: (CPString) s {
+    if ([Settings eccentXInDeg] != 0) {
+        s += tab + "eccentricityX" + tab + [Misc stringFromNumber: [Settings eccentXInDeg] decimals: 1 localised: YES];
+    }
+    return s;
+}
 
 @end

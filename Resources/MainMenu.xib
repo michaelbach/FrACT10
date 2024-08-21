@@ -262,7 +262,7 @@ Instruct to read the middle line, and when 3 of 5 are correct press ↓.
     
 Shortcut: 4
  </string>
-                        <buttonCell key="cell" type="roundTextured" title="Line-by-line" bezelStyle="texturedRounded" image="buttonAcuityLineByLine" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="KDf-Uw-FAZ">
+                        <buttonCell key="cell" type="roundTextured" title="Line-by-line" bezelStyle="texturedRounded" image="buttonAcuityLineByLine" imagePosition="only" alignment="center" enabled="NO" imageScaling="proportionallyUpOrDown" inset="2" id="KDf-Uw-FAZ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -4683,12 +4683,12 @@ DQ
         <image name="butCntE" width="970" height="652"/>
         <image name="butCntGrating" width="412" height="412"/>
         <image name="butCntLett" width="1097" height="658"/>
-        <image name="buttonAcuityC" width="849" height="499"/>
-        <image name="buttonAcuityE" width="662" height="424"/>
-        <image name="buttonAcuityLett" width="869" height="498"/>
-        <image name="buttonAcuityLineByLine" width="1075" height="731"/>
-        <image name="buttonAcuityTAO" width="820" height="800"/>
-        <image name="buttonAcuityVernier" width="518" height="816"/>
+        <image name="buttonAcuityC" width="849" height="849"/>
+        <image name="buttonAcuityE" width="662" height="662"/>
+        <image name="buttonAcuityLett" width="869" height="889"/>
+        <image name="buttonAcuityLineByLine" width="1055" height="1055"/>
+        <image name="buttonAcuityTAO" width="820" height="820"/>
+        <image name="buttonAcuityVernier" width="798" height="798"/>
         <image name="iconAbout" width="396" height="396"/>
         <image name="iconCross" width="482" height="480"/>
         <image name="iconFullscreen" width="356" height="356"/>

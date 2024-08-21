@@ -225,24 +225,25 @@ const specialBcmStepsize = 0.1;
 }
 
 
-- (CPString) contrastComposeExportString {    if ([[self parentController] runAborted]) return "";
-    let _testExportString = [self generalComposeExportString];
-    _testExportString += tab + "value" + tab + [Misc stringFromNumber: contrastMichelsonPercent decimals: 3 localised: YES];
-    _testExportString += tab + "unit1" + tab + currentTestResultUnit
-    _testExportString += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 2 localised: YES];
-    _testExportString += tab + "spatFreq" + tab + [Misc stringFromNumber: spatialFreqCPD decimals: 2 localised: YES];
-    _testExportString += tab + "unit2" + tab + "cpd";
-    _testExportString += tab + "nTrials" + tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
-    _testExportString += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
-    _testExportString += tab + "crowding" + tab + 0; // does not apply, but let's not NaN this
+- (CPString) contrastComposeExportString {
+    if ([[self parentController] runAborted]) return "";
+    let _exportString = [self generalComposeExportString];
+    _exportString += tab + "value" + tab + [Misc stringFromNumber: contrastMichelsonPercent decimals: 3 localised: YES];
+    _exportString += tab + "unit1" + tab + currentTestResultUnit
+    _exportString += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 2 localised: YES];
+    _exportString += tab + "spatFreq" + tab + [Misc stringFromNumber: spatialFreqCPD decimals: 2 localised: YES];
+    _exportString += tab + "unit2" + tab + "cpd";
+    _exportString += tab + "nTrials" + tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
+    _exportString += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
+    _exportString += tab + "crowding" + tab + 0; // does not apply, but let's not NaN this
     if (isGratingColor) {
-        _testExportString += tab + "colorForeBack" + tab + [gColorFore hexString] + tab + [gColorBack hexString];
+        _exportString += tab + "colorForeBack" + tab + [gColorFore hexString] + tab + [gColorBack hexString];
         if ([self isAcuityGrating]) {
-            _testExportString += tab + "cpdMin" + tab + [Misc stringFromNumber: [Settings gratingCPDmin] decimals: 3 localised: YES];
-            _testExportString += tab + "cpdMax" + tab + [Misc stringFromNumber: [Settings gratingCPDmax] decimals: 2 localised: YES];
+            _exportString += tab + "cpdMin" + tab + [Misc stringFromNumber: [Settings gratingCPDmin] decimals: 3 localised: YES];
+            _exportString += tab + "cpdMax" + tab + [Misc stringFromNumber: [Settings gratingCPDmax] decimals: 2 localised: YES];
         }
     }
-    return _testExportString;
+    return [self generalComposeExportStringFinalize: _exportString];
 }
 
 @end

@@ -33,7 +33,7 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     self = [super init];
     if (self) {
         /* first entry: Header, all others need corresponding code in the “switch orgy” further down. */
-        const allPresets = ["PRESETS", "Standard Defaults", "Demo", "Testing", "ESU", "ULV", "Color Equiluminance", "BCM@Scheie", "CNS@Freiburg", "Maculight", "Hyper@TUDo"];
+        const allPresets = ["PRESETS", "Standard Defaults", "Demo", "Testing", "ESU", "ULV", "Color Equiluminance", "BCM@Scheie", "CNS@Freiburg", "Maculight", "Hyper@TUDo", "AT@LeviLab"];
 
         _popUpButton = thePopUpButton; // local copy for later
         [_popUpButton removeAllItems];
@@ -191,6 +191,24 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             // Misc pane
             [Settings setWindowBackgroundColor: [CPColor whiteColor]];
             [Settings setSoundTrialNoIndex: 1];
+            break;
+        case "AT@LeviLab": // for Ângela
+            [self setStandardDefaultsKeepingCalBarLength];
+            // General pane
+            [[CPUserDefaults standardUserDefaults] setInteger: 1 forKey: "nAlternativesIndex"]; // 4
+            [Settings setNTrials04: 24];
+            [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
+            [Settings setDecimalMarkCharIndex: kDecimalMarkCharIndexComma];
+            [Settings setTimeoutDisplaySeconds: 0.15];
+            [Settings setEccentXInDeg: 8];
+            [Settings setDistanceInCM: 68.5];
+            [Settings setResults2clipboard: kResults2ClipFullHistory];
+            [Settings setDisplayTransform: 1]; // 1=mirror horizontally
+            [Settings setTestOnFive: kTestAcuityC];
+            // Acuity pane
+            [Settings setMaxDisplayedAcuity: 99];
+            // Misc pane
+            [Settings setEccentRandomizeX: YES];
             break;
         case "Generic Template": // only as template for new entries
             [Settings setDefaults];

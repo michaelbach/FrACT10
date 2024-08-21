@@ -191,7 +191,7 @@ basic flow:
     s += tab + "nTrials" + tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
     s += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
     s += tab + "crowding" + tab + 0; // does not apply, but let's not NaN this
-    return s;
+    return [self generalComposeExportStringFinalize: s];
 }
 
 
