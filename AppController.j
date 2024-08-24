@@ -432,7 +432,7 @@
 /**
  All test buttons land here, discriminated by their tag values (→HierarchyController for `TestIDType`)
  */
-- (IBAction) buttonDoTest_action: (id) sender {
+- (IBAction) buttonDoTest_action: (id) sender { //console.info("buttonDoTest_action ", [sender tag])
     [self runFractControllerTest: [sender tag]];
 }
 

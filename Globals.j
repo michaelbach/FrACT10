@@ -56,6 +56,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 
 /*
  #  History
++ 2024-08-24 fix regression (line-by-line was disabled in IB), harmonise button shapes & names, recognize "isEnabled" in MDBButton
 + 2024-08-15a add Preset "AT@LeviLab", modify randomization of `eccentXInDeg`, add to export string, button images square
 + 2024-08-14 add randomization of `eccentXInDeg` on request
 + 2024-08-02 reading `Info.plist` in service worker proved not useful: doesn't notice the update. Instead: `updateServiceWorkerDateFromInfoPlist.js` copies versionDate from plist whenever necessary

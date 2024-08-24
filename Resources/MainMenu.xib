@@ -153,7 +153,7 @@ Shortcut: V      
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Contrast assessment using Sloan Letters.  Shortcut: 1 
  </string>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="butCntLett" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="g65-ae-fbX">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonContrastLett" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="g65-ae-fbX">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -166,7 +166,7 @@ Shortcut: V      
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Contrast assessment using Tumbling E.  Shortcut: 3
  </string>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="butCntE" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="iBN-dd-rq2">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonContrastE" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="iBN-dd-rq2">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -179,7 +179,7 @@ Shortcut: V      
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Contrast assessment using Landolt C.  Shortcut: 2
  </string>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="butCntC" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="RRU-h0-CYF">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonContrastC" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="RRU-h0-CYF">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -233,7 +233,7 @@ Shortcut: f
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Acuity assessment using Sloan Letters. Shortcut: L
  </string>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityLett" imagePosition="overlaps" alignment="center" tag="1" imageScaling="proportionallyUpOrDown" inset="2" id="xw1-er-aQN">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityLett" imagePosition="only" alignment="center" tag="1" imageScaling="proportionallyUpOrDown" inset="2" id="xw1-er-aQN">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -262,7 +262,7 @@ Instruct to read the middle line, and when 3 of 5 are correct press ↓.
     
 Shortcut: 4
  </string>
-                        <buttonCell key="cell" type="roundTextured" title="Line-by-line" bezelStyle="texturedRounded" image="buttonAcuityLineByLine" imagePosition="only" alignment="center" enabled="NO" imageScaling="proportionallyUpOrDown" inset="2" id="KDf-Uw-FAZ">
+                        <buttonCell key="cell" type="roundTextured" title="Line-by-line" bezelStyle="texturedRounded" image="buttonAcuityLineByLine" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="KDf-Uw-FAZ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -271,7 +271,7 @@ Shortcut: 4
                         </connections>
                     </button>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBn-1C-8cg">
-                        <rect key="frame" x="3" y="-3" width="797" height="66"/>
+                        <rect key="frame" x="2" y="-3" width="797" height="66"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="resultString" allowsEditingTextAttributes="YES" usesSingleLineMode="YES" id="eZN-cU-So4">
                             <font key="font" metaFont="system" size="28"/>
@@ -287,7 +287,7 @@ Shortcut: 4
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Contrast assessment using gratings. Settings&gt;Contrast to set spatial frequency and diameter. Shortcut: g
  </string>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="butCntGrating" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="IV3-56-IkQ">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonGrating" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="IV3-56-IkQ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -464,7 +464,7 @@ DQ
                             <action selector="buttonHelpClose_action:" target="450" id="UKD-ir-DUY"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFH-Mg-hvS">
+                    <button tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFH-Mg-hvS">
                         <rect key="frame" x="309" y="18" width="126" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Opens the FrACT blog page in your browser.  
@@ -493,7 +493,7 @@ DQ
                             <action selector="buttonGotoFractManual_action:" target="450" id="phE-lI-WT6"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iza-6M-cRz">
+                    <button tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iza-6M-cRz">
                         <rect key="frame" x="164" y="18" width="126" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Opens the FrACT home page 
@@ -509,7 +509,7 @@ in your browser.
                             <action selector="buttonGotoFractChecklist_action:" target="450" id="sVb-BQ-QdS"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFU-iu-5G1">
+                    <button tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFU-iu-5G1">
                         <rect key="frame" x="453" y="18" width="126" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Opens the “Acuity Cheat Sheet" in your browser.
@@ -524,7 +524,7 @@ in your browser.
                             <action selector="buttonGotoAcuityCheats_action:" target="450" id="Ajb-pF-dXD"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SdT-ry-TcO">
+                    <button tag="4" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SdT-ry-TcO">
                         <rect key="frame" x="596" y="18" width="126" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Opens a website which will read and display the test results exported by default.
@@ -4679,16 +4679,16 @@ DQ
     <resources>
         <image name="CreditcardPlus2x50" width="2100" height="1361"/>
         <image name="FrACT_icon-390" width="390" height="390"/>
-        <image name="butCntC" width="1160" height="772"/>
-        <image name="butCntE" width="970" height="652"/>
-        <image name="butCntGrating" width="412" height="412"/>
-        <image name="butCntLett" width="1097" height="658"/>
         <image name="buttonAcuityC" width="849" height="849"/>
         <image name="buttonAcuityE" width="662" height="662"/>
         <image name="buttonAcuityLett" width="869" height="889"/>
         <image name="buttonAcuityLineByLine" width="1055" height="1055"/>
         <image name="buttonAcuityTAO" width="820" height="820"/>
         <image name="buttonAcuityVernier" width="798" height="798"/>
+        <image name="buttonContrastC" width="1160" height="1160"/>
+        <image name="buttonContrastE" width="970" height="970"/>
+        <image name="buttonContrastLett" width="1098" height="1098"/>
+        <image name="buttonGrating" width="412" height="412"/>
         <image name="iconAbout" width="396" height="396"/>
         <image name="iconCross" width="482" height="480"/>
         <image name="iconFullscreen" width="356" height="356"/>

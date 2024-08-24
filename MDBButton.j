@@ -33,8 +33,10 @@
     CGContextFillRoundedRectangleInRect(cgc, f1, radius, YES, YES, YES, YES);
     
     CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: 0.3 alpha: 1]); // border, darker than any fill
-    CGContextSetLineWidth(cgc, 3);
-    CGContextStrokeRoundedRectangleInRect(cgc, f1, radius, YES, YES, YES, YES);
+    if ([self isEnabled]) { // so I notice if inadvertantly disabled
+        CGContextSetLineWidth(cgc, 3);
+        CGContextStrokeRoundedRectangleInRect(cgc, f1, radius, YES, YES, YES, YES);
+    }
 }
 
 
