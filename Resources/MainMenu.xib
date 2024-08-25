@@ -373,7 +373,7 @@ DQ
                             <action selector="buttonAboutClose_action:" target="450" id="q99-th-ILa"/>
                         </connections>
                     </button>
-                    <button toolTip="This will open the FrACT blog page in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UsK-H5-DbG">
+                    <button toolTip="This will open the FrACT blog page in your browser." tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UsK-H5-DbG">
                         <rect key="frame" x="508" y="18" width="135" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="→FrACT blog" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KLB-6N-g7V">
@@ -381,10 +381,10 @@ DQ
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonGotoFractBlog_action:" target="450" id="ZwD-NH-v1x"/>
+                            <action selector="buttonGotoURLgivenTag_action:" target="450" id="jFA-od-fW5"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eo3-yh-5sO">
+                    <button tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eo3-yh-5sO">
                         <rect key="frame" x="20" y="18" width="135" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">This will open the manual in your browser.
@@ -396,7 +396,7 @@ DQ
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonGotoFractManual_action:" target="450" id="VSD-LV-7DS"/>
+                            <action selector="buttonGotoURLgivenTag_action:" target="450" id="aNB-sY-9uT"/>
                         </connections>
                     </button>
                     <webView fixedFrame="YES" maintainsBackForwardList="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68J-Vy-hV1">
@@ -413,7 +413,7 @@ DQ
                             <nil key="identifier"/>
                         </webPreferences>
                     </webView>
-                    <button toolTip="This will open the FrACT home page in your browser." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xo5-1y-fja">
+                    <button toolTip="This will open the FrACT home page in your browser." tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xo5-1y-fja">
                         <rect key="frame" x="274" y="18" width="135" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="→FrACT site" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FmC-12-fbn">
@@ -421,7 +421,7 @@ DQ
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonGotoFractSite_action:" target="450" id="0wl-C3-LrE"/>
+                            <action selector="buttonGotoURLgivenTag_action:" target="450" id="Rb6-QT-3IN"/>
                         </connections>
                     </button>
                 </subviews>
@@ -476,10 +476,10 @@ DQ
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonGotoFractBlog_action:" target="450" id="4Ol-RO-9ql"/>
+                            <action selector="buttonGotoURLgivenTag_action:" target="450" id="8YA-yu-srh"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pig-bH-1jM">
+                    <button tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pig-bH-1jM">
                         <rect key="frame" x="19" y="18" width="126" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Opens the manual in your browser. 
@@ -490,10 +490,10 @@ DQ
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonGotoFractManual_action:" target="450" id="phE-lI-WT6"/>
+                            <action selector="buttonGotoURLgivenTag_action:" target="450" id="niA-MV-GhX"/>
                         </connections>
                     </button>
-                    <button tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iza-6M-cRz">
+                    <button tag="4" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iza-6M-cRz">
                         <rect key="frame" x="164" y="18" width="126" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Opens the FrACT home page 
@@ -506,10 +506,10 @@ in your browser.
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonGotoFractChecklist_action:" target="450" id="sVb-BQ-QdS"/>
+                            <action selector="buttonGotoURLgivenTag_action:" target="450" id="XCD-QD-rKQ"/>
                         </connections>
                     </button>
-                    <button tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFU-iu-5G1">
+                    <button tag="5" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFU-iu-5G1">
                         <rect key="frame" x="453" y="18" width="126" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Opens the “Acuity Cheat Sheet" in your browser.
@@ -521,10 +521,10 @@ in your browser.
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonGotoAcuityCheats_action:" target="450" id="Ajb-pF-dXD"/>
+                            <action selector="buttonGotoURLgivenTag_action:" target="450" id="viI-sm-yoX"/>
                         </connections>
                     </button>
-                    <button tag="4" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SdT-ry-TcO">
+                    <button tag="6" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SdT-ry-TcO">
                         <rect key="frame" x="596" y="18" width="126" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Opens a website which will read and display the test results exported by default.
@@ -534,7 +534,7 @@ in your browser.
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="resultDetails_action:" target="450" id="eZ2-3l-yWR"/>
+                            <action selector="buttonGotoURLgivenTag_action:" target="450" id="97z-7W-R0E"/>
                         </connections>
                     </button>
                     <webView id="CEW-xu-zjz">

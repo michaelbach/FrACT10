@@ -56,6 +56,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 
 /*
  #  History
+2024-08-25 simplify actions for Help and About panels by using tag values and URL string collection
 + 2024-08-24 fix regression (line-by-line was disabled in IB), harmonise button shapes & names, recognize "isEnabled" in MDBButton
 + 2024-08-15a add Preset "AT@LeviLab", modify randomization of `eccentXInDeg`, add to export string, button images square
 + 2024-08-14 add randomization of `eccentXInDeg` on request

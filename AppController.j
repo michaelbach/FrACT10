@@ -409,14 +409,6 @@
 }
 
 
-- (IBAction) resultDetails_action: (id) sender {
-    const path = "../readResultString.html";
-    if ([Misc existsUrl: path]) {
-        window.open(path, "_blank");
-    }
-}
-
-
 - (IBAction) buttonFullScreen_action: (id) sender { //console.info("AppController>buttonFullScreen");
     const full = [Misc isFullScreen];
     if (full) {
@@ -491,20 +483,19 @@
 - (IBAction) buttonAboutClose_action: (id) sender {
     [aboutPanel close];
 }
-- (IBAction) buttonGotoFractSite_action: (id) sender {
-    window.open("https://michaelbach.de/fract/", "_blank");
-}
-- (IBAction) buttonGotoFractBlog_action: (id) sender {
-    window.open("https://michaelbach.de/fract/blog.html", "_blank");
-}
-- (IBAction) buttonGotoFractManual_action: (id) sender {
-    window.open("https://michaelbach.de/fract/manual.html", "_blank");
-}
-- (IBAction) buttonGotoFractChecklist_action: (id) sender {
-    window.open("https://michaelbach.de/fract/checklist.html", "_blank");
-}
-- (IBAction) buttonGotoAcuityCheats_action: (id) sender {
-    window.open("https://michaelbach.de/sci/acuity.html", "_blank");
+- (IBAction) buttonGotoURLgivenTag_action: (id) sender {
+    const tagsURLs = {1: "https://michaelbach.de/fract/",
+        2: "https://michaelbach.de/fract/blog.html",
+        3: "https://michaelbach.de/fract/manual.html",
+        4: "https://michaelbach.de/fract/checklist.html",
+        5: "https://michaelbach.de/sci/acuity.html",
+        6: "../readResultString.html"};
+    const url = tagsURLs[[sender tag]];
+    if (url != undefined) {
+        if ([Misc existsUrl: url]) {
+            window.open(url, "_blank");
+        }
+    }
 }
 
 
