@@ -179,19 +179,25 @@ function _pause(ms) { //console.info("Misc>_pause");
  Helper function: Find out if a URL exists
  */
 + (BOOL) existsUrl: (CPString) url { //console.info("Misc>existsUrl");
-    let request;
-    if(window.XMLHttpRequest)
-        request = new XMLHttpRequest();
-    else
-        request = new ActiveXObject("Microsoft.XMLHTTP");
-    request.open('GET', url, false);
-    request.send(); // there will be a 'pause' here until the response to come.
-    // the object request will be modified
-    if (request.status === 404) {
-        alert("The page you are trying to reach is not available (in this context).");
-        return false;
+    let success = false;
+    try {
+        let request;
+        if(window.XMLHttpRequest)
+            request = new XMLHttpRequest();
+        else
+            request = new ActiveXObject("Microsoft.XMLHTTP");
+        request.open('GET', url, false);
+        request.send(); // there will be a 'pause' here until the response to come.
+        // the object request will be modified
+        success = (request.status != 404)
     }
-    return true;
+    catch (e){
+        console.log(e);
+    }
+    if (!success) {
+        alert("The page you are trying to reach is not available (in this context).");
+    }
+    return success;
 }
 
 

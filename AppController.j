@@ -484,18 +484,19 @@
     [aboutPanel close];
 }
 - (IBAction) buttonGotoURLgivenTag_action: (id) sender {
+    const tag = [sender tag];
     const tagsURLs = {1: "https://michaelbach.de/fract/",
         2: "https://michaelbach.de/fract/blog.html",
         3: "https://michaelbach.de/fract/manual.html",
         4: "https://michaelbach.de/fract/checklist.html",
         5: "https://michaelbach.de/sci/acuity.html",
         6: "../readResultString.html"};
-    const url = tagsURLs[[sender tag]];
-    if (url != undefined) {
-        if ([Misc existsUrl: url]) {
-            window.open(url, "_blank");
-        }
+    const url = tagsURLs[tag];
+    if (url === undefined) return;
+    if (tag == 6) { // only check for this local file
+        if (![Misc existsUrl: url]) return;
     }
+    window.open(url, "_blank");
 }
 
 

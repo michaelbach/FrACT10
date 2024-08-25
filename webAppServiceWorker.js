@@ -2,7 +2,7 @@
 // file "webAppServiceWorker.js"
 //
 
-const cacheName = "FrACT10·2024-08-24";
+const cacheName = "FrACT10·2024-08-25a";
 
 
 // Fetching content using Service Worker, this is called on reload. If cache name has changed, `install` is next
@@ -37,9 +37,10 @@ self.addEventListener('install', (event) => {
                             './Resources/allRewardSprites.png',
                             './Resources/CreditcardPlus2x50.png',
                             './Resources/MainMenu.cib',
-                            './Resources/buttons/butCntC.png',
-                            './Resources/buttons/butCntE.png',
-                            './Resources/buttons/butCntLett.png',
+                            './Resources/buttonContrastC.png',
+                            './Resources/buttonContrastE.png',
+                            './Resources/buttonContrastLett.png',
+                            './Resources/buttonGrating.png',
                             './Resources/buttons/buttonAcuityC.png',
                             './Resources/buttons/buttonAcuityE.png',
                             './Resources/buttons/buttonAcuityLett.png',
