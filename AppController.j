@@ -249,7 +249,7 @@
 /**
  One of the tests should run, but let's test some prerequisites first
  */
-- (void) notificationRunFractControllerTest: (CPNotification) aNotification { // called from ControlDispatcher
+- (void) notificationRunFractControllerTest: (CPNotification) aNotification { //called from ControlDispatcher
     [self runFractControllerTest: [aNotification object]];
 }
 - (void) runFractControllerTest: (int) testNr { //console.info("AppController>runFractController");
@@ -277,7 +277,7 @@
 /**
  The above prerequisites were met, so let's run the test specified in the class-global`currentTestID`
  */
-- (void) runFractController2 { //   console.info("AppController>runFractController2  ");
+- (void) runFractController2 { //console.info("AppController>runFractController2");
     [self closeAllPanels];
     if ([Settings responseInfoAtStart]) {
         switch (currentTestID) {
@@ -353,7 +353,7 @@
     temp = currentTestResultsHistoryExportString.replace(/,/g, ".");
     localStorage.setItem(gFilename4ResultsHistoryStorage, temp);
 
-    if ([Settings results2clipboard] > kResults2ClipNone) {
+    if ([Settings results2clipboard] != kResults2ClipNone) {
         if ([Settings results2clipboard] == kResults2ClipFullHistory) {
             currentTestResultExportString += currentTestResultsHistoryExportString;
         }
@@ -445,7 +445,7 @@
     [self postNotificationName: "copyColorsFromSettings" object: nil];
 }
 
-- (IBAction) buttonSettingsClose_action: (id) sender { //console.info("AppController>buttonSettingsClose");
+- (IBAction) buttonSettingsClose_action: (id) sender {
     [Settings checkDefaults];  [settingsPanel close];
 }
 
