@@ -2147,21 +2147,21 @@ No money transfer involved, just for size!     </string>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Number of optotypes in the line.
                                     </string>
-                                                        <popUpButtonCell key="cell" type="push" title="1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="JL1-OY-GDI" id="1zx-GW-LFM" userLabel="Headcount">
+                                                        <popUpButtonCell key="cell" type="push" title="1 Optotype" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="JL1-OY-GDI" id="1zx-GW-LFM" userLabel="Headcount">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="menu"/>
                                                             <menu key="menu" id="H8F-8e-Giu">
                                                                 <items>
-                                                                    <menuItem title="1" state="on" id="JL1-OY-GDI">
+                                                                    <menuItem title="1 Optotype" state="on" id="JL1-OY-GDI">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
-                                                                    <menuItem title="3" id="MHF-Wn-f1j" userLabel="3">
+                                                                    <menuItem title="3 Optotypes" id="MHF-Wn-f1j" userLabel="3">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
-                                                                    <menuItem title="5" id="8Re-o2-FHj" userLabel="5">
+                                                                    <menuItem title="5 Optotypes" id="8Re-o2-FHj" userLabel="5">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
-                                                                    <menuItem title="7" id="TKc-nt-ZS5" userLabel="7">
+                                                                    <menuItem title="7 Optotypes" id="TKc-nt-ZS5" userLabel="7">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
                                                                 </items>
@@ -2171,29 +2171,50 @@ No money transfer involved, just for size!     </string>
                                                             <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.lineByLineHeadcountIndex" id="4jv-X1-tFW"/>
                                                         </connections>
                                                     </popUpButton>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aam-cb-JOL">
-                                                        <rect key="frame" x="18" y="19" width="151" height="18"/>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zQI-6P-xxp">
+                                                        <rect key="frame" x="118" y="17" width="89" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <string key="toolTip">Create 3 lines, akin to an acuity chart.
-The indicated LogMAR refers to the middle line. 
-Instruct to read the middle line, and when 3 of 5 are correct press ↓.
-    
- </string>
-                                                        <buttonCell key="cell" type="check" title="Chart mode (3 lines)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nlH-u0-tfg">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <string key="toolTip">Number of optotypes in the line.
+                                    </string>
+                                                        <textFieldCell key="cell" enabled="NO" sendsActionOnEndEditing="YES" title="Lines" id="x4h-YA-Xea">
                                                             <font key="font" metaFont="system"/>
-                                                        </buttonCell>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f44-FX-2gW" userLabel="Headcount">
+                                                        <rect key="frame" x="17" y="14" width="97" height="26"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">Number of optotypes in the line.
+                                    </string>
+                                                        <popUpButtonCell key="cell" type="push" title="1 line" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Kdc-AY-aPc" id="vjB-fL-uEG" userLabel="Headcount">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="menu"/>
+                                                            <menu key="menu" id="foO-hz-es1">
+                                                                <items>
+                                                                    <menuItem title="1 line" state="on" id="Kdc-AY-aPc">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="3 lines" id="j3m-ar-A9A" userLabel="3">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="5 lines" id="yox-zF-dUg" userLabel="5">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                </items>
+                                                            </menu>
+                                                        </popUpButtonCell>
                                                         <connections>
-                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.lineByLineChartMode" id="5pO-zF-x1d"/>
+                                                            <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.lineByLineLinesIndex" id="ZsM-hv-Nca"/>
                                                         </connections>
-                                                    </button>
+                                                    </popUpButton>
                                                 </subviews>
                                             </view>
                                         </box>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yeH-Jv-eDF">
-                                            <rect key="frame" x="548" y="123" width="135" height="22"/>
+                                            <rect key="frame" x="540" y="123" width="151" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Line of Optotypes" bezelStyle="round" id="80e-Xb-73c">
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Line(s) of Optotypes" bezelStyle="round" id="80e-Xb-73c">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

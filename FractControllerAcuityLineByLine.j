@@ -12,9 +12,7 @@ Created by mb on 2021-12-21.
 
 @import "FractControllerAcuity.j"
 @implementation FractControllerAcuityLineByLine: FractControllerAcuity {
-    int lineRange;
     float localLogMAR;
-    BOOL chartmode, chartmodeNotConstVA;
 }
 
 
@@ -46,15 +44,13 @@ Created by mb on 2021-12-21.
     switch(state) {
         case kStateDrawBack: break;
         case kStateDrawFore:
-            chartmode = [Settings lineByLineChartMode];
-            chartmodeNotConstVA = ![Settings lineByLineChartModeConstantVA];
+            const chartmodeNotConstVA = ![Settings lineByLineChartModeConstantVA];
             CGContextSaveGState(cgc);
-            lineRange = 0;
-            if (chartmode) {
+            const lineRange = [Settings lineByLineLinesIndex];
+            if (lineRange > 0) {
                 if (chartmodeNotConstVA) {
                     stimStrengthInDeviceunits /= Math.pow(2, 1/10);
                 }
-                lineRange = 1;
             }
             for (let iLine = -lineRange; iLine <= lineRange; iLine++) {
                 const usedAlternativesArray = [];
@@ -68,7 +64,7 @@ Created by mb on 2021-12-21.
                     if (localDecVA >= 1.0) optotypeDistance = 3;
                 }
                 optotypeDistance = (1 + optotypeDistance) * stimStrengthInDeviceunits * 5;
-                if (chartmode && (iLine >= 0)) CGContextTranslateCTM(cgc, 0, optotypeDistance);
+                if (iLine >= -1) CGContextTranslateCTM(cgc, 0, optotypeDistance);
                 const iRange = [Settings lineByLineHeadcountIndex];
                 for (let i = -iRange; i <= iRange; i++) {//iDex 0…3 → 1, 3, 5, 7
                     const tempX = i * optotypeDistance;
@@ -101,7 +97,7 @@ Created by mb on 2021-12-21.
                 //lineHeight = tInfo.emHeightAscent;// + tInfo.emHeightDescent;
             } catch(e) {}
             CGContextShowTextAtPoint(cgc, viewWidth2 - stringWidth, -viewHeight2 + lineHeight, s);
-            if (chartmode) {
+            if (lineRange > 0) {
                 CGContextShowTextAtPoint(cgc, viewWidth2 - stringWidth, -viewHeight2 + 2 * lineHeight, "(middle line)");
             }
             CGContextShowTextAtPoint(cgc, -viewWidth2, -viewHeight2 + lineHeight, " Use ↑↓, ⇄");

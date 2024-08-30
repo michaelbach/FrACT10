@@ -152,7 +152,7 @@ Created by mb on July 15, 2015.
     [self setTestOnLineByLine: [self checkNum: [self testOnLineByLine] dflt: 1 min: 1 max: 4 set: set]]; // 1: Sloan Letters. 0: nicht erlaubt, 2: Landolt, 3…
     [self setTestOnLineByLineDistanceType: [self checkNum: [self testOnLineByLineDistanceType] dflt: 1 min: 0 max: 1 set: set]]; // 0: DIN-EN-ISO, 1: ETDRS
     [self setLineByLineHeadcountIndex: [self checkNum: [self lineByLineHeadcountIndex] dflt: 2 min: 0 max: 4 set: set]]; // 0: "1", 2: "3", 3: "5", 4: "7"
-    [self setLineByLineChartMode: [self checkBool: [self lineByLineChartMode] dflt: NO set: set]];
+    [self setLineByLineLinesIndex: [self checkNum: [self lineByLineLinesIndex] dflt: 0 min: 0 max: 3 set: set]]; // 0: "1", 2: "3", 3: "5"
     [self setLineByLineChartModeConstantVA: [self checkBool: [self lineByLineChartModeConstantVA] dflt: NO set: set]];
 
     // Vernier stuff
@@ -813,11 +813,11 @@ Created by mb on July 15, 2015.
 + (void) setLineByLineHeadcountIndex: (int) val {
     [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "lineByLineHeadcountIndex"];
 }
-+ (BOOL) lineByLineChartMode {
-    return [[CPUserDefaults standardUserDefaults] boolForKey: "lineByLineChartMode"];
++ (int) lineByLineLinesIndex {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "lineByLineLinesIndex"];
 }
-+ (void) setLineByLineChartMode: (BOOL) val {
-    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "lineByLineChartMode"];
++ (void) setLineByLineLinesIndex: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "lineByLineLinesIndex"];
 }
 + (BOOL) lineByLineChartModeConstantVA {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "lineByLineChartModeConstantVA"];
