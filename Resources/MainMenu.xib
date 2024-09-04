@@ -76,7 +76,7 @@ Shortcut: A
                         <rect key="frame" x="32" y="167" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip"> Enter Settings screen.
- Shortcut: s 
+ Shortcut: s
    
  
  
@@ -151,7 +151,7 @@ Shortcut: V      
                     <button tag="6" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rNE-r4-ESi" customClass="MDBButton">
                         <rect key="frame" x="33" y="289" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Contrast assessment using Sloan Letters.  Shortcut: 1 
+                        <string key="toolTip">Contrast assessment using Sloan Letters.  Shortcut: 1
  </string>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonContrastLett" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="g65-ae-fbX">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -203,10 +203,10 @@ Shortcut: V      
                         <rect key="frame" x="190" y="167" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Toggle “fullscreen”.
-Shortcut: f 
- 
+Shortcut: f
+
  
- 
+
 
 </string>
                         <buttonCell key="cell" type="roundTextured" title="Fullscr." bezelStyle="texturedRounded" image="iconFullscreen" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cEz-jl-XIn">
@@ -244,7 +244,7 @@ Shortcut: f
                     <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H63-sm-3gG">
                         <rect key="frame" x="665" y="115" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">This button does what it says.         
+                        <string key="toolTip">This button does what it says.
 Shortcuts: "Q", "X" or "-" (Minus)</string>
                         <buttonCell key="cell" type="roundTextured" title="Exit" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GPt-7z-qAa">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -259,7 +259,7 @@ Shortcuts: "Q", "X" or "-" (Minus)</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">"Line of optotypes"": 1 or 3 lines of optypes, akin to an acuity chart.
 Instruct to read the middle line, and when 3 of 5 are correct press ↓.
-    
+
 Shortcut: 4
  </string>
                         <buttonCell key="cell" type="roundTextured" title="Line-by-line" bezelStyle="texturedRounded" image="buttonAcuityLineByLine" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="KDf-Uw-FAZ">
@@ -271,7 +271,7 @@ Shortcut: 4
                         </connections>
                     </button>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBn-1C-8cg">
-                        <rect key="frame" x="2" y="-3" width="797" height="66"/>
+                        <rect key="frame" x="2" y="-2" width="797" height="66"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="resultString" allowsEditingTextAttributes="YES" usesSingleLineMode="YES" id="eZN-cU-So4">
                             <font key="font" metaFont="system" size="28"/>
@@ -324,7 +324,7 @@ For testing.
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9X3-mm-3Mb">
                         <rect key="frame" x="765" y="557" width="24" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Exit.         
+                        <string key="toolTip">Exit.
 Shortcuts: "Q", "X" or "-" (Minus)</string>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="iconCross" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9Z8-We-9II">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -596,7 +596,7 @@ DQ
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Preset a set of settings.
 This is useful for studies / clinical trials for standardisation across time and/or centers.
- 
+
  </string>
                         <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="lkr-61-A7f" id="JI4-Wi-eC6">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -670,7 +670,7 @@ This is useful for studies / clinical trials for standardisation across time and
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WCS-rL-YCa">
                                             <rect key="frame" x="14" y="80" width="110" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Depending on where you live, commor or dot. 
+                                            <string key="toolTip">Depending on where you live, commor or dot.
 Especially for the export to clipboard action, it is necessary to choose the right one here, otherwise numbers etc. will not be recognised correctly by the spreadsheet. “Automatic” reads from the browser, which reads from the OS; should be correct in most cases.
  </string>
                                             <popUpButtonCell key="cell" type="push" title="Automatic" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="p64-gR-0Sx" id="Ymt-mG-1P5">
@@ -692,7 +692,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                             <rect key="frame" x="235" y="84" width="30" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Current decimal separator.
- 
+
  </string>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" drawsBackground="YES" id="UuG-0h-cVb">
                                                 <font key="font" metaFont="system"/>
@@ -789,7 +789,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                             <rect key="frame" x="15" y="223" width="154" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">“Touchable” buttons can be added to the display.
- 
+
 . </string>
                                             <buttonCell key="cell" type="check" title="Enable touch controls" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wX6-mM-ZH0">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1070,7 +1070,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LJd-oY-MqO">
                                                         <rect key="frame" x="69" y="49" width="247" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <string key="toolTip">Some optotypes have a fixed number of choices, or variants: Always 10 for Sloan Letters and Auckland Optotypes (TAO); Vernier 2. 
+                                                        <string key="toolTip">Some optotypes have a fixed number of choices, or variants: Always 10 for Sloan Letters and Auckland Optotypes (TAO); Vernier 2.
 For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
 </string>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="# of choices for Landolt Cs and gratings" id="2kS-jg-XcS">
@@ -1306,7 +1306,7 @@ Assumes full screen mode.
                                                         <rect key="frame" x="20" y="48" width="40" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">0°: middle of the screen, positive values shift to the right.
- 
+
 </string>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="EbP-1c-bMs">
                                                             <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="szh-J0-Xu1"/>
@@ -1323,7 +1323,7 @@ Assumes full screen mode.
                                                         <rect key="frame" x="154" y="48" width="40" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">0°: middle of the screen, positive values shift up.
- 
+
  .</string>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="cm5-Bq-tZU">
                                                             <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="ZKf-5q-ZZm"/>
@@ -1434,14 +1434,14 @@ Assumes full screen mode.
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="luN-q6-f3X">
                                             <rect key="frame" x="311" y="40" width="194" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Click to enter a dialog to use a plastic card for calibration (credit card or similar). 
+                                            <string key="toolTip">Click to enter a dialog to use a plastic card for calibration (credit card or similar).
 No money transfer involved, just for size!     </string>
                                             <buttonCell key="cell" type="roundTextured" title="💳 Calibrate with plastic card" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PZ9-YT-gCb">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="buttonCreditcardUse_action:" target="450" id="r5v-yx-rIb"/>
+                                                <action selector="buttonPlasticCardUse_action:" target="450" id="r5v-yx-rIb"/>
                                             </connections>
                                         </button>
                                         <textField toolTip="This displays the Observer distance converted from centimetres to inch" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" id="fkv-fu-ees" userLabel="max. poss. decimal VA">
@@ -1501,7 +1501,7 @@ No money transfer involved, just for size!     </string>
                                             <rect key="frame" x="96" y="373" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Color well, foreground color.
- 
+
  </string>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -1513,7 +1513,7 @@ No money transfer involved, just for size!     </string>
                                             <rect key="frame" x="149" y="373" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Color well, background color.
- 
+
  </string>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -1545,7 +1545,7 @@ No money transfer involved, just for size!     </string>
                                             <rect key="frame" x="33" y="374" width="59" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Optotypes/Background in color as selected by the neighboring color wells.
- 
+
  </string>
                                             <buttonCell key="cell" type="radio" title="Color" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="dfN-Qy-xU1">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1618,7 +1618,7 @@ No money transfer involved, just for size!     </string>
                                                         <rect key="frame" x="76" y="23" width="139" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Acuity can esaily be better than 0.3 LogMAR, but this may irritate. So it can be clipped for display, export values are left unchanged.
- 
+
 </string>
                                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="max. reported dec. VA" id="osW-YR-Yfx">
                                                             <font key="font" metaFont="system"/>
@@ -1651,7 +1651,7 @@ No money transfer involved, just for size!     </string>
                                                         <rect key="frame" x="18" y="238" width="201" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">If unchecked, the raw=psychometric threshold is caculated. If checked (default), it's descending-corrected, thus reflecting DIN/ISO values. If in doubt: checked.
- 
+
 </string>
                                                         <buttonCell key="cell" type="check" title="Threshold correction DIN/ISO" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="UxQ-w5-9S4">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1662,7 +1662,7 @@ No money transfer involved, just for size!     </string>
                                                         <rect key="frame" x="18" y="168" width="113" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">The result will include a “±0.xx” number to indicate the 95% confidence interval; based on resampling. Only works when LogMAR is enabled.
- 
+
 </string>
                                                         <buttonCell key="cell" type="check" title="show ± ½CI95" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="v7r-tv-miZ">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1729,7 +1729,7 @@ No money transfer involved, just for size!     </string>
                                                         <rect key="frame" x="191" y="17" width="60" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">The (vertical) length of a single vernier line in arcmin.
- 
+
  </string>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="pVS-jk-NjQ">
                                                             <font key="font" metaFont="system"/>
@@ -1745,7 +1745,7 @@ No money transfer involved, just for size!     </string>
                                                         <rect key="frame" x="271" y="17" width="60" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">The vertical gap between the vernier lines in arcmin.
- 
+
  </string>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="jQR-SS-gJb">
                                                             <font key="font" metaFont="system"/>
@@ -1770,7 +1770,7 @@ No money transfer involved, just for size!     </string>
                                                         <rect key="frame" x="17" y="17" width="78" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">The vernier stimulus can be of the 2 or 3 line variant.
- 
+
  </string>
                                                         <popUpButtonCell key="cell" type="push" title="2 lines" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="qvW-F3-MnN" id="Din-QU-a6Y" userLabel="2 lines">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1860,7 +1860,7 @@ No money transfer involved, just for size!     </string>
                                                         <rect key="frame" x="185" y="20" width="152" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Distance to crowders = gap between optotye and crowder.
- 
+
  </string>
                                                         <popUpButtonCell key="cell" type="push" title="2·stroke" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="mt7-ev-w6m" id="8J5-AI-Fsw" userLabel="2·gap etc.">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1903,7 +1903,7 @@ No money transfer involved, just for size!     </string>
                                             <rect key="frame" x="96" y="418" width="46" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Contrast (in Weber %) of the acuity optotypes.
- 
+
  </string>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="Contrast" placeholderString="Contrast" drawsBackground="YES" id="AyL-3q-wsa">
                                                 <font key="font" metaFont="system"/>
@@ -1943,7 +1943,7 @@ No money transfer involved, just for size!     </string>
                                             <rect key="frame" x="149" y="416" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Set weber contrast for acuity optotype to 100% (black on white).
- 
+
  </string>
                                             <buttonCell key="cell" type="roundTextured" title="max+" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ilt-gl-fCc">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1962,7 +1962,7 @@ No money transfer involved, just for size!     </string>
                                             <rect key="frame" x="202" y="416" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Set weber contrast for acuity optotype to –10000% (white on black).
- 
+
  </string>
                                             <buttonCell key="cell" type="roundTextured" title="max–" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9zq-sE-pGT">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1981,7 +1981,7 @@ No money transfer involved, just for size!     </string>
                                             <rect key="frame" x="22" y="254" width="107" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">To avoid contact between the largest optotype and the screen edge. Margin in units of stroke (0 gap for Landolt C).
- 
+
  </string>
                                             <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wkG-jG-jTL" id="sa5-f6-go7">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -2004,7 +2004,7 @@ No money transfer involved, just for size!     </string>
                                             <rect key="frame" x="22" y="205" width="107" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Automatic run, targeting this acuity. For testing.
-                            
+
  </string>
                                             <popUpButtonCell key="cell" type="push" title="Off" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ojh-ZS-2dd" id="MsF-Py-9nb">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -2037,7 +2037,7 @@ No money transfer involved, just for size!     </string>
                                             <rect key="frame" x="24" y="301" width="101" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">DIN/ISO: 1.0,  For ultra low vision consider e.g. 2.5.
- 
+
  </string>
                                             <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="ECG-mx-vc8">
                                                 <font key="font" metaFont="system"/>
@@ -2233,7 +2233,7 @@ No money transfer involved, just for size!     </string>
                                             <rect key="frame" x="346" y="304" width="165" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">if checked, the 12th, 18th, 24th… trial will have an “easy” optotype for motivation.
- 
+
  </string>
                                             <buttonCell key="cell" type="check" title="Occasional ‘easy trials’" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Gto-n0-omN">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2246,7 +2246,7 @@ No money transfer involved, just for size!     </string>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xLp-yY-lB5">
                                             <rect key="frame" x="386" y="259" width="99" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">For letters and tumbling E the minimal stroke width, for Landolt-Cs the minimal gap size, in pixel. Can be below 1.0 via aliasing. Know what you're doing when changing. 
+                                            <string key="toolTip">For letters and tumbling E the minimal stroke width, for Landolt-Cs the minimal gap size, in pixel. Can be below 1.0 via aliasing. Know what you're doing when changing.
 Maximum: 5px. </string>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="min. stroke [px]" id="DrW-KY-boK">
                                                 <font key="font" metaFont="system"/>
@@ -2257,9 +2257,9 @@ Maximum: 5px. </string>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LER-FX-oqj">
                                             <rect key="frame" x="348" y="258" width="32" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">For letters and tumbling E the minimal stroke width, for Landolt-Cs the minimal gap size, in pixel. Can be below 1.0 via aliasing. Know what you're doing when changing. 
+                                            <string key="toolTip">For letters and tumbling E the minimal stroke width, for Landolt-Cs the minimal gap size, in pixel. Can be below 1.0 via aliasing. Know what you're doing when changing.
 Maximum: 5px.
- 
+
  </string>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" id="WIn-vg-rCT">
                                                 <font key="font" metaFont="system"/>
@@ -2283,7 +2283,7 @@ Maximum: 5px.
                                             <rect key="frame" x="16" y="434" width="165" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">if checked, the 12th, 18th, 24th… trial will have an “easy” optotype for motivation.
- 
+
 </string>
                                             <buttonCell key="cell" type="check" title="Occasional ‘easy trials’" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="8rt-0N-FfV">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2297,7 +2297,7 @@ Maximum: 5px.
                                             <rect key="frame" x="18" y="134" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Diameter of the optotype.
- 
+
  </string>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="Znx-Pa-tgb">
                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="nuG-MA-6ZM"/>
@@ -2350,7 +2350,7 @@ Maximum: 5px.
                                             <rect key="frame" x="18" y="74" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Best not change it…
- 
+
  </string>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="0.0" drawsBackground="YES" id="B2m-gD-gKI">
                                                 <font key="font" metaFont="system"/>
@@ -2394,7 +2394,7 @@ Maximum: 5px.
                                             <rect key="frame" x="529" y="428" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Sets the fields below to 3% Weber contrast (possibly too small to render correctly).
- 
+
  </string>
                                             <buttonCell key="cell" type="roundTextured" title="3%" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1P6-vF-hoz">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2408,7 +2408,7 @@ Maximum: 5px.
                                             <rect key="frame" x="470" y="428" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Sets the fields below to 1% Weber contrast (too small to render).
- 
+
 </string>
                                             <buttonCell key="cell" type="roundTextured" title="1%" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AB1-ng-QrF">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2422,7 +2422,7 @@ Maximum: 5px.
                                             <rect key="frame" x="589" y="428" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Sets the fields below to 10% Weber contrast.
- 
+
  </string>
                                             <buttonCell key="cell" type="roundTextured" title="10%" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CmE-75-uwu">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2436,7 +2436,7 @@ Maximum: 5px.
                                             <rect key="frame" x="651" y="428" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Sets the fields below to 30% Weber contrast.
- 
+
  </string>
                                             <buttonCell key="cell" type="roundTextured" title="30%" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gbk-mY-cce">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2450,7 +2450,7 @@ Maximum: 5px.
                                             <rect key="frame" x="710" y="428" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Sets the fields below to 90% Weber contrast.
- 
+
  </string>
                                             <buttonCell key="cell" type="roundTextured" title="90%" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2PE-y0-Q2V">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2464,7 +2464,7 @@ Maximum: 5px.
                                             <rect key="frame" x="711" y="383" width="44" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">This displays the realisable Michelson contrast, depending on color discreteness and gamma value.
- 
+
  </string>
                                             <textFieldCell key="cell" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="Puz-11-8LJ">
                                                 <font key="font" metaFont="system"/>
@@ -2488,7 +2488,7 @@ Maximum: 5px.
                                             <rect key="frame" x="15" y="14" width="107" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Automatic run, targeting this contrast sensitivity. For testing.
- 
+
  </string>
                                             <popUpButtonCell key="cell" type="push" title="Off" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="XTz-Wz-SXk" id="w6t-JP-XDB">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -2521,7 +2521,7 @@ Maximum: 5px.
                                             <rect key="frame" x="471" y="383" width="44" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">This displays the realisable Weber contrast, depending on color discreteness and gamma value.
- 
+
  </string>
                                             <textFieldCell key="cell" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="tZh-H7-P0v">
                                                 <font key="font" metaFont="system"/>
@@ -2536,7 +2536,7 @@ Maximum: 5px.
                                             <rect key="frame" x="16" y="314" width="123" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Contrast polarity for the optotype.
- 
+
  </string>
                                             <buttonCell key="cell" type="check" title="Dark on light" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="W2N-2I-sCS">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2570,7 +2570,7 @@ Maximum: 5px.
                                             <rect key="frame" x="16" y="193" width="223" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Color Bit Stealing: Invented by Chris Tyler. Borrows color bits across RGB to better approximate a target luminance.
- 
+
  </string>
                                             <buttonCell key="cell" type="check" title="Color Bit Stealing (don't use yet)" bezelStyle="regularSquare" imagePosition="left" inset="2" id="j1U-UL-glo">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2598,7 +2598,7 @@ Don't go too close or you can resolve the pattern.
                                             <rect key="frame" x="176" y="381" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Duration the brief blue fisation star is visible.
- 
+
  </string>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="qPZ-Zq-ojx">
                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="VNM-2f-vjJ"/>
@@ -2644,7 +2644,7 @@ Don't go too close or you can resolve the pattern.
                                             <rect key="frame" x="178" y="393" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Duration the brief blue fixation star is visible.
- 
+
 </string>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="zoH-ba-UrM">
                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="z5r-QG-ZD4"/>
@@ -2662,7 +2662,7 @@ Don't go too close or you can resolve the pattern.
                                             <rect key="frame" x="229" y="394" width="88" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Duration the brief blue fixation star is visible.
- 
+
 </string>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="left" title="Duration [ms]" id="UGE-Cp-3gm">
                                                 <font key="font" metaFont="system"/>
@@ -2674,7 +2674,7 @@ Don't go too close or you can resolve the pattern.
                                             <rect key="frame" x="15" y="386" width="162" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">lets a blue star appear before grating; otherwise unclear if something has happened at all.
- 
+
 </string>
                                             <buttonCell key="cell" type="check" title="Show fixation mark " bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Ls9-Nh-jv8">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2707,7 +2707,7 @@ Don't go too close or you can resolve the pattern.
                                             <rect key="frame" x="178" y="349" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Diameter of the circular grating patch.
- 
+
 </string>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" id="zHM-jD-mTU">
                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="N8N-Lo-XLR"/>
@@ -2725,7 +2725,7 @@ Don't go too close or you can resolve the pattern.
                                             <rect key="frame" x="229" y="350" width="96" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Diameter of the circular grating patch.
- 
+
 </string>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="left" title="Diameter [deg]" id="yVa-cn-gFR">
                                                 <font key="font" metaFont="system"/>
@@ -2747,8 +2747,8 @@ Don't go too close or you can resolve the pattern.
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8er-Ta-td0" userLabel="what2sweep">
                                             <rect key="frame" x="165" y="180" width="386" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Switches between the two alternatives below. 
- 
+                                            <string key="toolTip">Switches between the two alternatives below.
+
 </string>
                                             <popUpButtonCell key="cell" type="push" title="Contrast" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="grk-FJ-Z1K" id="yjR-qI-kBp" userLabel="what2sweep">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -2839,7 +2839,7 @@ Don't go too close or you can resolve the pattern.
                                                         <rect key="frame" x="20" y="65" width="45" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Start CPD of the "sweep".
- 
+
  </string>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="k1F-gi-agb">
                                                             <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Vkl-i4-JnL"/>
@@ -2878,7 +2878,7 @@ Don't go too close or you can resolve the pattern.
                                                         <rect key="frame" x="20" y="27" width="45" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Highest CPD of the "sweep".
- 
+
  </string>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="4se-po-MeZ">
                                                             <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="BxP-t8-7gV"/>
@@ -2904,8 +2904,8 @@ Don't go too close or you can resolve the pattern.
                                                     <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="90M-mp-MA9">
                                                         <rect key="frame" x="20" y="101" width="45" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <string key="toolTip">Fixed contrast where the spatial frequency upper limit is to be assessed. Maximum: 99%. Unit: %Michelson contrast. 
- 
+                                                        <string key="toolTip">Fixed contrast where the spatial frequency upper limit is to be assessed. Maximum: 99%. Unit: %Michelson contrast.
+
 </string>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="h4K-HT-p0a">
                                                             <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="xnV-TX-bQX"/>
@@ -2961,7 +2961,7 @@ Don't go too close or you can resolve the pattern.
                                             <rect key="frame" x="414" y="403" width="74" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Grating in color?
- 
+
 </string>
                                             <buttonCell key="cell" type="check" title="Colored" bezelStyle="regularSquare" imagePosition="left" inset="2" id="r2y-Cq-syN">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2975,7 +2975,7 @@ Don't go too close or you can resolve the pattern.
                                             <rect key="frame" x="15" y="349" width="109" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Grating only within a circular range.
- 
+
 </string>
                                             <buttonCell key="cell" type="check" title="Circular mask" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="cKH-mc-mUi">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3010,7 +3010,7 @@ For gratings: 2 or 4.
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mcv-EH-86K">
                                             <rect key="frame" x="231" y="304" width="104" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Some optotypes have a fixed number of choices, or variants: Always 10 for Sloan Letters and Auckland Optotypes (TAO); Vernier 2. 
+                                            <string key="toolTip">Some optotypes have a fixed number of choices, or variants: Always 10 for Sloan Letters and Auckland Optotypes (TAO); Vernier 2.
 For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
 </string>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of orientations" id="JPi-TN-Wrt">
@@ -3158,7 +3158,7 @@ Change it with the ± buttons.</string>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" id="Ro8-W4-H2N">
                                                 <font key="font" metaFont="system"/>
-                                                <string key="title">← A central checkerboard, surrounded by a gray background. 
+                                                <string key="title">← A central checkerboard, surrounded by a gray background.
 
 The mean luminance (brightness) of the checkerboard should be the same as the background.
 
@@ -3208,7 +3208,7 @@ CQ
                                                     <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c36-Cx-YVY">
                                                         <rect key="frame" x="151" y="11" width="40" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <string key="toolTip">Noise percentage    
+                                                        <string key="toolTip">Noise percentage
 .</string>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" id="q0K-FW-bv2">
                                                             <font key="font" metaFont="system"/>
@@ -3277,7 +3277,7 @@ CQ
                                             <rect key="frame" x="35" y="328" width="298" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">If "Line of optotypes" is set to “Chart mode”, here you can select that all 3 lines have the same acuity grade.
- 
+
 </string>
                                             <buttonCell key="cell" type="check" title="&quot;Line of optotypes&quot; Chart Mode: ConstantVA" bezelStyle="regularSquare" imagePosition="left" inset="2" id="3nO-1o-wRI">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3291,7 +3291,7 @@ CQ
                                             <rect key="frame" x="35" y="178" width="124" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">For some contexts (e.g., embeddng FrACT in a larger project) the Exit button may be detrimental – so disable it here.
- 
+
 </string>
                                             <buttonCell key="cell" type="check" title="Hide Exit button" bezelStyle="regularSquare" imagePosition="left" inset="2" id="GGV-EW-Keb">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3305,7 +3305,7 @@ CQ
                                             <rect key="frame" x="35" y="253" width="224" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">For some contexts (e.g., embeddng FrACT in a larger project) the Exit button may be detrimental – so disable it here.
- 
+
 </string>
                                             <buttonCell key="cell" type="check" title="Randomize eccentricity right/left" bezelStyle="regularSquare" imagePosition="left" inset="2" id="gcZ-p8-SZP">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3343,7 +3343,7 @@ CQ
                                                         <rect key="frame" x="20" y="112" width="135" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Select a soundfile giving feedback on "Correct".
-                                              
+
 </string>
                                                         <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="LiR-sh-xxq" id="FEy-mm-2GC">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -3372,7 +3372,7 @@ CQ
                                                         <rect key="frame" x="20" y="67" width="135" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Select a soundfile giving feedback on "Incorrect".
-                                               
+
 </string>
                                                         <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="44O-uQ-H0W" id="UiF-cy-gaW">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -3401,7 +3401,7 @@ CQ
                                                         <rect key="frame" x="20" y="23" width="135" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Select a soundfile giving feedback on end of run.
-                                              
+
 </string>
                                                         <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="JG8-82-CQO" id="C6r-8A-Sme">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -3450,7 +3450,7 @@ CQ
                         <rect key="frame" x="146" y="19" width="128" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Last selected Preset. May not be correct if settings have been changed afterwards.
- 
+
 </string>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="s7j-e4-6de">
                             <font key="font" metaFont="system"/>
@@ -3484,8 +3484,6 @@ CQ
                 <outlet property="checkContrastWeberField1" destination="rpb-ue-CQK" id="6ZW-Oz-wpM"/>
                 <outlet property="checkContrastWeberField2" destination="4WO-rY-pis" id="Lcj-IY-0Np"/>
                 <outlet property="contrastMaxLogCSWeberField" destination="AQw-jE-a5x" id="gGe-Qj-bic"/>
-                <outlet property="creditcardImageView" destination="pj2-Gh-qNp" id="oh4-e6-pjq"/>
-                <outlet property="creditcardPanel" destination="Wcf-tk-C3n" id="vmt-db-Kmp"/>
                 <outlet property="decimalMarkCharField" destination="FoD-Bg-sIb" id="mCX-RN-Jxx"/>
                 <outlet property="fractControllerWindow" destination="r6R-bh-Qyp" id="WQx-mH-JUh"/>
                 <outlet property="gammaValueField" destination="jv4-5m-hDh" id="Luz-7v-gyX"/>
@@ -3495,6 +3493,8 @@ CQ
                 <outlet property="helpWebView2" destination="27W-sb-xg0" id="j0c-Kw-xnU"/>
                 <outlet property="helpWebView3" destination="xqp-kf-f7Y" id="5Gb-3A-6NO"/>
                 <outlet property="helpWebView4" destination="CEW-xu-zjz" id="y0W-7j-jD9"/>
+                <outlet property="plasticCardImageView" destination="pj2-Gh-qNp" id="oh4-e6-pjq"/>
+                <outlet property="plasticCardPanel" destination="Wcf-tk-C3n" id="vmt-db-Kmp"/>
                 <outlet property="radioButtonAcuityBW" destination="PDt-dH-Qlh" id="Wb0-h0-yCt"/>
                 <outlet property="radioButtonAcuityColor" destination="yDL-XG-JPC" id="y5a-Dq-689"/>
                 <outlet property="responseinfoPanelAcuity4C" destination="KH7-H9-rEd" id="9RI-zp-bV8"/>
@@ -3517,7 +3517,7 @@ CQ
                 <outlet property="window" destination="371" id="OB7-Tk-Lov"/>
             </connections>
         </customObject>
-        <window title="FrACT₁₀ – Settings,  Size Calibration" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Wcf-tk-C3n" userLabel="creditcardPanel" customClass="NSPanel">
+        <window title="FrACT₁₀ – Settings,  Size Calibration" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Wcf-tk-C3n" userLabel="plasticCardPanel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1710" height="1068"/>
@@ -3528,7 +3528,7 @@ CQ
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pj2-Gh-qNp">
                         <rect key="frame" x="284" y="224" width="233" height="151"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="CreditcardPlus2x50" id="q9B-HM-fLc"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="plasticCard4calibration" id="q9B-HM-fLc"/>
                     </imageView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nPX-rq-4OH">
                         <rect key="frame" x="695" y="17" width="84" height="23"/>
@@ -3541,7 +3541,7 @@ DQ
 </string>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonCreditcardClosePanel_action:" target="450" id="IqP-q3-JGO"/>
+                            <action selector="buttonPlasticCardClosePanel_action:" target="450" id="IqP-q3-JGO"/>
                         </connections>
                     </button>
                     <button tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pRh-xT-FdM">
@@ -3555,7 +3555,7 @@ Gw
 </string>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonCreditcardClosePanel_action:" target="450" id="O6W-ZF-flJ"/>
+                            <action selector="buttonPlasticCardClosePanel_action:" target="450" id="O6W-ZF-flJ"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mGn-Sf-aBZ">
@@ -3567,7 +3567,7 @@ Gw
                             <string key="keyEquivalent">+</string>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonCreditcardPlusMinus_action:" target="450" id="9JB-sM-wn0"/>
+                            <action selector="buttonPlasticCardPlusMinus_action:" target="450" id="9JB-sM-wn0"/>
                         </connections>
                     </button>
                     <button tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vJS-U1-WKM">
@@ -3578,7 +3578,7 @@ Gw
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonCreditcardPlusMinus_action:" target="450" id="txE-ch-4zf"/>
+                            <action selector="buttonPlasticCardPlusMinus_action:" target="450" id="txE-ch-4zf"/>
                         </connections>
                     </button>
                     <button tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Rg-MD-HAx">
@@ -3590,7 +3590,7 @@ Gw
                             <string key="keyEquivalent">-</string>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonCreditcardPlusMinus_action:" target="450" id="zSH-UR-d4F"/>
+                            <action selector="buttonPlasticCardPlusMinus_action:" target="450" id="zSH-UR-d4F"/>
                         </connections>
                     </button>
                     <button tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PNL-1Q-iqK">
@@ -3601,7 +3601,7 @@ Gw
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonCreditcardPlusMinus_action:" target="450" id="bgj-gZ-b8r"/>
+                            <action selector="buttonPlasticCardPlusMinus_action:" target="450" id="bgj-gZ-b8r"/>
                         </connections>
                     </button>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nyq-Ks-EJ5">
@@ -3614,7 +3614,7 @@ Gw
                         </textFieldCell>
                     </textField>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kNy-th-SSm">
-                        <rect key="frame" x="246" y="289" width="309" height="37"/>
+                        <rect key="frame" x="246" y="299" width="309" height="37"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Place plastic card here." id="4LV-LG-a2Y">
                             <font key="font" metaFont="system" size="28"/>
@@ -4620,7 +4620,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="RdJ-5E-648">
                             <font key="font" metaFont="system" size="16"/>
-                            <string key="title">A line of 5 letters will appear. 
+                            <string key="title">A line of 5 letters will appear.
 
 Use the cursor keys, or digits on a keypad (↑ = 8,  ↓ = 2), to change their acuity grade.
 
@@ -4698,7 +4698,6 @@ DQ
         </window>
     </objects>
     <resources>
-        <image name="CreditcardPlus2x50" width="2100" height="1361"/>
         <image name="FrACT_icon-390" width="390" height="390"/>
         <image name="buttonAcuityC" width="849" height="849"/>
         <image name="buttonAcuityE" width="662" height="662"/>
@@ -4723,5 +4722,6 @@ DQ
         <image name="optotypeE090" width="215" height="216"/>
         <image name="optotypeE180" width="216" height="215"/>
         <image name="optotypeE270" width="215" height="216"/>
+        <image name="plasticCard4calibration" width="2100" height="1361"/>
     </resources>
 </document>

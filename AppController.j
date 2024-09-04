@@ -41,13 +41,13 @@
 
 @implementation AppController : HierarchyController {
     @outlet CPWindow fractControllerWindow;
-    @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, resultDetailsPanel, creditcardPanel;
+    @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, resultDetailsPanel, plasticCardPanel;
     @outlet MDBButton buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine;
     @outlet CPButton buttonExport;
     @outlet CPButton radioButtonAcuityBW, radioButtonAcuityColor;
     @outlet GammaView gammaView;
     @outlet CPWebView aboutWebView1, aboutWebView2, helpWebView1, helpWebView2, helpWebView3, helpWebView4;
-    @outlet CPImageView creditcardImageView;
+    @outlet CPImageView plasticCardImageView;
     @outlet CPPopUpButton settingsPanePresetsPopUpButton;  Presets presets;
     @outlet CPPopUpButton settingsPaneMiscSoundsTrialYesPopUp;
     @outlet CPPopUpButton settingsPaneMiscSoundsTrialNoPopUp;
@@ -143,7 +143,7 @@
 
     allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherUnittest]; // sequence like Hierachy kTest#s
 
-    allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel, creditcardPanel];
+    allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel, plasticCardPanel];
     for (const p of allPanels) {
         [p setFrameOrigin: CGPointMake(0, 0)];  [p setMovable: NO];
     }
@@ -258,7 +258,7 @@
     if ([Settings isNotCalibrated]) {
         const alert = [CPAlert alertWithMessageText: "Calibration is mandatory for valid results!"
                                       defaultButton: "I just want to try…" alternateButton: "OK, go to Settings" otherButton: "Cancel"
-                          informativeTextWithFormat: "\rGoto 'Settings' and enter appropriate values for \r«Length of blue ruler» and «Observer distance»;\ror use the credit card sizing method.\r\rThis will also avoid the present obnoxious warning dialog."];
+                          informativeTextWithFormat: "\rGoto 'Settings' and enter appropriate values for \r«Length of blue ruler» and «Observer distance»;\ror use the plastic card sizing method.\r\rThis will also avoid the present obnoxious warning dialog."];
         [alert runModalWithDidEndBlock: function(alert, returnCode) {
             switch (returnCode) {
                 case 1: // alternateButton
@@ -570,19 +570,19 @@
 
 
 /**
- Dealing with calibration via creditcard size
+ Dealing with calibration via plasticCard size
  */
-- (void) creditCardUpdateSize {
+- (void) plasticCardUpdateSize {
     const wInPx = [MiscSpace pixelFromMillimeter: 92.4]; //magic number, why not 85.6?
     const hOverW = 53.98 / 85.6; // All bank cards are 85.6 mm wide and 53.98 mm high
     const hInPx = wInPx * hOverW, xc = 400, yc = 300 - 24; // position in window, space for buttons
-    [creditcardImageView setFrame: CGRectMake(xc - wInPx / 2, yc - hInPx / 2, wInPx, hInPx)];
+    [plasticCardImageView setFrame: CGRectMake(xc - wInPx / 2, yc - hInPx / 2, wInPx, hInPx)];
 }
-- (IBAction) buttonCreditcardUse_action: (id) sender {
+- (IBAction) buttonPlasticCardUse_action: (id) sender {
     calBarLengthInMMbefore = [Settings calBarLengthInMM];//for possible undo
-    [creditcardPanel makeKeyAndOrderFront: self];  [self creditCardUpdateSize];
+    [plasticCardPanel makeKeyAndOrderFront: self];  [self plasticCardUpdateSize];
 }
-- (IBAction) buttonCreditcardPlusMinus_action: (id) sender {
+- (IBAction) buttonPlasticCardPlusMinus_action: (id) sender {
     let f = 1;
     switch ([sender tag]) {
         case 0: f = 1.0 / 1.01;  break;
@@ -590,14 +590,14 @@
         case 2: f = 1.01;  break;
         case 3: f = 1.1;  break;
     }
-    [Settings setCalBarLengthInMM: [Settings calBarLengthInMM] * f];  [self creditCardUpdateSize];
+    [Settings setCalBarLengthInMM: [Settings calBarLengthInMM] * f];  [self plasticCardUpdateSize];
 }
-- (IBAction) buttonCreditcardClosePanel_action: (id) sender {
+- (IBAction) buttonPlasticCardClosePanel_action: (id) sender {
     if ([sender tag] == 1)  [Settings setCalBarLengthInMM: calBarLengthInMMbefore];//undo
     let t = [Settings calBarLengthInMM];
     if (t >= 100) t = Math.round(t); // don't need that much precision
     [Settings setCalBarLengthInMM: t];
-    [creditcardPanel close];
+    [plasticCardPanel close];
 }
 
 @end
