@@ -9,6 +9,7 @@
 
 /**
  Allow presets of settings
+ 2024-09-11 begin moving presets to categories
  2024-05-09 major rewrite to avoid repeated information
  2022-05-20 begun
  */
@@ -25,6 +26,9 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     CPPopUpButton _popUpButton;
 }
 
+@import "Presets_ULV_Gensight.j";
+@import "Presets_BCM_Scheie.j";
+@import "Presets_ESU.j";
 
 /**
  Init and add all preset names to the Presets popup in the Settings pane
@@ -92,24 +96,7 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
         case "Testing": // easier testing
             [self applyTestingPresets];  break;
         case "ESU": // secret project :)
-            [self setStandardDefaultsKeepingCalBarLength];
-            // general pane
-            [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
-            [Settings setDistanceInCM: 150];
-            [[CPUserDefaults standardUserDefaults] setInteger: kNAlternativesIndex4 forKey: "nAlternativesIndex"]; // 4 alternatives
-            [Settings setNTrials04: 18];
-            [Settings setTestOnFive: kTestAcuityC];
-            [Settings setTimeoutResponseSeconds: 999]; [Settings setTimeoutDisplaySeconds: 999];
-            [Settings setAuditoryFeedback4trial: kAuditoryFeedback4trialNone];
-            [Settings setRewardPicturesWhenDone: YES];
-            [Settings setDecimalMarkCharIndex: kDecimalMarkCharIndexComma];
-            [Settings setResults2clipboard: kResults2ClipNone];
-            // acuity pane
-            [Settings setAcuityFormatLogMAR: NO];
-            // other
-            [Settings setTrialInfoFontSize: 24];
-            //displayIncompleteRuns = true; not implemented yet
-            break;
+            [self presets_ESU];  break;
         case "ULV": // Ultra Low Vision settings – no longer used
             [self setStandardDefaultsKeepingCalBarLength];
             // general pane
@@ -121,35 +108,11 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [self applyTestingPresets];
             [Settings setIsAcuityColor: YES];
             [Settings setAcuityForeColor: [CPColor redColor]];
-            // ↓ dark green, near equiluminant to red
-            [Settings setAcuityBackColor: [CPColor colorWithRed: 0 green: 0.70 blue: 0 alpha: 1]];
+            [Settings setAcuityBackColor: [CPColor colorWithRed: 0 green: 0.70 blue: 0 alpha: 1]];// dark green, near equiluminant to red
             [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil];
             break;
         case "BCM@Scheie": // a clinical study
-            [Settings setDefaults];
-            // general pane
-            [Settings setNAlternativesIndex: kNAlternativesIndex2];  [Settings setNTrials02: 10];
-            [Settings setTimeoutResponseSeconds: 120]; [Settings setTimeoutDisplaySeconds: 120];
-            [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
-            [Settings setMobileOrientation: NO];
-            [Settings setResults2clipboard: kResults2ClipFullHistory];
-            [Settings setAuditoryFeedback4trial: kAuditoryFeedback4trialNone];
-            [Settings setCalBarLengthInMM: 189];  [Settings setDistanceInCM: 100];
-            // acuity pane
-            [Settings setContrastAcuityWeber: -1E6];
-            [Settings setTestOnLineByLineDistanceType: 1];  [Settings setLineByLineHeadcountIndex: 0];
-            [Settings setAcuityEasyTrials: NO];
-            // gratings pane
-            [Settings setContrastEasyTrials: NO];
-            [Settings setGratingObliqueOnly: YES];
-            [Settings setIsGratingColor: YES];
-            [Settings setGratingForeColor: [CPColor colorWithRed: 255 green: 0 blue: 255 alpha: 1]];
-            [Settings setGratingBackColor: [CPColor colorWithRed: 0 green: 0 blue: 255 alpha: 1]];
-            [Settings setWhat2sweepIndex: 1];
-            [Settings setGratingContrastMichelsonPercent: 99];
-            [Settings setGratingCPDmin: 1];
-            [Settings setGratingCPDmax: 7];
-            break;
+            [self presets_BCM_Scheie];  break;
         case "CNS@Freiburg": // a clinical study
             [Settings setDefaults];
             // general pane
@@ -211,25 +174,7 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Settings setEccentRandomizeX: YES];
             break;
         case "ULV@Gensight":
-            [Settings setDefaults];
-            // general pane
-            [Settings setResponseInfoAtStart: NO]; [Settings setEnableTouchControls: NO];
-            [Settings setDistanceInCM: 100];
-            [Settings setNAlternativesIndex: kNAlternativesIndex4];
-            [Settings setNTrials04: 32];
-            [Settings setNTrials08: 24];
-            [Settings setAuditoryFeedback4trial: kAuditoryFeedback4trialAlways];
-            [Settings setTimeoutResponseSeconds: 60]; [Settings setTimeoutDisplaySeconds: 60];
-            [Settings setTestOnFive: kTestAcuityLett];
-            [Settings setResults2clipboard: kResults2ClipFullHistory];
-            // acuity pane
-            [Settings setAcuityStartingLogMAR: 1];
-            [Settings setAcuityFormatLogMAR: YES];
-            [Settings setShowCI95: YES];
-            [Settings setAcuityFormatDecimal: NO];
-            [Settings setCrowdingType: 1]; //flanking bars
-            [Settings setCrowdingDistanceCalculationType: 3];//like ETDRS
-            break;
+            [self presets_ULV_Gensight];  break;
         case "Generic Template": // only as template for new entries
             [Settings setDefaults];
             // General pane
