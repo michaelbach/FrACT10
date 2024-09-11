@@ -33,7 +33,7 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     self = [super init];
     if (self) {
         /* first entry: Header, all others need corresponding code in the “switch orgy” further down. */
-        const allPresets = ["PRESETS", "Standard Defaults", "Demo", "Testing", "ESU", "ULV", "Color Equiluminance", "BCM@Scheie", "CNS@Freiburg", "Maculight", "Hyper@TUDo", "AT@LeviLab"];
+        const allPresets = ["PRESETS", "Standard Defaults", "Demo", "Testing", "ESU", "Color Equiluminance", "BCM@Scheie", "CNS@Freiburg", "Maculight", "Hyper@TUDo", "AT@LeviLab", "ULV@Gensight"];
 
         _popUpButton = thePopUpButton; // local copy for later
         [_popUpButton removeAllItems];
@@ -96,11 +96,11 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             // general pane
             [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
             [Settings setDistanceInCM: 150];
-            [[CPUserDefaults standardUserDefaults] setInteger: 1 forKey: "nAlternativesIndex"]; // 4 alternatives
+            [[CPUserDefaults standardUserDefaults] setInteger: kNAlternativesIndex4 forKey: "nAlternativesIndex"]; // 4 alternatives
             [Settings setNTrials04: 18];
             [Settings setTestOnFive: kTestAcuityC];
             [Settings setTimeoutResponseSeconds: 999]; [Settings setTimeoutDisplaySeconds: 999];
-            [Settings setAuditoryFeedback4trial: 0];
+            [Settings setAuditoryFeedback4trial: kAuditoryFeedback4trialNone];
             [Settings setRewardPicturesWhenDone: YES];
             [Settings setDecimalMarkCharIndex: kDecimalMarkCharIndexComma];
             [Settings setResults2clipboard: kResults2ClipNone];
@@ -110,7 +110,7 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Settings setTrialInfoFontSize: 24];
             //displayIncompleteRuns = true; not implemented yet
             break;
-        case "ULV": // Ultra Low Vision settings
+        case "ULV": // Ultra Low Vision settings – no longer used
             [self setStandardDefaultsKeepingCalBarLength];
             // general pane
             [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
@@ -128,12 +128,12 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
         case "BCM@Scheie": // a clinical study
             [Settings setDefaults];
             // general pane
-            [Settings setNAlternativesIndex: 0];  [Settings setNTrials02: 10];
+            [Settings setNAlternativesIndex: kNAlternativesIndex2];  [Settings setNTrials02: 10];
             [Settings setTimeoutResponseSeconds: 120]; [Settings setTimeoutDisplaySeconds: 120];
             [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
             [Settings setMobileOrientation: NO];
             [Settings setResults2clipboard: kResults2ClipFullHistory];
-            [Settings setAuditoryFeedback4trial: 0];
+            [Settings setAuditoryFeedback4trial: kAuditoryFeedback4trialNone];
             [Settings setCalBarLengthInMM: 189];  [Settings setDistanceInCM: 100];
             // acuity pane
             [Settings setContrastAcuityWeber: -1E6];
@@ -195,7 +195,7 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
         case "AT@LeviLab": // for Ângela
             [self setStandardDefaultsKeepingCalBarLength];
             // General pane
-            [[CPUserDefaults standardUserDefaults] setInteger: 1 forKey: "nAlternativesIndex"]; // 4
+            [[CPUserDefaults standardUserDefaults] setInteger: kNAlternativesIndex4 forKey: "nAlternativesIndex"]; // 4
             [Settings setNTrials04: 24];
             [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
             [Settings setDecimalMarkCharIndex: kDecimalMarkCharIndexComma];
@@ -209,6 +209,26 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Settings setMaxDisplayedAcuity: 99];
             // Misc pane
             [Settings setEccentRandomizeX: YES];
+            break;
+        case "ULV@Gensight":
+            [Settings setDefaults];
+            // general pane
+            [Settings setResponseInfoAtStart: NO]; [Settings setEnableTouchControls: NO];
+            [Settings setDistanceInCM: 100];
+            [Settings setNAlternativesIndex: kNAlternativesIndex4];
+            [Settings setNTrials04: 32];
+            [Settings setNTrials08: 24];
+            [Settings setAuditoryFeedback4trial: kAuditoryFeedback4trialAlways];
+            [Settings setTimeoutResponseSeconds: 60]; [Settings setTimeoutDisplaySeconds: 60];
+            [Settings setTestOnFive: kTestAcuityLett];
+            [Settings setResults2clipboard: kResults2ClipFullHistory];
+            // acuity pane
+            [Settings setAcuityStartingLogMAR: 1];
+            [Settings setAcuityFormatLogMAR: YES];
+            [Settings setShowCI95: YES];
+            [Settings setAcuityFormatDecimal: NO];
+            [Settings setCrowdingType: 1]; //flanking bars
+            [Settings setCrowdingDistanceCalculationType: 3];//like ETDRS
             break;
         case "Generic Template": // only as template for new entries
             [Settings setDefaults];

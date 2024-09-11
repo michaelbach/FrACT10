@@ -335,11 +335,11 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [trialHistoryController setCorrect: responseWasCorrect]; // placed here so reached by "onTimeoutAutoResponse"
     [thresholder enterTrialOutcomeWithAppliedStim: [self stimThresholderunitsFromDeviceunits: stimStrengthInDeviceunits] wasCorrect: responseWasCorrect];
     switch ([Settings auditoryFeedback4trial]) { // case 0: nothing
-        case 1:
+        case kAuditoryFeedback4trialAlways:
             [sound playNumber: kSoundTrialYes];  break;
-        case 2:
+        case kAuditoryFeedback4trialOncorrect:
             if (responseWasCorrect) [sound playNumber: kSoundTrialYes];  break;
-        case 3:
+        case kAuditoryFeedback4trialWithinfo:
             if (responseWasCorrect) [sound playNumber: kSoundTrialYes];
             else [sound playNumber: kSoundTrialNo];
             break;

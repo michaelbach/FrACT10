@@ -27,6 +27,12 @@ gShortcutKeys4Tests = {"L": kTestAcuityLett, "C": kTestAcuityC, "E": kTestAcuity
     "1": kTestContrastLett, "2": kTestContrastC, "3": kTestContrastE,
     "G": kTestContrastG, "0": kTestContrastDitherUnittest, "4": kTestAcuityLineByLine};
 
+@typedef NAlternativesIndexType
+kNAlternativesIndex2 = 0; kNAlternativesIndex4 = 1; kNAlternativesIndex8plus = 2;
+
+@typedef AuditoryFeedback4trialType
+kAuditoryFeedback4trialNone = 0; kAuditoryFeedback4trialAlways = 1; kAuditoryFeedback4trialOncorrect = 2; kAuditoryFeedback4trialWithinfo = 3;
+
 @typedef Results2ClipChoiceType
 kResults2ClipNone = 0; kResults2ClipFinalOnly = 1; kResults2ClipFullHistory = 2;
 

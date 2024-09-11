@@ -597,6 +597,7 @@
     let t = [Settings calBarLengthInMM];
     if (t >= 100) t = Math.round(t); // don't need that much precision
     [Settings setCalBarLengthInMM: t];
+    [Settings calculateMinMaxPossibleDecimalAcuity];
     [plasticCardPanel close];
 }
 

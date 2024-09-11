@@ -57,6 +57,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 /*
  #  History
 
+2024-09-11 add Preset "ULV@Gensight"; symbolic constants for NAlternativesIndexType and AuditoryFeedback4trialType; ensure best/worst VAs update after plastic card procedure
 2024-09-04 rename creditCard → plasticCard throughout
 2024-08-30 redesign "Line(s) of optotype mode": no more "chart mode", replaced by n of lines
 2024-08-25 simplify actions for Help and About panels by using tag values and URL string collection

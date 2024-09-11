@@ -70,7 +70,7 @@ Created by mb on July 15, 2015.
     // need to check before setNAlternativesIndex 'cause oblique might force to index=0
     [self setGratingObliqueOnly: [self checkBool: [self gratingObliqueOnly] dflt: NO set: set]];
     // for all tests
-    [self setNAlternativesIndex: [self checkNum: [self nAlternativesIndex] dflt: 2 min: 0 max: 2 set:set]];//dflt:8
+    [self setNAlternativesIndex: [self checkNum: [self nAlternativesIndex] dflt: kNAlternativesIndex8plus min: kNAlternativesIndex2 max: kNAlternativesIndex8plus set:set]];//dflt:8
     [self setNTrials02: [self checkNum: [self nTrials02] dflt: 32 min: 1 max: 200 set: set]];
     [self setNTrials04: [self checkNum: [self nTrials04] dflt: 24 min: 1 max: 200 set: set]];
     [self setNTrials08: [self checkNum: [self nTrials08] dflt: 18 min: 1 max: 200 set: set]];
@@ -110,7 +110,7 @@ Created by mb on July 15, 2015.
     [self setResults2clipboardSilent: [self checkBool: [self results2clipboardSilent] dflt: NO set: set]];
 
     // 0: none, 1: always, 2: on correct, 3: w/ info
-    [self setAuditoryFeedback4trial: [self checkNum: [self auditoryFeedback4trial] dflt: 3 min: 0 max: 3 set: set]];
+    [self setAuditoryFeedback4trial: [self checkNum: [self auditoryFeedback4trial] dflt: kAuditoryFeedback4trialWithinfo min: kAuditoryFeedback4trialNone max: kAuditoryFeedback4trialWithinfo set: set]];
     // 0: none, 1: always, 2: on correct, 3: w/ info
     [self setVisualFeedback: [self checkNum: [self visualFeedback] dflt: 0 min: 0 max: 3 set: set]]; // NOT IN USE
     [self setAuditoryFeedback4run: [self checkBool: [self auditoryFeedback4run] dflt: YES set: set]];
@@ -318,9 +318,9 @@ Created by mb on July 15, 2015.
 
 + (int) nAlternatives { //console.info("Settings>nAlternatives");
     switch ([self nAlternativesIndex]) {
-        case 0:  return 2;  break;
-        case 1:  return 4;  break;
-        default:  return 8; // case 2
+        case kNAlternativesIndex2:  return 2;  break;
+        case kNAlternativesIndex4:  return 4;  break;
+        default: return 8; // case kNAlternativesIndex8plus
     }
 }
 
