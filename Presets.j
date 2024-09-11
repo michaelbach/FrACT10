@@ -15,10 +15,14 @@
  */
 
 @import "ControlDispatcher.j"
+@import "Presets_BCM_Scheie.j";
+@import "Presets_ESU.j";
+@import "Presets_ULV_Gensight.j";
 
 
+// after setting preset, respond via GUI or send back to caller?
 @typedef feedbackTypeType
-kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
+kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
 
 
 @implementation Presets: CPObject {
@@ -26,9 +30,6 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     CPPopUpButton _popUpButton;
 }
 
-@import "Presets_ULV_Gensight.j";
-@import "Presets_BCM_Scheie.j";
-@import "Presets_ESU.j";
 
 /**
  Init and add all preset names to the Presets popup in the Settings pane
@@ -96,7 +97,7 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
         case "Testing": // easier testing
             [self applyTestingPresets];  break;
         case "ESU": // secret project :)
-            [self presets_ESU];  break;
+            [Presets_ESU presets_ESU];  break;
         case "ULV": // Ultra Low Vision settings – no longer used
             [self setStandardDefaultsKeepingCalBarLength];
             // general pane
@@ -112,7 +113,7 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil];
             break;
         case "BCM@Scheie": // a clinical study
-            [self presets_BCM_Scheie];  break;
+            [Presets_BCM_Scheie presets_BCM_Scheie];  break;
         case "CNS@Freiburg": // a clinical study
             [Settings setDefaults];
             // general pane
@@ -174,7 +175,7 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Settings setEccentRandomizeX: YES];
             break;
         case "ULV@Gensight":
-            [self presets_ULV_Gensight];  break;
+            [Presets_ULV_Gensight presets_ULV_Gensight];  break;
         case "Generic Template": // only as template for new entries
             [Settings setDefaults];
             // General pane
@@ -200,8 +201,8 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
         case kFeedbackTypeGUI:
             const messageText = "Preset  »" + _presetName + "«  was applied."
             const alert2 = [CPAlert alertWithMessageText: messageText
-                                       defaultButton: "OK" alternateButton: nil otherButton: nil
-                           informativeTextWithFormat: ""];
+                                           defaultButton: "OK" alternateButton: nil otherButton: nil
+                               informativeTextWithFormat: ""];
             [alert2 runModal];
             break;
         case kFeedbackTypeHTMLMessage:
@@ -229,6 +230,11 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     [Settings setDefaults];
     [Settings setCalBarLengthInMM: calBarLengthInMM_prior];
 }
++ (void) setStandardDefaultsKeepingCalBarLength {
+    const calBarLengthInMM_prior = [Settings calBarLengthInMM];
+    [Settings setDefaults];
+    [Settings setCalBarLengthInMM: calBarLengthInMM_prior];
+}
+
 
 @end
-

@@ -2,16 +2,16 @@
  This file is part of FrACT10, a vision test battery.
  Copyright © 2024 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
- Presets_ESU.j (implements a category of Presets)
+ Presets_ESU.j (a helper for Presets)
 
  */
 
+@import "Settings.j"
 
-@implementation Presets (Presets_ESU)
+@implementation Presets_ESU: CPObject
 
-
-- (void) presets_ESU {
-    [self setStandardDefaultsKeepingCalBarLength];
++ (void) presets_ESU {
+    [Presets setStandardDefaultsKeepingCalBarLength];
     // general pane
     [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
     [Settings setDistanceInCM: 150];
@@ -29,6 +29,5 @@
     [Settings setTrialInfoFontSize: 24];
     //displayIncompleteRuns = true; not implemented yet
 }
-
 
 @end

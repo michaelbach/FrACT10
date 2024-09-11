@@ -2,15 +2,15 @@
  This file is part of FrACT10, a vision test battery.
  Copyright © 2024 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
- Presets_ULV_Gensight.j (implements a category of Presets)
+ Presets_ULV_Gensight.j (a helper for Presets)
 
  */
 
+@import "Settings.j"
 
-@implementation Presets (Presets_ULV_Gensight)
+@implementation Presets_ULV_Gensight: CPObject
 
-
-- (void) presets_ULV_Gensight {//console.info("Preset_ULV_Gensight>preset_ULV_Gensight")
++ (void) presets_ULV_Gensight {//console.info("Preset_ULV_Gensight>preset_ULV_Gensight")
     [Settings setDefaults];
     // general pane
     [Settings setResponseInfoAtStart: NO]; [Settings setEnableTouchControls: NO];
@@ -30,6 +30,5 @@
     [Settings setCrowdingType: 1]; //flanking bars
     [Settings setCrowdingDistanceCalculationType: 3];//like ETDRS
 }
-
 
 @end

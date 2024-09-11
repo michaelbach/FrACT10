@@ -2,15 +2,15 @@
  This file is part of FrACT10, a vision test battery.
  Copyright © 2024 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
- Presets_BCM_Scheie.j (implements a category of Presets)
+ Presets_BCM_Scheie.j (a helper for Presets)
 
  */
 
+@import "Settings.j"
 
-@implementation Presets (Presets_BCM_Scheie)
+@implementation Presets_BCM_Scheie: CPObject
 
-
-- (void) presets_BCM_Scheie {
++ (void) presets_BCM_Scheie {
     [Settings setDefaults];
     // general pane
     [Settings setNAlternativesIndex: kNAlternativesIndex2];  [Settings setNTrials02: 10];
@@ -35,6 +35,5 @@
     [Settings setGratingCPDmin: 1];
     [Settings setGratingCPDmax: 7];
 }
-
 
 @end
