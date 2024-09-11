@@ -9,7 +9,7 @@
 
 /**
  Allow presets of settings
- 2024-09-11 begin moving presets to categories
+ 2024-09-11 begin moving presets to categories← no, singletons
  2024-05-09 major rewrite to avoid repeated information
  2022-05-20 begun
  */
@@ -99,7 +99,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
         case "ESU": // secret project :)
             [Presets_ESU presets_ESU];  break;
         case "ULV": // Ultra Low Vision settings – no longer used
-            [self setStandardDefaultsKeepingCalBarLength];
+            [Presets setStandardDefaultsKeepingCalBarLength];
             // general pane
             [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
             // acuity pane
@@ -126,7 +126,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             // gratings pane
             break;
         case "Maculight": // a clinical study
-            [self setStandardDefaultsKeepingCalBarLength];
+            [Presets setStandardDefaultsKeepingCalBarLength];
             // general pane
             [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
             [Settings setResults2clipboard: kResults2ClipFinalOnly];
@@ -157,7 +157,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Settings setSoundTrialNoIndex: 1];
             break;
         case "AT@LeviLab": // for Ângela
-            [self setStandardDefaultsKeepingCalBarLength];
+            [Presets setStandardDefaultsKeepingCalBarLength];
             // General pane
             [[CPUserDefaults standardUserDefaults] setInteger: kNAlternativesIndex4 forKey: "nAlternativesIndex"]; // 4
             [Settings setNTrials04: 24];
@@ -213,7 +213,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
 
 
 - (void) applyTestingPresets { // used several times, so it has its own function
-    [self setStandardDefaultsKeepingCalBarLength];
+    [Presets setStandardDefaultsKeepingCalBarLength];
     // general pane
     [Settings setDistanceInCM: 400];
     [Settings setCalBarLengthInMM: 150];
@@ -225,11 +225,6 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
 }
 
 
-- (void) setStandardDefaultsKeepingCalBarLength {
-    const calBarLengthInMM_prior = [Settings calBarLengthInMM];
-    [Settings setDefaults];
-    [Settings setCalBarLengthInMM: calBarLengthInMM_prior];
-}
 + (void) setStandardDefaultsKeepingCalBarLength {
     const calBarLengthInMM_prior = [Settings calBarLengthInMM];
     [Settings setDefaults];
