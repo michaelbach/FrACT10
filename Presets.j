@@ -15,10 +15,11 @@
  */
 
 @import "ControlDispatcher.j"
+@import "Presets_AT_LeviLab.j";
 @import "Presets_BCM_Scheie.j";
 @import "Presets_ESU.j";
+@import "Presets_Hyper_TUDo.j";
 @import "Presets_ULV_Gensight.j";
-
 
 // after setting preset, respond via GUI or send back to caller?
 @typedef feedbackTypeType
@@ -122,8 +123,6 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Settings setResults2clipboard: kResults2ClipFinalOnly];
             [Settings setDistanceInCM: 200];
             [Settings setTestOnFive: kTestAcuityLett];
-            // acuity pane
-            // gratings pane
             break;
         case "Maculight": // a clinical study
             [Presets setStandardDefaultsKeepingCalBarLength];
@@ -132,48 +131,13 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Settings setResults2clipboard: kResults2ClipFinalOnly];
             [Settings setDistanceInCM: 400];
             [Settings setTestOnFive: kTestAcuityLett];
-            // acuity pane
             // contrast pane
             [Settings setContrastOptotypeDiameter: 170];
-            // gratings pane
             break;
         case "Hyper@TUDo":
-            [Settings setDefaults];
-            // General pane
-            [Settings setTimeoutResponseSeconds: 600]; [Settings setTimeoutDisplaySeconds: 90];
-            [Settings setDistanceInCM: 147]; [Settings setCalBarLengthInMM: 134];
-            [Settings setResponseInfoAtStart: NO];
-            [Settings setTestOnFive: kTestNone];
-            [Settings setResults2clipboard: kResults2ClipFullHistory];
-            [Settings setResults2clipboardSilent: YES];
-            // Acuity pane
-            [Settings setVernierType: kVernierType3bars];
-            [Settings setVernierWidth: 1.5]; [Settings setVernierLength: 40]; [Settings setVernierGap: 0.2];
-            [Settings setShowCI95: YES];
-            // Gamma pane
-            [Settings setGammaValue: 2.2];
-            // Misc pane
-            [Settings setWindowBackgroundColor: [CPColor whiteColor]];
-            [Settings setSoundTrialNoIndex: 1];
-            break;
+            [Presets_Hyper_TUDo presets_Hyper_TUDo];  break;
         case "AT@LeviLab": // for Ângela
-            [Presets setStandardDefaultsKeepingCalBarLength];
-            // General pane
-            [[CPUserDefaults standardUserDefaults] setInteger: kNAlternativesIndex4 forKey: "nAlternativesIndex"]; // 4
-            [Settings setNTrials04: 24];
-            [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
-            [Settings setDecimalMarkCharIndex: kDecimalMarkCharIndexComma];
-            [Settings setTimeoutDisplaySeconds: 0.15];
-            [Settings setEccentXInDeg: 8];
-            [Settings setDistanceInCM: 68.5];
-            [Settings setResults2clipboard: kResults2ClipFullHistory];
-            [Settings setDisplayTransform: 1]; // 1=mirror horizontally
-            [Settings setTestOnFive: kTestAcuityC];
-            // Acuity pane
-            [Settings setMaxDisplayedAcuity: 99];
-            // Misc pane
-            [Settings setEccentRandomizeX: YES];
-            break;
+            [Presets_AT_LeviLab presets_AT_LeviLab];  break;
         case "ULV@Gensight":
             [Presets_ULV_Gensight presets_ULV_Gensight];  break;
         case "Generic Template": // only as template for new entries
@@ -215,13 +179,13 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
 - (void) applyTestingPresets { // used several times, so it has its own function
     [Presets setStandardDefaultsKeepingCalBarLength];
     // general pane
-    [Settings setDistanceInCM: 400];
-    [Settings setCalBarLengthInMM: 150];
+    [Settings setDistanceInCM: 400]; [Settings setCalBarLengthInMM: 150];
     [Settings setResponseInfoAtStart: NO];
     // acuity pane
     [Settings setShowCI95: YES];
     // Misc pane
-    [Settings setSoundTrialYesIndex: 0]; [Settings setSoundTrialNoIndex: 1]; [Settings setSoundRunEndIndex: 1];
+    [Settings setSoundTrialYesIndex: 0]; [Settings setSoundTrialNoIndex: 1];
+    [Settings setSoundRunEndIndex: 1];
 }
 
 
