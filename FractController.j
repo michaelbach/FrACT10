@@ -37,7 +37,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     TrialHistoryController trialHistoryController;
     Optotypes optotypes;
     CPString trialInfoString @accessors;
-    CPTimer timerDisplay, timerResponse, timerFixMark, timerAutoResponse;
+    CPTimer timerDisplay, timerResponse, timerFixMark, timerAutoResponse, timerIsi;
     CPString kRangeLimitDefault, kRangeLimitOk, kRangeLimitValueAtFloor, kRangeLimitValueAtCeiling, rangeLimitStatus, abortCharacter, ci95String;
     id sound @accessors;
     BOOL responseButtonsAdded;
@@ -125,18 +125,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if (gSpecialBcmDone) return;
 
     [alternativesGenerator nextAlternative];
-    timerDisplay = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutDisplaySeconds] target:self selector:@selector(onTimeoutDisplay:) userInfo:nil repeats:NO];
-    timerResponse = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutResponseSeconds] target:self selector:@selector(onTimeoutResponse:) userInfo:nil repeats:NO];
-    if ([Settings autoRunIndex] != kAutoRunIndexNone) {
-        if ([self isAcuityOptotype] || [self isContrastAny] || [self isAcuityGrating]) {
-            let time = 0.4;
-            if ([self isContrastAny]) {
-                time += [Settings contrastTimeoutFixmark] / 1000;
-            }
-            timerAutoResponse = [CPTimer scheduledTimerWithTimeInterval: 0.8 target:self selector:@selector(onTimeoutAutoResponse:) userInfo:nil repeats:NO];
-        }
-    }
-
     xEccInPix = -[MiscSpace pixelFromDegree: [Settings eccentXInDeg]];
     yEccInPix = [MiscSpace pixelFromDegree: [Settings eccentYInDeg]]; //pos y: ↑
     if ([Settings eccentRandomizeX]) {
@@ -144,15 +132,28 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             xEccInPix *= -1;
         }
     }
-
-    state = kStateDrawFore;  [[selfWindow contentView] setNeedsDisplay: YES];
+    timerIsi = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutIsiMillisecs] / 1000 target:self selector:@selector(onTimeoutIsi:) userInfo:nil repeats:NO];
+}
+- (void) onTimeoutIsi: (CPTimer) timer { // now we can draw the stimulus
+    timerDisplay = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutDisplaySeconds] target:self selector:@selector(onTimeoutDisplay:) userInfo:nil repeats:NO];
+    timerResponse = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutResponseSeconds] target:self selector:@selector(onTimeoutResponse:) userInfo:nil repeats:NO];
+    if ([Settings autoRunIndex] != kAutoRunIndexNone) {
+        if ([self isAcuityOptotype] || [self isContrastAny] || [self isAcuityGrating]) {
+            let autoTime = 0.4 + [Settings timeoutIsiMillisecs] / 1000
+            if ([self isContrastAny]) {
+                autoTime += [Settings contrastTimeoutFixmark] / 1000;
+            }
+            timerAutoResponse = [CPTimer scheduledTimerWithTimeInterval: autoTime target:self selector:@selector(onTimeoutAutoResponse:) userInfo:nil repeats:NO];
+        }
+    }
+    state = kStateDrawFore; [[selfWindow contentView] setNeedsDisplay: YES];
 }
 
 
 /**
  Standard things for all tests, includes the display transform
  */
-- (void) prepareDrawing { // console.info("FractController>prepareDrawing");
+- (void) prepareDrawing { //console.info("FractController>prepareDrawing");
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, gColorBack);
     if ([self isAcuityTAO])
@@ -329,9 +330,14 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [timerDisplay invalidate];  timerDisplay = nil;
     [timerResponse invalidate];  timerResponse = nil;
     [timerAutoResponse invalidate];  timerAutoResponse = nil;
+    [timerIsi invalidate];  timerIsi = nil;
 }
 - (void) trialEnd { //console.info("FractController>trialEnd");
     [self invalidateTrialTimers];
+
+    CGContextSetFillColor(cgc, gColorBack); // need to clear for ISI to work
+    CGContextFillRect(cgc, [selfWindow frame]);
+
     [trialHistoryController setCorrect: responseWasCorrect]; // placed here so reached by "onTimeoutAutoResponse"
     [thresholder enterTrialOutcomeWithAppliedStim: [self stimThresholderunitsFromDeviceunits: stimStrengthInDeviceunits] wasCorrect: responseWasCorrect];
     switch ([Settings auditoryFeedback4trial]) { // case 0: nothing

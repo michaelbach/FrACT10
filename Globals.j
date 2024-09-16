@@ -57,6 +57,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 /*
  #  History
 
+2024-09-16 add an "ISI" `timeoutIsiMillisecs`; remove superfluous Cappuccino files
 2024-09-13 Presets: two more "factored out" into separate files
 2024-09-11a Presets: begin moving presets to categories. Does not work, use singletons
 2024-09-11 add Preset "ULV@Gensight"; symbolic constants for NAlternativesIndexType and AuditoryFeedback4trialType; ensure best/worst VAs update after plastic card procedure

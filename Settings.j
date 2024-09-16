@@ -102,6 +102,7 @@ Created by mb on July 15, 2015.
     [self setTrialInfo: [self checkBool: [self trialInfo] dflt: YES set: set]];
     [self setTrialInfoFontSize: [self checkNum: [self trialInfoFontSize] dflt: 10 min: 4 max: 48 set: set]];
 
+    [self setTimeoutIsiMillisecs: [self checkNum: [self timeoutIsiMillisecs] dflt: 0 min: 0 max: 3000 set: set]];
     [self setTimeoutResponseSeconds: [self checkNum: [self timeoutResponseSeconds] dflt: 30 min: 0.1 max: 9999 set: set]];
     [self setTimeoutDisplaySeconds: [self checkNum: [self timeoutDisplaySeconds] dflt: 30 min: 0.1 max: 9999 set: set]];
     [self setMaskTimeOnResponseInMS: [self checkNum: [self timeoutDisplaySeconds] dflt: 0 min: 0 max: 9999 set: set]];
@@ -448,6 +449,12 @@ Created by mb on July 15, 2015.
     [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "trialInfoFontSize"];
 }
 
++ (float) timeoutIsiMillisecs {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "timeoutIsiMillisecs"];
+}
++ (void) setTimeoutIsiMillisecs: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "timeoutIsiMillisecs"];
+}
 
 + (float) timeoutResponseSeconds {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "timeoutResponseSeconds"];
