@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23094" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="101200" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="22690"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23094"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="23094"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -305,7 +305,7 @@ For testing.
 </string>
                         <popUpButtonCell key="cell" type="push" title="Ø Autorun" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Eg0-co-ecm" id="3tm-qQ-uSh">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="menu"/>
+                            <font key="font" metaFont="message"/>
                             <menu key="menu" id="X9t-wa-fsO">
                                 <items>
                                     <menuItem title="Ø Autorun" state="on" id="Eg0-co-ecm"/>
@@ -600,7 +600,7 @@ This is useful for studies / clinical trials for standardisation across time and
  </string>
                         <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="lkr-61-A7f" id="JI4-Wi-eC6">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="menu"/>
+                            <font key="font" metaFont="message"/>
                             <menu key="menu" id="xFl-9u-ikI">
                                 <items>
                                     <menuItem title="Item 1" state="on" id="lkr-61-A7f"/>
@@ -675,7 +675,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
  </string>
                                             <popUpButtonCell key="cell" type="push" title="Automatic" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="p64-gR-0Sx" id="Ymt-mG-1P5">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="menu"/>
+                                                <font key="font" metaFont="message"/>
                                                 <menu key="menu" id="IVL-nZ-4hD">
                                                     <items>
                                                         <menuItem title="Automatic" state="on" id="p64-gR-0Sx"/>
@@ -722,7 +722,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
 </string>
                                             <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="o1v-C2-qAT" id="FXQ-q8-3FM">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="menu"/>
+                                                <font key="font" metaFont="message"/>
                                                 <menu key="menu" id="qaa-tM-phA">
                                                     <items>
                                                         <menuItem title="None" state="on" id="o1v-C2-qAT">
@@ -827,7 +827,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Ydh-Um-hUv" id="4cQ-ky-Scu">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="menu"/>
+                                                <font key="font" metaFont="message"/>
                                                 <menu key="menu" id="fco-In-o7p">
                                                     <items>
                                                         <menuItem title="None" state="on" id="Ydh-Um-hUv">
@@ -934,7 +934,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                         <string key="toolTip">Type of sound feedback when you respond to an optotype presentation. “With info”: two different sounds for correct/incorrect (default).</string>
                                                         <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Ncx-YP-qRh" id="a2e-3I-Iu4">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="menu"/>
+                                                            <font key="font" metaFont="message"/>
                                                             <menu key="menu" id="701-5e-hT6">
                                                                 <items>
                                                                     <menuItem title="None" state="on" id="Ncx-YP-qRh">
@@ -1015,7 +1015,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                         <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes (TAO).  For Landolt Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.</string>
                                                         <popUpButtonCell key="cell" type="push" title="2" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="MNg-IJ-MqA" id="jUX-2m-CLf">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="menu"/>
+                                                            <font key="font" metaFont="message"/>
                                                             <menu key="menu" id="SUD-01-rKd">
                                                                 <items>
                                                                     <menuItem title="2" state="on" id="MNg-IJ-MqA"/>
@@ -1064,7 +1064,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.nTrials08" id="rkZ-VW-3NC"/>
-                                                            <outlet property="nextKeyView" destination="Lf9-G7-Nrh" id="RYZ-2j-GvP"/>
+                                                            <outlet property="nextKeyView" destination="OYn-Zv-7ZB" id="Ort-pK-8Jt"/>
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LJd-oY-MqO">
@@ -1153,7 +1153,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.timeoutIsiMillisecs" id="tSU-7B-gE5"/>
-                                                            <outlet property="nextKeyView" destination="Ojh-w9-WzR" id="dPL-FR-V7J"/>
+                                                            <outlet property="nextKeyView" destination="Lf9-G7-Nrh" id="8dc-19-g6d"/>
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sck-OL-zR0">
@@ -1410,7 +1410,7 @@ Assumes full screen mode.
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="Display transformation normal" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="fzq-C7-Daz" id="4HI-Hd-6YM">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="menu"/>
+                                                <font key="font" metaFont="message"/>
                                                 <menu key="menu" id="tx8-cs-phw">
                                                     <items>
                                                         <menuItem title="Display transformation normal" state="on" id="fzq-C7-Daz">
@@ -1798,7 +1798,7 @@ No money transfer involved, just for size!     </string>
  </string>
                                                         <popUpButtonCell key="cell" type="push" title="2 lines" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="qvW-F3-MnN" id="Din-QU-a6Y" userLabel="2 lines">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="menu"/>
+                                                            <font key="font" metaFont="message"/>
                                                             <menu key="menu" id="0uI-0w-5Vt">
                                                                 <items>
                                                                     <menuItem title="2 lines" state="on" id="qvW-F3-MnN">
@@ -1849,7 +1849,7 @@ No money transfer involved, just for size!     </string>
                   </string>
                                                         <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="CEr-tD-UxQ" id="Q94-l5-Nrk">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="menu"/>
+                                                            <font key="font" metaFont="message"/>
                                                             <menu key="menu" id="JBV-Xo-VBB">
                                                                 <items>
                                                                     <menuItem title="None" state="on" id="CEr-tD-UxQ">
@@ -1888,7 +1888,7 @@ No money transfer involved, just for size!     </string>
  </string>
                                                         <popUpButtonCell key="cell" type="push" title="2·stroke" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="mt7-ev-w6m" id="8J5-AI-Fsw" userLabel="2·gap etc.">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="menu"/>
+                                                            <font key="font" metaFont="message"/>
                                                             <menu key="menu" id="z7D-2p-Kha">
                                                                 <items>
                                                                     <menuItem title="2·stroke" state="on" id="mt7-ev-w6m">
@@ -2009,7 +2009,7 @@ No money transfer involved, just for size!     </string>
  </string>
                                             <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wkG-jG-jTL" id="sa5-f6-go7">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="menu"/>
+                                                <font key="font" metaFont="message"/>
                                                 <menu key="menu" id="aGl-Qb-JFa">
                                                     <items>
                                                         <menuItem title="None" state="on" id="wkG-jG-jTL"/>
@@ -2032,7 +2032,7 @@ No money transfer involved, just for size!     </string>
  </string>
                                             <popUpButtonCell key="cell" type="push" title="Off" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ojh-ZS-2dd" id="MsF-Py-9nb">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="menu"/>
+                                                <font key="font" metaFont="message"/>
                                                 <menu key="menu" id="257-ZE-Mjs">
                                                     <items>
                                                         <menuItem title="Off" state="on" id="ojh-ZS-2dd"/>
@@ -2120,7 +2120,7 @@ No money transfer involved, just for size!     </string>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <popUpButtonCell key="cell" type="push" title="–" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="BNs-47-qLW" id="HXT-wA-3ir">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="menu"/>
+                                                            <font key="font" metaFont="message"/>
                                                             <menu key="menu" id="XEE-w1-gvj">
                                                                 <items>
                                                                     <menuItem title="–" state="on" hidden="YES" enabled="NO" id="BNs-47-qLW">
@@ -2150,7 +2150,7 @@ No money transfer involved, just for size!     </string>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <popUpButtonCell key="cell" type="push" title="ISO-EN-DIN" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="TMO-F2-t8u" id="Nrt-m0-dMu">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="menu"/>
+                                                            <font key="font" metaFont="message"/>
                                                             <menu key="menu" id="EYS-fO-VUu">
                                                                 <items>
                                                                     <menuItem title="ISO-EN-DIN" state="on" id="TMO-F2-t8u">
@@ -2173,7 +2173,7 @@ No money transfer involved, just for size!     </string>
                                     </string>
                                                         <popUpButtonCell key="cell" type="push" title="1 Optotype" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="JL1-OY-GDI" id="1zx-GW-LFM" userLabel="Headcount">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="menu"/>
+                                                            <font key="font" metaFont="message"/>
                                                             <menu key="menu" id="H8F-8e-Giu">
                                                                 <items>
                                                                     <menuItem title="1 Optotype" state="on" id="JL1-OY-GDI">
@@ -2213,7 +2213,7 @@ No money transfer involved, just for size!     </string>
                                     </string>
                                                         <popUpButtonCell key="cell" type="push" title="1 line" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Kdc-AY-aPc" id="vjB-fL-uEG" userLabel="Headcount">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="menu"/>
+                                                            <font key="font" metaFont="message"/>
                                                             <menu key="menu" id="foO-hz-es1">
                                                                 <items>
                                                                     <menuItem title="1 line" state="on" id="Kdc-AY-aPc">
@@ -2383,6 +2383,7 @@ Maximum: 5px.
                                             </textFieldCell>
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.contrastMaxLogCSWeber" id="gMB-Zo-3un"/>
+                                                <outlet property="nextKeyView" destination="56f-od-lIR" id="N4C-0u-5Kf"/>
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Syd-WZ-yVY">
@@ -2516,7 +2517,7 @@ Maximum: 5px.
  </string>
                                             <popUpButtonCell key="cell" type="push" title="Off" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="XTz-Wz-SXk" id="w6t-JP-XDB">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="menu"/>
+                                                <font key="font" metaFont="message"/>
                                                 <menu key="menu" id="9Jo-rU-Ogd">
                                                     <items>
                                                         <menuItem title="Off" state="on" id="XTz-Wz-SXk"/>
@@ -2633,7 +2634,7 @@ Don't go too close or you can resolve the pattern.
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="enabled" keyPath="values.contrastShowFixMark" id="rdR-sc-Fi1"/>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.contrastTimeoutFixmark" id="ipc-hU-yMG"/>
-                                                <outlet property="nextKeyView" destination="LmQ-Fz-Lv8" id="Ear-ed-k1f"/>
+                                                <outlet property="nextKeyView" destination="Q2Y-AR-KXh" id="K7w-Ng-n4l"/>
                                             </connections>
                                         </textField>
                                     </subviews>
@@ -2776,7 +2777,7 @@ Don't go too close or you can resolve the pattern.
 </string>
                                             <popUpButtonCell key="cell" type="push" title="Contrast" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="grk-FJ-Z1K" id="yjR-qI-kBp" userLabel="what2sweep">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="menu"/>
+                                                <font key="font" metaFont="message"/>
                                                 <menu key="menu" id="dw9-Ij-jON">
                                                     <items>
                                                         <menuItem title="Contrast" state="on" id="grk-FJ-Z1K">
@@ -3018,7 +3019,7 @@ For gratings: 2 or 4.
 </string>
                                             <popUpButtonCell key="cell" type="push" title="2" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ITp-K5-C2i" id="UgL-WR-pL8">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="menu"/>
+                                                <font key="font" metaFont="message"/>
                                                 <menu key="menu" id="07F-qr-7e9">
                                                     <items>
                                                         <menuItem title="2" state="on" id="ITp-K5-C2i"/>
@@ -3048,7 +3049,7 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="Off" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="AcH-ef-uvd" id="Ocx-GM-WQO">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="menu"/>
+                                                <font key="font" metaFont="message"/>
                                                 <menu key="menu" id="ZIm-DU-7v5">
                                                     <items>
                                                         <menuItem title="Off" state="on" id="AcH-ef-uvd"/>
@@ -3371,7 +3372,7 @@ CQ
 </string>
                                                         <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="LiR-sh-xxq" id="FEy-mm-2GC">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="menu"/>
+                                                            <font key="font" metaFont="message"/>
                                                             <menu key="menu" id="Bin-J4-pCa">
                                                                 <items>
                                                                     <menuItem title="Item 1" state="on" id="LiR-sh-xxq"/>
@@ -3400,7 +3401,7 @@ CQ
 </string>
                                                         <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="44O-uQ-H0W" id="UiF-cy-gaW">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="menu"/>
+                                                            <font key="font" metaFont="message"/>
                                                             <menu key="menu" id="R7M-jL-fmL">
                                                                 <items>
                                                                     <menuItem title="Item 1" state="on" id="44O-uQ-H0W"/>
@@ -3429,7 +3430,7 @@ CQ
 </string>
                                                         <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="JG8-82-CQO" id="C6r-8A-Sme">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="menu"/>
+                                                            <font key="font" metaFont="message"/>
                                                             <menu key="menu" id="fp7-pp-xoi">
                                                                 <items>
                                                                     <menuItem title="Item 1" state="on" id="JG8-82-CQO"/>
