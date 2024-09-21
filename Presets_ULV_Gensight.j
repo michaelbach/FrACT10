@@ -23,7 +23,8 @@
     [Settings setTestOnFive: kTestAcuityLett];
     [Settings setResults2clipboard: kResults2ClipFullHistory];
     // acuity pane
-    [Settings setAcuityStartingLogMAR: 1];
+    [Settings setMaxDisplayedAcuity: 2.5];
+    [Settings setAcuityStartingLogMAR: 1.5];
     [Settings setAcuityFormatLogMAR: YES];
     [Settings setShowCI95: YES];
     [Settings setAcuityFormatDecimal: NO];
