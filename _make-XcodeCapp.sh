@@ -88,6 +88,9 @@ tell application "Terminal" to activate
 END
 echo " "
 
+# Check version date in service worker, update if necessary
+node ./updateServiceWorkerDateFromInfoPlist.js
+
 # Create xcodeSupportDirectory if necessary
 if [ ! -d "$xcodeSupportDirectory" ]; then
 	echo "Creating xcodeSupportDirectory."
