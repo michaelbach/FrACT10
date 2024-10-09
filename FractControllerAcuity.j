@@ -28,7 +28,13 @@
 
 // this manages stuff after the optotypes have been drawn, e.g. crowding
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractControllerAcuity>drawStimulusInRect");
-    [trialHistoryController setValue: [MiscSpace logMARfromDecVA: [MiscSpace decVAFromStrokePixels: stimStrengthInDeviceunits]]];
+    let _value = [MiscSpace logMARfromDecVA: [MiscSpace decVAFromStrokePixels: stimStrengthInDeviceunits]];
+    if (currentTestID === kTestAcuityVernier) { // needs to be in arcsec
+        //console.info(_value);
+        _value = [self reportFromNative: stimStrengthInDeviceunits];
+        //console.info(_value, "\r");
+    }
+    [trialHistoryController setValue: _value];
     if (([Settings crowdingType] > 0) && (currentTestID != kTestAcuityLineByLine) && (currentTestID != kTestContrastDitherUnittest)) {
         if (currentTestID != kTestAcuityVernier) { // don't do crowding with Vernier etc.
             CGContextSaveGState(cgc);

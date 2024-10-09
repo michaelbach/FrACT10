@@ -96,8 +96,10 @@ function _pause(ms) { //console.info("Misc>_pause");
 
 + (void) copyString2ClipboardWithDialog: (CPString) s { //console.info("Misc>copyString2ClipboardWithDialog");
     const alert = [CPAlert alertWithMessageText: "Done."
-    defaultButton: "Yes, put result → clipboard" alternateButton: "Cancel" otherButton: nil
+    defaultButton: "Yes, put result → clipboard  (ߵyߴ)" alternateButton: "Cancel  (ߵcߴ)" otherButton: nil
                 informativeTextWithFormat: "\rShall we place the result details into the clipboard?\r\r(So you can paste them into a spreadsheet.)\r"];
+    [[alert buttons][0] setKeyEquivalent: "c"]; // the "Cancel" button selected by "c"
+    [[alert buttons][1] setKeyEquivalent: "y"]; // the "Yes" button selected by "n"
     [alert setAlertStyle: CPInformationalAlertStyle];
     [[alert window] setFrameOrigin: CGPointMake(200, 200)];
     [alert runModalWithDidEndBlock: function(alert, returnCode) {

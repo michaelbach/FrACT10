@@ -163,7 +163,7 @@ Created by Bach on 14.08.2017.
 }
 
 
-- (floag) reportFromNative: (float) t {
+- (float) reportFromNative: (float) t {
     return ([MiscSpace degreeFromPixel: t] * 60.0 * 60.0);
 }
 
