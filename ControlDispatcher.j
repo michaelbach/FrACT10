@@ -117,8 +117,12 @@
             m3 = [_appController.currentFractController.alternativesGenerator currentAlternative]
             [self post2parentM1: m1 m2: m2 m3: m3 success: (m3 !== null)];
             break;
-        case "iTrial":
+        case "currentTrial":
             m3 = _appController.currentFractController.iTrial;
+            [self post2parentM1: m1 m2: m2 m3: m3 success: (m3 !== null)];
+            break;
+        case "currentValue":
+            m3 = [_appController.currentFractController.trialHistoryController value];
             [self post2parentM1: m1 m2: m2 m3: m3 success: (m3 !== null)];
             break;
         default:

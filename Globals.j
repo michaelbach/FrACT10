@@ -57,6 +57,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 /*
  #  History
 
+2024-10-11 messages syntax: add "currentValue", rename "iTrial" → "currentTrial"
 2024-10-09 add key equivalents to alerts and indicate them in the dialog text
 2024-10-08 Vs 1.5: fix bug: Vernier full history had value in LogMAR instead of arcsec units
 2024-09-21 modify a preset
