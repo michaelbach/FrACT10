@@ -258,7 +258,7 @@
     if ([Settings isNotCalibrated]) {
         const alert = [CPAlert alertWithMessageText: "Calibration is mandatory for valid results!"
                                       defaultButton: "I just want to try…" alternateButton: "OK, go to Settings" otherButton: "Cancel"
-                          informativeTextWithFormat: "\rGoto 'Settings' and enter appropriate values for \r«Length of blue ruler» and «Observer distance»;\ror use the plastic card sizing method.\r\rThis will also avoid the present obnoxious warning dialog."];
+                          informativeTextWithFormat: "\rGoto 'Settings' and enter appropriate values for \r«Observer distance» and «Length of blue ruler».\r\rThis will also get rid of this obnoxious warning dialog."];
         [alert runModalWithDidEndBlock: function(alert, returnCode) {
             switch (returnCode) {
                 case 1: // alternateButton

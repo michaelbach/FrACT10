@@ -56,7 +56,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 
 /*
  #  History
-
+2024-10-26a switch places for distance and ruler length
 2024-10-26 increase field size for distance in cm & inch, avoids overrun
 2024-10-11 messages syntax: add "currentValue", rename "iTrial" → "currentTrial"
 2024-10-09 add key equivalents to alerts and indicate them in the dialog text
