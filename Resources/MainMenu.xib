@@ -645,7 +645,7 @@ This is useful for studies / clinical trials for standardisation across time and
                                             </textFieldCell>
                                         </textField>
                                         <textField toolTip="For CALIBRATION: enter the distance between observer and screen here in CENTIMETERS." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNX-f3-PL9">
-                                            <rect key="frame" x="240" y="6" width="40" height="22"/>
+                                            <rect key="frame" x="236" y="6" width="44" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" usesSingleLineMode="YES" id="mSo-Pg-7e1">
                                                 <font key="font" metaFont="system"/>
@@ -668,7 +668,7 @@ This is useful for studies / clinical trials for standardisation across time and
                                             </textFieldCell>
                                         </textField>
                                         <textField toolTip="This displays the Observer distance converted from centimetres to inch" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" id="fkv-fu-ees" userLabel="max. poss. decimal VA">
-                                            <rect key="frame" x="240" y="-16" width="40" height="22"/>
+                                            <rect key="frame" x="236" y="-16" width="44" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="4HD-Fz-O2P">
                                                 <font key="font" metaFont="system"/>
@@ -1513,9 +1513,9 @@ No money transfer involved, just for size!     </string>
                                             </view>
                                         </box>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="vQg-Pw-FeU">
-                                            <rect key="frame" x="39" y="448" width="200" height="22"/>
+                                            <rect key="frame" x="39" y="448" width="250" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Optotypes/background color" bezelStyle="round" id="Hjs-y4-jpq">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Optotype contrast / background color" bezelStyle="round" id="Hjs-y4-jpq">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="unemphasizedSelectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
