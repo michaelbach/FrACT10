@@ -5,13 +5,13 @@ This file is part of FrACT10. Quesitions? Don't hesitate to contact me <bach@uni
 
 ## What’s the development workflow?
 
-It is not necessary to install Cappuccino, nor to compile. Just download the entire project from Github (e.g. ZIP), unzip, serve with a local server (or disable local file restrictions, see below), and open `index.html`. That should run FrACT10 on all platforms. You can modify any `*.j` file with a source editor and see results immediately on reload. To edit the GUI you need Xcode (sorry, MacOS only) and open `_cappDevelop.xcodeproj` with it.
+- It is not necessary to install Cappuccino, nor to compile. Just download the entire project from Github (e.g. ZIP), unzip, serve with a local server (or disable local file restrictions, see below), and open `index.html`. That should run FrACT10 on all platforms (I tested this on MacOS & Windows). You can modify any `*.j` file with a source editor and see results immediately on reload (possibly need to clear browser cache).
 
-- `_make-XcodeCapp.sh` (can be started within Xcode with ⌘B) saves any changed files from Xcode, creates the `.XcodeSupport` folder (if not already present), compiles the GUI (producing the `.cib` fle), and opens in Safari after clearing cache. This requires Xcode and a Cappuccino Node installation for the tools.
-- For development, I find it easiest to run directly from the files w/o compilation and w/o a local server. Depending on your preferred browser, you will need to disable¹ "local file restrictions" or "cross-origin safety", or it will not open using the file:// protocol.<br>
+- Should you want to install Cappuccino <https://www.cappuccino.dev>: A good place to start is the [Cappucino Wiki](https://github.com/cappuccino/cappuccino/wiki). The Cappuccino frameworks are already in the Resources folder, so you don't need them. But you do need Cappuccino's tools for GUI compilation. Then you can also edit the GUI (using Xcodes Interface Builder, sorry, MacOS only) by openening `_cappDevelop.xcodeproj`. Then, having made changes:
+  - `_make-XcodeCapp.sh` (can be started within Xcode with ⌘B) saves any changed files from Xcode, creates the `.XcodeSupport` folder (if not already present), compiles the GUI (producing the `.cib` fle), and opens in Safari after clearing Safari's cache.
+  - For development, I find it easiest to run directly from the files w/o compilation and w/o a local server. Depending on your preferred browser, you will need to disable¹ "local file restrictions" or "cross-origin safety", or it will not open using the file:// protocol.<br>
 ¹Easy in Firefox & Safari, no longer possible with Chrome.
-- Best not run `_make-FrACT.sh` unless you really know what you're doing. Briefly: it compiles, removes unnecessary build products and produces a folder with the minimum number of files necessary for running FrACT10.
-- Should you want to install Cappuccino <https://www.cappuccino.dev>: A good place to start is the [Cappucino Wiki](https://github.com/cappuccino/cappuccino/wiki). The Cappuccino frameworks are already in the Resources folder, so you don't need them. But you do need Cappuccino's tools for GUI compilation.
+  - Best not run `_make-FrACT.sh` unless you really know what you're doing. Briefly: it compiles, removes unnecessary build products and produces a folder with the minimum number of files necessary for running FrACT10. Best look at its code and then fit to your environment.
 
 
 
