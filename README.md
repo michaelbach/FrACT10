@@ -24,8 +24,7 @@ For more see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 
 ## Donations …
-… are welcome: [![Donate?](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z9ERGF97E67AJ)
-
+[… are welcome (via Buy Me a Coffee)](https://buymeacoffee.com/michaelbach)
 
 <hr>
 
