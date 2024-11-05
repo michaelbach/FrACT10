@@ -10,7 +10,7 @@
 
 @implementation Presets_AT_LeviLab: CPObject
 
-+ (void) presets_AT_LeviLab {
++ (void) apply {
     [Presets setStandardDefaultsKeepingCalBarLength];
     // General pane
     [[CPUserDefaults standardUserDefaults] setInteger: kNAlternativesIndex4 forKey: "nAlternativesIndex"]; // 4

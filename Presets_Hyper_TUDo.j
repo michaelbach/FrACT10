@@ -10,7 +10,7 @@
 
 @implementation Presets_Hyper_TUDo: CPObject
 
-+ (void) presets_Hyper_TUDo {
++ (void) apply {
     [Settings setDefaults];
     // General pane
     [Settings setTimeoutResponseSeconds: 600]; [Settings setTimeoutDisplaySeconds: 90];

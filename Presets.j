@@ -20,7 +20,7 @@
 @import "Presets_ESU.j";
 @import "Presets_Hyper_TUDo.j";
 @import "Presets_ULV_Gensight.j";
-
+@import "Presets_ETCF.j";
 // after setting preset, respond via GUI or send back to caller?
 @typedef feedbackTypeType
 kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
@@ -39,7 +39,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     self = [super init];
     if (self) {
         /* first entry: Header, all others need corresponding code in the “switch orgy” further down. */
-        const allPresets = ["PRESETS", "Standard Defaults", "Demo", "Testing", "ESU", "Color Equiluminance", "BCM@Scheie", "CNS@Freiburg", "Maculight", "Hyper@TUDo", "AT@LeviLab", "ULV@Gensight"];
+        const allPresets = ["PRESETS", "Standard Defaults", "Demo", "Testing", "ESU", "Color Equiluminance", "BCM@Scheie", "CNS@Freiburg", "Maculight", "Hyper@TUDo", "AT@LeviLab", "ULV@Gensight", "ETCF"];
 
         _popUpButton = thePopUpButton; // local copy for later
         [_popUpButton removeAllItems];
@@ -99,7 +99,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
         case "Testing": // easier testing
             [self applyTestingPresets];  break;
         case "ESU": // secret project :)
-            [Presets_ESU presets_ESU];  break;
+            [Presets_ESU apply];  break;
         case "ULV": // Ultra Low Vision settings – no longer used
             [Presets setStandardDefaultsKeepingCalBarLength];
             // general pane
@@ -115,7 +115,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil];
             break;
         case "BCM@Scheie": // a clinical study
-            [Presets_BCM_Scheie presets_BCM_Scheie];  break;
+            [Presets_BCM_Scheie apply];  break;
         case "CNS@Freiburg": // a clinical study
             [Settings setDefaults];
             // general pane
@@ -136,11 +136,13 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Settings setContrastOptotypeDiameter: 170];
             break;
         case "Hyper@TUDo":
-            [Presets_Hyper_TUDo presets_Hyper_TUDo];  break;
+            [Presets_Hyper_TUDo apply];  break;
         case "AT@LeviLab": // for Ângela
-            [Presets_AT_LeviLab presets_AT_LeviLab];  break;
+            [Presets_AT_LeviLab apply];  break;
         case "ULV@Gensight":
-            [Presets_ULV_Gensight presets_ULV_Gensight];  break;
+            [Presets_ULV_Gensight apply];  break;
+        case "ETCF":
+            [Presets_ETCF apply];  break;
         case "Generic Template": // only as template for new entries
             [Settings setDefaults];
             // General pane

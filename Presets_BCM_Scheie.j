@@ -10,7 +10,7 @@
 
 @implementation Presets_BCM_Scheie: CPObject
 
-+ (void) presets_BCM_Scheie {
++ (void) apply {
     [Settings setDefaults];
     // general pane
     [Settings setNAlternativesIndex: kNAlternativesIndex2];  [Settings setNTrials02: 10];
