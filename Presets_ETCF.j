@@ -14,8 +14,14 @@
     [Settings setDefaults];
     // general pane
     [Settings setTestOnFive: kTestContrastC];
+    [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
+    [Settings setResults2clipboard: kResults2ClipFinalOnly];
+    [Settings setDistanceInCM: 100];
     // acuity pane
     // contrast pane
+    [Settings setContrastOptotypeDiameter: 170];
+    // gamma pane
+    [Settings setGammaValue: 1.0];
 }
 
 @end
