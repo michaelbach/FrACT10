@@ -10,7 +10,7 @@
 
 @implementation Presets_ULV_Gensight: CPObject
 
-+ (void) apply {//console.info("Preset_ULV_Gensight>preset_ULV_Gensight")
++ (void) apply {//console.info("Preset_ULV_Gensight>apply")
     [Settings setDefaults];
     // general pane
     [Settings setResponseInfoAtStart: NO]; [Settings setEnableTouchControls: NO];

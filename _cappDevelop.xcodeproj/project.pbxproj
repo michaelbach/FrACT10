@@ -55,6 +55,7 @@
 		8AAB43932A55826800825E47 /* Presets.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A8BFD81283837D800DD61BB /* Presets.j */; };
 		8AAFB6022C0C8F5800E3BBEC /* ControlDispatcher.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AAFB6012C0C8F5800E3BBEC /* ControlDispatcher.j */; };
 		8ACD7D522C0362BD00FE90C6 /* ThresholderNupMdown.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8ACD7D512C0362BD00FE90C6 /* ThresholderNupMdown.j */; };
+		8AE2AD332CE096BC00305C56 /* Presets_CNS_Freiburg.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AE2AD322CE096BC00305C56 /* Presets_CNS_Freiburg.j */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,6 +84,7 @@
 				8AAB437B2A55823F00825E47 /* GammaView.j in CopyFiles */,
 				8AAB437F2A55824E00825E47 /* FractControllerContrastE.j in CopyFiles */,
 				8AAB43782A55820F00825E47 /* MDBButton.j in CopyFiles */,
+				8AE2AD332CE096BC00305C56 /* Presets_CNS_Freiburg.j in CopyFiles */,
 				8AAB43932A55826800825E47 /* Presets.j in CopyFiles */,
 				8A2E1BEA2C941F0F00F6FE00 /* Presets_Hyper_TUDo.j in CopyFiles */,
 				8AAB437A2A55822B00825E47 /* HierarchyController.j in CopyFiles */,
@@ -182,6 +184,7 @@
 		8AAFB6012C0C8F5800E3BBEC /* ControlDispatcher.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = ControlDispatcher.j; sourceTree = "<group>"; };
 		8ABDA6D4291A501000D68E3C /* capp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = capp; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACD7D512C0362BD00FE90C6 /* ThresholderNupMdown.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = ThresholderNupMdown.j; sourceTree = "<group>"; };
+		8AE2AD322CE096BC00305C56 /* Presets_CNS_Freiburg.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets_CNS_Freiburg.j; sourceTree = "<group>"; };
 		90444B1A970FC75C0FF93DB7 /* FractControllerContrastE.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerContrastE.j; sourceTree = SOURCE_ROOT; };
 		91844612BA04B04966D2045C /* AlternativesGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AlternativesGenerator.h; path = .XcodeSupport/AlternativesGenerator.h; sourceTree = SOURCE_ROOT; };
 		91B445DC96A0E8A06A4740E5 /* FractControllerAcuity.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerAcuity.j; sourceTree = SOURCE_ROOT; };
@@ -276,6 +279,7 @@
 				8A8BFD81283837D800DD61BB /* Presets.j */,
 				8A2E1BEB2C94225500F6FE00 /* Presets_AT_LeviLab.j */,
 				8A07B8442C919F0F007513BB /* Presets_BCM_Scheie.j */,
+				8AE2AD322CE096BC00305C56 /* Presets_CNS_Freiburg.j */,
 				8A31C6532CDABD82009662A4 /* Presets_ETCF.j */,
 				8A07B8422C919BB9007513BB /* Presets_ESU.j */,
 				8A2E1BE92C941F0F00F6FE00 /* Presets_Hyper_TUDo.j */,

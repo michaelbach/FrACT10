@@ -17,11 +17,12 @@
 @import "ControlDispatcher.j"
 @import "Presets_AT_LeviLab.j";
 @import "Presets_BCM_Scheie.j";
+@import "Presets_CNS_Freiburg.j";
 @import "Presets_ESU.j";
 @import "Presets_Hyper_TUDo.j";
 @import "Presets_ULV_Gensight.j";
 @import "Presets_ETCF.j";
-// after setting preset, respond via GUI or send back to caller?
+// after applying the preset, respond via GUI or send back to caller?
 @typedef feedbackTypeType
 kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
 
@@ -102,9 +103,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Presets_ESU apply];  break;
         case "ULV": // Ultra Low Vision settings – no longer used
             [Presets setStandardDefaultsKeepingCalBarLength];
-            // general pane
             [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
-            // acuity pane
             [Settings setAcuityStartingLogMAR: 2.5];
             break;
         case "Color Equiluminance": // near equiluminant color acuity
@@ -117,14 +116,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
         case "BCM@Scheie": // a clinical study
             [Presets_BCM_Scheie apply];  break;
         case "CNS@Freiburg": // a clinical study
-            [Settings setDefaults];
-            // general pane
-            [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
-            [Settings setMobileOrientation: NO];
-            [Settings setResults2clipboard: kResults2ClipFinalOnly];
-            [Settings setDistanceInCM: 200];
-            [Settings setTestOnFive: kTestAcuityLett];
-            break;
+            [Presets_CNS_Freiburg apply];  break;
         case "Maculight": // a clinical study
             [Presets setStandardDefaultsKeepingCalBarLength];
             // general pane
@@ -143,7 +135,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Presets_ULV_Gensight apply];  break;
         case "ETCF":
             [Presets_ETCF apply];  break;
-        case "Generic Template": // only as template for new entries
+        case "Generic Template": // template for new entries
             [Settings setDefaults];
             // General pane
             // Acuity pane
