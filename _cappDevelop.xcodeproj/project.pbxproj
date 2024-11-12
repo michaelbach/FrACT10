@@ -22,6 +22,7 @@
 		8A438B3A2BAF77FE00B33287 /* Dithering.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A438B392BAF77FE00B33287 /* Dithering.j */; };
 		8A48269329CF4F260035607A /* MiscLight.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A48269229CF4F260035607A /* MiscLight.j */; };
 		8A48269529CF58F30035607A /* MiscSpace.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A48269429CF58F30035607A /* MiscSpace.j */; };
+		8A6D71C32CE0C6E100BB7107 /* Presets_Maculight.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A6D71C22CE0C6E100BB7107 /* Presets_Maculight.j */; };
 		8A891B7E2A5585AE00ACEFDF /* MDBDispersionEstimation.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A891B7D2A5585AE00ACEFDF /* MDBDispersionEstimation.j */; };
 		8A9C70602BFE496000DD5E76 /* MDBTextField.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A9C705F2BFE496000DD5E76 /* MDBTextField.j */; };
 		8AA45BB42C393726005F5951 /* FractControllerContrastDitherUnittest.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AA45BB32C393726005F5951 /* FractControllerContrastDitherUnittest.j */; };
@@ -105,6 +106,7 @@
 				8AAB438C2A55826800825E47 /* Thresholder.j in CopyFiles */,
 				8AAB43842A55825A00825E47 /* FractControllerAcuityLineByLine.j in CopyFiles */,
 				8A891B7E2A5585AE00ACEFDF /* MDBDispersionEstimation.j in CopyFiles */,
+				8A6D71C32CE0C6E100BB7107 /* Presets_Maculight.j in CopyFiles */,
 				8AAB437C2A55824500825E47 /* FractView.j in CopyFiles */,
 				8AAB43832A55825700825E47 /* FractControllerAcuityTAO.j in CopyFiles */,
 				8AAB438A2A55826800825E47 /* TAOController.j in CopyFiles */,
@@ -177,6 +179,7 @@
 		8A48269229CF4F260035607A /* MiscLight.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MiscLight.j; sourceTree = SOURCE_ROOT; };
 		8A48269429CF58F30035607A /* MiscSpace.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MiscSpace.j; sourceTree = SOURCE_ROOT; };
 		8A574A8F29FAE30F00D28C1B /* FractControllerContrastG.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = FractControllerContrastG.j; sourceTree = SOURCE_ROOT; };
+		8A6D71C22CE0C6E100BB7107 /* Presets_Maculight.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets_Maculight.j; sourceTree = "<group>"; };
 		8A891B7D2A5585AE00ACEFDF /* MDBDispersionEstimation.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MDBDispersionEstimation.j; sourceTree = SOURCE_ROOT; };
 		8A8BFD81283837D800DD61BB /* Presets.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets.j; sourceTree = SOURCE_ROOT; };
 		8A9C705F2BFE496000DD5E76 /* MDBTextField.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MDBTextField.j; sourceTree = "<group>"; };
@@ -283,6 +286,7 @@
 				8A31C6532CDABD82009662A4 /* Presets_ETCF.j */,
 				8A07B8422C919BB9007513BB /* Presets_ESU.j */,
 				8A2E1BE92C941F0F00F6FE00 /* Presets_Hyper_TUDo.j */,
+				8A6D71C22CE0C6E100BB7107 /* Presets_Maculight.j */,
 				8A07B8402C919922007513BB /* Presets_ULV_Gensight.j */,
 				29834A62A925E37F8057FF9A /* RewardsController.j */,
 				F3064227AB4A793DAF144D61 /* Settings.j */,
