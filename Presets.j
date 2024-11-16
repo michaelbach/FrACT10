@@ -20,6 +20,7 @@
 @import "Presets_CNS_Freiburg.j";
 @import "Presets_ESU.j";
 @import "Presets_Hyper_TUDo.j";
+@import "Presets_Maculight.j";
 @import "Presets_ULV_Gensight.j";
 @import "Presets_ETCF.j";
 // after applying the preset, respond via GUI or send back to caller?
@@ -118,15 +119,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
         case "CNS@Freiburg": // a clinical study
             [Presets_CNS_Freiburg apply];  break;
         case "Maculight": // a clinical study
-            [Presets setStandardDefaultsKeepingCalBarLength];
-            // general pane
-            [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
-            [Settings setResults2clipboard: kResults2ClipFinalOnly];
-            [Settings setDistanceInCM: 400];
-            [Settings setTestOnFive: kTestAcuityLett];
-            // contrast pane
-            [Settings setContrastOptotypeDiameter: 170];
-            break;
+            [Presets_Maculight apply];  break;
         case "Hyper@TUDo":
             [Presets_Hyper_TUDo apply];  break;
         case "AT@LeviLab": // for Ângela
