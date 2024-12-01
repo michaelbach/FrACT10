@@ -56,6 +56,8 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 
 /*
  #  History
+
+2024-12-01 aesthetic improvements in the GUI
 2024-11-01 no touch controls in "Line(s) of Optotypes"
 2024-10-26a switch places for distance and ruler length
 2024-10-26 increase field size for distance in cm & inch, avoids overrun

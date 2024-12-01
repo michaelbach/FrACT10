@@ -13,7 +13,7 @@
 
 
 /**
- A collection of "miscellaneous" function for spatial aspects (degrees, acuity, …).
+ A collection of "miscellaneous" functions for spatial aspects (degrees, acuity, …).
  All a class variables for easy global access,
  */
 @implementation MiscSpace: CPObject {
@@ -36,7 +36,7 @@
 
 
 /**
- Convert period from spatial frequency
+ Convert to period from spatial frequency
  */
 + (float) periodInPixelFromSpatialFrequency: (float) f {
     let p = [MiscSpace pixelFromDegree: 1 / f];
