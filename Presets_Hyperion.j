@@ -1,0 +1,36 @@
+/*
+ This file is part of FrACT10, a vision test battery.
+ Copyright © 2024 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
+
+ Presets_Hyperion.j (a helper for Presets)
+
+ */
+
+@import "Settings.j"
+
+@implementation Presets_Hyperion: CPObject
+
++ (void) apply {//console.info("Presets_Hyperion>apply")
+    [Settings setDefaults];
+
+    // general pane
+    [Settings setResponseInfoAtStart: NO]; [Settings setEnableTouchControls: NO];
+    [Settings setDistanceInCM: 400];
+    [Settings setNAlternativesIndex: kNAlternativesIndex4];
+    [Settings setAuditoryFeedback4trial: kAuditoryFeedback4trialAlways];
+    [Settings setTimeoutIsiMillisecs: 1];
+    [Settings setTimeoutResponseSeconds: 60]; [Settings setTimeoutDisplaySeconds: 60];
+    [Settings setTestOnFive: kTestAcuityLett];
+    [Settings setResults2clipboard: kResults2ClipFullHistory];
+
+    // acuity pane
+    [Settings setMaxDisplayedAcuity: 99];
+    [Settings setAcuityStartingLogMAR: 1.0];
+    [Settings setAcuityFormatLogMAR: YES];
+    [Settings setShowCI95: YES];
+    [Settings setAcuityFormatDecimal: NO];
+    [Settings setCrowdingType: 1]; //flanking bars
+    [Settings setCrowdingDistanceCalculationType: 3];//like ETDRS
+}
+
+@end

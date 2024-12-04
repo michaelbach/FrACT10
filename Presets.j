@@ -23,6 +23,8 @@
 @import "Presets_Maculight.j";
 @import "Presets_ULV_Gensight.j";
 @import "Presets_ETCF.j";
+@import "Presets_Hyperion.j";
+
 // after applying the preset, respond via GUI or send back to caller?
 @typedef feedbackTypeType
 kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
@@ -41,7 +43,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     self = [super init];
     if (self) {
         /* first entry: Header, all others need corresponding code in the “switch orgy” further down. */
-        const allPresets = ["PRESETS", "Standard Defaults", "Demo", "Testing", "ESU", "Color Equiluminance", "BCM@Scheie", "CNS@Freiburg", "Maculight", "Hyper@TUDo", "AT@LeviLab", "ULV@Gensight", "ETCF"];
+        const allPresets = ["PRESETS", "Standard Defaults", "Demo", "Testing", "ESU", "Color Equiluminance", "BCM@Scheie", "CNS@Freiburg", "Maculight", "Hyper@TUDo", "AT@LeviLab", "ULV@Gensight", "ETCF", "HYPERION"];
 
         _popUpButton = thePopUpButton; // local copy for later
         [_popUpButton removeAllItems];
@@ -128,6 +130,8 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Presets_ULV_Gensight apply];  break;
         case "ETCF":
             [Presets_ETCF apply];  break;
+        case "HYPERION":
+            [Presets_Hyperion apply];  break;
         case "Generic Template": // template for new entries
             [Settings setDefaults];
             // General pane
