@@ -27,6 +27,8 @@
     [Settings setMaxDisplayedAcuity: 99];
     // Misc pane
     [Settings setEccentRandomizeX: YES];
+
+    [Settings setPresetName: "AT@LeviLab"];
 }
 
 @end

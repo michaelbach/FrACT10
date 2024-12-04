@@ -34,6 +34,8 @@
     [Settings setGratingContrastMichelsonPercent: 99];
     [Settings setGratingCPDmin: 1];
     [Settings setGratingCPDmax: 7];
+
+    [Settings setPresetName: "BCM@Scheie"];
 }
 
 @end

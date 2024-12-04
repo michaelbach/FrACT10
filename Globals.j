@@ -57,6 +57,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 /*
  #  History
 
+2024-12-04a rewrite Presets to use calculated classnames
 2024-12-04 add Preset "HYPERION"
 2024-12-01 aesthetic improvements in the GUI
 2024-11-01 no touch controls in "Line(s) of Optotypes"

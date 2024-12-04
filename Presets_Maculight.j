@@ -19,6 +19,8 @@
     [Settings setTestOnFive: kTestAcuityLett];
     // contrast pane
     [Settings setContrastOptotypeDiameter: 170];
+
+    [Settings setPresetName: "Maculight"];
 }
 
 @end

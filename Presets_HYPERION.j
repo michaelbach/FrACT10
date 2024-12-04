@@ -2,15 +2,15 @@
  This file is part of FrACT10, a vision test battery.
  Copyright © 2024 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
- Presets_Hyperion.j (a helper for Presets)
+ Presets_HYPERION.j (a helper for Presets)
 
  */
 
 @import "Settings.j"
 
-@implementation Presets_Hyperion: CPObject
+@implementation Presets_HYPERION: CPObject
 
-+ (void) apply {//console.info("Presets_Hyperion>apply")
++ (void) apply {//console.info("Presets_HYPERION>apply")
     [Settings setDefaults];
 
     // general pane
@@ -31,6 +31,8 @@
     [Settings setAcuityFormatDecimal: NO];
     [Settings setCrowdingType: 1]; //flanking bars
     [Settings setCrowdingDistanceCalculationType: 3];//like ETDRS
+
+    [Settings setPresetName: "HYPERION"];
 }
 
 @end

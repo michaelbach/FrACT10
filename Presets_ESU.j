@@ -28,6 +28,8 @@
     // other
     [Settings setTrialInfoFontSize: 24];
     //displayIncompleteRuns = true; not implemented yet
+
+    [Settings setPresetName: "ESU"];
 }
 
 @end

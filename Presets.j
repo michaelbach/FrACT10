@@ -23,7 +23,7 @@
 @import "Presets_Maculight.j";
 @import "Presets_ULV_Gensight.j";
 @import "Presets_ETCF.j";
-@import "Presets_Hyperion.j";
+@import "Presets_HYPERION.j";
 
 // after applying the preset, respond via GUI or send back to caller?
 @typedef feedbackTypeType
@@ -94,20 +94,17 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
 - (void) apply2withFeedbackType: (feedbackTypeType) feedbackType { //console.info("Presets>apply2", _presetName);
     switch (_presetName) {
         case "Standard Defaults":
-            [Settings setDefaults];  break;
+            [Settings setDefaults];
+            [Settings setPresetName: "Standard Defaults"];// setting here to check it worked
+            break;
         case "Demo":
             [Settings setDefaults];
-            [self applyTestingPresets];
-            [Settings setAutoRunIndex: kAutoRunIndexMid];
+            [self applyTestingPresets];  [Settings setAutoRunIndex: kAutoRunIndexMid];
+            [Settings setPresetName: "Demo"];
             break;
         case "Testing": // easier testing
-            [self applyTestingPresets];  break;
-        case "ESU": // secret project :)
-            [Presets_ESU apply];  break;
-        case "ULV": // Ultra Low Vision settings – no longer used
-            [Presets setStandardDefaultsKeepingCalBarLength];
-            [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
-            [Settings setAcuityStartingLogMAR: 2.5];
+            [self applyTestingPresets];
+            [Settings setPresetName: "Testing"];
             break;
         case "Color Equiluminance": // near equiluminant color acuity
             [self applyTestingPresets];
@@ -115,23 +112,19 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Settings setAcuityForeColor: [CPColor redColor]];
             [Settings setAcuityBackColor: [CPColor colorWithRed: 0 green: 0.70 blue: 0 alpha: 1]];// dark green, near equiluminant to red
             [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil];
+            [Settings setPresetName: "Color Equiluminance"];
             break;
+        case "ESU": // secret project :)
         case "BCM@Scheie": // a clinical study
-            [Presets_BCM_Scheie apply];  break;
         case "CNS@Freiburg": // a clinical study
-            [Presets_CNS_Freiburg apply];  break;
         case "Maculight": // a clinical study
-            [Presets_Maculight apply];  break;
-        case "Hyper@TUDo":
-            [Presets_Hyper_TUDo apply];  break;
         case "AT@LeviLab": // for Ângela
-            [Presets_AT_LeviLab apply];  break;
-        case "ULV@Gensight":
-            [Presets_ULV_Gensight apply];  break;
-        case "ETCF":
-            [Presets_ETCF apply];  break;
-        case "HYPERION":
-            [Presets_Hyperion apply];  break;
+        case "Hyper@TUDo": case "ULV@Gensight": case "ETCF": case "HYPERION":
+            // calculated class name requires strict discipline with filename systematics
+            const newPresetName = [_presetName stringByReplacingOccurrencesOfString:"@" withString:"_"]; //in filenames the @ is not allowed
+            const classObj = CPClassFromString("Presets_" + newPresetName);
+            [classObj performSelector: @selector(apply)];
+            break;
         case "Generic Template": // template for new entries
             [Settings setDefaults];
             // General pane
@@ -140,6 +133,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             // Gratings pane
             // Gamma pane
             // Misc pane
+            [Settings setPresetName: "Generic Template"];
             break;
         default:
             console.log("Frac10>Presets>unknown preset: ", _presetName);
@@ -150,7 +144,6 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     }
     [[CPNotificationCenter defaultCenter] postNotificationName: "updateSoundFiles" object: nil];
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil]; // this synchronises the color settings between userdefaults & AppController
-    [Settings setPresetName: _presetName];
     [_popUpButton setSelectedIndex: 0]; // always show "PRESETS"
 
     switch (feedbackType) {
