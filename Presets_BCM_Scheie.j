@@ -3,6 +3,7 @@
  Copyright © 2024 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
  Presets_BCM_Scheie.j (a helper for Presets)
+ Settings for project "BCM" at Scheie
 
  */
 

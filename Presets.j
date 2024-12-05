@@ -114,12 +114,8 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil];
             [Settings setPresetName: "Color Equiluminance"];
             break;
-        case "ESU": // secret project :)
-        case "BCM@Scheie": // a clinical study
-        case "CNS@Freiburg": // a clinical study
-        case "Maculight": // a clinical study
-        case "AT@LeviLab": // for Ângela
-        case "Hyper@TUDo": case "ULV@Gensight": case "ETCF": case "HYPERION":
+        case "ESU": case "BCM@Scheie": case "CNS@Freiburg": case "Maculight":
+        case "AT@LeviLab": case "Hyper@TUDo": case "ULV@Gensight": case "ETCF": case "HYPERION":
             // calculated class name requires strict discipline with filename systematics
             const newPresetName = [_presetName stringByReplacingOccurrencesOfString:"@" withString:"_"]; //in filenames the @ is not allowed
             const classObj = CPClassFromString("Presets_" + newPresetName);
@@ -136,7 +132,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Settings setPresetName: "Generic Template"];
             break;
         default:
-            console.log("Frac10>Presets>unknown preset: ", _presetName);
+            console.log("FrACT10>Presets>unknown preset: ", _presetName);
             if (feedbackType == kFeedbackTypeHTMLMessage) {
                 [ControlDispatcher post2parentM1: "Settings" m2: "Preset" m3: _presetName success: false];
             }
