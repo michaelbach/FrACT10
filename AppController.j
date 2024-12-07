@@ -138,6 +138,16 @@
         }
     });
 
+    addEventListener("fullscreenchange", (event) => { // called _after_ the change
+        //console.info("isFullScreen: ", [Misc isFullScreen]);
+        if ([Misc isFullScreen]){
+            const point = CGPointMake((window.screen.width - 800) / 2, (window.screen.height - 600) / 2);
+            [[selfWindow contentView] setFrameOrigin: point];
+        } else {
+            [[selfWindow contentView] setFrameOrigin: CGPointMake(0, 0)];
+        }
+    });
+
     const allButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];
     for (const b of allButtons)  [Misc makeFrameSquareFromWidth: b];
 
@@ -410,14 +420,8 @@
 
 
 - (IBAction) buttonFullScreen_action: (id) sender { //console.info("AppController>buttonFullScreen");
-    const full = [Misc isFullScreen];
-    if (full) {
-        [Misc fullScreenOn: NO];  [[selfWindow contentView] setFrameOrigin: CGPointMake(0, 0)];
-    } else {
-        [Misc fullScreenOn: YES];
-        const point = CGPointMake((window.screen.width - 800) / 2, (window.screen.height - 600) / 2);
-        [[selfWindow contentView] setFrameOrigin: point];
-    }
+    [Misc fullScreenOn: ![Misc isFullScreen]]; // toggle
+    // the origin changes are handled by the eventListener("fullscreenchange" above.
 }
 
 

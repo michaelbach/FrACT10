@@ -57,6 +57,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 /*
  #  History
 
+2024-12-07 fix: leaving fullscreen with ESC now correctly restores window origin
 2024-12-04a rewrite Presets to use calculated classnames
 2024-12-04 add Preset "HYPERION"
 2024-12-01 aesthetic improvements in the GUI
