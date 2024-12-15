@@ -49,7 +49,10 @@ Created by mb on July 15, 2015.
     return [CPColor colorWithHexString: theData];
 }
 + (void) setColor: (CPColor) theColor forKey: (CPString) keyString {
-    [[CPUserDefaults standardUserDefaults] setObject: [theColor hexString] forKey: keyString];
+    if (typeof(theColor) != "string") { // allow both hexstring (from HTML message) & CPColor
+        theColor = [theColor hexString];
+    }
+    [[CPUserDefaults standardUserDefaults] setObject: theColor forKey: keyString];
 }
 
 

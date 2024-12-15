@@ -38,6 +38,7 @@
         if ((m1 === undefined) || (m2 === undefined) || (m3 === undefined)) return;
         if (m1.length + m2.length + m3.length > 100) return;
         m3AsNumber = Number(m3);
+        const eData = e.data;//strangly, e no longer in scope after "default:" below; so copy
         switch (m1) {
             case "getVersion": case "Version": // 2 versions for compatibility, 2nd is deprecated
                 [self post2parentM1: "getVersion" m2: gVersionStringOfFract m3: gVersionDateOfFrACT success: YES];
@@ -58,7 +59,7 @@
             case "Unittest":
                 [self manageUnittests];  break;
             default:
-                [self _logProblem: e.data];
+                [self _logProblem: eData];
         }
     });
 }
@@ -96,6 +97,10 @@
     allowedNumberSettings = ["nAlternativesIndex", "nTrials02", "nTrials04", "nTrials08", "distanceInCM", "calBarLengthInMM", "testOnFive", "decimalMarkCharIndex", "testOnFive", "eccentXInDeg", "eccentYInDeg", "displayTransform", "trialInfoFontSize", "timeoutIsiMillisecs", "timeoutResponseSeconds", "timeoutDisplaySeconds", "soundVolume", "timeoutRewardPicturesInSeconds", "noiseContrast", "checkNum", "contrastAcuityWeber", "maxDisplayedAcuity", "minStrokeAcuity", "acuityStartingLogMAR", "margin4maxOptotypeIndex", "autoRunIndex", "crowdingType", "crowdingDistanceCalculationType", "crowdingDistanceCalculationType", "testOnLineByLine", "testOnLineByLineDistanceType", "lineByLineHeadcountIndex", "vernierType", "vernierWidth", "vernierLength", "vernierGap", "gammaValue", "contrastOptotypeDiameter", "contrastTimeoutFixmark", "contrastMaxLogCSWeber", "gratingCPD", "gratingDiaInDeg", "what2sweepIndex", "gratingCPDmin", "gratingCPDmax", "gratingContrastMichelsonPercent", "soundTrialYesIndex", "soundTrialNoIndex", "soundRunEndIndex"];
     if (allowedNumberSettings.includes(m2)) {
         [self setSettingNamed: m2];  return;
+    }
+    allowedColorSettings = ["windowBackgroundColor", "gratingForeColor", "gratingBackColor", "acuityForeColor", "acuityBackColor"];
+    if (allowedColorSettings.includes(m2)) {
+        [self setColorSettingNamed: m2];  return;
     }
     [self _logProblemM123];
 }
@@ -208,6 +213,23 @@
         m3Now = Number(m3Now);
     }
     [self post2parentM1: m1 m2: m2 m3: m3Now success: m3AsNumber === m3Now];
+}
+
+
++ (void) setColorSettingNamed: (CPString) sName { //console.info("setSettingNamed: ", sName);
+    if (["acuityForeColor", "acuityBackColor"].includes(m2)) {
+        [Settings setIsAcuityColor: YES];
+    }
+    if (["gratingForeColor", "gratingBackColor"].includes(m2)) {
+        [Settings setIsGratingColor: YES];
+    }
+    const sNameCapped = sName.charAt(0).toUpperCase() + sName.slice(1);
+    let setter = CPSelectorFromString("set" + sNameCapped + ":");
+    [Settings performSelector: setter withObject: m3];
+    [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil];
+    let m3Now = [Settings performSelector: CPSelectorFromString(sName)]; // read back
+    m3Now = [m3Now hexString];
+    [self post2parentM1: m1 m2: m2 m3: m3Now success: m3 === m3Now];
 }
 
 
