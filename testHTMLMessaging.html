@@ -7,10 +7,12 @@
 	<body>
 
 	<h1>Test sending of HTML Messages to FrACT₁₀</h1>
-	<label for="messageStringField">Return messages:</label><br>
-	<textarea id="messageStringField" rows="4" cols="103" style="overflow: scroll;"></textarea>
+    <iframe id="fractFrame" src="index.html" scrolling="yes" allow="clipboard-write" style="width: 800px; height: 628px; border: 1px solid #3050C0; padding:0px; margin:0px;"></iframe>
 	<br>
 
+	<label for="messageStringField">Return messages:</label><br>
+	<textarea id="messageStringField" rows="10" cols="103" style="overflow: scroll;"></textarea>
+	<br>
 
     <script>
 	   'use strict';
@@ -133,9 +135,81 @@
 			tf.value += ", m3: " + e.data.m3;
 			tf.scrollTop = tf.scrollHeight;
 		});
+
+
+		async function testAll() {//		console.info("testAll");
+ 		    let response;  const pauseMS = 300;
+			await pauseMilliseconds(500);
+
+			response = await tellIframeReturningPromise({m1: '', m2: '', m3: ''});//well formed, but unknown message
+		    if (response.success) errorAlert();
+
+			await pauseMilliseconds(pauseMS);
+			response = await tellIframeReturningPromise({m1: 'getVersion', m2: '', m3: ''});
+		    if (!response.success) errorAlert();
+
+			await pauseMilliseconds(pauseMS);
+		    response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'Preset', m3: 'Standard Defaults'});
+		    if (!response.success) errorAlert();
+		    response = await tellIframeReturningPromise({m1: 'getSetting', m2: 'distanceInCM', m3: ''});
+		    if (!response.success) errorAlert();
+		    if (response.m3 != 399) errorAlert();
+
+			await pauseMilliseconds(pauseMS);
+		    response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'Preset', m3: 'Testing'});
+		    if (!response.success) errorAlert();
+		    response = await tellIframeReturningPromise({m1: 'getSetting', m2: 'distanceInCM', m3: ''});
+		    if (!response.success) errorAlert();
+		    if (response.m3 != 400) errorAlert(); // did we really switch to Testing?
+
+			await pauseMilliseconds(pauseMS);
+		    response = await tellIframeReturningPromise({m1: 'getSetting', m2: 'distanceInCM', m3: ''});
+		    if (!response.success) errorAlert();
+		    if (response.m3 != 400) errorAlert();
+
+			await pauseMilliseconds(pauseMS);
+		    response = await tellIframeReturningPromise({m1: 'getSetting', m2: 'windowBackgroundColor', m3: ''});
+		    if (!response.success) errorAlert();
+		    if (response.m3 != "FFFFE6") errorAlert();
+
+			await pauseMilliseconds(pauseMS);
+		    response = await tellIframeReturningPromise({m1: 'getSetting', m2: 'acuityForeColor', m3: ''});
+		    if (response.m3 != "000000") errorAlert();
+		    response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'acuityForeColor', m3: 'FF0000'});
+		    response = await tellIframeReturningPromise({m1: 'getSetting', m2: 'acuityForeColor', m3: ''});
+		    if (response.m3 != "FF0000") errorAlert();
+
+			await pauseMilliseconds(pauseMS);
+		    response = await tellIframeReturningPromise({m1: 'getSetting', m2: 'acuityBackColor', m3: ''});
+		    if (response.m3 != "FFFFFF") errorAlert();
+		    response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'acuityBackColor', m3: '0000FF'});
+		    response = await tellIframeReturningPromise({m1: 'getSetting', m2: 'acuityBackColor', m3: ''});
+		    if (response.m3 != "0000FF") errorAlert();
+
+			await pauseMilliseconds(pauseMS);
+		    response = await tellIframeReturningPromise({m1: 'getSetting', m2: 'gratingForeColor', m3: ''});
+		    if (!response.success) errorAlert();
+		    if (response.m3 != "AAAAAA") errorAlert();
+
+			await pauseMilliseconds(pauseMS);
+		    response = await tellIframeReturningPromise({m1: 'getSetting', m2: 'gratingBackColor', m3: ''});
+		    if (!response.success) errorAlert();
+		    if (response.m3 != "555555") errorAlert();
+
+			await pauseMilliseconds(pauseMS);
+		    sendAsyncMessageChain01();
+		    //runResponding();
+		}
+		function errorAlert() {
+			alert("error");
+		}
+
+		testAll();
     </script>
 
+<h2>Test All &nbsp; <button onclick="testAll();">Start Testing</button><h2>
 
+<h2>Test specific items</h2>
     <button onclick="tellIframe('xx');">Send 'xx'</button>
     <button onclick="tellIframe({m1: 'm1', m2: 'm2', m3: 'm3'});">Send well formed, but unknown message</button>
     <br>
@@ -199,12 +273,5 @@
     <button onclick="tellIframe({m1: 'setSetting', m2: 'acuityBackColor', m3: '0000FF'});">set acuityBackColor BLUE</button>
     <button onclick="tellIframe({m1: 'setSetting', m2: 'gratingForeColor', m3: 'FF00FF'});">set gratingForeColor MAG.</button>
     <button onclick="tellIframe({m1: 'setSetting', m2: 'gratingBackColor', m3: '0000FF'});">set gratingBackColor BLUE</button>
-    <br>
-    <br>
-
-
-
-    <iframe id="fractFrame" src="index.html" scrolling="yes" allow="clipboard-write" style="width: 800px; height: 628px; border: 1px solid #3050C0; padding:0px; margin:0px;"></iframe>
-
 	</body>
 </html>

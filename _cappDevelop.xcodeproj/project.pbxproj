@@ -469,7 +469,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
 			shellScript = "# This script is invoked by ⌘b and simulates \"XcodeCapp\"\n\necho Project_Target_BuildPhases_RunScript\n\n# log _every_ step in build log, no more needed\nset -x\n\n# enable access to nib2cib… (Cappuccino tools) in child shell\nexport PATH=\"$HOME/.npm/bin:$PATH\"\n\n# cd to project source root\ncd $SRCROOT\n\n# now all set to run the XcodeCapp-like script\n#./_make-XcodeCappSimile.sh # old\n./_make-XcodeCapp.sh\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -543,7 +542,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = D5JGJ378PC;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
