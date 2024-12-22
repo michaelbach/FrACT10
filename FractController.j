@@ -56,9 +56,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if (self) {
         selfWindow = [self window];
         [selfWindow setFullPlatformWindow: YES];
-        if ([Misc isFullScreen]) {
-            [selfWindow setFrame: CGRectMake(0, 0, window.screen.width, window.screen.height)];
-        }
         [self setParentController: parent];
         [aWindow setDelegate: self];
         [self updateViewWidthHeight];

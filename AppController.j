@@ -140,12 +140,11 @@
 
     addEventListener("fullscreenchange", (event) => { // called _after_ the change
         //console.info("isFullScreen: ", [Misc isFullScreen]);
-        if ([Misc isFullScreen]){
-            const point = CGPointMake((window.screen.width - 800) / 2, (window.screen.height - 600) / 2);
-            [[selfWindow contentView] setFrameOrigin: point];
-        } else {
-            [[selfWindow contentView] setFrameOrigin: CGPointMake(0, 0)];
+        if (currentFractController !== null) {
+            [currentFractController runEnd];// can't end run with esc when escaping fullscreen
         }
+        [[selfWindow contentView] setFrameOrigin:
+          CGPointMake((window.innerWidth - 800) / 2, (window.innerHeight - 600) / 2)]; // why?
     });
 
     const allButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];
@@ -155,7 +154,8 @@
 
     allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel, plasticCardPanel];
     for (const p of allPanels) {
-        [p setFrameOrigin: CGPointMake(0, 0)];  [p setMovable: NO];
+        [p setMovable: NO];
+        [p setFrameOrigin: CGPointMake((window.window.innerWidth - 800) / 2, (window.window.innerHeight - 600) / 2)];
     }
     [self setSettingsPaneTabViewSelectedIndex: 0]; // select the "General" tab in Settings
 
@@ -196,6 +196,8 @@
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationRunFractControllerTest:) name: "notificationRunFractControllerTest" object: nil];
     [ControlDispatcher initWithAppController: self];
 
+    [[selfWindow contentView] setFrameOrigin:
+      CGPointMake((window.innerWidth - 800) / 2, (window.innerHeight - 600) / 2)]; // →center
     [selfWindow orderFront: self]; // ensures that it will receive clicks w/o activating
 }
 
