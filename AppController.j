@@ -580,7 +580,10 @@
  */
 - (void) plasticCardUpdateSize {
     const wInPx = [MiscSpace pixelFromMillimeter: 92.4]; //magic number, why not 85.6?
-    const hOverW = 53.98 / 85.6; // All bank cards are 85.6 mm wide and 53.98 mm high
+    const hOverW = 53.98 / 85.6; // All ID-1 bank cards are 85.6 mm wide and 53.98 mm high
+    // https://en.wikipedia.org/wiki/ISO/IEC_7810
+    // https://www.iso.org/obp/ui/en/#iso:std:iso-iec:7810:ed-4:v1:en
+    // ID-1: nominally 85,60 mm wide by 53,98 mm high by 0,76 mm thick
     const hInPx = wInPx * hOverW, xc = 400, yc = 300 - 24; // position in window, space for buttons
     [plasticCardImageView setFrame: CGRectMake(xc - wInPx / 2, yc - hInPx / 2, wInPx, hInPx)];
 }

@@ -1411,7 +1411,7 @@ Assumes full screen mode.
                                             </connections>
                                         </button>
                                         <popUpButton toolTip="Transformations are necessary if you increase viewing distance with mirrors." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NH7-ys-bRe">
-                                            <rect key="frame" x="284" y="155" width="199" height="25"/>
+                                            <rect key="frame" x="274" y="155" width="199" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="Display transformation normal" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="fzq-C7-Daz" id="4HI-Hd-6YM">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1438,7 +1438,7 @@ Assumes full screen mode.
                                             </connections>
                                         </popUpButton>
                                         <button toolTip="Redraw when changing orientation of a tablet between landscape and portrait." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BdA-0d-0v5">
-                                            <rect key="frame" x="285" y="253" width="208" height="18"/>
+                                            <rect key="frame" x="275" y="253" width="208" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Respond to mobile orientation" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ioU-bC-45H">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1450,7 +1450,7 @@ Assumes full screen mode.
                                             </connections>
                                         </button>
                                         <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lSV-fU-yD5">
-                                            <rect key="frame" x="285" y="223" width="116" height="18"/>
+                                            <rect key="frame" x="275" y="223" width="116" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="auto fullscreen" bezelStyle="regularSquare" imagePosition="left" enabled="NO" state="on" inset="2" id="8Hr-IM-bbi">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1458,19 +1458,6 @@ Assumes full screen mode.
                                             </buttonCell>
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.autoFullScreen" id="Ujn-aa-srf"/>
-                                            </connections>
-                                        </button>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="luN-q6-f3X">
-                                            <rect key="frame" x="291" y="40" width="194" height="23"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Click to enter a dialog to use a plastic card for calibration (credit card or similar).
-No money transfer involved, just for size!     </string>
-                                            <buttonCell key="cell" type="roundTextured" title="💳 Calibrate with plastic card" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PZ9-YT-gCb">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="buttonPlasticCardUse_action:" target="450" id="r5v-yx-rIb"/>
                                             </connections>
                                         </button>
                                         <textField toolTip="For CALIBRATION: measure the length of the blue “ruler” here, and enter its value in millimeters." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aXw-Ht-RMk">
@@ -1498,6 +1485,19 @@ No money transfer involved, just for size!     </string>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="luN-q6-f3X">
+                                            <rect key="frame" x="232" y="39" width="296" height="23"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <string key="toolTip">Click to enter a dialog to use an ID-1 plastic card for calibration (credit card or similar).
+No money transfer involved, just for size!     </string>
+                                            <buttonCell key="cell" type="roundTextured" title="💳 Calibrate with plastic card (e.g., credit card)" alternateTitle="ISO/IEC 7810:2019" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PZ9-YT-gCb">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="buttonPlasticCardUse_action:" target="450" id="r5v-yx-rIb"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -3560,7 +3560,7 @@ CQ
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pj2-Gh-qNp">
-                        <rect key="frame" x="284" y="224" width="233" height="151"/>
+                        <rect key="frame" x="284" y="223" width="233" height="151"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="plasticCard4calibration" id="q9B-HM-fLc"/>
                     </imageView>
@@ -3639,21 +3639,32 @@ Gw
                         </connections>
                     </button>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nyq-Ks-EJ5">
-                        <rect key="frame" x="258" y="21" width="290" height="16"/>
+                        <rect key="frame" x="256" y="20" width="213" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="Use the ± buttons to fit a standard plastic card." id="Wfw-08-xS0">
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Use the ± buttons to fit a the card." id="Wfw-08-xS0">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kNy-th-SSm">
-                        <rect key="frame" x="246" y="299" width="309" height="37"/>
+                        <rect key="frame" x="246" y="298" width="309" height="37"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Place plastic card here." id="4LV-LG-a2Y">
                             <font key="font" metaFont="system" size="28"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nll-9Q-DNA">
+                        <rect key="frame" x="18" y="512" width="762" height="68"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="VQY-MS-X7T">
+                            <font key="font" metaFont="system" size="18"/>
+                            <string key="title">ID-1 cards as used for, e.g., credit cards or personal identification,
+have a standardized size (ISO/IEC 7810:2019)</string>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                 </subviews>
