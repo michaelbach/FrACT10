@@ -57,6 +57,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 /*
  #  History
 
+2024-07-24 GUI: more info on the "plastic card"
 2024-14-21 all windows centered now, good for large screens
 2024-21-16 fix: optotype colors overwritten by contrast measurement; also auto-testing begun
 2024-12-15 fix crash on unknown html message; add external control of colors

@@ -138,7 +138,7 @@
         }
     });
 
-    addEventListener("fullscreenchange", (event) => { // called _after_ the change
+    window.addEventListener("fullscreenchange", (event) => { // called _after_ the change
         //console.info("isFullScreen: ", [Misc isFullScreen]);
         if (currentFractController !== null) {
             [currentFractController runEnd];// can't end run with esc when escaping fullscreen
