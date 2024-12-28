@@ -373,7 +373,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         if ([self isAcuityOptotype]) {
             // the below causes a delay of < 1 s with 10,000 samples
             const historyResults = [trialHistoryController composeInfo4CI];
-            const ciResults = [MDBDispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: 10000][0];
+            const ciResults = [MDBDispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: gNSamplesCI95];
             const halfCI95 = (ciResults.CI0975 - ciResults.CI0025) / 2;
             ci95String = " ± " + [Misc stringFromNumber: halfCI95 decimals: 2 localised: YES];
             [_parentController setResultString: [self acuityComposeResultString]]; // this will add CI95 info

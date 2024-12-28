@@ -25,8 +25,9 @@ gFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
 // Correction for threshold underestimation by DIN-ascending method (in VAdecimal)
 gThresholdCorrection4Ascending = 0.891;
 
-// slope parameter for the CI95 dispersion estimation; strongly affects CI95
-gSlopeCI95 = 15; // this value approximates test-retest variability
+// parameter for the CI95 dispersion estimation; strongly affects CI95
+gSlopeCI95 = 15; //strongly affects CI95, this value approximates test-retest variability
+gNSamplesCI95 = 10000; // with 10000 the median differs by LoA=0.003LogMAR from full run
 
 // Clamping the max logCSWeber value to avoid log of zero during conversions. Value way beyond physiologically possible.
 gMaxAllowedLogCSWeber = 4.0;

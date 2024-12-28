@@ -44,12 +44,14 @@ let kWorstLogMAR, kBestLogMAR, kGuess, testDF; // there are no class properties 
     for (let i = 0; i < nSamples; i++) threshSamples[i] = threshEstimate(sampleWithReplacement(df, df.length));
     //console.info(threshSamples);
     //console.info("extent: ", extent(threshSamples));
-    const med = median(threshSamples), CI0025 = quantile(threshSamples, 0.025), CI0975 = quantile(threshSamples, 0.975);
+    const med = median(threshSamples);
+    const CI0025 = quantile(threshSamples, 0.025)
+    const CI0975 = quantile(threshSamples, 0.975);
     //console.info("med: ", med, ", CI0025: ", CI0025, ", CI0975", CI0975, ", Bland-Altman-equiv: ±", (CI0025 - CI0975) / 2);
     /*let s = ""; // outputting all estimates on the clipboard for further workup in R
     for (i =0; i<threshSamples.length; i++) s += threshSamples[i]+ "\n";
     [Misc copyString2ClipboardWithDialog: s];*/
-    return [{median: med, CI0025: CI0025, CI0975: CI0975}];
+    return {median: med, CI0025: CI0025, CI0975: CI0975};
 }
 
 
