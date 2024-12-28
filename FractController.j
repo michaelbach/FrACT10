@@ -371,7 +371,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     let _currentTestResultExportString = [_parentController currentTestResultExportString];
     if ([Settings showCI95] && (![_parentController runAborted])) {
         if ([self isAcuityOptotype]) {
-            // the below causes a delay of < 1 s with 10,000 samples
+            // the below causes a delay of < 1 s with nSamples=10,000
             const historyResults = [trialHistoryController composeInfo4CI];
             const ciResults = [MDBDispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: gNSamplesCI95];
             const halfCI95 = (ciResults.CI0975 - ciResults.CI0025) / 2;
