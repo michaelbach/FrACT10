@@ -464,21 +464,6 @@ DQ
                             <action selector="buttonHelpClose_action:" target="450" id="UKD-ir-DUY"/>
                         </connections>
                     </button>
-                    <button tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFH-Mg-hvS">
-                        <rect key="frame" x="309" y="18" width="126" height="23"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Opens the FrACT blog page in your browser.  
-  
-  
-</string>
-                        <buttonCell key="cell" type="roundTextured" title="→FrACT blog" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xSN-4X-HKf">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonGotoURLgivenTag_action:" target="450" id="8YA-yu-srh"/>
-                        </connections>
-                    </button>
                     <button tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pig-bH-1jM">
                         <rect key="frame" x="19" y="18" width="126" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -494,7 +479,7 @@ DQ
                         </connections>
                     </button>
                     <button tag="4" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iza-6M-cRz">
-                        <rect key="frame" x="164" y="18" width="126" height="23"/>
+                        <rect key="frame" x="204" y="18" width="126" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Opens the FrACT home page 
 in your browser.
@@ -510,7 +495,7 @@ in your browser.
                         </connections>
                     </button>
                     <button tag="5" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFU-iu-5G1">
-                        <rect key="frame" x="453" y="18" width="126" height="23"/>
+                        <rect key="frame" x="383" y="18" width="126" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Opens the “Acuity Cheat Sheet" in your browser.
  
@@ -525,7 +510,7 @@ in your browser.
                         </connections>
                     </button>
                     <button tag="6" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SdT-ry-TcO">
-                        <rect key="frame" x="596" y="18" width="126" height="23"/>
+                        <rect key="frame" x="561" y="18" width="126" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Opens a website which will read and display the test results exported by default.
 </string>
