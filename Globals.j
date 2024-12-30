@@ -58,6 +58,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 /*
  #  History
 
+2024-12-30 in Help panel: remove `Blog` button, add latest paper
 2024-07-24 GUI: more info on the "plastic card"
 2024-14-21 all windows centered now, good for large screens
 2024-21-16 fix: optotype colors overwritten by contrast measurement; also auto-testing begun
