@@ -36,7 +36,7 @@ jake release
 rm -R Build/Release/FrACT/CommonJS.environment # we don't need this
 sleep 1
 mv Build/Release/FrACT ../ # move it up, creating the "FrACT" folder
-sleep 1
+sleep 2
 #would preserve date, but jake messes them up… cp -Rp Build/Release/FrACT ../ # move it up, creating the "FrACT" folder
 rm -R Build # and get rid of the rest of the built items
 sleep 1

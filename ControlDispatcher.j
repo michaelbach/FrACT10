@@ -176,6 +176,9 @@
                 case "TumblingE":
                     [self _notify: "notificationRunFractControllerTest" object: kTestContrastE];
                     break;
+                case "Grating":
+                    [self _notify: "notificationRunFractControllerTest" object: kTestContrastG];
+                    break;
                 default:
                     [self _logProblemM123];
             }
