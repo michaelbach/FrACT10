@@ -158,6 +158,9 @@
                 case "TumblingE":
                     [self _notify: "notificationRunFractControllerTest" object: kTestAcuityE];
                     break;
+                case "TAO":
+                    [self _notify: "notificationRunFractControllerTest" object: kTestAcuityTAO];
+                    break;
                 case "Vernier":
                     [self _notify: "notificationRunFractControllerTest" object: kTestAcuityVernier];
                     break;
