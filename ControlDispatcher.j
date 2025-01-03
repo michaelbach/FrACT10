@@ -58,6 +58,8 @@
                 [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;
             case "Unittest":
                 [self manageUnittests];  break;
+            case "reload":
+                window.location.reload(NO);  break;
             default:
                 [self _logProblem: eData];
         }
