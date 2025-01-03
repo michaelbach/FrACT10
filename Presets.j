@@ -134,7 +134,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
         default:
             console.log("FrACT10>Presets>unknown preset: ", _presetName);
             if (feedbackType == kFeedbackTypeHTMLMessage) {
-                [ControlDispatcher post2parentM1: "Settings" m2: "Preset" m3: _presetName success: false];
+                [ControlDispatcher post2parentM1: "Settings" m2: "Preset" m3: _presetName success: NO];
             }
             return;
     }

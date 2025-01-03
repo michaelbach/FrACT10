@@ -142,64 +142,64 @@ function selectTestDF(selector) {
     selector = selector || 0;
     switch (selector) {
         default:
-            testDF = [{lMar: 1.00, correct: true}, // trial run on 2021-04-22
-                      {lMar: 0.699, correct: false}, // inadvertant error, good for testing
-                      {lMar: 0.886, correct: true},
-                      {lMar: 0.725, correct: true},
-                      {lMar: 0.595, correct: true},
-                      {lMar: 0.481, correct: true},
-                      {lMar: 0.376, correct: true},
-                      {lMar: 0.278, correct: true},
-                      {lMar: 0.187, correct: true},
-                      {lMar: 0.101, correct: true},
-                      {lMar: 0.020, correct: false},
-                      {lMar: 0.581, correct: true},
-                      {lMar: 0.086, correct: true},
-                      {lMar: 0.029, correct: false},
-                      {lMar: 0.090, correct: true},
-                      {lMar: 0.044, correct: true},
-                      {lMar: 0.001, correct: true},
-                      {lMar: 0.439, correct: true}];
+            testDF = [{lMar: 1.00, correct: YES}, // trial run on 2021-04-22
+                      {lMar: 0.699, correct: NO}, // lapse error, good for testing
+                      {lMar: 0.886, correct: YES},
+                      {lMar: 0.725, correct: YES},
+                      {lMar: 0.595, correct: YES},
+                      {lMar: 0.481, correct: YES},
+                      {lMar: 0.376, correct: YES},
+                      {lMar: 0.278, correct: YES},
+                      {lMar: 0.187, correct: YES},
+                      {lMar: 0.101, correct: YES},
+                      {lMar: 0.020, correct: NO},
+                      {lMar: 0.581, correct: YES},
+                      {lMar: 0.086, correct: YES},
+                      {lMar: 0.029, correct: NO},
+                      {lMar: 0.090, correct: YES},
+                      {lMar: 0.044, correct: YES},
+                      {lMar: 0.001, correct: YES},
+                      {lMar: 0.439, correct: YES}];
             break;
         case 1:
-            testDF = [{lMar: 1.00, correct: true}, // run 1 (mb)
-                      {lMar: 0.699, correct: true},
-                      {lMar: 0.398, correct: true},
-                      {lMar: 0.097, correct: true},
-                      {lMar: -0.433, correct: false},
-                      {lMar: -0.179, correct: true},
-                      {lMar: -0.328, correct: false},
-                      {lMar: -0.188, correct: false},
-                      {lMar: -0.072, correct: false},
-                      {lMar: 0.026, correct: true},
-                      {lMar: -0.045, correct: false},
-                      {lMar: 0.513, correct: true},
-                      {lMar: 0.016, correct: true},
-                      {lMar: -0.033, correct: false},
-                      {lMar: 0.026, correct: false},
-                      {lMar: 0.081, correct: true},
-                      {lMar: 0.041, correct: true},
-                      {lMar: 0.479, correct: true}];
+            testDF = [{lMar: 1.00, correct: YES}, // run 1 (mb)
+                      {lMar: 0.699, correct: YES},
+                      {lMar: 0.398, correct: YES},
+                      {lMar: 0.097, correct: YES},
+                      {lMar: -0.433, correct: NO},
+                      {lMar: -0.179, correct: YES},
+                      {lMar: -0.328, correct: NO},
+                      {lMar: -0.188, correct: NO},
+                      {lMar: -0.072, correct: NO},
+                      {lMar: 0.026, correct: YES},
+                      {lMar: -0.045, correct: NO},
+                      {lMar: 0.513, correct: YES},
+                      {lMar: 0.016, correct: YES},
+                      {lMar: -0.033, correct: NO},
+                      {lMar: 0.026, correct: NO},
+                      {lMar: 0.081, correct: YES},
+                      {lMar: 0.041, correct: YES},
+                      {lMar: 0.479, correct: YES}];
             break;
         case 2:
-            testDF = [{lMar: 1.00, correct: true}, // "63-He-OS-1"
-                      {lMar: 0.699, correct: false},
-                      {lMar: 0.86, correct: true},
-                      {lMar: 0.697, correct: true},
-                      {lMar: 0.562, correct: false},
-                      {lMar: 0.693, correct: false},
-                      {lMar: 0.796, correct: true},
-                      {lMar: 0.726, correct: true},
-                      {lMar: 0.662, correct: true},
-                      {lMar: 0.607, correct: false},
-                      {lMar: 0.668, correct: true},
-                      {lMar: 1.099, correct: true},
-                      {lMar: 0.613, correct: false},
-                      {lMar: 0.662, correct: false},
-                      {lMar: 0.708, correct: true},
-                      {lMar: 0.672, correct: true},
-                      {lMar: 0.642, correct: false},
-                      {lMar: 1.159, correct: true}];
+            testDF = [{lMar: 1.00, correct: YES}, // "63-He-OS-1"
+                      {lMar: 0.699, correct: NO},
+                      {lMar: 0.86, correct: YES},
+                      {lMar: 0.697, correct: YES},
+                      {lMar: 0.562, correct: NO},
+                      {lMar: 0.693, correct: NO},
+                      {lMar: 0.796, correct: YES},
+                      {lMar: 0.726, correct: YES},
+                      {lMar: 0.662, correct: YES},
+                      {lMar: 0.607, correct: NO},
+                      {lMar: 0.668, correct: YES},
+                      {lMar: 1.099, correct: YES},
+                      {lMar: 0.613, correct: NO},
+                      {lMar: 0.662, correct: NO},
+                      {lMar: 0.708, correct: YES},
+                      {lMar: 0.672, correct: YES},
+                      {lMar: 0.642, correct: NO},
+                      {lMar: 1.159, correct: YES}];
             break;
     }
 }

@@ -88,9 +88,9 @@ function _pause(ms) { //console.info("Misc>_pause");
 + (BOOL) isFullScreen {
     const full_screen_element = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement || null;
     if (full_screen_element === null)// If no element is in full-screen
-        return false;
+        return NO;
     else
-        return true;
+        return YES;
 }
 
 
@@ -181,14 +181,14 @@ function _pause(ms) { //console.info("Misc>_pause");
  Helper function: Find out if a URL exists
  */
 + (BOOL) existsUrl: (CPString) url { //console.info("Misc>existsUrl");
-    let success = false;
+    let success = NO;
     try {
         let request;
         if(window.XMLHttpRequest)
             request = new XMLHttpRequest();
         else
             request = new ActiveXObject("Microsoft.XMLHTTP");
-        request.open('GET', url, false);
+        request.open('GET', url, NO);
         request.send(); // there will be a 'pause' here until the response to come.
         // the object request will be modified
         success = (request.status != 404)
