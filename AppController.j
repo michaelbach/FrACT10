@@ -167,7 +167,7 @@
     [Settings checkDefaults]; // what was the reason to put this here???
 
     rewardImageView = [[CPImageView alloc] initWithFrame: CGRectMake(100, 0, 600, 600)];
-    [[selfWindow contentView] addSubview: rewardImageView];
+    [[selfWindow contentView] addSubview: rewardImageView positioned: CPWindowBelow relativeTo: nil];
     rewardsController = [[RewardsController alloc] initWithView: rewardImageView];
     taoController = [[TAOController alloc] initWithButton2Enable: buttonAcuityTAO];
     sound = [[Sound alloc] init];

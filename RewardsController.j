@@ -82,6 +82,7 @@ kSpriteFile = "allRewardSprites.png";
 - (id) drawImage { // console.info("RewardsController>drawImageI: ", _currentImage);
     if ([_rewardImageStrip loadStatus] != CPImageLoadStatusCompleted) return;
     [_rewardView setImage: _rewardImageStrip];
+    [[_rewardView superview] addSubview: _rewardView]; // so it's ordered front
 
     // don't really understand why this bounds setting works to select a single sprite
     [_rewardView setBounds: CGRectMake(0, 0, (2 * _currentImage - kNImages + 2) * kSizeScaled, kSizeScaled)];
@@ -91,7 +92,8 @@ kSpriteFile = "allRewardSprites.png";
 
 
 - (void) onTimeoutRewardsController: (CPTimer) timer { //console.info("RewardsController>onTimeoutRewardsController");
-    [_rewardView setImage: nil];
+    [_rewardView setImage: nil]; // and now↓ order back so the tooltip areas are not covered
+    [[_rewardView superview] addSubview: _rewardView positioned: CPWindowBelow relativeTo: nil];
     if (!_testing) return;
 
     if (++_currentImage >= kNImages) {

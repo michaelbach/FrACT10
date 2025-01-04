@@ -16,11 +16,8 @@ Shortcut: A
 
 S;59;Acuity optotypes will be overlaid with static visual noise.S;66;After this time, an incorrect response will be recorded [seconds].S;110;Applies only to Landolt Cs with 4 orientations.
 
-The response keys are NOT updated (yet) by can be guessed :).S;70;Automatic run, targeting some acuity or contrast.
-For testing.
-   
-  
-S;53;Automatic run, targeting this acuity. For testing.
+The response keys are NOT updated (yet) by can be guessed :).S;81;Automatic run, targeting some acuity or contrast.                   
+For testing.S;53;Automatic run, targeting this acuity. For testing.
 
  S;64;Automatic run, targeting this contrast sensitivity. For testing.S;67;Automatic run, targeting this contrast sensitivity. For testing.
 
@@ -172,11 +169,8 @@ S;100;This displays the realisable Michelson contrast, depending on color discre
  
  S;118;To avoid contact between the largest optotype and the screen edge. Margin in units of stroke (0 gap for Landolt C).
 
- S;37;Toggle “fullscreen”.
+ S;68;Toggle fullscreen.                                     
 Shortcut: f
-
- 
-
 S;76;Transformations are necessary if you increase viewing distance with mirrors.S;135;Type of sound feedback when you respond to an optotype presentation. “With info”: two different sounds for correct/incorrect (default).S;37;Types of crowding.
                   S;51;VA result will be in LogMAR.
                       S;68;VA result will be in Snellen fraction.
