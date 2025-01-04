@@ -140,15 +140,17 @@
 
     window.addEventListener("fullscreenchange", (event) => { // called _after_ the change
         //console.info("isFullScreen: ", [Misc isFullScreen]);
-        if (currentFractController !== null) {
-            [currentFractController runEnd];// can't end run with esc when escaping fullscreen
+        if (![Misc isFullScreen]) { // so it was full before, possibly we're in a run
+            if (currentFractController !== null) {//need to end run when leaving fullscreen
+                [currentFractController runEnd]; //because the <esc> was consumed
+            }
         }
         [[selfWindow contentView] setFrameOrigin:
           CGPointMake((window.innerWidth - 800) / 2, (window.innerHeight - 600) / 2)]; // why?
     });
 
-    const allButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];
-    for (const b of allButtons)  [Misc makeFrameSquareFromWidth: b];
+    const allTestButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];
+    for (const b of allTestButtons)  [Misc makeFrameSquareFromWidth: b];
 
     allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherUnittest]; // sequence like Hierachy kTest#s
 
@@ -327,14 +329,14 @@
  Info panels (above) were not needed, or OKed, so lets now REALLY run the test.
  */
 - (IBAction) runFractController2_actionOK: (id) sender { //console.info("AppController>runFractController2_actionOK");
-    [self closeAllPanels];  [currentFractController release];
+    [self closeAllPanels];  [currentFractController release];  currentFractController = null;
+    if ([Settings autoFullScreen]) {
+        [Misc fullScreenOn: YES];
+    }
     currentFractController = [[allTestControllers[currentTestID] alloc] initWithWindow: fractControllerWindow parent: self];
     [currentFractController setSound: sound];
     [currentFractController setCurrentTestID: currentTestID]; // while it has inherited currentTestID, it hasn't inherited its value
     [currentFractController runStart];
-    if ([Settings autoFullScreen]) {
-        [Misc fullScreenOn: YES];
-    }
 }
 /**
  ok, so let's not run this test after all
@@ -346,8 +348,8 @@
 
 - (void) runEnd { //console.info("AppController>runEnd");
     [currentFractController release];  currentFractController = nil;
-    if ([Settings autoFullScreen]) {
-        [Misc fullScreenOn: NO];
+    if ([Settings autoFullScreen]) { // possible problem: if autoF is on,
+        [Misc fullScreenOn: NO]; // but screen was manually to fullscr., here will exit fullscr.
     }
     if (!runAborted) {
         if ([Settings rewardPicturesWhenDone]) {

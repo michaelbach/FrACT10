@@ -199,14 +199,13 @@ Shortcut: V      
                             <action selector="buttonHelp_action:" target="450" id="puK-iL-df6"/>
                         </connections>
                     </button>
-                    <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHP-WN-mFO">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHP-WN-mFO" propertyAccessControl="none">
                         <rect key="frame" x="190" y="167" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Toggle “fullscreen”.
 Shortcut: f
 
  
-
 
 </string>
                         <buttonCell key="cell" type="roundTextured" title="Fullscr." bezelStyle="texturedRounded" image="iconFullscreen" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cEz-jl-XIn">
@@ -1435,9 +1434,13 @@ Assumes full screen mode.
                                             </connections>
                                         </button>
                                         <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lSV-fU-yD5">
-                                            <rect key="frame" x="275" y="223" width="116" height="18"/>
+                                            <rect key="frame" x="275" y="223" width="117" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="auto fullscreen" bezelStyle="regularSquare" imagePosition="left" enabled="NO" state="on" inset="2" id="8Hr-IM-bbi">
+                                            <string key="toolTip">Automatically switches to full screen during a test run.
+After test run leaves fullscreen.
+ 
+ </string>
+                                            <buttonCell key="cell" type="check" title="Auto fullscreen" bezelStyle="regularSquare" imagePosition="left" inset="2" id="8Hr-IM-bbi">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
