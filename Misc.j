@@ -100,6 +100,11 @@ function _pause(ms) { //console.info("Misc>_pause");
 }
 
 
++ (void) centerWindowOrPanel: (CPWindow) p {
+    [p setFrameOrigin: CGPointMake((window.innerWidth - 800) / 2, (window.innerHeight - 600) / 2)];
+}
+
+
 + (void) copyString2ClipboardWithDialog: (CPString) s { //console.info("Misc>copyString2ClipboardWithDialog");
     const alert = [CPAlert alertWithMessageText: "Done."
     defaultButton: "Yes, put result → clipboard  (ߵyߴ)" alternateButton: "Cancel  (ߵcߴ)" otherButton: nil

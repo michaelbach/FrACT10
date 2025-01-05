@@ -145,8 +145,7 @@
                 [currentFractController runEnd]; //because the <esc> was consumed
             }
         }
-        [[selfWindow contentView] setFrameOrigin:
-          CGPointMake((window.innerWidth - 800) / 2, (window.innerHeight - 600) / 2)]; // why?
+        [Misc centerWindowOrPanel: [selfWindow contentView]];
     });
 
     const allTestButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];
@@ -155,10 +154,7 @@
     allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherUnittest]; // sequence like Hierachy kTest#s
 
     allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel, plasticCardPanel];
-    for (const p of allPanels) {
-        [p setMovable: NO];
-        [p setFrameOrigin: CGPointMake((window.window.innerWidth - 800) / 2, (window.window.innerHeight - 600) / 2)];
-    }
+    for (const p of allPanels)  [p setMovable: NO];
     [self setSettingsPaneTabViewSelectedIndex: 0]; // select the "General" tab in Settings
 
     [selfWindow setTitle: "FrACT10"];
@@ -198,8 +194,7 @@
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationRunFractControllerTest:) name: "notificationRunFractControllerTest" object: nil];
     [ControlDispatcher initWithAppController: self];
 
-    [[selfWindow contentView] setFrameOrigin:
-      CGPointMake((window.innerWidth - 800) / 2, (window.innerHeight - 600) / 2)]; // →center
+    [Misc centerWindowOrPanel: [selfWindow contentView]]; // →center
     [selfWindow orderFront: self]; // ensures that it will receive clicks w/o activating
 }
 
@@ -250,6 +245,9 @@
 - (void) closeAllPanels {
     for (const p of allPanels)  [p close];
 }
+- (void) centerAllPanels {
+    for (const p of allPanels)  [Misc centerWindowOrPanel: p];
+}
 
 
 /**
@@ -292,7 +290,7 @@
  The above prerequisites were met, so let's run the test specified in the class-global`currentTestID`
  */
 - (void) runFractController2 { //console.info("AppController>runFractController2");
-    [self closeAllPanels];
+    [self closeAllPanels];  [self centerAllPanels];
     if ([Settings responseInfoAtStart]) {
         switch (currentTestID) {
             case kTestAcuityLett: [responseinfoPanelAcuityL makeKeyAndOrderFront: self]; break;
@@ -443,6 +441,7 @@
 - (IBAction) buttonSettings_action: (id) sender { //console.info("AppController>buttonSettings");
     [sound initAfterUserinteraction];
     [Settings checkDefaults];  [settingsPanel makeKeyAndOrderFront: self];
+    [Misc centerWindowOrPanel: settingsPanel];
     if (settingsNeededNewDefaults) {
         settingsNeededNewDefaults = NO;
         const alert = [CPAlert alertWithMessageText: "WARNING"

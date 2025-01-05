@@ -16,6 +16,7 @@
 
     <script>
 	   'use strict';
+	   const YES = true, NO = !YES;
 	   function tellIframe(message) {
 		   document.getElementById("messageStringField").value = ""; // clear
 		   const iframe = document.getElementById('fractFrame');
@@ -101,7 +102,7 @@
 			let response, rChar;
 			response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'Preset', m3: 'Testing'});
 			tellIframe({m1: 'Run', m2: 'Acuity', m3: 'LandoltC'});
-			while (true) {
+			while (YES) {
 				response = await tellIframeReturningPromise({m1: 'getValue', m2: 'iTrial', m3: ''});
 				if (!response.success) return; // when run done, iTrial==0 & no success
 				response = await tellIframeReturningPromise({m1: 'getValue', m2: 'currentAlternative', m3: ''});
@@ -210,6 +211,8 @@
 <h2>Test All &nbsp; <button onclick="testAll();">Start Testing</button><h2>
 
 <h2>Test specific items</h2>
+    <button onclick="tellIframe({m1: 'setFullScreen', m2: NO, m3: ''});">fullScreen NO</button>
+    <button onclick="tellIframe({m1: 'setFullScreen', m2: YES, m3: ''});">fullScreen YES</button>
     <button onclick="tellIframe({m1: 'reload', m2: '', m3: ''});">reload</button>
     <button onclick="tellIframe('xx');">Send 'xx'</button>
     <button onclick="tellIframe({m1: 'm1', m2: 'm2', m3: 'm3'});">Send well formed, but unknown message</button>

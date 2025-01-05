@@ -60,6 +60,9 @@
                 [self manageUnittests];  break;
             case "reload":
                 window.location.reload(NO);  break;
+            case "setFullScreen":
+                [Misc fullScreenOn: m2];
+                [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;
             default:
                 [self _logProblem: eData];
         }

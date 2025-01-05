@@ -58,6 +58,8 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 /*
  #  History
 
+2025-01-05 center panels on all browsers, improve fullscreen handling, add isFullScreenSupported,
+    add setFullScreen HTML message
 2025-01-04 work `auto fullscreen`, now functions better after solving the scope; but switch too slow, wrong  onscreen size entered into calculations. Leave invisible for now.
     Fix problem of missing tooltips: the empty `rewardImageView` on top consumed the tooltips
 2025-01-03 add reload to HTML messages, replace true/false with YES/NO everywhere
