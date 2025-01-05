@@ -95,15 +95,15 @@
     if (m2 === "Preset") {
         [self _notify: "applyPresetNamed" object: m3];  return;
     }
-    allowedBoolSettings = ["gratingObliqueOnly", "responseInfoAtStart", "enableTouchControls", "eccentShowCenterFixMark", "eccentRandomizeX", "autoFullScreen", "mobileOrientation", "trialInfo", "results2clipboard", "results2clipboardSilent", "rewardPicturesWhenDone", "embedInNoise", "isAcuityColor", "obliqueOnly", "acuityEasyTrials", "acuityFormatDecimal", "acuityFormatLogMAR", "acuityFormatSnellenFractionFoot", "forceSnellen20", "showCI95", "lineByLineChartMode", "lineByLineChartModeConstantVA", "contrastEasyTrials", "contrastDarkOnLight", "contrastShowFixMark", "contrastDithering", "isGratingMasked", "gratingUseErrorDiffusion", "gratingSineNotSquare", "isGratingColor", "specialBcmOn", "hideExitButton", "auditoryFeedback4trial", "auditoryFeedback4run"];
+    const allowedBoolSettings = ["gratingObliqueOnly", "responseInfoAtStart", "enableTouchControls", "eccentShowCenterFixMark", "eccentRandomizeX", "autoFullScreen", "mobileOrientation", "trialInfo", "results2clipboard", "results2clipboardSilent", "rewardPicturesWhenDone", "embedInNoise", "isAcuityColor", "obliqueOnly", "acuityEasyTrials", "acuityFormatDecimal", "acuityFormatLogMAR", "acuityFormatSnellenFractionFoot", "forceSnellen20", "showCI95", "lineByLineChartMode", "lineByLineChartModeConstantVA", "contrastEasyTrials", "contrastDarkOnLight", "contrastShowFixMark", "contrastDithering", "isGratingMasked", "gratingUseErrorDiffusion", "gratingSineNotSquare", "isGratingColor", "specialBcmOn", "hideExitButton", "auditoryFeedback4trial", "auditoryFeedback4run"];
     if (allowedBoolSettings.includes(m2)) {
         [self setSettingNamed: m2];  return;
     }
-    allowedNumberSettings = ["nAlternativesIndex", "nTrials02", "nTrials04", "nTrials08", "distanceInCM", "calBarLengthInMM", "testOnFive", "decimalMarkCharIndex", "testOnFive", "eccentXInDeg", "eccentYInDeg", "displayTransform", "trialInfoFontSize", "timeoutIsiMillisecs", "timeoutResponseSeconds", "timeoutDisplaySeconds", "soundVolume", "timeoutRewardPicturesInSeconds", "noiseContrast", "checkNum", "contrastAcuityWeber", "maxDisplayedAcuity", "minStrokeAcuity", "acuityStartingLogMAR", "margin4maxOptotypeIndex", "autoRunIndex", "crowdingType", "crowdingDistanceCalculationType", "crowdingDistanceCalculationType", "testOnLineByLine", "testOnLineByLineDistanceType", "lineByLineHeadcountIndex", "vernierType", "vernierWidth", "vernierLength", "vernierGap", "gammaValue", "contrastOptotypeDiameter", "contrastTimeoutFixmark", "contrastMaxLogCSWeber", "gratingCPD", "gratingDiaInDeg", "what2sweepIndex", "gratingCPDmin", "gratingCPDmax", "gratingContrastMichelsonPercent", "soundTrialYesIndex", "soundTrialNoIndex", "soundRunEndIndex"];
+    const allowedNumberSettings = ["nAlternativesIndex", "nTrials02", "nTrials04", "nTrials08", "distanceInCM", "calBarLengthInMM", "testOnFive", "decimalMarkCharIndex", "testOnFive", "eccentXInDeg", "eccentYInDeg", "displayTransform", "trialInfoFontSize", "timeoutIsiMillisecs", "timeoutResponseSeconds", "timeoutDisplaySeconds", "soundVolume", "timeoutRewardPicturesInSeconds", "noiseContrast", "checkNum", "contrastAcuityWeber", "maxDisplayedAcuity", "minStrokeAcuity", "acuityStartingLogMAR", "margin4maxOptotypeIndex", "autoRunIndex", "crowdingType", "crowdingDistanceCalculationType", "crowdingDistanceCalculationType", "testOnLineByLine", "testOnLineByLineDistanceType", "lineByLineHeadcountIndex", "vernierType", "vernierWidth", "vernierLength", "vernierGap", "gammaValue", "contrastOptotypeDiameter", "contrastTimeoutFixmark", "contrastMaxLogCSWeber", "gratingCPD", "gratingDiaInDeg", "what2sweepIndex", "gratingCPDmin", "gratingCPDmax", "gratingContrastMichelsonPercent", "soundTrialYesIndex", "soundTrialNoIndex", "soundRunEndIndex"];
     if (allowedNumberSettings.includes(m2)) {
         [self setSettingNamed: m2];  return;
     }
-    allowedColorSettings = ["windowBackgroundColor", "gratingForeColor", "gratingBackColor", "acuityForeColor", "acuityBackColor"];
+    const allowedColorSettings = ["windowBackgroundColor", "gratingForeColor", "gratingBackColor", "acuityForeColor", "acuityBackColor"];
     if (allowedColorSettings.includes(m2)) {
         [self setColorSettingNamed: m2];  return;
     }
@@ -152,44 +152,25 @@
                 [self _logProblemM123];
             }
             break;
-        case "Acuity":
-            switch(m3) {
-                case "Letters":
-                    [self _notify: "notificationRunFractControllerTest" object: kTestAcuityLett];
-                    break;
-                case "LandoltC":
-                    [self _notify: "notificationRunFractControllerTest" object: kTestAcuityC];
-                    break;
-                case "TumblingE":
-                    [self _notify: "notificationRunFractControllerTest" object: kTestAcuityE];
-                    break;
-                case "TAO":
-                    [self _notify: "notificationRunFractControllerTest" object: kTestAcuityTAO];
-                    break;
-                case "Vernier":
-                    [self _notify: "notificationRunFractControllerTest" object: kTestAcuityVernier];
-                    break;
-                default:
-                    [self _logProblemM123];
-            }
+        case "Acuity": { // need brackets so scope of variables stays local
+            const keyStrings = ["Letters", "LandoltC", "TumblingE", "TAO", "Vernier"]
+            const keyNumbers = [kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO, kTestAcuityVernier];
+            const idx = keyStrings.indexOf(m3);
+            if (idx >= 0) {
+                [self _notify: "notificationRunFractControllerTest" object: keyNumbers[idx]];
+            } else {
+                [self _logProblemM123];
+            }}
             break;
-        case "Contrast":
-            switch(m3) {
-                case "Letters":
-                    [self _notify: "notificationRunFractControllerTest" object: kTestContrastLett];
-                    break;
-                case "LandoltC":
-                    [self _notify: "notificationRunFractControllerTest" object: kTestContrastC];
-                    break;
-                case "TumblingE":
-                    [self _notify: "notificationRunFractControllerTest" object: kTestContrastE];
-                    break;
-                case "Grating":
-                    [self _notify: "notificationRunFractControllerTest" object: kTestContrastG];
-                    break;
-                default:
-                    [self _logProblemM123];
-            }
+        case "Contrast": {
+            const keyStrings = ["Letters", "LandoltC", "TumblingE", "Grating"]
+            const keyNumbers = [kTestContrastLett, kTestContrastC, kTestContrastE, kTestContrastG];
+            const idx = keyStrings.indexOf(m3);
+            if (idx >= 0) {
+                [self _notify: "notificationRunFractControllerTest" object: keyNumbers[idx]];
+            } else {
+                [self _logProblemM123];
+            }}
             break;
         default:
             [self _logProblemM123];

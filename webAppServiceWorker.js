@@ -53,7 +53,6 @@ self.addEventListener('install', (event) => {
                             './Resources/buttons/iconSettings.png',
                             './Resources/icons/FrACT_icon-128.png',
                             './Resources/icons/FrACT_icon-390.png',
-                            './Resources/icons/FrACT_icon-512.png',
                             './Resources/icons/FrACT3icon.ico',
                             './Resources/icons/icon.png',
                             './Resources/keyMaps/keyMap4.png',
