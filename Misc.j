@@ -60,10 +60,23 @@ function _pause(ms) { //console.info("Misc>_pause");
 
 
 /**
- Toggle fullscreen. That was quite difficult to figure out :).
+ Handle fullscreen. That was quite difficult to figure out :) (at that time…).
  */
 // https://hacks.mozilla.org/2012/01/using-the-fullscreen-api-in-web-browsers/
++ (BOOL) isFullScreenSupported {
+    return (
+        document.fullscreenEnabled || document.webkitFullscreenEnabled ||
+        document.mozFullScreenEnabled || document.msFullscreenEnabled
+    );
+}
++ (BOOL) isFullScreen {
+    if (![self isFullScreenSupported]) return NO;
+    return !!(document.fullscreenElement || document.webkitFullscreenElement ||
+              document.mozFullScreenElement || document.msFullscreenElement);
+}
 + (void) fullScreenOn: (BOOL) onOff {
+    if (![self isFullScreenSupported]) return;
+    if ([self isFullScreen] == onOff) return;
     const element = document.documentElement;
     if (onOff) {
         if (element.requestFullscreen)
@@ -84,13 +97,6 @@ function _pause(ms) { //console.info("Misc>_pause");
         else if(document.msExitFullscreen)
             document.msExitFullscreen();
     }
-}
-+ (BOOL) isFullScreen {
-    const full_screen_element = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement || null;
-    if (full_screen_element === null)// If no element is in full-screen
-        return NO;
-    else
-        return YES;
 }
 
 
