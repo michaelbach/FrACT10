@@ -145,36 +145,21 @@
     _sendHTMLMessageOnRunDone = YES;// need to switch off again if parsing below fails
     switch(m2) {
         case "TestNumber":
-            const allowedNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-            if (allowedNumbers.includes(m3AsNumber)) {
-                [self _notify: "notificationRunFractControllerTest" object: m3];
-            } else {
-                [self _logProblemM123];
+            if ((m3AsNumber >= 1) && (m3AsNumber <= 10)) {
+                [self _notify: "notificationRunFractControllerTest" object: m3AsNumber];  return;
             }
-            break;
         case "Acuity": { // need brackets so scope of variables stays local
-            const keyStrings = ["Letters", "LandoltC", "TumblingE", "TAO", "Vernier"]
-            const keyNumbers = [kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO, kTestAcuityVernier];
-            const idx = keyStrings.indexOf(m3);
-            if (idx >= 0) {
-                [self _notify: "notificationRunFractControllerTest" object: keyNumbers[idx]];
-            } else {
-                [self _logProblemM123];
+            const testKey = {"Letters": kTestAcuityLett, "LandoltC": kTestAcuityC, "TumblingE": kTestAcuityE, "TAO": kTestAcuityTAO, "Vernier": kTestAcuityVernier}[m3];
+            if (testKey !== undefined) {
+                [self _notify: "notificationRunFractControllerTest" object: testKey];  return;
             }}
-            break;
         case "Contrast": {
-            const keyStrings = ["Letters", "LandoltC", "TumblingE", "Grating"]
-            const keyNumbers = [kTestContrastLett, kTestContrastC, kTestContrastE, kTestContrastG];
-            const idx = keyStrings.indexOf(m3);
-            if (idx >= 0) {
-                [self _notify: "notificationRunFractControllerTest" object: keyNumbers[idx]];
-            } else {
-                [self _logProblemM123];
+            const testKey = {"Letters": kTestContrastLett, "LandoltC": kTestContrastC, "TumblingE": kTestContrastE, "Grating": kTestContrastG}[m3];
+            if (testKey !== undefined) {
+                [self _notify: "notificationRunFractControllerTest" object: testKey];  return;
             }}
-            break;
-        default:
-            [self _logProblemM123];
     }
+    [self _logProblemM123];
 }
 
 
