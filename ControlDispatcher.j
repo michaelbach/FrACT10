@@ -119,7 +119,7 @@
         [self post2parentM1: m1 m2: _inRun m3: s success: YES];
         return;
     }
-    if (!_inRun) {
+    if (!_inRun) { // if no test is running, all options further down are moot
         [self _logProblemM123];  return;
     }
     switch(m2) {
