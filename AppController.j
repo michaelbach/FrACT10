@@ -148,6 +148,10 @@
         [Misc centerWindowOrPanel: [selfWindow contentView]];
     });
 
+    window.addEventListener("resize", (event) => {
+        [Misc centerWindowOrPanel: [selfWindow contentView]];
+    });
+
     const allTestButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];
     for (const b of allTestButtons)  [Misc makeFrameSquareFromWidth: b];
 
@@ -478,6 +482,7 @@
  */
 - (IBAction) buttonHelp_action: (id) sender { //console.info("AppController>buttonHelp_action");
     [helpPanel makeKeyAndOrderFront: self];
+    [Misc centerWindowOrPanel: helpPanel];
     [PopulateAboutPanel populateHelpPanelView1: helpWebView1 v2: helpWebView2 v3: helpWebView3 v4: helpWebView4];
 }
 - (IBAction) buttonHelpClose_action: (id) sender { //console.info("AppController>buttonHelpClose_action");
@@ -485,6 +490,7 @@
 }
 - (IBAction) buttonAbout_action: (id) sender {
     [aboutPanel makeKeyAndOrderFront: self];
+    [Misc centerWindowOrPanel: aboutPanel];
     [PopulateAboutPanel populateAboutPanelView1: aboutWebView1 view2: aboutWebView2];
 }
 - (IBAction) buttonAboutClose_action: (id) sender {

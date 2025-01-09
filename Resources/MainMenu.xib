@@ -4086,7 +4086,7 @@ Type 55, or &lt;esc&gt; to abort the run.</string>
                         </connections>
                     </button>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W6s-5N-Jqz">
-                        <rect key="frame" x="746" y="382" width="12" height="16"/>
+                        <rect key="frame" x="746" y="359" width="12" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="6" id="d2t-sW-KP1">
                             <font key="font" metaFont="system"/>

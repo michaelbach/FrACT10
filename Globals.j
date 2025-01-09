@@ -58,6 +58,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 /*
  #  History
 
+2025-01-09 center all windows/panels for both full- and not-fullscreen
 2025-01-06 omit caching of unnecessary icon, improve code in `ControlDispatcher` (replace `case` with list-based dispatcher), optimise some image sizes
 2025-01-05 center panels on all browsers, improve fullscreen handling, add isFullScreenSupported,
     add setFullScreen HTML message
