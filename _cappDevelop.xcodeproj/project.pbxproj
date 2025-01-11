@@ -15,6 +15,7 @@
 		8A07B8412C919923007513BB /* Presets_ULV_Gensight.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A07B8402C919922007513BB /* Presets_ULV_Gensight.j */; };
 		8A07B8432C919BB9007513BB /* Presets_ESU.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A07B8422C919BB9007513BB /* Presets_ESU.j */; };
 		8A07B8452C919F0F007513BB /* Presets_BCM_Scheie.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A07B8442C919F0F007513BB /* Presets_BCM_Scheie.j */; };
+		8A2A28992D31A1D100ED47DC /* testHTMLMessaging.html in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2A28982D31A1D100ED47DC /* testHTMLMessaging.html */; };
 		8A2E1BEA2C941F0F00F6FE00 /* Presets_Hyper_TUDo.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2E1BE92C941F0F00F6FE00 /* Presets_Hyper_TUDo.j */; };
 		8A2E1BEC2C94225500F6FE00 /* Presets_AT_LeviLab.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2E1BEB2C94225500F6FE00 /* Presets_AT_LeviLab.j */; };
 		8A31C6542CDABD82009662A4 /* Presets_ETCF.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A31C6532CDABD82009662A4 /* Presets_ETCF.j */; };
@@ -71,6 +72,7 @@
 				8A061F5F2A273800006B5CAD /* FractController.j in CopyFiles */,
 				8AAB43852A55825C00825E47 /* FractControllerAcuityL.j in CopyFiles */,
 				8AAB43862A55826300825E47 /* FractControllerAcuity.j in CopyFiles */,
+				8A2A28992D31A1D100ED47DC /* testHTMLMessaging.html in CopyFiles */,
 				8A438B3A2BAF77FE00B33287 /* Dithering.j in CopyFiles */,
 				8AAB43812A55825200825E47 /* FractControllerContrast.j in CopyFiles */,
 				8AAFB6022C0C8F5800E3BBEC /* ControlDispatcher.j in CopyFiles */,
@@ -173,6 +175,7 @@
 		8A07B8402C919922007513BB /* Presets_ULV_Gensight.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_ULV_Gensight.j; sourceTree = "<group>"; };
 		8A07B8422C919BB9007513BB /* Presets_ESU.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_ESU.j; sourceTree = "<group>"; };
 		8A07B8442C919F0F007513BB /* Presets_BCM_Scheie.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_BCM_Scheie.j; sourceTree = "<group>"; };
+		8A2A28982D31A1D100ED47DC /* testHTMLMessaging.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = testHTMLMessaging.html; sourceTree = "<group>"; };
 		8A2E1BE92C941F0F00F6FE00 /* Presets_Hyper_TUDo.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_Hyper_TUDo.j; sourceTree = "<group>"; };
 		8A2E1BEB2C94225500F6FE00 /* Presets_AT_LeviLab.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_AT_LeviLab.j; sourceTree = "<group>"; };
 		8A31C6532CDABD82009662A4 /* Presets_ETCF.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets_ETCF.j; sourceTree = "<group>"; };
@@ -301,6 +304,7 @@
 				8ACD7D512C0362BD00FE90C6 /* ThresholderNupMdown.j */,
 				4A5547F8854B1200466F770F /* TrialHistoryController.j */,
 				8A061F592A273350006B5CAD /* webAppServiceWorker.js */,
+				8A2A28982D31A1D100ED47DC /* testHTMLMessaging.html */,
 			);
 			name = "Cappuccino Source";
 			sourceTree = SOURCE_ROOT;

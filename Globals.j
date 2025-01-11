@@ -56,8 +56,11 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 
 
 /*
- #  History
+#  History
 
+2025-01-11 completely remove unnecessarily large (512×512) icon,
+    correct field tab sequence in Settings>General
+2025-01-10 add `settingsPanes` to `ControlDispatcher`
 2025-01-09 center all windows/panels for both full- and not-fullscreen
 2025-01-06 omit caching of unnecessary icon, improve code in `ControlDispatcher` (replace `case` with list-based dispatcher), optimise some image sizes
 2025-01-05 center panels on all browsers, improve fullscreen handling, add isFullScreenSupported,
@@ -65,7 +68,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 2025-01-04 work `auto fullscreen`, now functions better after solving the scope; but switch too slow, wrong  onscreen size entered into calculations. Leave invisible for now.
     Fix problem of missing tooltips: the empty `rewardImageView` on top consumed the tooltips
 2025-01-03 add reload to HTML messages, replace true/false with YES/NO everywhere
-2025-01-01 ControlDispatcher: add `Grating` to contrast and `TAO` to acuity
+2025-01-01 `ControlDispatcher`: add `Grating` to contrast and `TAO` to acuity
 2024-12-30 in Help panel: remove `Blog` button, add latest paper
 2024-07-24 GUI: more info on the "plastic card"
 2024-14-21 all windows centered now, good for large screens

@@ -277,7 +277,7 @@
                           informativeTextWithFormat: "\rGoto 'Settings' and enter appropriate values for \r«Observer distance» and «Length of blue ruler».\r\rThis will also get rid of this obnoxious warning dialog."];
         [alert runModalWithDidEndBlock: function(alert, returnCode) {
             switch (returnCode) {
-                case 1: // alternateButton
+                case 1: // alternateButton: go to Settings
                     [self setSettingsPaneTabViewSelectedIndex: 0]; // ensure "General" tab
                     [self buttonSettings_action: nil];  break;
                 case 0: // defaultButton

@@ -14,11 +14,6 @@
       "sizes": "390x390",
       "type": "image/png",
       "purpose": "maskable"
-    },
-    {
-      "src": "icons/FrACT_icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
     }
   ],
   "orientation": "landscape",

@@ -37,6 +37,7 @@
         m1 = e.data.m1, m2 = e.data.m2, m3 = e.data.m3;
         if ((m1 === undefined) || (m2 === undefined) || (m3 === undefined)) return;
         if (m1.length + m2.length + m3.length > 100) return;
+        m2AsNumber = Number(m2);
         m3AsNumber = Number(m3);
         const eData = e.data;//strangly, e no longer in scope after "default:" below; so copy
         switch (m1) {
@@ -56,12 +57,23 @@
                 const e = [CPEvent keyEventWithType:CPKeyDown location:CGPointMakeZero() modifierFlags:0 timestamp:0 windowNumber:0 context:nil characters:m2 charactersIgnoringModifiers:m2 isARepeat:NO keyCode:0];
                 [_appController.currentFractController performSelector: @selector(keyDown:) withObject: e];
                 [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;
-            case "Unittest":
+            case "unittest": case "Unittest":
                 [self manageUnittests];  break;
             case "reload":
                 window.location.reload(NO);  break;
             case "setFullScreen":
                 [Misc fullScreenOn: m2];
+                [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;
+            case "settingsPanes":
+                if (isNaN(m2AsNumber) || (m2AsNumber > 5)) {
+                    [self _logProblemM123];  return;
+                }
+                if (m2AsNumber < 0) {
+                    [_appController buttonSettingsClose_action: nil];
+                    [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;
+                }
+                [_appController setSettingsPaneTabViewSelectedIndex: m2AsNumber];
+                [_appController buttonSettings_action: nil];
                 [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;
             default:
                 [self _logProblem: eData];

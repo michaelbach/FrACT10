@@ -7,7 +7,7 @@
 	<body>
 
 	<h1>Test sending of HTML Messages to FrACT₁₀</h1>
-    <iframe id="fractFrame" src="index.html" scrolling="yes" allow="clipboard-write" style="width: 800px; height: 628px; border: 1px solid #3050C0; padding:0px; margin:0px;"></iframe>
+    <iframe id="fractFrame" src="index.html" scrolling="yes" allow="clipboard-write" style="width: 800px; height: 650px; border: 1px solid #3050C0; padding:0px; margin:0px;"></iframe>
 	<br>
 
 	<label for="messageStringField">Return messages:</label><br>
@@ -205,12 +205,22 @@
 			alert("error");
 		}
 
-		testAll();
+		//testAll();
     </script>
 
 <h2>Test All &nbsp; <button onclick="testAll();">Start Testing</button><h2>
 
 <h2>Test specific items</h2>
+
+    <button onclick="tellIframe({m1: 'setSetting', m2: 'embedInNoise', m3: YES});">setSetting embedInNoise YES</button>
+    <button onclick="tellIframe({m1: 'setSetting', m2: 'embedInNoise', m3: NO});">setSetting embedInNoise NO</button>
+    <br>
+
+    <button onclick="tellIframe({m1: 'settingsPanes', m2: -1, m3: ''});">settingsPanes -1</button>
+    <button onclick="tellIframe({m1: 'settingsPanes', m2: 0, m3: ''});">settingsPanes 0</button>
+    <button onclick="tellIframe({m1: 'settingsPanes', m2: 1, m3: ''});">settingsPanes +1</button>
+    <button onclick="tellIframe({m1: 'settingsPanes', m2: 5, m3: ''});">settingsPanes +5</button>
+    <br>
     <button onclick="tellIframe({m1: 'setFullScreen', m2: NO, m3: ''});">fullScreen NO</button>
     <button onclick="tellIframe({m1: 'setFullScreen', m2: YES, m3: ''});">fullScreen YES</button>
     <button onclick="tellIframe({m1: 'reload', m2: '', m3: ''});">reload</button>
@@ -265,8 +275,8 @@
     <br>
     <br>
 
-    <button onclick="tellIframe({m1: 'Unittest', m2: 'Error', m3: ''});">Unittest runtime error</button>
-    <button onclick="tellIframe({m1: 'Unittest', m2: 'RewardImages', m3: ''});">Unittest RewardImages</button>
+    <button onclick="tellIframe({m1: 'unittest', m2: 'Error', m3: ''});">unittest runtime error</button>
+    <button onclick="tellIframe({m1: 'unittest', m2: 'RewardImages', m3: ''});">unittest RewardImages</button>
     <br>
     <br>
     <button onclick="tellIframe({m1: 'getSetting', m2: 'windowBackgroundColor', m3: ''});">get windowBackgroundColor</button>
