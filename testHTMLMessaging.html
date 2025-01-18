@@ -23,9 +23,9 @@
 		   iframe.contentWindow.postMessage(message, "*");
 	   }
 	   function runDemoWith3trials() {
-		   tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Demo'});
+		   tellIframe({m1: 'setSetting', m2: 'preset', m3: 'Demo'});
 		   tellIframe({m1: 'setSetting', m2: 'nTrials08', m3: 3});
-		   tellIframe({m1: 'Run', m2: 'Acuity', m3: 'Letters'});
+		   tellIframe({m1: 'run', m2: 'acuity', m3: 'Letters'});
 	   }
 
 
@@ -84,7 +84,7 @@
 		   response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'autoRunIndex', m3: 2});
 		   if (!response.success) return;
 
-		   response = await tellIframeReturningPromise({m1: 'Run', m2: 'Acuity', m3: 'Letters'}, 20000);
+		   response = await tellIframeReturningPromise({m1: 'run', m2: 'acuity', m3: 'Letters'}, 20000);
 		   //if (!response.success) return; in case of error we also want to restore
 
 		   // restore settings
@@ -94,14 +94,14 @@
 		   response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'responseInfoAtStart', m3: responseInfoAtStart});
 		   response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'autoRunIndex', m3: autoRunIndex});
 
-		   console.info("sucessfully ran and restored.");
+		   console.info("successfully ran and restored.");
 		}
 
 
 		async function runResponding() {
 			let response, rChar;
-			response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'Preset', m3: 'Testing'});
-			tellIframe({m1: 'Run', m2: 'Acuity', m3: 'LandoltC'});
+			response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'preset', m3: 'Testing'});
+			tellIframe({m1: 'run', m2: 'acuity', m3: 'LandoltC'});
 			while (YES) {
 				response = await tellIframeReturningPromise({m1: 'getValue', m2: 'iTrial', m3: ''});
 				if (!response.success) return; // when run done, iTrial==0 & no success
@@ -150,14 +150,14 @@
 		    if (!response.success) errorAlert();
 
 			await pauseMilliseconds(pauseMS);
-		    response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'Preset', m3: 'Standard Defaults'});
+		    response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'preset', m3: 'Standard Defaults'});
 		    if (!response.success) errorAlert();
 		    response = await tellIframeReturningPromise({m1: 'getSetting', m2: 'distanceInCM', m3: ''});
 		    if (!response.success) errorAlert();
 		    if (response.m3 != 399) errorAlert();
 
 			await pauseMilliseconds(pauseMS);
-		    response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'Preset', m3: 'Testing'});
+		    response = await tellIframeReturningPromise({m1: 'setSetting', m2: 'preset', m3: 'Testing'});
 		    if (!response.success) errorAlert();
 		    response = await tellIframeReturningPromise({m1: 'getSetting', m2: 'distanceInCM', m3: ''});
 		    if (!response.success) errorAlert();
@@ -236,10 +236,10 @@
     <br>
     <br>
 
-    <button onclick="tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'NOTAPRESET'});">setSetting Preset NOTAPRESET</button>
-    <button onclick="tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Standard Defaults'});">setSetting Preset Defaults</button>
-    <button onclick="tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Testing'});">setSetting Preset Testing</button>
-    <button onclick="tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Demo'});">setSetting Preset Demo</button>
+    <button onclick="tellIframe({m1: 'setSetting', m2: 'preset', m3: 'NOTAPRESET'});">setSetting Preset NOTAPRESET</button>
+    <button onclick="tellIframe({m1: 'setSetting', m2: 'preset', m3: 'Standard Defaults'});">setSetting Preset Defaults</button>
+    <button onclick="tellIframe({m1: 'setSetting', m2: 'preset', m3: 'Testing'});">setSetting Preset Testing</button>
+    <button onclick="tellIframe({m1: 'setSetting', m2: 'preset', m3: 'Demo'});">setSetting Preset Demo</button>
     <br>
 
     <button onclick="tellIframe({m1: 'setSetting', m2: 'nTrials08', m3: '999'});">setSetting nTrials08: 999</button>
@@ -256,11 +256,11 @@
     <br>
     <br>
 
-    <button onclick="tellIframe({m1: 'Run', m2: 'UNKNOWN2', m3: 'UNKNOWN3'});">Run UNKNOWN</button>
-    <button onclick="tellIframe({m1: 'Run', m2: 'Acuity', m3: 'Letters'});">Run Acuity Letters</button>
-    <button onclick="tellIframe({m1: 'Run', m2: 'Acuity', m3: 'LandoltC'});">Run Acuity LandoltC</button>
-    <button onclick="tellIframe({m1: 'Run', m2: 'Contrast', m3: 'LandoltC'});">Run Contrast LandoltC</button>
-    <button onclick="tellIframe({m1: 'Run', m2: 'TestNumber', m3: 3});">Run TestNumber 3</button>
+    <button onclick="tellIframe({m1: 'run', m2: 'UNKNOWN2', m3: 'UNKNOWN3'});">Run UNKNOWN</button>
+    <button onclick="tellIframe({m1: 'run', m2: 'acuity', m3: 'Letters'});">Run Acuity Letters</button>
+    <button onclick="tellIframe({m1: 'run', m2: 'acuity', m3: 'LandoltC'});">Run Acuity LandoltC</button>
+    <button onclick="tellIframe({m1: 'run', m2: 'contrast', m3: 'LandoltC'});">Run Contrast LandoltC</button>
+    <button onclick="tellIframe({m1: 'run', m2: 'testNumber', m3: 3});">Run TestNumber 3</button>
     <br>
     <button onclick="runDemoWith3trials();">Run short Letters demo with only 3 trials</button>
     <br>
@@ -275,8 +275,8 @@
     <br>
     <br>
 
-    <button onclick="tellIframe({m1: 'unittest', m2: 'Error', m3: ''});">unittest runtime error</button>
-    <button onclick="tellIframe({m1: 'unittest', m2: 'RewardImages', m3: ''});">unittest RewardImages</button>
+    <button onclick="tellIframe({m1: 'unittest', m2: 'throwError', m3: ''});">unittest runtime error</button>
+    <button onclick="tellIframe({m1: 'unittest', m2: 'rewardImages', m3: ''});">unittest rewardImages</button>
     <br>
     <br>
     <button onclick="tellIframe({m1: 'getSetting', m2: 'windowBackgroundColor', m3: ''});">get windowBackgroundColor</button>

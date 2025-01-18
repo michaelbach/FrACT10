@@ -51,7 +51,7 @@
                 [self manageSetSetting];  break;
             case "getValue":
                 [self manageGetValue];  break;
-            case "Run":
+            case "run": case "Run":
                 [self manageRun];  break;
             case "respondWithChar":
                 const e = [CPEvent keyEventWithType:CPKeyDown location:CGPointMakeZero() modifierFlags:0 timestamp:0 windowNumber:0 context:nil characters:m2 charactersIgnoringModifiers:m2 isARepeat:NO keyCode:0];
@@ -104,7 +104,7 @@
 
 
 + (void) manageSetSetting {
-    if (m2 === "Preset") {
+    if ((m2 === "preset") || (m2 === "Preset")) {
         [self _notify: "applyPresetNamed" object: m3];  return;
     }
     const allowedBoolSettings = ["gratingObliqueOnly", "responseInfoAtStart", "enableTouchControls", "eccentShowCenterFixMark", "eccentRandomizeX", "autoFullScreen", "mobileOrientation", "trialInfo", "results2clipboard", "results2clipboardSilent", "rewardPicturesWhenDone", "embedInNoise", "isAcuityColor", "obliqueOnly", "acuityEasyTrials", "acuityFormatDecimal", "acuityFormatLogMAR", "acuityFormatSnellenFractionFoot", "forceSnellen20", "showCI95", "lineByLineChartMode", "lineByLineChartModeConstantVA", "contrastEasyTrials", "contrastDarkOnLight", "contrastShowFixMark", "contrastDithering", "isGratingMasked", "gratingUseErrorDiffusion", "gratingSineNotSquare", "isGratingColor", "specialBcmOn", "hideExitButton", "auditoryFeedback4trial", "auditoryFeedback4run"];
@@ -156,16 +156,16 @@
 + (void) manageRun {
     _sendHTMLMessageOnRunDone = YES;// need to switch off again if parsing below fails
     switch(m2) {
-        case "TestNumber":
+        case "testNumber": case "TestNumber":
             if ((m3AsNumber >= 1) && (m3AsNumber <= 10)) {
                 [self _notify: "notificationRunFractControllerTest" object: m3AsNumber];  return;
             }
-        case "Acuity": { // need brackets so scope of variables stays local
+        case "acuity": case "Acuity": { // need brackets so scope of variables stays local
             const testKey = {"Letters": kTestAcuityLett, "LandoltC": kTestAcuityC, "TumblingE": kTestAcuityE, "TAO": kTestAcuityTAO, "Vernier": kTestAcuityVernier}[m3];
             if (testKey !== undefined) {
                 [self _notify: "notificationRunFractControllerTest" object: testKey];  return;
             }}
-        case "Contrast": {
+        case "contrast": case "Contrast": {
             const testKey = {"Letters": kTestContrastLett, "LandoltC": kTestContrastC, "TumblingE": kTestContrastE, "Grating": kTestContrastG}[m3];
             if (testKey !== undefined) {
                 [self _notify: "notificationRunFractControllerTest" object: testKey];  return;
@@ -177,10 +177,10 @@
 
 + (void) manageUnittests {
     switch(m2) {
-        case "RewardImages": // ignore m3
+        case "rewardImages": case "RewardImages": // ignore m3
             [_appController.rewardsController unittest];
             break;
-        case "Error":
+        case "throwError": case "Error":
             throw new Error("Runtime error on purpose for testing.");
             break;
         default:
