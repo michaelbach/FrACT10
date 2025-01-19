@@ -35,7 +35,7 @@ kSpriteFile = "allRewardSprites.png";
     CPTimer _timerRewardsController;
     CPImageView _rewardView;
     int _oldImage, _currentImage;
-    BOOL _testing;
+    BOOL _unitTesting;
     float _savedTimeout;
 }
 
@@ -51,7 +51,7 @@ kSpriteFile = "allRewardSprites.png";
         [_rewardView setHitTests: NO]; // allows "click through"
         [_rewardImageStrip setSize: CGSizeMake(kNImages * kSizeScaled, kSizeScaled)];
         _oldImage = -1;
-        _testing = NO;
+        _unitTesting = NO;
         _savedTimeout = [Settings timeoutRewardPicturesInSeconds]
     }
     return self;
@@ -59,7 +59,7 @@ kSpriteFile = "allRewardSprites.png";
 
 
 - (void) unittest { //console.info("RewardsController>test");
-    _testing = YES;
+    _unitTesting = YES;
     _currentImage = 0;
     _savedTimeout = [Settings timeoutRewardPicturesInSeconds]
     [Settings setTimeoutRewardPicturesInSeconds: 0.5];
@@ -94,10 +94,10 @@ kSpriteFile = "allRewardSprites.png";
 - (void) onTimeoutRewardsController: (CPTimer) timer { //console.info("RewardsController>onTimeoutRewardsController");
     [_rewardView setImage: nil]; // and now↓ order back so the tooltip areas are not covered
     [[_rewardView superview] addSubview: _rewardView positioned: CPWindowBelow relativeTo: nil];
-    if (!_testing) return;
+    if (!_unitTesting) return;
 
     if (++_currentImage >= kNImages) {
-        _testing = NO;
+        _unitTesting = NO;
         [Settings setTimeoutRewardPicturesInSeconds: _savedTimeout];
         return;
     }
