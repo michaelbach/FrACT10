@@ -207,7 +207,7 @@ Created by mb on July 15, 2015.
     const strokeMaximal = screenSize / (5 + [self margin4maxOptotypeIndex]); // leave a margin of ½·index around the largest optotype
     let minPossibleAcuityVal = [MiscSpace decVAFromStrokePixels: strokeMaximal];
     // Correction for threshold underestimation of ascending procedures (as opposed to our bracketing one)
-    minPossibleAcuityVal = [self threshCorrection] ? minPossibleAcuityVal * gThresholdCorrection4Ascending : maxPossibleAcuityVal;
+    minPossibleAcuityVal = [self threshCorrection] ? minPossibleAcuityVal * gThresholdCorrection4Ascending : minPossibleAcuityVal;
     [self setMinPossibleDecimalAcuityLocalisedString: [Misc stringFromNumber: minPossibleAcuityVal decimals: 3 localised: YES]];
     [self setMaxPossibleLogMAR: [MiscSpace logMARfromDecVA: minPossibleAcuityVal]]; // needed for color
     [self setMaxPossibleLogMARLocalisedString: [Misc stringFromNumber: [self maxPossibleLogMAR] decimals: 2 localised: YES]];
