@@ -360,6 +360,9 @@
         [self exportCurrentTestResult];
     }
     [ControlDispatcher runDoneSuccessful: !runAborted];
+    
+    // allow 1 eventloop
+    setTimeout(() => {[[selfWindow contentView] setNeedsDisplay: YES];}, 1);
 }
 
 

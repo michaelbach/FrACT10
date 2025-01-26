@@ -58,6 +58,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 /*
 #  History
 
+2025-01-26 add delayed `setNeedsDisplay` at `runEnd` to make sure CI95 is displayed
 2025-01-18 harmonise capitalisation of HTLM control commands
 2025-01-11 completely remove unnecessarily large (512×512) icon,
     correct field tab sequence in Settings>General
