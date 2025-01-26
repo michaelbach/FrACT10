@@ -54,7 +54,6 @@ kDecimalMarkCharIndexAuto = 0; kDecimalMarkCharIndexDot = 1; kDecimalMarkCharInd
     TestIDType currentTestID @accessors;
     CPString resultString @accessors;
     CPString versionDateString @accessors; // for the main Xib window top right
-    CPString keyTestSettingsString @accessors;
     CPString currentTestResultUnit @accessors;
     CPString currentTestResultExportString @accessors;
     CPString currentTestResultsHistoryExportString @accessors;
