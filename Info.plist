@@ -11,11 +11,11 @@
 	<key>CPDefaultTheme</key>
 	<string>Aristo2</string>
 	<key>CPHumanReadableCopyright</key>
-	<string>Copyright © 1993–2024, Michael Bach, all rights reserved.</string>
+	<string>Copyright © 1993–2025, Michael Bach, all rights reserved.</string>
 	<key>Main cib file base name</key>
 	<string>MainMenu.cib</string>
 	<key>VersionDate</key>
-	<string>2025-01-26</string>
+	<string>2025-01-28</string>
 	<key>NSHumanReadableCopyright</key>
 	<string></string>
 	<key>CFBundleGetInfoString</key>
@@ -37,6 +37,6 @@
 	<key>CFBundleIdentifier</key>
 	<string></string>
 	<key>VersionNumberString</key>
-	<string>1.5</string>
+	<string>1.6</string>
 </dict>
 </plist>

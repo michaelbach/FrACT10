@@ -80,13 +80,21 @@ const specialBcmStepsize = 0.1;
 - (void) gratingSineWithPeriodInPx: (float) periodInPx direction: (int) theDirection contrast: (float) contrast {
     let s2 = Math.round(Math.max(viewHeight2, viewWidth2) / 2 * 1.3) * 2;
     const trigFactor = 1 / periodInPx * 2 * Math.PI; // calculate only once
-    const notGratingSineNotSquare = ![Settings gratingSineNotSquare]
+    const gratingShapeIndex = [Settings gratingShapeIndex];
     CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180);
     CGContextSetLineWidth(cgc, 1.3); // still an artifact on oblique
     let lFloat, lDiscrete, lError = 0;
     for (let ix = -s2; ix <= s2; ++ix) {
-        lFloat = Math.sin((ix % periodInPx) * trigFactor);
-        if (notGratingSineNotSquare) lFloat = lFloat >= 0 ? 1 : -1; // sine → square wave grating
+        lFloat = (ix % periodInPx) * trigFactor;
+        switch (gratingShapeIndex) {
+            case 0: lFloat = Math.sin(lFloat);  break;
+            case 1: lFloat = Math.sin(lFloat) >= 0 ? 1 : -1;  break;
+            case 2:
+                // https://en.wikipedia.org/wiki/Triangle_wave
+                let lFloat1 = lFloat / (2 * Math.PI);
+                lFloat = 2 * Math.abs(2 * (lFloat1 - Math.floor(lFloat1 + 0.5))) - 1;
+                break;
+        }
         lFloat = 0.5 + 0.5 * contrast / 100 * lFloat;  // contrast, map [-1, 1] → [0,1]
         if (isGratingColor) {
             CGContextSetStrokeColor(cgc, [gColorFore colorWithAlphaComponent: lFloat]);

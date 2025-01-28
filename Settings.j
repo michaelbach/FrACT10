@@ -182,7 +182,7 @@ Created by mb on July 15, 2015.
     [self setIsGratingMasked: [self checkBool: [self isGratingMasked] dflt: NO set: set]];
     [self setGratingDiaInDeg: [self checkNum: [self gratingDiaInDeg] dflt: 10.0 min: 1.0 max: 50 set: set]];
     [self setGratingUseErrorDiffusion: [self checkBool: [self gratingUseErrorDiffusion] dflt: YES set: set]];
-    [self setGratingSineNotSquare: [self checkBool: [self gratingSineNotSquare] dflt: YES set: set]];
+    [self setGratingShapeIndex: [self checkNum: [self gratingShapeIndex] dflt: 0 min: 0 max: 2 set: set]];
     [self setIsGratingColor: [self checkBool: [self isGratingColor] dflt: NO set: set]];
     [self setWhat2sweepIndex: [self checkNum: [self what2sweepIndex] dflt: 0 min: 0 max: 1 set: set]]; // 0: sweep contrast, 1: sweep spatial frequency
     [self setGratingCPDmin: [self checkNum: [self gratingCPDmin] dflt: 0.5 min: 0.01 max: 60 set: set]];
@@ -1013,11 +1013,11 @@ Created by mb on July 15, 2015.
     [[CPUserDefaults standardUserDefaults] setBool: val forKey: "gratingObliqueOnly"];
 }
 
-+ (BOOL) gratingSineNotSquare {
-    return [[CPUserDefaults standardUserDefaults] boolForKey: "gratingSineNotSquare"];
++ (int) gratingShapeIndex {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "gratingShapeIndex"];
 }
-+ (void) setGratingSineNotSquare: (BOOL) val {
-    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "gratingSineNotSquare"];
++ (void) setGratingShapeIndex: (int) val {
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "gratingShapeIndex"];
 }
 
 

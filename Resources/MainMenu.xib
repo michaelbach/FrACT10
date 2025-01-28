@@ -2623,7 +2623,7 @@ If you go very close or you may be able to resolve the pattern.
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button toolTip="if checked, the 12th, 18th, 24th… trial will have an “easy” optotype for motivation" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gdj-N6-flx">
-                                            <rect key="frame" x="30" y="435" width="165" height="35"/>
+                                            <rect key="frame" x="30" y="387" width="165" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Occasional ‘easy trials’" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="C95-fW-8a1">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2643,7 +2643,7 @@ If you go very close or you may be able to resolve the pattern.
                                             </textFieldCell>
                                         </textField>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5wI-LE-Ld6">
-                                            <rect key="frame" x="193" y="393" width="45" height="21"/>
+                                            <rect key="frame" x="193" y="345" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Duration the brief blue fixation star is visible.
  
@@ -2663,7 +2663,7 @@ If you go very close or you may be able to resolve the pattern.
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hZM-uL-nCM">
-                                            <rect key="frame" x="244" y="394" width="88" height="16"/>
+                                            <rect key="frame" x="244" y="346" width="88" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Duration the brief blue fixation star is visible.
 
@@ -2675,7 +2675,7 @@ If you go very close or you may be able to resolve the pattern.
                                             </textFieldCell>
                                         </textField>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZzJ-Vk-cFB">
-                                            <rect key="frame" x="30" y="386" width="162" height="35"/>
+                                            <rect key="frame" x="30" y="338" width="162" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">lets a blue star appear before grating; otherwise unclear if something has happened at all.
 
@@ -2689,7 +2689,7 @@ If you go very close or you may be able to resolve the pattern.
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fbu-h6-ePZ">
-                                            <rect key="frame" x="30" y="298" width="162" height="35"/>
+                                            <rect key="frame" x="30" y="250" width="162" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Only allows oblique, not hor/vertical gratings. Only works if you also set the number of orientations to 2 (right next to this). </string>
                                             <buttonCell key="cell" type="check" title="Oblique only" bezelStyle="regularSquare" imagePosition="left" inset="2" id="KpO-hF-P4I">
@@ -2708,7 +2708,7 @@ If you go very close or you may be able to resolve the pattern.
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LmQ-Fz-Lv8">
-                                            <rect key="frame" x="193" y="349" width="45" height="21"/>
+                                            <rect key="frame" x="193" y="301" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Diameter of the circular grating patch.
 
@@ -2726,7 +2726,7 @@ If you go very close or you may be able to resolve the pattern.
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pvM-K3-tHf">
-                                            <rect key="frame" x="244" y="350" width="96" height="16"/>
+                                            <rect key="frame" x="244" y="302" width="96" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Diameter of the circular grating patch.
 
@@ -2738,7 +2738,7 @@ If you go very close or you may be able to resolve the pattern.
                                             </textFieldCell>
                                         </textField>
                                         <button toolTip="If checked, very low contrast gratings are better defined by using &quot;error diffusion&quot;, akin to dithering." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YfI-9f-dKI">
-                                            <rect key="frame" x="191" y="443" width="140" height="18"/>
+                                            <rect key="frame" x="191" y="395" width="140" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Use error diffusion" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="N3X-Gw-gcK">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2976,7 +2976,7 @@ If you go very close or you may be able to resolve the pattern.
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PTu-3U-QD8">
-                                            <rect key="frame" x="30" y="349" width="109" height="18"/>
+                                            <rect key="frame" x="30" y="301" width="109" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Grating only within a circular range.
 
@@ -2990,7 +2990,7 @@ If you go very close or you may be able to resolve the pattern.
                                             </connections>
                                         </button>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ED5-xZ-XLE">
-                                            <rect key="frame" x="190" y="301" width="54" height="26"/>
+                                            <rect key="frame" x="190" y="253" width="54" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes (TAO).  For Landolt Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.
 
@@ -3012,7 +3012,7 @@ For gratings: 2 or 4.
                                             </connections>
                                         </popUpButton>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mcv-EH-86K">
-                                            <rect key="frame" x="246" y="304" width="104" height="16"/>
+                                            <rect key="frame" x="246" y="256" width="104" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Some optotypes have a fixed number of choices, or variants: Always 10 for Sloan Letters and Auckland Optotypes (TAO); Vernier 2.
 For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
@@ -3024,7 +3024,7 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                             </textFieldCell>
                                         </textField>
                                         <popUpButton toolTip="Automatic run, targeting this contrast sensitivity. For testing." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TlA-dW-ZGE">
-                                            <rect key="frame" x="29" y="253" width="107" height="25"/>
+                                            <rect key="frame" x="410" y="253" width="107" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="Off" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="AcH-ef-uvd" id="Ocx-GM-WQO">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -3045,7 +3045,7 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                             </connections>
                                         </popUpButton>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hbr-5F-BTO">
-                                            <rect key="frame" x="138" y="255" width="158" height="16"/>
+                                            <rect key="frame" x="519" y="256" width="158" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Autorun to target % / cpd" id="FAI-Vk-nyI">
                                                 <font key="font" metaFont="system"/>
@@ -3053,41 +3053,35 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sMA-Qr-CTs">
-                                            <rect key="frame" x="415" y="254" width="99" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="radio" title="Sinusoidal…" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="GoR-QS-HwF">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <binding destination="izh-pU-csC" name="value" keyPath="values.gratingSineNotSquare" id="SqH-NJ-g7x"/>
-                                            </connections>
-                                        </button>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iEY-Gl-dR3">
-                                            <rect key="frame" x="516" y="254" width="152" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="radio" title="Square-wave grating" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6lw-zX-LgI">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <binding destination="izh-pU-csC" name="value" keyPath="values.gratingSineNotSquare" id="q1S-YS-BHV">
-                                                    <dictionary key="options">
-                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                    </dictionary>
-                                                </binding>
-                                            </connections>
-                                        </button>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E46-NP-8NX">
-                                            <rect key="frame" x="51" y="334" width="249" height="16"/>
+                                            <rect key="frame" x="51" y="286" width="263" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="(causes line artifacts on some browsers)" id="Gey-Mk-E0I">
+                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="(causes line artifacts in the Safari browser)" id="Gey-Mk-E0I">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="quaternaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <popUpButton toolTip="Automatic run, targeting this contrast sensitivity. For testing." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WlG-Qa-YdE">
+                                            <rect key="frame" x="29" y="439" width="192" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <popUpButtonCell key="cell" type="push" title="Sinusoidal grating" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="TOz-G1-0jO" id="7Pi-2Z-5vF">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="message"/>
+                                                <menu key="menu" id="ydM-Zu-KTh">
+                                                    <items>
+                                                        <menuItem title="Sinusoidal grating" state="on" id="TOz-G1-0jO"/>
+                                                        <menuItem title="Square-wave grating" id="PZi-E0-ZTa">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                        <menuItem title="Triangular grating" id="L1f-Ot-i7r"/>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.gratingShapeIndex" id="BLG-2C-2dk"/>
+                                            </connections>
+                                        </popUpButton>
                                     </subviews>
                                     <connections>
                                         <outlet property="nextKeyView" destination="S1X-kS-Zwg" id="5NH-RO-8hK"/>
