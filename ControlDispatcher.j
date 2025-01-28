@@ -64,7 +64,7 @@
             case "setFullScreen":
                 [Misc fullScreenOn: m2];
                 [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;
-            case "settingsPanes":
+            case "settingsPane":
                 if (isNaN(m2AsNumber) || (m2AsNumber > 5)) {
                     [self _logProblemM123];  return;
                 }
