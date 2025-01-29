@@ -390,6 +390,11 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             _currentTestResultExportString += tab + "noiseContrast" + tab + [Misc stringFromInteger: [Settings noiseContrast]];
         }
     }
+
+    if (currentTestID == kTestContrastG) {
+        _currentTestResultExportString += tab + "gratingShape" + tab + [Settings gratingShapeIndex];
+    }
+
     [_parentController setCurrentTestResultExportString: _currentTestResultExportString + crlf];
     [_parentController runEnd];
 }
