@@ -21,6 +21,7 @@ const tellIframe3Ms = (m1, m2, m3) => {
 	const msg = {m1: m1, m2: m2, m3: m3};  tellIframe(msg);
 }
 
+
 const tellIframeReturningPromise = (message, timeout = 1000) => {
   return new Promise((resolve, reject) => {
 	const iframe = document.getElementById('fractFrame');
@@ -47,6 +48,7 @@ const tellIframeReturningPromise3Ms = (m1, m2, m3, timeout = 1000) => {
 	return tellIframeReturningPromise(msg, timeout);
 }
 
+
 const addText = (text) => {
 	text = text.replaceAll('"', '').replaceAll(',', ',  ');
 	text = text.replaceAll(':', ': ').replace('{', '');
@@ -57,9 +59,11 @@ const addText = (text) => {
 	box.scrollTop = box.scrollHeight; /* Auto-scroll to bottom */
 }
 
+
 const pauseMilliseconds = (ms) => {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
+
 
 const oneStep3Ms = async (m1, m2, m3) => {
 	await pauseMilliseconds(300);
@@ -68,12 +72,11 @@ const oneStep3Ms = async (m1, m2, m3) => {
 	return response;
 }
 
+
 const testingSuite = async () => {
 	const kCrowdingTypeMax = 6; /* 6 */
 	const kPaneMax = 5; /* 5 */
-	const kGratingShapeMax = 2; /* 2 */
-
-
+	const kGratingShapeMax = 3; /* 3 */
 	const scrollBoxInstance=document.getElementById('scrollBox');
 	if (scrollBoxInstance != null) { /* toggling the textarea */
 		scrollBoxInstance.remove();
@@ -88,6 +91,7 @@ const testingSuite = async () => {
 	let response;  const pauseMS = 300, PauseViewMS = 2000;
 
 	addText("TESTING SUITE STARTING\nDuration: ≈ 1 minute.\nDo not press any key until “TESTING SUITE done”.\n");
+    await pauseMilliseconds(2 * PauseViewMS);
 
 	response = await oneStep3Ms('getVersion', '', '');
 
@@ -162,18 +166,22 @@ const testingSuite = async () => {
 		tellIframe3Ms('run','acuity', 'Letters');
 		await pauseMilliseconds(PauseViewMS);
 	}
-	addText(" ↑ Cycle through crowding done.");
+	addText(" ↑ Cycle through crowding done.\n");
 
-	addText("\n ↓ `rewardPicturesWhenDone`.");
+	addText(" ↓ `rewardPicturesWhenDone`.");
 	await oneStep3Ms('setSetting', 'crowdingType', 0);
 	await oneStep3Ms('getSetting', 'rewardPicturesWhenDone', "");
-	await oneStep3Ms('setSetting', 'rewardPicturesWhenDone', YES);
+    await oneStep3Ms('setSetting', 'rewardPicturesWhenDone', YES);
+    await oneStep3Ms('setSetting', 'timeoutRewardPicturesInSeconds', 3);
 	tellIframe3Ms('run','acuity', 'Letters');
 	await pauseMilliseconds(PauseViewMS * 2);
+    addText(" ↑ `rewardPicturesWhenDone`: Done.\n");
 	await oneStep3Ms('setSetting', 'rewardPicturesWhenDone', NO);
 
+    addText(" ↓ Noise embedding");
 	await oneStep3Ms('setSetting', 'embedInNoise', YES);
 	tellIframe3Ms('run','acuity', 'Letters');
+    addText(" ↑ Noise embedding: Done.\n");
 	await pauseMilliseconds(PauseViewMS);
 
 /*	await oneStep3Ms('setSetting', 'autoFullScreen', YES);
@@ -202,7 +210,7 @@ const testingSuite = async () => {
 	}
 	addText(" ↑ cycle through grating shapes done.\n");
 
-	addText("\n ↓ Leave with `Standard Defaults`.");
+	addText("↓ Leave with `Standard Defaults`.");
 	response = await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
 
 	addText("\n Reload.");

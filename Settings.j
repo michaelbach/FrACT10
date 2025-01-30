@@ -182,7 +182,7 @@ Created by mb on July 15, 2015.
     [self setIsGratingMasked: [self checkBool: [self isGratingMasked] dflt: NO set: set]];
     [self setGratingDiaInDeg: [self checkNum: [self gratingDiaInDeg] dflt: 10.0 min: 1.0 max: 50 set: set]];
     [self setGratingUseErrorDiffusion: [self checkBool: [self gratingUseErrorDiffusion] dflt: YES set: set]];
-    [self setGratingShapeIndex: [self checkNum: [self gratingShapeIndex] dflt: 0 min: 0 max: 2 set: set]];
+    [self setGratingShapeIndex: [self checkNum: [self gratingShapeIndex] dflt: 0 min: 0 max: kGratingShapeIndexCheckerboard set: set]];
     [self setIsGratingColor: [self checkBool: [self isGratingColor] dflt: NO set: set]];
     [self setWhat2sweepIndex: [self checkNum: [self what2sweepIndex] dflt: 0 min: 0 max: 1 set: set]]; // 0: sweep contrast, 1: sweep spatial frequency
     [self setGratingCPDmin: [self checkNum: [self gratingCPDmin] dflt: 0.5 min: 0.01 max: 60 set: set]];

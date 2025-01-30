@@ -1,9 +1,9 @@
 /*
  This file is part of FrACT10, a vision test battery.
  Copyright © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
- 
+
  FractControllerContrastG.j: Gratings
- 
+
  Created by Bach on 2020-09-02
  */
 
@@ -13,7 +13,7 @@
     float periodInPixel;
     BOOL isGratingColor, isErrorDiffusion;
     float specialBcmFreq, specialBcmFreqPrevious;
-    int specialBcmCountAtStep, specialBcmCountAtStepError;
+    int specialBcmCountAtStep, specialBcmCountAtStepError, gratingShapeIndex;
 }
 
 
@@ -26,7 +26,7 @@ const specialBcmStepsize = 0.1;
         nTrials = 200;
         alternativesGenerator = [[AlternativesGenerator alloc] initWithNumAlternatives: 2 andNTrials: nTrials obliqueOnly: [Settings gratingObliqueOnly]];
         trialHistoryController = [[TrialHistoryController alloc] initWithNumTrials: nTrials];
-        
+
         specialBcmFreq = [Settings gratingCPDmin];
         specialBcmFreqPrevious = 0;  specialBcmCountAtStep = 1;  specialBcmCountAtStepError = 0;
     } else {
@@ -60,15 +60,15 @@ const specialBcmStepsize = 0.1;
 
     // exponential mapping for psychometric function to frequency. Does NOT work well.
     /*const expFreqMin = Math.pow(10, [Settings gratingCPDmin]);
-    const expFreqMax = Math.pow(10, [Settings gratingCPDmax]);
-    const expFreq = expFreqMin + thresholderunit * (expFreqMax - expFreqMin);
-    return Math.log10(expFreq);*/
+     const expFreqMax = Math.pow(10, [Settings gratingCPDmax]);
+     const expFreq = expFreqMin + thresholderunit * (expFreqMax - expFreqMin);
+     return Math.log10(expFreq);*/
 
     // linear mapping for psychometric function to frequency
     const freqMin = [Settings gratingCPDmin], freqMax = [Settings gratingCPDmax];
     const freq = freqMin + thresholderunit * (freqMax - freqMin);
     return freq;
-    
+
     // log mapping for psychometric function to frequency
     /*    const logFreqMin = Math.log10([Settings gratingCPDmin]);
      const logFreqMax = Math.log10([Settings gratingCPDmax]);
@@ -77,39 +77,69 @@ const specialBcmStepsize = 0.1;
 }
 
 
-- (void) gratingSineWithPeriodInPx: (float) periodInPx direction: (int) theDirection contrast: (float) contrast {
+- (void) checkerboardX: (float) x y: (float) y checkSize: (float) s nChecksX: (int) nx nChecksY: (int) ny foreCol: (CPColor) fCol backCol: (CPColor) bCol { //console.info("checkerboardX");
+    for (let ix = 0; ix < nx; ++ix) {
+        for (let iy = 0; iy < ny; ++iy) {
+            if ((ix & 1) ^ (iy & 1)) CGContextSetFillColor(cgc, fCol); else CGContextSetFillColor(cgc, bCol);
+            CGContextFillRect(cgc, CGRectMake(x + ix * s, y + iy * s, s, s));
+        }
+    }
+}
+
+
+- (void) gratingWithPeriodInPx: (float) periodInPx direction: (int) theDirection contrast: (float) contrast {
     let s2 = Math.round(Math.max(viewHeight2, viewWidth2) / 2 * 1.3) * 2;
     const trigFactor = 1 / periodInPx * 2 * Math.PI; // calculate only once
-    const gratingShapeIndex = [Settings gratingShapeIndex];
-    CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180);
+    if (gratingShapeIndex != kGratingShapeIndexCheckerboard) {
+        CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180);
+    } else { // for checkerboard we only have oblique versus cardinal
+        if (theDirection == 4) { // cardinal: ↑ or ↓, oblique: → or ←
+            CGContextRotateCTM(cgc, -2 * 22.5 * Math.PI / 180);
+        }
+    }
     CGContextSetLineWidth(cgc, 1.3); // still an artifact on oblique
     let lFloat, lDiscrete, lError = 0;
-    for (let ix = -s2; ix <= s2; ++ix) {
-        lFloat = (ix % periodInPx) * trigFactor;
-        switch (gratingShapeIndex) {
-            case 0: lFloat = Math.sin(lFloat);  break;
-            case 1: lFloat = Math.sin(lFloat) >= 0 ? 1 : -1;  break;
-            case 2:
-                // https://en.wikipedia.org/wiki/Triangle_wave
-                let lFloat1 = lFloat / (2 * Math.PI);
-                lFloat = 2 * Math.abs(2 * (lFloat1 - Math.floor(lFloat1 + 0.5))) - 1;
-                break;
-        }
-        lFloat = 0.5 + 0.5 * contrast / 100 * lFloat;  // contrast, map [-1, 1] → [0,1]
-        if (isGratingColor) {
-            CGContextSetStrokeColor(cgc, [gColorFore colorWithAlphaComponent: lFloat]);
-        } else {
-            lFloat = [MiscLight devicegrayFromLuminance: lFloat]; // gamma correction
-            lDiscrete = lFloat;
-            if (isErrorDiffusion) {
-                lFloat = lFloat * 255 + lError; // map → [0, 255], apply previous residual
-                lDiscrete = Math.round(lFloat); // discrete integer values [0, 255]
-                lError = lFloat - lDiscrete; // keep residual (what was lost by rounding)
-                lDiscrete /= 255; // remap → [0, 1]
+    if (gratingShapeIndex != kGratingShapeIndexCheckerboard) {
+        for (let ix = -s2; ix <= s2; ++ix) {
+            lFloat = (ix % periodInPx) * trigFactor;
+            switch (gratingShapeIndex) {
+                case kGratingShapeIndexSinus: lFloat = Math.sin(lFloat);  break;
+                case kGratingShapeIndexSquare: lFloat = Math.sin(lFloat) >= 0 ? 1 : -1;  break;
+                case kGratingShapeIndexTriangle: // https://en.wikipedia.org/wiki/Triangle_wave
+                    let lFloat1 = lFloat / (2 * Math.PI);
+                    lFloat = 2 * Math.abs(2 * (lFloat1 - Math.floor(lFloat1 + 0.5))) - 1;
+                    break;
             }
-            CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: lDiscrete alpha: 1]);
+            lFloat = 0.5 + 0.5 * contrast / 100 * lFloat;  // contrast, map [-1, 1] → [0,1]
+            if (isGratingColor) {
+                CGContextSetStrokeColor(cgc, [gColorFore colorWithAlphaComponent: lFloat]);
+            } else {
+                lFloat = [MiscLight devicegrayFromLuminance: lFloat]; // gamma correction
+                lDiscrete = lFloat;
+                if (isErrorDiffusion) {
+                    lFloat = lFloat * 255 + lError; // map → [0, 255], apply previous residual
+                    lDiscrete = Math.round(lFloat); // discrete integer values [0, 255]
+                    lError = lFloat - lDiscrete; // keep residual (what was lost by rounding)
+                    lDiscrete /= 255; // remap → [0, 1]
+                }
+                CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: lDiscrete alpha: 1]);
+            }
+            [optotypes strokeVLineAtX: ix y0: -s2 y1: s2];
         }
-        [optotypes strokeVLineAtX: ix y0: -s2 y1: s2];
+    } else {
+        if (![self isContrastG]) { // so acuity, need to take fixed contrast from settings
+            const c = [MiscLight contrastLogCSWeberFromWeberPercent:
+                        [MiscLight contrastWeberPercentFromMichelsonPercent:
+                          [Settings gratingContrastMichelsonPercent]]];
+            const gray1 = [MiscLight devicegrayFromLuminance: [MiscLight lowerLuminanceFromContrastLogCSWeber: c]];
+            const gray2 = [MiscLight devicegrayFromLuminance: [MiscLight upperLuminanceFromContrastLogCSWeber: c]];
+            gColorFore = [CPColor colorWithWhite: gray1 alpha: 1];
+            gColorBack = [CPColor colorWithWhite: gray2 alpha: 1];
+        }
+        const nChecks = 2 * Math.ceil(s2 / periodInPx);
+        const offSet = s2 - nChecks/2 * periodInPx; // checks should meet in the center
+        const xyOrigin = -s2 + offSet;
+        [self checkerboardX: xyOrigin y: xyOrigin checkSize: periodInPx nChecksX: nChecks nChecksY: nChecks foreCol: gColorFore backCol: gColorBack];
     }
 }
 
@@ -150,7 +180,7 @@ const specialBcmStepsize = 0.1;
                 CGContextAddEllipseInRect(cgc, CGRectMake(0 - r, 0 - r, 2 * r, 2 * r));
                 CGContextClosePath(cgc);  CGContextClip(cgc);
             }
-            [self gratingSineWithPeriodInPx: periodInPixel direction: dir contrast: contrastMichelsonPercent];
+            [self gratingWithPeriodInPx: periodInPixel direction: dir contrast: contrastMichelsonPercent];
             [self drawFixMark3];
             trialInfoString = [self contrastComposeTrialInfoString];
             break;
@@ -164,12 +194,16 @@ const specialBcmStepsize = 0.1;
         [trialHistoryController setValue: contrastMichelsonPercent];
     } else { // acuity_grating
         [trialHistoryController setValue: spatialFreqCPD];
-    }    
+    }
 }
 
 
 - (void) runStart { //console.info("FractControllerContrastLett>runStart");
+    gratingShapeIndex = [Settings gratingShapeIndex];
     nAlternatives = Math.min([Settings nAlternatives], 4);
+    if (gratingShapeIndex == kGratingShapeIndexCheckerboard) {
+        [Settings setNAlternativesIndex: kNAlternativesIndex2];  nAlternatives = [Settings nAlternatives];
+    }
     nTrials = nAlternatives == 4 ? [Settings nTrials04] : [Settings nTrials02];
     [super runStart];
     [self setCurrentTestResultUnit: "MichelsonPercent"];
@@ -218,11 +252,11 @@ const specialBcmStepsize = 0.1;
         }
         contrastMichelsonPercent = [Settings gratingContrastMichelsonPercent];
     }
-/* needs work for frequency sweep
-    if (contrastMichelsonPercent < 100 / 512) // 2 × 256
-        rangeLimitStatus = kRangeLimitValueAtFloor;
-    if (contrastMichelsonPercent >= 100)
-        rangeLimitStatus = kRangeLimitValueAtCeiling; */
+    /* needs work for frequency sweep
+     if (contrastMichelsonPercent < 100 / 512) // 2 × 256
+     rangeLimitStatus = kRangeLimitValueAtFloor;
+     if (contrastMichelsonPercent >= 100)
+     rangeLimitStatus = kRangeLimitValueAtCeiling; */
     let s = "Grating contrast: ";
     s += [self rangeStatusIndicatorStringInverted: YES];
     s += [Misc stringFromNumber: contrastMichelsonPercent decimals: 2 localised: YES];

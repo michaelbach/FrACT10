@@ -48,6 +48,10 @@ kSoundRunEnd = 0; kSoundTrialYes = 1; kSoundTrialNo = 2;
 @typedef decimalMarkCharIndexType
 kDecimalMarkCharIndexAuto = 0; kDecimalMarkCharIndexDot = 1; kDecimalMarkCharIndexComma = 2;
 
+@typedef gratingShapeIndexType
+kGratingShapeIndexSinus = 0; kGratingShapeIndexSquare = 1;
+kGratingShapeIndexTriangle = 2; kGratingShapeIndexCheckerboard = 3;
+
 
 @implementation HierarchyController: CPWindowController {
     HierarchyController parentController @accessors;
