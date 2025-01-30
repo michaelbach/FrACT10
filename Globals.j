@@ -58,6 +58,10 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 /*
 #  History
 
+2025-01-30c additional key mappings for cardinal/oblique checkerboards;
+ began using gAppController for inter-class communication;
+ checksize now with √2 so dominant spatial frequency same as other grating shapes;
+ fix possibility to have more than one run simultaneously; work on testing suite
 2025-01-30 add grating with triangular profile and "checkerboard profile"
 2025-01-26 add delayed `setNeedsDisplay` at `runEnd` to make sure CI95 is displayed
 2025-01-18 harmonise capitalisation of HTLM control commands

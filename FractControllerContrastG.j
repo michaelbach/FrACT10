@@ -212,6 +212,16 @@ const specialBcmStepsize = 0.1;
 
 
 - (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerContrastE>responseNumberFromChar: ", keyChar);
+    if (gratingShapeIndex == kGratingShapeIndexCheckerboard) {
+        // additional mappings for cardinal/oblique checkerboards
+        if (["1", "3", "7", "9"].includes(keyChar)) { // oblique
+            keyChar = CPRightArrowFunctionKey;
+        } else {
+            if (["2", "4", "6", "8"].includes(keyChar)) { // cardinal
+                keyChar = CPUpArrowFunctionKey;
+            }
+        }
+    }
     switch (keyChar) {
         case CPLeftArrowFunctionKey: return 4; // ⬅️
         case CPRightArrowFunctionKey: return 4; // ➡️
