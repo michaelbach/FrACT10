@@ -138,8 +138,8 @@ const specialBcmStepsize = 0.1;
         }
         const nChecks = 2 * Math.ceil(s2 / periodInPx);
         const offSet = s2 - nChecks/2 * periodInPx; // checks should meet in the center
-        const xyOrigin = -s2 + offSet;
-        [self checkerboardX: xyOrigin y: xyOrigin checkSize: periodInPx nChecksX: nChecks nChecksY: nChecks foreCol: gColorFore backCol: gColorBack];
+        const xyOrigin = -s2 + offSet; // period/√2↓: dominant spat freq like grating
+        [self checkerboardX: xyOrigin y: xyOrigin checkSize: (periodInPx / Math.SQRT2) nChecksX: nChecks nChecksY: nChecks foreCol: gColorFore backCol: gColorBack];
     }
 }
 
