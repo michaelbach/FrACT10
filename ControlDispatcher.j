@@ -18,16 +18,14 @@
     CPString m1, m2, m3;
     float m3AsNumber;
     BOOL _sendHTMLMessageOnRunDone;
-    id _appController;
 }
 
 
 /**
  set up listener to dispatch control messages to FrACT10 when embedded as iframe
  */
-+ (void) initWithAppController: (id) appController { //console.info("ControlDispatcher>initWithAppController")
++ (void) init { //console.info("ControlDispatcher>init")
     _sendHTMLMessageOnRunDone = NO;
-    _appController = appController;
     window.addEventListener("message", (e) => { //console.info("In addEventListener>message: ", e);
         if (e.origin !== "http://localhost:4000") { // only from local host (for unittesting)
             if (e.source !== window.parent) return; // or from embedding window
@@ -55,7 +53,7 @@
                 [self manageRun];  break;
             case "respondWithChar":
                 const e = [CPEvent keyEventWithType:CPKeyDown location:CGPointMakeZero() modifierFlags:0 timestamp:0 windowNumber:0 context:nil characters:m2 charactersIgnoringModifiers:m2 isARepeat:NO keyCode:0];
-                [_appController.currentFractController performSelector: @selector(keyDown:) withObject: e];
+                [gAppController.currentFractController performSelector: @selector(keyDown:) withObject: e];
                 [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;
             case "unittest": case "Unittest":
                 [self manageUnittests];  break;
@@ -69,11 +67,11 @@
                     [self _logProblemM123];  return;
                 }
                 if (m2AsNumber < 0) {
-                    [_appController buttonSettingsClose_action: nil];
+                    [gAppController buttonSettingsClose_action: nil];
                     [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;
                 }
-                [_appController setSettingsPaneTabViewSelectedIndex: m2AsNumber];
-                [_appController buttonSettings_action: nil];
+                [gAppController setSettingsPaneTabViewSelectedIndex: m2AsNumber];
+                [gAppController buttonSettings_action: nil];
                 [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;
             default:
                 [self _logProblem: eData];
@@ -126,8 +124,8 @@
 + (void) manageGetValue {
     m3 = null;  const _inRun = [self _isInRun];
     if (m2 == "isInRun") {
-        const currTestID = _appController.currentTestID;
-        const s = [_appController performSelector: @selector(testNameGivenTestID:) withObject: currTestID];
+        const currTestID = gAppController.currentTestID;
+        const s = [gAppController performSelector: @selector(testNameGivenTestID:) withObject: currTestID];
         [self post2parentM1: m1 m2: _inRun m3: s success: YES];
         return;
     }
@@ -136,15 +134,15 @@
     }
     switch(m2) {
         case "currentAlternative":
-            m3 = [_appController.currentFractController.alternativesGenerator currentAlternative]
+            m3 = [gAppController.currentFractController.alternativesGenerator currentAlternative]
             [self post2parentM1: m1 m2: m2 m3: m3 success: (m3 !== null)];
             break;
         case "currentTrial":
-            m3 = _appController.currentFractController.iTrial;
+            m3 = gAppController.currentFractController.iTrial;
             [self post2parentM1: m1 m2: m2 m3: m3 success: (m3 !== null)];
             break;
         case "currentValue":
-            m3 = [_appController.currentFractController.trialHistoryController value];
+            m3 = [gAppController.currentFractController.trialHistoryController value];
             [self post2parentM1: m1 m2: m2 m3: m3 success: (m3 !== null)];
             break;
         default:
@@ -178,7 +176,7 @@
 + (void) manageUnittests {
     switch(m2) {
         case "rewardImages": case "RewardImages": // ignore m3
-            [_appController.rewardsController unittest];
+            [gAppController.rewardsController unittest];
             break;
         case "throwError": case "Error":
             throw new Error("Runtime error on purpose for testing.");
@@ -223,13 +221,13 @@
 
 
 + (BOOL) _isInRun {
-    if (_appController.currentFractController === null) return NO;
-    return _appController.currentFractController.alternativesGenerator !== null;
+    if (gAppController.currentFractController === null) return NO;
+    return gAppController.currentFractController.alternativesGenerator !== null;
 }
 
 
 + (void) _notify: (CPString) aNotificationName object: (id) anObject {
-    [[_appController window] orderFront: self]; // otherwise we would crash here
+    [[gAppController window] orderFront: self]; // otherwise we would crash here
     [[CPNotificationCenter defaultCenter] postNotificationName: aNotificationName object: anObject];
 }
 

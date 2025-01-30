@@ -136,10 +136,11 @@ const specialBcmStepsize = 0.1;
             gColorFore = [CPColor colorWithWhite: gray1 alpha: 1];
             gColorBack = [CPColor colorWithWhite: gray2 alpha: 1];
         }
-        const nChecks = 2 * Math.ceil(s2 / periodInPx);
-        const offSet = s2 - nChecks/2 * periodInPx; // checks should meet in the center
+        const periodInPx2 = periodInPx / Math.SQRT2;
+        const nChecks = 2 * Math.ceil(s2 / periodInPx2);
+        const offSet = s2 - nChecks/2 * periodInPx2; // checks should meet in the center
         const xyOrigin = -s2 + offSet; // period/√2↓: dominant spat freq like grating
-        [self checkerboardX: xyOrigin y: xyOrigin checkSize: (periodInPx / Math.SQRT2) nChecksX: nChecks nChecksY: nChecks foreCol: gColorFore backCol: gColorBack];
+        [self checkerboardX: xyOrigin y: xyOrigin checkSize: periodInPx2 nChecksX: nChecks nChecksY: nChecks foreCol: gColorFore backCol: gColorBack];
     }
 }
 

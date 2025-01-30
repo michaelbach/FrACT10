@@ -123,6 +123,7 @@
 /** runs after "init" above */
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>…Launching");
     'use strict';
+    gAppController = self; // so others can reference via global variable
     currentFractController = null; // making sure, is used to check whether inRun
     selfWindow = [self window];
     [selfWindow setFullPlatformWindow: YES];  [selfWindow setBackgroundColor: [self windowBackgroundColor]];
@@ -197,7 +198,7 @@
 
     // set up control dispatcher (HTML messages to FrACT10 when embedded as iframe)
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationRunFractControllerTest:) name: "notificationRunFractControllerTest" object: nil];
-    [ControlDispatcher initWithAppController: self];
+    [ControlDispatcher init];
 
     [Misc centerWindowOrPanel: [selfWindow contentView]]; // →center
     [selfWindow orderFront: self]; // ensures that it will receive clicks w/o activating

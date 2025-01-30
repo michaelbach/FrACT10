@@ -44,7 +44,7 @@ gDefaultCalibrationBarLengthInMM = 149;
 
 // cgc as global makes for easy access in Optotypes and contrast calcs
 cgc = [[CPGraphicsContext currentContext] graphicsPort];
-
+gAppController = null;
 gColorFore = [CPColor whiteColor];  gColorBack = [CPColor blackColor];
 gSpecialBcmDone = NO;
 // minimal stroke size (half a pixel). Maximal, depending on screen & margin. Poor naming for Vernier.
