@@ -1,6 +1,7 @@
 /* History
    =======
 
+2025-01-30 move fullscreen to front, otherwise won't work (delay user interaction??)
 2025-01-28 add grating shapes, cleanup
 2025-01-10 add settingsPanes etc., convert function declarations to arrow functions
 2025-01-05 add rewardPicturesWhenDone
@@ -91,13 +92,19 @@ const testingSuite = async () => {
 	let response;  const pauseMS = 300, PauseViewMS = 2000;
 
 	addText("TESTING SUITE STARTING\nDuration: ≈ 1 minute.\nDo not press any key until “TESTING SUITE done”.\n");
-    await pauseMilliseconds(2 * PauseViewMS);
+    await pauseMilliseconds(PauseViewMS);
+
+	addText(" ↓ Test fullscreen");
+	await oneStep3Ms('setFullScreen', YES, '');/* do this later, doesn't work any more ??? */
+	await pauseMilliseconds(PauseViewMS * 1.5);  /* security issue? */
+	await oneStep3Ms('setFullScreen', NO, '');
+	addText("↑ tested fullscreen\n");
+	await pauseMilliseconds(PauseViewMS);
 
 	response = await oneStep3Ms('getVersion', '', '');
 
 	await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
 	response = await oneStep3Ms('getSetting', 'distanceInCM', '');
-
 	if (response.m3 != 399) errorAlert();
 
 	await oneStep3Ms('setSetting', 'Preset', 'Testing');
@@ -107,13 +114,6 @@ const testingSuite = async () => {
 	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
 	tellIframe3Ms('run','acuity', 'Letters');
 	addText(" ↑ Presets 'Standard Defaults' & 'Testing' successfully applied.\n");
-	await pauseMilliseconds(PauseViewMS);
-
-	addText(" ↓ Test fullscreen");
-	await oneStep3Ms('setFullScreen', YES, '');/* do this later, doesn't work any more ??? */
-	await pauseMilliseconds(PauseViewMS * 1.5);  /* security issue? */
-	await oneStep3Ms('setFullScreen', NO, '');
-	addText("↑ tested fullscreen\n");
 	await pauseMilliseconds(PauseViewMS);
 
 	addText(" ↓ Test color stuff");
@@ -190,7 +190,7 @@ const testingSuite = async () => {
 	await pauseMilliseconds(PauseViewMS);*/
 
 	addText("\n ↓ cycle through all panes of Settings");
-	for (let iPane = 1; iPane <= kPaneMax; iPane++) {
+	for (let iPane = 0; iPane <= kPaneMax; iPane++) {
 		await oneStep3Ms('settingsPane', iPane, '');
 		await pauseMilliseconds(PauseViewMS);
 	}
@@ -199,13 +199,12 @@ const testingSuite = async () => {
 	await pauseMilliseconds(PauseViewMS);
 
 	addText(" ↓ cycle through grating shapes");
-	tellIframe3Ms('reload', '', '');
 	await oneStep3Ms('setSetting', 'Preset', 'Testing');
 	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
 	await oneStep3Ms('setSetting', 'nTrials04', 1);
 	for (let iGratingType = 0; iGratingType <= kGratingShapeMax; iGratingType++) {
 		await oneStep3Ms('setSetting', 'gratingShapeIndex', iGratingType);
-		tellIframe3Ms('run','acuity', 'Grating');
+		tellIframe3Ms('run','contrast', 'Grating');
 		await pauseMilliseconds(PauseViewMS);
 	}
 	addText(" ↑ cycle through grating shapes done.\n");

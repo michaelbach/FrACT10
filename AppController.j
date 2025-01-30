@@ -123,6 +123,7 @@
 /** runs after "init" above */
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>…Launching");
     'use strict';
+    currentFractController = null; // making sure, is used to check whether inRun
     selfWindow = [self window];
     [selfWindow setFullPlatformWindow: YES];  [selfWindow setBackgroundColor: [self windowBackgroundColor]];
 
@@ -269,6 +270,7 @@
     [self runFractControllerTest: [aNotification object]];
 }
 - (void) runFractControllerTest: (int) testNr { //console.info("AppController>runFractController");
+    if (currentFractController != null) return; // got here by accident, already inRun?
     [sound initAfterUserinteraction];
     currentTestID = testNr;
     if ([Settings isNotCalibrated]) {
