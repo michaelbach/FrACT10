@@ -602,7 +602,9 @@
 }
 - (IBAction) buttonPlasticCardUse_action: (id) sender {
     calBarLengthInMMbefore = [Settings calBarLengthInMM];//for possible undo
-    [plasticCardPanel makeKeyAndOrderFront: self];  [self plasticCardUpdateSize];
+    [plasticCardPanel makeKeyAndOrderFront: self];
+    [Misc centerWindowOrPanel: plasticCardPanel]; // →center
+    [self plasticCardUpdateSize];
 }
 - (IBAction) buttonPlasticCardPlusMinus_action: (id) sender {
     let f = 1;

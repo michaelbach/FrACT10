@@ -58,6 +58,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 /*
 #  History
 
+2025-01-31 center the plastic card panel
 2025-01-30c additional key mappings for cardinal/oblique checkerboards;
  began using gAppController for inter-class communication;
  checksize now with √2 so dominant spatial frequency same as other grating shapes;
