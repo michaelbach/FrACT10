@@ -22,7 +22,7 @@ kTestNone = 0; kTestAcuityLett = 1; kTestAcuityC = 2; kTestAcuityE = 3; kTestAcu
 kTestAcuityVernier = 5; kTestContrastLett = 6; kTestContrastC = 7; kTestContrastE = 8;
 kTestContrastG = 9; kTestAcuityLineByLine = 10; kTestContrastDitherUnittest = 11;
 
-gShortcutKeys4Tests = {"L": kTestAcuityLett, "C": kTestAcuityC, "E": kTestAcuityE,
+kShortcutKeys4TestsArray = {"L": kTestAcuityLett, "C": kTestAcuityC, "E": kTestAcuityE,
     "A": kTestAcuityTAO, "V": kTestAcuityVernier,
     "1": kTestContrastLett, "2": kTestContrastC, "3": kTestContrastE,
     "G": kTestContrastG, "0": kTestContrastDitherUnittest, "4": kTestAcuityLineByLine};

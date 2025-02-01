@@ -400,8 +400,8 @@
 #pragma mark
 - (void) keyDown: (CPEvent) theEvent { //console.info("AppController>keyDown");
     const key = [[[theEvent charactersIgnoringModifiers] characterAtIndex: 0] uppercaseString];
-    if (gShortcutKeys4Tests[key]) {
-        [self runFractControllerTest: gShortcutKeys4Tests[key]];  return;
+    if (kShortcutKeys4TestsArray[key]) {
+        [self runFractControllerTest: kShortcutKeys4TestsArray[key]];  return;
     }
     switch(key) {
         case "Q": case "X": case "-": // Quit or eXit
