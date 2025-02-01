@@ -290,31 +290,13 @@
  */
 - (void) runFractController2 { //console.info("AppController>runFractController2");
     [self closeAllPanels];  [self centerAllPanels];
+    const allInfoPanels = {[kTestAcuityLett]: responseinfoPanelAcuityL, [kTestAcuityC]: responseinfoPanelAcuity8C, [kTestAcuityE]: responseinfoPanelAcuityE, [kTestAcuityTAO]: responseinfoPanelAcuityTAO, [kTestAcuityVernier]: responseinfoPanelAcuityVernier, [kTestContrastLett]: responseinfoPanelContrastLett, [kTestContrastC]: responseinfoPanelContrastC, [kTestContrastE]: responseinfoPanelContrastE, [kTestContrastG]: responseinfoPanelContrastG, [kTestAcuityLineByLine]: responseinfoPanelAcuityLineByLine};
     if ([Settings responseInfoAtStart]) {
-        switch (currentTestID) {
-            case kTestAcuityLett: [responseinfoPanelAcuityL makeKeyAndOrderFront: self]; break;
-            case kTestAcuityC:
-                switch ([Settings nAlternatives]) {
-                    case 4: [responseinfoPanelAcuity4C makeKeyAndOrderFront: self];  break;
-                    case 8: [responseinfoPanelAcuity8C makeKeyAndOrderFront: self];  break;
-                }  break;
-            case kTestAcuityE:
-                [responseinfoPanelAcuityE makeKeyAndOrderFront: self];  break;
-            case kTestAcuityTAO:
-                [responseinfoPanelAcuityTAO makeKeyAndOrderFront: self];  break;
-            case kTestAcuityVernier:
-                [responseinfoPanelAcuityVernier makeKeyAndOrderFront: self];  break;
-            case kTestContrastLett:
-                [responseinfoPanelContrastLett makeKeyAndOrderFront: self];  break;
-            case kTestContrastC:
-                [responseinfoPanelContrastC makeKeyAndOrderFront: self];  break;
-            case kTestContrastE:
-                [responseinfoPanelContrastE makeKeyAndOrderFront: self];  break;
-            case kTestContrastG:
-                [responseinfoPanelContrastG makeKeyAndOrderFront: self];  break;
-            case kTestAcuityLineByLine:
-                [responseinfoPanelAcuityLineByLine makeKeyAndOrderFront: self];  break;
-            case kTestContrastDitherUnittest:  break;
+        if (currentTestID in allInfoPanels) {
+            [allInfoPanels[currentTestID] makeKeyAndOrderFront: self];
+            if ((currentTestID == kTestAcuityC) && ([Settings nAlternatives] == 4)) {
+                [responseinfoPanelAcuity4C makeKeyAndOrderFront: self];
+            }
         }
     } else {
         [self runFractController2_actionOK: nil];
@@ -325,7 +307,7 @@
 /**
  Info panels (above) were not needed, or OKed, so lets now REALLY run the test.
  */
-- (IBAction) runFractController2_actionOK: (id) sender { //console.info("AppController>runFractController2_actionOK");
+- (IBAction) runFractController2_actionOK: (id) sender {
     [self closeAllPanels];  [currentFractController release];  currentFractController = null;
     if ([Settings autoFullScreen]) {
         [Misc fullScreenOn: YES];
