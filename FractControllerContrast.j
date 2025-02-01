@@ -180,7 +180,7 @@ basic flow:
 
 
 - (CPString) contrastComposeExportString { //console.info("FractController>contrastComposeExportString");
-    if ([[self parentController] runAborted]) return "";
+    if (gAppController.runAborted) return "";
     let s = [self generalComposeExportString];
     const nDigits = 3;
     s += tab + "value" + tab + [Misc stringFromNumber: stimStrengthInDeviceunits decimals: nDigits localised: YES];

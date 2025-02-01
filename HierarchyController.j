@@ -54,7 +54,6 @@ kGratingShapeIndexTriangle = 2; kGratingShapeIndexCheckerboard = 3;
 
 
 @implementation HierarchyController: CPWindowController {
-    HierarchyController parentController @accessors;
     TestIDType currentTestID @accessors;
     CPString resultString @accessors;
     CPString versionDateString @accessors; // for the main Xib window top right

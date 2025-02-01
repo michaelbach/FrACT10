@@ -30,13 +30,13 @@ Created by Bach on 2020-05-21
     switch(state) {
         case kStateDrawBack: break;
         case kStateDrawFore:
-            [myTaoController drawTaoWithStrokeInPx: stimStrengthInDeviceunits taoNumber: [alternativesGenerator currentAlternative]];
+            [gAppController.taoController drawTaoWithStrokeInPx: stimStrengthInDeviceunits taoNumber: [alternativesGenerator currentAlternative]];
             [self prepareDrawingTransformUndo]; // otherwise the button numbers are subject to "display transform"
             const size = viewWidth / (nAlternatives * 2 + 2)
             if (!responseButtonsAdded) {
                 for (let i = 0; i < (nAlternatives); i++) {
                     const button = [self buttonCenteredAtX: (i + 0.75) * 2 * size y: viewHeight2 - 0.5 * size size: size title: "" keyEquivalent: [@"1234567890" characterAtIndex: i]];
-                    [button setImage: [myTaoController imageNumber: i]];
+                    [button setImage: [gAppController.taoController imageNumber: i]];
                     [button setImageScaling: CPImageScaleProportionallyDown];
                 }
                 [self buttonCenteredAtX: (10 + 0.75) * 2 * size y: viewHeight2 - 0.5 * size size: size title: "Ø"];
@@ -54,7 +54,6 @@ Created by Bach on 2020-05-21
 
 
 - (void) runStart { //console.info("FractControllerAcuityTAO>runStart");
-    myTaoController = [parentController gTaoController];
     nAlternatives = 10;  nTrials = [Settings nTrials08];
     [self setCurrentTestResultUnit: "LogMAR"];
     abortCharacter = "A";

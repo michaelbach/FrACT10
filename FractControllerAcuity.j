@@ -9,7 +9,6 @@
 @import "FractController.j"
 @implementation FractControllerAcuity: FractController {
     int directionInRow;
-    id myTaoController;
 }
 
 
@@ -88,7 +87,7 @@
                                 case kTestAcuityE:
                                     [optotypes tumblingEWithStrokeInPx: stimStrengthInDeviceunits direction: directionInRow];  break;
                                 case kTestAcuityTAO:
-                                    [myTaoController drawTaoWithStrokeInPx: stimStrengthInDeviceunits taoNumber: directionInRow];  break;
+                                    [gAppController.taoController drawTaoWithStrokeInPx: stimStrengthInDeviceunits taoNumber: directionInRow];  break;
                                 default:
                                     [optotypes drawLandoltWithStrokeInPx: stimStrengthInDeviceunits landoltDirection: directionInRow];
                             }
@@ -222,7 +221,7 @@
 
 
 - (CPString) acuityComposeExportString { //console.info("FractController>acuityComposeExportString");
-    if ([[self parentController] runAborted]) return "";
+    if (gAppController.runAborted) return "";
     let s = [self generalComposeExportString];
     const nDigits = 3;
     s += tab + "value" + tab + [Misc stringFromNumber: [self resultValue4Export] decimals: nDigits localised: YES];

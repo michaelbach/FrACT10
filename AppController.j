@@ -257,14 +257,6 @@
 
 
 /**
- We will need this in FractControllerAcuityTAO, it will be accessed via `parent`.
- */
-- (id) gTaoController {
-    return taoController;
-}
-
-
-/**
  One of the tests should run, but let's test some prerequisites first
  */
 - (void) notificationRunFractControllerTest: (CPNotification) aNotification { //called from ControlDispatcher
@@ -338,7 +330,7 @@
     if ([Settings autoFullScreen]) {
         [Misc fullScreenOn: YES];
     }
-    currentFractController = [[allTestControllers[currentTestID] alloc] initWithWindow: fractControllerWindow parent: self];
+    currentFractController = [[allTestControllers[currentTestID] alloc] initWithWindow: fractControllerWindow];
     [currentFractController setSound: sound];
     [currentFractController setCurrentTestID: currentTestID]; // while it has inherited currentTestID, it hasn't inherited its value
     [currentFractController runStart];

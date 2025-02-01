@@ -51,12 +51,11 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
-- (id) initWithWindow: (CPWindow) aWindow parent: (HierarchyController) parent { //console.info("FractController>initWithWindow");
+- (id) initWithWindow: (CPWindow) aWindow { //console.info("FractController>initWithWindow");
     self = [super initWithWindow: aWindow];
     if (self) {
         selfWindow = [self window];
         [selfWindow setFullPlatformWindow: YES];
-        [self setParentController: parent];
         [aWindow setDelegate: self];
         [self updateViewWidthHeight];
         state = kStateDrawBack;
@@ -67,7 +66,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         optotypes = [[Optotypes alloc] init];
         [Settings checkDefaults];
         abortCharacter = "5";
-        [[self parentController] setRunAborted: YES];
+        [gAppController setRunAborted: YES];
         [selfWindow makeKeyAndOrderFront: self];  [selfWindow makeFirstResponder: self];
         //[self performSelector: @selector(runStart) withObject: nil afterDelay: 0.01];//geht nicht mehr nach DEPLOY???
         [MDBDispersionEstimation initResultStatistics];  ci95String = "";
@@ -358,25 +357,24 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     const sv = [[selfWindow contentView] subviews];
     for (const svi of sv) [svi removeFromSuperview];
     [selfWindow close];
-    [[self parentController] setRunAborted: (iTrial < nTrials)]; //premature end
-    [[self parentController] setResultString: resultString];
-    [[self parentController] setCurrentTestResultExportString: [self composeExportString]];
+    [gAppController setRunAborted: (iTrial < nTrials)]; //premature end
+    [gAppController setResultString: resultString];
+    [gAppController setCurrentTestResultExportString: [self composeExportString]];
     // delay to give the screen time to update for immediate response feedback
     await [Misc asyncDelaySeconds: 0.03];
     [trialHistoryController runEnded];
-    const _parentController = [self parentController];
-    [_parentController setCurrentTestResultsHistoryExportString: [trialHistoryController resultsHistoryString]];
+    [gAppController setCurrentTestResultsHistoryExportString: [trialHistoryController resultsHistoryString]];
     if ([Settings auditoryFeedback4run]) [sound playNumber: kSoundRunEnd];
 
-    let _currentTestResultExportString = [_parentController currentTestResultExportString];
-    if ([Settings showCI95] && (![_parentController runAborted])) {
+    let _currentTestResultExportString = [gAppController currentTestResultExportString];
+    if ([Settings showCI95] && (![gAppController runAborted])) {
         if ([self isAcuityOptotype]) {
             // the below causes a delay of < 1 s with nSamples=10,000
             const historyResults = [trialHistoryController composeInfo4CI];
             const ciResults = [MDBDispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: gNSamplesCI95];
             const halfCI95 = (ciResults.CI0975 - ciResults.CI0025) / 2;
             ci95String = " ± " + [Misc stringFromNumber: halfCI95 decimals: 2 localised: YES];
-            [_parentController setResultString: [self acuityComposeResultString]]; // this will add CI95 info
+            [gAppController setResultString: [self acuityComposeResultString]]; // this will add CI95 info
             _currentTestResultExportString += tab + "halfCI95" + tab + [Misc stringFromNumber: halfCI95 decimals: 3 localised: YES];
         }
     }
@@ -395,8 +393,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         _currentTestResultExportString += tab + "gratingShape" + tab + [Settings gratingShapeIndex];
     }
 
-    [_parentController setCurrentTestResultExportString: _currentTestResultExportString + crlf];
-    [_parentController runEnd];
+    [gAppController setCurrentTestResultExportString: _currentTestResultExportString + crlf];
+    [gAppController runEnd];
 }
 
 

@@ -20,9 +20,9 @@ Created by mb on 2021-12-21.
 - (CPString) composeExportString {return [self acuityComposeExportString];}
 
 
-- (id) initWithWindow: (CPWindow) aWindow parent: (HierarchyController) parent {
+- (id) initWithWindow: (CPWindow) aWindow {
     localLogMAR = 0.3; // we need this method only for this line, starting acuity
-    self = [super initWithWindow: aWindow parent: parent];
+    self = [super initWithWindow: aWindow];
     return self;
 }
 

@@ -58,6 +58,7 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 /*
 #  History
 
+2025-02-01 `gAppController` to replace access via `parent`, simplifies a lot
 2025-01-31 center the plastic card panel
 2025-01-30c additional key mappings for cardinal/oblique checkerboards;
  began using gAppController for inter-class communication;

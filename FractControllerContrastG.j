@@ -279,7 +279,7 @@ const specialBcmStepsize = 0.1;
 
 
 - (CPString) contrastComposeExportString {
-    if ([[self parentController] runAborted]) return "";
+    if (gAppController.runAborted) return "";
     let _exportString = [self generalComposeExportString];
     _exportString += tab + "value" + tab + [Misc stringFromNumber: contrastMichelsonPercent decimals: 3 localised: YES];
     _exportString += tab + "unit1" + tab + currentTestResultUnit
