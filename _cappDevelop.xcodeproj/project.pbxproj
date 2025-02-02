@@ -15,6 +15,8 @@
 		8A07B8412C919923007513BB /* Presets_ULV_Gensight.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A07B8402C919922007513BB /* Presets_ULV_Gensight.j */; };
 		8A07B8432C919BB9007513BB /* Presets_ESU.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A07B8422C919BB9007513BB /* Presets_ESU.j */; };
 		8A07B8452C919F0F007513BB /* Presets_BCM_Scheie.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A07B8442C919F0F007513BB /* Presets_BCM_Scheie.j */; };
+		8A2146282D4F7A2E00933042 /* CardController.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2146272D4F7A2E00933042 /* CardController.m */; };
+		8A2146292D4F7A2E00933042 /* CardController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2146262D4F7A2E00933042 /* CardController.h */; };
 		8A2A28992D31A1D100ED47DC /* testHTMLMessaging.html in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2A28982D31A1D100ED47DC /* testHTMLMessaging.html */; };
 		8A2E1BEA2C941F0F00F6FE00 /* Presets_Hyper_TUDo.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2E1BE92C941F0F00F6FE00 /* Presets_Hyper_TUDo.j */; };
 		8A2E1BEC2C94225500F6FE00 /* Presets_AT_LeviLab.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2E1BEB2C94225500F6FE00 /* Presets_AT_LeviLab.j */; };
@@ -59,6 +61,7 @@
 		8AAFB6022C0C8F5800E3BBEC /* ControlDispatcher.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AAFB6012C0C8F5800E3BBEC /* ControlDispatcher.j */; };
 		8ACD7D522C0362BD00FE90C6 /* ThresholderNupMdown.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8ACD7D512C0362BD00FE90C6 /* ThresholderNupMdown.j */; };
 		8AE2AD332CE096BC00305C56 /* Presets_CNS_Freiburg.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AE2AD322CE096BC00305C56 /* Presets_CNS_Freiburg.j */; };
+		8AF26B652D4F6EBA0033A618 /* CardController.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AF26B642D4F6EBA0033A618 /* CardController.j */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -107,6 +110,7 @@
 				8A061F5D2A2737F8006B5CAD /* AlternativesGenerator.j in CopyFiles */,
 				8A061F602A273809006B5CAD /* Globals.j in CopyFiles */,
 				8AAB437E2A55824B00825E47 /* FractControllerContrastG.j in CopyFiles */,
+				8AF26B652D4F6EBA0033A618 /* CardController.j in CopyFiles */,
 				8AAB438C2A55826800825E47 /* Thresholder.j in CopyFiles */,
 				8AAB43842A55825A00825E47 /* FractControllerAcuityLineByLine.j in CopyFiles */,
 				8A891B7E2A5585AE00ACEFDF /* MDBDispersionEstimation.j in CopyFiles */,
@@ -120,6 +124,8 @@
 				8A2E1BEC2C94225500F6FE00 /* Presets_AT_LeviLab.j in CopyFiles */,
 				8AAB43802A55825000825E47 /* FractControllerContrastC.j in CopyFiles */,
 				8A061F5E2A2737FC006B5CAD /* AppController.j in CopyFiles */,
+				8A2146282D4F7A2E00933042 /* CardController.m in CopyFiles */,
+				8A2146292D4F7A2E00933042 /* CardController.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -175,6 +181,8 @@
 		8A07B8402C919922007513BB /* Presets_ULV_Gensight.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_ULV_Gensight.j; sourceTree = "<group>"; };
 		8A07B8422C919BB9007513BB /* Presets_ESU.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_ESU.j; sourceTree = "<group>"; };
 		8A07B8442C919F0F007513BB /* Presets_BCM_Scheie.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_BCM_Scheie.j; sourceTree = "<group>"; };
+		8A2146262D4F7A2E00933042 /* CardController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardController.h; sourceTree = "<group>"; };
+		8A2146272D4F7A2E00933042 /* CardController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardController.m; sourceTree = "<group>"; };
 		8A2A28982D31A1D100ED47DC /* testHTMLMessaging.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = testHTMLMessaging.html; sourceTree = "<group>"; };
 		8A2E1BE92C941F0F00F6FE00 /* Presets_Hyper_TUDo.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_Hyper_TUDo.j; sourceTree = "<group>"; };
 		8A2E1BEB2C94225500F6FE00 /* Presets_AT_LeviLab.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_AT_LeviLab.j; sourceTree = "<group>"; };
@@ -194,6 +202,7 @@
 		8ABDA6D4291A501000D68E3C /* capp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = capp; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACD7D512C0362BD00FE90C6 /* ThresholderNupMdown.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = ThresholderNupMdown.j; sourceTree = "<group>"; };
 		8AE2AD322CE096BC00305C56 /* Presets_CNS_Freiburg.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets_CNS_Freiburg.j; sourceTree = "<group>"; };
+		8AF26B642D4F6EBA0033A618 /* CardController.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = CardController.j; sourceTree = SOURCE_ROOT; };
 		90444B1A970FC75C0FF93DB7 /* FractControllerContrastE.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerContrastE.j; sourceTree = SOURCE_ROOT; };
 		91844612BA04B04966D2045C /* AlternativesGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AlternativesGenerator.h; path = .XcodeSupport/AlternativesGenerator.h; sourceTree = SOURCE_ROOT; };
 		91B445DC96A0E8A06A4740E5 /* FractControllerAcuity.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerAcuity.j; sourceTree = SOURCE_ROOT; };
@@ -257,6 +266,7 @@
 				D7F842D1A68D8C133FA29CF9 /* Globals.j */,
 				2BD24D7590B3A2C0CF356A87 /* HierarchyController.j */,
 				6F8642B1B93603A5A204CC32 /* AppController.j */,
+				8AF26B642D4F6EBA0033A618 /* CardController.j */,
 				8AAFB6012C0C8F5800E3BBEC /* ControlDispatcher.j */,
 				9ADC4C46A65D7794540F1808 /* FractController.j */,
 				91B445DC96A0E8A06A4740E5 /* FractControllerAcuity.j */,
@@ -324,6 +334,8 @@
 				DED842598DD16F0DDDE21618 /* AlternativesGenerator.m */,
 				DEF24C8DA94A1A3BC22D7F49 /* AppController.h */,
 				856F4B1AA111E0F21404D2EB /* AppController.m */,
+				8A2146262D4F7A2E00933042 /* CardController.h */,
+				8A2146272D4F7A2E00933042 /* CardController.m */,
 				7D1241D0A9E8F532DCF76E49 /* FractController.h */,
 				26DE446DABE9E3C226ED99EF /* FractController.m */,
 				2F574A0FBE37760CBE3F9A3D /* FractControllerAcuity.h */,

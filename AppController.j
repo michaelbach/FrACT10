@@ -30,6 +30,8 @@
 @import "PopulateAboutPanel.j"
 @import "Presets.j"
 @import "ControlDispatcher.j"
+@import "CardController.j"
+
 
 
 /**
@@ -41,13 +43,12 @@
 
 @implementation AppController : HierarchyController {
     @outlet CPWindow fractControllerWindow;
-    @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, resultDetailsPanel, plasticCardPanel;
+    @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, resultDetailsPanel;
     @outlet MDBButton buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine;
     @outlet CPButton buttonExport;
     @outlet CPButton radioButtonAcuityBW, radioButtonAcuityColor;
     @outlet GammaView gammaView;
     @outlet CPWebView aboutWebView1, aboutWebView2, helpWebView1, helpWebView2, helpWebView3, helpWebView4;
-    @outlet CPImageView plasticCardImageView;
     @outlet CPPopUpButton settingsPanePresetsPopUpButton;  Presets presets;
     @outlet CPPopUpButton settingsPaneMiscSoundsTrialYesPopUp;
     @outlet CPPopUpButton settingsPaneMiscSoundsTrialNoPopUp;
@@ -159,7 +160,7 @@
 
     allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherUnittest]; // sequence like Hierachy kTest#s
 
-    allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel, plasticCardPanel];
+    allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel];
     for (const p of allPanels)  [p setMovable: NO];
     [self setSettingsPaneTabViewSelectedIndex: 0]; // select the "General" tab in Settings
 
@@ -368,13 +369,13 @@
 }
 
 
-/*- (void) controlTextDidChange: (CPNotification) notification { //console.info(@"controlTextDidChange: stringValue == %@", [[notification object] stringValue]);[Settings calculateMinMaxPossibleDecimalAcuity];
+/*- (void) controlTextDidChange: (CPNotification) notification { //console.info(@"controlTextDidChange: stringValue == %@", [[notification object] stringValue]);[Settings calculateMinMaxPossibleAcuity];
  }*/
 /**
  Called from some text fields in the Settings panel, to update dependencies
  */
 - (void) controlTextDidEndEditing: (CPNotification) notification { //console.info(@"controlTextDidChange: stringValue == %@", [[notification object] stringValue]);
-    [Settings calculateMinMaxPossibleDecimalAcuity];
+    [Settings calculateMinMaxPossibleAcuity];
     [Settings calculateAcuityForeBackColorsFromContrast];
 }
 
@@ -562,41 +563,5 @@
 }
 
 
-/**
- Dealing with calibration via plasticCard size
- */
-- (void) plasticCardUpdateSize {
-    const wInPx = [MiscSpace pixelFromMillimeter: 92.4]; //magic number, why not 85.6?
-    const hOverW = 53.98 / 85.6; // All ID-1 bank cards are 85.6 mm wide and 53.98 mm high
-    // https://en.wikipedia.org/wiki/ISO/IEC_7810
-    // https://www.iso.org/obp/ui/en/#iso:std:iso-iec:7810:ed-4:v1:en
-    // ID-1: nominally 85,60 mm wide by 53,98 mm high by 0,76 mm thick
-    const hInPx = wInPx * hOverW, xc = 400, yc = 300 - 24; // position in window, space for buttons
-    [plasticCardImageView setFrame: CGRectMake(xc - wInPx / 2, yc - hInPx / 2, wInPx, hInPx)];
-}
-- (IBAction) buttonPlasticCardUse_action: (id) sender {
-    calBarLengthInMMbefore = [Settings calBarLengthInMM];//for possible undo
-    [plasticCardPanel makeKeyAndOrderFront: self];
-    [Misc centerWindowOrPanel: plasticCardPanel]; // →center
-    [self plasticCardUpdateSize];
-}
-- (IBAction) buttonPlasticCardPlusMinus_action: (id) sender {
-    let f = 1;
-    switch ([sender tag]) {
-        case 0: f = 1.0 / 1.01;  break;
-        case 1: f = 1.0 / 1.1;  break;
-        case 2: f = 1.01;  break;
-        case 3: f = 1.1;  break;
-    }
-    [Settings setCalBarLengthInMM: [Settings calBarLengthInMM] * f];  [self plasticCardUpdateSize];
-}
-- (IBAction) buttonPlasticCardClosePanel_action: (id) sender {
-    if ([sender tag] == 1)  [Settings setCalBarLengthInMM: calBarLengthInMMbefore];//undo
-    let t = [Settings calBarLengthInMM];
-    if (t >= 100) t = Math.round(t); // don't need that much precision
-    [Settings setCalBarLengthInMM: t];
-    [Settings calculateMinMaxPossibleDecimalAcuity];
-    [plasticCardPanel close];
-}
 
 @end

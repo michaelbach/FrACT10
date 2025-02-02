@@ -143,7 +143,7 @@ Created by mb on July 15, 2015.
     [self setAcuityFormatSnellenFractionFoot: [self checkBool: [self acuityFormatSnellenFractionFoot] dflt: NO set: set]];
     [self setForceSnellen20: [self checkBool: [self forceSnellen20] dflt: NO set: set]];
     [self setShowCI95: [self checkBool: [self showCI95] dflt: NO set: set]];
-    [self calculateMinMaxPossibleDecimalAcuity];
+    [self calculateMinMaxPossibleAcuity];
 
     // Crowding, crowdingType: 0 = none, 1: flanking bars, 2 = flanking rings, 3 = surounding bars, 4: surounding ring, 5 = surounding square, 6 = row of optotypes
     [self setCrowdingType: [self checkNum: [self crowdingType] dflt: 0 min: 0 max: 6 set: set]];
@@ -201,7 +201,7 @@ Created by mb on July 15, 2015.
 }
 
 
-+ (void) calculateMinMaxPossibleDecimalAcuity { //console.info("Settings>calculateMinMaxPossibleDecimalAcuity");
++ (void) calculateMinMaxPossibleAcuity { //console.info("Settings>calculateMinMaxPossibleAcuity");
     let maxPossibleAcuityVal = [MiscSpace decVAFromStrokePixels: 1.0];
     const screenSize = Math.min(window.screen.availHeight, window.screen.availWidth);
     const strokeMaximal = screenSize / (5 + [self margin4maxOptotypeIndex]); // leave a margin of ½·index around the largest optotype
