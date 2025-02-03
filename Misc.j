@@ -101,7 +101,7 @@ function _pause(ms) { //console.info("Misc>_pause");
 
 
 + (void) centerWindowOrPanel: (CPWindow) p {
-    [p setFrameOrigin: CGPointMake((window.innerWidth - 800) / 2, (window.innerHeight - 600) / 2)];
+    [p setFrameOrigin: CGPointMake((window.innerWidth - 800) / 2, (window.innerHeight - 628) / 2)]; // the header adds 28 pixel, so more than 600
 }
 
 
