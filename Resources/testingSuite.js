@@ -1,6 +1,7 @@
 /* History
    =======
 
+2025-02-02 fix regression: restore demo run
 2025-01-30 move fullscreen to front, otherwise won't work (delay user interaction??)
 2025-01-28 add grating shapes, cleanup
 2025-01-10 add settingsPanes etc., convert function declarations to arrow functions
@@ -20,6 +21,13 @@ const tellIframe = (message) => {
 }
 const tellIframe3Ms = (m1, m2, m3) => {
 	const msg = {m1: m1, m2: m2, m3: m3};  tellIframe(msg);
+}
+
+
+const doDemoRun = () => {
+	tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Demo'});
+	/*tellIframe({m1: 'setSetting', m2: 'nTrials08', m3: '3'});*/
+	tellIframe({m1: 'run', m2: 'acuity', m3: 'Letters'});
 }
 
 

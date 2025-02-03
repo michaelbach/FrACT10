@@ -27,11 +27,10 @@
 @import "GammaView.j"
 @import "MDBButton.j"
 @import "MDBTextField.j"
-@import "PopulateAboutPanel.j"
 @import "Presets.j"
 @import "ControlDispatcher.j"
 @import "CardController.j"
-
+@import "AboutAndHelpController.j"
 
 
 /**
@@ -43,12 +42,11 @@
 
 @implementation AppController : HierarchyController {
     @outlet CPWindow fractControllerWindow;
-    @outlet CPPanel settingsPanel, aboutPanel, helpPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, resultDetailsPanel;
+    @outlet CPPanel settingsPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, resultDetailsPanel;
     @outlet MDBButton buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine;
     @outlet CPButton buttonExport;
     @outlet CPButton radioButtonAcuityBW, radioButtonAcuityColor;
     @outlet GammaView gammaView;
-    @outlet CPWebView aboutWebView1, aboutWebView2, helpWebView1, helpWebView2, helpWebView3, helpWebView4;
     @outlet CPPopUpButton settingsPanePresetsPopUpButton;  Presets presets;
     @outlet CPPopUpButton settingsPaneMiscSoundsTrialYesPopUp;
     @outlet CPPopUpButton settingsPaneMiscSoundsTrialNoPopUp;
@@ -160,7 +158,7 @@
 
     allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherUnittest]; // sequence like Hierachy kTest#s
 
-    allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, settingsPanel, helpPanel, aboutPanel, resultDetailsPanel];
+    allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, settingsPanel, resultDetailsPanel];
     for (const p of allPanels)  [p setMovable: NO];
     [self setSettingsPaneTabViewSelectedIndex: 0]; // select the "General" tab in Settings
 
@@ -458,42 +456,6 @@
 }
 
 
-/**
- Deal with the Help/About panels
- */
-- (IBAction) buttonHelp_action: (id) sender { //console.info("AppController>buttonHelp_action");
-    [helpPanel makeKeyAndOrderFront: self];
-    [Misc centerWindowOrPanel: helpPanel];
-    [PopulateAboutPanel populateHelpPanelView1: helpWebView1 v2: helpWebView2 v3: helpWebView3 v4: helpWebView4];
-}
-- (IBAction) buttonHelpClose_action: (id) sender { //console.info("AppController>buttonHelpClose_action");
-    [helpPanel close];
-}
-- (IBAction) buttonAbout_action: (id) sender {
-    [aboutPanel makeKeyAndOrderFront: self];
-    [Misc centerWindowOrPanel: aboutPanel];
-    [PopulateAboutPanel populateAboutPanelView1: aboutWebView1 view2: aboutWebView2];
-}
-- (IBAction) buttonAboutClose_action: (id) sender {
-    [aboutPanel close];
-}
-- (IBAction) buttonGotoURLgivenTag_action: (id) sender {
-    const tag = [sender tag];
-    const tagsURLs = {1: "https://michaelbach.de/fract/",
-        2: "https://michaelbach.de/fract/blog.html",
-        3: "https://michaelbach.de/fract/manual.html",
-        4: "https://michaelbach.de/fract/checklist.html",
-        5: "https://michaelbach.de/sci/acuity.html",
-        6: "../readResultString.html"};
-    const url = tagsURLs[tag];
-    if (url === undefined) return;
-    if (tag == 6) { // only check for this local file
-        if (![Misc existsUrl: url]) return;
-    }
-    window.open(url, "_blank");
-}
-
-
 #pragma mark
 /**
  And more buttons…
@@ -561,7 +523,6 @@
     [Settings setGammaValue: [Settings gammaValue] + ([sender tag] == 1 ? 0.1 : -0.1)];
     [gammaView setNeedsDisplay: YES];
 }
-
 
 
 @end
