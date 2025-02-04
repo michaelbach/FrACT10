@@ -20,14 +20,7 @@ const tellIframe = (message) => {
 	document.getElementById('fractFrame').contentWindow.postMessage(message);
 }
 const tellIframe3Ms = (m1, m2, m3) => {
-	const msg = {m1: m1, m2: m2, m3: m3};  tellIframe(msg);
-}
-
-
-const doDemoRun = () => {
-	tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Demo'});
-	/*tellIframe({m1: 'setSetting', m2: 'nTrials08', m3: '3'});*/
-	tellIframe({m1: 'run', m2: 'acuity', m3: 'Letters'});
+	tellIframe({m1: m1, m2: m2, m3: m3});
 }
 
 
@@ -74,11 +67,17 @@ const pauseMilliseconds = (ms) => {
 }
 
 
-const oneStep3Ms = async (m1, m2, m3) => {
-	await pauseMilliseconds(300);
-	const response = await tellIframeReturningPromise3Ms(m1, m2, m3);
+const oneStep3Ms = async (m1, m2, m3, timeout = 1000) => {
+	const response = await tellIframeReturningPromise3Ms(m1, m2, m3, timeout);
 	if (!response.success) errorAlert();
 	return response;
+}
+
+
+const doDemoRun = () => {
+	tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Demo'});
+	/*tellIframe({m1: 'setSetting', m2: 'nTrials08', m3: '3'});*/
+	tellIframe({m1: 'run', m2: 'acuity', m3: 'Letters'});
 }
 
 
@@ -229,4 +228,66 @@ const testingSuite = async () => {
 	response = await oneStep3Ms('xxxx', 'xxxx', 'xxxxxx');
 	*/
 
+}
+
+
+async function demoRunAndRestore() {
+   let response = await oneStep3Ms('getSetting', 'distanceInCM', '');
+   const distanceInCM = response.m3;
+   await oneStep3Ms('setSetting', 'distanceInCM', 400);
+
+   response = await oneStep3Ms('getSetting', 'calBarLengthInMM', '');
+   const calBarLengthInMM = response.m3; // store for later restore
+   await oneStep3Ms('setSetting', 'calBarLengthInMM', 170);
+
+   response = await oneStep3Ms('getSetting', 'nTrials08', '');
+   const nTrials08 = response.m3;
+   await oneStep3Ms('setSetting', 'nTrials08', 12);
+
+   response = await oneStep3Ms('getSetting', 'responseInfoAtStart', '');
+   const responseInfoAtStart = response.m3;
+   await oneStep3Ms('setSetting', 'responseInfoAtStart', 0);
+
+   response = await oneStep3Ms('getSetting', 'autoRunIndex', '');
+   const autoRunIndex = response.m3;
+   await oneStep3Ms('setSetting', 'autoRunIndex', 2);
+
+   response = await oneStep3Ms('run', 'Acuity', 'Letters', 20000); // long delay for entire run
+   const runSuccess = response.success;
+
+   // restore settings
+   await oneStep3Ms('setSetting', 'distanceInCM', distanceInCM);
+   await oneStep3Ms('setSetting', 'calBarLengthInMM', calBarLengthInMM);
+   await oneStep3Ms('setSetting', 'nTrials08', nTrials08);
+   await oneStep3Ms('setSetting', 'responseInfoAtStart', responseInfoAtStart);
+   await oneStep3Ms('setSetting', 'autoRunIndex', autoRunIndex);
+
+   //console.info("sucessfully: ", runSuccess, " ran and restored.");
+}
+
+
+async function runRespondingCorrectly() {
+	let response, rChar;
+	await tellIframeReturningPromise3Ms('setSetting', 'preset', 'Testing');
+	tellIframe3Ms('run', 'acuity', 'LandoltC');
+	while (YES) {
+		response = await tellIframeReturningPromise3Ms('getValue', 'isInRun', '');
+		if (!response.m2) return;// run done
+		//response = await tellIframeReturningPromise3Ms('getValue', 'currentTrial', '');
+		response = await tellIframeReturningPromise3Ms('getValue', 'currentAlternative', '');
+		if (!response.success) return;
+		switch (response.m3) {
+			case 7: rChar = "3";  break;
+			case 6: rChar = "2";  break; // ↓
+			case 5: rChar = "1";  break;
+			case 4: rChar = "4";  break; // ←
+			case 3: rChar = "7";  break;
+			case 2: rChar = "8";  break; // ↑
+			case 1: rChar = "9";  break;
+			default: rChar = "6"; // 0, angle 0°: →
+		}
+		await pauseMilliseconds(100); // otherwise blindingly fast
+		response = await tellIframeReturningPromise3Ms('respondWithChar', rChar, '');
+		if (!response.success) return;
+	}
 }
