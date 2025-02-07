@@ -1,20 +1,26 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
-abstract: "This is my vision test battery."
+message: 'If you use this software, please cite it as below.'
+abstract: This is my vision test battery.
 authors:
   - family-names: Bach
     given-names: Michael
-    orcid: http://orcid.org/0000-0003-2028-535X
+    orcid: 'https://orcid.org/0000-0003-2028-535X'
 contact:
   - email: bach@uni-freiburg.de
-    name: "FrACT"
-title: "FrACT10"
+    name: FrACT
+title: FrACT10
 version: 1.6
 date-released: 2025-02-07
 identifiers:
-  - description: This is the latest paper on FrACT
+  - description: The latest (2025) paper on FrACT
     type: doi
     value: 10.1007/s00417-024-06638-z
+  - description: The 2007 paper on FrACT
+    type: doi
+    value: 10.1007/s00417-006-0474-4
+  - description: The original 1996 paper describing FrACT
+    type: doi
+    value: 10.1097/00006324-199601000-00008
 keywords:
   - vision
   - research
@@ -22,6 +28,4 @@ keywords:
   - contrast
   - psychophysics
 license: GPL-3.0
-repository-code: "https://github.com/michaelbach/FrACT10"
-
-# https://github.com/citation-file-format/citation-file-format/blob/main/schema-guide.md
+repository-code: 'https://github.com/michaelbach/FrACT10'

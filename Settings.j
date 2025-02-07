@@ -203,7 +203,7 @@ Created by mb on July 15, 2015.
 
 + (void) calculateMinMaxPossibleAcuity { //console.info("Settings>calculateMinMaxPossibleAcuity");
     let maxPossibleAcuityVal = [MiscSpace decVAFromStrokePixels: 1.0];
-    const screenSize = Math.min(window.screen.availHeight, window.screen.availWidth);
+    const screenSize = Math.min(window.screen.height, window.screen.width);
     const strokeMaximal = screenSize / (5 + [self margin4maxOptotypeIndex]); // leave a margin of ½·index around the largest optotype
     let minPossibleAcuityVal = [MiscSpace decVAFromStrokePixels: strokeMaximal];
     // Correction for threshold underestimation of ascending procedures (as opposed to our bracketing one)
