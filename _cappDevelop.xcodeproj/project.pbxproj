@@ -15,19 +15,21 @@
 		8A07B8412C919923007513BB /* Presets_ULV_Gensight.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A07B8402C919922007513BB /* Presets_ULV_Gensight.j */; };
 		8A07B8432C919BB9007513BB /* Presets_ESU.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A07B8422C919BB9007513BB /* Presets_ESU.j */; };
 		8A07B8452C919F0F007513BB /* Presets_BCM_Scheie.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A07B8442C919F0F007513BB /* Presets_BCM_Scheie.j */; };
-		8A1812E92D50062F00609E76 /* AboutAndHelpController.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A1812E22D50062F00609E76 /* AboutAndHelpController.m */; };
-		8A1812EA2D50062F00609E76 /* ControlDispatcher.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A1812E52D50062F00609E76 /* ControlDispatcher.h */; };
-		8A1812EB2D50062F00609E76 /* Dithering.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A1812E72D50062F00609E76 /* Dithering.h */; };
-		8A1812EC2D50062F00609E76 /* CardController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A1812E32D50062F00609E76 /* CardController.h */; };
-		8A1812ED2D50062F00609E76 /* Dithering.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A1812E82D50062F00609E76 /* Dithering.m */; };
-		8A1812EE2D50062F00609E76 /* CardController.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A1812E42D50062F00609E76 /* CardController.m */; };
-		8A1812EF2D50062F00609E76 /* AboutAndHelpController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A1812E12D50062F00609E76 /* AboutAndHelpController.h */; };
-		8A1812F02D50062F00609E76 /* ControlDispatcher.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A1812E62D50062F00609E76 /* ControlDispatcher.m */; };
-		8A2A28992D31A1D100ED47DC /* testHTMLMessaging.html in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2A28982D31A1D100ED47DC /* testHTMLMessaging.html */; };
 		8A2E1BEA2C941F0F00F6FE00 /* Presets_Hyper_TUDo.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2E1BE92C941F0F00F6FE00 /* Presets_Hyper_TUDo.j */; };
 		8A2E1BEC2C94225500F6FE00 /* Presets_AT_LeviLab.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2E1BEB2C94225500F6FE00 /* Presets_AT_LeviLab.j */; };
 		8A31C6542CDABD82009662A4 /* Presets_ETCF.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A31C6532CDABD82009662A4 /* Presets_ETCF.j */; };
 		8A3384C72AA11B3B000325D0 /* Info.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A3384C62AA11B3B000325D0 /* Info.plist */; };
+		8A3F88A12D5854A500183F76 /* CheckingContrastController.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A3F88A02D5854A500183F76 /* CheckingContrastController.j */; };
+		8A3F88A42D585A8D00183F76 /* CheckingContrastController.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A3F88A32D585A8D00183F76 /* CheckingContrastController.m */; };
+		8A3F88A52D585A8D00183F76 /* CheckingContrastController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A3F88A22D585A8D00183F76 /* CheckingContrastController.h */; };
+		8A3F88A82D585C6900183F76 /* AboutAndHelpController.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A3F88A72D585C6900183F76 /* AboutAndHelpController.m */; };
+		8A3F88A92D585C6900183F76 /* AboutAndHelpController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A3F88A62D585C6900183F76 /* AboutAndHelpController.h */; };
+		8A3F88AC2D585C8B00183F76 /* CardController.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A3F88AB2D585C8B00183F76 /* CardController.m */; };
+		8A3F88AD2D585C8B00183F76 /* CardController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A3F88AA2D585C8B00183F76 /* CardController.h */; };
+		8A3F88B02D585CAA00183F76 /* ControlDispatcher.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A3F88AE2D585CAA00183F76 /* ControlDispatcher.h */; };
+		8A3F88B12D585CAA00183F76 /* ControlDispatcher.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A3F88AF2D585CAA00183F76 /* ControlDispatcher.m */; };
+		8A3F88B42D585CBE00183F76 /* Dithering.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A3F88B22D585CBE00183F76 /* Dithering.h */; };
+		8A3F88B52D585CBE00183F76 /* Dithering.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A3F88B32D585CBE00183F76 /* Dithering.m */; };
 		8A438B3A2BAF77FE00B33287 /* Dithering.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A438B392BAF77FE00B33287 /* Dithering.j */; };
 		8A48269329CF4F260035607A /* MiscLight.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A48269229CF4F260035607A /* MiscLight.j */; };
 		8A48269529CF58F30035607A /* MiscSpace.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A48269429CF58F30035607A /* MiscSpace.j */; };
@@ -78,17 +80,24 @@
 			dstSubfolderSpec = 0;
 			files = (
 				8A07B8412C919923007513BB /* Presets_ULV_Gensight.j in CopyFiles */,
+				8A3F88A42D585A8D00183F76 /* CheckingContrastController.m in CopyFiles */,
+				8A3F88A52D585A8D00183F76 /* CheckingContrastController.h in CopyFiles */,
 				8A061F5F2A273800006B5CAD /* FractController.j in CopyFiles */,
 				8AAB43852A55825C00825E47 /* FractControllerAcuityL.j in CopyFiles */,
 				8AAB43862A55826300825E47 /* FractControllerAcuity.j in CopyFiles */,
-				8A2A28992D31A1D100ED47DC /* testHTMLMessaging.html in CopyFiles */,
 				8A438B3A2BAF77FE00B33287 /* Dithering.j in CopyFiles */,
 				8AAB43812A55825200825E47 /* FractControllerContrast.j in CopyFiles */,
+				8A3F88AC2D585C8B00183F76 /* CardController.m in CopyFiles */,
+				8A3F88AD2D585C8B00183F76 /* CardController.h in CopyFiles */,
 				8AAFB6022C0C8F5800E3BBEC /* ControlDispatcher.j in CopyFiles */,
 				8AAB43792A55821300825E47 /* MDBSimplestatistics.j in CopyFiles */,
 				8A48269329CF4F260035607A /* MiscLight.j in CopyFiles */,
+				8A3F88B02D585CAA00183F76 /* ControlDispatcher.h in CopyFiles */,
+				8A3F88B12D585CAA00183F76 /* ControlDispatcher.m in CopyFiles */,
 				8A07B8452C919F0F007513BB /* Presets_BCM_Scheie.j in CopyFiles */,
 				8AAB43882A55826300825E47 /* FractControllerAcuityE.j in CopyFiles */,
+				8A3F88A82D585C6900183F76 /* AboutAndHelpController.m in CopyFiles */,
+				8A3F88A92D585C6900183F76 /* AboutAndHelpController.h in CopyFiles */,
 				8AA45BB42C393726005F5951 /* FractControllerContrastDitherUnittest.j in CopyFiles */,
 				8AAB438F2A55826800825E47 /* Settings.j in CopyFiles */,
 				8AAB43872A55826300825E47 /* FractControllerAcuityC.j in CopyFiles */,
@@ -98,14 +107,6 @@
 				8AABF0DF2D50022600176166 /* AboutAndHelpController.j in CopyFiles */,
 				8AAB437F2A55824E00825E47 /* FractControllerContrastE.j in CopyFiles */,
 				8AAB43782A55820F00825E47 /* MDBButton.j in CopyFiles */,
-				8A1812E92D50062F00609E76 /* AboutAndHelpController.m in CopyFiles */,
-				8A1812EA2D50062F00609E76 /* ControlDispatcher.h in CopyFiles */,
-				8A1812EB2D50062F00609E76 /* Dithering.h in CopyFiles */,
-				8A1812EC2D50062F00609E76 /* CardController.h in CopyFiles */,
-				8A1812ED2D50062F00609E76 /* Dithering.m in CopyFiles */,
-				8A1812EE2D50062F00609E76 /* CardController.m in CopyFiles */,
-				8A1812EF2D50062F00609E76 /* AboutAndHelpController.h in CopyFiles */,
-				8A1812F02D50062F00609E76 /* ControlDispatcher.m in CopyFiles */,
 				8AE2AD332CE096BC00305C56 /* Presets_CNS_Freiburg.j in CopyFiles */,
 				8AAB43932A55826800825E47 /* Presets.j in CopyFiles */,
 				8A2E1BEA2C941F0F00F6FE00 /* Presets_Hyper_TUDo.j in CopyFiles */,
@@ -121,6 +122,7 @@
 				8AAB43892A55826800825E47 /* Misc.j in CopyFiles */,
 				8AAB43912A55826800825E47 /* RewardsController.j in CopyFiles */,
 				8A061F5A2A273350006B5CAD /* webAppServiceWorker.js in CopyFiles */,
+				8A3F88A12D5854A500183F76 /* CheckingContrastController.j in CopyFiles */,
 				8A061F5D2A2737F8006B5CAD /* AlternativesGenerator.j in CopyFiles */,
 				8A061F602A273809006B5CAD /* Globals.j in CopyFiles */,
 				8AAB437E2A55824B00825E47 /* FractControllerContrastG.j in CopyFiles */,
@@ -137,6 +139,8 @@
 				8AAB438D2A55826800825E47 /* ThresholderPest.j in CopyFiles */,
 				8A2E1BEC2C94225500F6FE00 /* Presets_AT_LeviLab.j in CopyFiles */,
 				8AAB43802A55825000825E47 /* FractControllerContrastC.j in CopyFiles */,
+				8A3F88B42D585CBE00183F76 /* Dithering.h in CopyFiles */,
+				8A3F88B52D585CBE00183F76 /* Dithering.m in CopyFiles */,
 				8A061F5E2A2737FC006B5CAD /* AppController.j in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
@@ -193,19 +197,21 @@
 		8A07B8402C919922007513BB /* Presets_ULV_Gensight.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_ULV_Gensight.j; sourceTree = "<group>"; };
 		8A07B8422C919BB9007513BB /* Presets_ESU.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_ESU.j; sourceTree = "<group>"; };
 		8A07B8442C919F0F007513BB /* Presets_BCM_Scheie.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_BCM_Scheie.j; sourceTree = "<group>"; };
-		8A1812E12D50062F00609E76 /* AboutAndHelpController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutAndHelpController.h; sourceTree = "<group>"; };
-		8A1812E22D50062F00609E76 /* AboutAndHelpController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutAndHelpController.m; sourceTree = "<group>"; };
-		8A1812E32D50062F00609E76 /* CardController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardController.h; sourceTree = "<group>"; };
-		8A1812E42D50062F00609E76 /* CardController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardController.m; sourceTree = "<group>"; };
-		8A1812E52D50062F00609E76 /* ControlDispatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ControlDispatcher.h; sourceTree = "<group>"; };
-		8A1812E62D50062F00609E76 /* ControlDispatcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ControlDispatcher.m; sourceTree = "<group>"; };
-		8A1812E72D50062F00609E76 /* Dithering.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dithering.h; sourceTree = "<group>"; };
-		8A1812E82D50062F00609E76 /* Dithering.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dithering.m; sourceTree = "<group>"; };
-		8A2A28982D31A1D100ED47DC /* testHTMLMessaging.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = testHTMLMessaging.html; sourceTree = "<group>"; };
 		8A2E1BE92C941F0F00F6FE00 /* Presets_Hyper_TUDo.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_Hyper_TUDo.j; sourceTree = "<group>"; };
 		8A2E1BEB2C94225500F6FE00 /* Presets_AT_LeviLab.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_AT_LeviLab.j; sourceTree = "<group>"; };
 		8A31C6532CDABD82009662A4 /* Presets_ETCF.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets_ETCF.j; sourceTree = "<group>"; };
 		8A3384C62AA11B3B000325D0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		8A3F88A02D5854A500183F76 /* CheckingContrastController.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = CheckingContrastController.j; sourceTree = SOURCE_ROOT; };
+		8A3F88A22D585A8D00183F76 /* CheckingContrastController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CheckingContrastController.h; path = .XcodeSupport/CheckingContrastController.h; sourceTree = "<group>"; };
+		8A3F88A32D585A8D00183F76 /* CheckingContrastController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CheckingContrastController.m; path = .XcodeSupport/CheckingContrastController.m; sourceTree = "<group>"; };
+		8A3F88A62D585C6900183F76 /* AboutAndHelpController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AboutAndHelpController.h; path = "/Users/bach/Library/Mobile Documents/com~apple~CloudDocs/Bach/Projekte/Websites/WWW-michaelbach-de/fract/FrACT10/_cappDevelop/.XcodeSupport/AboutAndHelpController.h"; sourceTree = "<absolute>"; };
+		8A3F88A72D585C6900183F76 /* AboutAndHelpController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AboutAndHelpController.m; path = "/Users/bach/Library/Mobile Documents/com~apple~CloudDocs/Bach/Projekte/Websites/WWW-michaelbach-de/fract/FrACT10/_cappDevelop/.XcodeSupport/AboutAndHelpController.m"; sourceTree = "<absolute>"; };
+		8A3F88AA2D585C8B00183F76 /* CardController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CardController.h; path = "/Users/bach/Library/Mobile Documents/com~apple~CloudDocs/Bach/Projekte/Websites/WWW-michaelbach-de/fract/FrACT10/_cappDevelop/.XcodeSupport/CardController.h"; sourceTree = "<absolute>"; };
+		8A3F88AB2D585C8B00183F76 /* CardController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CardController.m; path = "/Users/bach/Library/Mobile Documents/com~apple~CloudDocs/Bach/Projekte/Websites/WWW-michaelbach-de/fract/FrACT10/_cappDevelop/.XcodeSupport/CardController.m"; sourceTree = "<absolute>"; };
+		8A3F88AE2D585CAA00183F76 /* ControlDispatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ControlDispatcher.h; path = "/Users/bach/Library/Mobile Documents/com~apple~CloudDocs/Bach/Projekte/Websites/WWW-michaelbach-de/fract/FrACT10/_cappDevelop/.XcodeSupport/ControlDispatcher.h"; sourceTree = "<absolute>"; };
+		8A3F88AF2D585CAA00183F76 /* ControlDispatcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ControlDispatcher.m; path = "/Users/bach/Library/Mobile Documents/com~apple~CloudDocs/Bach/Projekte/Websites/WWW-michaelbach-de/fract/FrACT10/_cappDevelop/.XcodeSupport/ControlDispatcher.m"; sourceTree = "<absolute>"; };
+		8A3F88B22D585CBE00183F76 /* Dithering.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Dithering.h; path = "/Users/bach/Library/Mobile Documents/com~apple~CloudDocs/Bach/Projekte/Websites/WWW-michaelbach-de/fract/FrACT10/_cappDevelop/.XcodeSupport/Dithering.h"; sourceTree = "<absolute>"; };
+		8A3F88B32D585CBE00183F76 /* Dithering.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Dithering.m; path = "/Users/bach/Library/Mobile Documents/com~apple~CloudDocs/Bach/Projekte/Websites/WWW-michaelbach-de/fract/FrACT10/_cappDevelop/.XcodeSupport/Dithering.m"; sourceTree = "<absolute>"; };
 		8A438B392BAF77FE00B33287 /* Dithering.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Dithering.j; sourceTree = "<group>"; };
 		8A48269229CF4F260035607A /* MiscLight.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MiscLight.j; sourceTree = SOURCE_ROOT; };
 		8A48269429CF58F30035607A /* MiscSpace.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MiscSpace.j; sourceTree = SOURCE_ROOT; };
@@ -217,7 +223,7 @@
 		8A9C705F2BFE496000DD5E76 /* MDBTextField.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MDBTextField.j; sourceTree = "<group>"; };
 		8AA45BB32C393726005F5951 /* FractControllerContrastDitherUnittest.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = FractControllerContrastDitherUnittest.j; sourceTree = "<group>"; };
 		8AABF0DE2D50022600176166 /* AboutAndHelpController.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = AboutAndHelpController.j; sourceTree = "<group>"; };
-		8AAFB6012C0C8F5800E3BBEC /* ControlDispatcher.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = ControlDispatcher.j; sourceTree = "<group>"; };
+		8AAFB6012C0C8F5800E3BBEC /* ControlDispatcher.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = ControlDispatcher.j; sourceTree = SOURCE_ROOT; };
 		8ABDA6D4291A501000D68E3C /* capp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = capp; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACD7D512C0362BD00FE90C6 /* ThresholderNupMdown.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = ThresholderNupMdown.j; sourceTree = "<group>"; };
 		8AE2AD322CE096BC00305C56 /* Presets_CNS_Freiburg.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets_CNS_Freiburg.j; sourceTree = "<group>"; };
@@ -284,8 +290,9 @@
 				D7F842D1A68D8C133FA29CF9 /* Globals.j */,
 				2BD24D7590B3A2C0CF356A87 /* HierarchyController.j */,
 				6F8642B1B93603A5A204CC32 /* AppController.j */,
-				8AF26B642D4F6EBA0033A618 /* CardController.j */,
 				8AABF0DE2D50022600176166 /* AboutAndHelpController.j */,
+				8AF26B642D4F6EBA0033A618 /* CardController.j */,
+				8A3F88A02D5854A500183F76 /* CheckingContrastController.j */,
 				8AAFB6012C0C8F5800E3BBEC /* ControlDispatcher.j */,
 				9ADC4C46A65D7794540F1808 /* FractController.j */,
 				91B445DC96A0E8A06A4740E5 /* FractControllerAcuity.j */,
@@ -332,7 +339,6 @@
 				8ACD7D512C0362BD00FE90C6 /* ThresholderNupMdown.j */,
 				4A5547F8854B1200466F770F /* TrialHistoryController.j */,
 				8A061F592A273350006B5CAD /* webAppServiceWorker.js */,
-				8A2A28982D31A1D100ED47DC /* testHTMLMessaging.html */,
 			);
 			name = "Cappuccino Source";
 			sourceTree = SOURCE_ROOT;
@@ -348,14 +354,16 @@
 		A9994B45B2AC6ED08434DFD6 /* Cocoa Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8A1812E12D50062F00609E76 /* AboutAndHelpController.h */,
-				8A1812E22D50062F00609E76 /* AboutAndHelpController.m */,
-				8A1812E32D50062F00609E76 /* CardController.h */,
-				8A1812E42D50062F00609E76 /* CardController.m */,
-				8A1812E52D50062F00609E76 /* ControlDispatcher.h */,
-				8A1812E62D50062F00609E76 /* ControlDispatcher.m */,
-				8A1812E72D50062F00609E76 /* Dithering.h */,
-				8A1812E82D50062F00609E76 /* Dithering.m */,
+				8A3F88A62D585C6900183F76 /* AboutAndHelpController.h */,
+				8A3F88A72D585C6900183F76 /* AboutAndHelpController.m */,
+				8A3F88AA2D585C8B00183F76 /* CardController.h */,
+				8A3F88AB2D585C8B00183F76 /* CardController.m */,
+				8A3F88A22D585A8D00183F76 /* CheckingContrastController.h */,
+				8A3F88A32D585A8D00183F76 /* CheckingContrastController.m */,
+				8A3F88AE2D585CAA00183F76 /* ControlDispatcher.h */,
+				8A3F88AF2D585CAA00183F76 /* ControlDispatcher.m */,
+				8A3F88B22D585CBE00183F76 /* Dithering.h */,
+				8A3F88B32D585CBE00183F76 /* Dithering.m */,
 				91844612BA04B04966D2045C /* AlternativesGenerator.h */,
 				DED842598DD16F0DDDE21618 /* AlternativesGenerator.m */,
 				DEF24C8DA94A1A3BC22D7F49 /* AppController.h */,

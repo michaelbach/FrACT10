@@ -57,7 +57,8 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 
 /*
 #  History
-2025-02-07 calculateMinMaxPossibleAcuity now based on window.screen.higth/width, no longer on availHeight/width, correct for fullscreen testing; move more tests to testingSuite.js so testHTMLMessaging.html no longer necessary; cleanup panel collection, add CITATION.cff
+2025-02-09 factor out `CheckingContrastController` from `AppController` → cleaner code, and initialise to 10%
+2025-02-07 calculateMinMaxPossibleAcuity now based on window.screen.heigth/width, no longer on availHeight/width, correct for fullscreen testing; move more tests to testingSuite.js so testHTMLMessaging.html no longer necessary; cleanup panel collection, add CITATION.cff
 2025-02-03 factor out `AboutAndHelpController` from `AppController` – cleaner code,
  correct height in centerWindowOrPanel to account for header
 2025-02-02 factor out `CardController` from `AppController` – cleaner code

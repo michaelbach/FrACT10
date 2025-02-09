@@ -2321,7 +2321,7 @@ Maximum: 5px.
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ukk-GT-YCS">
                                             <rect key="frame" x="519" y="459" width="186" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Checking Contrast Calibration" id="1ks-bV-U8w">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="center" title="Checking Contrast Calibration" id="1ks-bV-U8w">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -2379,7 +2379,7 @@ Maximum: 5px.
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <binding destination="450" name="value" keyPath="checkContrastWeberFieldColor2" id="XTa-Bf-ei4"/>
+                                                <binding destination="Xof-Bh-cQU" name="value" keyPath="weberFieldColor2" id="WID-5b-DAq"/>
                                             </connections>
                                         </colorWell>
                                         <colorWell toolTip="Measure luminance in these 2 fields to calculate actual contrast." fixedFrame="YES" allowsExpansionToolTips="YES" bordered="NO" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpb-ue-CQK">
@@ -2387,7 +2387,7 @@ Maximum: 5px.
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <binding destination="450" name="value" keyPath="checkContrastWeberFieldColor1" id="F9D-jk-1Tu"/>
+                                                <binding destination="Xof-Bh-cQU" name="value" keyPath="weberFieldColor1" id="NAB-2O-blF"/>
                                             </connections>
                                         </colorWell>
                                         <button tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hIy-ej-UZL">
@@ -2401,7 +2401,7 @@ Maximum: 5px.
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="buttonCheckContrast_action:" target="450" id="oes-xR-e6l"/>
+                                                <action selector="buttonCheckContrast_action:" target="Xof-Bh-cQU" id="cij-jF-SWb"/>
                                             </connections>
                                         </button>
                                         <button tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0BV-zZ-cWy">
@@ -2415,7 +2415,7 @@ Maximum: 5px.
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="buttonCheckContrast_action:" target="450" id="yVK-WT-gaC"/>
+                                                <action selector="buttonCheckContrast_action:" target="Xof-Bh-cQU" id="XuR-5Y-zPG"/>
                                             </connections>
                                         </button>
                                         <button tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="79G-4d-smM">
@@ -2429,7 +2429,7 @@ Maximum: 5px.
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="buttonCheckContrast_action:" target="450" id="hYI-hY-PyK"/>
+                                                <action selector="buttonCheckContrast_action:" target="Xof-Bh-cQU" id="xbz-P2-vEg"/>
                                             </connections>
                                         </button>
                                         <button tag="4" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PK9-fk-lXd">
@@ -2443,7 +2443,7 @@ Maximum: 5px.
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="buttonCheckContrast_action:" target="450" id="mTw-IG-EMe"/>
+                                                <action selector="buttonCheckContrast_action:" target="Xof-Bh-cQU" id="GFh-Je-3ee"/>
                                             </connections>
                                         </button>
                                         <button tag="5" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TKw-fV-GSt">
@@ -2457,7 +2457,7 @@ Maximum: 5px.
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="buttonCheckContrast_action:" target="450" id="Xde-Bx-Okk"/>
+                                                <action selector="buttonCheckContrast_action:" target="Xof-Bh-cQU" id="B0F-ua-eNQ"/>
                                             </connections>
                                         </button>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="B51-it-99X" userLabel="actual contrast">
@@ -2472,7 +2472,7 @@ Maximum: 5px.
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <connections>
-                                                <binding destination="450" name="value" keyPath="checkContrastActualMichelsonPercent" id="HRE-Cj-yPN"/>
+                                                <binding destination="Xof-Bh-cQU" name="value" keyPath="actualMichelsonPercent" id="Dfg-Qg-aTc"/>
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eau-sb-iUa">
@@ -2529,7 +2529,7 @@ Maximum: 5px.
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <connections>
-                                                <binding destination="450" name="value" keyPath="checkContrastActualWeberPercent" id="fMh-WG-LLt"/>
+                                                <binding destination="Xof-Bh-cQU" name="value" keyPath="actualWeberPercent" id="PUi-QK-HiY"/>
                                             </connections>
                                         </textField>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lcc-Iq-YtQ">
@@ -3636,6 +3636,7 @@ have a standardized size (ISO/IEC 7810:2019)</string>
                 <outlet property="plasticCardPanel" destination="Wcf-tk-C3n" id="Mdh-3L-pBY"/>
             </connections>
         </customObject>
+        <customObject id="Xof-Bh-cQU" customClass="CheckingContrastController"/>
         <customObject id="UIp-33-ymo" userLabel="AboutAndHelpController" customClass="AboutAndHelpController">
             <connections>
                 <outlet property="aboutPanel" destination="ErU-UN-jpI" id="5H1-aZ-KYP"/>

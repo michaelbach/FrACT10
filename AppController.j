@@ -31,7 +31,7 @@
 @import "ControlDispatcher.j"
 @import "CardController.j"
 @import "AboutAndHelpController.j"
-
+@import "CheckingContrastController.j"
 
 /**
  AppController
@@ -60,10 +60,6 @@
     BOOL runAborted @accessors;
     BOOL is4orientations @accessors;
     id allPanels, allTestControllers;
-    CPColor checkContrastWeberFieldColor1 @accessors;
-    CPColor checkContrastWeberFieldColor2 @accessors;
-    float checkContrastActualWeberPercent @accessors;
-    float checkContrastActualMichelsonPercent @accessors;
     int settingsPaneTabViewSelectedIndex @accessors;
     float calBarLengthInMMbefore;
     CPColor colorOfBestPossibleAcuity @accessors;
@@ -183,7 +179,6 @@
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:CPUserDefaultsDidChangeNotification object: nil];
 
     [self radioButtonsAcuityBwOrColor_action: null];
-    [self buttonCheckContrast_action: null];
 
     [Settings setAutoRunIndex: kAutoRunIndexNone]; // make sure it's not accidentally on
 
@@ -481,41 +476,6 @@
         [radioButtonAcuityBW setState: ([Settings isAcuityColor] ? CPOffState : CPOnState)];
         [radioButtonAcuityColor setState: ([Settings isAcuityColor] ? CPOnState : CPOffState)];
     }
-}
-
-
-- (IBAction) buttonCheckContrast_action: (id) sender { //console.info("AppController>buttonCheckContrast_action");
-    const tag = [sender tag], contrastsPercent = [1, 3, 10, 30, 90];
-    let contrastWeberPercent = 0;
-    if ((tag > 0) && (tag <= 5))  contrastWeberPercent = contrastsPercent[tag - 1];
-    const contrastLogCSWeber = [MiscLight contrastLogCSWeberFromWeberPercent: contrastWeberPercent];
-    //    console.log(tag, contrastWeberPercent, contrastLogCSWeber)
-    let gray1 = [MiscLight lowerLuminanceFromContrastLogCSWeber: contrastLogCSWeber];
-    gray1 = [MiscLight devicegrayFromLuminance: gray1];
-    let gray2 = [MiscLight upperLuminanceFromContrastLogCSWeber: contrastLogCSWeber];
-    gray2 = [MiscLight devicegrayFromLuminance: gray2];
-    if (![Settings contrastDarkOnLight]) {
-        [gray1, gray2] = [gray2, gray1]; // "modern" swapping of variables
-    }
-    //console.log("Wperc ", contrastWeberPercent, ", lgCSW ", contrastLogCSWeber, ", g1 ", gray1, ", g2 ", gray2);
-
-    //const c1 = [CPColor colorWithWhite: gray1 alpha: 1], c2 = [CPColor colorWithWhite: gray2 alpha: 1];
-    let c1 = [MiscLight colorFromGreyBitStealed: gray1];
-    let c2 = [MiscLight colorFromGreyBitStealed: gray2];
-    if ([Settings contrastDithering]) {
-        c1 = [CPColor colorWithPatternImage: [Dithering image3x3withGray: gray1]];
-        c2 = [CPColor colorWithPatternImage: [Dithering image3x3withGray: gray2]];
-    }
-    [self setCheckContrastWeberFieldColor1: c1];
-    [self setCheckContrastWeberFieldColor2: c2];
-    let actualMichelsonPerc = [MiscLight contrastMichelsonPercentFromColor1: c1 color2: c2];
-    let actualWeberPerc = [MiscLight contrastWeberPercentFromMichelsonPercent: actualMichelsonPerc];
-    if ([Settings contrastDithering]) {
-        actualMichelsonPerc = [MiscLight contrastMichelsonPercentFromWeberPercent: contrastWeberPercent];
-        actualWeberPerc = contrastWeberPercent;
-    }
-    [self setCheckContrastActualMichelsonPercent: Math.round(actualMichelsonPerc * 10) / 10];
-    [self setCheckContrastActualWeberPercent: Math.round(actualWeberPerc * 10) / 10];
 }
 
 

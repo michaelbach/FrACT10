@@ -1,6 +1,7 @@
 /* History
    =======
 
+2025-02-08 had added more tests, now add look at Settings in fullscreen
 2025-02-02 fix regression: restore demo run
 2025-01-30 move fullscreen to front, otherwise won't work (delay user interaction??)
 2025-01-28 add grating shapes, cleanup
@@ -81,6 +82,68 @@ const doDemoRun = () => {
 }
 
 
+async function demoRunAndRestore() {
+   let response = await oneStep3Ms('getSetting', 'distanceInCM', '');
+   const distanceInCM = response.m3;
+   await oneStep3Ms('setSetting', 'distanceInCM', 400);
+
+   response = await oneStep3Ms('getSetting', 'calBarLengthInMM', '');
+   const calBarLengthInMM = response.m3; // store for later restore
+   await oneStep3Ms('setSetting', 'calBarLengthInMM', 170);
+
+   response = await oneStep3Ms('getSetting', 'nTrials08', '');
+   const nTrials08 = response.m3;
+   await oneStep3Ms('setSetting', 'nTrials08', 12);
+
+   response = await oneStep3Ms('getSetting', 'responseInfoAtStart', '');
+   const responseInfoAtStart = response.m3;
+   await oneStep3Ms('setSetting', 'responseInfoAtStart', 0);
+
+   response = await oneStep3Ms('getSetting', 'autoRunIndex', '');
+   const autoRunIndex = response.m3;
+   await oneStep3Ms('setSetting', 'autoRunIndex', 2);
+
+   response = await oneStep3Ms('run', 'Acuity', 'Letters', 20000); // long delay for entire run
+   const runSuccess = response.success;
+
+   // restore settings
+   await oneStep3Ms('setSetting', 'distanceInCM', distanceInCM);
+   await oneStep3Ms('setSetting', 'calBarLengthInMM', calBarLengthInMM);
+   await oneStep3Ms('setSetting', 'nTrials08', nTrials08);
+   await oneStep3Ms('setSetting', 'responseInfoAtStart', responseInfoAtStart);
+   await oneStep3Ms('setSetting', 'autoRunIndex', autoRunIndex);
+
+   //console.info("sucessfully: ", runSuccess, " ran and restored.");
+}
+
+
+async function runRespondingCorrectly() {
+	let response, rChar;
+	await tellIframeReturningPromise3Ms('setSetting', 'preset', 'Testing');
+	tellIframe3Ms('run', 'acuity', 'LandoltC');
+	while (YES) {
+		response = await tellIframeReturningPromise3Ms('getValue', 'isInRun', '');
+		if (!response.m2) return;// run done
+		//response = await tellIframeReturningPromise3Ms('getValue', 'currentTrial', '');
+		response = await tellIframeReturningPromise3Ms('getValue', 'currentAlternative', '');
+		if (!response.success) return;
+		switch (response.m3) {
+			case 7: rChar = "3";  break;
+			case 6: rChar = "2";  break; // ↓
+			case 5: rChar = "1";  break;
+			case 4: rChar = "4";  break; // ←
+			case 3: rChar = "7";  break;
+			case 2: rChar = "8";  break; // ↑
+			case 1: rChar = "9";  break;
+			default: rChar = "6"; // 0, angle 0°: →
+		}
+		await pauseMilliseconds(100); // otherwise blindingly fast
+		response = await tellIframeReturningPromise3Ms('respondWithChar', rChar, '');
+		if (!response.success) return;
+	}
+}
+
+
 const testingSuite = async () => {
 	const kCrowdingTypeMax = 6; /* 6 */
 	const kPaneMax = 5; /* 5 */
@@ -104,6 +167,10 @@ const testingSuite = async () => {
 	addText(" ↓ Test fullscreen");
 	await oneStep3Ms('setFullScreen', YES, '');/* do this later, doesn't work any more ??? */
 	await pauseMilliseconds(PauseViewMS * 1.5);  /* security issue? */
+	await oneStep3Ms('settingsPane', 0, '');
+	await pauseMilliseconds(PauseViewMS);
+	await oneStep3Ms('settingsPane', -1, '');
+	await pauseMilliseconds(PauseViewMS);
 	await oneStep3Ms('setFullScreen', NO, '');
 	addText("↑ tested fullscreen\n");
 	await pauseMilliseconds(PauseViewMS);
@@ -228,66 +295,4 @@ const testingSuite = async () => {
 	response = await oneStep3Ms('xxxx', 'xxxx', 'xxxxxx');
 	*/
 
-}
-
-
-async function demoRunAndRestore() {
-   let response = await oneStep3Ms('getSetting', 'distanceInCM', '');
-   const distanceInCM = response.m3;
-   await oneStep3Ms('setSetting', 'distanceInCM', 400);
-
-   response = await oneStep3Ms('getSetting', 'calBarLengthInMM', '');
-   const calBarLengthInMM = response.m3; // store for later restore
-   await oneStep3Ms('setSetting', 'calBarLengthInMM', 170);
-
-   response = await oneStep3Ms('getSetting', 'nTrials08', '');
-   const nTrials08 = response.m3;
-   await oneStep3Ms('setSetting', 'nTrials08', 12);
-
-   response = await oneStep3Ms('getSetting', 'responseInfoAtStart', '');
-   const responseInfoAtStart = response.m3;
-   await oneStep3Ms('setSetting', 'responseInfoAtStart', 0);
-
-   response = await oneStep3Ms('getSetting', 'autoRunIndex', '');
-   const autoRunIndex = response.m3;
-   await oneStep3Ms('setSetting', 'autoRunIndex', 2);
-
-   response = await oneStep3Ms('run', 'Acuity', 'Letters', 20000); // long delay for entire run
-   const runSuccess = response.success;
-
-   // restore settings
-   await oneStep3Ms('setSetting', 'distanceInCM', distanceInCM);
-   await oneStep3Ms('setSetting', 'calBarLengthInMM', calBarLengthInMM);
-   await oneStep3Ms('setSetting', 'nTrials08', nTrials08);
-   await oneStep3Ms('setSetting', 'responseInfoAtStart', responseInfoAtStart);
-   await oneStep3Ms('setSetting', 'autoRunIndex', autoRunIndex);
-
-   //console.info("sucessfully: ", runSuccess, " ran and restored.");
-}
-
-
-async function runRespondingCorrectly() {
-	let response, rChar;
-	await tellIframeReturningPromise3Ms('setSetting', 'preset', 'Testing');
-	tellIframe3Ms('run', 'acuity', 'LandoltC');
-	while (YES) {
-		response = await tellIframeReturningPromise3Ms('getValue', 'isInRun', '');
-		if (!response.m2) return;// run done
-		//response = await tellIframeReturningPromise3Ms('getValue', 'currentTrial', '');
-		response = await tellIframeReturningPromise3Ms('getValue', 'currentAlternative', '');
-		if (!response.success) return;
-		switch (response.m3) {
-			case 7: rChar = "3";  break;
-			case 6: rChar = "2";  break; // ↓
-			case 5: rChar = "1";  break;
-			case 4: rChar = "4";  break; // ←
-			case 3: rChar = "7";  break;
-			case 2: rChar = "8";  break; // ↑
-			case 1: rChar = "9";  break;
-			default: rChar = "6"; // 0, angle 0°: →
-		}
-		await pauseMilliseconds(100); // otherwise blindingly fast
-		response = await tellIframeReturningPromise3Ms('respondWithChar', rChar, '');
-		if (!response.success) return;
-	}
 }
