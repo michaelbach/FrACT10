@@ -127,7 +127,7 @@ Created by mb on July 15, 2015.
     [self setNoiseContrast: [self checkNum: [self noiseContrast] dflt: 50 min: 0 max: 100 set: set]];
 
     // Acuity stuff
-    [self setIsAcuityColor: [self checkBool: [self isAcuityColor] dflt: NO set: set]];
+    [self setAcuityColor: [self checkBool: [self isAcuityColor] dflt: NO set: set]];
     [self setObliqueOnly: [self checkBool: [self obliqueOnly] dflt: NO set: set]]; // only applies to acuity with 4 Landolt orienations
     [self setContrastAcuityWeber: [self checkNum: [self contrastAcuityWeber] dflt: 100 min: -1E6 max: 100 set: set]];
     [self calculateAcuityForeBackColorsFromContrast];
@@ -611,7 +611,7 @@ Created by mb on July 15, 2015.
 + (BOOL) isAcuityColor {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "isAcuityColor"];
 }
-+ (void) setIsAcuityColor: (BOOL) val {
++ (void) setAcuityColor: (BOOL) val {
     [[CPUserDefaults standardUserDefaults] setBool: val forKey: "isAcuityColor"];
 }
 

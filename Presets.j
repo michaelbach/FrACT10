@@ -108,7 +108,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             break;
         case "Color Equiluminance": // near equiluminant color acuity
             [self applyTestingPresets];
-            [Settings setIsAcuityColor: YES];
+            [Settings setAcuityColor: YES];
             [Settings setAcuityForeColor: [CPColor redColor]];
             [Settings setAcuityBackColor: [CPColor colorWithRed: 0 green: 0.70 blue: 0 alpha: 1]];// dark green, near equiluminant to red
             [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil];

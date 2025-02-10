@@ -205,7 +205,7 @@
 
 + (void) setColorSettingNamed: (CPString) sName { //console.info("setSettingNamed: ", sName);
     if (["acuityForeColor", "acuityBackColor"].includes(m2)) {
-        [Settings setIsAcuityColor: YES];
+        [Settings setAcuityColor: YES];
     }
     if (["gratingForeColor", "gratingBackColor"].includes(m2)) {
         [Settings setIsGratingColor: YES];
