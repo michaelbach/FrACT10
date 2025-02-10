@@ -208,7 +208,7 @@
         [Settings setAcuityColor: YES];
     }
     if (["gratingForeColor", "gratingBackColor"].includes(m2)) {
-        [Settings setIsGratingColor: YES];
+        [Settings setGratingColor: YES];
     }
     const sNameCapped = sName.charAt(0).toUpperCase() + sName.slice(1);
     let setter = CPSelectorFromString("set" + sNameCapped + ":");
