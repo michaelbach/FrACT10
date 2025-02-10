@@ -179,7 +179,7 @@ Created by mb on July 15, 2015.
 
     // Grating stuff
     [self setGratingCPD: [self checkNum: [self gratingCPD] dflt: 2.0 min: 0.01 max: 18 set: set]];
-    [self setIsGratingMasked: [self checkBool: [self isGratingMasked] dflt: NO set: set]];
+    [self setGratingMasked: [self checkBool: [self isGratingMasked] dflt: NO set: set]];
     [self setGratingDiaInDeg: [self checkNum: [self gratingDiaInDeg] dflt: 10.0 min: 1.0 max: 50 set: set]];
     [self setGratingUseErrorDiffusion: [self checkBool: [self gratingUseErrorDiffusion] dflt: YES set: set]];
     [self setGratingShapeIndex: [self checkNum: [self gratingShapeIndex] dflt: 0 min: 0 max: kGratingShapeIndexCheckerboard set: set]];
@@ -944,7 +944,7 @@ Created by mb on July 15, 2015.
 + (BOOL) isGratingMasked {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "isGratingMasked"];
 }
-+ (void) setIsGratingMasked: (BOOL) val {
++ (void) setGratingMasked: (BOOL) val {
     [[CPUserDefaults standardUserDefaults] setBool: val forKey: "isGratingMasked"];
 }
 + (float) gratingDiaInDeg {
