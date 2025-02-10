@@ -1070,7 +1070,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="450" name="hidden" keyPath="is4orientations" id="Xb3-Hu-0Vp">
+                                                            <binding destination="450" name="hidden" keyPath="has4orientations" id="63X-Oo-475">
                                                                 <dictionary key="options">
                                                                     <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                                                                     <string key="NSValueTransformerName">NSNegateBoolean</string>

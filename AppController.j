@@ -58,7 +58,7 @@
     FractController currentFractController;
     BOOL settingsNeededNewDefaults;
     BOOL runAborted @accessors;
-    BOOL is4orientations @accessors;
+    BOOL has4orientations @accessors;
     id allPanels, allTestControllers;
     int settingsPaneTabViewSelectedIndex @accessors;
     float calBarLengthInMMbefore;
@@ -203,7 +203,7 @@
  Observe changes in the settings panel, making sure dependencies are updated
  */
 - (void) settingsDidChange: (CPNotification) aNotification { //console.info("settingsDidChange");
-    [self setIs4orientations: ([Settings nAlternatives] == 4)];
+    [self setHas4orientations: ([Settings nAlternatives] == 4)];
     [selfWindow setBackgroundColor: [self windowBackgroundColor]];
     if ([Settings minPossibleLogMAR] > 0) { // red: not good enough for normal vision
         [self setColorOfBestPossibleAcuity: [CPColor redColor]];
