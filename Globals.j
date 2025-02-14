@@ -57,6 +57,9 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 
 /*
 #  History
+ add `MDBLabel.j` which grays out when disabled, used for all labels;
+ remove some unneccesary `@import`s;
+ rename boolean properties from `setIsXXX` to `isXXX`, also for pertinent setters
 2025-02-09 factor out `CheckingContrastController` from `AppController` → cleaner code, and initialise to 10%
 2025-02-07 calculateMinMaxPossibleAcuity now based on window.screen.heigth/width, no longer on availHeight/width, correct for fullscreen testing; move more tests to testingSuite.js so testHTMLMessaging.html no longer necessary; cleanup panel collection, add CITATION.cff
 2025-02-03 factor out `AboutAndHelpController` from `AppController` – cleaner code,

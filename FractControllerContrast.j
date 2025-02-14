@@ -7,6 +7,7 @@ FractControllerContrast.j
 Created by Bach on 2020-09-02
 */
 
+@import "FractController.j"
 @import "Dithering.j"
 
 

@@ -8,7 +8,6 @@
             slight simplification of the rects & colors
 */
 
-@import "MDBButton.j"
 @import "HierarchyController.j"
 
 /**

@@ -866,7 +866,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                             <outlet property="nextKeyView" destination="WCS-rL-YCa" id="6si-79-mnR"/>
                                                         </connections>
                                                     </button>
-                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TdC-iT-hRA">
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TdC-iT-hRA" customClass="MDBLabel">
                                                         <rect key="frame" x="70" y="20" width="76" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Duration [s]" id="tjD-PX-7eX">
@@ -874,6 +874,9 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.rewardPicturesWhenDone" id="yCs-a7-elh"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField toolTip="How long the “rewarding” picture will stay on screen (it obscures the buttons)." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w75-A9-ahy">
                                                         <rect key="frame" x="24" y="17" width="40" height="22"/>
@@ -884,6 +887,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.rewardPicturesWhenDone" id="Q1V-Sj-kY5"/>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.timeoutRewardPicturesInSeconds" id="JVm-dc-Wac"/>
                                                             <outlet property="nextKeyView" destination="sNY-mP-vcW" id="xcs-zY-kJA"/>
                                                         </connections>
@@ -1517,7 +1521,7 @@ No money transfer involved, just for size!     </string>
                                                 <binding destination="izh-pU-csC" name="enabled" keyPath="values.isAcuityColor" id="RDK-pm-IBz"/>
                                             </connections>
                                         </colorWell>
-                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3IW-SR-qta">
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3IW-SR-qta" customClass="MDBLabel">
                                             <rect key="frame" x="204" y="375" width="163" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Fore- / background color" id="4Cc-fv-th1">
@@ -1525,6 +1529,9 @@ No money transfer involved, just for size!     </string>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="enabled" keyPath="values.isAcuityColor" id="xWo-k6-VBm"/>
+                                            </connections>
                                         </textField>
                                         <button toolTip="Optotypes/Background in black/white or gray, their gray values defined by the Weber contrast. " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PDt-dH-Qlh">
                                             <rect key="frame" x="33" y="415" width="48" height="18"/>
@@ -1920,7 +1927,7 @@ No money transfer involved, just for size!     </string>
                                                 <outlet property="nextKeyView" destination="LER-FX-oqj" id="XO2-i3-tYg"/>
                                             </connections>
                                         </textField>
-                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mmc-E5-4VD">
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mmc-E5-4VD" customClass="MDBLabel">
                                             <rect key="frame" x="253" y="418" width="267" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Optotype contrast (%Weber, –∞ to +100%)" id="KZk-ya-a9s">
@@ -1928,6 +1935,13 @@ No money transfer involved, just for size!     </string>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="enabled" keyPath="values.isAcuityColor" id="WEQ-C8-XP9">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1GB-4d-RW0">
                                             <rect key="frame" x="131" y="256" width="173" height="16"/>
@@ -2546,7 +2560,7 @@ Maximum: 5px.
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.contrastDarkOnLight" id="PIh-Zv-JmK"/>
                                             </connections>
                                         </button>
-                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Ya-Ka-mo9">
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Ya-Ka-mo9" customClass="MDBLabel">
                                             <rect key="frame" x="210" y="382" width="88" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Duration [ms]" id="jvL-kO-9E9">
@@ -2554,6 +2568,9 @@ Maximum: 5px.
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="enabled" keyPath="values.contrastShowFixMark" id="f7R-iN-kVk"/>
+                                            </connections>
                                         </textField>
                                         <button toolTip="lets a blue star appear before optotype; otherwise unclear if something has happened at all. " fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V4a-x9-twk">
                                             <rect key="frame" x="16" y="374" width="162" height="35"/>
@@ -2685,7 +2702,7 @@ If you go very close or you may be able to resolve the pattern.
                                                 <outlet property="nextKeyView" destination="LmQ-Fz-Lv8" id="13t-db-3tX"/>
                                             </connections>
                                         </textField>
-                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hZM-uL-nCM">
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hZM-uL-nCM" customClass="MDBLabel">
                                             <rect key="frame" x="244" y="346" width="88" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Duration the brief blue fixation star is visible.
@@ -2696,6 +2713,9 @@ If you go very close or you may be able to resolve the pattern.
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="enabled" keyPath="values.contrastShowFixMark" id="NUy-jG-jpY"/>
+                                            </connections>
                                         </textField>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZzJ-Vk-cFB">
                                             <rect key="frame" x="30" y="338" width="162" height="35"/>
@@ -2748,7 +2768,7 @@ If you go very close or you may be able to resolve the pattern.
                                                 <outlet property="nextKeyView" destination="90M-mp-MA9" id="62G-E9-Uht"/>
                                             </connections>
                                         </textField>
-                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pvM-K3-tHf">
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pvM-K3-tHf" customClass="MDBLabel">
                                             <rect key="frame" x="244" y="302" width="96" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Diameter of the circular grating patch.
@@ -2759,6 +2779,9 @@ If you go very close or you may be able to resolve the pattern.
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="enabled" keyPath="values.isGratingMasked" id="UEv-BE-kK7"/>
+                                            </connections>
                                         </textField>
                                         <button toolTip="If checked, very low contrast gratings are better defined by using &quot;error diffusion&quot;, akin to dithering." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YfI-9f-dKI">
                                             <rect key="frame" x="191" y="395" width="140" height="18"/>
@@ -2811,7 +2834,7 @@ If you go very close or you may be able to resolve the pattern.
                                                 <rect key="frame" x="4" y="5" width="292" height="148"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pNw-bT-yk9">
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pNw-bT-yk9" customClass="MDBLabel">
                                                         <rect key="frame" x="86" y="103" width="147" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Spatial frequency [cpd]" id="y64-or-Lub">
@@ -2819,6 +2842,13 @@ If you go very close or you may be able to resolve the pattern.
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.what2sweepIndex" id="okc-wT-jYM">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
                                                     </textField>
                                                     <comboBox toolTip="Spatial frequency of the grating whose threshold contrast is to be assessed. Unit: Cycles per degree (cpd)." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oxA-rK-pLZ" userLabel="gratingCPD">
                                                         <rect key="frame" x="19" y="99" width="64" height="25"/>
@@ -2880,7 +2910,7 @@ If you go very close or you may be able to resolve the pattern.
                                                             <outlet property="nextKeyView" destination="9rY-ds-9po" id="BjZ-FP-zz0"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4f-1p-ouL">
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4f-1p-ouL" customClass="MDBLabel">
                                                         <rect key="frame" x="72" y="66" width="174" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="left" title="Min. spatial frequency [cpd]" id="VUO-Pv-UfV">
@@ -2889,10 +2919,10 @@ If you go very close or you may be able to resolve the pattern.
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.what2SweepIndex" id="khA-NJ-DGl"/>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.what2sweepIndex" id="TWJ-Id-AsV"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SVX-0A-0LO">
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SVX-0A-0LO" customClass="MDBLabel">
                                                         <rect key="frame" x="72" y="28" width="178" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="left" title="Max. spatial frequency [cpd]" id="saD-Ir-zsH">
@@ -2900,6 +2930,9 @@ If you go very close or you may be able to resolve the pattern.
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.what2sweepIndex" id="dct-ZE-smG"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9rY-ds-9po">
                                                         <rect key="frame" x="20" y="27" width="45" height="21"/>
@@ -2919,7 +2952,7 @@ If you go very close or you may be able to resolve the pattern.
                                                             <outlet property="nextKeyView" destination="5wI-LE-Ld6" id="tPg-hg-G0B"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="stP-0s-NAS">
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="stP-0s-NAS" customClass="MDBLabel">
                                                         <rect key="frame" x="72" y="102" width="128" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="left" title="Grating contrast [%]" id="ieo-dc-gnw">
@@ -2927,6 +2960,9 @@ If you go very close or you may be able to resolve the pattern.
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.what2sweepIndex" id="KFO-kz-g5f"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="90M-mp-MA9">
                                                         <rect key="frame" x="20" y="101" width="45" height="21"/>
@@ -2975,7 +3011,7 @@ If you go very close or you may be able to resolve the pattern.
                                                 <binding destination="izh-pU-csC" name="enabled" keyPath="values.isGratingColor" id="qTb-en-m8x"/>
                                             </connections>
                                         </colorWell>
-                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BKg-g2-B0t">
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BKg-g2-B0t" customClass="MDBLabel">
                                             <rect key="frame" x="546" y="357" width="163" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Fore- / background color" id="8g7-YS-1n7">
@@ -2983,6 +3019,9 @@ If you go very close or you may be able to resolve the pattern.
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="enabled" keyPath="values.isGratingColor" id="IWk-tO-p1C"/>
+                                            </connections>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ysm-ie-p3K">
                                             <rect key="frame" x="434" y="403" width="74" height="18"/>
@@ -3224,7 +3263,7 @@ CQ
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.noiseContrast" id="bQz-5P-746"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gi7-O1-RRp">
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gi7-O1-RRp" customClass="MDBLabel">
                                                         <rect key="frame" x="195" y="13" width="16" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="%" id="kXq-c9-atD">
@@ -3232,6 +3271,9 @@ CQ
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.embedInNoise" id="K1V-kZ-fGu"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                             </view>
@@ -4693,6 +4735,16 @@ Type any unused key to exit this module.
             </view>
             <point key="canvasLocation" x="-101" y="759"/>
         </window>
+        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="xlm-zb-crD">
+            <rect key="frame" x="0.0" y="0.0" width="37" height="16"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="ymK-iS-zhY">
+                <font key="font" usesAppearanceFont="YES"/>
+                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+            </textFieldCell>
+            <point key="canvasLocation" x="-595" y="14"/>
+        </textField>
     </objects>
     <resources>
         <image name="FrACT_icon-390" width="390" height="390"/>

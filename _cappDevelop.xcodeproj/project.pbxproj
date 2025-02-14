@@ -69,6 +69,8 @@
 		8AAFB6022C0C8F5800E3BBEC /* ControlDispatcher.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AAFB6012C0C8F5800E3BBEC /* ControlDispatcher.j */; };
 		8ACD7D522C0362BD00FE90C6 /* ThresholderNupMdown.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8ACD7D512C0362BD00FE90C6 /* ThresholderNupMdown.j */; };
 		8AE2AD332CE096BC00305C56 /* Presets_CNS_Freiburg.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AE2AD322CE096BC00305C56 /* Presets_CNS_Freiburg.j */; };
+		8AE548312D5F623F008DED70 /* MDBLabel.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AE548302D5F623F008DED70 /* MDBLabel.j */; };
+		8AE548352D5F63CB008DED70 /* MDBLabel.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AE548342D5F63CB008DED70 /* MDBLabel.j */; };
 		8AF26B652D4F6EBA0033A618 /* CardController.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AF26B642D4F6EBA0033A618 /* CardController.j */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +102,7 @@
 				8A3F88A92D585C6900183F76 /* AboutAndHelpController.h in CopyFiles */,
 				8AA45BB42C393726005F5951 /* FractControllerContrastDitherUnittest.j in CopyFiles */,
 				8AAB438F2A55826800825E47 /* Settings.j in CopyFiles */,
+				8AE548312D5F623F008DED70 /* MDBLabel.j in CopyFiles */,
 				8AAB43872A55826300825E47 /* FractControllerAcuityC.j in CopyFiles */,
 				8A4D57002D00AF8C00980A21 /* Presets_HYPERION.j in CopyFiles */,
 				8AAB43922A55826800825E47 /* TrialHistoryController.j in CopyFiles */,
@@ -115,6 +118,7 @@
 				8AAB43822A55825500825E47 /* FractControllerAcuityVernier.j in CopyFiles */,
 				8AAB437D2A55824900825E47 /* FractControllerContrastLett.j in CopyFiles */,
 				8A07B8432C919BB9007513BB /* Presets_ESU.j in CopyFiles */,
+				8AE548352D5F63CB008DED70 /* MDBLabel.j in CopyFiles */,
 				8ACD7D522C0362BD00FE90C6 /* ThresholderNupMdown.j in CopyFiles */,
 				8A48269529CF58F30035607A /* MiscSpace.j in CopyFiles */,
 				8A3384C72AA11B3B000325D0 /* Info.plist in CopyFiles */,
@@ -227,6 +231,8 @@
 		8ABDA6D4291A501000D68E3C /* capp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = capp; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACD7D512C0362BD00FE90C6 /* ThresholderNupMdown.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = ThresholderNupMdown.j; sourceTree = "<group>"; };
 		8AE2AD322CE096BC00305C56 /* Presets_CNS_Freiburg.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets_CNS_Freiburg.j; sourceTree = "<group>"; };
+		8AE548302D5F623F008DED70 /* MDBLabel.j */ = {isa = PBXFileReference; lastKnownFileType = text; path = MDBLabel.j; sourceTree = "<group>"; };
+		8AE548342D5F63CB008DED70 /* MDBLabel.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = MDBLabel.j; sourceTree = "<group>"; };
 		8AF26B642D4F6EBA0033A618 /* CardController.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = CardController.j; sourceTree = SOURCE_ROOT; };
 		90444B1A970FC75C0FF93DB7 /* FractControllerContrastE.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerContrastE.j; sourceTree = SOURCE_ROOT; };
 		91844612BA04B04966D2045C /* AlternativesGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AlternativesGenerator.h; path = .XcodeSupport/AlternativesGenerator.h; sourceTree = SOURCE_ROOT; };
@@ -288,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				D7F842D1A68D8C133FA29CF9 /* Globals.j */,
+				8AE548302D5F623F008DED70 /* MDBLabel.j */,
 				2BD24D7590B3A2C0CF356A87 /* HierarchyController.j */,
 				6F8642B1B93603A5A204CC32 /* AppController.j */,
 				8AABF0DE2D50022600176166 /* AboutAndHelpController.j */,
@@ -313,6 +320,7 @@
 				5139419A9E317C413C110C0F /* AlternativesGenerator.j */,
 				46EC4178BBFDF502EFF4AF49 /* MDBButton.j */,
 				8A9C705F2BFE496000DD5E76 /* MDBTextField.j */,
+				8AE548342D5F63CB008DED70 /* MDBLabel.j */,
 				8A891B7D2A5585AE00ACEFDF /* MDBDispersionEstimation.j */,
 				FB4A479E9000040026E0D65B /* MDBSimplestatistics.j */,
 				BDC7432CBD70CCD5236EC4E7 /* Misc.j */,

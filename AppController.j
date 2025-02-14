@@ -27,6 +27,7 @@
 @import "GammaView.j"
 @import "MDBButton.j"
 @import "MDBTextField.j"
+@import "MDBLabel.j"
 @import "Presets.j"
 @import "ControlDispatcher.j"
 @import "CardController.j"
