@@ -1,5 +1,6 @@
 #  History
- add `MDBLabel.j` which grays out when disabled, used for all labels;
+2025-02-26 begin BaLM incorporation
+2025-02-14 add `MDBLabel.j` which grays out when disabled, used for all labels;
  remove some unneccesary `@import`s;
  rename boolean properties from `setIsXXX` to `isXXX`, also for pertinent setters
 2025-02-09 factor out `CheckingContrastController` from `AppController` → cleaner code, and initialise to 10%

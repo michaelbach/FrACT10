@@ -15,6 +15,7 @@
 		8A07B8412C919923007513BB /* Presets_ULV_Gensight.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A07B8402C919922007513BB /* Presets_ULV_Gensight.j */; };
 		8A07B8432C919BB9007513BB /* Presets_ESU.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A07B8422C919BB9007513BB /* Presets_ESU.j */; };
 		8A07B8452C919F0F007513BB /* Presets_BCM_Scheie.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A07B8442C919F0F007513BB /* Presets_BCM_Scheie.j */; };
+		8A0CDCF42D67943A0013BE3A /* FractControllerBalmLight.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A0CDCF32D67943A0013BE3A /* FractControllerBalmLight.j */; };
 		8A2E1BEA2C941F0F00F6FE00 /* Presets_Hyper_TUDo.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2E1BE92C941F0F00F6FE00 /* Presets_Hyper_TUDo.j */; };
 		8A2E1BEC2C94225500F6FE00 /* Presets_AT_LeviLab.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2E1BEB2C94225500F6FE00 /* Presets_AT_LeviLab.j */; };
 		8A31C6542CDABD82009662A4 /* Presets_ETCF.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A31C6532CDABD82009662A4 /* Presets_ETCF.j */; };
@@ -100,6 +101,7 @@
 				8AAB43882A55826300825E47 /* FractControllerAcuityE.j in CopyFiles */,
 				8A3F88A82D585C6900183F76 /* AboutAndHelpController.m in CopyFiles */,
 				8A3F88A92D585C6900183F76 /* AboutAndHelpController.h in CopyFiles */,
+				8A0CDCF42D67943A0013BE3A /* FractControllerBalmLight.j in CopyFiles */,
 				8AA45BB42C393726005F5951 /* FractControllerContrastDitherUnittest.j in CopyFiles */,
 				8AAB438F2A55826800825E47 /* Settings.j in CopyFiles */,
 				8AAB43872A55826300825E47 /* FractControllerAcuityC.j in CopyFiles */,
@@ -201,6 +203,7 @@
 		8A07B8402C919922007513BB /* Presets_ULV_Gensight.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_ULV_Gensight.j; sourceTree = "<group>"; };
 		8A07B8422C919BB9007513BB /* Presets_ESU.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_ESU.j; sourceTree = "<group>"; };
 		8A07B8442C919F0F007513BB /* Presets_BCM_Scheie.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_BCM_Scheie.j; sourceTree = "<group>"; };
+		8A0CDCF32D67943A0013BE3A /* FractControllerBalmLight.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerBalmLight.j; sourceTree = "<group>"; };
 		8A2E1BE92C941F0F00F6FE00 /* Presets_Hyper_TUDo.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_Hyper_TUDo.j; sourceTree = "<group>"; };
 		8A2E1BEB2C94225500F6FE00 /* Presets_AT_LeviLab.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_AT_LeviLab.j; sourceTree = "<group>"; };
 		8A31C6532CDABD82009662A4 /* Presets_ETCF.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets_ETCF.j; sourceTree = "<group>"; };
@@ -315,6 +318,7 @@
 				8A574A8F29FAE30F00D28C1B /* FractControllerContrastG.j */,
 				7EED432AB6B14FFDE0AEE426 /* FractControllerContrastLett.j */,
 				8AA45BB32C393726005F5951 /* FractControllerContrastDitherUnittest.j */,
+				8A0CDCF32D67943A0013BE3A /* FractControllerBalmLight.j */,
 				F71043F69484B3E36875B5AE /* FractView.j */,
 				C61449039211562F0283776F /* GammaView.j */,
 				5139419A9E317C413C110C0F /* AlternativesGenerator.j */,

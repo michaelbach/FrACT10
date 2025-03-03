@@ -176,7 +176,7 @@ Shortcut: 4
                             <action selector="buttonDoTest_action:" target="450" id="PTe-sO-rie"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUU-sC-ci6" propertyAccessControl="none">
+                    <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUU-sC-ci6" propertyAccessControl="none">
                         <rect key="frame" x="32" y="167" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip"> Enter Settings screen.
@@ -193,7 +193,7 @@ Shortcut: 4
                             <action selector="buttonSettings_action:" target="450" id="Gsf-c7-lcD"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHP-WN-mFO" propertyAccessControl="none">
+                    <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHP-WN-mFO" propertyAccessControl="none">
                         <rect key="frame" x="190" y="167" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Toggle fullscreen.                                     
@@ -230,7 +230,7 @@ For testing.</string>
                             <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.autoRunIndex" id="9Nl-Ih-LZF"/>
                         </connections>
                     </popUpButton>
-                    <button toolTip="Guess what this button does…    " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CDI-8L-YSC">
+                    <button toolTip="Guess what this button does…    " imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CDI-8L-YSC">
                         <rect key="frame" x="507" y="167" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="Help" bezelStyle="texturedRounded" image="iconHelp" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7qY-Pl-QqO">
@@ -713,7 +713,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                             </connections>
                                         </popUpButton>
                                         <box fixedFrame="YES" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4PI-eF-GR8">
-                                            <rect key="frame" x="33" y="49" width="700" height="3"/>
+                                            <rect key="frame" x="33" y="50" width="700" height="3"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="Itc-rv-ck6">
                                                 <rect key="frame" x="1" y="1" width="698" height="1"/>
@@ -723,7 +723,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                             <color key="fillColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </box>
                                         <box fixedFrame="YES" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="NYw-lp-ui0">
-                                            <rect key="frame" x="33" y="45" width="3" height="12"/>
+                                            <rect key="frame" x="33" y="46" width="3" height="12"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="F2O-4Y-ugx">
                                                 <rect key="frame" x="1" y="1" width="1" height="10"/>
@@ -733,7 +733,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                             <color key="fillColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </box>
                                         <box fixedFrame="YES" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="c3I-kf-NBt">
-                                            <rect key="frame" x="731" y="45" width="3" height="12"/>
+                                            <rect key="frame" x="731" y="46" width="3" height="12"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="kqD-gL-3di">
                                                 <rect key="frame" x="1" y="1" width="1" height="10"/>
@@ -1460,11 +1460,11 @@ After test run leaves fullscreen.
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="luN-q6-f3X">
-                                            <rect key="frame" x="232" y="39" width="296" height="23"/>
+                                            <rect key="frame" x="216" y="40" width="312" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Click to enter a dialog to use an ID-1 plastic card for calibration (credit card or similar).
 No money transfer involved, just for size!     </string>
-                                            <buttonCell key="cell" type="roundTextured" title="💳 Calibrate with plastic card (e.g., credit card)" alternateTitle="ISO/IEC 7810:2019" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PZ9-YT-gCb">
+                                            <buttonCell key="cell" type="roundTextured" title="🪪 Calibrate with plastic card (e.g., credit card 💳)" alternateTitle="ISO/IEC 7810:2019" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PZ9-YT-gCb">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>

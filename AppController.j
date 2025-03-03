@@ -21,6 +21,7 @@
 @import "FractControllerContrastG.j"
 @import "FractControllerContrastDitherUnittest.j"
 @import "FractControllerAcuityLineByLine.j"
+@import "FractControllerBalmLight.j"
 @import "RewardsController.j"
 @import "TAOController.j"
 @import "Sound.j"
@@ -153,7 +154,7 @@
     const allTestButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];
     for (const b of allTestButtons)  [Misc makeFrameSquareFromWidth: b];
 
-    allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherUnittest]; // sequence like Hierachy kTest#s
+    allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherUnittest,                          FractControllerBalmLight]; // sequence like Hierachy kTest#s
 
     allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, settingsPanel];
     for (const p of allPanels)  [p setMovable: NO];
@@ -263,8 +264,8 @@
     currentTestID = testNr;
     if ([Settings isNotCalibrated]) {
         const alert = [CPAlert alertWithMessageText: "Calibration is mandatory for valid results!"
-                                      defaultButton: "I just want to try…" alternateButton: "OK, go to Settings" otherButton: "Cancel"
-                          informativeTextWithFormat: "\rGoto 'Settings' and enter appropriate values for \r«Observer distance» and «Length of blue ruler».\r\rThis will also get rid of this obnoxious warning dialog."];
+                                      defaultButton: "I just want to try…" alternateButton: "OK, go to  ‘⛭ Settings’" otherButton: "Cancel"
+                          informativeTextWithFormat: "\rGoto ‘⛭ Settings’ and enter appropriate values for \r«Observer distance» and «Length of blue ruler».\r\rThis wilbl also get rid of this obnoxious warning dialog."];
         [alert runModalWithDidEndBlock: function(alert, returnCode) {
             switch (returnCode) {
                 case 1: // alternateButton: go to Settings
@@ -394,6 +395,21 @@
             break;
         case "R":
             [Settings toggleAutoRunIndex];  break;
+        case "B":
+            const alert = [CPAlert alertWithMessageText: "BaLM@FrACT₁₀" defaultButton: "Cancel" alternateButton: "Location (2)" otherButton: "Light (1)" informativeTextWithFormat: "Which BaLM test?\r\r(work in progress)"];
+            [[alert buttons][0] setKeyEquivalent: "1"]; // yes, 1/2 inverted…
+            [[alert buttons][1] setKeyEquivalent: "2"];
+            //[alert addButtonWithTitle: "3"]; // returnCode == 2
+            [alert runModalWithDidEndBlock: function(alert, returnCode) {
+                switch (returnCode) {
+                    case 2: // Light
+                        [self runFractControllerTest: kTestBalmLight];
+                        break;
+                    case 1: console.info(returnCode); // Location
+                        break;
+                    default: console.info(returnCode);// 0=cancel
+                }
+            }];
         default:
             [super keyDown: theEvent];  break;
     }
