@@ -396,13 +396,14 @@
         case "R":
             [Settings toggleAutoRunIndex];  break;
         case "B":
+            [self runFractControllerTest: kTestBalmLight];break;
             const alert = [CPAlert alertWithMessageText: "BaLM@FrACT₁₀" defaultButton: "Cancel" alternateButton: "Location (2)" otherButton: "Light (1)" informativeTextWithFormat: "Which BaLM test?\r\r(work in progress)"];
             [[alert buttons][0] setKeyEquivalent: "1"]; // yes, 1/2 inverted…
             [[alert buttons][1] setKeyEquivalent: "2"];
             //[alert addButtonWithTitle: "3"]; // returnCode == 2
             [alert runModalWithDidEndBlock: function(alert, returnCode) {
                 switch (returnCode) {
-                    case 2: // Light
+                    case 2: //console.info(returnCode); // Light
                         [self runFractControllerTest: kTestBalmLight];
                         break;
                     case 1: console.info(returnCode); // Location

@@ -22,22 +22,23 @@
 - (void) runStart { //console.info("FractControllerBalmLight>runStart");
     nAlternatives = 2;  nTrials = [Settings nTrials02];
     [self setCurrentTestResultUnit: "hit rate"];
-    gColorBack = [CPColor blackColor];
-    gColorFore = [CPColor whiteColor];
-    gColorFore = [CPColor blackColor];
+    [Settings setAcuityForeColor: [CPColor whiteColor]];// will be copied → gColorFore
+    [Settings setAcuityBackColor: [CPColor blackColor]];
     [super runStart];
 }
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { console.info("FractControllerBalmLight>drawStimulusInRect");
-    gColorFore = [CPColor blackColor];
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerBalmLight>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
     [self prepareDrawing];
     switch(state) {
         case kStateDrawBack: break;
-        case kStateDrawFore: //console.info("kStateDrawFore");
-            if (([Settings nAlternatives] == 4) && ([Settings obliqueOnly])) {
-                [alternativesGenerator setCurrentAlternative: [alternativesGenerator currentAlternative] + 1];
+        case kStateDrawFore://console.info("kStateDrawFore");
+            [sound playNumber: kSoundTrialYes];
+            console.info("currentAlternative", [alternativesGenerator currentAlternative]);
+            if ([alternativesGenerator currentAlternative] != 0) {
+                CGContextSetFillColor(cgc, gColorFore);
+                CGContextFillRect(cgc, [selfWindow frame]);
             }
 //            [optotypes drawLandoltWithStrokeInPx: stimStrengthInDeviceunits landoltDirection: [alternativesGenerator currentAlternative]];
             break;
@@ -45,29 +46,6 @@
     }
     CGContextRestoreGState(cgc);
     CGContextSetFillColor(cgc, gColorBack);
-    [super drawStimulusInRect: dirtyRect];
-}
-
-
-- (void) drawCenterFixMark { //console.info("FractControllerBalmLight>drawCenterFixMark");
-    if (![Settings eccentShowCenterFixMark]) return;
-    const eccRadiusInPix = Math.sqrt(xEccInPix * xEccInPix + yEccInPix * yEccInPix);
-    if ((stimStrengthInDeviceunits * 3.5) > eccRadiusInPix) return;// we don't want overlap between fixmark and optotype
-    CGContextSaveGState(cgc);
-    CGContextTranslateCTM(cgc, viewWidth2, viewHeight2);
-    CGContextSetLineWidth(cgc, 1);
-    CGContextSetStrokeColor(cgc, [CPColor colorWithRed: 0 green: 0 blue: 1 alpha: 0.5]);
-    [optotypes strokeStarAtX: 0 y: 0 size: Math.max(stimStrengthInDeviceunits * 2.5, [MiscSpace pixelFromDegree: 1 / 6])];
-    CGContextRestoreGState(cgc);
-}
-
-
-// this manages stuff after the optotypes have been drawn, e.g. crowding
-- (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractControllerBalmLight>drawStimulusInRect");
-    let _value = [MiscSpace logMARfromDecVA: [MiscSpace decVAFromStrokePixels: stimStrengthInDeviceunits]];
-    [trialHistoryController setValue: _value];
-
-    [self drawCenterFixMark];
     [super drawStimulusInRect: dirtyRect];
 }
 

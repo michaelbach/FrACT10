@@ -197,6 +197,11 @@ Created by mb on July 15, 2015.
     [self setSoundTrialNoIndex: [self checkNum: [self soundTrialNoIndex] dflt: 0 min: 0 max: gSoundsTrialNo.length-1 set: set]];
     [self setSoundRunEndIndex: [self checkNum: [self soundRunEndIndex] dflt: 0 min: 0 max: gSoundsRunEnd.length-1 set: set]];
 
+    // BaLM stuff
+    [self setbalmIsiMillisecs: [self checkNum: [self balmIsiMillisecs] dflt: 1500 min: 20 max: 5000 set: set]];
+    [self setBalmOnMillisecs: [self checkNum: [self balmOnMillisecs] dflt: 200 min: 20 max: 2000 set: set]];
+
+
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -1076,6 +1081,21 @@ Created by mb on July 15, 2015.
         [p setSelectedIndex: allIndexes[i]]; // lost after remove
     }
 }
+
+
++ (int) balmIsiMillisecs {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "balmIsiMillisecs"];
+}
++ (void) setbalmIsiMillisecs: (int) val { //console.info("balmIsiMillisecs", val);
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "balmIsiMillisecs"];
+}
++ (int) balmOnMillisecs {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "balmOnMillisecs"];
+}
++ (void) setBalmOnMillisecs: (int) val { //console.info("balmIsiMillisecs", val);
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "balmOnMillisecs"];
+}
+
 
 
 @end

@@ -37,7 +37,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     TrialHistoryController trialHistoryController;
     Optotypes optotypes;
     CPString trialInfoString @accessors;
-    CPTimer timerDisplay, timerResponse, timerFixMark, timerAutoResponse, timerIsi;
+    CPTimer timerDisplay, timerResponse, timerFixMark, timerAutoResponse, timerIsi, timerBalmOff;
     CPString kRangeLimitDefault, kRangeLimitOk, kRangeLimitValueAtFloor, kRangeLimitValueAtCeiling, rangeLimitStatus, abortCharacter, ci95String;
     id sound @accessors;
     BOOL responseButtonsAdded;
@@ -129,10 +129,12 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             xEccInPix *= -1;
         }
     }
-    timerIsi = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutIsiMillisecs] / 1000 target:self selector:@selector(onTimeoutIsi:) userInfo:nil repeats:NO];
+    const tIsi = (currentTestID == kTestBalmLight) ? [Settings balmIsiMillisecs] : [Settings timeoutIsiMillisecs];
+    timerIsi = [CPTimer scheduledTimerWithTimeInterval: tIsi / 1000 target:self selector:@selector(onTimeoutIsi:) userInfo:nil repeats:NO];
 }
 - (void) onTimeoutIsi: (CPTimer) timer { // now we can draw the stimulus
-    timerDisplay = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutDisplaySeconds] target:self selector:@selector(onTimeoutDisplay:) userInfo:nil repeats:NO];
+    const tDisp = (currentTestID == kTestBalmLight) ? ([Settings balmOnMillisecs] / 1000) : [Settings timeoutDisplaySeconds];
+    timerDisplay = [CPTimer scheduledTimerWithTimeInterval: tDisp target:self selector:@selector(onTimeoutDisplay:) userInfo:nil repeats:NO];
     timerResponse = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutResponseSeconds] target:self selector:@selector(onTimeoutResponse:) userInfo:nil repeats:NO];
     if ([Settings autoRunIndex] != kAutoRunIndexNone) {
         if ([self isAcuityOptotype] || [self isContrastAny] || [self isAcuityGrating]) {
