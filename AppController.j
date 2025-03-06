@@ -311,6 +311,7 @@
     currentFractController = [[allTestControllers[currentTestID] alloc] initWithWindow: fractControllerWindow];
     [currentFractController setSound: sound];
     [currentFractController setCurrentTestID: currentTestID]; // while it has inherited currentTestID, it hasn't inherited its value
+    currentTestResultExportString = "";
     [currentFractController runStart];
 }
 /**
@@ -396,8 +397,7 @@
         case "R":
             [Settings toggleAutoRunIndex];  break;
         case "B":
-            [self runFractControllerTest: kTestBalmLight];break;
-            const alert = [CPAlert alertWithMessageText: "BaLM@FrACT₁₀" defaultButton: "Cancel" alternateButton: "Location (2)" otherButton: "Light (1)" informativeTextWithFormat: "Which BaLM test?\r\r(work in progress)"];
+            const alert = [CPAlert alertWithMessageText: "BaLM@FrACT₁₀" defaultButton: "Cancel" alternateButton: "ØLocation  (‘2’)Ø" otherButton: "Light  (‘1’)" informativeTextWithFormat: "Which BaLM test?\r\r(work in progress)"];
             [[alert buttons][0] setKeyEquivalent: "1"]; // yes, 1/2 inverted…
             [[alert buttons][1] setKeyEquivalent: "2"];
             //[alert addButtonWithTitle: "3"]; // returnCode == 2

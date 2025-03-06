@@ -89,6 +89,8 @@ kGratingShapeIndexTriangle = 2; kGratingShapeIndexCheckerboard = 3;
             if ([self isContrastG]) return "Contrast_Grating";
             return "Acuity_Grating";
         case kTestAcuityLineByLine: return "Acuity_LineByLine";
+        case kTestBalmLight: return "BalmLight";
+        case kTestBalmLocation: return "BalmLocation";
     }
     return "NOT ASSIGNED";
 }

@@ -14,6 +14,9 @@
 
 - (void) modifyThresholderStimulus {
 }
+- (float) stimThresholderunitsFromDeviceunits: (float) ntve {
+    return ntve;
+}
 - (float) stimDeviceunitsFromThresholderunits: (float) generic {
     return generic;
 }
@@ -21,26 +24,25 @@
 
 - (void) runStart { //console.info("FractControllerBalmLight>runStart");
     nAlternatives = 2;  nTrials = [Settings nTrials02];
-    [self setCurrentTestResultUnit: "hit rate"];
+    [self setCurrentTestResultUnit: "hitRateInPercent"];
     [Settings setAcuityForeColor: [CPColor whiteColor]];// will be copied → gColorFore
     [Settings setAcuityBackColor: [CPColor blackColor]];
+    [Settings setAuditoryFeedback4trial: kAuditoryFeedback4trialNone];
     [super runStart];
 }
 
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerBalmLight>drawStimulusInRect");
-    trialInfoString = [self acuityComposeTrialInfoString];
     [self prepareDrawing];
     switch(state) {
         case kStateDrawBack: break;
         case kStateDrawFore://console.info("kStateDrawFore");
             [sound playNumber: kSoundTrialYes];
-            console.info("currentAlternative", [alternativesGenerator currentAlternative]);
             if ([alternativesGenerator currentAlternative] != 0) {
                 CGContextSetFillColor(cgc, gColorFore);
-                CGContextFillRect(cgc, [selfWindow frame]);
+                CGContextFillRect(cgc, CGRectMake(-viewWidth2, -viewHeight2, viewWidth, viewHeight));
             }
-//            [optotypes drawLandoltWithStrokeInPx: stimStrengthInDeviceunits landoltDirection: [alternativesGenerator currentAlternative]];
+            discardKeyEntries = NO; // now allow responding
             break;
         default: break;
     }
@@ -50,88 +52,54 @@
 }
 
 
+// 0 & 4=valid; -1=ignore; -2=invalid
+- (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerBalmLight>responseNumberFromChar: ", keyChar);
+    switch (keyChar) { // 0=no light, 4=light
+        case CPLeftArrowFunctionKey: case CPDownArrowFunctionKey:
+        case "2": case "4": return 0;
+        case CPRightArrowFunctionKey: case CPUpArrowFunctionKey:
+        case "6": case "8": return 4;
+        case "5": return -1;
+    }
+    return -2;
+}
+
+
 - (void) runEnd { //console.info("FractControllerBalm>runEnd");
-    switch (currentTestID) {
-        case kTestAcuityLett:
-        case kTestAcuityC:
-        case kTestAcuityE:
-        case kTestAcuityTAO:
-            if (iTrial < nTrials) { //premature end
-                [self setResultString: "Aborted"];
-            } else {
-                [self setResultString: [self acuityComposeResultString]];
-            }
-            break;
-        case kTestAcuityVernier:
-            break;
-        case kTestAcuityLineByLine:
-            [self setResultString: ""];
-            break;
+    if (iTrial < nTrials) { //premature end
+        [self setResultString: "Aborted"];
+    } else {
+        [self setResultString: [self balmLightComposeResultString]];
     }
     [super runEnd];
 }
 
 
-- (CPString) acuityComposeTrialInfoString {
-    let s = iTrial + "/" + nTrials + " ";
-    s += [Misc stringFromNumber: [MiscSpace decVAFromStrokePixels: stimStrengthInDeviceunits] decimals: 2 localised: NO];
+- (float) resultValue4Export {
+    const total = [trialHistoryController nCorrect] + [trialHistoryController nIncorrect];
+    if ([trialHistoryController nTotal] != total) throw new Error("corret+incorrect ≠ total.");
+    // ↑ should never occur
+    const hitRateInPercent = 100 * [trialHistoryController nCorrect] / total;
+    return hitRateInPercent;
+}
+
+
+- (CPString) balmLightComposeResultString {
+    let s = [Misc stringFromNumber: [self resultValue4Export] decimals: 1 localised: YES];
+    s = "Hit rate: " + s + "%";
     return s;
 }
 
 
-- (float) acuityResultInDecVA {
-    const resultInStrokePx = stimStrengthInDeviceunits;
-    let resultInDecVA = [MiscSpace decVAFromStrokePixels: resultInStrokePx];
-    if ([Settings threshCorrection]) resultInDecVA *= gThresholdCorrection4Ascending;
-    //console.info("FractControllerAcuity>acuityResultInDecVA: ", resultInDecVA);
-    return resultInDecVA;
-}
-
-
-- (float) acuityResultInLogMAR {
-    return [MiscSpace logMARfromDecVA: [self acuityResultInDecVA]];
-}
-
-
-- (float) acuityResultValue4Export {
-    return [self acuityResultInLogMAR];
-}
-
-
-- (CPString) acuityComposeResultString { // 2021-05-02: now all formats are "ceilinged"
-    const resultInDecVACeilinged = Math.min([Settings maxDisplayedAcuity], [self acuityResultInDecVA]);
-    const resultInLogMARCeilinged = [MiscSpace logMARfromDecVA: resultInDecVACeilinged];
-    let s = "";
-    if ([Settings acuityFormatLogMAR]) {
-        if (s.length > 1) s += ",  ";
-        s += "LogMAR:" + [self rangeStatusIndicatorStringInverted: YES];
-        s += [Misc stringFromNumber: resultInLogMARCeilinged decimals: 2 localised: YES];
-        if (ci95String.length > 1) {
-            s += ci95String;
-        }
-    }
-    if ([Settings acuityFormatDecimal]) {
-        if (s.length > 1) s += ",  ";
-        s += "decVA:" + [self rangeStatusIndicatorStringInverted: NO];
-        s += [Misc stringFromNumber: resultInDecVACeilinged decimals: 2 localised: YES];
-    }
-    if ([Settings acuityFormatSnellenFractionFoot]) {
-        if (s.length > 1) s += ",  ";
-        s += "Snellen fraction:" +  [self rangeStatusIndicatorStringInverted: NO];
-        s += [self format4SnellenInFeet: resultInDecVACeilinged];
-    }
-    return s;
-}
-
-
-- (CPString) acuityComposeExportString { //console.info("FractController>acuityComposeExportString");
+- (CPString) composeExportString { //console.info("FractControllerBalm>composeExportString");
     if (gAppController.runAborted) return "";
+
     let s = [self generalComposeExportString];
     const nDigits = 3;
     s += tab + "value" + tab + [Misc stringFromNumber: [self resultValue4Export] decimals: nDigits localised: YES];
     s += tab + "unit1" + tab + currentTestResultUnit
     s += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 1 localised: YES];
-    s += tab + "contrastWeber" + tab + [Misc stringFromNumber: [Settings contrastAcuityWeber] decimals: 1 localised: YES];
+    s += tab + "contrastWeber" + tab + 99;
     s += tab + "unit2" + tab + "%";
     s += tab + "nTrials" + tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
     s += tab + "rangeLimitStatus" + tab + rangeLimitStatus;

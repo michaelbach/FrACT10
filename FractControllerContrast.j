@@ -71,6 +71,7 @@ Created by Bach on 2020-09-02
         t = 0.02;
     }
     timerFixMark = [CPTimer scheduledTimerWithTimeInterval: t target:self selector:@selector(onTimeoutFixMark:) userInfo:nil repeats:NO];
+    discardKeyEntries = NO; // now allow responding
 }
 - (void) onTimeoutFixMark: (CPTimer) timer { //console.info("FractController>onTimeoutFixCross");
     state = kStateDrawFore2;

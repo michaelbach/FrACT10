@@ -100,6 +100,7 @@
     }
     [self drawCenterFixMark];
     [super drawStimulusInRect: dirtyRect];
+    discardKeyEntries = NO; // now allow responding
 }
 
 

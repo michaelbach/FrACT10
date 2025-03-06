@@ -41,6 +41,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     CPString kRangeLimitDefault, kRangeLimitOk, kRangeLimitValueAtFloor, kRangeLimitValueAtCeiling, rangeLimitStatus, abortCharacter, ci95String;
     id sound @accessors;
     BOOL responseButtonsAdded;
+    BOOL discardKeyEntries; // this allows flushing the event queue to discard early responses
     CPColor colorForeUndithered, colorBackUndithered;
 }
 
@@ -111,6 +112,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) trialStart { //console.info("FractController>trialStart");
+    discardKeyEntries = YES;
     iTrial += 1;
     stimStrengthInThresholderUnits = [thresholder nextStim2apply];//console.info("stimStrengthInThresholderUnits ", stimStrengthInThresholderUnits);
     [self modifyThresholderStimulus];// e.g. for bonus trials
@@ -317,6 +319,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) processKeyDownEvent { //console.info("FractController>processKeyDownEvent");
+    if (discardKeyEntries) return;//flushing the event queue to discard early responses
     const r = [self responseNumberFromChar: responseKeyChar];
     responseWasCorrect = (r == [alternativesGenerator currentAlternative]);
     [trialHistoryController setResponded: r];

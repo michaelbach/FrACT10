@@ -22,6 +22,9 @@ TrialHistoryController.j
     float value @accessors;
     int presented @accessors;
     int responded @accessors;
+    int nTotal @accessors;
+    int nCorrect @accessors;
+    int nIncorrect @accessors;
     BOOL correct @accessors;
     CPString resultsHistoryString @accessors;
 }
@@ -35,6 +38,7 @@ TrialHistoryController.j
         _nTrials = nTrials;
         _dateStart = [CPDate date];
         [self setResultsHistoryString: ""];
+        [self setNTotal: 0];  [self setNCorrect: 0];  [self setNIncorrect: 0];
     }
     return self;
 }
@@ -49,6 +53,9 @@ TrialHistoryController.j
     _trialHistory[_currentIndex].correct = correct;
     _trialHistory[_currentIndex].reactionTimeInMs = Math.round(-[_dateStart timeIntervalSinceNow] * 1000.0);
     _currentIndex++;
+    [self setNTotal: nTotal + 1]; // calculation for BaLM
+    if (correct) [self setNCorrect: nCorrect + 1];
+    else [self setNIncorrect: nIncorrect + 1];
     _dateStart = [CPDate date];
 }
 

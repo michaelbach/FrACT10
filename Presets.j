@@ -67,7 +67,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     _presetName = [sender itemTitleAtIndex: _presetIndex];
     const messageText = "Really all Settings to “" + _presetName + "” ?";
     const alert1 = [CPAlert alertWithMessageText: messageText
-                                   defaultButton: "NO   ߵnߴ" alternateButton: "YES   ߵyߴ" otherButton: nil
+                                   defaultButton: "NO   (ߵnߴ)" alternateButton: "YES   (ߵyߴ)" otherButton: nil
                        informativeTextWithFormat: "Many Settings will change. You should know what you are doing here. Luckily, you can always return to defaults."];
     [[alert1 buttons][0] setKeyEquivalent: "y"]; // the "YES" button selected by "y"
     [[alert1 buttons][1] setKeyEquivalent: "n"]; // the "NO" button selected by "n"
