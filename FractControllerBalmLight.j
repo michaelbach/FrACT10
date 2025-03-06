@@ -20,6 +20,11 @@
 - (float) stimDeviceunitsFromThresholderunits: (float) generic {
     return generic;
 }
+- (CPString) composeTrialInfoString {
+    let s = iTrial + "/" + nTrials + " ";
+    s += [alternativesGenerator currentAlternative];
+    return s;
+}
 
 
 - (void) runStart { //console.info("FractControllerBalmLight>runStart");
@@ -33,6 +38,7 @@
 
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerBalmLight>drawStimulusInRect");
+    trialInfoString = [self composeTrialInfoString];
     [self prepareDrawing];
     switch(state) {
         case kStateDrawBack: break;

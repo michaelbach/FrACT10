@@ -160,7 +160,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if ([self isAcuityTAO])
         CGContextSetFillColor(cgc, [CPColor whiteColor]); // contrast always 100% with TAO
     if ([self isContrastOptotype] && [Settings contrastDithering]) {
-        CGContextSetFillColor(cgc, colorBackUndithered); // else black background briefly visible, dithering delay
+        CGContextSetFillColor(cgc, colorBackUndithered); // else black background is briefly visible, due to dithering delay
         CGContextFillRect(cgc, [selfWindow frame]);
         CGContextSetFillColor(cgc, gColorBack);
     }
@@ -197,7 +197,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if ([Settings trialInfo]) {
         CGContextSetTextPosition(cgc, 10, 10); // we assume here no transformed CGContext
         //CGContextSetFillColor(cgc, colOptotypeFore); would be unreadable with low contrast
-        CGContextSetFillColor(cgc, [CPColor blackColor]);
+        CGContextSetFillColor(cgc, [CPColor darkGrayColor]);
         CGContextSelectFont(cgc, [Settings trialInfoFontSize] + "px sans-serif");
         CGContextShowText(cgc, trialInfoString);
     }
