@@ -131,7 +131,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             xEccInPix *= -1;
         }
     }
-    const tIsi = (currentTestID == kTestBalmLight) ? [Settings balmIsiMillisecs] : [Settings timeoutIsiMillisecs];
+    const tIsi = ([kTestBalmLight, kTestBalmLocation].includes(currentTestID)) ? [Settings balmIsiMillisecs] : [Settings timeoutIsiMillisecs];
     timerIsi = [CPTimer scheduledTimerWithTimeInterval: tIsi / 1000 target:self selector:@selector(onTimeoutIsi:) userInfo:nil repeats:NO];
 }
 - (void) onTimeoutIsi: (CPTimer) timer { // now we can draw the stimulus
