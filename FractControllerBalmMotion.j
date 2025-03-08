@@ -46,25 +46,25 @@
     switch(state) {
         case kStateDrawBack:
             isMoving = NO;
-            if (animationRequestID != 0)
+            if (animationRequestID != 0){
                 window.cancelAnimationFrame(animationRequestID);
+            }
             animationRequestID = 0;
+            [optotypes fillCircleAtX: 0 y: 0 radius: 100];
             break;
         case kStateDrawFore://console.info("kStateDrawFore");
-            if (!isMoving) { // first time
-                isMoving = YES;
-                motionOffset = 0;
+            if (!isMoving) { // detect first time
+                isMoving = YES;  motionOffset = 0;
                 [sound playNumber: kSoundTrialYes];
                 discardKeyEntries = NO; // now allow responding
             }
-            CGContextSetFillColor(cgc, gColorFore);
             motionOffset += 1;
             let x, y;
             switch ([alternativesGenerator currentAlternative]) {
                 case 0: x = motionOffset, y = 0;  break;
-                case 2: x = 0, y = motionOffset;  break;
+                case 2: x = 0, y = -motionOffset;  break;
                 case 4: x = - motionOffset, y = 0;  break;
-                case 6: x = 0, y = -motionOffset;  break;
+                case 6: x = 0, y = motionOffset;  break;
             }
             [optotypes fillCircleAtX: x y: y radius: 100];
             animationRequestID = window.requestAnimationFrame(function(timeStamp) {

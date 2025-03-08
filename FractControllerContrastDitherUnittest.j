@@ -46,13 +46,13 @@ Created by Bach on 2020-08-17
 }
 
 
-- (void) runStart { //console.info("FractControllerContrastLett>runStart");
+- (void) runStart { //console.info("FractControllerContrastDitherUnittest>runStart");
     nAlternatives = 2;  nTrials = 9999;
     [super runStart];
 }
 
 
-- (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerAcuityLetters>responseNumberFromChar: ", keyChar);
+- (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerContrastDitherUnittest>responseNumberFromChar: ", keyChar);
     return -1;// -1: ignore; -2: invalid
 }
 

@@ -90,7 +90,6 @@
 
 - (CPString) composeExportString { //console.info("FractControllerBalm>composeExportString");
     if (gAppController.runAborted) return "";
-
     let s = [self generalComposeExportString];
     const nDigits = 3;
     s += tab + "value" + tab + [Misc stringFromNumber: [self resultValue4Export] decimals: nDigits localised: YES];

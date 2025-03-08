@@ -131,7 +131,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             xEccInPix *= -1;
         }
     }
-    const tIsi = ([kTestBalmLight, kTestBalmLocation].includes(currentTestID)) ? [Settings balmIsiMillisecs] : [Settings timeoutIsiMillisecs];
+    const tIsi = ([kTestBalmLight, kTestBalmLocation, kTestBalmMotion].includes(currentTestID)) ? [Settings balmIsiMillisecs] : [Settings timeoutIsiMillisecs];
     timerIsi = [CPTimer scheduledTimerWithTimeInterval: tIsi / 1000 target:self selector:@selector(onTimeoutIsi:) userInfo:nil repeats:NO];
 }
 - (void) onTimeoutIsi: (CPTimer) timer { // now we can draw the stimulus
@@ -329,7 +329,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 
-// with two directions, this can be used by any test
+// for a two directions/alternatives test
 // 0 & 4=valid; -1=ignore; -2=invalid
 - (int) responseNumber2FromChar: (CPString) keyChar { //console.info("responseNumber2FromChar>responseNumberFromChar: ", keyChar);
     switch (keyChar) { // 0=no light, 4=light
@@ -337,25 +337,62 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         case "2": case "4": return 0;
         case CPRightArrowFunctionKey: case CPUpArrowFunctionKey:
         case "6": case "8": return 4;
+        case "5": return -1;
     }
     return -2;
 }
-
-
-// with the four cardinal directions, this can be used by any test
+// for a four cardinal directions/alternatives
 - (int) responseNumber4FromChar: (CPString) keyChar {
     //console.info("FractController>responseNumber4FromChar: ", keyChar);
     switch (keyChar) {
         case CPRightArrowFunctionKey: case "6": //→
             return 0;
         case CPDownArrowFunctionKey: case "2": // ↓
-            return 2;
+            return 6;
         case CPLeftArrowFunctionKey: case "4": // ←
             return 4;
         case CPUpArrowFunctionKey: case "8": // ↑
-            return 6;
+            return 2;
+        case "5": return -1;
     }
     return -2;
+}
+// 8 directions/alternatives, this can be used for Landolt Cs
+// 0–8: valid; -1: ignore; -2: invalid
+- (int) responseNumber8FromChar: (CPString) keyChar { //console.info("FractController>responseNumber8FromChar: ", keyChar);
+    switch (keyChar) {
+        case CPLeftArrowFunctionKey: return 4;
+        case CPRightArrowFunctionKey: return 0;
+        case CPUpArrowFunctionKey: return 2;
+        case CPDownArrowFunctionKey: return 6;
+        case "6": return 0;
+        case "9": return 1;
+        case "8": return 2;
+        case "7": return 3;
+        case "4": return 4;
+        case "1": return 5;
+        case "2": return 6;
+        case "3": return 7;
+        case "5": return -1;
+    }
+    return -2;
+}
+// 10 alternatives, this can be used for Letters
+- (int) responseNumber10FromChar: (CPString) keyChar { //console.info("FractController>responseNumber10FromChar: ", keyChar);
+    switch ([keyChar uppercaseString]) { // "CDHKNORSVZ"
+        case "C": return 0;
+        case "D": return 1;
+        case "H": return 2;
+        case "K": return 3;
+        case "N": return 4;
+        case "O": return 5;
+        case "R": return 6;
+        case "S": return 7;
+        case "V": return 8;
+        case "Z": return 9;
+        case "5": return -1;
+    }
+    return -2;// -1: ignore; -2: invalid
 }
 
 

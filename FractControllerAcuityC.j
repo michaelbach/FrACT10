@@ -53,24 +53,8 @@ Created by Bach on 18.07.2017.
 }
 
 
-// 0–8: valid; -1: ignore; -2: invalid
-- (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerAcuityC>responseNumberFromChar: ", keyChar);
-    switch (keyChar) {
-        case CPLeftArrowFunctionKey: return 4;
-        case CPRightArrowFunctionKey: return 0;
-        case CPUpArrowFunctionKey: return 2;
-        case CPDownArrowFunctionKey: return 6;
-        case "6": return 0;
-        case "9": return 1;
-        case "8": return 2;
-        case "7": return 3;
-        case "4": return 4;
-        case "1": return 5;
-        case "2": return 6;
-        case "3": return 7;
-        case "5": return -1;
-    }
-    return -2;
+- (int) responseNumberFromChar: (CPString) keyChar {
+    return [self responseNumber8FromChar: keyChar];
 }
 
 

@@ -43,18 +43,8 @@ Created by Bach on 2020-09-02
 }
 
 
-- (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerContrastE>responseNumberFromChar: ", keyChar);
-    switch (keyChar) {
-        case CPLeftArrowFunctionKey: return 4;
-        case CPRightArrowFunctionKey: return 0;
-        case CPUpArrowFunctionKey: return 2;
-        case CPDownArrowFunctionKey: return 6;
-        case "6": return 0;
-        case "8": return 2;
-        case "4": return 4;
-        case "2": return 6;
-    }
-    return -2;// 0, 2, 4, 6: valid; -1: ignore; -2: invalid
+- (int) responseNumberFromChar: (CPString) keyChar {
+    return [self responseNumber4FromChar: keyChar];
 }
 
 

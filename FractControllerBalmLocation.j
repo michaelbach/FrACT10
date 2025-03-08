@@ -47,7 +47,7 @@
             [sound playNumber: kSoundTrialYes];
             CGContextSetFillColor(cgc, gColorFore);
             [optotypes fillCircleAtX: 0 y: 0 radius: 100];
-            CGContextRotateCTM(cgc, Math.PI / 4 * [alternativesGenerator currentAlternative]);
+            CGContextRotateCTM(cgc, -Math.PI / 4 * [alternativesGenerator currentAlternative]);
             const pnts = [[0,0], [1,1], [1,-1], [0,0]];
             [optotypes fillPolygon: pnts withD: Math.max(viewWidth2, viewHeight2)];
             discardKeyEntries = NO; // now allow responding

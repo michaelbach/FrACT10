@@ -43,21 +43,8 @@ Created by Bach on 2020-08-17
 }
 
 
-- (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerAcuityLetters>responseNumberFromChar: ", keyChar);
-    switch ([keyChar uppercaseString]) { // "CDHKNORSVZ"
-        case "C": return 0;
-        case "D": return 1;
-        case "H": return 2;
-        case "K": return 3;
-        case "N": return 4;
-        case "O": return 5;
-        case "R": return 6;
-        case "S": return 7;
-        case "V": return 8;
-        case "Z": return 9;
-        case "5": return -1;
-    }
-    return -2;// -1: ignore; -2: invalid
+- (int) responseNumberFromChar: (CPString) keyChar {
+    return [self responseNumber10FromChar: keyChar];
 }
 
 
