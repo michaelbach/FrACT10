@@ -328,6 +328,37 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
+
+// with two directions, this can be used by any test
+// 0 & 4=valid; -1=ignore; -2=invalid
+- (int) responseNumber2FromChar: (CPString) keyChar { //console.info("responseNumber2FromChar>responseNumberFromChar: ", keyChar);
+    switch (keyChar) { // 0=no light, 4=light
+        case CPLeftArrowFunctionKey: case CPDownArrowFunctionKey:
+        case "2": case "4": return 0;
+        case CPRightArrowFunctionKey: case CPUpArrowFunctionKey:
+        case "6": case "8": return 4;
+    }
+    return -2;
+}
+
+
+// with the four cardinal directions, this can be used by any test
+- (int) responseNumber4FromChar: (CPString) keyChar {
+    //console.info("FractController>responseNumber4FromChar: ", keyChar);
+    switch (keyChar) {
+        case CPRightArrowFunctionKey: case "6": //→
+            return 0;
+        case CPDownArrowFunctionKey: case "2": // ↓
+            return 2;
+        case CPLeftArrowFunctionKey: case "4": // ←
+            return 4;
+        case CPUpArrowFunctionKey: case "8": // ↑
+            return 6;
+    }
+    return -2;
+}
+
+
 - (void) invalidateTrialTimers {
     [timerDisplay invalidate];  timerDisplay = nil;
     [timerResponse invalidate];  timerResponse = nil;

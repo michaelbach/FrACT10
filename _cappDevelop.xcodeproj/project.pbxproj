@@ -37,6 +37,7 @@
 		8A48269529CF58F30035607A /* MiscSpace.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A48269429CF58F30035607A /* MiscSpace.j */; };
 		8A4D57002D00AF8C00980A21 /* Presets_HYPERION.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A4D56FF2D00AF8C00980A21 /* Presets_HYPERION.j */; };
 		8A6D71C32CE0C6E100BB7107 /* Presets_Maculight.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A6D71C22CE0C6E100BB7107 /* Presets_Maculight.j */; };
+		8A865B932D7B246200743123 /* FractControllerBalmMotion.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A865B922D7B246200743123 /* FractControllerBalmMotion.j */; };
 		8A891B7E2A5585AE00ACEFDF /* MDBDispersionEstimation.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A891B7D2A5585AE00ACEFDF /* MDBDispersionEstimation.j */; };
 		8A9C70602BFE496000DD5E76 /* MDBTextField.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A9C705F2BFE496000DD5E76 /* MDBTextField.j */; };
 		8A9E4D422D7A15F80056D4B9 /* FractControllerBalmLocation.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A9E4D412D7A15F80056D4B9 /* FractControllerBalmLocation.j */; };
@@ -124,6 +125,7 @@
 				8AE548352D5F63CB008DED70 /* MDBLabel.j in CopyFiles */,
 				8A9E4D422D7A15F80056D4B9 /* FractControllerBalmLocation.j in CopyFiles */,
 				8ACD7D522C0362BD00FE90C6 /* ThresholderNupMdown.j in CopyFiles */,
+				8A865B932D7B246200743123 /* FractControllerBalmMotion.j in CopyFiles */,
 				8A48269529CF58F30035607A /* MiscSpace.j in CopyFiles */,
 				8A3384C72AA11B3B000325D0 /* Info.plist in CopyFiles */,
 				8A31C6542CDABD82009662A4 /* Presets_ETCF.j in CopyFiles */,
@@ -228,6 +230,7 @@
 		8A4D56FF2D00AF8C00980A21 /* Presets_HYPERION.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets_HYPERION.j; sourceTree = "<group>"; };
 		8A574A8F29FAE30F00D28C1B /* FractControllerContrastG.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = FractControllerContrastG.j; sourceTree = SOURCE_ROOT; };
 		8A6D71C22CE0C6E100BB7107 /* Presets_Maculight.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets_Maculight.j; sourceTree = "<group>"; };
+		8A865B922D7B246200743123 /* FractControllerBalmMotion.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerBalmMotion.j; sourceTree = "<group>"; };
 		8A891B7D2A5585AE00ACEFDF /* MDBDispersionEstimation.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MDBDispersionEstimation.j; sourceTree = SOURCE_ROOT; };
 		8A8BFD81283837D800DD61BB /* Presets.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets.j; sourceTree = SOURCE_ROOT; };
 		8A9C705F2BFE496000DD5E76 /* MDBTextField.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MDBTextField.j; sourceTree = "<group>"; };
@@ -323,6 +326,7 @@
 				8AA45BB32C393726005F5951 /* FractControllerContrastDitherUnittest.j */,
 				8A0CDCF32D67943A0013BE3A /* FractControllerBalmLight.j */,
 				8A9E4D412D7A15F80056D4B9 /* FractControllerBalmLocation.j */,
+				8A865B922D7B246200743123 /* FractControllerBalmMotion.j */,
 				F71043F69484B3E36875B5AE /* FractView.j */,
 				C61449039211562F0283776F /* GammaView.j */,
 				5139419A9E317C413C110C0F /* AlternativesGenerator.j */,

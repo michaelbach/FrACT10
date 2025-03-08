@@ -2,12 +2,15 @@
  This file is part of FrACT10, a vision test battery.
  Copyright © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
  
- 2025-02-26 created class "FractControllerBalmLight" inheriting from "FractController"
+ 2025-03-05 created class "FractControllerBalmMotion" inheriting from "FractController"
  */
 
 
 @import "FractController.j"
-@implementation FractControllerBalmLight: FractController {
+@implementation FractControllerBalmMotion: FractController {
+    float motionOffset;
+    BOOL isMoving;
+    id animationRequestID;
 }
 
 
@@ -26,28 +29,51 @@
 }
 
 
-- (void) runStart { //console.info("FractControllerBalmLight>runStart");
-    nAlternatives = 2;  nTrials = [Settings nTrials02];
+- (void) runStart { //console.info("FractControllerBalmMotion>runStart");
+    nAlternatives = 4;  nTrials = [Settings nTrials04];
     [self setCurrentTestResultUnit: "hitRateInPercent"];
     [Settings setAcuityForeColor: [CPColor whiteColor]];// will be copied → gColorFore
     [Settings setAcuityBackColor: [CPColor blackColor]];
     [Settings setAuditoryFeedback4trial: kAuditoryFeedback4trialNone];
+    animationRequestID = 0;
     [super runStart];
 }
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerBalmLight>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerBalmMotion>drawStimulusInRect, state: ", state);
     trialInfoString = [self composeTrialInfoString];
     [self prepareDrawing];
     switch(state) {
-        case kStateDrawBack: break;
+        case kStateDrawBack:
+            isMoving = NO;
+            if (animationRequestID != 0)
+                window.cancelAnimationFrame(animationRequestID);
+            animationRequestID = 0;
+            break;
         case kStateDrawFore://console.info("kStateDrawFore");
-            [sound playNumber: kSoundTrialYes];
-            if ([alternativesGenerator currentAlternative] != 0) {
-                CGContextSetFillColor(cgc, gColorFore);
-                CGContextFillRect(cgc, CGRectMake(-viewWidth2, -viewHeight2, viewWidth, viewHeight));
+            if (!isMoving) { // first time
+                isMoving = YES;
+                motionOffset = 0;
+                [sound playNumber: kSoundTrialYes];
+                discardKeyEntries = NO; // now allow responding
             }
-            discardKeyEntries = NO; // now allow responding
+            CGContextSetFillColor(cgc, gColorFore);
+            motionOffset += 1;
+            let x, y;
+            switch ([alternativesGenerator currentAlternative]) {
+                case 0: x = motionOffset, y = 0;  break;
+                case 2: x = 0, y = motionOffset;  break;
+                case 4: x = - motionOffset, y = 0;  break;
+                case 6: x = 0, y = -motionOffset;  break;
+            }
+            [optotypes fillCircleAtX: x y: y radius: 100];
+            animationRequestID = window.requestAnimationFrame(function(timeStamp) {
+                //console.info("frameAnimation", timeStamp)
+                if (isMoving) {
+                    if (motionOffset > viewWidth2) motionOffset -= viewWidth2;
+                    [fractView display];
+                }
+            })
             break;
         default: break;
     }
@@ -58,7 +84,14 @@
 
 
 - (int) responseNumberFromChar: (CPString) keyChar {
-    return [self responseNumber2FromChar: keyChar];
+    return [self responseNumber4FromChar: keyChar];
+}
+
+
+- (void) trialEnd { //console.info("FractControllerBalmMotion>trialEnd");
+    isMoving = NO;
+    window.cancelAnimationFrame(animationRequestID);
+    [super trialEnd];
 }
 
 
@@ -66,7 +99,7 @@
     if (iTrial < nTrials) { //premature end
         [self setResultString: "Aborted"];
     } else {
-        [self setResultString: [self balmLightComposeResultString]];
+        [self setResultString: [self composeResultString]];
     }
     [super runEnd];
 }
@@ -81,7 +114,7 @@
 }
 
 
-- (CPString) balmLightComposeResultString {
+- (CPString) composeResultString {
     let s = [Misc stringFromNumber: [self resultValue4Export] decimals: 1 localised: YES];
     s = "Hit rate: " + s + "%";
     return s;

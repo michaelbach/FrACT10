@@ -8,7 +8,6 @@
 
 @import "FractController.j"
 @implementation FractControllerAcuity: FractController {
-    int directionInRow;
 }
 
 
@@ -78,7 +77,7 @@
                         const tempX = i * distance4optotypes;
                         CGContextTranslateCTM(cgc, -tempX, 0);
                         if (i != 0)  {
-                            directionInRow = [rowAlternatives nextAlternative];
+                            let directionInRow = [rowAlternatives nextAlternative];
                             if (directionInRow == [alternativesGenerator currentAlternative])
                                 directionInRow = [rowAlternatives nextAlternative];
                             switch (currentTestID) {

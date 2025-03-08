@@ -23,6 +23,7 @@
 @import "FractControllerAcuityLineByLine.j"
 @import "FractControllerBalmLight.j"
 @import "FractControllerBalmLocation.j"
+@import "FractControllerBalmMotion.j"
 @import "RewardsController.j"
 @import "TAOController.j"
 @import "Sound.j"
@@ -155,7 +156,7 @@
     const allTestButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];
     for (const b of allTestButtons)  [Misc makeFrameSquareFromWidth: b];
 
-    allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherUnittest,                          FractControllerBalmLight, FractControllerBalmLocation]; // sequence like Hierachy kTest#s
+    allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherUnittest,                          FractControllerBalmLight, FractControllerBalmLocation, FractControllerBalmMotion]; // sequence like Hierachy kTest#s
 
     allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, settingsPanel];
     for (const p of allPanels)  [p setMovable: NO];
@@ -398,7 +399,7 @@
         case "R":
             [Settings toggleAutoRunIndex];  break;
         case "B":
-            const alert = [CPAlert alertWithMessageText: "BaLM@FrACT₁₀" defaultButton: "Cancel" alternateButton: "Ø (‘3’)" otherButton: "Location (‘2’)" informativeTextWithFormat: "Which BaLM test?\r\r(work in progress)"];
+            const alert = [CPAlert alertWithMessageText: "BaLM@FrACT₁₀" defaultButton: "Cancel" alternateButton: "Motion (‘3’)" otherButton: "Location (‘2’)" informativeTextWithFormat: "Which BaLM test?\r\r(work in progress)"];
             [alert addButtonWithTitle: "Light (‘1’)"]; // returnCode == 2
             [[alert buttons][0] setKeyEquivalent: "1"]; // yes, 1/2 inverted…
             [[alert buttons][1] setKeyEquivalent: "2"];
@@ -411,8 +412,8 @@
                     case 2: //console.info(returnCode); // Location
                         [self runFractControllerTest: kTestBalmLocation];
                         break;
-                    case 1: console.info(returnCode); // Motion
-                        //[self runFractControllerTest: kTestBalmLocation];
+                    case 1: //console.info(returnCode); // Motion
+                        [self runFractControllerTest: kTestBalmMotion];
                         break;
                     default: console.info(returnCode);// 0=cancel
                 }

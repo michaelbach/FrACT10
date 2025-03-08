@@ -8,7 +8,6 @@
 
 @import "FractController.j"
 @implementation FractControllerBalmLocation: FractController {
-    int directionInRow;
 }
 
 
@@ -62,19 +61,8 @@
 
 
 // 0 & 4=valid; -1=ignore; -2=invalid
-- (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerBalmLocation>responseNumberFromChar: ", keyChar);
-    switch (keyChar) {
-        case CPRightArrowFunctionKey: case "6": //→
-            return 0;
-        case CPDownArrowFunctionKey: case "2": // ↓
-            return 2;
-        case CPLeftArrowFunctionKey: case "4": // ←
-            return 4;
-        case CPUpArrowFunctionKey: case "8": // ↑
-            return 6;
-        case "5": return -1;
-    }
-    return -2;
+- (int) responseNumberFromChar: (CPString) keyChar {
+    return [self responseNumber4FromChar: keyChar];
 }
 
 
