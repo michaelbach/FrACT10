@@ -8,9 +8,10 @@
 
 @import "FractController.j"
 @implementation FractControllerBalmMotion: FractController {
-    float motionOffset;
+    float motionOffset, radiusInPix, speedInPixPerSec;
     BOOL isMoving;
     id animationRequestID;
+    
 }
 
 
@@ -30,27 +31,41 @@
 
 
 - (void) runStart { //console.info("FractControllerBalmMotion>runStart");
+    [super runStart];
     nAlternatives = 4;  nTrials = [Settings nTrials04];
     [self setCurrentTestResultUnit: "hitRateInPercent"];
     [Settings setAcuityForeColor: [CPColor whiteColor]];// will be copied → gColorFore
     [Settings setAcuityBackColor: [CPColor blackColor]];
     [Settings setAuditoryFeedback4trial: kAuditoryFeedback4trialNone];
     animationRequestID = 0;
-    [super runStart];
+    radiusInPix = 0.5 * [MiscSpace pixelFromDegree: [Settings balmDiameterInDeg]];
+    speedInPixPerSec = [MiscSpace pixelFromDegree: [Settings balmSpeedInDegPerSec]];
 }
 
+
+- (void) trialStart {
+    [super trialStart];
+    isMoving = NO;
+    if (animationRequestID != 0){
+        window.cancelAnimationFrame(animationRequestID);
+    }
+    animationRequestID = 0;
+}
+/*const rows = 3;
+const cols = 4;
+const array2 = new Array(rows);
+for (let i = 0; i < rows; i++) {
+  array2[i] = new Array(cols);
+}
+// Accessing elements
+console.log(array1[0][1]);*/
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerBalmMotion>drawStimulusInRect, state: ", state);
     trialInfoString = [self composeTrialInfoString];
     [self prepareDrawing];
     switch(state) {
         case kStateDrawBack:
-            isMoving = NO;
-            if (animationRequestID != 0){
-                window.cancelAnimationFrame(animationRequestID);
-            }
-            animationRequestID = 0;
-            [optotypes fillCircleAtX: 0 y: 0 radius: 100];
+            [optotypes fillCircleAtX: 0 y: 0 radius: radiusInPix];
             break;
         case kStateDrawFore://console.info("kStateDrawFore");
             if (!isMoving) { // detect first time
@@ -66,7 +81,7 @@
                 case 4: x = - motionOffset, y = 0;  break;
                 case 6: x = 0, y = motionOffset;  break;
             }
-            [optotypes fillCircleAtX: x y: y radius: 100];
+            [optotypes fillCircleAtX: x y: y radius: radiusInPix];
             animationRequestID = window.requestAnimationFrame(function(timeStamp) {
                 //console.info("frameAnimation", timeStamp)
                 if (isMoving) {

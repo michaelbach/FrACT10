@@ -8,6 +8,7 @@
 
 @import "FractController.j"
 @implementation FractControllerBalmLocation: FractController {
+    float radiusInPix;
 }
 
 
@@ -32,6 +33,7 @@
     [Settings setAcuityForeColor: [CPColor whiteColor]];// will be copied → gColorFore
     [Settings setAcuityBackColor: [CPColor blackColor]];
     [Settings setAuditoryFeedback4trial: kAuditoryFeedback4trialNone];
+    radiusInPix = 0.5 * [MiscSpace pixelFromDegree: [Settings balmDiameterInDeg]];
     [super runStart];
 }
 
@@ -41,12 +43,12 @@
     [self prepareDrawing];
     switch(state) {
         case kStateDrawBack:
-            [optotypes fillCircleAtX: 0 y: 0 radius: 100];
+            [optotypes fillCircleAtX: 0 y: 0 radius: radiusInPix];
             break;
         case kStateDrawFore://console.info("kStateDrawFore");
             [sound playNumber: kSoundTrialYes];
             CGContextSetFillColor(cgc, gColorFore);
-            [optotypes fillCircleAtX: 0 y: 0 radius: 100];
+            [optotypes fillCircleAtX: 0 y: 0 radius: radiusInPix];
             CGContextRotateCTM(cgc, -Math.PI / 4 * [alternativesGenerator currentAlternative]);
             const pnts = [[0,0], [1,1], [1,-1], [0,0]];
             [optotypes fillPolygon: pnts withD: Math.max(viewWidth2, viewHeight2)];

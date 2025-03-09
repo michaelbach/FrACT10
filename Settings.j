@@ -200,8 +200,9 @@ Created by mb on July 15, 2015.
     // BaLM stuff
     [self setbalmIsiMillisecs: [self checkNum: [self balmIsiMillisecs] dflt: 1500 min: 20 max: 5000 set: set]];
     [self setBalmOnMillisecs: [self checkNum: [self balmOnMillisecs] dflt: 200 min: 20 max: 2000 set: set]];
-
-
+    [self setbalmDiameterInDeg: [self checkNum: [self balmDiameterInDeg] dflt: 1 min: 0.1 max: 10 set: set]];
+    [self setbalmSpeedInDegPerSec: [self checkNum: [self balmSpeedInDegPerSec] dflt: 2 min: 0.1 max: 10 set: set]];
+    
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -1086,16 +1087,30 @@ Created by mb on July 15, 2015.
 + (int) balmIsiMillisecs {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "balmIsiMillisecs"];
 }
-+ (void) setbalmIsiMillisecs: (int) val { //console.info("balmIsiMillisecs", val);
++ (void) setbalmIsiMillisecs: (int) val {
     [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "balmIsiMillisecs"];
 }
+
 + (int) balmOnMillisecs {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "balmOnMillisecs"];
 }
-+ (void) setBalmOnMillisecs: (int) val { //console.info("balmIsiMillisecs", val);
++ (void) setBalmOnMillisecs: (int) val {
     [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "balmOnMillisecs"];
 }
 
++ (int) balmDiameterInDeg {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "balmDiameterInDeg"];
+}
++ (void) setbalmDiameterInDeg: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "balmDiameterInDeg"];
+}
+
++ (int) balmSpeedInDegPerSec {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "balmSpeedInDegPerSec"];
+}
++ (void) setbalmSpeedInDegPerSec: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "balmSpeedInDegPerSec"];
+}
 
 
 @end

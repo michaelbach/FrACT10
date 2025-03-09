@@ -160,6 +160,9 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
 - (void) applyTestingPresets { // used several times, so it has its own function
     [Presets setStandardDefaultsKeepingCalBarLength];
     // general pane
+    [Settings setNTrials02: 4];
+    [Settings setNTrials04: 4];
+    [Settings setNTrials08: 12];
     [Settings setDistanceInCM: 400]; [Settings setCalBarLengthInMM: 150];
     [Settings setResponseInfoAtStart: NO];
     // acuity pane
@@ -167,6 +170,8 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     // Misc pane
     [Settings setSoundTrialYesIndex: 0]; [Settings setSoundTrialNoIndex: 1];
     [Settings setSoundRunEndIndex: 1];
+    [Settings setbalmIsiMillisecs: 500];
+    [Settings setbalmIsiMillisecs: 500];
 }
 
 
