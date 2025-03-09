@@ -31,7 +31,6 @@
 
 
 - (void) runStart { //console.info("FractControllerBalmMotion>runStart");
-    [super runStart];
     nAlternatives = 4;  nTrials = [Settings nTrials04];
     [self setCurrentTestResultUnit: "hitRateInPercent"];
     [Settings setAcuityForeColor: [CPColor whiteColor]];// will be copied → gColorFore
@@ -40,17 +39,10 @@
     animationRequestID = 0;
     radiusInPix = 0.5 * [MiscSpace pixelFromDegree: [Settings balmDiameterInDeg]];
     speedInPixPerSec = [MiscSpace pixelFromDegree: [Settings balmSpeedInDegPerSec]];
+    [super runStart];
 }
 
 
-- (void) trialStart {
-    [super trialStart];
-    isMoving = NO;
-    if (animationRequestID != 0){
-        window.cancelAnimationFrame(animationRequestID);
-    }
-    animationRequestID = 0;
-}
 /*const rows = 3;
 const cols = 4;
 const array2 = new Array(rows);
