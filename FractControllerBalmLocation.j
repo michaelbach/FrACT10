@@ -33,7 +33,7 @@
     [Settings setAcuityForeColor: [CPColor whiteColor]];// will be copied → gColorFore
     [Settings setAcuityBackColor: [CPColor blackColor]];
     [Settings setAuditoryFeedback4trial: kAuditoryFeedback4trialNone];
-    radiusInPix = 0.5 * [MiscSpace pixelFromDegree: [Settings balmDiameterInDeg]];
+    radiusInPix = 3.3 * 0.5 * [MiscSpace pixelFromDegree: [Settings balmDiameterInDeg]];
     [super runStart];
 }
 
@@ -62,7 +62,6 @@
 }
 
 
-// 0 & 4=valid; -1=ignore; -2=invalid
 - (int) responseNumberFromChar: (CPString) keyChar {
     return [self responseNumber4FromChar: keyChar];
 }
@@ -96,7 +95,6 @@
 
 - (CPString) composeExportString { //console.info("FractControllerBalm>composeExportString");
     if (gAppController.runAborted) return "";
-
     let s = [self generalComposeExportString];
     const nDigits = 3;
     s += tab + "value" + tab + [Misc stringFromNumber: [self resultValue4Export] decimals: nDigits localised: YES];
