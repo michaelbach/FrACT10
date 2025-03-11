@@ -160,10 +160,10 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
 - (void) applyTestingPresets { // used several times, so it has its own function
     [Presets setStandardDefaultsKeepingCalBarLength];
     // general pane
-    [Settings setNTrials02: 4];
-    [Settings setNTrials04: 4];
-    [Settings setNTrials08: 12];
-    [Settings setDistanceInCM: 400]; [Settings setCalBarLengthInMM: 150];
+    [Settings setNTrials02: 24];//32
+    [Settings setNTrials04: 18];//24
+    [Settings setNTrials08: 12];//18
+    [Settings setDistanceInCM: 400]; [Settings setCalBarLengthInMM: 150];//avoids dialog
     [Settings setResponseInfoAtStart: NO];
     // acuity pane
     [Settings setShowCI95: YES];

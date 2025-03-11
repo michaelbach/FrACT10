@@ -22,7 +22,10 @@
 - (void) runStart { //console.info("FractControllerBalmMotion>runStart");
     nAlternatives = 4;  nTrials = [Settings nTrials04];
     animationRequestID = 0;
-    radiusInPix = 0.5 * [MiscSpace pixelFromDegree: [Settings balmDiameterInDeg]];
+    radiusInPix = 0.5 * [MiscSpace pixelFromDegree: [Settings balmMotionDiameterInDeg]];
+    if (radiusInPix > 0.1 * Math.min(viewWidth, viewHeight)) {
+        [self alertProblemOfDiameter: [Settings balmMotionDiameterInDeg]];
+    }
     speedInPixPerSec = [MiscSpace pixelFromDegree: [Settings balmSpeedInDegPerSec]];
     dotCenterDist = radiusInPix * 4;
     dotgridNX = Math.ceil((3 * viewWidth) / dotCenterDist); // create x/y arrays for the dots

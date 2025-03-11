@@ -200,7 +200,8 @@ Created by mb on July 15, 2015.
     // BaLM stuff
     [self setbalmIsiMillisecs: [self checkNum: [self balmIsiMillisecs] dflt: 1500 min: 20 max: 5000 set: set]];
     [self setBalmOnMillisecs: [self checkNum: [self balmOnMillisecs] dflt: 200 min: 20 max: 2000 set: set]];
-    [self setbalmDiameterInDeg: [self checkNum: [self balmDiameterInDeg] dflt: 2 min: 0.1 max: 10 set: set]];
+    [self setBalmLocationDiameterInDeg: [self checkNum: [self balmLocationDiameterInDeg] dflt: 5 min: 0.1 max: 20 set: set]];
+    [self setBalmMotionDiameterInDeg: [self checkNum: [self balmMotionDiameterInDeg] dflt: 2 min: 0.1 max: 10 set: set]];
     [self setbalmSpeedInDegPerSec: [self checkNum: [self balmSpeedInDegPerSec] dflt: 3.3 min: 0.1 max: 10 set: set]];
 
     [[CPUserDefaults standardUserDefaults] synchronize];
@@ -1098,11 +1099,18 @@ Created by mb on July 15, 2015.
     [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "balmOnMillisecs"];
 }
 
-+ (int) balmDiameterInDeg {
-    return [[CPUserDefaults standardUserDefaults] floatForKey: "balmDiameterInDeg"];
++ (int) balmLocationDiameterInDeg {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "balmLocationDiameterInDeg"];
 }
-+ (void) setbalmDiameterInDeg: (float) val {
-    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "balmDiameterInDeg"];
++ (void) setBalmLocationDiameterInDeg: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "balmLocationDiameterInDeg"];
+}
+
++ (int) balmMotionDiameterInDeg {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "balmMotionDiameterInDeg"];
+}
++ (void) setBalmMotionDiameterInDeg: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "balmMotionDiameterInDeg"];
 }
 
 + (int) balmSpeedInDegPerSec {

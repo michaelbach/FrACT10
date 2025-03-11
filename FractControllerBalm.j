@@ -3,6 +3,8 @@
  Copyright © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
  2025-03-11 created
+
+ This is the superclass for the 3 BaLM modules
  */
 
 
@@ -40,6 +42,18 @@
 }
 
 
+- (void) alertProblemOfDiameter: (float) dia {
+    let s = "\r\rThe combination of distance (";
+    s += [Misc stringFromInteger: [Settings distanceInCM]] + " cm) and diameter (";
+    s += [Misc stringFromNumber: dia decimals: 1 localised: YES] + "°)"
+    s += " renders the stimulus (nearly) invisible.\r\rTipp: Set distance to, e.g., 60 cm\r\r"
+    const alert = [CPAlert alertWithMessageText: "WARNING"
+                                  defaultButton: "OK" alternateButton: nil otherButton: nil
+                      informativeTextWithFormat: s];
+    [alert runModalWithDidEndBlock: function(alert, returnCode) {}];
+}
+
+
 - (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerBalm>responseNumberFromChar")
     switch (nAlternatives) {
         case 2: return [self responseNumber2FromChar: keyChar];
@@ -52,7 +66,6 @@
 
 - (void) runEnd { //console.info("FractControllerBalm>runEnd");
     [Settings setAuditoryFeedback4trial: savedAuditoryFeedback4trial];
-
     if (iTrial < nTrials) { //premature end
         [self setResultString: "Aborted"];
     } else {

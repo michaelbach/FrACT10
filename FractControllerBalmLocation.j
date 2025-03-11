@@ -1,7 +1,7 @@
 /*
  This file is part of FrACT10, a vision test battery.
  Copyright © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
- 
+
  2020-11-09 created class "FractControllerBalmLocation" inheriting from "FractController"
  */
 
@@ -16,7 +16,10 @@
 
 - (void) runStart { //console.info("FractControllerBalmLocation>runStart");
     nAlternatives = 4;  nTrials = [Settings nTrials04];
-    radiusInPix = 3.3 * 0.5 * [MiscSpace pixelFromDegree: [Settings balmDiameterInDeg]];
+    radiusInPix = 0.5 * [MiscSpace pixelFromDegree: [Settings balmLocationDiameterInDeg]];
+    if (radiusInPix > 0.3 * Math.min(viewWidth, viewHeight)) {
+        [self alertProblemOfDiameter: [Settings balmLocationDiameterInDeg]];
+    }
     [super runStart];
 }
 
