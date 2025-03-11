@@ -1,4 +1,8 @@
 #  History
+2025-03-11 add MDBAlert to improve aesthetics iwth 3+ buttons,
+    add BaLM button & associated logic,
+    correct typo "MDBAlert": lowercase "A" messed up compileing,
+    factorize the BaLM modules to use intermediate superclass `FractControllerBalm`
 2025-03-06 add flushing of event queue to discard early key entries, add BalmLight
 2025-02-26 begin BaLM incorporation
 2025-02-14 add `MDBLabel.j` which grays out when disabled, used for all labels;
