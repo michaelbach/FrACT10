@@ -31,6 +31,7 @@
 @import "MDBButton.j"
 @import "MDBTextField.j"
 @import "MDBLabel.j"
+@import "MDBalert.j"
 @import "Presets.j"
 @import "ControlDispatcher.j"
 @import "CardController.j"
@@ -47,7 +48,7 @@
 @implementation AppController : HierarchyController {
     @outlet CPWindow fractControllerWindow;
     @outlet CPPanel settingsPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine;
-    @outlet MDBButton buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine;
+    @outlet MDBButton buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, bottonBalm, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine;
     @outlet CPButton buttonExport;
     @outlet CPButton radioButtonAcuityBW, radioButtonAcuityColor;
     @outlet GammaView gammaView;
@@ -153,7 +154,7 @@
         [Misc centerWindowOrPanel: [selfWindow contentView]];
     });
 
-    const allTestButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];
+    const allTestButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, bottonBalm, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];
     for (const b of allTestButtons)  [Misc makeFrameSquareFromWidth: b];
 
     allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherUnittest,                          FractControllerBalmLight, FractControllerBalmLocation, FractControllerBalmMotion]; // sequence like Hierachy kTest#s
@@ -399,30 +400,46 @@
         case "R":
             [Settings toggleAutoRunIndex];  break;
         case "B":
-            const alert = [CPAlert alertWithMessageText: "BaLM@FrACT₁₀" defaultButton: "Cancel" alternateButton: "Motion (‘3’)" otherButton: "Location (‘2’)" informativeTextWithFormat: "Which BaLM test?\r\r(work in progress)"];
-            [alert addButtonWithTitle: "Light (‘1’)"]; // returnCode == 2
-            [[alert buttons][0] setKeyEquivalent: "1"]; // yes, 1/2 inverted…
-            [[alert buttons][1] setKeyEquivalent: "2"];
-            [[alert buttons][2] setKeyEquivalent: "3"];
-            [alert runModalWithDidEndBlock: function(alert, returnCode) {
-                switch (returnCode) {
-                    case 3: //console.info(returnCode); // Light
-                        [self runFractControllerTest: kTestBalmLight];
-                        break;
-                    case 2: //console.info(returnCode); // Location
-                        [self runFractControllerTest: kTestBalmLocation];
-                        break;
-                    case 1: //console.info(returnCode); // Motion
-                        [self runFractControllerTest: kTestBalmMotion];
-                        break;
-                    default: console.info(returnCode);// 0=cancel
-                }
-            }];
+            [self balmSwitch];  break;
         default:
             [super keyDown: theEvent];  break;
     }
 }
+- (BOOL) alertShowHelp: (id) sender { // DOESN'T WORK
+    console.info("alertShowHelp");
+    return YES;
+}
 
+
+- (void) balmSwitch {
+    const alert = [MDBAlert alertWithMessageText: "BaLM@FrACT₁₀" defaultButton: "Cancel" alternateButton: "❓Help" otherButton: "Motion (‘3’)" informativeTextWithFormat: "“Basic Assesment of Light, Location, Motion” for ultra low vision.\r❗️Not ready for use yet❗️\r\r\r↓ Which BaLM test?"];
+    [alert addButtonWithTitle: "Location (‘2’)"]; // returnCode == 2
+    [alert addButtonWithTitle: "Light (‘1’)"]; // returnCode == 2
+    [alert setDelegate: self];
+    //[alert setShowsHelp: YES]; //doesn't work
+    [[alert buttons][0] setKeyEquivalent: "1"]; // yes, 1/2 inverted…
+    [[alert buttons][1] setKeyEquivalent: "2"];
+    [[alert buttons][2] setKeyEquivalent: "3"];
+    [alert runModalWithDidEndBlock: function(alert, returnCode) {
+        switch (returnCode) {
+            case 4: //console.info(returnCode); // Light
+                [self runFractControllerTest: kTestBalmLight];
+                break;
+            case 3: //console.info(returnCode); // Location
+                [self runFractControllerTest: kTestBalmLocation];
+                break;
+            case 2: //console.info(returnCode); // Motion
+                [self runFractControllerTest: kTestBalmMotion];
+                break;
+            case 1: //console.info(returnCode); // help
+                const url = "https://michaelbach.de/sci/stim/balm/index.html";
+                if ([Misc existsUrl: url])  window.open(url, "_blank");
+                break;
+            default: console.info(returnCode);// 0=cancel
+        }
+    }];
+
+}
 
 - (IBAction) buttonFullScreen_action: (id) sender { //console.info("AppController>buttonFullScreen");
     [Misc fullScreenOn: ![Misc isFullScreen]]; // toggle
@@ -434,6 +451,9 @@
  All test buttons land here, discriminated by their tag values (→HierarchyController for `TestIDType`)
  */
 - (IBAction) buttonDoTest_action: (id) sender { //console.info("buttonDoTest_action ", [sender tag])
+    if ([sender tag] == 11) {
+        [self balmSwitch];  return;
+    }
     [self runFractControllerTest: [sender tag]];
 }
 
