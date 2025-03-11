@@ -165,7 +165,7 @@ basic flow:
 
 
 - (CPString) contrastComposeResultString { //console.info("contrastComposeResultString");
-    // console.info("rangeLimitStatus: ", rangeLimitStatus);
+    //console.info("rangeLimitStatus: ", rangeLimitStatus);
     rangeLimitStatus = kRangeLimitOk;
     if (stimStrengthInDeviceunits >= gMaxResultLogCSWeber) { // todo: do this while testing
         rangeLimitStatus = kRangeLimitValueAtCeiling;

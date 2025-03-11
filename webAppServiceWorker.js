@@ -13,7 +13,7 @@ self.addEventListener('fetch', (event) => {
         if (response1) return response1;
         const response2 = await fetch(event.request);
         const cache = await caches.open(cacheName);
-        // console.info(`webAppServiceWorker Caching new resource: ${event.request.url}`);
+        //console.info(`webAppServiceWorker Caching new resource: ${event.request.url}`);
         cache.put(event.request, response2.clone());
         return response2;
     })());

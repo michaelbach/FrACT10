@@ -35,7 +35,7 @@ Created by mb on July 15, 2015.
     if (!set && !isNaN(val)) return val;
     return def;
 }
-+ (int) checkNum: (CPNumber) val dflt: (int) def min: (int) min max: (int) max set: (BOOL) set { // console.info("chckInt ", val);
++ (int) checkNum: (CPNumber) val dflt: (int) def min: (int) min max: (int) max set: (BOOL) set { //console.info("chckInt ", val);
     if (!set && !isNaN(val) && (val <= max) && (val >= min)) return val;
     return def;
 }

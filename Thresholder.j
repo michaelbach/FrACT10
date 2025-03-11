@@ -54,7 +54,7 @@ A wrapper for whatever thresholding algorithm is used (currently only BestPEST)
  */
 - (void) enterTrialOutcomeWithAppliedStim: (float) appliedStim wasCorrect: (BOOL) wasCorrect {
     appliedStim = [Misc limit01: appliedStim]; // ensure that contrast after converting to logCS is in range
-    // console.info("Thresholder>enterTrialOutcomeWithAppliedStim", appliedStim, ", wasCorrect: ", wasCorrect);
+    //console.info("Thresholder>enterTrialOutcomeWithAppliedStim", appliedStim, ", wasCorrect: ", wasCorrect);
     [currentThresholder enterTrialOutcomeWithAppliedStim: appliedStim wasCorrect: wasCorrect];
 }
 

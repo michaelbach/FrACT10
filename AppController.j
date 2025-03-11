@@ -435,7 +435,7 @@
                 const url = "https://michaelbach.de/sci/stim/balm/index.html";
                 if ([Misc existsUrl: url])  window.open(url, "_blank");
                 break;
-            default: console.info(returnCode);// 0=cancel
+            default: //console.info(returnCode);// 0=cancel
         }
     }];
 

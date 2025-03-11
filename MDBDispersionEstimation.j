@@ -70,7 +70,7 @@ function findMaxLlhInRange(df, r1, r2, delta) {
 /**
  The fit to the psychometric function is done in stages, because the fit's slope can be VERY shallow
  */
-function threshEstimate(df) { // console.info("threshEstimate");
+function threshEstimate(df) { //console.info("threshEstimate");
     let delta = 0.5; // initial LogMAR precision for rough homing-in
     let lMarMax = findMaxLlhInRange(df, kBestLogMAR, kWorstLogMAR, delta);
     lMarMax = findMaxLlhInRange(df, lMarMax - delta, lMarMax + delta, delta / 5); // now precise to ±0.1 LogMAR

@@ -10,7 +10,7 @@
 
 
 @implementation FractControllerBalm: FractController {
-    id settingssave;//kAuditoryFeedback4trialNone
+    int savedAuditoryFeedback4trial;
 }
 
 
@@ -32,7 +32,10 @@
     [self setCurrentTestResultUnit: "hitRateInPercent"];
     [Settings setAcuityForeColor: [CPColor whiteColor]];// will be copied → gColorFore
     [Settings setAcuityBackColor: [CPColor blackColor]];
+
+    savedAuditoryFeedback4trial = [Settings auditoryFeedback4trial];
     [Settings setAuditoryFeedback4trial: kAuditoryFeedback4trialNone];
+
     [super runStart];
 }
 
@@ -48,6 +51,8 @@
 
 
 - (void) runEnd { //console.info("FractControllerBalm>runEnd");
+    [Settings setAuditoryFeedback4trial: savedAuditoryFeedback4trial];
+
     if (iTrial < nTrials) { //premature end
         [self setResultString: "Aborted"];
     } else {

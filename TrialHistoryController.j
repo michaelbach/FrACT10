@@ -32,7 +32,7 @@ TrialHistoryController.j
 
 - (id) initWithNumTrials: (int) nTrials { //console.info("TrialHistoryController>initWithNumTrials");
     self = [super init];
-    if (self) { // console.info("TrialHistory>initWithNumTrials: success");
+    if (self) { //console.info("TrialHistory>initWithNumTrials: success");
         _trialHistory = [];
         _currentIndex = 0;
         _nTrials = nTrials;
