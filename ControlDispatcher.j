@@ -63,7 +63,7 @@
                 [Misc fullScreenOn: m2];
                 [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;
             case "settingsPane":
-                if (isNaN(m2AsNumber) || (m2AsNumber > 5)) {
+                if (isNaN(m2AsNumber) || (m2AsNumber > 6)) {
                     [self _logProblemM123];  return;
                 }
                 if (m2AsNumber < 0) {
@@ -159,7 +159,8 @@
                 [self _notify: "notificationRunFractControllerTest" object: m3AsNumber];  return;
             }
         case "acuity": case "Acuity": { // need brackets so scope of variables stays local
-            const testKey = {"Letters": kTestAcuityLett, "LandoltC": kTestAcuityC, "TumblingE": kTestAcuityE, "TAO": kTestAcuityTAO, "Vernier": kTestAcuityVernier}[m3];
+            const testKey = {"Letters": kTestAcuityLett, "LandoltC": kTestAcuityC, "TumblingE": kTestAcuityE, "TAO": kTestAcuityTAO, "Vernier": kTestAcuityVernier,
+                "BalmLight": kTestBalmLight, "BalmLocation": kTestBalmLocation, "BalmMotion": kTestBalmMotion}[m3];
             if (testKey !== undefined) {
                 [self _notify: "notificationRunFractControllerTest" object: testKey];  return;
             }}

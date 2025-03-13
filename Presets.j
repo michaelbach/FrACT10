@@ -43,7 +43,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     self = [super init];
     if (self) {
         /* first entry: Header, all others need corresponding code in the “switch orgy” further down. */
-        const allPresets = ["PRESETS", "Standard Defaults", "Demo", "Testing", "ESU", "Color Equiluminance", "BCM@Scheie", "CNS@Freiburg", "Maculight", "Hyper@TUDo", "AT@LeviLab", "ULV@Gensight", "ETCF", "HYPERION"];
+        const allPresets = ["PRESETS", "Standard Defaults", "Demo", "Testing", "TestingBaLM", "ESU", "Color Equiluminance", "BCM@Scheie", "CNS@Freiburg", "Maculight", "Hyper@TUDo", "AT@LeviLab", "ULV@Gensight", "ETCF", "HYPERION"];
 
         _popUpButton = thePopUpButton; // local copy for later
         [_popUpButton removeAllItems];
@@ -95,16 +95,22 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     switch (_presetName) {
         case "Standard Defaults":
             [Settings setDefaults];
-            [Settings setPresetName: "Standard Defaults"];// setting here to check it worked
+            [Settings setPresetName: _presetName];// setting here to check it worked
             break;
         case "Demo":
             [Settings setDefaults];
             [self applyTestingPresets];  [Settings setAutoRunIndex: kAutoRunIndexMid];
-            [Settings setPresetName: "Demo"];
+            [Settings setPresetName: _presetName];
             break;
         case "Testing": // easier testing
             [self applyTestingPresets];
-            [Settings setPresetName: "Testing"];
+            [Settings setPresetName: _presetName];
+            break;
+        case "TestingBaLM": // easier testing
+            [self applyTestingPresets];
+            [Settings setPresetName: _presetName];
+            [Settings setNTrials02: 4]; [Settings setNTrials04: 4];
+            [Settings setDistanceInCM: 60];
             break;
         case "Color Equiluminance": // near equiluminant color acuity
             [self applyTestingPresets];
@@ -112,7 +118,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Settings setAcuityForeColor: [CPColor redColor]];
             [Settings setAcuityBackColor: [CPColor colorWithRed: 0 green: 0.70 blue: 0 alpha: 1]];// dark green, near equiluminant to red
             [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil];
-            [Settings setPresetName: "Color Equiluminance"];
+            [Settings setPresetName: _presetName];
             break;
         case "ESU": case "BCM@Scheie": case "CNS@Freiburg": case "Maculight":
         case "AT@LeviLab": case "Hyper@TUDo": case "ULV@Gensight": case "ETCF": case "HYPERION":
@@ -129,7 +135,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             // Gratings pane
             // Gamma pane
             // Misc pane
-            [Settings setPresetName: "Generic Template"];
+            [Settings setPresetName: _presetName];
             break;
         default:
             console.log("FrACT10>Presets>unknown preset: ", _presetName);

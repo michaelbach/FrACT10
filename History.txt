@@ -1,4 +1,6 @@
 #  History
+
+2025-03-13 Add `TestingBaLM` preset, add BaLMs to HTML commands, move BaLM settings to separate panel with more fields
 2025-03-11 add MDBAlert to improve aesthetics iwth 3+ buttons,
     add BaLM button & associated logic,
     correct typo "MDBAlert": lowercase "A" messed up compileing,

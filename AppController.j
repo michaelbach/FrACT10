@@ -337,7 +337,7 @@
         [self exportCurrentTestResult];
     }
     [ControlDispatcher runDoneSuccessful: !runAborted];
-    
+
     // allow 1 eventloop
     setTimeout(() => {[[selfWindow contentView] setNeedsDisplay: YES];}, 1);
 }
@@ -412,7 +412,7 @@
 
 
 - (void) balmSwitch {
-    const alert = [MDBAlert alertWithMessageText: "BaLM@FrACT₁₀" defaultButton: "Cancel" alternateButton: "❓Help" otherButton: "Motion (‘3’)" informativeTextWithFormat: "“Basic Assesment of Light, Location, Motion” for ultra low vision.\r❗️Not ready for use yet❗️\r\r\r↓ Which BaLM test?"];
+    const alert = [MDBAlert alertWithMessageText: "BaLM@FrACT₁₀" defaultButton: "Cancel" alternateButton: "❓Help" otherButton: "Motion (‘3’)" informativeTextWithFormat: "“Basic Assessment of Light, Location & Motion”\rfor ultra low vision.\r\r❗️Not ready for routine use yet❗️\r\r\r↓ Which BaLM test?"];
     [alert addButtonWithTitle: "Location (‘2’)"]; // returnCode == 2
     [alert addButtonWithTitle: "Light (‘1’)"]; // returnCode == 2
     [alert setDelegate: self];

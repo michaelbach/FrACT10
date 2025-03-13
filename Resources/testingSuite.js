@@ -24,6 +24,7 @@ const tellIframe3Ms = (m1, m2, m3) => {
 	tellIframe({m1: m1, m2: m2, m3: m3});
 }
 
+const pauseMS = 300, pauseViewMS = 2000;
 
 const tellIframeReturningPromise = (message, timeout = 1000) => {
   return new Promise((resolve, reject) => {
@@ -144,6 +145,39 @@ async function runRespondingCorrectly() {
 }
 
 
+async function responseChain(invertedKeys) {
+	let response, rChar;
+	while (YES) {
+		response = await tellIframeReturningPromise3Ms('getValue', 'isInRun', '');
+		if (!response.m2) break;
+		await pauseMilliseconds(2 * pauseMS);
+		response = await tellIframeReturningPromise3Ms('getValue', 'currentAlternative', '');
+		if (!response.success) return;
+		if (invertedKeys) {
+			switch (response.m3) {
+				case 0: rChar = "4";  break; // ←
+				default: rChar = "6"; // 0, angle 0°: →
+			}
+		} else {
+		   switch (response.m3) {
+			   case 7: rChar = "3";  break;
+			   case 6: rChar = "2";  break; // ↓
+			   case 5: rChar = "1";  break;
+			   case 4: rChar = "4";  break; // ←
+			   case 3: rChar = "7";  break;
+			   case 2: rChar = "8";  break; // ↑
+			   case 1: rChar = "9";  break;
+			   default: rChar = "6"; // 0, angle 0°: →
+		   }
+		}
+		await pauseMilliseconds(pauseMS); // otherwise blindingly fast
+		response = await tellIframeReturningPromise3Ms('respondWithChar', rChar, '');
+		await pauseMilliseconds(40);// to allow possible unloading the test run at end
+		if (!response.success) break;
+	}
+}
+
+
 const testingSuite = async () => {
 	const kCrowdingTypeMax = 6; /* 6 */
 	const kPaneMax = 5; /* 5 */
@@ -159,21 +193,21 @@ const testingSuite = async () => {
 	textarea.value = "";
 	document.getElementById('belowFractFrame').appendChild(textarea);
 	window.addEventListener('message', listener4textarea);
-	let response;  const pauseMS = 300, PauseViewMS = 2000;
+	let response;
 
 	addText("TESTING SUITE STARTING\nDuration: ≈ 1 minute.\nDo not press any key until “TESTING SUITE done”.\n");
-    await pauseMilliseconds(PauseViewMS);
+    await pauseMilliseconds(pauseViewMS);
 
 	addText(" ↓ Test fullscreen");
 	await oneStep3Ms('setFullScreen', YES, '');/* do this later, doesn't work any more ??? */
-	await pauseMilliseconds(PauseViewMS * 1.5);  /* security issue? */
+	await pauseMilliseconds(pauseViewMS * 1.5);  /* security issue? */
 	await oneStep3Ms('settingsPane', 0, '');
-	await pauseMilliseconds(PauseViewMS);
+	await pauseMilliseconds(pauseViewMS);
 	await oneStep3Ms('settingsPane', -1, '');
-	await pauseMilliseconds(PauseViewMS);
+	await pauseMilliseconds(pauseViewMS);
 	await oneStep3Ms('setFullScreen', NO, '');
 	addText("↑ tested fullscreen\n");
-	await pauseMilliseconds(PauseViewMS);
+	await pauseMilliseconds(pauseViewMS);
 
 	response = await oneStep3Ms('getVersion', '', '');
 
@@ -183,12 +217,12 @@ const testingSuite = async () => {
 
 	await oneStep3Ms('setSetting', 'Preset', 'Testing');
 	response = await oneStep3Ms('getSetting', 'distanceInCM', '');
-	if (response.m3 != 400) errorAlert(); /* did we really switch to Testing? */
+	if (response.m3 != 400) errorAlert();
 	await oneStep3Ms('setSetting', 'nTrials08', 1);
 	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
 	tellIframe3Ms('run','acuity', 'Letters');
 	addText(" ↑ Presets 'Standard Defaults' & 'Testing' successfully applied.\n");
-	await pauseMilliseconds(PauseViewMS);
+	await pauseMilliseconds(pauseViewMS);
 
 	addText(" ↓ Test color stuff");
 	response = await oneStep3Ms('getSetting', 'windowBackgroundColor', '');
@@ -215,7 +249,7 @@ const testingSuite = async () => {
 	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
 	tellIframe3Ms('run','acuity', 'TumblingE');
 	addText(" ↑ Colors ok.\n");
-	await pauseMilliseconds(PauseViewMS);
+	await pauseMilliseconds(pauseViewMS);
 
 	addText(" ↓ Test multiple optotypes");
 	response = await oneStep3Ms('setSetting', 'Preset', 'Testing');
@@ -224,13 +258,13 @@ const testingSuite = async () => {
 	response = await oneStep3Ms('setSetting', 'nTrials02', 1);
 	response = await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
 	tellIframe3Ms('run','acuity', 'TAO');
-	await pauseMilliseconds(PauseViewMS);
+	await pauseMilliseconds(pauseViewMS);
 	tellIframe3Ms('run','acuity', 'Vernier');
-	await pauseMilliseconds(PauseViewMS);
+	await pauseMilliseconds(pauseViewMS);
 	tellIframe3Ms('run','contrast', 'LandoltC');
-	await pauseMilliseconds(PauseViewMS);
+	await pauseMilliseconds(pauseViewMS);
 	tellIframe3Ms('run','contrast', 'Grating');
-	await pauseMilliseconds(PauseViewMS);
+	await pauseMilliseconds(pauseViewMS);
 	addText(" ↑ Test multiple optotypes done.");
 
 	addText("\n ↓ Cycle through crowding possibilities.");
@@ -238,7 +272,7 @@ const testingSuite = async () => {
 	for (let iCrowdingType = 1; iCrowdingType <= kCrowdingTypeMax; iCrowdingType++) {
 		await oneStep3Ms('setSetting', 'crowdingType', iCrowdingType);
 		tellIframe3Ms('run','acuity', 'Letters');
-		await pauseMilliseconds(PauseViewMS);
+		await pauseMilliseconds(pauseViewMS);
 	}
 	addText(" ↑ Cycle through crowding done.\n");
 
@@ -248,7 +282,7 @@ const testingSuite = async () => {
     await oneStep3Ms('setSetting', 'rewardPicturesWhenDone', YES);
     await oneStep3Ms('setSetting', 'timeoutRewardPicturesInSeconds', 3);
 	tellIframe3Ms('run','acuity', 'Letters');
-	await pauseMilliseconds(PauseViewMS * 2);
+	await pauseMilliseconds(pauseViewMS * 2);
     addText(" ↑ `rewardPicturesWhenDone`: Done.\n");
 	await oneStep3Ms('setSetting', 'rewardPicturesWhenDone', NO);
 
@@ -256,32 +290,42 @@ const testingSuite = async () => {
 	await oneStep3Ms('setSetting', 'embedInNoise', YES);
 	tellIframe3Ms('run','acuity', 'Letters');
     addText(" ↑ Noise embedding: Done.\n");
-	await pauseMilliseconds(PauseViewMS);
-
-/*	await oneStep3Ms('setSetting', 'autoFullScreen', YES);
-	await pauseMilliseconds(300);
-	tellIframe3Ms('run','acuity', 'Letters');
-	await pauseMilliseconds(PauseViewMS);*/
+	await pauseMilliseconds(pauseViewMS);
 
 	addText("\n ↓ cycle through all panes of Settings");
 	for (let iPane = 0; iPane <= kPaneMax; iPane++) {
 		await oneStep3Ms('settingsPane', iPane, '');
-		await pauseMilliseconds(PauseViewMS);
+		await pauseMilliseconds(pauseViewMS);
 	}
 	response = await oneStep3Ms('settingsPane', -1, '');
 	addText(" ↑ cycle through all panes of Settings done.\n");
-	await pauseMilliseconds(PauseViewMS);
+	await pauseMilliseconds(pauseViewMS);
 
 	addText(" ↓ cycle through grating shapes");
 	await oneStep3Ms('setSetting', 'Preset', 'Testing');
 	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
+	await oneStep3Ms('setSetting', 'nTrials02', 1);
 	await oneStep3Ms('setSetting', 'nTrials04', 1);
 	for (let iGratingType = 0; iGratingType <= kGratingShapeMax; iGratingType++) {
 		await oneStep3Ms('setSetting', 'gratingShapeIndex', iGratingType);
 		tellIframe3Ms('run','contrast', 'Grating');
-		await pauseMilliseconds(PauseViewMS);
+		await pauseMilliseconds(pauseViewMS);
 	}
 	addText(" ↑ cycle through grating shapes done.\n");
+	await pauseMilliseconds(pauseViewMS);
+
+	addText(" ↓ cycle through BaLM tests.\n");
+	await oneStep3Ms('setSetting', 'Preset', 'Testing');
+	await oneStep3Ms('setSetting', 'nTrials02', 4);
+	await oneStep3Ms('setSetting', 'nTrials04', 4);
+    await oneStep3Ms('setSetting', 'distanceInCM', 60);
+   	tellIframe3Ms('run','acuity', 'BalmLight');
+	await responseChain(YES);
+	tellIframe3Ms('run','acuity', 'BalmLocation');
+	await responseChain(NO);
+	tellIframe3Ms('run','acuity', 'BalmMotion');
+	await responseChain(NO);
+	addText(" ↑ cycle through BaLM tests done.\n");
 
 	addText("↓ Leave with `Standard Defaults`.");
 	response = await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
@@ -295,4 +339,22 @@ const testingSuite = async () => {
 	response = await oneStep3Ms('xxxx', 'xxxx', 'xxxxxx');
 	*/
 
+}
+
+
+async function testBalm() { console.info("testBalm");
+	await oneStep3Ms('setSetting', 'Preset', 'Testing');
+	await oneStep3Ms('setSetting', 'nTrials02', 4);
+	await oneStep3Ms('setSetting', 'nTrials04', 4);
+    await oneStep3Ms('setSetting', 'distanceInCM', 60);
+	await oneStep3Ms('settingsPane', 0, '');
+	await pauseMilliseconds(pauseMS);
+	await oneStep3Ms('settingsPane', -1, '');
+	await pauseMilliseconds(pauseMS);
+	tellIframe3Ms('run','acuity', 'BalmLight');
+	await responseChain(YES);
+	tellIframe3Ms('run','acuity', 'BalmLocation');
+	await responseChain(NO);
+	tellIframe3Ms('run','acuity', 'BalmMotion');
+	await responseChain(NO);
 }
