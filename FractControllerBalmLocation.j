@@ -35,13 +35,13 @@
             [sound playNumber: kSoundTrialYes];
             CGContextSetFillColor(cgc, gColorFore);
             [optotypes fillCircleAtX: 0 y: 0 radius: radiusInPix];
-            const a = -Math.PI / 4 * [alternativesGenerator currentAlternative] + [MiscSpace degrees2radians: -30];
+            const a = -Math.PI / 4 * [alternativesGenerator currentAlternative] + [MiscSpace degrees2radians: -33.33];
             CGContextRotateCTM(cgc, a);
             const r = [MiscSpace pixelFromDegree: [Settings balmLocationEccentricityInDeg]];
             CGContextBeginPath(cgc);
             CGContextMoveToPoint(cgc, 0, 0);
             CGContextAddLineToPoint(cgc, r, 0);
-            CGContextAddArc(cgc, 0, 0, r, 0, [MiscSpace degrees2radians: 60], 1);
+            CGContextAddArc(cgc, 0, 0, r, 0, [MiscSpace degrees2radians: 66.66], 1);
             CGContextFillPath(cgc);
             discardKeyEntries = NO; // now allow responding
             break;
