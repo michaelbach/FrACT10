@@ -3242,7 +3242,7 @@ CQ
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="0Po-Bx-662">
-                                            <rect key="frame" x="34" y="261" width="259" height="185"/>
+                                            <rect key="frame" x="39" y="261" width="259" height="185"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="qau-az-PJY">
                                                 <rect key="frame" x="4" y="5" width="251" height="177"/>
@@ -3320,7 +3320,7 @@ CQ
                                             </view>
                                         </box>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="UC3-Oa-ide">
-                                            <rect key="frame" x="353" y="360" width="378" height="86"/>
+                                            <rect key="frame" x="358" y="360" width="378" height="86"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="EkW-I7-Ce4">
                                                 <rect key="frame" x="4" y="5" width="370" height="78"/>
@@ -3361,9 +3361,9 @@ CQ
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kbk-Bd-Ih7">
-                                                        <rect key="frame" x="268" y="28" width="80" height="16"/>
+                                                        <rect key="frame" x="268" y="28" width="46" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="# trials Light" id="zEq-iS-ncq">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="# trials" id="zEq-iS-ncq">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -3373,7 +3373,7 @@ CQ
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UsG-vs-uyw">
-                                            <rect key="frame" x="496" y="432" width="93" height="22"/>
+                                            <rect key="frame" x="501" y="432" width="93" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Light" bezelStyle="round" id="8Ec-2w-HJ8">
                                                 <font key="font" metaFont="system"/>
@@ -3382,23 +3382,23 @@ CQ
                                             </textFieldCell>
                                         </textField>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eVm-9D-urV">
-                                            <rect key="frame" x="116" y="432" width="93" height="22"/>
+                                            <rect key="frame" x="121" y="432" width="93" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="All" bezelStyle="round" id="Uef-B8-Fcg">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="General" bezelStyle="round" id="Uef-B8-Fcg">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="zeP-uQ-AUm">
-                                            <rect key="frame" x="353" y="217" width="378" height="86"/>
+                                            <rect key="frame" x="358" y="181" width="378" height="126"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="3tf-ts-bNs">
-                                                <rect key="frame" x="4" y="5" width="370" height="78"/>
+                                                <rect key="frame" x="4" y="5" width="370" height="118"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField toolTip="Diameter of center disk for Location and the discs for Motion. Light center diskk 3.3× largen than this value. " focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fkc-Cy-km4">
-                                                        <rect key="frame" x="20" y="26" width="40" height="22"/>
+                                                        <rect key="frame" x="20" y="68" width="40" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="fnr-Wc-qZE">
                                                             <font key="font" metaFont="system"/>
@@ -3410,16 +3410,37 @@ CQ
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PTf-gh-Il3">
-                                                        <rect key="frame" x="63" y="28" width="134" height="16"/>
+                                                        <rect key="frame" x="63" y="70" width="79" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Diameter Location [°]" id="vZO-vI-hg4">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Diameter [°]" id="vZO-vI-hg4">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField toolTip="The eccentricity reached by the wedge. " focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="asj-L0-Qxw">
+                                                        <rect key="frame" x="20" y="21" width="40" height="22"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="p6O-w3-ki6">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.balmLocationEccentricityInDeg" id="8pH-tf-pxc"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VLM-Ly-0uM">
+                                                        <rect key="frame" x="63" y="23" width="95" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Eccentricity [°]" id="1PO-Mj-gEB">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField toolTip="The number of trials presented when 2 choices are possible (e.g. Vernier)." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p6b-M4-8wp">
-                                                        <rect key="frame" x="225" y="26" width="40" height="22"/>
+                                                        <rect key="frame" x="225" y="68" width="40" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="oxg-4m-xrg">
                                                             <font key="font" metaFont="system"/>
@@ -3432,11 +3453,11 @@ CQ
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="abV-Ti-khj">
-                                                        <rect key="frame" x="268" y="13" width="101" height="32"/>
+                                                        <rect key="frame" x="268" y="55" width="68" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" id="1au-bd-X6h">
                                                             <font key="font" metaFont="system"/>
-                                                            <string key="title"># trials Location
+                                                            <string key="title"># trials
 (= Motion)</string>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -3446,7 +3467,7 @@ CQ
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5kY-jf-Frv">
-                                            <rect key="frame" x="496" y="289" width="93" height="22"/>
+                                            <rect key="frame" x="501" y="294" width="93" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Location" bezelStyle="round" id="xAk-Cu-Ybq">
                                                 <font key="font" metaFont="system"/>
@@ -3455,14 +3476,14 @@ CQ
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="FNj-Pk-xcF">
-                                            <rect key="frame" x="353" y="39" width="378" height="125"/>
+                                            <rect key="frame" x="358" y="18" width="378" height="126"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="Vwd-3E-Sox">
-                                                <rect key="frame" x="4" y="5" width="370" height="117"/>
+                                                <rect key="frame" x="4" y="5" width="370" height="118"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField toolTip="Diameter of center disk for Location and the discs for Motion. Light center diskk 3.3× largen than this value. " focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CIa-SF-JnB">
-                                                        <rect key="frame" x="20" y="70" width="40" height="22"/>
+                                                        <rect key="frame" x="20" y="68" width="40" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="JrR-YE-3tf">
                                                             <font key="font" metaFont="system"/>
@@ -3475,16 +3496,16 @@ CQ
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VAB-rf-iaZ">
-                                                        <rect key="frame" x="63" y="72" width="124" height="16"/>
+                                                        <rect key="frame" x="63" y="70" width="79" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Diameter Motion [°]" id="WrB-bG-RjD">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Diameter [°]" id="WrB-bG-RjD">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField toolTip="The number of trials presented when 2 choices are possible (e.g. Vernier)." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="42W-EL-5vE">
-                                                        <rect key="frame" x="225" y="69" width="40" height="22"/>
+                                                        <rect key="frame" x="225" y="68" width="40" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="pLK-iM-kqr">
                                                             <font key="font" metaFont="system"/>
@@ -3497,18 +3518,18 @@ CQ
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vkn-30-3it">
-                                                        <rect key="frame" x="268" y="56" width="91" height="32"/>
+                                                        <rect key="frame" x="268" y="55" width="74" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" id="X4x-cE-X0j">
                                                             <font key="font" metaFont="system"/>
-                                                            <string key="title"># trials Motion
+                                                            <string key="title"># trials
 (=Location)</string>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField toolTip="Motion speed in degrees per second. " focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0ox-Lw-rbs">
-                                                        <rect key="frame" x="20" y="20" width="40" height="22"/>
+                                                        <rect key="frame" x="20" y="21" width="40" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="dqs-Rp-Wiv">
                                                             <font key="font" metaFont="system"/>
@@ -3520,7 +3541,7 @@ CQ
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lwn-U5-xYG">
-                                                        <rect key="frame" x="63" y="22" width="73" height="16"/>
+                                                        <rect key="frame" x="63" y="23" width="73" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Speed [°/s]" id="Q9I-bf-itc">
                                                             <font key="font" metaFont="system"/>
@@ -3532,7 +3553,7 @@ CQ
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kSr-eD-mDB">
-                                            <rect key="frame" x="496" y="150" width="93" height="22"/>
+                                            <rect key="frame" x="501" y="130" width="93" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Motion" bezelStyle="round" id="eiX-XU-mkn">
                                                 <font key="font" metaFont="system"/>

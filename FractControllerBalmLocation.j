@@ -35,9 +35,14 @@
             [sound playNumber: kSoundTrialYes];
             CGContextSetFillColor(cgc, gColorFore);
             [optotypes fillCircleAtX: 0 y: 0 radius: radiusInPix];
-            CGContextRotateCTM(cgc, -Math.PI / 4 * [alternativesGenerator currentAlternative]);
-            const pnts = [[0,0], [1,1], [1,-1], [0,0]];
-            [optotypes fillPolygon: pnts withD: Math.max(viewWidth2, viewHeight2)];
+            const a = -Math.PI / 4 * [alternativesGenerator currentAlternative] + [MiscSpace degrees2radians: -30];
+            CGContextRotateCTM(cgc, a);
+            const r = [MiscSpace pixelFromDegree: [Settings balmLocationEccentricityInDeg]];
+            CGContextBeginPath(cgc);
+            CGContextMoveToPoint(cgc, 0, 0);
+            CGContextAddLineToPoint(cgc, r, 0);
+            CGContextAddArc(cgc, 0, 0, r, 0, [MiscSpace degrees2radians: 60], 1);
+            CGContextFillPath(cgc);
             discardKeyEntries = NO; // now allow responding
             break;
         default: break;

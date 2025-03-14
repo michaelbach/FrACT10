@@ -84,6 +84,13 @@
 }
 
 
+/**
+ Convert degrees to ratians
+ */
++ (float) degrees2radians: (float) degrees {
+    return degrees * Math.PI / 180;
+}
+
 /* ///////////////////////////////////// OLD, not in use (yet) */
 
 /*

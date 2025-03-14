@@ -110,7 +110,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [self applyTestingPresets];
             [Settings setPresetName: _presetName];
             [Settings setNTrials02: 4]; [Settings setNTrials04: 4];
-            [Settings setDistanceInCM: 60];
+            [Settings setDistanceInCM: 57];
             break;
         case "Color Equiluminance": // near equiluminant color acuity
             [self applyTestingPresets];
