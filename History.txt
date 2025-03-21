@@ -1,7 +1,8 @@
 #  History
 
+2025-03-21 add `extent` setting to BaLM
 2025-03-14 improve wedge shape for BalmLocation, add pertinent eccentricity setting
-2025-03-13 Add `TestingBaLM` preset, add BaLMs to HTML commands, move BaLM settings to separate panel with more fields
+2025-03-13 Add `DemoBaLM` preset, add BaLMs to HTML commands, move BaLM settings to separate panel with more fields
 2025-03-11 add MDBAlert to improve aesthetics iwth 3+ buttons,
     add BaLM button & associated logic,
     correct typo "MDBAlert": lowercase "A" messed up compileing,

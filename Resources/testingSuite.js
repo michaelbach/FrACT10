@@ -318,7 +318,8 @@ const testingSuite = async () => {
 	await oneStep3Ms('setSetting', 'Preset', 'Testing');
 	await oneStep3Ms('setSetting', 'nTrials02', 4);
 	await oneStep3Ms('setSetting', 'nTrials04', 4);
-    await oneStep3Ms('setSetting', 'distanceInCM', 60);
+    await oneStep3Ms('setSetting', 'distanceInCM', 20);
+	await pauseMilliseconds(pauseMS);
    	tellIframe3Ms('run','acuity', 'BalmLight');
 	await responseChain(YES);
 	tellIframe3Ms('run','acuity', 'BalmLocation');
@@ -346,7 +347,7 @@ async function testBalm() { console.info("testBalm");
 	await oneStep3Ms('setSetting', 'Preset', 'Testing');
 	await oneStep3Ms('setSetting', 'nTrials02', 4);
 	await oneStep3Ms('setSetting', 'nTrials04', 4);
-    await oneStep3Ms('setSetting', 'distanceInCM', 60);
+    await oneStep3Ms('setSetting', 'distanceInCM', 20);
 	await oneStep3Ms('settingsPane', 0, '');
 	await pauseMilliseconds(pauseMS);
 	await oneStep3Ms('settingsPane', -1, '');

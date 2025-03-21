@@ -204,6 +204,7 @@ Created by mb on July 15, 2015.
     [self setBalmLocationDiameterInDeg: [self checkNum: [self balmLocationDiameterInDeg] dflt: 5 min: 0.1 max: 20 set: set]];
     [self setBalmMotionDiameterInDeg: [self checkNum: [self balmMotionDiameterInDeg] dflt: 2 min: 0.1 max: 10 set: set]];
     [self setbalmSpeedInDegPerSec: [self checkNum: [self balmSpeedInDegPerSec] dflt: 3.3 min: 0.1 max: 10 set: set]];
+    [self setBalmExtentInDeg: [self checkNum: [self balmExtentInDeg] dflt: 15 min: 5 max: 30 set: set]];
 
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
@@ -1126,6 +1127,13 @@ Created by mb on July 15, 2015.
 }
 + (void) setbalmSpeedInDegPerSec: (float) val {
     [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "balmSpeedInDegPerSec"];
+}
+
++ (int) balmExtentInDeg {
+    return [[CPUserDefaults standardUserDefaults] floatForKey: "balmExtentInDeg"];
+}
++ (void) setBalmExtentInDeg: (float) val {
+    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "balmExtentInDeg"];
 }
 
 

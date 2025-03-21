@@ -1,7 +1,7 @@
 /*
  This file is part of FrACT10, a vision test battery.
  Copyright © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
- 
+
  2025-03-05 created class "FractControllerBalmMotion" inheriting from "FractController"
  */
 
@@ -51,16 +51,24 @@
 }
 
 
+- (void) drawAllDotsDx: (float) dx dy: (float) dy {
+    const er = extentInPix + radiusInPix;
+    for (let x = 0; x < dotgridNX; x++) {
+        for (let y = 0; y < dotgridNY; y++) {
+            const dotX = dotsX[x][y] + dx, dotY = dotsY[x][y] + dy;
+            const inside = (dotX > -er) && (dotX < er) && (dotY > -er) && (dotY < er);
+            if (inside)  [optotypes fillCircleAtX: dotX y: dotY radius: radiusInPix];
+        }
+    }
+}
+
+
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerBalmMotion>drawStimulusInRect, state: ", state);
     trialInfoString = [self composeTrialInfoString];
     [self prepareDrawing];
     switch(state) {
         case kStateDrawBack:
-            for (let x = 0; x < dotgridNX; x++) {
-                for (let y = 0; y < dotgridNY; y++) {
-                    [optotypes fillCircleAtX: dotsX[x][y] y: dotsY[x][y] radius: radiusInPix];
-                }
-            }
+            [self drawAllDotsDx: 0 dy: 0];
             break;
         case kStateDrawFore://console.info("kStateDrawFore");
             if (!isMoving) { // detect first time
@@ -75,15 +83,11 @@
                 case 4: dx = - motionOffset; dy = 0;  break;
                 case 6: dx = 0; dy = motionOffset;  break;
             }
-            for (let x = 0; x < dotgridNX; x++) {
-                for (let y = 0; y < dotgridNY; y++) {
-                    [optotypes fillCircleAtX: dotsX[x][y]+dx y: dotsY[x][y]+dy radius: radiusInPix];
-                }
-            }
+            [self drawAllDotsDx: dx dy: dy];
             animationRequestID = window.requestAnimationFrame(function(timeStamp) {
                 //console.info("frameAnimation", timeStamp)
                 if (isMoving) {
-                    if (animationTimeStamp < 0) animationTimeStamp = timeStamp
+                    if (animationTimeStamp < 0) animationTimeStamp = timeStamp;
                     const deltaTSecs = (timeStamp - animationTimeStamp) / 1000;
                     animationTimeStamp = timeStamp;
                     motionOffset += speedInPixPerSec * deltaTSecs;
@@ -96,7 +100,7 @@
     }
     CGContextRestoreGState(cgc);
     CGContextSetFillColor(cgc, gColorBack);
-    [super drawStimulusInRect: dirtyRect];
+    [super drawStimulusInRect: dirtyRect forView: fractView];
 }
 
 

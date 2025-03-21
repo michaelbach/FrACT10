@@ -3242,14 +3242,14 @@ CQ
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="0Po-Bx-662">
-                                            <rect key="frame" x="39" y="261" width="259" height="185"/>
+                                            <rect key="frame" x="39" y="206" width="259" height="240"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="qau-az-PJY">
-                                                <rect key="frame" x="4" y="5" width="251" height="177"/>
+                                                <rect key="frame" x="4" y="5" width="251" height="232"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField toolTip="Interstimulus Interval for Light: the dark phase before thte potential flash. " focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nrp-Wj-PW4">
-                                                        <rect key="frame" x="25" y="129" width="40" height="22"/>
+                                                        <rect key="frame" x="25" y="184" width="40" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="6bK-ey-Chb">
                                                             <font key="font" metaFont="system"/>
@@ -3261,7 +3261,7 @@ CQ
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d71-is-X3r">
-                                                        <rect key="frame" x="67" y="130" width="108" height="16"/>
+                                                        <rect key="frame" x="67" y="185" width="108" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="ISI [milliseconds]" id="rzY-Yo-wEr">
                                                             <font key="font" metaFont="system"/>
@@ -3270,7 +3270,7 @@ CQ
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SQF-Si-FsI">
-                                                        <rect key="frame" x="67" y="67" width="168" height="32"/>
+                                                        <rect key="frame" x="67" y="122" width="168" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" id="DWq-b1-g4e">
                                                             <font key="font" metaFont="system"/>
@@ -3281,7 +3281,7 @@ CQ
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField toolTip="After this time, an incorrect response will be recorded [seconds]." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QBW-Sq-PH3">
-                                                        <rect key="frame" x="25" y="80" width="40" height="22"/>
+                                                        <rect key="frame" x="25" y="135" width="40" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="T3p-Jy-GWk">
                                                             <font key="font" metaFont="system"/>
@@ -3294,7 +3294,7 @@ CQ
                                                         </connections>
                                                     </textField>
                                                     <textField toolTip="For CALIBRATION: enter the distance between observer and screen here in CENTIMETERS." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUb-hN-mFf">
-                                                        <rect key="frame" x="25" y="29" width="40" height="22"/>
+                                                        <rect key="frame" x="25" y="84" width="40" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" usesSingleLineMode="YES" id="iyV-qZ-ehe">
                                                             <font key="font" metaFont="system"/>
@@ -3308,9 +3308,32 @@ CQ
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qIF-ZF-cbG">
-                                                        <rect key="frame" x="67" y="31" width="143" height="16"/>
+                                                        <rect key="frame" x="67" y="86" width="143" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Distance [centimeters]" id="EuT-zZ-1x2">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField toolTip="Total extent of all BaLM stimuli. Black outside. Stimulus runs from –extnt to -extent.  " focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fto-FZ-UrT">
+                                                        <rect key="frame" x="25" y="33" width="40" height="22"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" usesSingleLineMode="YES" id="2Vp-yF-zET">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.balmExtentInDeg" id="FZr-83-bYh"/>
+                                                            <outlet property="delegate" destination="450" id="VoV-Ud-Hzs"/>
+                                                            <outlet property="nextKeyView" destination="aXw-Ht-RMk" id="kjg-Nb-9u6"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k0m-jS-Dth">
+                                                        <rect key="frame" x="67" y="35" width="95" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Total extent [°]" id="viF-9t-qBb">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

@@ -13,6 +13,7 @@
 
 @implementation FractControllerBalm: FractController {
     int savedAuditoryFeedback4trial;
+    int extentInPix;
 }
 
 
@@ -38,6 +39,8 @@
     savedAuditoryFeedback4trial = [Settings auditoryFeedback4trial];
     [Settings setAuditoryFeedback4trial: kAuditoryFeedback4trialNone];
 
+    extentInPix = Math.round([MiscSpace pixelFromDegree: [Settings balmExtentInDeg]]);
+
     [super runStart];
 }
 
@@ -51,6 +54,24 @@
                                   defaultButton: "OK" alternateButton: nil otherButton: nil
                       informativeTextWithFormat: s];
     [alert runModalWithDidEndBlock: function(alert, returnCode) {}];
+}
+
+
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerBalm>drawStimulusInRect");
+
+    CGContextSaveGState(cgc);
+    CGContextTranslateCTM(cgc,  viewWidth2, viewHeight2); // origin to center
+    if (viewHeight2 > extentInPix) {
+        CGContextFillRect(cgc, CGRectMake(-viewWidth2, -viewHeight2, viewWidth, viewHeight2-extentInPix));
+        CGContextFillRect(cgc, CGRectMake(-viewWidth2, extentInPix, viewWidth, viewHeight2-extentInPix));
+    }
+    if (viewWidth2 > extentInPix) {
+        CGContextFillRect(cgc, CGRectMake(-viewWidth2, -extentInPix, viewWidth2-extentInPix, 2 * extentInPix));
+        CGContextFillRect(cgc, CGRectMake(extentInPix, -extentInPix, viewWidth2-extentInPix, 2 * extentInPix));
+    }
+
+    CGContextRestoreGState(cgc);
+    [super drawStimulusInRect: dirtyRect];
 }
 
 

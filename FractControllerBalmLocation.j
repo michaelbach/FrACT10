@@ -49,7 +49,7 @@
     }
     CGContextRestoreGState(cgc);
     CGContextSetFillColor(cgc, gColorBack);
-    [super drawStimulusInRect: dirtyRect];
+    [super drawStimulusInRect: dirtyRect forView: fractView];
 }
 
 
