@@ -1,5 +1,6 @@
 #  History
 
+2025-03-27 update BaLM button image
 2025-03-21 add `extent` setting to BaLM
 2025-03-14 improve wedge shape for BalmLocation, add pertinent eccentricity setting
 2025-03-13 Add `DemoBaLM` preset, add BaLMs to HTML commands, move BaLM settings to separate panel with more fields
