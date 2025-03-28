@@ -43,7 +43,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     self = [super init];
     if (self) {
         /* first entry: Header, all others need corresponding code in the “switch orgy” further down. */
-        const allPresets = ["PRESETS", "Standard Defaults", "Demo", "Testing", "DemoBaLM", "ESU", "Color Equiluminance", "BCM@Scheie", "CNS@Freiburg", "Maculight", "Hyper@TUDo", "AT@LeviLab", "ULV@Gensight", "ETCF", "HYPERION"];
+        const allPresets = ["PRESETS", "Standard Defaults", "Demo", "Testing", "BaLM₁₀", "ESU", "Color Equiluminance", "BCM@Scheie", "CNS@Freiburg", "Maculight", "Hyper@TUDo", "AT@LeviLab", "ULV@Gensight", "ETCF", "HYPERION"];
 
         _popUpButton = thePopUpButton; // local copy for later
         [_popUpButton removeAllItems];
@@ -111,6 +111,13 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Settings setPresetName: _presetName];
             [Settings setNTrials02: 4];  [Settings setNTrials04: 4];
             [Settings setDistanceInCM: 29];  [Settings setbalmIsiMillisecs: 500];
+            break;
+        case "BaLM₁₀": // easier testing
+            [Settings setDefaults];
+            [Settings setTimeoutResponseSeconds: 2];
+            [Settings setNTrials02: 24];  [Settings setNTrials04: 24];
+            [Settings setDistanceInCM: 57];  [Settings setbalmIsiMillisecs: 500];
+            [Settings setPresetName: _presetName];
             break;
         case "Color Equiluminance": // near equiluminant color acuity
             [self applyTestingPresets];

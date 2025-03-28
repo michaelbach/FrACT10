@@ -290,12 +290,10 @@
 - (void) runFractController2 { //console.info("AppController>runFractController2");
     [self closeAllPanels];  [self centerAllPanels];
     const allInfoPanels = {[kTestAcuityLett]: responseinfoPanelAcuityL, [kTestAcuityC]: responseinfoPanelAcuity8C, [kTestAcuityE]: responseinfoPanelAcuityE, [kTestAcuityTAO]: responseinfoPanelAcuityTAO, [kTestAcuityVernier]: responseinfoPanelAcuityVernier, [kTestContrastLett]: responseinfoPanelContrastLett, [kTestContrastC]: responseinfoPanelContrastC, [kTestContrastE]: responseinfoPanelContrastE, [kTestContrastG]: responseinfoPanelContrastG, [kTestAcuityLineByLine]: responseinfoPanelAcuityLineByLine};
-    if ([Settings responseInfoAtStart]) {
-        if (currentTestID in allInfoPanels) {
-            [allInfoPanels[currentTestID] makeKeyAndOrderFront: self];
-            if ((currentTestID == kTestAcuityC) && ([Settings nAlternatives] == 4)) {
-                [responseinfoPanelAcuity4C makeKeyAndOrderFront: self];
-            }
+    if ([Settings responseInfoAtStart] && (currentTestID in allInfoPanels)) {
+        [allInfoPanels[currentTestID] makeKeyAndOrderFront: self];
+        if ((currentTestID == kTestAcuityC) && ([Settings nAlternatives] == 4)) {
+            [responseinfoPanelAcuity4C makeKeyAndOrderFront: self];
         }
     } else {
         [self runFractController2_actionOK: nil];
@@ -412,7 +410,7 @@
 
 
 - (void) balmSwitch {
-    const alert = [MDBAlert alertWithMessageText: "BaLM@FrACT₁₀" defaultButton: "Cancel" alternateButton: "❓Help" otherButton: "Motion (‘3’)" informativeTextWithFormat: "“Basic Assessment of Light, Location & Motion”\rfor ultra low vision.\r\r❗️Not ready for routine use yet❗️\r\r\r↓ Which BaLM test?"];
+    const alert = [MDBAlert alertWithMessageText: "BaLM@FrACT₁₀" defaultButton: "Cancel" alternateButton: "❓Help" otherButton: "Motion (‘3’)" informativeTextWithFormat: "“Basic Assessment of Light, Location & Motion”\rfor ultra low vision.\r\r\r↓ Which BaLM test?"];
     [alert addButtonWithTitle: "Location (‘2’)"]; // returnCode == 2
     [alert addButtonWithTitle: "Light (‘1’)"]; // returnCode == 2
     [alert setDelegate: self];
