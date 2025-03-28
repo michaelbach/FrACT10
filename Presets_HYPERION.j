@@ -32,8 +32,6 @@
     [Settings setAcuityFormatDecimal: NO];
     [Settings setCrowdingType: 1]; //flanking bars
     [Settings setCrowdingDistanceCalculationType: 3];//like ETDRS
-
-    [Settings setPresetName: "HYPERION"];
 }
 
 @end

@@ -77,21 +77,22 @@ const oneStep3Ms = async (m1, m2, m3, timeout = 1000) => {
 }
 
 
-const doDemoRun = () => {
-	tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Testing'});
-    tellIframe({m1: 'setSetting', m2: 'autoRunIndex', m3: '2'});
-	tellIframe({m1: 'setSetting', m2: 'nTrials08', m3: '12'});
-	tellIframe({m1: 'run', m2: 'acuity', m3: 'Letters'});
+const doDemoRun = async () => {
+    await oneStep3Ms('setSetting', 'preset', 'Testing');
+    await oneStep3Ms('setSetting', 'autoRunIndex', '2');
+    await oneStep3Ms('setSetting', 'nTrials08', '12');
+    await oneStep3Ms('run', 'Acuity', 'Letters', 20000); /* long delay for entire run*/
+    await oneStep3Ms('setSetting', 'preset', 'Standard Defaults');
 }
 
 
-async function demoRunAndRestore() {
+const demoRunAndRestore = async () => {
    let response = await oneStep3Ms('getSetting', 'distanceInCM', '');
    const distanceInCM = response.m3;
    await oneStep3Ms('setSetting', 'distanceInCM', 400);
 
    response = await oneStep3Ms('getSetting', 'calBarLengthInMM', '');
-   const calBarLengthInMM = response.m3; // store for later restore
+   const calBarLengthInMM = response.m3; /* store for later restore */
    await oneStep3Ms('setSetting', 'calBarLengthInMM', 170);
 
    response = await oneStep3Ms('getSetting', 'nTrials08', '');
@@ -106,17 +107,17 @@ async function demoRunAndRestore() {
    const autoRunIndex = response.m3;
    await oneStep3Ms('setSetting', 'autoRunIndex', 2);
 
-   response = await oneStep3Ms('run', 'Acuity', 'Letters', 20000); // long delay for entire run
+   response = await oneStep3Ms('run', 'Acuity', 'Letters', 20000); /* long delay for entire run */
    const runSuccess = response.success;
 
-   // restore settings
+   /* restore settings */
    await oneStep3Ms('setSetting', 'distanceInCM', distanceInCM);
    await oneStep3Ms('setSetting', 'calBarLengthInMM', calBarLengthInMM);
    await oneStep3Ms('setSetting', 'nTrials08', nTrials08);
    await oneStep3Ms('setSetting', 'responseInfoAtStart', responseInfoAtStart);
    await oneStep3Ms('setSetting', 'autoRunIndex', autoRunIndex);
 
-   //console.info("sucessfully: ", runSuccess, " ran and restored.");
+   /*console.info("sucessfully: ", runSuccess, " ran and restored.");*/
 }
 
 

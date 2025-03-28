@@ -95,21 +95,16 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     switch (_presetName) {
         case "Standard Defaults":
             [Settings setDefaults];
-            [Settings setPresetName: _presetName];// setting here to check it worked
             break;
         case "Demo":
             [Settings setDefaults];
             [self applyTestingPresets];  [Settings setAutoRunIndex: kAutoRunIndexMid];
-            [Settings setPresetName: _presetName];
             break;
         case "Testing": // easier testing
             [self applyTestingPresets];
-            [Settings setPresetName: _presetName];
             break;
         case "DemoBaLM": // easier testing
-            [self applyTestingPresets];
-            [Settings setPresetName: _presetName];
-            [Settings setNTrials02: 4];  [Settings setNTrials04: 4];
+            [self applyTestingPresets];  [Settings setNTrials02: 4];  [Settings setNTrials04: 4];
             [Settings setDistanceInCM: 29];  [Settings setbalmIsiMillisecs: 500];
             break;
         case "BaLM₁₀": // easier testing
@@ -117,7 +112,6 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Settings setTimeoutResponseSeconds: 2];
             [Settings setNTrials02: 24];  [Settings setNTrials04: 24];
             [Settings setDistanceInCM: 57];  [Settings setbalmIsiMillisecs: 500];
-            [Settings setPresetName: _presetName];
             break;
         case "Color Equiluminance": // near equiluminant color acuity
             [self applyTestingPresets];
@@ -125,7 +119,6 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Settings setAcuityForeColor: [CPColor redColor]];
             [Settings setAcuityBackColor: [CPColor colorWithRed: 0 green: 0.70 blue: 0 alpha: 1]];// dark green, near equiluminant to red
             [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil];
-            [Settings setPresetName: _presetName];
             break;
         case "ESU": case "BCM@Scheie": case "CNS@Freiburg": case "Maculight":
         case "AT@LeviLab": case "Hyper@TUDo": case "ULV@Gensight": case "ETCF": case "HYPERION":
@@ -142,7 +135,6 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             // Gratings pane
             // Gamma pane
             // Misc pane
-            [Settings setPresetName: _presetName];
             break;
         default:
             console.log("FrACT10>Presets>unknown preset: ", _presetName);
@@ -151,6 +143,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             }
             return;
     }
+    [Settings setPresetName: _presetName];
     [[CPNotificationCenter defaultCenter] postNotificationName: "updateSoundFiles" object: nil];
     [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil]; // this synchronises the color settings between userdefaults & AppController
     [_popUpButton setSelectedIndex: 0]; // always show "PRESETS"

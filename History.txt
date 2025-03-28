@@ -1,6 +1,9 @@
 #  History
 
-2025-03-28 add Preset `BaLM₁₀`, tiny corrections to BaLM workflow
+2025-03-28 add Preset `BaLM₁₀`, tiny corrections to BaLM workflow,
+    remove Preset "Demo"
+    simplify `Presets` by moving `[Settings setPresetName: _presetName];` to a more general position
+    fix BaLM to have fixation target on during ISI
 2025-03-27 update BaLM button image
 2025-03-21 add `extent` setting to BaLM
 2025-03-14 improve wedge shape for BalmLocation, add pertinent eccentricity setting

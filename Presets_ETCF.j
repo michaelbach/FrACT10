@@ -23,8 +23,6 @@
     [Settings setContrastOptotypeDiameter: 170];
     // gamma pane
     [Settings setGammaValue: 1.0];
-
-    [Settings setPresetName: "ETCF"];
 }
 
 @end

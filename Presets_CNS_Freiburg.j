@@ -19,8 +19,6 @@
     [Settings setResults2clipboard: kResults2ClipFinalOnly];
     [Settings setDistanceInCM: 200];
     [Settings setTestOnFive: kTestAcuityLett];
-
-    [Settings setPresetName: "CNS@Freiburg"];
 }
 
 @end

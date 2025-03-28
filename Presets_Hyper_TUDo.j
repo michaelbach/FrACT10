@@ -29,8 +29,6 @@
     // Misc pane
     [Settings setWindowBackgroundColor: [CPColor whiteColor]];
     [Settings setSoundTrialNoIndex: 1];
-
-    [Settings setPresetName: "Hyper@TUDo"];
 }
 
 @end

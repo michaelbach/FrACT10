@@ -134,6 +134,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     const balmTestIDs = [kTestBalmLight, kTestBalmLocation, kTestBalmMotion];
     const tIsi = balmTestIDs.includes(currentTestID) ? [Settings balmIsiMillisecs] : [Settings timeoutIsiMillisecs];
     timerIsi = [CPTimer scheduledTimerWithTimeInterval: tIsi / 1000 target:self selector:@selector(onTimeoutIsi:) userInfo:nil repeats:NO];
+    state = kStateDrawBack; [[selfWindow contentView] setNeedsDisplay: YES];
 }
 - (void) onTimeoutIsi: (CPTimer) timer { // now we can draw the stimulus
     const tDisp = (currentTestID == kTestBalmLight) ? ([Settings balmOnMillisecs] / 1000) : [Settings timeoutDisplaySeconds];
