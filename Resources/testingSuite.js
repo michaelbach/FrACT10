@@ -1,6 +1,7 @@
 /* History
    =======
 
+2025-03-28 `doDemoRun` w/o Demo preset
 2025-02-08 had added more tests, now add look at Settings in fullscreen
 2025-02-02 fix regression: restore demo run
 2025-01-30 move fullscreen to front, otherwise won't work (delay user interaction??)
@@ -77,8 +78,9 @@ const oneStep3Ms = async (m1, m2, m3, timeout = 1000) => {
 
 
 const doDemoRun = () => {
-	tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Demo'});
-	/*tellIframe({m1: 'setSetting', m2: 'nTrials08', m3: '3'});*/
+	tellIframe({m1: 'setSetting', m2: 'Preset', m3: 'Testing'});
+    tellIframe({m1: 'setSetting', m2: 'autoRunIndex', m3: '2'});
+	tellIframe({m1: 'setSetting', m2: 'nTrials08', m3: '12'});
 	tellIframe({m1: 'run', m2: 'acuity', m3: 'Letters'});
 }
 
