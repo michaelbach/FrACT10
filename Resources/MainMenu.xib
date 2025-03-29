@@ -3602,6 +3602,54 @@ CQ
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="cc2-Ui-CwT">
+                                            <rect key="frame" x="39" y="45" width="259" height="98"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <view key="contentView" id="AWe-gj-yg5">
+                                                <rect key="frame" x="4" y="5" width="251" height="90"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <popUpButton tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LWV-gO-9VY">
+                                                        <rect key="frame" x="20" y="30" width="135" height="25"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">Select a soundfile giving feedback on "Correct".
+
+</string>
+                                                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="TwY-ZT-7H3" id="bkg-lO-hM6">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="message"/>
+                                                            <menu key="menu" id="HOF-nv-Kh2">
+                                                                <items>
+                                                                    <menuItem title="Item 1" state="on" id="TwY-ZT-7H3"/>
+                                                                </items>
+                                                            </menu>
+                                                        </popUpButtonCell>
+                                                        <connections>
+                                                            <action selector="buttonSettingsTestSound_action:" target="450" id="cwY-TS-hfd"/>
+                                                            <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.soundTrialStartIndex" id="Guo-Aj-szV"/>
+                                                        </connections>
+                                                    </popUpButton>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sfl-TH-LbQ">
+                                                        <rect key="frame" x="157" y="32" width="63" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Trial Start" id="JdD-T8-5M9">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                            </view>
+                                        </box>
+                                        <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Ee-dm-14a">
+                                            <rect key="frame" x="126" y="129" width="83" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Sound" bezelStyle="round" id="s4t-cP-a8Z">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -3929,6 +3977,7 @@ CQ
                 <outlet property="settingsPaneMiscSoundsTrialNoPopUp" destination="mWY-c6-Jrm" id="HN9-re-Pwr"/>
                 <outlet property="settingsPaneMiscSoundsTrialYesPopUp" destination="LG4-aN-i05" id="AVc-o7-tXf"/>
                 <outlet property="settingsPanePresetsPopUpButton" destination="JgX-d5-6k1" id="N2S-lI-dCM"/>
+                <outlet property="settingsPaneSoundsTrialStartPopUp" destination="LWV-gO-9VY" id="K4D-9p-JFB"/>
                 <outlet property="settingsPanel" destination="MF5-y3-Ol0" id="6RV-5t-pXs"/>
                 <outlet property="window" destination="371" id="OB7-Tk-Lov"/>
             </connections>

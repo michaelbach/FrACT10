@@ -25,7 +25,7 @@
     switch(state) {
         case kStateDrawBack: break;
         case kStateDrawFore://console.info("kStateDrawFore");
-            [sound playNumber: kSoundTrialYes];
+            [sound playNumber: kSoundTrialStart];
             if ([alternativesGenerator currentAlternative] != 0) {
                 CGContextSetFillColor(cgc, gColorFore);
                 CGContextFillRect(cgc, CGRectMake(-viewWidth2, -viewHeight2, viewWidth, viewHeight));

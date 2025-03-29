@@ -53,6 +53,7 @@
     @outlet CPButton radioButtonAcuityBW, radioButtonAcuityColor;
     @outlet GammaView gammaView;
     @outlet CPPopUpButton settingsPanePresetsPopUpButton;  Presets presets;
+    @outlet CPPopUpButton settingsPaneSoundsTrialStartPopUp;
     @outlet CPPopUpButton settingsPaneMiscSoundsTrialYesPopUp;
     @outlet CPPopUpButton settingsPaneMiscSoundsTrialNoPopUp;
     @outlet CPPopUpButton settingsPaneMiscSoundsRunEndPopUp;
@@ -193,7 +194,7 @@
     [contrastMaxLogCSWeberField setFormatter: numberFormatter];
     [gammaValueField setFormatter: numberFormatter];
 
-    [Settings setupSoundPopups: [settingsPaneMiscSoundsTrialYesPopUp, settingsPaneMiscSoundsTrialNoPopUp, settingsPaneMiscSoundsRunEndPopUp]];
+    [Settings setupSoundPopups: [settingsPaneSoundsTrialStartPopUp, settingsPaneMiscSoundsTrialYesPopUp, settingsPaneMiscSoundsTrialNoPopUp, settingsPaneMiscSoundsRunEndPopUp]];
 
     // set up control dispatcher (HTML messages to FrACT10 when embedded as iframe)
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationRunFractControllerTest:) name: "notificationRunFractControllerTest" object: nil];
@@ -477,7 +478,7 @@
     [Settings checkDefaults];  [settingsPanel close];
 }
 
-- (IBAction) buttonSettingsTestSound_action: (id) sender {
+- (IBAction) buttonSettingsTestSound_action: (id) sender { //console.info("buttonSettingsTestSound_action", [sender tag]);
     [self postNotificationName: "updateSoundFiles" object: nil];
     [sound playDelayedNumber: [sender tag]]; // delay because new buffer to be loaded; 0.02 would be enough.
 }

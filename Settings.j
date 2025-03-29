@@ -193,6 +193,7 @@ Created by mb on July 15, 2015.
     [self setSpecialBcmOn: [self checkBool: [self specialBcmOn] dflt: NO set: set]];
     [self setHideExitButton: [self checkBool: [self hideExitButton] dflt: NO set: set]];
 
+    [self setSoundTrialStartIndex: [self checkNum: [self soundTrialStartIndex] dflt: 1 min: 0 max: gSoundsTrialStart.length-1 set: set]];
     [self setSoundTrialYesIndex: [self checkNum: [self soundTrialYesIndex] dflt: 0 min: 0 max: gSoundsTrialYes.length-1 set: set]];
     [self setSoundTrialNoIndex: [self checkNum: [self soundTrialNoIndex] dflt: 0 min: 0 max: gSoundsTrialNo.length-1 set: set]];
     [self setSoundRunEndIndex: [self checkNum: [self soundRunEndIndex] dflt: 0 min: 0 max: gSoundsRunEnd.length-1 set: set]];
@@ -1053,6 +1054,14 @@ Created by mb on July 15, 2015.
     [[CPUserDefaults standardUserDefaults] setBool: val forKey: "hideExitButton"];
 }
 
+
++ (int) soundTrialStartIndex {
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "soundTrialStartIndex"];
+}
++ (void) setSoundTrialStartIndex: (int) val { //console.info("setSoundTrialYesIndex", val);
+    if ((val < 0 ) || (val >= gSoundsTrialYes.length)) val = 0;
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "soundTrialStartIndex"];
+}
 + (int) soundTrialYesIndex {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "soundTrialYesIndex"];
 }
@@ -1076,8 +1085,8 @@ Created by mb on July 15, 2015.
 }
 
 + (void) setupSoundPopups: (id) popupsArray {
-    const allSounds = [gSoundsTrialYes, gSoundsTrialNo, gSoundsRunEnd];
-    const allIndexes = [[self soundTrialYesIndex], [self soundTrialNoIndex], [self soundRunEndIndex]];
+    const allSounds = [gSoundsTrialStart, gSoundsTrialYes, gSoundsTrialNo, gSoundsRunEnd];
+    const allIndexes = [[self soundTrialStartIndex], [self soundTrialYesIndex], [self soundTrialNoIndex], [self soundRunEndIndex]];
     for (let i = 0; i < popupsArray.length; i++) {
         const p = popupsArray[i];
         [p removeAllItems];

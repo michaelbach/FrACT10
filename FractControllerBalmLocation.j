@@ -32,7 +32,7 @@
             [optotypes fillCircleAtX: 0 y: 0 radius: radiusInPix];
             break;
         case kStateDrawFore://console.info("kStateDrawFore");
-            [sound playNumber: kSoundTrialYes];
+            [sound playNumber: kSoundTrialStart];
             CGContextSetFillColor(cgc, gColorFore);
             [optotypes fillCircleAtX: 0 y: 0 radius: radiusInPix];
             const a = -Math.PI / 4 * [alternativesGenerator currentAlternative] + [MiscSpace degrees2radians: -33.33];

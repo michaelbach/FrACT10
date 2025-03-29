@@ -53,3 +53,4 @@ gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden via S
 gSoundsTrialYes = ["tink.mp3", "miniPop.mp3"];
 gSoundsTrialNo = ["whistle.mp3", "error2.mp3"];
 gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
+gSoundsTrialStart = ["click02.mp3", "notify1.mp3", "notify2.mp3"];

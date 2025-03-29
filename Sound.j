@@ -13,7 +13,7 @@ Sound.j
 
 
 @implementation Sound: CPObject {
-    id audioContext, bufferTrialYes, bufferTrialNo, bufferRunEnd, volumeNode;
+    id audioContext, bufferTrialStart, bufferTrialYes, bufferTrialNo, bufferRunEnd, volumeNode;
     BOOL needsInitAfterUserinteraction;
     CPTimer _timer;
 }
@@ -27,8 +27,24 @@ Sound.j
 
 // the below is clumsy (doing it 3 times), but the closure didn't take the provided buffer in my attempts.
 
+
+// for start of trial (BaLM)
+- (void) loadSoundTrialStart { //console.info("Sound>loadSoundTrialStart");
+    bufferTrialStart = null;
+    const request = new XMLHttpRequest();
+    request.open('GET', "Resources/sounds/trialStart/" + gSoundsTrialStart[[Settings soundTrialStartIndex]], true);
+    request.responseType = 'arraybuffer';
+    request.onload = function() {  // Decode asynchronously
+        audioContext.decodeAudioData(request.response, function(buff) {bufferTrialStart = buff;});
+    }
+    request.send();
+}
+
+
+
+
 // for correct response
-- (void) loadSoundTrialYes { //console.info("Sound>loadSound");
+- (void) loadSoundTrialYes { //console.info("Sound>loadSoundTrialYes");
     bufferTrialYes = null;
     const request = new XMLHttpRequest();
     request.open('GET', "Resources/sounds/trialYes/" + gSoundsTrialYes[[Settings soundTrialYesIndex]], true);
@@ -79,9 +95,11 @@ Sound.j
 
 - (void) playNumber: (int) number {
     switch (number) {
+        case kSoundTrialStart: [self playSoundFromBuffer: bufferTrialStart];  break;
         case kSoundTrialYes: [self playSoundFromBuffer: bufferTrialYes];  break;
         case kSoundTrialNo: [self playSoundFromBuffer: bufferTrialNo];  break;
-        default: [self playSoundFromBuffer: bufferRunEnd]; // kSoundRunEnd
+        case kSoundRunEnd: [self playSoundFromBuffer: bufferRunEnd];  break;
+        default: alert("xx");
     }
 }
 - (void) playDelayedNumber: (int) number {
@@ -103,7 +121,8 @@ Sound.j
     volumeNode = audioContext.createGain();
     volumeNode.gain.value = 0;
     volumeNode.connect(audioContext.destination);
-    [self loadSoundTrialYes];  [self loadSoundTrialNo];  [self loadSoundRunEnd];
+    [self loadSoundTrialStart];  [self loadSoundTrialYes];
+    [self loadSoundTrialNo];  [self loadSoundRunEnd];
 }
 
 

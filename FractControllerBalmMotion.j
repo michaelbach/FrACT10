@@ -72,8 +72,8 @@
             break;
         case kStateDrawFore://console.info("kStateDrawFore");
             if (!isMoving) { // detect first time
+                [sound playNumber: kSoundTrialStart];
                 isMoving = YES;  motionOffset = 0;  animationTimeStamp = -1;
-                [sound playNumber: kSoundTrialYes];
                 discardKeyEntries = NO; // now allow responding
             }
             let dx, dy;
