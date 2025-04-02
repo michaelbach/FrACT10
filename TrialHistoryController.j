@@ -30,7 +30,7 @@ TrialHistoryController.j
 }
 
 
-- (id) initWithNumTrials: (int) nTrials { //console.info("TrialHistoryController>initWithNumTrials");
+- (id) initWithNumTrials: (int) nTrials { //console.info("TrialHistoryController>initWithNumTrials", nTrials);
     self = [super init];
     if (self) { //console.info("TrialHistory>initWithNumTrials: success");
         _trialHistory = [];
@@ -44,7 +44,7 @@ TrialHistoryController.j
 }
 
 
-- (void) trialEnded { //console.info("TrialHistoryController>trialEnded, value: ", value);
+- (void) trialEnded { //console.info("TrialHistoryController>trialEnded");
     if (_currentIndex > _nTrials) return;  // just for safety, should not occur
     _trialHistory[_currentIndex] = {};
     _trialHistory[_currentIndex].value = value;

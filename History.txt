@@ -1,5 +1,6 @@
 #  History
 
+2025-04-02 fix bug: "Full history" record records null for choices/alternatives if response timeout occurs
 2025-03-28 add Preset `BaLM₁₀`, tiny corrections to BaLM workflow,
     remove Preset "Demo"
     simplify `Presets` by moving `[Settings setPresetName: _presetName];` to a more general position

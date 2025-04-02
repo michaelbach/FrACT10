@@ -292,7 +292,10 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) onTimeoutResponse: (CPTimer) timer { //console.info("FractController>onTimeoutResponse");
-    responseWasCorrect = NO;  [self trialEnd];
+    responseWasCorrect = NO;
+    [trialHistoryController setResponded: -1];
+    [trialHistoryController setPresented: [alternativesGenerator currentAlternative]];
+    [self trialEnd];
 }
 
 
@@ -323,9 +326,10 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (void) processKeyDownEvent { //console.info("FractController>processKeyDownEvent");
     if (discardKeyEntries) return;//flushing the event queue to discard early responses
     const r = [self responseNumberFromChar: responseKeyChar];
-    responseWasCorrect = (r == [alternativesGenerator currentAlternative]);
+    const ca = [alternativesGenerator currentAlternative];
+    responseWasCorrect = (r == ca);
     [trialHistoryController setResponded: r];
-    [trialHistoryController setPresented: [alternativesGenerator currentAlternative]];
+    [trialHistoryController setPresented: ca];
     [self trialEnd];
 }
 
@@ -404,6 +408,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [timerAutoResponse invalidate];  timerAutoResponse = nil;
     [timerIsi invalidate];  timerIsi = nil;
 }
+
+
 - (void) trialEnd { //console.info("FractController>trialEnd");
     [self invalidateTrialTimers];
 
