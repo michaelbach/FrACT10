@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23727" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="101200" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="23504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23727"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="23727"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,12 +23,12 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a87-ja-bWZ">
-                        <rect key="frame" x="12" y="541" width="48" height="48"/>
+                        <rect key="frame" x="20" y="537" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FrACT_icon-390" id="PrW-IU-8O1"/>
                     </imageView>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="joy-xW-5wZ">
-                        <rect key="frame" x="140" y="540" width="530" height="44"/>
+                        <rect key="frame" x="140" y="535" width="530" height="44"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="FrACT₁₀ – Freiburg Vision Test" allowsEditingTextAttributes="YES" id="zvc-iA-vcl">
                             <font key="font" size="28" name="Arial-BoldMT"/>
@@ -37,11 +37,11 @@
                         </textFieldCell>
                     </textField>
                     <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Vch-Ov-elQ">
-                        <rect key="frame" x="12" y="521" width="776" height="5"/>
+                        <rect key="frame" x="20" y="523" width="760" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
                     <button tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jHx-aa-MPC" customClass="MDBButton">
-                        <rect key="frame" x="12" y="434" width="100" height="20"/>
+                        <rect key="frame" x="20" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Acuity assessment using Sloan Letters. Shortcut: L
  </string>
@@ -54,7 +54,7 @@
                         </connections>
                     </button>
                     <button tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWr-KV-CRJ" customClass="MDBButton">
-                        <rect key="frame" x="148" y="434" width="100" height="20"/>
+                        <rect key="frame" x="152" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Acuity assessment using Landolt Cs. 
 Shortcut: C 
@@ -68,7 +68,7 @@ Shortcut: C 
                         </connections>
                     </button>
                     <button tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Phl-6Z-YpU" customClass="MDBButton">
-                        <rect key="frame" x="285" y="434" width="100" height="20"/>
+                        <rect key="frame" x="284" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Acuity assessment using tumbling Es.  Shortcut: E
  </string>
@@ -81,7 +81,7 @@ Shortcut: C 
                         </connections>
                     </button>
                     <button tag="4" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6e2-Sj-gkY" customClass="MDBButton">
-                        <rect key="frame" x="418" y="434" width="100" height="20"/>
+                        <rect key="frame" x="416" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Acuity assessment using TAO (The Auckland Optotypes).
 Shortcut: A
@@ -95,7 +95,7 @@ Shortcut: A
                         </connections>
                     </button>
                     <button tag="5" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oB-kn-EbO" customClass="MDBButton">
-                        <rect key="frame" x="552" y="434" width="100" height="20"/>
+                        <rect key="frame" x="548" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Hyperacuity (Vernier) assessment.
 Shortcut: V      
@@ -109,7 +109,7 @@ Shortcut: V      
                         </connections>
                     </button>
                     <button toolTip="BaLM₁₀ (Basic Assessment of Light, Locatoin &amp; Motion. " tag="11" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JdF-37-xKU" customClass="MDBButton">
-                        <rect key="frame" x="688" y="434" width="100" height="20"/>
+                        <rect key="frame" x="680" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonBalm" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="lHR-rw-W7J">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -120,7 +120,7 @@ Shortcut: V      
                         </connections>
                     </button>
                     <button tag="6" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rNE-r4-ESi" customClass="MDBButton">
-                        <rect key="frame" x="12" y="289" width="100" height="20"/>
+                        <rect key="frame" x="20" y="288" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Contrast assessment using Sloan Letters.  Shortcut: 1
  </string>
@@ -133,7 +133,7 @@ Shortcut: V      
                         </connections>
                     </button>
                     <button tag="7" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="teG-PN-Gq7" customClass="MDBButton">
-                        <rect key="frame" x="176" y="289" width="100" height="20"/>
+                        <rect key="frame" x="185" y="288" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Contrast assessment using Landolt C.  Shortcut: 2
  </string>
@@ -146,7 +146,7 @@ Shortcut: V      
                         </connections>
                     </button>
                     <button tag="8" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0h-oh-O7H" customClass="MDBButton">
-                        <rect key="frame" x="350" y="289" width="100" height="20"/>
+                        <rect key="frame" x="350" y="288" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Contrast assessment using Tumbling E.  Shortcut: 3
  </string>
@@ -159,7 +159,7 @@ Shortcut: V      
                         </connections>
                     </button>
                     <button tag="9" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aRI-1u-jl3" customClass="MDBButton">
-                        <rect key="frame" x="519" y="289" width="100" height="20"/>
+                        <rect key="frame" x="515" y="288" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Contrast assessment using gratings. Settings&gt;Contrast to set spatial frequency and diameter. Shortcut: g
  </string>
@@ -172,7 +172,7 @@ Shortcut: V      
                         </connections>
                     </button>
                     <button tag="10" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-y6-Eca" customClass="MDBButton">
-                        <rect key="frame" x="688" y="289" width="100" height="20"/>
+                        <rect key="frame" x="680" y="288" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">"Line of optotypes"": 1 or 3 lines of optypes, akin to an acuity chart.
 Instruct to read the middle line, and when 3 of 5 are correct press ↓.
@@ -188,7 +188,7 @@ Shortcut: 4
                         </connections>
                     </button>
                     <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUU-sC-ci6" propertyAccessControl="none">
-                        <rect key="frame" x="11" y="167" width="102" height="23"/>
+                        <rect key="frame" x="19" y="167" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip"> Enter Settings screen.
  Shortcut: s
@@ -205,7 +205,7 @@ Shortcut: 4
                         </connections>
                     </button>
                     <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHP-WN-mFO" propertyAccessControl="none">
-                        <rect key="frame" x="180" y="167" width="102" height="23"/>
+                        <rect key="frame" x="184" y="167" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Toggle fullscreen.                                     
 Shortcut: f
@@ -219,7 +219,7 @@ Shortcut: f
                         </connections>
                     </button>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KcI-ws-Dhl">
-                        <rect key="frame" x="347" y="167" width="107" height="25"/>
+                        <rect key="frame" x="352" y="167" width="107" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Automatic run, targeting some acuity or contrast.                   
 For testing.</string>
@@ -242,7 +242,7 @@ For testing.</string>
                         </connections>
                     </popUpButton>
                     <button toolTip="Guess what this button does…    " imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CDI-8L-YSC">
-                        <rect key="frame" x="518" y="167" width="102" height="23"/>
+                        <rect key="frame" x="514" y="167" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="Help" bezelStyle="texturedRounded" image="iconHelp" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7qY-Pl-QqO">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -254,7 +254,7 @@ For testing.</string>
                         </connections>
                     </button>
                     <button toolTip="Legal notice and more.         " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y5b-QD-e3x">
-                        <rect key="frame" x="687" y="167" width="102" height="23"/>
+                        <rect key="frame" x="679" y="167" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="About" bezelStyle="texturedRounded" image="iconAbout" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="duS-rs-9gg">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -269,11 +269,11 @@ For testing.</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
                     <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Oxi-an-PcJ">
-                        <rect key="frame" x="12" y="218" width="776" height="5"/>
+                        <rect key="frame" x="20" y="218" width="760" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IAa-NP-Kj2">
-                        <rect key="frame" x="498" y="534" width="292" height="17"/>
+                        <rect key="frame" x="490" y="534" width="292" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="versionDateString" id="OHh-EV-lga">
                             <font key="font" metaFont="system"/>
@@ -285,7 +285,7 @@ For testing.</string>
                         </connections>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L8d-bR-KqO">
-                        <rect key="frame" x="11" y="115" width="132" height="23"/>
+                        <rect key="frame" x="19" y="115" width="132" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">This button only appears after a finished run and does what it says. 
 </string>
@@ -295,19 +295,6 @@ For testing.</string>
                         </buttonCell>
                         <connections>
                             <action selector="buttonExport_action:" target="450" id="aIb-Nf-ia3"/>
-                        </connections>
-                    </button>
-                    <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H63-sm-3gG">
-                        <rect key="frame" x="665" y="115" width="102" height="23"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">This button does what it says.
-Shortcuts: "Q", "X" or "-" (Minus)</string>
-                        <buttonCell key="cell" type="roundTextured" title="Exit" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GPt-7z-qAa">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonDoExit_action:" target="450" id="t4f-l7-7Lm"/>
                         </connections>
                     </button>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBn-1C-8cg">
@@ -323,7 +310,7 @@ Shortcuts: "Q", "X" or "-" (Minus)</string>
                         </connections>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9X3-mm-3Mb">
-                        <rect key="frame" x="765" y="565" width="24" height="14"/>
+                        <rect key="frame" x="757" y="561" width="24" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Exit.
 Shortcuts: "Q", "X" or "-" (Minus)</string>
