@@ -46,7 +46,7 @@ Created by Bach on 14.08.2017.
 
 - (void) runStart { //console.info("FractControllerAcuityE>runStart");
     nAlternatives = 4;  nTrials = [Settings nTrials04];
-    [self setCurrentTestResultUnit: "LogMAR"];
+    [gAppController setCurrentTestResultUnit: "LogMAR"];
     [super runStart];
 }
 

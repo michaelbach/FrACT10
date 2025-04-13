@@ -127,7 +127,7 @@ Created by mb on 2021-12-21.
         case 2: nAlternatives = 8;  break; // 4 Landolt orientations not supported
     }
     nTrials = 9999;
-    [self setCurrentTestResultUnit: "LogMAR"];
+    [gAppController setCurrentTestResultUnit: "LogMAR"];
     [super runStart];
 }
 

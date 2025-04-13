@@ -32,7 +32,7 @@
 
 
 - (void) runStart { //console.info("FractControllerBalm>runStart");
-    [self setCurrentTestResultUnit: "hitRateInPercent"];
+    [gAppController setCurrentTestResultUnit: "hitRateInPercent"];
     [Settings setAcuityForeColor: [CPColor whiteColor]];// will be copied → gColorFore
     [Settings setAcuityBackColor: [CPColor blackColor]];
 
@@ -88,9 +88,9 @@
 - (void) runEnd { //console.info("FractControllerBalm>runEnd");
     [Settings setAuditoryFeedback4trial: savedAuditoryFeedback4trial];
     if (iTrial < nTrials) { //premature end
-        [self setResultString: "Aborted"];
+        [gAppController setResultString: "Aborted"];
     } else {
-        [self setResultString: [self composeResultString]];
+        [gAppController setResultString: [self composeResultString]];
     }
     [super runEnd];
 }
@@ -117,7 +117,7 @@
     let s = [self generalComposeExportString];
     const nDigits = 3;
     s += tab + "value" + tab + [Misc stringFromNumber: [self resultValue4Export] decimals: nDigits localised: YES];
-    s += tab + "unit1" + tab + currentTestResultUnit
+    s += tab + "unit1" + tab + gAppController.currentTestResultUnit
     s += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 1 localised: YES];
     s += tab + "contrastWeber" + tab + 99;
     s += tab + "unit2" + tab + "%";

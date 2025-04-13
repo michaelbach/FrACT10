@@ -121,7 +121,7 @@ Created by Bach on 14.08.2017.
 
 
 - (void) runStart { //console.info("FractControllerAcuityVernier>runStart");
-    [self setCurrentTestResultUnit: "arcsec"];
+    [gAppController setCurrentTestResultUnit: "arcsec"];
     nAlternatives = 2;  nTrials = [Settings nTrials02];
     offsetVernierMinimalArcSec = 0.5;  offsetVernierMaximalArcSec = 3000.0;
     [super runStart];
@@ -130,9 +130,9 @@ Created by Bach on 14.08.2017.
 
 - (void) runEnd { //console.info("FractControllerAcuityVernier>runEnd");
     if (iTrial < nTrials) { //premature end
-        [self setResultString: @"Aborted"];
+        [gAppController setResultString: @"Aborted"];
     } else {
-        [self setResultString: [self composeResultString]];
+        [gAppController setResultString: [self composeResultString]];
     }
     [super runEnd];
 }

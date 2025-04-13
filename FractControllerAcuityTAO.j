@@ -55,7 +55,7 @@ Created by Bach on 2020-05-21
 
 - (void) runStart { //console.info("FractControllerAcuityTAO>runStart");
     nAlternatives = 10;  nTrials = [Settings nTrials08];
-    [self setCurrentTestResultUnit: "LogMAR"];
+    [gAppController setCurrentTestResultUnit: "LogMAR"];
     abortCharacter = "A";
     [super runStart];
 }

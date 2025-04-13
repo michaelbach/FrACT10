@@ -42,6 +42,7 @@ kTestNone = 0; kTestAcuityLett = 1; kTestAcuityC = 2; kTestAcuityE = 3; kTestAcu
 kTestAcuityVernier = 5; kTestContrastLett = 6; kTestContrastC = 7; kTestContrastE = 8;
 kTestContrastG = 9; kTestAcuityLineByLine = 10; kTestContrastDitherUnittest = 11;
 kTestBalmLight = 12; kTestBalmLocation = 13; kTestBalmMotion = 14;
+currentTestID = kTestNone;
 
 kShortcutKeys4TestsArray = {"L": kTestAcuityLett, "C": kTestAcuityC, "E": kTestAcuityE,
     "A": kTestAcuityTAO, "V": kTestAcuityVernier,

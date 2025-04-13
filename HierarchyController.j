@@ -18,12 +18,6 @@ HierarchyController.j
  Created on 18.07.2017
  */
 @implementation HierarchyController: CPWindowController {
-    TestIDType currentTestID @accessors;
-    CPString resultString @accessors;
-    CPString versionDateString @accessors; // for the main Xib window top right
-    CPString currentTestResultUnit @accessors;
-    CPString currentTestResultExportString @accessors;
-    CPString currentTestResultsHistoryExportString @accessors;
     CPWindow selfWindow;
 }
 

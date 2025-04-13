@@ -110,15 +110,15 @@
         case kTestAcuityE:
         case kTestAcuityTAO:
             if (iTrial < nTrials) { //premature end
-                [self setResultString: "Aborted"];
+                [gAppController setResultString: "Aborted"];
             } else {
-                [self setResultString: [self acuityComposeResultString]];
+                [gAppController setResultString: [self acuityComposeResultString]];
             }
             break;
         case kTestAcuityVernier:
             break;
         case kTestAcuityLineByLine:
-            [self setResultString: ""];
+            [gAppController setResultString: ""];
             break;
     }
     [super runEnd];
@@ -225,7 +225,7 @@
     let s = [self generalComposeExportString];
     const nDigits = 3;
     s += tab + "value" + tab + [Misc stringFromNumber: [self resultValue4Export] decimals: nDigits localised: YES];
-    s += tab + "unit1" + tab + currentTestResultUnit
+    s += tab + "unit1" + tab + gAppController.currentTestResultUnit;
     s += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 1 localised: YES];
     s += tab + "contrastWeber" + tab + [Misc stringFromNumber: [Settings contrastAcuityWeber] decimals: 1 localised: YES];
     s += tab + "unit2" + tab + "%";

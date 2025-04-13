@@ -81,7 +81,7 @@ Created by Bach on 2020-09-02
 
 - (void) runStart { //console.info("FractControllerContrast>runStart");
     [super runStart];
-    [self setCurrentTestResultUnit: "logCSWeber"];
+    [gAppController setCurrentTestResultUnit: "logCSWeber"];
 }
 
 
@@ -97,10 +97,10 @@ Created by Bach on 2020-09-02
 
 - (void) runEnd { //console.info("FractControllerContrast>runEnd");
     if (iTrial < nTrials) { //premature end
-        [self setResultString: @"Aborted"];
+        [gAppController setResultString: @"Aborted"];
     } else {
         stimStrengthInDeviceunits = Math.min(stimStrengthInDeviceunits, gMaxResultLogCSWeber);
-        [self setResultString: [self contrastComposeResultString]];
+        [gAppController setResultString: [self contrastComposeResultString]];
     }
     [super runEnd];
 }
@@ -186,7 +186,7 @@ basic flow:
     let s = [self generalComposeExportString];
     const nDigits = 3;
     s += tab + "value" + tab + [Misc stringFromNumber: stimStrengthInDeviceunits decimals: nDigits localised: YES];
-    s += tab + "unit1" + tab + currentTestResultUnit
+    s += tab + "unit1" + tab + gAppController.currentTestResultUnit
     s += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 2 localised: YES];
     s += tab + "diameter" + tab + [Misc stringFromNumber: [Settings contrastOptotypeDiameter] decimals: 2 localised: YES];
     s += tab + "unit2" + tab + "arcmin";

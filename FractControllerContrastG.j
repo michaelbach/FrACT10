@@ -207,7 +207,7 @@ const specialBcmStepsize = 0.1;
     }
     nTrials = nAlternatives == 4 ? [Settings nTrials04] : [Settings nTrials02];
     [super runStart];
-    [self setCurrentTestResultUnit: "MichelsonPercent"];
+    [gAppController setCurrentTestResultUnit: "MichelsonPercent"];
 }
 
 
@@ -282,7 +282,7 @@ const specialBcmStepsize = 0.1;
     if (gAppController.runAborted) return "";
     let _exportString = [self generalComposeExportString];
     _exportString += tab + "value" + tab + [Misc stringFromNumber: contrastMichelsonPercent decimals: 3 localised: YES];
-    _exportString += tab + "unit1" + tab + currentTestResultUnit
+    _exportString += tab + "unit1" + tab + gAppController.currentTestResultUnit
     _exportString += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 2 localised: YES];
     _exportString += tab + "spatFreq" + tab + [Misc stringFromNumber: spatialFreqCPD decimals: 2 localised: YES];
     _exportString += tab + "unit2" + tab + "cpd";

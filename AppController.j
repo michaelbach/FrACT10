@@ -57,6 +57,11 @@
     @outlet CPPopUpButton settingsPaneMiscSoundsTrialYesPopUp;
     @outlet CPPopUpButton settingsPaneMiscSoundsTrialNoPopUp;
     @outlet CPPopUpButton settingsPaneMiscSoundsRunEndPopUp;
+    CPString versionDateString @accessors; // for the main Xib window top right
+    CPString resultString @accessors;
+    CPString currentTestResultUnit @accessors;
+    CPString currentTestResultExportString @accessors;
+    CPString currentTestResultsHistoryExportString @accessors;
     Sound sound;
     CPImageView rewardImageView;
     RewardsController rewardsController;
@@ -286,7 +291,7 @@
 
 
 /**
- The above prerequisites were met, so let's run the test specified in the class-global`currentTestID`
+ The above prerequisites were met, so let's run the test specified in the global`currentTestID`
  */
 - (void) runFractController2 { //console.info("AppController>runFractController2");
     [self closeAllPanels];  [self centerAllPanels];
@@ -312,7 +317,6 @@
     }
     currentFractController = [[allTestControllers[currentTestID] alloc] initWithWindow: fractControllerWindow];
     [currentFractController setSound: sound];
-    [currentFractController setCurrentTestID: currentTestID]; // while it has inherited currentTestID, it hasn't inherited its value
     currentTestResultExportString = "";
     [currentFractController runStart];
 }

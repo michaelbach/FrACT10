@@ -439,7 +439,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     for (const svi of sv) [svi removeFromSuperview];
     [selfWindow close];
     [gAppController setRunAborted: (iTrial < nTrials)]; //premature end
-    [gAppController setResultString: resultString];
+    //[gAppController setResultString: resultString];
     [gAppController setCurrentTestResultExportString: [self composeExportString]];
     // delay to give the screen time to update for immediate response feedback
     await [Misc asyncDelaySeconds: 0.03];
