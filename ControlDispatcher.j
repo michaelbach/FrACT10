@@ -214,7 +214,7 @@
     const sNameCapped = sName.charAt(0).toUpperCase() + sName.slice(1);
     let setter = CPSelectorFromString("set" + sNameCapped + ":");
     [Settings performSelector: setter withObject: m3];
-    [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil];
+    [Misc postDfltNotificationName: "copyColorsFromSettings" object: nil];
     let m3Now = [Settings performSelector: CPSelectorFromString(sName)]; // read back
     m3Now = [m3Now hexString];
     [self post2parentM1: m1 m2: m2 m3: m3Now success: m3 === m3Now];
@@ -229,7 +229,7 @@
 
 + (void) _notify: (CPString) aNotificationName object: (id) anObject {
     [[gAppController window] orderFront: self]; // otherwise we would crash here
-    [[CPNotificationCenter defaultCenter] postNotificationName: aNotificationName object: anObject];
+    [Misc postDfltNotificationName: aNotificationName object: anObject];
 }
 
 

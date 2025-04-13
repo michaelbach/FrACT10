@@ -241,7 +241,7 @@ Created by mb on July 15, 2015.
     temp = [MiscLight upperLuminanceFromContrastMilsn: cnt];  temp = [MiscLight devicegrayFromLuminance: temp];
     gColorBack = [CPColor colorWithWhite: temp alpha: 1];
     [self setAcuityBackColor: gColorBack];
-    [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil];
+    [Misc postDfltNotificationName: "copyColorsFromSettings" object: nil];
 }
 
 

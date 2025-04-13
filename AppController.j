@@ -180,7 +180,7 @@
         Math.random(); // randomising the pseudorandom sequence
 
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(buttonExportEnableYESorNO:) name: "buttonExportEnableYESorNO" object: nil];
-    [self postNotificationName: "buttonExportEnableYESorNO" object: 0];
+    [Misc postDfltNotificationName: "buttonExportEnableYESorNO" object: 0];
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(copyColorsFromSettings:) name: "copyColorsFromSettings" object: nil];
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:CPUserDefaultsDidChangeNotification object: nil];
 
@@ -358,7 +358,7 @@
             [Misc copyString2ClipboardWithDialog: currentTestResultExportString];
         }
     }
-    [self postNotificationName: "buttonExportEnableYESorNO" object: ([currentTestResultExportString length] > 1)];
+    [Misc postDfltNotificationName: "buttonExportEnableYESorNO" object: ([currentTestResultExportString length] > 1)];
 }
 
 
@@ -471,7 +471,7 @@
                           informativeTextWithFormat: "\r\rAll settings were (re)set to their default values.\r\r"];
         [alert runModalWithDidEndBlock: function(alert, returnCode) {}];
     }
-    [self postNotificationName: "copyColorsFromSettings" object: nil];
+    [Misc postDfltNotificationName: "copyColorsFromSettings" object: nil];
 }
 
 - (IBAction) buttonSettingsClose_action: (id) sender {
@@ -479,7 +479,7 @@
 }
 
 - (IBAction) buttonSettingsTestSound_action: (id) sender { //console.info("buttonSettingsTestSound_action", [sender tag]);
-    [self postNotificationName: "updateSoundFiles" object: nil];
+    [Misc postDfltNotificationName: "updateSoundFiles" object: nil];
     [sound playDelayedNumber: [sender tag]]; // delay because new buffer to be loaded; 0.02 would be enough.
 }
 
@@ -501,7 +501,7 @@
  */
 - (IBAction) buttonExport_action: (id) sender { //console.info("AppController>buttonExport_action");
     [Misc copyString2Clipboard: currentTestResultExportString];
-    [self postNotificationName: "buttonExportEnableYESorNO" object: 0];
+    [Misc postDfltNotificationName: "buttonExportEnableYESorNO" object: 0];
 }
 
 

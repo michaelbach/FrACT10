@@ -118,7 +118,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Settings setAcuityColor: YES];
             [Settings setAcuityForeColor: [CPColor redColor]];
             [Settings setAcuityBackColor: [CPColor colorWithRed: 0 green: 0.70 blue: 0 alpha: 1]];// dark green, near equiluminant to red
-            [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil];
+            [Misc postDfltNotificationName: "copyColorsFromSettings" object: nil];
             break;
         case "ESU": case "BCM@Scheie": case "CNS@Freiburg": case "Maculight":
         case "AT@LeviLab": case "Hyper@TUDo": case "ULV@Gensight": case "ETCF": case "HYPERION":
@@ -144,8 +144,8 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             return;
     }
     [Settings setPresetName: _presetName];
-    [[CPNotificationCenter defaultCenter] postNotificationName: "updateSoundFiles" object: nil];
-    [[CPNotificationCenter defaultCenter] postNotificationName: "copyColorsFromSettings" object: nil]; // this synchronises the color settings between userdefaults & AppController
+    [Misc postDfltNotificationName: "updateSoundFiles" object: nil];
+    [Misc postDfltNotificationName: "copyColorsFromSettings" object: nil]; // this synchronises the color settings between userdefaults & AppController
     [_popUpButton setSelectedIndex: 0]; // always show "PRESETS"
 
     switch (feedbackType) {

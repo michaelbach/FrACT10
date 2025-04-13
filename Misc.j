@@ -118,7 +118,7 @@ function _pause(ms) { //console.info("Misc>_pause");
             case 1: /*console.info("ok, dann nicht");*/  break;
             case 0:
                 [self copyString2Clipboard: s];
-                [[CPNotificationCenter defaultCenter] postNotificationName: "buttonExportEnableYESorNO" object: 0];
+                [self postDfltNotificationName: "buttonExportEnableYESorNO" object: 0];
                 break;
         }
     }];
@@ -211,6 +211,12 @@ function _pause(ms) { //console.info("Misc>_pause");
         alert("The page you are trying to reach is not available (in this context).");
     }
     return success;
+}
+
+
+// Helper to shorten code
++ (void) postDfltNotificationName: (CPString) aNotificationName object: (id) anObject {
+    [[CPNotificationCenter defaultCenter] postNotificationName: aNotificationName object: anObject];
 }
 
 
