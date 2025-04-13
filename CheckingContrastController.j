@@ -7,8 +7,6 @@
  Created by mb on 2025-02-09.
  */
 
-@import "HierarchyController.j"
-
 
 /**
  CheckingContrastController
@@ -16,7 +14,7 @@
  Dealing with the Checking Contrast stuff: Init, and responding to buttons
  */
 
-@implementation CheckingContrastController : HierarchyController {
+@implementation CheckingContrastController : CPWindowController {
     CPColor weberFieldColor1 @accessors;
     CPColor weberFieldColor2 @accessors;
     float actualWeberPercent @accessors;

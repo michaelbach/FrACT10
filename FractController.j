@@ -6,7 +6,7 @@ Copyright © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 */
 
 
-@import "HierarchyController.j"
+@import "AppController.j"
 @import "AlternativesGenerator.j"
 @import "Thresholder.j";
 @import "Optotypes.j";
@@ -21,10 +21,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 /**
  FractController
  
- The template controller for all tests. It inherits from HierarchyController
- to make communication with AppController easier.
  */
-@implementation FractController: HierarchyController {
+@implementation FractController: CPWindowController {
     int iTrial, nTrials, nAlternatives;
     StateType state;
     BOOL isBonusTrial, responseWasCorrect, responseWasCorrectCumulative;
@@ -47,16 +45,20 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) updateViewWidthHeight {
-    viewWidth = CGRectGetWidth([selfWindow frame]);  viewWidth2 = viewWidth / 2;
-    viewHeight = CGRectGetHeight([selfWindow frame]);  viewHeight2 = viewHeight / 2;
+    viewWidth = CGRectGetWidth([gAppController.selfWindow frame]);  viewWidth2 = viewWidth / 2;
+    viewHeight = CGRectGetHeight([gAppController.selfWindow frame]);  viewHeight2 = viewHeight / 2;
+
+//    viewWidth = CGRectGetWidth(gAppController.selfWindow.frame.width);  viewWidth2 = viewWidth / 2;
+//    viewHeight = CGRectGetHeight(gAppController.selfWindow.frame.height);  viewHeight2 = viewHeight / 2;
+
 }
 
 
 - (id) initWithWindow: (CPWindow) aWindow { //console.info("FractController>initWithWindow");
     self = [super initWithWindow: aWindow];
     if (self) {
-        selfWindow = [self window];
-        [selfWindow setFullPlatformWindow: YES];
+        gAppController.selfWindow = [self window];
+        [gAppController.selfWindow setFullPlatformWindow: YES];
         [aWindow setDelegate: self];
         [self updateViewWidthHeight];
         state = kStateDrawBack;
@@ -68,7 +70,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         [Settings checkDefaults];
         abortCharacter = "5";
         [gAppController setRunAborted: YES];
-        [selfWindow makeKeyAndOrderFront: self];  [selfWindow makeFirstResponder: self];
+        [gAppController.selfWindow makeKeyAndOrderFront: self];  [gAppController.selfWindow makeFirstResponder: self];
         //[self performSelector: @selector(runStart) withObject: nil afterDelay: 0.01];//geht nicht mehr nach DEPLOY???
         [MDBDispersionEstimation initResultStatistics];  ci95String = "";
         //[self runStart];
@@ -132,12 +134,12 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         }
     }
     const balmTestIDs = [kTestBalmLight, kTestBalmLocation, kTestBalmMotion];
-    const tIsi = balmTestIDs.includes(currentTestID) ? [Settings balmIsiMillisecs] : [Settings timeoutIsiMillisecs];
+    const tIsi = balmTestIDs.includes(gCurrentTestID) ? [Settings balmIsiMillisecs] : [Settings timeoutIsiMillisecs];
     timerIsi = [CPTimer scheduledTimerWithTimeInterval: tIsi / 1000 target:self selector:@selector(onTimeoutIsi:) userInfo:nil repeats:NO];
-    state = kStateDrawBack; [[selfWindow contentView] setNeedsDisplay: YES];
+    state = kStateDrawBack; [[gAppController.selfWindow contentView] setNeedsDisplay: YES];
 }
 - (void) onTimeoutIsi: (CPTimer) timer { // now we can draw the stimulus
-    const tDisp = (currentTestID == kTestBalmLight) ? ([Settings balmOnMillisecs] / 1000) : [Settings timeoutDisplaySeconds];
+    const tDisp = (gCurrentTestID == kTestBalmLight) ? ([Settings balmOnMillisecs] / 1000) : [Settings timeoutDisplaySeconds];
     timerDisplay = [CPTimer scheduledTimerWithTimeInterval: tDisp target:self selector:@selector(onTimeoutDisplay:) userInfo:nil repeats:NO];
     timerResponse = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutResponseSeconds] target:self selector:@selector(onTimeoutResponse:) userInfo:nil repeats:NO];
     if ([Settings autoRunIndex] != kAutoRunIndexNone) {
@@ -149,7 +151,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             timerAutoResponse = [CPTimer scheduledTimerWithTimeInterval: autoTime target:self selector:@selector(onTimeoutAutoResponse:) userInfo:nil repeats:NO];
         }
     }
-    state = kStateDrawFore; [[selfWindow contentView] setNeedsDisplay: YES];
+    state = kStateDrawFore; [[gAppController.selfWindow contentView] setNeedsDisplay: YES];
 }
 
 
@@ -163,10 +165,10 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         CGContextSetFillColor(cgc, [CPColor whiteColor]); // contrast always 100% with TAO
     if ([self isContrastOptotype] && [Settings contrastDithering]) {
         CGContextSetFillColor(cgc, colorBackUndithered); // else black background is briefly visible, due to dithering delay
-        CGContextFillRect(cgc, [selfWindow frame]);
+        CGContextFillRect(cgc, [gAppController.selfWindow frame]);
         CGContextSetFillColor(cgc, gColorBack);
     }
-    CGContextFillRect(cgc, [selfWindow frame]);
+    CGContextFillRect(cgc, [gAppController.selfWindow frame]);
     CGContextSaveGState(cgc);
     CGContextTranslateCTM(cgc,  viewWidth2, viewHeight2); // origin to center
     CGContextTranslateCTM(cgc,  -xEccInPix, -yEccInPix); // eccentric if desired
@@ -237,7 +239,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (void) drawTouchControls {
     if ((![Settings enableTouchControls]) || (responseButtonsAdded)) return;
     let sze = 52, sze2 = sze / 2;
-    switch  (currentTestID) {// kTestAcuityTAO, kTestAcuityVernier: done in instance
+    switch  (gCurrentTestID) {// kTestAcuityTAO, kTestAcuityVernier: done in instance
         case kTestAcuityLett: case kTestContrastLett:
             sze = viewWidth / ((nAlternatives+1) * 1.4 + 1);
             for (let i = 0; i < nAlternatives; i++) {
@@ -275,7 +277,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [button setTitle: title];  [button setKeyEquivalent: keyEquivalent];
     [button setTarget: self];  [button setAction: @selector(responseButton_action:)];
     [button setBezelStyle: CPRoundRectBezelStyle];
-    [[selfWindow contentView] addSubview: button];
+    [[gAppController.selfWindow contentView] addSubview: button];
     responseButtonsAdded = YES;
     return button;
 }
@@ -287,7 +289,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) onTimeoutDisplay: (CPTimer) timer { //console.info("FractController>onTimeoutDisplay");
-    state = kStateDrawBack;  [[selfWindow contentView] setNeedsDisplay: YES];
+    state = kStateDrawBack;  [[gAppController.selfWindow contentView] setNeedsDisplay: YES];
 }
 
 
@@ -414,7 +416,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [self invalidateTrialTimers];
 
     CGContextSetFillColor(cgc, gColorBack); // need to clear for ISI to work
-    CGContextFillRect(cgc, [selfWindow frame]);
+    CGContextFillRect(cgc, [gAppController.selfWindow frame]);
 
     [trialHistoryController setCorrect: responseWasCorrect]; // placed here so reached by "onTimeoutAutoResponse"
     [thresholder enterTrialOutcomeWithAppliedStim: [self stimThresholderunitsFromDeviceunits: stimStrengthInDeviceunits] wasCorrect: responseWasCorrect];
@@ -435,11 +437,10 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 - (async void) runEnd { //console.info("FractController>runEnd");
     [self invalidateTrialTimers];
-    const sv = [[selfWindow contentView] subviews];
+    const sv = [[gAppController.selfWindow contentView] subviews];
     for (const svi of sv) [svi removeFromSuperview];
-    [selfWindow close];
+    [gAppController.selfWindow close];
     [gAppController setRunAborted: (iTrial < nTrials)]; //premature end
-    //[gAppController setResultString: resultString];
     [gAppController setCurrentTestResultExportString: [self composeExportString]];
     // delay to give the screen time to update for immediate response feedback
     await [Misc asyncDelaySeconds: 0.03];
@@ -470,7 +471,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         }
     }
 
-    if (currentTestID == kTestContrastG) {
+    if (gCurrentTestID == kTestContrastG) {
         _currentTestResultExportString += tab + "gratingShape" + tab + [Settings gratingShapeIndex];
     }
 
@@ -554,7 +555,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     s += tab + "decimalMark" + tab + [Settings decimalMarkChar];
     s += tab + "date" + tab + [Misc date2YYYY_MM_DD: now];
     s += tab + "time" + tab + [Misc date2HH_MM_SS: now];
-    s += tab + "test" + tab + [self testNameGivenTestID: currentTestID];
+    s += tab + "test" + tab + [Misc testNameGivenTestID: gCurrentTestID];
     return s;
 }
 // in order to not mangle parameter sequence I'm tucking this addition at the end
@@ -563,6 +564,35 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         s += tab + "eccentricityX" + tab + [Misc stringFromNumber: [Settings eccentXInDeg] decimals: 1 localised: YES];
     }
     return s;
+}
+
+
+/**
+ Helpers
+ */
+- (BOOL) isAcuityTAO {
+    return [kTestAcuityTAO].includes(gCurrentTestID);
+}
+- (BOOL) isAcuityOptotype {
+    return [kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO].includes(gCurrentTestID);
+}
+- (BOOL) isAcuityGrating {
+    return (gCurrentTestID == kTestContrastG) && ([Settings what2sweepIndex] == 1);
+}
+- (BOOL) isAcuityAny {
+    return ([self isAcuityOptotype] || (gCurrentTestID == kTestAcuityVernier) || [self isAcuityGrating]);
+}
+- (BOOL) isContrastG {
+    return [kTestContrastG].includes(gCurrentTestID) && (![self isAcuityGrating]);
+}
+- (BOOL) isContrastOptotype { //console.info("isContrastOptotype ", gCurrentTestID);
+    return [kTestContrastLett, kTestContrastC, kTestContrastE].includes(gCurrentTestID);
+}
+- (BOOL) isContrastAny {
+    return [self isContrastOptotype] || (gCurrentTestID == kTestContrastG);
+}
+- (BOOL) isGratingAny {
+    return gCurrentTestID == kTestContrastG;
 }
 
 @end

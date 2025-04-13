@@ -7,8 +7,6 @@
  Created by mb on 2025-02-02.
  */
 
-@import "HierarchyController.j"
-
 
 /**
  CardController
@@ -16,7 +14,7 @@
  Dealing with calibration via plastic card's size
  */
 
-@implementation CardController : HierarchyController {
+@implementation CardController : CPWindowController {
     @outlet CPPanel plasticCardPanel;
     @outlet CPImageView plasticCardImageView;
     float calBarLengthInMMbefore;

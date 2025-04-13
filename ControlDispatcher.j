@@ -11,7 +11,6 @@
 
 @import <Foundation/Foundation.j>
 @import <AppKit/AppKit.j>
-@import "Globals.j"
 
 
 @implementation ControlDispatcher: CPObject {
@@ -124,8 +123,7 @@
 + (void) manageGetValue {
     m3 = null;  const _inRun = [self _isInRun];
     if (m2 == "isInRun") {
-        const currTestID = gAppController.currentTestID;
-        const s = [gAppController performSelector: @selector(testNameGivenTestID:) withObject: currTestID];
+        const s = [Misc testNameGivenTestID: gAppController.gCurrentTestID];
         [self post2parentM1: m1 m2: _inRun m3: s success: YES];
         return;
     }

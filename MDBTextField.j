@@ -5,7 +5,6 @@
   Created by Bach on 2024-05-22.
  */
 
-@import "HierarchyController.j"
 
 /**
  Custom ad-hoc textfield to work around this problem:

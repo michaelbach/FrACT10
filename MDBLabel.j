@@ -6,8 +6,6 @@
  */
 
 
-@import "HierarchyController.j"
-
 /**
  Custom textfield to be used as label to work around this problem:
  A bezeled textfield = label does not show its disabled state.

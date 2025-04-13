@@ -7,7 +7,6 @@ MDBDispersionEstimation.j
 */
 
 @import "MDBSimplestatistics.j"
-@import "Globals.j"
 
 
 /**

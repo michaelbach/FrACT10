@@ -8,7 +8,6 @@
             slight simplification of the rects & colors
 */
 
-@import "HierarchyController.j"
 
 /**
  Custom button to make the large square buttons look nicer,

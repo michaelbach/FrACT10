@@ -6,8 +6,6 @@
  */
 
 
-//@import "HierarchyController.j"
-
 /**
  Custom CPAlert to be make layout more pleasing when using 3 buttons.
  */

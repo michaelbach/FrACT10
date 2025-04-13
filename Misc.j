@@ -9,6 +9,7 @@ Misc.j
 
 @import <Foundation/Foundation.j>
 @import <AppKit/AppKit.j>
+@import "Globals.j"
 @import "Settings.j"
 
 
@@ -217,6 +218,34 @@ function _pause(ms) { //console.info("Misc>_pause");
 // Helper to shorten code
 + (void) postDfltNotificationName: (CPString) aNotificationName object: (id) anObject {
     [[CPNotificationCenter defaultCenter] postNotificationName: aNotificationName object: anObject];
+}
+
+
++ (BOOL) isAcuityGratingMisc { // replication of Helper in FractController
+    return (gCurrentTestID == kTestContrastG) && ([Settings what2sweepIndex] == 1);
+}
++ (BOOL) isContrastGMisc { // replication of Helper in FractController
+    return [kTestContrastG].includes(gCurrentTestID) && (![self isAcuityGratingMisc]);
+}
++ (CPString) testNameGivenTestID: (TestIDType) theTestID {
+    switch (theTestID) {
+        case kTestAcuityLett: return "Acuity_Letters";
+        case kTestAcuityC: return "Acuity_LandoltC";
+        case kTestAcuityE: return "Acuity_TumblingE";
+        case kTestAcuityTAO: return "Acuity_TAO";
+        case kTestAcuityVernier: return "Acuity_Vernier";
+        case kTestContrastLett: return "Contrast_Letters";
+        case kTestContrastC: return "Contrast_LandoltC";
+        case kTestContrastE: return "Contrast_TumblingE";
+        case kTestContrastG:
+            if ([self isContrastGMisc]) return "Contrast_Grating";
+            return "Acuity_Grating";
+        case kTestAcuityLineByLine: return "Acuity_LineByLine";
+        case kTestBalmLight: return "BalmLight";
+        case kTestBalmLocation: return "BalmLocation";
+        case kTestBalmMotion: return "BalmMotion";
+    }
+    return "NOT ASSIGNED";
 }
 
 

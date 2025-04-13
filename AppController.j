@@ -7,7 +7,8 @@
  Created by mb on 2017-07-12.
  */
 
-@import "HierarchyController.j"
+@import "Globals.j"
+@import "Misc.j"
 @import "FractView.j"
 @import "FractController.j"
 @import "FractControllerAcuityC.j"
@@ -41,11 +42,10 @@
 /**
  AppController
 
- The main controller. It inherits from HierarchyController
- to make communication with some classes which do not inherit from AppController easier.
  */
 
-@implementation AppController : HierarchyController {
+@implementation AppController : CPWindowController {
+    CPWindow selfWindow;
     @outlet CPWindow fractControllerWindow;
     @outlet CPPanel settingsPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine;
     @outlet MDBButton buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, bottonBalm, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine;
@@ -270,7 +270,7 @@
 - (void) runFractControllerTest: (int) testNr { //console.info("AppController>runFractController");
     if (currentFractController != null) return; // got here by accident, already inRun?
     [sound initAfterUserinteraction];
-    currentTestID = testNr;
+    gCurrentTestID = testNr;
     if ([Settings isNotCalibrated]) {
         const alert = [CPAlert alertWithMessageText: "Calibration is mandatory for valid results!"
                                       defaultButton: "I just want to try…" alternateButton: "OK, go to  ‘⛭ Settings’" otherButton: "Cancel"
@@ -291,14 +291,14 @@
 
 
 /**
- The above prerequisites were met, so let's run the test specified in the global`currentTestID`
+ The above prerequisites were met, so let's run the test specified in the global`gCurrentTestID`
  */
 - (void) runFractController2 { //console.info("AppController>runFractController2");
     [self closeAllPanels];  [self centerAllPanels];
     const allInfoPanels = {[kTestAcuityLett]: responseinfoPanelAcuityL, [kTestAcuityC]: responseinfoPanelAcuity8C, [kTestAcuityE]: responseinfoPanelAcuityE, [kTestAcuityTAO]: responseinfoPanelAcuityTAO, [kTestAcuityVernier]: responseinfoPanelAcuityVernier, [kTestContrastLett]: responseinfoPanelContrastLett, [kTestContrastC]: responseinfoPanelContrastC, [kTestContrastE]: responseinfoPanelContrastE, [kTestContrastG]: responseinfoPanelContrastG, [kTestAcuityLineByLine]: responseinfoPanelAcuityLineByLine};
-    if ([Settings responseInfoAtStart] && (currentTestID in allInfoPanels)) {
-        [allInfoPanels[currentTestID] makeKeyAndOrderFront: self];
-        if ((currentTestID == kTestAcuityC) && ([Settings nAlternatives] == 4)) {
+    if ([Settings responseInfoAtStart] && (gCurrentTestID in allInfoPanels)) {
+        [allInfoPanels[gCurrentTestID] makeKeyAndOrderFront: self];
+        if ((gCurrentTestID == kTestAcuityC) && ([Settings nAlternatives] == 4)) {
             [responseinfoPanelAcuity4C makeKeyAndOrderFront: self];
         }
     } else {
@@ -315,7 +315,7 @@
     if ([Settings autoFullScreen]) {
         [Misc fullScreenOn: YES];
     }
-    currentFractController = [[allTestControllers[currentTestID] alloc] initWithWindow: fractControllerWindow];
+    currentFractController = [[allTestControllers[gCurrentTestID] alloc] initWithWindow: fractControllerWindow];
     [currentFractController setSound: sound];
     currentTestResultExportString = "";
     [currentFractController runStart];
@@ -451,7 +451,7 @@
 
 
 /**
- All test buttons land here, discriminated by their tag values (→HierarchyController for `TestIDType`)
+ All test buttons land here, discriminated by their tag values (→Globals for `TestIDType`)
  */
 - (IBAction) buttonDoTest_action: (id) sender { //console.info("buttonDoTest_action ", [sender tag])
     if ([sender tag] == 11) {

@@ -42,7 +42,7 @@ kTestNone = 0; kTestAcuityLett = 1; kTestAcuityC = 2; kTestAcuityE = 3; kTestAcu
 kTestAcuityVernier = 5; kTestContrastLett = 6; kTestContrastC = 7; kTestContrastE = 8;
 kTestContrastG = 9; kTestAcuityLineByLine = 10; kTestContrastDitherUnittest = 11;
 kTestBalmLight = 12; kTestBalmLocation = 13; kTestBalmMotion = 14;
-currentTestID = kTestNone;
+gCurrentTestID = kTestNone;
 
 kShortcutKeys4TestsArray = {"L": kTestAcuityLett, "C": kTestAcuityC, "E": kTestAcuityE,
     "A": kTestAcuityTAO, "V": kTestAcuityVernier,
@@ -81,7 +81,7 @@ gDefaultCalibrationBarLengthInMM = 149;
 
 // cgc as global makes for easy access in Optotypes and contrast calcs
 cgc = [[CPGraphicsContext currentContext] graphicsPort];
-gAppController = null;
+gAppController = null; // allows globally communicating with the AppController
 gColorFore = [CPColor whiteColor];  gColorBack = [CPColor blackColor];
 gSpecialBcmDone = NO;
 // minimal stroke size (half a pixel). Maximal, depending on screen & margin. Poor naming for Vernier.
