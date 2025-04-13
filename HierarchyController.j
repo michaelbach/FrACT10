@@ -17,43 +17,6 @@ HierarchyController.j
  Superclass to allow communication between "AppController" and "FractController"
  Created on 18.07.2017
  */
-@typedef TestIDType
-kTestNone = 0; kTestAcuityLett = 1; kTestAcuityC = 2; kTestAcuityE = 3; kTestAcuityTAO = 4;
-kTestAcuityVernier = 5; kTestContrastLett = 6; kTestContrastC = 7; kTestContrastE = 8;
-kTestContrastG = 9; kTestAcuityLineByLine = 10; kTestContrastDitherUnittest = 11;
-kTestBalmLight = 12; kTestBalmLocation = 13; kTestBalmMotion = 14;
-
-kShortcutKeys4TestsArray = {"L": kTestAcuityLett, "C": kTestAcuityC, "E": kTestAcuityE,
-    "A": kTestAcuityTAO, "V": kTestAcuityVernier,
-    "1": kTestContrastLett, "2": kTestContrastC, "3": kTestContrastE,
-    "G": kTestContrastG, "0": kTestContrastDitherUnittest, "4": kTestAcuityLineByLine};
-
-@typedef NAlternativesIndexType
-kNAlternativesIndex2 = 0; kNAlternativesIndex4 = 1; kNAlternativesIndex8plus = 2;
-
-@typedef AuditoryFeedback4trialType
-kAuditoryFeedback4trialNone = 0; kAuditoryFeedback4trialAlways = 1; kAuditoryFeedback4trialOncorrect = 2; kAuditoryFeedback4trialWithinfo = 3;
-
-@typedef Results2ClipChoiceType
-kResults2ClipNone = 0; kResults2ClipFinalOnly = 1; kResults2ClipFullHistory = 2;
-
-@typedef AutoRunIndexType
-kAutoRunIndexNone = 0; kAutoRunIndexHi = 1; kAutoRunIndexMid = 2; kAutoRunIndexLow = 3;
-
-@typedef VernierTypeType
-kVernierType2bars = 0; kVernierType3bars = 1;
-
-@typedef SoundTypeType
-kSoundRunEnd = 0; kSoundTrialYes = 1; kSoundTrialNo = 2; kSoundTrialStart = 3;
-
-@typedef decimalMarkCharIndexType
-kDecimalMarkCharIndexAuto = 0; kDecimalMarkCharIndexDot = 1; kDecimalMarkCharIndexComma = 2;
-
-@typedef gratingShapeIndexType
-kGratingShapeIndexSinus = 0; kGratingShapeIndexSquare = 1;
-kGratingShapeIndexTriangle = 2; kGratingShapeIndexCheckerboard = 3;
-
-
 @implementation HierarchyController: CPWindowController {
     TestIDType currentTestID @accessors;
     CPString resultString @accessors;

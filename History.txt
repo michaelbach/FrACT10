@@ -1,5 +1,6 @@
 #  History
 
+2025-04-13 remaining global constants & variables `HierarchyController` → `Gobals`
 2025-04-12 slight graphics tweaks for the main window button positions
 2025-04-02 fix bug: "Full history" record records null for choices/alternatives if response timeout occurs,
     fix bug: Reaction time includes the ISI delay
