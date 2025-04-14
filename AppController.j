@@ -119,6 +119,8 @@
  Our main initialisation begins here
  */
 - (id) init { //console.info("AppController>init");
+    'use strict';
+    gAppController = self; // so others can reference via global variable
     settingsNeededNewDefaults = [Settings needNewDefaults];
     [Settings checkDefaults]; //important to do this very early, before nib loading, otherwise the updates don't populate the settings panel
     return self;
@@ -128,8 +130,6 @@
 #pragma mark
 /** runs after "init" above */
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>…Launching");
-    'use strict';
-    gAppController = self; // so others can reference via global variable
     currentFractController = null; // making sure, is used to check whether inRun
     selfWindow = [self window];
     [selfWindow setFullPlatformWindow: YES];  [selfWindow setBackgroundColor: [self windowBackgroundColor]];
