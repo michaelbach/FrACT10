@@ -1,5 +1,6 @@
 #  History
 
+2025-04-14 refactor: buttonExport en/disabling w/o notification
 2025-04-13 remaining global constants & variables `HierarchyController` → `Gobals`
     simplify call to default notification center by declaring `postDfltNotificationName` in `Misc`
     refactor: `currentTestResultUnit`, `currentTestResultExportString`, `currentTestResultsHistoryExportString` → `AppController`

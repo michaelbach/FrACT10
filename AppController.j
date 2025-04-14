@@ -184,8 +184,7 @@
     for (let i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++)
         Math.random(); // randomising the pseudorandom sequence
 
-    [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(buttonExportEnableYESorNO:) name: "buttonExportEnableYESorNO" object: nil];
-    [Misc postDfltNotificationName: "buttonExportEnableYESorNO" object: 0];
+    [buttonExport setEnabled: NO];
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(copyColorsFromSettings:) name: "copyColorsFromSettings" object: nil];
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:CPUserDefaultsDidChangeNotification object: nil];
 
@@ -233,11 +232,6 @@
         let r = [decimalMarkCharField bounds]; r.size.height = 30; r.origin.y = 12;
         [decimalMarkCharField setBounds: r];
     }
-}
-
-
-- (void) buttonExportEnableYESorNO: (CPNotification) aNotification { //console.info("buttonExportEnableYESorNO");
-    [buttonExport setEnabled: !([aNotification object] == 0)];
 }
 
 
@@ -362,7 +356,7 @@
             [Misc copyString2ClipboardWithDialog: currentTestResultExportString];
         }
     }
-    [Misc postDfltNotificationName: "buttonExportEnableYESorNO" object: ([currentTestResultExportString length] > 1)];
+    [buttonExport setEnabled: ([currentTestResultExportString length] > 1)];
 }
 
 
@@ -505,7 +499,7 @@
  */
 - (IBAction) buttonExport_action: (id) sender { //console.info("AppController>buttonExport_action");
     [Misc copyString2Clipboard: currentTestResultExportString];
-    [Misc postDfltNotificationName: "buttonExportEnableYESorNO" object: 0];
+    [buttonExport setEnabled: NO];
 }
 
 
