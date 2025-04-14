@@ -365,13 +365,12 @@
 }
 
 
-/*- (void) controlTextDidChange: (CPNotification) notification { //console.info(@"controlTextDidChange: stringValue == %@", [[notification object] stringValue]);[Settings calculateMinMaxPossibleAcuity];
+/*- (void) controlTextDidChange: (CPNotification) notification {
  }*/
 /**
  Called from some text fields in the Settings panel, to update dependencies
  */
-- (void) controlTextDidEndEditing: (CPNotification) notification { //console.info(@"controlTextDidChange: stringValue == %@", [[notification object] stringValue]);
-    [Settings calculateMinMaxPossibleAcuity];
+- (void) controlTextDidEndEditing: (CPNotification) notification {     [Settings calculateMinMaxPossibleAcuity];
     [Settings calculateAcuityForeBackColorsFromContrast];
 }
 

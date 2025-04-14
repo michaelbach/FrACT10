@@ -119,7 +119,7 @@ function _pause(ms) { //console.info("Misc>_pause");
             case 1: /*console.info("ok, dann nicht");*/  break;
             case 0:
                 [self copyString2Clipboard: s];
-                [self postDfltNotificationName: "buttonExportEnableYESorNO" object: 0];
+                [gAppController.buttonExport setEnabled: NO];
                 break;
         }
     }];
