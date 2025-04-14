@@ -129,7 +129,7 @@ function _pause(ms) { //console.info("Misc>_pause");
  */
 + (void) copyString2Clipboard: (CPString) s { //console.info("Misc>copyString2Clipboard: ", s);
     try {
-        navigator.clipboard.writeText(s); // only over https
+        navigator.clipboard.writeText(s); // only over https, returns a Promise
     }
     catch(e) { // avoid the global error catcher
         console.info("Error copying result to clipboard: ", e);  // alert(e);
