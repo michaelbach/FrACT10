@@ -34,7 +34,7 @@ Created by mb on 2021-12-21.
     iTrial = 1;
     stimStrengthInDeviceunits = [MiscSpace strokePixelsFromDecVA: [MiscSpace decVAfromLogMAR: localLogMAR]];
     state = kStateDrawFore;
-    [gAppController.selfWindow.contentView setNeedsDisplay: YES];
+    [[gAppController.selfWindow contentView] setNeedsDisplay: YES];
 }
 
 
