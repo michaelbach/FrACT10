@@ -183,7 +183,7 @@ async function responseChain(invertedKeys) {
 
 const testingSuite = async () => {
 	const kCrowdingTypeMax = 6; /* 6 */
-	const kPaneMax = 5; /* 5 */
+	const kPaneMax = 6; /* 6 */
 	const kGratingShapeMax = 3; /* 3 */
 	const scrollBoxInstance=document.getElementById('scrollBox');
 	if (scrollBoxInstance != null) { /* toggling the textarea */
@@ -213,7 +213,6 @@ const testingSuite = async () => {
 	await pauseMilliseconds(pauseViewMS);
 
 	response = await oneStep3Ms('getVersion', '', '');
-
 	await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
 	response = await oneStep3Ms('getSetting', 'distanceInCM', '');
 	if (response.m3 != 399) errorAlert();
@@ -251,8 +250,8 @@ const testingSuite = async () => {
 	await oneStep3Ms('setSetting', 'nTrials04', 1);
 	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
 	tellIframe3Ms('run','acuity', 'TumblingE');
-	addText(" ↑ Colors ok.\n");
 	await pauseMilliseconds(pauseViewMS);
+	addText(" ↑ Colors ok.\n");
 
 	addText(" ↓ Test multiple optotypes");
 	response = await oneStep3Ms('setSetting', 'Preset', 'Testing');
@@ -268,7 +267,7 @@ const testingSuite = async () => {
 	await pauseMilliseconds(pauseViewMS);
 	tellIframe3Ms('run','contrast', 'Grating');
 	await pauseMilliseconds(pauseViewMS);
-	addText(" ↑ Test multiple optotypes done.");
+	addText(" ↑ Test multiple optotypes: Done.");
 
 	addText("\n ↓ Cycle through crowding possibilities.");
 	response = await oneStep3Ms('setSetting', 'acuityStartingLogMAR', 0.3);
@@ -277,7 +276,7 @@ const testingSuite = async () => {
 		tellIframe3Ms('run','acuity', 'Letters');
 		await pauseMilliseconds(pauseViewMS);
 	}
-	addText(" ↑ Cycle through crowding done.\n");
+	addText(" ↑ Cycle through crowding: Done.\n");
 
 	addText(" ↓ `rewardPicturesWhenDone`.");
 	await oneStep3Ms('setSetting', 'crowdingType', 0);
@@ -286,23 +285,39 @@ const testingSuite = async () => {
     await oneStep3Ms('setSetting', 'timeoutRewardPicturesInSeconds', 3);
 	tellIframe3Ms('run','acuity', 'Letters');
 	await pauseMilliseconds(pauseViewMS * 2);
-    addText(" ↑ `rewardPicturesWhenDone`: Done.\n");
 	await oneStep3Ms('setSetting', 'rewardPicturesWhenDone', NO);
+    addText(" ↑ `rewardPicturesWhenDone`: Done.\n");
 
     addText(" ↓ Noise embedding");
 	await oneStep3Ms('setSetting', 'embedInNoise', YES);
 	tellIframe3Ms('run','acuity', 'Letters');
-    addText(" ↑ Noise embedding: Done.\n");
 	await pauseMilliseconds(pauseViewMS);
+    addText(" ↑ Noise embedding: Done.\n");
 
-	addText("\n ↓ cycle through all panes of Settings");
+	addText(" ↓ Test line-by-line");
+	await oneStep3Ms('setSetting', 'Preset', 'Testing');
+	tellIframe3Ms('run','acuity', 'Line');
+	await tellIframeReturningPromise3Ms('redraw', '', ''); /* not clear why necessary */
+	await pauseMilliseconds(pauseViewMS);
+	await tellIframeReturningPromise3Ms('respondWithChar', "2", '');
+	await tellIframeReturningPromise3Ms('redraw', '', '');
+	await pauseMilliseconds(pauseViewMS);
+	await tellIframeReturningPromise3Ms('respondWithChar', "2", '');
+	await tellIframeReturningPromise3Ms('redraw', '', '');
+	await pauseMilliseconds(pauseViewMS);
+	await tellIframeReturningPromise3Ms('respondWithChar', "5", '');
+	await tellIframeReturningPromise3Ms('respondWithChar', "5", ''); /* exit the test */
+	await pauseMilliseconds(pauseViewMS);
+	addText(" ↑ Test line-by-line: Done.\n");
+
+	addText(" ↓ cycle through all panes of Settings");
 	for (let iPane = 0; iPane <= kPaneMax; iPane++) {
 		await oneStep3Ms('settingsPane', iPane, '');
 		await pauseMilliseconds(pauseViewMS);
 	}
 	response = await oneStep3Ms('settingsPane', -1, '');
-	addText(" ↑ cycle through all panes of Settings done.\n");
 	await pauseMilliseconds(pauseViewMS);
+	addText(" ↑ cycle through all panes of Settings: Done.\n");
 
 	addText(" ↓ cycle through grating shapes");
 	await oneStep3Ms('setSetting', 'Preset', 'Testing');
@@ -314,22 +329,26 @@ const testingSuite = async () => {
 		tellIframe3Ms('run','contrast', 'Grating');
 		await pauseMilliseconds(pauseViewMS);
 	}
-	addText(" ↑ cycle through grating shapes done.\n");
+	addText(" ↑ cycle through grating shapes: Done.\n");
 	await pauseMilliseconds(pauseViewMS);
 
-	addText(" ↓ cycle through BaLM tests.\n");
+	addText(" ↓ cycle through BaLM tests.");
 	await oneStep3Ms('setSetting', 'Preset', 'Testing');
+	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
 	await oneStep3Ms('setSetting', 'nTrials02', 4);
 	await oneStep3Ms('setSetting', 'nTrials04', 4);
     await oneStep3Ms('setSetting', 'distanceInCM', 20);
 	await pauseMilliseconds(pauseMS);
    	tellIframe3Ms('run','acuity', 'BalmLight');
 	await responseChain(YES);
+	await pauseMilliseconds(pauseViewMS);
 	tellIframe3Ms('run','acuity', 'BalmLocation');
 	await responseChain(NO);
+	await pauseMilliseconds(pauseViewMS);
 	tellIframe3Ms('run','acuity', 'BalmMotion');
 	await responseChain(NO);
-	addText(" ↑ cycle through BaLM tests done.\n");
+	await pauseMilliseconds(pauseViewMS);
+	addText(" ↑ cycle through BaLM tests: Done.\n");
 
 	addText("↓ Leave with `Standard Defaults`.");
 	response = await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
@@ -346,7 +365,7 @@ const testingSuite = async () => {
 }
 
 
-async function testBalm() { console.info("testBalm");
+async function testBalm() { //console.info("testBalm");
 	await oneStep3Ms('setSetting', 'Preset', 'Testing');
 	await oneStep3Ms('setSetting', 'nTrials02', 4);
 	await oneStep3Ms('setSetting', 'nTrials04', 4);
@@ -357,8 +376,11 @@ async function testBalm() { console.info("testBalm");
 	await pauseMilliseconds(pauseMS);
 	tellIframe3Ms('run','acuity', 'BalmLight');
 	await responseChain(YES);
+	await pauseMilliseconds(pauseViewMS);
 	tellIframe3Ms('run','acuity', 'BalmLocation');
 	await responseChain(NO);
+	await pauseMilliseconds(pauseViewMS);
 	tellIframe3Ms('run','acuity', 'BalmMotion');
 	await responseChain(NO);
+	await pauseMilliseconds(pauseViewMS);
 }

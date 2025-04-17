@@ -71,6 +71,12 @@
                 }
                 [gAppController setSettingsPaneTabViewSelectedIndex: m2AsNumber];
                 [gAppController buttonSettings_action: nil];
+//                [[gAppController.selfWindow contentView] display]; //does not help update panes
+//                [[[CPApp keyWindow] contentView] display]; //does not help to update panes
+//                [[[CPApp mainWindow] contentView] display]; //does not help to update panes
+                [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;
+            case "redraw":
+                [[gAppController.selfWindow contentView] display];
                 [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;
             default:
                 [self _logProblem: eData];
@@ -157,7 +163,7 @@
                 [self _notify: "notificationRunFractControllerTest" object: m3AsNumber];  return;
             }
         case "acuity": case "Acuity": { // need brackets so scope of variables stays local
-            const testKey = {"Letters": kTestAcuityLett, "LandoltC": kTestAcuityC, "TumblingE": kTestAcuityE, "TAO": kTestAcuityTAO, "Vernier": kTestAcuityVernier,
+            const testKey = {"Letters": kTestAcuityLett, "LandoltC": kTestAcuityC, "TumblingE": kTestAcuityE, "TAO": kTestAcuityTAO, "Vernier": kTestAcuityVernier, "Line": kTestAcuityLineByLine,
                 "BalmLight": kTestBalmLight, "BalmLocation": kTestBalmLocation, "BalmMotion": kTestBalmMotion}[m3];
             if (testKey !== undefined) {
                 [self _notify: "notificationRunFractControllerTest" object: testKey];  return;
