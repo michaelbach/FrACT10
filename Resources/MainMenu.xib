@@ -3267,7 +3267,7 @@ CQ
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField toolTip="After this time, an incorrect response will be recorded [seconds]." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QBW-Sq-PH3">
+                                                    <textField toolTip="After this time without a repsonse, an incorrect response will be recorded [seconds]." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QBW-Sq-PH3">
                                                         <rect key="frame" x="25" y="135" width="40" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="T3p-Jy-GWk">
@@ -3303,7 +3303,7 @@ CQ
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField toolTip="Total extent of all BaLM stimuli. Black outside. Stimulus runs from –extnt to -extent.  " focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fto-FZ-UrT">
+                                                    <textField toolTip="Total extent of all BaLM stimuli. Black outside. Stimulus runs from –extent to -extent.  " focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fto-FZ-UrT">
                                                         <rect key="frame" x="25" y="33" width="40" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" usesSingleLineMode="YES" id="2Vp-yF-zET">
@@ -3357,7 +3357,7 @@ CQ
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField toolTip="The number of trials presented when 2 choices are possible (e.g. Vernier)." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W3v-OS-u47">
+                                                    <textField toolTip="The number of trials presented when 2 choices are possible (Light / no light)" focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W3v-OS-u47">
                                                         <rect key="frame" x="225" y="26" width="40" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="N0R-qE-sCL">
@@ -3428,7 +3428,7 @@ CQ
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField toolTip="The eccentricity reached by the wedge. " focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="asj-L0-Qxw">
+                                                    <textField toolTip="The maximal eccentricity reached by the wedge. " focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="asj-L0-Qxw">
                                                         <rect key="frame" x="20" y="21" width="40" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="p6O-w3-ki6">
@@ -3458,7 +3458,7 @@ CQ
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField toolTip="The number of trials presented when 2 choices are possible (e.g. Vernier)." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p6b-M4-8wp">
+                                                    <textField toolTip="The number of trials presented when 4 choices are possible (for Location and Motion)" focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p6b-M4-8wp">
                                                         <rect key="frame" x="225" y="68" width="40" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="oxg-4m-xrg">
@@ -3523,7 +3523,7 @@ CQ
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField toolTip="The number of trials presented when 2 choices are possible (e.g. Vernier)." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="42W-EL-5vE">
+                                                    <textField toolTip="The number of trials presented when 4 choices are possible (for Location and Motion)" focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="42W-EL-5vE">
                                                         <rect key="frame" x="225" y="68" width="40" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="pLK-iM-kqr">
@@ -3596,12 +3596,9 @@ CQ
                                                 <rect key="frame" x="4" y="5" width="251" height="90"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <popUpButton tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LWV-gO-9VY">
+                                                    <popUpButton toolTip="Select a soundfile giving feedback that the target has appeared." tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LWV-gO-9VY">
                                                         <rect key="frame" x="20" y="30" width="135" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <string key="toolTip">Select a soundfile giving feedback on "Correct".
-
-</string>
                                                         <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="TwY-ZT-7H3" id="bkg-lO-hM6">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="message"/>
@@ -3737,7 +3734,7 @@ CQ
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKl-qE-MnI">
                                             <rect key="frame" x="35" y="358" width="298" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">If "Line of optotypes" is set to “Chart mode”, here you can select that all 3 lines have the same acuity grade.
+                                            <string key="toolTip">If "Line of optotypes" is set to “Chart mode”, here you can select that all 3 lines have the same acuity grade (instead of 0.1 LogMAR difference between them).
 
 </string>
                                             <buttonCell key="cell" type="check" title="&quot;Line of optotypes&quot; Chart Mode: ConstantVA" bezelStyle="regularSquare" imagePosition="left" inset="2" id="3nO-1o-wRI">
@@ -3762,12 +3759,9 @@ CQ
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.hideExitButton" id="rx4-JS-9Ql"/>
                                             </connections>
                                         </button>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VtB-h9-XQq">
+                                        <button toolTip="For some designs, it may be advantageous to randomse target appearance to left or right." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VtB-h9-XQq">
                                             <rect key="frame" x="35" y="313" width="224" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">For some contexts (e.g., embeddng FrACT in a larger project) the Exit button may be detrimental – so disable it here.
-
-</string>
                                             <buttonCell key="cell" type="check" title="Randomize eccentricity right/left" bezelStyle="regularSquare" imagePosition="left" inset="2" id="gcZ-p8-SZP">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
