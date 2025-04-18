@@ -59,6 +59,7 @@
     @outlet CPPopUpButton settingsPaneMiscSoundsRunEndPopUp;
     CPString versionDateString @accessors; // for the main Xib window top right
     CPString resultString @accessors;
+    @outlet MDBLabel resultStringField;
     CPString currentTestResultUnit @accessors;
     CPString currentTestResultExportString @accessors;
     CPString currentTestResultsHistoryExportString @accessors;
@@ -206,6 +207,7 @@
 
     [Misc centerWindowOrPanel: [selfWindow contentView]]; // →center
     [selfWindow orderFront: self]; // ensures that it will receive clicks w/o activating
+    [self setResultString: "→ Results to be displayed here ←"];
 }
 
 
@@ -323,6 +325,7 @@
 
 
 - (void) runEnd { //console.info("AppController>runEnd");
+    [resultStringField setEnabled: YES];
     [currentFractController release];  currentFractController = nil;
     if ([Settings autoFullScreen]) { // possible problem: if autoF is on,
         [Misc fullScreenOn: NO]; // but screen was manually to fullscr., here will exit fullscr.

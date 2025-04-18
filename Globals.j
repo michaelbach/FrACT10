@@ -22,6 +22,7 @@ gVersionOfExportFormat = "5";
 gFilename4ResultStorage = "FRACT10-FINAL-RESULT-STRING";
 gFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
 
+gAbortMessage = "Test run canceled.";
 // Correction for threshold underestimation by DIN-ascending method (in VAdecimal)
 gThresholdCorrection4Ascending = 0.891;
 

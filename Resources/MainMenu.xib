@@ -285,11 +285,11 @@ For testing.</string>
                         </connections>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L8d-bR-KqO">
-                        <rect key="frame" x="19" y="115" width="132" height="23"/>
+                        <rect key="frame" x="21" y="115" width="128" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">This button only appears after a finished run and does what it says. 
 </string>
-                        <buttonCell key="cell" type="roundTextured" title="Result→Clipboard" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yIl-d4-aF3">
+                        <buttonCell key="cell" type="roundTextured" title="Result → Clipboard" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yIl-d4-aF3">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -297,10 +297,10 @@ For testing.</string>
                             <action selector="buttonExport_action:" target="450" id="aIb-Nf-ia3"/>
                         </connections>
                     </button>
-                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBn-1C-8cg">
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBn-1C-8cg" customClass="MDBLabel">
                         <rect key="frame" x="1" y="-2" width="797" height="66"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" continuous="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="resultString" allowsEditingTextAttributes="YES" usesSingleLineMode="YES" id="eZN-cU-So4">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" continuous="YES" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="resultString" allowsEditingTextAttributes="YES" usesSingleLineMode="YES" id="eZN-cU-So4">
                             <font key="font" metaFont="system" size="28"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -3960,6 +3960,7 @@ CQ
                 <outlet property="responseinfoPanelContrastE" destination="XVY-wU-ZJF" id="4nI-Wi-dhf"/>
                 <outlet property="responseinfoPanelContrastG" destination="6tH-lc-nrw" id="hdZ-lu-dgD"/>
                 <outlet property="responseinfoPanelContrastLett" destination="FJ1-4N-r6U" id="Veo-hD-u3i"/>
+                <outlet property="resultStringField" destination="sBn-1C-8cg" id="5uF-Lg-b6v"/>
                 <outlet property="settingsPaneMiscSoundsRunEndPopUp" destination="0wa-1C-3dD" id="ao3-Ph-yeo"/>
                 <outlet property="settingsPaneMiscSoundsTrialNoPopUp" destination="mWY-c6-Jrm" id="HN9-re-Pwr"/>
                 <outlet property="settingsPaneMiscSoundsTrialYesPopUp" destination="LG4-aN-i05" id="AVc-o7-tXf"/>

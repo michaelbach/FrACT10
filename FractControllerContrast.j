@@ -97,7 +97,7 @@ Created by Bach on 2020-09-02
 
 - (void) runEnd { //console.info("FractControllerContrast>runEnd");
     if (iTrial < nTrials) { //premature end
-        [gAppController setResultString: @"Aborted"];
+        [gAppController setResultString: gAbortMessage];
     } else {
         stimStrengthInDeviceunits = Math.min(stimStrengthInDeviceunits, gMaxResultLogCSWeber);
         [gAppController setResultString: [self contrastComposeResultString]];

@@ -130,7 +130,7 @@ Created by Bach on 14.08.2017.
 
 - (void) runEnd { //console.info("FractControllerAcuityVernier>runEnd");
     if (iTrial < nTrials) { //premature end
-        [gAppController setResultString: @"Aborted"];
+        [gAppController setResultString: gAbortMessage];
     } else {
         [gAppController setResultString: [self composeResultString]];
     }

@@ -110,7 +110,7 @@
         case kTestAcuityE:
         case kTestAcuityTAO:
             if (iTrial < nTrials) { //premature end
-                [gAppController setResultString: "Aborted"];
+                [gAppController setResultString: gAbortMessage];
             } else {
                 [gAppController setResultString: [self acuityComposeResultString]];
             }
