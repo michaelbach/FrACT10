@@ -22,8 +22,8 @@ gVersionOfExportFormat = "5";
 gFilename4ResultStorage = "FRACT10-FINAL-RESULT-STRING";
 gFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
 
-gAbortMessage = "Test run canceled.";
-// Correction for threshold underestimation by DIN-ascending method (in VAdecimal)
+gAbortMessage = "Run canceled.";
+// Correction for threshold underestimation by DIN/ISO-ascending method (in VAdecimal)
 gThresholdCorrection4Ascending = 0.891;
 
 // parameter for the CI95 dispersion estimation; strongly affects CI95
