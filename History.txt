@@ -1,5 +1,7 @@
 #  History
 
+2025-04-21 change wording for run cancellation; improve some tooltips;
+    tiny button edge color tweak, tiny button image tweak, deploy
 2025-04-18 improve GUI: resultField initially disabled showing appropriate text;
     change "aborted" to "cancelled" with gobal string variable
 2025-04-17 add acuity line-by-line to testing suite, add `Line` and `redraw` to `ControlDispatcher` for this
