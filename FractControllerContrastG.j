@@ -50,7 +50,7 @@ const specialBcmStepsize = 0.1;
 - (void) specialBcmDone {
     spatialFreqCPD = specialBcmFreqPrevious;
     nTrials = iTrial - 1;  iTrial = 9999;
-    gSpecialBcmDone = YES;
+    specialBcmDone = YES;
     [self runEnd];
 }
 

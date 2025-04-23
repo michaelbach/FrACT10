@@ -75,6 +75,11 @@ kDecimalMarkCharIndexAuto = 0; kDecimalMarkCharIndexDot = 1; kDecimalMarkCharInd
 kGratingShapeIndexSinus = 0; kGratingShapeIndexSquare = 1;
 kGratingShapeIndexTriangle = 2; kGratingShapeIndexCheckerboard = 3;
 
+gSoundsTrialYes = ["tink.mp3", "miniPop.mp3"];
+gSoundsTrialNo = ["whistle.mp3", "error2.mp3"];
+gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
+gSoundsTrialStart = ["click02.mp3", "notify1.mp3", "notify2.mp3"];
+
 
 //// global Variables
 gDefaultDistanceInCM = 399;
@@ -84,12 +89,5 @@ gDefaultCalibrationBarLengthInMM = 149;
 cgc = [[CPGraphicsContext currentContext] graphicsPort];
 gAppController = null; // allows globally communicating with the AppController
 gColorFore = [CPColor whiteColor];  gColorBack = [CPColor blackColor];
-gSpecialBcmDone = NO;
-// minimal stroke size (half a pixel). Maximal, depending on screen & margin. Poor naming for Vernier.
-gStrokeMinimal = 0.5;  gStrokeMaximal = 100; //Values are later overridden via Setting and screen size
-
-gSoundsTrialYes = ["tink.mp3", "miniPop.mp3"];
-gSoundsTrialNo = ["whistle.mp3", "error2.mp3"];
-gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
-gSoundsTrialStart = ["click02.mp3", "notify1.mp3", "notify2.mp3"];
-
+// minimal stroke size (half a pixel). Maximal, depending on screen & margin. Poor naming for Vernier. Values are later overridden via Setting and screen size.
+gStrokeMinimal = 0.5;  gStrokeMaximal = 100;

@@ -38,7 +38,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     CPTimer timerDisplay, timerResponse, timerFixMark, timerAutoResponse, timerIsi, timerBalmOff;
     CPString kRangeLimitDefault, kRangeLimitOk, kRangeLimitValueAtFloor, kRangeLimitValueAtCeiling, rangeLimitStatus, abortCharacter, ci95String;
     id sound @accessors;
-    BOOL responseButtonsAdded;
+    BOOL responseButtonsAdded, specialBcmDone;
     BOOL discardKeyEntries; // this allows flushing the event queue to discard early responses
     CPColor colorForeUndithered, colorBackUndithered;
 }
@@ -64,7 +64,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         state = kStateDrawBack;
         kRangeLimitDefault = "";  kRangeLimitOk = "rangeOK";  kRangeLimitValueAtFloor = "atFloor";
         kRangeLimitValueAtCeiling = "atCeiling";  rangeLimitStatus = kRangeLimitDefault;
-        gSpecialBcmDone = NO;
+        specialBcmDone = NO;
 
         optotypes = [[Optotypes alloc] init];
         [Settings checkDefaults];
@@ -123,7 +123,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         [self runEnd];  return;
     }
     [self modifyDeviceStimulus];// e.g. let the first 4 follow DIN
-    if (gSpecialBcmDone) return;
+    if (specialBcmDone) return;
 
     [alternativesGenerator nextAlternative];
     xEccInPix = -[MiscSpace pixelFromDegree: [Settings eccentXInDeg]];

@@ -1,5 +1,5 @@
 #  History
-
+2025-04-23 refactor: `gSpecialBcmDone` doesn't need to be global, renamed to `specialBcmDone`
 2025-04-21 change wording for run cancellation; improve some tooltips;
     tiny button edge color tweak, tiny button image tweak, deploy
 2025-04-18 improve GUI: resultField initially disabled showing appropriate text;
