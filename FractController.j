@@ -47,10 +47,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (void) updateViewWidthHeight {
     viewWidth = CGRectGetWidth([gAppController.selfWindow frame]);  viewWidth2 = viewWidth / 2;
     viewHeight = CGRectGetHeight([gAppController.selfWindow frame]);  viewHeight2 = viewHeight / 2;
-
-//    viewWidth = CGRectGetWidth(gAppController.selfWindow.frame.width);  viewWidth2 = viewWidth / 2;
-//    viewHeight = CGRectGetHeight(gAppController.selfWindow.frame.height);  viewHeight2 = viewHeight / 2;
-
 }
 
 
