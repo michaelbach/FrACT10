@@ -21,10 +21,7 @@ For testing.S;53;Automatic run, targeting this acuity. For testing.
 
  S;67;Automatic run, targeting this contrast sensitivity. For testing.
 
- S;65;Automatic run, targeting this contrast sensitivity. For testing. S;94;Automatically switches to full screen during a test run.
-After test run leaves fullscreen.
- 
- S;54;BaLM₁₀ (Basic Assessment of Light, Locatoin & Motion. S;22;Best not change it…
+ S;65;Automatic run, targeting this contrast sensitivity. For testing. S;52;Automatically switches to full screen on app startupS;54;BaLM₁₀ (Basic Assessment of Light, Locatoin & Motion. S;22;Best not change it…
 
  S;141;Click to enter a dialog to use an ID-1 plastic card for calibration (credit card or similar).
 No money transfer involved, just for size!     S;149;Color Bit Stealing: Invented by Chris Tyler. Borrows color bits across RGB to better approximate a target luminance. Superseded here by dithering.

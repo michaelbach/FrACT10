@@ -156,6 +156,9 @@
         }
         [Misc centerWindowOrPanel: [selfWindow contentView]];
     });
+    if ([Settings autoFullScreen]) {// does not work because it needs user interaction
+        [Misc fullScreenOn: YES];
+    }
 
     window.addEventListener("resize", (event) => {
         [Misc centerWindowOrPanel: [selfWindow contentView]];
@@ -308,9 +311,6 @@
  */
 - (IBAction) runFractController2_actionOK: (id) sender {
     [self closeAllPanels];  [currentFractController release];  currentFractController = null;
-    if ([Settings autoFullScreen]) {
-        [Misc fullScreenOn: YES];
-    }
     currentFractController = [[allTestControllers[gCurrentTestID] alloc] initWithWindow: fractControllerWindow];
     [currentFractController setSound: sound];
     currentTestResultExportString = "";
@@ -327,9 +327,6 @@
 - (void) runEnd { //console.info("AppController>runEnd");
     [resultStringField setEnabled: YES];
     [currentFractController release];  currentFractController = nil;
-    if ([Settings autoFullScreen]) { // possible problem: if autoF is on,
-        [Misc fullScreenOn: NO]; // but screen was manually to fullscr., here will exit fullscr.
-    }
     if (!runAborted) {
         if ([Settings rewardPicturesWhenDone]) {
             [rewardsController drawRandom];

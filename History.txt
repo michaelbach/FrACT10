@@ -1,6 +1,7 @@
 #  History
-2025-04-29 modify Setting Hyperion: `setDecimalMarkCharIndex: kDecimalMarkCharIndexDot`
-    style: sort presets alphabetically
+2025-04-29 modify Setting Hyperion: `setDecimalMarkCharIndex: kDecimalMarkCharIndexDot`;
+    style: sort presets alphabetically;
+    feat: add fullscreen on app startup ← does not work because it needs user interaction
 2025-04-25 rename `specialBcmDone` to `isSpecialBcmDone` disambiguating from eponymous method name
 2025-04-23 refactor: `gSpecialBcmDone` doesn't need to be global, renamed to `specialBcmDone`
 2025-04-21 change wording for run cancellation; improve some tooltips;

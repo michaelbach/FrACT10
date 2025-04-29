@@ -1417,13 +1417,9 @@ Assumes full screen mode.
                                                 <outlet property="nextKeyView" destination="WCS-rL-YCa" id="hP4-Te-I6S"/>
                                             </connections>
                                         </button>
-                                        <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lSV-fU-yD5">
+                                        <button hidden="YES" toolTip="Automatically switches to full screen on app startup" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lSV-fU-yD5">
                                             <rect key="frame" x="275" y="223" width="117" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Automatically switches to full screen during a test run.
-After test run leaves fullscreen.
- 
- </string>
                                             <buttonCell key="cell" type="check" title="Auto fullscreen" bezelStyle="regularSquare" imagePosition="left" inset="2" id="8Hr-IM-bbi">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
