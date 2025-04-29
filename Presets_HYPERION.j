@@ -16,6 +16,7 @@
 
     // general pane
     [Settings setResponseInfoAtStart: NO]; [Settings setEnableTouchControls: NO];
+    [Settings setDecimalMarkCharIndex: kDecimalMarkCharIndexDot];
     [Settings setDistanceInCM: 400];
     [Settings setNAlternativesIndex: kNAlternativesIndex4];
     [Settings setAuditoryFeedback4trial: kAuditoryFeedback4trialAlways];
