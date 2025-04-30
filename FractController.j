@@ -78,7 +78,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 - (void) runStart { //console.info("FractController>runStart");
     [self updateViewWidthHeight];
-    [Misc postDfltNotificationName: "copyColorsFromSettings" object: nil]; // could have been overwritten
+    [gAppController copyColorsFromSettings]; // could have been overwritten
     gStrokeMinimal = [Settings minStrokeAcuity]; // smallest possible stroke is ½pixel. Made into a Setting.
     gStrokeMaximal = Math.min(viewHeight, viewWidth) / (5 + [Settings margin4maxOptotypeIndex]); // leave a margin of ½·index around the largest optotype
     if (!([Settings acuityFormatLogMAR] || [Settings acuityFormatDecimal] ||  [Settings acuityFormatSnellenFractionFoot])) {

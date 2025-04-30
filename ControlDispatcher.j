@@ -218,7 +218,7 @@
     const sNameCapped = sName.charAt(0).toUpperCase() + sName.slice(1);
     let setter = CPSelectorFromString("set" + sNameCapped + ":");
     [Settings performSelector: setter withObject: m3];
-    [Misc postDfltNotificationName: "copyColorsFromSettings" object: nil];
+    [gAppController copyColorsFromSettings];;
     let m3Now = [Settings performSelector: CPSelectorFromString(sName)]; // read back
     m3Now = [m3Now hexString];
     [self post2parentM1: m1 m2: m2 m3: m3Now success: m3 === m3Now];

@@ -189,7 +189,6 @@
         Math.random(); // randomising the pseudorandom sequence
 
     [buttonExport setEnabled: NO];
-    [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(copyColorsFromSettings:) name: "copyColorsFromSettings" object: nil];
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:CPUserDefaultsDidChangeNotification object: nil];
 
     [self radioButtonsAcuityBwOrColor_action: null];
@@ -244,7 +243,7 @@
  Synchronising userdefaults & Appcontroller
  This mirroring is necessary, because the Settingspanel cannot read the stored colors, because the Archiver does not work
  */
-- (void) copyColorsFromSettings: (CPNotification) aNotification { //console.info("mirrorForeBackColors");
+- (void) copyColorsFromSettings { //console.info("copyColorsFromSettings");
     gColorFore = [Settings acuityForeColor];  [self setAcuityForeColor: gColorFore];
     gColorBack = [Settings acuityBackColor];  [self setAcuityBackColor: gColorBack];
     [self setGratingForeColor: [Settings gratingForeColor]];  [self setGratingBackColor: [Settings gratingBackColor]];
@@ -468,7 +467,7 @@
                           informativeTextWithFormat: "\r\rAll settings were (re)set to their default values.\r\r"];
         [alert runModalWithDidEndBlock: function(alert, returnCode) {}];
     }
-    [Misc postDfltNotificationName: "copyColorsFromSettings" object: nil];
+    [self copyColorsFromSettings];
 }
 
 - (IBAction) buttonSettingsClose_action: (id) sender {
