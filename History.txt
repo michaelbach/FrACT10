@@ -1,4 +1,5 @@
 #  History
+2025-04-30 deploy & freeze
 2025-04-29 modify Setting Hyperion: `setDecimalMarkCharIndex: kDecimalMarkCharIndexDot`;
     style: sort presets alphabetically;
     feat: add fullscreen on app startup ← does not work because it needs user interaction
