@@ -233,7 +233,7 @@
 
 + (void) _notify: (CPString) aNotificationName object: (id) anObject {
     [[gAppController window] orderFront: self]; // otherwise we would crash here
-    [Misc postDfltNotificationName: aNotificationName object: anObject];
+    [[CPNotificationCenter defaultCenter] postNotificationName: aNotificationName object: anObject];
 }
 
 

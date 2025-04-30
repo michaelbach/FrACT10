@@ -19,7 +19,7 @@ Sound.j
 }
 
 
-- (void) updateSoundFiles: (CPNotification) aNotification { //console.info("Sound>updateSoundFiles");
+- (void) updateSoundFiles { //console.info("Sound>updateSoundFiles");
     needsInitAfterUserinteraction = YES;
     [self initAfterUserinteraction];
 }
@@ -129,9 +129,8 @@ Sound.j
 - (id) init { //console.info("Sound>init");
     self = [super init];
     if (self) {
-        // starting the AudioContext is not allowed unless by user interaction
+        //starting the AudioContext is not allowed unless by user interaction
         needsInitAfterUserinteraction = YES;
-        [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(updateSoundFiles:) name: "updateSoundFiles" object: nil]; // needed when changing sounds in Presets
     }
     return self;
 }

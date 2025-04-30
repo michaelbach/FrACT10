@@ -144,7 +144,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             return;
     }
     [Settings setPresetName: _presetName];
-    [Misc postDfltNotificationName: "updateSoundFiles" object: nil];
+    [gAppController.sound updateSoundFiles];
     [gAppController copyColorsFromSettings]; //this synchronises the color settings between userdefaults & AppController
     [_popUpButton setSelectedIndex: 0]; // always show "PRESETS"
 

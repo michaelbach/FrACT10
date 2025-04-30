@@ -215,12 +215,6 @@ function _pause(ms) { //console.info("Misc>_pause");
 }
 
 
-// Helper to shorten code
-+ (void) postDfltNotificationName: (CPString) aNotificationName object: (id) anObject {
-    [[CPNotificationCenter defaultCenter] postNotificationName: aNotificationName object: anObject];
-}
-
-
 + (BOOL) isAcuityGratingMisc { // replication of Helper in FractController
     return (gCurrentTestID == kTestContrastG) && ([Settings what2sweepIndex] == 1);
 }

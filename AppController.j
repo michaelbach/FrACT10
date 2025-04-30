@@ -475,7 +475,7 @@
 }
 
 - (IBAction) buttonSettingsTestSound_action: (id) sender { //console.info("buttonSettingsTestSound_action", [sender tag]);
-    [Misc postDfltNotificationName: "updateSoundFiles" object: nil];
+    [sound updateSoundFiles];
     [sound playDelayedNumber: [sender tag]]; // delay because new buffer to be loaded; 0.02 would be enough.
 }
 
