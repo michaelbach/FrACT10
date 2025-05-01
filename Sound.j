@@ -25,16 +25,16 @@ Sound.j
 }
 
 
-// the below is clumsy (doing it 3 times), but the closure didn't take the provided buffer in my attempts.
+//the below is clumsy (doing it 3 times), but the closure didn't take the provided buffer in my attempts.
 
 
-// for start of trial (BaLM)
+//for start of trial (BaLM)
 - (void) loadSoundTrialStart { //console.info("Sound>loadSoundTrialStart");
     bufferTrialStart = null;
     const request = new XMLHttpRequest();
     request.open('GET', "Resources/sounds/trialStart/" + gSoundsTrialStart[[Settings soundTrialStartIndex]], true);
     request.responseType = 'arraybuffer';
-    request.onload = function() {  // Decode asynchronously
+    request.onload = function() {  //Decode asynchronously
         audioContext.decodeAudioData(request.response, function(buff) {bufferTrialStart = buff;});
     }
     request.send();
@@ -43,39 +43,39 @@ Sound.j
 
 
 
-// for correct response
+//for correct response
 - (void) loadSoundTrialYes { //console.info("Sound>loadSoundTrialYes");
     bufferTrialYes = null;
     const request = new XMLHttpRequest();
     request.open('GET', "Resources/sounds/trialYes/" + gSoundsTrialYes[[Settings soundTrialYesIndex]], true);
     request.responseType = 'arraybuffer';
-    request.onload = function() {  // Decode asynchronously
+    request.onload = function() {  //Decode asynchronously
         audioContext.decodeAudioData(request.response, function(buff) {bufferTrialYes = buff;});
     }
     request.send();
 }
 
 
-// for incorrect responses
+//for incorrect responses
 - (void) loadSoundTrialNo { //console.info("Sound>loadSound");
     bufferTrialNo = null;
     const request = new XMLHttpRequest();
     request.open('GET', "Resources/sounds/trialNo/" + gSoundsTrialNo[[Settings soundTrialNoIndex]], true);
     request.responseType = 'arraybuffer';
-    request.onload = function() {  // Decode asynchronously
+    request.onload = function() {  //Decode asynchronously
         audioContext.decodeAudioData(request.response, function(buff) {bufferTrialNo = buff;});
     }
     request.send();
 }
 
 
-// for end of run
+//for end of run
 - (void) loadSoundRunEnd { //console.info("Sound>loadSound");
     bufferRunEnd = null;
     const request = new XMLHttpRequest();
     request.open('GET', "Resources/sounds/runEnd/" + gSoundsRunEnd[[Settings soundRunEndIndex]], true);
     request.responseType = 'arraybuffer';
-    request.onload = function() {  // Decode asynchronously
+    request.onload = function() {  //Decode asynchronously
         audioContext.decodeAudioData(request.response, function(buff) {bufferRunEnd = buff;});
     }
     request.send();
@@ -88,7 +88,7 @@ Sound.j
     const source = audioContext.createBufferSource();
     source.buffer = buffer;
     source.connect(volumeNode);
-    volumeNode.gain.value = Math.pow([Settings soundVolume] / 100.0, 2); // a more physiologic transfer function IMHO
+    volumeNode.gain.value = Math.pow([Settings soundVolume] / 100.0, 2); //a more physiologic transfer function IMHO
     source.start(0);
 }
 

@@ -13,8 +13,8 @@
 
 + (void) apply {
     [Presets setStandardDefaultsKeepingCalBarLength];
-    // General pane
-    [[CPUserDefaults standardUserDefaults] setInteger: kNAlternativesIndex4 forKey: "nAlternativesIndex"]; // 4
+    //General pane
+    [[CPUserDefaults standardUserDefaults] setInteger: kNAlternativesIndex4 forKey: "nAlternativesIndex"]; //4
     [Settings setNTrials04: 24];
     [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
     [Settings setDecimalMarkCharIndex: kDecimalMarkCharIndexComma];
@@ -22,11 +22,11 @@
     [Settings setEccentXInDeg: 8];
     [Settings setDistanceInCM: 68.5];
     [Settings setResults2clipboard: kResults2ClipFullHistory];
-    [Settings setDisplayTransform: 1]; // 1=mirror horizontally
+    [Settings setDisplayTransform: 1]; //1=mirror horizontally
     [Settings setTestOnFive: kTestAcuityC];
-    // Acuity pane
+    //Acuity pane
     [Settings setMaxDisplayedAcuity: 99];
-    // Misc pane
+    //Misc pane
     [Settings setEccentRandomizeX: YES];
 }
 

@@ -30,7 +30,7 @@
                 CGContextSetFillColor(cgc, gColorFore);
                 CGContextFillRect(cgc, CGRectMake(-viewWidth2, -viewHeight2, viewWidth, viewHeight));
             }
-            discardKeyEntries = NO; // now allow responding
+            discardKeyEntries = NO; //now allow responding
             break;
         default: break;
     }

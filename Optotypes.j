@@ -13,7 +13,7 @@ Optotypes.j
  */
 @implementation Optotypes: CPObject {
     float kPi, kPi2;
-    float currentX, currentY; // for drawing
+    float currentX, currentY; //for drawing
 }
 
 
@@ -88,7 +88,7 @@ Optotypes.j
 
 
 - (void) strokeStarAtX: (float) x y: (float) y size: (float) s { //console.info("optotypes>strokeStarAtX");
-    cgc = [[CPGraphicsContext currentContext] graphicsPort]; // probably no longer necessary
+    cgc = [[CPGraphicsContext currentContext] graphicsPort]; //probably no longer necessary
     [self strokeXAtX: x y: y size: s];  [self strokeCrossAtX: x y: y size: s];
 }
 
@@ -182,21 +182,21 @@ Optotypes.j
     d = d * 0.5;
     CGContextBeginPath(cgc);
     CGContextMoveToPoint(cgc, -5 * d, 2 * d);
-    CGContextAddArc(cgc, -2 * d, 2 * d, 3 * d, kPi, kPi2, NO);// unten links
+    CGContextAddArc(cgc, -2 * d, 2 * d, 3 * d, kPi, kPi2, NO); //unten links
     CGContextAddLineToPoint(cgc, 2 * d, 5 * d);
-    CGContextAddArc(cgc, 2 * d, 2 * d, 3 * d, kPi2, -kPi2, NO);// unten rechts außen
+    CGContextAddArc(cgc, 2 * d, 2 * d, 3 * d, kPi2, -kPi2, NO); //unten rechts außen
     CGContextAddLineToPoint(cgc, -2 * d, -1 * d);
-    CGContextAddArc(cgc, -2 * d, -2 * d, d, kPi2, -kPi2, YES);// oben links innen
+    CGContextAddArc(cgc, -2 * d, -2 * d, d, kPi2, -kPi2, YES); //oben links innen
     CGContextAddLineToPoint(cgc, 2 * d, -3 * d);
-    CGContextAddArc(cgc, 2 * d, -2 * d, d, -kPi2, 0, YES);// oben rechts innen
+    CGContextAddArc(cgc, 2 * d, -2 * d, d, -kPi2, 0, YES); //oben rechts innen
     CGContextAddLineToPoint(cgc, 5 * d, -2 * d);
-    CGContextAddArc(cgc, 2 * d, -2 * d, 3 * d, 0, -kPi2, NO);// oben rechts außen
+    CGContextAddArc(cgc, 2 * d, -2 * d, 3 * d, 0, -kPi2, NO); //oben rechts außen
     CGContextAddLineToPoint(cgc, -2 * d, -5 * d);
-    CGContextAddArc(cgc, -2 * d, -2 * d, 3 * d, -kPi2, kPi2, NO);// oben links außen
+    CGContextAddArc(cgc, -2 * d, -2 * d, 3 * d, -kPi2, kPi2, NO); //oben links außen
     CGContextAddLineToPoint(cgc, 2 * d, 1 * d);
-    CGContextAddArc(cgc, 2 * d, 2 * d, d, -kPi2, kPi2, YES);// unten rechts innen
+    CGContextAddArc(cgc, 2 * d, 2 * d, d, -kPi2, kPi2, YES); //unten rechts innen
     CGContextAddLineToPoint(cgc, -2 * d, 3 * d);
-    CGContextAddArc(cgc, -2 * d, 2 * d, d, kPi2, kPi, YES);// unten rechts innen
+    CGContextAddArc(cgc, -2 * d, 2 * d, d, kPi2, kPi, YES); //unten rechts innen
     CGContextAddLineToPoint(cgc, -5 * d, 2 * d);
     CGContextFillPath(cgc);
     //[self strokeXAtX: 0 y: 0 size: 3];
@@ -255,7 +255,7 @@ Optotypes.j
             p = [[-5, -5], [5, -5], [5, 5], [-5, 5], [-5, 3], [3, 3], [3, 1], [-5, 1], [-5, -1], [3, -1], [3, -3], [-5, -3]];  break;
         case 6:
             p = [[5, -5], [5, 5], [-5, 5], [-5, -5], [-3, -5], [-3, 3], [-1, 3], [-1, -5], [1, -5], [1, 3], [3, 3], [3, -5]];  break;
-        default:    // hollow square (for flanker)
+        default:    //hollow square (for flanker)
             p = [[5, -5], [-5, -5], [-5, 5], [5, 5], [5, -5], [3, -3], [-3, -3], [-3, 3], [3, 3], [3, -3]];
     }
     [self fillPolygon: p withD: d * 0.5];

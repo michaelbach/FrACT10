@@ -43,7 +43,7 @@
             CGContextAddLineToPoint(cgc, r, 0);
             CGContextAddArc(cgc, 0, 0, r, 0, [MiscSpace degrees2radians: 66.66], 1);
             CGContextFillPath(cgc);
-            discardKeyEntries = NO; // now allow responding
+            discardKeyEntries = NO; //now allow responding
             break;
         default: break;
     }

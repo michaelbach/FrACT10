@@ -11,17 +11,17 @@
 
 @implementation Presets_ETCF: CPObject
 
-+ (void) apply {//console.info("Preset_ETCF>apply")
++ (void) apply { //console.info("Preset_ETCF>apply")
     [Settings setDefaults];
-    // general pane
+    //general pane
     [Settings setTestOnFive: kTestContrastC];
     [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
     [Settings setResults2clipboard: kResults2ClipFinalOnly];
     [Settings setDistanceInCM: 100];
-    // acuity pane
-    // contrast pane
+    //acuity pane
+    //contrast pane
     [Settings setContrastOptotypeDiameter: 170];
-    // gamma pane
+    //gamma pane
     [Settings setGammaValue: 1.0];
 }
 

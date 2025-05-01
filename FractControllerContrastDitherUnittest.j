@@ -22,7 +22,7 @@ Created by Bach on 2025-03-11
 
 
 - (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerContrastDitherUnittest>responseNumberFromChar: ", keyChar);
-    return -1;// -1: ignore; -2: invalid
+    return -1; //-1: ignore; -2: invalid
 }
 
 

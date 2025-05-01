@@ -1,11 +1,11 @@
 //
-// file "webAppServiceWorker.js"
+//file "webAppServiceWorker.js"
 //
 
 const cacheName = "FrACT10·2025-04-30";
 
 
-// Fetching content using Service Worker, this is called on reload. If cache name has changed, `install` is next
+//Fetching content using Service Worker, this is called on reload. If cache name has changed, `install` is next
 self.addEventListener('fetch', (event) => {
     //console.info("webAppServiceWorker responding to fetch event…");
     event.respondWith((async () => {
@@ -20,12 +20,12 @@ self.addEventListener('fetch', (event) => {
 });
 
 
-// Installing Service Worker, this is called first, before "AppController>init"
+//Installing Service Worker, this is called first, before "AppController>init"
 self.addEventListener('install', (event) => {
     //console.info("webAppServiceWorker responding to install event…");
     event.waitUntil(
                     caches.open(cacheName).then((cache) => {
-                        return cache.addAll([ // Cache all these files
+                        return cache.addAll([ //Cache all these files
                             './',
                             './Browser.environment/dataURLs.txt',
                             './Browser.environment/MHTMLData.txt',
@@ -85,7 +85,7 @@ self.addEventListener('install', (event) => {
 });
 
 
-// Activate Service Worker, this is called after the `install` event
+//Activate Service Worker, this is called after the `install` event
 self.addEventListener('activate', function(event) {
     //console.info("webAppServiceWorker responding to activate event…");
     const cacheWhitelist = [cacheName];

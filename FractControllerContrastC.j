@@ -23,9 +23,9 @@ Created by Bach on 2020-08-17
             break;
         case kStateDrawFore2:
             [optotypes drawLandoltWithStrokeInPx: strokeSizeInPix landoltDirection: [alternativesGenerator currentAlternative]];
-            [self drawFixMark3];// need to draw again
+            [self drawFixMark3]; //need to draw again
             stimStrengthInDeviceunits = [self getCurrentContrastLogCSWeber];
-            trialInfoString = [self contrastComposeTrialInfoString];// compose here after colors are set
+            trialInfoString = [self contrastComposeTrialInfoString]; //compose here after colors are set
             break;
         default: break;
     }

@@ -18,8 +18,8 @@
 - (void) drawRect: (CGRect) dirtyRect { //console.info("MDBLabel>drawRect");
     [super drawRect: dirtyRect];
     //[self currentValueForThemeAttribute:@"text-color"] always 0 or gray???
-    // of course, because disable has no effect on standard labels!
+    //of course, because disable has no effect on standard labels!
     [self setTextColor:[self isEnabled] ? [CPColor blackColor] : [CPColor colorWithCalibratedWhite: 79.0 / 255.0 alpha: 0.6]];
-    // from: regularDisabledTextColor in Aristo2>ThemeDescriptors.j
+    //from: regularDisabledTextColor in Aristo2>ThemeDescriptors.j
 }
 @end

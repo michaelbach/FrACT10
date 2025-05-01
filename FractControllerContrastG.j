@@ -17,7 +17,7 @@
 }
 
 
-// Method of limits
+//Method of limits
 const specialBcmStepsize = 0.1;
 - (void) modifyDeviceStimulus { //console.info("FractControllerContrastG>modifyDeviceStimulus");
     responseWasCorrectCumulative = responseWasCorrectCumulative && responseWasCorrect;
@@ -56,20 +56,20 @@ const specialBcmStepsize = 0.1;
 
 
 - (float) freqFromThresholderunits: (float) thresholderunit {
-    thresholderunit = 1 - thresholderunit; // 0: strong stimulus=low spatFreq
+    thresholderunit = 1 - thresholderunit; //0: strong stimulus=low spatFreq
 
-    // exponential mapping for psychometric function to frequency. Does NOT work well.
+    //exponential mapping for psychometric function to frequency. Does NOT work well.
     /*const expFreqMin = Math.pow(10, [Settings gratingCPDmin]);
      const expFreqMax = Math.pow(10, [Settings gratingCPDmax]);
      const expFreq = expFreqMin + thresholderunit * (expFreqMax - expFreqMin);
      return Math.log10(expFreq);*/
 
-    // linear mapping for psychometric function to frequency
+    //linear mapping for psychometric function to frequency
     const freqMin = [Settings gratingCPDmin], freqMax = [Settings gratingCPDmax];
     const freq = freqMin + thresholderunit * (freqMax - freqMin);
     return freq;
 
-    // log mapping for psychometric function to frequency
+    //log mapping for psychometric function to frequency
     /*    const logFreqMin = Math.log10([Settings gratingCPDmin]);
      const logFreqMax = Math.log10([Settings gratingCPDmax]);
      const logFreq = logFreqMin + thresholderunit * (logFreqMax - logFreqMin);
@@ -89,15 +89,15 @@ const specialBcmStepsize = 0.1;
 
 - (void) gratingWithPeriodInPx: (float) periodInPx direction: (int) theDirection contrast: (float) contrast {
     let s2 = Math.round(Math.max(viewHeight2, viewWidth2) / 2 * 1.3) * 2;
-    const trigFactor = 1 / periodInPx * 2 * Math.PI; // calculate only once
+    const trigFactor = 1 / periodInPx * 2 * Math.PI; //calculate only once
     if (gratingShapeIndex != kGratingShapeIndexCheckerboard) {
         CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180);
-    } else { // for checkerboard we only have oblique versus cardinal
-        if (theDirection == 4) { // cardinal: ↑ or ↓, oblique: → or ←
+    } else { //for checkerboard we only have oblique versus cardinal
+        if (theDirection == 4) { //cardinal: ↑ or ↓, oblique: → or ←
             CGContextRotateCTM(cgc, -2 * 22.5 * Math.PI / 180);
         }
     }
-    CGContextSetLineWidth(cgc, 1.3); // still an artifact on oblique
+    CGContextSetLineWidth(cgc, 1.3); //still an artifact on oblique
     let lFloat, lDiscrete, lError = 0;
     if (gratingShapeIndex != kGratingShapeIndexCheckerboard) {
         for (let ix = -s2; ix <= s2; ++ix) {
@@ -105,29 +105,29 @@ const specialBcmStepsize = 0.1;
             switch (gratingShapeIndex) {
                 case kGratingShapeIndexSinus: lFloat = Math.sin(lFloat);  break;
                 case kGratingShapeIndexSquare: lFloat = Math.sin(lFloat) >= 0 ? 1 : -1;  break;
-                case kGratingShapeIndexTriangle: // https://en.wikipedia.org/wiki/Triangle_wave
+                case kGratingShapeIndexTriangle: //https://en.wikipedia.org/wiki/Triangle_wave
                     let lFloat1 = lFloat / (2 * Math.PI);
                     lFloat = 2 * Math.abs(2 * (lFloat1 - Math.floor(lFloat1 + 0.5))) - 1;
                     break;
             }
-            lFloat = 0.5 + 0.5 * contrast / 100 * lFloat;  // contrast, map [-1, 1] → [0,1]
+            lFloat = 0.5 + 0.5 * contrast / 100 * lFloat;  //contrast, map [-1, 1] → [0,1]
             if (isGratingColor) {
                 CGContextSetStrokeColor(cgc, [gColorFore colorWithAlphaComponent: lFloat]);
             } else {
-                lFloat = [MiscLight devicegrayFromLuminance: lFloat]; // gamma correction
+                lFloat = [MiscLight devicegrayFromLuminance: lFloat]; //gamma correction
                 lDiscrete = lFloat;
                 if (isErrorDiffusion) {
-                    lFloat = lFloat * 255 + lError; // map → [0, 255], apply previous residual
-                    lDiscrete = Math.round(lFloat); // discrete integer values [0, 255]
-                    lError = lFloat - lDiscrete; // keep residual (what was lost by rounding)
-                    lDiscrete /= 255; // remap → [0, 1]
+                    lFloat = lFloat * 255 + lError; //map → [0, 255], apply previous residual
+                    lDiscrete = Math.round(lFloat); //discrete integer values [0, 255]
+                    lError = lFloat - lDiscrete; //keep residual (what was lost by rounding)
+                    lDiscrete /= 255; //remap → [0, 1]
                 }
                 CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: lDiscrete alpha: 1]);
             }
             [optotypes strokeVLineAtX: ix y0: -s2 y1: s2];
         }
     } else {
-        if (![self isContrastG]) { // so acuity, need to take fixed contrast from settings
+        if (![self isContrastG]) { //so acuity, need to take fixed contrast from settings
             const c = [MiscLight contrastLogCSWeberFromWeberPercent:
                         [MiscLight contrastWeberPercentFromMichelsonPercent:
                           [Settings gratingContrastMichelsonPercent]]];
@@ -138,8 +138,8 @@ const specialBcmStepsize = 0.1;
         }
         const periodInPx2 = periodInPx / Math.SQRT2;
         const nChecks = 2 * Math.ceil(s2 / periodInPx2);
-        const offSet = s2 - nChecks/2 * periodInPx2; // checks should meet in the center
-        const xyOrigin = -s2 + offSet; // period/√2↓: dominant spat freq like grating
+        const offSet = s2 - nChecks/2 * periodInPx2; //checks should meet in the center
+        const xyOrigin = -s2 + offSet; //period/√2↓: dominant spat freq like grating
         [self checkerboardX: xyOrigin y: xyOrigin checkSize: periodInPx2 nChecksX: nChecks nChecksY: nChecks foreCol: gColorFore backCol: gColorBack];
     }
 }
@@ -166,7 +166,7 @@ const specialBcmStepsize = 0.1;
             if ([self isContrastG]) {
                 contrastMichelsonPercent = [MiscLight contrastMichelsonPercentFromLogCSWeber: stimStrengthInDeviceunits];
                 spatialFreqCPD = [Settings gratingCPD];
-            } else { // acuity_grating
+            } else { //acuity_grating
                 contrastMichelsonPercent = [Settings gratingContrastMichelsonPercent];
                 spatialFreqCPD = [self freqFromThresholderunits: stimStrengthInThresholderUnits];
                 if ([Settings specialBcmOn]) {
@@ -193,7 +193,7 @@ const specialBcmStepsize = 0.1;
     [super drawStimulusInRect: dirtyRect];
     if ([self isContrastG]) {
         [trialHistoryController setValue: contrastMichelsonPercent];
-    } else { // acuity_grating
+    } else { //acuity_grating
         [trialHistoryController setValue: spatialFreqCPD];
     }
 }
@@ -213,31 +213,31 @@ const specialBcmStepsize = 0.1;
 
 - (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerContrastE>responseNumberFromChar: ", keyChar);
     if (gratingShapeIndex == kGratingShapeIndexCheckerboard) {
-        // additional mappings for cardinal/oblique checkerboards
-        if (["1", "3", "7", "9"].includes(keyChar)) { // oblique
+        //additional mappings for cardinal/oblique checkerboards
+        if (["1", "3", "7", "9"].includes(keyChar)) { //oblique
             keyChar = CPRightArrowFunctionKey;
         } else {
-            if (["2", "4", "6", "8"].includes(keyChar)) { // cardinal
+            if (["2", "4", "6", "8"].includes(keyChar)) { //cardinal
                 keyChar = CPUpArrowFunctionKey;
             }
         }
     }
     switch (keyChar) {
-        case CPLeftArrowFunctionKey: return 4; // ⬅️
-        case CPRightArrowFunctionKey: return 4; // ➡️
-        case CPUpArrowFunctionKey: return 0; // ⬆️
-        case CPDownArrowFunctionKey: return 0; // ⬇️
-        case "1": return 6; // ↙️
-        case "2": return 0; // ⬇️
-        case "3": return 2; // ↘️
-        case "4": return 4; // ⬅️
+        case CPLeftArrowFunctionKey: return 4; //⬅️
+        case CPRightArrowFunctionKey: return 4; //➡️
+        case CPUpArrowFunctionKey: return 0; //⬆️
+        case CPDownArrowFunctionKey: return 0; //⬇️
+        case "1": return 6; //↙️
+        case "2": return 0; //⬇️
+        case "3": return 2; //↘️
+        case "4": return 4; //⬅️
         case "5": return -1;
-        case "6": return 4; // ➡️
-        case "7": return 2; // ↖️
-        case "8": return 0; // ⬆️
-        case "9": return 6; // ↗️
+        case "6": return 4; //➡️
+        case "7": return 2; //↖️
+        case "8": return 0; //⬆️
+        case "9": return 6; //↗️
     }
-    return -2;// 0, 2, 4, 6: valid; -1: ignore; -2: invalid
+    return -2; //0, 2, 4, 6: valid; -1: ignore; -2: invalid
 }
 
 
@@ -252,19 +252,19 @@ const specialBcmStepsize = 0.1;
 
 - (CPString) contrastComposeResultString {
     rangeLimitStatus = kRangeLimitOk;
-    // taking into account the result of final trial
+    //taking into account the result of final trial
     stimStrengthInDeviceunits = [self stimDeviceunitsFromThresholderunits: [thresholder nextStim2apply]];
     if ([self isContrastG]) {
         contrastMichelsonPercent = [MiscLight contrastMichelsonPercentFromLogCSWeber: stimStrengthInDeviceunits];
         spatialFreqCPD = [Settings gratingCPD];
-    } else { // acuity_grating
+    } else { //acuity_grating
         if (![Settings specialBcmOn]) {
             spatialFreqCPD = [self freqFromThresholderunits: stimStrengthInThresholderUnits];
         }
         contrastMichelsonPercent = [Settings gratingContrastMichelsonPercent];
     }
     /* needs work for frequency sweep
-     if (contrastMichelsonPercent < 100 / 512) // 2 × 256
+     if (contrastMichelsonPercent < 100 / 512) //2 × 256
      rangeLimitStatus = kRangeLimitValueAtFloor;
      if (contrastMichelsonPercent >= 100)
      rangeLimitStatus = kRangeLimitValueAtCeiling; */
@@ -288,7 +288,7 @@ const specialBcmStepsize = 0.1;
     _exportString += tab + "unit2" + tab + "cpd";
     _exportString += tab + "nTrials" + tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
     _exportString += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
-    _exportString += tab + "crowding" + tab + 0; // does not apply, but let's not NaN this
+    _exportString += tab + "crowding" + tab + 0; //does not apply, but let's not NaN this
     if (isGratingColor) {
         _exportString += tab + "colorForeBack" + tab + [gColorFore hexString] + tab + [gColorBack hexString];
         if ([self isAcuityGrating]) {

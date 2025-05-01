@@ -62,7 +62,7 @@
         6: "../readResultString.html"};
     const url = tagsURLs[tag];
     if (url === undefined) return;
-    if (tag == 6) { // check if this local file exists
+    if (tag == 6) { //check if this local file exists
         if (![Misc existsUrl: url]) return;
     }
     window.open(url, "_blank");
@@ -94,7 +94,7 @@
     s += "<a href='https://michaelbach.de/fract/' target='_blank'>FrACT₁₀ homepage</a><br><br>";
     s += "Sources: <a href='https://github.com/michaelbach/FrACT10/#fract' target='_blank'>GitHub repository</a>, <a href='https://github.com/michaelbach/FrACT10/commits' target='_blank'>Commit history</a><br>"
     s += "Frameworks/Libraries used:<br>";
-    const cappucinoVersion = [[[CPBundle bundleWithIdentifier: "com.280n.Foundation"] infoDictionary] objectForKey:@"CPBundleVersion"]; // initialised in AppController
+    const cappucinoVersion = [[[CPBundle bundleWithIdentifier: "com.280n.Foundation"] infoDictionary] objectForKey:@"CPBundleVersion"]; //initialised in AppController
     s += "<a href='https://michaelbach.de/ot/-misc/cappFrameworks/index.html' target='_blank'>Cappuccino " + cappucinoVersion + "</a>,&nbsp; ";
     s += "«simplestatistics.org».<br>";
     //s += "<a href='https://nodejs.org/' target='_blank'>Node.js,</a><br>";

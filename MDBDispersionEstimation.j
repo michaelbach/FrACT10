@@ -16,14 +16,14 @@ MDBDispersionEstimation.j
 @implementation MDBDispersionEstimation
 
 
-let kWorstLogMAR, kBestLogMAR, kGuess, testDF; // there are no class properties in Cappuccino, so use JavaScript
+let kWorstLogMAR, kBestLogMAR, kGuess, testDF; //there are no class properties in Cappuccino, so use JavaScript
 
 
 + (void) initResultStatistics { //console.info("Entering initResultStatistics");
     kWorstLogMAR = [MiscSpace logMARfromDecVA: [MiscSpace decVAFromStrokePixels: gStrokeMaximal]];
     kBestLogMAR =  [MiscSpace logMARfromDecVA: [MiscSpace decVAFromStrokePixels: gStrokeMinimal]];
     //console.info("kWorstLogMAR: ", kWorstLogMAR, ", kBestLogMAR: ", kBestLogMAR);
-    kGuess = 0.125; // will be overridden
+    kGuess = 0.125; //will be overridden
     
     /* selectTestDF(2);
     console.info("threshEstimate: ", threshEstimate(testDF, 10000));
@@ -37,9 +37,9 @@ let kWorstLogMAR, kBestLogMAR, kGuess, testDF; // there are no class properties 
  That dataframe is composed in TrialHistoryController
  */
 + (id) calculateCIfromDF: (id) df guessingProbability: (float) guessingProbability nSamples: (int) nSamples {
-    kGuess = guessingProbability; // as global parameter to speed up
-    nSamples = nSamples || 1000; // default value
-    const threshSamples = [nSamples]; // this array will hold all bootstrap results
+    kGuess = guessingProbability; //as global parameter to speed up
+    nSamples = nSamples || 1000; //default value
+    const threshSamples = [nSamples]; //this array will hold all bootstrap results
     for (let i = 0; i < nSamples; i++) threshSamples[i] = threshEstimate(sampleWithReplacement(df, df.length));
     //console.info(threshSamples);
     //console.info("extent: ", extent(threshSamples));
@@ -47,7 +47,7 @@ let kWorstLogMAR, kBestLogMAR, kGuess, testDF; // there are no class properties 
     const CI0025 = quantile(threshSamples, 0.025)
     const CI0975 = quantile(threshSamples, 0.975);
     //console.info("med: ", med, ", CI0025: ", CI0025, ", CI0975", CI0975, ", Bland-Altman-equiv: ±", (CI0025 - CI0975) / 2);
-    /*let s = ""; // outputting all estimates on the clipboard for further workup in R
+    /*let s = ""; //outputting all estimates on the clipboard for further workup in R
     for (i =0; i<threshSamples.length; i++) s += threshSamples[i]+ "\n";
     [Misc copyString2ClipboardWithDialog: s];*/
     return {median: med, CI0025: CI0025, CI0975: CI0975};
@@ -70,13 +70,13 @@ function findMaxLlhInRange(df, r1, r2, delta) {
  The fit to the psychometric function is done in stages, because the fit's slope can be VERY shallow
  */
 function threshEstimate(df) { //console.info("threshEstimate");
-    let delta = 0.5; // initial LogMAR precision for rough homing-in
+    let delta = 0.5; //initial LogMAR precision for rough homing-in
     let lMarMax = findMaxLlhInRange(df, kBestLogMAR, kWorstLogMAR, delta);
-    lMarMax = findMaxLlhInRange(df, lMarMax - delta, lMarMax + delta, delta / 5); // now precise to ±0.1 LogMAR
+    lMarMax = findMaxLlhInRange(df, lMarMax - delta, lMarMax + delta, delta / 5); //now precise to ±0.1 LogMAR
     delta /= 10;
-    lMarMax = findMaxLlhInRange(df, lMarMax - delta, lMarMax + delta, delta / 5); // now precise to ±0.02 LogMAR
+    lMarMax = findMaxLlhInRange(df, lMarMax - delta, lMarMax + delta, delta / 5); //now precise to ±0.02 LogMAR
     delta /= 10;
-    lMarMax = findMaxLlhInRange(df, lMarMax - delta, lMarMax + delta, delta / 5); // now precise to ±0.004 LogMAR. Overkill??
+    lMarMax = findMaxLlhInRange(df, lMarMax - delta, lMarMax + delta, delta / 5); //now precise to ±0.004 LogMAR. Overkill??
     return lMarMax;
 }
 
@@ -96,10 +96,10 @@ function logMAR2pest(lmar) {
 /**
  likelihood stuff
  */
-function likelihoodFunc(thresh, df) {//console.info("MDBDispersionEstimation>likelihoodFunc");
+function likelihoodFunc(thresh, df) { //console.info("MDBDispersionEstimation>likelihoodFunc");
     const len = df.length
-    //let llh = probCorrectGivenLogMAR(kGuess, thresh, kWorstLogMAR); // nearly 1. Fix right end.
-    //llh = llh * (1 - probCorrectGivenLogMAR(kGuess, thresh, kBestLogMAR)); // guess prob. Fix left end.
+    //let llh = probCorrectGivenLogMAR(kGuess, thresh, kWorstLogMAR); //nearly 1. Fix right end.
+    //llh = llh * (1 - probCorrectGivenLogMAR(kGuess, thresh, kBestLogMAR)); //guess prob. Fix left end.
     let llh = 1;
     for (let i = 0; i < len; i++) {
         const l = probCorrectGivenLogMAR(kGuess, thresh, df[i].lMar);
@@ -129,7 +129,7 @@ function unittestLogistic(guessingProbability) {
 function logisticFun(guessingProbability, inflectionPoint, x) {
     //console.log("guessingProbability: ", guessingProbability, ", inflectionPoint: ", inflectionPoint);
     x = 1 - x;  inflectionPoint = 1 - inflectionPoint;
-    // 2023-02-07 previously, slope was defined inversely. No change in result, now more readable
+    //2023-02-07 previously, slope was defined inversely. No change in result, now more readable
     return guessingProbability + (1 - guessingProbability) / (1 + Math.exp(-gSlopeCI95 * (x - inflectionPoint)));
 }
 
@@ -141,8 +141,8 @@ function selectTestDF(selector) {
     selector = selector || 0;
     switch (selector) {
         default:
-            testDF = [{lMar: 1.00, correct: YES}, // trial run on 2021-04-22
-                      {lMar: 0.699, correct: NO}, // lapse error, good for testing
+            testDF = [{lMar: 1.00, correct: YES}, //trial run on 2021-04-22
+                      {lMar: 0.699, correct: NO}, //lapse error, good for testing
                       {lMar: 0.886, correct: YES},
                       {lMar: 0.725, correct: YES},
                       {lMar: 0.595, correct: YES},
@@ -161,7 +161,7 @@ function selectTestDF(selector) {
                       {lMar: 0.439, correct: YES}];
             break;
         case 1:
-            testDF = [{lMar: 1.00, correct: YES}, // run 1 (mb)
+            testDF = [{lMar: 1.00, correct: YES}, //run 1 (mb)
                       {lMar: 0.699, correct: YES},
                       {lMar: 0.398, correct: YES},
                       {lMar: 0.097, correct: YES},
@@ -181,7 +181,7 @@ function selectTestDF(selector) {
                       {lMar: 0.479, correct: YES}];
             break;
         case 2:
-            testDF = [{lMar: 1.00, correct: YES}, // "63-He-OS-1"
+            testDF = [{lMar: 1.00, correct: YES}, //"63-He-OS-1"
                       {lMar: 0.699, correct: NO},
                       {lMar: 0.86, correct: YES},
                       {lMar: 0.697, correct: YES},

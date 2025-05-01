@@ -11,10 +11,10 @@
 
 @implementation Presets_HYPERION: CPObject
 
-+ (void) apply {//console.info("Presets_HYPERION>apply")
++ (void) apply { //console.info("Presets_HYPERION>apply")
     [Settings setDefaults];
 
-    // general pane
+    //general pane
     [Settings setResponseInfoAtStart: NO]; [Settings setEnableTouchControls: NO];
     [Settings setDecimalMarkCharIndex: kDecimalMarkCharIndexDot];
     [Settings setDistanceInCM: 400];
@@ -25,14 +25,14 @@
     [Settings setTestOnFive: kTestAcuityLett];
     [Settings setResults2clipboard: kResults2ClipFullHistory];
 
-    // acuity pane
+    //acuity pane
     [Settings setMaxDisplayedAcuity: 99];
     [Settings setAcuityStartingLogMAR: 1.0];
     [Settings setAcuityFormatLogMAR: YES];
     [Settings setShowCI95: YES];
     [Settings setAcuityFormatDecimal: NO];
     [Settings setCrowdingType: 1]; //flanking bars
-    [Settings setCrowdingDistanceCalculationType: 3];//like ETDRS
+    [Settings setCrowdingDistanceCalculationType: 3]; //like ETDRS
 }
 
 @end

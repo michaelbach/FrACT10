@@ -31,7 +31,7 @@ Created by Bach on 2020-05-21
         case kStateDrawBack: break;
         case kStateDrawFore:
             [gAppController.taoController drawTaoWithStrokeInPx: stimStrengthInDeviceunits taoNumber: [alternativesGenerator currentAlternative]];
-            [self prepareDrawingTransformUndo]; // otherwise the button numbers are subject to "display transform"
+            [self prepareDrawingTransformUndo]; //otherwise the button numbers are subject to "display transform"
             const size = viewWidth / (nAlternatives * 2 + 2)
             if (!responseButtonsAdded) {
                 for (let i = 0; i < (nAlternatives); i++) {
@@ -42,7 +42,7 @@ Created by Bach on 2020-05-21
                 [self buttonCenteredAtX: (10 + 0.75) * 2 * size y: viewHeight2 - 0.5 * size size: size title: "Ø"];
             }
             CGContextSetTextDrawingMode(cgc, kCGTextFill);
-            CGContextSelectFont(cgc, "36px sans-serif"); // this, surprisingly, must be CSS
+            CGContextSelectFont(cgc, "36px sans-serif"); //this, surprisingly, must be CSS
             for (let i = 0; i < (nAlternatives); i++)
                 CGContextShowTextAtPoint(cgc, (i + 0.5) * 2 * size + size / 2 - 8, viewHeight - 1.4 * size, [Misc stringFromInteger: (i + 1) % 10]);
             break;
@@ -75,7 +75,7 @@ Created by Bach on 2020-05-21
         case "9": return 8;
         case abortCharacter: return -1;
     }
-    return -2;// -1: ignore; -2: invalid
+    return -2; //-1: ignore; -2: invalid
 }
 
 

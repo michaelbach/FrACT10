@@ -19,9 +19,9 @@ Created by Bach on 2020-09-02
 
 
 - (void) modifyThresholderStimulus {
-    if (iTrial == 1) // make the first more visible
+    if (iTrial == 1) //make the first more visible
         stimStrengthInThresholderUnits = Math.min(stimStrengthInThresholderUnits + 0.3, 1);
-    if ([Settings contrastEasyTrials]) // don't forget bonus
+    if ([Settings contrastEasyTrials]) //don't forget bonus
         [self modifyThresholderStimulusWithBonus];
 }
 
@@ -32,10 +32,10 @@ Created by Bach on 2020-09-02
     let gray2 = [MiscLight upperLuminanceFromContrastLogCSWeber: stimStrengthInDeviceunits];
     gray2 = [MiscLight devicegrayFromLuminance: gray2];
     if (![Settings contrastDarkOnLight]) {
-        [gray1, gray2] = [gray2, gray1]; // "modern" swapping of variables
+        [gray1, gray2] = [gray2, gray1]; //"modern" swapping of variables
     }
-    gColorFore = [MiscLight colorFromGreyBitStealed: gray1];//console.info(gColorFore);
-    gColorBack = [MiscLight colorFromGreyBitStealed: gray2];//console.info(gColorBack);
+    gColorFore = [MiscLight colorFromGreyBitStealed: gray1]; //console.info(gColorFore);
+    gColorBack = [MiscLight colorFromGreyBitStealed: gray2]; //console.info(gColorBack);
     colorForeUndithered = gColorFore;  colorBackUndithered = gColorBack;
     stimStrengthInDeviceunitsUnquantised = stimStrengthInDeviceunits;
 
@@ -46,24 +46,24 @@ Created by Bach on 2020-09-02
 }
 
 
-// Strategy: draw fixmark, delay (onTimeoutFixMark) and draw optotype, erasing fixmark.
-// With eccentricity: Need to draw again right after optotype so it seamlessly stays put
-// No marked eccentricity: don't draw it again
-- (void) drawFixMark3 { // check marked eccentricity is set, otherwise don't draw it
+//Strategy: draw fixmark, delay (onTimeoutFixMark) and draw optotype, erasing fixmark.
+//With eccentricity: Need to draw again right after optotype so it seamlessly stays put
+//No marked eccentricity: don't draw it again
+- (void) drawFixMark3 { //check marked eccentricity is set, otherwise don't draw it
     const eccRadiusInPix = Math.sqrt(xEccInPix * xEccInPix + yEccInPix * yEccInPix);
-    if ((strokeSizeInPix * 4) > eccRadiusInPix) return; // we don't want overlap between fixmark and optotype
+    if ((strokeSizeInPix * 4) > eccRadiusInPix) return; //we don't want overlap between fixmark and optotype
     [self drawFixMark2];
 }
 - (void) drawFixMark2 {
     CGContextSaveGState(cgc);
     CGContextSetStrokeColor(cgc, [CPColor colorWithRed: 0 green: 0 blue: 1 alpha: 0.7]);
     CGContextSetLineWidth(cgc, 0.5);
-    CGContextTranslateCTM(cgc,  +xEccInPix, +yEccInPix); // counter eccentricity
+    CGContextTranslateCTM(cgc,  +xEccInPix, +yEccInPix); //counter eccentricity
     [optotypes strokeStarAtX: 0 y: 0 size: strokeSizeInPix * 3];
     CGContextRestoreGState(cgc);
 }
 - (void) drawFixMark {
-    let t = [Settings contrastTimeoutFixmark] / 1000; // ms → seconds
+    let t = [Settings contrastTimeoutFixmark] / 1000; //ms → seconds
     if ([Settings contrastShowFixMark] && (gCurrentTestID != kTestContrastDitherUnittest)) {
         [self drawFixMark2];
         timerFixMark = [CPTimer scheduledTimerWithTimeInterval: t target:self selector:@selector(onTimeoutFixMark:) userInfo:nil repeats:NO];
@@ -71,7 +71,7 @@ Created by Bach on 2020-09-02
         t = 0.02;
     }
     timerFixMark = [CPTimer scheduledTimerWithTimeInterval: t target:self selector:@selector(onTimeoutFixMark:) userInfo:nil repeats:NO];
-    discardKeyEntries = NO; // now allow responding
+    discardKeyEntries = NO; //now allow responding
 }
 - (void) onTimeoutFixMark: (CPTimer) timer { //console.info("FractController>onTimeoutFixCross");
     state = kStateDrawFore2;
@@ -85,7 +85,7 @@ Created by Bach on 2020-09-02
 }
 
 
-// this manages stuff after the optotypes have been drawn
+//this manages stuff after the optotypes have been drawn
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractControllerContrast>drawStimulusInRect");
     if ([Settings contrastDithering]) {
         stimStrengthInDeviceunits = stimStrengthInDeviceunitsUnquantised;
@@ -106,7 +106,7 @@ Created by Bach on 2020-09-02
 }
 
 
-///////////////////////// CONTRAST UTILs
+/////////////////////////CONTRAST UTILs
 /*
 basic flow:
  Thresholder → thresholderunits
@@ -117,9 +117,9 @@ basic flow:
  thresholderunits + correctness → Thresholder
  
 
-// contrast: 0.1 … 100, thresholder: 0 … 1
-// deviceUnits are in logCSWeber for all contrast tests; for gratings that is converted to Michelson%
-// logCSW: 2 … 0, thresholder: 0 … 1 */
+//contrast: 0.1 … 100, thresholder: 0 … 1
+//deviceUnits are in logCSWeber for all contrast tests; for gratings that is converted to Michelson%
+//logCSW: 2 … 0, thresholder: 0 … 1 */
 
 - (float) getCurrentContrastMichelsonPercent {
     return [MiscLight contrastMichelsonPercentFromColor1: colorForeUndithered color2: colorBackUndithered];
@@ -127,8 +127,8 @@ basic flow:
 /*- (float) getCurrentContrastWeberPercent {
     return [MiscLight contrastWeberPercentFromMichelsonPercent: [self getCurrentContrastMichelsonPercent]];
 }*/
-// Problem here: 0% weber contrast corresponds to infinite logCSWeber.
-// But since the latter is clamped at gMaxAllowedLogCSWeber, after rounding this will still read 0%. Solved.
+//Problem here: 0% weber contrast corresponds to infinite logCSWeber.
+//But since the latter is clamped at gMaxAllowedLogCSWeber, after rounding this will still read 0%. Solved.
 - (float) getCurrentContrastLogCSWeber {
     const michelsonPercent = [self getCurrentContrastMichelsonPercent];
     const weberPercent = [MiscLight contrastWeberPercentFromMichelsonPercent: michelsonPercent];
@@ -138,7 +138,7 @@ basic flow:
 
 - (float) stimDeviceunitsFromThresholderunits: (float) thresholderunit { //console.info("FractControllerContrast>stimDeviceunitsFromThresholderunits");
     const logCSWMaximal = [Settings contrastMaxLogCSWeber];
-    const deviceVal = logCSWMaximal - logCSWMaximal * thresholderunit; // logCSWMinimal = 0 anyway
+    const deviceVal = logCSWMaximal - logCSWMaximal * thresholderunit; //logCSWMinimal = 0 anyway
     return deviceVal;
 }
 - (float) stimThresholderunitsFromDeviceunits: (float) d { //console.info("FractControllerContrast>stimThresholderunitsFromDeviceunits");
@@ -167,7 +167,7 @@ basic flow:
 - (CPString) contrastComposeResultString { //console.info("contrastComposeResultString");
     //console.info("rangeLimitStatus: ", rangeLimitStatus);
     rangeLimitStatus = kRangeLimitOk;
-    if (stimStrengthInDeviceunits >= gMaxResultLogCSWeber) { // todo: do this while testing
+    if (stimStrengthInDeviceunits >= gMaxResultLogCSWeber) { //todo: do this while testing
         rangeLimitStatus = kRangeLimitValueAtCeiling;
     }
     let s = "Contrast threshold: " + crlf;
@@ -192,7 +192,7 @@ basic flow:
     s += tab + "unit2" + tab + "arcmin";
     s += tab + "nTrials" + tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
     s += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
-    s += tab + "crowding" + tab + 0; // does not apply, but let's not NaN this
+    s += tab + "crowding" + tab + 0; //does not apply, but let's not NaN this
     return [self generalComposeExportStringFinalize: s];
 }
 

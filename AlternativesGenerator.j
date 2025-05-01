@@ -7,7 +7,7 @@ AlternativesGenerator.j
 Created by Bach on 23.07.2017.
 
 Generates "alternatives" (e.g. Landolt C directions) from 0 to (nAlternatives-1)
- 
+
 */
 
 /**
@@ -17,7 +17,7 @@ Generates "alternatives" (e.g. Landolt C directions) from 0 to (nAlternatives-1)
  *
  * */
 
- 
+
 @import <Foundation/CPObject.j>
 @import <AppKit/AppKit.j>
 
@@ -27,7 +27,7 @@ Generates "alternatives" (e.g. Landolt C directions) from 0 to (nAlternatives-1)
     int currentAlternative @accessors;
     id alternatives2present;
     int i;
-    BOOL _obliqueOnly;// only gratings for now
+    BOOL _obliqueOnly; //only gratings for now
 }
 
 
@@ -50,17 +50,17 @@ function randomiseArray(array) {
 
 /**
  Initialiser
- 
+
  @param nAlternatives: (int) 2, 4, 8, 10
  @param nTrials: (int) number of trials
  @return class instance
-    
+
  */
 - (id) initWithNumAlternatives: (int) nAlternatives andNTrials: (int) nTrials obliqueOnly: (BOOL) obliqueOnly { //console.info("AlternativesGenerator>initWithNumAlternatives");
     self = [super init];
     if (self) {
-        for (i = 0; i < (([CPDate date].getSeconds()) % 10); ++i) Math.random(); // truly random
-        
+        for (i = 0; i < (([CPDate date].getSeconds()) % 10); ++i) Math.random(); //truly random
+
         //console.info("AlternativesGenerator>initWithNumAlternatives, nAlt:", nAlternatives, ", nT:", nTrials);
         if (nAlternatives < 2) {
             console.log("AlternativesGenerator>initWithNumAlternatives TOO SMALL: ", nAlternatives);
@@ -76,22 +76,22 @@ function randomiseArray(array) {
         switch(nAlternatives) {
             case 2:
                 for (i = 0; i < nAlternatives; ++i) possibleAlternatives[i] *= 4;  break;
-            case 4: // skip oblique == odd
+            case 4: //skip oblique == odd
                 for (i = 0; i < nAlternatives; ++i) possibleAlternatives[i] *= 2;  break;
             case 8:  //console.info("8 alternatives, special rare-oblique choice");
-                possibleAlternatives = [0, 2, 4, 6, 1, 3, 5, 7]; // oblique never more often then straight
+                possibleAlternatives = [0, 2, 4, 6, 1, 3, 5, 7]; //oblique never more often then straight
                 break;
-            case 10: break; // letters, no action needed
-            default: console.log("nAlternatives=", nAlternatives, " should never occur!"); // needs to be logged
+            case 10: break; //letters, no action needed
+            default: console.log("nAlternatives=", nAlternatives, " should never occur!"); //needs to be logged
         }
-//        if (nAlternatives == 2) { // to discern between v and h
-//            if (current_TestName != "Acuity_Vernier") { // don't do this for Vernier
-//                if (Prefs.dir2.n == 2) {
-//                    for (i = 0; i < nAlternatives; ++i) possiblenAlternatives[i] += 2;
-//                }
-//            }
-//        }
-        possibleAlternatives = randomiseArray(possibleAlternatives); // in case nTrials<nAlternatives
+/*        if (nAlternatives == 2) { //to discern between v and h
+            if (current_TestName != "Acuity_Vernier") { //don't do this for Vernier
+                if (Prefs.dir2.n == 2) {
+                    for (i = 0; i < nAlternatives; ++i) possiblenAlternatives[i] += 2;
+                }
+            }
+        } */
+        possibleAlternatives = randomiseArray(possibleAlternatives); //in case nTrials<nAlternatives
 
         alternatives2present = [nTrials];
         for (i=0; i < nTrials; ++i) {
@@ -107,11 +107,11 @@ function randomiseArray(array) {
 
 /**
  Retrieve next alternative to present as optotype
- 
+
  @return (int) number within the range given when instantiating
  */
 - (int) nextAlternative { //console.info("AlternativesGenerator>nextAlternative");
-    const _trial = _currentTrial % alternatives2present.length; // to catch 5 Es with crowding
+    const _trial = _currentTrial % alternatives2present.length; //to catch 5 Es with crowding
     [self setCurrentAlternative: alternatives2present[_trial]];
     if (_obliqueOnly)
         [self setCurrentAlternative: currentAlternative + 2];

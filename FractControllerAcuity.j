@@ -14,7 +14,7 @@
 - (void) drawCenterFixMark { //console.info("FractController>drawCenterFixMark");
     if (![Settings eccentShowCenterFixMark]) return;
     const eccRadiusInPix = Math.sqrt(xEccInPix * xEccInPix + yEccInPix * yEccInPix);
-    if ((stimStrengthInDeviceunits * 3.5) > eccRadiusInPix) return;// we don't want overlap between fixmark and optotype
+    if ((stimStrengthInDeviceunits * 3.5) > eccRadiusInPix) return; //we don't want overlap between fixmark and optotype
     CGContextSaveGState(cgc);
     CGContextTranslateCTM(cgc, viewWidth2, viewHeight2);
     CGContextSetLineWidth(cgc, 1);
@@ -24,39 +24,39 @@
 }
 
 
-// this manages stuff after the optotypes have been drawn, e.g. crowding
+//this manages stuff after the optotypes have been drawn, e.g. crowding
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractControllerAcuity>drawStimulusInRect");
     let _value = [MiscSpace logMARfromDecVA: [MiscSpace decVAFromStrokePixels: stimStrengthInDeviceunits]];
-    if (gCurrentTestID === kTestAcuityVernier) { // needs to be in arcsec
+    if (gCurrentTestID === kTestAcuityVernier) { //needs to be in arcsec
         //console.info(_value);
         _value = [self reportFromNative: stimStrengthInDeviceunits];
         //console.info(_value, "\r");
     }
     [trialHistoryController setValue: _value];
     if (([Settings crowdingType] > 0) && (gCurrentTestID != kTestAcuityLineByLine) && (gCurrentTestID != kTestContrastDitherUnittest)) {
-        if (gCurrentTestID != kTestAcuityVernier) { // don't do crowding with Vernier etc.
+        if (gCurrentTestID != kTestAcuityVernier) { //don't do crowding with Vernier etc.
             CGContextSaveGState(cgc);
-            CGContextTranslateCTM(cgc, viewWidth2, viewHeight2); // origin to center
+            CGContextTranslateCTM(cgc, viewWidth2, viewHeight2); //origin to center
             CGContextTranslateCTM(cgc, -xEccInPix, -yEccInPix);
             const crowdingGap = [self acuityCrowdingGapFromStrokeWidth: stimStrengthInDeviceunits];
             const distance4bars = crowdingGap + (0.5 + 2.5) * stimStrengthInDeviceunits;
             const distance4optotypes = crowdingGap + 5 * stimStrengthInDeviceunits;
             CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
             switch ([Settings crowdingType]) {
-                case 0:  break; // should not occur here anyway
-                case 1: // flanking bars
+                case 0:  break; //should not occur here anyway
+                case 1: //flanking bars
                     const length2 = stimStrengthInDeviceunits * 2.5;
                     [optotypes strokeVLineAtX: -distance4bars y0: -length2 y1: length2];
                     [optotypes strokeVLineAtX: distance4bars y0: -length2 y1: length2];
                     break;
-                case 2: // flanking rings
+                case 2: //flanking rings
                     for (let i = -1; i <= 1; i++) { //console.info(i);
                         const tempX = i * distance4optotypes;
                         CGContextTranslateCTM(cgc,  -tempX, 0);
                         if (i != 0)  [optotypes drawLandoltWithStrokeInPx: stimStrengthInDeviceunits landoltDirection: -1];
                         CGContextTranslateCTM(cgc,  +tempX, 0);
                     }  break;
-                case 3:    // surounding bars
+                case 3:    //surounding bars
                     const length4 = stimStrengthInDeviceunits * 4;
                     CGContextSetLineCap(cgc,  kCGLineCapRound);
                     [optotypes strokeVLineAtX: -distance4bars y0: -length4 y1: length4];
@@ -64,14 +64,14 @@
                     [optotypes strokeHLineAtX0: -length4 y: -distance4bars x1: length4];
                     [optotypes strokeHLineAtX0: -length4 y: distance4bars x1: length4];
                     break;
-                case 4:  // surounding ring: gap + 2.5 strokes + ½ stroke for stroke width
+                case 4:  //surounding ring: gap + 2.5 strokes + ½ stroke for stroke width
                     [optotypes strokeCircleAtX: 0 y: 0 radius: distance4bars];
                     break;
-                case 5: // surrounding square
+                case 5: //surrounding square
                     const frameSizeX2 = 2 * distance4bars, frameSize = distance4bars;
                     CGContextStrokeRect(cgc, CGRectMake(-frameSize, -frameSize, frameSizeX2, frameSizeX2));
                     break;
-                case 6:    // row of optotypes
+                case 6:    //row of optotypes
                     let rowAlternatives = [[AlternativesGenerator alloc] initWithNumAlternatives: nAlternatives andNTrials: 5 obliqueOnly: NO];
                     for (let i = -2; i <= 2; i++) {
                         const tempX = i * distance4optotypes;
@@ -99,7 +99,7 @@
     }
     [self drawCenterFixMark];
     [super drawStimulusInRect: dirtyRect];
-    discardKeyEntries = NO; // now allow responding
+    discardKeyEntries = NO; //now allow responding
 }
 
 
@@ -145,7 +145,7 @@
 - (float) acuityStimDeviceunitsFromThresholderunits: (float) tPest { //console.info("FractControllerAcuityC>stimDeviceunitsFromThresholderunits");
     const c2 = - Math.log(gStrokeMinimal / gStrokeMaximal), c1 = gStrokeMinimal;
     const deviceVal = c1 * Math.exp(tPest * c2); //console.info("DeviceFromPest " + tPest + " " + deviceVal);
-    // ROUNDING for realisable stroke values? @@@
+    //ROUNDING for realisable stroke values? @@@
     if ([Misc areNearlyEqual: deviceVal and: gStrokeMaximal]) {
         if (!isBonusTrial) {
             rangeLimitStatus = kRangeLimitValueAtCeiling; //console.info("max stroke size!")
@@ -194,7 +194,7 @@
 }
 
 
-- (CPString) acuityComposeResultString { // 2021-05-02: now all formats are "ceilinged"
+- (CPString) acuityComposeResultString { //2021-05-02: now all formats are "ceilinged"
     const resultInDecVACeilinged = Math.min([Settings maxDisplayedAcuity], [self acuityResultInDecVA]);
     const resultInLogMARCeilinged = [MiscSpace logMARfromDecVA: resultInDecVACeilinged];
     let s = "";
@@ -250,15 +250,15 @@
 }
 
 
-// gap between optotype border and border of the crowder
+//gap between optotype border and border of the crowder
 - (float) acuityCrowdingGapFromStrokeWidth: (float) stroke {
-    let returnVal = 2 * stroke; // case 0
+    let returnVal = 2 * stroke; //case 0
     switch ([Settings crowdingDistanceCalculationType]) {
         case 1:
             returnVal = [MiscSpace pixelFromDegree: 2.6 / 60.0];  break;
         case 2:
             returnVal = [MiscSpace pixelFromDegree: 30 / 60.0];  break;
-        case 3: // 1 optotype (like ETDRS)
+        case 3: //1 optotype (like ETDRS)
             returnVal = 5 * stroke;  break;
     }
     return returnVal;

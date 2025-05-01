@@ -11,9 +11,9 @@
 
 @implementation Presets_ULV_Gensight: CPObject
 
-+ (void) apply {//console.info("Preset_ULV_Gensight>apply")
++ (void) apply { //console.info("Preset_ULV_Gensight>apply")
     [Settings setDefaults];
-    // general pane
+    //general pane
     [Settings setResponseInfoAtStart: NO]; [Settings setEnableTouchControls: NO];
     [Settings setDistanceInCM: 100];
     [Settings setNAlternativesIndex: kNAlternativesIndex4];
@@ -23,14 +23,14 @@
     [Settings setTimeoutResponseSeconds: 60]; [Settings setTimeoutDisplaySeconds: 60];
     [Settings setTestOnFive: kTestAcuityLett];
     [Settings setResults2clipboard: kResults2ClipFullHistory];
-    // acuity pane
+    //acuity pane
     [Settings setMaxDisplayedAcuity: 2.5];
     [Settings setAcuityStartingLogMAR: 1.5];
     [Settings setAcuityFormatLogMAR: YES];
     [Settings setShowCI95: YES];
     [Settings setAcuityFormatDecimal: NO];
     [Settings setCrowdingType: 1]; //flanking bars
-    [Settings setCrowdingDistanceCalculationType: 3];//like ETDRS
+    [Settings setCrowdingDistanceCalculationType: 3]; //like ETDRS
 }
 
 @end

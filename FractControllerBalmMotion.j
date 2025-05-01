@@ -28,9 +28,9 @@
     }
     speedInPixPerSec = [MiscSpace pixelFromDegree: [Settings balmSpeedInDegPerSec]];
     dotCenterDist = radiusInPix * 4;
-    dotgridNX = Math.ceil((3 * viewWidth) / dotCenterDist); // create x/y arrays for the dots
+    dotgridNX = Math.ceil((3 * viewWidth) / dotCenterDist); //create x/y arrays for the dots
     dotgridNY = Math.ceil((3 * viewHeight) / dotCenterDist);
-    dotsX = [dotgridNX]; // allocate the dots position arrays
+    dotsX = [dotgridNX]; //allocate the dots position arrays
     for (let i = 0; i < dotgridNX; i++) dotsX[i] = [dotgridNY];
     dotsY = [dotgridNX];
     for (let i = 0; i < dotgridNX; i++) dotsY[i] = [dotgridNY];
@@ -71,10 +71,10 @@
             [self drawAllDotsDx: 0 dy: 0];
             break;
         case kStateDrawFore://console.info("kStateDrawFore");
-            if (!isMoving) { // detect first time
+            if (!isMoving) { //detect first time
                 [sound playNumber: kSoundTrialStart];
                 isMoving = YES;  motionOffset = 0;  animationTimeStamp = -1;
-                discardKeyEntries = NO; // now allow responding
+                discardKeyEntries = NO; //now allow responding
             }
             let dx, dy;
             switch ([alternativesGenerator currentAlternative]) {

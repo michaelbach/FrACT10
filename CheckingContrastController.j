@@ -23,14 +23,14 @@
 
 
 - (id) init { //console.info("CheckingContrastController>Init");
-    [self buttonCheckContrast_action: null]; // populate fields
+    [self buttonCheckContrast_action: null]; //populate fields
     return self;
 }
 
 
-// all buttons to this action, discriminated by tag value
+//all buttons to this action, discriminated by tag value
 - (IBAction) buttonCheckContrast_action: (id) sender { //console.info("CheckingContrastController>buttonCheckContrast_action");
-    const tag = sender ? [sender tag] : 3; // if sender==null select 10%
+    const tag = sender ? [sender tag] : 3; //if sender==null select 10%
     let contrastWeberPercent = 0;
     if ((tag > 0) && (tag <= 5))  contrastWeberPercent = [1, 3, 10, 30, 90][tag - 1];
     const contrastLogCSWeber = [MiscLight contrastLogCSWeberFromWeberPercent: contrastWeberPercent];
@@ -39,7 +39,7 @@
     let gray2 = [MiscLight upperLuminanceFromContrastLogCSWeber: contrastLogCSWeber];
     gray2 = [MiscLight devicegrayFromLuminance: gray2];
     if (![Settings contrastDarkOnLight]) {
-        [gray1, gray2] = [gray2, gray1]; // "modern" swapping of variables
+        [gray1, gray2] = [gray2, gray1]; //"modern" swapping of variables
     }
     //console.log("Wperc ", contrastWeberPercent, ", lgCSW ", contrastLogCSWeber, ", g1 ", gray1, ", g2 ", gray2);
     //const c1 = [CPColor colorWithWhite: gray1 alpha: 1], c2 = [CPColor colorWithWhite: gray2 alpha: 1];

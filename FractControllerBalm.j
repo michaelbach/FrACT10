@@ -33,7 +33,7 @@
 
 - (void) runStart { //console.info("FractControllerBalm>runStart");
     [gAppController setCurrentTestResultUnit: "hitRateInPercent"];
-    [Settings setAcuityForeColor: [CPColor whiteColor]];// will be copied → gColorFore
+    [Settings setAcuityForeColor: [CPColor whiteColor]]; //will be copied → gColorFore
     [Settings setAcuityBackColor: [CPColor blackColor]];
 
     savedAuditoryFeedback4trial = [Settings auditoryFeedback4trial];
@@ -60,7 +60,7 @@
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerBalm>drawStimulusInRect");
 
     CGContextSaveGState(cgc);
-    CGContextTranslateCTM(cgc,  viewWidth2, viewHeight2); // origin to center
+    CGContextTranslateCTM(cgc,  viewWidth2, viewHeight2); //origin to center
     if (viewHeight2 > extentInPix) {
         CGContextFillRect(cgc, CGRectMake(-viewWidth2, -viewHeight2, viewWidth, viewHeight2-extentInPix));
         CGContextFillRect(cgc, CGRectMake(-viewWidth2, extentInPix, viewWidth, viewHeight2-extentInPix));

@@ -40,15 +40,15 @@ Created by mb on July 15, 2015.
 }
 
 
-// CPColors are stored as hexString because the archiver does not work in Cappuccino. Why not??
+//CPColors are stored as hexString because the archiver does not work in Cappuccino. Why not??
 //https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/DrawColor/Tasks/StoringNSColorInDefaults.html
 + (CPColor) colorForKey: (CPString) keyString fallbackInHex: (CPString) fallbackInHex {
     let theData = [[CPUserDefaults standardUserDefaults] stringForKey: keyString];
-    if (theData == nil) theData = fallbackInHex; // safety measure and default
+    if (theData == nil) theData = fallbackInHex; //safety measure and default
     return [CPColor colorWithHexString: theData];
 }
 + (void) setColor: (CPColor) theColor forKey: (CPString) keyString {
-    if (typeof(theColor) != "string") { // allow both hexstring (from HTML message) & CPColor
+    if (typeof(theColor) != "string") { //allow both hexstring (from HTML message) & CPColor
         theColor = [theColor hexString];
     }
     [[CPUserDefaults standardUserDefaults] setObject: theColor forKey: keyString];
@@ -62,17 +62,17 @@ Created by mb on July 15, 2015.
     [[CPUserDefaults standardUserDefaults] synchronize];
     if (set) {
         [self setDateSettingsVersion: kDateOfCurrentSettingsVersion];
-        // for `CPColor` I have no `CheckCol` (yet) #tbd, worth it?
+        //for `CPColor` I have no `CheckCol` (yet) #tbd, worth it?
         [self setWindowBackgroundColor: [CPColor colorWithRed: 1 green: 1 blue: 0.9 alpha: 1]];
         [self setGratingForeColor: [CPColor lightGrayColor]];
         [self setGratingBackColor: [CPColor darkGrayColor]];
-        [self setPresetName: "Standard Defaults"];// synchronise with corresponding item in Presets!
+        [self setPresetName: "Standard Defaults"]; //synchronise with corresponding item in Presets!
     }
 
-    // need to check before setNAlternativesIndex 'cause oblique might force to index=0
+    //need to check before setNAlternativesIndex 'cause oblique might force to index=0
     [self setGratingObliqueOnly: [self checkBool: [self gratingObliqueOnly] dflt: NO set: set]];
-    // for all tests
-    [self setNAlternativesIndex: [self checkNum: [self nAlternativesIndex] dflt: kNAlternativesIndex8plus min: kNAlternativesIndex2 max: kNAlternativesIndex8plus set:set]];//dflt:8
+    //for all tests
+    [self setNAlternativesIndex: [self checkNum: [self nAlternativesIndex] dflt: kNAlternativesIndex8plus min: kNAlternativesIndex2 max: kNAlternativesIndex8plus set:set]]; //dflt:8
     [self setNTrials02: [self checkNum: [self nTrials02] dflt: 32 min: 1 max: 200 set: set]];
     [self setNTrials04: [self checkNum: [self nTrials04] dflt: 24 min: 1 max: 200 set: set]];
     [self setNTrials08: [self checkNum: [self nTrials08] dflt: 18 min: 1 max: 200 set: set]];
@@ -85,7 +85,7 @@ Created by mb on July 15, 2015.
 
     [self setDecimalMarkCharIndex: [self checkNum: [self decimalMarkCharIndex] dflt: kDecimalMarkCharIndexAuto min: kDecimalMarkCharIndexAuto max: kDecimalMarkCharIndexComma set: set]];
 
-    [self setTestOnFive: [self checkNum: [self testOnFive] dflt: kTestAcuityLett min: kTestNone max: kTestAcuityLineByLine set: set]]; // 1: Sloan Letters
+    [self setTestOnFive: [self checkNum: [self testOnFive] dflt: kTestAcuityLett min: kTestNone max: kTestAcuityLineByLine set: set]]; //1: Sloan Letters
 
     //[self setNOfRuns2Recall: [self checkNum: [self nOfRuns2Recall] dflt: 0 min: 0 max: 100 set: set]];
 
@@ -98,7 +98,7 @@ Created by mb on July 15, 2015.
 
     [self setMobileOrientation: [self checkBool: [self mobileOrientation] dflt: YES set: set]];
 
-    // 0=normal, 1=mirror horizontally, 2=mirror vertically, 3=both=rot180°
+    //0=normal, 1=mirror horizontally, 2=mirror vertically, 3=both=rot180°
     [self setDisplayTransform: [self checkNum: [self displayTransform] dflt: 0 min: 0 max: 3 set: set]];
 
     [self setTrialInfo: [self checkBool: [self trialInfo] dflt: YES set: set]];
@@ -112,10 +112,10 @@ Created by mb on July 15, 2015.
     [self setResults2clipboard: [self checkNum: [self results2clipboard] dflt: kResults2ClipNone min: kResults2ClipNone max: kResults2ClipFullHistory set: set]];
     [self setResults2clipboardSilent: [self checkBool: [self results2clipboardSilent] dflt: NO set: set]];
 
-    // 0: none, 1: always, 2: on correct, 3: w/ info
+    //0: none, 1: always, 2: on correct, 3: w/ info
     [self setAuditoryFeedback4trial: [self checkNum: [self auditoryFeedback4trial] dflt: kAuditoryFeedback4trialWithinfo min: kAuditoryFeedback4trialNone max: kAuditoryFeedback4trialWithinfo set: set]];
-    // 0: none, 1: always, 2: on correct, 3: w/ info
-    [self setVisualFeedback: [self checkNum: [self visualFeedback] dflt: 0 min: 0 max: 3 set: set]]; // NOT IN USE
+    //0: none, 1: always, 2: on correct, 3: w/ info
+    [self setVisualFeedback: [self checkNum: [self visualFeedback] dflt: 0 min: 0 max: 3 set: set]]; //NOT IN USE
     [self setAuditoryFeedback4run: [self checkBool: [self auditoryFeedback4run] dflt: YES set: set]];
     [self setSoundVolume: [self checkNum: [self soundVolume] dflt: 20 min: 1 max: 100 set: set]];
 
@@ -125,9 +125,9 @@ Created by mb on July 15, 2015.
     [self setEmbedInNoise: [self checkBool: [self embedInNoise] dflt: NO set: set]];
     [self setNoiseContrast: [self checkNum: [self noiseContrast] dflt: 50 min: 0 max: 100 set: set]];
 
-    // Acuity stuff
+    //Acuity stuff
     [self setAcuityColor: [self checkBool: [self isAcuityColor] dflt: NO set: set]];
-    [self setObliqueOnly: [self checkBool: [self obliqueOnly] dflt: NO set: set]]; // only applies to acuity with 4 Landolt orienations
+    [self setObliqueOnly: [self checkBool: [self obliqueOnly] dflt: NO set: set]]; //only applies to acuity with 4 Landolt orienations
     [self setContrastAcuityWeber: [self checkNum: [self contrastAcuityWeber] dflt: 100 min: -1E6 max: 100 set: set]];
     [self calculateAcuityForeBackColorsFromContrast];
     [self setAcuityEasyTrials: [self checkBool: [self acuityEasyTrials] dflt: YES set: set]];
@@ -144,28 +144,28 @@ Created by mb on July 15, 2015.
     [self setShowCI95: [self checkBool: [self showCI95] dflt: NO set: set]];
     [self calculateMinMaxPossibleAcuity];
 
-    // Crowding, crowdingType: 0 = none, 1: flanking bars, 2 = flanking rings, 3 = surounding bars, 4: surounding ring, 5 = surounding square, 6 = row of optotypes
+    //Crowding, crowdingType: 0 = none, 1: flanking bars, 2 = flanking rings, 3 = surounding bars, 4: surounding ring, 5 = surounding square, 6 = row of optotypes
     [self setCrowdingType: [self checkNum: [self crowdingType] dflt: 0 min: 0 max: 6 set: set]];
-    // 0 = 2·stroke between rings, 1 = fixed 2.6 arcmin between rings, 2 = fixed 30', 3 = like ETDRS
+    //0 = 2·stroke between rings, 1 = fixed 2.6 arcmin between rings, 2 = fixed 30', 3 = like ETDRS
     [self setCrowdingDistanceCalculationType: [self checkNum: [self crowdingDistanceCalculationType] dflt: 0 min: 0 max: 3 set: set]];
 
     [self setCrowdingDistanceCalculationType: [self checkNum: [self crowdingDistanceCalculationType] dflt: 0 min: 0 max: 3 set: set]];
 
-    // Line-by-line stuff
-    [self setTestOnLineByLine: [self checkNum: [self testOnLineByLine] dflt: 1 min: 1 max: 4 set: set]]; // 1: Sloan Letters. 0: nicht erlaubt, 2: Landolt, 3…
-    [self setTestOnLineByLineDistanceType: [self checkNum: [self testOnLineByLineDistanceType] dflt: 1 min: 0 max: 1 set: set]]; // 0: DIN-EN-ISO, 1: ETDRS
-    [self setLineByLineHeadcountIndex: [self checkNum: [self lineByLineHeadcountIndex] dflt: 2 min: 0 max: 4 set: set]]; // 0: "1", 2: "3", 3: "5", 4: "7"
-    [self setLineByLineLinesIndex: [self checkNum: [self lineByLineLinesIndex] dflt: 0 min: 0 max: 3 set: set]]; // 0: "1", 2: "3", 3: "5"
+    //Line-by-line stuff
+    [self setTestOnLineByLine: [self checkNum: [self testOnLineByLine] dflt: 1 min: 1 max: 4 set: set]]; //1: Sloan Letters. 0: nicht erlaubt, 2: Landolt, 3…
+    [self setTestOnLineByLineDistanceType: [self checkNum: [self testOnLineByLineDistanceType] dflt: 1 min: 0 max: 1 set: set]]; //0: DIN-EN-ISO, 1: ETDRS
+    [self setLineByLineHeadcountIndex: [self checkNum: [self lineByLineHeadcountIndex] dflt: 2 min: 0 max: 4 set: set]]; //0: "1", 2: "3", 3: "5", 4: "7"
+    [self setLineByLineLinesIndex: [self checkNum: [self lineByLineLinesIndex] dflt: 0 min: 0 max: 3 set: set]]; //0: "1", 2: "3", 3: "5"
     [self setLineByLineChartModeConstantVA: [self checkBool: [self lineByLineChartModeConstantVA] dflt: NO set: set]];
 
-    // Vernier stuff
-    [self setVernierType: [self checkNum: [self vernierType] dflt: 0 min: 0 max: 1 set: set]]; // 2 or 3 bars
-    [self setVernierWidth: [self checkNum: [self vernierWidth] dflt: 1.0 min: 0.1 max: 120 set: set]]; // in arcminutes
+    //Vernier stuff
+    [self setVernierType: [self checkNum: [self vernierType] dflt: 0 min: 0 max: 1 set: set]]; //2 or 3 bars
+    [self setVernierWidth: [self checkNum: [self vernierWidth] dflt: 1.0 min: 0.1 max: 120 set: set]]; //in arcminutes
     [self setVernierLength: [self checkNum: [self vernierLength] dflt: 15.0 min: 0.1 max: 1200 set: set]];
     [self setVernierGap: [self checkNum: [self vernierGap] dflt: 0.2 min: 0.0 max: 120 set: set]];
 
 
-    // Contrast stuff
+    //Contrast stuff
     [self setGammaValue: [self checkNum: [self gammaValue] dflt: 2.0 min: 0.8 max: 4 set: set]];
     [self setContrastEasyTrials: [self checkBool: [self contrastEasyTrials] dflt: YES set: set]];
     [self setContrastDarkOnLight: [self checkBool: [self contrastDarkOnLight] dflt: YES set: set]];
@@ -176,19 +176,19 @@ Created by mb on July 15, 2015.
     [self setContrastBitStealing: [self checkBool: [self contrastBitStealing] dflt: NO set: set]];
     [self setContrastDithering: [self checkBool: [self contrastDithering] dflt: YES set: set]];
 
-    // Grating stuff
+    //Grating stuff
     [self setGratingCPD: [self checkNum: [self gratingCPD] dflt: 2.0 min: 0.01 max: 18 set: set]];
     [self setGratingMasked: [self checkBool: [self isGratingMasked] dflt: NO set: set]];
     [self setGratingDiaInDeg: [self checkNum: [self gratingDiaInDeg] dflt: 10.0 min: 1.0 max: 50 set: set]];
     [self setGratingUseErrorDiffusion: [self checkBool: [self gratingUseErrorDiffusion] dflt: YES set: set]];
     [self setGratingShapeIndex: [self checkNum: [self gratingShapeIndex] dflt: 0 min: 0 max: kGratingShapeIndexCheckerboard set: set]];
     [self setGratingColor: [self checkBool: [self isGratingColor] dflt: NO set: set]];
-    [self setWhat2sweepIndex: [self checkNum: [self what2sweepIndex] dflt: 0 min: 0 max: 1 set: set]]; // 0: sweep contrast, 1: sweep spatial frequency
+    [self setWhat2sweepIndex: [self checkNum: [self what2sweepIndex] dflt: 0 min: 0 max: 1 set: set]]; //0: sweep contrast, 1: sweep spatial frequency
     [self setGratingCPDmin: [self checkNum: [self gratingCPDmin] dflt: 0.5 min: 0.01 max: 60 set: set]];
     [self setGratingCPDmax: [self checkNum: [self gratingCPDmax] dflt: 30 min: 0.01 max: 60 set: set]];
     [self setGratingContrastMichelsonPercent: [self checkNum: [self gratingContrastMichelsonPercent] dflt: 95 min: 0.3 max: 99 set: set]];
 
-    // Misc stuff
+    //Misc stuff
     [self setSpecialBcmOn: [self checkBool: [self specialBcmOn] dflt: NO set: set]];
     [self setHideExitButton: [self checkBool: [self hideExitButton] dflt: NO set: set]];
 
@@ -197,7 +197,7 @@ Created by mb on July 15, 2015.
     [self setSoundTrialNoIndex: [self checkNum: [self soundTrialNoIndex] dflt: 0 min: 0 max: gSoundsTrialNo.length-1 set: set]];
     [self setSoundRunEndIndex: [self checkNum: [self soundRunEndIndex] dflt: 0 min: 0 max: gSoundsRunEnd.length-1 set: set]];
 
-    // BaLM stuff
+    //BaLM stuff
     [self setbalmIsiMillisecs: [self checkNum: [self balmIsiMillisecs] dflt: 1500 min: 20 max: 5000 set: set]];
     [self setBalmOnMillisecs: [self checkNum: [self balmOnMillisecs] dflt: 200 min: 20 max: 2000 set: set]];
     [self setBalmLocationEccentricityInDeg: [self checkNum: [self balmLocationEccentricityInDeg] dflt: 15 min: 1 max: 30 set: set]];
@@ -213,24 +213,24 @@ Created by mb on July 15, 2015.
 + (void) calculateMinMaxPossibleAcuity { //console.info("Settings>calculateMinMaxPossibleAcuity");
     let maxPossibleAcuityVal = [MiscSpace decVAFromStrokePixels: 1.0];
     const screenSize = Math.min(window.screen.height, window.screen.width);
-    const strokeMaximal = screenSize / (5 + [self margin4maxOptotypeIndex]); // leave a margin of ½·index around the largest optotype
+    const strokeMaximal = screenSize / (5 + [self margin4maxOptotypeIndex]); //leave a margin of ½·index around the largest optotype
     let minPossibleAcuityVal = [MiscSpace decVAFromStrokePixels: strokeMaximal];
-    // Correction for threshold underestimation of ascending procedures (as opposed to our bracketing one)
+    //Correction for threshold underestimation of ascending procedures (as opposed to our bracketing one)
     minPossibleAcuityVal = [self threshCorrection] ? minPossibleAcuityVal * gThresholdCorrection4Ascending : minPossibleAcuityVal;
     [self setMinPossibleDecimalAcuityLocalisedString: [Misc stringFromNumber: minPossibleAcuityVal decimals: 3 localised: YES]];
-    [self setMaxPossibleLogMAR: [MiscSpace logMARfromDecVA: minPossibleAcuityVal]]; // needed for color
+    [self setMaxPossibleLogMAR: [MiscSpace logMARfromDecVA: minPossibleAcuityVal]]; //needed for color
     [self setMaxPossibleLogMARLocalisedString: [Misc stringFromNumber: [self maxPossibleLogMAR] decimals: 2 localised: YES]];
 
-    // Correction for threshold underestimation of ascending procedures (as opposed to our bracketing one)
+    //Correction for threshold underestimation of ascending procedures (as opposed to our bracketing one)
     maxPossibleAcuityVal = [self threshCorrection] ? maxPossibleAcuityVal * gThresholdCorrection4Ascending : maxPossibleAcuityVal;
     [self setMaxPossibleDecimalAcuityLocalisedString: [Misc stringFromNumber: maxPossibleAcuityVal decimals: 2 localised: YES]];
-    [self setMinPossibleLogMAR: [MiscSpace logMARfromDecVA: maxPossibleAcuityVal]]; // needed for color
+    [self setMinPossibleLogMAR: [MiscSpace logMARfromDecVA: maxPossibleAcuityVal]]; //needed for color
     [self setMinPossibleLogMARLocalisedString: [Misc stringFromNumber: [self minPossibleLogMAR] decimals: 2 localised: YES]];
     [self setDistanceInInchFromCM: [self distanceInCM]];
 }
 
 
-// contrast in %. 100%: background fully white, foreground fully dark. -100%: inverted
+//contrast in %. 100%: background fully white, foreground fully dark. -100%: inverted
 + (void) calculateAcuityForeBackColorsFromContrast { //console.info("Settings>calculateAcuityForeBackColorsFromContrast");
     if ([self isAcuityColor]) return;
     const cnt = [MiscLight contrastMichelsonPercentFromWeberPercent: [self contrastAcuityWeber]];
@@ -287,9 +287,9 @@ Created by mb on July 15, 2015.
  individual getters / setters for all settings
  */
 ///////////////////////////////////////////////////////////
-// for all tests
+//for all tests
 
-+ (int) nAlternativesIndex { // 0: 2; 1: 4; 2: 8+
++ (int) nAlternativesIndex { //0: 2; 1: 4; 2: 8+
     const t = [[CPUserDefaults standardUserDefaults] integerForKey: "nAlternativesIndex"]; //console.info(t);
     return t;
 }
@@ -333,7 +333,7 @@ Created by mb on July 15, 2015.
     switch ([self nAlternativesIndex]) {
         case kNAlternativesIndex2:  return 2;  break;
         case kNAlternativesIndex4:  return 4;  break;
-        default: return 8; // case kNAlternativesIndex8plus
+        default: return 8; //case kNAlternativesIndex8plus
     }
 }
 
@@ -387,7 +387,7 @@ Created by mb on July 15, 2015.
 }
 
 
-+ (int) nOfRuns2Recall { // not yet used
++ (int) nOfRuns2Recall { //not yet used
     return [[CPUserDefaults standardUserDefaults] integerForKey: "nOfRuns2Recall"];
 }
 + (void) setNOfRuns2Recall: (float) val {
@@ -528,13 +528,13 @@ Created by mb on July 15, 2015.
 }
 
 
-+ (float) soundVolume { // from 1 to 100%.
++ (float) soundVolume { //from 1 to 100%.
     let theValue = [[CPUserDefaults standardUserDefaults] floatForKey: "soundVolume"];
-    if (theValue < 1) { // really need this???
-        theValue = 20;  // if 0 then it did not go through defaulting; 0 not allowed
+    if (theValue < 1) { //really need this???
+        theValue = 20;  //if 0 then it did not go through defaulting; 0 not allowed
         [self setSoundVolume: theValue];
     }
-    if (theValue > 100) { // really necessary?
+    if (theValue > 100) { //really necessary?
         theValue = 100;  [self setSoundVolume: theValue];
     }
     return theValue;
@@ -591,16 +591,16 @@ Created by mb on July 15, 2015.
 + (CPString) decimalMarkChar { //console.info("settings>decimalMarkChar");
     let _mark = ".";
     switch ([self decimalMarkCharIndex]) {
-        case 0: // "Automatic"
+        case 0: //"Automatic"
             try {
-                const tArray = Intl.NumberFormat().formatToParts(1.3); // "1.3" has a decimal mark
+                const tArray = Intl.NumberFormat().formatToParts(1.3); //"1.3" has a decimal mark
                 _mark = tArray.find(currentValue => currentValue.type === "decimal").value;
             }
-            catch(e) { // avoid global error catcher, but log the problem
+            catch(e) { //avoid global error catcher, but log the problem
                 console.log("“Intl.NumberFormat().formatToParts” throws error: ", e);
             } //console.info("_decimalMarkChar: ", _decimalMarkChar)
             break;
-        case 2: // comma
+        case 2: //comma
             _mark = ","; break;
     }
     [self setDecimalMarkChar: _mark];
@@ -790,7 +790,7 @@ Created by mb on July 15, 2015.
 }
 
 
-// these settings keeps optotype colors between restarts. Within FrACT use globals gColorFore/gColorBack
+//these settings keeps optotype colors between restarts. Within FrACT use globals gColorFore/gColorBack
 + (CPColor) acuityForeColor {
     return [self colorForKey: "acuityForeColor" fallbackInHex: "FFFFFF"];
 }
@@ -813,7 +813,7 @@ Created by mb on July 15, 2015.
 }
 
 
-// Line-by-line stuff
+//Line-by-line stuff
 + (int) testOnLineByLine {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "testOnLineByLine"];
 }
@@ -846,7 +846,7 @@ Created by mb on July 15, 2015.
 }
 
 
-// Vernier stuff
+//Vernier stuff
 + (int) vernierType {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "vernierType"];
 }
@@ -876,7 +876,7 @@ Created by mb on July 15, 2015.
 }
 
 
-// Contrast stuff
+//Contrast stuff
 + (BOOL) contrastEasyTrials {
     return [[CPUserDefaults standardUserDefaults] boolForKey: "contrastEasyTrials"];
 }
@@ -926,23 +926,23 @@ Created by mb on July 15, 2015.
     [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "gammaValue"];
 }
 
-+ (float) contrastBitStealing {//console.info("Settings>contrastBitStealing");
++ (float) contrastBitStealing { //console.info("Settings>contrastBitStealing");
     return [[CPUserDefaults standardUserDefaults] boolForKey: "contrastBitStealing"];
 }
-+ (void) setContrastBitStealing: (BOOL) val {//console.info("Settings>setContrastBitStealing", val);
++ (void) setContrastBitStealing: (BOOL) val { //console.info("Settings>setContrastBitStealing", val);
     [[CPUserDefaults standardUserDefaults] setBool: val forKey: "contrastBitStealing"];
 }
 
-+ (BOOL) contrastDithering {//console.info("Settings>contrastDithering");
++ (BOOL) contrastDithering { //console.info("Settings>contrastDithering");
     return [[CPUserDefaults standardUserDefaults] boolForKey: "contrastDithering"];
 }
-+ (void) setContrastDithering: (BOOL) val {//console.info("Settings>setContrastDithering", val);
++ (void) setContrastDithering: (BOOL) val { //console.info("Settings>setContrastDithering", val);
     [[CPUserDefaults standardUserDefaults] setBool: val forKey: "contrastDithering"];
 }
 
 
 
-// Grating stuff
+//Grating stuff
 + (float) gratingCPD {
     return [[CPUserDefaults standardUserDefaults] floatForKey: "gratingCPD"];
 }
@@ -1030,7 +1030,7 @@ Created by mb on July 15, 2015.
 }
 
 
-// Misc stuff
+//Misc stuff
 + (CPColor) windowBackgroundColor {
     return [self colorForKey: "windowBackgroundColor" fallbackInHex: "FFFFEE"];
 }
@@ -1090,7 +1090,7 @@ Created by mb on July 15, 2015.
         const p = popupsArray[i];
         [p removeAllItems];
         for (const soundName of allSounds[i]) [p addItemWithTitle: soundName];
-        [p setSelectedIndex: allIndexes[i]]; // lost after remove
+        [p setSelectedIndex: allIndexes[i]]; //lost after remove
     }
 }
 

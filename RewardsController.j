@@ -45,10 +45,10 @@ kSpriteFile = "allRewardSprites.png";
     if (self) {
         _rewardImageStrip = [[CPImage alloc] initWithContentsOfFile: [[CPBundle mainBundle] pathForResource: kSpriteFile]];
         _rewardView = view;
-        [_rewardView setImageAlignment: CPImageAlignCenter]; // is already the default
+        [_rewardView setImageAlignment: CPImageAlignCenter]; //is already the default
         [_rewardView setImageScaling: CPImageScaleNone];
         [_rewardView setAlphaValue: 0.98];
-        [_rewardView setHitTests: NO]; // allows "click through"
+        [_rewardView setHitTests: NO]; //allows "click through"
         [_rewardImageStrip setSize: CGSizeMake(kNImages * kSizeScaled, kSizeScaled)];
         _oldImage = -1;
         _unitTesting = NO;
@@ -69,7 +69,7 @@ kSpriteFile = "allRewardSprites.png";
 
 - (id) drawRandom { //console.info("RewardsController>drawRandom");
     _currentImage = [Misc iRandom: kNImages];
-    // no immediate repeats
+    //no immediate repeats
     while (_currentImage == _oldImage)  _currentImage = [Misc iRandom: kNImages];
     _oldImage = _currentImage;
     //_currentImage = 0;
@@ -77,14 +77,14 @@ kSpriteFile = "allRewardSprites.png";
 }
 
 
-// There are 24 reward images, each 200x200 → 4800 x 200
-// The image _rewardImageStrip is a strip of sprites, it contains 24 images at 200x200 px
+//There are 24 reward images, each 200x200 → 4800 x 200
+//The image _rewardImageStrip is a strip of sprites, it contains 24 images at 200x200 px
 - (id) drawImage { //console.info("RewardsController>drawImageI: ", _currentImage);
     if ([_rewardImageStrip loadStatus] != CPImageLoadStatusCompleted) return;
     [_rewardView setImage: _rewardImageStrip];
-    [[_rewardView superview] addSubview: _rewardView]; // so it's ordered front
+    [[_rewardView superview] addSubview: _rewardView]; //so it's ordered front
 
-    // don't really understand why this bounds setting works to select a single sprite
+    //don't really understand why this bounds setting works to select a single sprite
     [_rewardView setBounds: CGRectMake(0, 0, (2 * _currentImage - kNImages + 2) * kSizeScaled, kSizeScaled)];
 
     _timerRewardsController = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutRewardPicturesInSeconds] target: self selector: @selector(onTimeoutRewardsController:) userInfo: nil repeats: NO];
@@ -92,7 +92,7 @@ kSpriteFile = "allRewardSprites.png";
 
 
 - (void) onTimeoutRewardsController: (CPTimer) timer { //console.info("RewardsController>onTimeoutRewardsController");
-    [_rewardView setImage: nil]; // and now↓ order back so the tooltip areas are not covered
+    [_rewardView setImage: nil]; //and now↓ order back so the tooltip areas are not covered
     [[_rewardView superview] addSubview: _rewardView positioned: CPWindowBelow relativeTo: nil];
     if (!_unitTesting) return;
 

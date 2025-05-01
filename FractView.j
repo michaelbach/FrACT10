@@ -15,7 +15,7 @@ FractView.j
  Created by Bach on 18.07.2017.
  */
 @implementation FractView : CPView {
-    @outlet CPWindowController drawingDelegate; // has a connection from view to delegate in IB
+    @outlet CPWindowController drawingDelegate; //has a connection from view to delegate in IB
     SEL drawStimulusInRect;
 }
 

@@ -25,7 +25,7 @@ Created by Bach on 2020-09-02
             [optotypes tumblingEWithStrokeInPx: strokeSizeInPix direction: [alternativesGenerator currentAlternative]];
             [self drawFixMark3];
             stimStrengthInDeviceunits = [self getCurrentContrastLogCSWeber];
-            trialInfoString = [self contrastComposeTrialInfoString];// compose here after colors are set
+            trialInfoString = [self contrastComposeTrialInfoString]; //compose here after colors are set
             break;
         default: break;
     }

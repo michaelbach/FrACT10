@@ -73,21 +73,21 @@ Created by Bach on 14.08.2017.
     const xPos0 = xCent + theSign * offsetSize / 2, xPos1 = xCent - theSign * offsetSize / 2;
     const vLength2 = vLength / 2;
     switch([Settings vernierType]) {
-        case 1: // 3 bars
-            // lower
+        case 1: //3 bars
+            //lower
             let yTemp = yCent + vLength2 + gapHeight;
             [self drawLineGaussProfileVerticalAtX: xPos0 y0: yTemp y1: yTemp + vLength sigma: sigma];
-            // middle
+            //middle
             [self drawLineGaussProfileVerticalAtX: xPos1 y0: yCent - vLength2 y1: yCent + vLength2 sigma: sigma];
-            // upper
+            //upper
             yTemp = yCent - vLength2 - gapHeight;
             [self drawLineGaussProfileVerticalAtX: xPos0 y0: yTemp y1: yTemp - vLength sigma: sigma];
             break;
-        default: // case 0, 2 bars
+        default: //case 0, 2 bars
             const gapHeight2 = gapHeight / 2;
-            // lower
+            //lower
             [self drawLineGaussProfileVerticalAtX: xPos0 y0: yCent + gapHeight2 y1: yCent + gapHeight2 + vLength sigma: sigma];
-            // upper
+            //upper
             [self drawLineGaussProfileVerticalAtX: xPos1 y0: yCent - gapHeight2 y1: yCent - gapHeight2 - vLength sigma: sigma];
             break;
     }
@@ -145,7 +145,7 @@ Created by Bach on 14.08.2017.
         case "6": return 0;
         case "4": return 4;
     }
-    return -2;// 0, 4: valid; -1: ignore; -2: invalid
+    return -2; //0, 4: valid; -1: ignore; -2: invalid
 }
 
 

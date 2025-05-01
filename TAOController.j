@@ -62,7 +62,7 @@ TAOController.j
 
 
 - (void) drawTaoWithStrokeInPx: (float) stroke taoNumber: (int) taoNumber { //console.info("TAOController>drawTaoWithStrokeInPx", taoNumber, taoNumber);
-    const sizeInPix = stroke * 5 * 8.172 / 5;// correction for stroke width (Dakin)
+    const sizeInPix = stroke * 5 * 8.172 / 5; //correction for stroke width (Dakin)
     const imageRect = CGRectMake(-sizeInPix / 2, -sizeInPix / 2, sizeInPix, sizeInPix);
     CGContextDrawImage([[CPGraphicsContext currentContext] graphicsPort], imageRect, _taoImages[taoNumber]);
 }

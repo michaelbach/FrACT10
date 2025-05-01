@@ -1,4 +1,8 @@
 #  History
+
+2025-04-30 after freeze
+    Refactor: call `copyColorsFromSettings` w/o notification:
+    Refactor: call `updateSoundFiles` directly w/o notification, no more need for `Misc>postDfltNotificationName`
 2025-04-30 deploy & freeze
 2025-04-29 modify Setting Hyperion: `setDecimalMarkCharIndex: kDecimalMarkCharIndexDot`;
     style: sort presets alphabetically;
@@ -279,7 +283,7 @@ BIG addition: new "make-XcodeCapp_and_run.sh" to replace XcodeCapp
 gStrokeMinimal / gStrokeMaximal now global, so accessible from dispersion estim.
 Add "acuityStartingLogMAR" logic + GUI, good for ultra low vision
 + 2022-05-21 preparation for Presets
-+ 2022-04-26 gStrokeMaximal = viewHeight / (5 + 1); // this leaves ½stroke margin around optotype
++ 2022-04-26 gStrokeMaximal = viewHeight / (5 + 1); //this leaves ½stroke margin around optotype
 + 2022-04-26 fix incorrect range check for contrastAcuityWeber, add max+/max- buttons. Change the "OK" button of settings to the correct type.
 + 2022-04-06 Settings>Tabcontainer: adjusted right edge. Not yet changed "OK" to push button (as will be needed for Aristo 3)
 + 2022-03-27 tweaks in Settings texts & positions

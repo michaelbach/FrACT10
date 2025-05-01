@@ -21,14 +21,14 @@
     const buttonsCount = [_buttons count];
     if (buttonsCount > 4) aestheticShift += 100;
     let w = [_window frame].size.width, h = [_window frame].size.height;
-    [_window setFrameSize: CGSizeMake(w + aestheticShift, h)]; // window a little wider
+    [_window setFrameSize: CGSizeMake(w + aestheticShift, h)]; //window a little wider
     for (let i = 0; i < buttonsCount; i++) {
-        let button = _buttons[i]; // ↓ shift all buttons a little to the right
+        let button = _buttons[i]; //↓ shift all buttons a little to the right
         [button setFrame: CPRectOffset([button frame], aestheticShift, 0)];
     }
     [_window center];
     //console.info(_showHelp, _alertHelpButton)
-    // help button not shown???
+    //help button not shown???
  }
 
 

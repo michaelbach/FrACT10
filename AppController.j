@@ -57,7 +57,7 @@
     @outlet CPPopUpButton settingsPaneMiscSoundsTrialYesPopUp;
     @outlet CPPopUpButton settingsPaneMiscSoundsTrialNoPopUp;
     @outlet CPPopUpButton settingsPaneMiscSoundsRunEndPopUp;
-    CPString versionDateString @accessors; // for the main Xib window top right
+    CPString versionDateString @accessors; //for the main Xib window top right
     CPString resultString @accessors;
     @outlet MDBLabel resultStringField;
     CPString currentTestResultUnit @accessors;
@@ -121,7 +121,7 @@
  */
 - (id) init { //console.info("AppController>init");
     'use strict';
-    gAppController = self; // so others can reference via global variable
+    gAppController = self; //so others can reference via global variable
     settingsNeededNewDefaults = [Settings needNewDefaults];
     [Settings checkDefaults]; //important to do this very early, before nib loading, otherwise the updates don't populate the settings panel
     return self;
@@ -131,7 +131,7 @@
 #pragma mark
 /** runs after "init" above */
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>…Launching");
-    currentFractController = null; // making sure, is used to check whether inRun
+    currentFractController = null; //making sure, is used to check whether inRun
     selfWindow = [self window];
     [selfWindow setFullPlatformWindow: YES];  [selfWindow setBackgroundColor: [self windowBackgroundColor]];
 
@@ -147,16 +147,16 @@
         }
     });
 
-    window.addEventListener("fullscreenchange", (event) => { // called _after_ the change
+    window.addEventListener("fullscreenchange", (event) => { //called _after_ the change
         //console.info("isFullScreen: ", [Misc isFullScreen]);
-        if (![Misc isFullScreen]) { // so it was full before, possibly we're in a run
-            if (currentFractController !== null) {//need to end run when leaving fullscreen
+        if (![Misc isFullScreen]) { //so it was full before, possibly we're in a run
+            if (currentFractController !== null) { //need to end run when leaving fullscreen
                 [currentFractController runEnd]; //because the <esc> was consumed
             }
         }
         [Misc centerWindowOrPanel: [selfWindow contentView]];
     });
-    if ([Settings autoFullScreen]) {// does not work because it needs user interaction
+    if ([Settings autoFullScreen]) { //does not work because it needs user interaction
         [Misc fullScreenOn: YES];
     }
 
@@ -167,16 +167,16 @@
     const allTestButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, bottonBalm, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];
     for (const b of allTestButtons)  [Misc makeFrameSquareFromWidth: b];
 
-    allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherUnittest,                          FractControllerBalmLight, FractControllerBalmLocation, FractControllerBalmMotion]; // sequence like Hierachy kTest#s
+    allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherUnittest,                          FractControllerBalmLight, FractControllerBalmLocation, FractControllerBalmMotion]; //sequence like Hierachy kTest#s
 
     allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, settingsPanel];
     for (const p of allPanels)  [p setMovable: NO];
-    [self setSettingsPaneTabViewSelectedIndex: 0]; // select the "General" tab in Settings
+    [self setSettingsPaneTabViewSelectedIndex: 0]; //select the "General" tab in Settings
 
     [selfWindow setTitle: "FrACT10"];
     [self setVersionDateString: gVersionStringOfFract + "·" + gVersionDateOfFrACT];
 
-    [Settings checkDefaults]; // what was the reason to put this here???
+    [Settings checkDefaults]; //what was the reason to put this here???
 
     rewardImageView = [[CPImageView alloc] initWithFrame: CGRectMake(100, 0, 600, 600)];
     [[selfWindow contentView] addSubview: rewardImageView positioned: CPWindowBelow relativeTo: nil];
@@ -186,14 +186,14 @@
     presets = [[Presets alloc] initWithPopup: settingsPanePresetsPopUpButton];
 
     for (let i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++)
-        Math.random(); // randomising the pseudorandom sequence
+        Math.random(); //randomising the pseudorandom sequence
 
     [buttonExport setEnabled: NO];
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:CPUserDefaultsDidChangeNotification object: nil];
 
     [self radioButtonsAcuityBwOrColor_action: null];
 
-    [Settings setAutoRunIndex: kAutoRunIndexNone]; // make sure it's not accidentally on
+    [Settings setAutoRunIndex: kAutoRunIndexNone]; //make sure it's not accidentally on
 
     numberFormatter = [[CPNumberFormatter alloc] init];
     [numberFormatter setNumberStyle: CPNumberFormatterDecimalStyle];
@@ -203,12 +203,12 @@
 
     [Settings setupSoundPopups: [settingsPaneSoundsTrialStartPopUp, settingsPaneMiscSoundsTrialYesPopUp, settingsPaneMiscSoundsTrialNoPopUp, settingsPaneMiscSoundsRunEndPopUp]];
 
-    // set up control dispatcher (HTML messages to FrACT10 when embedded as iframe)
+    //set up control dispatcher (HTML messages to FrACT10 when embedded as iframe)
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationRunFractControllerTest:) name: "notificationRunFractControllerTest" object: nil];
     [ControlDispatcher init];
 
-    [Misc centerWindowOrPanel: [selfWindow contentView]]; // →center
-    [selfWindow orderFront: self]; // ensures that it will receive clicks w/o activating
+    [Misc centerWindowOrPanel: [selfWindow contentView]]; //→center
+    [selfWindow orderFront: self]; //ensures that it will receive clicks w/o activating
     [self setResultString: "→ Results to be displayed here ←"];
 }
 
@@ -219,20 +219,20 @@
 - (void) settingsDidChange: (CPNotification) aNotification { //console.info("settingsDidChange");
     [self setHas4orientations: ([Settings nAlternatives] == 4)];
     [selfWindow setBackgroundColor: [self windowBackgroundColor]];
-    if ([Settings minPossibleLogMAR] > 0) { // red: not good enough for normal vision
+    if ([Settings minPossibleLogMAR] > 0) { //red: not good enough for normal vision
         [self setColorOfBestPossibleAcuity: [CPColor redColor]];
     } else {
         [self setColorOfBestPossibleAcuity: [CPColor colorWithRed: 0 green: 0.4 blue: 0 alpha: 1]];
     }
     [self radioButtonsAcuityBwOrColor_action: null];
-    // ↓ complicated to ensure the character is updated (and well visible) in the GUI
-    const decimalMarkCharIndexCurrent = [Settings decimalMarkCharIndex];// check for change
-    if (decimalMarkCharIndexCurrent != decimalMarkCharIndexPrevious) {// startup value is always null
-        decimalMarkCharIndexPrevious = decimalMarkCharIndexCurrent;//save for next time
-        [Settings setDecimalMarkChar: [Settings decimalMarkChar]];// this updates in GUI
-        [decimalMarkCharField setTextColor: [CPColor blueColor]];// while we're here…
-        [decimalMarkCharField setFont: [CPFont systemFontOfSize: 24]];//need more visibility
-        [decimalMarkCharField sizeToFit];// can't change font size of CPTextField, so →MDBTextField,
+    //↓ complicated to ensure the character is updated (and well visible) in the GUI
+    const decimalMarkCharIndexCurrent = [Settings decimalMarkCharIndex]; //check for change
+    if (decimalMarkCharIndexCurrent != decimalMarkCharIndexPrevious) { //startup value is always null
+        decimalMarkCharIndexPrevious = decimalMarkCharIndexCurrent; //save for next time
+        [Settings setDecimalMarkChar: [Settings decimalMarkChar]]; //this updates in GUI
+        [decimalMarkCharField setTextColor: [CPColor blueColor]]; //while we're here…
+        [decimalMarkCharField setFont: [CPFont systemFontOfSize: 24]]; //need more visibility
+        [decimalMarkCharField sizeToFit]; //can't change font size of CPTextField, so →MDBTextField,
         let r = [decimalMarkCharField bounds]; r.size.height = 30; r.origin.y = 12;
         [decimalMarkCharField setBounds: r];
     }
@@ -266,7 +266,7 @@
     [self runFractControllerTest: [aNotification object]];
 }
 - (void) runFractControllerTest: (int) testNr { //console.info("AppController>runFractController");
-    if (currentFractController != null) return; // got here by accident, already inRun?
+    if (currentFractController != null) return; //got here by accident, already inRun?
     [sound initAfterUserinteraction];
     gCurrentTestID = testNr;
     if ([Settings isNotCalibrated]) {
@@ -275,10 +275,10 @@
                           informativeTextWithFormat: "\rGoto ‘⛭ Settings’ and enter appropriate values for \r«Observer distance» and «Length of blue ruler».\r\rThis wilbl also get rid of this obnoxious warning dialog."];
         [alert runModalWithDidEndBlock: function(alert, returnCode) {
             switch (returnCode) {
-                case 1: // alternateButton: go to Settings
-                    [self setSettingsPaneTabViewSelectedIndex: 0]; // ensure "General" tab
+                case 1: //alternateButton: go to Settings
+                    [self setSettingsPaneTabViewSelectedIndex: 0]; //ensure "General" tab
                     [self buttonSettings_action: nil];  break;
-                case 0: // defaultButton
+                case 0: //defaultButton
                     [self runFractController2];  break;
             }
         }];
@@ -334,13 +334,13 @@
     }
     [ControlDispatcher runDoneSuccessful: !runAborted];
 
-    // allow 1 eventloop
+    //allow 1 eventloop
     setTimeout(() => {[[selfWindow contentView] setNeedsDisplay: YES];}, 1);
 }
 
 
 - (void) exportCurrentTestResult { //console.info("AppController>exportCurrentTestResult");
-    let temp = currentTestResultExportString.replace(/,/g, "."); // in localStorage we don't want to localise
+    let temp = currentTestResultExportString.replace(/,/g, "."); //in localStorage we don't want to localise
     localStorage.setItem(gFilename4ResultStorage, temp);
     temp = currentTestResultsHistoryExportString.replace(/,/g, ".");
     localStorage.setItem(gFilename4ResultsHistoryStorage, temp);
@@ -381,10 +381,10 @@
         [self runFractControllerTest: kShortcutKeys4TestsArray[key]];  return;
     }
     switch(key) {
-        case "Q": case "X": case "-": // Quit or eXit
+        case "Q": case "X": case "-": //Quit or eXit
             [self buttonDoExit_action: nil];  break;
-        case "S": // Settings
-            // this complicated version avoids propagation of the "s"
+        case "S": //Settings
+            //this complicated version avoids propagation of the "s"
             [[CPRunLoop currentRunLoop] performSelector: @selector(buttonSettings_action:) target: self argument: nil order: 10000 modes: [CPDefaultRunLoopMode]];  break;
         case "F":
             [self buttonFullScreen_action: nil];  break;
@@ -400,7 +400,7 @@
             [super keyDown: theEvent];  break;
     }
 }
-- (BOOL) alertShowHelp: (id) sender { // DOESN'T WORK
+- (BOOL) alertShowHelp: (id) sender { //DOESN'T WORK
     console.info("alertShowHelp");
     return YES;
 }
@@ -408,37 +408,37 @@
 
 - (void) balmSwitch {
     const alert = [MDBAlert alertWithMessageText: "BaLM@FrACT₁₀" defaultButton: "Cancel" alternateButton: "❓Help" otherButton: "Motion (‘3’)" informativeTextWithFormat: "“Basic Assessment of Light, Location & Motion”\rfor ultra low vision.\r\r\r↓ Which BaLM test?"];
-    [alert addButtonWithTitle: "Location (‘2’)"]; // returnCode == 2
-    [alert addButtonWithTitle: "Light (‘1’)"]; // returnCode == 2
+    [alert addButtonWithTitle: "Location (‘2’)"]; //returnCode == 2
+    [alert addButtonWithTitle: "Light (‘1’)"]; //returnCode == 2
     [alert setDelegate: self];
     //[alert setShowsHelp: YES]; //doesn't work
-    [[alert buttons][0] setKeyEquivalent: "1"]; // yes, 1/2 inverted…
+    [[alert buttons][0] setKeyEquivalent: "1"]; //yes, 1/2 inverted…
     [[alert buttons][1] setKeyEquivalent: "2"];
     [[alert buttons][2] setKeyEquivalent: "3"];
     [alert runModalWithDidEndBlock: function(alert, returnCode) {
         switch (returnCode) {
-            case 4: //console.info(returnCode); // Light
+            case 4: //console.info(returnCode); //Light
                 [self runFractControllerTest: kTestBalmLight];
                 break;
-            case 3: //console.info(returnCode); // Location
+            case 3: //console.info(returnCode); //Location
                 [self runFractControllerTest: kTestBalmLocation];
                 break;
-            case 2: //console.info(returnCode); // Motion
+            case 2: //console.info(returnCode); //Motion
                 [self runFractControllerTest: kTestBalmMotion];
                 break;
-            case 1: //console.info(returnCode); // help
+            case 1: //console.info(returnCode); //help
                 const url = "https://michaelbach.de/sci/stim/balm/index.html";
                 if ([Misc existsUrl: url])  window.open(url, "_blank");
                 break;
-            default: //console.info(returnCode);// 0=cancel
+            default: //console.info(returnCode); //0=cancel
         }
     }];
 
 }
 
 - (IBAction) buttonFullScreen_action: (id) sender { //console.info("AppController>buttonFullScreen");
-    [Misc fullScreenOn: ![Misc isFullScreen]]; // toggle
-    // the origin changes are handled by the eventListener("fullscreenchange" above.
+    [Misc fullScreenOn: ![Misc isFullScreen]]; //toggle
+    //the origin changes are handled by the eventListener("fullscreenchange" above.
 }
 
 
@@ -476,7 +476,7 @@
 
 - (IBAction) buttonSettingsTestSound_action: (id) sender { //console.info("buttonSettingsTestSound_action", [sender tag]);
     [sound updateSoundFiles];
-    [sound playDelayedNumber: [sender tag]]; // delay because new buffer to be loaded; 0.02 would be enough.
+    [sound playDelayedNumber: [sender tag]]; //delay because new buffer to be loaded; 0.02 would be enough.
 }
 
 - (IBAction) buttonSettingsContrastAcuityMaxMin_action: (id) sender {
@@ -486,7 +486,7 @@
     }
 }
 
-- (IBAction) popupPreset_action: (id) sender {//console.info("popupPreset_action: ", sender)
+- (IBAction) popupPreset_action: (id) sender { //console.info("popupPreset_action: ", sender)
     [presets apply: sender];
 }
 
@@ -512,7 +512,7 @@
 - (IBAction) radioButtonsAcuityBwOrColor_action: (id) sender {
     if (sender != null)
         [Settings setAcuityColor: [sender tag] == 1];
-    else { // this is to preset the radio buttons
+    else { //this is to preset the radio buttons
         [radioButtonAcuityBW setState: ([Settings isAcuityColor] ? CPOffState : CPOnState)];
         [radioButtonAcuityColor setState: ([Settings isAcuityColor] ? CPOnState : CPOffState)];
     }

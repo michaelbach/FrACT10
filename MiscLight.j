@@ -35,7 +35,7 @@
     let inMichelson = inMichelsonPercent /= 100,  outWeber;
     if (inMichelson >= 0) {
         outWeber = 2 * inMichelson / (1 + inMichelson);
-    } else {//console.info("in neg Michelson range")
+    } else { //console.info("in neg Michelson range")
         const inMichelsonInverted = -inMichelson;
         outWeber = 2 * inMichelsonInverted / (1 + inMichelsonInverted);
     }
@@ -127,7 +127,7 @@
 }
 
 
-+ (float) contrastMichelsonPercentFromDevicegray1: (float) g1 g2: g2 { // on 0…1 scale
++ (float) contrastMichelsonPercentFromDevicegray1: (float) g1 g2: g2 { //on 0…1 scale
     const l1 = [self luminanceFromDevicegray: g1], l2 = [self luminanceFromDevicegray: g2];
     return [self contrastMichelsonPercentFromL1: l1 l2: l2];
 }
@@ -136,7 +136,7 @@
  */
 + (float) contrastMichelsonPercentFromColor1: (float) c1 color2: c2 {
     const g1 = [self getBrightnessViaCSSfromColor: c1], g2 = [self getBrightnessViaCSSfromColor: c2];
-    return [self contrastMichelsonPercentFromDevicegray1: g1 g2: g2]; // on 0…1 scale
+    return [self contrastMichelsonPercentFromDevicegray1: g1 g2: g2]; //on 0…1 scale
 }
 
 

@@ -13,24 +13,24 @@ Globals.j
  */
 
 
-//// global Constants
+////global Constants
 const bundleDict = [[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] infoDictionary];
 gVersionDateOfFrACT = [bundleDict objectForKey:@"VersionDate"];
-gVersionStringOfFract = [bundleDict objectForKey:@"VersionNumberString"];//CPBundleVersion mangled by jake
+gVersionStringOfFract = [bundleDict objectForKey:@"VersionNumberString"]; //CPBundleVersion mangled by jake
 gVersionOfExportFormat = "5";
 
 gFilename4ResultStorage = "FRACT10-FINAL-RESULT-STRING";
 gFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
 
 gAbortMessage = "Run canceled.";
-// Correction for threshold underestimation by DIN/ISO-ascending method (in VAdecimal)
+//Correction for threshold underestimation by DIN/ISO-ascending method (in VAdecimal)
 gThresholdCorrection4Ascending = 0.891;
 
-// parameter for the CI95 dispersion estimation; strongly affects CI95
+//parameter for the CI95 dispersion estimation; strongly affects CI95
 gSlopeCI95 = 15; //strongly affects CI95, this value approximates test-retest variability
-gNSamplesCI95 = 10000; // with 10000 the median differs by LoA=0.003LogMAR from full run
+gNSamplesCI95 = 10000; //with 10000 the median differs by LoA=0.003LogMAR from full run
 
-// Clamping the max logCSWeber value to avoid log of zero during conversions. Value way beyond physiologically possible.
+//Clamping the max logCSWeber value to avoid log of zero during conversions. Value way beyond physiologically possible.
 gMaxAllowedLogCSWeber = 4.0;
 gMaxResultLogCSWeber = 2.0;
 
@@ -81,13 +81,13 @@ gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 gSoundsTrialStart = ["click02.mp3", "notify1.mp3", "notify2.mp3"];
 
 
-//// global Variables
+////global Variables
 gDefaultDistanceInCM = 399;
 gDefaultCalibrationBarLengthInMM = 149;
 
-// cgc as global makes for easy access in Optotypes and contrast calcs
+//cgc as global makes for easy access in Optotypes and contrast calcs
 cgc = [[CPGraphicsContext currentContext] graphicsPort];
-gAppController = null; // allows globally communicating with the AppController
+gAppController = null; //allows globally communicating with the AppController
 gColorFore = [CPColor whiteColor];  gColorBack = [CPColor blackColor];
-// minimal stroke size (half a pixel). Maximal, depending on screen & margin. Poor naming for Vernier. Values are later overridden via Setting and screen size.
+//minimal stroke size (half a pixel). Maximal, depending on screen & margin. Poor naming for Vernier. Values are later overridden via Setting and screen size.
 gStrokeMinimal = 0.5;  gStrokeMaximal = 100;

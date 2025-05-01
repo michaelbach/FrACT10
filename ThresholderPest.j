@@ -21,13 +21,13 @@ Implementation of BestPEST
 
 - (id)initWithNumAlternatives: (int) numAlternatives { //console.info("ThresholderPest>init");
     self = [super init];
-    if (self) { // Code below is really really old, but at least long proven
+    if (self) { //Code below is really really old, but at least long proven
         kRange = 5000;  kRange1 = kRange - 1;  kRange2 = kRange * 2
         probability = new Array(kRange);  plgit = new Array(kRange * 2);  mlgit = new Array(kRange * 2);
         for (let i = 0; i < kRange; i++) {
             probability[i] = 0.0;
         }
-        const slope = kRange / 10.0; // this is a major choice, should be parametrized
+        const slope = kRange / 10.0; //this is a major choice, should be parametrized
         const guessProb = 1.0 / numAlternatives;
         for (let i = 0; i < kRange2; i++) {
             const logistic = guessProb + (1.0 - guessProb) / (1.0 + Math.exp((kRange - i) / slope));
@@ -63,7 +63,7 @@ Implementation of BestPEST
 }
 
 
-// this is very old code … don't change a winning team :)
+//this is very old code … don't change a winning team :)
 - (float) nextStimGivenAppliedStim: (float) appliedStim wasCorrect: (BOOL) wasCorrect {
     const intStim = [self externalStim2internalStimGiven: appliedStim];
     let p1 = -10000, p2 = -10000, maxP = -10000;

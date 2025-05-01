@@ -21,7 +21,7 @@ Created by mb on 2021-12-21.
 
 
 - (id) initWithWindow: (CPWindow) aWindow {
-    localLogMAR = 0.3; // we need this method only for this line, starting acuity
+    localLogMAR = 0.3; //we need this method only for this line, starting acuity
     self = [super initWithWindow: aWindow];
     return self;
 }
@@ -54,8 +54,8 @@ Created by mb on 2021-12-21.
             }
             for (let iLine = -lineRange; iLine <= lineRange; iLine++) {
                 const usedAlternativesArray = [];
-                let optotypeDistance = 1; // according to ETDRS
-                if ([Settings testOnLineByLineDistanceType] == 0) {// according to DIN EN ISO 8596
+                let optotypeDistance = 1; //according to ETDRS
+                if ([Settings testOnLineByLineDistanceType] == 0) { //according to DIN EN ISO 8596
                     optotypeDistance = 0.4;
                     const localDecVA = [MiscSpace decVAfromLogMAR: localLogMAR];
                     if (localDecVA >= 0.06) optotypeDistance = 1;
@@ -66,7 +66,7 @@ Created by mb on 2021-12-21.
                 optotypeDistance = (1 + optotypeDistance) * stimStrengthInDeviceunits * 5;
                 if (iLine >= -1) CGContextTranslateCTM(cgc, 0, optotypeDistance);
                 const iRange = [Settings lineByLineHeadcountIndex];
-                for (let i = -iRange; i <= iRange; i++) {//iDex 0…3 → 1, 3, 5, 7
+                for (let i = -iRange; i <= iRange; i++) { //iDex 0…3 → 1, 3, 5, 7
                     const tempX = i * optotypeDistance;
                     CGContextTranslateCTM(cgc, -tempX, -verticalOffset);
                     let currentAlternative = [Misc iRandom: nAlternatives];
@@ -88,13 +88,13 @@ Created by mb on 2021-12-21.
             CGContextRestoreGState(cgc);
             CGContextSetFillColor(cgc, [CPColor blueColor]);
             CGContextSetTextDrawingMode(cgc, kCGTextFill);
-            CGContextSelectFont(cgc, "24px sans-serif"); // must be CSS
+            CGContextSelectFont(cgc, "24px sans-serif"); //must be CSS
             const s = [Misc stringFromNumber: localLogMAR decimals: 1 localised: YES] + " LogMAR  "
             let stringWidth = 140, lineHeight = 24;
             try {
                 const tInfo = cgc.measureText(s);
                 stringWidth = tInfo.width;
-                //lineHeight = tInfo.emHeightAscent;// + tInfo.emHeightDescent;
+                //lineHeight = tInfo.emHeightAscent; //+ tInfo.emHeightDescent;
             } catch(e) {}
             CGContextShowTextAtPoint(cgc, viewWidth2 - stringWidth, -viewHeight2 + lineHeight, s);
             if (lineRange > 0) {
@@ -115,7 +115,7 @@ Created by mb on 2021-12-21.
     }
 
     CGContextRestoreGState(cgc);
-    CGContextTranslateCTM(cgc, 0, -verticalOffset);//so crowding is also offset
+    CGContextTranslateCTM(cgc, 0, -verticalOffset); //so crowding is also offset
     [super drawStimulusInRect: dirtyRect];
 }
 
@@ -124,7 +124,7 @@ Created by mb on 2021-12-21.
     nAlternatives = 10;
     switch([Settings testOnLineByLine]) {
         case 1: nAlternatives = 10;  break;
-        case 2: nAlternatives = 8;  break; // 4 Landolt orientations not supported
+        case 2: nAlternatives = 8;  break; //4 Landolt orientations not supported
     }
     nTrials = 9999;
     [gAppController setCurrentTestResultUnit: "LogMAR"];
@@ -138,7 +138,7 @@ Created by mb on 2021-12-21.
         case "4":
         case CPRightArrowFunctionKey:
         case "6":
-            break; // just reshuffle the optotypes
+            break; //just reshuffle the optotypes
         case CPUpArrowFunctionKey:
         case "8":
             localLogMAR +=0.1; break;

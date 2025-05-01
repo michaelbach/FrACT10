@@ -25,7 +25,7 @@
 @import "Presets_ETCF.j";
 @import "Presets_HYPERION.j";
 
-// after applying the preset, respond via GUI or send back to caller?
+//after applying the preset, respond via GUI or send back to caller?
 @typedef feedbackTypeType
 kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
 
@@ -45,10 +45,10 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
         /* first entry: Header, all others need corresponding code in the “switch orgy” further down. */
         const allPresets = ["PRESETS", "Standard Defaults", "AT@LeviLab", "BaLM₁₀", "BCM@Scheie", "CNS@Freiburg", "Color Equiluminance", "ESU", "ETCF", "Hyper@TUDo", "HYPERION", "Maculight", "ULV@Gensight", "Testing"];
 
-        _popUpButton = thePopUpButton; // local copy for later
+        _popUpButton = thePopUpButton; //local copy for later
         [_popUpButton removeAllItems];
         for (const aPreset of allPresets) [_popUpButton addItemWithTitle: aPreset];
-        [_popUpButton setSelectedIndex: 0]; // always show "PRESETS"
+        [_popUpButton setSelectedIndex: 0]; //always show "PRESETS"
 
         [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(applyPresetNamed:) name: "applyPresetNamed" object: nil];
     }
@@ -61,7 +61,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
  */
 - (void) apply: (id) sender { //console.info("Presets>apply");
     const _presetIndex = [sender indexOfSelectedItem];
-    if (_presetIndex == 0) {//console.info("_presetIndex == 0");
+    if (_presetIndex == 0) { //console.info("_presetIndex == 0");
         return;
     }
     _presetName = [sender itemTitleAtIndex: _presetIndex];
@@ -69,10 +69,10 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     const alert1 = [CPAlert alertWithMessageText: messageText
                                    defaultButton: "NO   (ߵnߴ)" alternateButton: "YES   (ߵyߴ)" otherButton: nil
                        informativeTextWithFormat: "Many Settings will change. You should know what you are doing here. Luckily, you can always return to defaults."];
-    [[alert1 buttons][0] setKeyEquivalent: "y"]; // the "YES" button selected by "y"
-    [[alert1 buttons][1] setKeyEquivalent: "n"]; // the "NO" button selected by "n"
+    [[alert1 buttons][0] setKeyEquivalent: "y"]; //the "YES" button selected by "y"
+    [[alert1 buttons][1] setKeyEquivalent: "n"]; //the "NO" button selected by "n"
     [alert1 runModalWithDidEndBlock: function(alert, returnCode) {
-        if (returnCode==1) { // alternateButton
+        if (returnCode==1) { //alternateButton
             [self apply2withFeedbackType: kFeedbackTypeGUI];
         }
     }];
@@ -100,41 +100,41 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Settings setDefaults];
             [self applyTestingPresets];  [Settings setAutoRunIndex: kAutoRunIndexMid];
             break;
-        case "Testing": // easier testing
+        case "Testing": //easier testing
             [self applyTestingPresets];
             break;
-        case "DemoBaLM": // easier testing
+        case "DemoBaLM": //easier testing
             [self applyTestingPresets];  [Settings setNTrials02: 4];  [Settings setNTrials04: 4];
             [Settings setDistanceInCM: 29];  [Settings setbalmIsiMillisecs: 500];
             break;
-        case "BaLM₁₀": // easier testing
+        case "BaLM₁₀": //easier testing
             [Settings setDefaults];
             [Settings setTimeoutResponseSeconds: 2];
             [Settings setNTrials02: 24];  [Settings setNTrials04: 24];
             [Settings setDistanceInCM: 57];  [Settings setbalmIsiMillisecs: 500];
             break;
-        case "Color Equiluminance": // near equiluminant color acuity
+        case "Color Equiluminance": //near equiluminant color acuity
             [self applyTestingPresets];
             [Settings setAcuityColor: YES];
             [Settings setAcuityForeColor: [CPColor redColor]];
-            [Settings setAcuityBackColor: [CPColor colorWithRed: 0 green: 0.70 blue: 0 alpha: 1]];// dark green, near equiluminant to red
+            [Settings setAcuityBackColor: [CPColor colorWithRed: 0 green: 0.70 blue: 0 alpha: 1]]; //dark green, near equiluminant to red
             [gAppController copyColorsFromSettings];
             break;
         case "ESU": case "BCM@Scheie": case "CNS@Freiburg": case "Maculight":
         case "AT@LeviLab": case "Hyper@TUDo": case "ULV@Gensight": case "ETCF": case "HYPERION":
-            // calculated class name requires strict discipline with filename systematics
+            //calculated class name requires strict discipline with filename systematics
             const newPresetName = [_presetName stringByReplacingOccurrencesOfString:"@" withString:"_"]; //in filenames the @ is not allowed
             const classObj = CPClassFromString("Presets_" + newPresetName);
             [classObj performSelector: @selector(apply)];
             break;
-        case "Generic Template": // template for new entries
+        case "Generic Template": //template for new entries
             [Settings setDefaults];
-            // General pane
-            // Acuity pane
-            // Contrast pane
-            // Gratings pane
-            // Gamma pane
-            // Misc pane
+            //General pane
+            //Acuity pane
+            //Contrast pane
+            //Gratings pane
+            //Gamma pane
+            //Misc pane
             break;
         default:
             console.log("FrACT10>Presets>unknown preset: ", _presetName);
@@ -146,7 +146,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     [Settings setPresetName: _presetName];
     [gAppController.sound updateSoundFiles];
     [gAppController copyColorsFromSettings]; //this synchronises the color settings between userdefaults & AppController
-    [_popUpButton setSelectedIndex: 0]; // always show "PRESETS"
+    [_popUpButton setSelectedIndex: 0]; //always show "PRESETS"
 
     switch (feedbackType) {
         case kFeedbackTypeGUI:
@@ -163,17 +163,17 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
 }
 
 
-- (void) applyTestingPresets { // used several times, so it has its own function
+- (void) applyTestingPresets { //used several times, so it has its own function
     [Presets setStandardDefaultsKeepingCalBarLength];
-    // general pane
-    [Settings setNTrials02: 24];//32
-    [Settings setNTrials04: 18];//24
-    [Settings setNTrials08: 12];//18
-    [Settings setDistanceInCM: 400]; [Settings setCalBarLengthInMM: 150];//avoids dialog
+    //general pane
+    [Settings setNTrials02: 24]; //32
+    [Settings setNTrials04: 18]; //24
+    [Settings setNTrials08: 12]; //18
+    [Settings setDistanceInCM: 400]; [Settings setCalBarLengthInMM: 150]; //avoids dialog
     [Settings setResponseInfoAtStart: NO];
-    // acuity pane
+    //acuity pane
     [Settings setShowCI95: YES];
-    // Misc pane
+    //Misc pane
     [Settings setSoundTrialYesIndex: 0]; [Settings setSoundTrialNoIndex: 1];
     [Settings setSoundRunEndIndex: 1];
 }

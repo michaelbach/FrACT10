@@ -11,14 +11,14 @@
 
 @implementation Presets_Maculight: CPObject
 
-+ (void) apply {//console.info("Presets_Maculight>apply")
++ (void) apply { //console.info("Presets_Maculight>apply")
     [Presets setStandardDefaultsKeepingCalBarLength];
-    // general pane
+    //general pane
     [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
     [Settings setResults2clipboard: kResults2ClipFinalOnly];
     [Settings setDistanceInCM: 400];
     [Settings setTestOnFive: kTestAcuityLett];
-    // contrast pane
+    //contrast pane
     [Settings setContrastOptotypeDiameter: 170];
 }
 

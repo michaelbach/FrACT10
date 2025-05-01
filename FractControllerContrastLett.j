@@ -25,7 +25,7 @@ Created by Bach on 2020-08-17
             [optotypes drawLetterWithStriokeInPx: strokeSizeInPix letterNumber: [alternativesGenerator currentAlternative]];
             [self drawFixMark3];
             stimStrengthInDeviceunits = [self getCurrentContrastLogCSWeber];
-            trialInfoString = [self contrastComposeTrialInfoString]; // compose here after colors are set
+            trialInfoString = [self contrastComposeTrialInfoString]; //compose here after colors are set
             break;
         default: break;
     }

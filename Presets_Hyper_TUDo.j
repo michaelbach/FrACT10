@@ -13,20 +13,20 @@
 
 + (void) apply {
     [Settings setDefaults];
-    // General pane
+    //General pane
     [Settings setTimeoutResponseSeconds: 600]; [Settings setTimeoutDisplaySeconds: 90];
     [Settings setDistanceInCM: 147]; [Settings setCalBarLengthInMM: 134];
     [Settings setResponseInfoAtStart: NO];
     [Settings setTestOnFive: kTestNone];
     [Settings setResults2clipboard: kResults2ClipFullHistory];
     [Settings setResults2clipboardSilent: YES];
-    // Acuity pane
+    //Acuity pane
     [Settings setVernierType: kVernierType3bars];
     [Settings setVernierWidth: 1.5]; [Settings setVernierLength: 40]; [Settings setVernierGap: 0.2];
     [Settings setShowCI95: YES];
-    // Gamma pane
+    //Gamma pane
     [Settings setGammaValue: 2.2];
-    // Misc pane
+    //Misc pane
     [Settings setWindowBackgroundColor: [CPColor whiteColor]];
     [Settings setSoundTrialNoIndex: 1];
 }

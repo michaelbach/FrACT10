@@ -59,7 +59,7 @@
 /**
  Given stroke size in pixels, calculates decimal VA
  */
-+ (float) decVAFromStrokePixels: (float) pixels { // "decVA": visual acuity in decimal format
++ (float) decVAFromStrokePixels: (float) pixels { //"decVA": visual acuity in decimal format
     return 1 / 60 / [self degreeFromPixel: pixels];
 }
 /**
@@ -91,7 +91,7 @@
     return degrees * Math.PI / 180;
 }
 
-/* ///////////////////////////////////// OLD, not in use (yet) */
+/* /////////////////////////////////////OLD, not in use (yet) */
 
 /*
  static public function spatFreq2periodInPix(spatFreqInCPD:Number):Number {

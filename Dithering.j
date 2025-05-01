@@ -30,7 +30,7 @@ Created by Bach on 2024-03-23.
     CPImage patternImage;
 }
 
-// https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas
+//https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas
 /*function setPixelRGBA(imageData, x, y, r, g, b, a=255) {
     const idx = 4 * (x + y * imageData.width);
     imageData.data[idx] = r;
@@ -38,13 +38,13 @@ Created by Bach on 2024-03-23.
     imageData.data[idx+2] = b;
     imageData.data[idx+3] = a;
 }
-function setPixelRGB(imageData, x, y, r, g, b) { // assuming alpha already set
+function setPixelRGB(imageData, x, y, r, g, b) { //assuming alpha already set
     const idx = 4 * (x + y * imageData.width);
     imageData.data[idx] = r;
     imageData.data[idx+1] = g;
     imageData.data[idx+2] = b;    //imageData.data[idx+3] = 255;
 }*/
-function setPixelGray(imageData, x, y, g) { // assuming alpha already set
+function setPixelGray(imageData, x, y, g) { //assuming alpha already set
     const idx = 4 * (x + y * imageData.width);
     imageData.data[idx] = g;
     imageData.data[idx+1] = g;
@@ -57,19 +57,19 @@ function setPixelGray(imageData, x, y, g) { // assuming alpha already set
          4 2           2  1  4
                        6  3  8 */
 + (CPImage) image3x3withGray: (int) g { //console.log("Dithering>image3x3withGray");
-    g *= 255; // 0…1 → 0…255
+    g *= 255; //0…1 → 0…255
     const integerPart = Math.floor(g);
     let fractionalPart = g - integerPart;
     fractionalPart = Math.round(fractionalPart * 9); //console.info(g, integerPart, fractionalPart)
-    // use only 0…8, 9 would be 1 bit higher for the intPart
+    //use only 0…8, 9 would be 1 bit higher for the intPart
     const offCanvas = document.createElement('canvas');  offCanvas.width = 3;  offCanvas.height = 3;
     const offContext = offCanvas.getContext('2d');
-    const imageData = offContext.createImageData(3, 3);// this presets all to 0 = transparent black
+    const imageData = offContext.createImageData(3, 3); //this presets all to 0 = transparent black
     //console.info(offCanvas, offContext, imageData)
-    for (let i=0; i < 4 * 9; i++) imageData.data[i] = integerPart; // set all to non-dithered gray level
-    for (let i=0; i < 9; i++) imageData.data[3 + i * 4] = 255; // set alpha to opaque
-    const f = integerPart + 1; // one bit higher than the average gray level
-    if (fractionalPart >= 1) { // check which pixels need to be set one index higher
+    for (let i=0; i < 4 * 9; i++) imageData.data[i] = integerPart; //set all to non-dithered gray level
+    for (let i=0; i < 9; i++) imageData.data[3 + i * 4] = 255; //set alpha to opaque
+    const f = integerPart + 1; //one bit higher than the average gray level
+    if (fractionalPart >= 1) { //check which pixels need to be set one index higher
         setPixelGray(imageData, 1, 1, f);
         if (fractionalPart >= 2) {
             setPixelGray(imageData, 0, 1, f);
@@ -97,13 +97,13 @@ function setPixelGray(imageData, x, y, g) { // assuming alpha already set
             }
         }
     }
-    offContext.putImageData(imageData, 0, 0); // write the generated dither pattern to offscreen
+    offContext.putImageData(imageData, 0, 0); //write the generated dither pattern to offscreen
     let dataURL = [CPString stringWithString: offContext.canvas.toDataURL("image/png")];
-    dataURL = [dataURL substringFromIndex: 22]; // need to drop "data:image/png;base64,"
+    dataURL = [dataURL substringFromIndex: 22]; //need to drop "data:image/png;base64,"
     patternImage = [[CPImage alloc] initWithData: [CPData dataWithBase64: dataURL]];
     return patternImage;
-    // return [patternImage copy];
-    // As written now, ↑ can only store one patternImage, but seems to be ok.
+    //return [patternImage copy];
+    //As written now, ↑ can only store one patternImage, but seems to be ok.
 }
 
 

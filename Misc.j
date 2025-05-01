@@ -48,7 +48,7 @@ function _pause(ms) { //console.info("Misc>_pause");
 /**
  Limit the input value to lie between 2 values
  */
-+ (float) limit: (float) theValue lo: (float) lo hi: (float) hi { // limit the input value to lie between lo and hi
++ (float) limit: (float) theValue lo: (float) lo hi: (float) hi { //limit the input value to lie between lo and hi
     if (theValue < lo) return lo;
     if (theValue > hi) return hi;
     return theValue;
@@ -63,7 +63,7 @@ function _pause(ms) { //console.info("Misc>_pause");
 /**
  Handle fullscreen. That was quite difficult to figure out :) (at that time…).
  */
-// https://hacks.mozilla.org/2012/01/using-the-fullscreen-api-in-web-browsers/
+//https://hacks.mozilla.org/2012/01/using-the-fullscreen-api-in-web-browsers/
 + (BOOL) isFullScreenSupported {
     return (
         document.fullscreenEnabled || document.webkitFullscreenEnabled ||
@@ -102,7 +102,7 @@ function _pause(ms) { //console.info("Misc>_pause");
 
 
 + (void) centerWindowOrPanel: (CPWindow) p {
-    [p setFrameOrigin: CGPointMake((window.innerWidth - 800) / 2, (window.innerHeight - 628) / 2)]; // the header adds 28 pixel, so more than 600
+    [p setFrameOrigin: CGPointMake((window.innerWidth - 800) / 2, (window.innerHeight - 628) / 2)]; //the header adds 28 pixel, so more than 600
 }
 
 
@@ -110,8 +110,8 @@ function _pause(ms) { //console.info("Misc>_pause");
     const alert = [CPAlert alertWithMessageText: "Done."
     defaultButton: "Yes, put result → clipboard  (ߵyߴ)" alternateButton: "Cancel  (ߵcߴ)" otherButton: nil
                 informativeTextWithFormat: "\rShall we place the result details into the clipboard?\r\r(So you can paste them into a spreadsheet.)\r"];
-    [[alert buttons][0] setKeyEquivalent: "c"]; // the "Cancel" button selected by "c"
-    [[alert buttons][1] setKeyEquivalent: "y"]; // the "Yes" button selected by "n"
+    [[alert buttons][0] setKeyEquivalent: "c"]; //the "Cancel" button selected by "c"
+    [[alert buttons][1] setKeyEquivalent: "y"]; //the "Yes" button selected by "n"
     [alert setAlertStyle: CPInformationalAlertStyle];
     [[alert window] setFrameOrigin: CGPointMake(200, 200)];
     [alert runModalWithDidEndBlock: function(alert, returnCode) {
@@ -129,10 +129,10 @@ function _pause(ms) { //console.info("Misc>_pause");
  */
 + (void) copyString2Clipboard: (CPString) s { //console.info("Misc>copyString2Clipboard: ", s);
     try {
-        navigator.clipboard.writeText(s); // only over https, returns a Promise
+        navigator.clipboard.writeText(s); //only over https, returns a Promise
     }
-    catch(e) { // avoid the global error catcher
-        console.info("Error copying result to clipboard: ", e);  // alert(e);
+    catch(e) { //avoid the global error catcher
+        console.info("Error copying result to clipboard: ", e); //alert(e);
     }
 }
 
@@ -201,8 +201,8 @@ function _pause(ms) { //console.info("Misc>_pause");
         else
             request = new ActiveXObject("Microsoft.XMLHTTP");
         request.open('GET', url, NO);
-        request.send(); // there will be a 'pause' here until the response to come.
-        // the object request will be modified
+        request.send(); //there will be a 'pause' here until the response to come.
+        //the object request will be modified
         success = (request.status != 404)
     }
     catch (e){
@@ -215,10 +215,10 @@ function _pause(ms) { //console.info("Misc>_pause");
 }
 
 
-+ (BOOL) isAcuityGratingMisc { // replication of Helper in FractController
++ (BOOL) isAcuityGratingMisc { //replication of Helper in FractController
     return (gCurrentTestID == kTestContrastG) && ([Settings what2sweepIndex] == 1);
 }
-+ (BOOL) isContrastGMisc { // replication of Helper in FractController
++ (BOOL) isContrastGMisc { //replication of Helper in FractController
     return [kTestContrastG].includes(gCurrentTestID) && (![self isAcuityGratingMisc]);
 }
 + (CPString) testNameGivenTestID: (TestIDType) theTestID {
@@ -243,7 +243,7 @@ function _pause(ms) { //console.info("Misc>_pause");
 }
 
 
-/* ///////////////////////////////////// OLD, not in use (yet) */
+/* /////////////////////////////////////OLD, not in use (yet) */
 
 /*
 
@@ -256,25 +256,25 @@ function _pause(ms) { //console.info("Misc>_pause");
 }
 
  
- // formats a number to given precision
+ //formats a number to given precision
 + (CPString) rStrFromNumber: num precision: (int) precision {
     if (isNaN(precision)) {
         let precision=0;
     }
-    if (precision <= 0)	 {	// no decimal points
+    if (precision <= 0)	 {	//no decimal points
         return String(Math.round(num));
     }
-    //return String(Math.floor(num) + "." + Math.floor(num * Math.pow(10, precision)).toString().substr(-precision));//this is from Macromedia, but wrong all the same… 15.12.2003
+    //return String(Math.floor(num) + "." + Math.floor(num * Math.pow(10, precision)).toString().substr(-precision)); //this is from Macromedia, but wrong all the same… 15.12.2003
     let temp = Math.pow(10, precision);
     temp = Math.round(num * temp) / temp;
     return String(temp);
 }
 
 
-// formats a number to a “sensible” precision
+//formats a number to a “sensible” precision
 static public  function rStr(theValue:Number):String {
     let precision:int=1,theValueAbs:Number=Math.abs(theValue);
-    if (theValueAbs < 0.0001) { // this could be easier using log10…
+    if (theValueAbs < 0.0001) { //this could be easier using log10…
         precision=7;
     } else {
         if (theValueAbs < 0.001) {

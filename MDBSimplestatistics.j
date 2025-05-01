@@ -29,7 +29,7 @@ MDBSimplestatistics.j
  * @throws {Error} if the the length of x is less than one
  * @returns {number} minimum value
  * @ example
- * min([1, 5, -10, 100, 2]); // => -10
+ * min([1, 5, -10, 100, 2]); //=> -10
  */
 function min(x) {
     if (x.length === 0) {
@@ -55,7 +55,7 @@ function min(x) {
  * @throws {Error} if the the length of x is less than one
  * @ example
  * max([1, 2, 3, 4]);
- * // => 4
+ * //=> 4
  */
 function max(x) {
     if (x.length === 0) {
@@ -81,7 +81,7 @@ function max(x) {
  * @throws {Error} if the the length of x is less than one
  * @ example
  * extent([1, 2, 3, 4]);
- * // => [1, 4]
+ * //=> [1, 4]
  */
 function extent(x) {
     if (x.length === 0) {
@@ -112,16 +112,16 @@ function extent(x) {
  * @return {Array} n sampled items from the population
  * @ example
  * let values = [1, 2, 3, 4];
- * sampleWithReplacement(values, 2); // returns 2 random values, like [2, 4];
+ * sampleWithReplacement(values, 2); //returns 2 random values, like [2, 4];
  */
 function sampleWithReplacement(x, n, randomSource) {
     if (x.length === 0) {
         return [];
     }
     
-    // a custom random number source can be provided if you want to use
-    // a fixed seed or another random number generator, like
-    // [random-js](https://www.npmjs.org/package/random-js)
+    //a custom random number source can be provided if you want to use
+    //a fixed seed or another random number generator, like
+    //[random-js](https://www.npmjs.org/package/random-js)
     randomSource = randomSource || Math.random;
     
     const length = x.length;
@@ -150,7 +150,7 @@ function sampleWithReplacement(x, n, randomSource) {
  * @param {Array<number>} x input
  * @returns {number} median value
  * @ example
- * median([10, 2, 5, 100, 2, 1]); // => 3.5
+ * median([10, 2, 5, 100, 2, 1]); //=> 3.5
  */
 function median(x) {
     return +quantile(x, 0.5);
@@ -168,7 +168,7 @@ function median(x) {
  * @throws {Error} if p ix outside of the range from 0 to 1
  * @throws {Error} if x is empty
  * @ example
- * quantileSorted([3, 6, 7, 8, 8, 9, 10, 13, 15, 16, 20], 0.5); // => 9
+ * quantileSorted([3, 6, 7, 8, 8, 9, 10, 13, 15, 16, 20], 0.5); //=> 9
  */
 function quantileSorted(x, p) {
     const idx = x.length * p;
@@ -177,21 +177,21 @@ function quantileSorted(x, p) {
     } else if (p < 0 || p > 1) {
         throw new Error("quantiles must be between 0 and 1");
     } else if (p === 1) {
-        // If p is 1, directly return the last element
+        //If p is 1, directly return the last element
         return x[x.length - 1];
     } else if (p === 0) {
-        // If p is 0, directly return the first element
+        //If p is 0, directly return the first element
         return x[0];
     } else if (idx % 1 !== 0) {
-        // If p is not integer, return the next element in array
+        //If p is not integer, return the next element in array
         return x[Math.ceil(idx) - 1];
     } else if (x.length % 2 === 0) {
-        // If the list has even-length, we'll take the average of this number
-        // and the next value, if there is one
+        //If the list has even-length, we'll take the average of this number
+        //and the next value, if there is one
         return (x[idx - 1] + x[idx]) / 2;
     } else {
-        // Finally, in the simple case of an integer value
-        // with an odd-length list, return the x value at the index.
+        //Finally, in the simple case of an integer value
+        //with an odd-length list, return the x value at the index.
         return x[idx];
     }
 }
@@ -211,14 +211,14 @@ function quantileSorted(x, p) {
  * @ example
  * let arr = [65, 28, 59, 33, 21, 56, 22, 95, 50, 12, 90, 53, 28, 77, 39];
  * quickselect(arr, 8);
- * // = [39, 28, 28, 33, 21, 12, 22, 50, 53, 56, 59, 65, 90, 77, 95]
+ * //= [39, 28, 28, 33, 21, 12, 22, 50, 53, 56, 59, 65, 90, 77, 95]
  */
 function quickselect(arr, k, left, right) {
     left = left || 0;
     right = right || arr.length - 1;
     
     while (right > left) {
-        // 600 and 0.5 are arbitrary constants chosen in the original paper to minimize execution time
+        //600 and 0.5 are arbitrary constants chosen in the original paper to minimize execution time
         if (right - left > 600) {
             const n = right - left + 1;
             const m = k - left + 1;
@@ -286,18 +286,18 @@ function swap(arr, i, j) {
  * @param {Array<number> | number} p the desired quantile, as a number between 0 and 1
  * @returns {number} quantile
  * @ example
- * quantile([3, 6, 7, 8, 8, 9, 10, 13, 15, 16, 20], 0.5); // => 9
+ * quantile([3, 6, 7, 8, 8, 9, 10, 13, 15, 16, 20], 0.5); //=> 9
  */
 function quantile(x, p) {
     const copy = x.slice();
     
     if (Array.isArray(p)) {
-        // rearrange elements so that each element corresponding to a requested
-        // quantile is on a place it would be if the array was fully sorted
+        //rearrange elements so that each element corresponding to a requested
+        //quantile is on a place it would be if the array was fully sorted
         multiQuantileSelect(copy, p);
-        // Initialize the result array
+        //Initialize the result array
         let results = [];
-        // For each requested quantile
+        //For each requested quantile
         for (let i = 0; i < p.length; i++) {
             results[i] = quantileSorted(copy, p[i]);
         }
@@ -353,21 +353,21 @@ function compare(a, b) {
 function quantileIndex(len, p) {
     const idx = len * p;
     if (p === 1) {
-        // If p is 1, directly return the last index
+        //If p is 1, directly return the last index
         return len - 1;
     } else if (p === 0) {
-        // If p is 0, directly return the first index
+        //If p is 0, directly return the first index
         return 0;
     } else if (idx % 1 !== 0) {
-        // If index is not integer, return the next index in array
+        //If index is not integer, return the next index in array
         return Math.ceil(idx) - 1;
     } else if (len % 2 === 0) {
-        // If the list has even-length, we'll return the middle of two indices
-        // around quantile to indicate that we need an average value of the two
+        //If the list has even-length, we'll return the middle of two indices
+        //around quantile to indicate that we need an average value of the two
         return idx - 0.5;
     } else {
-        // Finally, in the simple case of an integer index
-        // with an odd-length list, return the index
+        //Finally, in the simple case of an integer index
+        //with an odd-length list, return the index
         return idx;
     }
 }

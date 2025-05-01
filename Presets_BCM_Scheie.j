@@ -13,7 +13,7 @@
 
 + (void) apply {
     [Settings setDefaults];
-    // general pane
+    //general pane
     [Settings setNAlternativesIndex: kNAlternativesIndex2];  [Settings setNTrials02: 10];
     [Settings setTimeoutResponseSeconds: 120]; [Settings setTimeoutDisplaySeconds: 120];
     [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
@@ -21,11 +21,11 @@
     [Settings setResults2clipboard: kResults2ClipFullHistory];
     [Settings setAuditoryFeedback4trial: kAuditoryFeedback4trialNone];
     [Settings setCalBarLengthInMM: 189];  [Settings setDistanceInCM: 100];
-    // acuity pane
+    //acuity pane
     [Settings setContrastAcuityWeber: -1E6];
     [Settings setTestOnLineByLineDistanceType: 1];  [Settings setLineByLineHeadcountIndex: 0];
     [Settings setAcuityEasyTrials: NO];
-    // gratings pane
+    //gratings pane
     [Settings setContrastEasyTrials: NO];
     [Settings setGratingObliqueOnly: YES];
     [Settings setGratingColor: YES];

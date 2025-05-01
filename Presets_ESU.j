@@ -12,10 +12,10 @@
 
 + (void) apply {
     [Presets setStandardDefaultsKeepingCalBarLength];
-    // general pane
+    //general pane
     [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
     [Settings setDistanceInCM: 150];
-    [[CPUserDefaults standardUserDefaults] setInteger: kNAlternativesIndex4 forKey: "nAlternativesIndex"]; // 4 alternatives
+    [[CPUserDefaults standardUserDefaults] setInteger: kNAlternativesIndex4 forKey: "nAlternativesIndex"]; //4 alternatives
     [Settings setNTrials04: 18];
     [Settings setTestOnFive: kTestAcuityC];
     [Settings setTimeoutResponseSeconds: 999]; [Settings setTimeoutDisplaySeconds: 999];
@@ -23,9 +23,9 @@
     [Settings setRewardPicturesWhenDone: YES];
     [Settings setDecimalMarkCharIndex: kDecimalMarkCharIndexComma];
     [Settings setResults2clipboard: kResults2ClipNone];
-    // acuity pane
+    //acuity pane
     [Settings setAcuityFormatLogMAR: NO];
-    // other
+    //other
     [Settings setTrialInfoFontSize: 24];
     //displayIncompleteRuns = true; not implemented yet
 }

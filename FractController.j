@@ -29,7 +29,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     char oldResponseKeyChar, responseKeyChar;
     float stimStrengthInThresholderUnits, stimStrengthInDeviceunits, viewWidth, viewHeight, viewWidth2, viewHeight2;
     float strokeSizeInPix, spatialFreqCPD, contrastMichelsonPercent;
-    float xEccInPix, yEccInPix; // eccentricity
+    float xEccInPix, yEccInPix; //eccentricity
     Thresholder thresholder;
     AlternativesGenerator alternativesGenerator, alternativesGeneratorEccentRandomizeX;
     TrialHistoryController trialHistoryController;
@@ -39,7 +39,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     CPString kRangeLimitDefault, kRangeLimitOk, kRangeLimitValueAtFloor, kRangeLimitValueAtCeiling, rangeLimitStatus, abortCharacter, ci95String;
     id sound @accessors;
     BOOL responseButtonsAdded, isSpecialBcmDone;
-    BOOL discardKeyEntries; // this allows flushing the event queue to discard early responses
+    BOOL discardKeyEntries; //this allows flushing the event queue to discard early responses
     CPColor colorForeUndithered, colorBackUndithered;
 }
 
@@ -67,10 +67,10 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         abortCharacter = "5";
         [gAppController setRunAborted: YES];
         [gAppController.selfWindow makeKeyAndOrderFront: self];  [gAppController.selfWindow makeFirstResponder: self];
-        //[self performSelector: @selector(runStart) withObject: nil afterDelay: 0.01];//geht nicht mehr nach DEPLOY???
+        //[self performSelector: @selector(runStart) withObject: nil afterDelay: 0.01]; //geht nicht mehr nach DEPLOY???
         [MDBDispersionEstimation initResultStatistics];  ci95String = "";
         //[self runStart];
-        // [self unittestContrastDeviceThresholdConversion];
+        //[self unittestContrastDeviceThresholdConversion];
     }
     return self;
 }
@@ -78,11 +78,11 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 - (void) runStart { //console.info("FractController>runStart");
     [self updateViewWidthHeight];
-    [gAppController copyColorsFromSettings]; // could have been overwritten
-    gStrokeMinimal = [Settings minStrokeAcuity]; // smallest possible stroke is ½pixel. Made into a Setting.
-    gStrokeMaximal = Math.min(viewHeight, viewWidth) / (5 + [Settings margin4maxOptotypeIndex]); // leave a margin of ½·index around the largest optotype
+    [gAppController copyColorsFromSettings]; //could have been overwritten
+    gStrokeMinimal = [Settings minStrokeAcuity]; //smallest possible stroke is ½pixel. Made into a Setting.
+    gStrokeMaximal = Math.min(viewHeight, viewWidth) / (5 + [Settings margin4maxOptotypeIndex]); //leave a margin of ½·index around the largest optotype
     if (!([Settings acuityFormatLogMAR] || [Settings acuityFormatDecimal] ||  [Settings acuityFormatSnellenFractionFoot])) {
-        [Settings setAcuityFormatLogMAR: YES];  [Settings setAcuityFormatDecimal: YES]; // make sure not all formats are de-selected
+        [Settings setAcuityFormatLogMAR: YES];  [Settings setAcuityFormatDecimal: YES]; //make sure not all formats are de-selected
     }
     responseButtonsAdded = NO;
     iTrial = 0;
@@ -112,13 +112,13 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (void) trialStart { //console.info("FractController>trialStart");
     discardKeyEntries = YES;
     iTrial += 1;
-    stimStrengthInThresholderUnits = [thresholder nextStim2apply];//console.info("stimStrengthInThresholderUnits ", stimStrengthInThresholderUnits);
-    [self modifyThresholderStimulus];// e.g. for bonus trials
-    stimStrengthInDeviceunits = [self stimDeviceunitsFromThresholderunits: stimStrengthInThresholderUnits];//console.info("stimStrengthInDeviceunits ", stimStrengthInDeviceunits);
-    if (iTrial > nTrials) { // testing after new stimStrength so we can use final threshold
+    stimStrengthInThresholderUnits = [thresholder nextStim2apply]; //console.info("stimStrengthInThresholderUnits ", stimStrengthInThresholderUnits);
+    [self modifyThresholderStimulus]; //e.g. for bonus trials
+    stimStrengthInDeviceunits = [self stimDeviceunitsFromThresholderunits: stimStrengthInThresholderUnits]; //console.info("stimStrengthInDeviceunits ", stimStrengthInDeviceunits);
+    if (iTrial > nTrials) { //testing after new stimStrength so we can use final threshold
         [self runEnd];  return;
     }
-    [self modifyDeviceStimulus];// e.g. let the first 4 follow DIN
+    [self modifyDeviceStimulus]; //e.g. let the first 4 follow DIN
     if (isSpecialBcmDone) return;
 
     [alternativesGenerator nextAlternative];
@@ -134,7 +134,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     timerIsi = [CPTimer scheduledTimerWithTimeInterval: tIsi / 1000 target:self selector:@selector(onTimeoutIsi:) userInfo:nil repeats:NO];
     state = kStateDrawBack; [[gAppController.selfWindow contentView] setNeedsDisplay: YES];
 }
-- (void) onTimeoutIsi: (CPTimer) timer { // now we can draw the stimulus
+- (void) onTimeoutIsi: (CPTimer) timer { //now we can draw the stimulus
     const tDisp = (gCurrentTestID == kTestBalmLight) ? ([Settings balmOnMillisecs] / 1000) : [Settings timeoutDisplaySeconds];
     timerDisplay = [CPTimer scheduledTimerWithTimeInterval: tDisp target:self selector:@selector(onTimeoutDisplay:) userInfo:nil repeats:NO];
     timerResponse = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutResponseSeconds] target:self selector:@selector(onTimeoutResponse:) userInfo:nil repeats:NO];
@@ -158,17 +158,17 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, gColorBack);
     if ([self isAcuityTAO])
-        CGContextSetFillColor(cgc, [CPColor whiteColor]); // contrast always 100% with TAO
+        CGContextSetFillColor(cgc, [CPColor whiteColor]); //contrast always 100% with TAO
     if ([self isContrastOptotype] && [Settings contrastDithering]) {
-        CGContextSetFillColor(cgc, colorBackUndithered); // else black background is briefly visible, due to dithering delay
+        CGContextSetFillColor(cgc, colorBackUndithered); //else black background is briefly visible, due to dithering delay
         CGContextFillRect(cgc, [gAppController.selfWindow frame]);
         CGContextSetFillColor(cgc, gColorBack);
     }
     CGContextFillRect(cgc, [gAppController.selfWindow frame]);
     CGContextSaveGState(cgc);
-    CGContextTranslateCTM(cgc,  viewWidth2, viewHeight2); // origin to center
-    CGContextTranslateCTM(cgc,  -xEccInPix, -yEccInPix); // eccentric if desired
-    switch ([Settings displayTransform]) { // mirroring etc.
+    CGContextTranslateCTM(cgc,  viewWidth2, viewHeight2); //origin to center
+    CGContextTranslateCTM(cgc,  -xEccInPix, -yEccInPix); //eccentric if desired
+    switch ([Settings displayTransform]) { //mirroring etc.
         case 1: CGContextScaleCTM(cgc, -1, 1);  break;
         case 2: CGContextScaleCTM(cgc, 1, -1);  break;
         case 3: CGContextScaleCTM(cgc, -1, -1);  break;
@@ -181,7 +181,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
  At this time we have to undo the transform, so that the buttons in TAO are ok
  */
 - (void) prepareDrawingTransformUndo {
-    switch ([Settings displayTransform]) { // opposite sequence than above
+    switch ([Settings displayTransform]) { //opposite sequence than above
         case 1: CGContextScaleCTM(cgc, -1, 1);  break;
         case 2: CGContextScaleCTM(cgc, 1, -1);  break;
         case 3: CGContextScaleCTM(cgc, -1, -1);  break;
@@ -195,7 +195,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
  */
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
     if ([Settings trialInfo]) {
-        CGContextSetTextPosition(cgc, 10, 10); // we assume here no transformed CGContext
+        CGContextSetTextPosition(cgc, 10, 10); //we assume here no transformed CGContext
         //CGContextSetFillColor(cgc, colOptotypeFore); would be unreadable with low contrast
         CGContextSetFillColor(cgc, [CPColor darkGrayColor]);
         CGContextSelectFont(cgc, [Settings trialInfoFontSize] + "px sans-serif");
@@ -235,7 +235,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (void) drawTouchControls {
     if ((![Settings enableTouchControls]) || (responseButtonsAdded)) return;
     let sze = 52, sze2 = sze / 2;
-    switch  (gCurrentTestID) {// kTestAcuityTAO, kTestAcuityVernier: done in instance
+    switch  (gCurrentTestID) { //kTestAcuityTAO, kTestAcuityVernier: done in instance
         case kTestAcuityLett: case kTestContrastLett:
             sze = viewWidth / ((nAlternatives+1) * 1.4 + 1);
             for (let i = 0; i < nAlternatives; i++) {
@@ -267,7 +267,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [self buttonCenteredAtX: x y: y size: size title: title keyEquivalent: title];
 }
 - (CPButton) buttonCenteredAtX: (float) x y: (float) y size: (float) size title: (CPString) title keyEquivalent: (CPString) keyEquivalent { //console.info("FractControllerAcuityE>buttonAtX…", x, y, size, title, keyEquivalent);
-    y = y + viewHeight2 // contentView is not affected by CGContextTranslateCTM, so I'm shifting y here to 0 at center
+    y = y + viewHeight2 //contentView is not affected by CGContextTranslateCTM, so I'm shifting y here to 0 at center
     const sze2 = size / 2;
     const button = [[CPButton alloc] initWithFrame: CGRectMake(x - sze2, y - sze2, size, size)];
     [button setTitle: title];  [button setKeyEquivalent: keyEquivalent];
@@ -322,7 +322,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) processKeyDownEvent { //console.info("FractController>processKeyDownEvent");
-    if (discardKeyEntries) return;//flushing the event queue to discard early responses
+    if (discardKeyEntries) return; //flushing the event queue to discard early responses
     const r = [self responseNumberFromChar: responseKeyChar];
     const ca = [alternativesGenerator currentAlternative];
     responseWasCorrect = (r == ca);
@@ -333,10 +333,10 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 
-// for a two directions/alternatives test
-// 0 & 4=valid; -1=ignore; -2=invalid
+//for a two directions/alternatives test
+//0 & 4=valid; -1=ignore; -2=invalid
 - (int) responseNumber2FromChar: (CPString) keyChar { //console.info("responseNumber2FromChar>responseNumberFromChar: ", keyChar);
-    switch (keyChar) { // 0=no light, 4=light
+    switch (keyChar) { //0=no light, 4=light
         case CPLeftArrowFunctionKey: case CPDownArrowFunctionKey:
         case "2": case "4": return 0;
         case CPRightArrowFunctionKey: case CPUpArrowFunctionKey:
@@ -345,24 +345,24 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     }
     return -2;
 }
-// for a four cardinal directions/alternatives
+//for a four cardinal directions/alternatives
 - (int) responseNumber4FromChar: (CPString) keyChar {
     //console.info("FractController>responseNumber4FromChar: ", keyChar);
     switch (keyChar) {
         case CPRightArrowFunctionKey: case "6": //→
             return 0;
-        case CPDownArrowFunctionKey: case "2": // ↓
+        case CPDownArrowFunctionKey: case "2": //↓
             return 6;
-        case CPLeftArrowFunctionKey: case "4": // ←
+        case CPLeftArrowFunctionKey: case "4": //←
             return 4;
-        case CPUpArrowFunctionKey: case "8": // ↑
+        case CPUpArrowFunctionKey: case "8": //↑
             return 2;
         case "5": return -1;
     }
     return -2;
 }
-// 8 directions/alternatives, this can be used for Landolt Cs
-// 0–8: valid; -1: ignore; -2: invalid
+//8 directions/alternatives, this can be used for Landolt Cs
+//0–8: valid; -1: ignore; -2: invalid
 - (int) responseNumber8FromChar: (CPString) keyChar { //console.info("FractController>responseNumber8FromChar: ", keyChar);
     switch (keyChar) {
         case CPLeftArrowFunctionKey: return 4;
@@ -381,9 +381,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     }
     return -2;
 }
-// 10 alternatives, this can be used for Letters
+//10 alternatives, this can be used for Letters
 - (int) responseNumber10FromChar: (CPString) keyChar { //console.info("FractController>responseNumber10FromChar: ", keyChar);
-    switch ([keyChar uppercaseString]) { // "CDHKNORSVZ"
+    switch ([keyChar uppercaseString]) { //"CDHKNORSVZ"
         case "C": return 0;
         case "D": return 1;
         case "H": return 2;
@@ -396,7 +396,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         case "Z": return 9;
         case "5": return -1;
     }
-    return -2;// -1: ignore; -2: invalid
+    return -2; //-1: ignore; -2: invalid
 }
 
 
@@ -411,12 +411,12 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (void) trialEnd { //console.info("FractController>trialEnd");
     [self invalidateTrialTimers];
 
-    CGContextSetFillColor(cgc, gColorBack); // need to clear for ISI to work
+    CGContextSetFillColor(cgc, gColorBack); //need to clear for ISI to work
     CGContextFillRect(cgc, [gAppController.selfWindow frame]);
 
-    [trialHistoryController setCorrect: responseWasCorrect]; // placed here so reached by "onTimeoutAutoResponse"
+    [trialHistoryController setCorrect: responseWasCorrect]; //placed here so reached by "onTimeoutAutoResponse"
     [thresholder enterTrialOutcomeWithAppliedStim: [self stimThresholderunitsFromDeviceunits: stimStrengthInDeviceunits] wasCorrect: responseWasCorrect];
-    switch ([Settings auditoryFeedback4trial]) { // case 0: nothing
+    switch ([Settings auditoryFeedback4trial]) { //case 0: nothing
         case kAuditoryFeedback4trialAlways:
             [sound playNumber: kSoundTrialYes];  break;
         case kAuditoryFeedback4trialOncorrect:
@@ -438,7 +438,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [gAppController.selfWindow close];
     [gAppController setRunAborted: (iTrial < nTrials)]; //premature end
     [gAppController setCurrentTestResultExportString: [self composeExportString]];
-    // delay to give the screen time to update for immediate response feedback
+    //delay to give the screen time to update for immediate response feedback
     await [Misc asyncDelaySeconds: 0.03];
     [trialHistoryController runEnded];
     [gAppController setCurrentTestResultsHistoryExportString: [trialHistoryController resultsHistoryString]];
@@ -447,12 +447,12 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     let _currentTestResultExportString = [gAppController currentTestResultExportString];
     if ([Settings showCI95] && (![gAppController runAborted])) {
         if ([self isAcuityOptotype]) {
-            // the below causes a delay of < 1 s with nSamples=10,000
+            //the below causes a delay of < 1 s with nSamples=10,000
             const historyResults = [trialHistoryController composeInfo4CI];
             const ciResults = [MDBDispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: gNSamplesCI95];
             const halfCI95 = (ciResults.CI0975 - ciResults.CI0025) / 2;
             ci95String = " ± " + [Misc stringFromNumber: halfCI95 decimals: 2 localised: YES];
-            [gAppController setResultString: [self acuityComposeResultString]]; // this will add CI95 info
+            [gAppController setResultString: [self acuityComposeResultString]]; //this will add CI95 info
             _currentTestResultExportString += tab + "halfCI95" + tab + [Misc stringFromNumber: halfCI95 decimals: 3 localised: YES];
         }
     }
@@ -512,7 +512,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) modifyThresholderStimulusWithBonus {
-    if (iTrial > nTrials) return; // don't change if done
+    if (iTrial > nTrials) return; //don't change if done
     isBonusTrial = (iTrial % 6 == 0) && (iTrial != 6);
     if (isBonusTrial) stimStrengthInThresholderUnits = Math.min(stimStrengthInThresholderUnits + 0.2, 1.0);
 }
@@ -554,7 +554,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     s += tab + "test" + tab + [Misc testNameGivenTestID: gCurrentTestID];
     return s;
 }
-// in order to not mangle parameter sequence I'm tucking this addition at the end
+//in order to not mangle parameter sequence I'm tucking this addition at the end
 - (CPString) generalComposeExportStringFinalize: (CPString) s {
     if ([Settings eccentXInDeg] != 0) {
         s += tab + "eccentricityX" + tab + [Misc stringFromNumber: [Settings eccentXInDeg] decimals: 1 localised: YES];

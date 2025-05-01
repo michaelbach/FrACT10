@@ -11,9 +11,9 @@
 
 @implementation Presets_CNS_Freiburg: CPObject
 
-+ (void) apply {//console.info("Presets_CNS_Freiburg>apply")
++ (void) apply { //console.info("Presets_CNS_Freiburg>apply")
     [Settings setDefaults];
-    // general pane
+    //general pane
     [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
     [Settings setMobileOrientation: NO];
     [Settings setResults2clipboard: kResults2ClipFinalOnly];

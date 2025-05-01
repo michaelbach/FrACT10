@@ -44,7 +44,7 @@ TrialHistoryController.j
 
 
 - (void) trialEnded { //console.info("TrialHistoryController>trialEnded");
-    if (_currentIndex > _nTrials) return;  // just for safety, should not occur
+    if (_currentIndex > _nTrials) return;  //just for safety, should not occur
     _trialHistory[_currentIndex] = {};
     _trialHistory[_currentIndex].value = value;
     _trialHistory[_currentIndex].presented = presented;
@@ -52,7 +52,7 @@ TrialHistoryController.j
     _trialHistory[_currentIndex].correct = correct;
     _trialHistory[_currentIndex].reactionTimeInMs = Math.round(-[_dateStart timeIntervalSinceNow] * 1000.0) - [Settings balmIsiMillisecs];
     _currentIndex++;
-    [self setNTotal: nTotal + 1]; // calculation for BaLM
+    [self setNTotal: nTotal + 1]; //calculation for BaLM
     if (correct) [self setNCorrect: nCorrect + 1];
     else [self setNIncorrect: nIncorrect + 1];
     _dateStart = [CPDate date];

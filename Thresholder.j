@@ -53,7 +53,7 @@ A wrapper for whatever thresholding algorithm is used (currently only BestPEST)
  Tell the algorith (1) was stimulus strength was applied, and (2) the outcome
  */
 - (void) enterTrialOutcomeWithAppliedStim: (float) appliedStim wasCorrect: (BOOL) wasCorrect {
-    appliedStim = [Misc limit01: appliedStim]; // ensure that contrast after converting to logCS is in range
+    appliedStim = [Misc limit01: appliedStim]; //ensure that contrast after converting to logCS is in range
     //console.info("Thresholder>enterTrialOutcomeWithAppliedStim", appliedStim, ", wasCorrect: ", wasCorrect);
     [currentThresholder enterTrialOutcomeWithAppliedStim: appliedStim wasCorrect: wasCorrect];
 }
