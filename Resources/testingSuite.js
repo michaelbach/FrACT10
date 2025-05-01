@@ -201,6 +201,10 @@ const testingSuite = async () => {
 	addText("TESTING SUITE STARTING\nDuration: ≈ 1 minute.\nDo not press any key until “TESTING SUITE done”.\n");
     await pauseMilliseconds(pauseViewMS);
 
+    addText(" ↓ Got to main screen first (in case we were not)");
+    response = await oneStep3Ms('settingsPane', -1, '');
+    await pauseMilliseconds(pauseViewMS);
+
 	addText(" ↓ Test fullscreen");
 	await oneStep3Ms('setFullScreen', YES, '');/* do this later, doesn't work any more ??? */
 	await pauseMilliseconds(pauseViewMS * 1.5);  /* security issue? */
