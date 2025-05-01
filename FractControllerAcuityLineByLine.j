@@ -96,11 +96,11 @@ Created by mb on 2021-12-21.
                 stringWidth = tInfo.width;
                 //lineHeight = tInfo.emHeightAscent; //+ tInfo.emHeightDescent;
             } catch(e) {}
-            CGContextShowTextAtPoint(cgc, viewWidth2 - stringWidth, -viewHeight2 + lineHeight, s);
+            CGContextShowTextAtPoint(cgc, viewWidthHalf - stringWidth, -viewHeightHalf + lineHeight, s);
             if (lineRange > 0) {
-                CGContextShowTextAtPoint(cgc, viewWidth2 - stringWidth, -viewHeight2 + 2 * lineHeight, "(middle line)");
+                CGContextShowTextAtPoint(cgc, viewWidthHalf - stringWidth, -viewHeightHalf + 2 * lineHeight, "(middle line)");
             }
-            CGContextShowTextAtPoint(cgc, -viewWidth2, -viewHeight2 + lineHeight, " Use ↑↓, ⇄");
+            CGContextShowTextAtPoint(cgc, -viewWidthHalf, -viewHeightHalf + lineHeight, " Use ↑↓, ⇄");
             break;
         default: break;
     }
@@ -109,9 +109,9 @@ Created by mb on 2021-12-21.
         const sze = 50, sze2 = sze / 2;
         /*[self buttonCenteredAtX: viewWidth-sze2 y: 0 size: sze title: "6"];
         [self buttonCenteredAtX: sze2 y: 0 size: sze title: "4"];
-        [self buttonCenteredAtX: viewWidth2 y: -viewHeight2 + sze2 size: sze title: "8"];
-        [self buttonCenteredAtX: viewWidth2 y: viewHeight2 - sze2 size: sze title: "2"];*/
-        [self buttonCenteredAtX: viewWidth - sze2 y: viewHeight2 - sze2 size: sze title: "Ø"];
+        [self buttonCenteredAtX: viewWidthHalf y: -viewHeightHalf + sze2 size: sze title: "8"];
+        [self buttonCenteredAtX: viewWidthHalf y: viewHeightHalf - sze2 size: sze title: "2"];*/
+        [self buttonCenteredAtX: viewWidth - sze2 y: viewHeightHalf - sze2 size: sze title: "Ø"];
     }
 
     CGContextRestoreGState(cgc);

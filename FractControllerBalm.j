@@ -60,14 +60,14 @@
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerBalm>drawStimulusInRect");
 
     CGContextSaveGState(cgc);
-    CGContextTranslateCTM(cgc,  viewWidth2, viewHeight2); //origin to center
-    if (viewHeight2 > extentInPix) {
-        CGContextFillRect(cgc, CGRectMake(-viewWidth2, -viewHeight2, viewWidth, viewHeight2-extentInPix));
-        CGContextFillRect(cgc, CGRectMake(-viewWidth2, extentInPix, viewWidth, viewHeight2-extentInPix));
+    CGContextTranslateCTM(cgc,  viewWidthHalf, viewHeightHalf); //origin to center
+    if (viewHeightHalf > extentInPix) {
+        CGContextFillRect(cgc, CGRectMake(-viewWidthHalf, -viewHeightHalf, viewWidth, viewHeightHalf-extentInPix));
+        CGContextFillRect(cgc, CGRectMake(-viewWidthHalf, extentInPix, viewWidth, viewHeightHalf-extentInPix));
     }
-    if (viewWidth2 > extentInPix) {
-        CGContextFillRect(cgc, CGRectMake(-viewWidth2, -extentInPix, viewWidth2-extentInPix, 2 * extentInPix));
-        CGContextFillRect(cgc, CGRectMake(extentInPix, -extentInPix, viewWidth2-extentInPix, 2 * extentInPix));
+    if (viewWidthHalf > extentInPix) {
+        CGContextFillRect(cgc, CGRectMake(-viewWidthHalf, -extentInPix, viewWidthHalf-extentInPix, 2 * extentInPix));
+        CGContextFillRect(cgc, CGRectMake(extentInPix, -extentInPix, viewWidthHalf-extentInPix, 2 * extentInPix));
     }
 
     CGContextRestoreGState(cgc);

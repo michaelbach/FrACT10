@@ -16,7 +16,7 @@
     const eccRadiusInPix = Math.sqrt(xEccInPix * xEccInPix + yEccInPix * yEccInPix);
     if ((stimStrengthInDeviceunits * 3.5) > eccRadiusInPix) return; //we don't want overlap between fixmark and optotype
     CGContextSaveGState(cgc);
-    CGContextTranslateCTM(cgc, viewWidth2, viewHeight2);
+    CGContextTranslateCTM(cgc, viewWidthHalf, viewHeightHalf);
     CGContextSetLineWidth(cgc, 1);
     CGContextSetStrokeColor(cgc, [CPColor colorWithRed: 0 green: 0 blue: 1 alpha: 0.5]);
     [optotypes strokeStarAtX: 0 y: 0 size: Math.max(stimStrengthInDeviceunits * 2.5, [MiscSpace pixelFromDegree: 1 / 6])];
@@ -36,7 +36,7 @@
     if (([Settings crowdingType] > 0) && (gCurrentTestID != kTestAcuityLineByLine) && (gCurrentTestID != kTestContrastDitherUnittest)) {
         if (gCurrentTestID != kTestAcuityVernier) { //don't do crowding with Vernier etc.
             CGContextSaveGState(cgc);
-            CGContextTranslateCTM(cgc, viewWidth2, viewHeight2); //origin to center
+            CGContextTranslateCTM(cgc, viewWidthHalf, viewHeightHalf); //origin to center
             CGContextTranslateCTM(cgc, -xEccInPix, -yEccInPix);
             const crowdingGap = [self acuityCrowdingGapFromStrokeWidth: stimStrengthInDeviceunits];
             const distance4bars = crowdingGap + (0.5 + 2.5) * stimStrengthInDeviceunits;

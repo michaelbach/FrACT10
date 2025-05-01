@@ -91,7 +91,7 @@
                     const deltaTSecs = (timeStamp - animationTimeStamp) / 1000;
                     animationTimeStamp = timeStamp;
                     motionOffset += speedInPixPerSec * deltaTSecs;
-                    if (motionOffset > viewWidth2) motionOffset -= viewWidth2;
+                    if (motionOffset > viewWidthHalf) motionOffset -= viewWidthHalf;
                     [fractView display];
                 }
             })

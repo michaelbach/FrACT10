@@ -28,7 +28,7 @@
             [sound playNumber: kSoundTrialStart];
             if ([alternativesGenerator currentAlternative] != 0) {
                 CGContextSetFillColor(cgc, gColorFore);
-                CGContextFillRect(cgc, CGRectMake(-viewWidth2, -viewHeight2, viewWidth, viewHeight));
+                CGContextFillRect(cgc, CGRectMake(-viewWidthHalf, -viewHeightHalf, viewWidth, viewHeight));
             }
             discardKeyEntries = NO; //now allow responding
             break;

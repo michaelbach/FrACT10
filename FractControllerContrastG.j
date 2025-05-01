@@ -88,7 +88,7 @@ const specialBcmStepsize = 0.1;
 
 
 - (void) gratingWithPeriodInPx: (float) periodInPx direction: (int) theDirection contrast: (float) contrast {
-    let s2 = Math.round(Math.max(viewHeight2, viewWidth2) / 2 * 1.3) * 2;
+    let s2 = Math.round(Math.max(viewHeightHalf, viewWidthHalf) / 2 * 1.3) * 2;
     const trigFactor = 1 / periodInPx * 2 * Math.PI; //calculate only once
     if (gratingShapeIndex != kGratingShapeIndexCheckerboard) {
         CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180);
@@ -155,7 +155,7 @@ const specialBcmStepsize = 0.1;
     [self prepareDrawing];
     if (!isGratingColor) {
         CGContextSetFillColor(cgc, [CPColor colorWithWhite: [MiscLight devicegrayFromLuminance: 0.5] alpha: 1]);
-        CGContextFillRect(cgc, CGRectMake(-viewWidth2, +viewHeight2, viewWidth, -viewHeight));
+        CGContextFillRect(cgc, CGRectMake(-viewWidthHalf, +viewHeightHalf, viewWidth, -viewHeight));
     }
     switch(state) {
         case kStateDrawBack: break;

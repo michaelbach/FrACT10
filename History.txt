@@ -188,7 +188,7 @@
 + 2023-08-20 linear mapping of psychometric function to grating frequency
 + 2023-08-19 add autorun to gratings, fix wrong result value for gratingAcuity
 + 2023-08-13 rename strokePolygon→fillPolygon, fix *.0 → * (all Numbers are floats)
-+ 2023-08-11 fix regression with number of choices, gratings circular mask now via clip [now default off, (bug in current Safari)], "viewWidth/2"→viewWidth2 etc.
++ 2023-08-11 fix regression with number of choices, gratings circular mask now via clip [now default off, (bug in current Safari)], "viewWidth/2"→viewWidthHalf etc.
 + 2023-08-09 gratings circular mask optional
 + 2023-08-09 increase default range for CPD, increase significant digits in results
 + 2023-08-09 add "cancel" to not-calibrated alert, change wording a little

@@ -528,7 +528,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "# This script is invoked by ⌘b and simulates \"XcodeCapp\"\n\necho Project_Target_BuildPhases_RunScript\n\n# log _every_ step in build log, no more needed\nset -x\n\n# enable access to nib2cib… (Cappuccino tools) in child shell\nexport PATH=\"$HOME/.npm/bin:$PATH\"\nexport PATH=\"/opt/homebrew/bin:$PATH\"\nexport PATH=\"/opt/homebrew/bin:$PATH\"\nexport PATH=\"/opt/homebrew/opt/node@22/bin:$PATH\"\n\n# cd to project source root\ncd $SRCROOT\n\n# now all set to run the XcodeCapp-like script\n#./_make-XcodeCappSimile.sh # old\n./_make-XcodeCapp.sh\n";
+			shellScript = "# This script is invoked by ⌘b in Xcode and calls a simplified \"XcodeCapp\" \n\necho Project_Target_BuildPhases_RunScript\n\n# log _every_ step in build log, no more needed\nset -x\n\n# enable access to Cappuccino tools (nib2cib etc.) in child shell\nexport PATH=\"$HOME/.npm/bin:$PATH\"\nexport PATH=\"/opt/homebrew/bin:$PATH\"\n# on one of my machines there's only node@22\nexport PATH=\"/opt/homebrew/opt/node@22/bin:$PATH\"\nexport PATH=\"/opt/homebrew/opt/node/bin:$PATH\"\n\n# cd to project source root\ncd $SRCROOT\n\n# now all set to run the XcodeCapp-emulating script\n./_make-XcodeCapp.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

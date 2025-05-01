@@ -27,7 +27,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     StateType state;
     BOOL isBonusTrial, responseWasCorrect, responseWasCorrectCumulative;
     char oldResponseKeyChar, responseKeyChar;
-    float stimStrengthInThresholderUnits, stimStrengthInDeviceunits, viewWidth, viewHeight, viewWidth2, viewHeight2;
+    float stimStrengthInThresholderUnits, stimStrengthInDeviceunits, viewWidth, viewHeight, viewWidthHalf, viewHeightHalf;
     float strokeSizeInPix, spatialFreqCPD, contrastMichelsonPercent;
     float xEccInPix, yEccInPix; //eccentricity
     Thresholder thresholder;
@@ -45,8 +45,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) updateViewWidthHeight {
-    viewWidth = CGRectGetWidth([gAppController.selfWindow frame]);  viewWidth2 = viewWidth / 2;
-    viewHeight = CGRectGetHeight([gAppController.selfWindow frame]);  viewHeight2 = viewHeight / 2;
+    viewWidth = CGRectGetWidth([gAppController.selfWindow frame]);  viewWidthHalf = viewWidth / 2;
+    viewHeight = CGRectGetHeight([gAppController.selfWindow frame]);  viewHeightHalf = viewHeight / 2;
 }
 
 
@@ -166,7 +166,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     }
     CGContextFillRect(cgc, [gAppController.selfWindow frame]);
     CGContextSaveGState(cgc);
-    CGContextTranslateCTM(cgc,  viewWidth2, viewHeight2); //origin to center
+    CGContextTranslateCTM(cgc,  viewWidthHalf, viewHeightHalf); //origin to center
     CGContextTranslateCTM(cgc,  -xEccInPix, -yEccInPix); //eccentric if desired
     switch ([Settings displayTransform]) { //mirroring etc.
         case 1: CGContextScaleCTM(cgc, -1, 1);  break;
@@ -186,7 +186,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         case 2: CGContextScaleCTM(cgc, 1, -1);  break;
         case 3: CGContextScaleCTM(cgc, -1, -1);  break;
     }
-    CGContextTranslateCTM(cgc,  xEccInPix, yEccInPix);  CGContextTranslateCTM(cgc,  -viewWidth2, -viewHeight2);
+    CGContextTranslateCTM(cgc,  xEccInPix, yEccInPix);  CGContextTranslateCTM(cgc,  -viewWidthHalf, -viewHeightHalf);
 }
 
 
@@ -213,8 +213,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     let checksize = [self isContrastAny] ? strokeSizeInPix : stimStrengthInDeviceunits;
     checksize = Math.ceil(checksize / 5);
     const aCheck = CGRectMake(0, 0, checksize, checksize);
-    const nx = Math.min(Math.ceil(viewWidth2 / checksize), 16 * 5);
-    const ny = Math.min(Math.ceil(viewHeight2 / checksize), 16 * 5);
+    const nx = Math.min(Math.ceil(viewWidthHalf / checksize), 16 * 5);
+    const ny = Math.min(Math.ceil(viewHeightHalf / checksize), 16 * 5);
     const _alpha = [Settings noiseContrast] / 100;
     for (let ix = -nx; ix < nx; ix++) {
         for (let iy = -ny; iy < ny; iy++) {
@@ -239,7 +239,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         case kTestAcuityLett: case kTestContrastLett:
             sze = viewWidth / ((nAlternatives+1) * 1.4 + 1);
             for (let i = 0; i < nAlternatives; i++) {
-                [self buttonCenteredAtX: (i + 0.9) * 1.4 * sze y: viewHeight2 - sze2 - 1
+                [self buttonCenteredAtX: (i + 0.9) * 1.4 * sze y: viewHeightHalf - sze2 - 1
                                    size: sze title: [@"CDHKNORSVZØ" characterAtIndex: i]];
             }
             break;
@@ -251,23 +251,23 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
                     if ((([Settings nAlternatives] == 4) && [Settings obliqueOnly])
                         || ([self isGratingAny] && [Settings gratingObliqueOnly])) iConsiderObliqueOnly++;
                     const ang = iConsiderObliqueOnly / 8 * 2 * Math.PI;
-                    [self buttonCenteredAtX: viewWidth2 + Math.cos(ang) * radius y:  Math.sin(ang) * radius size: sze title: [@"632147899" characterAtIndex: iConsiderObliqueOnly]];
+                    [self buttonCenteredAtX: viewWidthHalf + Math.cos(ang) * radius y:  Math.sin(ang) * radius size: sze title: [@"632147899" characterAtIndex: iConsiderObliqueOnly]];
                 }
             }
             break;
         case kTestAcuityE: case kTestContrastE:
             [self buttonCenteredAtX: viewWidth-sze2 y: 0 size: sze title: "6"];
             [self buttonCenteredAtX: sze2 y: 0 size: sze title: "4"];
-            [self buttonCenteredAtX: viewWidth2 y: -viewHeight2 + sze2 size: sze title: "8"];
-            [self buttonCenteredAtX: viewWidth2 y: viewHeight2 - sze2 size: sze title: "2"];
+            [self buttonCenteredAtX: viewWidthHalf y: -viewHeightHalf + sze2 size: sze title: "8"];
+            [self buttonCenteredAtX: viewWidthHalf y: viewHeightHalf - sze2 size: sze title: "2"];
     }
-    [self buttonCenteredAtX: viewWidth - sze2 - 1 y: viewHeight2 - sze2 - 1 size: sze title: "Ø"];
+    [self buttonCenteredAtX: viewWidth - sze2 - 1 y: viewHeightHalf - sze2 - 1 size: sze title: "Ø"];
 }
 - (CPButton) buttonCenteredAtX: (float) x y: (float) y size: (float) size title: (CPString) title {
     [self buttonCenteredAtX: x y: y size: size title: title keyEquivalent: title];
 }
 - (CPButton) buttonCenteredAtX: (float) x y: (float) y size: (float) size title: (CPString) title keyEquivalent: (CPString) keyEquivalent { //console.info("FractControllerAcuityE>buttonAtX…", x, y, size, title, keyEquivalent);
-    y = y + viewHeight2 //contentView is not affected by CGContextTranslateCTM, so I'm shifting y here to 0 at center
+    y = y + viewHeightHalf //contentView is not affected by CGContextTranslateCTM, so I'm shifting y here to 0 at center
     const sze2 = size / 2;
     const button = [[CPButton alloc] initWithFrame: CGRectMake(x - sze2, y - sze2, size, size)];
     [button setTitle: title];  [button setKeyEquivalent: keyEquivalent];
@@ -547,7 +547,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (CPString) generalComposeExportString { //console.info("FractController>generalComposeExportString");
     let s = "", now = [CPDate date];
     s += "Vs" + tab + gVersionOfExportFormat;
-    s += tab + "vsFrACT" + tab + gVersionDateOfFrACT;
+    s += tab + "vsFrACT" + tab + gVersionDateOfFrACT;x
     s += tab + "decimalMark" + tab + [Settings decimalMarkChar];
     s += tab + "date" + tab + [Misc date2YYYY_MM_DD: now];
     s += tab + "time" + tab + [Misc date2HH_MM_SS: now];
