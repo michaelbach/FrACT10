@@ -1,5 +1,9 @@
 #  History
 
+2025-05-01 feat: ensure we're at the main screen when starting the testing suite;
+    docs: harmonise spacing around comment slashesn (1 before, 0 after);
+    docs: rename viewWidth2 → viewWidthHalf, same for height;
+    fix: regression (inadvertantly added an "x" somwhere…)
 2025-04-30 after freeze
     Refactor: call `copyColorsFromSettings` w/o notification:
     Refactor: call `updateSoundFiles` directly w/o notification, no more need for `Misc>postDfltNotificationName`
