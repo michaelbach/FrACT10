@@ -198,7 +198,7 @@ const testingSuite = async () => {
 	window.addEventListener('message', listener4textarea);
 	let response;
 
-	addText("TESTING SUITE STARTING\nDuration: ≈ 1 minute.\nDo not press any key until “TESTING SUITE done”.\n");
+	addText("TESTING SUITE STARTING\nDuration: ≈ 2 minutes.\nDo not press any key until “TESTING SUITE done”.\n");
     await pauseMilliseconds(pauseViewMS);
 
     addText(" ↓ Got to main screen first (in case we were not)");
