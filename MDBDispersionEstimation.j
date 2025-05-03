@@ -72,11 +72,12 @@ function findMaxLlhInRange(df, r1, r2, delta) {
 function threshEstimate(df) { //console.info("threshEstimate");
     let delta = 0.5; //initial LogMAR precision for rough homing-in
     let lMarMax = findMaxLlhInRange(df, kBestLogMAR, kWorstLogMAR, delta);
-    lMarMax = findMaxLlhInRange(df, lMarMax - delta, lMarMax + delta, delta / 5); //now precise to ±0.1 LogMAR
+    delta /= 5;
+    lMarMax = findMaxLlhInRange(df, lMarMax - delta, lMarMax + delta, delta); //now precise to ±0.1 LogMAR
     delta /= 10;
-    lMarMax = findMaxLlhInRange(df, lMarMax - delta, lMarMax + delta, delta / 5); //now precise to ±0.02 LogMAR
+    lMarMax = findMaxLlhInRange(df, lMarMax - delta, lMarMax + delta, delta); //now precise to ±0.02 LogMAR
     delta /= 10;
-    lMarMax = findMaxLlhInRange(df, lMarMax - delta, lMarMax + delta, delta / 5); //now precise to ±0.004 LogMAR. Overkill??
+    lMarMax = findMaxLlhInRange(df, lMarMax - delta, lMarMax + delta, delta); //now precise to ±0.004 LogMAR. Overkill??
     return lMarMax;
 }
 
