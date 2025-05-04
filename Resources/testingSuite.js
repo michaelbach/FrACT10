@@ -199,13 +199,9 @@ const testingSuite = async () => {
 	let response;
 
 	addText("TESTING SUITE STARTING\nDuration: ≈ 2 minutes.\nDo not press any key until “TESTING SUITE done”.\n");
-    await pauseMilliseconds(pauseViewMS);
+    await pauseMilliseconds(3 * pauseViewMS);
 
-    addText(" ↓ Got to main screen first (in case we were not)");
-    response = await oneStep3Ms('settingsPane', -1, '');
-    await pauseMilliseconds(pauseViewMS);
-
-	addText(" ↓ Test fullscreen");
+	addText(" ↓ Test fullscreen (first, so not forbidden)");
 	await oneStep3Ms('setFullScreen', YES, '');/* do this later, doesn't work any more ??? */
 	await pauseMilliseconds(pauseViewMS * 1.5);  /* security issue? */
 	await oneStep3Ms('settingsPane', 0, '');
@@ -215,6 +211,11 @@ const testingSuite = async () => {
 	await oneStep3Ms('setFullScreen', NO, '');
 	addText("↑ tested fullscreen\n");
 	await pauseMilliseconds(pauseViewMS);
+
+    addText(" ↓ Got to main screen (in case we were not)");
+    response = await oneStep3Ms('settingsPane', -1, '');
+    await pauseMilliseconds(pauseViewMS);
+    addText(" ↑ Got to main screen (in case we were not)");
 
 	response = await oneStep3Ms('getVersion', '', '');
 	await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');

@@ -1,5 +1,6 @@
 #  History
 
+2025-05-04 fix: incorrect test name returen on HTML messasge "isInRun"
 2025-05-03 feat: add new domain for "simplestatistics"; refactor: "combine "/ 5" into one place
 2025-05-01 feat: ensure we're at the main screen when starting the testing suite;
     docs: harmonise spacing around comment slashesn (1 before, 0 after);

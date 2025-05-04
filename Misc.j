@@ -239,7 +239,7 @@ function _pause(ms) { //console.info("Misc>_pause");
         case kTestBalmLocation: return "BalmLocation";
         case kTestBalmMotion: return "BalmMotion";
     }
-    return "NOT ASSIGNED";
+    return "TEST NUMBER " + [self stringFromInteger: theTestID] + "NOT ASSIGNED";
 }
 
 
