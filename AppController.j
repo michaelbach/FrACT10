@@ -209,7 +209,7 @@
 
     [Misc centerWindowOrPanel: [selfWindow contentView]]; //→center
     [selfWindow orderFront: self]; //ensures that it will receive clicks w/o activating
-    [self setResultString: "→ Results to be displayed here ←"];
+    [self setResultString: "→ Result displayed here ←"];
 }
 
 

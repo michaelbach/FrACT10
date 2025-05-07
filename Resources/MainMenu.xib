@@ -2301,7 +2301,7 @@ Maximum: 5px.
                                             </connections>
                                         </button>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q2Y-AR-KXh">
-                                            <rect key="frame" x="18" y="134" width="45" height="21"/>
+                                            <rect key="frame" x="18" y="191" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Diameter of the optotype.
 
@@ -2318,7 +2318,7 @@ Maximum: 5px.
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WRa-Gy-4ku">
-                                            <rect key="frame" x="68" y="135" width="173" height="16"/>
+                                            <rect key="frame" x="68" y="192" width="173" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Optotype diameter [arcmin]" id="k8n-UU-dxq">
                                                 <font key="font" metaFont="system"/>
@@ -2354,7 +2354,7 @@ Maximum: 5px.
                                             </textFieldCell>
                                         </textField>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AQw-jE-a5x">
-                                            <rect key="frame" x="18" y="74" width="45" height="21"/>
+                                            <rect key="frame" x="18" y="131" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Best not change it…
 
@@ -2370,7 +2370,7 @@ Maximum: 5px.
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Syd-WZ-yVY">
-                                            <rect key="frame" x="68" y="75" width="288" height="16"/>
+                                            <rect key="frame" x="68" y="132" width="288" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Maximal logCSWeber (careful when changing!)" id="mUy-h3-BZW">
                                                 <font key="font" metaFont="system"/>
@@ -2493,7 +2493,7 @@ Maximum: 5px.
                                             </textFieldCell>
                                         </textField>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2jb-Fx-woN">
-                                            <rect key="frame" x="15" y="14" width="107" height="25"/>
+                                            <rect key="frame" x="15" y="71" width="107" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Automatic run, targeting this contrast sensitivity. For testing.
 
@@ -2517,7 +2517,7 @@ Maximum: 5px.
                                             </connections>
                                         </popUpButton>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nNq-xc-7ag">
-                                            <rect key="frame" x="123" y="17" width="148" height="16"/>
+                                            <rect key="frame" x="123" y="74" width="148" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Autorun to target logCS" id="sQa-Wz-SbV">
                                                 <font key="font" metaFont="system"/>
@@ -2577,20 +2577,6 @@ Maximum: 5px.
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.contrastShowFixMark" id="BgG-5U-YZz"/>
                                             </connections>
                                         </button>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TIh-uw-rMc">
-                                            <rect key="frame" x="16" y="193" width="223" height="35"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Color Bit Stealing: Invented by Chris Tyler. Borrows color bits across RGB to better approximate a target luminance. Superseded here by dithering.
-
- </string>
-                                            <buttonCell key="cell" type="check" title="Color Bit Stealing (don't use)" bezelStyle="regularSquare" imagePosition="left" inset="2" id="j1U-UL-glo">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <binding destination="izh-pU-csC" name="value" keyPath="values.contrastBitStealing" id="vzG-uK-jUa"/>
-                                            </connections>
-                                        </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6qg-wc-7SL">
                                             <rect key="frame" x="16" y="252" width="223" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -2625,6 +2611,20 @@ If you go very close or you may be able to resolve the pattern.
                                                 <outlet property="nextKeyView" destination="Q2Y-AR-KXh" id="K7w-Ng-n4l"/>
                                             </connections>
                                         </textField>
+                                        <button hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TIh-uw-rMc">
+                                            <rect key="frame" x="15" y="16" width="223" height="35"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <string key="toolTip">Color Bit Stealing: Invented by Chris Tyler. Borrows color bits across RGB to better approximate a target luminance. Superseded here by dithering.
+
+ </string>
+                                            <buttonCell key="cell" type="check" title="Color Bit Stealing (don't use)" bezelStyle="regularSquare" imagePosition="left" inset="2" id="j1U-UL-glo">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="value" keyPath="values.contrastBitStealing" id="vzG-uK-jUa"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -3241,6 +3241,7 @@ CQ
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.balmIsiMillisecs" id="m7t-QT-Oda"/>
+                                                            <outlet property="nextKeyView" destination="QBW-Sq-PH3" id="L0o-RB-Oxo"/>
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d71-is-X3r">
@@ -3273,7 +3274,7 @@ CQ
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.timeoutResponseSeconds" id="NgY-Xm-TCa"/>
-                                                            <outlet property="nextKeyView" destination="w75-A9-ahy" id="XWe-Eh-iWI"/>
+                                                            <outlet property="nextKeyView" destination="jUb-hN-mFf" id="K55-Lp-VWW"/>
                                                         </connections>
                                                     </textField>
                                                     <textField toolTip="For CALIBRATION: enter the distance between observer and screen here in CENTIMETERS." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUb-hN-mFf">
@@ -3287,7 +3288,7 @@ CQ
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.distanceInCM" id="nmn-wd-QuO"/>
                                                             <outlet property="delegate" destination="450" id="MVV-A6-aZu"/>
-                                                            <outlet property="nextKeyView" destination="aXw-Ht-RMk" id="gdR-H1-LTR"/>
+                                                            <outlet property="nextKeyView" destination="Fto-FZ-UrT" id="tTb-c2-d9w"/>
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qIF-ZF-cbG">
@@ -3310,7 +3311,7 @@ CQ
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.balmExtentInDeg" id="FZr-83-bYh"/>
                                                             <outlet property="delegate" destination="450" id="VoV-Ud-Hzs"/>
-                                                            <outlet property="nextKeyView" destination="aXw-Ht-RMk" id="kjg-Nb-9u6"/>
+                                                            <outlet property="nextKeyView" destination="5HA-mg-1iI" id="Kwj-BA-3M6"/>
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k0m-jS-Dth">
@@ -3342,6 +3343,7 @@ CQ
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.balmOnMillisecs" id="N2l-H5-HNL"/>
+                                                            <outlet property="nextKeyView" destination="W3v-OS-u47" id="qX0-H0-Ipl"/>
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a2Q-qS-fr7">
@@ -3363,7 +3365,7 @@ CQ
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.nTrials02" id="36Z-Pd-C3G"/>
-                                                            <outlet property="nextKeyView" destination="5HA-mg-1iI" id="t8n-aU-EUH"/>
+                                                            <outlet property="nextKeyView" destination="fkc-Cy-km4" id="tb3-JX-a5h"/>
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kbk-Bd-Ih7">
@@ -3413,6 +3415,7 @@ CQ
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.balmLocationDiameterInDeg" id="8MN-La-fEr"/>
+                                                            <outlet property="nextKeyView" destination="asj-L0-Qxw" id="j1N-fS-GUi"/>
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PTf-gh-Il3">
@@ -3434,6 +3437,7 @@ CQ
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.balmLocationEccentricityInDeg" id="8pH-tf-pxc"/>
+                                                            <outlet property="nextKeyView" destination="p6b-M4-8wp" id="zRy-H5-Xde"/>
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VLM-Ly-0uM">
@@ -3464,7 +3468,7 @@ CQ
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.nTrials04" id="nmj-Lc-zHd"/>
-                                                            <outlet property="nextKeyView" destination="fkc-Cy-km4" id="MUy-w1-0dg"/>
+                                                            <outlet property="nextKeyView" destination="CIa-SF-JnB" id="fvV-vd-mII"/>
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="abV-Ti-khj">
@@ -3529,7 +3533,7 @@ CQ
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.nTrials04" id="3Zd-5W-8kS"/>
-                                                            <outlet property="nextKeyView" destination="fkc-Cy-km4" id="X3N-WC-MGz"/>
+                                                            <outlet property="nextKeyView" destination="nrp-Wj-PW4" id="wUk-qb-IQY"/>
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vkn-30-3it">
@@ -3553,6 +3557,7 @@ CQ
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.balmSpeedInDegPerSec" id="M8d-rg-mLz"/>
+                                                            <outlet property="nextKeyView" destination="42W-EL-5vE" id="JF1-Dt-Zjk"/>
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lwn-U5-xYG">
@@ -3645,7 +3650,7 @@ CQ
                                                 <rect key="frame" x="4" y="5" width="231" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <button toolTip="Acuity optotypes will be overlaid with static visual noise." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aOQ-zx-dEN">
+                                                    <button toolTip="Optotypes will be overlaid with static visual noise." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aOQ-zx-dEN">
                                                         <rect key="frame" x="18" y="13" width="119" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="check" title="Embed in noise" bezelStyle="regularSquare" imagePosition="left" inset="2" id="KTZ-ku-BfR">

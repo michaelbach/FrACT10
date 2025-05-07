@@ -2,7 +2,7 @@
 //file "webAppServiceWorker.js"
 //
 
-const cacheName = "FrACT10·2025-05-04";
+const cacheName = "FrACT10·2025-05-07";
 
 
 //Fetching content using Service Worker, this is called on reload. If cache name has changed, `install` is next
