@@ -38,7 +38,7 @@
 @import "CardController.j"
 @import "AboutAndHelpController.j"
 @import "CheckingContrastController.j"
-@import "Resources/js/jspdf.umd.min.js"
+
 
 /**
  AppController
