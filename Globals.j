@@ -58,6 +58,7 @@ kAuditoryFeedback4trialNone = 0; kAuditoryFeedback4trialAlways = 1; kAuditoryFee
 
 @typedef Results2ClipChoiceType
 kResults2ClipNone = 0; kResults2ClipFinalOnly = 1; kResults2ClipFullHistory = 2;
+kResults2ClipFullHistory2PDF = 3;
 
 @typedef AutoRunIndexType
 kAutoRunIndexNone = 0; kAutoRunIndexHi = 1; kAutoRunIndexMid = 2; kAutoRunIndexLow = 3;

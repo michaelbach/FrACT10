@@ -637,7 +637,7 @@ This is useful for studies / clinical trials for standardisation across time and
                                             </textFieldCell>
                                         </textField>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FoD-Bg-sIb" customClass="MDBTextField">
-                                            <rect key="frame" x="235" y="84" width="30" height="22"/>
+                                            <rect key="frame" x="265" y="84" width="30" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Current decimal separator.
 
@@ -652,7 +652,7 @@ This is useful for studies / clinical trials for standardisation across time and
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qMH-Kz-jR5">
-                                            <rect key="frame" x="125" y="83" width="115" height="16"/>
+                                            <rect key="frame" x="155" y="83" width="115" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Decimal separator" id="aPd-Pg-2d0">
                                                 <font key="font" metaFont="system"/>
@@ -661,7 +661,7 @@ This is useful for studies / clinical trials for standardisation across time and
                                             </textFieldCell>
                                         </textField>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WCS-rL-YCa">
-                                            <rect key="frame" x="14" y="80" width="110" height="26"/>
+                                            <rect key="frame" x="14" y="80" width="141" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Depending on where you live, commor or dot.
 Especially for the export to clipboard action, it is necessary to choose the right one here, otherwise numbers etc. will not be recognised correctly by the spreadsheet. “Automatic” reads from the browser, which reads from the OS; should be correct in most cases.
@@ -682,11 +682,11 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                             </connections>
                                         </popUpButton>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YNd-5j-KRz">
-                                            <rect key="frame" x="14" y="117" width="110" height="26"/>
+                                            <rect key="frame" x="14" y="117" width="141" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">The results can be placed on the clipboard. A dialog will appear asking if ok (usually necessary for safety reasons). Then you could switch (e.g. with the task switcher) to a spreadsheet running in the background and paste the results for record keeping and statistical processing.
+                                            <string key="toolTip">The results can be placed on the clipboard or into a PDF. A dialog will appear asking if ok (usually necessary for safety reasons). Then you could switch (e.g. with the task switcher) to a spreadsheet running in the background and paste the results for record keeping and statistical processing.
  
-"Full history" keeps every single trial.
+"Full history" adds data from every single trial.
  
 </string>
                                             <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="o1v-C2-qAT" id="FXQ-q8-3FM">
@@ -697,10 +697,13 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                         <menuItem title="None" state="on" id="o1v-C2-qAT">
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
-                                                        <menuItem title="Final result only" id="8KE-db-sUg">
+                                                        <menuItem title="Final result only→Clipboard" id="8KE-db-sUg">
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
-                                                        <menuItem title="Full history" id="xfk-hv-0zr">
+                                                        <menuItem title="Full history→Clipboard" id="xfk-hv-0zr">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                        <menuItem title="Full history→PDF" toolTip="After the test, a dialog will appear asking where to place the file (works well only on Chrome/Edge)" id="5SV-XG-as4">
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
                                                     </items>
@@ -783,16 +786,16 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                             </connections>
                                         </button>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o8D-i8-6T9">
-                                            <rect key="frame" x="125" y="120" width="125" height="16"/>
+                                            <rect key="frame" x="155" y="120" width="114" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Results to clipboard" id="Emm-a5-Lui">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Export results to ?" id="Emm-a5-Lui">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                         <popUpButton toolTip="Which test to start when the key ‘5’ is pressed. This enables operation just by using the external numeric keypad." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ndc-mY-KBr">
-                                            <rect key="frame" x="14" y="155" width="110" height="26"/>
+                                            <rect key="frame" x="14" y="155" width="141" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Ydh-Um-hUv" id="4cQ-ky-Scu">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -837,7 +840,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                             </connections>
                                         </popUpButton>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LJT-Mq-fdZ">
-                                            <rect key="frame" x="125" y="158" width="107" height="16"/>
+                                            <rect key="frame" x="155" y="158" width="107" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Which test on ‘5’" id="v8V-gO-yyX">
                                                 <font key="font" metaFont="system"/>
@@ -1366,7 +1369,7 @@ Assumes full screen mode.
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PuM-ue-ids">
-                                            <rect key="frame" x="238" y="120" width="69" height="18"/>
+                                            <rect key="frame" x="261" y="120" width="69" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Export results to the clipboard WITHOUT asking. Is faster, but it's easier to forget switching to the spreadsheet to transfer the clipboard content.</string>
                                             <buttonCell key="cell" type="check" title="silently" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="acI-tj-0Pq">

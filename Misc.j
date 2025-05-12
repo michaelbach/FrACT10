@@ -137,19 +137,32 @@ function _pause(ms) { //console.info("Misc>_pause");
 }
 
 
+/**
+ ISO date/time formatters
+ */
 + (CPString) date2YYYY_MM_DD: (CPDate) theDate {
     return [CPString stringWithFormat:@"%04d-%02d-%02d", theDate.getFullYear(), theDate.getMonth() + 1, theDate.getDate()];
 }
 
 
-/**
- ISO date formatter
- */
 + (CPString) date2HH_MM_SS: (CPDate) theDate {
     return [CPString stringWithFormat:@"%02d:%02d:%02d", theDate.getHours(), theDate.getMinutes(), theDate.getSeconds()];
 }
 
 
++ (CPString) date2HH_MM: (CPDate) theDate {
+    return [CPString stringWithFormat:@"%02d:%02d", theDate.getHours(), theDate.getMinutes()];
+}
+
+
++ (CPString) date2HH__MM: (CPDate) theDate { //can't use colon in Mac filenames, so "_"
+    return [CPString stringWithFormat:@"%02d_%02d", theDate.getHours(), theDate.getMinutes()];
+}
+
+
+/**
+ string / number converters
+ */
 + (CPString) stringFromInteger: (int) num { //console.info("Misc>stringFromInteger");
     return [CPString stringWithFormat: @"%d", num];
 }
@@ -171,6 +184,19 @@ function _pause(ms) { //console.info("Misc>_pause");
     }
     //console.info("Misc>stringFromNumber ", fmt, ", ", [Settings decimalMarkChar], " ,", str);
     return str;
+}
+
+
++ (CPString) replaceEvery2ndTabWithNewlineInString: (CPString) input {
+    const parts = input.split(tab);
+    let result = '';
+    for (let i = 0; i < parts.length; i++) {
+        result += parts[i];
+        if (i < parts.length - 1) {
+            result += (i % 2 === 0) ? tab : crlf;
+        }
+    }
+    return result;
 }
 
 
@@ -212,6 +238,41 @@ function _pause(ms) { //console.info("Misc>_pause");
         alert("The page you are trying to reach is not available (in this context).");
     }
     return success;
+}
+
+
+/**
+ Helper function: Create a PDF from received text and save it, ".pdf" appended to "inFile"
+ */
++ (void) saveAsPDF: (CPString) theText inFile: (CPString) filename {
+    const doc = new jspdf.jsPDF();
+    doc.setFontSize(10);
+    doc.text(theText, 10, 10); //https://artskydj.github.io/jsPDF/docs/jsPDF.html#text
+    const blob = doc.output("blob");
+    [Misc trySaveFile: blob filename: filename + ".pdf"];
+}
+
+
+/**
+ Helper function: Save "blob" into file
+ With fallback to download if File System Access API does not exist
+ */
++ (async void) trySaveFile: (id) blob filename: (CPString) filename {
+    if ('showSaveFilePicker' in window) {
+        const handle = await window.showSaveFilePicker({
+            excludeAcceptAllOption: true,
+            suggestedName: filename,
+            types: [{description: 'PDF File', accept: {'application/pdf': ['.pdf']},}]
+        });
+        const writable = await handle.createWritable();
+        await writable.write(blob);  await writable.close();
+    } else {
+       alert("The results will be saved in a file named »" + filename + "« in your downloads folder if you allow it in the next dialog.");
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;  a.download = filename;  a.click();
+        URL.revokeObjectURL(url);
+    }
 }
 
 

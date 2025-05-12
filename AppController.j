@@ -38,6 +38,7 @@
 @import "CardController.j"
 @import "AboutAndHelpController.j"
 @import "CheckingContrastController.j"
+@import "Resources/js/jspdf.umd.min.js"
 
 /**
  AppController
@@ -344,16 +345,25 @@
     localStorage.setItem(gFilename4ResultStorage, temp);
     temp = currentTestResultsHistoryExportString.replace(/,/g, ".");
     localStorage.setItem(gFilename4ResultsHistoryStorage, temp);
-
-    if ([Settings results2clipboard] != kResults2ClipNone) {
-        if ([Settings results2clipboard] == kResults2ClipFullHistory) {
+    switch ([Settings results2clipboard]) {
+        case kResults2ClipNone: break;
+        case kResults2ClipFullHistory:
             currentTestResultExportString += currentTestResultsHistoryExportString;
-        }
-        if ([Settings results2clipboardSilent]) {
+            //purposefully "fall throught" to next:
+        case kResults2ClipFinalOnly:
             [Misc copyString2Clipboard: currentTestResultExportString];
-        } else {
-            [Misc copyString2ClipboardWithDialog: currentTestResultExportString];
-        }
+            if ([Settings results2clipboardSilent]) {
+                [Misc copyString2Clipboard: currentTestResultExportString];
+            } else {
+                [Misc copyString2ClipboardWithDialog: currentTestResultExportString];
+            }
+            break;
+        case kResults2ClipFullHistory2PDF:
+            const now = [CPDate date];
+            const filename = "FrACT_"+ [Misc date2YYYY_MM_DD: now] + "_" + [Misc date2HH__MM: now];
+            let s = [Misc replaceEvery2ndTabWithNewlineInString: currentTestResultExportString];
+            s += crlf + currentTestResultsHistoryExportString;
+            [Misc saveAsPDF: s inFile: filename];
     }
     [buttonExport setEnabled: ([currentTestResultExportString length] > 1)];
 }
