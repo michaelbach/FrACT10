@@ -97,7 +97,7 @@
     s += "Frameworks/Libraries used:<br>";
     const cappucinoVersion = [[[CPBundle bundleWithIdentifier: "com.280n.Foundation"] infoDictionary] objectForKey:@"CPBundleVersion"]; //initialised in AppController
     s += "<a href='https://michaelbach.de/ot/-misc/cappFrameworks/index.html' target='_blank'>Cappuccino " + cappucinoVersion + "</a>,&nbsp; ";
-    s += "<a href='https://simple-statistics.github.io' target='_blank'>simple-statistics</a>.<br>";
+    s += "<a href='https://simple-statistics.github.io' target='_blank'>simple-statistics</a>, <a href='https://github.com/parallax/jsPDF' target='_blank'>jsPDF</a>.<br>";
     //s += "<a href='https://nodejs.org/' target='_blank'>Node.js,</a><br>";
     //s += "<a href='https://www.electronjs.org' target='_blank'>Electron</a>, <a href='https://www.electron.build' target='_blank'>electron-builder</a>";
     s += "Some sounds from <a href='https://pixabay.com/' target='_blank'>pixabay</a>."

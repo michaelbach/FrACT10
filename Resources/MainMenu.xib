@@ -786,9 +786,9 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                             </connections>
                                         </button>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o8D-i8-6T9">
-                                            <rect key="frame" x="155" y="120" width="114" height="16"/>
+                                            <rect key="frame" x="155" y="120" width="104" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Export results to ?" id="Emm-a5-Lui">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Export results to" id="Emm-a5-Lui">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1369,7 +1369,7 @@ Assumes full screen mode.
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PuM-ue-ids">
-                                            <rect key="frame" x="261" y="120" width="69" height="18"/>
+                                            <rect key="frame" x="266" y="120" width="69" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Export results to the clipboard WITHOUT asking. Is faster, but it's easier to forget switching to the spreadsheet to transfer the clipboard content.</string>
                                             <buttonCell key="cell" type="check" title="silently" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="acI-tj-0Pq">
@@ -3779,7 +3779,7 @@ CQ
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKl-qE-MnI">
-                                            <rect key="frame" x="35" y="338" width="298" height="18"/>
+                                            <rect key="frame" x="35" y="328" width="298" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">If "Line of optotypes" is set to “Chart mode”, here you can select that all 3 lines have the same acuity grade (instead of 0.1 LogMAR difference between them).
 
@@ -3793,7 +3793,7 @@ CQ
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Woj-eV-bwS">
-                                            <rect key="frame" x="35" y="258" width="124" height="18"/>
+                                            <rect key="frame" x="35" y="238" width="124" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">For some contexts (e.g., embeddng FrACT in a larger project) the Exit button may be detrimental – so disable it here.
 
@@ -3807,7 +3807,7 @@ CQ
                                             </connections>
                                         </button>
                                         <button toolTip="For some designs, it may be advantageous to randomse target appearance to left or right." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VtB-h9-XQq">
-                                            <rect key="frame" x="35" y="298" width="224" height="18"/>
+                                            <rect key="frame" x="35" y="283" width="224" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Randomize eccentricity right/left" bezelStyle="regularSquare" imagePosition="left" inset="2" id="gcZ-p8-SZP">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3818,7 +3818,7 @@ CQ
                                             </connections>
                                         </button>
                                         <colorWell toolTip="The background color of the entire window can be selected here." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPx-4F-4Cr">
-                                            <rect key="frame" x="34" y="382" width="62" height="23"/>
+                                            <rect key="frame" x="34" y="377" width="62" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -3826,7 +3826,7 @@ CQ
                                             </connections>
                                         </colorWell>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ngk-rr-VCS">
-                                            <rect key="frame" x="102" y="384" width="83" height="16"/>
+                                            <rect key="frame" x="102" y="379" width="83" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Windowcolor" id="R1D-PV-saB">
                                                 <font key="font" metaFont="system"/>
@@ -3835,14 +3835,14 @@ CQ
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="TaC-8z-ATT">
-                                            <rect key="frame" x="34" y="32" width="239" height="180"/>
+                                            <rect key="frame" x="34" y="17" width="257" height="180"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="SHV-oL-MQO">
-                                                <rect key="frame" x="4" y="5" width="231" height="172"/>
+                                                <rect key="frame" x="4" y="5" width="249" height="172"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <popUpButton tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LG4-aN-i05">
-                                                        <rect key="frame" x="20" y="112" width="135" height="25"/>
+                                                        <rect key="frame" x="20" y="112" width="143" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Select a soundfile giving feedback on "Correct".
 
@@ -3862,7 +3862,7 @@ CQ
                                                         </connections>
                                                     </popUpButton>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yDr-o5-85R">
-                                                        <rect key="frame" x="157" y="114" width="50" height="16"/>
+                                                        <rect key="frame" x="167" y="114" width="50" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Correct" id="zUl-BP-Ho4">
                                                             <font key="font" metaFont="system"/>
@@ -3871,7 +3871,7 @@ CQ
                                                         </textFieldCell>
                                                     </textField>
                                                     <popUpButton tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mWY-c6-Jrm">
-                                                        <rect key="frame" x="20" y="67" width="135" height="25"/>
+                                                        <rect key="frame" x="20" y="67" width="143" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Select a soundfile giving feedback on "Incorrect".
 
@@ -3891,7 +3891,7 @@ CQ
                                                         </connections>
                                                     </popUpButton>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ele-Us-qcy">
-                                                        <rect key="frame" x="157" y="70" width="59" height="16"/>
+                                                        <rect key="frame" x="167" y="70" width="59" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Incorrect" id="HFc-TQ-ZXI">
                                                             <font key="font" metaFont="system"/>
@@ -3900,7 +3900,7 @@ CQ
                                                         </textFieldCell>
                                                     </textField>
                                                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0wa-1C-3dD">
-                                                        <rect key="frame" x="20" y="23" width="135" height="25"/>
+                                                        <rect key="frame" x="20" y="23" width="143" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Select a soundfile giving feedback on end of run.
 
@@ -3920,7 +3920,7 @@ CQ
                                                         </connections>
                                                     </popUpButton>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OBb-NE-cnC">
-                                                        <rect key="frame" x="157" y="26" width="67" height="16"/>
+                                                        <rect key="frame" x="167" y="26" width="67" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="End of run" id="df0-sa-HTN">
                                                             <font key="font" metaFont="system"/>
@@ -3932,7 +3932,7 @@ CQ
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oi1-uI-HB5">
-                                            <rect key="frame" x="85" y="198" width="135" height="22"/>
+                                            <rect key="frame" x="85" y="183" width="135" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Feedback Sounds" bezelStyle="round" id="NZY-ji-TCC">
                                                 <font key="font" metaFont="system"/>
