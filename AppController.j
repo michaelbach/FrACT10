@@ -195,6 +195,7 @@
     [self radioButtonsAcuityBwOrColor_action: null];
 
     [Settings setAutoRunIndex: kAutoRunIndexNone]; //make sure it's not accidentally on
+    [Settings setPatID: "-"]; //clear ID string
 
     numberFormatter = [[CPNumberFormatter alloc] init];
     [numberFormatter setNumberStyle: CPNumberFormatterDecimalStyle];
@@ -512,9 +513,8 @@
 
 
 - (IBAction) buttonDoExit_action: (id) sender { //console.info("AppController>buttonExit_action");
-    if ([Misc isFullScreen]) {
-        [Misc fullScreenOn: NO];
-    }
+    [Misc fullScreenOn: NO];
+    [Settings setPatID: "-"]; //clear ID string
     [selfWindow close];  [CPApp terminate: nil];  window.close();
 }
 

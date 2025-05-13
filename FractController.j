@@ -542,19 +542,22 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 /**
- Generic part of the export string, used by both acuity & contrast
+ Initial part of the export string, used by acuity & contrast…
  */
 - (CPString) generalComposeExportString { //console.info("FractController>generalComposeExportString");
-    let s = "", now = [CPDate date];
-    s += "Vs" + tab + gVersionOfExportFormat;
+    const now = [CPDate date];
+    let s = "vsExportFormat" + tab + gVersionOfExportFormat;
     s += tab + "vsFrACT" + tab + gVersionDateOfFrACT;
     s += tab + "decimalMark" + tab + [Settings decimalMarkChar];
+    s += tab + "ID" + tab + [Settings patID];
+    s += tab + "eyeCondition" + tab + gEyeIndex2string[[Settings eyeIndex]];
     s += tab + "date" + tab + [Misc date2YYYY_MM_DD: now];
     s += tab + "time" + tab + [Misc date2HH_MM_SS: now];
     s += tab + "test" + tab + [Misc testNameGivenTestID: gCurrentTestID];
     return s;
 }
 //in order to not mangle parameter sequence I'm tucking this addition at the end
+//to be used for optional conditions
 - (CPString) generalComposeExportStringFinalize: (CPString) s {
     if ([Settings eccentXInDeg] != 0) {
         s += tab + "eccentricityX" + tab + [Misc stringFromNumber: [Settings eccentXInDeg] decimals: 1 localised: YES];

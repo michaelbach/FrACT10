@@ -1,5 +1,6 @@
 #  History
 
+2025-05-13 feat: ad id string & eye indicator; BREAKING CHANGE: export format Vs 3.0
 2025-05-12 feat: save results into PDF, a step towards '21 CRF Part 11' compliance; doc: increase version to 2.1; fix: bad import in `AppController`
 2025-05-07 feat: misc UI improvements: add tab sequence for BaLM settings, correct a Tooltip, hide setting "Color Bit Stealing", change "Results do be displayed here" → "Result displayed here"
 2025-05-04 fix: incorrect test name returen on HTML messasge "isInRun"

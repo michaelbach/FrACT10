@@ -67,6 +67,7 @@ Created by mb on July 15, 2015.
         [self setGratingForeColor: [CPColor lightGrayColor]];
         [self setGratingBackColor: [CPColor darkGrayColor]];
         [self setPresetName: "Standard Defaults"]; //synchronise with corresponding item in Presets!
+        [self setPatID: "-"];
     }
 
     //need to check before setNAlternativesIndex 'cause oblique might force to index=0
@@ -196,6 +197,9 @@ Created by mb on July 15, 2015.
     [self setSoundTrialYesIndex: [self checkNum: [self soundTrialYesIndex] dflt: 0 min: 0 max: gSoundsTrialYes.length-1 set: set]];
     [self setSoundTrialNoIndex: [self checkNum: [self soundTrialNoIndex] dflt: 0 min: 0 max: gSoundsTrialNo.length-1 set: set]];
     [self setSoundRunEndIndex: [self checkNum: [self soundRunEndIndex] dflt: 0 min: 0 max: gSoundsRunEnd.length-1 set: set]];
+
+    [self setEyeIndex: [self checkNum: [self eyeIndex] dflt: 0 min: 0 max: 3 set: set]];
+
 
     //BaLM stuff
     [self setbalmIsiMillisecs: [self checkNum: [self balmIsiMillisecs] dflt: 1500 min: 20 max: 5000 set: set]];
@@ -1094,7 +1098,22 @@ Created by mb on July 15, 2015.
     }
 }
 
++ (CPString) patID { //console.info("Settings>patID");
+    return [[CPUserDefaults standardUserDefaults] stringForKey: "patID"];
+}
++ (void) setPatID: (CPString) val { //console.info("Settings>setPatID", val);
+    [[CPUserDefaults standardUserDefaults] setObject: val forKey: "patID"];
+}
 
++ (int) eyeIndex { //console.info("Settings>eyeIndex");
+    return [[CPUserDefaults standardUserDefaults] integerForKey: "eyeIndex"];
+}
++ (void) setEyeIndex: (int) val { //console.info("Settings>setEyeIndex", val);
+    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "eyeIndex"];
+}
+
+
+//BaLM stuff
 + (int) balmIsiMillisecs {
     return [[CPUserDefaults standardUserDefaults] integerForKey: "balmIsiMillisecs"];
 }

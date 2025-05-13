@@ -3646,6 +3646,49 @@ CQ
                                     <rect key="frame" x="10" y="33" width="760" height="493"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
+                                        <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2kB-T3-ryf">
+                                            <rect key="frame" x="37" y="433" width="120" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <string key="toolTip">Use to identify case etc., will appear in export and cleared on start and exit.
+</string>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" id="se8-Sw-8GP">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="value" keyPath="values.patID" id="0bj-pe-qqy"/>
+                                            </connections>
+                                        </textField>
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cq8-eG-eLV">
+                                            <rect key="frame" x="162" y="434" width="17" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="ID" id="Vmz-iu-UXv">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <popUpButton toolTip="Identify eye tested., will appear in export." tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gg3-Po-Zes">
+                                            <rect key="frame" x="205" y="431" width="87" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <popUpButtonCell key="cell" type="push" title="Eye NA" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="OAn-Z2-omn" id="7XS-Pc-ph4">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="message"/>
+                                                <menu key="menu" id="WRr-el-ogn">
+                                                    <items>
+                                                        <menuItem title="Eye NA" state="on" id="OAn-Z2-omn"/>
+                                                        <menuItem title="OU" id="DTs-DQ-HmG"/>
+                                                        <menuItem title="OD" id="ff0-lX-SFA"/>
+                                                        <menuItem title="OS" id="1vQ-zF-Aqg"/>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                            <connections>
+                                                <action selector="buttonSettingsTestSound_action:" target="450" id="Oky-ao-tmd"/>
+                                                <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.eyeIndex" id="VEM-kE-fSe"/>
+                                            </connections>
+                                        </popUpButton>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="P7G-M5-Pjw">
                                             <rect key="frame" x="492" y="388" width="239" height="58"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -3736,7 +3779,7 @@ CQ
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKl-qE-MnI">
-                                            <rect key="frame" x="35" y="358" width="298" height="18"/>
+                                            <rect key="frame" x="35" y="338" width="298" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">If "Line of optotypes" is set to “Chart mode”, here you can select that all 3 lines have the same acuity grade (instead of 0.1 LogMAR difference between them).
 
@@ -3750,7 +3793,7 @@ CQ
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Woj-eV-bwS">
-                                            <rect key="frame" x="35" y="268" width="124" height="18"/>
+                                            <rect key="frame" x="35" y="258" width="124" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">For some contexts (e.g., embeddng FrACT in a larger project) the Exit button may be detrimental – so disable it here.
 
@@ -3764,7 +3807,7 @@ CQ
                                             </connections>
                                         </button>
                                         <button toolTip="For some designs, it may be advantageous to randomse target appearance to left or right." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VtB-h9-XQq">
-                                            <rect key="frame" x="35" y="313" width="224" height="18"/>
+                                            <rect key="frame" x="35" y="298" width="224" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Randomize eccentricity right/left" bezelStyle="regularSquare" imagePosition="left" inset="2" id="gcZ-p8-SZP">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3775,7 +3818,7 @@ CQ
                                             </connections>
                                         </button>
                                         <colorWell toolTip="The background color of the entire window can be selected here." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPx-4F-4Cr">
-                                            <rect key="frame" x="34" y="407" width="61" height="23"/>
+                                            <rect key="frame" x="34" y="382" width="62" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -3783,7 +3826,7 @@ CQ
                                             </connections>
                                         </colorWell>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ngk-rr-VCS">
-                                            <rect key="frame" x="101" y="409" width="83" height="16"/>
+                                            <rect key="frame" x="102" y="384" width="83" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Windowcolor" id="R1D-PV-saB">
                                                 <font key="font" metaFont="system"/>

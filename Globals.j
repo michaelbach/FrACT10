@@ -17,7 +17,7 @@ Globals.j
 const bundleDict = [[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] infoDictionary];
 gVersionDateOfFrACT = [bundleDict objectForKey:@"VersionDate"];
 gVersionStringOfFract = [bundleDict objectForKey:@"VersionNumberString"]; //CPBundleVersion mangled by jake
-gVersionOfExportFormat = "5";
+gVersionOfExportFormat = "6"; //incremented 2025-05-13 after adding ID and eyeCondition
 
 gFilename4ResultStorage = "FRACT10-FINAL-RESULT-STRING";
 gFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
@@ -81,6 +81,7 @@ gSoundsTrialNo = ["whistle.mp3", "error2.mp3"];
 gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 gSoundsTrialStart = ["click02.mp3", "notify1.mp3", "notify2.mp3"];
 
+gEyeIndex2string = ["eyeNA", "OU", "OD", "OS"]; //OU = "oculus uterque" = both eyes
 
 ////global Variables
 gDefaultDistanceInCM = 399;
