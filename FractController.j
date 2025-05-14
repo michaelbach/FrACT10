@@ -129,8 +129,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             xEccInPix *= -1;
         }
     }
-    const balmTestIDs = [kTestBalmLight, kTestBalmLocation, kTestBalmMotion];
-    const tIsi = balmTestIDs.includes(gCurrentTestID) ? [Settings balmIsiMillisecs] : [Settings timeoutIsiMillisecs];
+    const tIsi = gBalmTestIDs.includes(gCurrentTestID) ? [Settings balmIsiMillisecs] : [Settings timeoutIsiMillisecs];
     timerIsi = [CPTimer scheduledTimerWithTimeInterval: tIsi / 1000 target:self selector:@selector(onTimeoutIsi:) userInfo:nil repeats:NO];
     state = kStateDrawBack; [[gAppController.selfWindow contentView] setNeedsDisplay: YES];
 }

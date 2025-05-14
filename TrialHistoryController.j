@@ -50,7 +50,8 @@ TrialHistoryController.j
     _trialHistory[_currentIndex].presented = presented;
     _trialHistory[_currentIndex].responded = responded;
     _trialHistory[_currentIndex].correct = correct;
-    _trialHistory[_currentIndex].reactionTimeInMs = Math.round(-[_dateStart timeIntervalSinceNow] * 1000.0) - [Settings balmIsiMillisecs];
+    const tIsi = gBalmTestIDs.includes(gCurrentTestID) ? [Settings balmIsiMillisecs] : [Settings timeoutIsiMillisecs];
+    _trialHistory[_currentIndex].reactionTimeInMs = Math.round(-[_dateStart timeIntervalSinceNow] * 1000.0) - tIsi;
     _currentIndex++;
     [self setNTotal: nTotal + 1]; //calculation for BaLM
     if (correct) [self setNCorrect: nCorrect + 1];
