@@ -30,7 +30,7 @@
 
 //all buttons to this action, discriminated by tag value
 - (IBAction) buttonCheckContrast_action: (id) sender { //console.info("CheckingContrastController>buttonCheckContrast_action");
-    const tag = sender ? [sender tag] : 3; //if sender==null select 10%
+    const tag = sender ? [sender tag] : 3; //if sender===null select 10%
     let contrastWeberPercent = 0;
     if ((tag > 0) && (tag <= 5))  contrastWeberPercent = [1, 3, 10, 30, 90][tag - 1];
     const contrastLogCSWeber = [MiscLight contrastLogCSWeberFromWeberPercent: contrastWeberPercent];

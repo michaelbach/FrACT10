@@ -84,7 +84,7 @@ Sound.j
 
 - (void) playSoundFromBuffer: (id) buffer { //console.info("Sound>playSoundFromBuffer");
     if (needsInitAfterUserinteraction) [self initAfterUserinteraction];
-    if (buffer == nil) return;
+    if (buffer === nil) return;
     const source = audioContext.createBufferSource();
     source.buffer = buffer;
     source.connect(volumeNode);

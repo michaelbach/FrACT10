@@ -44,11 +44,11 @@ Created by mb on July 15, 2015.
 //https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/DrawColor/Tasks/StoringNSColorInDefaults.html
 + (CPColor) colorForKey: (CPString) keyString fallbackInHex: (CPString) fallbackInHex {
     let theData = [[CPUserDefaults standardUserDefaults] stringForKey: keyString];
-    if (theData == nil) theData = fallbackInHex; //safety measure and default
+    if (theData === nil) theData = fallbackInHex; //safety measure and default
     return [CPColor colorWithHexString: theData];
 }
 + (void) setColor: (CPColor) theColor forKey: (CPString) keyString {
-    if (typeof(theColor) != "string") { //allow both hexstring (from HTML message) & CPColor
+    if (typeof(theColor) !== "string") { //allow both hexstring (from HTML message) & CPColor
         theColor = [theColor hexString];
     }
     [[CPUserDefaults standardUserDefaults] setObject: theColor forKey: keyString];
@@ -56,7 +56,7 @@ Created by mb on July 15, 2015.
 
 
 /**
- Test all settings for in-range (set==NO) or set the to defaults (set==YES)
+ Test all settings for in-range (set===NO) or set the to defaults (set===YES)
  */
 + (void) allNotCheckButSet: (BOOL) set {
     [[CPUserDefaults standardUserDefaults] synchronize];
@@ -253,7 +253,7 @@ Created by mb on July 15, 2015.
  When new defaults are added, kDateOfCurrentSettingsVersion is updated. That tells FrACT that all settings need to be defaulted.
  */
 + (BOOL) needNewDefaults {
-    return [self dateSettingsVersion] != kDateOfCurrentSettingsVersion;
+    return [self dateSettingsVersion] !== kDateOfCurrentSettingsVersion;
 }
 + (void) checkDefaults { //console.info("Settings>checkDefaults");
     if ([self needNewDefaults]) {
@@ -275,7 +275,7 @@ Created by mb on July 15, 2015.
 
 + (BOOL) isNotCalibrated {
     [self checkDefaults];
-    return (([self distanceInCM] == gDefaultDistanceInCM) || ([self calBarLengthInMM] == gDefaultCalibrationBarLengthInMM));
+    return (([self distanceInCM] === gDefaultDistanceInCM) || ([self calBarLengthInMM] === gDefaultCalibrationBarLengthInMM));
 }
 
 

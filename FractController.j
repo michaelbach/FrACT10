@@ -125,7 +125,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     xEccInPix = -[MiscSpace pixelFromDegree: [Settings eccentXInDeg]];
     yEccInPix = [MiscSpace pixelFromDegree: [Settings eccentYInDeg]]; //pos y: ↑
     if ([Settings eccentRandomizeX]) {
-        if ([alternativesGeneratorEccentRandomizeX nextAlternative] != 0)  {
+        if ([alternativesGeneratorEccentRandomizeX nextAlternative] !== 0)  {
             xEccInPix *= -1;
         }
     }
@@ -134,10 +134,10 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     state = kStateDrawBack; [[gAppController.selfWindow contentView] setNeedsDisplay: YES];
 }
 - (void) onTimeoutIsi: (CPTimer) timer { //now we can draw the stimulus
-    const tDisp = (gCurrentTestID == kTestBalmLight) ? ([Settings balmOnMillisecs] / 1000) : [Settings timeoutDisplaySeconds];
+    const tDisp = (gCurrentTestID === kTestBalmLight) ? ([Settings balmOnMillisecs] / 1000) : [Settings timeoutDisplaySeconds];
     timerDisplay = [CPTimer scheduledTimerWithTimeInterval: tDisp target:self selector:@selector(onTimeoutDisplay:) userInfo:nil repeats:NO];
     timerResponse = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutResponseSeconds] target:self selector:@selector(onTimeoutResponse:) userInfo:nil repeats:NO];
-    if ([Settings autoRunIndex] != kAutoRunIndexNone) {
+    if ([Settings autoRunIndex] !== kAutoRunIndexNone) {
         if ([self isAcuityOptotype] || [self isContrastAny] || [self isAcuityGrating]) {
             let autoTime = 0.4 + [Settings timeoutIsiMillisecs] / 1000
             if ([self isContrastAny]) {
@@ -247,7 +247,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             for (let i = 0; i < 8; i++) {
                 if ( ([Settings nAlternatives] > 4)  || (![Misc isOdd: i])) {
                     let iConsiderObliqueOnly = i;
-                    if ((([Settings nAlternatives] == 4) && [Settings obliqueOnly])
+                    if ((([Settings nAlternatives] === 4) && [Settings obliqueOnly])
                         || ([self isGratingAny] && [Settings gratingObliqueOnly])) iConsiderObliqueOnly++;
                     const ang = iConsiderObliqueOnly / 8 * 2 * Math.PI;
                     [self buttonCenteredAtX: viewWidthHalf + Math.cos(ang) * radius y:  Math.sin(ang) * radius size: sze title: [@"632147899" characterAtIndex: iConsiderObliqueOnly]];
@@ -278,7 +278,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 - (IBAction) responseButton_action: (id) sender { //console.info("FractController>responseButton_action");
     responseKeyChar = [sender keyEquivalent]; //console.info("<",responseKeyChar,">");
-    if (responseKeyChar == "Ø") [self runEnd];
+    if (responseKeyChar === "Ø") [self runEnd];
     else [super processKeyDownEvent];
 }
 
@@ -324,7 +324,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if (discardKeyEntries) return; //flushing the event queue to discard early responses
     const r = [self responseNumberFromChar: responseKeyChar];
     const ca = [alternativesGenerator currentAlternative];
-    responseWasCorrect = (r == ca);
+    responseWasCorrect = (r === ca);
     [trialHistoryController setResponded: r];
     [trialHistoryController setPresented: ca];
     [self trialEnd];
@@ -466,7 +466,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         }
     }
 
-    if (gCurrentTestID == kTestContrastG) {
+    if (gCurrentTestID === kTestContrastG) {
         _currentTestResultExportString += tab + "gratingShape" + tab + [Settings gratingShapeIndex];
     }
 
@@ -486,11 +486,11 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (void) keyDown: (CPEvent) theEvent { //console.info("FractController>keyDown");
     responseKeyChar = [[[theEvent characters] characterAtIndex: 0] uppercaseString];
     const responseKeyCode = [theEvent keyCode];
-    if ((responseKeyCode == CPEscapeKeyCode) || ((responseKeyChar == abortCharacter) && (oldResponseKeyChar == abortCharacter))) {
+    if ((responseKeyCode === CPEscapeKeyCode) || ((responseKeyChar === abortCharacter) && (oldResponseKeyChar === abortCharacter))) {
         [self runEnd];  return;
     }
     oldResponseKeyChar = responseKeyChar;
-    if (responseKeyChar != abortCharacter) [self processKeyDownEvent];
+    if (responseKeyChar !== abortCharacter) [self processKeyDownEvent];
 }
 
 
@@ -512,7 +512,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 - (void) modifyThresholderStimulusWithBonus {
     if (iTrial > nTrials) return; //don't change if done
-    isBonusTrial = (iTrial % 6 == 0) && (iTrial != 6);
+    isBonusTrial = (iTrial % 6 === 0) && (iTrial !== 6);
     if (isBonusTrial) stimStrengthInThresholderUnits = Math.min(stimStrengthInThresholderUnits + 0.2, 1.0);
 }
 
@@ -526,10 +526,10 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if (invert) {
         let sTemp = sCeil;  sCeil = sFloor;  sFloor = sTemp;
     }
-    if (rangeLimitStatus == sFloor) {
+    if (rangeLimitStatus === sFloor) {
         s += " ≥ ";
     } else {
-        if (rangeLimitStatus == sCeil) {
+        if (rangeLimitStatus === sCeil) {
             s += " ≤ ";
         } else {
             s += " ";
@@ -558,7 +558,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 //in order to not mangle parameter sequence I'm tucking this addition at the end
 //to be used for optional conditions
 - (CPString) generalComposeExportStringFinalize: (CPString) s {
-    if ([Settings eccentXInDeg] != 0) {
+    if ([Settings eccentXInDeg] !== 0) {
         s += tab + "eccentricityX" + tab + [Misc stringFromNumber: [Settings eccentXInDeg] decimals: 1 localised: YES];
     }
     return s;
@@ -575,10 +575,10 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     return [kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO].includes(gCurrentTestID);
 }
 - (BOOL) isAcuityGrating {
-    return (gCurrentTestID == kTestContrastG) && ([Settings what2sweepIndex] == 1);
+    return (gCurrentTestID === kTestContrastG) && ([Settings what2sweepIndex] === 1);
 }
 - (BOOL) isAcuityAny {
-    return ([self isAcuityOptotype] || (gCurrentTestID == kTestAcuityVernier) || [self isAcuityGrating]);
+    return ([self isAcuityOptotype] || (gCurrentTestID === kTestAcuityVernier) || [self isAcuityGrating]);
 }
 - (BOOL) isContrastG {
     return [kTestContrastG].includes(gCurrentTestID) && (![self isAcuityGrating]);
@@ -587,10 +587,10 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     return [kTestContrastLett, kTestContrastC, kTestContrastE].includes(gCurrentTestID);
 }
 - (BOOL) isContrastAny {
-    return [self isContrastOptotype] || (gCurrentTestID == kTestContrastG);
+    return [self isContrastOptotype] || (gCurrentTestID === kTestContrastG);
 }
 - (BOOL) isGratingAny {
-    return gCurrentTestID == kTestContrastG;
+    return gCurrentTestID === kTestContrastG;
 }
 
 @end

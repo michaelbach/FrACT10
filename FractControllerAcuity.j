@@ -33,8 +33,8 @@
         //console.info(_value, "\r");
     }
     [trialHistoryController setValue: _value];
-    if (([Settings crowdingType] > 0) && (gCurrentTestID != kTestAcuityLineByLine) && (gCurrentTestID != kTestContrastDitherUnittest)) {
-        if (gCurrentTestID != kTestAcuityVernier) { //don't do crowding with Vernier etc.
+    if (([Settings crowdingType] > 0) && (gCurrentTestID !== kTestAcuityLineByLine) && (gCurrentTestID !== kTestContrastDitherUnittest)) {
+        if (gCurrentTestID !== kTestAcuityVernier) { //don't do crowding with Vernier etc.
             CGContextSaveGState(cgc);
             CGContextTranslateCTM(cgc, viewWidthHalf, viewHeightHalf); //origin to center
             CGContextTranslateCTM(cgc, -xEccInPix, -yEccInPix);
@@ -53,7 +53,7 @@
                     for (let i = -1; i <= 1; i++) { //console.info(i);
                         const tempX = i * distance4optotypes;
                         CGContextTranslateCTM(cgc,  -tempX, 0);
-                        if (i != 0)  [optotypes drawLandoltWithStrokeInPx: stimStrengthInDeviceunits landoltDirection: -1];
+                        if (i !== 0)  [optotypes drawLandoltWithStrokeInPx: stimStrengthInDeviceunits landoltDirection: -1];
                         CGContextTranslateCTM(cgc,  +tempX, 0);
                     }  break;
                 case 3:    //surounding bars
@@ -76,9 +76,9 @@
                     for (let i = -2; i <= 2; i++) {
                         const tempX = i * distance4optotypes;
                         CGContextTranslateCTM(cgc, -tempX, 0);
-                        if (i != 0)  {
+                        if (i !== 0)  {
                             let directionInRow = [rowAlternatives nextAlternative];
-                            if (directionInRow == [alternativesGenerator currentAlternative])
+                            if (directionInRow === [alternativesGenerator currentAlternative])
                                 directionInRow = [rowAlternatives nextAlternative];
                             switch (gCurrentTestID) {
                                 case kTestAcuityLett:

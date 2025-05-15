@@ -105,7 +105,7 @@ Created by Bach on 14.08.2017.
                             sigma: [MiscSpace pixelFromDegree: [Settings vernierWidth] / 60.0]
                         gapHeight: [MiscSpace pixelFromDegree: [Settings vernierGap] / 60.0]
                        offsetSize: stimStrengthInDeviceunits
-                 offsetIsTopRight: [alternativesGenerator currentAlternative] != 0]
+                 offsetIsTopRight: [alternativesGenerator currentAlternative] !== 0]
             break;
         default: break;
     }

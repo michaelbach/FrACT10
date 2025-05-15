@@ -76,7 +76,7 @@ function randomiseArray(array) {
         switch(nAlternatives) {
             case 2:
                 for (i = 0; i < nAlternatives; ++i) possibleAlternatives[i] *= 4;  break;
-            case 4: //skip oblique == odd
+            case 4: //skip oblique === odd
                 for (i = 0; i < nAlternatives; ++i) possibleAlternatives[i] *= 2;  break;
             case 8:  //console.info("8 alternatives, special rare-oblique choice");
                 possibleAlternatives = [0, 2, 4, 6, 1, 3, 5, 7]; //oblique never more often then straight
@@ -84,9 +84,9 @@ function randomiseArray(array) {
             case 10: break; //letters, no action needed
             default: console.log("nAlternatives=", nAlternatives, " should never occur!"); //needs to be logged
         }
-/*        if (nAlternatives == 2) { //to discern between v and h
-            if (current_TestName != "Acuity_Vernier") { //don't do this for Vernier
-                if (Prefs.dir2.n == 2) {
+/*        if (nAlternatives === 2) { //to discern between v and h
+            if (current_TestName !== "Acuity_Vernier") { //don't do this for Vernier
+                if (Prefs.dir2.n === 2) {
                     for (i = 0; i < nAlternatives; ++i) possiblenAlternatives[i] += 2;
                 }
             }

@@ -75,7 +75,7 @@ Implementation of BestPEST
         if (p > maxP) {
             maxP = p;  p1 = i;
         }
-        if (p == maxP) {
+        if (p === maxP) {
             p2 = i;
         }
         probability[i] = p;

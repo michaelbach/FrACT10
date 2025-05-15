@@ -19,7 +19,7 @@ Created by Bach on 2020-09-02
 
 
 - (void) modifyThresholderStimulus {
-    if (iTrial == 1) //make the first more visible
+    if (iTrial === 1) //make the first more visible
         stimStrengthInThresholderUnits = Math.min(stimStrengthInThresholderUnits + 0.3, 1);
     if ([Settings contrastEasyTrials]) //don't forget bonus
         [self modifyThresholderStimulusWithBonus];
@@ -64,7 +64,7 @@ Created by Bach on 2020-09-02
 }
 - (void) drawFixMark {
     let t = [Settings contrastTimeoutFixmark] / 1000; //ms → seconds
-    if ([Settings contrastShowFixMark] && (gCurrentTestID != kTestContrastDitherUnittest)) {
+    if ([Settings contrastShowFixMark] && (gCurrentTestID !== kTestContrastDitherUnittest)) {
         [self drawFixMark2];
         timerFixMark = [CPTimer scheduledTimerWithTimeInterval: t target:self selector:@selector(onTimeoutFixMark:) userInfo:nil repeats:NO];
     } else {

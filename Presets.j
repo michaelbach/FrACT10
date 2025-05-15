@@ -61,7 +61,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
  */
 - (void) apply: (id) sender { //console.info("Presets>apply");
     const _presetIndex = [sender indexOfSelectedItem];
-    if (_presetIndex == 0) { //console.info("_presetIndex == 0");
+    if (_presetIndex === 0) { //console.info("_presetIndex === 0");
         return;
     }
     _presetName = [sender itemTitleAtIndex: _presetIndex];
@@ -72,7 +72,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     [[alert1 buttons][0] setKeyEquivalent: "y"]; //the "YES" button selected by "y"
     [[alert1 buttons][1] setKeyEquivalent: "n"]; //the "NO" button selected by "n"
     [alert1 runModalWithDidEndBlock: function(alert, returnCode) {
-        if (returnCode==1) { //alternateButton
+        if (returnCode === 1) { //alternateButton
             [self apply2withFeedbackType: kFeedbackTypeGUI];
         }
     }];
@@ -138,7 +138,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             break;
         default:
             console.log("FrACT10>Presets>unknown preset: ", _presetName);
-            if (feedbackType == kFeedbackTypeHTMLMessage) {
+            if (feedbackType === kFeedbackTypeHTMLMessage) {
                 [ControlDispatcher post2parentM1: "Settings" m2: "Preset" m3: _presetName success: NO];
             }
             return;

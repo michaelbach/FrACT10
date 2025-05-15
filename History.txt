@@ -1,4 +1,6 @@
 #  History
+
+2025-05-15 refactor: replace the evil "==" and "!=" with the "good" "===" and "!==" throughout (Douglas Crockford)
 2025-05-14 fix: reaction times had subtracted BaLM-ISI, thus all but BaLMs 1000ms to short); feat: add header to PDF record
 2025-05-13 feat: ad id string & eye indicator; BREAKING CHANGE: export format Vs 3.0
     doc: improve GUI in Misc page, add jsPDF to credits

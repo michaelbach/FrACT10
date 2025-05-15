@@ -62,7 +62,7 @@
         6: "../readResultString.html"};
     const url = tagsURLs[tag];
     if (url === undefined) return;
-    if (tag == 6) { //check if this local file exists
+    if (tag === 6) { //check if this local file exists
         if (![Misc existsUrl: url]) return;
     }
     window.open(url, "_blank");

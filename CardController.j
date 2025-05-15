@@ -54,7 +54,7 @@
 
 
 - (IBAction) buttonPlasticCardClosePanel_action: (id) sender {
-    if ([sender tag] == 1) {
+    if ([sender tag] === 1) {
         [Settings setCalBarLengthInMM: calBarLengthInMMbefore]; //undo
     }
     let t = [Settings calBarLengthInMM];

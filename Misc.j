@@ -77,7 +77,7 @@ function _pause(ms) { //console.info("Misc>_pause");
 }
 + (void) fullScreenOn: (BOOL) onOff {
     if (![self isFullScreenSupported]) return;
-    if ([self isFullScreen] == onOff) return;
+    if ([self isFullScreen] === onOff) return;
     const element = document.documentElement;
     if (onOff) {
         if (element.requestFullscreen)
@@ -179,7 +179,7 @@ function _pause(ms) { //console.info("Misc>_pause");
         str = [str substringToIndex:str.length-(str.length>0)];
     }
     if ([str hasSuffix:@"."]) str = str + "0";
-    if (locd && ([Settings decimalMarkChar] != ".")) {
+    if (locd && ([Settings decimalMarkChar] !== ".")) {
         str = [str stringByReplacingOccurrencesOfString:@"." withString:@","];
     }
     //console.info("Misc>stringFromNumber ", fmt, ", ", [Settings decimalMarkChar], " ,", str);
@@ -229,7 +229,7 @@ function _pause(ms) { //console.info("Misc>_pause");
         request.open('GET', url, NO);
         request.send(); //there will be a 'pause' here until the response to come.
         //the object request will be modified
-        success = (request.status != 404)
+        success = (request.status !== 404)
     }
     catch (e){
         console.log(e);
@@ -277,7 +277,7 @@ function _pause(ms) { //console.info("Misc>_pause");
 
 
 + (BOOL) isAcuityGratingMisc { //replication of Helper in FractController
-    return (gCurrentTestID == kTestContrastG) && ([Settings what2sweepIndex] == 1);
+    return (gCurrentTestID === kTestContrastG) && ([Settings what2sweepIndex] === 1);
 }
 + (BOOL) isContrastGMisc { //replication of Helper in FractController
     return [kTestContrastG].includes(gCurrentTestID) && (![self isAcuityGratingMisc]);
@@ -310,7 +310,7 @@ function _pause(ms) { //console.info("Misc>_pause");
 
 + (CPString) capitalizeFirstLetter: (CPString) s {
  if (s.length < 1)  return @"";
- else if (s.length == 1)  return [s capitalizedString];
+ else if (s.length === 1)  return [s capitalizedString];
  const firstChar = [[s substringToIndex: 1] uppercaseString];
  const otherChars = [s substringWithRange: CPMakeRange(1, s.length - 1)];
  return firstChar + otherChars;

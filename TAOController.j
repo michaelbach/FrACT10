@@ -42,7 +42,7 @@ TAOController.j
 
 
 - (void) imageDidLoad: (CPNotification) aNotification { //console.info("TAOController>didLoadRepresentation: ", aNotification);
-    if ([aNotification loadStatus] == CPImageLoadStatusCompleted) {
+    if ([aNotification loadStatus] === CPImageLoadStatusCompleted) {
         if (++_nTAOImagesLoaded > 9) {
             [self setNImages: _nTAOImagesLoaded];
             [_button setEnabled: YES];

@@ -55,7 +55,7 @@ Created by mb on 2021-12-21.
             for (let iLine = -lineRange; iLine <= lineRange; iLine++) {
                 const usedAlternativesArray = [];
                 let optotypeDistance = 1; //according to ETDRS
-                if ([Settings testOnLineByLineDistanceType] == 0) { //according to DIN EN ISO 8596
+                if ([Settings testOnLineByLineDistanceType] === 0) { //according to DIN EN ISO 8596
                     optotypeDistance = 0.4;
                     const localDecVA = [MiscSpace decVAfromLogMAR: localLogMAR];
                     if (localDecVA >= 0.06) optotypeDistance = 1;

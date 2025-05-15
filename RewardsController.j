@@ -70,7 +70,7 @@ kSpriteFile = "allRewardSprites.png";
 - (id) drawRandom { //console.info("RewardsController>drawRandom");
     _currentImage = [Misc iRandom: kNImages];
     //no immediate repeats
-    while (_currentImage == _oldImage)  _currentImage = [Misc iRandom: kNImages];
+    while (_currentImage === _oldImage)  _currentImage = [Misc iRandom: kNImages];
     _oldImage = _currentImage;
     //_currentImage = 0;
     [self drawImage];
@@ -80,7 +80,7 @@ kSpriteFile = "allRewardSprites.png";
 //There are 24 reward images, each 200x200 → 4800 x 200
 //The image _rewardImageStrip is a strip of sprites, it contains 24 images at 200x200 px
 - (id) drawImage { //console.info("RewardsController>drawImageI: ", _currentImage);
-    if ([_rewardImageStrip loadStatus] != CPImageLoadStatusCompleted) return;
+    if ([_rewardImageStrip loadStatus] !== CPImageLoadStatusCompleted) return;
     [_rewardView setImage: _rewardImageStrip];
     [[_rewardView superview] addSubview: _rewardView]; //so it's ordered front
 

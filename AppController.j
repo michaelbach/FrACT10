@@ -219,7 +219,7 @@
  Observe changes in the settings panel, making sure dependencies are updated
  */
 - (void) settingsDidChange: (CPNotification) aNotification { //console.info("settingsDidChange");
-    [self setHas4orientations: ([Settings nAlternatives] == 4)];
+    [self setHas4orientations: ([Settings nAlternatives] === 4)];
     [selfWindow setBackgroundColor: [self windowBackgroundColor]];
     if ([Settings minPossibleLogMAR] > 0) { //red: not good enough for normal vision
         [self setColorOfBestPossibleAcuity: [CPColor redColor]];
@@ -229,7 +229,7 @@
     [self radioButtonsAcuityBwOrColor_action: null];
     //↓ complicated to ensure the character is updated (and well visible) in the GUI
     const decimalMarkCharIndexCurrent = [Settings decimalMarkCharIndex]; //check for change
-    if (decimalMarkCharIndexCurrent != decimalMarkCharIndexPrevious) { //startup value is always null
+    if (decimalMarkCharIndexCurrent !== decimalMarkCharIndexPrevious) { //startup value is always null
         decimalMarkCharIndexPrevious = decimalMarkCharIndexCurrent; //save for next time
         [Settings setDecimalMarkChar: [Settings decimalMarkChar]]; //this updates in GUI
         [decimalMarkCharField setTextColor: [CPColor blueColor]]; //while we're here…
@@ -268,7 +268,7 @@
     [self runFractControllerTest: [aNotification object]];
 }
 - (void) runFractControllerTest: (int) testNr { //console.info("AppController>runFractController");
-    if (currentFractController != null) return; //got here by accident, already inRun?
+    if (currentFractController !== null) return; //got here by accident, already inRun?
     [sound initAfterUserinteraction];
     gCurrentTestID = testNr;
     if ([Settings isNotCalibrated]) {
@@ -298,7 +298,7 @@
     const allInfoPanels = {[kTestAcuityLett]: responseinfoPanelAcuityL, [kTestAcuityC]: responseinfoPanelAcuity8C, [kTestAcuityE]: responseinfoPanelAcuityE, [kTestAcuityTAO]: responseinfoPanelAcuityTAO, [kTestAcuityVernier]: responseinfoPanelAcuityVernier, [kTestContrastLett]: responseinfoPanelContrastLett, [kTestContrastC]: responseinfoPanelContrastC, [kTestContrastE]: responseinfoPanelContrastE, [kTestContrastG]: responseinfoPanelContrastG, [kTestAcuityLineByLine]: responseinfoPanelAcuityLineByLine};
     if ([Settings responseInfoAtStart] && (gCurrentTestID in allInfoPanels)) {
         [allInfoPanels[gCurrentTestID] makeKeyAndOrderFront: self];
-        if ((gCurrentTestID == kTestAcuityC) && ([Settings nAlternatives] == 4)) {
+        if ((gCurrentTestID === kTestAcuityC) && ([Settings nAlternatives] === 4)) {
             [responseinfoPanelAcuity4C makeKeyAndOrderFront: self];
         }
     } else {
@@ -420,8 +420,8 @@
 
 - (void) balmSwitch {
     const alert = [MDBAlert alertWithMessageText: "BaLM@FrACT₁₀" defaultButton: "Cancel" alternateButton: "❓Help" otherButton: "Motion (‘3’)" informativeTextWithFormat: "“Basic Assessment of Light, Location & Motion”\rfor ultra low vision.\r\r\r↓ Which BaLM test?"];
-    [alert addButtonWithTitle: "Location (‘2’)"]; //returnCode == 2
-    [alert addButtonWithTitle: "Light (‘1’)"]; //returnCode == 2
+    [alert addButtonWithTitle: "Location (‘2’)"]; //returnCode === 2
+    [alert addButtonWithTitle: "Light (‘1’)"]; //returnCode === 2
     [alert setDelegate: self];
     //[alert setShowsHelp: YES]; //doesn't work
     [[alert buttons][0] setKeyEquivalent: "1"]; //yes, 1/2 inverted…
@@ -458,7 +458,7 @@
  All test buttons land here, discriminated by their tag values (→Globals for `TestIDType`)
  */
 - (IBAction) buttonDoTest_action: (id) sender { //console.info("buttonDoTest_action ", [sender tag])
-    if ([sender tag] == 11) {
+    if ([sender tag] === 11) {
         [self balmSwitch];  return;
     }
     [self runFractControllerTest: [sender tag]];
@@ -521,8 +521,8 @@
 
 
 - (IBAction) radioButtonsAcuityBwOrColor_action: (id) sender {
-    if (sender != null)
-        [Settings setAcuityColor: [sender tag] == 1];
+    if (sender !== null)
+        [Settings setAcuityColor: [sender tag] === 1];
     else { //this is to preset the radio buttons
         [radioButtonAcuityBW setState: ([Settings isAcuityColor] ? CPOffState : CPOnState)];
         [radioButtonAcuityColor setState: ([Settings isAcuityColor] ? CPOnState : CPOffState)];
@@ -531,7 +531,7 @@
 
 
 - (IBAction) buttonGamma_action: (id) sender {
-    [Settings setGammaValue: [Settings gammaValue] + ([sender tag] == 1 ? 0.1 : -0.1)];
+    [Settings setGammaValue: [Settings gammaValue] + ([sender tag] === 1 ? 0.1 : -0.1)];
     [gammaView setNeedsDisplay: YES];
 }
 

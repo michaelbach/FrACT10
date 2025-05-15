@@ -22,7 +22,7 @@ const specialBcmStepsize = 0.1;
 - (void) modifyDeviceStimulus { //console.info("FractControllerContrastG>modifyDeviceStimulus");
     responseWasCorrectCumulative = responseWasCorrectCumulative && responseWasCorrect;
     if (![Settings specialBcmOn]) return;
-    if (iTrial == 1) {
+    if (iTrial === 1) {
         nTrials = 200;
         alternativesGenerator = [[AlternativesGenerator alloc] initWithNumAlternatives: 2 andNTrials: nTrials obliqueOnly: [Settings gratingObliqueOnly]];
         trialHistoryController = [[TrialHistoryController alloc] initWithNumTrials: nTrials];
@@ -90,16 +90,16 @@ const specialBcmStepsize = 0.1;
 - (void) gratingWithPeriodInPx: (float) periodInPx direction: (int) theDirection contrast: (float) contrast {
     let s2 = Math.round(Math.max(viewHeightHalf, viewWidthHalf) / 2 * 1.3) * 2;
     const trigFactor = 1 / periodInPx * 2 * Math.PI; //calculate only once
-    if (gratingShapeIndex != kGratingShapeIndexCheckerboard) {
+    if (gratingShapeIndex !== kGratingShapeIndexCheckerboard) {
         CGContextRotateCTM(cgc, -theDirection * 22.5 * Math.PI / 180);
     } else { //for checkerboard we only have oblique versus cardinal
-        if (theDirection == 4) { //cardinal: ↑ or ↓, oblique: → or ←
+        if (theDirection === 4) { //cardinal: ↑ or ↓, oblique: → or ←
             CGContextRotateCTM(cgc, -2 * 22.5 * Math.PI / 180);
         }
     }
     CGContextSetLineWidth(cgc, 1.3); //still an artifact on oblique
     let lFloat, lDiscrete, lError = 0;
-    if (gratingShapeIndex != kGratingShapeIndexCheckerboard) {
+    if (gratingShapeIndex !== kGratingShapeIndexCheckerboard) {
         for (let ix = -s2; ix <= s2; ++ix) {
             lFloat = (ix % periodInPx) * trigFactor;
             switch (gratingShapeIndex) {
@@ -202,17 +202,17 @@ const specialBcmStepsize = 0.1;
 - (void) runStart { //console.info("FractControllerContrastLett>runStart");
     gratingShapeIndex = [Settings gratingShapeIndex];
     nAlternatives = Math.min([Settings nAlternatives], 4);
-    if (gratingShapeIndex == kGratingShapeIndexCheckerboard) {
+    if (gratingShapeIndex === kGratingShapeIndexCheckerboard) {
         [Settings setNAlternativesIndex: kNAlternativesIndex2];  nAlternatives = [Settings nAlternatives];
     }
-    nTrials = nAlternatives == 4 ? [Settings nTrials04] : [Settings nTrials02];
+    nTrials = nAlternatives === 4 ? [Settings nTrials04] : [Settings nTrials02];
     [super runStart];
     [gAppController setCurrentTestResultUnit: "MichelsonPercent"];
 }
 
 
 - (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerContrastE>responseNumberFromChar: ", keyChar);
-    if (gratingShapeIndex == kGratingShapeIndexCheckerboard) {
+    if (gratingShapeIndex === kGratingShapeIndexCheckerboard) {
         //additional mappings for cardinal/oblique checkerboards
         if (["1", "3", "7", "9"].includes(keyChar)) { //oblique
             keyChar = CPRightArrowFunctionKey;
