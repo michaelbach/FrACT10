@@ -155,11 +155,11 @@
                 [currentFractController runEnd]; //because the <esc> was consumed
             }
         }
-        [Misc centerWindowOrPanel: [selfWindow contentView]];
+        selfWindow = [self window]; //this prevents origin shift for fullScreen on/off 2025-05-23
     });
-    if ([Settings autoFullScreen]) { //does not work because it needs user interaction
+    /*if ([Settings autoFullScreen]) { //does not work because it needs user interaction
         [Misc fullScreenOn: YES];
-    }
+    }*/
 
     window.addEventListener("resize", (event) => {
         [Misc centerWindowOrPanel: [selfWindow contentView]];

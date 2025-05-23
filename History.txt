@@ -1,5 +1,6 @@
 #  History
 
+2025-05-23 fix: window origin shift for fullScreen on/off; doc: `autoFullScreen` does not work because it needs user interaction
 2025-05-15 refactor: replace the evil "==" and "!=" with the "good" "===" and "!==" throughout (Douglas Crockford);
     feat: change font face to Courier and font size to 9 in PDF output since jsPDF doesn't support tab stops, more readable now
 2025-05-14 fix: reaction times had subtracted BaLM-ISI, thus all but BaLMs 1000ms to short); feat: add header to PDF record
