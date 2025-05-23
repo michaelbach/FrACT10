@@ -154,15 +154,19 @@
                 [currentFractController runEnd]; //because the <esc> was consumed
             }
         }
-        selfWindow = [self window]; //this prevents origin shift for fullScreen on/off 2025-05-23
+        if (![Misc isInRun]) { //don't do ⇙this while "inRun"
+            selfWindow = [self window]; //this prevents origin shift for fullScreen on/off
+        }
     });
     /*if ([Settings autoFullScreen]) { //does not work because it needs user interaction
         [Misc fullScreenOn: YES];
     }*/
 
     window.addEventListener("resize", (event) => {
-        selfWindow = [self window]; //this prevents origin shift for fullScreen on/off 2025-05-23b
-        [Misc centerWindowOrPanel: [selfWindow contentView]];
+        if (![Misc isInRun]) { //don't do ⇙this while "inRun"
+            selfWindow = [self window]; //this prevents origin shift for fullScreen on/off
+            [Misc centerWindowOrPanel: [selfWindow contentView]];
+        }
     });
 
     const allTestButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, bottonBalm, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];

@@ -305,6 +305,12 @@ function _pause(ms) { //console.info("Misc>_pause");
 }
 
 
++ (BOOL) isInRun {
+    if (gAppController.currentFractController === null) return NO;
+    return gAppController.currentFractController.alternativesGenerator !== null;
+}
+
+
 /* /////////////////////////////////////OLD, not in use (yet) */
 
 /*

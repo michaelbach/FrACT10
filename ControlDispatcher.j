@@ -127,7 +127,7 @@
 
 
 + (void) manageGetValue {
-    m3 = null;  const _inRun = [self _isInRun];
+    m3 = null;  const _inRun = [Misc isInRun];
     if (m2 === "isInRun") {
         const s = [Misc testNameGivenTestID: gCurrentTestID];
         [self post2parentM1: m1 m2: _inRun m3: s success: YES];
@@ -222,12 +222,6 @@
     let m3Now = [Settings performSelector: CPSelectorFromString(sName)]; //read back
     m3Now = [m3Now hexString];
     [self post2parentM1: m1 m2: m2 m3: m3Now success: m3 === m3Now];
-}
-
-
-+ (BOOL) _isInRun {
-    if (gAppController.currentFractController === null) return NO;
-    return gAppController.currentFractController.alternativesGenerator !== null;
 }
 
 
