@@ -1,6 +1,6 @@
 {
   "name": "FrACT10",
-  "version": "10.0.0",
+  "version": "10.3.0",
   "dependencies": {
     "cappuccino": "git://github.com/cappuccino/cappuccino.git"
   },

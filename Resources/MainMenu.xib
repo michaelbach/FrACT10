@@ -3132,8 +3132,17 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                     <rect key="frame" x="10" y="33" width="760" height="493"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Scd-FK-c0m" customClass="MDBLabel">
+                                            <rect key="frame" x="180" y="452" width="401" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="Basic Assessment of Light and Motion perception" allowsEditingTextAttributes="YES" id="EL1-Ix-lL6">
+                                                <font key="font" metaFont="system" size="18"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="0Po-Bx-662">
-                                            <rect key="frame" x="39" y="206" width="259" height="240"/>
+                                            <rect key="frame" x="39" y="181" width="259" height="240"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="qau-az-PJY">
                                                 <rect key="frame" x="4" y="5" width="251" height="232"/>
@@ -3235,7 +3244,7 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                             </view>
                                         </box>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="UC3-Oa-ide">
-                                            <rect key="frame" x="358" y="360" width="378" height="86"/>
+                                            <rect key="frame" x="358" y="335" width="378" height="86"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="EkW-I7-Ce4">
                                                 <rect key="frame" x="4" y="5" width="370" height="78"/>
@@ -3289,7 +3298,7 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UsG-vs-uyw">
-                                            <rect key="frame" x="501" y="432" width="93" height="22"/>
+                                            <rect key="frame" x="501" y="407" width="93" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Light" bezelStyle="round" id="8Ec-2w-HJ8">
                                                 <font key="font" metaFont="system"/>
@@ -3298,7 +3307,7 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                             </textFieldCell>
                                         </textField>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eVm-9D-urV">
-                                            <rect key="frame" x="121" y="432" width="93" height="22"/>
+                                            <rect key="frame" x="121" y="407" width="93" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="General" bezelStyle="round" id="Uef-B8-Fcg">
                                                 <font key="font" metaFont="system"/>
@@ -3307,7 +3316,7 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="zeP-uQ-AUm">
-                                            <rect key="frame" x="358" y="181" width="378" height="126"/>
+                                            <rect key="frame" x="358" y="156" width="378" height="126"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="3tf-ts-bNs">
                                                 <rect key="frame" x="4" y="5" width="370" height="118"/>
@@ -3394,7 +3403,7 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5kY-jf-Frv">
-                                            <rect key="frame" x="501" y="294" width="93" height="22"/>
+                                            <rect key="frame" x="501" y="269" width="93" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Location" bezelStyle="round" id="xAk-Cu-Ybq">
                                                 <font key="font" metaFont="system"/>
@@ -3403,7 +3412,7 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="FNj-Pk-xcF">
-                                            <rect key="frame" x="358" y="18" width="378" height="126"/>
+                                            <rect key="frame" x="358" y="-7" width="378" height="126"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="Vwd-3E-Sox">
                                                 <rect key="frame" x="4" y="5" width="370" height="118"/>
@@ -3490,7 +3499,7 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kSr-eD-mDB">
-                                            <rect key="frame" x="501" y="130" width="93" height="22"/>
+                                            <rect key="frame" x="501" y="105" width="93" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Motion" bezelStyle="round" id="eiX-XU-mkn">
                                                 <font key="font" metaFont="system"/>
@@ -3499,7 +3508,7 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="cc2-Ui-CwT">
-                                            <rect key="frame" x="39" y="45" width="259" height="98"/>
+                                            <rect key="frame" x="39" y="20" width="259" height="98"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="AWe-gj-yg5">
                                                 <rect key="frame" x="4" y="5" width="251" height="90"/>
@@ -3535,7 +3544,7 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Ee-dm-14a">
-                                            <rect key="frame" x="126" y="129" width="83" height="22"/>
+                                            <rect key="frame" x="126" y="104" width="83" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Sound" bezelStyle="round" id="s4t-cP-a8Z">
                                                 <font key="font" metaFont="system"/>
@@ -3551,17 +3560,17 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                     <rect key="frame" x="10" y="33" width="760" height="493"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VKN-D1-Q8l">
-                                            <rect key="frame" x="327" y="453" width="149" height="16"/>
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VKN-D1-Q8l" customClass="MDBLabel">
+                                            <rect key="frame" x="295" y="452" width="169" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="GAMMA CALIBRATION" allowsEditingTextAttributes="YES" id="eWs-5N-fLc">
-                                                <font key="font" metaFont="systemBold"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="Gamma Calibration" id="eWs-5N-fLc">
+                                                <font key="font" metaFont="system" size="18"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                         <button toolTip="Increase the gamma value a little. This makes the background a bit brighter." tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VFX-B5-9gh" userLabel="–">
-                                            <rect key="frame" x="464" y="391" width="46" height="23"/>
+                                            <rect key="frame" x="464" y="376" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="roundTextured" title="+" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="j1S-Qo-P56" userLabel="–">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -3572,7 +3581,7 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                             </buttonCell>
                                         </button>
                                         <button toolTip="Decrease the gamma value a little. This makes the background a bit darker." tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HgA-UX-e3C" userLabel="+">
-                                            <rect key="frame" x="464" y="325" width="46" height="23"/>
+                                            <rect key="frame" x="464" y="310" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="roundTextured" title="–" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ooH-5B-x6e" userLabel="+">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -3583,11 +3592,11 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                             </connections>
                                         </button>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c7s-eX-XEN" customClass="GammaView">
-                                            <rect key="frame" x="32" y="16" width="400" height="400"/>
+                                            <rect key="frame" x="32" y="1" width="400" height="400"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </customView>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jv4-5m-hDh">
-                                            <rect key="frame" x="465" y="360" width="45" height="21"/>
+                                            <rect key="frame" x="465" y="345" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Gamma value to correct for display non-linearity.
 
@@ -3604,7 +3613,7 @@ Change it with the ± buttons.</string>
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OxX-bl-ne7">
-                                            <rect key="frame" x="518" y="361" width="86" height="16"/>
+                                            <rect key="frame" x="518" y="346" width="86" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Gamma value" id="H7x-as-Tvc">
                                                 <font key="font" metaFont="system"/>
@@ -3613,7 +3622,7 @@ Change it with the ± buttons.</string>
                                             </textFieldCell>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvn-96-GfO">
-                                            <rect key="frame" x="463" y="61" width="283" height="176"/>
+                                            <rect key="frame" x="463" y="46" width="283" height="176"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" id="Ro8-W4-H2N">
                                                 <font key="font" metaFont="system"/>
@@ -3630,7 +3639,7 @@ CQ
                                             </textFieldCell>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uVS-tP-dD5">
-                                            <rect key="frame" x="114" y="434" width="546" height="16"/>
+                                            <rect key="frame" x="114" y="419" width="546" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Necessary to “linearise” your display, a prerequisite for correct contrast threshold results." id="5Nq-fM-LSJ">
                                                 <font key="font" metaFont="system"/>
