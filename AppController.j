@@ -121,7 +121,6 @@
  Our main initialisation begins here
  */
 - (id) init { //console.info("AppController>init");
-    'use strict';
     gAppController = self; //so others can reference via global variable
     settingsNeededNewDefaults = [Settings needNewDefaults];
     [Settings checkDefaults]; //important to do this very early, before nib loading, otherwise the updates don't populate the settings panel
@@ -162,6 +161,7 @@
     }*/
 
     window.addEventListener("resize", (event) => {
+        selfWindow = [self window]; //this prevents origin shift for fullScreen on/off 2025-05-23b
         [Misc centerWindowOrPanel: [selfWindow contentView]];
     });
 
