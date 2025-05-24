@@ -27,8 +27,8 @@
     [Settings setAcuityEasyTrials: NO];
     //gratings pane
     [Settings setContrastEasyTrials: NO];
-    [Settings setGratingObliqueOnly: YES];
-    [Settings setGratingColor: YES];
+    [Settings setIsGratingObliqueOnly: YES];
+    [Settings setIsGratingColor: YES];
     [Settings setGratingForeColor: [CPColor colorWithRed: 255 green: 0 blue: 255 alpha: 1]];
     [Settings setGratingBackColor: [CPColor colorWithRed: 0 green: 0 blue: 255 alpha: 1]];
     [Settings setWhat2sweepIndex: 1];

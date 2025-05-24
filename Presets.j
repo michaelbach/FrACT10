@@ -105,17 +105,17 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             break;
         case "DemoBaLM": //easier testing
             [self applyTestingPresets];  [Settings setNTrials02: 4];  [Settings setNTrials04: 4];
-            [Settings setDistanceInCM: 29];  [Settings setbalmIsiMillisecs: 500];
+            [Settings setDistanceInCM: 29];  [Settings setBalmIsiMillisecs: 500];
             break;
         case "BaLM₁₀": //easier testing
             [Settings setDefaults];
             [Settings setTimeoutResponseSeconds: 2];
             [Settings setNTrials02: 24];  [Settings setNTrials04: 24];
-            [Settings setDistanceInCM: 57];  [Settings setbalmIsiMillisecs: 500];
+            [Settings setDistanceInCM: 57];  [Settings setBalmIsiMillisecs: 500];
             break;
         case "Color Equiluminance": //near equiluminant color acuity
             [self applyTestingPresets];
-            [Settings setAcuityColor: YES];
+            [Settings setIsAcuityColor: YES];
             [Settings setAcuityForeColor: [CPColor redColor]];
             [Settings setAcuityBackColor: [CPColor colorWithRed: 0 green: 0.70 blue: 0 alpha: 1]]; //dark green, near equiluminant to red
             [gAppController copyColorsFromSettings];

@@ -210,10 +210,10 @@
 
 + (void) setColorSettingNamed: (CPString) sName { //console.info("setSettingNamed: ", sName);
     if (["acuityForeColor", "acuityBackColor"].includes(m2)) {
-        [Settings setAcuityColor: YES];
+        [Settings setIsAcuityColor: YES];
     }
     if (["gratingForeColor", "gratingBackColor"].includes(m2)) {
-        [Settings setGratingColor: YES];
+        [Settings setISGratingColor: YES];
     }
     const sNameCapped = sName.charAt(0).toUpperCase() + sName.slice(1);
     let setter = CPSelectorFromString("set" + sNameCapped + ":");

@@ -526,7 +526,7 @@
 
 - (IBAction) radioButtonsAcuityBwOrColor_action: (id) sender {
     if (sender !== null)
-        [Settings setAcuityColor: [sender tag] === 1];
+        [Settings setIsAcuityColor: [sender tag] === 1];
     else { //this is to preset the radio buttons
         [radioButtonAcuityBW setState: ([Settings isAcuityColor] ? CPOffState : CPOnState)];
         [radioButtonAcuityColor setState: ([Settings isAcuityColor] ? CPOnState : CPOffState)];
