@@ -193,7 +193,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
  Draw the trial info (top left) after everything else has been drawn
  */
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
-    if ([Settings trialInfo]) {
+    if ([Settings showTrialInfo]) {
         CGContextSetTextPosition(cgc, 10, 10); //we assume here no transformed CGContext
         //CGContextSetFillColor(cgc, colOptotypeFore); would be unreadable with low contrast
         CGContextSetFillColor(cgc, [CPColor darkGrayColor]);
@@ -247,7 +247,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             for (let i = 0; i < 8; i++) {
                 if ( ([Settings nAlternatives] > 4)  || (![Misc isOdd: i])) {
                     let iConsiderObliqueOnly = i;
-                    if ((([Settings nAlternatives] === 4) && [Settings obliqueOnly])
+                    if ((([Settings nAlternatives] === 4) && [Settings isLandoltObliqueOnly])
                         || ([self isGratingAny] && [Settings isGratingObliqueOnly])) iConsiderObliqueOnly++;
                     const ang = iConsiderObliqueOnly / 8 * 2 * Math.PI;
                     [self buttonCenteredAtX: viewWidthHalf + Math.cos(ang) * radius y:  Math.sin(ang) * radius size: sze title: [@"632147899" characterAtIndex: iConsiderObliqueOnly]];

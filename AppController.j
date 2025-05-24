@@ -409,7 +409,8 @@
             if (sto5 > 0) [self runFractControllerTest: sto5];
             break;
         case "R":
-            [Settings toggleAutoRunIndex];  break;
+            [Settings setAutoRunIndex: [Settings autoRunIndex] === kAutoRunIndexNone ? kAutoRunIndexMid : kAutoRunIndexNone];
+            break;
         case "B":
             [self balmSwitch];  break;
         default:

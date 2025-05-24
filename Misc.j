@@ -25,7 +25,7 @@ Misc.j
  Turn on CPLog and set to common use settings
  */
 + (void) CPLogSetup {
-    CPLogRegister(CPLogConsole); // CPLogPopup / CPLogDefault
+    CPLogRegister(CPLogConsole); //CPLogPopup / CPLogDefault
 }
 
 

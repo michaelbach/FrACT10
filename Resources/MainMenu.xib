@@ -781,7 +781,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <binding destination="izh-pU-csC" name="value" keyPath="values.trialInfo" id="iUa-M6-Xfk"/>
+                                                <binding destination="izh-pU-csC" name="value" keyPath="values.showTrialInfo" id="pgr-UZ-fHG"/>
                                                 <outlet property="nextKeyView" destination="WCS-rL-YCa" id="bZD-iF-Bwa"/>
                                             </connections>
                                         </button>
@@ -1065,12 +1065,12 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                                         </textFieldCell>
                                                     </textField>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cEj-Jr-YXR">
-                                                        <rect key="frame" x="305" y="48" width="102" height="18"/>
+                                                        <rect key="frame" x="305" y="48" width="117" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Applies only to Landolt Cs with 4 orientations.
 
 The response keys are NOT updated (yet) by can be guessed :).</string>
-                                                        <buttonCell key="cell" type="check" title="Oblique only" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ybg-Vb-Abm">
+                                                        <buttonCell key="cell" type="check" title="L. Oblique only" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ybg-Vb-Abm">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -1081,7 +1081,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                                     <string key="NSValueTransformerName">NSNegateBoolean</string>
                                                                 </dictionary>
                                                             </binding>
-                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.obliqueOnly" id="jS1-rY-bmJ"/>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.isLandoltObliqueOnly" id="GFe-pW-6Ie"/>
                                                             <outlet property="nextKeyView" destination="WCS-rL-YCa" id="N5k-qV-WAC"/>
                                                         </connections>
                                                     </button>
@@ -2699,6 +2699,20 @@ If you go very close or you may be able to resolve the pattern.
                                                 <outlet property="nextKeyView" destination="LmQ-Fz-Lv8" id="13t-db-3tX"/>
                                             </connections>
                                         </textField>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZzJ-Vk-cFB">
+                                            <rect key="frame" x="30" y="338" width="162" height="35"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <string key="toolTip">lets a blue star appear before grating; otherwise unclear if something has happened at all.
+
+</string>
+                                            <buttonCell key="cell" type="check" title="Show fixation mark " bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Ls9-Nh-jv8">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="value" keyPath="values.contrastShowFixMark" id="ezW-l6-uXg"/>
+                                            </connections>
+                                        </button>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hZM-uL-nCM" customClass="MDBLabel">
                                             <rect key="frame" x="244" y="346" width="88" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -2714,39 +2728,32 @@ If you go very close or you may be able to resolve the pattern.
                                                 <binding destination="izh-pU-csC" name="enabled" keyPath="values.contrastShowFixMark" id="NUy-jG-jpY"/>
                                             </connections>
                                         </textField>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZzJ-Vk-cFB">
-                                            <rect key="frame" x="30" y="338" width="162" height="35"/>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PTu-3U-QD8">
+                                            <rect key="frame" x="30" y="301" width="109" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">lets a blue star appear before grating; otherwise unclear if something has happened at all.
+                                            <string key="toolTip">Grating only within a circular range.
 
 </string>
-                                            <buttonCell key="cell" type="check" title="Show fixation mark " bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Ls9-Nh-jv8">
+                                            <buttonCell key="cell" type="check" title="Circular mask" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="cKH-mc-mUi">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <binding destination="izh-pU-csC" name="value" keyPath="values.contrastShowFixMark" id="ezW-l6-uXg"/>
+                                                <binding destination="izh-pU-csC" name="value" keyPath="values.isGratingMasked" id="jkc-Jy-5sm"/>
                                             </connections>
                                         </button>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fbu-h6-ePZ">
-                                            <rect key="frame" x="30" y="250" width="162" height="35"/>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sBG-fk-AX4">
+                                            <rect key="frame" x="30" y="250" width="102" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Only allows oblique, not hor/vertical gratings. Only works if you also set the number of orientations to 2 (right next to this). </string>
-                                            <buttonCell key="cell" type="check" title="Oblique only" bezelStyle="regularSquare" imagePosition="left" inset="2" id="KpO-hF-P4I">
+                                            <buttonCell key="cell" type="check" title="Oblique only" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="gff-bk-EHN">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
-                                                <connections>
-                                                    <binding destination="izh-pU-csC" name="value" keyPath="values.gratingObliqueOnly" id="waa-nl-oV1"/>
-                                                </connections>
                                             </buttonCell>
                                             <connections>
-                                                <binding destination="izh-pU-csC" name="value" keyPath="values.contrastShowFixMark" id="pEN-TQ-aTW"/>
+                                                <binding destination="izh-pU-csC" name="value" keyPath="values.isGratingObliqueOnly" id="koF-ya-Mt0"/>
                                             </connections>
                                         </button>
-                                        <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="itu-xS-0Lk">
-                                            <rect key="frame" x="24" y="228" width="696" height="5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LmQ-Fz-Lv8">
                                             <rect key="frame" x="193" y="301" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -2780,6 +2787,10 @@ If you go very close or you may be able to resolve the pattern.
                                                 <binding destination="izh-pU-csC" name="enabled" keyPath="values.isGratingMasked" id="UEv-BE-kK7"/>
                                             </connections>
                                         </textField>
+                                        <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="itu-xS-0Lk">
+                                            <rect key="frame" x="24" y="228" width="696" height="5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        </box>
                                         <button toolTip="If checked, very low contrast gratings are better defined by using &quot;error diffusion&quot;, akin to dithering." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YfI-9f-dKI">
                                             <rect key="frame" x="191" y="395" width="140" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -3034,22 +3045,8 @@ If you go very close or you may be able to resolve the pattern.
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.isGratingColor" id="JLF-w2-Bke"/>
                                             </connections>
                                         </button>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PTu-3U-QD8">
-                                            <rect key="frame" x="30" y="301" width="109" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Grating only within a circular range.
-
-</string>
-                                            <buttonCell key="cell" type="check" title="Circular mask" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="cKH-mc-mUi">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <binding destination="izh-pU-csC" name="value" keyPath="values.isGratingMasked" id="jkc-Jy-5sm"/>
-                                            </connections>
-                                        </button>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ED5-xZ-XLE">
-                                            <rect key="frame" x="190" y="253" width="54" height="26"/>
+                                            <rect key="frame" x="190" y="248" width="54" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes (TAO).  For Landolt Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.
 
@@ -3071,7 +3068,7 @@ For gratings: 2 or 4.
                                             </connections>
                                         </popUpButton>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mcv-EH-86K">
-                                            <rect key="frame" x="246" y="256" width="104" height="16"/>
+                                            <rect key="frame" x="246" y="251" width="104" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Some optotypes have a fixed number of choices, or variants: Always 10 for Sloan Letters and Auckland Optotypes (TAO); Vernier 2.
 For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.

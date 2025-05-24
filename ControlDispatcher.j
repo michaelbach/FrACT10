@@ -110,7 +110,7 @@
     if ((m2 === "preset") || (m2 === "Preset")) {
         [self _notify: "applyPresetNamed" object: m3];  return;
     }
-    const allowedBoolSettings = ["isGratingObliqueOnly", "responseInfoAtStart", "enableTouchControls", "eccentShowCenterFixMark", "eccentRandomizeX", "autoFullScreen", "mobileOrientation", "trialInfo", "results2clipboard", "results2clipboardSilent", "rewardPicturesWhenDone", "embedInNoise", "isAcuityColor", "obliqueOnly", "acuityEasyTrials", "acuityFormatDecimal", "acuityFormatLogMAR", "acuityFormatSnellenFractionFoot", "forceSnellen20", "showCI95", "lineByLineChartMode", "lineByLineChartModeConstantVA", "contrastEasyTrials", "contrastDarkOnLight", "contrastShowFixMark", "contrastDithering", "isGratingMasked", "gratingUseErrorDiffusion", "isGratingColor", "specialBcmOn", "hideExitButton", "auditoryFeedback4trial", "auditoryFeedback4run"];
+    const allowedBoolSettings = ["isGratingObliqueOnly", "responseInfoAtStart", "enableTouchControls", "eccentShowCenterFixMark", "eccentRandomizeX", "autoFullScreen", "mobileOrientation", "showTrialInfo", "results2clipboard", "results2clipboardSilent", "rewardPicturesWhenDone", "embedInNoise", "isAcuityColor", "isLandoltObliqueOnly", "acuityEasyTrials", "acuityFormatDecimal", "acuityFormatLogMAR", "acuityFormatSnellenFractionFoot", "forceSnellen20", "showCI95", "lineByLineChartMode", "lineByLineChartModeConstantVA", "contrastEasyTrials", "contrastDarkOnLight", "contrastShowFixMark", "contrastDithering", "isGratingMasked", "gratingUseErrorDiffusion", "isGratingColor", "specialBcmOn", "hideExitButton", "auditoryFeedback4trial", "auditoryFeedback4run"];
     if (allowedBoolSettings.includes(m2)) {
         [self setSettingNamed: m2];  return;
     }
@@ -213,7 +213,7 @@
         [Settings setIsAcuityColor: YES];
     }
     if (["gratingForeColor", "gratingBackColor"].includes(m2)) {
-        [Settings setISGratingColor: YES];
+        [Settings setIsGratingColor: YES];
     }
     const sNameCapped = sName.charAt(0).toUpperCase() + sName.slice(1);
     let setter = CPSelectorFromString("set" + sNameCapped + ":");

@@ -25,24 +25,55 @@ Created by mb on July 15, 2015.
 
 + (void) initialize {
     [super initialize];  [Misc CPLogSetup];
+//    [self addBoolAccessors4Key: ""];
+//    [self addIntAccessors4Key: ""];
+//    [self addFloatAccessors4Key: ""];
+//    [self addStringAccessors4Key: ""];
 
-    [self addBoolAccessors4Key: ""];
-    [self addIntAccessors4Key: ""];
-    [self addFloatAccessors4Key: ""];
-    [self addStringAccessors4Key: ""];
+    //above or for all setting tabs
+    [self addIntAccessors4Key: "nAlternativesIndex"];
+    [self addStringAccessors4Key: "presetName"];
+    [self addIntAccessors4Key: "autoRunIndex"];
+    [self addStringAccessors4Key: "dateSettingsVersion"];
 
     //General
+    [self addIntAccessors4Key: "nTrials02"];
+    [self addIntAccessors4Key: "nTrials04"];
+    [self addIntAccessors4Key: "nTrials08"];
+    [self addFloatAccessors4Key: "distanceInCM"];
+    [self addStringAccessors4Key: "distanceInInchLocalisedString"];
+    [self addFloatAccessors4Key: "calBarLengthInMM"];
+    [self addBoolAccessors4Key: "responseInfoAtStart"];
+    [self addIntAccessors4Key: "testOnFive"];
+    [self addIntAccessors4Key: "nOfRuns2Recall"];
+    [self addFloatAccessors4Key: "eccentXInDeg"];
+    [self addFloatAccessors4Key: "eccentYInDeg"];
+    [self addBoolAccessors4Key: "eccentShowCenterFixMark"];
+    [self addBoolAccessors4Key: "eccentRandomizeX"];
+    [self addBoolAccessors4Key: "mobileOrientation"];
+    [self addBoolAccessors4Key: "autoFullScreen"];
+    [self addIntAccessors4Key: "displayTransform"];
+    [self addBoolAccessors4Key: "showTrialInfo"];
+    [self addIntAccessors4Key: "trialInfoFontSize"];
+    [self addFloatAccessors4Key: "timeoutIsiMillisecs"];
+    [self addFloatAccessors4Key: "timeoutResponseSeconds"];
+    [self addFloatAccessors4Key: "timeoutDisplaySeconds"];
+    [self addFloatAccessors4Key: "maskTimeOnResponseInMS"];
     [self addIntAccessors4Key: "decimalMarkCharIndex"];
-
-    //xx
+    [self addIntAccessors4Key: "results2clipboard"];
+    [self addBoolAccessors4Key: "results2clipboardSilent"];
+    [self addIntAccessors4Key: "auditoryFeedback4trial"];
+    [self addIntAccessors4Key: "visualFeedback"];
+    [self addBoolAccessors4Key: "auditoryFeedback4run"];
+    [self addFloatAccessors4Key: "soundVolume"];
     [self addBoolAccessors4Key: "rewardPicturesWhenDone"];
     [self addFloatAccessors4Key: "timeoutRewardPicturesInSeconds"];
-    [self addBoolAccessors4Key: "embedInNoise"];
-    [self addIntAccessors4Key: "noiseContrast"];
-    [self addStringAccessors4Key: "presetName"];
     [self addBoolAccessors4Key: "enableTouchControls"];
 
     //Acuity
+    //these 2 settings keeps optotype colors between restarts. Within FrACT use globals gColorFore/gColorBack
+    [self addColorAccessors4Key: "acuityForeColor"];
+    [self addColorAccessors4Key: "acuityBackColor"];
     [self addBoolAccessors4Key: "isAcuityColor"];
     [self addFloatAccessors4Key: "floatForKey"];
     [self addStringAccessors4Key: "maxPossibleDecimalAcuityLocalisedString"];
@@ -57,7 +88,6 @@ Created by mb on July 15, 2015.
     [self addFloatAccessors4Key: "minStrokeAcuity"];
     [self addFloatAccessors4Key: "acuityStartingLogMAR"];
     [self addIntAccessors4Key: "margin4maxOptotypeIndex"];
-    [self addIntAccessors4Key: "autoRunIndex"];
     [self addIntAccessors4Key: "crowdingType"];
     [self addIntAccessors4Key: "crowdingDistanceCalculationType"];
     [self addBoolAccessors4Key: "acuityFormatDecimal"];
@@ -67,6 +97,7 @@ Created by mb on July 15, 2015.
     [self addBoolAccessors4Key: "showCI95"];
     [self addFloatAccessors4Key: "contrastAcuityWeber"];
     [self addBoolAccessors4Key: "acuityEasyTrials"];
+    [self addBoolAccessors4Key: "isLandoltObliqueOnly"];
 
     //Acuity>Line-by-line
     [self addIntAccessors4Key: "testOnLineByLine"];
@@ -104,21 +135,10 @@ Created by mb on July 15, 2015.
     [self addFloatAccessors4Key: "gratingContrastMichelsonPercent"];
     [self addBoolAccessors4Key: "isGratingObliqueOnly"];
     [self addIntAccessors4Key: "gratingShapeIndex"];
+    [self addColorAccessors4Key: "gratingForeColor"];
+    [self addColorAccessors4Key: "gratingBackColor"];
 
-    // Misc
-    [self addBoolAccessors4Key: "specialBcmOn"];
-    [self addBoolAccessors4Key: "hideExitButton"];
-
-    //Sound
-    [self addIntAccessors4Key: "soundTrialStartIndex"];
-    [self addIntAccessors4Key: "soundTrialYesIndex"];
-    [self addIntAccessors4Key: "soundTrialNoIndex"];
-    [self addIntAccessors4Key: "soundRunEndIndex"];
-
-    [self addStringAccessors4Key: "patID"];
-    [self addIntAccessors4Key: "eyeIndex"];
-
-    //BaLM stuff
+    //BaLM
     [self addIntAccessors4Key: "balmIsiMillisecs"];
     [self addIntAccessors4Key: "balmOnMillisecs"];
     [self addFloatAccessors4Key: "balmSpeedInDegPerSec"];
@@ -127,69 +147,21 @@ Created by mb on July 15, 2015.
     [self addFloatAccessors4Key: "balmMotionDiameterInDeg"];
     [self addFloatAccessors4Key: "balmSpeedInDegPerSec"];
     [self addFloatAccessors4Key: "balmExtentInDeg"];
-}
 
+    //Misc
+    [self addColorAccessors4Key: "windowBackgroundColor"];
+    [self addBoolAccessors4Key: "specialBcmOn"];
+    [self addBoolAccessors4Key: "hideExitButton"];
+    [self addBoolAccessors4Key: "embedInNoise"];
+    [self addIntAccessors4Key: "noiseContrast"];
+    //Sound
+    [self addIntAccessors4Key: "soundTrialStartIndex"];
+    [self addIntAccessors4Key: "soundTrialYesIndex"];
+    [self addIntAccessors4Key: "soundTrialNoIndex"];
+    [self addIntAccessors4Key: "soundRunEndIndex"];
 
-/**
- Helpers for synthesising class methods to get/set defaults
- */
-+ (void) addBoolAccessors4Key: (CPString) key { //CPLog("Settings>addIntAccessors4Key called with key: " + key);
-    if (key == "") return;
-    const setterName = "set" + key.charAt(0).toUpperCase() + key.substring(1) + ":";
-    const getterSel = CPSelectorFromString(key),
-        setterSel = CPSelectorFromString(setterName);
-    class_addMethod(self.isa, getterSel, function(self, _cmd) {
-        const val = [[CPUserDefaults standardUserDefaults] boolForKey:key];
-        //CPLog("Getter called for key: %@, returning %d", key, val);
-        return val;
-    });
-    class_addMethod(self.isa, setterSel, function(self, _cmd, val) { //CPLog("Bool setter called for key: " + key + " with value: " + val);
-        [[CPUserDefaults standardUserDefaults] setBool:val forKey:key];
-    });
-}
-+ (void) addIntAccessors4Key: (CPString) key { //CPLog("Settings>addIntAccessors4Key called with key: " + key);
-    if (key == "") return;
-    const setterName = "set" + key.charAt(0).toUpperCase() + key.substring(1) + ":";
-    const getterSel = CPSelectorFromString(key),
-        setterSel = CPSelectorFromString(setterName);
-    class_addMethod(self.isa, getterSel, function(self, _cmd) {
-        const val = [[CPUserDefaults standardUserDefaults] integerForKey:key];
-        //CPLog("Getter called for key: %@, returning %d", key, val);
-        return val;
-    });
-    class_addMethod(self.isa, setterSel, function(self, _cmd, val) { //CPLog("Int setter called for key: " + key + " with value: " + val);
-        [[CPUserDefaults standardUserDefaults] setInteger:val forKey:key];
-    });
-}
-+ (void) addFloatAccessors4Key: (CPString) key { //CPLog("Settings>addFloatAccessors4Key called with key: " + key);
-    if (key == "") return;
-    const setterName = "set" + key.charAt(0).toUpperCase() + key.substring(1) + ":";
-    const getterSel = CPSelectorFromString(key),
-        setterSel = CPSelectorFromString(setterName);
-    class_addMethod(self.isa, getterSel, function(self, _cmd) {
-        const val = [[CPUserDefaults standardUserDefaults] floatForKey:key];
-        //CPLog("Getter called for key: %@, returning %f", key, val);
-        return val;
-    });
-    class_addMethod(self.isa, setterSel, function(self, _cmd, val) { //CPLog("Float setter called for key: " + key + " with value: " + val);
-        [[CPUserDefaults standardUserDefaults] setFloat:val forKey:key];
-    });
-    //CPLog("Self responds to getter: " + [self respondsToSelector:getterSel]);
-    //CPLog("Settings responds to getter: " + [Settings respondsToSelector:getterSel]);
-}
-+ (void) addStringAccessors4Key: (CPString) key { //CPLog("Settings>addIntAccessors4Key called with key: " + key);
-    if (key == "") return;
-    const setterName = "set" + key.charAt(0).toUpperCase() + key.substring(1) + ":";
-    const getterSel = CPSelectorFromString(key),
-        setterSel = CPSelectorFromString(setterName);
-    class_addMethod(self.isa, getterSel, function(self, _cmd) {
-        const val = [[CPUserDefaults standardUserDefaults] stringForKey:key];
-        //CPLog("Getter called for key: %@, returning %d", key, val);
-        return val;
-    });
-    class_addMethod(self.isa, setterSel, function(self, _cmd, val) { //CPLog("String setter called for key: " + key + " with value: " + val);
-        [[CPUserDefaults standardUserDefaults] setObject:val forKey:key];
-    });
+    [self addStringAccessors4Key: "patID"];
+    [self addIntAccessors4Key: "eyeIndex"];
 }
 
 
@@ -272,7 +244,7 @@ Created by mb on July 15, 2015.
     //0=normal, 1=mirror horizontally, 2=mirror vertically, 3=both=rot180°
     [self setDisplayTransform: [self checkNum: [self displayTransform] dflt: 0 min: 0 max: 3 set: set]];
 
-    [self setTrialInfo: [self checkBool: [self trialInfo] dflt: YES set: set]];
+    [self setShowTrialInfo: [self checkBool: [self showTrialInfo] dflt: YES set: set]];
     [self setTrialInfoFontSize: [self checkNum: [self trialInfoFontSize] dflt: 10 min: 4 max: 48 set: set]];
 
     [self setTimeoutIsiMillisecs: [self checkNum: [self timeoutIsiMillisecs] dflt: 0 min: 0 max: 3000 set: set]];
@@ -298,7 +270,7 @@ Created by mb on July 15, 2015.
 
     //Acuity stuff
     [self setIsAcuityColor: [self checkBool: [self isAcuityColor] dflt: NO set: set]];
-    [self setObliqueOnly: [self checkBool: [self obliqueOnly] dflt: NO set: set]]; //only applies to acuity with 4 Landolt orienations
+    [self setIsLandoltObliqueOnly: [self checkBool: [self isLandoltObliqueOnly] dflt: NO set: set]]; //only applies to acuity with 4 Landolt orienations
     [self setContrastAcuityWeber: [self checkNum: [self contrastAcuityWeber] dflt: 100 min: -1E6 max: 100 set: set]];
     [self calculateAcuityForeBackColorsFromContrast];
     [self setAcuityEasyTrials: [self checkBool: [self acuityEasyTrials] dflt: YES set: set]];
@@ -400,7 +372,9 @@ Created by mb on July 15, 2015.
     [self setMaxPossibleDecimalAcuityLocalisedString: [Misc stringFromNumber: maxPossibleAcuityVal decimals: 2 localised: YES]];
     [self setMinPossibleLogMAR: [MiscSpace logMARfromDecVA: maxPossibleAcuityVal]]; //needed for color
     [self setMinPossibleLogMARLocalisedString: [Misc stringFromNumber: [self minPossibleLogMAR] decimals: 2 localised: YES]];
-    [self setDistanceInInchFromCM: [self distanceInCM]];
+    const inch = [Misc stringFromNumber: [self distanceInCM] / 2.54 decimals: 1 localised: YES];
+    [self setDistanceInInchLocalisedString: inch];
+
 }
 
 
@@ -443,35 +417,34 @@ Created by mb on July 15, 2015.
 }
 
 
+/**
+ Calibration is assumed ok if the distance and the calBarLength differ from defaults
+ */
 + (BOOL) isNotCalibrated {
     [self checkDefaults];
     return (([self distanceInCM] === gDefaultDistanceInCM) || ([self calBarLengthInMM] === gDefaultCalibrationBarLengthInMM));
 }
 
 
-+ (CPString) dateSettingsVersion { //console.info("Settings>dateSettingsVersion");
-    return [[CPUserDefaults standardUserDefaults] stringForKey: "dateSettingsVersion"];
-}
-+ (void) setDateSettingsVersion: (CPString) val { //console.info("Settings>setDatesettingsVersion");
-    [[CPUserDefaults standardUserDefaults] setObject: val forKey: "dateSettingsVersion"];
-}
-
-
 /**
- individual getters / setters for all settings
+ Populate the sound selection popups from the selected indices
  */
++ (void) setupSoundPopups: (id) popupsArray {
+    const allSounds = [gSoundsTrialStart, gSoundsTrialYes, gSoundsTrialNo, gSoundsRunEnd];
+    const allIndexes = [[self soundTrialStartIndex], [self soundTrialYesIndex], [self soundTrialNoIndex], [self soundRunEndIndex]];
+    for (let i = 0; i < popupsArray.length; i++) {
+        const p = popupsArray[i];
+        [p removeAllItems]; //first remove all, then add selected ones
+        for (const soundName of allSounds[i]) [p addItemWithTitle: soundName];
+        [p setSelectedIndex: allIndexes[i]]; //was lost after remove
+    }
+}
+
+
 ///////////////////////////////////////////////////////////
-//for all tests
-
-+ (int) nAlternativesIndex { //0: 2; 1: 4; 2: 8+
-    const t = [[CPUserDefaults standardUserDefaults] integerForKey: "nAlternativesIndex"]; //console.info(t);
-    return t;
-}
-+ (void) setNAlternativesIndex: (int) val {
-    //[self setDfltIntForKey: "nAlternativesIndex"];
-    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "nAlternativesIndex"];
-}
-
+/**
+ individual getters / setters for all settings not synthesized
+ */
 
 + (int) nTrials { //console.info("Settings>nTrials");
     switch ([self nAlternatives]) {
@@ -481,28 +454,6 @@ Created by mb on July 15, 2015.
     }
 }
 
-+ (int) nTrials02 { //console.info("Settings>nTrials02");
-    const t = [[CPUserDefaults standardUserDefaults] integerForKey: "nTrials02"]; //console.info(t);
-    return t;
-}
-+ (void) setNTrials02: (int) val { //console.info("Settings>nTrials02");
-    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "nTrials02"];
-}
-
-+ (int) nTrials04 { //console.info("Settings>nTrials04");
-    return [[CPUserDefaults standardUserDefaults] integerForKey: "nTrials04"];
-}
-+ (void) setNTrials04: (int) val {
-    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "nTrials04"];
-}
-
-+ (int) nTrials08 {
-    return [[CPUserDefaults standardUserDefaults] integerForKey: "nTrials08"];
-}
-+ (void) setNTrials08: (int) val { //console.info("Settings>nTrials08");
-    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "nTrials08"];
-}
-
 + (int) nAlternatives { //console.info("Settings>nAlternatives");
     switch ([self nAlternativesIndex]) {
         case kNAlternativesIndex2:  return 2;  break;
@@ -510,215 +461,6 @@ Created by mb on July 15, 2015.
         default: return 8; //case kNAlternativesIndex8plus
     }
 }
-
-+ (BOOL) obliqueOnly {
-    return [[CPUserDefaults standardUserDefaults] boolForKey: "obliqueOnly"];
-}
-+ (void) setObliqueOnly: (BOOL) val {
-    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "obliqueOnly"];
-}
-
-
-+ (float) distanceInCM {
-    return [[CPUserDefaults standardUserDefaults] floatForKey: "distanceInCM"];
-}
-+ (void) setDistanceInCM: (float) cm {
-    [[CPUserDefaults standardUserDefaults] setFloat: cm forKey: "distanceInCM"];
-    [self setDistanceInInchFromCM: cm];
-}
-+ (void) setDistanceInInchFromCM: (float) cm {
-    const inch = [Misc stringFromNumber: cm / 2.54 decimals: 1 localised: YES];
-    [self setDistanceInInchLocalisedString: inch];
-}
-+ (CPString) distanceInInchLocalisedString { //console.info("Settings>distanceInInchLocalisedString");
-    return [[CPUserDefaults standardUserDefaults] floatForKey: "distanceInInchLocalisedString"];
-}
-+ (void) setDistanceInInchLocalisedString: (CPString) val {
-    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "distanceInInchLocalisedString"];
-}
-
-+ (float) calBarLengthInMM {
-    return [[CPUserDefaults standardUserDefaults] floatForKey: "calBarLengthInMM"];
-}
-+ (void)setCalBarLengthInMM: (float) val {
-    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "calBarLengthInMM"];
-}
-
-
-+ (BOOL) responseInfoAtStart {
-    return [[CPUserDefaults standardUserDefaults] boolForKey: "responseInfoAtStart"];
-}
-+ (void) setResponseInfoAtStart: (BOOL) val {
-    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "responseInfoAtStart"];
-}
-
-
-+ (int) testOnFive {
-    return [[CPUserDefaults standardUserDefaults] integerForKey: "testOnFive"];
-}
-+ (void) setTestOnFive: (int) val {
-    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "testOnFive"];
-}
-
-
-+ (int) nOfRuns2Recall { //not yet used
-    return [[CPUserDefaults standardUserDefaults] integerForKey: "nOfRuns2Recall"];
-}
-+ (void) setNOfRuns2Recall: (float) val {
-    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "nOfRuns2Recall"];
-}
-
-
-+ (float) eccentXInDeg {
-    return [[CPUserDefaults standardUserDefaults] floatForKey: "eccentXInDeg"];
-}
-+ (void) setEccentXInDeg: (float) val {
-    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "eccentXInDeg"];
-}
-+ (float) eccentYInDeg {
-    return [[CPUserDefaults standardUserDefaults] floatForKey: "eccentYInDeg"];
-}
-+ (void) setEccentYInDeg: (float) val {
-    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "eccentYInDeg"];
-}
-+ (BOOL) eccentShowCenterFixMark {
-    return [[CPUserDefaults standardUserDefaults] boolForKey: "eccentShowCenterFixMark"];
-}
-+ (void) setEccentShowCenterFixMark: (BOOL) val {
-    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "eccentShowCenterFixMark"];
-}
-+ (BOOL) eccentRandomizeX {
-    return [[CPUserDefaults standardUserDefaults] boolForKey: "eccentRandomizeX"];
-}
-+ (void) setEccentRandomizeX: (BOOL) val {
-    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "eccentRandomizeX"];
-}
-
-
-+ (BOOL) mobileOrientation {
-    return [[CPUserDefaults standardUserDefaults] boolForKey: "mobileOrientation"];
-}
-+ (void) setMobileOrientation: (BOOL) val {
-    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "mobileOrientation"];
-}
-
-
-+ (BOOL) autoFullScreen {
-    return [[CPUserDefaults standardUserDefaults] boolForKey: "autoFullScreen"];
-}
-+ (void) setAutoFullScreen: (BOOL) val {
-    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "autoFullScreen"];
-}
-
-
-
-+ (int) displayTransform {
-    return [[CPUserDefaults standardUserDefaults] integerForKey: "displayTransform"];
-}
-+ (void) setDisplayTransform: (int) val {
-    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "displayTransform"];
-}
-
-
-+ (BOOL) trialInfo {
-    return [[CPUserDefaults standardUserDefaults] boolForKey: "trialInfo"];
-}
-+ (void) setTrialInfo: (BOOL) val {
-    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "trialInfo"];
-}
-
-
-+ (int) trialInfoFontSize {
-    return [[CPUserDefaults standardUserDefaults] integerForKey: "trialInfoFontSize"];
-}
-+ (void) setTrialInfoFontSize: (float) val {
-    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "trialInfoFontSize"];
-}
-
-+ (float) timeoutIsiMillisecs {
-    return [[CPUserDefaults standardUserDefaults] floatForKey: "timeoutIsiMillisecs"];
-}
-+ (void) setTimeoutIsiMillisecs: (float) val {
-    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "timeoutIsiMillisecs"];
-}
-
-+ (float) timeoutResponseSeconds {
-    return [[CPUserDefaults standardUserDefaults] floatForKey: "timeoutResponseSeconds"];
-}
-+ (void) setTimeoutResponseSeconds: (float) val {
-    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "timeoutResponseSeconds"];
-}
-
-+ (float) timeoutDisplaySeconds {
-    return [[CPUserDefaults standardUserDefaults] floatForKey: "timeoutDisplaySeconds"];
-}
-+ (void) setTimeoutDisplaySeconds: (float) val {
-    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "timeoutDisplaySeconds"];
-}
-
-+ (float) maskTimeOnResponseInMS {
-    return [[CPUserDefaults standardUserDefaults] floatForKey: "maskTimeOnResponseInMS"];
-}
-+ (void)setMaskTimeOnResponseInMS: (float) val {
-    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "maskTimeOnResponseInMS"];
-}
-
-
-+ (int) results2clipboard {
-    return [[CPUserDefaults standardUserDefaults] integerForKey: "results2clipboard"];
-}
-+ (void) setResults2clipboard: (int) val {
-    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "results2clipboard"];
-}
-+ (BOOL) results2clipboardSilent {
-    return [[CPUserDefaults standardUserDefaults] boolForKey: "results2clipboardSilent"];
-}
-+ (void) setResults2clipboardSilent: (BOOL) val {
-    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "results2clipboardSilent"];
-}
-
-
-+ (int) auditoryFeedback4trial {
-    return [[CPUserDefaults standardUserDefaults] integerForKey: "auditoryFeedback4trial"];
-}
-+ (void) setAuditoryFeedback4trial: (int) val {
-    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "auditoryFeedback4trial"];
-}
-
-
-+ (int) visualFeedback {
-    return [[CPUserDefaults standardUserDefaults] integerForKey: "visualFeedback"];
-}
-+ (void) setVisualFeedback: (int) val {
-    [[CPUserDefaults standardUserDefaults] setInteger: val forKey: "visualFeedback"];
-}
-
-
-+ (BOOL) auditoryFeedback4run {
-    return [[CPUserDefaults standardUserDefaults] boolForKey: "auditoryFeedback4run"];
-}
-+ (void) setAuditoryFeedback4run: (BOOL) val {
-    [[CPUserDefaults standardUserDefaults] setBool: val forKey: "auditoryFeedback4run"];
-}
-
-
-+ (float) soundVolume { //from 1 to 100%.
-    let theValue = [[CPUserDefaults standardUserDefaults] floatForKey: "soundVolume"];
-    if (theValue < 1) { //really need this???
-        theValue = 20;  //if 0 then it did not go through defaulting; 0 not allowed
-        [self setSoundVolume: theValue];
-    }
-    if (theValue > 100) { //really necessary?
-        theValue = 100;  [self setSoundVolume: theValue];
-    }
-    return theValue;
-}
-+ (void) setSoundVolume: (float) val {
-    [[CPUserDefaults standardUserDefaults] setFloat: val forKey: "soundVolume"];
-}
-
-
-////////////////////////
 
 + (CPString) decimalMarkChar { //console.info("settings>decimalMarkChar");
     let _mark = ".";
@@ -741,56 +483,81 @@ Created by mb on July 15, 2015.
 + (void) setDecimalMarkChar: (CPString) val {
     [[CPUserDefaults standardUserDefaults] setObject: val forKey: "decimalMarkChar"];
 }
+///////////////////////////////////////////////////////////
 
-+ (void) toggleAutoRunIndex {
-    [self setAutoRunIndex: [self autoRunIndex] === kAutoRunIndexNone ? kAutoRunIndexMid : kAutoRunIndexNone];
-}
 
-//these settings keeps optotype colors between restarts. Within FrACT use globals gColorFore/gColorBack
-+ (CPColor) acuityForeColor {
-    return [self colorForKey: "acuityForeColor" fallbackInHex: "FFFFFF"];
+/**
+ Helpers for synthesising class methods to get/set defaults
+ */
++ (void) addBoolAccessors4Key: (CPString) key { //CPLog("Settings>addIntAccessors4Key called with key: " + key);
+    if (key == "") return;
+    const setterName = "set" + key.charAt(0).toUpperCase() + key.substring(1) + ":";
+    const getterSel = CPSelectorFromString(key),
+        setterSel = CPSelectorFromString(setterName);
+    class_addMethod(self.isa, getterSel, function(self, _cmd) {
+        const val = [[CPUserDefaults standardUserDefaults] boolForKey:key];
+        //CPLog("Getter called for key: %@, returning %d", key, val);
+        return val;
+    });
+    class_addMethod(self.isa, setterSel, function(self, _cmd, val) { //CPLog("Bool setter called for key: " + key + " with value: " + val);
+        [[CPUserDefaults standardUserDefaults] setBool:val forKey:key];
+    });
 }
-+ (void) setAcuityForeColor: (CPColor) theColor {
-    [self setColor: theColor forKey: "acuityForeColor"];
++ (void) addIntAccessors4Key: (CPString) key { //CPLog("Settings>addIntAccessors4Key called with key: " + key);
+    if (key == "") return;
+    const setterName = "set" + key.charAt(0).toUpperCase() + key.substring(1) + ":";
+    const getterSel = CPSelectorFromString(key),
+        setterSel = CPSelectorFromString(setterName);
+    class_addMethod(self.isa, getterSel, function(self, _cmd) {
+        const val = [[CPUserDefaults standardUserDefaults] integerForKey:key];
+        //CPLog("Getter called for key: %@, returning %d", key, val);
+        return val;
+    });
+    class_addMethod(self.isa, setterSel, function(self, _cmd, val) { //CPLog("Int setter called for key: " + key + " with value: " + val);
+        [[CPUserDefaults standardUserDefaults] setInteger:val forKey:key];
+    });
 }
-+ (CPColor) acuityBackColor {
-    return [self colorForKey: "acuityBackColor" fallbackInHex: "000000"];
++ (void) addFloatAccessors4Key: (CPString) key { //CPLog("Settings>addFloatAccessors4Key called with key: " + key);
+    if (key == "") return;
+    const setterName = "set" + key.charAt(0).toUpperCase() + key.substring(1) + ":";
+    const getterSel = CPSelectorFromString(key),
+        setterSel = CPSelectorFromString(setterName);
+    class_addMethod(self.isa, getterSel, function(self, _cmd) {
+        const val = [[CPUserDefaults standardUserDefaults] floatForKey:key];
+        //CPLog("Getter called for key: %@, returning %f", key, val);
+        return val;
+    });
+    class_addMethod(self.isa, setterSel, function(self, _cmd, val) { //CPLog("Float setter called for key: " + key + " with value: " + val);
+        [[CPUserDefaults standardUserDefaults] setFloat:val forKey:key];
+    });
+    //CPLog("Self responds to getter: " + [self respondsToSelector:getterSel]);
+    //CPLog("Settings responds to getter: " + [Settings respondsToSelector:getterSel]);
 }
-+ (void) setAcuityBackColor: (CPColor) theColor {
-    [self setColor: theColor forKey: "acuityBackColor"];
++ (void) addStringAccessors4Key: (CPString) key { //CPLog("Settings>addIntAccessors4Key called with key: " + key);
+    if (key == "") return;
+    const setterName = "set" + key.charAt(0).toUpperCase() + key.substring(1) + ":";
+    const getterSel = CPSelectorFromString(key),
+        setterSel = CPSelectorFromString(setterName);
+    class_addMethod(self.isa, getterSel, function(self, _cmd) {
+        const val = [[CPUserDefaults standardUserDefaults] stringForKey:key];
+        //CPLog("Getter called for key: %@, returning %d", key, val);
+        return val;
+    });
+    class_addMethod(self.isa, setterSel, function(self, _cmd, val) { //CPLog("String setter called for key: " + key + " with value: " + val);
+        [[CPUserDefaults standardUserDefaults] setObject:val forKey:key];
+    });
 }
-
-//Grating stuff
-+ (CPColor) gratingForeColor {
-    return [self colorForKey: "gratingForeColor" fallbackInHex: "FFFFFF"];
-}
-+ (void) setGratingForeColor: (CPColor) theColor {
-    [self setColor: theColor forKey: "gratingForeColor"];
-}
-+ (CPColor) gratingBackColor {
-    return [self colorForKey: "gratingBackColor" fallbackInHex: "000000"];
-}
-+ (void) setGratingBackColor: (CPColor) theColor {
-    [self setColor: theColor forKey: "gratingBackColor"];
-}
-
-//Misc stuff
-+ (CPColor) windowBackgroundColor {
-    return [self colorForKey: "windowBackgroundColor" fallbackInHex: "FFFFEE"];
-}
-+ (void) setWindowBackgroundColor: (CPColor) theColor {
-    [self setColor: theColor forKey: "windowBackgroundColor"];
-}
-
-+ (void) setupSoundPopups: (id) popupsArray {
-    const allSounds = [gSoundsTrialStart, gSoundsTrialYes, gSoundsTrialNo, gSoundsRunEnd];
-    const allIndexes = [[self soundTrialStartIndex], [self soundTrialYesIndex], [self soundTrialNoIndex], [self soundRunEndIndex]];
-    for (let i = 0; i < popupsArray.length; i++) {
-        const p = popupsArray[i];
-        [p removeAllItems];
-        for (const soundName of allSounds[i]) [p addItemWithTitle: soundName];
-        [p setSelectedIndex: allIndexes[i]]; //lost after remove
-    }
++ (void) addColorAccessors4Key: (CPString) key { //CPLog("Settings>addIntAccessors4Key called with key: " + key);
+    if (key == "") return;
+    const setterName = "set" + key.charAt(0).toUpperCase() + key.substring(1) + ":";
+    const getterSel = CPSelectorFromString(key),
+        setterSel = CPSelectorFromString(setterName);
+    class_addMethod(self.isa, getterSel, function(self, _cmd) {
+        return [self colorForKey: key fallbackInHex: "777777"];
+    });
+    class_addMethod(self.isa, setterSel, function(self, _cmd, val) { //CPLog("Color setter called for key: " + key + " with value: " + val);
+        [self setColor: val forKey: key];
+    });
 }
 
 

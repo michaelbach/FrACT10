@@ -32,7 +32,7 @@ Created by Bach on 18.07.2017.
     switch(state) {
         case kStateDrawBack: break;
         case kStateDrawFore: //console.info("kStateDrawFore");
-            if (([Settings nAlternatives] === 4) && ([Settings obliqueOnly])) {
+            if (([Settings nAlternatives] === 4) && ([Settings isLandoltObliqueOnly])) {
                 [alternativesGenerator setCurrentAlternative: [alternativesGenerator currentAlternative] + 1];
             }
             [optotypes drawLandoltWithStrokeInPx: stimStrengthInDeviceunits landoltDirection: [alternativesGenerator currentAlternative]];

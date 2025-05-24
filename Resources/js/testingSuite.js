@@ -212,10 +212,10 @@ const testingSuite = async () => {
 	addText("↑ tested fullscreen\n");
 	await pauseMilliseconds(pauseViewMS);
 
-    addText(" ↓ Got to main screen (in case we were not)");
+    addText(" ↓ Go to main screen (in case we were not there)");
     response = await oneStep3Ms('settingsPane', -1, '');
     await pauseMilliseconds(pauseViewMS);
-    addText(" ↑ Got to main screen (in case we were not)\n");
+    addText(" ↑ Go to main screen (in case we were not there)\n");
 
 	response = await oneStep3Ms('getVersion', '', '');
 	await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
