@@ -22,6 +22,14 @@ Misc.j
 
 
 /**
+ Turn on CPLog and set to common use settings
+ */
++ (void) CPLogSetup {
+    CPLogRegister(CPLogConsole); // CPLogPopup / CPLogDefault
+}
+
+
+/**
  Delay for seconds
  */
 function _pause(ms) { //console.info("Misc>_pause");

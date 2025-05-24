@@ -3978,7 +3978,6 @@ CQ
         </window>
         <customObject id="450" customClass="AppController">
             <connections>
-                <outlet property="aboutPanel" destination="ErU-UN-jpI" id="7Pz-ls-119"/>
                 <outlet property="bottonBalm" destination="JdF-37-xKU" id="rAg-pm-fya"/>
                 <outlet property="buttCntC" destination="teG-PN-Gq7" id="Vvz-oi-F4f"/>
                 <outlet property="buttCntE" destination="V0h-oh-O7H" id="mPS-2H-434"/>
@@ -3996,7 +3995,6 @@ CQ
                 <outlet property="fractControllerWindow" destination="r6R-bh-Qyp" id="WQx-mH-JUh"/>
                 <outlet property="gammaValueField" destination="jv4-5m-hDh" id="Luz-7v-gyX"/>
                 <outlet property="gammaView" destination="c7s-eX-XEN" id="fNv-bD-BRg"/>
-                <outlet property="helpPanel" destination="28C-lv-KIF" id="Uyw-Zc-Dhd"/>
                 <outlet property="radioButtonAcuityBW" destination="PDt-dH-Qlh" id="Wb0-h0-yCt"/>
                 <outlet property="radioButtonAcuityColor" destination="yDL-XG-JPC" id="y5a-Dq-689"/>
                 <outlet property="responseinfoPanelAcuity4C" destination="KH7-H9-rEd" id="9RI-zp-bV8"/>
