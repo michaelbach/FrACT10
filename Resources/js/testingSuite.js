@@ -215,12 +215,21 @@ const testingSuite = async () => {
     addText(" ↓ Got to main screen (in case we were not)");
     response = await oneStep3Ms('settingsPane', -1, '');
     await pauseMilliseconds(pauseViewMS);
-    addText(" ↑ Got to main screen (in case we were not)");
+    addText(" ↑ Got to main screen (in case we were not)\n");
 
 	response = await oneStep3Ms('getVersion', '', '');
 	await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
 	response = await oneStep3Ms('getSetting', 'distanceInCM', '');
 	if (response.m3 != 399) errorAlert();
+    addText("");
+
+    addText(" ↓ Traverse all Presets");
+    const allPresets = ["Standard Defaults", "AT@LeviLab", "BaLM₁₀", "BCM@Scheie", "CNS@Freiburg", "Color Equiluminance", "ESU", "ETCF", "Hyper@TUDo", "HYPERION", "Maculight", "ULV@Gensight", "Testing"];
+    for (let aPreset of allPresets) {
+        await oneStep3Ms('setSetting', 'Preset', aPreset);
+        await pauseMilliseconds(0.5 * pauseViewMS);
+    }
+    addText("↑ All Presets traversed\n");
 
 	await oneStep3Ms('setSetting', 'Preset', 'Testing');
 	response = await oneStep3Ms('getSetting', 'distanceInCM', '');

@@ -110,7 +110,7 @@
     if ((m2 === "preset") || (m2 === "Preset")) {
         [self _notify: "applyPresetNamed" object: m3];  return;
     }
-    const allowedBoolSettings = ["gratingObliqueOnly", "responseInfoAtStart", "enableTouchControls", "eccentShowCenterFixMark", "eccentRandomizeX", "autoFullScreen", "mobileOrientation", "trialInfo", "results2clipboard", "results2clipboardSilent", "rewardPicturesWhenDone", "embedInNoise", "isAcuityColor", "obliqueOnly", "acuityEasyTrials", "acuityFormatDecimal", "acuityFormatLogMAR", "acuityFormatSnellenFractionFoot", "forceSnellen20", "showCI95", "lineByLineChartMode", "lineByLineChartModeConstantVA", "contrastEasyTrials", "contrastDarkOnLight", "contrastShowFixMark", "contrastDithering", "isGratingMasked", "gratingUseErrorDiffusion", "isGratingColor", "specialBcmOn", "hideExitButton", "auditoryFeedback4trial", "auditoryFeedback4run"];
+    const allowedBoolSettings = ["isGratingObliqueOnly", "responseInfoAtStart", "enableTouchControls", "eccentShowCenterFixMark", "eccentRandomizeX", "autoFullScreen", "mobileOrientation", "trialInfo", "results2clipboard", "results2clipboardSilent", "rewardPicturesWhenDone", "embedInNoise", "isAcuityColor", "obliqueOnly", "acuityEasyTrials", "acuityFormatDecimal", "acuityFormatLogMAR", "acuityFormatSnellenFractionFoot", "forceSnellen20", "showCI95", "lineByLineChartMode", "lineByLineChartModeConstantVA", "contrastEasyTrials", "contrastDarkOnLight", "contrastShowFixMark", "contrastDithering", "isGratingMasked", "gratingUseErrorDiffusion", "isGratingColor", "specialBcmOn", "hideExitButton", "auditoryFeedback4trial", "auditoryFeedback4run"];
     if (allowedBoolSettings.includes(m2)) {
         [self setSettingNamed: m2];  return;
     }

@@ -102,7 +102,7 @@ Created by mb on July 15, 2015.
     [self addFloatAccessors4Key: "gratingCPDmin"];
     [self addFloatAccessors4Key: "gratingCPDmax"];
     [self addFloatAccessors4Key: "gratingContrastMichelsonPercent"];
-    [self addBoolAccessors4Key: "gratingObliqueOnly"];
+    [self addBoolAccessors4Key: "isGratingObliqueOnly"];
     [self addIntAccessors4Key: "gratingShapeIndex"];
 
     // Misc
@@ -241,7 +241,7 @@ Created by mb on July 15, 2015.
     }
 
     //need to check before setNAlternativesIndex 'cause oblique might force to index=0
-    [self setGratingObliqueOnly: [self checkBool: [self gratingObliqueOnly] dflt: NO set: set]];
+    [self setIsGratingObliqueOnly: [self checkBool: [self isGratingObliqueOnly] dflt: NO set: set]];
     //for all tests
     [self setNAlternativesIndex: [self checkNum: [self nAlternativesIndex] dflt: kNAlternativesIndex8plus min: kNAlternativesIndex2 max: kNAlternativesIndex8plus set:set]]; //dflt:8
     [self setNTrials02: [self checkNum: [self nTrials02] dflt: 32 min: 1 max: 200 set: set]];
