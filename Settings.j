@@ -45,7 +45,6 @@ Created by mb on July 15, 2015.
     [self addFloatAccessors4Key: "calBarLengthInMM"];
     [self addBoolAccessors4Key: "responseInfoAtStart"];
     [self addIntAccessors4Key: "testOnFive"];
-    [self addIntAccessors4Key: "nOfRuns2Recall"];
     [self addFloatAccessors4Key: "eccentXInDeg"];
     [self addFloatAccessors4Key: "eccentYInDeg"];
     [self addBoolAccessors4Key: "eccentShowCenterFixMark"];
@@ -230,8 +229,6 @@ Created by mb on July 15, 2015.
 
     [self setTestOnFive: [self checkNum: [self testOnFive] dflt: kTestAcuityLett min: kTestNone max: kTestAcuityLineByLine set: set]]; //1: Sloan Letters
 
-    //[self setNOfRuns2Recall: [self checkNum: [self nOfRuns2Recall] dflt: 0 min: 0 max: 100 set: set]];
-
     [self setEccentXInDeg: [self checkNum: [self eccentXInDeg] dflt: 0 min: -99 max: 99 set: set]];
     [self setEccentYInDeg: [self checkNum: [self eccentYInDeg] dflt: 0 min: -99 max: 99 set: set]];
     [self setEccentShowCenterFixMark: [self checkBool: [self eccentShowCenterFixMark] dflt: YES set: set]];
@@ -307,7 +304,6 @@ Created by mb on July 15, 2015.
     [self setVernierLength: [self checkNum: [self vernierLength] dflt: 15.0 min: 0.1 max: 1200 set: set]];
     [self setVernierGap: [self checkNum: [self vernierGap] dflt: 0.2 min: 0.0 max: 120 set: set]];
 
-
     //Contrast stuff
     [self setGammaValue: [self checkNum: [self gammaValue] dflt: 2.0 min: 0.8 max: 4 set: set]];
     [self setContrastEasyTrials: [self checkBool: [self contrastEasyTrials] dflt: YES set: set]];
@@ -331,18 +327,6 @@ Created by mb on July 15, 2015.
     [self setGratingCPDmax: [self checkNum: [self gratingCPDmax] dflt: 30 min: 0.01 max: 60 set: set]];
     [self setGratingContrastMichelsonPercent: [self checkNum: [self gratingContrastMichelsonPercent] dflt: 95 min: 0.3 max: 99 set: set]];
 
-    //Misc stuff
-    [self setSpecialBcmOn: [self checkBool: [self specialBcmOn] dflt: NO set: set]];
-    [self setHideExitButton: [self checkBool: [self hideExitButton] dflt: NO set: set]];
-
-    [self setSoundTrialStartIndex: [self checkNum: [self soundTrialStartIndex] dflt: 1 min: 0 max: gSoundsTrialStart.length-1 set: set]];
-    [self setSoundTrialYesIndex: [self checkNum: [self soundTrialYesIndex] dflt: 0 min: 0 max: gSoundsTrialYes.length-1 set: set]];
-    [self setSoundTrialNoIndex: [self checkNum: [self soundTrialNoIndex] dflt: 0 min: 0 max: gSoundsTrialNo.length-1 set: set]];
-    [self setSoundRunEndIndex: [self checkNum: [self soundRunEndIndex] dflt: 0 min: 0 max: gSoundsRunEnd.length-1 set: set]];
-
-    [self setEyeIndex: [self checkNum: [self eyeIndex] dflt: 0 min: 0 max: 3 set: set]];
-
-
     //BaLM stuff
     [self setBalmIsiMillisecs: [self checkNum: [self balmIsiMillisecs] dflt: 1500 min: 20 max: 5000 set: set]];
     [self setBalmOnMillisecs: [self checkNum: [self balmOnMillisecs] dflt: 200 min: 20 max: 2000 set: set]];
@@ -351,6 +335,16 @@ Created by mb on July 15, 2015.
     [self setBalmMotionDiameterInDeg: [self checkNum: [self balmMotionDiameterInDeg] dflt: 3.3 min: 0.1 max: 10 set: set]];
     [self setBalmSpeedInDegPerSec: [self checkNum: [self balmSpeedInDegPerSec] dflt: 3.3 min: 0.1 max: 10 set: set]];
     [self setBalmExtentInDeg: [self checkNum: [self balmExtentInDeg] dflt: 15 min: 5 max: 30 set: set]];
+
+    //Misc stuff
+    [self setSpecialBcmOn: [self checkBool: [self specialBcmOn] dflt: NO set: set]];
+    [self setHideExitButton: [self checkBool: [self hideExitButton] dflt: NO set: set]];
+
+    [self setSoundTrialStartIndex: [self checkNum: [self soundTrialStartIndex] dflt: 1 min: 0 max: gSoundsTrialStart.length-1 set: set]];
+    [self setSoundTrialYesIndex: [self checkNum: [self soundTrialYesIndex] dflt: 0 min: 0 max: gSoundsTrialYes.length-1 set: set]];
+    [self setSoundTrialNoIndex: [self checkNum: [self soundTrialNoIndex] dflt: 0 min: 0 max: gSoundsTrialNo.length-1 set: set]];
+    [self setSoundRunEndIndex: [self checkNum: [self soundRunEndIndex] dflt: 0 min: 0 max: gSoundsRunEnd.length-1 set: set]];
+    [self setEyeIndex: [self checkNum: [self eyeIndex] dflt: 0 min: 0 max: 3 set: set]];
 
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
