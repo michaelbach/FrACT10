@@ -2751,6 +2751,7 @@ If you go very close or you may be able to resolve the pattern.
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <binding destination="450" name="enabled" keyPath="has2orientations" id="KOL-py-8kb"/>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.isGratingObliqueOnly" id="koF-ya-Mt0"/>
                                             </connections>
                                         </button>

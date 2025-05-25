@@ -72,6 +72,7 @@
     BOOL settingsNeededNewDefaults;
     BOOL runAborted @accessors;
     BOOL has4orientations @accessors;
+    BOOL has2orientations @accessors;
     id allPanels, allTestControllers;
     int settingsPaneTabViewSelectedIndex @accessors;
     float calBarLengthInMMbefore;
@@ -224,6 +225,7 @@
  */
 - (void) settingsDidChange: (CPNotification) aNotification { //console.info("settingsDidChange");
     [self setHas4orientations: ([Settings nAlternatives] === 4)];
+    [self setHas2orientations: ([Settings nAlternatives] === 2)];
     [selfWindow setBackgroundColor: [self windowBackgroundColor]];
     if ([Settings minPossibleLogMAR] > 0) { //red: not good enough for normal vision
         [self setColorOfBestPossibleAcuity: [CPColor redColor]];
