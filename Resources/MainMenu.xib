@@ -2662,7 +2662,7 @@ If you go very close or you may be able to resolve the pattern.
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <binding destination="izh-pU-csC" name="value" keyPath="values.contrastEasyTrials" id="i5W-0e-RJB"/>
+                                                <binding destination="izh-pU-csC" name="value" keyPath="values.contrastHasEasyTrials" id="8H7-U2-Bse"/>
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gY0-Kn-fAg">
