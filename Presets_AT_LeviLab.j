@@ -16,12 +16,12 @@
     //General pane
     [[CPUserDefaults standardUserDefaults] setInteger: kNAlternativesIndex4 forKey: "nAlternativesIndex"]; //4
     [Settings setNTrials04: 24];
-    [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
+    [Settings setShowResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
     [Settings setDecimalMarkCharIndex: kDecimalMarkCharIndexComma];
     [Settings setTimeoutDisplaySeconds: 0.15];
     [Settings setEccentXInDeg: 8];
     [Settings setDistanceInCM: 68.5];
-    [Settings setResults2clipboard: kResults2ClipFullHistory];
+    [Settings setResultsToClipboardIndex: kResultsToClipFullHistory];
     [Settings setDisplayTransform: 1]; //1=mirror horizontally
     [Settings setTestOnFive: kTestAcuityC];
     //Acuity pane

@@ -123,6 +123,7 @@
  */
 - (id) init { //console.info("AppController>init");
     gAppController = self; //so others can reference via global variable
+    [Misc CPLogSetup];
     settingsNeededNewDefaults = [Settings needNewDefaults];
     [Settings checkDefaults]; //important to do this very early, before nib loading, otherwise the updates don't populate the settings panel
     return self;
@@ -142,7 +143,7 @@
         window.location.reload(NO);
     });
     window.addEventListener("orientationchange", function(e) {
-        if ([Settings mobileOrientation]) {
+        if ([Settings respondsToMobileOrientation]) {
             //alert("Orientation change, now "+e.target.screen.orientation.angle+"°.\r\rOn “Close”, the window will reload to fit.");
             window.location.reload(NO);
         }
@@ -302,7 +303,7 @@
 - (void) runFractController2 { //console.info("AppController>runFractController2");
     [self closeAllPanels];  [self centerAllPanels];
     const allInfoPanels = {[kTestAcuityLett]: responseinfoPanelAcuityL, [kTestAcuityC]: responseinfoPanelAcuity8C, [kTestAcuityE]: responseinfoPanelAcuityE, [kTestAcuityTAO]: responseinfoPanelAcuityTAO, [kTestAcuityVernier]: responseinfoPanelAcuityVernier, [kTestContrastLett]: responseinfoPanelContrastLett, [kTestContrastC]: responseinfoPanelContrastC, [kTestContrastE]: responseinfoPanelContrastE, [kTestContrastG]: responseinfoPanelContrastG, [kTestAcuityLineByLine]: responseinfoPanelAcuityLineByLine};
-    if ([Settings responseInfoAtStart] && (gCurrentTestID in allInfoPanels)) {
+    if ([Settings showResponseInfoAtStart] && (gCurrentTestID in allInfoPanels)) {
         [allInfoPanels[gCurrentTestID] makeKeyAndOrderFront: self];
         if ((gCurrentTestID === kTestAcuityC) && ([Settings nAlternatives] === 4)) {
             [responseinfoPanelAcuity4C makeKeyAndOrderFront: self];
@@ -335,7 +336,7 @@
     [resultStringField setEnabled: YES];
     [currentFractController release];  currentFractController = nil;
     if (!runAborted) {
-        if ([Settings rewardPicturesWhenDone]) {
+        if ([Settings showRewardPicturesWhenDone]) {
             [rewardsController drawRandom];
         }
         [self exportCurrentTestResult];
@@ -352,20 +353,20 @@
     localStorage.setItem(gFilename4ResultStorage, temp);
     temp = currentTestResultsHistoryExportString.replace(/,/g, ".");
     localStorage.setItem(gFilename4ResultsHistoryStorage, temp);
-    switch ([Settings results2clipboard]) {
-        case kResults2ClipNone: break;
-        case kResults2ClipFullHistory:
+    switch ([Settings resultsToClipboardIndex]) {
+        case kResultsToClipNone: break;
+        case kResultsToClipFullHistory:
             currentTestResultExportString += currentTestResultsHistoryExportString;
             //purposefully "fall throught" to next:
-        case kResults2ClipFinalOnly:
+        case kResultsToClipFinalOnly:
             [Misc copyString2Clipboard: currentTestResultExportString];
-            if ([Settings results2clipboardSilent]) {
+            if ([Settings putResultsToClipboardSilent]) {
                 [Misc copyString2Clipboard: currentTestResultExportString];
             } else {
                 [Misc copyString2ClipboardWithDialog: currentTestResultExportString];
             }
             break;
-        case kResults2ClipFullHistory2PDF:
+        case kResultsToClipFullHistory2PDF:
             const now = [CPDate date];
             const filename = "FrACT_"+ [Misc date2YYYY_MM_DD: now] + "_" + [Misc date2HH__MM: now];
             let s = "FrACT10 RESULT RECORD" + crlf + crlf + crlf;

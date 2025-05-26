@@ -81,8 +81,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [gAppController copyColorsFromSettings]; //could have been overwritten
     gStrokeMinimal = [Settings minStrokeAcuity]; //smallest possible stroke is ½pixel. Made into a Setting.
     gStrokeMaximal = Math.min(viewHeight, viewWidth) / (5 + [Settings margin4maxOptotypeIndex]); //leave a margin of ½·index around the largest optotype
-    if (!([Settings acuityFormatLogMAR] || [Settings acuityFormatDecimal] ||  [Settings acuityFormatSnellenFractionFoot])) {
-        [Settings setAcuityFormatLogMAR: YES];  [Settings setAcuityFormatDecimal: YES]; //make sure not all formats are de-selected
+    if (!([Settings showAcuityFormatLogMAR] || [Settings showAcuityFormatDecimal] ||  [Settings showAcuityFormatSnellenFractionFoot])) {
+        [Settings setShowAcuityFormatLogMAR: YES];  [Settings setShowAcuityFormatDecimal: YES]; //make sure not all formats are de-selected
     }
     responseButtonsAdded = NO;
     iTrial = 0;
@@ -158,7 +158,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     CGContextSetFillColor(cgc, gColorBack);
     if ([self isAcuityTAO])
         CGContextSetFillColor(cgc, [CPColor whiteColor]); //contrast always 100% with TAO
-    if ([self isContrastOptotype] && [Settings contrastDithering]) {
+    if ([self isContrastOptotype] && [Settings isContrastDithering]) {
         CGContextSetFillColor(cgc, colorBackUndithered); //else black background is briefly visible, due to dithering delay
         CGContextFillRect(cgc, [gAppController.selfWindow frame]);
         CGContextSetFillColor(cgc, gColorBack);
@@ -301,7 +301,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if ([self isAcuityOptotype]) {
         const logMARcurrent = [MiscSpace logMARfromDecVA: [MiscSpace decVAFromStrokePixels: stimStrengthInDeviceunits]];
         let logMARtarget = [0.3, 0.0, -0.3][arIndex];
-        if ([Settings threshCorrection]) logMARtarget += Math.log10(gThresholdCorrection4Ascending);
+        if ([Settings doThreshCorrection]) logMARtarget += Math.log10(gThresholdCorrection4Ascending);
         responseWasCorrect = logMARcurrent > logMARtarget;
     }
     if ([self isContrastOptotype]) {
@@ -415,12 +415,12 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
     [trialHistoryController setCorrect: responseWasCorrect]; //placed here so reached by "onTimeoutAutoResponse"
     [thresholder enterTrialOutcomeWithAppliedStim: [self stimThresholderunitsFromDeviceunits: stimStrengthInDeviceunits] wasCorrect: responseWasCorrect];
-    switch ([Settings auditoryFeedback4trial]) { //case 0: nothing
-        case kAuditoryFeedback4trialAlways:
+    switch ([Settings auditoryFeedback4trialIndex]) { //case 0: nothing
+        case kauditoryFeedback4trialIndexAlways:
             [sound playNumber: kSoundTrialYes];  break;
-        case kAuditoryFeedback4trialOncorrect:
+        case kauditoryFeedback4trialIndexOncorrect:
             if (responseWasCorrect) [sound playNumber: kSoundTrialYes];  break;
-        case kAuditoryFeedback4trialWithinfo:
+        case kauditoryFeedback4trialIndexWithinfo:
             if (responseWasCorrect) [sound playNumber: kSoundTrialYes];
             else [sound playNumber: kSoundTrialNo];
             break;
@@ -441,7 +441,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     await [Misc asyncDelaySeconds: 0.03];
     [trialHistoryController runEnded];
     [gAppController setCurrentTestResultsHistoryExportString: [trialHistoryController resultsHistoryString]];
-    if ([Settings auditoryFeedback4run]) [sound playNumber: kSoundRunEnd];
+    if ([Settings giveAuditoryFeedback4run]) [sound playNumber: kSoundRunEnd];
 
     let _currentTestResultExportString = [gAppController currentTestResultExportString];
     if ([Settings showCI95] && (![gAppController runAborted])) {

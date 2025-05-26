@@ -1,5 +1,6 @@
 #  History
 
+2025-05-26 refactor: rename many settings, especially boolean ones, to sytematically use "is"/"has"/…; consequently Version 3.0→3.1
 2025-05-23 fix: window origin shift for fullScreen on/off; doc: `autoFullScreen` does not work because it needs user interaction; doc: shift BaLM tab position it settings before Gamma;     style: `'use strict'` has no effect (why?), so delete; fix: origin shift bug also addressed in resize handler; refactor: move `isInRun` from `ControlDispatcher` to `Misc`; fix: the fullscreen/resize event handlers must not set `selfWindow` during run; style: add subtitle to BaLM tab
 2025-05-15 refactor: replace the evil "==" and "!=" with the "good" "===" and "!==" throughout (Douglas Crockford);
     feat: change font face to Courier and font size to 9 in PDF output since jsPDF doesn't support tab stops, more readable now
@@ -99,7 +100,7 @@
 2024-09-17 add an "ISI" `timeoutIsiMillisecs`; remove superfluous Cappuccino files
 2024-09-13 Presets: two more "factored out" into separate files
 2024-09-11a Presets: begin moving presets to categories. Does not work, use singletons
-2024-09-11 add Preset "ULV@Gensight"; symbolic constants for NAlternativesIndexType and AuditoryFeedback4trialType; ensure best/worst VAs update after plastic card procedure
+2024-09-11 add Preset "ULV@Gensight"; symbolic constants for NAlternativesIndexType and auditoryFeedback4trialIndexType; ensure best/worst VAs update after plastic card procedure
 2024-09-04 rename creditCard → plasticCard throughout
 2024-08-30 redesign "Line(s) of optotype mode": no more "chart mode", replaced by n of lines
 2024-08-25 simplify actions for Help and About panels by using tag values and URL string collection
@@ -159,7 +160,7 @@
 + 2024-01-30 add  1.5 and 12 cpd on request of Nic Reus
 + 2024-01-30 begin implementation of "specialBcm"
 + 2024-01-28 add preset text name in GUI, fix button relation to started test (via tag)
-+ 2024-01-28 results2clipboard with constants rather than numbers
++ 2024-01-28 putResultsToClipboard with constants rather than numbers
 + 2024-01-28 all back to this morning, with consistent numbering
 + 2024-01-28 test numbering consistent: 0 also in the constant list (hierarchyC.), several changes ensued
 + 2024-01-24 add preset "CNSatFreiburg"

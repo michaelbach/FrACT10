@@ -15,8 +15,8 @@
     [Settings setDefaults];
     //general pane
     [Settings setTestOnFive: kTestContrastC];
-    [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
-    [Settings setResults2clipboard: kResults2ClipFinalOnly];
+    [Settings setShowResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
+    [Settings setResultsToClipboardIndex: kResultsToClipFinalOnly];
     [Settings setDistanceInCM: 100];
     //acuity pane
     //contrast pane

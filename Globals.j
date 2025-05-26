@@ -55,12 +55,12 @@ kShortcutKeys4TestsArray = {"L": kTestAcuityLett, "C": kTestAcuityC, "E": kTestA
 @typedef NAlternativesIndexType
 kNAlternativesIndex2 = 0; kNAlternativesIndex4 = 1; kNAlternativesIndex8plus = 2;
 
-@typedef AuditoryFeedback4trialType
-kAuditoryFeedback4trialNone = 0; kAuditoryFeedback4trialAlways = 1; kAuditoryFeedback4trialOncorrect = 2; kAuditoryFeedback4trialWithinfo = 3;
+@typedef auditoryFeedback4trialIndexType
+kauditoryFeedback4trialIndexNone = 0; kauditoryFeedback4trialIndexAlways = 1; kauditoryFeedback4trialIndexOncorrect = 2; kauditoryFeedback4trialIndexWithinfo = 3;
 
-@typedef Results2ClipChoiceType
-kResults2ClipNone = 0; kResults2ClipFinalOnly = 1; kResults2ClipFullHistory = 2;
-kResults2ClipFullHistory2PDF = 3;
+@typedef ResultsToClipChoiceType
+kResultsToClipNone = 0; kResultsToClipFinalOnly = 1; kResultsToClipFullHistory = 2;
+kResultsToClipFullHistory2PDF = 3;
 
 @typedef AutoRunIndexType
 kAutoRunIndexNone = 0; kAutoRunIndexHi = 1; kAutoRunIndexMid = 2; kAutoRunIndexLow = 3;

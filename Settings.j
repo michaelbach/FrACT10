@@ -10,7 +10,7 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kDateOfCurrentSettingsVersion "2021-01-31"
+#define kDateOfCurrentSettingsVersion "2025-05-25"
 
 
 @import <Foundation/Foundation.j>
@@ -34,7 +34,7 @@ Created by mb on July 15, 2015.
     [self addIntAccessors4Key: "nAlternativesIndex"];
     [self addStringAccessors4Key: "presetName"];
     [self addIntAccessors4Key: "autoRunIndex"];
-    [self addStringAccessors4Key: "dateSettingsVersion"];
+    [self addStringAccessors4Key: "dateOfSettingsVersion"];
 
     //General
     [self addIntAccessors4Key: "nTrials02"];
@@ -43,13 +43,13 @@ Created by mb on July 15, 2015.
     [self addFloatAccessors4Key: "distanceInCM"];
     [self addStringAccessors4Key: "distanceInInchLocalisedString"];
     [self addFloatAccessors4Key: "calBarLengthInMM"];
-    [self addBoolAccessors4Key: "responseInfoAtStart"];
+    [self addBoolAccessors4Key: "showResponseInfoAtStart"];
     [self addIntAccessors4Key: "testOnFive"];
     [self addFloatAccessors4Key: "eccentXInDeg"];
     [self addFloatAccessors4Key: "eccentYInDeg"];
     [self addBoolAccessors4Key: "eccentShowCenterFixMark"];
     [self addBoolAccessors4Key: "eccentRandomizeX"];
-    [self addBoolAccessors4Key: "mobileOrientation"];
+    [self addBoolAccessors4Key: "respondsToMobileOrientation"];
     [self addBoolAccessors4Key: "autoFullScreen"];
     [self addIntAccessors4Key: "displayTransform"];
     [self addBoolAccessors4Key: "showTrialInfo"];
@@ -59,13 +59,13 @@ Created by mb on July 15, 2015.
     [self addFloatAccessors4Key: "timeoutDisplaySeconds"];
     [self addFloatAccessors4Key: "maskTimeOnResponseInMS"];
     [self addIntAccessors4Key: "decimalMarkCharIndex"];
-    [self addIntAccessors4Key: "results2clipboard"];
-    [self addBoolAccessors4Key: "results2clipboardSilent"];
-    [self addIntAccessors4Key: "auditoryFeedback4trial"];
+    [self addIntAccessors4Key: "resultsToClipboardIndex"];
+    [self addBoolAccessors4Key: "putResultsToClipboardSilent"];
+    [self addIntAccessors4Key: "auditoryFeedback4trialIndex"];
     [self addIntAccessors4Key: "visualFeedback"];
-    [self addBoolAccessors4Key: "auditoryFeedback4run"];
+    [self addBoolAccessors4Key: "giveAuditoryFeedback4run"];
     [self addFloatAccessors4Key: "soundVolume"];
-    [self addBoolAccessors4Key: "rewardPicturesWhenDone"];
+    [self addBoolAccessors4Key: "showRewardPicturesWhenDone"];
     [self addFloatAccessors4Key: "timeoutRewardPicturesInSeconds"];
     [self addBoolAccessors4Key: "enableTouchControls"];
 
@@ -82,28 +82,28 @@ Created by mb on July 15, 2015.
     [self addStringAccessors4Key: "minPossibleLogMARLocalisedString"];
     [self addFloatAccessors4Key: "maxPossibleLogMAR"];
     [self addStringAccessors4Key: "maxPossibleLogMARLocalisedString"];
-    [self addBoolAccessors4Key: "threshCorrection"];
+    [self addBoolAccessors4Key: "doThreshCorrection"];
     [self addFloatAccessors4Key: "maxDisplayedAcuity"];
     [self addFloatAccessors4Key: "minStrokeAcuity"];
     [self addFloatAccessors4Key: "acuityStartingLogMAR"];
     [self addIntAccessors4Key: "margin4maxOptotypeIndex"];
     [self addIntAccessors4Key: "crowdingType"];
     [self addIntAccessors4Key: "crowdingDistanceCalculationType"];
-    [self addBoolAccessors4Key: "acuityFormatDecimal"];
-    [self addBoolAccessors4Key: "acuityFormatLogMAR"];
-    [self addBoolAccessors4Key: "acuityFormatSnellenFractionFoot"];
+    [self addBoolAccessors4Key: "showAcuityFormatDecimal"];
+    [self addBoolAccessors4Key: "showAcuityFormatLogMAR"];
+    [self addBoolAccessors4Key: "showAcuityFormatSnellenFractionFoot"];
     [self addBoolAccessors4Key: "forceSnellen20"];
     [self addBoolAccessors4Key: "showCI95"];
     [self addFloatAccessors4Key: "contrastAcuityWeber"];
-    [self addBoolAccessors4Key: "acuityEasyTrials"];
+    [self addBoolAccessors4Key: "acuityHasEasyTrials"];
     [self addBoolAccessors4Key: "isLandoltObliqueOnly"];
 
     //Acuity>Line-by-line
-    [self addIntAccessors4Key: "testOnLineByLine"];
-    [self addIntAccessors4Key: "testOnLineByLineDistanceType"];
+    [self addIntAccessors4Key: "testOnLineByLineIndex"];
+    [self addIntAccessors4Key: "lineByLineDistanceType"];
     [self addIntAccessors4Key: "lineByLineHeadcountIndex"];
     [self addIntAccessors4Key: "lineByLineLinesIndex"];
-    [self addBoolAccessors4Key: "lineByLineChartModeConstantVA"];
+    [self addBoolAccessors4Key: "isLineByLineChartModeConstantVA"];
 
     //Acuity>Vernier
     [self addIntAccessors4Key: "vernierType"];
@@ -112,21 +112,21 @@ Created by mb on July 15, 2015.
     [self addFloatAccessors4Key: "vernierGap"];
 
     //Contrast
-    [self addBoolAccessors4Key: "contrastEasyTrials"];
-    [self addBoolAccessors4Key: "contrastDarkOnLight"];
+    [self addBoolAccessors4Key: "contrastHasEasyTrials"];
+    [self addBoolAccessors4Key: "isContrastDarkOnLight"];
     [self addFloatAccessors4Key: "contrastOptotypeDiameter"];
     [self addBoolAccessors4Key: "contrastShowFixMark"];
     [self addFloatAccessors4Key: "contrastTimeoutFixmark"];
     [self addFloatAccessors4Key: "contrastMaxLogCSWeber"];
     [self addFloatAccessors4Key: "gammaValue"];
     [self addBoolAccessors4Key: "contrastBitStealing"];
-    [self addBoolAccessors4Key: "contrastDithering"];
+    [self addBoolAccessors4Key: "isContrastDithering"];
 
     //Gratings
     [self addFloatAccessors4Key: "gratingCPD"];
     [self addBoolAccessors4Key: "isGratingMasked"];
     [self addFloatAccessors4Key: "gratingDiaInDeg"];
-    [self addBoolAccessors4Key: "gratingUseErrorDiffusion"];
+    [self addBoolAccessors4Key: "isGratingErrorDiffusion"];
     [self addBoolAccessors4Key: "isGratingColor"];
     [self addIntAccessors4Key: "what2sweepIndex"];
     [self addFloatAccessors4Key: "gratingCPDmin"];
@@ -202,7 +202,7 @@ Created by mb on July 15, 2015.
 + (void) allNotCheckButSet: (BOOL) set {
     [[CPUserDefaults standardUserDefaults] synchronize];
     if (set) {
-        [self setDateSettingsVersion: kDateOfCurrentSettingsVersion];
+        [self setDateOfSettingsVersion: kDateOfCurrentSettingsVersion];
         //for `CPColor` I have no `CheckCol` (yet) #tbd, worth it?
         [self setWindowBackgroundColor: [CPColor colorWithRed: 1 green: 1 blue: 0.9 alpha: 1]];
         [self setGratingForeColor: [CPColor lightGrayColor]];
@@ -222,7 +222,7 @@ Created by mb on July 15, 2015.
     [self setDistanceInCM: [self checkNum: [self distanceInCM] dflt: gDefaultDistanceInCM min: 1 max: 2500 set: set]];
     [self setCalBarLengthInMM: [self checkNum: [self calBarLengthInMM] dflt: gDefaultCalibrationBarLengthInMM min: 1 max: 10000 set: set]];
 
-    [self setResponseInfoAtStart: [self checkBool: [self responseInfoAtStart] dflt: YES set: set]];
+    [self setShowResponseInfoAtStart: [self checkBool: [self showResponseInfoAtStart] dflt: YES set: set]];
     [self setEnableTouchControls: [self checkBool: [self enableTouchControls] dflt: YES set: set]];
 
     [self setDecimalMarkCharIndex: [self checkNum: [self decimalMarkCharIndex] dflt: kDecimalMarkCharIndexAuto min: kDecimalMarkCharIndexAuto max: kDecimalMarkCharIndexComma set: set]];
@@ -236,7 +236,7 @@ Created by mb on July 15, 2015.
 
     [self setAutoFullScreen: [self checkBool: [self autoFullScreen] dflt: NO set: set]];
 
-    [self setMobileOrientation: [self checkBool: [self mobileOrientation] dflt: YES set: set]];
+    [self setRespondsToMobileOrientation: [self checkBool: [self respondsToMobileOrientation] dflt: YES set: set]];
 
     //0=normal, 1=mirror horizontally, 2=mirror vertically, 3=both=rot180°
     [self setDisplayTransform: [self checkNum: [self displayTransform] dflt: 0 min: 0 max: 3 set: set]];
@@ -249,17 +249,17 @@ Created by mb on July 15, 2015.
     [self setTimeoutDisplaySeconds: [self checkNum: [self timeoutDisplaySeconds] dflt: 30 min: 0.1 max: 9999 set: set]];
     [self setMaskTimeOnResponseInMS: [self checkNum: [self timeoutDisplaySeconds] dflt: 0 min: 0 max: 9999 set: set]];
 
-    [self setResults2clipboard: [self checkNum: [self results2clipboard] dflt: kResults2ClipNone min: kResults2ClipNone max: kResults2ClipFullHistory2PDF set: set]];
-    [self setResults2clipboardSilent: [self checkBool: [self results2clipboardSilent] dflt: NO set: set]];
+    [self setResultsToClipboardIndex: [self checkNum: [self resultsToClipboardIndex] dflt: kResultsToClipNone min: kResultsToClipNone max: kResultsToClipFullHistory2PDF set: set]];
+    [self setPutResultsToClipboardSilent: [self checkBool: [self putResultsToClipboardSilent] dflt: NO set: set]];
 
     //0: none, 1: always, 2: on correct, 3: w/ info
-    [self setAuditoryFeedback4trial: [self checkNum: [self auditoryFeedback4trial] dflt: kAuditoryFeedback4trialWithinfo min: kAuditoryFeedback4trialNone max: kAuditoryFeedback4trialWithinfo set: set]];
+    [self setAuditoryFeedback4trialIndex: [self checkNum: [self auditoryFeedback4trialIndex] dflt: kauditoryFeedback4trialIndexWithinfo min: kauditoryFeedback4trialIndexNone max: kauditoryFeedback4trialIndexWithinfo set: set]];
     //0: none, 1: always, 2: on correct, 3: w/ info
     [self setVisualFeedback: [self checkNum: [self visualFeedback] dflt: 0 min: 0 max: 3 set: set]]; //NOT IN USE
-    [self setAuditoryFeedback4run: [self checkBool: [self auditoryFeedback4run] dflt: YES set: set]];
+    [self setGiveAuditoryFeedback4run: [self checkBool: [self giveAuditoryFeedback4run] dflt: YES set: set]];
     [self setSoundVolume: [self checkNum: [self soundVolume] dflt: 20 min: 1 max: 100 set: set]];
 
-    [self setRewardPicturesWhenDone: [self checkBool: [self rewardPicturesWhenDone] dflt: NO set: set]];
+    [self setShowRewardPicturesWhenDone: [self checkBool: [self showRewardPicturesWhenDone] dflt: NO set: set]];
     [self setTimeoutRewardPicturesInSeconds: [self checkNum: [self timeoutRewardPicturesInSeconds] dflt: 5 min: 0.1 max: 999 set: set]];
 
     [self setEmbedInNoise: [self checkBool: [self embedInNoise] dflt: NO set: set]];
@@ -270,16 +270,16 @@ Created by mb on July 15, 2015.
     [self setIsLandoltObliqueOnly: [self checkBool: [self isLandoltObliqueOnly] dflt: NO set: set]]; //only applies to acuity with 4 Landolt orienations
     [self setContrastAcuityWeber: [self checkNum: [self contrastAcuityWeber] dflt: 100 min: -1E6 max: 100 set: set]];
     [self calculateAcuityForeBackColorsFromContrast];
-    [self setAcuityEasyTrials: [self checkBool: [self acuityEasyTrials] dflt: YES set: set]];
+    [self setAcuityHasEasyTrials: [self checkBool: [self acuityHasEasyTrials] dflt: YES set: set]];
     [self setMaxDisplayedAcuity: [self checkNum: [self maxDisplayedAcuity] dflt: 2 min: 1 max: 99 set: set]];
     [self setMinStrokeAcuity: [self checkNum: [self minStrokeAcuity] dflt: 0.5 min: 0.5 max: 5 set: set]];
     [self setAcuityStartingLogMAR: [self checkNum: [self acuityStartingLogMAR] dflt: 1 min: 0.3 max: 2.5 set: set]];
     [self setMargin4maxOptotypeIndex: [self checkNum: [self margin4maxOptotypeIndex] dflt: 1 min: 0 max: 4 set: set]];
     [self setAutoRunIndex: [self checkNum: [self autoRunIndex] dflt: kAutoRunIndexNone min: kAutoRunIndexNone max: kAutoRunIndexLow set: set]];
-    [self setThreshCorrection: [self checkBool: [self threshCorrection] dflt: YES set: set]];
-    [self setAcuityFormatDecimal: [self checkBool: [self acuityFormatDecimal] dflt: YES set: set]];
-    [self setAcuityFormatLogMAR: [self checkBool: [self acuityFormatLogMAR] dflt: YES set: set]];
-    [self setAcuityFormatSnellenFractionFoot: [self checkBool: [self acuityFormatSnellenFractionFoot] dflt: NO set: set]];
+    [self setDoThreshCorrection: [self checkBool: [self doThreshCorrection] dflt: YES set: set]];
+    [self setShowAcuityFormatDecimal: [self checkBool: [self showAcuityFormatDecimal] dflt: YES set: set]];
+    [self setShowAcuityFormatLogMAR: [self checkBool: [self showAcuityFormatLogMAR] dflt: YES set: set]];
+    [self setShowAcuityFormatSnellenFractionFoot: [self checkBool: [self showAcuityFormatSnellenFractionFoot] dflt: NO set: set]];
     [self setForceSnellen20: [self checkBool: [self forceSnellen20] dflt: NO set: set]];
     [self setShowCI95: [self checkBool: [self showCI95] dflt: NO set: set]];
     [self calculateMinMaxPossibleAcuity];
@@ -292,11 +292,11 @@ Created by mb on July 15, 2015.
     [self setCrowdingDistanceCalculationType: [self checkNum: [self crowdingDistanceCalculationType] dflt: 0 min: 0 max: 3 set: set]];
 
     //Line-by-line stuff
-    [self setTestOnLineByLine: [self checkNum: [self testOnLineByLine] dflt: 1 min: 1 max: 4 set: set]]; //1: Sloan Letters. 0: nicht erlaubt, 2: Landolt, 3…
-    [self setTestOnLineByLineDistanceType: [self checkNum: [self testOnLineByLineDistanceType] dflt: 1 min: 0 max: 1 set: set]]; //0: DIN-EN-ISO, 1: ETDRS
+    [self setTestOnLineByLineIndex: [self checkNum: [self testOnLineByLineIndex] dflt: 1 min: 1 max: 4 set: set]]; //1: Sloan Letters. 0: nicht erlaubt, 2: Landolt, 3…
+    [self setLineByLineDistanceType: [self checkNum: [self lineByLineDistanceType] dflt: 1 min: 0 max: 1 set: set]]; //0: DIN-EN-ISO, 1: ETDRS
     [self setLineByLineHeadcountIndex: [self checkNum: [self lineByLineHeadcountIndex] dflt: 2 min: 0 max: 4 set: set]]; //0: "1", 2: "3", 3: "5", 4: "7"
     [self setLineByLineLinesIndex: [self checkNum: [self lineByLineLinesIndex] dflt: 0 min: 0 max: 3 set: set]]; //0: "1", 2: "3", 3: "5"
-    [self setLineByLineChartModeConstantVA: [self checkBool: [self lineByLineChartModeConstantVA] dflt: NO set: set]];
+    [self setIsLineByLineChartModeConstantVA: [self checkBool: [self isLineByLineChartModeConstantVA] dflt: NO set: set]];
 
     //Vernier stuff
     [self setVernierType: [self checkNum: [self vernierType] dflt: 0 min: 0 max: 1 set: set]]; //2 or 3 bars
@@ -306,20 +306,20 @@ Created by mb on July 15, 2015.
 
     //Contrast stuff
     [self setGammaValue: [self checkNum: [self gammaValue] dflt: 2.0 min: 0.8 max: 4 set: set]];
-    [self setContrastEasyTrials: [self checkBool: [self contrastEasyTrials] dflt: YES set: set]];
-    [self setContrastDarkOnLight: [self checkBool: [self contrastDarkOnLight] dflt: YES set: set]];
+    [self setContrastHasEasyTrials: [self checkBool: [self contrastHasEasyTrials] dflt: YES set: set]];
+    [self setIsContrastDarkOnLight: [self checkBool: [self isContrastDarkOnLight] dflt: YES set: set]];
     [self setContrastOptotypeDiameter: [self checkNum: [self contrastOptotypeDiameter] dflt: 50 min: 1 max: 2500 set: set]];
     [self setContrastShowFixMark: [self checkBool: [self contrastShowFixMark] dflt: YES set: set]];
     [self setContrastTimeoutFixmark: [self checkNum: [self contrastTimeoutFixmark] dflt: 500 min: 20 max: 5000 set: set]];
     [self setContrastMaxLogCSWeber: [self checkNum: [self contrastMaxLogCSWeber] dflt: 3.0 min: 1.5 max: gMaxAllowedLogCSWeber set: set]];
     [self setContrastBitStealing: [self checkBool: [self contrastBitStealing] dflt: NO set: set]];
-    [self setContrastDithering: [self checkBool: [self contrastDithering] dflt: YES set: set]];
+    [self setIsContrastDithering: [self checkBool: [self isContrastDithering] dflt: YES set: set]];
 
     //Grating stuff
     [self setGratingCPD: [self checkNum: [self gratingCPD] dflt: 2.0 min: 0.01 max: 18 set: set]];
     [self setIsGratingMasked: [self checkBool: [self isGratingMasked] dflt: NO set: set]];
     [self setGratingDiaInDeg: [self checkNum: [self gratingDiaInDeg] dflt: 10.0 min: 1.0 max: 50 set: set]];
-    [self setGratingUseErrorDiffusion: [self checkBool: [self gratingUseErrorDiffusion] dflt: YES set: set]];
+    [self setIsGratingErrorDiffusion: [self checkBool: [self isGratingErrorDiffusion] dflt: YES set: set]];
     [self setGratingShapeIndex: [self checkNum: [self gratingShapeIndex] dflt: 0 min: 0 max: kGratingShapeIndexCheckerboard set: set]];
     [self setIsGratingColor: [self checkBool: [self isGratingColor] dflt: NO set: set]];
     [self setWhat2sweepIndex: [self checkNum: [self what2sweepIndex] dflt: 0 min: 0 max: 1 set: set]]; //0: sweep contrast, 1: sweep spatial frequency
@@ -356,13 +356,13 @@ Created by mb on July 15, 2015.
     const strokeMaximal = screenSize / (5 + [self margin4maxOptotypeIndex]); //leave a margin of ½·index around the largest optotype
     let minPossibleAcuityVal = [MiscSpace decVAFromStrokePixels: strokeMaximal];
     //Correction for threshold underestimation of ascending procedures (as opposed to our bracketing one)
-    minPossibleAcuityVal = [self threshCorrection] ? minPossibleAcuityVal * gThresholdCorrection4Ascending : minPossibleAcuityVal;
+    minPossibleAcuityVal = [self doThreshCorrection] ? minPossibleAcuityVal * gThresholdCorrection4Ascending : minPossibleAcuityVal;
     [self setMinPossibleDecimalAcuityLocalisedString: [Misc stringFromNumber: minPossibleAcuityVal decimals: 3 localised: YES]];
     [self setMaxPossibleLogMAR: [MiscSpace logMARfromDecVA: minPossibleAcuityVal]]; //needed for color
     [self setMaxPossibleLogMARLocalisedString: [Misc stringFromNumber: [self maxPossibleLogMAR] decimals: 2 localised: YES]];
 
     //Correction for threshold underestimation of ascending procedures (as opposed to our bracketing one)
-    maxPossibleAcuityVal = [self threshCorrection] ? maxPossibleAcuityVal * gThresholdCorrection4Ascending : maxPossibleAcuityVal;
+    maxPossibleAcuityVal = [self doThreshCorrection] ? maxPossibleAcuityVal * gThresholdCorrection4Ascending : maxPossibleAcuityVal;
     [self setMaxPossibleDecimalAcuityLocalisedString: [Misc stringFromNumber: maxPossibleAcuityVal decimals: 2 localised: YES]];
     [self setMinPossibleLogMAR: [MiscSpace logMARfromDecVA: maxPossibleAcuityVal]]; //needed for color
     [self setMinPossibleLogMARLocalisedString: [Misc stringFromNumber: [self minPossibleLogMAR] decimals: 2 localised: YES]];
@@ -391,7 +391,7 @@ Created by mb on July 15, 2015.
  When new defaults are added, kDateOfCurrentSettingsVersion is updated. That tells FrACT that all settings need to be defaulted.
  */
 + (BOOL) needNewDefaults {
-    return [self dateSettingsVersion] !== kDateOfCurrentSettingsVersion;
+    return [self dateOfSettingsVersion] !== kDateOfCurrentSettingsVersion;
 }
 + (void) checkDefaults { //console.info("Settings>checkDefaults");
     if ([self needNewDefaults]) {

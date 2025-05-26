@@ -147,7 +147,7 @@ const specialBcmStepsize = 0.1;
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView {
     isGratingColor = [Settings isGratingColor];
-    isErrorDiffusion = [Settings gratingUseErrorDiffusion];
+    isErrorDiffusion = [Settings isGratingErrorDiffusion];
     [self calculateForeBackColors];
     if (isGratingColor) {
         gColorFore = [Settings gratingForeColor];  gColorBack = [Settings gratingBackColor];

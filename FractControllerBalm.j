@@ -12,7 +12,7 @@
 
 
 @implementation FractControllerBalm: FractController {
-    int savedAuditoryFeedback4trial;
+    int savedauditoryFeedback4trialIndex;
     int extentInPix;
 }
 
@@ -36,8 +36,8 @@
     [Settings setAcuityForeColor: [CPColor whiteColor]]; //will be copied → gColorFore
     [Settings setAcuityBackColor: [CPColor blackColor]];
 
-    savedAuditoryFeedback4trial = [Settings auditoryFeedback4trial];
-    //[Settings setAuditoryFeedback4trial: kAuditoryFeedback4trialNone];
+    savedauditoryFeedback4trialIndex = [Settings auditoryFeedback4trialIndex];
+    //[Settings setAuditoryFeedback4trialIndex: kauditoryFeedback4trialIndexNone];
 
     extentInPix = Math.round([MiscSpace pixelFromDegree: [Settings balmExtentInDeg]]);
 
@@ -86,7 +86,7 @@
 
 
 - (void) runEnd { //console.info("FractControllerBalm>runEnd");
-    [Settings setAuditoryFeedback4trial: savedAuditoryFeedback4trial];
+    [Settings setAuditoryFeedback4trialIndex: savedauditoryFeedback4trialIndex];
     if (iTrial < nTrials) { //premature end
         [gAppController setResultString: gAbortMessage];
     } else {

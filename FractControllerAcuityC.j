@@ -14,7 +14,7 @@ Created by Bach on 18.07.2017.
 
 
 - (void) modifyThresholderStimulus {
-    if ([Settings acuityEasyTrials]) [self modifyThresholderStimulusWithBonus];
+    if ([Settings acuityHasEasyTrials]) [self modifyThresholderStimulusWithBonus];
 }
 - (void) modifyDeviceStimulus {[self acuityModifyDeviceStimulusDIN01_02_04_08];}
 

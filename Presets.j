@@ -170,7 +170,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     [Settings setNTrials04: 18]; //24
     [Settings setNTrials08: 12]; //18
     [Settings setDistanceInCM: 400]; [Settings setCalBarLengthInMM: 150]; //avoids dialog
-    [Settings setResponseInfoAtStart: NO];
+    [Settings setShowResponseInfoAtStart: NO];
     //acuity pane
     [Settings setShowCI95: YES];
     //Misc pane

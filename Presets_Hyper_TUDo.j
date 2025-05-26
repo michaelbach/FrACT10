@@ -16,10 +16,10 @@
     //General pane
     [Settings setTimeoutResponseSeconds: 600]; [Settings setTimeoutDisplaySeconds: 90];
     [Settings setDistanceInCM: 147]; [Settings setCalBarLengthInMM: 134];
-    [Settings setResponseInfoAtStart: NO];
+    [Settings setShowResponseInfoAtStart: NO];
     [Settings setTestOnFive: kTestNone];
-    [Settings setResults2clipboard: kResults2ClipFullHistory];
-    [Settings setResults2clipboardSilent: YES];
+    [Settings setResultsToClipboardIndex: kResultsToClipFullHistory];
+    [Settings setPutResultsToClipboardSilent: YES];
     //Acuity pane
     [Settings setVernierType: kVernierType3bars];
     [Settings setVernierWidth: 1.5]; [Settings setVernierLength: 40]; [Settings setVernierGap: 0.2];

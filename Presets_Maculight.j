@@ -14,8 +14,8 @@
 + (void) apply { //console.info("Presets_Maculight>apply")
     [Presets setStandardDefaultsKeepingCalBarLength];
     //general pane
-    [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
-    [Settings setResults2clipboard: kResults2ClipFinalOnly];
+    [Settings setShowResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
+    [Settings setResultsToClipboardIndex: kResultsToClipFinalOnly];
     [Settings setDistanceInCM: 400];
     [Settings setTestOnFive: kTestAcuityLett];
     //contrast pane

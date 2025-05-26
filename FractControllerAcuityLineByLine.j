@@ -44,7 +44,7 @@ Created by mb on 2021-12-21.
     switch(state) {
         case kStateDrawBack: break;
         case kStateDrawFore:
-            const chartmodeNotConstVA = ![Settings lineByLineChartModeConstantVA];
+            const chartmodeNotConstVA = ![Settings isLineByLineChartModeConstantVA];
             CGContextSaveGState(cgc);
             const lineRange = [Settings lineByLineLinesIndex];
             if (lineRange > 0) {
@@ -55,7 +55,7 @@ Created by mb on 2021-12-21.
             for (let iLine = -lineRange; iLine <= lineRange; iLine++) {
                 const usedAlternativesArray = [];
                 let optotypeDistance = 1; //according to ETDRS
-                if ([Settings testOnLineByLineDistanceType] === 0) { //according to DIN EN ISO 8596
+                if ([Settings lineByLineDistanceType] === 0) { //according to DIN EN ISO 8596
                     optotypeDistance = 0.4;
                     const localDecVA = [MiscSpace decVAfromLogMAR: localLogMAR];
                     if (localDecVA >= 0.06) optotypeDistance = 1;
@@ -74,10 +74,10 @@ Created by mb on 2021-12-21.
                         currentAlternative = [Misc iRandom: nAlternatives];
                     }
                     usedAlternativesArray.push(currentAlternative);
-                    switch([Settings testOnLineByLine]) {
+                    switch([Settings testOnLineByLineIndex]) {
                         case 1: [optotypes drawLetterWithStriokeInPx: stimStrengthInDeviceunits letterNumber: currentAlternative];  break;
                         case 2: [optotypes drawLandoltWithStrokeInPx: stimStrengthInDeviceunits landoltDirection: currentAlternative];  break;
-                        default: console.log("Line-by-line: unsupported optotype-id: ", [Settings testOnLineByLine]);
+                        default: console.log("Line-by-line: unsupported optotype-id: ", [Settings testOnLineByLineIndex]);
                     }
                     CGContextTranslateCTM(cgc, +tempX, verticalOffset);
                 }
@@ -122,7 +122,7 @@ Created by mb on 2021-12-21.
 
 - (void) runStart { //console.info("FractControllerAcuityLetters>runStart");
     nAlternatives = 10;
-    switch([Settings testOnLineByLine]) {
+    switch([Settings testOnLineByLineIndex]) {
         case 1: nAlternatives = 10;  break;
         case 2: nAlternatives = 8;  break; //4 Landolt orientations not supported
     }

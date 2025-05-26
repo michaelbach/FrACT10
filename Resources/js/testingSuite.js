@@ -99,9 +99,9 @@ const demoRunAndRestore = async () => {
    const nTrials08 = response.m3;
    await oneStep3Ms('setSetting', 'nTrials08', 12);
 
-   response = await oneStep3Ms('getSetting', 'responseInfoAtStart', '');
-   const responseInfoAtStart = response.m3;
-   await oneStep3Ms('setSetting', 'responseInfoAtStart', 0);
+   response = await oneStep3Ms('getSetting', 'showResponseInfoAtStart', '');
+   const showResponseInfoAtStart = response.m3;
+   await oneStep3Ms('setSetting', 'showResponseInfoAtStart', 0);
 
    response = await oneStep3Ms('getSetting', 'autoRunIndex', '');
    const autoRunIndex = response.m3;
@@ -114,7 +114,7 @@ const demoRunAndRestore = async () => {
    await oneStep3Ms('setSetting', 'distanceInCM', distanceInCM);
    await oneStep3Ms('setSetting', 'calBarLengthInMM', calBarLengthInMM);
    await oneStep3Ms('setSetting', 'nTrials08', nTrials08);
-   await oneStep3Ms('setSetting', 'responseInfoAtStart', responseInfoAtStart);
+   await oneStep3Ms('setSetting', 'showResponseInfoAtStart', showResponseInfoAtStart);
    await oneStep3Ms('setSetting', 'autoRunIndex', autoRunIndex);
 
    /*console.info("sucessfully: ", runSuccess, " ran and restored.");*/
@@ -209,7 +209,7 @@ const testingSuite = async () => {
 	await oneStep3Ms('settingsPane', -1, '');
 	await pauseMilliseconds(pauseViewMS);
 	await oneStep3Ms('setFullScreen', NO, '');
-	addText("↑ tested fullscreen\n");
+	addText(" ↑ tested fullscreen\n");
 	await pauseMilliseconds(pauseViewMS);
 
     addText(" ↓ Go to main screen (in case we were not there)");
@@ -292,15 +292,15 @@ const testingSuite = async () => {
 	}
 	addText(" ↑ Cycle through crowding: Done.\n");
 
-	addText(" ↓ `rewardPicturesWhenDone`.");
+	addText(" ↓ `showRewardPicturesWhenDone`.");
 	await oneStep3Ms('setSetting', 'crowdingType', 0);
-	await oneStep3Ms('getSetting', 'rewardPicturesWhenDone', "");
-    await oneStep3Ms('setSetting', 'rewardPicturesWhenDone', YES);
+	await oneStep3Ms('getSetting', 'showRewardPicturesWhenDone', "");
+    await oneStep3Ms('setSetting', 'showRewardPicturesWhenDone', YES);
     await oneStep3Ms('setSetting', 'timeoutRewardPicturesInSeconds', 3);
 	tellIframe3Ms('run','acuity', 'Letters');
 	await pauseMilliseconds(pauseViewMS * 2);
-	await oneStep3Ms('setSetting', 'rewardPicturesWhenDone', NO);
-    addText(" ↑ `rewardPicturesWhenDone`: Done.\n");
+	await oneStep3Ms('setSetting', 'showRewardPicturesWhenDone', NO);
+    addText(" ↑ `showRewardPicturesWhenDone`: Done.\n");
 
     addText(" ↓ Noise embedding");
 	await oneStep3Ms('setSetting', 'embedInNoise', YES);

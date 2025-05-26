@@ -21,7 +21,7 @@ Created by Bach on 2020-09-02
 - (void) modifyThresholderStimulus {
     if (iTrial === 1) //make the first more visible
         stimStrengthInThresholderUnits = Math.min(stimStrengthInThresholderUnits + 0.3, 1);
-    if ([Settings contrastEasyTrials]) //don't forget bonus
+    if ([Settings contrastHasEasyTrials]) //don't forget bonus
         [self modifyThresholderStimulusWithBonus];
 }
 
@@ -31,7 +31,7 @@ Created by Bach on 2020-09-02
     gray1 = [MiscLight devicegrayFromLuminance: gray1];
     let gray2 = [MiscLight upperLuminanceFromContrastLogCSWeber: stimStrengthInDeviceunits];
     gray2 = [MiscLight devicegrayFromLuminance: gray2];
-    if (![Settings contrastDarkOnLight]) {
+    if (![Settings isContrastDarkOnLight]) {
         [gray1, gray2] = [gray2, gray1]; //"modern" swapping of variables
     }
     gColorFore = [MiscLight colorFromGreyBitStealed: gray1]; //console.info(gColorFore);
@@ -39,7 +39,7 @@ Created by Bach on 2020-09-02
     colorForeUndithered = gColorFore;  colorBackUndithered = gColorBack;
     stimStrengthInDeviceunitsUnquantised = stimStrengthInDeviceunits;
 
-    if ([Settings contrastDithering]) {
+    if ([Settings isContrastDithering]) {
         gColorFore = [CPColor colorWithPatternImage: [Dithering image3x3withGray: gray1]];
         gColorBack = [CPColor colorWithPatternImage: [Dithering image3x3withGray: gray2]];
     }
@@ -87,7 +87,7 @@ Created by Bach on 2020-09-02
 
 //this manages stuff after the optotypes have been drawn
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractControllerContrast>drawStimulusInRect");
-    if ([Settings contrastDithering]) {
+    if ([Settings isContrastDithering]) {
         stimStrengthInDeviceunits = stimStrengthInDeviceunitsUnquantised;
     }
     [trialHistoryController setValue: stimStrengthInDeviceunits];

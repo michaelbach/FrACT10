@@ -14,9 +14,9 @@
 + (void) apply { //console.info("Presets_CNS_Freiburg>apply")
     [Settings setDefaults];
     //general pane
-    [Settings setResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
-    [Settings setMobileOrientation: NO];
-    [Settings setResults2clipboard: kResults2ClipFinalOnly];
+    [Settings setShowResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
+    [Settings setRespondsToMobileOrientation: NO];
+    [Settings setResultsToClipboardIndex: kResultsToClipFinalOnly];
     [Settings setDistanceInCM: 200];
     [Settings setTestOnFive: kTestAcuityLett];
 }

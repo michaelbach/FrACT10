@@ -178,7 +178,7 @@
 - (float) acuityResultInDecVA {
     const resultInStrokePx = stimStrengthInDeviceunits;
     let resultInDecVA = [MiscSpace decVAFromStrokePixels: resultInStrokePx];
-    if ([Settings threshCorrection]) resultInDecVA *= gThresholdCorrection4Ascending;
+    if ([Settings doThreshCorrection]) resultInDecVA *= gThresholdCorrection4Ascending;
     //console.info("FractControllerAcuity>acuityResultInDecVA: ", resultInDecVA);
     return resultInDecVA;
 }
@@ -198,7 +198,7 @@
     const resultInDecVACeilinged = Math.min([Settings maxDisplayedAcuity], [self acuityResultInDecVA]);
     const resultInLogMARCeilinged = [MiscSpace logMARfromDecVA: resultInDecVACeilinged];
     let s = "";
-    if ([Settings acuityFormatLogMAR]) {
+    if ([Settings showAcuityFormatLogMAR]) {
         if (s.length > 1) s += ",  ";
         s += "LogMAR:" + [self rangeStatusIndicatorStringInverted: YES];
         s += [Misc stringFromNumber: resultInLogMARCeilinged decimals: 2 localised: YES];
@@ -206,12 +206,12 @@
             s += ci95String;
         }
     }
-    if ([Settings acuityFormatDecimal]) {
+    if ([Settings showAcuityFormatDecimal]) {
         if (s.length > 1) s += ",  ";
         s += "decVA:" + [self rangeStatusIndicatorStringInverted: NO];
         s += [Misc stringFromNumber: resultInDecVACeilinged decimals: 2 localised: YES];
     }
-    if ([Settings acuityFormatSnellenFractionFoot]) {
+    if ([Settings showAcuityFormatSnellenFractionFoot]) {
         if (s.length > 1) s += ",  ";
         s += "Snellen fraction:" +  [self rangeStatusIndicatorStringInverted: NO];
         s += [self format4SnellenInFeet: resultInDecVACeilinged];

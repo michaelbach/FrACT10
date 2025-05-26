@@ -38,14 +38,14 @@
     gray1 = [MiscLight devicegrayFromLuminance: gray1];
     let gray2 = [MiscLight upperLuminanceFromContrastLogCSWeber: contrastLogCSWeber];
     gray2 = [MiscLight devicegrayFromLuminance: gray2];
-    if (![Settings contrastDarkOnLight]) {
+    if (![Settings isContrastDarkOnLight]) {
         [gray1, gray2] = [gray2, gray1]; //"modern" swapping of variables
     }
     //console.log("Wperc ", contrastWeberPercent, ", lgCSW ", contrastLogCSWeber, ", g1 ", gray1, ", g2 ", gray2);
     //const c1 = [CPColor colorWithWhite: gray1 alpha: 1], c2 = [CPColor colorWithWhite: gray2 alpha: 1];
     let c1 = [MiscLight colorFromGreyBitStealed: gray1];
     let c2 = [MiscLight colorFromGreyBitStealed: gray2];
-    if ([Settings contrastDithering]) {
+    if ([Settings isContrastDithering]) {
         c1 = [CPColor colorWithPatternImage: [Dithering image3x3withGray: gray1]];
         c2 = [CPColor colorWithPatternImage: [Dithering image3x3withGray: gray2]];
     }
@@ -53,7 +53,7 @@
     [self setWeberFieldColor2: c2];
     let actualMichelsonPerc = [MiscLight contrastMichelsonPercentFromColor1: c1 color2: c2];
     let actualWeberPerc = [MiscLight contrastWeberPercentFromMichelsonPercent: actualMichelsonPerc];
-    if ([Settings contrastDithering]) {
+    if ([Settings isContrastDithering]) {
         actualMichelsonPerc = [MiscLight contrastMichelsonPercentFromWeberPercent: contrastWeberPercent];
         actualWeberPerc = contrastWeberPercent;
     }

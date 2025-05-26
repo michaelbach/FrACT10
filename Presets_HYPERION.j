@@ -15,22 +15,22 @@
     [Settings setDefaults];
 
     //general pane
-    [Settings setResponseInfoAtStart: NO]; [Settings setEnableTouchControls: NO];
+    [Settings setShowResponseInfoAtStart: NO]; [Settings setEnableTouchControls: NO];
     [Settings setDecimalMarkCharIndex: kDecimalMarkCharIndexDot];
     [Settings setDistanceInCM: 400];
     [Settings setNAlternativesIndex: kNAlternativesIndex4];
-    [Settings setAuditoryFeedback4trial: kAuditoryFeedback4trialAlways];
+    [Settings setAuditoryFeedback4trialIndex: kauditoryFeedback4trialIndexAlways];
     [Settings setTimeoutIsiMillisecs: 1];
     [Settings setTimeoutResponseSeconds: 60]; [Settings setTimeoutDisplaySeconds: 60];
     [Settings setTestOnFive: kTestAcuityLett];
-    [Settings setResults2clipboard: kResults2ClipFullHistory];
+    [Settings setResultsToClipboardIndex: kResultsToClipFullHistory];
 
     //acuity pane
     [Settings setMaxDisplayedAcuity: 99];
     [Settings setAcuityStartingLogMAR: 1.0];
-    [Settings setAcuityFormatLogMAR: YES];
+    [Settings setShowAcuityFormatLogMAR: YES];
     [Settings setShowCI95: YES];
-    [Settings setAcuityFormatDecimal: NO];
+    [Settings setShowAcuityFormatDecimal: NO];
     [Settings setCrowdingType: 1]; //flanking bars
     [Settings setCrowdingDistanceCalculationType: 3]; //like ETDRS
 }
