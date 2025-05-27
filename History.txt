@@ -1,5 +1,6 @@
 #  History
 
+2025-05-27 add `isAcuityPresentedConstant` and `acuityPresentedConstantLogMAR` plus associated logic to support a specific experiment
 2025-05-26 fix regression: "showResponseInfoAtStart" wasn't propagated to IB
 2025-05-26 refactor: rename many settings, especially boolean ones, to sytematically use "is"/"has"/…; consequently Version 3.0→3.1
 2025-05-23 fix: window origin shift for fullScreen on/off; doc: `autoFullScreen` does not work because it needs user interaction; doc: shift BaLM tab position it settings before Gamma;     style: `'use strict'` has no effect (why?), so delete; fix: origin shift bug also addressed in resize handler; refactor: move `isInRun` from `ControlDispatcher` to `Misc`; fix: the fullscreen/resize event handlers must not set `selfWindow` during run; style: add subtitle to BaLM tab
@@ -446,7 +447,7 @@ all 10 letters in letters
 2017-08-05 Acuity working
 2017-07-18 serious restart with design help by PM
 ## ↑Restart
-
+2015 first attempts
 
 ///////////////////////////////////////////////////////////////////////
 

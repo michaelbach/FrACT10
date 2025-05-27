@@ -25,10 +25,10 @@ Created by mb on July 15, 2015.
 
 + (void) initialize {
     [super initialize];  [Misc CPLogSetup];
-//    [self addBoolAccessors4Key: ""];
-//    [self addIntAccessors4Key: ""];
-//    [self addFloatAccessors4Key: ""];
-//    [self addStringAccessors4Key: ""];
+    //    [self addBoolAccessors4Key: ""];
+    //    [self addIntAccessors4Key: ""];
+    //    [self addFloatAccessors4Key: ""];
+    //    [self addStringAccessors4Key: ""];
 
     //above or for all setting tabs
     [self addIntAccessors4Key: "nAlternativesIndex"];
@@ -161,6 +161,9 @@ Created by mb on July 15, 2015.
 
     [self addStringAccessors4Key: "patID"];
     [self addIntAccessors4Key: "eyeIndex"];
+
+    [self addBoolAccessors4Key: "isAcuityPresentedConstant"];
+    [self addFloatAccessors4Key: "acuityPresentedConstantLogMAR"];
 }
 
 
@@ -345,6 +348,10 @@ Created by mb on July 15, 2015.
     [self setSoundTrialNoIndex: [self checkNum: [self soundTrialNoIndex] dflt: 0 min: 0 max: gSoundsTrialNo.length-1 set: set]];
     [self setSoundRunEndIndex: [self checkNum: [self soundRunEndIndex] dflt: 0 min: 0 max: gSoundsRunEnd.length-1 set: set]];
     [self setEyeIndex: [self checkNum: [self eyeIndex] dflt: 0 min: 0 max: 3 set: set]];
+
+    [self setIsAcuityPresentedConstant: [self checkBool: [self isAcuityPresentedConstant] dflt: NO set: set]];
+    [self setAcuityPresentedConstantLogMAR: [self checkNum: [self acuityPresentedConstantLogMAR] dflt: 0 min: -1.0 max: 3.0 set: set]];
+
 
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
