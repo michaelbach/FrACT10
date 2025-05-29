@@ -377,7 +377,6 @@ Created by mb on July 15, 2015.
     [self setMinPossibleLogMARLocalisedString: [Misc stringFromNumber: [self minPossibleLogMAR] decimals: 2 localised: YES]];
     const inch = [Misc stringFromNumber: [self distanceInCM] / 2.54 decimals: 1 localised: YES];
     [self setDistanceInInchLocalisedString: inch];
-
 }
 
 

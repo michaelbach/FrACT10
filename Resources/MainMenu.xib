@@ -379,14 +379,14 @@ DQ
                         </connections>
                     </button>
                     <webView fixedFrame="YES" maintainsBackForwardList="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68J-Vy-hV1">
-                        <rect key="frame" x="23" y="219" width="364" height="360"/>
+                        <rect key="frame" x="23" y="200" width="364" height="380"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" plugInsEnabled="NO" javaEnabled="NO" javaScriptEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO" loadsImagesAutomatically="NO" allowsAnimatedImages="NO" allowsAnimatedImageLooping="NO">
                             <nil key="identifier"/>
                         </webPreferences>
                     </webView>
                     <webView fixedFrame="YES" maintainsBackForwardList="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nO5-T6-Njd">
-                        <rect key="frame" x="416" y="219" width="364" height="361"/>
+                        <rect key="frame" x="416" y="200" width="364" height="380"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" plugInsEnabled="NO" javaEnabled="NO" javaScriptEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO" loadsImagesAutomatically="NO" allowsAnimatedImages="NO" allowsAnimatedImageLooping="NO">
                             <nil key="identifier"/>
@@ -3796,8 +3796,8 @@ CQ
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.isAcuityPresentedConstant" id="66f-xg-oye"/>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.acuityPresentedConstantLogMAR" id="LwC-P0-Lpx"/>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.isAcuityPresentedConstant" id="66f-xg-oye"/>
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PyM-x2-2u4">

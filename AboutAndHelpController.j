@@ -88,7 +88,7 @@
     [self oneWebView: aboutWebView1 htmlString: s];
 
     s = "©1993–" + [gVersionDateOfFrACT substringWithRange: CPMakeRange(0, 4)];
-    s += "<br>Prof. Michael Bach, Eye Center, Medical Center<br>"
+     s += "<br>Prof. Michael Bach, Eye Center, Medical Center<br>"
     s += "Faculty of Medicine, University of Freiburg, Germany<br>";
     s += "<a href='https://michaelbach.de' target='_blank'>https://michaelbach.de</a><br>";
     s += "<a href='mailto:bach@uni-freiburg.de'>bach@uni-freiburg.de</a><br><br>";
@@ -96,16 +96,16 @@
     s += "Sources: <a href='https://github.com/michaelbach/FrACT10/#fract' target='_blank'>GitHub repository</a>, <a href='https://github.com/michaelbach/FrACT10/commits' target='_blank'>Commit history</a><br>"
     s += "Frameworks/Libraries used:<br>";
     const cappucinoVersion = [[[CPBundle bundleWithIdentifier: "com.280n.Foundation"] infoDictionary] objectForKey:@"CPBundleVersion"]; //initialised in AppController
-    s += "<a href='https://michaelbach.de/ot/-misc/cappFrameworks/index.html' target='_blank'>Cappuccino " + cappucinoVersion + "</a>,&nbsp; ";
-    s += "<a href='https://simple-statistics.github.io' target='_blank'>simple-statistics</a>, <a href='https://github.com/parallax/jsPDF' target='_blank'>jsPDF</a>.<br>";
+    s += "&nbsp; &nbsp; <a href='https://michaelbach.de/ot/-misc/cappFrameworks/index.html' target='_blank'>Cappuccino " + cappucinoVersion + "</a>,&nbsp; ";
+    s += "<a href='https://simple-statistics.github.io' target='_blank'>simple-statistics</a>,&nbsp; <a href='https://github.com/parallax/jsPDF' target='_blank'>jsPDF</a><br>";
     //s += "<a href='https://nodejs.org/' target='_blank'>Node.js,</a><br>";
     //s += "<a href='https://www.electronjs.org' target='_blank'>Electron</a>, <a href='https://www.electron.build' target='_blank'>electron-builder</a>";
     s += "Some sounds from <a href='https://pixabay.com/' target='_blank'>pixabay</a>."
-    s += "<br><br><br>";
-    s += "FrACT₁₀ places “cookies” on your computer:<br>";
-    s += "– Two for saving the web app and its settings across sessions<br>";
-    s += "– A third contains the last results for exporting.";
-    s += "<br><br><br>";
+    s += "<br><br>";
+    s += "FrACT₁₀ places “cookies” on your computer:<ol>";
+    s += "<li>To save the settings across sessions</li>";
+    s += "<li>To save the web app itself for use w/o internet access</li>";
+    s += "<li>The last results, exported for access outside FrACT.</li></ol><br>";
     s += "This is free software, there is no warranty for anything: <a href='https://github.com/michaelbach/FrACT10/blob/main/LICENSE.md' target='_blank'>GNU GPL licence</a>. ";
     s += "It is not formally certified for medical purposes."
 
