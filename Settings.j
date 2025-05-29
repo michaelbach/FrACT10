@@ -30,16 +30,17 @@ Created by mb on July 15, 2015.
     //    [self addFloatAccessors4Key: ""];
     //    [self addStringAccessors4Key: ""];
 
+    //settings are roughly arranged by the Settings tab where they appear
     //above or for all setting tabs
-    [self addIntAccessors4Key: "nAlternativesIndex"];
     [self addStringAccessors4Key: "presetName"];
     [self addIntAccessors4Key: "autoRunIndex"];
     [self addStringAccessors4Key: "dateOfSettingsVersion"];
 
-    //General
+    //General tab
     [self addIntAccessors4Key: "nTrials02"];
     [self addIntAccessors4Key: "nTrials04"];
     [self addIntAccessors4Key: "nTrials08"];
+    [self addIntAccessors4Key: "nAlternativesIndex"];
     [self addFloatAccessors4Key: "distanceInCM"];
     [self addStringAccessors4Key: "distanceInInchLocalisedString"];
     [self addFloatAccessors4Key: "calBarLengthInMM"];
@@ -69,8 +70,8 @@ Created by mb on July 15, 2015.
     [self addFloatAccessors4Key: "timeoutRewardPicturesInSeconds"];
     [self addBoolAccessors4Key: "enableTouchControls"];
 
-    //Acuity
-    //these 2 settings keeps optotype colors between restarts. Within FrACT use globals gColorFore/gColorBack
+    //Acuity tab
+    //`acuityForeColor` & `acuityBackColor` keep optotype colors between restarts; within FrACT use globals gColorFore/gColorBack
     [self addColorAccessors4Key: "acuityForeColor"];
     [self addColorAccessors4Key: "acuityBackColor"];
     [self addBoolAccessors4Key: "isAcuityColor"];
@@ -111,7 +112,7 @@ Created by mb on July 15, 2015.
     [self addFloatAccessors4Key: "vernierLength"];
     [self addFloatAccessors4Key: "vernierGap"];
 
-    //Contrast
+    //Contrast tab
     [self addBoolAccessors4Key: "contrastHasEasyTrials"];
     [self addBoolAccessors4Key: "isContrastDarkOnLight"];
     [self addFloatAccessors4Key: "contrastOptotypeDiameter"];
@@ -122,7 +123,7 @@ Created by mb on July 15, 2015.
     [self addBoolAccessors4Key: "contrastBitStealing"];
     [self addBoolAccessors4Key: "isContrastDithering"];
 
-    //Gratings
+    //Gratings tab
     [self addFloatAccessors4Key: "gratingCPD"];
     [self addBoolAccessors4Key: "isGratingMasked"];
     [self addFloatAccessors4Key: "gratingDiaInDeg"];
@@ -137,7 +138,7 @@ Created by mb on July 15, 2015.
     [self addColorAccessors4Key: "gratingForeColor"];
     [self addColorAccessors4Key: "gratingBackColor"];
 
-    //BaLM
+    //BaLM tab
     [self addIntAccessors4Key: "balmIsiMillisecs"];
     [self addIntAccessors4Key: "balmOnMillisecs"];
     [self addFloatAccessors4Key: "balmSpeedInDegPerSec"];
@@ -147,13 +148,13 @@ Created by mb on July 15, 2015.
     [self addFloatAccessors4Key: "balmSpeedInDegPerSec"];
     [self addFloatAccessors4Key: "balmExtentInDeg"];
 
-    //Misc
+    //Misc tab
     [self addColorAccessors4Key: "windowBackgroundColor"];
     [self addBoolAccessors4Key: "specialBcmOn"];
     [self addBoolAccessors4Key: "hideExitButton"];
     [self addBoolAccessors4Key: "embedInNoise"];
     [self addIntAccessors4Key: "noiseContrast"];
-    //Sound
+
     [self addIntAccessors4Key: "soundTrialStartIndex"];
     [self addIntAccessors4Key: "soundTrialYesIndex"];
     [self addIntAccessors4Key: "soundTrialNoIndex"];
@@ -186,12 +187,12 @@ Created by mb on July 15, 2015.
 
 //CPColors are stored as hexString because the archiver does not work in Cappuccino. Why not??
 //https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/DrawColor/Tasks/StoringNSColorInDefaults.html
-+ (CPColor) colorForKey: (CPString) keyString fallbackInHex: (CPString) fallbackInHex {
++ (CPColor) _colorForKey: (CPString) keyString fallbackInHex: (CPString) fallbackInHex {
     let theData = [[CPUserDefaults standardUserDefaults] stringForKey: keyString];
     if (theData === nil) theData = fallbackInHex; //safety measure and default
     return [CPColor colorWithHexString: theData];
 }
-+ (void) setColor: (CPColor) theColor forKey: (CPString) keyString {
++ (void) _setColor: (CPColor) theColor forKey: (CPString) keyString {
     if (typeof(theColor) !== "string") { //allow both hexstring (from HTML message) & CPColor
         theColor = [theColor hexString];
     }
@@ -214,6 +215,7 @@ Created by mb on July 15, 2015.
         [self setPatID: "-"];
     }
 
+    //General stuff
     //need to check before setNAlternativesIndex 'cause oblique might force to index=0
     [self setIsGratingObliqueOnly: [self checkBool: [self isGratingObliqueOnly] dflt: NO set: set]];
     //for all tests
@@ -394,7 +396,7 @@ Created by mb on July 15, 2015.
 
 
 /**
- Test if we neet to set all Settings to defaults
+ Test if we need to set all Settings to defaults
  When new defaults are added, kDateOfCurrentSettingsVersion is updated. That tells FrACT that all settings need to be defaulted.
  */
 + (BOOL) needNewDefaults {
@@ -444,7 +446,7 @@ Created by mb on July 15, 2015.
 
 ///////////////////////////////////////////////////////////
 /**
- individual getters / setters for all settings not synthesized
+ individual getters / setters for all settings not synthesized in `initialize`
  */
 
 + (int) nTrials { //console.info("Settings>nTrials");
@@ -488,7 +490,7 @@ Created by mb on July 15, 2015.
 
 
 /**
- Helpers for synthesising class methods to get/set defaults
+ Bool/Int/Float/String/Color helpers for synthesising class methods to get/set defaults
  */
 + (void) addBoolAccessors4Key: (CPString) key { //CPLog("Settings>addIntAccessors4Key called with key: " + key);
     if (key == "") return;
@@ -554,10 +556,10 @@ Created by mb on July 15, 2015.
     const getterSel = CPSelectorFromString(key),
         setterSel = CPSelectorFromString(setterName);
     class_addMethod(self.isa, getterSel, function(self, _cmd) {
-        return [self colorForKey: key fallbackInHex: "777777"];
+        return [self _colorForKey: key fallbackInHex: "777777"];
     });
     class_addMethod(self.isa, setterSel, function(self, _cmd, val) { //CPLog("Color setter called for key: " + key + " with value: " + val);
-        [self setColor: val forKey: key];
+        [self _setColor: val forKey: key];
     });
 }
 
