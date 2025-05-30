@@ -37,6 +37,7 @@
 @import "ControlDispatcher.j"
 @import "CardController.j"
 @import "AboutAndHelpController.j"
+@import "PlotController.j"
 @import "CheckingContrastController.j"
 
 
@@ -51,6 +52,7 @@
     @outlet CPPanel settingsPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine;
     @outlet MDBButton buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, bottonBalm, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine;
     @outlet CPButton buttonExport;
+    @outlet CPButton buttonPlot;
     @outlet CPButton radioButtonAcuityBW, radioButtonAcuityColor;
     @outlet GammaView gammaView;
     @outlet CPPopUpButton settingsPanePresetsPopUpButton;  Presets presets;
@@ -378,7 +380,7 @@
 }
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("AppController>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //CPLog("AppController>drawStimulusInRect");
     [currentFractController drawStimulusInRect: dirtyRect forView: fractView];
 }
 

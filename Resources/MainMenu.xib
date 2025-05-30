@@ -264,6 +264,18 @@ For testing.</string>
                             <action selector="buttonAbout_action:" target="UIp-33-ymo" id="1H2-b1-Gk8"/>
                         </connections>
                     </button>
+                    <button toolTip="Legal notice and more.         " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1i4-ka-JiB">
+                        <rect key="frame" x="679" y="115" width="102" height="23"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="roundTextured" title="✍🏻   Plot" bezelStyle="texturedRounded" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nuw-PE-PlE">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent">p</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="buttonPlotOpen_action:" target="g7B-ke-xcD" id="ykE-Qq-x3h"/>
+                        </connections>
+                    </button>
                     <box hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="VTI-MS-JAu">
                         <rect key="frame" x="12" y="84" width="776" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -519,6 +531,36 @@ in your browser.
             </view>
             <point key="canvasLocation" x="-101" y="759"/>
         </window>
+        <window title="FrACT₁₀ – Plot" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="BEK-Ad-Tt4" userLabel="plotPanel" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
+            <rect key="contentRect" x="167" y="107" width="800" height="600"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1710" height="1068"/>
+            <view key="contentView" id="zgw-vN-0L7">
+                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X8D-yc-xSw">
+                        <rect key="frame" x="734" y="18" width="47" height="23"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="roundTextured" title="OK" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="giG-co-gpO">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="buttonPlotClose_action:" target="g7B-ke-xcD" id="Zai-wc-aw8"/>
+                        </connections>
+                    </button>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cfr-lS-W9p" customClass="PlotView">
+                        <rect key="frame" x="20" y="48" width="760" height="532"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="-101" y="759"/>
+        </window>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="r6R-bh-Qyp" userLabel="fractControllerWindow">
             <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="0.0" y="0.0" width="800" height="600"/>
@@ -526,9 +568,6 @@ in your browser.
             <view key="contentView" id="ZKN-RJ-jLS" customClass="FractView">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <connections>
-                    <outlet property="drawingDelegate" destination="450" id="g6S-bE-itG"/>
-                </connections>
             </view>
             <point key="canvasLocation" x="-101" y="769"/>
         </window>
@@ -4035,6 +4074,7 @@ CQ
                 <outlet property="buttonAcuityTAO" destination="6e2-Sj-gkY" id="wS5-ys-hpB"/>
                 <outlet property="buttonAcuityVernier" destination="8oB-kn-EbO" id="D7M-xX-xff"/>
                 <outlet property="buttonExport" destination="L8d-bR-KqO" id="YCp-1H-vRB"/>
+                <outlet property="buttonPlot" destination="1i4-ka-JiB" id="6nc-Qu-82k"/>
                 <outlet property="contrastMaxLogCSWeberField" destination="AQw-jE-a5x" id="gGe-Qj-bic"/>
                 <outlet property="decimalMarkCharField" destination="FoD-Bg-sIb" id="mCX-RN-Jxx"/>
                 <outlet property="fractControllerWindow" destination="r6R-bh-Qyp" id="WQx-mH-JUh"/>
@@ -4200,6 +4240,12 @@ have a standardized size (ISO/IEC 7810:2019)</string>
                 <outlet property="helpWebView2" destination="27W-sb-xg0" id="rkj-9C-MvB"/>
                 <outlet property="helpWebView3" destination="xqp-kf-f7Y" id="cpD-d2-jXC"/>
                 <outlet property="helpWebView4" destination="CEW-xu-zjz" id="4KN-pl-1v1"/>
+            </connections>
+        </customObject>
+        <customObject id="g7B-ke-xcD" userLabel="PlotController" customClass="PlotController">
+            <connections>
+                <outlet property="plotPanel" destination="BEK-Ad-Tt4" id="mTC-fN-TQR"/>
+                <outlet property="plotView1" destination="Cfr-lS-W9p" id="xYa-cJ-aSD"/>
             </connections>
         </customObject>
         <userDefaultsController representsSharedInstance="YES" id="izh-pU-csC"/>
@@ -5246,16 +5292,6 @@ Type any unused key to exit this module.
             </view>
             <point key="canvasLocation" x="-101" y="759"/>
         </window>
-        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="xlm-zb-crD">
-            <rect key="frame" x="0.0" y="0.0" width="37" height="16"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="ymK-iS-zhY">
-                <font key="font" usesAppearanceFont="YES"/>
-                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-            </textFieldCell>
-            <point key="canvasLocation" x="-595" y="14"/>
-        </textField>
     </objects>
     <resources>
         <image name="FrACT_icon-390" width="390" height="390"/>
