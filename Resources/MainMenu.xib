@@ -568,6 +568,9 @@ DQ
             <view key="contentView" id="ZKN-RJ-jLS" customClass="FractView">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <connections>
+                    <outlet property="drawingDelegate" destination="450" id="dqL-pO-gO4"/>
+                </connections>
             </view>
             <point key="canvasLocation" x="-101" y="769"/>
         </window>
