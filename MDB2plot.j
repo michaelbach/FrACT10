@@ -1,10 +1,10 @@
 /*
-This file is part of FrACT10, a vision test battery.
-Copyright © 2025 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
-
-Optotypes.j
-
-*/
+ This file is part of FrACT10, a vision test battery.
+ Copyright © 2025 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
+ 
+ Optotypes.j
+ 
+ */
 
 
 /**
@@ -37,11 +37,11 @@ Optotypes.j
  Low-level
  */
 /*+ (void) moveToX: (float) x {
-    currentX = x;
-}
-+ (void) moveToY: (float) y {
-    currentY = y;
-}*/
+ currentX = x;
+ }
+ + (void) moveToY: (float) y {
+ currentY = y;
+ }*/
 + (void) moveToX: (float) x0 y: (float) y0 { //CPLog("MDB2plot>moveToX: %f, y: %f", x0, y0);
     CGContextMoveToPoint(_cgc, x0, y0);
     currentX = x0;  currentY = y0;
@@ -193,6 +193,17 @@ Optotypes.j
 + (void) p2vlineX: (float) x y0: (float) y0 y1: (float) y1 { //console.info("p2vlineX0");
     [self moveToX: [self p2tx: x] y: [self p2ty: y0]];
     [self strokeLineToX: [self p2tx: x] y: [self p2ty: y1]];
+}
+
+
++ (void) p2strokeXAtX: (float) x y: (float) y sizeInPx: (float) s { //console.info("optotypes>strokeXAtX");
+    [self strokeXAtX: [self p2tx: x] y: [self p2ty: y] size: s];
+}
+
+
++ (void) p2strokeCircleAtX: (float)x y: (float)y radiusInPx: (float) r { //console.info("MBIllus>strokeCircleAtX");
+    x = [self p2tx: x]; y = [self p2ty: y];
+    CGContextStrokeEllipseInRect(_cgc, CGRectMake(x - r, y - r, 2 * r, 2 * r));
 }
 
 @end

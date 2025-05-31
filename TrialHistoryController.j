@@ -1,10 +1,10 @@
 /*
-This file is part of FrACT10, a vision test battery.
-Copyright © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
+ This file is part of FrACT10, a vision test battery.
+ Copyright © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
-TrialHistoryController.j
+ TrialHistoryController.j
 
-*/
+ */
 
 
 @import <Foundation/Foundation.j>
@@ -13,7 +13,7 @@ TrialHistoryController.j
 
 /**
  2021-01-06 This class manages the FrACT10 trial history that collects the full run info
-*/
+ */
 @implementation TrialHistoryController: CPObject {
     id trialHistoryRecord;
     // the fields of above record
