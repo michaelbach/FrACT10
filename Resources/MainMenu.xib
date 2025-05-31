@@ -267,7 +267,7 @@ For testing.</string>
                     <button toolTip="Legal notice and more.         " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1i4-ka-JiB">
                         <rect key="frame" x="679" y="115" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" title="✍🏻   Plot" bezelStyle="texturedRounded" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nuw-PE-PlE">
+                        <buttonCell key="cell" type="roundTextured" title="✍🏻   Plot" bezelStyle="texturedRounded" imagePosition="left" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nuw-PE-PlE">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                             <string key="keyEquivalent">p</string>
@@ -554,9 +554,18 @@ DQ
                         </connections>
                     </button>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cfr-lS-W9p" customClass="PlotView">
-                        <rect key="frame" x="20" y="48" width="760" height="532"/>
+                        <rect key="frame" x="20" y="48" width="760" height="523"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bCT-69-sCP" customClass="MDBLabel">
+                        <rect key="frame" x="200" y="579" width="401" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="–Work in progress–" allowsEditingTextAttributes="YES" id="ET9-0f-Pmz">
+                            <font key="font" metaFont="system" size="18"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
             <point key="canvasLocation" x="-101" y="759"/>

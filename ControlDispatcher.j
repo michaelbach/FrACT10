@@ -146,7 +146,7 @@
             [self post2parentM1: m1 m2: m2 m3: m3 success: (m3 !== null)];
             break;
         case "currentValue":
-            m3 = [gAppController.currentFractController.trialHistoryController value];
+            m3 = [TrialHistoryController value];
             [self post2parentM1: m1 m2: m2 m3: m3 success: (m3 !== null)];
             break;
         default:

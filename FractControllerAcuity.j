@@ -32,7 +32,7 @@
         _value = [self reportFromNative: stimStrengthInDeviceunits];
         //console.info(_value, "\r");
     }
-    [trialHistoryController setValue: _value];
+    [TrialHistoryController setValue: _value];
     if (([Settings crowdingType] > 0) && (gCurrentTestID !== kTestAcuityLineByLine) && (gCurrentTestID !== kTestContrastDitherUnittest)) {
         if (gCurrentTestID !== kTestAcuityVernier) { //don't do crowding with Vernier etc.
             CGContextSaveGState(cgc);

@@ -90,7 +90,7 @@ Created by Bach on 2020-09-02
     if ([Settings isContrastDithering]) {
         stimStrengthInDeviceunits = stimStrengthInDeviceunitsUnquantised;
     }
-    [trialHistoryController setValue: stimStrengthInDeviceunits];
+    [TrialHistoryController setValue: stimStrengthInDeviceunits];
     [super drawStimulusInRect: dirtyRect];
 }
 

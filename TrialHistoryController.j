@@ -15,55 +15,87 @@ TrialHistoryController.j
  2021-01-06 This class manages the FrACT10 trial history that collects the full run info
 */
 @implementation TrialHistoryController: CPObject {
-    id _trialHistory;
-    int _currentIndex, _nTrials;
-    CPDate _dateStart;
-    float value @accessors;
-    int presented @accessors;
-    int responded @accessors;
-    int nTotal @accessors;
-    int nCorrect @accessors;
-    int nIncorrect @accessors;
-    BOOL correct @accessors;
-    CPString resultsHistoryString @accessors;
+    id trialHistoryRecord;
+    // the fields of above record
+    CPDate dateStart;
+    float value;
+    int presented;
+    int responded;
+    int nTotal;
+    int nCorrect;
+    int nIncorrect;
+    BOOL correct;
+    // end fields
+    int currentIndex, nTrialsLocal;
+    CPString resultsHistoryString;
 }
 
 
-- (id) initWithNumTrials: (int) nTrials { //console.info("TrialHistoryController>initWithNumTrials", nTrials);
-    self = [super init];
-    if (self) { //console.info("TrialHistory>initWithNumTrials: success");
-        _trialHistory = [];
-        _currentIndex = 0;
-        _nTrials = nTrials;
-        _dateStart = [CPDate date];
-        [self setResultsHistoryString: ""];
-        [self setNTotal: 0];  [self setNCorrect: 0];  [self setNIncorrect: 0];
-    }
-    return self;
++ (id) trialHistoryRecord {return trialHistoryRecord;}
++ (void) setTrialHistoryRecord: (id) v {value = v;}
+
++ (float) value {return resultsHistoryString;}
++ (void) setValue: (float) v {value = v;}
+
++ (int) presented {return presented;}
++ (void) setPresented: (int) v {presented = v;}
+
++ (int) responded {return presented;}
++ (void) setResponded: (int) v {responded = v;}
+
++ (int) nTotal {return presented;}
++ (void) setNTotal: (int) v {nTotal = v;}
+
++ (int) nCorrect {return presented;}
++ (void) setNCorrect: (int) v {nCorrect = v;}
+
++ (int) nIncorrect {return presented;}
++ (void) setNIncorrect: (int) v {nIncorrect = v;}
+
++ (BOOL) correct {return correct;}
++ (void) setCorrect: (BOOL) v {correct = v;}
+
++ (CPString) resultsHistoryString {return resultsHistoryString;}
++ (void) setResultsHistoryString: (CPString) v {resultsHistoryString = v;}
+
+
++ (void) initialize { //CPLog("TrialHistoryController>initialize");
+    [super initialize];
 }
 
 
-- (void) trialEnded { //console.info("TrialHistoryController>trialEnded");
-    if (_currentIndex > _nTrials) return;  //just for safety, should not occur
-    _trialHistory[_currentIndex] = {};
-    _trialHistory[_currentIndex].value = value;
-    _trialHistory[_currentIndex].presented = presented;
-    _trialHistory[_currentIndex].responded = responded;
-    _trialHistory[_currentIndex].correct = correct;
++ initWithNumTrials: (int) nTrials { //console.info("TrialHistoryController>initWithNumTrials", nTrials);
+    trialHistoryRecord = [];
+    currentIndex = 0;
+    nTrialsLocal = nTrials;
+    dateStart = [CPDate date];
+    [self setResultsHistoryString: ""];
+    [self setNTotal: 0];  [self setNCorrect: 0];  [self setNIncorrect: 0];
+}
+
+
++ (void) trialEnded { //console.info("TrialHistoryController>trialEnded");
+    if (currentIndex > nTrialsLocal) return;  //just for safety, should not occur
+    trialHistoryRecord[currentIndex] = {};
+    trialHistoryRecord[currentIndex].value = value;
+    trialHistoryRecord[currentIndex].presented = presented;
+    trialHistoryRecord[currentIndex].responded = responded;
+    trialHistoryRecord[currentIndex].correct = correct;
     const tIsi = gBalmTestIDs.includes(gCurrentTestID) ? [Settings balmIsiMillisecs] : [Settings timeoutIsiMillisecs];
-    _trialHistory[_currentIndex].reactionTimeInMs = Math.round(-[_dateStart timeIntervalSinceNow] * 1000.0) - tIsi;
-    _currentIndex++;
+    trialHistoryRecord[currentIndex].reactionTimeInMs = Math.round(-[dateStart timeIntervalSinceNow] * 1000.0) - tIsi;
+    currentIndex++;
     [self setNTotal: nTotal + 1]; //calculation for BaLM
     if (correct) [self setNCorrect: nCorrect + 1];
     else [self setNIncorrect: nIncorrect + 1];
-    _dateStart = [CPDate date];
+    dateStart = [CPDate date];
 }
 
 
-- (void) runEnded { //console.info("TrialHistoryController>trialEnded");
++ (void) runEnded { //console.info("TrialHistoryController>trialEnded");
+    //console.info(trialHistoryRecord);
     let s = "trial" + tab + "value" + tab + "choicePresented" + tab + "choiceResponded" + tab + "correct" + tab + "reactionTimeInMs" + crlf;
-    for (let i = 0; i < _trialHistory.length; ++i) {
-        const th = _trialHistory[i];
+    for (let i = 0; i < trialHistoryRecord.length; ++i) {
+        const th = trialHistoryRecord[i];
         s += [Misc stringFromInteger: i + 1] + tab;
         s += [Misc stringFromNumber: th.value decimals: 3 localised: YES]  + tab;
         s += th.presented + tab;
@@ -78,9 +110,9 @@ TrialHistoryController.j
 /**
  Here we collect all info in a dataframe that is needed for the CI95 calculation
  */
-- (id) composeInfo4CI {
++ (id) composeInfo4CI {
     const trialsDF = [];
-    for (const thi of _trialHistory) {
+    for (const thi of trialHistoryRecord) {
         trialsDF.push({lMar: thi.value, correct: thi.correct});
     }
     return trialsDF;

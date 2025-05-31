@@ -32,7 +32,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     float xEccInPix, yEccInPix; //eccentricity
     Thresholder thresholder;
     AlternativesGenerator alternativesGenerator, alternativesGeneratorEccentRandomizeX;
-    TrialHistoryController trialHistoryController;
     Optotypes optotypes;
     CPString trialInfoString @accessors;
     CPTimer timerDisplay, timerResponse, timerFixMark, timerAutoResponse, timerIsi, timerBalmOff;
@@ -95,7 +94,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         alternativesGeneratorEccentRandomizeX = [[AlternativesGenerator alloc] initWithNumAlternatives: 2 andNTrials: nTrials obliqueOnly: NO];
     }
     thresholder = [[Thresholder alloc] initWithNumAlternatives: nAlternatives];
-    trialHistoryController = [[TrialHistoryController alloc] initWithNumTrials: nTrials];
+    [TrialHistoryController initWithNumTrials: nTrials];
     responseWasCorrect = YES;  responseWasCorrectCumulative = YES;
     strokeSizeInPix = [MiscSpace pixelFromDegree: [Settings contrastOptotypeDiameter] / 60] / 5;
     [self trialStart];
@@ -133,7 +132,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     timerIsi = [CPTimer scheduledTimerWithTimeInterval: tIsi / 1000 target:self selector:@selector(onTimeoutIsi:) userInfo:nil repeats:NO];
     state = kStateDrawBack; [[gAppController.selfWindow contentView] setNeedsDisplay: YES];
 }
-- (void) onTimeoutIsi: (CPTimer) timer { //now we can draw the stimulus
+- (void) onTimeoutIsi: (CPTimer) timer { //CPLog("onTimeoutIsi");
+    //now we can draw the stimulus
     const tDisp = (gCurrentTestID === kTestBalmLight) ? ([Settings balmOnMillisecs] / 1000) : [Settings timeoutDisplaySeconds];
     timerDisplay = [CPTimer scheduledTimerWithTimeInterval: tDisp target:self selector:@selector(onTimeoutDisplay:) userInfo:nil repeats:NO];
     timerResponse = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutResponseSeconds] target:self selector:@selector(onTimeoutResponse:) userInfo:nil repeats:NO];
@@ -290,8 +290,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 - (void) onTimeoutResponse: (CPTimer) timer { //console.info("FractController>onTimeoutResponse");
     responseWasCorrect = NO;
-    [trialHistoryController setResponded: -1];
-    [trialHistoryController setPresented: [alternativesGenerator currentAlternative]];
+    [TrialHistoryController setResponded: -1];
+    [TrialHistoryController setPresented: [alternativesGenerator currentAlternative]];
     [self trialEnd];
 }
 
@@ -325,8 +325,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     const r = [self responseNumberFromChar: responseKeyChar];
     const ca = [alternativesGenerator currentAlternative];
     responseWasCorrect = (r === ca);
-    [trialHistoryController setResponded: r];
-    [trialHistoryController setPresented: ca];
+    [TrialHistoryController setResponded: r];
+    [TrialHistoryController setPresented: ca];
     [self trialEnd];
 }
 
@@ -413,7 +413,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     CGContextSetFillColor(cgc, gColorBack); //need to clear for ISI to work
     CGContextFillRect(cgc, [gAppController.selfWindow frame]);
 
-    [trialHistoryController setCorrect: responseWasCorrect]; //placed here so reached by "onTimeoutAutoResponse"
+    [TrialHistoryController setCorrect: responseWasCorrect]; //placed here so reached by "onTimeoutAutoResponse"
     [thresholder enterTrialOutcomeWithAppliedStim: [self stimThresholderunitsFromDeviceunits: stimStrengthInDeviceunits] wasCorrect: responseWasCorrect];
     switch ([Settings auditoryFeedback4trialIndex]) { //case 0: nothing
         case kauditoryFeedback4trialIndexAlways:
@@ -425,7 +425,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             else [sound playNumber: kSoundTrialNo];
             break;
     }
-    [trialHistoryController trialEnded];
+    [TrialHistoryController trialEnded];
     [self trialStart];
 }
 
@@ -439,15 +439,15 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [gAppController setCurrentTestResultExportString: [self composeExportString]];
     //delay to give the screen time to update for immediate response feedback
     await [Misc asyncDelaySeconds: 0.03];
-    [trialHistoryController runEnded];
-    [gAppController setCurrentTestResultsHistoryExportString: [trialHistoryController resultsHistoryString]];
+    [TrialHistoryController runEnded];
+    [gAppController setCurrentTestResultsHistoryExportString: [TrialHistoryController resultsHistoryString]];
     if ([Settings giveAuditoryFeedback4run]) [sound playNumber: kSoundRunEnd];
 
     let _currentTestResultExportString = [gAppController currentTestResultExportString];
     if ([Settings showCI95] && (![gAppController runAborted])) {
         if ([self isAcuityOptotype]) {
             //the below causes a delay of < 1 s with nSamples=10,000
-            const historyResults = [trialHistoryController composeInfo4CI];
+            const historyResults = [TrialHistoryController composeInfo4CI];
             const ciResults = [MDBDispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: gNSamplesCI95];
             const halfCI95 = (ciResults.CI0975 - ciResults.CI0025) / 2;
             ci95String = " ± " + [Misc stringFromNumber: halfCI95 decimals: 2 localised: YES];
