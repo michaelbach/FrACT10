@@ -378,7 +378,9 @@
             [Misc saveAsPDF: s inFile: filename];
     }
     [buttonExport setEnabled: ([currentTestResultExportString length] > 1)];
-    [buttonPlot setEnabled: ([currentTestResultExportString length] > 1)];
+    if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO].includes(gCurrentTestID)){
+        [buttonPlot setEnabled: ([currentTestResultExportString length] > 1)];
+    }
 }
 
 

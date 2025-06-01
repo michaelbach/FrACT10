@@ -264,9 +264,12 @@ For testing.</string>
                             <action selector="buttonAbout_action:" target="UIp-33-ymo" id="1H2-b1-Gk8"/>
                         </connections>
                     </button>
-                    <button toolTip="Legal notice and more.         " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1i4-ka-JiB">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1i4-ka-JiB">
                         <rect key="frame" x="679" y="115" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">Plot the test history after an acuity test.
+Shortcut: P
+</string>
                         <buttonCell key="cell" type="roundTextured" title="✍🏻   Plot" bezelStyle="texturedRounded" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nuw-PE-PlE">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>

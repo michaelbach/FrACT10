@@ -28,7 +28,7 @@
 //This is called by IB
 - (id) initWithFrame: (CGRect) theFrame { //CPLog("PlotView>initWithFrame");
     self = [super initWithFrame: theFrame];
-    testHistoryFinalValue = 0.149;
+    /*    testHistoryFinalValue = 0.149;
     testHistory = [
         {value: 1, correct: true},
         {value: 0.7, correct: true},
@@ -48,7 +48,7 @@
         {value: 0.085, correct: false},
         {value: 0.138, correct: true},
         {value: 0.609, correct: true}
-    ]
+    ]*/
     return self;
 }
 - (void) drawRect: (CGRect) dirtyRect { //CPLog("PlotView>drawRect");
