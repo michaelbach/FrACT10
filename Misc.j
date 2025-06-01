@@ -254,7 +254,7 @@ function _pause(ms) { //console.info("Misc>_pause");
  */
 + (void) saveAsPDF: (CPString) theText inFile: (CPString) filename {
     const doc = new jspdf.jsPDF();
-    doc.setFontSize(9);
+    doc.setFontSize(8);
     doc.setFont("courier", "normal");
     doc.text(theText, 4, 10); //https://artskydj.github.io/jsPDF/docs/jsPDF.html#text
     const blob = doc.output("blob");

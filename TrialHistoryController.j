@@ -26,6 +26,7 @@
     int nIncorrect;
     BOOL correct;
     // end fields
+    float finalValue;
     int currentIndex, nTrialsLocal;
     CPString resultsHistoryString;
 }
@@ -34,22 +35,25 @@
 + (id) trialHistoryRecord {return trialHistoryRecord;}
 + (void) setTrialHistoryRecord: (id) v {value = v;}
 
-+ (float) value {return resultsHistoryString;}
++ (float) value {return value;}
 + (void) setValue: (float) v {value = v;}
+
++ (float) finalValue {return finalValue;}
++ (void) setFinalValue: (float) v {finalValue = v;}
 
 + (int) presented {return presented;}
 + (void) setPresented: (int) v {presented = v;}
 
-+ (int) responded {return presented;}
++ (int) responded {return responded;}
 + (void) setResponded: (int) v {responded = v;}
 
-+ (int) nTotal {return presented;}
++ (int) nTotal {return nTotal;}
 + (void) setNTotal: (int) v {nTotal = v;}
 
-+ (int) nCorrect {return presented;}
++ (int) nCorrect {return nCorrect;}
 + (void) setNCorrect: (int) v {nCorrect = v;}
 
-+ (int) nIncorrect {return presented;}
++ (int) nIncorrect {return nIncorrect;}
 + (void) setNIncorrect: (int) v {nIncorrect = v;}
 
 + (BOOL) correct {return correct;}

@@ -1,9 +1,9 @@
 /*
  This file is part of FrACT10, a vision test battery.
  Copyright © 2025 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
- 
+
  Optotypes.j
- 
+
  */
 
 
@@ -156,8 +156,8 @@
 
 //Set Window in user coordinates
 + (void) p2wndwX0: (float) x0 y0: (float) y0 x1: (float) x1 y1: (float) y1 {
-    if (x0 > x1) [x0, x1] = [x1, x0];
-    if (y0 > y1) [y0, y1] = [y1, y0];
+//    if (x0 > x1) [x0, x1] = [x1, x0]; we might intentionally invert coordinate direction
+//    if (y0 > y1) [y0, y1] = [y1, y0];
     p2wxl = x0; p2wxr = x1; p2wyb = y0; p2wyt = y1;
     if (p2wxl == p2wxr) p2wxr = p2wxl + 1.0;
     if (p2wyb == p2wyt) p2wyt = p2wyb + 1.0;
@@ -196,14 +196,20 @@
 }
 
 
-+ (void) p2strokeXAtX: (float) x y: (float) y sizeInPx: (float) s { //console.info("optotypes>strokeXAtX");
++ (void) p2strokeXAtX: (float) x y: (float) y sizeInPx: (float) s {
     [self strokeXAtX: [self p2tx: x] y: [self p2ty: y] size: s];
 }
 
 
-+ (void) p2strokeCircleAtX: (float)x y: (float)y radiusInPx: (float) r { //console.info("MBIllus>strokeCircleAtX");
++ (void) p2strokeCircleAtX: (float)x y: (float)y radiusInPx: (float) r {
     x = [self p2tx: x]; y = [self p2ty: y];
     CGContextStrokeEllipseInRect(_cgc, CGRectMake(x - r, y - r, 2 * r, 2 * r));
 }
++ (void) p2fillCircleAtX: (float)x y: (float)y radiusInPx: (float) r {
+    x = [self p2tx: x]; y = [self p2ty: y];
+    [self fillCircleAtX: x y: y radius: r];
+}
+
+
 
 @end

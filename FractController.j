@@ -315,18 +315,19 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if ([self isAcuityGrating]) {
         responseWasCorrect = spatialFreqCPD < [0.3, 1, 10][arIndex];
     }
-
+    [TrialHistoryController setPresented: [alternativesGenerator currentAlternative]];
+    [TrialHistoryController setResponded: -1]; //doesn't make sense on autorun, but something needs to be entered
     [self trialEnd];
 }
 
 
 - (void) processKeyDownEvent { //console.info("FractController>processKeyDownEvent");
     if (discardKeyEntries) return; //flushing the event queue to discard early responses
-    const r = [self responseNumberFromChar: responseKeyChar];
     const ca = [alternativesGenerator currentAlternative];
-    responseWasCorrect = (r === ca);
-    [TrialHistoryController setResponded: r];
+    const r = [self responseNumberFromChar: responseKeyChar];
     [TrialHistoryController setPresented: ca];
+    [TrialHistoryController setResponded: r];
+    responseWasCorrect = (r === ca);
     [self trialEnd];
 }
 

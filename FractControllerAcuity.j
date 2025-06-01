@@ -193,7 +193,9 @@
 
 
 - (float) acuityResultValue4Export {
-    return [self acuityResultInLogMAR];
+    const tmp = [self acuityResultInLogMAR];
+    [TrialHistoryController setFinalValue: tmp];
+    return [tmp];
 }
 
 

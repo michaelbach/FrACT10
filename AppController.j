@@ -197,7 +197,7 @@
     for (let i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++)
         Math.random(); //randomising the pseudorandom sequence
 
-    [buttonExport setEnabled: NO];
+    [buttonExport setEnabled: NO];  [buttonPlot setEnabled: NO];
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:CPUserDefaultsDidChangeNotification object: nil];
 
     [self radioButtonsAcuityBwOrColor_action: null];
@@ -277,6 +277,7 @@
     [self runFractControllerTest: [aNotification object]];
 }
 - (void) runFractControllerTest: (int) testNr { //console.info("AppController>runFractController");
+    [buttonExport setEnabled: NO];  [buttonPlot setEnabled: NO];
     if (currentFractController !== null) return; //got here by accident, already inRun?
     [sound initAfterUserinteraction];
     gCurrentTestID = testNr;
@@ -377,6 +378,7 @@
             [Misc saveAsPDF: s inFile: filename];
     }
     [buttonExport setEnabled: ([currentTestResultExportString length] > 1)];
+    [buttonPlot setEnabled: ([currentTestResultExportString length] > 1)];
 }
 
 
@@ -519,7 +521,6 @@
  */
 - (IBAction) buttonExport_action: (id) sender { //console.info("AppController>buttonExport_action");
     [Misc copyString2Clipboard: currentTestResultExportString];
-    [buttonExport setEnabled: NO];
 }
 
 

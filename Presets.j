@@ -111,6 +111,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Settings setDefaults];
             [Settings setTimeoutResponseSeconds: 2];
             [Settings setNTrials02: 24];  [Settings setNTrials04: 24];
+            [Settings setShowResponseInfoAtStart: NO];
             [Settings setDistanceInCM: 57];  [Settings setBalmIsiMillisecs: 500];
             break;
         case "Color Equiluminance": //near equiluminant color acuity
