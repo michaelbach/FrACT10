@@ -110,12 +110,12 @@
             [MDB2plot p2strokeXAtX: trial+0.5 y: y sizeInPx: 25];
         }
     }
-    [MDB2plot p2setStrokeColor: [CPColor blackColor]];
 
     //line for final value
     if ([Settings doThreshCorrection]) { //"anticorrect" to let final coincide with history values
         testHistoryFinalValue += Math.log10(gThresholdCorrection4Ascending);
     }
+    [MDB2plot p2setStrokeColor: [CPColor blueColor]];
     [MDB2plot p2setLineWidthInPx: 2];
     [MDB2plot p2hlineX0: xMin y: testHistoryFinalValue x1: xMax];
 }
