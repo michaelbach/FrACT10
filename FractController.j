@@ -332,7 +332,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
-
 //for a two directions/alternatives test
 //0 & 4=valid; -1=ignore; -2=invalid
 - (int) responseNumber2FromChar: (CPString) keyChar { //console.info("responseNumber2FromChar>responseNumberFromChar: ", keyChar);

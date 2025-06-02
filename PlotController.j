@@ -17,8 +17,6 @@
  */
 
 
-
-
 @implementation PlotView: CPView {
     CPString firstTime;
     id testHistory;
@@ -28,71 +26,97 @@
 //This is called by IB
 - (id) initWithFrame: (CGRect) theFrame { //CPLog("PlotView>initWithFrame");
     self = [super initWithFrame: theFrame];
-    /*    testHistoryFinalValue = 0.149;
-    testHistory = [
-        {value: 1, correct: true},
-        {value: 0.7, correct: true},
-        {value: 0.4, correct: true},
-        {value: 0.1, correct: true},
-        {value: -0.033, correct: false},
-        {value: 0.139, correct: false},
-        {value: 0.284, correct: true},
-        {value: 0.203, correct: true},
-        {value: 0.136, correct: true},
-        {value: 0.078, correct: false},
-        {value: 0.160, correct: true},
-        {value: 0.615, correct: true},
-        {value: 0.101, correct: true},
-        {value: 0.060, correct: false},
-        {value: 0.121, correct: true},
-        {value: 0.085, correct: false},
-        {value: 0.138, correct: true},
-        {value: 0.609, correct: true}
-    ]*/
+    if (gTestingPlotting) { //this only needed for testing
+        testHistoryFinalValue = 0.149 - Math.log10(gThresholdCorrection4Ascending);
+        testHistory = [
+            {value: 1, correct: true},
+            {value: 0.7, correct: true},
+            {value: 0.4, correct: true},
+            {value: 0.1, correct: true},
+            {value: -0.033, correct: false},
+            {value: 0.139, correct: false},
+            {value: 0.284, correct: true},
+            {value: 0.203, correct: true},
+            {value: 0.136, correct: true},
+            {value: 0.078, correct: false},
+            {value: 0.160, correct: true},
+            {value: 0.615, correct: true},
+            {value: 0.101, correct: true},
+            {value: 0.060, correct: false},
+            {value: 0.121, correct: true},
+            {value: 0.085, correct: false},
+            {value: 0.138, correct: true},
+            {value: 0.609, correct: true}
+        ]
+    }
     return self;
 }
+
+
 - (void) drawRect: (CGRect) dirtyRect { //CPLog("PlotView>drawRect");
-    if (firstTime !== "notFirstTime") {
+    if (firstTime !== "notFirstTime") { //ignore the very first call during launching
         firstTime = "notFirstTime";  return;
     }
-    const cgc_ = [[CPGraphicsContext currentContext] graphicsPort]
-    [MDB2plot p2initWithCGC: cgc_];
-
-    testHistory = [TrialHistoryController trialHistoryRecord];
-    testHistoryFinalValue = [TrialHistoryController finalValue];
-    const n = testHistory.length;
-//    const yMax = 2.5, yMin = -0.6, yHorAxis = yMin;
-    const yMax = -0.6, yMin = 2.5, yHorAxis = yMin;
+    [MDB2plot p2init];
+    if (!gTestingPlotting) {
+        testHistory = [TrialHistoryController trialHistoryRecord];
+        testHistoryFinalValue = [TrialHistoryController finalValue];
+    }
+    const nTrials = testHistory.length;
+    const yMin = 3, yMax = -0.6, yHorAxis = yMin; //note inverted axis
     const yTick = (yMax - yMin) / 50;
-    const xMax = n, xMin = -0.5;
-    const xTick = (xMax - xMin) / 50;
+    const xMin = -1, xMax = nTrials + 1;
+    const xTick = (xMax - xMin) / 80;
+    [MDB2plot p2wndwX0: xMin-0.01 y0: yMin x1: xMax y1: yMax];
 
-    [MDB2plot p2wndwX0: -0.5 y0: yMin - yTick x1: n y1: yMax];
+    //title
+    [MDB2plot p2setFontSize: 24];
+    [MDB2plot p2setTextAlignHorizontal: "center" vertical: "hanging"];
+    [MDB2plot p2showText: "Presented acuity grades along the run" atX: (xMax - xMin - 2) / 2 y: yMax];
+    [MDB2plot p2setTextAlignDefault];
 
-    [MDB2plot p2hlineX0: 0 y: yHorAxis x1: n]; //abscissa
-    for (let x = 1; x <= n; x++)  [MDB2plot p2vlineX: x-0.5 y0: yHorAxis - yTick y1: yHorAxis];
+    //axes
+        //abscissa
+    [MDB2plot p2setFontSize: 18];
+    [MDB2plot p2hlineX0: xMin y: yHorAxis x1: nTrials];
+    [MDB2plot p2setTextAlignHorizontal: "end" vertical: "bottom"];
+    [MDB2plot p2showText: "Trials→" atX: xMax-1 y: yMin-0.3];
+    [MDB2plot p2setTextAlignHorizontal: "center" vertical: "bottom"];
+    for (let trial = 1; trial <= nTrials; trial++) {
+        [MDB2plot p2vlineX: trial-0.5 y0: yHorAxis + yTick y1: yHorAxis];
+        if ([Misc isOdd: trial]) {
+            [MDB2plot p2showText: trial atX: trial-0.5 y: yHorAxis + yTick ];
+        }
+    }
+    [MDB2plot p2setTextAlignDefault];
 
-    [MDB2plot p2vlineX: 0 y0: yMin y1: yMax]; //ordinate
-    [MDB2plot p2hlineX0: -xTick y: 0 x1: 0];
-    [MDB2plot p2hlineX0: -xTick y: 1 x1: 0];
+        //abscissa
+    [MDB2plot p2vlineX: xMin y0: yMin y1: yMax];
+    [MDB2plot p2showText: "↓LogMAR" atX: xMin y: yMax + 0.1];
+    for (let y = 0; y < 3; y++) {
+        [MDB2plot p2hlineX0: xMin y: y x1: xMin + xTick];
+        [MDB2plot p2showText: y atX: xMin + xTick +0.1 y: y];
+    }
 
-    CGContextSetLineWidth(cgc_, 4);
-    for (let trial = 0; trial < n; trial++) {
+    //test points
+    [MDB2plot p2setLineWidthInPx: 4];
+    for (let trial = 0; trial < nTrials; trial++) {
         const y = testHistory[trial].value;
         if (testHistory[trial].correct) {
-            CGContextSetFillColor(cgc_, [CPColor colorWithRed: 0 green: 0.6 blue: 0 alpha: 1]);
+            [MDB2plot p2setFillColor: [CPColor colorWithRed: 0 green: 0.6 blue: 0 alpha: 1]];
             [MDB2plot p2fillCircleAtX: trial+0.5 y: y radiusInPx: 10];
         } else {
-            CGContextSetStrokeColor(cgc_, [CPColor redColor]);
+            [MDB2plot p2setStrokeColor: [CPColor redColor]];
             [MDB2plot p2strokeXAtX: trial+0.5 y: y sizeInPx: 25];
         }
     }
-    CGContextSetStrokeColor(cgc_, [CPColor blackColor]);
+    [MDB2plot p2setStrokeColor: [CPColor blackColor]];
 
+    //line for final value
     if ([Settings doThreshCorrection]) { //"anticorrect" to let final coincide with history values
         testHistoryFinalValue += Math.log10(gThresholdCorrection4Ascending);
     }
-    CGContextSetLineWidth(cgc_, 2);
+    [MDB2plot p2setLineWidthInPx: 2];
     [MDB2plot p2hlineX0: xMin y: testHistoryFinalValue x1: xMax];
 }
 @end
@@ -115,7 +139,6 @@
 - (IBAction) buttonPlotClose_action: (id) sender { //CPLog("AboutAndHelpController>buttonPlotClose_action");
     [plotPanel close];
 }
-
 
 
 @end

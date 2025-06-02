@@ -95,3 +95,5 @@ gAppController = null; //allows globally communicating with the AppController
 gColorFore = [CPColor whiteColor];  gColorBack = [CPColor blackColor];
 //minimal stroke size (half a pixel). Maximal, depending on screen & margin. Poor naming for Vernier. Values are later overridden via Setting and screen size.
 gStrokeMinimal = 0.5;  gStrokeMaximal = 100;
+
+gTestingPlotting = NO;

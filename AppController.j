@@ -197,7 +197,7 @@
     for (let i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++)
         Math.random(); //randomising the pseudorandom sequence
 
-    [buttonExport setEnabled: NO];  [buttonPlot setEnabled: NO];
+    [buttonExport setEnabled: NO];  [buttonPlot setEnabled: gTestingPlotting];
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:CPUserDefaultsDidChangeNotification object: nil];
 
     [self radioButtonsAcuityBwOrColor_action: null];
