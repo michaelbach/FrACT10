@@ -270,7 +270,7 @@ For testing.</string>
                         <string key="toolTip">Plot the test history after an acuity test.
 Shortcut: P
 </string>
-                        <buttonCell key="cell" type="roundTextured" title="✍🏻   Plot" bezelStyle="texturedRounded" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nuw-PE-PlE">
+                        <buttonCell key="cell" type="roundTextured" title="📈 Plot History" bezelStyle="texturedRounded" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nuw-PE-PlE">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                             <string key="keyEquivalent">p</string>
@@ -3702,58 +3702,15 @@ CQ
                                     <rect key="frame" x="10" y="33" width="760" height="493"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2kB-T3-ryf">
-                                            <rect key="frame" x="37" y="433" width="120" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Use to identify case etc., will appear in export and cleared on start and exit.
-</string>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" id="se8-Sw-8GP">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                            <connections>
-                                                <binding destination="izh-pU-csC" name="value" keyPath="values.patID" id="0bj-pe-qqy"/>
-                                            </connections>
-                                        </textField>
-                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cq8-eG-eLV">
-                                            <rect key="frame" x="162" y="434" width="17" height="16"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="ID" id="Vmz-iu-UXv">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                        <popUpButton toolTip="Identify eye tested., will appear in export." tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gg3-Po-Zes">
-                                            <rect key="frame" x="205" y="431" width="87" height="25"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <popUpButtonCell key="cell" type="push" title="Eye NA" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="OAn-Z2-omn" id="7XS-Pc-ph4">
-                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="message"/>
-                                                <menu key="menu" id="WRr-el-ogn">
-                                                    <items>
-                                                        <menuItem title="Eye NA" state="on" id="OAn-Z2-omn"/>
-                                                        <menuItem title="OU" id="DTs-DQ-HmG"/>
-                                                        <menuItem title="OD" id="ff0-lX-SFA"/>
-                                                        <menuItem title="OS" id="1vQ-zF-Aqg"/>
-                                                    </items>
-                                                </menu>
-                                            </popUpButtonCell>
-                                            <connections>
-                                                <action selector="buttonSettingsTestSound_action:" target="450" id="Oky-ao-tmd"/>
-                                                <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.eyeIndex" id="VEM-kE-fSe"/>
-                                            </connections>
-                                        </popUpButton>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="P7G-M5-Pjw">
-                                            <rect key="frame" x="492" y="388" width="239" height="58"/>
+                                            <rect key="frame" x="492" y="394" width="239" height="66"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="Ye2-rS-NGY">
-                                                <rect key="frame" x="4" y="5" width="231" height="50"/>
+                                                <rect key="frame" x="4" y="5" width="231" height="58"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button toolTip="Optotypes will be overlaid with static visual noise." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aOQ-zx-dEN">
-                                                        <rect key="frame" x="18" y="13" width="119" height="18"/>
+                                                        <rect key="frame" x="18" y="18" width="119" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="check" title="Embed in noise" bezelStyle="regularSquare" imagePosition="left" inset="2" id="KTZ-ku-BfR">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3764,7 +3721,7 @@ CQ
                                                         </connections>
                                                     </button>
                                                     <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c36-Cx-YVY">
-                                                        <rect key="frame" x="151" y="11" width="40" height="21"/>
+                                                        <rect key="frame" x="151" y="16" width="40" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Noise percentage
 .</string>
@@ -3776,10 +3733,11 @@ CQ
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="enabled" keyPath="values.embedInNoise" id="oX4-aR-iEd"/>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.noiseContrast" id="bQz-5P-746"/>
+                                                            <outlet property="nextKeyView" destination="hru-Yg-Axx" id="Q9C-UW-ZuA"/>
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gi7-O1-RRp" customClass="MDBLabel">
-                                                        <rect key="frame" x="195" y="13" width="16" height="16"/>
+                                                        <rect key="frame" x="195" y="18" width="16" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="%" id="kXq-c9-atD">
                                                             <font key="font" metaFont="system"/>
@@ -3794,7 +3752,7 @@ CQ
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Upt-gW-HXb">
-                                            <rect key="frame" x="565" y="432" width="93" height="22"/>
+                                            <rect key="frame" x="565" y="446" width="93" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Noise" bezelStyle="round" id="lSm-aI-d2L">
                                                 <font key="font" metaFont="system"/>
@@ -3803,14 +3761,14 @@ CQ
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="wk1-2Q-0TD">
-                                            <rect key="frame" x="492" y="279" width="239" height="58"/>
+                                            <rect key="frame" x="492" y="285" width="239" height="66"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="Zq0-Ut-2pJ">
-                                                <rect key="frame" x="4" y="5" width="231" height="50"/>
+                                                <rect key="frame" x="4" y="5" width="231" height="58"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y4T-w7-sUH">
-                                                        <rect key="frame" x="18" y="13" width="113" height="18"/>
+                                                        <rect key="frame" x="18" y="19" width="113" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Very specific setting for the BCM@Scheie project. Don't use unless…
 </string>
@@ -3826,7 +3784,7 @@ CQ
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vrU-9s-v0O">
-                                            <rect key="frame" x="551" y="323" width="120" height="22"/>
+                                            <rect key="frame" x="551" y="337" width="120" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="specialBCM" bezelStyle="round" id="6zX-X5-bZb">
                                                 <font key="font" metaFont="system"/>
@@ -3835,14 +3793,14 @@ CQ
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="DmF-dV-9Qa">
-                                            <rect key="frame" x="492" y="131" width="239" height="96"/>
+                                            <rect key="frame" x="492" y="135" width="239" height="98"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="KnA-cE-9rl">
-                                                <rect key="frame" x="4" y="5" width="231" height="88"/>
+                                                <rect key="frame" x="4" y="5" width="231" height="90"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField toolTip="for a special experiment: always present this acuity grade" focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hru-Yg-Axx">
-                                                        <rect key="frame" x="20" y="16" width="40" height="21"/>
+                                                        <rect key="frame" x="20" y="15" width="40" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" id="6jL-JA-JrB">
                                                             <font key="font" metaFont="system"/>
@@ -3852,10 +3810,11 @@ CQ
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.acuityPresentedConstantLogMAR" id="LwC-P0-Lpx"/>
                                                             <binding destination="izh-pU-csC" name="enabled" keyPath="values.isAcuityPresentedConstant" id="66f-xg-oye"/>
+                                                            <outlet property="nextKeyView" destination="6lP-RP-LyP" id="p4i-wB-G7m"/>
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PyM-x2-2u4">
-                                                        <rect key="frame" x="68" y="16" width="55" height="16"/>
+                                                        <rect key="frame" x="68" y="15" width="55" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="LogMAR" id="XLl-48-dMU">
                                                             <font key="font" metaFont="system"/>
@@ -3864,7 +3823,7 @@ CQ
                                                         </textFieldCell>
                                                     </textField>
                                                     <button toolTip="for a special experiment: always present the same acuity grade" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vWH-V9-NRz">
-                                                        <rect key="frame" x="18" y="51" width="149" height="18"/>
+                                                        <rect key="frame" x="18" y="50" width="149" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="check" title="present constant VA" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nPl-qd-uWo">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3878,7 +3837,7 @@ CQ
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ifz-L2-wIZ">
-                                            <rect key="frame" x="551" y="213" width="120" height="22"/>
+                                            <rect key="frame" x="551" y="219" width="120" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Constant VA" bezelStyle="round" id="k51-x2-V0c">
                                                 <font key="font" metaFont="system"/>
@@ -3887,7 +3846,7 @@ CQ
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKl-qE-MnI">
-                                            <rect key="frame" x="35" y="328" width="298" height="18"/>
+                                            <rect key="frame" x="35" y="298" width="298" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">If "Line of optotypes" is set to “Chart mode”, here you can select that all 3 lines have the same acuity grade (instead of 0.1 LogMAR difference between them).
 
@@ -3901,7 +3860,7 @@ CQ
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Woj-eV-bwS">
-                                            <rect key="frame" x="35" y="238" width="124" height="18"/>
+                                            <rect key="frame" x="35" y="208" width="124" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">For some contexts (e.g., embeddng FrACT in a larger project) the Exit button may be detrimental – so disable it here.
 
@@ -3915,7 +3874,7 @@ CQ
                                             </connections>
                                         </button>
                                         <button toolTip="For some designs, it may be advantageous to randomse target appearance to left or right." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VtB-h9-XQq">
-                                            <rect key="frame" x="35" y="283" width="224" height="18"/>
+                                            <rect key="frame" x="35" y="253" width="224" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Randomize eccentricity right/left" bezelStyle="regularSquare" imagePosition="left" inset="2" id="gcZ-p8-SZP">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3925,25 +3884,8 @@ CQ
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.eccentRandomizeX" id="jbd-FM-uhs"/>
                                             </connections>
                                         </button>
-                                        <colorWell toolTip="The background color of the entire window can be selected here." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPx-4F-4Cr">
-                                            <rect key="frame" x="34" y="377" width="62" height="23"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <binding destination="450" name="value" keyPath="windowBackgroundColor" id="5ZB-1E-Xxc"/>
-                                            </connections>
-                                        </colorWell>
-                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ngk-rr-VCS">
-                                            <rect key="frame" x="102" y="379" width="83" height="16"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Windowcolor" id="R1D-PV-saB">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="TaC-8z-ATT">
-                                            <rect key="frame" x="34" y="17" width="257" height="180"/>
+                                            <rect key="frame" x="34" y="-8" width="257" height="180"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="SHV-oL-MQO">
                                                 <rect key="frame" x="4" y="5" width="249" height="172"/>
@@ -4040,11 +3982,91 @@ CQ
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oi1-uI-HB5">
-                                            <rect key="frame" x="85" y="183" width="135" height="22"/>
+                                            <rect key="frame" x="85" y="158" width="135" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Feedback Sounds" bezelStyle="round" id="NZY-ji-TCC">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Feg-eP-hq3">
+                                            <rect key="frame" x="34" y="394" width="357" height="66"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <view key="contentView" id="MMn-bG-87A">
+                                                <rect key="frame" x="4" y="5" width="349" height="58"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6lP-RP-LyP">
+                                                        <rect key="frame" x="20" y="15" width="120" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">Use to identify case etc., will appear in export and cleared on start and exit.
+</string>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" id="61h-7g-u3g">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.patID" id="Cuv-EF-BRS"/>
+                                                            <outlet property="nextKeyView" destination="c36-Cx-YVY" id="Dl1-wS-U9Z"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o6O-DM-Dbo">
+                                                        <rect key="frame" x="146" y="16" width="17" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="ID" id="2e0-ee-HNt">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <popUpButton toolTip="Identify eye tested., will appear in export." tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EoK-g5-Kz6">
+                                                        <rect key="frame" x="246" y="11" width="87" height="25"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <popUpButtonCell key="cell" type="push" title="Eye NA" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Xms-9G-2R4" id="fbx-gg-e9S">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="message"/>
+                                                            <menu key="menu" id="n57-BL-BRY">
+                                                                <items>
+                                                                    <menuItem title="Eye NA" state="on" id="Xms-9G-2R4"/>
+                                                                    <menuItem title="OU" id="EBk-1q-qxJ"/>
+                                                                    <menuItem title="OD" id="yhm-K8-hYP"/>
+                                                                    <menuItem title="OS" id="zYH-7S-4Ss"/>
+                                                                </items>
+                                                            </menu>
+                                                        </popUpButtonCell>
+                                                        <connections>
+                                                            <action selector="buttonSettingsTestSound_action:" target="450" id="cHe-aC-HBb"/>
+                                                            <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.eyeIndex" id="KcS-Xd-nf9"/>
+                                                        </connections>
+                                                    </popUpButton>
+                                                </subviews>
+                                            </view>
+                                        </box>
+                                        <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bmk-W7-iS9">
+                                            <rect key="frame" x="124" y="446" width="177" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Documenation for export" bezelStyle="round" id="3fl-oA-9Mh">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <colorWell toolTip="The background color of the entire window can be selected here." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPx-4F-4Cr">
+                                            <rect key="frame" x="38" y="343" width="62" height="23"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <binding destination="450" name="value" keyPath="windowBackgroundColor" id="5ZB-1E-Xxc"/>
+                                            </connections>
+                                        </colorWell>
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ngk-rr-VCS">
+                                            <rect key="frame" x="106" y="346" width="83" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Windowcolor" id="R1D-PV-saB">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
