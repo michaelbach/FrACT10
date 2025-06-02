@@ -161,7 +161,7 @@
 
 
 + (void) p2moveToX: (float) x y: (float) y { //console.info("p2moveToX");
-    [self moveToX: [self p2tx: x]]; [self moveToY: [self p2ty: y]];
+    [self moveToX: [self p2tx: x] y: [self p2ty: y]];
 }
 
 
