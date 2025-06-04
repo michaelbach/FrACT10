@@ -33,7 +33,7 @@ Misc.j
  Delay for seconds
  */
 function _pause(ms) { //console.info("Misc>_pause");
-  return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 + (async void) asyncDelaySeconds: (float) secs { //console.info("Misc>delaySeconds");
     await _pause(secs * 1000);
@@ -74,9 +74,9 @@ function _pause(ms) { //console.info("Misc>_pause");
 //https://hacks.mozilla.org/2012/01/using-the-fullscreen-api-in-web-browsers/
 + (BOOL) isFullScreenSupported {
     return (
-        document.fullscreenEnabled || document.webkitFullscreenEnabled ||
-        document.mozFullScreenEnabled || document.msFullscreenEnabled
-    );
+            document.fullscreenEnabled || document.webkitFullscreenEnabled ||
+            document.mozFullScreenEnabled || document.msFullscreenEnabled
+            );
 }
 + (BOOL) isFullScreen {
     if (![self isFullScreenSupported]) return NO;
@@ -116,8 +116,8 @@ function _pause(ms) { //console.info("Misc>_pause");
 
 + (void) copyString2ClipboardWithDialog: (CPString) s { //console.info("Misc>copyString2ClipboardWithDialog");
     const alert = [CPAlert alertWithMessageText: "Done."
-    defaultButton: "Yes, put result → clipboard  (ߵyߴ)" alternateButton: "Cancel  (ߵcߴ)" otherButton: nil
-                informativeTextWithFormat: "\rShall we place the result details into the clipboard?\r\r(So you can paste them into a spreadsheet.)\r"];
+                                  defaultButton: "Yes, put result → clipboard  (ߵyߴ)" alternateButton: "Cancel  (ߵcߴ)" otherButton: nil
+                      informativeTextWithFormat: "\rShall we place the result details into the clipboard?\r\r(So you can paste them into a spreadsheet.)\r"];
     [[alert buttons][0] setKeyEquivalent: "c"]; //the "Cancel" button selected by "c"
     [[alert buttons][1] setKeyEquivalent: "y"]; //the "Yes" button selected by "n"
     [alert setAlertStyle: CPInformationalAlertStyle];
@@ -175,7 +175,9 @@ function _pause(ms) { //console.info("Misc>_pause");
     return [CPString stringWithFormat: @"%d", num];
 }
 
-
++ (CPString) stringFromNumber: (float) num decimals: (int) decs {
+    return [self stringFromNumber: num decimals: decs localised: NO];
+}
 + (CPString) stringFromNumber: (float) num decimals: (int) decs localised: (BOOL) locd { //console.info("Misc>stringFromNumber");
     if (decs < 1)  return [self stringFromInteger: num];
     const fmt = @"%6." + [CPString stringWithFormat:@"%d", decs] + "f";

@@ -18,6 +18,7 @@
 @import "Presets_AT_LeviLab.j";
 @import "Presets_BCM_Scheie.j";
 @import "Presets_CNS_Freiburg.j";
+@import "Presets_EndoArt01.j";
 @import "Presets_ESU.j";
 @import "Presets_Hyper_TUDo.j";
 @import "Presets_Maculight.j";
@@ -43,7 +44,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     self = [super init];
     if (self) {
         /* first entry: Header, all others need corresponding code in the “switch orgy” further down. */
-        const allPresets = ["PRESETS", "Standard Defaults", "AT@LeviLab", "BaLM₁₀", "BCM@Scheie", "CNS@Freiburg", "Color Equiluminance", "ESU", "ETCF", "Hyper@TUDo", "HYPERION", "Maculight", "ULV@Gensight", "Testing"];
+        const allPresets = ["PRESETS", "Standard Defaults", "AT@LeviLab", "BaLM₁₀", "BCM@Scheie", "CNS@Freiburg", "Color Equiluminance", "EndoArt01", "ESU", "ETCF", "Hyper@TUDo", "HYPERION", "Maculight", "ULV@Gensight", "Testing"];
 
         _popUpButton = thePopUpButton; //local copy for later
         [_popUpButton removeAllItems];
@@ -121,7 +122,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Settings setAcuityBackColor: [CPColor colorWithRed: 0 green: 0.70 blue: 0 alpha: 1]]; //dark green, near equiluminant to red
             [gAppController copyColorsFromSettings];
             break;
-        case "ESU": case "BCM@Scheie": case "CNS@Freiburg": case "Maculight":
+        case "EndoArt01": case "ESU": case "BCM@Scheie": case "CNS@Freiburg": case "Maculight":
         case "AT@LeviLab": case "Hyper@TUDo": case "ULV@Gensight": case "ETCF": case "HYPERION":
             //calculated class name requires strict discipline with filename systematics
             const newPresetName = [_presetName stringByReplacingOccurrencesOfString:"@" withString:"_"]; //in filenames the @ is not allowed
@@ -145,6 +146,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             return;
     }
     [Settings setPresetName: _presetName];
+    [Settings calculateMinMaxPossibleAcuity];
     [gAppController.sound updateSoundFiles];
     [gAppController copyColorsFromSettings]; //this synchronises the color settings between userdefaults & AppController
     [_popUpButton setSelectedIndex: 0]; //always show "PRESETS"

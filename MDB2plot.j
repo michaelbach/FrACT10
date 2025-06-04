@@ -117,9 +117,8 @@
 //transform user→screen coordinates
 + (int) p2tx: (float) x {return Math.round(p2wvxm * x + p2wvxa);}
 + (int) p2ty: (float) y {return Math.round(p2wvym * y + p2wvya);}
-//static double ity(const short y) {    return(y - p2wvya) / p2wvym;    }
-//static double itx(const short x) {    return(x - p2wvxa) / p2wvxm;    }
-
++ (float) ip2tx: (float) x {return(x - p2wvxa) / p2wvxm;}
++ (float) ip2ty: (float) y {return(y - p2wvya) / p2wvym;}
 
 // initialisation of mid level
 + (void) p2init { //CPLog("p2init");
@@ -229,9 +228,19 @@
     //can't use CGContextShowTextAtPoint because that resets alignment values
     cgcLocal.fillText(s, [self p2tx: x], [self p2ty: y]);
 }
++ (void) p2showText: (CPString) s atXpx: (float) x ypx: (float) y {
+    //can't use CGContextShowTextAtPoint because that resets alignment values
+    cgcLocal.fillText(s, x, y);
+}
 
 // horizontal: "start", "end", "left", "right", "center" (default: "start")
 // vertical: "top", "hanging", "middle", "alphabetic", "ideographic", "bottom" (default: "alphabetic")
++ (void) p2setTextAlignHorizontal: (CPString) hor {
+    cgcLocal.textAlign = hor;
+}
++ (void) p2setTextAlignVertical: (CPString) vert {
+    cgcLocal.textBaseline = vert;
+}
 + (void) p2setTextAlignHorizontal: (CPString) hor vertical: (CPString) vert {
     cgcLocal.textBaseline = vert;  cgcLocal.textAlign = hor;
 }
