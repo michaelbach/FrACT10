@@ -224,7 +224,7 @@ const testingSuite = async () => {
     addText("");
 
     addText(" ↓ Traverse all Presets");
-    const allPresets = ["Standard Defaults", "AT@LeviLab", "BaLM₁₀", "BCM@Scheie", "CNS@Freiburg", "Color Equiluminance", "ESU", "ETCF", "Hyper@TUDo", "HYPERION", "Maculight", "ULV@Gensight", "Testing"];
+    const allPresets = ["Standard Defaults", "AT@LeviLab", "BaLM₁₀", "BCM@Scheie", "CNS@Freiburg", "Color Equiluminance", "EndoArt01", "ESU", "ETCF", "Hyper@TUDo", "HYPERION", "Maculight", "ULV@Gensight", "Testing"];
     for (let aPreset of allPresets) {
         await oneStep3Ms('setSetting', 'Preset', aPreset);
         await pauseMilliseconds(0.5 * pauseViewMS);
