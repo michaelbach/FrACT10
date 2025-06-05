@@ -26,11 +26,11 @@
     [Settings setTimeoutDisplaySeconds: 30];
     [Settings setTestOnFive: kTestAcuityC];
     [Settings setResultsToClipboardIndex: kResultsToClipFullHistory];
-    [Settings setAuditoryFeedback4trialIndex: kauditoryFeedback4trialIndexAlways];
+    [Settings setAuditoryFeedback4trialIndex: kauditoryFeedback4trialIndexNone];
 
     //acuity tab
     [Settings setAcuityStartingLogMAR: 2.5];
-    [Settings setShowCI95: YES];
+    [Settings setShowCI95: NO];
     [Settings setShowAcuityFormatLogMAR: YES];
     [Settings setShowAcuityFormatDecimal: NO];
 

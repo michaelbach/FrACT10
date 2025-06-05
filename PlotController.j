@@ -63,7 +63,7 @@
         testHistoryFinalValue = [TrialHistoryController finalValue];
     }
     const nTrials = testHistory.length;
-    const yMin = 3, yMax = -1, yHorAxis = yMin; //note inverted axis
+    const yMin = 3, yMax = -1.05, yHorAxis = yMin; //note inverted axis
     const yTick = (yMax - yMin) / 50;
     const xMin = -1, xMax = nTrials + 1;
     const xTick = (xMax - xMin) / 80;
@@ -90,12 +90,15 @@
     }
     [MDB2plot p2setTextAlignDefault];
 
-        //abscissa
+        //ordinate
     [MDB2plot p2vlineX: xMin y0: yMin y1: yMax];
-    [MDB2plot p2showText: "↓LogMAR" atX: xMin y: [MDB2plot ip2ty: MDB2plot.p2vyt + 20]];
-    for (let y = 0; y < 3; y++) {
+    [MDB2plot p2showText: "↓LogMAR" atXpx: [MDB2plot p2tx: xMin+0.5] ypx: 40];
+    for (let y = -1; y < 3; y++) {
         [MDB2plot p2hlineX0: xMin y: y x1: xMin + xTick];
         [MDB2plot p2showText: y atX: xMin + xTick +0.1 y: y];
+    }
+    for (let y = -1; y < 3; y+=0.1) {
+        [MDB2plot p2hlineX0: xMin y: y x1: xMin + xTick/2];
     }
 
     //test points
@@ -113,16 +116,16 @@
 
     //line for final value
     let testHistoryFinalValueCorr = testHistoryFinalValue;
-    if ([Settings doThreshCorrection]) { //"anticorrect" to let final coincide with history values
-        testHistoryFinalValueCorr -= Math.log10(gThresholdCorrection4Ascending);
-    }
+    //if ([Settings doThreshCorrection]) { //"anticorrect" to let final coincide with history values
+        //testHistoryFinalValueCorr -= Math.log10(gThresholdCorrection4Ascending);
+    //}
     [MDB2plot p2setStrokeColor: [CPColor blueColor]];
     [MDB2plot p2setLineWidthInPx: 2];
-    [MDB2plot p2hlineX0: xMin+1 y: testHistoryFinalValueCorr x1: xMax];
+    [MDB2plot p2hlineX0: xMin+1.5 y: testHistoryFinalValueCorr x1: xMax];
     [MDB2plot p2setFillColor: [CPColor blueColor]];
     [MDB2plot p2setTextAlignVertical: "top"];
     let s = [Misc stringFromNumber: testHistoryFinalValueCorr decimals: 2];
-    [MDB2plot p2showText: s+"↑" atXpx: [MDB2plot p2tx: xMin+1] ypx: [MDB2plot p2ty: testHistoryFinalValue]+8];
+    [MDB2plot p2showText: s+"↑" atXpx: [MDB2plot p2tx: xMin+1.5] ypx: [MDB2plot p2ty: testHistoryFinalValueCorr]+8];
 }
 @end
 
