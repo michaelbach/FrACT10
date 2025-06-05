@@ -86,7 +86,7 @@ Shortcut: C 
                         <string key="toolTip">Acuity assessment using TAO (The Auckland Optotypes).
 Shortcut: A
  </string>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityTAO" imagePosition="only" alignment="center" enabled="NO" tag="3" imageScaling="proportionallyUpOrDown" inset="2" id="nnv-n0-fGE">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityTAO" imagePosition="only" alignment="center" tag="3" imageScaling="proportionallyUpOrDown" inset="2" id="nnv-n0-fGE">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>

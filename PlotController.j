@@ -116,9 +116,9 @@
 
     //line for final value
     let testHistoryFinalValueCorr = testHistoryFinalValue;
-    //if ([Settings doThreshCorrection]) { //"anticorrect" to let final coincide with history values
-        //testHistoryFinalValueCorr -= Math.log10(gThresholdCorrection4Ascending);
-    //}
+    if ([Settings doThreshCorrection]) { //"anticorrect" to let final coincide with history values
+        testHistoryFinalValueCorr += Math.log10(gThresholdCorrection4Ascending);
+    }
     [MDB2plot p2setStrokeColor: [CPColor blueColor]];
     [MDB2plot p2setLineWidthInPx: 2];
     [MDB2plot p2hlineX0: xMin+1.5 y: testHistoryFinalValueCorr x1: xMax];
