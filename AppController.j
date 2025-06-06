@@ -51,8 +51,7 @@
     @outlet CPWindow fractControllerWindow;
     @outlet CPPanel settingsPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine;
     @outlet MDBButton buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, bottonBalm, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine;
-    @outlet CPButton buttonExport;
-    @outlet CPButton buttonPlot;
+    @outlet CPButton buttonExportClip, buttonExportPDF, buttonPlot;
     @outlet CPButton radioButtonAcuityBW, radioButtonAcuityColor;
     @outlet GammaView gammaView;
     @outlet CPPopUpButton settingsPanePresetsPopUpButton;  Presets presets;
@@ -197,7 +196,8 @@
     for (let i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++)
         Math.random(); //randomising the pseudorandom sequence
 
-    [buttonExport setEnabled: NO];  [buttonPlot setEnabled: gTestingPlotting];
+    [buttonExportClip setEnabled: NO];  [buttonExportPDF setEnabled: NO];
+    [buttonPlot setEnabled: gTestingPlotting];
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:CPUserDefaultsDidChangeNotification object: nil];
 
     [self radioButtonsAcuityBwOrColor_action: null];
@@ -277,7 +277,7 @@
     [self runFractControllerTest: [aNotification object]];
 }
 - (void) runFractControllerTest: (int) testNr { //console.info("AppController>runFractController");
-    [buttonExport setEnabled: NO];  [buttonPlot setEnabled: NO];
+    [buttonExportClip setEnabled: NO];  [buttonExportPDF setEnabled: NO];  [buttonPlot setEnabled: NO];
     if (currentFractController !== null) return; //got here by accident, already inRun?
     [sound initAfterUserinteraction];
     gCurrentTestID = testNr;
@@ -369,18 +369,21 @@
                 [Misc copyString2ClipboardWithDialog: currentTestResultExportString];
             }
             break;
-        case kResultsToClipFullHistory2PDF:
-            const now = [CPDate date];
-            const filename = "FrACT_"+ [Misc date2YYYY_MM_DD: now] + "_" + [Misc date2HH__MM: now];
-            let s = "FrACT10 RESULT RECORD" + crlf + crlf + crlf;
-            s += [Misc replaceEvery2ndTabWithNewlineInString: currentTestResultExportString];
-            s += crlf + currentTestResultsHistoryExportString;
-            [Misc saveAsPDF: s inFile: filename];
+        case kResultsToClipFullHistory2PDF: [self exportPDF]; break;
     }
-    [buttonExport setEnabled: ([currentTestResultExportString length] > 1)];
+    [buttonExportClip setEnabled: ([currentTestResultExportString length] > 1)];
+    [buttonExportPDF setEnabled: ([currentTestResultExportString length] > 1)];
     if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO].includes(gCurrentTestID)){
         [buttonPlot setEnabled: ([currentTestResultExportString length] > 1)];
     }
+}
+- (void) exportPDF { //CPLog("AppController>exportPDF");
+    const dateStart = [TrialHistoryController dateStart];
+    const filename = "FrACT_"+ [Misc date2YYYY_MM_DD: dateStart] + "_" + [Misc date2HH__MM: dateStart];
+    let s = "FrACT10 RESULT RECORD" + crlf + crlf + crlf;
+    s += [Misc replaceEvery2ndTabWithNewlineInString: currentTestResultExportString];
+    s += crlf + currentTestResultsHistoryExportString;
+    [Misc saveAsPDF: s inFile: filename];
 }
 
 
@@ -522,8 +525,11 @@
 /**
  And more buttons…
  */
-- (IBAction) buttonExport_action: (id) sender { //console.info("AppController>buttonExport_action");
+- (IBAction) buttonExportClip_action: (id) sender { //CPLog("AppController>buttonExportClip_action");
     [Misc copyString2Clipboard: currentTestResultExportString];
+}
+- (IBAction) buttonExportPDF_action: (id) sender { //CPLog("AppController>buttonExportPDF_action");
+    [self exportPDF];
 }
 
 

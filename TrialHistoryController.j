@@ -35,6 +35,9 @@
 + (id) trialHistoryRecord {return trialHistoryRecord;}
 + (void) setTrialHistoryRecord: (id) v {value = v;}
 
++ (CPDate) dateStart {return dateStart;}
++ (void) setDateStart: (CPDate) v {dateStart = v;}
+
 + (float) value {return value;}
 + (void) setValue: (float) v {value = v;}
 
@@ -72,7 +75,7 @@
     trialHistoryRecord = [];
     currentIndex = 0;
     nTrialsLocal = nTrials;
-    dateStart = [CPDate date];
+    [self setDateStart: [CPDate date]];
     [self setResultsHistoryString: ""];
     [self setNTotal: 0];  [self setNCorrect: 0];  [self setNIncorrect: 0];
 }

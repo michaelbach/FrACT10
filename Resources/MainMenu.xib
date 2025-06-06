@@ -265,12 +265,12 @@ For testing.</string>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1i4-ka-JiB">
-                        <rect key="frame" x="679" y="115" width="102" height="23"/>
+                        <rect key="frame" x="651" y="115" width="130" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Plot the test history after an acuity test.
 Shortcut: P
 </string>
-                        <buttonCell key="cell" type="roundTextured" title="📈 Plot History" bezelStyle="texturedRounded" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nuw-PE-PlE">
+                        <buttonCell key="cell" type="roundTextured" title="📈 Plot History " bezelStyle="texturedRounded" imagePosition="left" alignment="right" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nuw-PE-PlE">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                             <string key="keyEquivalent">p</string>
@@ -300,16 +300,16 @@ Shortcut: P
                         </connections>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L8d-bR-KqO">
-                        <rect key="frame" x="21" y="115" width="128" height="23"/>
+                        <rect key="frame" x="21" y="115" width="130" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">This button only appears after a finished run and does what it says. 
+                        <string key="toolTip">This button is enabled after a finished run and does what it says. 
 </string>
-                        <buttonCell key="cell" type="roundTextured" title="Result → Clipboard" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yIl-d4-aF3">
+                        <buttonCell key="cell" type="roundTextured" title=" Result → Clipboard" bezelStyle="texturedRounded" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yIl-d4-aF3">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="buttonExport_action:" target="450" id="aIb-Nf-ia3"/>
+                            <action selector="buttonExportClip_action:" target="450" id="QeW-qM-PSJ"/>
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBn-1C-8cg" customClass="MDBLabel">
@@ -336,6 +336,20 @@ Shortcuts: "Q", "X" or "-" (Minus)</string>
                         <connections>
                             <action selector="buttonDoExit_action:" target="450" id="g6R-u3-FII"/>
                             <binding destination="izh-pU-csC" name="hidden" keyPath="values.hideExitButton" id="tzn-UR-dLC"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nR3-vD-4DK">
+                        <rect key="frame" x="184" y="115" width="130" height="23"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">This button is enabled after a finished run and exports the results into a PDF file.
+Depending on your browser, it will ask for file location or ask whether it's ok place into your downloads folder.
+</string>
+                        <buttonCell key="cell" type="roundTextured" title=" Result → PDF" bezelStyle="texturedRounded" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hsP-3O-AY0">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="buttonExportPDF_action:" target="450" id="Xay-4m-cwe"/>
                         </connections>
                     </button>
                 </subviews>
@@ -4101,7 +4115,8 @@ CQ
                 <outlet property="buttonAcuityLineByLine" destination="s1F-y6-Eca" id="mXW-qr-ZAe"/>
                 <outlet property="buttonAcuityTAO" destination="6e2-Sj-gkY" id="wS5-ys-hpB"/>
                 <outlet property="buttonAcuityVernier" destination="8oB-kn-EbO" id="D7M-xX-xff"/>
-                <outlet property="buttonExport" destination="L8d-bR-KqO" id="YCp-1H-vRB"/>
+                <outlet property="buttonExportClip" destination="L8d-bR-KqO" id="pL7-9C-xYE"/>
+                <outlet property="buttonExportPDF" destination="nR3-vD-4DK" id="fao-uj-EGO"/>
                 <outlet property="buttonPlot" destination="1i4-ka-JiB" id="6nc-Qu-82k"/>
                 <outlet property="contrastMaxLogCSWeberField" destination="AQw-jE-a5x" id="gGe-Qj-bic"/>
                 <outlet property="decimalMarkCharField" destination="FoD-Bg-sIb" id="mCX-RN-Jxx"/>
