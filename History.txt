@@ -1,6 +1,6 @@
 #  History
 
-2025-06-06 add plotting of results history, change `TrialHistoryController`to singleton, add preset "EndoArt01"
+2025-06-07 add plotting of results history, change `TrialHistoryController`to singleton, add preset "EndoArt01". Vs 3.1.1
 2025-05-27 add `isAcuityPresentedConstant` and `acuityPresentedConstantLogMAR` plus associated logic to support a specific experiment
 2025-05-26 fix regression: "showResponseInfoAtStart" wasn't propagated to IB
 2025-05-26 refactor: rename many settings, especially boolean ones, to sytematically use "is"/"has"/…; consequently Version 3.0→3.1
