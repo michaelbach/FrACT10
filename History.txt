@@ -1,5 +1,6 @@
 #  History
 
+2025-06-06 add plotting of results history, change `TrialHistoryController`to singleton, add preset "EndoArt01"
 2025-05-27 add `isAcuityPresentedConstant` and `acuityPresentedConstantLogMAR` plus associated logic to support a specific experiment
 2025-05-26 fix regression: "showResponseInfoAtStart" wasn't propagated to IB
 2025-05-26 refactor: rename many settings, especially boolean ones, to sytematically use "is"/"has"/…; consequently Version 3.0→3.1
@@ -7,7 +8,7 @@
 2025-05-15 refactor: replace the evil "==" and "!=" with the "good" "===" and "!==" throughout (Douglas Crockford);
     feat: change font face to Courier and font size to 9 in PDF output since jsPDF doesn't support tab stops, more readable now
 2025-05-14 fix: reaction times had subtracted BaLM-ISI, thus all but BaLMs 1000ms to short); feat: add header to PDF record
-2025-05-13 feat: ad id string & eye indicator; BREAKING CHANGE: export format Vs 3.0
+2025-05-13 feat: add id string & eye indicator; BREAKING CHANGE: export format Vs 3.0
     doc: improve GUI in Misc page, add jsPDF to credits
 2025-05-12 feat: save results into PDF, a step towards '21 CRF Part 11' compliance; doc: increase version to 2.1; fix: bad import in `AppController`
 2025-05-07 feat: misc UI improvements: add tab sequence for BaLM settings, correct a Tooltip, hide setting "Color Bit Stealing", change "Results do be displayed here" → "Result displayed here"
