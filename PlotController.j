@@ -12,7 +12,7 @@
 @import "MDB2plot.j"
 
 /**
- For plotting test history
+ For plotting test results history
  Created by Bach on 2025-05-29
  */
 
@@ -27,7 +27,7 @@
 - (id) initWithFrame: (CGRect) theFrame { //CPLog("PlotView>initWithFrame");
     self = [super initWithFrame: theFrame];
     if (gTestingPlotting) { //this only needed for testing
-        testHistoryFinalValue = 0.149 + Math.log10(gThresholdCorrection4Ascending);
+        testHistoryFinalValue = 0.149;
         testHistory = [
             {value: 1, correct: true},
             {value: 0.7, correct: true},
@@ -80,8 +80,9 @@
     [MDB2plot p2setFontSize: 18];
     [MDB2plot p2hlineX0: xMin y: yHorAxis x1: nTrials];
     [MDB2plot p2setTextAlignHorizontal: "end" vertical: "bottom"];
-    [MDB2plot p2showText: "Trials→" atX: xMax-1 y: [MDB2plot ip2ty: MDB2plot.p2vyb - 30]];
-    [MDB2plot p2setTextAlignHorizontal: "center" vertical: "bottom"];
+//    [MDB2plot p2showText: "Trials→" atXpx: [yHorAxis p2tx: xMax-1] ypx: 490];
+    [MDB2plot p2showText: "Trials→" atX: xMax - 1 y: yHorAxis + 4 * yTick];
+    [MDB2plot p2setTextAlignHorizontal: "center"];
     for (let trial = 1; trial <= nTrials; trial++) {
         [MDB2plot p2vlineX: trial-0.5 y0: yHorAxis + yTick y1: yHorAxis];
         if ([Misc isOdd: trial]) {

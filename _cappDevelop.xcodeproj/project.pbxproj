@@ -313,7 +313,6 @@
 			isa = PBXGroup;
 			children = (
 				8A44B4CA2D5F8E5300E55DEF /* History.txt */,
-				8AB27F712DE8630900F68D21 /* MDB2plot.j */,
 				D7F842D1A68D8C133FA29CF9 /* Globals.j */,
 				6F8642B1B93603A5A204CC32 /* AppController.j */,
 				8AABF0DE2D50022600176166 /* AboutAndHelpController.j */,
@@ -348,6 +347,7 @@
 				8AE548342D5F63CB008DED70 /* MDBLabel.j */,
 				8A891B7D2A5585AE00ACEFDF /* MDBDispersionEstimation.j */,
 				FB4A479E9000040026E0D65B /* MDBSimplestatistics.j */,
+				8AB27F712DE8630900F68D21 /* MDB2plot.j */,
 				BDC7432CBD70CCD5236EC4E7 /* Misc.j */,
 				8A48269429CF58F30035607A /* MiscSpace.j */,
 				8A48269229CF4F260035607A /* MiscLight.j */,
