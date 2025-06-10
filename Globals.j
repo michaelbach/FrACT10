@@ -97,3 +97,41 @@ gColorFore = [CPColor whiteColor];  gColorBack = [CPColor blackColor];
 gStrokeMinimal = 0.5;  gStrokeMaximal = 100;
 
 gTestingPlotting = NO;
+
+// general exporting
+kTestDetail_vsExpFormat = "vsExpFormat";
+kTestDetail_vsFrACT = "vsFrACT";
+kTestDetail_decimalMark = "decimalMark";
+kTestDetail_ID = "ID";
+kTestDetail_eyeCondition = "eyeCondition";
+kTestDetail_date = "date";
+kTestDetail_Time = "time";
+kTestDetail_TestName = "testName"
+kTestDetail_value = "value";
+kTestDetail_unit1 = "unit1";
+kTestDetail_distanceInCm = "distanceInCm";
+kTestDetail_contrastWeber = "contrastWeber";
+kTestDetail_unit2 = "unit2";
+kTestDetail_nTrials = "nTrials";
+// optionals
+kTestDetail_rangeLimitStatus = "rangeLimitStatus";
+kTestDetail_crowdingType = "crowdingType";
+kTestDetail_eccentricityX = "eccentricityX";
+kTestDetail_eccentricityY = "eccentricityY";
+kTestDetail_spatFreq = "spatFreq";
+kTestDetail_colorFore = "colorFore";
+kTestDetail_colorBack = "colorBack";
+kTestDetail_cpdMin = "cpdMin";
+kTestDetail_cpdMax = "cpdMax";
+kTestDetail_noiseContrast = "noiseContrast";
+kTestDetail_gratingShape = "gratingShape";
+gTestDetails = {};
+gTestDetailsKeys = [
+    kTestDetail_vsExpFormat, kTestDetail_vsFrACT, kTestDetail_decimalMark, kTestDetail_ID, kTestDetail_eyeCondition,
+    kTestDetail_date, kTestDetail_Time, kTestDetail_TestName, kTestDetail_value, kTestDetail_unit1,
+    kTestDetail_distanceInCm, kTestDetail_contrastWeber, kTestDetail_unit2, kTestDetail_nTrials,
+    // optionals
+    kTestDetail_rangeLimitStatus, kTestDetail_crowdingType, kTestDetail_eccentricityX, kTestDetail_eccentricityY,
+    kTestDetail_spatFreq, kTestDetail_colorFore, kTestDetail_colorBack, kTestDetail_cpdMin, kTestDetail_cpdMax];
+gTestDetails[kTestDetail_vsExpFormat] = gVersionOfExportFormat;
+gTestDetails[kTestDetail_vsFrACT] = gVersionStringOfFract + "·" + gVersionDateOfFrACT;

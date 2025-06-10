@@ -128,4 +128,4 @@ tell application "Safari" to activate
 delay 0.2
 tell application "System Events" to keystroke "e" using {command down, option down}
 END
-open -a Safari $workingDirectory"/index.html"
+open -a Safari $workingDirectory"/index4testing.html"
