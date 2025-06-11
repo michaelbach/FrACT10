@@ -1,5 +1,6 @@
 #  History
 
+2025-06-11 fix typo in `lineByLineLinesIndex` range checks; set it to "5 lines" in the Hyperion preset; add to testing suite; add `lineByLineLinesIndex to ControlDispatcher
 2025-06-07 add plotting of results history, change `TrialHistoryController`to singleton, add preset "EndoArt01". Vs 3.1.1
 2025-05-27 add `isAcuityPresentedConstant` and `acuityPresentedConstantLogMAR` plus associated logic to support a specific experiment
 2025-05-26 fix regression: "showResponseInfoAtStart" wasn't propagated to IB

@@ -223,14 +223,6 @@ const testingSuite = async () => {
 	if (response.m3 != 399) errorAlert();
     addText("");
 
-    addText(" ↓ Traverse all Presets");
-    const allPresets = ["Standard Defaults", "AT@LeviLab", "BaLM₁₀", "BCM@Scheie", "CNS@Freiburg", "Color Equiluminance", "EndoArt01", "ESU", "ETCF", "Hyper@TUDo", "HYPERION", "Maculight", "ULV@Gensight", "Testing"];
-    for (let aPreset of allPresets) {
-        await oneStep3Ms('setSetting', 'Preset', aPreset);
-        await pauseMilliseconds(0.5 * pauseViewMS);
-    }
-    addText("↑ All Presets traversed\n");
-
 	await oneStep3Ms('setSetting', 'Preset', 'Testing');
 	response = await oneStep3Ms('getSetting', 'distanceInCM', '');
 	if (response.m3 != 400) errorAlert();
@@ -320,9 +312,16 @@ const testingSuite = async () => {
 	await tellIframeReturningPromise3Ms('redraw', '', '');
 	await pauseMilliseconds(pauseViewMS);
 	await tellIframeReturningPromise3Ms('respondWithChar', "5", '');
-	await tellIframeReturningPromise3Ms('respondWithChar', "5", ''); /* exit the test */
+	await tellIframeReturningPromise3Ms('respondWithChar', "5", ''); /* 2x5: exit test */
 	await pauseMilliseconds(pauseViewMS);
-	addText(" ↑ Test line-by-line: Done.\n");
+    await oneStep3Ms('setSetting', 'lineByLineLinesIndex', '2');
+    tellIframe3Ms('run','acuity', 'Line');
+    await tellIframeReturningPromise3Ms('redraw', '', ''); /* not clear why necessary */
+    await pauseMilliseconds(pauseViewMS);
+    await tellIframeReturningPromise3Ms('respondWithChar', "5", '');
+    await tellIframeReturningPromise3Ms('respondWithChar', "5", ''); /* exit the test */
+    await pauseMilliseconds(pauseViewMS);
+    addText(" ↑ Test line-by-line: Done.\n");
 
 	addText(" ↓ cycle through all panes of Settings");
 	for (let iPane = 0; iPane <= kPaneMax; iPane++) {
@@ -347,6 +346,7 @@ const testingSuite = async () => {
 	await pauseMilliseconds(pauseViewMS);
 
 	addText(" ↓ cycle through BaLM tests.");
+    await oneStep3Ms('settingsPane', -1, '');
 	await oneStep3Ms('setSetting', 'Preset', 'Testing');
 	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
 	await oneStep3Ms('setSetting', 'nTrials02', 4);
@@ -363,6 +363,19 @@ const testingSuite = async () => {
 	await responseChain(NO);
 	await pauseMilliseconds(pauseViewMS);
 	addText(" ↑ cycle through BaLM tests: Done.\n");
+
+    addText(" ↓ Traverse all Presets");
+    const allPresets = ["Standard Defaults", "AT@LeviLab", "BaLM₁₀", "BCM@Scheie", "CNS@Freiburg", "Color Equiluminance", "EndoArt01", "ESU", "ETCF", "Hyper@TUDo", "HYPERION", "Maculight", "ULV@Gensight", "Testing"];
+    await oneStep3Ms('settingsPane', 0, ''); /* go to Settings */
+    await pauseMilliseconds(pauseViewMS);
+    for (let aPreset of allPresets) {
+        await oneStep3Ms('setSetting', 'Preset', aPreset);
+        await tellIframeReturningPromise3Ms('redraw', '', '');
+        await pauseMilliseconds(0.5 * pauseViewMS);
+    }
+    await oneStep3Ms('settingsPane', -1, ''); /* go to main */
+    await pauseMilliseconds(pauseViewMS);
+    addText("↑ All Presets traversed\n");
 
 	addText("↓ Leave with `Standard Defaults`.");
 	response = await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');

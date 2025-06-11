@@ -300,7 +300,7 @@ Created by mb on July 15, 2015.
     [self setTestOnLineByLineIndex: [self checkNum: [self testOnLineByLineIndex] dflt: 1 min: 1 max: 4 set: set]]; //1: Sloan Letters. 0: nicht erlaubt, 2: Landolt, 3…
     [self setLineByLineDistanceType: [self checkNum: [self lineByLineDistanceType] dflt: 1 min: 0 max: 1 set: set]]; //0: DIN-EN-ISO, 1: ETDRS
     [self setLineByLineHeadcountIndex: [self checkNum: [self lineByLineHeadcountIndex] dflt: 2 min: 0 max: 4 set: set]]; //0: "1", 2: "3", 3: "5", 4: "7"
-    [self setLineByLineLinesIndex: [self checkNum: [self lineByLineLinesIndex] dflt: 0 min: 0 max: 3 set: set]]; //0: "1", 2: "3", 3: "5"
+    [self setLineByLineLinesIndex: [self checkNum: [self lineByLineLinesIndex] dflt: 0 min: 0 max: 2 set: set]]; //0: "1", 1: "3", 2: "5"
     [self setIsLineByLineChartModeConstantVA: [self checkBool: [self isLineByLineChartModeConstantVA] dflt: NO set: set]];
 
     //Vernier stuff

@@ -33,6 +33,8 @@
     [Settings setShowAcuityFormatDecimal: NO];
     [Settings setCrowdingType: 1]; //flanking bars
     [Settings setCrowdingDistanceCalculationType: 3]; //like ETDRS
+
+    [Settings setLineByLineLinesIndex: 2]; // 5 lines to aid refraction
 }
 
 @end
