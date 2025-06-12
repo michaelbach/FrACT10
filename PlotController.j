@@ -73,6 +73,10 @@
     [MDB2plot p2setFontSize: 24];
     [MDB2plot p2setTextAlignHorizontal: "center" vertical: "hanging"];
     [MDB2plot p2showText: "Presented acuity grades along the run" atX: (xMax - xMin - 2) / 2 y: yMax];
+    if ([Settings doThreshCorrection]) {
+        [MDB2plot p2setFontSize: 14];
+        [MDB2plot p2showText: "[Without threshold correction, so 0.05 LogMAR smaller]" atX: (xMax - xMin - 2) / 2 y: yMax +0.21];
+    }
     [MDB2plot p2setTextAlignDefault];
 
     //axes
