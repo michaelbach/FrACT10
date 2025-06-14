@@ -20,11 +20,15 @@ Created by mb on July 15, 2015.
 @import "MiscLight.j"
 @import "MiscSpace.j"
 
+let sharedSettingsInstance;
+
 @implementation Settings: CPUserDefaultsController
 
 
 + (void) initialize {
     [super initialize];  [Misc CPLogSetup];
+    sharedSettingsInstance = nil; // not really necessary
+
     //    [self addBoolAccessors4Key: ""];
     //    [self addIntAccessors4Key: ""];
     //    [self addFloatAccessors4Key: ""];
@@ -165,6 +169,20 @@ Created by mb on July 15, 2015.
 
     [self addBoolAccessors4Key: "isAcuityPresentedConstant"];
     [self addFloatAccessors4Key: "acuityPresentedConstantLogMAR"];
+}
+
+
+// ↓ somewhat complicated to ensure I can use the popup in "line(s) of optotypes"
++ (Settings) sharedSettings {
+    if (!sharedSettingsInstance)
+        sharedSettingsInstance = [[Settings alloc] init];
+    return sharedSettingsInstance;
+}
+- (int) lineByLineLinesIndexInstance {return [Settings lineByLineLinesIndex];}
+- (void) setLineByLineLinesIndexInstance:(int) value {
+    [self willChangeValueForKey:@"lineByLineLinesIndexInstance"];//ensure that bound UI elements automatically update, and the binding automatically saves changes back to Settings storage when the user interacts with the popup
+    [Settings setLineByLineLinesIndex:value];
+    [self didChangeValueForKey:@"lineByLineLinesIndexInstance"];
 }
 
 

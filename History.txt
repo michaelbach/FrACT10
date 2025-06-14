@@ -1,5 +1,6 @@
 #  History
 
+2025-06-14 add popup button in "line(s) of optotypes", this needed an instance for Settings
 2025-06-12 add threshold correction info to plot of result history title
 2025-06-11 fix typo in `lineByLineLinesIndex` range checks; set it to "5 lines" in the Hyperion preset; add to testing suite; add `lineByLineLinesIndex to ControlDispatcher
 2025-06-07 add plotting of results history, change `TrialHistoryController`to singleton, add preset "EndoArt01". Vs 3.1.1

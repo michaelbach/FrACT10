@@ -114,9 +114,22 @@ Created by mb on 2021-12-21.
         [self buttonCenteredAtX: viewWidth - sze2 y: viewHeightHalf - sze2 size: sze title: "Ø"];
     }
 
+    // add a popup to directly change the number of lines
+    const acuityLinesPopup = [[CPPopUpButton alloc] initWithFrame:CGRectMake(0, 604, 80, 24)];
+    [acuityLinesPopup setTitle:@"1 line"];
+    [acuityLinesPopup addItemWithTitle:"3 lines"];
+    [acuityLinesPopup addItemWithTitle:"5 lines"];
+    [acuityLinesPopup bind:CPSelectedIndexBinding toObject:[Settings sharedSettings] withKeyPath:@"lineByLineLinesIndexInstance" options:nil];
+    [acuityLinesPopup setTarget: self];
+    [acuityLinesPopup setAction: @selector(acuityLinesPopupChanged:)];
+    [fractView addSubview: acuityLinesPopup];
+
     CGContextRestoreGState(cgc);
     CGContextTranslateCTM(cgc, 0, -verticalOffset); //so crowding is also offset
     [super drawStimulusInRect: dirtyRect];
+}
+- (void)acuityLinesPopupChanged:(id)sender { // necessary for immediate update
+    [[gAppController.selfWindow contentView] setNeedsDisplay: YES];
 }
 
 
