@@ -163,7 +163,7 @@ Created by mb on 2021-12-21.
     }
     //limit the acuity range to sensible pixel values
     let stroke = [MiscSpace strokePixelsFromlogMAR: localLogMAR];
-    stroke = [Misc limit: stroke lo: 1 hi: 35 / [Settings lineByLineHeadcountIndex]];
+    stroke = [Misc limit: stroke lo: gStrokeMinimal hi: 35 / [Settings lineByLineHeadcountIndex]];
     localLogMAR = [MiscSpace logMARFromStrokePixels: stroke];
     [self trialStart];
 }
