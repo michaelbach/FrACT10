@@ -85,6 +85,20 @@
 
 
 /**
+ Given stroke size in pixels → LogMAR
+ */
++ (float) logMARFromStrokePixels: (float) pixels {
+    return [self logMARfromDecVA: [self decVAFromStrokePixels: pixels]];
+}
+/**
+ Given LogMAR → stroke size in pixels
+ */
++ (float) strokePixelsFromlogMAR: (float) decVA {
+    return [self strokePixelsFromDecVA: [self decVAfromLogMAR: decVA]];
+}
+
+
+/**
  Convert degrees to ratians
  */
 + (float) degrees2radians: (float) degrees {

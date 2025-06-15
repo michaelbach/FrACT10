@@ -13,6 +13,7 @@ Created by mb on 2021-12-21.
 @import "FractControllerAcuity.j"
 @implementation FractControllerAcuityLineByLine: FractControllerAcuity {
     float localLogMAR;
+    CPPopUpButton acuityLinesPopup;
 }
 
 
@@ -21,8 +22,15 @@ Created by mb on 2021-12-21.
 
 
 - (id) initWithWindow: (CPWindow) aWindow {
-    localLogMAR = 0.3; //we need this method only for this line, starting acuity
     self = [super initWithWindow: aWindow];
+    localLogMAR = 0.3;
+    acuityLinesPopup = [[CPPopUpButton alloc] initWithFrame:CGRectMake(0, 604, 80, 24)];
+    [acuityLinesPopup setTitle:@"1 line"];
+    [acuityLinesPopup addItemWithTitle:"3 lines"];
+    [acuityLinesPopup addItemWithTitle:"5 lines"];
+    [acuityLinesPopup bind:CPSelectedIndexBinding toObject:self withKeyPath:@"lineByLineLinesIndexSelf" options:nil];
+    [acuityLinesPopup setTarget: self];
+    [acuityLinesPopup setAction: @selector(acuityLinesPopupChanged:)];
     return self;
 }
 
@@ -114,19 +122,15 @@ Created by mb on 2021-12-21.
         [self buttonCenteredAtX: viewWidth - sze2 y: viewHeightHalf - sze2 size: sze title: "Ø"];
     }
 
-    // add a popup to directly change the number of lines
-    const acuityLinesPopup = [[CPPopUpButton alloc] initWithFrame:CGRectMake(0, 604, 80, 24)];
-    [acuityLinesPopup setTitle:@"1 line"];
-    [acuityLinesPopup addItemWithTitle:"3 lines"];
-    [acuityLinesPopup addItemWithTitle:"5 lines"];
-    [acuityLinesPopup bind:CPSelectedIndexBinding toObject:[Settings sharedSettings] withKeyPath:@"lineByLineLinesIndexInstance" options:nil];
-    [acuityLinesPopup setTarget: self];
-    [acuityLinesPopup setAction: @selector(acuityLinesPopupChanged:)];
-    [fractView addSubview: acuityLinesPopup];
+    [fractView addSubview: acuityLinesPopup]; //to directly change the number of lines
 
     CGContextRestoreGState(cgc);
     CGContextTranslateCTM(cgc, 0, -verticalOffset); //so crowding is also offset
     [super drawStimulusInRect: dirtyRect];
+}
+- (int) lineByLineLinesIndexSelf {return [Settings lineByLineLinesIndex];}
+- (void) setLineByLineLinesIndexSelf: (int) value {
+    [Settings setLineByLineLinesIndex:value];
 }
 - (void)acuityLinesPopupChanged:(id)sender { // necessary for immediate update
     [[gAppController.selfWindow contentView] setNeedsDisplay: YES];
@@ -162,7 +166,10 @@ Created by mb on 2021-12-21.
         default:
             [self runEnd];  return;
     }
-    localLogMAR = [Misc limit: localLogMAR lo: -1 hi: 3];
+    //limit the acuity range to sensible pixel values
+    let stroke = [MiscSpace strokePixelsFromlogMAR: localLogMAR];
+    stroke = [Misc limit: stroke lo: 1 hi: 35 / [Settings lineByLineHeadcountIndex]];
+    localLogMAR = [MiscSpace logMARFromStrokePixels: stroke];
     [self trialStart];
 }
 
