@@ -24,7 +24,7 @@ Created by mb on 2021-12-21.
 - (id) initWithWindow: (CPWindow) aWindow {
     self = [super initWithWindow: aWindow];
     localLogMAR = 0.3;
-    acuityLinesPopup = [[CPPopUpButton alloc] initWithFrame:CGRectMake(0, 604, 80, 24)];
+    acuityLinesPopup = [[CPPopUpButton alloc] initWithFrame:CGRectMake(0, window.innerHeight-24, 80, 24)];
     [acuityLinesPopup setTitle:@"1 line"];
     [acuityLinesPopup addItemWithTitle:"3 lines"];
     [acuityLinesPopup addItemWithTitle:"5 lines"];
@@ -163,7 +163,7 @@ Created by mb on 2021-12-21.
     }
     //limit the acuity range to sensible pixel values
     let stroke = [MiscSpace strokePixelsFromlogMAR: localLogMAR];
-    stroke = [Misc limit: stroke lo: gStrokeMinimal hi: 35 / [Settings lineByLineHeadcountIndex]];
+    stroke = [Misc limit: stroke lo: gStrokeMinimal hi: gStrokeMaximal / 3 / [Settings lineByLineHeadcountIndex]];
     localLogMAR = [MiscSpace logMARFromStrokePixels: stroke];
     [self trialStart];
 }
