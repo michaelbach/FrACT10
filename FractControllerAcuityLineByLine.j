@@ -113,16 +113,11 @@ Created by mb on 2021-12-21.
         default: break;
     }
     
-    if ([Settings enableTouchControls] && (!responseButtonsAdded)) {
+    if (!responseButtonsAdded) {
         const sze = 50, sze2 = sze / 2;
-        /*[self buttonCenteredAtX: viewWidth-sze2 y: 0 size: sze title: "6"];
-        [self buttonCenteredAtX: sze2 y: 0 size: sze title: "4"];
-        [self buttonCenteredAtX: viewWidthHalf y: -viewHeightHalf + sze2 size: sze title: "8"];
-        [self buttonCenteredAtX: viewWidthHalf y: viewHeightHalf - sze2 size: sze title: "2"];*/
         [self buttonCenteredAtX: viewWidth - sze2 y: viewHeightHalf - sze2 size: sze title: "Ø"];
+        [fractView addSubview: acuityLinesPopup]; //to directly change number of lines
     }
-
-    [fractView addSubview: acuityLinesPopup]; //to directly change the number of lines
 
     CGContextRestoreGState(cgc);
     CGContextTranslateCTM(cgc, 0, -verticalOffset); //so crowding is also offset
