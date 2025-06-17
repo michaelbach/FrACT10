@@ -71,12 +71,10 @@
                 }
                 [gAppController setSettingsPaneTabViewSelectedIndex: m2AsNumber];
                 [gAppController buttonSettings_action: nil];
-//                [[gAppController.selfWindow contentView] display]; //does not help update panes
-//                [[[CPApp keyWindow] contentView] display]; //does not help to update panes
-//                [[[CPApp mainWindow] contentView] display]; //does not help to update panes
+                [Misc udpateGUI];
                 [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;
             case "redraw":
-                [[gAppController.selfWindow contentView] display];
+                [Misc udpateGUI];
                 [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;
             default:
                 [self _logProblem: eData];

@@ -114,6 +114,14 @@ function _pause(ms) { //console.info("Misc>_pause");
 }
 
 
++ (void) udpateGUI {
+    [[gAppController.selfWindow contentView] display];
+    setTimeout(function() {
+        [[gAppController.selfWindow contentView] display];
+    }, 1);
+}
+
+
 + (void) copyString2ClipboardWithDialog: (CPString) s { //console.info("Misc>copyString2ClipboardWithDialog");
     const alert = [CPAlert alertWithMessageText: "Done."
                                   defaultButton: "Yes, put result → clipboard  (ߵyߴ)" alternateButton: "Cancel  (ߵcߴ)" otherButton: nil

@@ -12,6 +12,16 @@
 <br>
 <br>
 
+<script>
+allSettings = async function() {
+	for (let i = 0; i < 7; i++) {
+		tellIframe3Ms('settingsPane', i, '');
+		await pauseMilliseconds(1000);
+	}
+	tellIframe3Ms('settingsPane', -1, '');
+}
+</script>
+
 <iframe id="fractFrame" src="index.html" scrolling="no" allow="clipboard-write" style="width: 800px; height: 628px; border: 1px solid #3050C0; padding:0px; margin:0px;"></iframe>
 
 <div id="belowFractFrame"></div>
@@ -25,6 +35,8 @@
 <br>
 <button onclick="tellIframe('xx');">Send 'xx'</button>
 <button onclick="tellIframe3Ms('m1', 'm2', 'm3');">Send well formed, but unknown message</button>
+<button onclick="tellIframe3Ms('redraw', '', '');">Redraw</button>
+<button onclick="allSettings()">All Settings</button>
 <br>
 
 <button onclick="tellIframe3Ms({m1: 'getVersion', m2: '', m3: ''});">getVersion</button>

@@ -46,7 +46,7 @@ Created by mb on 2021-12-21.
 }
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerAcuityLetters>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerAcuityLineByLine>drawStimulusInRect");
     const verticalOffset = 150;
     [self prepareDrawing];
     switch(state) {
