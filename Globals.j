@@ -98,7 +98,7 @@ gStrokeMinimal = 0.5;  gStrokeMaximal = 100;
 
 gTestingPlotting = NO;
 
-// general exporting
+//general exporting
 kTestDetail_vsExpFormat = "vsExpFormat";
 kTestDetail_vsFrACT = "vsFrACT";
 kTestDetail_decimalMark = "decimalMark";
