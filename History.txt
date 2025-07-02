@@ -1,5 +1,6 @@
 #  History
 
+2025-07-03 feat: increase max. nTrials to 500 on request
 2025-07-02 fix: harmonise layout in plastic card panel; harmonise layout in settings below ruler
 2025-06-30 fix: typo in plastic card string, also added arrors and made bold
 2025-06-17 fix: settings pane GUI now updates even if driven externally (`udpateGUI` with delayed `display` did the trick)
