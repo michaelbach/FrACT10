@@ -639,7 +639,7 @@ This is useful for studies / clinical trials for standardisation across time and
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
-                            <tabViewItem label=" General " identifier="GeneralTab" id="Ppw-we-9iU">
+                            <tabViewItem label=" General " identifier="GeneralTab" id="Ppw-we-9iU" userLabel="General">
                                 <view key="view" id="0Bl-gJ-kre">
                                     <rect key="frame" x="10" y="33" width="760" height="493"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1374,7 +1374,7 @@ Assumes full screen mode.
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cXH-fg-tcl">
-                                                        <rect key="frame" x="154" y="48" width="40" height="21"/>
+                                                        <rect key="frame" x="149" y="48" width="40" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">0°: middle of the screen, positive values shift up.
 
@@ -1390,11 +1390,20 @@ Assumes full screen mode.
                                                             <outlet property="nextKeyView" destination="YNX-f3-PL9" id="1mF-xZ-Fld"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Noj-5S-zHu">
-                                                        <rect key="frame" x="59" y="49" width="97" height="17"/>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YYo-WW-EQg">
+                                                        <rect key="frame" x="123" y="49" width="25" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="←hor      vert→" id="rVX-3B-Vbh">
-                                                            <font key="font" metaFont="system"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="⇅" id="FPc-Fw-oH3">
+                                                            <font key="font" metaFont="system" size="16"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P5L-6A-nkp">
+                                                        <rect key="frame" x="63" y="50" width="25" height="17"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="⇄" id="eb5-ps-LD8">
+                                                            <font key="font" metaFont="system" size="16"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -3797,8 +3806,51 @@ CQ
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="kZW-Nr-fsM">
+                                            <rect key="frame" x="492" y="175" width="239" height="66"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <view key="contentView" id="BHt-rH-U3y">
+                                                <rect key="frame" x="4" y="5" width="231" height="58"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <button toolTip="For some designs, it may be advantageous to randomse target appearance to left or right." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VtB-h9-XQq">
+                                                        <rect key="frame" x="42" y="16" width="40" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="⇄" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="gcZ-p8-SZP">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system" size="16"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.eccentRandomizeX" id="jbd-FM-uhs"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ixj-ux-urY">
+                                                        <rect key="frame" x="140" y="17" width="40" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">For some designs, it may be advantageous to randomse target appearance up or down.
+</string>
+                                                        <buttonCell key="cell" type="check" title="⇅" bezelStyle="regularSquare" imagePosition="right" alignment="right" inset="2" id="uhK-m4-ZGz">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system" size="16"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.eccentRandomizeY" id="mn1-Ue-eic"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </view>
+                                        </box>
+                                        <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YA8-cJ-HC0">
+                                            <rect key="frame" x="527" y="227" width="168" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Randomize eccentricity" bezelStyle="round" id="elL-OJ-pRU">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="DmF-dV-9Qa">
-                                            <rect key="frame" x="492" y="135" width="239" height="98"/>
+                                            <rect key="frame" x="492" y="34" width="239" height="98"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="KnA-cE-9rl">
                                                 <rect key="frame" x="4" y="5" width="231" height="90"/>
@@ -3842,7 +3894,7 @@ CQ
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ifz-L2-wIZ">
-                                            <rect key="frame" x="551" y="219" width="120" height="22"/>
+                                            <rect key="frame" x="551" y="118" width="120" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Constant VA" bezelStyle="round" id="k51-x2-V0c">
                                                 <font key="font" metaFont="system"/>
@@ -3865,7 +3917,7 @@ CQ
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Woj-eV-bwS">
-                                            <rect key="frame" x="35" y="208" width="124" height="18"/>
+                                            <rect key="frame" x="35" y="253" width="124" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">For some contexts (e.g., embeddng FrACT in a larger project) the Exit button may be detrimental – so disable it here.
 
@@ -3878,19 +3930,8 @@ CQ
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.hideExitButton" id="rx4-JS-9Ql"/>
                                             </connections>
                                         </button>
-                                        <button toolTip="For some designs, it may be advantageous to randomse target appearance to left or right." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VtB-h9-XQq">
-                                            <rect key="frame" x="35" y="253" width="224" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="Randomize eccentricity right/left" bezelStyle="regularSquare" imagePosition="left" inset="2" id="gcZ-p8-SZP">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <binding destination="izh-pU-csC" name="value" keyPath="values.eccentRandomizeX" id="jbd-FM-uhs"/>
-                                            </connections>
-                                        </button>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="TaC-8z-ATT">
-                                            <rect key="frame" x="34" y="-8" width="257" height="180"/>
+                                            <rect key="frame" x="34" y="34" width="257" height="180"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="SHV-oL-MQO">
                                                 <rect key="frame" x="4" y="5" width="249" height="172"/>
@@ -3987,7 +4028,7 @@ CQ
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oi1-uI-HB5">
-                                            <rect key="frame" x="85" y="158" width="135" height="22"/>
+                                            <rect key="frame" x="85" y="200" width="135" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Feedback Sounds" bezelStyle="round" id="NZY-ji-TCC">
                                                 <font key="font" metaFont="system"/>

@@ -19,7 +19,8 @@
     [Settings setShowResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
     [Settings setDecimalMarkCharIndex: kDecimalMarkCharIndexComma];
     [Settings setTimeoutDisplaySeconds: 0.15];
-    [Settings setEccentXInDeg: 8];
+    //[Settings setEccentXInDeg: 8];
+    [Settings setEccentYInDeg: 8];
     [Settings setDistanceInCM: 68.5];
     [Settings setResultsToClipboardIndex: kResultsToClipFullHistory];
     [Settings setDisplayTransform: 1]; //1=mirror horizontally
@@ -27,7 +28,8 @@
     //Acuity pane
     [Settings setMaxDisplayedAcuity: 99];
     //Misc pane
-    [Settings setEccentRandomizeX: YES];
+    //[Settings setEccentRandomizeX: YES];
+    [Settings setEccentRandomizeY: YES];
 }
 
 @end

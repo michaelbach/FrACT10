@@ -53,6 +53,7 @@ Created by mb on July 15, 2015.
     [self addFloatAccessors4Key: "eccentYInDeg"];
     [self addBoolAccessors4Key: "eccentShowCenterFixMark"];
     [self addBoolAccessors4Key: "eccentRandomizeX"];
+    [self addBoolAccessors4Key: "eccentRandomizeY"];
     [self addBoolAccessors4Key: "respondsToMobileOrientation"];
     [self addBoolAccessors4Key: "autoFullScreen"];
     [self addIntAccessors4Key: "displayTransform"];
@@ -241,6 +242,7 @@ Created by mb on July 15, 2015.
     [self setEccentYInDeg: [self checkNum: [self eccentYInDeg] dflt: 0 min: -99 max: 99 set: set]];
     [self setEccentShowCenterFixMark: [self checkBool: [self eccentShowCenterFixMark] dflt: YES set: set]];
     [self setEccentRandomizeX: [self checkBool: [self eccentRandomizeX] dflt: NO set: set]];
+    [self setEccentRandomizeY: [self checkBool: [self eccentRandomizeY] dflt: NO set: set]];
 
     [self setAutoFullScreen: [self checkBool: [self autoFullScreen] dflt: NO set: set]];
 

@@ -31,7 +31,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     float strokeSizeInPix, spatialFreqCPD, contrastMichelsonPercent;
     float xEccInPix, yEccInPix; //eccentricity
     Thresholder thresholder;
-    AlternativesGenerator alternativesGenerator, alternativesGeneratorEccentRandomizeX;
+    AlternativesGenerator alternativesGenerator, alternativesGeneratorEccentRandomizeX, alternativesGeneratorEccentRandomizeY;
     Optotypes optotypes;
     CPString trialInfoString @accessors;
     CPTimer timerDisplay, timerResponse, timerFixMark, timerAutoResponse, timerIsi, timerBalmOff;
@@ -93,6 +93,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if ([Settings eccentRandomizeX]) {
         alternativesGeneratorEccentRandomizeX = [[AlternativesGenerator alloc] initWithNumAlternatives: 2 andNTrials: nTrials obliqueOnly: NO];
     }
+    if ([Settings eccentRandomizeY]) {
+        alternativesGeneratorEccentRandomizeY = [[AlternativesGenerator alloc] initWithNumAlternatives: 2 andNTrials: nTrials obliqueOnly: NO];
+    }
     thresholder = [[Thresholder alloc] initWithNumAlternatives: nAlternatives];
     [TrialHistoryController initWithNumTrials: nTrials];
     responseWasCorrect = YES;  responseWasCorrectCumulative = YES;
@@ -126,6 +129,11 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if ([Settings eccentRandomizeX]) {
         if ([alternativesGeneratorEccentRandomizeX nextAlternative] !== 0)  {
             xEccInPix *= -1;
+        }
+    }
+    if ([Settings eccentRandomizeY]) {
+        if ([alternativesGeneratorEccentRandomizeY nextAlternative] !== 0)  {
+            yEccInPix *= -1;
         }
     }
     const tIsi = gBalmTestIDs.includes(gCurrentTestID) ? [Settings balmIsiMillisecs] : [Settings timeoutIsiMillisecs];
