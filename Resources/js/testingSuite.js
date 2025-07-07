@@ -290,7 +290,7 @@ const testingSuite = async () => {
     await oneStep3Ms('setSetting', 'showRewardPicturesWhenDone', YES);
     await oneStep3Ms('setSetting', 'timeoutRewardPicturesInSeconds', 3);
 	tellIframe3Ms('run','acuity', 'Letters');
-	await pauseMilliseconds(pauseViewMS * 2);
+	await pauseMilliseconds(pauseViewMS);
 	await oneStep3Ms('setSetting', 'showRewardPicturesWhenDone', NO);
     addText(" ↑ `showRewardPicturesWhenDone`: Done.\n");
 
@@ -373,6 +373,7 @@ const testingSuite = async () => {
     await pauseMilliseconds(pauseViewMS);
     for (let aPreset of allPresets) {
         await oneStep3Ms('setSetting', 'Preset', aPreset);
+	    await tellIframeReturningPromise3Ms('redraw', '', '');
         await pauseMilliseconds(0.5 * pauseViewMS);
     }
     await oneStep3Ms('settingsPane', -1, ''); /* go to main */
