@@ -210,9 +210,9 @@ Shortcut: 4
                         <string key="toolTip">Toggle fullscreen.                                     
 Shortcut: f
 </string>
-                        <buttonCell key="cell" type="roundTextured" title="Fullscr." bezelStyle="texturedRounded" image="iconFullscreen" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cEz-jl-XIn">
+                        <buttonCell key="cell" type="roundTextured" title="⛶ Fullscreen" bezelStyle="texturedRounded" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cEz-jl-XIn">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" size="13" name="STIXTwoMath-Regular"/>
                         </buttonCell>
                         <connections>
                             <action selector="buttonFullScreen_action:" target="450" id="OjF-xB-SV6"/>
@@ -5392,7 +5392,6 @@ Type any unused key to exit this module.
         <image name="buttonGrating" width="412" height="412"/>
         <image name="iconAbout" width="396" height="396"/>
         <image name="iconCross" width="482" height="480"/>
-        <image name="iconFullscreen" width="356" height="356"/>
         <image name="iconHelp" width="356" height="356"/>
         <image name="iconSettings" width="276" height="276"/>
         <image name="keyMap4" width="1066" height="840"/>
