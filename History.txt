@@ -1,5 +1,6 @@
-#  History
+# History
 
+2025-07-08 fix: Checkbox "Show “How to operate” at start of run" on the responseInfoPanels had lost binding after renaming, also harmonised its GUI naming
 2025-07-08 feat: update from Cappuccino master; remove obsolete fullscreen icon
 2025-07-07 feat: eccentricity randomisation also ⇅; change UI to show ⇄ and ⇅ in place of hor vert;
     Unicode "⛶" instead of icon, thus avoiding the abbreviaton "Fullscr.".
