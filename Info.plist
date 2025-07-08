@@ -15,7 +15,7 @@
 	<key>Main cib file base name</key>
 	<string>MainMenu.cib</string>
 	<key>VersionDate</key>
-	<string>2025-07-07</string>
+	<string>2025-07-08</string>
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundlePrimaryIcon</key>

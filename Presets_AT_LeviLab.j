@@ -3,7 +3,7 @@
  Copyright © 2024 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
  Presets_AT_LeviLab.j (a helper for Presets)
- Settings for a project by  Ângela at LeviLab
+ Settings for a project by Ângela at LeviLab
 
  */
 

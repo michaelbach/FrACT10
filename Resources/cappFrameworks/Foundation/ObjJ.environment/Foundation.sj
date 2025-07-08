@@ -2699,7 +2699,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("addObject:"), function 
 
 ,["unsigned","id"])]);
 }
-p;8;CPData.jt;8301;@STATIC;1.0;i;10;CPObject.ji;10;CPString.jt;8252;objj_executeFile("CPObject.j", YES);objj_executeFile("CPString.j", YES);
+p;8;CPData.jt;8542;@STATIC;1.0;i;10;CPObject.ji;10;CPString.jt;8493;objj_executeFile("CPObject.j", YES);objj_executeFile("CPString.j", YES);
 {var the_class = objj_allocateClassPair(CPObject, "CPData"),
 meta_class = the_class.isa;objj_registerClassPair(the_class);
 class_addMethods(the_class, [new objj_method(sel_getUid("initWithRawString:"), function $CPData__initWithRawString_(self, _cmd, aString)
@@ -2881,9 +2881,16 @@ class_addMethods(meta_class, [new objj_method(sel_getUid("dataWithString:"), fun
 
 ,["id","CPString"])]);
 }
-CFData.prototype.isa = CPData;
-CFMutableData.prototype.isa = CPData;
-p;8;CPDate.jt;11420;@STATIC;1.0;i;10;CPObject.ji;10;CPString.ji;13;CPException.jt;11352;objj_executeFile("CPObject.j", YES);objj_executeFile("CPString.j", YES);objj_executeFile("CPException.j", YES);var CPDateReferenceDate = new Date(Date.UTC(2001, 0, 1, 0, 0, 0, 0));
+if (CFData.prototype.isa !== CPData)
+{
+    Object.defineProperties(CFData.prototype, {isa: {value: CPData, enumerable: false, writable: true}});
+}
+;
+if (CFMutableData.prototype.isa !== CPData)
+{
+    Object.defineProperties(CFMutableData.prototype, {isa: {value: CPData, enumerable: false, writable: true}});
+}
+p;8;CPDate.jt;11534;@STATIC;1.0;i;10;CPObject.ji;10;CPString.ji;13;CPException.jt;11466;objj_executeFile("CPObject.j", YES);objj_executeFile("CPString.j", YES);objj_executeFile("CPException.j", YES);var CPDateReferenceDate = new Date(Date.UTC(2001, 0, 1, 0, 0, 0, 0));
 
 {var the_class = objj_allocateClassPair(CPObject, "CPDate"),
 meta_class = the_class.isa;objj_registerClassPair(the_class);
@@ -3103,7 +3110,10 @@ Date.parseISO8601 = function(date)
     }
     return timestamp;
 };
-Date.prototype.isa = CPDate;
+if (Date.prototype.isa !== CPDate)
+{
+    Object.defineProperties(Date.prototype, {isa: {value: CPDate, enumerable: false, writable: true}});
+}
 _isNumberType = function(value)
 {
     if (typeof value === 'number')
@@ -3111,7 +3121,7 @@ _isNumberType = function(value)
     else
         return NO;
 }
-p;17;CPDateFormatter.jt;116008;@STATIC;1.0;i;9;CPArray.ji;8;CPDate.ji;10;CPString.ji;13;CPFormatter.ji;12;CPTimeZone.ji;10;CPLocale.jt;115897;objj_executeFile("CPArray.j", YES);objj_executeFile("CPDate.j", YES);objj_executeFile("CPString.j", YES);objj_executeFile("CPFormatter.j", YES);objj_executeFile("CPTimeZone.j", YES);objj_executeFile("CPLocale.j", YES);{var the_typedef = objj_allocateTypeDef("CPDateFormatterStyle");
+p;17;CPDateFormatter.jt;116482;@STATIC;1.0;i;9;CPArray.ji;8;CPDate.ji;10;CPString.ji;13;CPFormatter.ji;12;CPTimeZone.ji;10;CPLocale.jt;116371;objj_executeFile("CPArray.j", YES);objj_executeFile("CPDate.j", YES);objj_executeFile("CPString.j", YES);objj_executeFile("CPFormatter.j", YES);objj_executeFile("CPTimeZone.j", YES);objj_executeFile("CPLocale.j", YES);{var the_typedef = objj_allocateTypeDef("CPDateFormatterStyle");
 objj_registerTypeDef(the_typedef);
 }CPDateFormatterNoStyle = 0;
 CPDateFormatterShortStyle = 1;
@@ -4068,6 +4078,16 @@ default:
 {
     if (!aString)
         return ((___r1 = (CPDate.isa.method_msgSend["alloc"] || _objj_forward)(CPDate, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithTimeIntervalSinceReferenceDate:"] || _objj_forward)(___r1, "initWithTimeIntervalSinceReferenceDate:", -31622400));
+    if (aFormat === "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+    {
+        var d = new Date(aString);
+        if (d && !isNaN(d.getTime()))
+        {
+            var kCFAbsoluteTimeIntervalSince1970 = 978307200.0;
+            var interval = d.getTime() / 1000.0 - kCFAbsoluteTimeIntervalSince1970;
+            return (CPDate.isa.method_msgSend["dateWithTimeIntervalSinceReferenceDate:"] || _objj_forward)(CPDate, "dateWithTimeIntervalSinceReferenceDate:", interval);
+        }
+    }
     if (aFormat == nil)
         return nil;
     var currentToken = (CPString.isa.method_msgSend["new"] || _objj_forward)(CPString, "new"),
@@ -6536,7 +6556,7 @@ class_addMethods(meta_class, [new objj_method(sel_getUid("cancelPreviousPerformR
 
 ,["void","id","SEL","id","CPTimeInterval","CPArray"])]);
 }
-p;14;CPDictionary.jt;22726;@STATIC;1.0;i;9;CPArray.ji;14;CPEnumerator.ji;13;CPException.ji;8;CPNull.ji;10;CPObject.jt;22629;objj_executeFile("CPArray.j", YES);objj_executeFile("CPEnumerator.j", YES);objj_executeFile("CPException.j", YES);objj_executeFile("CPNull.j", YES);objj_executeFile("CPObject.j", YES);var CPDictionaryMaxDescriptionRecursion = 10;
+p;14;CPDictionary.jt;22996;@STATIC;1.0;i;9;CPArray.ji;14;CPEnumerator.ji;13;CPException.ji;8;CPNull.ji;10;CPObject.jt;22899;objj_executeFile("CPArray.j", YES);objj_executeFile("CPEnumerator.j", YES);objj_executeFile("CPException.j", YES);objj_executeFile("CPNull.j", YES);objj_executeFile("CPObject.j", YES);var CPDictionaryMaxDescriptionRecursion = 10;
 
 {var the_class = objj_allocateClassPair(CPObject, "CPDictionary"),
 meta_class = the_class.isa;objj_registerClassPair(the_class);
@@ -6970,8 +6990,14 @@ class_addMethods(the_class, [new objj_method(sel_getUid("initWithDictionary:"), 
 {var the_class = objj_allocateClassPair(CPDictionary, "CPMutableDictionary"),
 meta_class = the_class.isa;objj_registerClassPair(the_class);
 }
-CFDictionary.prototype.isa = CPDictionary;
-CFMutableDictionary.prototype.isa = CPMutableDictionary;
+if (CFDictionary.prototype.isa !== CPDictionary)
+{
+    Object.defineProperties(CFDictionary.prototype, {isa: {value: CPDictionary, enumerable: false, writable: true}});
+}
+if (CFMutableDictionary.prototype.isa !== CPMutableDictionary)
+{
+    Object.defineProperties(CFMutableDictionary.prototype, {isa: {value: CPMutableDictionary, enumerable: false, writable: true}});
+}
 p;14;CPEnumerator.jt;476;@STATIC;1.0;i;10;CPObject.jt;443;objj_executeFile("CPObject.j", YES);
 {var the_class = objj_allocateClassPair(CPObject, "CPEnumerator"),
 meta_class = the_class.isa;objj_registerClassPair(the_class);
@@ -6987,7 +7013,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("nextObject"), function 
 
 ,["CPArray"])]);
 }
-p;9;CPError.jt;5576;@STATIC;1.0;i;14;CPDictionary.ji;10;CPObject.ji;10;CPString.jt;5508;objj_executeFile("CPDictionary.j", YES);objj_executeFile("CPObject.j", YES);objj_executeFile("CPString.j", YES);CPCappuccinoErrorDomain = kCFErrorDomainCappuccino;
+p;9;CPError.jt;5694;@STATIC;1.0;i;14;CPDictionary.ji;10;CPObject.ji;10;CPString.jt;5626;objj_executeFile("CPDictionary.j", YES);objj_executeFile("CPObject.j", YES);objj_executeFile("CPString.j", YES);CPCappuccinoErrorDomain = kCFErrorDomainCappuccino;
 CPCocoaErrorDomain = kCFErrorDomainCappuccino;
 CPUnderlyingErrorKey = kCFErrorUnderlyingErrorKey;
 CPLocalizedDescriptionKey = kCFErrorLocalizedDescriptionKey;
@@ -7097,8 +7123,11 @@ var meta_class = the_class.isa;class_addMethods(the_class, [new objj_method(sel_
 
 ,["void","CPCoder"])]);
 }
-CFError.prototype.isa = CPError;
-p;13;CPException.jt;8779;@STATIC;1.0;i;9;CPCoder.ji;10;CPObject.ji;10;CPString.jt;8717;objj_executeFile("CPCoder.j", YES);objj_executeFile("CPObject.j", YES);objj_executeFile("CPString.j", YES);CPInvalidArgumentException = "CPInvalidArgumentException";
+if (CFError.prototype.isa !== CPError)
+{
+    Object.defineProperties(CFError.prototype, {isa: {value: CPError, enumerable: false, writable: true}});
+}
+p;13;CPException.jt;9018;@STATIC;1.0;i;9;CPCoder.ji;10;CPObject.ji;10;CPString.jt;8956;objj_executeFile("CPCoder.j", YES);objj_executeFile("CPObject.j", YES);objj_executeFile("CPString.j", YES);CPInvalidArgumentException = "CPInvalidArgumentException";
 CPUnsupportedMethodException = "CPUnsupportedMethodException";
 CPRangeException = "CPRangeException";
 CPInternalInconsistencyException = "CPInternalInconsistencyException";
@@ -7219,8 +7248,14 @@ var meta_class = the_class.isa;class_addMethods(the_class, [new objj_method(sel_
 
 ,["void","CPCoder"])]);
 }
-Error.prototype.isa = CPException;
-Error.prototype._userInfo = null;
+if (Error.prototype.isa !== CPException)
+{
+    Object.defineProperties(Error.prototype, {isa: {value: CPException, enumerable: false, writable: true}});
+}
+if (Error.prototype._userInfo !== null)
+{
+    Object.defineProperties(Error.prototype, {_userInfo: {value: null, enumerable: false, writable: true}});
+}
 (CPException.isa.method_msgSend["initialize"] || _objj_forward)(CPException, "initialize");
 _CPRaiseInvalidAbstractInvocation = function(anObject, aSelector)
 {
@@ -11172,7 +11207,7 @@ class_addMethods(meta_class, [new objj_method(sel_getUid("null"), function $CPNu
 
 ,["CPNull"])]);
 }
-p;10;CPNumber.jt;9505;@STATIC;1.0;i;13;CPException.ji;8;CPNull.ji;10;CPObject.ji;15;CPObjJRuntime.jt;9421;objj_executeFile("CPException.j", YES);objj_executeFile("CPNull.j", YES);objj_executeFile("CPObject.j", YES);objj_executeFile("CPObjJRuntime.j", YES);var CPNumberUIDs = new CFMutableDictionary();
+p;10;CPNumber.jt;9742;@STATIC;1.0;i;13;CPException.ji;8;CPNull.ji;10;CPObject.ji;15;CPObjJRuntime.jt;9658;objj_executeFile("CPException.j", YES);objj_executeFile("CPNull.j", YES);objj_executeFile("CPObject.j", YES);objj_executeFile("CPObjJRuntime.j", YES);var CPNumberUIDs = new CFMutableDictionary();
 
 {var the_class = objj_allocateClassPair(CPObject, "CPNumber"),
 meta_class = the_class.isa;objj_registerClassPair(the_class);
@@ -11447,8 +11482,14 @@ var meta_class = the_class.isa;class_addMethods(the_class, [new objj_method(sel_
 
 ,["void","CPCoder"])]);
 }
-Number.prototype.isa = CPNumber;
-Boolean.prototype.isa = CPNumber;
+if (Number.prototype.isa !== CPNumber)
+{
+    Object.defineProperties(Number.prototype, {isa: {value: CPNumber, enumerable: false, writable: true}});
+}
+if (Boolean.prototype.isa !== CPNumber)
+{
+    Object.defineProperties(Boolean.prototype, {isa: {value: CPNumber, enumerable: false, writable: true}});
+}
 (CPNumber.isa.method_msgSend["initialize"] || _objj_forward)(CPNumber, "initialize");
 p;19;CPNumberFormatter.jt;20226;@STATIC;1.0;i;10;CPString.ji;13;CPFormatter.ji;17;CPDecimalNumber.jt;20151;objj_executeFile("CPString.j", YES);objj_executeFile("CPFormatter.j", YES);objj_executeFile("CPDecimalNumber.j", YES);{var the_typedef = objj_allocateTypeDef("CPNumberFormatterStyle");
 objj_registerTypeDef(the_typedef);
@@ -13876,7 +13917,7 @@ var meta_class = the_class.isa;class_addMethods(the_class, [new objj_method(sel_
 
 ,["void","CPCoder"])]);
 }
-p;10;CPString.jt;24325;@STATIC;1.0;i;13;CPException.ji;10;CPObject.ji;15;CPObjJRuntime.ji;9;CPRange.ji;18;CPSortDescriptor.ji;7;CPURL.ji;9;CPValue.ji;8;CPNull.jt;24180;objj_executeFile("CPException.j", YES);objj_executeFile("CPObject.j", YES);objj_executeFile("CPObjJRuntime.j", YES);objj_executeFile("CPRange.j", YES);objj_executeFile("CPSortDescriptor.j", YES);objj_executeFile("CPURL.j", YES);objj_executeFile("CPValue.j", YES);objj_executeFile("CPNull.j", YES);CPCaseInsensitiveSearch = 1;
+p;10;CPString.jt;24445;@STATIC;1.0;i;13;CPException.ji;10;CPObject.ji;15;CPObjJRuntime.ji;9;CPRange.ji;18;CPSortDescriptor.ji;7;CPURL.ji;9;CPValue.ji;8;CPNull.jt;24300;objj_executeFile("CPException.j", YES);objj_executeFile("CPObject.j", YES);objj_executeFile("CPObjJRuntime.j", YES);objj_executeFile("CPRange.j", YES);objj_executeFile("CPSortDescriptor.j", YES);objj_executeFile("CPURL.j", YES);objj_executeFile("CPValue.j", YES);objj_executeFile("CPNull.j", YES);CPCaseInsensitiveSearch = 1;
 CPLiteralSearch = 2;
 CPBackwardsSearch = 4;
 CPAnchoredSearch = 8;
@@ -14417,7 +14458,11 @@ String.prototype.stripDiacritics = function()
     }
     return output;
 };
-String.prototype.isa = CPString;
+if (String.prototype.isa !== CPString)
+{
+    Object.defineProperties(String.prototype, {isa: {value: CPString, enumerable: false, writable: true}});
+}
+;
 p;9;CPTimer.jt;11697;@STATIC;1.0;i;8;CPDate.ji;14;CPInvocation.ji;10;CPObject.ji;11;CPRunLoop.jt;11615;objj_executeFile("CPDate.j", YES);objj_executeFile("CPInvocation.j", YES);objj_executeFile("CPObject.j", YES);objj_executeFile("CPRunLoop.j", YES);
 {var the_class = objj_allocateClassPair(CPObject, "CPTimer"),
 meta_class = the_class.isa;class_addIvars(the_class, [new objj_ivar("_timeInterval", "CPTimeInterval"), new objj_ivar("_invocation", "CPInvocation"), new objj_ivar("_callback", "Function"), new objj_ivar("_repeats", "BOOL"), new objj_ivar("_isValid", "BOOL"), new objj_ivar("_fireDate", "CPDate"), new objj_ivar("_userInfo", "id")]);objj_registerClassPair(the_class);
@@ -14608,7 +14653,7 @@ if (typeof window !== 'undefined')
         window.clearTimeout(aTimeoutID);
     };
 }
-p;12;CPTimeZone.jt;25461;@STATIC;1.0;i;10;CPObject.ji;10;CPString.ji;8;CPDate.ji;10;CPLocale.jt;25384;objj_executeFile("CPObject.j", YES);objj_executeFile("CPString.j", YES);objj_executeFile("CPDate.j", YES);objj_executeFile("CPLocale.j", YES);CPTimeZoneNameStyleStandard = 0;
+p;12;CPTimeZone.jt;28670;@STATIC;1.0;i;10;CPObject.ji;10;CPString.ji;8;CPDate.ji;10;CPLocale.jt;28593;objj_executeFile("CPObject.j", YES);objj_executeFile("CPString.j", YES);objj_executeFile("CPDate.j", YES);objj_executeFile("CPLocale.j", YES);CPTimeZoneNameStyleStandard = 0;
 CPTimeZoneNameStyleShortStandard = 1;
 CPTimeZoneNameStyleDaylightSaving = 2;
 CPTimeZoneNameStyleShortDaylightSaving = 3;
@@ -14625,11 +14670,72 @@ var abbreviationDictionary,
     localizedName;
 abbreviationForDate = function(date)
 {
-    var abbreviation = date.toLocaleString('en-US', {timeZoneName: 'long'}).replace(/^([0]?\d|[1][0-2])\/((?:[0]?|[1-2])\d|[3][0-1])\/([2][01]|[1][6-9])\d{2}(,?\s*([0]?\d|[1][0-2])(\:[0-5]\d){1,2})*\s*([aApP][mM]{0,2})?\s*/, "").split(" ").map(    function(l)
+    var dateString = date.toString();
+    var longNameMatch = dateString.match(/\(([^)]+)\)/);
+    if (longNameMatch)
     {
-        return l[0];
-    }).join("");
-    return abbreviation;
+        var timeZoneComponent = longNameMatch[1];
+        if ((abbreviationDictionary == null ? abbreviationDictionary : (abbreviationDictionary.isa.method_msgSend["objectForKey:"] || _objj_forward)(abbreviationDictionary, "objectForKey:", timeZoneComponent)))
+        {
+            return timeZoneComponent;
+        }
+        if (timeZoneComponent.indexOf(' ') > -1)
+        {
+            var generatedAbbr = timeZoneComponent.split(' ').map(            function(word)
+            {
+                return word[0];
+            }).join('');
+            if ((abbreviationDictionary == null ? abbreviationDictionary : (abbreviationDictionary.isa.method_msgSend["objectForKey:"] || _objj_forward)(abbreviationDictionary, "objectForKey:", generatedAbbr)))
+            {
+                return generatedAbbr;
+            }
+        }
+    }
+    try {
+        var ianaName = new Intl.DateTimeFormat().resolvedOptions().timeZone;
+        var currentOffset = -date.getTimezoneOffset();
+        var keys = (abbreviationDictionary == null ? abbreviationDictionary : (abbreviationDictionary.isa.method_msgSend["keyEnumerator"] || _objj_forward)(abbreviationDictionary, "keyEnumerator")),
+            key;
+        var possibleAbbrs = [];
+        while (key = (keys == null ? keys : (keys.isa.method_msgSend["nextObject"] || _objj_forward)(keys, "nextObject")))
+        {
+            if ((abbreviationDictionary == null ? abbreviationDictionary : (abbreviationDictionary.isa.method_msgSend["valueForKey:"] || _objj_forward)(abbreviationDictionary, "valueForKey:", key)) === ianaName)
+            {
+                possibleAbbrs.push(key);
+            }
+        }
+        for (var i = 0; i < possibleAbbrs.length; i++)
+        {
+            var abbr = possibleAbbrs[i];
+            if ((timeDifferenceFromUTC == null ? timeDifferenceFromUTC : (timeDifferenceFromUTC.isa.method_msgSend["valueForKey:"] || _objj_forward)(timeDifferenceFromUTC, "valueForKey:", abbr)) === currentOffset)
+            {
+                return abbr;
+            }
+        }
+        if (possibleAbbrs.length > 0)
+        {
+            return possibleAbbrs[0];
+        }
+    }
+    catch(e) {
+    }
+    return nil;
+}
+_abbreviationForNameAndDate = function(tzName, date)
+{
+    try {
+        var options = {timeZone: tzName, timeZoneName: 'long'};
+        var dateString = date.toLocaleString('en-US', options);
+        var longTZName = dateString.replace(/^([0]?\d|[1][0-2])\/((?:[0]?|[1-2])\d|[3][0-1])\/([2][01]|[1][6-9])\d{2}(,?\s*([0]?\d|[1][0-2])(\:[0-5]\d){1,2})*\s*([aApP][mM]{0,2})?\s*/, "");
+        var abbreviation = longTZName.split(" ").map(        function(l)
+        {
+            return l[0];
+        }).join("");
+        return abbreviation;
+    }
+    catch(e) {
+        return nil;
+    }
 }
 
 {var the_class = objj_allocateClassPair(CPObject, "CPTimeZone"),
@@ -14677,17 +14783,27 @@ class_addMethods(the_class, [new objj_method(sel_getUid("data"), function $CPTim
     if (self = (objj_getClass("CPTimeZone").super_class.method_dtable["init"] || _objj_forward)(self, "init"))
     {
         self._name = tzName;
-        var keys = (abbreviationDictionary == null ? abbreviationDictionary : (abbreviationDictionary.isa.method_msgSend["keyEnumerator"] || _objj_forward)(abbreviationDictionary, "keyEnumerator")),
-            key;
-        while (key = (keys == null ? keys : (keys.isa.method_msgSend["nextObject"] || _objj_forward)(keys, "nextObject")))
+        var currentAbbreviation = _abbreviationForNameAndDate(tzName, (CPDate.isa.method_msgSend["date"] || _objj_forward)(CPDate, "date"));
+        if (currentAbbreviation && (abbreviationDictionary == null ? abbreviationDictionary : (abbreviationDictionary.isa.method_msgSend["containsKey:"] || _objj_forward)(abbreviationDictionary, "containsKey:", currentAbbreviation)))
         {
-            var value = (abbreviationDictionary == null ? abbreviationDictionary : (abbreviationDictionary.isa.method_msgSend["valueForKey:"] || _objj_forward)(abbreviationDictionary, "valueForKey:", key));
-            if ((value == null ? value : (value.isa.method_msgSend["isEqualToString:"] || _objj_forward)(value, "isEqualToString:", self._name)))
+            self._abbreviation = currentAbbreviation;
+        }
+        else
+        {
+            var keys = (abbreviationDictionary == null ? abbreviationDictionary : (abbreviationDictionary.isa.method_msgSend["keyEnumerator"] || _objj_forward)(abbreviationDictionary, "keyEnumerator")),
+                key;
+            while (key = (keys == null ? keys : (keys.isa.method_msgSend["nextObject"] || _objj_forward)(keys, "nextObject")))
             {
-                self._abbreviation = key;
-                break;
+                var value = (abbreviationDictionary == null ? abbreviationDictionary : (abbreviationDictionary.isa.method_msgSend["valueForKey:"] || _objj_forward)(abbreviationDictionary, "valueForKey:", key));
+                if ((value == null ? value : (value.isa.method_msgSend["isEqualToString:"] || _objj_forward)(value, "isEqualToString:", self._name)))
+                {
+                    self._abbreviation = key;
+                    break;
+                }
             }
         }
+        if (!self._abbreviation)
+            return nil;
     }
     return self;
 }
@@ -14853,7 +14969,7 @@ class_addMethods(meta_class, [new objj_method(sel_getUid("initialize"), function
     var date = (CPDate.isa.method_msgSend["date"] || _objj_forward)(CPDate, "date"),
         abbreviation = abbreviationForDate(date);
     systemTimeZone = (self.isa.method_msgSend["timeZoneWithAbbreviation:"] || _objj_forward)(self, "timeZoneWithAbbreviation:", abbreviation);
-    ((___r1 = (CPNotification.isa.method_msgSend["defaultCenter"] || _objj_forward)(CPNotification, "defaultCenter")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["postNotificationName:object:"] || _objj_forward)(___r1, "postNotificationName:object:", CPSystemTimeZoneDidChangeNotification, systemTimeZone));
+    ((___r1 = (CPNotificationCenter == null ? CPNotificationCenter : (CPNotificationCenter.isa.method_msgSend["defaultCenter"] || _objj_forward)(CPNotificationCenter, "defaultCenter"))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["postNotificationName:object:"] || _objj_forward)(___r1, "postNotificationName:object:", CPSystemTimeZoneDidChangeNotification, systemTimeZone));
     var ___r1;
 }
 
@@ -15431,7 +15547,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("methodSignatureForSelec
 
 ,["void","CPInvocation"])]);
 }
-p;7;CPURL.jt;10194;@STATIC;1.0;i;10;CPObject.ji;10;CPString.jt;10144;objj_executeFile("CPObject.j", YES);objj_executeFile("CPString.j", YES);CPURLNameKey = "CPURLNameKey";
+p;7;CPURL.jt;10247;@STATIC;1.0;i;10;CPObject.ji;10;CPString.jt;10197;objj_executeFile("CPObject.j", YES);objj_executeFile("CPString.j", YES);CPURLNameKey = "CPURLNameKey";
 CPURLLocalizedNameKey = "CPURLLocalizedNameKey";
 CPURLIsRegularFileKey = "CPURLIsRegularFileKey";
 CPURLIsDirectoryKey = "CPURLIsDirectoryKey";
@@ -15660,7 +15776,11 @@ var meta_class = the_class.isa;class_addMethods(the_class, [new objj_method(sel_
 
 ,["void","CPCoder"])]);
 }
-CFURL.prototype.isa = (CPURL.isa.method_msgSend["class"] || _objj_forward)(CPURL, "class");
+if (CFURL.prototype.isa !== CPURL)
+{
+    Object.defineProperties(CFURL.prototype, {isa: {value: CPURL, enumerable: false, writable: true}});
+}
+;
 p;17;CPURLConnection.jt;21384;@STATIC;1.0;i;8;CPData.ji;10;CPObject.ji;11;CPRunLoop.ji;14;CPURLRequest.ji;15;CPURLResponse.ji;18;CPOperationQueue.ji;13;CPOperation.jt;21241;objj_executeFile("CPData.j", YES);objj_executeFile("CPObject.j", YES);objj_executeFile("CPRunLoop.j", YES);objj_executeFile("CPURLRequest.j", YES);objj_executeFile("CPURLResponse.j", YES);objj_executeFile("CPOperationQueue.j", YES);objj_executeFile("CPOperation.j", YES);{var the_protocol = objj_allocateProtocol("CPURLConnectionDelegate");
 var aProtocol = objj_getProtocol("CPObject");
 if (!aProtocol) throw new SyntaxError("*** Could not find definition for protocol \"CPURLConnectionDelegate\"");
@@ -18078,7 +18198,7 @@ class_addMethods(meta_class, [new objj_method(sel_getUid("alloc"), function $_CP
 
 ,["id"])]);
 }
-p;20;_CPJavaScriptArray.jt;15251;@STATIC;1.0;i;16;CPMutableArray.jt;15210;objj_executeFile("CPMutableArray.j", YES);var concat = Array.prototype.concat,
+p;20;_CPJavaScriptArray.jt;15378;@STATIC;1.0;i;16;CPMutableArray.jt;15337;objj_executeFile("CPMutableArray.j", YES);var concat = Array.prototype.concat,
     indexOf = Array.prototype.indexOf,
     join = Array.prototype.join,
     pop = Array.prototype.pop,
@@ -18388,7 +18508,10 @@ class_addMethods(meta_class, [new objj_method(sel_getUid("alloc"), function $_CP
 
 ,["id","id"])]);
 }
-Array.prototype.isa = _CPJavaScriptArray;
+if (Array.prototype.isa !== _CPJavaScriptArray)
+{
+    Object.defineProperties(Array.prototype, {isa: {value: _CPJavaScriptArray, enumerable: false, writable: true}});
+}
 p;9;CPArray.jt;139;@STATIC;1.0;i;10;_CPArray.ji;20;_CPJavaScriptArray.jt;82;objj_executeFile("_CPArray.j", YES);objj_executeFile("_CPJavaScriptArray.j", YES);p;16;CPMutableArray.jt;18923;@STATIC;1.0;i;10;_CPArray.jt;18888;objj_executeFile("_CPArray.j", YES);
 {var the_class = objj_allocateClassPair(CPArray, "CPMutableArray"),
 meta_class = the_class.isa;objj_registerClassPair(the_class);
@@ -21229,7 +21352,7 @@ var meta_class = the_class.isa;class_addMethods(the_class, [new objj_method(sel_
 p;31;CPCompoundPredicate_Constants.jt;88;@STATIC;1.0;t;71;CPNotPredicateType = 0;
 CPAndPredicateType = 1;
 CPOrPredicateType = 2;
-p;14;CPExpression.jt;841;@STATIC;1.0;i;15;_CPExpression.ji;28;_CPConstantValueExpression.ji;19;_CPSelfExpression.ji;23;_CPVariableExpression.ji;22;_CPKeyPathExpression.ji;23;_CPFunctionExpression.ji;24;_CPAggregateExpression.ji;18;_CPSetExpression.ji;23;_CPSubqueryExpression.ji;20;_CPBlockExpression.ji;26;_CPConditionalExpression.jt;527;objj_executeFile("_CPExpression.j", YES);objj_executeFile("_CPConstantValueExpression.j", YES);objj_executeFile("_CPSelfExpression.j", YES);objj_executeFile("_CPVariableExpression.j", YES);objj_executeFile("_CPKeyPathExpression.j", YES);objj_executeFile("_CPFunctionExpression.j", YES);objj_executeFile("_CPAggregateExpression.j", YES);objj_executeFile("_CPSetExpression.j", YES);objj_executeFile("_CPSubqueryExpression.j", YES);objj_executeFile("_CPBlockExpression.j", YES);objj_executeFile("_CPConditionalExpression.j", YES);p;13;CPPredicate.jt;286;@STATIC;1.0;i;14;_CPPredicate.ji;21;CPCompoundPredicate.ji;23;CPComparisonPredicate.ji;14;CPExpression.jt;176;objj_executeFile("_CPPredicate.j", YES);objj_executeFile("CPCompoundPredicate.j", YES);objj_executeFile("CPComparisonPredicate.j", YES);objj_executeFile("CPExpression.j", YES);p;23;_CPConcreteMutableSet.jt;4373;@STATIC;1.0;i;14;CPMutableSet.jt;4335;objj_executeFile("CPMutableSet.j", YES);var hasOwnProperty = Object.prototype.hasOwnProperty;
+p;14;CPExpression.jt;841;@STATIC;1.0;i;15;_CPExpression.ji;28;_CPConstantValueExpression.ji;19;_CPSelfExpression.ji;23;_CPVariableExpression.ji;22;_CPKeyPathExpression.ji;23;_CPFunctionExpression.ji;24;_CPAggregateExpression.ji;18;_CPSetExpression.ji;23;_CPSubqueryExpression.ji;20;_CPBlockExpression.ji;26;_CPConditionalExpression.jt;527;objj_executeFile("_CPExpression.j", YES);objj_executeFile("_CPConstantValueExpression.j", YES);objj_executeFile("_CPSelfExpression.j", YES);objj_executeFile("_CPVariableExpression.j", YES);objj_executeFile("_CPKeyPathExpression.j", YES);objj_executeFile("_CPFunctionExpression.j", YES);objj_executeFile("_CPAggregateExpression.j", YES);objj_executeFile("_CPSetExpression.j", YES);objj_executeFile("_CPSubqueryExpression.j", YES);objj_executeFile("_CPBlockExpression.j", YES);objj_executeFile("_CPConditionalExpression.j", YES);p;13;CPPredicate.jt;286;@STATIC;1.0;i;14;_CPPredicate.ji;21;CPCompoundPredicate.ji;23;CPComparisonPredicate.ji;14;CPExpression.jt;176;objj_executeFile("_CPPredicate.j", YES);objj_executeFile("CPCompoundPredicate.j", YES);objj_executeFile("CPComparisonPredicate.j", YES);objj_executeFile("CPExpression.j", YES);p;23;_CPConcreteMutableSet.jt;4651;@STATIC;1.0;i;14;CPMutableSet.jt;4613;objj_executeFile("CPMutableSet.j", YES);var hasOwnProperty = Object.prototype.hasOwnProperty;
 
 {var the_class = objj_allocateClassPair(CPMutableSet, "_CPConcreteMutableSet"),
 meta_class = the_class.isa;class_addIvars(the_class, [new objj_ivar("_contents", "Object"), new objj_ivar("_count", "unsigned")]);objj_registerClassPair(the_class);
@@ -21325,6 +21448,17 @@ class_addMethods(the_class, [new objj_method(sel_getUid("initWithObjects:count:"
 
 ,["Class"])]);
 }
+_CPConcreteMutableSet.allocator.prototype[Symbol.iterator] = function *()
+{
+    const contents = this._contents;
+    for (const key in contents)
+    {
+        if (Object.prototype.hasOwnProperty.call(contents, key))
+        {
+            yield contents[key];
+        }
+    }
+};
 p;8;_CPSet.jt;19643;@STATIC;1.0;i;9;CPArray.ji;14;CPEnumerator.ji;10;CPNumber.ji;10;CPObject.jt;19561;objj_executeFile("CPArray.j", YES);objj_executeFile("CPEnumerator.j", YES);objj_executeFile("CPNumber.j", YES);objj_executeFile("CPObject.j", YES);
 {var the_class = objj_allocateClassPair(CPObject, "CPSet"),
 meta_class = the_class.isa;objj_registerClassPair(the_class);
