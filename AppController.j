@@ -284,7 +284,7 @@
     if ([Settings isNotCalibrated]) {
         const alert = [CPAlert alertWithMessageText: "Calibration is mandatory for valid results!"
                                       defaultButton: "I just want to try…" alternateButton: "OK, go to  ‘⛭ Settings’" otherButton: "Cancel"
-                          informativeTextWithFormat: "\rGoto ‘⛭ Settings’ and enter appropriate values for \r«Observer distance» and «Length of blue ruler».\r\rThis wilbl also get rid of this obnoxious warning dialog."];
+                          informativeTextWithFormat: "\rGoto ‘⛭ Settings’ and enter appropriate values for \r«Observer distance» and «Length of blue ruler».\r\rThis will also get rid of the present obnoxious warning dialog."];
         [alert runModalWithDidEndBlock: function(alert, returnCode) {
             switch (returnCode) {
                 case 1: //alternateButton: go to Settings
@@ -438,13 +438,15 @@
 
 - (void) balmSwitch {
     const alert = [MDBAlert alertWithMessageText: "BaLM@FrACT₁₀" defaultButton: "Cancel" alternateButton: "❓Help" otherButton: "Motion (‘3’)" informativeTextWithFormat: "“Basic Assessment of Light, Location & Motion”\rfor ultra low vision.\r\r\r↓ Which BaLM test?"];
-    [alert addButtonWithTitle: "Location (‘2’)"]; //returnCode === 2
+    [alert addButtonWithTitle: "Location (‘2’)"]; //returnCode === 3
     [alert addButtonWithTitle: "Light (‘1’)"]; //returnCode === 2
     [alert setDelegate: self];
     //[alert setShowsHelp: YES]; //doesn't work
     [[alert buttons][0] setKeyEquivalent: "1"]; //yes, 1/2 inverted…
     [[alert buttons][1] setKeyEquivalent: "2"];
     [[alert buttons][2] setKeyEquivalent: "3"];
+    [[alert buttons][3] setKeyEquivalent: "h"]; //help
+    [[alert buttons][4] setKeyEquivalent: "\x1b"]; //esc
     [alert runModalWithDidEndBlock: function(alert, returnCode) {
         switch (returnCode) {
             case 4: //console.info(returnCode); //Light
