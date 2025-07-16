@@ -470,7 +470,6 @@
 
 - (IBAction) buttonFullScreen_action: (id) sender { //console.info("AppController>buttonFullScreen");
     [Misc fullScreenOn: ![Misc isFullScreen]]; //toggle
-    //the origin changes are handled by the eventListener("fullscreenchange" above.
 }
 
 
@@ -529,6 +528,7 @@
  */
 - (IBAction) buttonExportClip_action: (id) sender { //CPLog("AppController>buttonExportClip_action");
     [Misc copyString2Clipboard: currentTestResultExportString];
+    [buttonExportClip setEnabled: NO];
 }
 - (IBAction) buttonExportPDF_action: (id) sender { //CPLog("AppController>buttonExportPDF_action");
     [self exportPDF];

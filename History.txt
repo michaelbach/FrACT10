@@ -1,5 +1,6 @@
 # History
 
+2025-07-16 fix regression: export→clib now again disabled after being used
 2025-07-11 doc: rename "Plot History" → "All trials Plot"
 2025-07-08 fix: Checkbox "Show “How to operate” at start of run" on the responseInfoPanels had lost binding after renaming, also harmonised its GUI naming;
     fix: remove a typo; feat: add further key equivalents to BaLM alert
