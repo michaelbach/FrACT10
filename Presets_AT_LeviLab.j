@@ -12,7 +12,8 @@
 @implementation Presets_AT_LeviLab: CPObject
 
 + (void) apply {
-    [Presets setStandardDefaultsKeepingCalBarLength];
+    [Settings setDefaults];
+//    [Presets setStandardDefaultsKeepingCalBarLength];
     //General pane
     [[CPUserDefaults standardUserDefaults] setInteger: kNAlternativesIndex4 forKey: "nAlternativesIndex"]; //4
     [Settings setNTrials04: 24];
@@ -20,8 +21,9 @@
     [Settings setDecimalMarkCharIndex: kDecimalMarkCharIndexComma];
     [Settings setTimeoutDisplaySeconds: 0.15];
     //[Settings setEccentXInDeg: 8];
-    [Settings setEccentYInDeg: 8];
+    [Settings setEccentYInDeg: 5];
     [Settings setDistanceInCM: 68.5];
+    [Settings setCalBarLengthInMM: 191];
     [Settings setResultsToClipboardIndex: kResultsToClipFullHistory];
     [Settings setDisplayTransform: 1]; //1=mirror horizontally
     [Settings setTestOnFive: kTestAcuityC];
