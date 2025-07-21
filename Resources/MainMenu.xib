@@ -4083,7 +4083,6 @@ CQ
                                                             </menu>
                                                         </popUpButtonCell>
                                                         <connections>
-                                                            <action selector="buttonSettingsTestSound_action:" target="450" id="cHe-aC-HBb"/>
                                                             <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.eyeIndex" id="KcS-Xd-nf9"/>
                                                         </connections>
                                                     </popUpButton>
