@@ -497,7 +497,7 @@ Created by mb on July 15, 2015.
  Bool/Int/Float/String/Color helpers for synthesising class methods to get/set defaults
  */
 + (void) addBoolAccessors4Key: (CPString) key { //CPLog("Settings>addIntAccessors4Key called with key: " + key);
-    if (key == "") return;
+    if (key === "") return;
     const setterName = "set" + key.charAt(0).toUpperCase() + key.substring(1) + ":";
     const getterSel = CPSelectorFromString(key),
         setterSel = CPSelectorFromString(setterName);
@@ -511,7 +511,7 @@ Created by mb on July 15, 2015.
     });
 }
 + (void) addIntAccessors4Key: (CPString) key { //CPLog("Settings>addIntAccessors4Key called with key: " + key);
-    if (key == "") return;
+    if (key === "") return;
     const setterName = "set" + key.charAt(0).toUpperCase() + key.substring(1) + ":";
     const getterSel = CPSelectorFromString(key),
         setterSel = CPSelectorFromString(setterName);
@@ -525,7 +525,7 @@ Created by mb on July 15, 2015.
     });
 }
 + (void) addFloatAccessors4Key: (CPString) key { //CPLog("Settings>addFloatAccessors4Key called with key: " + key);
-    if (key == "") return;
+    if (key === "") return;
     const setterName = "set" + key.charAt(0).toUpperCase() + key.substring(1) + ":";
     const getterSel = CPSelectorFromString(key),
         setterSel = CPSelectorFromString(setterName);
@@ -541,7 +541,7 @@ Created by mb on July 15, 2015.
     //CPLog("Settings responds to getter: " + [Settings respondsToSelector:getterSel]);
 }
 + (void) addStringAccessors4Key: (CPString) key { //CPLog("Settings>addIntAccessors4Key called with key: " + key);
-    if (key == "") return;
+    if (key === "") return;
     const setterName = "set" + key.charAt(0).toUpperCase() + key.substring(1) + ":";
     const getterSel = CPSelectorFromString(key),
         setterSel = CPSelectorFromString(setterName);
@@ -555,7 +555,7 @@ Created by mb on July 15, 2015.
     });
 }
 + (void) addColorAccessors4Key: (CPString) key { //CPLog("Settings>addIntAccessors4Key called with key: " + key);
-    if (key == "") return;
+    if (key === "") return;
     const setterName = "set" + key.charAt(0).toUpperCase() + key.substring(1) + ":";
     const getterSel = CPSelectorFromString(key),
         setterSel = CPSelectorFromString(setterName);

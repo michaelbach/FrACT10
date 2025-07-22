@@ -1,6 +1,7 @@
 # History
 
-2025-07-21 fix typo in GUI, harmonise font setting of pop-ups
+2025-07-21 fix typo in GUI, harmonise font setting of pop-ups;
+    fix: remove unncessary connection from eye to ping
 2025-07-17 modify a preset
 2025-07-16 fix regression: export→clib now again disabled after being used
 2025-07-11 doc: rename "Plot History" → "All trials Plot"
