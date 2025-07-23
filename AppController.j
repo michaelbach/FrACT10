@@ -219,6 +219,7 @@
 
     [Misc centerWindowOrPanel: [selfWindow contentView]]; //→center
     [selfWindow orderFront: self]; //ensures that it will receive clicks w/o activating
+    [resultStringField setVerticalAlignment: CPTopVerticalTextAlignment];
     [self setResultString: "→ Result displayed here ←"];
 }
 
@@ -377,13 +378,31 @@
         [buttonPlot setEnabled: ([currentTestResultExportString length] > 1)];
     }
 }
+
+
 - (void) exportPDF { //CPLog("AppController>exportPDF");
+    const doc = new jspdf.jsPDF(); //https://artskydj.github.io/jsPDF/docs/jsPDF.html
+    doc.setFontSize(8);  doc.setFont("Courier", "bold");
+    doc.text("FrACT10 RESULT RECORD" + crlf, 15, 10); //https://artskydj.github.io/jsPDF/docs/jsPDF.html#text
+
+    // main output
+    const items = currentTestResultExportString.trim().split('\t');
+    let tableData = []; //https://github.com/simonbengtsson/jsPDF-AutoTable
+    for (let i = 0; i < items.length; i += 2) { // every second item: new row
+        tableData.push([items[i], items[i + 1]]);
+    }
+    const styles = {fontSize: 8, cellWidth: 30, font: "Courier", cellPadding: {top: 1, right: 1, bottom: 1, left: 1}};
+    doc.autoTable({body: tableData, theme: 'grid', styles: styles});
+    
+    // trial-by-trial output
+    tableData = currentTestResultsHistoryExportString.trim()
+      .split('\n') //split rows by newline
+      .map(row => row.split('\t')); //split columns by tab
+    doc.autoTable({body: tableData, theme: 'grid', styles: styles});
+
     const dateStart = [TrialHistoryController dateStart];
-    const filename = "FrACT_"+ [Misc date2YYYY_MM_DD: dateStart] + "_" + [Misc date2HH__MM: dateStart];
-    let s = "FrACT10 RESULT RECORD" + crlf + crlf + crlf;
-    s += [Misc replaceEvery2ndTabWithNewlineInString: currentTestResultExportString];
-    s += crlf + currentTestResultsHistoryExportString;
-    [Misc saveAsPDF: s inFile: filename];
+    const filename = "FrACT_"+ [Misc date2YYYY_MM_DD: dateStart] + "_" + [Misc date2HH__MM: dateStart] + ".pdf";
+    doc.save(filename); //https://github.com/eligrey/FileSaver.js
 }
 
 

@@ -262,21 +262,21 @@ function _pause(ms) { //console.info("Misc>_pause");
 /**
  Helper function: Create a PDF from received text and save it, ".pdf" appended to "inFile"
  */
-+ (void) saveAsPDF: (CPString) theText inFile: (CPString) filename {
+/*+ (void) saveAsPDF: (CPString) theText inFile: (CPString) filename {
     const doc = new jspdf.jsPDF();
     doc.setFontSize(8);
     doc.setFont("courier", "normal");
     doc.text(theText, 4, 10); //https://artskydj.github.io/jsPDF/docs/jsPDF.html#text
     const blob = doc.output("blob");
     [Misc trySaveFile: blob filename: filename + ".pdf"];
-}
+}*/
 
 
 /**
  Helper function: Save "blob" into file
  With fallback to download if File System Access API does not exist
  */
-+ (async void) trySaveFile: (id) blob filename: (CPString) filename {
+/*+ (async void) trySaveFile: (id) blob filename: (CPString) filename {
     if ('showSaveFilePicker' in window) {
         const handle = await window.showSaveFilePicker({
             excludeAcceptAllOption: true,
@@ -292,7 +292,7 @@ function _pause(ms) { //console.info("Misc>_pause");
         a.href = url;  a.download = filename;  a.click();
         URL.revokeObjectURL(url);
     }
-}
+}*/
 
 
 + (BOOL) isAcuityGratingMisc { //replication of Helper in FractController
