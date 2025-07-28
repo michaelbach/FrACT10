@@ -1,5 +1,6 @@
 # History
 
+2025-07-28 fix: replace misleading reward image (smiley+glasses) with smiley+cowboy hat
 2025-07-23 feature: improve `exportPDF` with tables and using libraries, much simpler
 2025-07-21 fix typo in GUI, harmonise font setting of pop-ups;
     fix: remove unncessary connection from eye to ping
