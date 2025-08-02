@@ -134,4 +134,4 @@ gTestDetailsKeys = [
     kTestDetail_rangeLimitStatus, kTestDetail_crowdingType, kTestDetail_eccentricityX, kTestDetail_eccentricityY,
     kTestDetail_spatFreq, kTestDetail_colorFore, kTestDetail_colorBack, kTestDetail_cpdMin, kTestDetail_cpdMax];
 gTestDetails[kTestDetail_vsExpFormat] = gVersionOfExportFormat;
-gTestDetails[kTestDetail_vsFrACT] = gVersionStringOfFract + "·" + gVersionDateOfFrACT;
+gTestDetails[kTestDetail_vsFrACT] = "FrACT10·" + gVersionStringOfFract + "·" + gVersionDateOfFrACT;

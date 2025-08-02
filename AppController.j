@@ -182,7 +182,7 @@
     [self setSettingsPaneTabViewSelectedIndex: 0]; //select the "General" tab in Settings
 
     [selfWindow setTitle: "FrACT10"];
-    [self setVersionDateString: gVersionStringOfFract + "·" + gVersionDateOfFrACT];
+    [self setVersionDateString: gTestDetails[kTestDetail_vsFrACT]];
 
     [Settings checkDefaults]; //what was the reason to put this here???
 
