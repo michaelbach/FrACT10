@@ -291,7 +291,7 @@ Shortcut: P
                         <rect key="frame" x="490" y="534" width="292" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="versionDateString" id="OHh-EV-lga">
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="system" size="11"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>

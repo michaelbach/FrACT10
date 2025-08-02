@@ -78,6 +78,8 @@ self.addEventListener('install', (event) => {
                             './Resources/TAOs/rabbit.png',
                             './Resources/TAOs/rocket.png',
                             './Resources/TAOs/tree.png',
+                            './Resources/js/jspdf.umd.min.js',
+                            './Resources/js/jspdf.plugin.autotable.min.js'
                                             ]);
                     })
                     );
