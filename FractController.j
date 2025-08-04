@@ -201,13 +201,13 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
  Draw the trial info (top left) after everything else has been drawn
  */
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractController>drawStimulusInRect");
-    if ([Settings showTrialInfo]) {
-        CGContextSetTextPosition(cgc, 10, 10); //we assume here no transformed CGContext
-        //CGContextSetFillColor(cgc, colOptotypeFore); would be unreadable with low contrast
-        CGContextSetFillColor(cgc, [CPColor darkGrayColor]);
-        CGContextSelectFont(cgc, [Settings trialInfoFontSize] + "px sans-serif");
-        CGContextShowText(cgc, trialInfoString);
-    }
+    if (gCurrentTestID == kTestAcuityLineByLine) return;
+    if (![Settings showTrialInfo]) return;
+    CGContextSetTextPosition(cgc, 10, 10); //we assume here no transformed CGContext
+    //CGContextSetFillColor(cgc, colOptotypeFore); would be unreadable with low contrast
+    CGContextSetFillColor(cgc, [CPColor darkGrayColor]);
+    CGContextSelectFont(cgc, [Settings trialInfoFontSize] + "px sans-serif");
+    CGContextShowText(cgc, trialInfoString);
 }
 
 

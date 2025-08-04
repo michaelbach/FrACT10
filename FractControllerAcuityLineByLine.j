@@ -14,7 +14,8 @@ Created by mb on 2021-12-21.
 @implementation FractControllerAcuityLineByLine: FractControllerAcuity {
     float localLogMAR;
     float logMARdelta1line;
-    CPPopUpButton acuityLinesPopup;
+    CPPopUpButton acuityNLinesPopup;
+    CPPopUpButton acuityNOptosPopup;
 }
 
 
@@ -25,13 +26,24 @@ Created by mb on 2021-12-21.
 - (id) initWithWindow: (CPWindow) aWindow {
     self = [super initWithWindow: aWindow];
     localLogMAR = 0.3;
-    acuityLinesPopup = [[CPPopUpButton alloc] initWithFrame:CGRectMake(0, window.innerHeight-24, 80, 24)];
-    [acuityLinesPopup setTitle:@"1 line"];
-    [acuityLinesPopup addItemWithTitle:"3 lines"];
-    [acuityLinesPopup addItemWithTitle:"5 lines"];
-    [acuityLinesPopup bind:CPSelectedIndexBinding toObject:self withKeyPath:@"lineByLineLinesIndexSelf" options:nil];
-    [acuityLinesPopup setTarget: self];
-    [acuityLinesPopup setAction: @selector(acuityLinesPopupChanged:)];
+    let popupRect = CGRectMake(0, window.innerHeight-24, 107, 24); // first one at bottom
+    acuityNOptosPopup = [[CPPopUpButton alloc] initWithFrame: popupRect];
+    [acuityNOptosPopup setTitle:"1 Optotype"];
+    [acuityNOptosPopup addItemWithTitle:"3 Optotypes"];
+    [acuityNOptosPopup addItemWithTitle:"5 Optotypes"];
+    [acuityNOptosPopup addItemWithTitle:"7 Optotypes"];
+    [acuityNOptosPopup bind: CPSelectedIndexBinding toObject:self withKeyPath:@"lineByLineHeadcountIndexSelf" options:nil];
+    [acuityNOptosPopup setTarget: self];
+    [acuityNOptosPopup setAction: @selector(acuityNLinesPopupChanged:)];
+
+    popupRect = CGRectOffset(popupRect, 0, -24); // next one: one up
+    acuityNLinesPopup = [[CPPopUpButton alloc] initWithFrame: popupRect];
+    [acuityNLinesPopup setTitle:"1 line"];
+    [acuityNLinesPopup addItemWithTitle:"3 lines"];
+    [acuityNLinesPopup addItemWithTitle:"5 lines"];
+    [acuityNLinesPopup bind: CPSelectedIndexBinding toObject:self withKeyPath:@"lineByLineLinesIndexSelf" options:nil];
+    [acuityNLinesPopup setTarget: self];
+    [acuityNLinesPopup setAction: @selector(acuityNLinesPopupChanged:)];
     return self;
 }
 
@@ -47,7 +59,7 @@ Created by mb on 2021-12-21.
 }
 
 
-- (void) drawOneLineSiftedByLines: (int) tLines {
+- (void) drawOneLineShiftedByLines: (int) tLines {
     //first vertical
     //Ferris et al 1982: the space between lines is equal in height to the letters of the next lower line
     const logMARthisLine = localLogMAR + tLines * logMARdelta1line;
@@ -111,26 +123,24 @@ Created by mb on 2021-12-21.
             if (![Settings isLineByLineChartModeConstantVA]) { //make the block about centered
                 CGContextTranslateCTM(cgc, 0, (lines - 1) * 20);
             }
-            [self drawOneLineSiftedByLines: 0];
+            [self drawOneLineShiftedByLines: 0];
             for (let i = 1; i <= (lines - 1) / 2; i++) {
-                [self drawOneLineSiftedByLines: -i]; [self drawOneLineSiftedByLines: i];
+                [self drawOneLineShiftedByLines: -i]; [self drawOneLineShiftedByLines: i];
             }
             CGContextRestoreGState(cgc);
             CGContextSetFillColor(cgc, [CPColor blueColor]);
             CGContextSetTextDrawingMode(cgc, kCGTextFill);
             CGContextSelectFont(cgc, "24px sans-serif"); //must be CSS
-            const s = [Misc stringFromNumber: localLogMAR decimals: 1 localised: YES] + " LogMAR  ";
             let stringWidth = 140, lineHeight = 24;
+            CGContextShowTextAtPoint(cgc, -viewWidthHalf, -viewHeightHalf + lineHeight, " Use ↑↓, ⇄");
+            let s = (lines > 1) ? "middle line: " : "";
+            s += [Misc stringFromNumber: localLogMAR decimals: 1 localised: YES] + " LogMAR ";
             try {
                 const tInfo = cgc.measureText(s);
                 stringWidth = tInfo.width;
                 //lineHeight = tInfo.emHeightAscent; //+ tInfo.emHeightDescent;
             } catch(e) {}
             CGContextShowTextAtPoint(cgc, viewWidthHalf - stringWidth, -viewHeightHalf + lineHeight, s);
-            if (lines > 1) {
-                CGContextShowTextAtPoint(cgc, viewWidthHalf - stringWidth, -viewHeightHalf + 2 * lineHeight, "(middle line)");
-            }
-            CGContextShowTextAtPoint(cgc, -viewWidthHalf, -viewHeightHalf + lineHeight, " Use ↑↓, ⇄");
             break;
         default: break;
     }
@@ -138,7 +148,8 @@ Created by mb on 2021-12-21.
     if (!responseButtonsAdded) {
         const sze = 50, sze2 = sze / 2;
         [self buttonCenteredAtX: viewWidth - sze2 y: viewHeightHalf - sze2 size: sze title: "Ø"];
-        [fractView addSubview: acuityLinesPopup]; //to directly change number of lines
+        [fractView addSubview: acuityNLinesPopup]; //to directly change number of lines
+        [fractView addSubview: acuityNOptosPopup]; //to directly change number of optotypes
     }
 
     CGContextRestoreGState(cgc);
@@ -149,7 +160,11 @@ Created by mb on 2021-12-21.
 - (void) setLineByLineLinesIndexSelf: (int) value {
     [Settings setLineByLineLinesIndex:value];
 }
-- (void)acuityLinesPopupChanged:(id)sender { // necessary for immediate update
+- (int) lineByLineHeadcountIndexSelf {return [Settings lineByLineHeadcountIndex];}
+- (void) setLineByLineHeadcountIndexSelf: (int) value {
+    [Settings setLineByLineHeadcountIndex:value];
+}
+- (void)acuityNLinesPopupChanged:(id)sender { // necessary for immediate update
     [[gAppController.selfWindow contentView] setNeedsDisplay: YES];
 }
 
