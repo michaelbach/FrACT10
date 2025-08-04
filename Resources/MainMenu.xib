@@ -288,10 +288,14 @@ Shortcut: P
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IAa-NP-Kj2">
-                        <rect key="frame" x="490" y="534" width="292" height="17"/>
+                        <rect key="frame" x="619" y="534" width="163" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="versionDateString" id="OHh-EV-lga">
-                            <font key="font" metaFont="system" size="11"/>
+                        <string key="toolTip">This is current version and release date.
+
+It can be selected and copied.
+</string>
+                        <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="right" title="versionDateString" usesSingleLineMode="YES" id="OHh-EV-lga">
+                            <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
