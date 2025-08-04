@@ -1,5 +1,6 @@
 # History
 
+2025-08-04 fix: vertical spacing of "line of optotypes" following Ferris et al. 1982
 2025-08-02 feature: prefix version string with "FrACT10·" for better disambiguation from classical; fix: add `jspdf` libraries to `cache.addAll` in the webAppServiceWorker
 2025-07-28 fix: replace misleading reward image (smiley+glasses) with smiley+cowboy hat
 2025-07-23 feature: improve `exportPDF` with tables and using libraries, much simpler

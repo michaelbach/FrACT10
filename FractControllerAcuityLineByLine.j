@@ -13,6 +13,7 @@ Created by mb on 2021-12-21.
 @import "FractControllerAcuity.j"
 @implementation FractControllerAcuityLineByLine: FractControllerAcuity {
     float localLogMAR;
+    float logMARdelta1line;
     CPPopUpButton acuityLinesPopup;
 }
 
@@ -46,58 +47,79 @@ Created by mb on 2021-12-21.
 }
 
 
+- (void) drawOneLineSiftedByLines: (int) tLines {
+    //first vertical
+    //Ferris et al 1982: the space between lines is equal in height to the letters of the next lower line
+    const logMARthisLine = localLogMAR + tLines * logMARdelta1line;
+    const d0 = [MiscSpace strokePixelsFromlogMAR: logMARthisLine - tLines * logMARdelta1line];
+    const d1 = [MiscSpace strokePixelsFromlogMAR: logMARthisLine + (Math.sign(tLines) - tLines) * logMARdelta1line];
+    const d2 = [MiscSpace strokePixelsFromlogMAR: logMARthisLine];
+    let vOffset = 0;
+    switch (tLines) {
+        case 2: // 2 above
+            vOffset = 7.5 * d0 + 10 * d1 + 2.5 * d2;  break;
+        case 1: // 1 above
+            vOffset = 7.5 * d0 + 2.5 * d1;  break;
+        case -1: // 1 below
+            vOffset = -(7.5 * d1 + 2.5 * d0);  break;
+        case -2: // 2 below
+            vOffset = -(2.5 * d0 + 10 * d1 + 7.5 * d2);  break;
+    }
+    CGContextSaveGState(cgc);
+    CGContextTranslateCTM(cgc, 0, -vOffset);
+    //now horizontal
+    let optotypeDistance = 1; //according to ETDRS
+    if ([Settings lineByLineDistanceType] === 0) { //according to DIN EN ISO 8596
+        optotypeDistance = 0.4;
+        const localDecVA = [MiscSpace decVAfromLogMAR: localLogMAR];
+        if (localDecVA >= 0.06) optotypeDistance = 1;
+        if (localDecVA >= 0.16) optotypeDistance = 1.5;
+        if (localDecVA >= 0.4) optotypeDistance = 2;
+        if (localDecVA >= 1.0) optotypeDistance = 3;
+    }
+    const locStimStrenInDeviceunits = [MiscSpace strokePixelsFromlogMAR: logMARthisLine];
+    optotypeDistance = (1 + optotypeDistance) * locStimStrenInDeviceunits * 5;
+    const iRange = [Settings lineByLineHeadcountIndex];
+    let usedAlternativesArray = [];
+    for (let i = -iRange; i <= iRange; i++) { //index 0…3 → 1, 3, 5, 7
+        const tempX = i * optotypeDistance;
+        CGContextTranslateCTM(cgc, -tempX, 0);
+        let currentAlternative = [Misc iRandom: nAlternatives];
+        while (usedAlternativesArray.includes(currentAlternative)) {
+            currentAlternative = [Misc iRandom: nAlternatives];
+        }
+        usedAlternativesArray.push(currentAlternative);
+        switch([Settings testOnLineByLineIndex]) {
+            case 1: [optotypes drawLetterWithStriokeInPx: locStimStrenInDeviceunits letterNumber: currentAlternative];  break;
+            case 2: [optotypes drawLandoltWithStrokeInPx: locStimStrenInDeviceunits landoltDirection: currentAlternative];  break;
+            default: console.log("Line-by-line: unsupported optotype-id: ", [Settings testOnLineByLineIndex]);
+        }
+        CGContextTranslateCTM(cgc, tempX, 0);
+    }
+    CGContextRestoreGState(cgc);
+}
+
+
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerAcuityLineByLine>drawStimulusInRect");
-    const verticalOffset = 150;
+    logMARdelta1line = [Settings isLineByLineChartModeConstantVA] ? 0 : 0.1;
     [self prepareDrawing];
     switch(state) {
         case kStateDrawBack: break;
         case kStateDrawFore:
-            const chartmodeNotConstVA = ![Settings isLineByLineChartModeConstantVA];
+            const lines = [1, 3, 5][[Settings lineByLineLinesIndex]];
             CGContextSaveGState(cgc);
-            const lineRange = [Settings lineByLineLinesIndex];
-            if (lineRange > 0) {
-                if (chartmodeNotConstVA) {
-                    stimStrengthInDeviceunits /= Math.pow(2, 1/10);
-                }
+            if (![Settings isLineByLineChartModeConstantVA]) { //make the block about centered
+                CGContextTranslateCTM(cgc, 0, (lines - 1) * 20);
             }
-            for (let iLine = -lineRange; iLine <= lineRange; iLine++) {
-                const usedAlternativesArray = [];
-                let optotypeDistance = 1; //according to ETDRS
-                if ([Settings lineByLineDistanceType] === 0) { //according to DIN EN ISO 8596
-                    optotypeDistance = 0.4;
-                    const localDecVA = [MiscSpace decVAfromLogMAR: localLogMAR];
-                    if (localDecVA >= 0.06) optotypeDistance = 1;
-                    if (localDecVA >= 0.16) optotypeDistance = 1.5;
-                    if (localDecVA >= 0.4) optotypeDistance = 2;
-                    if (localDecVA >= 1.0) optotypeDistance = 3;
-                }
-                optotypeDistance = (1 + optotypeDistance) * stimStrengthInDeviceunits * 5;
-                if (iLine >= -1) CGContextTranslateCTM(cgc, 0, optotypeDistance);
-                const iRange = [Settings lineByLineHeadcountIndex];
-                for (let i = -iRange; i <= iRange; i++) { //iDex 0…3 → 1, 3, 5, 7
-                    const tempX = i * optotypeDistance;
-                    CGContextTranslateCTM(cgc, -tempX, -verticalOffset);
-                    let currentAlternative = [Misc iRandom: nAlternatives];
-                    while (usedAlternativesArray.includes(currentAlternative)) {
-                        currentAlternative = [Misc iRandom: nAlternatives];
-                    }
-                    usedAlternativesArray.push(currentAlternative);
-                    switch([Settings testOnLineByLineIndex]) {
-                        case 1: [optotypes drawLetterWithStriokeInPx: stimStrengthInDeviceunits letterNumber: currentAlternative];  break;
-                        case 2: [optotypes drawLandoltWithStrokeInPx: stimStrengthInDeviceunits landoltDirection: currentAlternative];  break;
-                        default: console.log("Line-by-line: unsupported optotype-id: ", [Settings testOnLineByLineIndex]);
-                    }
-                    CGContextTranslateCTM(cgc, +tempX, verticalOffset);
-                }
-                if (chartmodeNotConstVA) {
-                    stimStrengthInDeviceunits /= Math.pow(2, 1/10);
-                }
+            [self drawOneLineSiftedByLines: 0];
+            for (let i = 1; i <= (lines - 1) / 2; i++) {
+                [self drawOneLineSiftedByLines: -i]; [self drawOneLineSiftedByLines: i];
             }
             CGContextRestoreGState(cgc);
             CGContextSetFillColor(cgc, [CPColor blueColor]);
             CGContextSetTextDrawingMode(cgc, kCGTextFill);
             CGContextSelectFont(cgc, "24px sans-serif"); //must be CSS
-            const s = [Misc stringFromNumber: localLogMAR decimals: 1 localised: YES] + " LogMAR  "
+            const s = [Misc stringFromNumber: localLogMAR decimals: 1 localised: YES] + " LogMAR  ";
             let stringWidth = 140, lineHeight = 24;
             try {
                 const tInfo = cgc.measureText(s);
@@ -105,7 +127,7 @@ Created by mb on 2021-12-21.
                 //lineHeight = tInfo.emHeightAscent; //+ tInfo.emHeightDescent;
             } catch(e) {}
             CGContextShowTextAtPoint(cgc, viewWidthHalf - stringWidth, -viewHeightHalf + lineHeight, s);
-            if (lineRange > 0) {
+            if (lines > 1) {
                 CGContextShowTextAtPoint(cgc, viewWidthHalf - stringWidth, -viewHeightHalf + 2 * lineHeight, "(middle line)");
             }
             CGContextShowTextAtPoint(cgc, -viewWidthHalf, -viewHeightHalf + lineHeight, " Use ↑↓, ⇄");
@@ -120,7 +142,7 @@ Created by mb on 2021-12-21.
     }
 
     CGContextRestoreGState(cgc);
-    CGContextTranslateCTM(cgc, 0, -verticalOffset); //so crowding is also offset
+    //CGContextTranslateCTM(cgc, 0, -verticalOffset); //so crowding is also offset //CROWDING not work???
     [super drawStimulusInRect: dirtyRect];
 }
 - (int) lineByLineLinesIndexSelf {return [Settings lineByLineLinesIndex];}
