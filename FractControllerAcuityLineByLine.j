@@ -26,12 +26,12 @@ Created by mb on 2021-12-21.
 - (id) initWithWindow: (CPWindow) aWindow {
     self = [super initWithWindow: aWindow];
     localLogMAR = 0.3;
-    let popupRect = CGRectMake(0, window.innerHeight-24, 107, 24); // first one at bottom
+    let popupRect = CGRectMake(0, window.innerHeight-24, 106, 24); // first one at bottom
     acuityNOptosPopup = [[CPPopUpButton alloc] initWithFrame: popupRect];
-    [acuityNOptosPopup setTitle:"1 Optotype"];
-    [acuityNOptosPopup addItemWithTitle:"3 Optotypes"];
-    [acuityNOptosPopup addItemWithTitle:"5 Optotypes"];
-    [acuityNOptosPopup addItemWithTitle:"7 Optotypes"];
+    [acuityNOptosPopup setTitle:"1 optotype"];
+    [acuityNOptosPopup addItemWithTitle:"3 optotypes"];
+    [acuityNOptosPopup addItemWithTitle:"5 optotypes"];
+    [acuityNOptosPopup addItemWithTitle:"7 optotypes"];
     [acuityNOptosPopup bind: CPSelectedIndexBinding toObject:self withKeyPath:@"lineByLineHeadcountIndexSelf" options:nil];
     [acuityNOptosPopup setTarget: self];
     [acuityNOptosPopup setAction: @selector(acuityNLinesPopupChanged:)];
