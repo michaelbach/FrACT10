@@ -83,7 +83,7 @@
     s += "Freiburg Visual Acuity and Contrast Test 10, ";
     s += "<a href='https://michaelbach.de/fract/index.html#anchorWhatsNew' target='_blank'>" + "Vs " + gVersionStringOfFract + "</a>, <br>";
     s += "release date " + gVersionDateOfFrACT + ".<br><br>";
-    s += "Semi-automatic assessment of visual acuities following ISO, and contrast thresholds.<br><br>Optotypes: Sloan letters, Landolt C, Tumbling E, TAO, gratings, and hyperacuity targets.<br><br>Acuity results in LogMAR, decimal or Snellen notation; ∃ export options plus 2-way html messaging for data management systems.<br><br>With <a href='https://doi.org/10.3758/BF03204398' target='_blank'>‘Best PEST’</a>, <a href='https://dx.doi.org/10.1163/156856897x00087' target='_blank'>anti-aliasing and dithering</a>.<br><br>"
+    s += "Semi-automatic assessment of visual acuities following ISO, and contrast thresholds.<br><br>Optotypes: Sloan letters, Landolt C, Tumbling E, TAO, gratings, and hyperacuity targets.<br><br>Acuity results in LogMAR, decimal or Snellen notation; several export options plus 2-way HTML messaging for data management systems.<br><br>With <a href='https://doi.org/10.3758/BF03204398' target='_blank'>‘Best PEST’</a>, <a href='https://dx.doi.org/10.1163/156856897x00087' target='_blank'>anti-aliasing and dithering</a>.<br><br>"
     s += "Includes <a href='https://michaelbach.de/sci/stim/balm/index.html' target='_blank'>BaLM as BaLM₁₀</a>";
     [self oneWebView: aboutWebView1 htmlString: s];
 
@@ -93,7 +93,7 @@
     s += "<a href='https://michaelbach.de' target='_blank'>https://michaelbach.de</a>,&nbsp; ";
     s += "<a href='mailto:bach@uni-freiburg.de'>bach@uni-freiburg.de</a><br><br>";
     s += "<a href='https://michaelbach.de/fract/' target='_blank'>FrACT₁₀ homepage</a><br><br>";
-    
+
     s += "Sources: <a href='https://github.com/michaelbach/FrACT10/#fract' target='_blank'>GitHub repository</a>, <a href='https://github.com/michaelbach/FrACT10/commits' target='_blank'>Commit history</a>.<br>"
     s += "Frameworks/Libraries used (thanks!):<br>";
     const cappucinoVersion = [[[CPBundle bundleWithIdentifier: "com.280n.Foundation"] infoDictionary] objectForKey:@"CPBundleVersion"]; //initialised in AppController
@@ -103,12 +103,12 @@
     //s += "<a href='https://www.electronjs.org' target='_blank'>Electron</a>, <a href='https://www.electron.build' target='_blank'>electron-builder</a>";
     s += "&nbsp; &nbsp; Some sounds from <a href='https://pixabay.com/' target='_blank'>pixabay</a>."
     s += "<br><br>";
-    
+
     s += "FrACT₁₀ places “cookies” on your computer:<ol>";
     s += "<li>To save the settings across sessions</li>";
-    s += "<li>To save the web app itself for use w/o internet access</li>";
+    s += "<li>To save the web app itself for use w/o internet</li>";
     s += "<li>The last results, exported for access outside FrACT.</li></ol><br>";
-    
+
     s += "This is free software, there is no warranty for anything: <a href='https://github.com/michaelbach/FrACT10/blob/main/LICENSE.md' target='_blank'>GNU GPL licence</a>. ";
     s += "It is not formally certified for medical purposes."
 
@@ -119,7 +119,7 @@
 - (void) populateHelpPanel {
     s = "<h4>General</h4> <ul><li><b>Make use of the cool tool tips</b> by hovering with the mouse over the pertinent interface element.</li> <li>Be sure to calibrate (→Settings) for correct results. Preferences are automatically saved.</li> <li>This is a forced choice test – even when your observers indicate that they cannot see a thing, encourage them to make their best guess; the software knows about the lucky guesses. Motivate them to react swiftly, lengthy squinting at the optotype is not helpful.</li> <li>Quality results require knowledge in sensory testing. At least observe the <a href='https://michaelbach.de/fract/checklist.html' target='_blank'>Checklist</a>.</li> <li>The <a href='https://michaelbach.de/fract/manual.html' target='_blank'>Manual</a> should cover everything, also don't hesitate to contact me: <a href='mailto:bach@uni-freiburg.de'>bach@uni-freiburg.de</a>.</li> <li>Speed up operation with <a href='https://michaelbach.de/fract/manual.html#anchor_Shortcuts' target='_blank'>Shortcuts</a>.</li></ul>";
     [self oneWebView: helpWebView1 htmlString: s];
-    
+
     s = "<h4>Visual Acuity</h4> <ul><li>Results in logMAR, decimal acuity or Snellen format</li><li>Limited screen resolution (pixel size) may clip high acuity</ul>";
     [self oneWebView: helpWebView2 htmlString: s];
 
