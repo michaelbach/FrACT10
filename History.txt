@@ -1,6 +1,6 @@
 # History
 
-2025-08-09 improve: wording in `responseinfoPanel`s; add “Best Pest” source link in About
+2025-08-09 improve: wording in `responseinfoPanel`s; add “Best Pest” source link in About, also for “anti-aliasing and dithering”
 2025-08-04 fix: vertical spacing of "line of optotypes" following Ferris et al. 1982
     feature: add 2nd popup button in "line(s) of optotypes", for n of optotypes
 2025-08-02 feature: prefix version string with "FrACT10·" for better disambiguation from classical; fix: add `jspdf` libraries to `cache.addAll` in the webAppServiceWorker
