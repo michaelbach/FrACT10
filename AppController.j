@@ -382,6 +382,13 @@
 
 - (void) exportPDF { //CPLog("AppController>exportPDF");
     const doc = new jspdf.jsPDF(); //https://artskydj.github.io/jsPDF/docs/jsPDF.html
+    doc.setProperties({
+     title: 'FrACT10 RESULT RECORD',
+     author: 'bach@uni-freiburg.de',
+     keywords: 'visual acuity',
+     creator: "FrACT10_" + gVersionStringOfFract + "·" + gVersionDateOfFrACT
+    });
+
     doc.setFontSize(8);  doc.setFont("Courier", "bold");
     doc.text("FrACT10 RESULT RECORD" + crlf, 15, 10); //https://artskydj.github.io/jsPDF/docs/jsPDF.html#text
 
