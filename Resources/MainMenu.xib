@@ -4345,7 +4345,7 @@ have a standardized size (ISO/IEC 7810:2019)</string>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1DO-9k-S9y">
-                        <rect key="frame" x="20" y="348" width="760" height="197"/>
+                        <rect key="frame" x="20" y="348" width="760" height="214"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="JMr-GS-kTU">
                             <font key="font" metaFont="system" size="16"/>
@@ -4358,7 +4358,7 @@ On touch devices, use the buttons at the bottom of the screen (may need to enabl
 If you can't recognise the letter, use your best guess.
 
 
-Type 55, or Ø, or &lt;esc&gt; to abort the run.
+Type 55 or &lt;esc&gt;, or touch Ø to abort the run.
 </string>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -4407,7 +4407,7 @@ Gw
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6o4-T6-NsI">
                         <rect key="frame" x="18" y="232" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Show “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nOb-QR-RMy">
+                        <buttonCell key="cell" type="check" title="Show this panel “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nOb-QR-RMy">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -4461,7 +4461,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="UMe-Yr-3VB">
                             <font key="font" metaFont="system" size="16"/>
-                            <string key="title">
+                            <mutableString key="title">
 Rings with gaps will appear, how are they oriented?
 
 Use the cursor keys, or on a keypad:
@@ -4473,7 +4473,8 @@ On touch devices, use the buttons around the screen (may need to enable).
 If you can't recognise the orientation, use your best guess.
 
 
-Type 55, or &lt;esc&gt; to abort the run.</string>
+Type 55 or &lt;esc&gt;, or touch Ø to abort the run.
+</mutableString>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -4481,7 +4482,7 @@ Type 55, or &lt;esc&gt; to abort the run.</string>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ahk-gy-psf">
                         <rect key="frame" x="28" y="136" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Show “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Flu-8c-Np5">
+                        <buttonCell key="cell" type="check" title="Show this panel “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Flu-8c-Np5">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -4525,7 +4526,7 @@ On touch devices, use the buttons around the screen (may need to enable).
 If you can't recognise the direction of the gap, use your best guess.
 
 
-Type 55, or &lt;esc&gt; to abort the run.
+Type 55 or &lt;esc&gt;, or touch Ø to abort the run.
 </string>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -4574,7 +4575,7 @@ Gw
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vhj-Uu-joO">
                         <rect key="frame" x="18" y="103" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Show “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="91b-Qr-OG1">
+                        <buttonCell key="cell" type="check" title="Show this panell “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="91b-Qr-OG1">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -4601,7 +4602,7 @@ Gw
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="icO-7N-r70">
-                        <rect key="frame" x="20" y="250" width="383" height="290"/>
+                        <rect key="frame" x="20" y="250" width="383" height="366"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="ZL2-B5-ysg">
                             <font key="font" metaFont="system" size="16"/>
@@ -4618,7 +4619,7 @@ On touch devices, use the buttons around the screen (may need to enable).
 If you can't recognise the direction of the gap, use your best guess.
 
 
-Type 55, or &lt;esc&gt; to abort the run.
+Type 55 or &lt;esc&gt;, or touch Ø to abort the run.
 </string>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -4667,7 +4668,7 @@ Gw
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gI2-uJ-d3q">
                         <rect key="frame" x="18" y="103" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Show “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yp9-6V-pdS">
+                        <buttonCell key="cell" type="check" title="Show this panel “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yp9-6V-pdS">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -4726,7 +4727,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="4ks-UH-FmP">
                             <font key="font" metaFont="system" size="16"/>
-                            <string key="title">
+                            <mutableString key="title">
 “Tumbling Es“ will appear, how are they oriented?
 
 Use the cursor keys, or on a keypad:
@@ -4738,7 +4739,8 @@ On touch devices, use the buttons around the screen (may need to enable).
 If you can't recognise the orientation, use your best guess.
 
 
-Type 55, or &lt;esc&gt; to abort the run.</string>
+Type 55 or &lt;esc&gt;, or touch Ø to abort the run.
+</mutableString>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -4758,7 +4760,7 @@ Type 55, or &lt;esc&gt; to abort the run.</string>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7dB-dL-Xce">
                         <rect key="frame" x="28" y="84" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Show “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="x74-TQ-9o2">
+                        <buttonCell key="cell" type="check" title="Show this panel “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="x74-TQ-9o2">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -4851,7 +4853,7 @@ Use the number keys on your keyboard to indicate the symbol appearing on the scr
 If you can't recognise the symbol, use your best guess.
 
 
-Type ’aa‘, or &lt;esc&gt; to abort the run.
+Type ’aa‘ or &lt;esc&gt; to abort the run.
 
 
 You MUST have a keyboard for this test. If not, cancel now.</string>
@@ -4904,7 +4906,7 @@ https://doi.org/10.1167/18.3.13</string>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f59-fh-Ajj">
                         <rect key="frame" x="18" y="107" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Show “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="b2h-Pg-jNp">
+                        <buttonCell key="cell" type="check" title="Show this panel “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="b2h-Pg-jNp">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -4926,7 +4928,7 @@ https://doi.org/10.1167/18.3.13</string>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MEO-dD-MuZ">
-                        <rect key="frame" x="20" y="346" width="760" height="199"/>
+                        <rect key="frame" x="20" y="346" width="760" height="214"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="nSs-N5-jC6">
                             <font key="font" metaFont="system" size="16"/>
@@ -4939,7 +4941,7 @@ On touch devices, use the buttons right/left on the screen (may need to enable).
 If you can't decide, simply use your best guess.
 
 
-Type ’55‘, or &lt;esc&gt; to abort the run.
+Type 55 or &lt;esc&gt;, or touch Ø to abort the run.
 </string>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -4988,7 +4990,7 @@ Gw
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xJH-Vi-BPg">
                         <rect key="frame" x="18" y="206" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Show “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="v2k-OW-crk">
+                        <buttonCell key="cell" type="check" title="Show this panel “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="v2k-OW-crk">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -5023,7 +5025,7 @@ On touch devices, use the buttons around the screen (may need to enable).
 If you can't recognise the orientation, use your best guess.
 
 
-Type 55, or &lt;esc&gt; to abort the run.
+Type 55 or &lt;esc&gt;, or touch Ø to abort the run.
 </string>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -5072,7 +5074,7 @@ Gw
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ypf-xX-C6S">
                         <rect key="frame" x="18" y="103" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Show “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="gBy-B7-bWW">
+                        <buttonCell key="cell" type="check" title="Show this panel “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="gBy-B7-bWW">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -5112,7 +5114,7 @@ On touch devices, use the buttons at the bottom of the screen (may need to enabl
 If you can't recognise the letter, use your best guess.
 
 
-Type 55, or Ø, or &lt;esc&gt; to abort the run.
+Type 55 or &lt;esc&gt;, or touch Ø to abort the run.
 
 
 The result of contrast assessment is in logCS(Weber) units.</string>
@@ -5163,7 +5165,7 @@ Gw
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IlL-Qc-BHv">
                         <rect key="frame" x="18" y="242" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Show “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nOj-Fc-rtx">
+                        <buttonCell key="cell" type="check" title="Show this panel “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nOj-Fc-rtx">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -5217,7 +5219,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" allowsEditingTextAttributes="YES" id="9Yj-ik-8Ly">
                             <font key="font" metaFont="system" size="16"/>
-                            <string key="title">
+                            <mutableString key="title">
 “Tumbling Es“ will appear, how are they oriented?
 
 Use the cursor keys, or on a keypad:
@@ -5229,8 +5231,8 @@ On touch devices, use the buttons around the screen (may need to enable).
 If you can't recognise the orientation, use your best guess.
 
 
-Type 55, or &lt;esc&gt; to abort the run.
-</string>
+Type 55 or &lt;esc&gt;, or touch Ø to abort the run.
+</mutableString>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -5275,7 +5277,7 @@ Type 55, or &lt;esc&gt; to abort the run.
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9hx-7G-0rB">
                         <rect key="frame" x="28" y="84" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Show “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="1Me-af-wRA">
+                        <buttonCell key="cell" type="check" title="Show this panel “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="1Me-af-wRA">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -5346,22 +5348,10 @@ Type any unused key to exit this module.
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BHH-Ke-3hx">
-                        <rect key="frame" x="28" y="146" width="342" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Enable Touch Controls (necessary without keyboard)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jXb-oM-QcR">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTouchControls" id="RsC-2y-RFT"/>
-                            <outlet property="nextKeyView" destination="WCS-rL-YCa" id="Rwy-tJ-Tdx"/>
-                        </connections>
-                    </button>
                     <button toolTip="When you start a test, a brief description will appear. Here you can get rid of it." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YeQ-G7-k4b">
                         <rect key="frame" x="28" y="84" width="491" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Show “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tgf-Kr-7Nd">
+                        <buttonCell key="cell" type="check" title="Show this panel “How to operate” at start of run" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tgf-Kr-7Nd">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
