@@ -83,7 +83,7 @@
     s += "Freiburg Visual Acuity and Contrast Test 10, ";
     s += "<a href='https://michaelbach.de/fract/index.html#anchorWhatsNew' target='_blank'>" + "Vs " + gVersionStringOfFract + "</a>, <br>";
     s += "release date " + gVersionDateOfFrACT + ".<br><br>";
-    s += "Semi-automatic assessment of visual acuities following ISO, and contrast thresholds.<br><br>Optotypes: Sloan letters, Landolt C, Tumbling E, TAO, gratings, and hyperacuity targets.<br><br>Acuity results in LogMAR, decimal or Snellen notation; ∃ export options plus 2-way html messaging for data management systems.<br><br>With ‘Best PEST’, antialiasing and dithering.<br><br>"
+    s += "Semi-automatic assessment of visual acuities following ISO, and contrast thresholds.<br><br>Optotypes: Sloan letters, Landolt C, Tumbling E, TAO, gratings, and hyperacuity targets.<br><br>Acuity results in LogMAR, decimal or Snellen notation; ∃ export options plus 2-way html messaging for data management systems.<br><br>With <a href='https://doi.org/10.3758/BF03204398' target='_blank'>‘Best PEST’</a>, antialiasing and dithering.<br><br>"
     s += "Includes <a href='https://michaelbach.de/sci/stim/balm/index.html' target='_blank'>BaLM as BaLM₁₀</a>";
     [self oneWebView: aboutWebView1 htmlString: s];
 
