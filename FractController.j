@@ -6,7 +6,6 @@ Copyright © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 */
 
 
-@import "AppController.j"
 @import "AlternativesGenerator.j"
 @import "Thresholder.j";
 @import "Optotypes.j";

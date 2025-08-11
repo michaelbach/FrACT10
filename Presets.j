@@ -171,7 +171,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     //general pane
     [Settings setNTrials02: 24]; //32
     [Settings setNTrials04: 18]; //24
-    [Settings setNTrials08: 12]; //18
+    [Settings setNTrials08: 18]; //18
     [Settings setDistanceInCM: 400]; [Settings setCalBarLengthInMM: 150]; //avoids dialog
     [Settings setShowResponseInfoAtStart: NO];
     //acuity pane
