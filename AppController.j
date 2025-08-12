@@ -322,7 +322,10 @@
  Info panels (above) were not needed, or OKed, so lets now REALLY run the test.
  */
 - (IBAction) runFractController2_actionOK: (id) sender {
-    [self closeAllPanels];  [currentFractController release];  currentFractController = null;
+    [self closeAllPanels];
+    if (currentFractController) {
+        [currentFractController release];  currentFractController = null;
+    }
     currentFractController = [[allTestControllers[gCurrentTestID] alloc] initWithWindow: fractControllerWindow];
     [currentFractController setSound: sound];
     currentTestResultExportString = "";
