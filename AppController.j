@@ -193,8 +193,8 @@
     sound = [[Sound alloc] init];
     presets = [[Presets alloc] initWithPopup: settingsPanePresetsPopUpButton];
 
-    for (let i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % 33); i++)
-        Math.random(); //randomising the pseudorandom sequence
+    const RANDOM_SEED_CYCLES = 33;
+    for (let i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % RANDOM_SEED_CYCLES); i++)  Math.random(); //randomising the pseudorandom sequence
 
     [buttonExportClip setEnabled: NO];  [buttonExportPDF setEnabled: NO];
     [buttonPlot setEnabled: gTestingPlotting];
@@ -351,7 +351,8 @@
     [ControlDispatcher runDoneSuccessful: !runAborted];
 
     //allow 1 eventloop
-    setTimeout(() => {[[selfWindow contentView] setNeedsDisplay: YES];}, 1);
+    const UI_UPDATE_DELAY = 1; // 1 millisecond is enough
+    setTimeout(() => {[[selfWindow contentView] setNeedsDisplay: YES];}, UI_UPDATE_DELAY);
 }
 
 
