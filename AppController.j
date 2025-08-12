@@ -140,10 +140,60 @@
     [selfWindow setFullPlatformWindow: YES];  [selfWindow setBackgroundColor: [self windowBackgroundColor]];
 
     [CPMenu setMenuBarVisible: NO];
+    [self setupEventListeners];
+    [self setupControllers];
+    const allTestButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, bottonBalm, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];
+    for (const b of allTestButtons)  [Misc makeFrameSquareFromWidth: b];
+
+    allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherUnittest,                          FractControllerBalmLight, FractControllerBalmLocation, FractControllerBalmMotion]; //sequence like Hierachy kTest#s
+
+    allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, settingsPanel];
+    for (const p of allPanels)  [p setMovable: NO];
+    [self setSettingsPaneTabViewSelectedIndex: 0]; //select the "General" tab in Settings
+
+    [selfWindow setTitle: "FrACT10"];
+    [self setVersionDateString: gTestDetails[kTestDetail_vsFrACT]];
+
+    [Settings checkDefaults]; //what was the reason to put this here???
+
+    rewardImageView = [[CPImageView alloc] initWithFrame: CGRectMake(100, 0, 600, 600)];
+    [[selfWindow contentView] addSubview: rewardImageView positioned: CPWindowBelow relativeTo: nil];
+
+    [buttonExportClip setEnabled: NO];  [buttonExportPDF setEnabled: NO];
+    [buttonPlot setEnabled: gTestingPlotting];
+    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:CPUserDefaultsDidChangeNotification object: nil];
+
+    [self radioButtonsAcuityBwOrColor_action: null];
+
+    [Settings setAutoRunIndex: kAutoRunIndexNone]; //make sure it's not accidentally on
+    [Settings setPatID: "-"]; //clear ID string
+
+    numberFormatter = [[CPNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle: CPNumberFormatterDecimalStyle];
+    [numberFormatter setMinimumFractionDigits: 1];
+    [contrastMaxLogCSWeberField setFormatter: numberFormatter];
+    [gammaValueField setFormatter: numberFormatter];
+
+    [Settings setupSoundPopups: [settingsPaneSoundsTrialStartPopUp, settingsPaneMiscSoundsTrialYesPopUp, settingsPaneMiscSoundsTrialNoPopUp, settingsPaneMiscSoundsRunEndPopUp]];
+
+    //set up control dispatcher (HTML messages to FrACT10 when embedded as iframe)
+    [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationRunFractControllerTest:) name: "notificationRunFractControllerTest" object: nil];
+    [ControlDispatcher init];
+
+    [Misc centerWindowOrPanel: [selfWindow contentView]]; //→center
+    [selfWindow orderFront: self]; //ensures that it will receive clicks w/o activating
+    [resultStringField setVerticalAlignment: CPTopVerticalTextAlignment];
+    [self setResultString: "→ Result displayed here ←"];
+}
+
+
+- (void) setupEventListeners {
     window.addEventListener('error', function(e) {
+        console.error("Error details:", e);
         alert("An error occured, I'm sorry. Error message:\r\r" + e.message + "\r\rIf it recurs, please notify bach@uni-freiburg.de, ideally relating the message, e.g. via a screeshot.\rI will look into it and endeavour to provide a fix ASAP.\r\rOn “Close”, the window will reload and you can retry.");
         window.location.reload(NO);
     });
+
     window.addEventListener("orientationchange", function(e) {
         if ([Settings respondsToMobileOrientation]) {
             //alert("Orientation change, now "+e.target.screen.orientation.angle+"°.\r\rOn “Close”, the window will reload to fit.");
@@ -172,53 +222,14 @@
             [Misc centerWindowOrPanel: [selfWindow contentView]];
         }
     });
+}
 
-    const allTestButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, bottonBalm, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];
-    for (const b of allTestButtons)  [Misc makeFrameSquareFromWidth: b];
 
-    allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherUnittest,                          FractControllerBalmLight, FractControllerBalmLocation, FractControllerBalmMotion]; //sequence like Hierachy kTest#s
-
-    allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, settingsPanel];
-    for (const p of allPanels)  [p setMovable: NO];
-    [self setSettingsPaneTabViewSelectedIndex: 0]; //select the "General" tab in Settings
-
-    [selfWindow setTitle: "FrACT10"];
-    [self setVersionDateString: gTestDetails[kTestDetail_vsFrACT]];
-
-    [Settings checkDefaults]; //what was the reason to put this here???
-
-    rewardImageView = [[CPImageView alloc] initWithFrame: CGRectMake(100, 0, 600, 600)];
-    [[selfWindow contentView] addSubview: rewardImageView positioned: CPWindowBelow relativeTo: nil];
+- (void) setupControllers {
     rewardsController = [[RewardsController alloc] initWithView: rewardImageView];
     taoController = [[TAOController alloc] initWithButton2Enable: buttonAcuityTAO];
     sound = [[Sound alloc] init];
     presets = [[Presets alloc] initWithPopup: settingsPanePresetsPopUpButton];
-
-    [buttonExportClip setEnabled: NO];  [buttonExportPDF setEnabled: NO];
-    [buttonPlot setEnabled: gTestingPlotting];
-    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:CPUserDefaultsDidChangeNotification object: nil];
-
-    [self radioButtonsAcuityBwOrColor_action: null];
-
-    [Settings setAutoRunIndex: kAutoRunIndexNone]; //make sure it's not accidentally on
-    [Settings setPatID: "-"]; //clear ID string
-
-    numberFormatter = [[CPNumberFormatter alloc] init];
-    [numberFormatter setNumberStyle: CPNumberFormatterDecimalStyle];
-    [numberFormatter setMinimumFractionDigits: 1];
-    [contrastMaxLogCSWeberField setFormatter: numberFormatter];
-    [gammaValueField setFormatter: numberFormatter];
-
-    [Settings setupSoundPopups: [settingsPaneSoundsTrialStartPopUp, settingsPaneMiscSoundsTrialYesPopUp, settingsPaneMiscSoundsTrialNoPopUp, settingsPaneMiscSoundsRunEndPopUp]];
-
-    //set up control dispatcher (HTML messages to FrACT10 when embedded as iframe)
-    [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationRunFractControllerTest:) name: "notificationRunFractControllerTest" object: nil];
-    [ControlDispatcher init];
-
-    [Misc centerWindowOrPanel: [selfWindow contentView]]; //→center
-    [selfWindow orderFront: self]; //ensures that it will receive clicks w/o activating
-    [resultStringField setVerticalAlignment: CPTopVerticalTextAlignment];
-    [self setResultString: "→ Result displayed here ←"];
 }
 
 
