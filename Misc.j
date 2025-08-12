@@ -41,6 +41,16 @@ function _pause(ms) { //console.info("Misc>_pause");
 
 
 /**
+ Randomize the pseudorandom sequence based on current time
+ */
++ (void) randomizeRandomGenerator {
+    const SEED_CYCLES_MAX = 333;
+    const seedCycles = Math.round([[CPDate date] timeIntervalSince1970]) % SEED_CYCLES_MAX;
+    for (let i = 0; i < seedCycles; i++) Math.random();
+}
+
+
+/**
  Return random integer from 0 to i-1 */
 + (int) iRandom: (int) i {
     return Math.floor(Math.random() * i);

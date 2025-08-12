@@ -193,9 +193,6 @@
     sound = [[Sound alloc] init];
     presets = [[Presets alloc] initWithPopup: settingsPanePresetsPopUpButton];
 
-    const RANDOM_SEED_CYCLES = 33;
-    for (let i = 0; i < (Math.round([[CPDate date] timeIntervalSince1970]) % RANDOM_SEED_CYCLES); i++)  Math.random(); //randomising the pseudorandom sequence
-
     [buttonExportClip setEnabled: NO];  [buttonExportPDF setEnabled: NO];
     [buttonPlot setEnabled: gTestingPlotting];
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:CPUserDefaultsDidChangeNotification object: nil];
