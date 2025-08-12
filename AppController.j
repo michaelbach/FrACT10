@@ -74,7 +74,7 @@
     BOOL runAborted @accessors;
     BOOL has4orientations @accessors;
     BOOL has2orientations @accessors;
-    id allPanels, allTestControllers;
+    id allPanels;
     int settingsPaneTabViewSelectedIndex @accessors;
     float calBarLengthInMMbefore;
     CPColor colorOfBestPossibleAcuity @accessors;
@@ -137,27 +137,26 @@
     currentFractController = null; //making sure, is used to check whether inRun
     [Misc randomizeRandomGenerator];
     selfWindow = [self window];
-    [selfWindow setFullPlatformWindow: YES];  [selfWindow setBackgroundColor: [self windowBackgroundColor]];
-
+    [selfWindow setFullPlatformWindow: YES];
+    [selfWindow setBackgroundColor: [self windowBackgroundColor]];
+    [selfWindow setTitle: "FrACT10"];
+    [self setVersionDateString: gTestDetails[kTestDetail_vsFrACT]];
     [CPMenu setMenuBarVisible: NO];
     [self setupEventListeners];
-    [self setupControllers];
+
     const allTestButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, bottonBalm, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];
     for (const b of allTestButtons)  [Misc makeFrameSquareFromWidth: b];
 
-    allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherUnittest,                          FractControllerBalmLight, FractControllerBalmLocation, FractControllerBalmMotion]; //sequence like Hierachy kTest#s
+    [Settings checkDefaults]; //what was the reason to put this here???
 
     allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, settingsPanel];
     for (const p of allPanels)  [p setMovable: NO];
     [self setSettingsPaneTabViewSelectedIndex: 0]; //select the "General" tab in Settings
 
-    [selfWindow setTitle: "FrACT10"];
-    [self setVersionDateString: gTestDetails[kTestDetail_vsFrACT]];
-
-    [Settings checkDefaults]; //what was the reason to put this here???
-
     rewardImageView = [[CPImageView alloc] initWithFrame: CGRectMake(100, 0, 600, 600)];
     [[selfWindow contentView] addSubview: rewardImageView positioned: CPWindowBelow relativeTo: nil];
+
+    [self setupControllers];
 
     [buttonExportClip setEnabled: NO];  [buttonExportPDF setEnabled: NO];
     [buttonPlot setEnabled: gTestingPlotting];
@@ -193,14 +192,12 @@
         alert("An error occured, I'm sorry. Error message:\r\r" + e.message + "\r\rIf it recurs, please notify bach@uni-freiburg.de, ideally relating the message, e.g. via a screeshot.\rI will look into it and endeavour to provide a fix ASAP.\r\rOn “Close”, the window will reload and you can retry.");
         window.location.reload(NO);
     });
-
     window.addEventListener("orientationchange", function(e) {
         if ([Settings respondsToMobileOrientation]) {
             //alert("Orientation change, now "+e.target.screen.orientation.angle+"°.\r\rOn “Close”, the window will reload to fit.");
             window.location.reload(NO);
         }
     });
-
     window.addEventListener("fullscreenchange", (event) => { //called _after_ the change
         //console.info("isFullScreen: ", [Misc isFullScreen]);
         if (![Misc isFullScreen]) { //so it was full before, possibly we're in a run
@@ -215,7 +212,6 @@
     /*if ([Settings autoFullScreen]) { //does not work because it needs user interaction
         [Misc fullScreenOn: YES];
     }*/
-
     window.addEventListener("resize", (event) => {
         if (![Misc isInRun]) { //don't do ⇙this while "inRun"
             selfWindow = [self window]; //this prevents origin shift for fullScreen on/off
@@ -269,6 +265,7 @@
     gColorBack = [Settings acuityBackColor];  [self setAcuityBackColor: gColorBack];
     [self setGratingForeColor: [Settings gratingForeColor]];  [self setGratingBackColor: [Settings gratingBackColor]];
     [self setWindowBackgroundColor: [Settings windowBackgroundColor]];
+    [selfWindow setBackgroundColor: [self windowBackgroundColor]];
 }
 
 
@@ -315,7 +312,16 @@
  */
 - (void) runFractController2 { //console.info("AppController>runFractController2");
     [self closeAllPanels];  [self centerAllPanels];
-    const allInfoPanels = {[kTestAcuityLett]: responseinfoPanelAcuityL, [kTestAcuityC]: responseinfoPanelAcuity8C, [kTestAcuityE]: responseinfoPanelAcuityE, [kTestAcuityTAO]: responseinfoPanelAcuityTAO, [kTestAcuityVernier]: responseinfoPanelAcuityVernier, [kTestContrastLett]: responseinfoPanelContrastLett, [kTestContrastC]: responseinfoPanelContrastC, [kTestContrastE]: responseinfoPanelContrastE, [kTestContrastG]: responseinfoPanelContrastG, [kTestAcuityLineByLine]: responseinfoPanelAcuityLineByLine};
+    const allInfoPanels = {[kTestAcuityLett]: responseinfoPanelAcuityL,
+        [kTestAcuityC]: responseinfoPanelAcuity8C,
+        [kTestAcuityE]: responseinfoPanelAcuityE,
+        [kTestAcuityTAO]: responseinfoPanelAcuityTAO,
+        [kTestAcuityVernier]: responseinfoPanelAcuityVernier,
+        [kTestContrastLett]: responseinfoPanelContrastLett,
+        [kTestContrastC]: responseinfoPanelContrastC,
+        [kTestContrastE]: responseinfoPanelContrastE,
+        [kTestContrastG]: responseinfoPanelContrastG,
+        [kTestAcuityLineByLine]: responseinfoPanelAcuityLineByLine};
     if ([Settings showResponseInfoAtStart] && (gCurrentTestID in allInfoPanels)) {
         [allInfoPanels[gCurrentTestID] makeKeyAndOrderFront: self];
         if ((gCurrentTestID === kTestAcuityC) && ([Settings nAlternatives] === 4)) {
@@ -335,6 +341,7 @@
     if (currentFractController) {
         [currentFractController release];  currentFractController = null;
     }
+    const allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherUnittest,                          FractControllerBalmLight, FractControllerBalmLocation, FractControllerBalmMotion]; //sequence like Hierachy kTest#s
     currentFractController = [[allTestControllers[gCurrentTestID] alloc] initWithWindow: fractControllerWindow];
     [currentFractController setSound: sound];
     currentTestResultExportString = "";
