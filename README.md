@@ -2,7 +2,7 @@
 
 <br>
 
-[FrACT](https://michaelbach.de/fract/) is a semiautomated vision test battery. FrACT₁₀ is a version that runs in browsers on all plattforms or as a web app. For full details see <https://michaelbach.de/fract/>.
+[FrACT](https://michaelbach.de/fract/) is a semiautomated vision test battery. FrACT₁₀ is a version that runs in browsers on all plattforms or as a progressive web app. For full details see <https://michaelbach.de/fract/>.
 
 
 ## Programming overview
