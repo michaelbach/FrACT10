@@ -356,10 +356,15 @@
 
 
 - (void) exportCurrentTestResult { //console.info("AppController>exportCurrentTestResult");
-    let temp = currentTestResultExportString.replace(/,/g, "."); //in localStorage we don't want to localise
-    localStorage.setItem(gFilename4ResultStorage, temp);
-    temp = currentTestResultsHistoryExportString.replace(/,/g, ".");
-    localStorage.setItem(gFilename4ResultsHistoryStorage, temp);
+    try {//in localStorage we don't want to localise
+        let temp = currentTestResultExportString.replace(/,/g, ".");
+        localStorage.setItem(gFilename4ResultStorage, temp);
+        temp = currentTestResultsHistoryExportString.replace(/,/g, ".");
+        localStorage.setItem(gFilename4ResultsHistoryStorage, temp);
+    } catch (e) {
+        console.warn("localStorage not available:", e);
+        // Fallback behavior not really availabe
+    }
     switch ([Settings resultsToClipboardIndex]) {
         case kResultsToClipNone: break;
         case kResultsToClipFullHistory:
