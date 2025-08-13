@@ -16,8 +16,12 @@ Shortcut: A
 
 S;100;After the test, a dialog will appear asking where to place the file (works well only on Chrome/Edge)S;85;After this time without a repsonse, an incorrect response will be recorded [seconds].S;66;After this time, an incorrect response will be recorded [seconds].S;110;Applies only to Landolt Cs with 4 orientations.
 
-The response keys are NOT updated (yet) by can be guessed :).S;81;Automatic run, targeting some acuity or contrast.                   
-For testing.S;53;Automatic run, targeting this acuity. For testing.
+The response keys are NOT updated (yet) by can be guessed :).S;98;Automatic run, targeting some acuity or contrast. 
+
+Hi ≙ high acuity = low LogMAR.‘
+
+For testing.
+S;53;Automatic run, targeting this acuity. For testing.
 
  S;67;Automatic run, targeting this contrast sensitivity. For testing.
 
