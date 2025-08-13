@@ -62,7 +62,7 @@ kauditoryFeedback4trialIndexNone = 0; kauditoryFeedback4trialIndexAlways = 1; ka
 kResultsToClipNone = 0; kResultsToClipFinalOnly = 1; kResultsToClipFullHistory = 2;
 kResultsToClipFullHistory2PDF = 3;
 
-@typedef AutoRunIndexType
+@typedef AutoRunIndexType //hi ≙ high acuity
 kAutoRunIndexNone = 0; kAutoRunIndexHi = 1; kAutoRunIndexMid = 2; kAutoRunIndexLow = 3;
 
 @typedef VernierTypeType

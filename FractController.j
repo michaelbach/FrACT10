@@ -307,7 +307,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     const arIndex = [Settings autoRunIndex] - 1;
     if ([self isAcuityOptotype]) {
         const logMARcurrent = [MiscSpace logMARfromDecVA: [MiscSpace decVAFromStrokePixels: stimStrengthInDeviceunits]];
-        let logMARtarget = [0.3, 0.0, -0.3][arIndex];
+        let logMARtarget = [-0.3, 0.0, 0.3][arIndex];
         if ([Settings doThreshCorrection]) logMARtarget += Math.log10(gThresholdCorrection4Ascending);
         responseWasCorrect = logMARcurrent > logMARtarget;
     }
