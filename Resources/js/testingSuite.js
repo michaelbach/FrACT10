@@ -1,6 +1,10 @@
-/* History
-   =======
+/* testingSuite for FrACT
 
+
+History
+=======
+
+2025-08-14 `testBalm` only once, add `ensureHomeStatus` to make more robust against previous state
 2025-03-28 `doDemoRun` w/o Demo preset
 2025-02-08 had added more tests, now add look at Settings in fullscreen
 2025-02-02 fix regression: restore demo run
@@ -77,8 +81,24 @@ const oneStep3Ms = async (m1, m2, m3, timeout = 1000) => {
 }
 
 
+const ensureHomeStatus = async () => {
+	/*await tellIframeReturningPromise3Ms('sendChar', String.fromCharCode(27), '');
+	await tellIframeReturningPromise3Ms('sendChar', '\n', '');
+	await tellIframeReturningPromise3Ms('sendChar', '\r', '');*/
+	// don't know how to cancel an CPAlert, should that be front…
+	let response = await tellIframeReturningPromise3Ms('getValue', 'isInRun', '');
+    if (response.m2) { // in run, so cancel it
+		await tellIframeReturningPromise3Ms('respondWithChar', '5', '');
+		await tellIframeReturningPromise3Ms('respondWithChar', '5', '');
+    }
+	await oneStep3Ms('settingsPane', -1, ''); //make sure we're not in Settings
+	await pauseMilliseconds(20);
+}
+
+
 const doDemoRun = async () => {
-    await oneStep3Ms('setSetting', 'preset', 'Testing');
+    await ensureHomeStatus();
+	await oneStep3Ms('setSetting', 'preset', 'Testing');
     await oneStep3Ms('setSetting', 'autoRunIndex', '2');
     await oneStep3Ms('setSetting', 'nTrials08', '12');
     await oneStep3Ms('run', 'Acuity', 'Letters', 20000); /* long delay for entire run*/
@@ -87,37 +107,38 @@ const doDemoRun = async () => {
 
 
 const demoRunAndRestore = async () => {
-   let response = await oneStep3Ms('getSetting', 'distanceInCM', '');
-   const distanceInCM = response.m3;
-   await oneStep3Ms('setSetting', 'distanceInCM', 400);
+    await ensureHomeStatus();
+	let response = await oneStep3Ms('getSetting', 'distanceInCM', '');
+	const distanceInCM = response.m3;
+	await oneStep3Ms('setSetting', 'distanceInCM', 400);
 
-   response = await oneStep3Ms('getSetting', 'calBarLengthInMM', '');
-   const calBarLengthInMM = response.m3; /* store for later restore */
-   await oneStep3Ms('setSetting', 'calBarLengthInMM', 170);
+	response = await oneStep3Ms('getSetting', 'calBarLengthInMM', '');
+	const calBarLengthInMM = response.m3; /* store for later restore */
+	await oneStep3Ms('setSetting', 'calBarLengthInMM', 170);
 
-   response = await oneStep3Ms('getSetting', 'nTrials08', '');
-   const nTrials08 = response.m3;
-   await oneStep3Ms('setSetting', 'nTrials08', 12);
+	response = await oneStep3Ms('getSetting', 'nTrials08', '');
+	const nTrials08 = response.m3;
+	await oneStep3Ms('setSetting', 'nTrials08', 12);
 
-   response = await oneStep3Ms('getSetting', 'showResponseInfoAtStart', '');
-   const showResponseInfoAtStart = response.m3;
-   await oneStep3Ms('setSetting', 'showResponseInfoAtStart', 0);
+	response = await oneStep3Ms('getSetting', 'showResponseInfoAtStart', '');
+	const showResponseInfoAtStart = response.m3;
+	await oneStep3Ms('setSetting', 'showResponseInfoAtStart', 0);
 
-   response = await oneStep3Ms('getSetting', 'autoRunIndex', '');
-   const autoRunIndex = response.m3;
-   await oneStep3Ms('setSetting', 'autoRunIndex', 2);
+	response = await oneStep3Ms('getSetting', 'autoRunIndex', '');
+	const autoRunIndex = response.m3;
+	await oneStep3Ms('setSetting', 'autoRunIndex', 2);
 
-   response = await oneStep3Ms('run', 'Acuity', 'Letters', 20000); /* long delay for entire run */
-   const runSuccess = response.success;
+	response = await oneStep3Ms('run', 'Acuity', 'Letters', 20000); /* long delay for entire run */
+	const runSuccess = response.success;
 
-   /* restore settings */
-   await oneStep3Ms('setSetting', 'distanceInCM', distanceInCM);
-   await oneStep3Ms('setSetting', 'calBarLengthInMM', calBarLengthInMM);
-   await oneStep3Ms('setSetting', 'nTrials08', nTrials08);
-   await oneStep3Ms('setSetting', 'showResponseInfoAtStart', showResponseInfoAtStart);
-   await oneStep3Ms('setSetting', 'autoRunIndex', autoRunIndex);
+	/* restore settings */
+	await oneStep3Ms('setSetting', 'distanceInCM', distanceInCM);
+	await oneStep3Ms('setSetting', 'calBarLengthInMM', calBarLengthInMM);
+	await oneStep3Ms('setSetting', 'nTrials08', nTrials08);
+	await oneStep3Ms('setSetting', 'showResponseInfoAtStart', showResponseInfoAtStart);
+	await oneStep3Ms('setSetting', 'autoRunIndex', autoRunIndex);
 
-   /*console.info("sucessfully: ", runSuccess, " ran and restored.");*/
+	/*console.info("sucessfully: ", runSuccess, " ran and restored.");*/
 }
 
 
@@ -148,7 +169,7 @@ async function runRespondingCorrectly() {
 }
 
 
-async function responseChain(invertedKeys) {
+async function responseChain(invertedKeys = NO) {
 	let response, rChar;
 	while (YES) {
 		response = await tellIframeReturningPromise3Ms('getValue', 'isInRun', '');
@@ -156,7 +177,7 @@ async function responseChain(invertedKeys) {
 		await pauseMilliseconds(2 * pauseMS);
 		response = await tellIframeReturningPromise3Ms('getValue', 'currentAlternative', '');
 		if (!response.success) return;
-		if (invertedKeys) {
+		if (invertedKeys) { //keys need to be inverted for BaLM
 			switch (response.m3) {
 				case 0: rChar = "4";  break; // ←
 				default: rChar = "6"; // 0, angle 0°: →
@@ -178,6 +199,26 @@ async function responseChain(invertedKeys) {
 		await pauseMilliseconds(40);// to allow possible unloading the test run at end
 		if (!response.success) break;
 	}
+}
+
+
+async function testBalm() { //console.info("testBalm");
+    await ensureHomeStatus();
+	await oneStep3Ms('setSetting', 'Preset', 'Testing');
+	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
+	await oneStep3Ms('setSetting', 'nTrials02', 4);
+	await oneStep3Ms('setSetting', 'nTrials04', 4);
+    await oneStep3Ms('setSetting', 'distanceInCM', 20);
+	await pauseMilliseconds(pauseMS);
+   	tellIframe3Ms('run','acuity', 'BalmLight');
+	await responseChain(YES);
+	await pauseMilliseconds(pauseViewMS);
+	tellIframe3Ms('run','acuity', 'BalmLocation');
+	await responseChain();
+	await pauseMilliseconds(pauseViewMS);
+	tellIframe3Ms('run','acuity', 'BalmMotion');
+	await responseChain();
+	await pauseMilliseconds(pauseViewMS);
 }
 
 
@@ -213,8 +254,7 @@ const testingSuite = async () => {
 	await pauseMilliseconds(pauseViewMS);
 
     addText(" ↓ Go to main screen (in case we were not there)");
-    response = await oneStep3Ms('settingsPane', -1, '');
-    await pauseMilliseconds(pauseViewMS);
+    await ensureHomeStatus();
     addText(" ↑ Go to main screen (in case we were not there)\n");
 
 	response = await oneStep3Ms('getVersion', '', '');
@@ -349,22 +389,7 @@ const testingSuite = async () => {
 	await pauseMilliseconds(pauseViewMS);
 
 	addText(" ↓ cycle through BaLM tests.");
-    await oneStep3Ms('settingsPane', -1, '');
-	await oneStep3Ms('setSetting', 'Preset', 'Testing');
-	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
-	await oneStep3Ms('setSetting', 'nTrials02', 4);
-	await oneStep3Ms('setSetting', 'nTrials04', 4);
-    await oneStep3Ms('setSetting', 'distanceInCM', 20);
-	await pauseMilliseconds(pauseMS);
-   	tellIframe3Ms('run','acuity', 'BalmLight');
-	await responseChain(YES);
-	await pauseMilliseconds(pauseViewMS);
-	tellIframe3Ms('run','acuity', 'BalmLocation');
-	await responseChain(NO);
-	await pauseMilliseconds(pauseViewMS);
-	tellIframe3Ms('run','acuity', 'BalmMotion');
-	await responseChain(NO);
-	await pauseMilliseconds(pauseViewMS);
+    await testBalm();
 	addText(" ↑ cycle through BaLM tests: Done.\n");
 
     addText(" ↓ Traverse all Presets");
@@ -392,25 +417,4 @@ const testingSuite = async () => {
 	response = await oneStep3Ms('xxxx', 'xxxx', 'xxxxxx');
 	*/
 
-}
-
-
-async function testBalm() { //console.info("testBalm");
-	await oneStep3Ms('setSetting', 'Preset', 'Testing');
-	await oneStep3Ms('setSetting', 'nTrials02', 4);
-	await oneStep3Ms('setSetting', 'nTrials04', 4);
-    await oneStep3Ms('setSetting', 'distanceInCM', 20);
-	await oneStep3Ms('settingsPane', 0, '');
-	await pauseMilliseconds(pauseMS);
-	await oneStep3Ms('settingsPane', -1, '');
-	await pauseMilliseconds(pauseMS);
-	tellIframe3Ms('run','acuity', 'BalmLight');
-	await responseChain(YES);
-	await pauseMilliseconds(pauseViewMS);
-	tellIframe3Ms('run','acuity', 'BalmLocation');
-	await responseChain(NO);
-	await pauseMilliseconds(pauseViewMS);
-	tellIframe3Ms('run','acuity', 'BalmMotion');
-	await responseChain(NO);
-	await pauseMilliseconds(pauseViewMS);
 }

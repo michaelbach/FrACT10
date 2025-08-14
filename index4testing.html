@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>FrACT₁₀ with testing suite</title>
+    <title>FrACT₁₀ with testing suite</title>
 	<script src="Resources/js/testingSuite.js"></script>
 </head>
 
@@ -26,10 +26,13 @@ allSettings = async function() {
 
 <div id="belowFractFrame"></div>
 
+<button onclick="doDemoRun();">Click for demo run</button>
+<button onclick="testingSuite();">Run software testing suite</button>
+
+<hr>
+
 <button onclick="tellIframe3Ms('reload', 'm2', 'm3');">Reload</button>
 
-<button onclick="doDemoRun();">Click for automatic demo run</button>
-<button onclick="testingSuite();">Run software testing suite</button>
 <button onclick="demoRunAndRestore();">demoRunAndRestore</button> &nbsp;
 <button onclick="runRespondingCorrectly();">runRespondingCorrectly</button> &nbsp;
 <br>
@@ -76,6 +79,8 @@ allSettings = async function() {
 <button onclick="tellIframe({m1: 'respondWithChar', m2: '4', m3: 3});">respond "4"</button>
 <button onclick="tellIframe({m1: 'respondWithChar', m2: '6', m3: 3});">respond "6"</button>
 <button onclick="tellIframe({m1: 'respondWithChar', m2: '8', m3: 3});">respond "8"</button>
+<button onclick="tellIframe({m1: 'sendChar', m2: '/r', m3: 3});">send "CR"</button>
+<button onclick="tellIframe({m1: 'sendChar', m2: '/n', m3: 3});">send "NL"</button>
 <br>
 <br>
 
