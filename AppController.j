@@ -284,8 +284,11 @@
     [self runFractControllerTest: [aNotification object]];
 }
 - (void) runFractControllerTest: (int) testNr { //console.info("AppController>runFractController");
-    [buttonExportClip setEnabled: NO];  [buttonExportPDF setEnabled: NO];  [buttonPlot setEnabled: NO];
+    let frontWindow = [[CPApp orderedWindows] objectAtIndex:0];
+    if ([frontWindow title] !== "FrACT10") [frontWindow close]; //close overlaying window if any
     if (currentFractController !== null) return; //got here by accident, already inRun?
+
+    [buttonExportClip setEnabled: NO];  [buttonExportPDF setEnabled: NO];  [buttonPlot setEnabled: NO];
     [sound initAfterUserinteraction];
     gCurrentTestID = testNr;
     if ([Settings isNotCalibrated]) {

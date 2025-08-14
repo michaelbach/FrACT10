@@ -1,7 +1,8 @@
 # History
 
 2025-08-14 improve: `testingSuite` more robust against previous state;
-    adding `sendChar` to `ControlDispatcher` not successful (yet)
+    adding `sendChar` to `ControlDispatcher` not successful (yet);
+    now successfully close an overlapping window when starting run with HTML events
 2025-08-13 fix: invert meaning of `AutoRunIndexType`: 'hi' ≙ high acuity
 2025-08-11 Improve: remove unnecessary `@Import` and set ntrilas in `Testing` back to 18
 2025-08-09 improve: wording in `responseinfoPanel`s; add “Best Pest” source link in About, also for “anti-aliasing and dithering”; add PDF metadata
