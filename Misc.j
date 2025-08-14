@@ -339,6 +339,14 @@ function _pause(ms) { //console.info("Misc>_pause");
 }
 
 
++ (void) infoAllWindows {
+    for (let w of [CPApp windows]) {
+        console.info([w title], ", main: ", [w isMainWindow ], ", key: ", [w isKeyWindow ], ", parentWindow: ", [[w parentWindow] title]);
+        //if ([w title] == "Window") [w close];
+    }
+}
+
+
 /* /////////////////////////////////////OLD, not in use (yet) */
 
 /*

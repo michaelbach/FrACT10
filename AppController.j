@@ -461,6 +461,7 @@
         [self runFractControllerTest: kShortcutKeys4TestsArray[key]];  return;
     }
     switch(key) {
+        case "W" : [Misc infoAllWindows]; break;
         case "Q": case "X": case "-": //Quit or eXit
             [self buttonDoExit_action: nil];  break;
         case "S": //Settings
