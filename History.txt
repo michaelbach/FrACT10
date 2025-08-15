@@ -1,5 +1,6 @@
 # History
 
+2025-08-15 tweak vertical position of line-by-line
 2025-08-14 improve: `testingSuite` more robust against previous state;
     adding `sendChar` to `ControlDispatcher` not successful (yet);
     now successfully close an overlapping window when starting run with HTML events
