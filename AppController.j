@@ -213,10 +213,15 @@
         [Misc fullScreenOn: YES];
     }*/
     window.addEventListener("resize", (event) => {
-        if (![Misc isInRun]) { //don't do ⇙this while "inRun"
-            selfWindow = [self window]; //this prevents origin shift for fullScreen on/off
-            [Misc centerWindowOrPanel: [selfWindow contentView]];
-        }
+        if ([Misc isInRun]) return; //don't do ⇙this while "inRun"
+        selfWindow = [self window]; //this prevents origin shift for fullScreen on/off
+        [Misc centerWindowOrPanel: [selfWindow contentView]];
+
+/*        //https://ua.hexalys.com
+        console.info("scale", window.visualViewport.scale);
+        console.info("window.devicePixelRatio", window.devicePixelRatio);
+        console.info("window.outerWidth / window.innerWidth", window.outerWidth / window.innerWidth);*/
+
     });
 }
 
