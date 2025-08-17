@@ -21,6 +21,11 @@ Created by Bach on 2025-03-11
 }
 
 
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //CPLog("FractControllerContrastDitherUnittest>drawStimulusInRect");
+    // does not do anything but prevents crash
+}
+
+
 - (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerContrastDitherUnittest>responseNumberFromChar: ", keyChar);
     return -1; //-1: ignore; -2: invalid
 }

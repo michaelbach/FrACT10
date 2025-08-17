@@ -50,7 +50,7 @@ gBalmTestIDs = [kTestBalmLight, kTestBalmLocation, kTestBalmMotion];
 kShortcutKeys4TestsArray = {"L": kTestAcuityLett, "C": kTestAcuityC, "E": kTestAcuityE,
     "A": kTestAcuityTAO, "V": kTestAcuityVernier,
     "1": kTestContrastLett, "2": kTestContrastC, "3": kTestContrastE,
-    "G": kTestContrastG, "0": kTestContrastDitherUnittest, "4": kTestAcuityLineByLine};
+    "G": kTestContrastG, "9": kTestContrastDitherUnittest, "4": kTestAcuityLineByLine};
 
 @typedef NAlternativesIndexType
 kNAlternativesIndex2 = 0; kNAlternativesIndex4 = 1; kNAlternativesIndex8plus = 2;
