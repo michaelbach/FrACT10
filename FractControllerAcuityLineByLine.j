@@ -120,8 +120,8 @@ Created by mb on 2021-12-21.
         case kStateDrawFore:
             const lines = [1, 3, 5][[Settings lineByLineLinesIndex]];
             CGContextSaveGState(cgc);
-            if (![Settings isLineByLineChartModeConstantVA]) { //make the block about centered
-                CGContextTranslateCTM(cgc, 0, (lines - 1) * 15);
+            if (![Settings isLineByLineChartModeConstantVA]) { //make the block about centered. No, center the center line: no shift
+                //CGContextTranslateCTM(cgc, 0, (lines - 1) * 15);
             }
             [self drawOneLineShiftedByLines: 0];
             for (let i = 1; i <= (lines - 1) / 2; i++) {

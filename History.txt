@@ -1,5 +1,6 @@
 # History
 
+2025-08-18 fix: vertical position of line-by-line, center line always centered
 2025-08-15 tweak vertical position of line-by-line
 2025-08-14 improve: `testingSuite` more robust against previous state;
     adding `sendChar` to `ControlDispatcher` not successful (yet);
