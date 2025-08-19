@@ -50,10 +50,12 @@
     s += [Misc stringFromInteger: [Settings distanceInCM]] + " cm) and diameter (";
     s += [Misc stringFromNumber: dia decimals: 1 localised: YES] + "°)"
     s += " renders the stimulus (probably) invisible.\r\rTipp: <ESC><ESC> now, then Settings>BaLM>Distance to, e.g., 30 cm.\r\r"
-    const alert = [CPAlert alertWithMessageText: "WARNING"
+    gLatestAlert = [CPAlert alertWithMessageText: "WARNING"
                                   defaultButton: "OK" alternateButton: "Cancel" otherButton: nil
                       informativeTextWithFormat: s];
-    [alert runModalWithDidEndBlock: function(alert, returnCode) {}];
+    [gLatestAlert runModalWithDidEndBlock: function(alert, returnCode) {
+        gLatestAlert = null;
+    }];
 }
 //alternateButton: "Cancel  (ߵcߴ)"
 

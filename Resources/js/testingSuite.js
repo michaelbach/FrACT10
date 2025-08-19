@@ -86,7 +86,8 @@ const oneStep3Ms = async (m1, m2, m3, timeout = 1000) => {
 
 
 const ensureHomeStatus = async () => {
-	await postToIframe('sendChar', String.fromCharCode(27), '');
+    await postToIframe('setHomeStatus', '', '');
+/*	await postToIframe('sendChar', String.fromCharCode(27), '');
 	await postToIframe('sendChar', '\n', '');
 	await postToIframe('sendChar', '\r', '');
 	// don't know how to cancel an CPAlert, should that be front…
@@ -95,7 +96,7 @@ const ensureHomeStatus = async () => {
 		await postToIframe('respondWithChar', '5', '');
 		await postToIframe('respondWithChar', '5', '');
     }
-	await oneStep3Ms('settingsPane', -1, ''); //make sure we're not in Settings
+	await oneStep3Ms('settingsPane', -1, ''); //make sure we're not in Settings*/
 	await pauseMilliseconds(20);
 }
 

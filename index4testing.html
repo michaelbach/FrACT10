@@ -9,8 +9,7 @@
 <body>
 
 <button onclick="testingSuite();">Run software testing suite</button>
-<br>
-<br>
+<br><br>
 
 <script>
 allSettings = async function() {
@@ -46,8 +45,7 @@ allSettings = async function() {
 <button onclick="tellIframe3Ms({m1: 'getSetting', m2: 'UNKNOWN', m3: ''});">getSetting UNKNOWN</button>
 <button onclick="tellIframe3Ms({m1: 'getSetting', m2: 'nTrials08', m3: ''});">getSetting nTrials08</button>
 <button onclick="tellIframe3Ms({m1: 'getSetting', m2: 'allKeys', m3: ''});">getSetting allKeys</button>
-<br>
-<br>
+<br><br>
 
 <button onclick="tellIframe({m1: 'setSetting', m2: 'preset', m3: 'NOTAPRESET'});">setSetting Preset NOTAPRESET</button>
 <button onclick="tellIframe({m1: 'setSetting', m2: 'preset', m3: 'Standard Defaults'});">setSetting Preset Defaults</button>
@@ -60,14 +58,12 @@ allSettings = async function() {
 <button onclick="tellIframe({m1: 'setSetting', m2: 'distanceInCM', m3: '57'});">setSetting distanceInCM: 57</button>
 <button onclick="tellIframe({m1: 'setSetting', m2: 'calBarLengthInMM', m3: '145'});">setSetting calBarLengthInMM: 145</button>
 <button onclick="tellIframe({m1: 'setSetting', m2: 'autoRunIndex', m3: '0'});">setSetting autoRunIndex: 0</button>
-<br>
-<br>
+<br><br>
 
 <button onclick="tellIframe({m1: 'getValue', m2: 'isInRun', m3: ''});">getValue isInRun</button>
 <button onclick="tellIframe({m1: 'getValue', m2: 'currentTrial', m3: ''});">getValue currentTrial</button>
 <button onclick="tellIframe({m1: 'getValue', m2: 'currentAlternative', m3: ''});">getValue currentAlternative</button>
-<br>
-<br>
+<br><br>
 
 <button onclick="tellIframe({m1: 'run', m2: 'UNKNOWN2', m3: 'UNKNOWN3'});">Run UNKNOWN</button>
 <button onclick="tellIframe({m1: 'run', m2: 'acuity', m3: 'Letters'});">Run Acuity Letters</button>
@@ -88,13 +84,13 @@ allSettings = async function() {
 <button onclick="tellIframe({m1: 'sendChar', m2: String.fromCharCode(10), m3: 3});">send "LF"</button>
 <button onclick="tellIframe({m1: 'sendChar', m2: String.fromCharCode(13), m3: 3});">send "CR"</button>
 <button onclick="tellIframe({m1: 'sendChar', m2: String.fromCharCode(27), m3: 3});">send "ESC"</button>
-<br>
-<br>
+<br><br>
+<button onclick="tellIframe({m1: 'setHomeStatus', m2: '', m3: 3});">setHomeStatus</button>
+<br><br>
 
 <button onclick="tellIframe({m1: 'unittest', m2: 'throwError', m3: ''});">unittest runtime error</button>
 <button onclick="tellIframe({m1: 'unittest', m2: 'rewardImages', m3: ''});">unittest rewardImages</button>
-<br>
-<br>
+<br><br>
 <button onclick="testBalm();">testBalm</button>
 <br>
 </body>

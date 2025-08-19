@@ -67,15 +67,16 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     }
     _presetName = [sender itemTitleAtIndex: _presetIndex];
     const messageText = "Really all Settings to “" + _presetName + "” ?";
-    const alert1 = [CPAlert alertWithMessageText: messageText
+    gLatestAlert = [CPAlert alertWithMessageText: messageText
                                    defaultButton: "NO   (ߵnߴ)" alternateButton: "YES   (ߵyߴ)" otherButton: nil
                        informativeTextWithFormat: "Many Settings will change. You should know what you are doing here. Luckily, you can always return to defaults."];
-    [[alert1 buttons][0] setKeyEquivalent: "y"]; //the "YES" button selected by "y"
-    [[alert1 buttons][1] setKeyEquivalent: "n"]; //the "NO" button selected by "n"
-    [alert1 runModalWithDidEndBlock: function(alert, returnCode) {
+    [[gLatestAlert buttons][0] setKeyEquivalent: "y"]; //the "YES" button selected by "y"
+    [[gLatestAlert buttons][1] setKeyEquivalent: "n"]; //the "NO" button selected by "n"
+    [gLatestAlert runModalWithDidEndBlock: function(alert, returnCode) {
         if (returnCode === 1) { //alternateButton
             [self apply2withFeedbackType: kFeedbackTypeGUI];
         }
+        gLatestAlert = null;
     }];
 }
 
@@ -154,10 +155,10 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     switch (feedbackType) {
         case kFeedbackTypeGUI:
             const messageText = "Preset  »" + _presetName + "«  was applied."
-            const alert2 = [CPAlert alertWithMessageText: messageText
+            gLatestAlert = [CPAlert alertWithMessageText: messageText
                                            defaultButton: "OK" alternateButton: nil otherButton: nil
                                informativeTextWithFormat: ""];
-            [alert2 runModal];
+            [gLatestAlert runModal];
             break;
         case kFeedbackTypeHTMLMessage:
             [ControlDispatcher post2parentM1: "Settings" m2: "Preset" m3: _presetName success: true];

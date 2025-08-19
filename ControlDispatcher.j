@@ -50,10 +50,8 @@
                 [self manageGetValue];  break;
             case "run": case "Run":
                 [self manageRun];  break;
-            case "sendChar": //works (except for <esc> in BaLM switch)
-                const keyEvent2 = [CPEvent keyEventWithType:CPKeyDown location:CGPointMakeZero() modifierFlags:0 timestamp:0 windowNumber:0 context:nil characters:m2 charactersIgnoringModifiers:m2 isARepeat:NO keyCode:m2.charCodeAt(0)];
-                let frontWindow = [[CPApp orderedWindows] objectAtIndex:0];
-                [frontWindow sendEvent: keyEvent2];
+            case "sendChar":
+                [self sendChar: m2];
                 [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;
             case "respondWithChar":
                 const keyEvent = [CPEvent keyEventWithType:CPKeyDown location:CGPointMakeZero() modifierFlags:0 timestamp:0 windowNumber:0 context:nil characters:m2 charactersIgnoringModifiers:m2 isARepeat:NO keyCode:0];
@@ -81,10 +79,34 @@
             case "redraw":
                 [Misc udpateGUI];
                 [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;
+            case "setHomeStatus": // close alerts, cancel run
+                [self sendChar: String.fromCharCode(13)];
+                [self sendChar: String.fromCharCode(10)];
+                if ([Misc isInRun]) {
+                    [gAppController.currentFractController runEnd];
+                } else {
+                    if (gLatestAlert) {
+                        let alertWindow = [gLatestAlert window];
+                        if (alertWindow) {
+                            [CPApp stopModal];  [alertWindow orderOut: self];
+                            gLatestAlert = null;
+                        }
+                    }
+                }
+                [gAppController.selfWindow makeKeyWindow];
+                [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;
             default:
                 [self _logProblem: eData];
         }
     });
+}
+
+
+//works except for <esc> in BaLM switch
++ (void) sendChar: (CPString) s { //console.info("ControlDispatcher>sendChar", s)
+    const keyEvent = [CPEvent keyEventWithType:CPKeyDown location:CGPointMakeZero() modifierFlags:0 timestamp:0 windowNumber:0 context:nil characters:s charactersIgnoringModifiers:s isARepeat:NO keyCode:s.charCodeAt(0)];
+    const frontWindow = [[CPApp orderedWindows] objectAtIndex:0];
+    [frontWindow sendEvent: keyEvent];
 }
 
 
@@ -207,6 +229,7 @@
     if (typeof(m3Now) === "boolean") {
         m3Now = Number(m3Now);
     }
+    [Misc udpateGUI];
     [self post2parentM1: m1 m2: m2 m3: m3Now success: m3AsNumber === m3Now];
 }
 
@@ -224,6 +247,7 @@
     [gAppController copyColorsFromSettings];;
     let m3Now = [Settings performSelector: CPSelectorFromString(sName)]; //read back
     m3Now = [m3Now hexString];
+    [Misc udpateGUI];
     [self post2parentM1: m1 m2: m2 m3: m3Now success: m3 === m3Now];
 }
 

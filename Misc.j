@@ -133,14 +133,14 @@ function _pause(ms) { //console.info("Misc>_pause");
 
 
 + (void) copyString2ClipboardWithDialog: (CPString) s { //console.info("Misc>copyString2ClipboardWithDialog");
-    const alert = [CPAlert alertWithMessageText: "Done."
+    gLatestAlert = [CPAlert alertWithMessageText: "Done."
                                   defaultButton: "Yes, put result → clipboard  (ߵyߴ)" alternateButton: "Cancel  (ߵcߴ)" otherButton: nil
                       informativeTextWithFormat: "\rShall we place the result details into the clipboard?\r\r(So you can paste them into a spreadsheet.)\r"];
-    [[alert buttons][0] setKeyEquivalent: "c"]; //the "Cancel" button selected by "c"
-    [[alert buttons][1] setKeyEquivalent: "y"]; //the "Yes" button selected by "n"
-    [alert setAlertStyle: CPInformationalAlertStyle];
-    [[alert window] setFrameOrigin: CGPointMake(200, 200)];
-    [alert runModalWithDidEndBlock: function(alert, returnCode) {
+    [[gLatestAlert buttons][0] setKeyEquivalent: "c"]; //the "Cancel" button selected by "c"
+    [[gLatestAlert buttons][1] setKeyEquivalent: "y"]; //the "Yes" button selected by "n"
+    [gLatestAlert setAlertStyle: CPInformationalAlertStyle];
+    [[gLatestAlert window] setFrameOrigin: CGPointMake(200, 200)];
+    [gLatestAlert runModalWithDidEndBlock: function(alert, returnCode) {
         switch (returnCode) {
             case 1: /*console.info("ok, dann nicht");*/  break;
             case 0:
@@ -148,6 +148,7 @@ function _pause(ms) { //console.info("Misc>_pause");
                 [gAppController.buttonExport setEnabled: NO];
                 break;
         }
+        gLatestAlert = null;
     }];
 }
 /**

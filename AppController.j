@@ -297,10 +297,10 @@
     [sound initAfterUserinteraction];
     gCurrentTestID = testNr;
     if ([Settings isNotCalibrated]) {
-        const alert = [CPAlert alertWithMessageText: "Calibration is mandatory for valid results!"
+        gLatestAlert = [CPAlert alertWithMessageText: "Calibration is mandatory for valid results!"
                                       defaultButton: "I just want to try…" alternateButton: "OK, go to  ‘⛭ Settings’" otherButton: "Cancel"
                           informativeTextWithFormat: "\rGoto ‘⛭ Settings’ and enter appropriate values for \r«Observer distance» and «Length of blue ruler».\r\rThis will also get rid of the present obnoxious warning dialog."];
-        [alert runModalWithDidEndBlock: function(alert, returnCode) {
+        [gLatestAlert runModalWithDidEndBlock: function(alert, returnCode) {
             switch (returnCode) {
                 case 1: //alternateButton: go to Settings
                     [self setSettingsPaneTabViewSelectedIndex: 0]; //ensure "General" tab
@@ -308,6 +308,7 @@
                 case 0: //defaultButton
                     [self runFractController2];  break;
             }
+            gLatestAlert = null;
         }];
     } else {
         [self runFractController2];
@@ -497,17 +498,17 @@
 
 
 - (void) balmSwitch {
-    const alert = [MDBAlert alertWithMessageText: "BaLM@FrACT₁₀" defaultButton: "Cancel" alternateButton: "❓Help" otherButton: "Motion (‘3’)" informativeTextWithFormat: "“Basic Assessment of Light, Location & Motion”\rfor ultra low vision.\r\r\r↓ Which BaLM test?"];
-    [alert addButtonWithTitle: "Location (‘2’)"]; //returnCode === 3
-    [alert addButtonWithTitle: "Light (‘1’)"]; //returnCode === 2
-    [alert setDelegate: self];
+    gLatestAlert = [MDBAlert alertWithMessageText: "BaLM@FrACT₁₀" defaultButton: "Cancel" alternateButton: "❓Help" otherButton: "Motion (‘3’)" informativeTextWithFormat: "“Basic Assessment of Light, Location & Motion”\rfor ultra low vision.\r\r\r↓ Which BaLM test?"];
+    [gLatestAlert addButtonWithTitle: "Location (‘2’)"]; //returnCode === 3
+    [gLatestAlert addButtonWithTitle: "Light (‘1’)"]; //returnCode === 2
+    [gLatestAlert setDelegate: self];
     //[alert setShowsHelp: YES]; //doesn't work
-    [[alert buttons][0] setKeyEquivalent: "1"]; //yes, 1/2 inverted…
-    [[alert buttons][1] setKeyEquivalent: "2"];
-    [[alert buttons][2] setKeyEquivalent: "3"];
-    [[alert buttons][3] setKeyEquivalent: "h"]; //help
-    [[alert buttons][4] setKeyEquivalent: "\x1b"]; //esc
-    [alert runModalWithDidEndBlock: function(alert, returnCode) {
+    [[gLatestAlert buttons][0] setKeyEquivalent: "1"]; //yes, 1/2 inverted…
+    [[gLatestAlert buttons][1] setKeyEquivalent: "2"];
+    [[gLatestAlert buttons][2] setKeyEquivalent: "3"];
+    [[gLatestAlert buttons][3] setKeyEquivalent: "h"]; //help
+    [[gLatestAlert buttons][4] setKeyEquivalent: "\x1b"]; //esc
+    [gLatestAlert runModalWithDidEndBlock: function(alert, returnCode) {
         switch (returnCode) {
             case 4: //console.info(returnCode); //Light
                 [self runFractControllerTest: kTestBalmLight];
@@ -524,8 +525,8 @@
                 break;
             default: //console.info(returnCode); //0=cancel
         }
+        gLatestAlert = null;
     }];
-
 }
 
 - (IBAction) buttonFullScreen_action: (id) sender { //console.info("AppController>buttonFullScreen");
@@ -553,10 +554,12 @@
     [Misc centerWindowOrPanel: settingsPanel];
     if (settingsNeededNewDefaults) {
         settingsNeededNewDefaults = NO;
-        const alert = [CPAlert alertWithMessageText: "WARNING"
+        gLatestAlert = [CPAlert alertWithMessageText: "WARNING"
                                       defaultButton: "OK" alternateButton: nil otherButton: nil
                           informativeTextWithFormat: "\r\rAll settings were (re)set to their default values.\r\r"];
-        [alert runModalWithDidEndBlock: function(alert, returnCode) {}];
+        [gLatestAlert runModalWithDidEndBlock: function(alert, returnCode) {
+            gLatestAlert = null;
+        }];
     }
     [self copyColorsFromSettings];
 }

@@ -98,6 +98,8 @@ gStrokeMinimal = 0.5;  gStrokeMaximal = 100;
 
 gTestingPlotting = NO;
 
+gLatestAlert = null;
+
 //general exporting
 kTestDetail_vsExpFormat = "vsExpFormat";
 kTestDetail_vsFrACT = "vsFrACT";
