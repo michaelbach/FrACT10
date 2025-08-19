@@ -1,5 +1,7 @@
 # History
 
+2025-08-19 feature: HTML message `sendChar`works (except for <esc> in BaLM switch);
+    also update testingSuite
 2025-08-18 fix: vertical position of line-by-line, center line always centered
 2025-08-15 tweak vertical position of line-by-line
 2025-08-14 improve: `testingSuite` more robust against previous state;

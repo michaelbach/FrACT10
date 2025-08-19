@@ -50,11 +50,11 @@
                 [self manageGetValue];  break;
             case "run": case "Run":
                 [self manageRun];  break;
-            /*case "sendChar": //doesn't work
-                const keyEvent2 = [CPEvent keyEventWithType:CPKeyDown location:CGPointMakeZero() modifierFlags:0 timestamp:0 windowNumber:0 context:nil characters:m2 charactersIgnoringModifiers:m2 isARepeat:NO keyCode:0];
+            case "sendChar": //works except for <esc> (in BaLM switch)
+                const keyEvent2 = [CPEvent keyEventWithType:CPKeyDown location:CGPointMakeZero() modifierFlags:0 timestamp:0 windowNumber:0 context:nil characters:m2 charactersIgnoringModifiers:m2 isARepeat:NO keyCode:m2.charCodeAt(0)];
                 let frontWindow = [[CPApp orderedWindows] objectAtIndex:0];
                 [frontWindow sendEvent: keyEvent2];
-                [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;*/
+                [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;
             case "respondWithChar":
                 const keyEvent = [CPEvent keyEventWithType:CPKeyDown location:CGPointMakeZero() modifierFlags:0 timestamp:0 windowNumber:0 context:nil characters:m2 charactersIgnoringModifiers:m2 isARepeat:NO keyCode:0];
                 [gAppController.currentFractController performSelector: @selector(keyDown:) withObject: keyEvent];

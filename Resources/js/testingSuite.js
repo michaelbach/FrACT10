@@ -4,6 +4,8 @@
 History
 =======
 
+2025-08-18 `runRespondingCorrectly` uses `responseChain`;
+    rename `tellIframeReturningPromise3Ms` → `postToIframe`
 2025-08-14 `testBalm` only once, add `ensureHomeStatus` to make more robust against previous state
 2025-03-28 `doDemoRun` w/o Demo preset
 2025-02-08 had added more tests, now add look at Settings in fullscreen
@@ -52,7 +54,9 @@ const tellIframeReturningPromise = (message, timeout = 1000) => {
 	}, timeout);
   });
 }
-const tellIframeReturningPromise3Ms = (m1, m2, m3, timeout = 1000) => {
+
+
+const postToIframe = (m1, m2, m3, timeout = 1000) => {
 	const msg = {m1: m1, m2: m2, m3: m3};
 	return tellIframeReturningPromise(msg, timeout);
 }
@@ -75,21 +79,21 @@ const pauseMilliseconds = (ms) => {
 
 
 const oneStep3Ms = async (m1, m2, m3, timeout = 1000) => {
-	const response = await tellIframeReturningPromise3Ms(m1, m2, m3, timeout);
+	const response = await postToIframe(m1, m2, m3, timeout);
 	if (!response.success) errorAlert();
 	return response;
 }
 
 
 const ensureHomeStatus = async () => {
-	/*await tellIframeReturningPromise3Ms('sendChar', String.fromCharCode(27), '');
-	await tellIframeReturningPromise3Ms('sendChar', '\n', '');
-	await tellIframeReturningPromise3Ms('sendChar', '\r', '');*/
+	await postToIframe('sendChar', String.fromCharCode(27), '');
+	await postToIframe('sendChar', '\n', '');
+	await postToIframe('sendChar', '\r', '');
 	// don't know how to cancel an CPAlert, should that be front…
-	let response = await tellIframeReturningPromise3Ms('getValue', 'isInRun', '');
-    if (response.m2) { // in run, so cancel it
-		await tellIframeReturningPromise3Ms('respondWithChar', '5', '');
-		await tellIframeReturningPromise3Ms('respondWithChar', '5', '');
+	let response = await postToIframe('getValue', 'isInRun', '');
+    if (response.m2) { //in run, so cancel it
+		await postToIframe('respondWithChar', '5', '');
+		await postToIframe('respondWithChar', '5', '');
     }
 	await oneStep3Ms('settingsPane', -1, ''); //make sure we're not in Settings
 	await pauseMilliseconds(20);
@@ -99,8 +103,8 @@ const ensureHomeStatus = async () => {
 const doDemoRun = async () => {
     await ensureHomeStatus();
 	await oneStep3Ms('setSetting', 'preset', 'Testing');
-    await oneStep3Ms('setSetting', 'autoRunIndex', '2');
-    await oneStep3Ms('setSetting', 'nTrials08', '12');
+    await oneStep3Ms('setSetting', 'autoRunIndex', 2);
+    await oneStep3Ms('setSetting', 'nTrials08', 18);
     await oneStep3Ms('run', 'Acuity', 'Letters', 20000); /* long delay for entire run*/
     await oneStep3Ms('setSetting', 'preset', 'Standard Defaults');
 }
@@ -118,7 +122,7 @@ const demoRunAndRestore = async () => {
 
 	response = await oneStep3Ms('getSetting', 'nTrials08', '');
 	const nTrials08 = response.m3;
-	await oneStep3Ms('setSetting', 'nTrials08', 12);
+	await oneStep3Ms('setSetting', 'nTrials08', 18);
 
 	response = await oneStep3Ms('getSetting', 'showResponseInfoAtStart', '');
 	const showResponseInfoAtStart = response.m3;
@@ -142,40 +146,20 @@ const demoRunAndRestore = async () => {
 }
 
 
-async function runRespondingCorrectly() {
-	let response, rChar;
-	await tellIframeReturningPromise3Ms('setSetting', 'preset', 'Testing');
+const runRespondingCorrectly = async () => {
+	await postToIframe('setSetting', 'preset', 'Testing');
 	tellIframe3Ms('run', 'acuity', 'LandoltC');
-	while (YES) {
-		response = await tellIframeReturningPromise3Ms('getValue', 'isInRun', '');
-		if (!response.m2) return;// run done
-		//response = await tellIframeReturningPromise3Ms('getValue', 'currentTrial', '');
-		response = await tellIframeReturningPromise3Ms('getValue', 'currentAlternative', '');
-		if (!response.success) return;
-		switch (response.m3) {
-			case 7: rChar = "3";  break;
-			case 6: rChar = "2";  break; // ↓
-			case 5: rChar = "1";  break;
-			case 4: rChar = "4";  break; // ←
-			case 3: rChar = "7";  break;
-			case 2: rChar = "8";  break; // ↑
-			case 1: rChar = "9";  break;
-			default: rChar = "6"; // 0, angle 0°: →
-		}
-		await pauseMilliseconds(100); // otherwise blindingly fast
-		response = await tellIframeReturningPromise3Ms('respondWithChar', rChar, '');
-		if (!response.success) return;
-	}
+	responseChain(NO, 100);
 }
 
 
-async function responseChain(invertedKeys = NO) {
+const responseChain = async (invertedKeys = NO, delay = pauseMS) => {
 	let response, rChar;
 	while (YES) {
-		response = await tellIframeReturningPromise3Ms('getValue', 'isInRun', '');
+		response = await postToIframe('getValue', 'isInRun', '');
 		if (!response.m2) break;
-		await pauseMilliseconds(2 * pauseMS);
-		response = await tellIframeReturningPromise3Ms('getValue', 'currentAlternative', '');
+		await pauseMilliseconds(delay);
+		response = await postToIframe('getValue', 'currentAlternative', '');
 		if (!response.success) return;
 		if (invertedKeys) { //keys need to be inverted for BaLM
 			switch (response.m3) {
@@ -194,15 +178,15 @@ async function responseChain(invertedKeys = NO) {
 			   default: rChar = "6"; // 0, angle 0°: →
 		   }
 		}
-		await pauseMilliseconds(pauseMS); // otherwise blindingly fast
-		response = await tellIframeReturningPromise3Ms('respondWithChar', rChar, '');
+		await pauseMilliseconds(delay); // otherwise blindingly fast
+		response = await postToIframe('respondWithChar', rChar, '');
 		await pauseMilliseconds(40);// to allow possible unloading the test run at end
 		if (!response.success) break;
 	}
 }
 
 
-async function testBalm() { //console.info("testBalm");
+const testBalm= async () => { //console.info("testBalm");
     await ensureHomeStatus();
 	await oneStep3Ms('setSetting', 'Preset', 'Testing');
 	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
@@ -343,26 +327,26 @@ const testingSuite = async () => {
 	addText(" ↓ Test 'line(s) of optotypes'");
 	await oneStep3Ms('setSetting', 'Preset', 'Testing');
 	tellIframe3Ms('run','acuity', 'Line');
-    await tellIframeReturningPromise3Ms('redraw', '', ''); /* should not be necessary */
+    await postToIframe('redraw', '', ''); /* should not be necessary */
 	await pauseMilliseconds(pauseViewMS);
-	await tellIframeReturningPromise3Ms('respondWithChar', "2", '');
-    await tellIframeReturningPromise3Ms('redraw', '', '');
+	await postToIframe('respondWithChar', "2", '');
+    await postToIframe('redraw', '', '');
 	await pauseMilliseconds(pauseViewMS);
-	await tellIframeReturningPromise3Ms('respondWithChar', "2", '');
-    await tellIframeReturningPromise3Ms('redraw', '', '');
+	await postToIframe('respondWithChar', "2", '');
+    await postToIframe('redraw', '', '');
 	await pauseMilliseconds(pauseViewMS);
-	await tellIframeReturningPromise3Ms('respondWithChar', "5", '');
-	await tellIframeReturningPromise3Ms('respondWithChar', "5", ''); /* 2x5: exit test */
-    await tellIframeReturningPromise3Ms('redraw', '', '');
+	await postToIframe('respondWithChar', "5", '');
+	await postToIframe('respondWithChar', "5", ''); /* 2x5: exit test */
+    await postToIframe('redraw', '', '');
 	await pauseMilliseconds(pauseViewMS);
     await oneStep3Ms('setSetting', 'lineByLineLinesIndex', '2');
     tellIframe3Ms('run','acuity', 'Line');
-    await tellIframeReturningPromise3Ms('redraw', '', '');
+    await postToIframe('redraw', '', '');
     await pauseMilliseconds(pauseViewMS);
-    await tellIframeReturningPromise3Ms('respondWithChar', "5", '');
-    await tellIframeReturningPromise3Ms('redraw', '', '');
-    await tellIframeReturningPromise3Ms('respondWithChar', "5", ''); /* exit the test */
-    await tellIframeReturningPromise3Ms('redraw', '', '');
+    await postToIframe('respondWithChar', "5", '');
+    await postToIframe('redraw', '', '');
+    await postToIframe('respondWithChar', "5", ''); /* exit the test */
+    await postToIframe('redraw', '', '');
     await pauseMilliseconds(pauseViewMS);
     addText(" ↑ Test 'line(s) of optotypes': Done.\n");
 
@@ -398,7 +382,7 @@ const testingSuite = async () => {
     await pauseMilliseconds(pauseViewMS);
     for (let aPreset of allPresets) {
         await oneStep3Ms('setSetting', 'Preset', aPreset);
-	    await tellIframeReturningPromise3Ms('redraw', '', '');
+	    await postToIframe('redraw', '', '');
         await pauseMilliseconds(0.5 * pauseViewMS);
     }
     await oneStep3Ms('settingsPane', -1, ''); /* go to main */
