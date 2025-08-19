@@ -50,7 +50,7 @@
                 [self manageGetValue];  break;
             case "run": case "Run":
                 [self manageRun];  break;
-            case "sendChar": //works except for <esc> (in BaLM switch)
+            case "sendChar": //works (except for <esc> in BaLM switch)
                 const keyEvent2 = [CPEvent keyEventWithType:CPKeyDown location:CGPointMakeZero() modifierFlags:0 timestamp:0 windowNumber:0 context:nil characters:m2 charactersIgnoringModifiers:m2 isARepeat:NO keyCode:m2.charCodeAt(0)];
                 let frontWindow = [[CPApp orderedWindows] objectAtIndex:0];
                 [frontWindow sendEvent: keyEvent2];
