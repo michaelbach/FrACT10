@@ -1639,7 +1639,7 @@ No money transfer involved, just for size!     </string>
                                             </view>
                                         </box>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="vQg-Pw-FeU">
-                                            <rect key="frame" x="39" y="448" width="250" height="22"/>
+                                            <rect key="frame" x="40" y="448" width="250" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Optotype contrast / background color" bezelStyle="round" id="Hjs-y4-jpq">
                                                 <font key="font" metaFont="system"/>
@@ -1959,7 +1959,7 @@ No money transfer involved, just for size!     </string>
                                             </textFieldCell>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k67-Qx-BFb">
-                                            <rect key="frame" x="39" y="53" width="147" height="22"/>
+                                            <rect key="frame" x="40" y="53" width="147" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Vernier Hyperacuity" bezelStyle="round" id="ICj-eq-Caf">
                                                 <font key="font" metaFont="system"/>
@@ -1975,7 +1975,7 @@ No money transfer involved, just for size!     </string>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFy-VR-55t" userLabel="Crowding type">
-                                                        <rect key="frame" x="18" y="20" width="151" height="25"/>
+                                                        <rect key="frame" x="18" y="16" width="151" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Types of crowding.
                   </string>
@@ -2013,7 +2013,7 @@ No money transfer involved, just for size!     </string>
                                                         </connections>
                                                     </popUpButton>
                                                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6J-2A-7mk" userLabel="Crowding distance">
-                                                        <rect key="frame" x="185" y="20" width="152" height="25"/>
+                                                        <rect key="frame" x="185" y="16" width="152" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Distance to crowders = gap between optotye and crowder.
 
@@ -2040,14 +2040,13 @@ No money transfer involved, just for size!     </string>
                                                         </popUpButtonCell>
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.crowdingDistanceCalculationType" id="lyq-HX-gbT"/>
-                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.crowdingType" id="fCp-62-cNh"/>
                                                         </connections>
                                                     </popUpButton>
                                                 </subviews>
                                             </view>
                                         </box>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pbL-S0-XrG">
-                                            <rect key="frame" x="39" y="155" width="90" height="22"/>
+                                            <rect key="frame" x="40" y="155" width="90" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Crowding" bezelStyle="round" id="Rpe-YE-TbN">
                                                 <font key="font" metaFont="system"/>
@@ -2457,7 +2456,7 @@ Maximum: 5px.
                                             </connections>
                                         </button>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q2Y-AR-KXh">
-                                            <rect key="frame" x="18" y="191" width="45" height="21"/>
+                                            <rect key="frame" x="18" y="207" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Diameter of the optotype.
 
@@ -2474,7 +2473,7 @@ Maximum: 5px.
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WRa-Gy-4ku">
-                                            <rect key="frame" x="68" y="192" width="173" height="16"/>
+                                            <rect key="frame" x="68" y="208" width="173" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Optotype diameter [arcmin]" id="k8n-UU-dxq">
                                                 <font key="font" metaFont="system"/>
@@ -2510,7 +2509,7 @@ Maximum: 5px.
                                             </textFieldCell>
                                         </textField>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AQw-jE-a5x">
-                                            <rect key="frame" x="18" y="131" width="45" height="21"/>
+                                            <rect key="frame" x="18" y="148" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Best not change it…
 
@@ -2526,7 +2525,7 @@ Maximum: 5px.
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Syd-WZ-yVY">
-                                            <rect key="frame" x="68" y="132" width="288" height="16"/>
+                                            <rect key="frame" x="68" y="149" width="288" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Maximal logCSWeber (careful when changing!)" id="mUy-h3-BZW">
                                                 <font key="font" metaFont="system"/>
@@ -2649,7 +2648,7 @@ Maximum: 5px.
                                             </textFieldCell>
                                         </textField>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2jb-Fx-woN">
-                                            <rect key="frame" x="15" y="71" width="107" height="25"/>
+                                            <rect key="frame" x="15" y="88" width="107" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Automatic run, targeting this contrast sensitivity. For testing.
 
@@ -2673,7 +2672,7 @@ Maximum: 5px.
                                             </connections>
                                         </popUpButton>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nNq-xc-7ag">
-                                            <rect key="frame" x="123" y="74" width="148" height="16"/>
+                                            <rect key="frame" x="123" y="91" width="148" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Autorun to target logCS" id="sQa-Wz-SbV">
                                                 <font key="font" metaFont="system"/>
@@ -2734,7 +2733,7 @@ Maximum: 5px.
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6qg-wc-7SL">
-                                            <rect key="frame" x="16" y="252" width="223" height="35"/>
+                                            <rect key="frame" x="16" y="257" width="223" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Dithering increases luminance resolution on the cost of spatial resolution. Good for contrast testing!
 If you go very close or you may be able to resolve the pattern.
@@ -2768,7 +2767,7 @@ If you go very close or you may be able to resolve the pattern.
                                             </connections>
                                         </textField>
                                         <button hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TIh-uw-rMc">
-                                            <rect key="frame" x="15" y="16" width="223" height="35"/>
+                                            <rect key="frame" x="305" y="-4" width="223" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Color Bit Stealing: Invented by Chris Tyler. Borrows color bits across RGB to better approximate a target luminance. Superseded here by dithering.
 
@@ -2781,6 +2780,93 @@ If you go very close or you may be able to resolve the pattern.
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.contrastBitStealing" id="vzG-uK-jUa"/>
                                             </connections>
                                         </button>
+                                        <box fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="5PT-LI-0Nj">
+                                            <rect key="frame" x="14" y="-16" width="369" height="86"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <view key="contentView" id="Kxc-me-IbM">
+                                                <rect key="frame" x="4" y="5" width="361" height="66"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u0R-rq-KZv" userLabel="Crowding type">
+                                                        <rect key="frame" x="18" y="16" width="151" height="25"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">Types of crowding.
+                  </string>
+                                                        <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="rMe-tH-BmC" id="goM-9s-fQc">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="message"/>
+                                                            <menu key="menu" id="YP6-oM-FfH">
+                                                                <items>
+                                                                    <menuItem title="None" state="on" id="rMe-tH-BmC">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="flanking bars" id="f9O-85-ACL">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="flanking rings" id="fXI-54-JMA">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="surounding bars" id="Ece-4s-g6r">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="surounding ring" id="6vH-Xb-Ulz">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="surounding square" id="rVe-Qm-6jH">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="row of optotypes" id="EtS-jb-miS">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                </items>
+                                                            </menu>
+                                                        </popUpButtonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.contrastCrowdingType" id="aaJ-DP-jDQ"/>
+                                                        </connections>
+                                                    </popUpButton>
+                                                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sJQ-V7-env" userLabel="Crowding distance">
+                                                        <rect key="frame" x="185" y="16" width="152" height="25"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">Distance to crowders = gap between optotye and crowder.
+
+ </string>
+                                                        <popUpButtonCell key="cell" type="push" title="2·stroke" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="4oP-bt-upB" id="8KW-tZ-M6A" userLabel="2·gap etc.">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="message"/>
+                                                            <menu key="menu" id="Cyx-VL-Cdr">
+                                                                <items>
+                                                                    <menuItem title="2·stroke" state="on" id="4oP-bt-upB">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="2.6 arcmin" id="ib6-fz-94t">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="30 arcmin" id="4Bu-2b-YZJ">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="1 optotype (like ETDRS)" id="hti-al-BCa">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                </items>
+                                                            </menu>
+                                                        </popUpButtonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.crowdingDistanceCalculationType" id="roz-V8-Ck2"/>
+                                                        </connections>
+                                                    </popUpButton>
+                                                </subviews>
+                                            </view>
+                                        </box>
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r0W-mv-IUK">
+                                            <rect key="frame" x="37" y="40" width="90" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Crowding" bezelStyle="round" id="37m-Q5-wBi">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                 </view>
                             </tabViewItem>

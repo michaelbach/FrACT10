@@ -91,7 +91,9 @@ Created by Bach on 2020-09-02
         stimStrengthInDeviceunits = stimStrengthInDeviceunitsUnquantised;
     }
     [TrialHistoryController setValue: stimStrengthInDeviceunits];
-    if (([Settings crowdingType] > 0) && (gCurrentTestID !== kTestAcuityLineByLine) && (gCurrentTestID !== kTestAcuityVernier) && (gCurrentTestID !== kTestContrastG) && (gCurrentTestID !== kTestContrastDitherUnittest) && (state===kStateDrawFore2)) { //don't do crowding with Vernier etc.
+
+    if (([Settings contrastCrowdingType] > 0) && (state === kStateDrawFore2) &&
+        (!([kTestAcuityLineByLine, kTestAcuityVernier, kTestContrastG].includes(gCurrentTestID)))) { //don't do crowding with these
         CGContextSaveGState(cgc);
         CGContextTranslateCTM(cgc, viewWidthHalf, viewHeightHalf); //origin to center
         CGContextTranslateCTM(cgc, -xEccInPix, -yEccInPix);
@@ -100,7 +102,7 @@ Created by Bach on 2020-09-02
         const distance4optotypes = crowdingGap + 5 * strokeSizeInPix;
         CGContextSetLineWidth(cgc, strokeSizeInPix);
         CGContextSetStrokeColor(cgc, gColorFore);
-        switch ([Settings crowdingType]) {
+        switch ([Settings contrastCrowdingType]) {
             case 0:  break; //should not occur here anyway
             case 1: //flanking bars
                 const length2 = strokeSizeInPix * 2.5;

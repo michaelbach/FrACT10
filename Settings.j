@@ -127,6 +127,7 @@ Created by mb on July 15, 2015.
     [self addFloatAccessors4Key: "gammaValue"];
     [self addBoolAccessors4Key: "contrastBitStealing"];
     [self addBoolAccessors4Key: "isContrastDithering"];
+    [self addIntAccessors4Key: "contrastCrowdingType"];
 
     //Gratings tab
     [self addFloatAccessors4Key: "gratingCPD"];
@@ -303,8 +304,6 @@ Created by mb on July 15, 2015.
     //0 = 2·stroke between rings, 1 = fixed 2.6 arcmin between rings, 2 = fixed 30', 3 = like ETDRS
     [self setCrowdingDistanceCalculationType: [self checkNum: [self crowdingDistanceCalculationType] dflt: 0 min: 0 max: 3 set: set]];
 
-    [self setCrowdingDistanceCalculationType: [self checkNum: [self crowdingDistanceCalculationType] dflt: 0 min: 0 max: 3 set: set]];
-
     //Line-by-line stuff
     [self setTestOnLineByLineIndex: [self checkNum: [self testOnLineByLineIndex] dflt: 1 min: 1 max: 4 set: set]]; //1: Sloan Letters. 0: nicht erlaubt, 2: Landolt, 3…
     [self setLineByLineDistanceType: [self checkNum: [self lineByLineDistanceType] dflt: 1 min: 0 max: 1 set: set]]; //0: DIN-EN-ISO, 1: ETDRS
@@ -328,6 +327,7 @@ Created by mb on July 15, 2015.
     [self setContrastMaxLogCSWeber: [self checkNum: [self contrastMaxLogCSWeber] dflt: 3.0 min: 1.5 max: gMaxAllowedLogCSWeber set: set]];
     [self setContrastBitStealing: [self checkBool: [self contrastBitStealing] dflt: NO set: set]];
     [self setIsContrastDithering: [self checkBool: [self isContrastDithering] dflt: YES set: set]];
+    [self setContrastCrowdingType: [self checkNum: [self contrastCrowdingType] dflt: 0 min: 0 max: 6 set: set]];
 
     //Grating stuff
     [self setGratingCPD: [self checkNum: [self gratingCPD] dflt: 2.0 min: 0.01 max: 18 set: set]];
