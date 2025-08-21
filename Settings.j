@@ -33,12 +33,13 @@ Created by mb on July 15, 2015.
     //    [self addFloatAccessors4Key: ""];
     //    [self addStringAccessors4Key: ""];
 
-    //settings are roughly arranged by the Settings tab where they appear
     //above or for all setting tabs
     [self addStringAccessors4Key: "presetName"];
     [self addIntAccessors4Key: "autoRunIndex"];
     [self addStringAccessors4Key: "dateOfSettingsVersion"];
+    [self addBoolAccessors4Key: "showIdAndEyeOnMain"];
 
+    //settings are roughly arranged by the Settings tab where they appear
     //General tab
     [self addIntAccessors4Key: "nTrials02"];
     [self addIntAccessors4Key: "nTrials04"];
@@ -219,6 +220,10 @@ Created by mb on July 15, 2015.
         [self setPatID: "-"];
     }
 
+    //above or for all setting tabs
+    [self setAutoRunIndex: [self checkNum: [self autoRunIndex] dflt: kAutoRunIndexNone min: kAutoRunIndexNone max: kAutoRunIndexLow set: set]];
+    [self setShowIdAndEyeOnMain: [self checkBool: [self showIdAndEyeOnMain] dflt: NO set: set]];
+
     //General stuff
     //need to check before setNAlternativesIndex 'cause oblique might force to index=0
     [self setIsGratingObliqueOnly: [self checkBool: [self isGratingObliqueOnly] dflt: NO set: set]];
@@ -285,7 +290,6 @@ Created by mb on July 15, 2015.
     [self setMinStrokeAcuity: [self checkNum: [self minStrokeAcuity] dflt: 0.5 min: 0.5 max: 5 set: set]];
     [self setAcuityStartingLogMAR: [self checkNum: [self acuityStartingLogMAR] dflt: 1 min: 0.3 max: 2.5 set: set]];
     [self setMargin4maxOptotypeIndex: [self checkNum: [self margin4maxOptotypeIndex] dflt: 1 min: 0 max: 4 set: set]];
-    [self setAutoRunIndex: [self checkNum: [self autoRunIndex] dflt: kAutoRunIndexNone min: kAutoRunIndexNone max: kAutoRunIndexLow set: set]];
     [self setDoThreshCorrection: [self checkBool: [self doThreshCorrection] dflt: YES set: set]];
     [self setShowAcuityFormatDecimal: [self checkBool: [self showAcuityFormatDecimal] dflt: YES set: set]];
     [self setShowAcuityFormatLogMAR: [self checkBool: [self showAcuityFormatLogMAR] dflt: YES set: set]];

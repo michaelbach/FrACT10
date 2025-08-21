@@ -186,7 +186,7 @@
 }
 
 
-- (void) setupEventListeners {
+- (void) setupEventListeners { //called from `applicationDidFinishLaunching`
     window.addEventListener('error', function(e) {
         console.error("Error details:", e);
         alert("An error occured, I'm sorry. Error message:\r\r" + e.message + "\r\rIf it recurs, please notify bach@uni-freiburg.de, ideally relating the message, e.g. via a screeshot.\rI will look into it and endeavour to provide a fix ASAP.\r\rOn “Close”, the window will reload and you can retry.");
@@ -226,7 +226,7 @@
 }
 
 
-- (void) setupControllers {
+- (void) setupControllers { //called from `applicationDidFinishLaunching`
     rewardsController = [[RewardsController alloc] initWithView: rewardImageView];
     taoController = [[TAOController alloc] initWithButton2Enable: buttonAcuityTAO];
     sound = [[Sound alloc] init];
@@ -258,6 +258,9 @@
         let r = [decimalMarkCharField bounds]; r.size.height = 30; r.origin.y = 12;
         [decimalMarkCharField setBounds: r];
     }
+    let rct = CGRectMake(0, 560, 800, 84); //placeResultStringField
+    if ([Settings showIdAndEyeOnMain])  rct = CGRectOffset(rct, 84 / 2, 0);
+    [resultStringField setFrame: rct];
 }
 
 
@@ -289,6 +292,7 @@
     [self runFractControllerTest: [aNotification object]];
 }
 - (void) runFractControllerTest: (int) testNr { //console.info("AppController>runFractController");
+    [ControlDispatcher sendChar: "\r"]; //commit possible change in patID
     let frontWindow = [[CPApp orderedWindows] objectAtIndex:0];
     if ([frontWindow title] !== "FrACT10") [frontWindow close]; //close overlaying window if any
     if (currentFractController !== null) return; //got here by accident, already inRun?

@@ -1,5 +1,6 @@
 # History
 
+2025-08-20 feature: option for settings of ID & Eye on the main screen
 2025-08-19 feature: HTML message `sendChar`works (except for <esc> in BaLM switch);
     also update testingSuite;
     feature: new HTML message setHomeStatus which required many changes to reliably close open alert panels etc.

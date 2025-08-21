@@ -298,9 +298,16 @@ const testingSuite = async () => {
 	await pauseMilliseconds(pauseViewMS);
 	tellIframe3Ms('run','contrast', 'Grating');
 	await pauseMilliseconds(pauseViewMS);
-	addText(" ↑ Test multiple optotypes: Done.");
+	addText(" ↑ Test multiple optotypes: Done.\n");
 
-	addText("\n ↓ Cycle through crowding possibilities.");
+    addText(" ↓ 'showIdAndEyeOnMain'");
+    await oneStep3Ms('setSetting', 'showIdAndEyeOnMain', YES);
+    await pauseMilliseconds(2 * pauseViewMS);
+    await oneStep3Ms('setSetting', 'showIdAndEyeOnMain', NO);
+    await pauseMilliseconds(pauseViewMS);
+    addText(" ↓ 'showIdAndEyeOnMain': Done.\n");
+
+	addText(" ↓ Cycle through crowding possibilities.");
 	response = await oneStep3Ms('setSetting', 'acuityStartingLogMAR', 0.3);
 	for (let iCrowdingType = 1; iCrowdingType <= kCrowdingTypeMax; iCrowdingType++) {
 		await oneStep3Ms('setSetting', 'crowdingType', iCrowdingType);

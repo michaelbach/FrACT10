@@ -17,6 +17,8 @@
 		8A07B8432C919BB9007513BB /* Presets_ESU.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A07B8422C919BB9007513BB /* Presets_ESU.j */; };
 		8A07B8452C919F0F007513BB /* Presets_BCM_Scheie.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A07B8442C919F0F007513BB /* Presets_BCM_Scheie.j */; };
 		8A0CDCF42D67943A0013BE3A /* FractControllerBalmLight.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A0CDCF32D67943A0013BE3A /* FractControllerBalmLight.j */; };
+		8A28B6C12E56773E002FD5FC /* MDBTextfFieldAutoBlur.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A28B6BF2E56773E002FD5FC /* MDBTextfFieldAutoBlur.h */; };
+		8A28B6C22E56773E002FD5FC /* MDBTextfFieldAutoBlur.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A28B6C02E56773E002FD5FC /* MDBTextfFieldAutoBlur.m */; };
 		8A2E1BEA2C941F0F00F6FE00 /* Presets_Hyper_TUDo.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2E1BE92C941F0F00F6FE00 /* Presets_Hyper_TUDo.j */; };
 		8A2E1BEC2C94225500F6FE00 /* Presets_AT_LeviLab.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2E1BEB2C94225500F6FE00 /* Presets_AT_LeviLab.j */; };
 		8A31C6542CDABD82009662A4 /* Presets_ETCF.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A31C6532CDABD82009662A4 /* Presets_ETCF.j */; };
@@ -125,6 +127,8 @@
 				8AE2AD332CE096BC00305C56 /* Presets_CNS_Freiburg.j in CopyFiles */,
 				8AAB43932A55826800825E47 /* Presets.j in CopyFiles */,
 				8A2E1BEA2C941F0F00F6FE00 /* Presets_Hyper_TUDo.j in CopyFiles */,
+				8A28B6C12E56773E002FD5FC /* MDBTextfFieldAutoBlur.h in CopyFiles */,
+				8A28B6C22E56773E002FD5FC /* MDBTextfFieldAutoBlur.m in CopyFiles */,
 				8AAB43902A55826800825E47 /* Sound.j in CopyFiles */,
 				8AAB43822A55825500825E47 /* FractControllerAcuityVernier.j in CopyFiles */,
 				8A44B4CB2D5F8E5300E55DEF /* History.txt in CopyFiles */,
@@ -218,6 +222,8 @@
 		8A07B8422C919BB9007513BB /* Presets_ESU.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_ESU.j; sourceTree = SOURCE_ROOT; };
 		8A07B8442C919F0F007513BB /* Presets_BCM_Scheie.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_BCM_Scheie.j; sourceTree = SOURCE_ROOT; };
 		8A0CDCF32D67943A0013BE3A /* FractControllerBalmLight.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerBalmLight.j; sourceTree = SOURCE_ROOT; };
+		8A28B6BF2E56773E002FD5FC /* MDBTextfFieldAutoBlur.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MDBTextfFieldAutoBlur.h; path = .XcodeSupport/MDBTextfFieldAutoBlur.h; sourceTree = "<group>"; };
+		8A28B6C02E56773E002FD5FC /* MDBTextfFieldAutoBlur.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MDBTextfFieldAutoBlur.m; path = .XcodeSupport/MDBTextfFieldAutoBlur.m; sourceTree = "<group>"; };
 		8A2E1BE92C941F0F00F6FE00 /* Presets_Hyper_TUDo.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_Hyper_TUDo.j; sourceTree = SOURCE_ROOT; };
 		8A2E1BEB2C94225500F6FE00 /* Presets_AT_LeviLab.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_AT_LeviLab.j; sourceTree = SOURCE_ROOT; };
 		8A31C6532CDABD82009662A4 /* Presets_ETCF.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets_ETCF.j; sourceTree = SOURCE_ROOT; };
@@ -438,6 +444,8 @@
 				1979436C8E51D5214A6FAE33 /* MDBDispersionEstimation.m */,
 				521B4104A56B8556565DDAEA /* MDBsimplestatistics.h */,
 				644D4F5FA2772D3095E57056 /* MDBSimplestatistics.m */,
+				8A28B6BF2E56773E002FD5FC /* MDBTextfFieldAutoBlur.h */,
+				8A28B6C02E56773E002FD5FC /* MDBTextfFieldAutoBlur.m */,
 				75084FCC9719E6E38CC9A31F /* Misc.h */,
 				E4BB4C6386E462030290EAF1 /* Misc.m */,
 				AAC943E39D548D5050E1B931 /* Optotypes.h */,

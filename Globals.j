@@ -24,7 +24,7 @@ gFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
 
 gAbortMessage = "Run canceled.";
 //Correction for threshold underestimation by DIN/ISO-ascending method (in VAdecimal)
-gThresholdCorrection4Ascending = 0.891;// multiplicative for decimal acuity ≙ 0,0501 logMAR addition
+gThresholdCorrection4Ascending = 0.891;// multiplicative for decimal acuity ≙ 0.0501 logMAR addition
 
 //parameter for the CI95 dispersion estimation; strongly affects CI95
 gSlopeCI95 = 15; //strongly affects CI95, this value approximates test-retest variability
