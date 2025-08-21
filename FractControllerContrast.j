@@ -91,6 +91,69 @@ Created by Bach on 2020-09-02
         stimStrengthInDeviceunits = stimStrengthInDeviceunitsUnquantised;
     }
     [TrialHistoryController setValue: stimStrengthInDeviceunits];
+    if (([Settings crowdingType] > 0) && (gCurrentTestID !== kTestAcuityLineByLine) && (gCurrentTestID !== kTestAcuityVernier) && (gCurrentTestID !== kTestContrastG) && (gCurrentTestID !== kTestContrastDitherUnittest) && (state===kStateDrawFore2)) { //don't do crowding with Vernier etc.
+        CGContextSaveGState(cgc);
+        CGContextTranslateCTM(cgc, viewWidthHalf, viewHeightHalf); //origin to center
+        CGContextTranslateCTM(cgc, -xEccInPix, -yEccInPix);
+        const crowdingGap = [self crowdingGapFromStrokeWidth: strokeSizeInPix];
+        const distance4bars = crowdingGap + (0.5 + 2.5) * strokeSizeInPix;
+        const distance4optotypes = crowdingGap + 5 * strokeSizeInPix;
+        CGContextSetLineWidth(cgc, strokeSizeInPix);
+        CGContextSetStrokeColor(cgc, gColorFore);
+        switch ([Settings crowdingType]) {
+            case 0:  break; //should not occur here anyway
+            case 1: //flanking bars
+                const length2 = strokeSizeInPix * 2.5;
+                [optotypes strokeVLineAtX: -distance4bars y0: -length2 y1: length2];
+                [optotypes strokeVLineAtX: distance4bars y0: -length2 y1: length2];
+                break;
+            case 2: //flanking rings
+                for (let i = -1; i <= 1; i++) { //console.info(i);
+                    const tempX = i * distance4optotypes;
+                    CGContextTranslateCTM(cgc,  -tempX, 0);
+                    if (i !== 0)  [optotypes drawLandoltWithStrokeInPx: strokeSizeInPix landoltDirection: -1];
+                    CGContextTranslateCTM(cgc,  +tempX, 0);
+                }  break;
+            case 3: //surounding bars
+                const length4 = strokeSizeInPix * 4;
+                CGContextSetLineCap(cgc,  kCGLineCapRound);
+                [optotypes strokeVLineAtX: -distance4bars y0: -length4 y1: length4];
+                [optotypes strokeVLineAtX: distance4bars y0: -length4 y1: length4];
+                [optotypes strokeHLineAtX0: -length4 y: -distance4bars x1: length4];
+                [optotypes strokeHLineAtX0: -length4 y: distance4bars x1: length4];
+                break;
+            case 4: //surounding ring: gap + 2.5 strokes + ½ stroke for stroke width
+                [optotypes strokeCircleAtX: 0 y: 0 radius: distance4bars];
+                break;
+            case 5: //surrounding square
+                const frameSizeX2 = 2 * distance4bars, frameSize = distance4bars;
+                CGContextStrokeRect(cgc, CGRectMake(-frameSize, -frameSize, frameSizeX2, frameSizeX2));
+                break;
+            case 6: //row of optotypes
+                let rowAlternatives = [[AlternativesGenerator alloc] initWithNumAlternatives: nAlternatives andNTrials: 5 obliqueOnly: NO];
+                for (let i = -2; i <= 2; i++) {
+                    const tempX = i * distance4optotypes;
+                    CGContextTranslateCTM(cgc, -tempX, 0);
+                    if (i !== 0)  {
+                        let directionInRow = [rowAlternatives nextAlternative];
+                        if (directionInRow === [alternativesGenerator currentAlternative])
+                            directionInRow = [rowAlternatives nextAlternative];
+                        switch (gCurrentTestID) {
+                            case kTestAcuityLett:
+                                [optotypes drawLetterWithStriokeInPx: strokeSizeInPix letterNumber: directionInRow];  break;
+                            case kTestAcuityE:
+                                [optotypes tumblingEWithStrokeInPx: strokeSizeInPix direction: directionInRow];  break;
+                            case kTestAcuityTAO:
+                                [gAppController.taoController drawTaoWithStrokeInPx: strokeSizeInPix taoNumber: directionInRow];  break;
+                            default:
+                                [optotypes drawLandoltWithStrokeInPx: strokeSizeInPix landoltDirection: directionInRow];
+                        }
+                    }
+                    CGContextTranslateCTM(cgc, +tempX, 0);
+                }  break;
+        }
+        CGContextRestoreGState(cgc);
+    }
     [super drawStimulusInRect: dirtyRect];
 }
 

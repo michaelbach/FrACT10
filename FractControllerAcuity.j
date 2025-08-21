@@ -38,7 +38,7 @@
             CGContextSaveGState(cgc);
             CGContextTranslateCTM(cgc, viewWidthHalf, viewHeightHalf); //origin to center
             CGContextTranslateCTM(cgc, -xEccInPix, -yEccInPix);
-            const crowdingGap = [self acuityCrowdingGapFromStrokeWidth: stimStrengthInDeviceunits];
+            const crowdingGap = [self crowdingGapFromStrokeWidth: stimStrengthInDeviceunits];
             const distance4bars = crowdingGap + (0.5 + 2.5) * stimStrengthInDeviceunits;
             const distance4optotypes = crowdingGap + 5 * stimStrengthInDeviceunits;
             CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
@@ -257,21 +257,6 @@
     }
     if (stimStrengthInDeviceunits > gStrokeMaximal) stimStrengthInDeviceunits = gStrokeMaximal;
     if (stimStrengthInDeviceunits < gStrokeMinimal) stimStrengthInDeviceunits = gStrokeMinimal;
-}
-
-
-//gap between optotype border and border of the crowder
-- (float) acuityCrowdingGapFromStrokeWidth: (float) stroke {
-    let returnVal = 2 * stroke; //case 0
-    switch ([Settings crowdingDistanceCalculationType]) {
-        case 1:
-            returnVal = [MiscSpace pixelFromDegree: 2.6 / 60.0];  break;
-        case 2:
-            returnVal = [MiscSpace pixelFromDegree: 30 / 60.0];  break;
-        case 3: //1 optotype (like ETDRS)
-            returnVal = 5 * stroke;  break;
-    }
-    return returnVal;
 }
 
 

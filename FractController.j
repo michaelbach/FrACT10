@@ -437,6 +437,21 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
+//For crowing: gap between optotype border and border of the crowder
+- (float) crowdingGapFromStrokeWidth: (float) stroke {
+    let returnVal = 2 * stroke; //case 0
+    switch ([Settings crowdingDistanceCalculationType]) {
+        case 1:
+            returnVal = [MiscSpace pixelFromDegree: 2.6 / 60.0];  break;
+        case 2:
+            returnVal = [MiscSpace pixelFromDegree: 30 / 60.0];  break;
+        case 3: //1 optotype (like ETDRS)
+            returnVal = 5 * stroke;  break;
+    }
+    return returnVal;
+}
+
+
 - (async void) runEnd { //console.info("FractController>runEnd");
     [self invalidateTrialTimers];
     const sv = [[gAppController.selfWindow contentView] subviews];
