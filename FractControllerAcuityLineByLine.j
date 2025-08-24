@@ -27,6 +27,15 @@ Created by mb on 2021-12-21.
     self = [super initWithWindow: aWindow];
     localLogMAR = 0.3;
     let popupRect = CGRectMake(0, window.innerHeight-24, 106, 24); // first one at bottom
+    acuityNLinesPopup = [[CPPopUpButton alloc] initWithFrame: popupRect];
+    [acuityNLinesPopup setTitle:"1 line"];
+    [acuityNLinesPopup addItemWithTitle:"3 lines"];
+    [acuityNLinesPopup addItemWithTitle:"5 lines"];
+    [acuityNLinesPopup bind: CPSelectedIndexBinding toObject:self withKeyPath:@"lineByLineLinesIndexSelf" options:nil];
+    [acuityNLinesPopup setTarget: self];
+    [acuityNLinesPopup setAction: @selector(acuityNLinesPopupChanged:)];
+
+    popupRect = CGRectOffset(popupRect, 0, -24); // next one: one up
     acuityNOptosPopup = [[CPPopUpButton alloc] initWithFrame: popupRect];
     [acuityNOptosPopup setTitle:"1 optotype"];
     [acuityNOptosPopup addItemWithTitle:"3 optotypes"];
@@ -35,15 +44,6 @@ Created by mb on 2021-12-21.
     [acuityNOptosPopup bind: CPSelectedIndexBinding toObject:self withKeyPath:@"lineByLineHeadcountIndexSelf" options:nil];
     [acuityNOptosPopup setTarget: self];
     [acuityNOptosPopup setAction: @selector(acuityNLinesPopupChanged:)];
-
-    popupRect = CGRectOffset(popupRect, 0, -24); // next one: one up
-    acuityNLinesPopup = [[CPPopUpButton alloc] initWithFrame: popupRect];
-    [acuityNLinesPopup setTitle:"1 line"];
-    [acuityNLinesPopup addItemWithTitle:"3 lines"];
-    [acuityNLinesPopup addItemWithTitle:"5 lines"];
-    [acuityNLinesPopup bind: CPSelectedIndexBinding toObject:self withKeyPath:@"lineByLineLinesIndexSelf" options:nil];
-    [acuityNLinesPopup setTarget: self];
-    [acuityNLinesPopup setAction: @selector(acuityNLinesPopupChanged:)];
     return self;
 }
 
