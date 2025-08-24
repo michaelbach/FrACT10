@@ -1128,14 +1128,14 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="8AU-kb-15P">
-                                            <rect key="frame" x="13" y="371" width="425" height="105"/>
+                                            <rect key="frame" x="13" y="372" width="425" height="108"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="qqp-Oy-oZv">
-                                                <rect key="frame" x="4" y="5" width="417" height="85"/>
+                                                <rect key="frame" x="4" y="5" width="417" height="88"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wrj-XQ-Ter">
-                                                        <rect key="frame" x="12" y="46" width="54" height="26"/>
+                                                        <rect key="frame" x="12" y="49" width="55" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes (TAO).  For Landolt Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.</string>
                                                         <popUpButtonCell key="cell" type="push" title="2" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="MNg-IJ-MqA" id="jUX-2m-CLf">
@@ -1153,47 +1153,8 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                             <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.nAlternativesIndex" id="RlV-ns-IbV"/>
                                                         </connections>
                                                     </popUpButton>
-                                                    <textField toolTip="The number of trials presented when 2 choices are possible (e.g. Vernier)." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wuy-yQ-B3F">
-                                                        <rect key="frame" x="15" y="13" width="34" height="22"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="7YW-A6-gCu">
-                                                            <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                        <connections>
-                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.nTrials02" id="aad-02-t2D"/>
-                                                            <outlet property="nextKeyView" destination="9PX-pe-3kM" id="6iv-gn-omW"/>
-                                                        </connections>
-                                                    </textField>
-                                                    <textField toolTip="The number of trials presented when 4 choices are possible (e.g. tumbling E. or Landolt Cs set for 4)." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9PX-pe-3kM">
-                                                        <rect key="frame" x="49" y="13" width="34" height="22"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="iyE-mY-Vwd">
-                                                            <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                        <connections>
-                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.nTrials04" id="3MC-au-62j"/>
-                                                            <outlet property="nextKeyView" destination="xWr-Q3-BrM" id="ele-gj-hew"/>
-                                                        </connections>
-                                                    </textField>
-                                                    <textField toolTip="The number of trials presented when 8 or 10 choices are possible (e.g. Sloan Letters or Landolt Cs set for 8)." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xWr-Q3-BrM">
-                                                        <rect key="frame" x="83" y="13" width="34" height="22"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="5t6-Le-phN">
-                                                            <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                        <connections>
-                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.nTrials08" id="rkZ-VW-3NC"/>
-                                                            <outlet property="nextKeyView" destination="OYn-Zv-7ZB" id="Ort-pK-8Jt"/>
-                                                        </connections>
-                                                    </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LJd-oY-MqO">
-                                                        <rect key="frame" x="69" y="49" width="247" height="16"/>
+                                                        <rect key="frame" x="69" y="52" width="247" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Some optotypes have a fixed number of choices, or variants: Always 10 for Sloan Letters and Auckland Optotypes (TAO); Vernier 2.
 For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
@@ -1205,7 +1166,7 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gNV-ad-8PW">
-                                                        <rect key="frame" x="123" y="15" width="225" height="17"/>
+                                                        <rect key="frame" x="176" y="17" width="225" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of trials  for 2, 4, or 8/10 choices" id="rae-uy-roh">
                                                             <font key="font" metaFont="system"/>
@@ -1214,12 +1175,14 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                                         </textFieldCell>
                                                     </textField>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cEj-Jr-YXR">
-                                                        <rect key="frame" x="305" y="48" width="117" height="18"/>
+                                                        <rect key="frame" x="305" y="51" width="120" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <string key="toolTip">Applies only to Landolt Cs with 4 orientations.
+                                                        <string key="toolTip">LC = Landolt C.
+
+Applies only to Landolt Cs with 4 orientations.
 
 The response keys are NOT updated (yet) by can be guessed :).</string>
-                                                        <buttonCell key="cell" type="check" title="L. Oblique only" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ybg-Vb-Abm">
+                                                        <buttonCell key="cell" type="check" title="LC oblique only" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ybg-Vb-Abm">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -1229,11 +1192,79 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                             <outlet property="nextKeyView" destination="WCS-rL-YCa" id="N5k-qV-WAC"/>
                                                         </connections>
                                                     </button>
+                                                    <comboBox focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8ZN-pt-i6I">
+                                                        <rect key="frame" x="122" y="16" width="50" height="23"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">The number of trials presented when 8 or 10 choices are possible (e.g. Sloan Letters or Landolt
+Cs set for 8).
+
+You can select a suggestion or enter any value.
+ </string>
+                                                        <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="B6g-Jp-5yU">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            <objectValues>
+                                                                <string>18</string>
+                                                                <string>24</string>
+                                                                <string>30</string>
+                                                            </objectValues>
+                                                        </comboBoxCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.nTrials08" id="E1f-vc-oLS"/>
+                                                            <outlet property="nextKeyView" destination="OYn-Zv-7ZB" id="KCc-ku-eXu"/>
+                                                        </connections>
+                                                    </comboBox>
+                                                    <comboBox focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wjh-JY-aXB">
+                                                        <rect key="frame" x="68" y="16" width="50" height="23"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">The number of trials presented when 4 choices are possible (e.g. tumbling E. or Landolt Cs set for 4).
+
+You can select a suggestion or enter any value.
+ </string>
+                                                        <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="iYJ-0A-iXx">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            <objectValues>
+                                                                <string>24</string>
+                                                                <string>30</string>
+                                                                <string>36</string>
+                                                            </objectValues>
+                                                        </comboBoxCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.nTrials04" id="KFF-gL-2Rh"/>
+                                                            <outlet property="nextKeyView" destination="8ZN-pt-i6I" id="uYq-nz-qWD"/>
+                                                        </connections>
+                                                    </comboBox>
+                                                    <comboBox focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pWH-8k-W6i">
+                                                        <rect key="frame" x="14" y="16" width="50" height="23"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">The number of trials presented when 2 choices are
+possible (e.g. Vernier).
+
+You can select a suggestion or enter any value.
+ </string>
+                                                        <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="3" id="DeX-Rk-R4k">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            <objectValues>
+                                                                <string>30</string>
+                                                                <string>36</string>
+                                                                <string>42</string>
+                                                            </objectValues>
+                                                        </comboBoxCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.nTrials02" id="f2K-Bm-Bxj"/>
+                                                            <outlet property="nextKeyView" destination="wjh-JY-aXB" id="PJQ-D2-nwa"/>
+                                                        </connections>
+                                                    </comboBox>
                                                 </subviews>
                                             </view>
                                         </box>
                                         <box fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="Lyg-sn-7fZ">
-                                            <rect key="frame" x="13" y="288" width="425" height="74"/>
+                                            <rect key="frame" x="13" y="287" width="425" height="74"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="Qcg-KZ-L0s">
                                                 <rect key="frame" x="4" y="5" width="417" height="54"/>
@@ -1311,7 +1342,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </view>
                                         </box>
                                         <textField toolTip="Separate timeouts for how long you see the optotype, and how much time you have to respond." focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bYX-OR-zsU">
-                                            <rect key="frame" x="174" y="333" width="102" height="22"/>
+                                            <rect key="frame" x="174" y="332" width="102" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Timeouts" bezelStyle="round" id="9C2-xl-yi2">
                                                 <font key="font" metaFont="system"/>
@@ -1320,7 +1351,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                             </textFieldCell>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ltj-KO-hkh">
-                                            <rect key="frame" x="132" y="447" width="187" height="22"/>
+                                            <rect key="frame" x="132" y="450" width="187" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="# of choices and # of trials" bezelStyle="round" id="YAU-7j-hx8">
                                                 <font key="font" metaFont="system"/>
@@ -1595,7 +1626,7 @@ Assumes full screen mode.
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.calBarLengthInMM" id="rGX-Ua-nd0"/>
                                                 <outlet property="delegate" destination="450" id="hgS-w7-eDq"/>
-                                                <outlet property="nextKeyView" destination="Wuy-yQ-B3F" id="Rew-dE-8Oz"/>
+                                                <outlet property="nextKeyView" destination="pWH-8k-W6i" id="ZdP-mx-yuF"/>
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LFN-en-1hJ">

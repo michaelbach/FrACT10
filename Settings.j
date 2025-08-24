@@ -230,7 +230,7 @@ Created by mb on July 15, 2015.
     [self setIsGratingObliqueOnly: [self checkBool: [self isGratingObliqueOnly] dflt: NO set: set]];
     //for all tests
     [self setNAlternativesIndex: [self checkNum: [self nAlternativesIndex] dflt: kNAlternativesIndex8plus min: kNAlternativesIndex2 max: kNAlternativesIndex8plus set:set]]; //dflt:8
-    [self setNTrials02: [self checkNum: [self nTrials02] dflt: 32 min: 1 max: 500 set: set]];
+    [self setNTrials02: [self checkNum: [self nTrials02] dflt: 36 min: 1 max: 500 set: set]];
     [self setNTrials04: [self checkNum: [self nTrials04] dflt: 24 min: 1 max: 500 set: set]];
     [self setNTrials08: [self checkNum: [self nTrials08] dflt: 18 min: 1 max: 500 set: set]];
 

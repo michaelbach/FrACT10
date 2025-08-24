@@ -1,5 +1,6 @@
 # History
 
+2025-08-24 feature: changed "#of trials" textfields → comboboxes, default #2: 36
 2025-08-21 feature: crowding option for contrast
 2025-08-20 feature: option for settings of ID & Eye on the main screen
 2025-08-19 feature: HTML message `sendChar`works (except for <esc> in BaLM switch);

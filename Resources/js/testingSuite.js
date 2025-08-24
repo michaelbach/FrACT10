@@ -224,7 +224,7 @@ const testingSuite = async () => {
 	window.addEventListener('message', listener4textarea);
 	let response;
 
-	addText("TESTING SUITE STARTING\nDuration: ≈ 2 minutes.\nDo not press any key until “TESTING SUITE done”.\n");
+	addText("TESTING SUITE STARTING\nDuration: ≈ 2 minutes.\n\nDo not press any key until “TESTING SUITE done”.\n\nFor early termination: reload.\n");
     await pauseMilliseconds(2 * pauseViewMS);
 
 	addText(" ↓ Test fullscreen (first, so hopefully not forbidden)");
