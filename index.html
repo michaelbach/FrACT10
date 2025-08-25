@@ -3,14 +3,11 @@
 <!--
 This file is part of FrACT10, a vision test battery.
 Copyright © 2022 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
-
 FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
 -->
     <head>
         <meta charset="utf-8">
-
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-
         <!--<meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">-->
         <link rel="apple-touch-icon" href="Resources/icons/icon.png">
@@ -18,27 +15,20 @@ FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
         <link rel="icon" href="Resources/icons/FrACT3icon.ico" type="image/x-icon">
         <link rel="manifest" href="Resources/webApp.webmanifest" type="application/manifest+json">
         <meta name="description" content="Freiburg Vision Test Battery ©bach@uni-freiburg.de">
-
         <title>FrACT10</title>
-
         <script type="text/javascript">
         	OBJJ_INCLUDE_PATHS = ["Resources/cappFrameworks"];
             OBJJ_MAIN_FILE = "main.j";
-            // The below will tell the compiler to not generate debug symbols but will generate type signatures and inline objj_msgSend functions.
             OBJJ_COMPILER_FLAGS = [/*"IncludeDebugSymbols",*/ "IncludeTypeSignatures"/*, "SourceMap"*/, "InlineMsgSend"];
-
-            var progressBar = null;
+            let progressBar = null;
             OBJJ_PROGRESS_CALLBACK = function(percent, appSize, path) {
-                percent = percent * 100;
-
+                percent *= 100;
                 if (!progressBar)
                     progressBar = document.getElementById("progress-bar");
-
                 if (progressBar)
                     progressBar.style.width = Math.min(percent, 100) + "%";
             }
-
-            var loadingHTML =
+            let loadingHTML =
                     '<div id="loading">' +
 	                '    <div style="flex-grow: 35"></div>' +
 	                '    <div id="loading-text">Loading...</div>' +
@@ -46,11 +36,9 @@ FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
 	                '        <span id="progress-bar" style="width:0%"></span>' +
 	                '    </div>' +
 	                '    <div style="flex-grow: 65"></div>' +
-                    '</div>'
+                    '</div>';
         </script>
-
         <script src="Resources/cappFrameworks/Objective-J/Objective-J.js"></script>
-
         <script src="Resources/js/jspdf.umd.min.js"></script>
         <script src="Resources/js/jspdf.plugin.autotable.min.js"></script>
 
@@ -59,31 +47,24 @@ FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
                 margin: 0;
                 padding: 0;
             }
-
             /* We need a body wrapper because Cappuccino is unhappy if we change the body element */
             #cappuccino-body {
-                /* Position it absolutely so it will fill the height without content */
-                position: absolute;
+                position: absolute;/* Position it absolutely so it will fill the height without content */
                 top: 0;
                 bottom: 0;
                 width: 100%;
-
-                /* Put it at the bottom of the stack so it doesn't interfere with UI */
-                z-index: 0;
+                z-index: 0;/* Put it at the bottom of the stack so it doesn't interfere with UI */
             }
-
             #cappuccino-body .container {
                 display: table;
                 margin: 0 auto;
                 height: 100%;
             }
-
             #cappuccino-body .content {
                 display: table-cell;
                 height: 100%;
                 vertical-align: top;
             }
-
             #loading {
                 height: 100%;
                 display:flex;
@@ -91,13 +72,11 @@ FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
                 flex-wrap:nowrap;
                 justify-content: space-evenly;
             }
-
             #loading-text {
                 height: 1.5em;
                 color: #555;
                 font: normal bold 36px/36px Arial, sans-serif;
             }
-
             #progress-indicator {
                 padding: 0px;
                 height: 16px;
@@ -105,19 +84,15 @@ FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
                 border-radius: 18px;
                 background-color: white;
             }
-
             #progress-bar {
                 position: relative;
                 top: -1px;
                 left: -1px;
                 display: block;
                 height: 18px;
-
-                /* Compensate for moving the bar left 1px to overlap the indicator border */
-                border-right: 1px solid #555;
+                border-right: 1px solid #555;/* Compensate for moving the bar left 1px to overlap the indicator border */
                 background-color: #555;
             }
-
             #noscript {
                 position: relative;
                 top: 35%;
@@ -129,7 +104,6 @@ FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
                 text-align: center;
                 font: bold 24px Arial, sans-serif;
             }
-
             #noscript a {
                 color: #98c0ff;
                 text-decoration: none;
@@ -157,7 +131,7 @@ FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
                 </div>
             </noscript>
         </div>
-        <script defer> // try to activate the service worker
+        <script defer> /* try to activate the service worker */
 		  try {
 			if ("serviceWorker" in navigator) {
 			  navigator.serviceWorker.register("webAppServiceWorker.js").then((registration) => {
@@ -170,6 +144,7 @@ FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
 			  });
 			}
 		  } catch(error) {
+		  	 console.log(`Error when trying to activate the service worker: ${error}`);
 		  }
         </script>
     </body>
