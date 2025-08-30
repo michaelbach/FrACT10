@@ -113,7 +113,7 @@
                 [gAppController setResultString: gAbortMessage];
             } else {
                 if ([Settings isAcuityPresentedConstant]) {
-                    stimStrengthInDeviceunits = [MiscSpace strokePixelsFromDecVA: [MiscSpace decVAfromLogMAR: [Settings acuityPresentedConstantLogMAR]]];
+                    stimStrengthInDeviceunits = [MiscSpace strokePixelsFromlogMAR: [Settings acuityPresentedConstantLogMAR]];
                 }
                 [gAppController setResultString: [self acuityComposeResultString]];
             }
@@ -243,7 +243,7 @@
 
 - (void) acuityModifyDeviceStimulusDIN01_02_04_08 {
     if ([Settings isAcuityPresentedConstant]) {
-        stimStrengthInDeviceunits = [MiscSpace strokePixelsFromDecVA: [MiscSpace decVAfromLogMAR: [Settings acuityPresentedConstantLogMAR]]];
+        stimStrengthInDeviceunits = [MiscSpace strokePixelsFromlogMAR: [Settings acuityPresentedConstantLogMAR]];
         return;
     }
 

@@ -53,7 +53,7 @@ Created by mb on 2021-12-21.
 
 - (void) trialStart { //console.info("FractControllerAcuityLineByLine>trialStart");
     iTrial = 1;
-    stimStrengthInDeviceunits = [MiscSpace strokePixelsFromDecVA: [MiscSpace decVAfromLogMAR: localLogMAR]];
+    stimStrengthInDeviceunits = [MiscSpace strokePixelsFromlogMAR: localLogMAR];
     state = kStateDrawFore;
     [[gAppController.selfWindow contentView] setNeedsDisplay: YES];
 }
