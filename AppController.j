@@ -491,6 +491,12 @@
             break;
         case "B":
             [self balmSwitch];  break;
+        case "U":
+            let success = [MiscSpace unittest];
+            success &&= [MDBDispersionEstimation unittestLogisticFun];
+            const s = "Unittests: " + (success ? "OK" : "failed");
+            [self setResultString: s];
+            break;
         default:
             [super keyDown: theEvent];  break;
     }

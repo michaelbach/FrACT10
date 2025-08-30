@@ -72,6 +72,7 @@
 
 /**
  Given decimal VA, returns equivalent LogMAR
+ Reference: Bailey IL, Lovie JE (1976) New design principles for visual acuity letter charts. Am J Optom Physiol Opt. 53(11):740-745, Table 1
  */
 + (float) logMARfromDecVA: (float) decVA {
     return -Math.log10(decVA);
@@ -93,8 +94,8 @@
 /**
  Given LogMAR → stroke size in pixels
  */
-+ (float) strokePixelsFromlogMAR: (float) decVA {
-    return [self strokePixelsFromDecVA: [self decVAfromLogMAR: decVA]];
++ (float) strokePixelsFromlogMAR: (float) logMAR {
+    return [self strokePixelsFromDecVA: [self decVAfromLogMAR: logMAR]];
 }
 
 
@@ -104,6 +105,46 @@
 + (float) degrees2radians: (float) degrees {
     return degrees * Math.PI / 180;
 }
+
+
+/**
+ Tests for round-trip accuracy (deg→px→deg, logMAR↔VA, …
+ */
++ (BOOL) unittest {
+    let success = [self unittestDeg2Pix2Deg];
+    success &&= [self unittestLogMAR2VA2LogMAR];
+    console.info("MiscSpace unittest, success:", success);
+    return success;
+}
++ (BOOL) unittestDeg2Pix2Deg {
+    let success = YES;
+    for (val0 of [-1, 0, 0.1, 1, 10, 90]) {// > 90: error with degs, ok
+            let val1 = [self degreeFromPixel: [self pixelFromDegree: val0]];
+            success &&= [Misc areNearlyEqual: val0 and: val1];
+            if (!success) console.info("unittestDeg2Pix2Deg 1", val0, val1, success);
+            val1 = [self periodInPixelFromSpatialFrequency: [self spatialFrequencyFromPeriodInPixel: val0]];
+            success &&= [Misc areNearlyEqual: val0 and: val1];
+            if (!success) console.info("unittestDeg2Pix2Deg 2", val0, val1, success);
+            val1 = [self millimeterFromPixel: [self pixelFromMillimeter: val0]];
+            success &&= [Misc areNearlyEqual: val0 and: val1];
+            if (!success) console.info("unittestDeg2Pix2Deg 3", val0, val1, success);
+    }
+    return success;
+}
++ (BOOL) unittestLogMAR2VA2LogMAR {
+    let success = YES;
+    for (logMAR0 of [-10, -1, 0, 0.1, 1, 10]) {
+        let logMAR1 = [self logMARfromDecVA: [self decVAfromLogMAR: logMAR0]];
+        success && [Misc areNearlyEqual: logMAR0 and: logMAR1];
+        //console.info("unittestLogMAR2VA2LogMAR", logMAR0, logMAR0, success);
+
+        logMAR1 = [self logMARFromStrokePixels: [self strokePixelsFromlogMAR: logMAR0]];
+        success ||= [Misc areNearlyEqual: logMAR0 and: logMAR1];
+        //console.info("unittestLogMAR2VA2LogMAR", logMAR0, logMAR0, success);
+    }
+    return success;
+}
+
 
 /* /////////////////////////////////////OLD, not in use (yet) */
 

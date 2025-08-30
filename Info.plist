@@ -15,7 +15,7 @@
 	<key>Main cib file base name</key>
 	<string>MainMenu.cib</string>
 	<key>VersionDate</key>
-	<string>2025-08-26</string>
+	<string>2025-08-30</string>
 	<key>NSMainStoryboardFile</key>
 	<string></string>
 	<key>CFBundleIcons</key>
