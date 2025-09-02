@@ -1,9 +1,9 @@
 /*
  This file is part of FrACT10, a vision test battery.
  Copyright © 2023 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
- 
+
  Misc.j
- 
+
  */
 
 
@@ -101,11 +101,12 @@
     return Math.pow(g, [Settings gammaValue]);
 }
 
+
 + (float) lowerLuminanceFromContrastMilsn: (float) contrast { //console.info("lowerLuminanceFromContrastMilsn");
     return [Misc limit01: [Misc limit01: 0.5 - 0.5 * contrast / 100]];
 }
 /**
- And the inverse
+ And the upper partner
  */
 + (float) upperLuminanceFromContrastMilsn: (float) contrast { //console.info("highLuminanceFromContras");
     return [Misc limit01: [Misc limit01: 0.5 + 0.5 * contrast / 100]];
@@ -118,7 +119,7 @@
     return [self lowerLuminanceFromContrastMilsn: michelson];
 }
 /**
- And the inverse
+ And upper partner
  */
 + (float) upperLuminanceFromContrastLogCSWeber: (float) logCSW {
     const weberPercent = [MiscLight contrastWeberPercentFromLogCSWeber: logCSW];

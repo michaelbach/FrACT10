@@ -395,17 +395,17 @@
         console.warn("localStorage not available:", e);
         // Fallback behavior not really availabe
     }
+    let string4clipboard = currentTestResultExportString;
     switch ([Settings resultsToClipboardIndex]) {
         case kResultsToClipNone: break;
         case kResultsToClipFullHistory:
-            currentTestResultExportString += currentTestResultsHistoryExportString;
+            string4clipboard += currentTestResultsHistoryExportString;
             //purposefully "fall throught" to next:
         case kResultsToClipFinalOnly:
-            [Misc copyString2Clipboard: currentTestResultExportString];
             if ([Settings putResultsToClipboardSilent]) {
-                [Misc copyString2Clipboard: currentTestResultExportString];
+                [Misc copyString2Clipboard: string4clipboard];
             } else {
-                [Misc copyString2ClipboardWithDialog: currentTestResultExportString];
+                [Misc copyString2ClipboardWithDialog: string4clipboard];
             }
             break;
         case kResultsToClipFullHistory2PDF: [self exportPDF]; break;
