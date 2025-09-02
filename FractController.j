@@ -141,7 +141,10 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 - (void) onTimeoutIsi: (CPTimer) timer { //CPLog("onTimeoutIsi");
     //now we can draw the stimulus
-    const tDisp = (gCurrentTestID === kTestBalmLight) ? ([Settings balmOnMillisecs] / 1000) : [Settings timeoutDisplaySeconds];
+    let tDisp = (gCurrentTestID === kTestBalmLight) ? ([Settings balmOnMillisecs] / 1000) : [Settings timeoutDisplaySeconds]; //BaLM has its own setting
+    if ([self isContrastAny] && [Settings contrastShowFixMark]) {
+        tDisp += [Settings contrastTimeoutFixmark] / 1000; //correcting for fixmarktime
+    }
     timerDisplay = [CPTimer scheduledTimerWithTimeInterval: tDisp target:self selector:@selector(onTimeoutDisplay:) userInfo:nil repeats:NO];
     timerResponse = [CPTimer scheduledTimerWithTimeInterval: [Settings timeoutResponseSeconds] target:self selector:@selector(onTimeoutResponse:) userInfo:nil repeats:NO];
     if ([Settings autoRunIndex] !== kAutoRunIndexNone) {
