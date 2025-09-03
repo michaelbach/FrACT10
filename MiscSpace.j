@@ -111,38 +111,38 @@
  Tests for round-trip accuracy (deg→px→deg, logMAR↔VA, …
  */
 + (BOOL) unittest {
-    let success = [self unittestDeg2Pix2Deg];
-    success &&= [self unittestLogMAR2VA2LogMAR];
-    console.info("MiscSpace unittest, success:", success);
-    return success;
+    let isSuccess = [self unittestDeg2Pix2Deg];
+    isSuccess &&= [self unittestLogMAR2VA2LogMAR];
+    console.info("MiscSpace unittest, isSuccess:", isSuccess);
+    return isSuccess;
 }
 + (BOOL) unittestDeg2Pix2Deg {
-    let success = YES;
+    let isSuccess = YES;
     for (val0 of [-1, 0, 0.1, 1, 10, 90]) {// > 90: error with degs, ok
             let val1 = [self degreeFromPixel: [self pixelFromDegree: val0]];
-            success &&= [Misc areNearlyEqual: val0 and: val1];
-            if (!success) console.info("unittestDeg2Pix2Deg 1", val0, val1, success);
+            isSuccess &&= [Misc areNearlyEqual: val0 and: val1];
+            if (!isSuccess) console.info("unittestDeg2Pix2Deg 1", val0, val1, isSuccess);
             val1 = [self periodInPixelFromSpatialFrequency: [self spatialFrequencyFromPeriodInPixel: val0]];
-            success &&= [Misc areNearlyEqual: val0 and: val1];
-            if (!success) console.info("unittestDeg2Pix2Deg 2", val0, val1, success);
+            isSuccess &&= [Misc areNearlyEqual: val0 and: val1];
+            if (!isSuccess) console.info("unittestDeg2Pix2Deg 2", val0, val1, isSuccess);
             val1 = [self millimeterFromPixel: [self pixelFromMillimeter: val0]];
-            success &&= [Misc areNearlyEqual: val0 and: val1];
-            if (!success) console.info("unittestDeg2Pix2Deg 3", val0, val1, success);
+            isSuccess &&= [Misc areNearlyEqual: val0 and: val1];
+            if (!isSuccess) console.info("unittestDeg2Pix2Deg 3", val0, val1, isSuccess);
     }
-    return success;
+    return isSuccess;
 }
 + (BOOL) unittestLogMAR2VA2LogMAR {
-    let success = YES;
+    let isSuccess = YES;
     for (logMAR0 of [-10, -1, 0, 0.1, 1, 10]) {
         let logMAR1 = [self logMARfromDecVA: [self decVAfromLogMAR: logMAR0]];
-        success && [Misc areNearlyEqual: logMAR0 and: logMAR1];
-        //console.info("unittestLogMAR2VA2LogMAR", logMAR0, logMAR0, success);
+        isSuccess && [Misc areNearlyEqual: logMAR0 and: logMAR1];
+        //console.info("unittestLogMAR2VA2LogMAR", logMAR0, logMAR0, isSuccess);
 
         logMAR1 = [self logMARFromStrokePixels: [self strokePixelsFromlogMAR: logMAR0]];
-        success ||= [Misc areNearlyEqual: logMAR0 and: logMAR1];
-        //console.info("unittestLogMAR2VA2LogMAR", logMAR0, logMAR0, success);
+        isSuccess ||= [Misc areNearlyEqual: logMAR0 and: logMAR1];
+        //console.info("unittestLogMAR2VA2LogMAR", logMAR0, logMAR0, isSuccess);
     }
-    return success;
+    return isSuccess;
 }
 
 

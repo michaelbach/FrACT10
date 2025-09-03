@@ -86,6 +86,34 @@
 
 
 /**
+ Unit tests to the degree possible
+ */
++ (BOOL) unittest {
+    let isSuccess = YES;
+    for (val0 of [0, 0.1, 0.3, 1]) {
+        val1 = [self contrastWeberPercentFromLogCSWeber: val0];
+        val1 = [self contrastLogCSWeberFromWeberPercent: val1];
+        isSuccess &&= [Misc areNearlyEqual: val0 and: val1];
+        if (!isSuccess) {
+            console.info("unittest MiscLight 1", val0, val1, isSuccess);
+            return isSuccess;
+        }
+
+        val1 = [self contrastWeberPercentFromLogCSWeber: val0];
+        val1 = [self contrastMichelsonPercentFromWeberPercent: val1];
+        val1 = [self contrastWeberPercentFromMichelsonPercent: val1]
+        val1 = [self contrastLogCSWeberFromWeberPercent: val1];
+        isSuccess &&= [Misc areNearlyEqual: val0 and: val1];
+        if (!isSuccess) {
+            console.info("unittest MiscLight 2", val0, val1, isSuccess);
+            return isSuccess;
+        }
+    }
+    return isSuccess;
+}
+
+
+/**
  scale transformations luminance ⇄ devicegray
  contrast: -100 … 100 (both for Michelson & Weber)
  “devicegray": 0 … 1 AFTER gamma correction
