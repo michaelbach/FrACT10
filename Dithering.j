@@ -66,8 +66,8 @@ function setPixelGray(imageData, x, y, g) { //assuming alpha already set
     const offContext = offCanvas.getContext('2d');
     const imageData = offContext.createImageData(3, 3); //this presets all to 0 = transparent black
     //console.info(offCanvas, offContext, imageData)
-    for (let i=0; i < 4 * 9; i++) imageData.data[i] = integerPart; //set all to non-dithered gray level
-    for (let i=0; i < 9; i++) imageData.data[3 + i * 4] = 255; //set alpha to opaque
+    for (let i=0; i < 36; i++) imageData.data[i] = integerPart; //set all to non-dithered gray level
+    for (let i = 3; i < 36; i += 4) imageData.data[i] = 255; //set alpha to opaque
     const f = integerPart + 1; //one bit higher than the average gray level
     if (fractionalPart >= 1) { //check which pixels need to be set one index higher
         setPixelGray(imageData, 1, 1, f);
