@@ -65,6 +65,27 @@
 + (CPString) resultsHistoryString {return resultsHistoryString;}
 + (void) setResultsHistoryString: (CPString) v {resultsHistoryString = v;}
 
+// preparation the factor out "composing" the `currentTestResultExportString`
+// these ↓ are used in the `currentTestResultExportString` and should be collected
+// "vsExportFormat" + tab + gVersionOfExportFormat;
+// "vsFrACT" + tab + gVersionDateOfFrACT;
+// "decimalMark" + tab + [Settings decimalMarkChar];
+// "ID" + tab + [Settings patID];
+// "eyeCondition" + tab + gEyeIndex2string[[Settings eyeIndex]];
+// "date" + tab + [Misc date2YYYY_MM_DD: now];
+// "time" + tab + [Misc date2HH_MM_SS: now];
+// "test" + tab + [Misc testNameGivenTestID: gCurrentTestID];
+// eccentricityX, eccentricityY
+// halfCI95, colorForeBack, noiseContrast, gratingShape
+// "Hit rate: " + s + "%";
+// "value" + tab + [Misc stringFromNumber: [self resultValue4Export] decimals: nDigits localised: YES]; →finalValue
+// "unit1" + tab + gAppController.currentTestResultUnit
+// "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 1 localised: YES];
+// "contrastWeber" + tab + 99;
+// "unit2" + tab + "%";
+// "rangeLimitStatus" + tab + rangeLimitStatus;
+// "crowding" + tab + [Settings crowdingType];
+
 
 + (void) initialize { //CPLog("TrialHistoryController>initialize");
     [super initialize];

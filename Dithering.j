@@ -15,9 +15,9 @@ Created by Bach on 2024-03-23.
  * `[CPColor colorWithPatternImage: [Dithering image3x3withGray: g]];`
  * g ∈ [0, 1]
  * g it is multiplied by 255, the integer part is the`greyvalue across all 9 pixels.
- * The remainder is then used to set 1 to 8 pixesl one bit higher.
+ * The remainder is then used to set 1 to 8 pixels one bit higher.
  * The result is a resolution increase by a factor of 9.
- * The patterns differ only by 1 bit between pixels and are all but invisible.
+ * The patterns differ only by 1 bit between pixels and thus are all but invisible.
  *
  * */
 
