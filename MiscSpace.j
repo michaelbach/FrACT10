@@ -113,34 +113,44 @@
 + (BOOL) unittest {
     let isSuccess = [self unittestDeg2Pix2Deg];
     isSuccess &&= [self unittestLogMAR2VA2LogMAR];
+    isSuccess &&= [self unittestConversionsPositiveValsOnly];
     console.info("MiscSpace unittest, isSuccess:", isSuccess);
     return isSuccess;
 }
 + (BOOL) unittestDeg2Pix2Deg {
     let isSuccess = YES;
     for (val0 of [-1, 0, 0.1, 1, 10, 90]) {// > 90: error with degs, ok
-            let val1 = [self degreeFromPixel: [self pixelFromDegree: val0]];
-            isSuccess &&= [Misc areNearlyEqual: val0 and: val1];
-            if (!isSuccess) console.info("unittestDeg2Pix2Deg 1", val0, val1, isSuccess);
-            val1 = [self periodInPixelFromSpatialFrequency: [self spatialFrequencyFromPeriodInPixel: val0]];
-            isSuccess &&= [Misc areNearlyEqual: val0 and: val1];
-            if (!isSuccess) console.info("unittestDeg2Pix2Deg 2", val0, val1, isSuccess);
-            val1 = [self millimeterFromPixel: [self pixelFromMillimeter: val0]];
-            isSuccess &&= [Misc areNearlyEqual: val0 and: val1];
-            if (!isSuccess) console.info("unittestDeg2Pix2Deg 3", val0, val1, isSuccess);
+        let val1 = [self degreeFromPixel: [self pixelFromDegree: val0]];
+        isSuccess &&= [Misc areNearlyEqual: val0 and: val1];
+        if (!isSuccess) console.info("unittestDeg2Pix2Deg 1", val0, val1, isSuccess);
+        val1 = [self periodInPixelFromSpatialFrequency: [self spatialFrequencyFromPeriodInPixel: val0]];
+        isSuccess &&= [Misc areNearlyEqual: val0 and: val1];
+        if (!isSuccess) console.info("unittestDeg2Pix2Deg 2", val0, val1, isSuccess);
+        val1 = [self millimeterFromPixel: [self pixelFromMillimeter: val0]];
+        isSuccess &&= [Misc areNearlyEqual: val0 and: val1];
+        if (!isSuccess) console.info("unittestDeg2Pix2Deg 3", val0, val1, isSuccess);
     }
     return isSuccess;
 }
 + (BOOL) unittestLogMAR2VA2LogMAR {
     let isSuccess = YES;
-    for (logMAR0 of [-10, -1, 0, 0.1, 1, 10]) {
+    for (logMAR0 of [-3, -1, 0, 0.1, 1, 3]) {
         let logMAR1 = [self logMARfromDecVA: [self decVAfromLogMAR: logMAR0]];
-        isSuccess && [Misc areNearlyEqual: logMAR0 and: logMAR1];
-        //console.info("unittestLogMAR2VA2LogMAR", logMAR0, logMAR0, isSuccess);
-
+        isSuccess &&= [Misc areNearlyEqual: logMAR0 and: logMAR1];
+        if (!isSuccess) console.info("unittestLogMAR2VA2LogMAR 1", logMAR0, logMAR0, isSuccess);
         logMAR1 = [self logMARFromStrokePixels: [self strokePixelsFromlogMAR: logMAR0]];
-        isSuccess ||= [Misc areNearlyEqual: logMAR0 and: logMAR1];
-        //console.info("unittestLogMAR2VA2LogMAR", logMAR0, logMAR0, isSuccess);
+        isSuccess &&= [Misc areNearlyEqual: logMAR0 and: logMAR1];
+        if (!isSuccess) console.info("unittestLogMAR2VA2LogMAR 2", logMAR0, logMAR1, isSuccess);
+    }
+    return isSuccess;
+}
++ (BOOL) unittestConversionsPositiveValsOnly {
+    let isSuccess = YES;
+    for (val of [0.01, 0.1, 1, 10]) {
+        const val0 = [self logMARfromDecVA: [MiscSpace decVAFromStrokePixels: val]];
+        const val1 = [self logMARFromStrokePixels: val];
+        isSuccess &&= [Misc areNearlyEqual: val0 and: val1];
+        if (!isSuccess) console.info("unittestConversionsPositiveOnly", val, val0, val1, isSuccess);
     }
     return isSuccess;
 }
