@@ -26,7 +26,7 @@
 
 //this manages stuff after the optotypes have been drawn, e.g. crowding
 - (void) drawStimulusInRect: (CGRect) dirtyRect { //console.info("FractControllerAcuity>drawStimulusInRect");
-    let _value = [MiscSpace logMARfromDecVA: [MiscSpace decVAFromStrokePixels: stimStrengthInDeviceunits]];
+    let _value = [MiscSpace logMARFromStrokePixels: stimStrengthInDeviceunits];
     if (gCurrentTestID === kTestAcuityVernier) { //needs to be in arcsec
         //console.info(_value);
         _value = [self reportFromNative: stimStrengthInDeviceunits];

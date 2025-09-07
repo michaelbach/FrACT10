@@ -309,7 +309,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (void) onTimeoutAutoResponse: (CPTimer) timer { //console.info("FractController>onTimeoutAutoResponse");
     const arIndex = [Settings autoRunIndex] - 1;
     if ([self isAcuityOptotype]) {
-        const logMARcurrent = [MiscSpace logMARfromDecVA: [MiscSpace decVAFromStrokePixels: stimStrengthInDeviceunits]];
+        const logMARcurrent = [MiscSpace logMARFromStrokePixels: stimStrengthInDeviceunits];
         let logMARtarget = [-0.3, 0.0, 0.3][arIndex];
         if ([Settings doThreshCorrection]) logMARtarget += Math.log10(gThresholdCorrection4Ascending);
         responseWasCorrect = logMARcurrent > logMARtarget;
