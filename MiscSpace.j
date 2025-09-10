@@ -114,7 +114,7 @@
     let isSuccess = [self unittestDeg2Pix2Deg];
     isSuccess &&= [self unittestLogMAR2VA2LogMAR];
     isSuccess &&= [self unittestConversionsPositiveValsOnly];
-    console.info("MiscSpace unittest, isSuccess:", isSuccess);
+    //console.info("MiscSpace unittest, isSuccess:", isSuccess);
     return isSuccess;
 }
 + (BOOL) unittestDeg2Pix2Deg {

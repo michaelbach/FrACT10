@@ -492,10 +492,14 @@
         case "B":
             [self balmSwitch];  break;
         case "U":
-            let success = [MiscSpace unittest];
+            let s = "", success = YES;
+            success &&= [MiscSpace unittest];
+            s += success ? "+" : "-";  [self setResultString: s];
             success &&= [MiscLight unittest];
+            s += success ? "+" : "-";  [self setResultString: s];
             success &&= [MDBDispersionEstimation unittestLogisticFun];
-            const s = "Unit tests: " + (success ? "OK" : "failed");
+            s += success ? "+" : "-";  [self setResultString: s];
+            s += " Unit tests: " + (success ? "OK" : "failed");
             [self setResultString: s];
             break;
         default:
