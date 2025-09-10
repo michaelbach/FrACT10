@@ -79,7 +79,7 @@
             case "redraw":
                 [Misc udpateGUI];
                 [self post2parentM1: m1 m2: m2 m3: m3 success: YES];  break;
-            case "setHomeStatus": // close alerts, cancel run
+            case "setHomeStatus": case "setHomeState": // close alerts, cancel run. "…status": deprecated
                 [self sendChar: String.fromCharCode(13)];
                 [self sendChar: String.fromCharCode(10)];
                 if ([Misc isInRun]) {

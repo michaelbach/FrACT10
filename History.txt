@@ -1,6 +1,7 @@
 # History
 
-2025-09-10 improve: a little more feedback for the unittests
+2025-09-10 improve: a little more feedback for the unittests;
+    rename: `setHomeStatus` → `setHomeState`
 2025-09-04 improve: slight speed-ups in dithering (much more possible!);
     doc: prepare to improve on "composing" of the currentTestResultExportString
 2025-09-03 improve: add unittest to `MiscLight`

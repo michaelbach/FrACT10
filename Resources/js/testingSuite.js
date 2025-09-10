@@ -6,7 +6,7 @@ History
 
 2025-08-18 `runRespondingCorrectly` uses `responseChain`;
     rename `tellIframeReturningPromise3Ms` → `postToIframe`
-2025-08-14 `testBalm` only once, add `ensureHomeStatus` to make more robust against previous state
+2025-08-14 `testBalm` only once, add `ensureHomeState` to make more robust against previous state
 2025-03-28 `doDemoRun` w/o Demo preset
 2025-02-08 had added more tests, now add look at Settings in fullscreen
 2025-02-02 fix regression: restore demo run
@@ -85,8 +85,8 @@ const oneStep3Ms = async (m1, m2, m3, timeout = 1000) => {
 }
 
 
-const ensureHomeStatus = async () => {
-    await postToIframe('setHomeStatus', '', '');
+const ensureHomeState = async () => {
+    await postToIframe('setHomeState', '', '');
 /*	await postToIframe('sendChar', String.fromCharCode(27), '');
 	await postToIframe('sendChar', '\n', '');
 	await postToIframe('sendChar', '\r', '');
@@ -102,7 +102,7 @@ const ensureHomeStatus = async () => {
 
 
 const doDemoRun = async () => {
-    await ensureHomeStatus();
+    await ensureHomeState();
 	await oneStep3Ms('setSetting', 'preset', 'Testing');
     await oneStep3Ms('setSetting', 'autoRunIndex', 2);
     await oneStep3Ms('setSetting', 'nTrials08', 18);
@@ -112,7 +112,7 @@ const doDemoRun = async () => {
 
 
 const demoRunAndRestore = async () => {
-    await ensureHomeStatus();
+    await ensureHomeState();
 	let response = await oneStep3Ms('getSetting', 'distanceInCM', '');
 	const distanceInCM = response.m3;
 	await oneStep3Ms('setSetting', 'distanceInCM', 400);
@@ -188,7 +188,7 @@ const responseChain = async (invertedKeys = NO, delay = pauseMS) => {
 
 
 const testBalm= async () => { //console.info("testBalm");
-    await ensureHomeStatus();
+    await ensureHomeState();
 	await oneStep3Ms('setSetting', 'Preset', 'Testing');
 	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
 	await oneStep3Ms('setSetting', 'nTrials02', 4);
@@ -239,7 +239,7 @@ const testingSuite = async () => {
 	await pauseMilliseconds(pauseViewMS);
 
     addText(" ↓ Go to main screen (in case we were not there)");
-    await ensureHomeStatus();
+    await ensureHomeState();
     addText(" ↑ Go to main screen (in case we were not there)\n");
 
 	response = await oneStep3Ms('getVersion', '', '');
