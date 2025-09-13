@@ -140,7 +140,7 @@
     [selfWindow setFullPlatformWindow: YES];
     [selfWindow setBackgroundColor: [self windowBackgroundColor]];
     [selfWindow setTitle: "FrACT10"];
-    [self setVersionDateString: gTestDetails[kTestDetail_vsFrACT]];
+    [self setVersionDateString: gTestDetails[td_vsFrACT]];
     [CPMenu setMenuBarVisible: NO];
     [self setupEventListeners];
 
@@ -382,6 +382,7 @@
     //allow 1 eventloop
     const UI_UPDATE_DELAY = 1; // 1 millisecond is enough
     setTimeout(() => {[[selfWindow contentView] setNeedsDisplay: YES];}, UI_UPDATE_DELAY);
+    console.info(gTestDetails);
 }
 
 
@@ -445,7 +446,7 @@
       .map(row => row.split('\t')); //split columns by tab
     doc.autoTable({body: tableData, theme: 'grid', styles: styles});
 
-    const dateStart = [TrialHistoryController dateStart];
+    const dateStart = [TrialHistoryController dateRunStart];
     const filename = "FrACT_"+ [Misc date2YYYY_MM_DD: dateStart] + "_" + [Misc date2HH__MM: dateStart] + ".pdf";
     doc.save(filename); //https://github.com/eligrey/FileSaver.js
 }

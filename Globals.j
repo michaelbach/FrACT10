@@ -101,39 +101,49 @@ gTestingPlotting = NO;
 gLatestAlert = null;
 
 //general exporting
-kTestDetail_vsExpFormat = "vsExpFormat";
-kTestDetail_vsFrACT = "vsFrACT";
-kTestDetail_decimalMark = "decimalMark";
-kTestDetail_ID = "ID";
-kTestDetail_eyeCondition = "eyeCondition";
-kTestDetail_date = "date";
-kTestDetail_Time = "time";
-kTestDetail_TestName = "testName"
-kTestDetail_value = "value";
-kTestDetail_unit1 = "unit1";
-kTestDetail_distanceInCm = "distanceInCm";
-kTestDetail_contrastWeber = "contrastWeber";
-kTestDetail_unit2 = "unit2";
-kTestDetail_nTrials = "nTrials";
+td_vsExpFormat = "vsExpFormat";
+td_vsFrACT = "vsFrACT";
+td_decimalMark = "decimalMark";
+td_ID = "ID";
+td_eyeCondition = "eyeCondition";
+td_dateTimeRunStart = "dateTimeRunStart"
+td_dateTimeTrialStart = "dateTimeRunStart"
+td_dateRunStart = "dateRunStart";
+td_timeStart = "timeStart";
+td_testName = "testName"
+td_resultValue = "resultValue";
+td_resultUnit = "resultUnit";
+td_distanceInCm = "distanceInCm";
+td_contrastWeber = "contrastWeber";
+td_resultUnit2 = "resultUnit2";
+td_nTrials = "nTrials";
+td_nCorrect = "nCorrect";
+td_nIncorrect = "nIncorrect";
 // optionals
-kTestDetail_rangeLimitStatus = "rangeLimitStatus";
-kTestDetail_crowdingType = "crowdingType";
-kTestDetail_eccentricityX = "eccentricityX";
-kTestDetail_eccentricityY = "eccentricityY";
-kTestDetail_spatFreq = "spatFreq";
-kTestDetail_colorFore = "colorFore";
-kTestDetail_colorBack = "colorBack";
-kTestDetail_cpdMin = "cpdMin";
-kTestDetail_cpdMax = "cpdMax";
-kTestDetail_noiseContrast = "noiseContrast";
-kTestDetail_gratingShape = "gratingShape";
+td_halfCI95 = "halfCI95";
+td_colorFore = "colorFore";
+td_colorBack = "colorBack";
+td_rangeLimitStatus = "rangeLimitStatus";
+td_noiseContrast = "noiseContrast";
+td_gratingShape = "gratingShape";
+td_crowdingType = "crowdingType";
+td_eccentricityX = "eccentricityX";
+td_eccentricityY = "eccentricityY";
+td_spatFreq = "spatFreq";
+td_cpdMin = "cpdMin";
+td_cpdMax = "cpdMax";
+td_hitRate = "hitRate";
 gTestDetails = {};
 gTestDetailsKeys = [
-    kTestDetail_vsExpFormat, kTestDetail_vsFrACT, kTestDetail_decimalMark, kTestDetail_ID, kTestDetail_eyeCondition,
-    kTestDetail_date, kTestDetail_Time, kTestDetail_TestName, kTestDetail_value, kTestDetail_unit1,
-    kTestDetail_distanceInCm, kTestDetail_contrastWeber, kTestDetail_unit2, kTestDetail_nTrials,
+    td_vsExpFormat, td_vsFrACT, td_decimalMark, td_ID, td_eyeCondition,
+    td_dateTimeRunStart, td_dateRunStart, td_dateTimeTrialStart, td_timeStart, td_testName, td_resultValue, td_resultUnit,
+    td_distanceInCm, td_contrastWeber, td_resultUnit2,
+    td_nTrials, td_nCorrect, td_nIncorrect,
     // optionals
-    kTestDetail_rangeLimitStatus, kTestDetail_crowdingType, kTestDetail_eccentricityX, kTestDetail_eccentricityY,
-    kTestDetail_spatFreq, kTestDetail_colorFore, kTestDetail_colorBack, kTestDetail_cpdMin, kTestDetail_cpdMax];
-gTestDetails[kTestDetail_vsExpFormat] = gVersionOfExportFormat;
-gTestDetails[kTestDetail_vsFrACT] = "FrACT10·" + gVersionStringOfFract + "·" + gVersionDateOfFrACT;
+    td_halfCI95, td_colorFore, td_colorBack, td_rangeLimitStatus,
+    td_noiseContrast, td_gratingShape,
+    td_crowdingType, td_eccentricityX, td_eccentricityY,
+    td_spatFreq, td_cpdMin, td_cpdMax,
+    td_hitRate];
+gTestDetails[td_vsExpFormat] = gVersionOfExportFormat;
+gTestDetails[td_vsFrACT] = "FrACT10·" + gVersionStringOfFract + "·" + gVersionDateOfFrACT;

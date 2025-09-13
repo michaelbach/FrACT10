@@ -194,7 +194,7 @@
 
 - (float) acuityResultValue4Export {
     const tmp = [self acuityResultInLogMAR];
-    [TrialHistoryController setFinalValue: tmp];
+    gTestDetailsKeys[td_resultValue] = tmp;
     return [tmp];
 }
 
@@ -227,6 +227,15 @@
 
 - (CPString) acuityComposeExportString { //console.info("FractController>acuityComposeExportString");
     if (gAppController.runAborted) return "";
+    gTestDetails[td_resultValue] = [self resultValue4Export];
+    gTestDetails[td_resultUnit] = gAppController.currentTestResultUnit;
+    gTestDetails[td_distanceInCm] = [Settings distanceInCM];
+    gTestDetails[td_contrastWeber] = [Settings contrastAcuityWeber];
+    gTestDetails[td_resultUnit2] = "%";
+    gTestDetails[td_nTrials] = nTrials;
+    gTestDetails[td_rangeLimitStatus] = rangeLimitStatus;
+    gTestDetails[td_crowdingType] = [Settings crowdingType];
+
     let s = [self generalComposeExportString];
     const nDigits = 3;
     s += tab + "value" + tab + [Misc stringFromNumber: [self resultValue4Export] decimals: nDigits localised: YES];

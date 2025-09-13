@@ -60,7 +60,7 @@
     [MDB2plot p2init];
     if (!gTestingPlotting) {
         testHistory = [TrialHistoryController trialHistoryRecord];
-        testHistoryFinalValue = [TrialHistoryController finalValue];
+        testHistoryFinalValue = gTestDetailsKeys[td_resultValue];
     }
     const nTrials = testHistory.length;
     const yMin = 3, yMax = -1.05, yHorAxis = yMin; //note inverted axis
@@ -110,7 +110,7 @@
     [MDB2plot p2setLineWidthInPx: 4];
     for (let trial = 0; trial < nTrials; trial++) {
         const y = testHistory[trial].value;
-        if (testHistory[trial].correct) {
+        if (testHistory[trial].isCorrect) {
             [MDB2plot p2setFillColor: [CPColor colorWithRed: 0 green: 0.6 blue: 0 alpha: 1]];
             [MDB2plot p2fillCircleAtX: trial+0.5 y: y radiusInPx: 10];
         } else {

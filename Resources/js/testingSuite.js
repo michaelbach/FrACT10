@@ -4,7 +4,8 @@
 History
 =======
 
-2025-08-18 `runRespondingCorrectly` uses `responseChain`;
+2025-09-11 testSuite more systematic using anonymous functions
+2025-08-18 `runRespondingCorrectly` uses `doResponseChain`;
     rename `tellIframeReturningPromise3Ms` → `postToIframe`
 2025-08-14 `testBalm` only once, add `ensureHomeState` to make more robust against previous state
 2025-03-28 `doDemoRun` w/o Demo preset
@@ -87,16 +88,6 @@ const oneStep3Ms = async (m1, m2, m3, timeout = 1000) => {
 
 const ensureHomeState = async () => {
     await postToIframe('setHomeState', '', '');
-/*	await postToIframe('sendChar', String.fromCharCode(27), '');
-	await postToIframe('sendChar', '\n', '');
-	await postToIframe('sendChar', '\r', '');
-	// don't know how to cancel an CPAlert, should that be front…
-	let response = await postToIframe('getValue', 'isInRun', '');
-    if (response.m2) { //in run, so cancel it
-		await postToIframe('respondWithChar', '5', '');
-		await postToIframe('respondWithChar', '5', '');
-    }
-	await oneStep3Ms('settingsPane', -1, ''); //make sure we're not in Settings*/
 	await pauseMilliseconds(20);
 }
 
@@ -142,19 +133,10 @@ const demoRunAndRestore = async () => {
 	await oneStep3Ms('setSetting', 'nTrials08', nTrials08);
 	await oneStep3Ms('setSetting', 'showResponseInfoAtStart', showResponseInfoAtStart);
 	await oneStep3Ms('setSetting', 'autoRunIndex', autoRunIndex);
-
-	/*console.info("sucessfully: ", runSuccess, " ran and restored.");*/
 }
 
 
-const runRespondingCorrectly = async () => {
-	await postToIframe('setSetting', 'preset', 'Testing');
-	tellIframe3Ms('run', 'acuity', 'LandoltC');
-	responseChain(NO, 100);
-}
-
-
-const responseChain = async (invertedKeys = NO, delay = pauseMS) => {
+const doResponseChain = async (invertedKeys = NO, delay = pauseMS) => {
 	let response, rChar;
 	while (YES) {
 		response = await postToIframe('getValue', 'isInRun', '');
@@ -187,78 +169,15 @@ const responseChain = async (invertedKeys = NO, delay = pauseMS) => {
 }
 
 
-const testBalm= async () => { //console.info("testBalm");
-    await ensureHomeState();
-	await oneStep3Ms('setSetting', 'Preset', 'Testing');
-	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
-	await oneStep3Ms('setSetting', 'nTrials02', 4);
-	await oneStep3Ms('setSetting', 'nTrials04', 4);
-    await oneStep3Ms('setSetting', 'distanceInCM', 20);
-	await pauseMilliseconds(pauseMS);
-   	tellIframe3Ms('run','acuity', 'BalmLight');
-	await responseChain(YES);
-	await pauseMilliseconds(pauseViewMS);
-	tellIframe3Ms('run','acuity', 'BalmLocation');
-	await responseChain();
-	await pauseMilliseconds(pauseViewMS);
-	tellIframe3Ms('run','acuity', 'BalmMotion');
-	await responseChain();
-	await pauseMilliseconds(pauseViewMS);
+const runRespondingCorrectly = async () => {
+	await postToIframe('setSetting', 'preset', 'Testing');
+	tellIframe3Ms('run', 'acuity', 'LandoltC');
+	doResponseChain(NO, 100);
 }
 
 
-const testingSuite = async () => {
-	const kCrowdingTypeMax = 6; /* 6 */
-	const kPaneMax = 6; /* 6 */
-	const kGratingShapeMax = 3; /* 3 */
-	const scrollBoxInstance=document.getElementById('scrollBox');
-	if (scrollBoxInstance != null) { /* toggling the textarea */
-		scrollBoxInstance.remove();
-		window.removeEventListener('message', listener4textarea);
-		return;
-	}
-	textarea.id = 'scrollBox';  textarea.readOnly = YES;
-	textarea.style.width = '800px';  textarea.style.height = '200px';
-	textarea.value = "";
-	document.getElementById('belowFractFrame').appendChild(textarea);
-	window.addEventListener('message', listener4textarea);
-	let response;
-
-	addText("TESTING SUITE STARTING\nDuration: ≈ 2 minutes.\n\nDo not press any key until “TESTING SUITE done”.\n\nFor early termination: reload.\n");
-    await pauseMilliseconds(2 * pauseViewMS);
-
-	addText(" ↓ Test fullscreen (first, so hopefully not forbidden)");
-	await oneStep3Ms('setFullScreen', YES, '');/* do this later, doesn't work any more ??? */
-	await pauseMilliseconds(pauseViewMS * 1.5);  /* security issue? */
-	await oneStep3Ms('settingsPane', 0, '');
-	await pauseMilliseconds(pauseViewMS);
-	await oneStep3Ms('settingsPane', -1, '');
-	await pauseMilliseconds(pauseViewMS);
-	await oneStep3Ms('setFullScreen', NO, '');
-	addText(" ↑ tested fullscreen\n");
-	await pauseMilliseconds(pauseViewMS);
-
-    addText(" ↓ Go to main screen (in case we were not there)");
-    await ensureHomeState();
-    addText(" ↑ Go to main screen (in case we were not there)\n");
-
-	response = await oneStep3Ms('getVersion', '', '');
-	await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
-	response = await oneStep3Ms('getSetting', 'distanceInCM', '');
-	if (response.m3 != 399) errorAlert();
-    addText("");
-
-	await oneStep3Ms('setSetting', 'Preset', 'Testing');
-	response = await oneStep3Ms('getSetting', 'distanceInCM', '');
-	if (response.m3 != 400) errorAlert();
-	await oneStep3Ms('setSetting', 'nTrials08', 1);
-	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
-	tellIframe3Ms('run','acuity', 'Letters');
-	addText(" ↑ Presets 'Standard Defaults' & 'Testing' successfully applied.\n");
-	await pauseMilliseconds(pauseViewMS);
-
-	addText(" ↓ Test color stuff");
-	response = await oneStep3Ms('getSetting', 'windowBackgroundColor', '');
+const testColorStuff = async () => {
+	let response = await oneStep3Ms('getSetting', 'windowBackgroundColor', '');
 	if (response.m3 != "FFFFE6") errorAlert();
 
 	response = await oneStep3Ms('getSetting', 'acuityForeColor', '');
@@ -281,15 +200,15 @@ const testingSuite = async () => {
 	await oneStep3Ms('setSetting', 'nTrials04', 1);
 	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
 	tellIframe3Ms('run','acuity', 'TumblingE');
-	await pauseMilliseconds(pauseViewMS);
-	addText(" ↑ Colors ok.\n");
+}
 
-	addText(" ↓ Test multiple optotypes");
-	response = await oneStep3Ms('setSetting', 'Preset', 'Testing');
-	response = await oneStep3Ms('setSetting', 'nTrials08', 1);
-	response = await oneStep3Ms('setSetting', 'nTrials04', 1);
-	response = await oneStep3Ms('setSetting', 'nTrials02', 1);
-	response = await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
+
+const testMultipleOptotypes = async () => {
+	await oneStep3Ms('setSetting', 'Preset', 'Testing');
+	await oneStep3Ms('setSetting', 'nTrials08', 1);
+	await oneStep3Ms('setSetting', 'nTrials04', 1);
+	await oneStep3Ms('setSetting', 'nTrials02', 1);
+	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
 	tellIframe3Ms('run','acuity', 'TAO');
 	await pauseMilliseconds(pauseViewMS);
 	tellIframe3Ms('run','acuity', 'Vernier');
@@ -297,26 +216,24 @@ const testingSuite = async () => {
 	tellIframe3Ms('run','contrast', 'LandoltC');
 	await pauseMilliseconds(pauseViewMS);
 	tellIframe3Ms('run','contrast', 'Grating');
-	await pauseMilliseconds(pauseViewMS);
-	addText(" ↑ Test multiple optotypes: Done.\n");
+}
 
-    addText(" ↓ 'showIdAndEyeOnMain'");
-    await oneStep3Ms('setSetting', 'showIdAndEyeOnMain', YES);
-    await pauseMilliseconds(2 * pauseViewMS);
-    await oneStep3Ms('setSetting', 'showIdAndEyeOnMain', NO);
-    await pauseMilliseconds(pauseViewMS);
-    addText(" ↓ 'showIdAndEyeOnMain': Done.\n");
 
-	addText(" ↓ Cycle through crowding possibilities.");
-	response = await oneStep3Ms('setSetting', 'acuityStartingLogMAR', 0.3);
+const testCrowdingPossibilities = async () => {
+	await oneStep3Ms('setSetting', 'nTrials08', 1);
+	await oneStep3Ms('setSetting', 'nTrials04', 1);
+	await oneStep3Ms('setSetting', 'nTrials02', 1);
+	await oneStep3Ms('setSetting', 'acuityStartingLogMAR', 0.3);
+	const kCrowdingTypeMax = 6; /* 6 */
 	for (let iCrowdingType = 1; iCrowdingType <= kCrowdingTypeMax; iCrowdingType++) {
 		await oneStep3Ms('setSetting', 'crowdingType', iCrowdingType);
 		tellIframe3Ms('run','acuity', 'Letters');
 		await pauseMilliseconds(pauseViewMS);
 	}
-	addText(" ↑ Cycle through crowding: Done.\n");
+}
 
-	addText(" ↓ `showRewardPicturesWhenDone`.");
+
+const testShowRewardPictures = async () => {
 	await oneStep3Ms('setSetting', 'crowdingType', 0);
 	await oneStep3Ms('getSetting', 'showRewardPicturesWhenDone', "");
     await oneStep3Ms('setSetting', 'showRewardPicturesWhenDone', YES);
@@ -324,15 +241,10 @@ const testingSuite = async () => {
 	tellIframe3Ms('run','acuity', 'Letters');
 	await pauseMilliseconds(pauseViewMS);
 	await oneStep3Ms('setSetting', 'showRewardPicturesWhenDone', NO);
-    addText(" ↑ `showRewardPicturesWhenDone`: Done.\n");
+}
 
-    addText(" ↓ Noise embedding");
-	await oneStep3Ms('setSetting', 'embedInNoise', YES);
-	tellIframe3Ms('run','acuity', 'Letters');
-	await pauseMilliseconds(pauseViewMS);
-    addText(" ↑ Noise embedding: Done.\n");
 
-	addText(" ↓ Test 'line(s) of optotypes'");
+const testLinesOfOptotypes = async () => { //console.info("testLinesOfOptotypes");
 	await oneStep3Ms('setSetting', 'Preset', 'Testing');
 	tellIframe3Ms('run','acuity', 'Line');
     await postToIframe('redraw', '', ''); /* should not be necessary */
@@ -355,36 +267,53 @@ const testingSuite = async () => {
     await postToIframe('redraw', '', '');
     await postToIframe('respondWithChar', "5", ''); /* exit the test */
     await postToIframe('redraw', '', '');
-    await pauseMilliseconds(pauseViewMS);
-    addText(" ↑ Test 'line(s) of optotypes': Done.\n");
+}
 
-	addText(" ↓ cycle through all panes of Settings");
+
+const testAllSettings = async () => {
+	const kPaneMax = 6; /* 6 */
 	for (let iPane = 0; iPane <= kPaneMax; iPane++) {
 		await oneStep3Ms('settingsPane', iPane, '');
 		await pauseMilliseconds(pauseViewMS);
 	}
-	response = await oneStep3Ms('settingsPane', -1, '');
-	await pauseMilliseconds(pauseViewMS);
-	addText(" ↑ cycle through all panes of Settings: Done.\n");
+	await oneStep3Ms('settingsPane', -1, '');
+}
 
-	addText(" ↓ cycle through grating shapes");
+
+const testAllGratingShapes = async () => { //console.info("testAllGratingShapes");
 	await oneStep3Ms('setSetting', 'Preset', 'Testing');
 	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
 	await oneStep3Ms('setSetting', 'nTrials02', 1);
 	await oneStep3Ms('setSetting', 'nTrials04', 1);
+	const kGratingShapeMax = 3; /* 3 */
 	for (let iGratingType = 0; iGratingType <= kGratingShapeMax; iGratingType++) {
 		await oneStep3Ms('setSetting', 'gratingShapeIndex', iGratingType);
 		tellIframe3Ms('run','contrast', 'Grating');
 		await pauseMilliseconds(pauseViewMS);
 	}
-	addText(" ↑ cycle through grating shapes: Done.\n");
+}
+
+
+const testBalm = async () => { //console.info("testBalm");
+	await oneStep3Ms('setSetting', 'Preset', 'Testing');
+	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
+	await oneStep3Ms('setSetting', 'nTrials02', 4);
+	await oneStep3Ms('setSetting', 'nTrials04', 4);
+    await oneStep3Ms('setSetting', 'distanceInCM', 20);
+	await pauseMilliseconds(pauseMS);
+   	tellIframe3Ms('run','acuity', 'BalmLight');
+	await doResponseChain(YES);
 	await pauseMilliseconds(pauseViewMS);
+	tellIframe3Ms('run','acuity', 'BalmLocation');
+	await doResponseChain();
+	await pauseMilliseconds(pauseViewMS);
+	tellIframe3Ms('run','acuity', 'BalmMotion');
+	await doResponseChain();
+}
 
-	addText(" ↓ cycle through BaLM tests.");
-    await testBalm();
-	addText(" ↑ cycle through BaLM tests: Done.\n");
 
-    addText(" ↓ Traverse all Presets");
+const testAllPresets = async () => { //console.info("testAllPresets");
+    await ensureHomeState();
     const allPresets = ["Standard Defaults", "AT@LeviLab", "BaLM₁₀", "BCM@Scheie", "CNS@Freiburg", "Color Equiluminance", "EndoArt01", "ESU", "ETCF", "Hyper@TUDo", "HYPERION", "Maculight", "ULV@Gensight", "Testing"];
     await oneStep3Ms('settingsPane', 0, ''); /* go to Settings */
     await pauseMilliseconds(pauseViewMS);
@@ -394,19 +323,72 @@ const testingSuite = async () => {
         await pauseMilliseconds(0.5 * pauseViewMS);
     }
     await oneStep3Ms('settingsPane', -1, ''); /* go to main */
-    await pauseMilliseconds(pauseViewMS);
-    addText("↑ All Presets traversed\n");
+}
 
-	addText("↓ Leave with `Standard Defaults`.");
-	response = await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
 
-	addText("\n Reload.");
+// run one sub-test with leading and trailing text info
+const doTextTestfunText = async (text, testfun) => {
+	addText(" ↓ " + text);
+    await ensureHomeState();
+	await testfun();
+	await pauseMilliseconds(pauseViewMS);
+	addText("↑ " + text + ": Done.\n");
+}
+
+
+const testingSuite = async () => {
+	const scrollBoxInstance=document.getElementById('scrollBox');
+	if (scrollBoxInstance != null) { /* toggling the textarea */
+		scrollBoxInstance.remove();
+		window.removeEventListener('message', listener4textarea);
+		return;
+	}
+	textarea.id = 'scrollBox';  textarea.readOnly = YES;
+	textarea.style.width = '800px';  textarea.style.height = '200px';
+	textarea.value = "";
+	document.getElementById('belowFractFrame').appendChild(textarea);
+	window.addEventListener('message', listener4textarea);
+	let response;
+
+	addText("TESTING SUITE STARTING\nDuration: ≈ 2 minutes.\n\nDo not press any key until “TESTING SUITE done”.\n\nFor early termination: reload.\n");
+	await doTextTestfunText("Test fullscreen", async () => {/* do this later, doesn't work any more ??? */
+		await oneStep3Ms('setFullScreen', YES, ''); await pauseMilliseconds(pauseViewMS * 1.5);
+		await oneStep3Ms('settingsPane', 0, ''); await pauseMilliseconds(pauseViewMS);
+		await oneStep3Ms('settingsPane', -1, ''); await pauseMilliseconds(pauseViewMS);
+		await oneStep3Ms('setFullScreen', NO, '');
+	});
+	await doTextTestfunText("Test `getVersion` etc.", async () => {
+		await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
+		let response = await oneStep3Ms('getSetting', 'distanceInCM', '');
+		if (response.m3 != 399) errorAlert();
+	});
+	await doTextTestfunText("Test `setSetting` etc.", async () => {
+		await oneStep3Ms('setSetting', 'Preset', 'Testing');
+		response = await oneStep3Ms('getSetting', 'distanceInCM', '');
+		if (response.m3 != 400) errorAlert();
+		await oneStep3Ms('setSetting', 'nTrials08', 1);
+		await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
+		tellIframe3Ms('run','acuity', 'Letters');
+	});
+	await doTextTestfunText("Test color stuff", testColorStuff);
+	await doTextTestfunText("Test multiple optotypes", testMultipleOptotypes);
+	await doTextTestfunText("'showIdAndEyeOnMain'", async () => {
+		await oneStep3Ms('setSetting', 'showIdAndEyeOnMain', YES); await pauseMilliseconds(2 * pauseViewMS);
+		await oneStep3Ms('setSetting', 'showIdAndEyeOnMain', NO);
+	});
+	await doTextTestfunText("Cycle through crowding possibilities", testCrowdingPossibilities);
+	await doTextTestfunText("`showRewardPicturesWhenDone`", testShowRewardPictures);
+	await doTextTestfunText("Noise embedding", async () => {
+		await oneStep3Ms('setSetting', 'embedInNoise', YES);  tellIframe3Ms('run','acuity', 'Letters');
+	});
+	await doTextTestfunText("Test 'line(s) of optotypes'", testLinesOfOptotypes);
+	await doTextTestfunText("Cycle through all panes of Settings", testAllSettings);
+	await doTextTestfunText("Cycle through grating shapes", testAllGratingShapes);
+	await doTextTestfunText("Cycle through BaLM tests", testBalm);
+	await doTextTestfunText("Traverse all Presets", testAllPresets);
+
+	addText("↓ Set `Standard Defaults` & Reload.");
+	await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
 	tellIframe3Ms('reload', '', '');
-
 	addText(" TESTING SUITE done.");
-
-	/*
-	response = await oneStep3Ms('xxxx', 'xxxx', 'xxxxxx');
-	*/
-
 }

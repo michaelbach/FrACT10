@@ -99,6 +99,17 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [TrialHistoryController initWithNumTrials: nTrials];
     responseWasCorrect = YES;  responseWasCorrectCumulative = YES;
     strokeSizeInPix = [MiscSpace pixelFromDegree: [Settings contrastOptotypeDiameter] / 60] / 5;
+
+    gTestDetails[td_dateTimeRunStart] = [CPDate date];
+    gTestDetails[td_dateRunStart] = [Misc date2YYYY_MM_DD: gTestDetails[td_dateTimeRunStart]];
+    gTestDetails[td_timeStart] = [Misc date2HH_MM_SS: gTestDetails[td_dateTimeRunStart]];
+    gTestDetails[td_decimalMark] = [Settings decimalMarkChar];
+    gTestDetails[td_ID] = [Settings patID];
+    gTestDetails[td_eyeCondition] = gEyeIndex2string[[Settings eyeIndex]];
+    gTestDetails[td_testName] = [Misc testNameGivenTestID: gCurrentTestID];
+    gTestDetails[td_eccentricityX] = [Settings eccentXInDeg];
+    gTestDetails[td_eccentricityY] = [Settings eccentYInDeg];
+
     [self trialStart];
 }
 
@@ -138,6 +149,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     const tIsi = gBalmTestIDs.includes(gCurrentTestID) ? [Settings balmIsiMillisecs] : [Settings timeoutIsiMillisecs];
     timerIsi = [CPTimer scheduledTimerWithTimeInterval: tIsi / 1000 target:self selector:@selector(onTimeoutIsi:) userInfo:nil repeats:NO];
     state = kStateDrawBack; [[gAppController.selfWindow contentView] setNeedsDisplay: YES];
+    gTestDetails[td_dateTimeTrialStart] = [CPDate date];
 }
 - (void) onTimeoutIsi: (CPTimer) timer { //CPLog("onTimeoutIsi");
     //now we can draw the stimulus
@@ -423,7 +435,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     CGContextSetFillColor(cgc, gColorBack); //need to clear for ISI to work
     CGContextFillRect(cgc, [gAppController.selfWindow frame]);
 
-    [TrialHistoryController setCorrect: responseWasCorrect]; //placed here so reached by "onTimeoutAutoResponse"
+    [TrialHistoryController setIsCorrect: responseWasCorrect]; //placed here so reached by "onTimeoutAutoResponse"
     [thresholder enterTrialOutcomeWithAppliedStim: [self stimThresholderunitsFromDeviceunits: stimStrengthInDeviceunits] wasCorrect: responseWasCorrect];
     switch ([Settings auditoryFeedback4trialIndex]) { //case 0: nothing
         case kauditoryFeedback4trialIndexAlways:
@@ -474,25 +486,29 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             //the below causes a delay of < 1 s with nSamples=10,000
             const historyResults = [TrialHistoryController composeInfo4CI];
             const ciResults = [MDBDispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: gNSamplesCI95];
-            const halfCI95 = (ciResults.CI0975 - ciResults.CI0025) / 2;
-            ci95String = " ± " + [Misc stringFromNumber: halfCI95 decimals: 2 localised: YES];
+            gTestDetails[td_halfCI95] = (ciResults.CI0975 - ciResults.CI0025) / 2;
+            ci95String = " ± " + [Misc stringFromNumber: gTestDetails[td_halfCI95] decimals: 2 localised: YES];
             [gAppController setResultString: [self acuityComposeResultString]]; //this will add CI95 info
-            _currentTestResultExportString += tab + "halfCI95" + tab + [Misc stringFromNumber: halfCI95 decimals: 3 localised: YES];
+            _currentTestResultExportString += tab + "halfCI95" + tab + [Misc stringFromNumber: gTestDetails[td_halfCI95] decimals: 3 localised: YES];
         }
     }
     if ([Settings isAcuityColor]) {
         if ([self isAcuityOptotype] && (![self isAcuityTAO])) {
             _currentTestResultExportString += tab + "colorForeBack" + tab + [gColorFore hexString] + tab + [gColorBack hexString];
+            gTestDetails[td_colorFore] = gColorFore;
+            gTestDetails[td_colorBack] = gColorBack;
         }
     }
     if ([Settings embedInNoise]) {
         if (([self isAcuityOptotype] || [self isContrastOptotype]) && (![self isAcuityTAO])) {
             _currentTestResultExportString += tab + "noiseContrast" + tab + [Misc stringFromInteger: [Settings noiseContrast]];
+            gTestDetails[td_noiseContrast] = [Settings noiseContrast];
         }
     }
 
     if (gCurrentTestID === kTestContrastG) {
         _currentTestResultExportString += tab + "gratingShape" + tab + [Settings gratingShapeIndex];
+        gTestDetails[td_gratingShape] = [Settings gratingShapeIndex];
     }
 
     [gAppController setCurrentTestResultExportString: _currentTestResultExportString + crlf];
@@ -569,14 +585,14 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
  Initial part of the export string, used by acuity & contrast…
  */
 - (CPString) generalComposeExportString { //console.info("FractController>generalComposeExportString");
-    const now = [CPDate date];
+    const nowDateTime = [CPDate date];
     let s = "vsExportFormat" + tab + gVersionOfExportFormat;
     s += tab + "vsFrACT" + tab + gVersionDateOfFrACT;
     s += tab + "decimalMark" + tab + [Settings decimalMarkChar];
     s += tab + "ID" + tab + [Settings patID];
     s += tab + "eyeCondition" + tab + gEyeIndex2string[[Settings eyeIndex]];
-    s += tab + "date" + tab + [Misc date2YYYY_MM_DD: now];
-    s += tab + "time" + tab + [Misc date2HH_MM_SS: now];
+    s += tab + "date" + tab + [Misc date2YYYY_MM_DD: nowDateTime];
+    s += tab + "time" + tab + [Misc date2HH_MM_SS: nowDateTime];
     s += tab + "test" + tab + [Misc testNameGivenTestID: gCurrentTestID];
     return s;
 }

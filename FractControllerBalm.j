@@ -98,10 +98,10 @@
 
 
 - (float) resultValue4Export { //console.info("FractControllerBalm>resultValue4Export");
-    const total = [TrialHistoryController nCorrect] + [TrialHistoryController nIncorrect];
-    if ([TrialHistoryController nTotal] !== total)
+    const total = gTestDetails[td_nCorrect] + gTestDetails[td_nIncorrect];
+    if (gTestDetails[td_nTrials] !== total)
         throw new Error("FractControllerBalm: corret+incorrect ≠ total.");
-    const hitRateInPercent = 100 * [TrialHistoryController nCorrect] / total;
+    const hitRateInPercent = 100 * gTestDetails[td_nCorrect] / total;
     return hitRateInPercent;
 }
 
