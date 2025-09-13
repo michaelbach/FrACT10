@@ -60,7 +60,7 @@
     [MDB2plot p2init];
     if (!gTestingPlotting) {
         testHistory = [TrialHistoryController trialHistoryRecord];
-        testHistoryFinalValue = gTestDetailsKeys[td_resultValue];
+        testHistoryFinalValue = gTestDetails[td_resultValue];
     }
     const nTrials = testHistory.length;
     const yMin = 3, yMax = -1.05, yHorAxis = yMin; //note inverted axis

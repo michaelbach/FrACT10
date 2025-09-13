@@ -22,6 +22,7 @@
     int responded;
     BOOL isCorrect;
     // end fields
+    CPDate dateStart;
     int currentIndex, nTrialsLocal;
     CPString resultsHistoryString;
 }
@@ -62,6 +63,7 @@
     currentIndex = 0;
     nTrialsLocal = nTrials;
     [self setResultsHistoryString: ""];
+    dateStart = [CPDate date];
 }
 
 
@@ -73,7 +75,7 @@
     trialHistoryRecord[currentIndex].responded = responded;
     trialHistoryRecord[currentIndex].isCorrect = isCorrect;
     const tIsi = gBalmTestIDs.includes(gCurrentTestID) ? [Settings balmIsiMillisecs] : [Settings timeoutIsiMillisecs];
-    trialHistoryRecord[currentIndex].reactionTimeInMs = Math.round(-[gTestDetails[td_dateTimeTrialStart] timeIntervalSinceNow] * 1000.0) - tIsi;
+    trialHistoryRecord[currentIndex].reactionTimeInMs = Math.round(-[dateStart timeIntervalSinceNow] * 1000.0) - tIsi;
     currentIndex++;
     gTestDetails[td_nTrials] += 1; //calculation for BaLM
     if (isCorrect) gTestDetails[td_nCorrect] += 1;

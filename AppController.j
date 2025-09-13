@@ -382,7 +382,7 @@
     //allow 1 eventloop
     const UI_UPDATE_DELAY = 1; // 1 millisecond is enough
     setTimeout(() => {[[selfWindow contentView] setNeedsDisplay: YES];}, UI_UPDATE_DELAY);
-    console.info(gTestDetails);
+    //console.info(gTestDetails);
 }
 
 
@@ -445,9 +445,7 @@
       .split('\n') //split rows by newline
       .map(row => row.split('\t')); //split columns by tab
     doc.autoTable({body: tableData, theme: 'grid', styles: styles});
-
-    const dateStart = [TrialHistoryController dateRunStart];
-    const filename = "FrACT_"+ [Misc date2YYYY_MM_DD: dateStart] + "_" + [Misc date2HH__MM: dateStart] + ".pdf";
+    const filename = "FrACT_"+ gTestDetails[td_dateOfRunStart] + "_" + [Misc date2HHdashMM: gTestDetails[td_dateTimeOfRunStart]] + ".pdf";
     doc.save(filename); //https://github.com/eligrey/FileSaver.js
 }
 

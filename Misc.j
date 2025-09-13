@@ -185,6 +185,9 @@ function _pause(ms) { //console.info("Misc>_pause");
 + (CPString) date2HH__MM: (CPDate) theDate { //can't use colon in Mac filenames, so "_"
     return [CPString stringWithFormat:@"%02d_%02d", theDate.getHours(), theDate.getMinutes()];
 }
++ (CPString) date2HHdashMM: (CPDate) theDate { //can't use colon in Mac filenames, so "-" (dash)
+    return [CPString stringWithFormat:@"%02d-%02d", theDate.getHours(), theDate.getMinutes()];
+}
 
 
 /**

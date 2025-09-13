@@ -100,9 +100,10 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     responseWasCorrect = YES;  responseWasCorrectCumulative = YES;
     strokeSizeInPix = [MiscSpace pixelFromDegree: [Settings contrastOptotypeDiameter] / 60] / 5;
 
-    gTestDetails[td_dateTimeRunStart] = [CPDate date];
-    gTestDetails[td_dateRunStart] = [Misc date2YYYY_MM_DD: gTestDetails[td_dateTimeRunStart]];
-    gTestDetails[td_timeStart] = [Misc date2HH_MM_SS: gTestDetails[td_dateTimeRunStart]];
+    const dateTime = [CPDate date];
+    gTestDetails[td_dateTimeOfRunStart] = dateTime;
+    gTestDetails[td_dateOfRunStart] = [Misc date2YYYY_MM_DD: dateTime];
+    gTestDetails[td_timeOfRunStart] = [Misc date2HH_MM_SS: dateTime];
     gTestDetails[td_decimalMark] = [Settings decimalMarkChar];
     gTestDetails[td_ID] = [Settings patID];
     gTestDetails[td_eyeCondition] = gEyeIndex2string[[Settings eyeIndex]];
@@ -149,7 +150,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     const tIsi = gBalmTestIDs.includes(gCurrentTestID) ? [Settings balmIsiMillisecs] : [Settings timeoutIsiMillisecs];
     timerIsi = [CPTimer scheduledTimerWithTimeInterval: tIsi / 1000 target:self selector:@selector(onTimeoutIsi:) userInfo:nil repeats:NO];
     state = kStateDrawBack; [[gAppController.selfWindow contentView] setNeedsDisplay: YES];
-    gTestDetails[td_dateTimeTrialStart] = [CPDate date];
 }
 - (void) onTimeoutIsi: (CPTimer) timer { //CPLog("onTimeoutIsi");
     //now we can draw the stimulus

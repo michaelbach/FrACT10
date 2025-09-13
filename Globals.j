@@ -106,10 +106,9 @@ td_vsFrACT = "vsFrACT";
 td_decimalMark = "decimalMark";
 td_ID = "ID";
 td_eyeCondition = "eyeCondition";
-td_dateTimeRunStart = "dateTimeRunStart"
-td_dateTimeTrialStart = "dateTimeRunStart"
-td_dateRunStart = "dateRunStart";
-td_timeStart = "timeStart";
+td_dateTimeOfRunStart = "dateTimeOfRunStart"
+td_dateOfRunStart = "dateOfRunStart"
+td_timeOfRunStart = "timeOfRunStart";
 td_testName = "testName"
 td_resultValue = "resultValue";
 td_resultUnit = "resultUnit";
@@ -134,9 +133,9 @@ td_cpdMin = "cpdMin";
 td_cpdMax = "cpdMax";
 td_hitRate = "hitRate";
 gTestDetails = {};
-gTestDetailsKeys = [
+/*gTestDetailsKeys = [
     td_vsExpFormat, td_vsFrACT, td_decimalMark, td_ID, td_eyeCondition,
-    td_dateTimeRunStart, td_dateRunStart, td_dateTimeTrialStart, td_timeStart, td_testName, td_resultValue, td_resultUnit,
+    td_dateTimeOfRunStart, td_timeOfRunStart, td_timeOfRunStart, td_testName, td_resultValue, td_resultUnit,
     td_distanceInCm, td_contrastWeber, td_resultUnit2,
     td_nTrials, td_nCorrect, td_nIncorrect,
     // optionals
@@ -144,6 +143,6 @@ gTestDetailsKeys = [
     td_noiseContrast, td_gratingShape,
     td_crowdingType, td_eccentricityX, td_eccentricityY,
     td_spatFreq, td_cpdMin, td_cpdMax,
-    td_hitRate];
+    td_hitRate];*/
 gTestDetails[td_vsExpFormat] = gVersionOfExportFormat;
 gTestDetails[td_vsFrACT] = "FrACT10·" + gVersionStringOfFract + "·" + gVersionDateOfFrACT;

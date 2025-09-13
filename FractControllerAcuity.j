@@ -194,7 +194,7 @@
 
 - (float) acuityResultValue4Export {
     const tmp = [self acuityResultInLogMAR];
-    gTestDetailsKeys[td_resultValue] = tmp;
+    gTestDetails[td_resultValue] = tmp;
     return [tmp];
 }
 
