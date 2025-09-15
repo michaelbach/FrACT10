@@ -290,10 +290,13 @@ const specialBcmStepsize = 0.1;
     _exportString += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
     _exportString += tab + "crowding" + tab + 0; //does not apply, but let's not NaN this
     if (isGratingColor) {
-        _exportString += tab + "colorForeBack" + tab + [gColorFore hexString] + tab + [gColorBack hexString];
+        _exportString += tab + "colorFore" + tab + [gColorFore hexString];
+        _exportString += tab + "colorBack" + tab + [gColorBack hexString];
+        gTestDetails[td_colorFore] = gColorFore;  gTestDetails[td_colorBack] = gColorBack;
         if ([self isAcuityGrating]) {
             _exportString += tab + "cpdMin" + tab + [Misc stringFromNumber: [Settings gratingCPDmin] decimals: 3 localised: YES];
             _exportString += tab + "cpdMax" + tab + [Misc stringFromNumber: [Settings gratingCPDmax] decimals: 2 localised: YES];
+            gTestDetails[td_cpdMin] = [Settings gratingCPDmin]; gTestDetails[td_cpdMax] = [Settings gratingCPDmax];
         }
     }
     return [self generalComposeExportStringFinalize: _exportString];

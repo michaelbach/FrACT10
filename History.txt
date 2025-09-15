@@ -1,5 +1,6 @@
 # History
 
+2025-09-15 improve: split export field colorForeBack → 2 separate name-value pairs (fix issue #43)
 2025-09-13 improve: more work on `gTestDetails` all over the place, aiming to replace `resultExportString`
 2025-09-11 improve: made many GUI entries selectable, so their text can be copied.
 2025-09-10 improve: a little more feedback for the unittests;

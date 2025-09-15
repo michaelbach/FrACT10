@@ -494,9 +494,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     }
     if ([Settings isAcuityColor]) {
         if ([self isAcuityOptotype] && (![self isAcuityTAO])) {
-            _currentTestResultExportString += tab + "colorForeBack" + tab + [gColorFore hexString] + tab + [gColorBack hexString];
-            gTestDetails[td_colorFore] = gColorFore;
-            gTestDetails[td_colorBack] = gColorBack;
+            _currentTestResultExportString += tab + "colorFore" + tab + [gColorFore hexString];
+            _currentTestResultExportString += tab + "colorBack" + tab + [gColorBack hexString];
+            gTestDetails[td_colorFore] = gColorFore;  gTestDetails[td_colorBack] = gColorBack;
         }
     }
     if ([Settings embedInNoise]) {
