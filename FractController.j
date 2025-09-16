@@ -599,8 +599,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 //in order to not mangle parameter sequence I'm tucking this addition at the end
 //to be used for optional conditions
 - (CPString) generalComposeExportStringFinalize: (CPString) s {
-    if ([Settings eccentXInDeg] !== 0) {
+    if (([Settings eccentXInDeg] !== 0) || ([Settings eccentYInDeg] !== 0)) {
         s += tab + "eccentricityX" + tab + [Misc stringFromNumber: [Settings eccentXInDeg] decimals: 1 localised: YES];
+        s += tab + "eccentricityY" + tab + [Misc stringFromNumber: [Settings eccentYInDeg] decimals: 1 localised: YES];
     }
     return s;
 }
