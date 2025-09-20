@@ -82,7 +82,7 @@
                                 directionInRow = [rowAlternatives nextAlternative];
                             switch (gCurrentTestID) {
                                 case kTestAcuityLett:
-                                    [optotypes drawLetterWithStriokeInPx: stimStrengthInDeviceunits letterNumber: directionInRow];  break;
+                                    [optotypes drawLetterNr: directionInRow withStrokeInPx: stimStrengthInDeviceunits];  break;
                                 case kTestAcuityE:
                                     [optotypes tumblingEWithStrokeInPx: stimStrengthInDeviceunits direction: directionInRow];  break;
                                 case kTestAcuityTAO:

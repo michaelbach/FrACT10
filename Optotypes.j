@@ -211,7 +211,7 @@ Optotypes.j
 }
 
 
-- (void) drawLetterWithStriokeInPx: (float) stroke letterNumber: (int) letterNumber { //console.info("Optotypes>drawLetterWithStriokeInPx")
+- (void) drawLetterNr:(int) letterNumber withStrokeInPx: (float) stroke { //console.info("Optotypes>drawLetterWithStrokeInPx")
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSetFillColor(cgc, gColorFore);
     switch (letterNumber) { //"CDHKNORSVZ"

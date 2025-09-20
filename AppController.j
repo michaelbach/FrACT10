@@ -133,7 +133,7 @@
 
 #pragma mark
 /** runs after "init" above */
-- (void) applicationDidFinishLaunching: (CPNotification) aNotification { console.info("AppController>…Launching");
+- (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>…Launching");
     currentFractController = null; //making sure, is used to check whether inRun
     [Misc randomizeRandomGenerator];
     selfWindow = [self window];

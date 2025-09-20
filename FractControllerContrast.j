@@ -131,7 +131,7 @@ Created by Bach on 2020-09-02
                 const frameSizeX2 = 2 * distance4bars, frameSize = distance4bars;
                 CGContextStrokeRect(cgc, CGRectMake(-frameSize, -frameSize, frameSizeX2, frameSizeX2));
                 break;
-            case 6: //row of optotypes
+            case 6: //console.info("row of optotypes");
                 let rowAlternatives = [[AlternativesGenerator alloc] initWithNumAlternatives: nAlternatives andNTrials: 5 obliqueOnly: NO];
                 for (let i = -2; i <= 2; i++) {
                     const tempX = i * distance4optotypes;
@@ -141,12 +141,10 @@ Created by Bach on 2020-09-02
                         if (directionInRow === [alternativesGenerator currentAlternative])
                             directionInRow = [rowAlternatives nextAlternative];
                         switch (gCurrentTestID) {
-                            case kTestAcuityLett:
-                                [optotypes drawLetterWithStriokeInPx: strokeSizeInPix letterNumber: directionInRow];  break;
-                            case kTestAcuityE:
+                            case kTestContrastLett:
+                                [optotypes drawLetterNr: directionInRow withStrokeInPx: strokeSizeInPix];  break;
+                            case kTestContrastE:
                                 [optotypes tumblingEWithStrokeInPx: strokeSizeInPix direction: directionInRow];  break;
-                            case kTestAcuityTAO:
-                                [gAppController.taoController drawTaoWithStrokeInPx: strokeSizeInPix taoNumber: directionInRow];  break;
                             default:
                                 [optotypes drawLandoltWithStrokeInPx: strokeSizeInPix landoltDirection: directionInRow];
                         }

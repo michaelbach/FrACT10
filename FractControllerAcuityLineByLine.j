@@ -102,7 +102,7 @@ Created by mb on 2021-12-21.
         }
         usedAlternativesArray.push(currentAlternative);
         switch([Settings testOnLineByLineIndex]) {
-            case 1: [optotypes drawLetterWithStriokeInPx: locStimStrenInDeviceunits letterNumber: currentAlternative];  break;
+            case 1: [optotypes drawLetterNr: currentAlternative withStrokeInPx: locStimStrenInDeviceunits];  break;
             case 2: [optotypes drawLandoltWithStrokeInPx: locStimStrenInDeviceunits landoltDirection: currentAlternative];  break;
             default: console.log("Line-by-line: unsupported optotype-id: ", [Settings testOnLineByLineIndex]);
         }
