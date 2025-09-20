@@ -219,7 +219,7 @@ const testMultipleOptotypes = async () => {
 }
 
 
-const testCrowdingPossibilities = async () => {
+const testAcuityCrowdingPossibilities = async () => {
 	await oneStep3Ms('setSetting', 'nTrials08', 1);
 	await oneStep3Ms('setSetting', 'nTrials04', 1);
 	await oneStep3Ms('setSetting', 'nTrials02', 1);
@@ -230,6 +230,24 @@ const testCrowdingPossibilities = async () => {
 		tellIframe3Ms('run','acuity', 'Letters');
 		await pauseMilliseconds(pauseViewMS);
 	}
+}
+
+
+const testContrastCrowding = async () => {
+	await oneStep3Ms('setSetting', 'Preset', 'Testing');
+	await oneStep3Ms('setSetting', 'distanceInCM', 150);//so enough fit on screen
+	await oneStep3Ms('setSetting', 'nTrials08', 1);
+	await oneStep3Ms('setSetting', 'nTrials04', 1);
+	await oneStep3Ms('setSetting', 'nTrials02', 1);
+    await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
+    await oneStep3Ms('setSetting', 'contrastCrowdingType', 6);
+    await oneStep3Ms('setSetting', 'enableTouchControls', NO);
+	tellIframe3Ms('run','contrast', 'Letters');
+	await pauseMilliseconds(pauseViewMS);
+	tellIframe3Ms('run','contrast', 'LandoltC');
+	await pauseMilliseconds(pauseViewMS);
+	tellIframe3Ms('run','contrast', 'TumblingE');
+	await pauseMilliseconds(pauseViewMS);
 }
 
 
@@ -376,7 +394,8 @@ const testingSuite = async () => {
 		await oneStep3Ms('setSetting', 'showIdAndEyeOnMain', YES); await pauseMilliseconds(2 * pauseViewMS);
 		await oneStep3Ms('setSetting', 'showIdAndEyeOnMain', NO);
 	});
-	await doTextTestfunText("Cycle through crowding possibilities", testCrowdingPossibilities);
+	await doTextTestfunText("Cycle through acuity crowding possibilities", testAcuityCrowdingPossibilities);
+    await doTextTestfunText("Test Contrast Crowding", testContrastCrowding);
 	await doTextTestfunText("`showRewardPicturesWhenDone`", testShowRewardPictures);
 	await doTextTestfunText("Noise embedding", async () => {
 		await oneStep3Ms('setSetting', 'embedInNoise', YES);  tellIframe3Ms('run','acuity', 'Letters');
