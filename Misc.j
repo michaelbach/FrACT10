@@ -352,6 +352,24 @@ function _pause(ms) { //console.info("Misc>_pause");
 }
 
 
+/**
+ Unit tests to the degree possible
+ */
++ (BOOL) unittest {
+    let isSuccess = YES;
+    console.log("\nMisc>Testing rounding of floating point numbers")
+    for (let val0 of [0.8049, 0.80499, 0.8050, 0.80501, 0.8051]) {
+        let val1 = [self stringFromNumber: val0 decimals: 1 localised: NO];
+        let val2 = [self stringFromNumber: val0 decimals: 2 localised: NO];
+        let val3 = [self stringFromNumber: val0 decimals: 3 localised: NO];
+        console.log(val0, val1, val2, val3);
+    }
+    isSuccess &&= [self stringFromNumber: 0.8049 decimals: 2 localised: NO] === "0.80";
+    isSuccess &&= [self stringFromNumber: 0.8051 decimals: 2 localised: NO] === "0.81";
+    return isSuccess;
+}
+
+
 /* /////////////////////////////////////OLD, not in use (yet) */
 
 /*

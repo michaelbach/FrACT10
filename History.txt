@@ -1,5 +1,6 @@
 # History
 
+2025-09-22 improve: add test for number rounding, unittesting with console.log
 2025-09-16 fix: eccentricity values are exported when either hor & ver ≠ 0
 2025-09-15 improve: split export field colorForeBack → 2 separate name-value pairs (fix issue #43)
 2025-09-13 improve: more work on `gTestDetails` all over the place, aiming to replace `resultExportString`
@@ -506,3 +507,9 @@ all 10 letters in letters
  devHistory = [];
  devHistory.push(["2022-09-02", 'increase max value of `contrastOptotypeDiameter` from 1500 to 2500']);
  devHistory.push(["2022-09-01", 'new compiler allows "let" and "const", begin to use them']);*/
+////////////////////////////////////
+# Ideas
++ TAO method with new format
++ dito for other Optotype calls
++ speed up dithering
++ simplify testingSuite

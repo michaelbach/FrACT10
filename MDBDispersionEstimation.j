@@ -125,9 +125,10 @@ Logistic function for nAFC tasks, x on a linear 0…1 scale
 x=0: below threshold, =guess; x=1: above threshold, =1
  */
 + (BOOL) unittestLogisticFun {
-    for (let i = 0; i <= 10; i++) {
-        const v = i/10, f = parseFloat(logisticFun(0.125, 0.5, v).toFixed(3));
-        console.info("LogisticFun:", v, f);
+    console.log("\nMDBDispersionEstimation>unittestLogisticFun")
+    for (let v of [0, 0.5, 1]) {
+        const f = parseFloat(logisticFun(0.125, 0.5, v).toFixed(3));
+        console.log(v, f);
     }
     return YES;
 }

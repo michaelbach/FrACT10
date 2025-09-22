@@ -204,6 +204,7 @@
 
 
 + (void) manageUnittests {
+    console.log("\nControlDispatcher>unittest")
     switch(m2) {
         case "rewardImages": case "RewardImages": //ignore m3
             [gAppController.rewardsController unittest];

@@ -492,6 +492,8 @@
             [self balmSwitch];  break;
         case "U":
             let s = "", success = YES;
+            success &&= [Misc unittest];
+            s += success ? "+" : "-";  [self setResultString: s];
             success &&= [MiscSpace unittest];
             s += success ? "+" : "-";  [self setResultString: s];
             success &&= [MiscLight unittest];
