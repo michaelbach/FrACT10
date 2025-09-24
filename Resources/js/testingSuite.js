@@ -303,12 +303,26 @@ const testAllGratingShapes = async () => { //console.info("testAllGratingShapes"
 	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
 	await oneStep3Ms('setSetting', 'nTrials02', 1);
 	await oneStep3Ms('setSetting', 'nTrials04', 1);
+    await oneStep3Ms('setSetting', 'enableTouchControls', NO);
 	const kGratingShapeMax = 3; /* 3 */
 	for (let iGratingType = 0; iGratingType <= kGratingShapeMax; iGratingType++) {
 		await oneStep3Ms('setSetting', 'gratingShapeIndex', iGratingType);
 		tellIframe3Ms('run','contrast', 'Grating');
 		await pauseMilliseconds(pauseViewMS);
 	}
+}
+
+
+const testSafariBugWithClippedGrating = async () => { //console.info("testBalm");
+    await oneStep3Ms('setSetting', 'Preset', 'Testing');
+    await oneStep3Ms('setSetting', 'isGratingMasked', YES);
+    await oneStep3Ms('setSetting', 'nTrials04', 1);
+    await oneStep3Ms('setSetting', 'gratingShapeIndex', 1); // sine
+    await oneStep3Ms('setSetting', 'gratingDiaInDeg', 1.5);
+    await oneStep3Ms('setSetting', 'enableTouchControls', NO);
+    tellIframe3Ms('run','contrast', 'Grating');
+    await pauseMilliseconds(pauseViewMS);
+    await pauseMilliseconds(pauseViewMS);
 }
 
 
@@ -403,6 +417,7 @@ const testingSuite = async () => {
 	await doTextTestfunText("Test 'line(s) of optotypes'", testLinesOfOptotypes);
 	await doTextTestfunText("Cycle through all panes of Settings", testAllSettings);
 	await doTextTestfunText("Cycle through grating shapes", testAllGratingShapes);
+    await doTextTestfunText("test Safari bug with clipped grating", testSafariBugWithClippedGrating);
 	await doTextTestfunText("Cycle through BaLM tests", testBalm);
 	await doTextTestfunText("Traverse all Presets", testAllPresets);
 

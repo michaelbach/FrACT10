@@ -1,5 +1,7 @@
 # History
 
+2025-09-24 revert to former dither code hoping to fix Marie's strange artifact line;
+    add Safari's grating bug to testingSuite
 2025-09-22 improve: add test for number rounding, unittesting with console.log
 2025-09-16 fix: eccentricity values are exported when either hor & ver ≠ 0
 2025-09-15 improve: split export field colorForeBack → 2 separate name-value pairs (fix issue #43)
