@@ -25,6 +25,11 @@ const textarea = document.createElement('textarea');
 const listener4textarea = (e) => {addText(JSON.stringify(e.data));};
 
 
+const errorAlert = () => {
+	alert("An error occured in `testingSuite`")
+}
+
+
 const tellIframe = (message) => {
 	document.getElementById('fractFrame').contentWindow.postMessage(message);
 }
@@ -92,16 +97,18 @@ const ensureHomeState = async () => {
 }
 
 
+/* exported doDemoRun */
 const doDemoRun = async () => {
     await ensureHomeState();
 	await oneStep3Ms('setSetting', 'preset', 'Testing');
     await oneStep3Ms('setSetting', 'autoRunIndex', 2);
     await oneStep3Ms('setSetting', 'nTrials08', 18);
-    await oneStep3Ms('run', 'Acuity', 'Letters', 20000); /* long delay for entire run*/
+    await oneStep3Ms('run', 'Acuity', 'Letters', 20000); // long delay for entire run
     await oneStep3Ms('setSetting', 'preset', 'Standard Defaults');
 }
 
 
+/* exported demoRunAndRestore */
 const demoRunAndRestore = async () => {
     await ensureHomeState();
 	let response = await oneStep3Ms('getSetting', 'distanceInCM', '');
@@ -109,7 +116,7 @@ const demoRunAndRestore = async () => {
 	await oneStep3Ms('setSetting', 'distanceInCM', 400);
 
 	response = await oneStep3Ms('getSetting', 'calBarLengthInMM', '');
-	const calBarLengthInMM = response.m3; /* store for later restore */
+	const calBarLengthInMM = response.m3; // store for later restore
 	await oneStep3Ms('setSetting', 'calBarLengthInMM', 170);
 
 	response = await oneStep3Ms('getSetting', 'nTrials08', '');
@@ -124,10 +131,10 @@ const demoRunAndRestore = async () => {
 	const autoRunIndex = response.m3;
 	await oneStep3Ms('setSetting', 'autoRunIndex', 2);
 
-	response = await oneStep3Ms('run', 'Acuity', 'Letters', 20000); /* long delay for entire run */
-	const runSuccess = response.success;
+	response = await oneStep3Ms('run', 'Acuity', 'Letters', 20000); // long delay for entire run
+	//const runSuccess = response.success;
 
-	/* restore settings */
+	// restore settings
 	await oneStep3Ms('setSetting', 'distanceInCM', distanceInCM);
 	await oneStep3Ms('setSetting', 'calBarLengthInMM', calBarLengthInMM);
 	await oneStep3Ms('setSetting', 'nTrials08', nTrials08);
@@ -169,6 +176,7 @@ const doResponseChain = async (invertedKeys = NO, delay = pauseMS) => {
 }
 
 
+/* runRespondingCorrectly */
 const runRespondingCorrectly = async () => {
 	await postToIframe('setSetting', 'preset', 'Testing');
 	tellIframe3Ms('run', 'acuity', 'LandoltC');
@@ -368,6 +376,7 @@ const doTextTestfunText = async (text, testfun) => {
 }
 
 
+/* testingSuite */
 const testingSuite = async () => {
 	const scrollBoxInstance=document.getElementById('scrollBox');
 	if (scrollBoxInstance != null) { /* toggling the textarea */
