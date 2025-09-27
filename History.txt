@@ -1,5 +1,6 @@
 # History
 
+2025-09-27 enhance: add PDF output to AllTrialsPlot
 2025-09-24 revert to former dither code hoping to fix Marie's strange artifact line;
     add Safari's grating bug to testingSuite
 2025-09-22 improve: add test for number rounding, unittesting with console.log

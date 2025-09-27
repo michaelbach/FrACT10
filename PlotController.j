@@ -138,19 +138,51 @@
 @implementation PlotController: CPWindowController {
     @outlet CPPanel plotPanel;
     @outlet PlotView plotView1;
-    CPString s;
 }
 
 
-- (IBAction) buttonPlotOpen_action: (id) sender { //CPLog("AboutAndHelpController>buttonPlotOpen_action");
+- (IBAction) buttonPlotOpen_action: (id) sender { //CPLog("PlotView>buttonPlotOpen_action");
     [plotPanel setMovable: NO];
     [Misc centerWindowOrPanel: plotPanel];
     [plotPanel makeKeyAndOrderFront: self];
 }
 
 
-- (IBAction) buttonPlotClose_action: (id) sender { //CPLog("AboutAndHelpController>buttonPlotClose_action");
+- (IBAction) buttonPlotClose_action: (id) sender { //CPLog("PlotView>buttonPlotClose_action");
     [plotPanel close];
+}
+
+
+- (IBAction) buttonPlotToPDF_action: (id) sender { //CPLog("PlotView>buttonPlotToPDF_action");
+    const canvas = [MDB2plot getCGC].DOMElement;
+    const imgData = canvas.toDataURL("image/png", 1.0);
+
+    // Default is 'pt' units and 'a4' size
+    const doc = new jspdf.jsPDF({
+        title: 'FrACT10 RESULT PLOT',
+        author: 'bach@uni-freiburg.de',
+        keywords: 'visual acuity',
+        creator: "FrACT10_" + gVersionStringOfFract + "·" + gVersionDateOfFrACT,
+        orientation: 'portrait', unit: 'pt', format: 'a4'
+    });
+
+    doc.setFontSize(10);  doc.setFont("Courier", "bold");
+    let s = "FrACT10 RESULT PLOT" + crlf + crlf;
+    s += "Date: " + gTestDetails[td_dateOfRunStart] + crlf;
+    s += "Time: " + [Misc date2HH_MM: gTestDetails[td_dateTimeOfRunStart]] + crlf;
+    doc.text(s, 15, 10);
+    
+    // Scale image to fit (keeping aspect ratio)
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const canvasWidth = canvas.width, canvasHeight = canvas.height;
+    const ratio = 0.8 * Math.min(pageWidth / canvasWidth, pageHeight / canvasHeight);
+    const imgWidth = canvasWidth * ratio, imgHeight = canvasHeight * ratio;
+    const x = (pageWidth - imgWidth) / 2, y = (pageHeight - imgHeight) / 2; //Center it
+    doc.addImage(imgData, "PNG", x, y, imgWidth, imgHeight);
+
+    const filename = "FrACT_"+ gTestDetails[td_dateOfRunStart] + "_" + [Misc date2HHdashMM: gTestDetails[td_dateTimeOfRunStart]] + "_AllTrialsPlot.pdf";
+    doc.save(filename);
 }
 
 

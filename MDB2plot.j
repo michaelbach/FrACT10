@@ -159,6 +159,12 @@
 }
 
 
+//Get the plot's graphics context (needed for printing to PDF)
++ (id) getCGC {
+    return cgcLocal;
+}
+
+
 + (void) p2moveToX: (float) x y: (float) y { //console.info("p2moveToX");
     [self moveToX: [self p2tx: x] y: [self p2ty: y]];
 }
