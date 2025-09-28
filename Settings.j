@@ -21,156 +21,123 @@ Created by mb on July 15, 2015.
 @import "MiscSpace.j"
 
 
-@implementation Settings: CPUserDefaultsController
+@implementation Settings: CPUserDefaultsController {
+    id settingsNamesAndTypes;
+}
 
 
 + (void) initialize {
     [super initialize];  [Misc CPLogSetup];
-    sharedSettingsInstance = nil; // not really necessary
-
-    //    [self addBoolAccessors4Key: ""];
-    //    [self addIntAccessors4Key: ""];
-    //    [self addFloatAccessors4Key: ""];
-    //    [self addStringAccessors4Key: ""];
-
-    //above or for all setting tabs
-    [self addStringAccessors4Key: "presetName"];
-    [self addIntAccessors4Key: "autoRunIndex"];
-    [self addStringAccessors4Key: "dateOfSettingsVersion"];
-    [self addBoolAccessors4Key: "showIdAndEyeOnMain"];
-
-    //settings are roughly arranged by the Settings tab where they appear
-    //General tab
-    [self addIntAccessors4Key: "nTrials02"];
-    [self addIntAccessors4Key: "nTrials04"];
-    [self addIntAccessors4Key: "nTrials08"];
-    [self addIntAccessors4Key: "nAlternativesIndex"];
-    [self addFloatAccessors4Key: "distanceInCM"];
-    [self addStringAccessors4Key: "distanceInInchLocalisedString"];
-    [self addFloatAccessors4Key: "calBarLengthInMM"];
-    [self addBoolAccessors4Key: "showResponseInfoAtStart"];
-    [self addIntAccessors4Key: "testOnFive"];
-    [self addFloatAccessors4Key: "eccentXInDeg"];
-    [self addFloatAccessors4Key: "eccentYInDeg"];
-    [self addBoolAccessors4Key: "eccentShowCenterFixMark"];
-    [self addBoolAccessors4Key: "eccentRandomizeX"];
-    [self addBoolAccessors4Key: "eccentRandomizeY"];
-    [self addBoolAccessors4Key: "respondsToMobileOrientation"];
-    [self addBoolAccessors4Key: "autoFullScreen"];
-    [self addIntAccessors4Key: "displayTransform"];
-    [self addBoolAccessors4Key: "showTrialInfo"];
-    [self addIntAccessors4Key: "trialInfoFontSize"];
-    [self addFloatAccessors4Key: "timeoutIsiMillisecs"];
-    [self addFloatAccessors4Key: "timeoutResponseSeconds"];
-    [self addFloatAccessors4Key: "timeoutDisplaySeconds"];
-    [self addFloatAccessors4Key: "maskTimeOnResponseInMS"];
-    [self addIntAccessors4Key: "decimalMarkCharIndex"];
-    [self addIntAccessors4Key: "resultsToClipboardIndex"];
-    [self addBoolAccessors4Key: "putResultsToClipboardSilent"];
-    [self addIntAccessors4Key: "auditoryFeedback4trialIndex"];
-    [self addIntAccessors4Key: "visualFeedback"];
-    [self addBoolAccessors4Key: "giveAuditoryFeedback4run"];
-    [self addFloatAccessors4Key: "soundVolume"];
-    [self addBoolAccessors4Key: "showRewardPicturesWhenDone"];
-    [self addFloatAccessors4Key: "timeoutRewardPicturesInSeconds"];
-    [self addBoolAccessors4Key: "enableTouchControls"];
-
-    //Acuity tab
-    //`acuityForeColor` & `acuityBackColor` keep optotype colors between restarts; within FrACT use globals gColorFore/gColorBack
-    [self addColorAccessors4Key: "acuityForeColor"];
-    [self addColorAccessors4Key: "acuityBackColor"];
-    [self addBoolAccessors4Key: "isAcuityColor"];
-    [self addFloatAccessors4Key: "floatForKey"];
-    [self addStringAccessors4Key: "maxPossibleDecimalAcuityLocalisedString"];
-    [self addFloatAccessors4Key: "minPossibleDecimalAcuity"];
-    [self addStringAccessors4Key: "minPossibleDecimalAcuityLocalisedString"];
-    [self addFloatAccessors4Key: "minPossibleLogMAR"];
-    [self addStringAccessors4Key: "minPossibleLogMARLocalisedString"];
-    [self addFloatAccessors4Key: "maxPossibleLogMAR"];
-    [self addStringAccessors4Key: "maxPossibleLogMARLocalisedString"];
-    [self addBoolAccessors4Key: "doThreshCorrection"];
-    [self addFloatAccessors4Key: "maxDisplayedAcuity"];
-    [self addFloatAccessors4Key: "minStrokeAcuity"];
-    [self addFloatAccessors4Key: "acuityStartingLogMAR"];
-    [self addIntAccessors4Key: "margin4maxOptotypeIndex"];
-    [self addIntAccessors4Key: "crowdingType"];
-    [self addIntAccessors4Key: "crowdingDistanceCalculationType"];
-    [self addBoolAccessors4Key: "showAcuityFormatDecimal"];
-    [self addBoolAccessors4Key: "showAcuityFormatLogMAR"];
-    [self addBoolAccessors4Key: "showAcuityFormatSnellenFractionFoot"];
-    [self addBoolAccessors4Key: "forceSnellen20"];
-    [self addBoolAccessors4Key: "showCI95"];
-    [self addFloatAccessors4Key: "contrastAcuityWeber"];
-    [self addBoolAccessors4Key: "acuityHasEasyTrials"];
-    [self addBoolAccessors4Key: "isLandoltObliqueOnly"];
-
-    //Acuity>Line-by-line
-    [self addIntAccessors4Key: "testOnLineByLineIndex"];
-    [self addIntAccessors4Key: "lineByLineDistanceType"];
-    [self addIntAccessors4Key: "lineByLineHeadcountIndex"];
-    [self addIntAccessors4Key: "lineByLineLinesIndex"];
-    [self addBoolAccessors4Key: "isLineByLineChartModeConstantVA"];
-
-    //Acuity>Vernier
-    [self addIntAccessors4Key: "vernierType"];
-    [self addFloatAccessors4Key: "vernierWidth"];
-    [self addFloatAccessors4Key: "vernierLength"];
-    [self addFloatAccessors4Key: "vernierGap"];
-
-    //Contrast tab
-    [self addBoolAccessors4Key: "contrastHasEasyTrials"];
-    [self addBoolAccessors4Key: "isContrastDarkOnLight"];
-    [self addFloatAccessors4Key: "contrastOptotypeDiameter"];
-    [self addBoolAccessors4Key: "contrastShowFixMark"];
-    [self addFloatAccessors4Key: "contrastTimeoutFixmark"];
-    [self addFloatAccessors4Key: "contrastMaxLogCSWeber"];
-    [self addFloatAccessors4Key: "gammaValue"];
-    [self addBoolAccessors4Key: "contrastBitStealing"];
-    [self addBoolAccessors4Key: "isContrastDithering"];
-    [self addIntAccessors4Key: "contrastCrowdingType"];
-
-    //Gratings tab
-    [self addFloatAccessors4Key: "gratingCPD"];
-    [self addBoolAccessors4Key: "isGratingMasked"];
-    [self addFloatAccessors4Key: "gratingDiaInDeg"];
-    [self addBoolAccessors4Key: "isGratingErrorDiffusion"];
-    [self addBoolAccessors4Key: "isGratingColor"];
-    [self addIntAccessors4Key: "what2sweepIndex"];
-    [self addFloatAccessors4Key: "gratingCPDmin"];
-    [self addFloatAccessors4Key: "gratingCPDmax"];
-    [self addFloatAccessors4Key: "gratingContrastMichelsonPercent"];
-    [self addBoolAccessors4Key: "isGratingObliqueOnly"];
-    [self addIntAccessors4Key: "gratingShapeIndex"];
-    [self addColorAccessors4Key: "gratingForeColor"];
-    [self addColorAccessors4Key: "gratingBackColor"];
-
-    //BaLM tab
-    [self addIntAccessors4Key: "balmIsiMillisecs"];
-    [self addIntAccessors4Key: "balmOnMillisecs"];
-    [self addFloatAccessors4Key: "balmSpeedInDegPerSec"];
-    [self addFloatAccessors4Key: "balmLocationDiameterInDeg"];
-    [self addFloatAccessors4Key: "balmLocationEccentricityInDeg"];
-    [self addFloatAccessors4Key: "balmMotionDiameterInDeg"];
-    [self addFloatAccessors4Key: "balmSpeedInDegPerSec"];
-    [self addFloatAccessors4Key: "balmExtentInDeg"];
-
-    //Misc tab
-    [self addColorAccessors4Key: "windowBackgroundColor"];
-    [self addBoolAccessors4Key: "specialBcmOn"];
-    [self addBoolAccessors4Key: "hideExitButton"];
-    [self addBoolAccessors4Key: "embedInNoise"];
-    [self addIntAccessors4Key: "noiseContrast"];
-
-    [self addIntAccessors4Key: "soundTrialStartIndex"];
-    [self addIntAccessors4Key: "soundTrialYesIndex"];
-    [self addIntAccessors4Key: "soundTrialNoIndex"];
-    [self addIntAccessors4Key: "soundRunEndIndex"];
-
-    [self addStringAccessors4Key: "patID"];
-    [self addIntAccessors4Key: "eyeIndex"];
-
-    [self addBoolAccessors4Key: "isAcuityPresentedConstant"];
-    [self addFloatAccessors4Key: "acuityPresentedConstantLogMAR"];
+    sharedSettingsInstance = nil; //not really necessary
+    //my accessor functions are constructed from this array, depending on type
+    settingsNamesAndTypes = [ //array of arrays for all settings and their type
+        //[name, type]
+        ["presetName", "str"], //above all or for all setting tabs
+        ["autoRunIndex", "int"],
+        ["dateOfSettingsVersion", "str"],
+        ["showIdAndEyeOnMain", "bool"],//↓General tab
+        ["nTrials02", "int"], ["nTrials04", "int"], ["nTrials08", "int"],
+        ["nAlternativesIndex", "int"],
+        ["distanceInCM", "float"],
+        ["distanceInInchLocalisedString", "str"],
+        ["calBarLengthInMM", "float"],
+        ["showResponseInfoAtStart", "bool"],
+        ["testOnFive", "int"],
+        ["eccentXInDeg", "float"], ["eccentYInDeg", "float"],
+        ["eccentShowCenterFixMark", "bool"],
+        ["eccentRandomizeX", "bool"], ["eccentRandomizeY", "bool"],
+        ["respondsToMobileOrientation", "bool"],
+        ["autoFullScreen", "bool"],
+        ["displayTransform", "int"],
+        ["showTrialInfo", "bool"], ["trialInfoFontSize", "int"],
+        ["timeoutIsiMillisecs", "float"],
+        ["timeoutResponseSeconds", "float"],
+        ["timeoutDisplaySeconds", "float"],
+        ["maskTimeOnResponseInMS", "float"],
+        ["decimalMarkCharIndex", "int"],
+        ["resultsToClipboardIndex", "int"], ["putResultsToClipboardSilent", "bool"],
+        ["auditoryFeedback4trialIndex", "int"],
+        ["visualFeedback", "int"],
+        ["giveAuditoryFeedback4run", "bool"],
+        ["soundVolume", "float"],
+        ["showRewardPicturesWhenDone", "bool"],
+        ["timeoutRewardPicturesInSeconds", "float"],
+        ["enableTouchControls", "bool"],//↓Acuity tab
+        ["acuityForeColor", "col"], ["acuityBackColor", "col"],
+        ["isAcuityColor", "bool"],
+        ["floatForKey", "float"],
+        ["maxPossibleDecimalAcuityLocalisedString", "str"],
+        ["minPossibleDecimalAcuity", "float"],
+        ["minPossibleDecimalAcuityLocalisedString", "str"],
+        ["minPossibleLogMAR", "float"],
+        ["minPossibleLogMARLocalisedString", "str"],
+        ["maxPossibleLogMAR", "float"],
+        ["maxPossibleLogMARLocalisedString", "str"],
+        ["doThreshCorrection", "bool"],
+        ["maxDisplayedAcuity", "float"],
+        ["minStrokeAcuity", "float"],
+        ["acuityStartingLogMAR", "float"],
+        ["margin4maxOptotypeIndex", "int"],
+        ["crowdingType", "int"], ["crowdingDistanceCalculationType", "int"],
+        ["showAcuityFormatDecimal", "bool"],
+        ["showAcuityFormatLogMAR", "bool"],
+        ["showAcuityFormatSnellenFractionFoot", "bool"],
+        ["forceSnellen20", "bool"],
+        ["showCI95", "bool"],
+        ["contrastAcuityWeber", "float"],
+        ["acuityHasEasyTrials", "bool"],
+        ["isLandoltObliqueOnly", "bool"], //↓Acuity>Line-by-line
+        ["testOnLineByLineIndex", "int"], ["lineByLineDistanceType", "int"],
+        ["lineByLineHeadcountIndex", "int"], ["lineByLineLinesIndex", "int"],
+        ["isLineByLineChartModeConstantVA", "bool"], //↓Acuity>Vernier
+        ["vernierType", "int"], ["vernierWidth", "float"],
+        ["vernierLength", "float"], ["vernierGap", "float"], //↓Contrast tab
+        ["contrastHasEasyTrials", "bool"],
+        ["isContrastDarkOnLight", "bool"],
+        ["contrastOptotypeDiameter", "float"],
+        ["contrastShowFixMark", "bool"], ["contrastTimeoutFixmark", "float"],
+        ["contrastMaxLogCSWeber", "float"],
+        ["gammaValue", "float"],
+        ["contrastBitStealing", "bool"],
+        ["isContrastDithering", "bool"],
+        ["contrastCrowdingType", "int"], //↓Gratings tab
+        ["gratingCPD", "float"],
+        ["isGratingMasked", "bool"], ["gratingDiaInDeg", "float"],
+        ["isGratingErrorDiffusion", "bool"],
+        ["isGratingColor", "bool"],
+        ["what2sweepIndex", "int"],
+        ["gratingCPDmin", "float"], ["gratingCPDmax", "float"],
+        ["gratingContrastMichelsonPercent", "float"],
+        ["isGratingObliqueOnly", "bool"],
+        ["gratingShapeIndex", "int"],
+        ["gratingForeColor", "col"], ["gratingBackColor", "col"], //↓BaLM tab
+        ["balmIsiMillisecs", "int"], ["balmOnMillisecs", "int"],
+        ["balmSpeedInDegPerSec", "float"],
+        ["balmLocationDiameterInDeg", "float"],
+        ["balmLocationEccentricityInDeg", "float"],
+        ["balmMotionDiameterInDeg", "float"],
+        ["balmSpeedInDegPerSec", "float"],
+        ["balmExtentInDeg", "float"], //↓Misc tab
+        ["windowBackgroundColor", "col"],
+        ["specialBcmOn", "bool"],
+        ["hideExitButton", "bool"],
+        ["embedInNoise", "bool"], ["noiseContrast", "int"],
+        ["soundTrialStartIndex", "int"], ["soundRunEndIndex", "int"],
+        ["soundTrialYesIndex", "int"], ["soundTrialNoIndex", "int"],
+        ["patID", "str"], ["eyeIndex", "int"],
+        ["isAcuityPresentedConstant", "bool"],
+        ["acuityPresentedConstantLogMAR", "float"]
+    ];
+    for (const [name, type] of settingsNamesAndTypes) {
+        switch (type) {
+            case "str": [self addStringAccessors4Key: name]; break;
+            case "int": [self addIntAccessors4Key: name]; break;
+            case "bool": [self addBoolAccessors4Key: name]; break;
+            case "float": [self addFloatAccessors4Key: name]; break;
+            case "col": [self addColorAccessors4Key: name]; break;
+            default: alert("Settings>initialize, this must not occur: " + type + ", " + name);
+        }
+    }
 }
 
 
@@ -495,6 +462,12 @@ Created by mb on July 15, 2015.
     [[CPUserDefaults standardUserDefaults] setObject: val forKey: "decimalMarkChar"];
 }
 ///////////////////////////////////////////////////////////
+
+
+////////////////
++ (void) exportAllSettings {
+    [[CPUserDefaults standardUserDefaults] setObject: val forKey: "decimalMarkChar"];
+}
 
 
 /**
