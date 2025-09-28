@@ -118,7 +118,7 @@ Shortcut: V      
                     <button tag="11" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JdF-37-xKU" customClass="MDBButton">
                         <rect key="frame" x="680" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">BaLM₁₀ (Basic Assessment of Light, Locatoin &amp; Motion. 
+                        <string key="toolTip">BaLM₁₀ (Basic Assessment of Light, Location &amp; Motion. 
 
 Shortcut: B 
  </string>
