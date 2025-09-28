@@ -13,8 +13,6 @@ Created by Bach on 2025-03-11
 }
 
 
-
-
 - (void) runStart { //console.info("FractControllerContrastDitherUnittest>runStart");
     nAlternatives = 2;  nTrials = 9999;
     [super runStart];
@@ -22,7 +20,20 @@ Created by Bach on 2025-03-11
 
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //CPLog("FractControllerContrastDitherUnittest>drawStimulusInRect");
-    // does not do anything but prevents crash
+    [self calculateForeBackColors];
+    [self prepareDrawing];
+    const w = 10;
+    stimStrengthInDeviceunits = 2.0;//logCSWeber: this will be very low contrast
+    for (let x = -viewWidthHalf; x < viewWidth; x += w) {
+        let r = CGRectMake(x, -viewHeightHalf, w, viewHeightHalf);
+        stimStrengthInDeviceunits -= 0.007;
+        if (stimStrengthInDeviceunits > 1) stimStrengthInDeviceunits = 1;
+        [self calculateForeBackColors];
+        console.info(x, stimStrengthInDeviceunits, [MiscLight contrastWeberPercentFromLogCSWeber: stimStrengthInDeviceunits]);
+        CGContextSetFillColor(cgc, gColorFore);
+        CGContextFillRect(cgc, r);
+    }
+    [super drawStimulusInRect: dirtyRect];
 }
 
 
