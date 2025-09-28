@@ -65,7 +65,6 @@ Created by mb on July 15, 2015.
         ["enableTouchControls", "bool"],//↓Acuity tab
         ["acuityForeColor", "col"], ["acuityBackColor", "col"],
         ["isAcuityColor", "bool"],
-        ["floatForKey", "float"],
         ["maxPossibleDecimalAcuityLocalisedString", "str"],
         ["minPossibleDecimalAcuity", "float"],
         ["minPossibleDecimalAcuityLocalisedString", "str"],
@@ -466,7 +465,33 @@ Created by mb on July 15, 2015.
 
 ////////////////
 + (void) exportAllSettings {
-    [[CPUserDefaults standardUserDefaults] setObject: val forKey: "decimalMarkChar"];
+    let s = "[";
+    for (const [name, type] of settingsNamesAndTypes) {
+        const v = [[CPUserDefaults standardUserDefaults] objectForKey: name];
+        if (s.length > 1) s += ",";
+        s += crlf + "[" + JSON.stringify(name) + "," + JSON.stringify(type) + "," + JSON.stringify(v) + "]";
+    }
+    s += "]";
+    //console.info(s)
+   /* const blob = new Blob([s], { type: "application/json;charset=utf-8"});
+    const filename = prompt("Please enter a filename:", "mySetting.json");
+    if (filename) { // null if canceled
+        saveAs(blob, filename);
+    } else {
+        alert("OK, as you wish we are not saving your settings.");
+    }*/
+    const data = JSON.parse(s);
+//    console.info(data);
+    for (const [name, type, value] of data) {
+        console.info(name, type, value);
+        //value = JSON.parse(value);
+  //      console.info(value);
+        if (value) {
+            [[CPUserDefaults standardUserDefaults] setObject: value forKey: name];
+        }
+        
+    }
+
 }
 
 
