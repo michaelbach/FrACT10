@@ -465,13 +465,19 @@ Created by mb on July 15, 2015.
 
 ////////////////
 + (void) exportAllSettings { //CPLog("Settings>exportAllSettings")
-    let success = NO, filename;
-    do {
-        filename = prompt("Please enter a filename (must end with “.json”):", "mySettings.json");
-        if (!filename) return; //null if canceled
-        success = (filename.toLowerCase().endsWith(".json"));
-    } while (!success);
-    //Build a JavaScript array first
+    let s = "Please enter a descriptive filename." + crlf + crlf;
+    s += "I will remove most illegal characters and add extension “.json˚'‘’’‘”." + crlf + crlf;
+    s += "Your browser will ask to allow the download from my site into you downloads folder." + crlf;
+    s += "Afterwards, you can move the file to a better place, to be used for future Importing."
+    let filename = prompt(s, "FrACT-mySettings");
+    if (!filename) return; //null if canceled
+    //now let's sanitize the string
+    filename = filename.replace(/[\/\?<>\\:\*\|\""]/g, '_');//illegal characters → _
+    filename = filename.trim().replace(/^\.+|\.+$/g, ''); //trim ␣ and .
+    filename = filename.slice(0, 50); //arbitrary max length
+    filename += ".json"; //console.info(filename);
+
+    //On with exporting. Build a 2D JavaScript array first
     const settingsToExport = settingsNamesAndTypes.map(([name, type]) => {
         const value = [[CPUserDefaults standardUserDefaults] objectForKey: name];
         return [name, type, value];
