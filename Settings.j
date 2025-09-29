@@ -466,7 +466,7 @@ Created by mb on July 15, 2015.
 ////////////////
 + (void) exportAllSettings { //CPLog("Settings>exportAllSettings")
     let s = "Please enter a descriptive filename." + crlf + crlf;
-    s += "I will remove most illegal characters and add extension “.json˚'‘’’‘”." + crlf + crlf;
+    s += "I will remove most illegal characters and add extension ‘.json’." + crlf + crlf;
     s += "Your browser will ask to allow the download from my site into you downloads folder." + crlf;
     s += "Afterwards, you can move the file to a better place, to be used for future Importing."
     let filename = prompt(s, "FrACT-mySettings");
