@@ -119,6 +119,7 @@ Shortcut: V      
                         <rect key="frame" x="680" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">BaLM₁₀ (Basic Assessment of Light, Location &amp; Motion. 
+Click to access Help for it.
 
 Shortcut: B 
  </string>
@@ -148,7 +149,7 @@ Shortcut: 1
                     <button tag="7" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="teG-PN-Gq7" customClass="MDBButton">
                         <rect key="frame" x="185" y="288" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Contrast assessment using Landolt C.  
+                        <string key="toolTip">Contrast assessment using Landolt Cs.  
 
 Shortcut: 2
  </string>
@@ -163,7 +164,7 @@ Shortcut: 2
                     <button tag="8" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0h-oh-O7H" customClass="MDBButton">
                         <rect key="frame" x="350" y="288" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Contrast assessment using Tumbling E.  
+                        <string key="toolTip">Contrast assessment using Tumbling Es.  
 
 Shortcut: 3
  </string>
@@ -193,8 +194,8 @@ Shortcut: g
                     <button tag="10" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-y6-Eca" customClass="MDBButton">
                         <rect key="frame" x="680" y="288" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">"Line of optotypes"": 1 or 3 lines of optypes, akin to an acuity chart.
-Instruct to read the middle line, and when 3 of 5 are correct press ↓.
+                        <string key="toolTip">"Line of optotypes"": 1–5 lines of optypes, akin to an acuity chart.
+Manual acuity assessment: Instruct to read the middle line, and when 3 of 5 are correct press ↓.
 
 Shortcut: 4
  </string>
@@ -226,7 +227,8 @@ Shortcut: 4
                     <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHP-WN-mFO" propertyAccessControl="none">
                         <rect key="frame" x="184" y="173" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Toggle fullscreen.                                     
+                        <string key="toolTip">Toggle fullscreen.      
+                               
 Shortcut: f
 </string>
                         <buttonCell key="cell" type="roundTextured" title="⛶  Fullscreen" bezelStyle="texturedRounded" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cEz-jl-XIn">
@@ -290,7 +292,8 @@ For testing.
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1i4-ka-JiB">
                         <rect key="frame" x="651" y="111" width="130" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Plot the test history after an acuity test.
+                        <string key="toolTip">This button is enabled after a finished run and plots the detailed test history of this run.
+ 
 Shortcut: P
 </string>
                         <buttonCell key="cell" type="roundTextured" title="📈   All Trials Plot" bezelStyle="texturedRounded" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nuw-PE-PlE">
@@ -331,6 +334,7 @@ It can be selected and copied.
                         <rect key="frame" x="19" y="111" width="130" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">This button is enabled after a finished run and does what it says. 
+Depending on the pertinent setting in Settings&gt;General it will export the final value + testing details, or the full history of the run.
 </string>
                         <buttonCell key="cell" type="roundTextured" title=" Result → Clipboard" bezelStyle="texturedRounded" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yIl-d4-aF3">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -732,14 +736,14 @@ DQ
                             <action selector="buttonSettingsClose_action:" target="450" id="AKb-di-UxX"/>
                         </connections>
                     </button>
-                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JgX-d5-6k1">
+                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JgX-d5-6k1" userLabel="PRESETS">
                         <rect key="frame" x="7" y="18" width="135" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Preset a set of settings.
 This is useful for studies / clinical trials for standardisation across time and/or centers.
 
  </string>
-                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="lkr-61-A7f" id="JI4-Wi-eC6">
+                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="lkr-61-A7f" id="JI4-Wi-eC6" userLabel="PRESETS">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="message"/>
                             <menu key="menu" id="xFl-9u-ikI">
@@ -752,8 +756,52 @@ This is useful for studies / clinical trials for standardisation across time and
                             <action selector="popupPreset_action:" target="450" id="s9a-Hy-zVf"/>
                         </connections>
                     </popUpButton>
+                    <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N8d-dZ-cuN" userLabel="presetName">
+                        <rect key="frame" x="150" y="19" width="164" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">Last selected Preset or Import.
+May not be correct if settings have been changed afterwards.
+
+</string>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="s7j-e4-6de">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="underPageBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="izh-pU-csC" name="value" keyPath="values.presetName" id="S9j-xO-fXG"/>
+                        </connections>
+                    </textField>
+                    <button tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z0L-0q-JnB">
+                        <rect key="frame" x="327" y="14" width="124" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">To Export your personalised settings into a file. You can “Import” them later. This is useful if you want to ensure you always test with your personalised settings, and also for rapid switching between personalised settings.
+
+The export file will be placed into your Downloads folder, but then can be moved anywhere – just be sure you can find it again for later importing 😎.
+</string>
+                        <buttonCell key="cell" type="push" title="Export Settings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i9g-Iu-m2w">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="buttonSettingsExportImport_action:" target="450" id="g7U-2b-2Pz"/>
+                        </connections>
+                    </button>
+                    <button tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MYC-Id-ZFX">
+                        <rect key="frame" x="458" y="14" width="124" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">To Import your personalised settings, which were previously Exported.
+</string>
+                        <buttonCell key="cell" type="push" title="Import Settings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jQn-Er-Ixx">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="buttonSettingsExportImport_action:" target="450" id="fPT-dt-ISO"/>
+                        </connections>
+                    </button>
                     <tabView fixedFrame="YES" initialItem="Ppw-we-9iU" translatesAutoresizingMaskIntoConstraints="NO" id="S1X-kS-Zwg">
-                        <rect key="frame" x="8" y="55" width="780" height="539"/>
+                        <rect key="frame" x="7" y="53" width="780" height="539"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
@@ -785,7 +833,7 @@ This is useful for studies / clinical trials for standardisation across time and
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField toolTip="This displays the Observer distance converted from centimetres to inch" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" id="fkv-fu-ees" userLabel="max. poss. decimal VA">
+                                        <textField toolTip="This displays the Observer distance above converted from centimetres to inch" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" id="fkv-fu-ees" userLabel="in Inch">
                                             <rect key="frame" x="17" y="-22" width="44" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="4HD-Fz-O2P">
@@ -1032,9 +1080,12 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                 <rect key="frame" x="0.0" y="0.0" width="220" height="250"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <button toolTip="If checked, cute images will appear when a run is completed." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWG-86-qaT">
+                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWG-86-qaT">
                                                         <rect key="frame" x="22" y="63" width="162" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">If checked, cute images will appear when a run is completed.
+
+Very useful for testing kid. I like them too 😎.</string>
                                                         <buttonCell key="cell" type="check" title="Reward pictures at end" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="PGB-KE-sqe">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1194,9 +1245,9 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gNV-ad-8PW">
-                                                        <rect key="frame" x="176" y="25" width="225" height="17"/>
+                                                        <rect key="frame" x="186" y="25" width="250" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" title="# of trials  for 2, 4, or 8/10 choices" id="rae-uy-roh">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" title="number of trials  for 2, 4, or 8/10 choices" id="rae-uy-roh">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1221,7 +1272,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                         </connections>
                                                     </button>
                                                     <comboBox focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8ZN-pt-i6I">
-                                                        <rect key="frame" x="122" y="24" width="50" height="23"/>
+                                                        <rect key="frame" x="132" y="24" width="50" height="23"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">The number of trials presented when 8 or 10 choices are possible (e.g. Sloan Letters or Landolt
 Cs set for 8).
@@ -1244,9 +1295,9 @@ You can select a suggestion or enter any value.
                                                         </connections>
                                                     </comboBox>
                                                     <comboBox focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wjh-JY-aXB">
-                                                        <rect key="frame" x="68" y="24" width="50" height="23"/>
+                                                        <rect key="frame" x="73" y="24" width="50" height="23"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <string key="toolTip">The number of trials presented when 4 choices are possible (e.g. tumbling E. or Landolt Cs set for 4).
+                                                        <string key="toolTip">The number of trials presented when 4 choices are possible (e.g. tumbling E, or Landolt C set for 4).
 
 You can select a suggestion or enter any value.
  </string>
@@ -1268,8 +1319,7 @@ You can select a suggestion or enter any value.
                                                     <comboBox focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pWH-8k-W6i">
                                                         <rect key="frame" x="14" y="24" width="50" height="23"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <string key="toolTip">The number of trials presented when 2 choices are
-possible (e.g. Vernier).
+                                                        <string key="toolTip">The number of trials presented when 2 choices are possible (e.g. Vernier).
 
 You can select a suggestion or enter any value.
  </string>
@@ -1549,7 +1599,7 @@ Assumes full screen mode.
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P5L-6A-nkp">
-                                                        <rect key="frame" x="63" y="58" width="25" height="17"/>
+                                                        <rect key="frame" x="63" y="57" width="25" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="⇄" id="eb5-ps-LD8">
                                                             <font key="font" metaFont="system" size="16"/>
@@ -1583,8 +1633,9 @@ Assumes full screen mode.
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PuM-ue-ids">
                                             <rect key="frame" x="266" y="120" width="69" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Export results to the clipboard WITHOUT asking. Is faster, but it's easier to forget switching to the spreadsheet to transfer the clipboard content.</string>
-                                            <buttonCell key="cell" type="check" title="silently" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="acI-tj-0Pq">
+                                            <string key="toolTip">Export results to the clipboard WITHOUT asking.
+Is faster, but it's easier to forget switching to the spreadsheet to transfer the clipboard content.</string>
+                                            <buttonCell key="cell" type="check" title="silently" bezelStyle="regularSquare" imagePosition="left" inset="2" id="acI-tj-0Pq">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
@@ -1596,21 +1647,21 @@ Assumes full screen mode.
                                         <popUpButton toolTip="Transformations are necessary if you increase viewing distance with mirrors." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NH7-ys-bRe">
                                             <rect key="frame" x="274" y="155" width="199" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <popUpButtonCell key="cell" type="push" title="Display transformation normal" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="fzq-C7-Daz" id="4HI-Hd-6YM">
+                                            <popUpButtonCell key="cell" type="push" title="Normal display transformation" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="fzq-C7-Daz" id="4HI-Hd-6YM">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="message"/>
                                                 <menu key="menu" id="tx8-cs-phw">
                                                     <items>
-                                                        <menuItem title="Display transformation normal" state="on" id="fzq-C7-Daz">
+                                                        <menuItem title="Normal display transformation" state="on" id="fzq-C7-Daz">
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
-                                                        <menuItem title="Display mirrorred ↔︎" id="tgl-7e-7OS">
+                                                        <menuItem title="Mirrorred display ↔︎" id="tgl-7e-7OS">
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
-                                                        <menuItem title="Display mirrorred ↕︎" id="enf-92-y7w">
+                                                        <menuItem title="Mirrorred display ↕︎" id="enf-92-y7w">
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
-                                                        <menuItem title="Display rotated 180° ↷" id="Wr8-KS-I6L">
+                                                        <menuItem title="Rotated display 180° ↷" id="Wr8-KS-I6L">
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
                                                     </items>
@@ -1663,7 +1714,7 @@ Assumes full screen mode.
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" id="Y2A-Yd-GvF">
                                                 <font key="font" metaFont="system"/>
                                                 <string key="title">Length of blue ruler, in mm
-(best calibrate with ↑plastic card)</string>
+(best calibrated with ↑plastic card)</string>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -1671,8 +1722,8 @@ Assumes full screen mode.
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="luN-q6-f3X">
                                             <rect key="frame" x="216" y="38" width="312" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Click to enter a dialog to use an ID-1 plastic card for calibration (credit card or similar).
-No money transfer involved, just for size!     </string>
+                                            <string key="toolTip">Click to enter a dialog to use a normal ID-1 plastic card for calibration (credit card or similar).
+No money transfer involved 😎, just to calibrate size!     </string>
                                             <buttonCell key="cell" type="roundTextured" title="🪪 Calibrate with plastic card (e.g., credit card 💳)" alternateTitle="ISO/IEC 7810:2019" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PZ9-YT-gCb">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1709,7 +1760,7 @@ No money transfer involved, just for size!     </string>
                                         <colorWell fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eR-Ax-gL1">
                                             <rect key="frame" x="96" y="373" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Color well, foreground color.
+                                            <string key="toolTip">Color well for foreground color.
 
  </string>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1721,7 +1772,7 @@ No money transfer involved, just for size!     </string>
                                         <colorWell fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSW-TH-Yop">
                                             <rect key="frame" x="149" y="373" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Color well, background color.
+                                            <string key="toolTip">Color well for background color.
 
  </string>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1928,6 +1979,7 @@ No money transfer involved, just for size!     </string>
                                                         <rect key="frame" x="112" y="25" width="60" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">The width of a single vernier line in arcmin.
+Denoted as "σ", since the line has a Gaussian profile.
                  </string>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="nGV-sq-MBL">
                                                             <font key="font" metaFont="system"/>
@@ -2477,7 +2529,7 @@ Maximum: 5px. </string>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LER-FX-oqj">
                                             <rect key="frame" x="343" y="258" width="32" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">For letters and tumbling E the minimal stroke width, for Landolt-Cs the minimal gap size, in pixel. Can be below 1.0 via aliasing. Know what you're doing when changing.
+                                            <string key="toolTip">For letters and tumbling Es the minimal stroke width, for Landolt-Cs the minimal gap size, in pixels. Can be below 1.0 via aliasing. Know what you're doing when changing.
 Maximum: 5px.
 
  </string>
@@ -2569,9 +2621,10 @@ Maximum: 5px.
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AQw-jE-a5x">
                                             <rect key="frame" x="18" y="148" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Best not change it…
-
- </string>
+                                            <string key="toolTip">Best not change it… 
+See manual.
+   .
+  </string>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="0.0" drawsBackground="YES" id="B2m-gD-gKI">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -4368,49 +4421,6 @@ CQ
                             <binding destination="450" name="selectedIndex" keyPath="settingsPaneTabViewSelectedIndex" id="YRW-UH-Yg8"/>
                         </connections>
                     </tabView>
-                    <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N8d-dZ-cuN">
-                        <rect key="frame" x="150" y="19" width="164" height="22"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Last selected Preset or Import. May not be correct if settings have been changed afterwards.
-
-</string>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="s7j-e4-6de">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="underPageBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="izh-pU-csC" name="value" keyPath="values.presetName" id="S9j-xO-fXG"/>
-                        </connections>
-                    </textField>
-                    <button tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z0L-0q-JnB">
-                        <rect key="frame" x="327" y="14" width="124" height="24"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <mutableString key="toolTip">To Export your personalised settings into a file. You can “Import” them later. This is useful if you want to ensure you always test with your personalised settings, and also for rapid switching between personalised settings.
-
-The export file will be placed into your Downloads folder, but then can be moved anywhere – just be sure you can find it again for later importing 😎.
-</mutableString>
-                        <buttonCell key="cell" type="push" title="Export Settings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i9g-Iu-m2w">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonSettingsExportImport_action:" target="450" id="g7U-2b-2Pz"/>
-                        </connections>
-                    </button>
-                    <button tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MYC-Id-ZFX">
-                        <rect key="frame" x="458" y="14" width="124" height="24"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">To Import your personalised settings, which were previously Exported.
-</string>
-                        <buttonCell key="cell" type="push" title="Import Settings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jQn-Er-Ixx">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonSettingsExportImport_action:" target="450" id="fPT-dt-ISO"/>
-                        </connections>
-                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="-101" y="759"/>
