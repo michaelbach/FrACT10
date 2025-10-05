@@ -391,7 +391,7 @@ const testingSuite = async () => {
 	window.addEventListener('message', listener4textarea);
 	let response;
 
-	addText("TESTING SUITE STARTING\nDuration: ≈ 2 minutes.\n\nDo not press any key until “TESTING SUITE done”.\n\nFor early termination: reload.\n");
+	addText("TESTING SUITE STARTING\nDuration: ≈ 2½ minutes.\n\nDo not press any key until “TESTING SUITE done”.\n\nFor early termination: Reload.\n");
 	await doTextTestfunText("Test fullscreen", async () => {/* do this later, doesn't work any more ??? */
 		await oneStep3Ms('setFullScreen', YES, ''); await pauseMilliseconds(pauseViewMS * 1.5);
 		await oneStep3Ms('settingsPane', 0, ''); await pauseMilliseconds(pauseViewMS);
