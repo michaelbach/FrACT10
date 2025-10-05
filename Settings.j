@@ -467,8 +467,8 @@ Created by mb on July 15, 2015.
 + (void) exportAllSettings { //CPLog("Settings>exportAllSettings")
     let s = "Please enter a descriptive filename." + crlf + crlf;
     s += "I will remove most illegal characters and add extension ‘.json’." + crlf + crlf;
-    s += "Your browser will ask to allow the download from my site into you downloads folder." + crlf;
-    s += "Afterwards, you can move the file to a better place, to be used for future Importing."
+    s += "Your browser will ask to allow the download from my site into your downloads folder." + crlf;
+    s += "Afterwards, you can move that file to a better place, to be used for future Importing."
     let filename = prompt(s, "FrACT-mySettings");
     if (!filename) return; //null if canceled
     //now let's sanitize the string
@@ -482,7 +482,11 @@ Created by mb on July 15, 2015.
         const value = [[CPUserDefaults standardUserDefaults] objectForKey: name];
         return [name, type, value];
     });
-    const jsonString = JSON.stringify(settingsToExport, null, 2);//"2": prettier
+    let jsonString = JSON.stringify(settingsToExport); //all  in one long string, not good
+    jsonString = JSON.parse(jsonString); //Parse string into JavaScript array
+    jsonString = jsonString.map(item => JSON.stringify(item)); //Stringify each triplet individually
+    jsonString = '[\n' + jsonString.join(',\n') + '\n]' //Join triplets with comma and newline, and wrap them
+    
     //modern, non-blocking way to trigger a download.
     const blob = new Blob([jsonString], { type: "application/json;charset=utf-8" });
     const url = URL.createObjectURL(blob);
@@ -520,6 +524,7 @@ Created by mb on July 15, 2015.
                     alert("The selected file is not valid JSON.");
                 }
                 document.body.removeChild(dummyInput); //clean up
+                [self allNotCheckButSet: NO]; //vet imported settings
             };
             reader.readAsText(file);
         } else {
