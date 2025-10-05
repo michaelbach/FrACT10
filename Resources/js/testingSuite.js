@@ -326,7 +326,7 @@ const testSafariBugWithClippedGrating = async () => { //console.info("testBalm")
     await oneStep3Ms('setSetting', 'isGratingMasked', YES);
     await oneStep3Ms('setSetting', 'nTrials04', 1);
     await oneStep3Ms('setSetting', 'gratingShapeIndex', 1); // sine
-    await oneStep3Ms('setSetting', 'gratingDiaInDeg', 1.5);
+    await oneStep3Ms('setSetting', 'gratingMaskDiaInDeg', 1.5);
     await oneStep3Ms('setSetting', 'enableTouchControls', NO);
     tellIframe3Ms('run','contrast', 'Grating');
     await pauseMilliseconds(pauseViewMS);

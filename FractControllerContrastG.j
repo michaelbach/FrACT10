@@ -177,7 +177,7 @@ const specialBcmStepsize = 0.1;
             let dir = [alternativesGenerator currentAlternative];
             if ([Settings isGratingMasked]) {
                 CGContextBeginPath(cgc);
-                const r = 0.5 * [MiscSpace pixelFromDegree: [Settings gratingDiaInDeg]];
+                const r = 0.5 * [MiscSpace pixelFromDegree: [Settings gratingMaskDiaInDeg]];
                 CGContextAddEllipseInRect(cgc, CGRectMake(0 - r, 0 - r, 2 * r, 2 * r));
                 CGContextClosePath(cgc);  CGContextClip(cgc);
             }

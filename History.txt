@@ -1,6 +1,8 @@
 # History
 
-2025-10-05 improve: readability of json settings export file
+2025-10-05 improve: readability of json settings export file;
+    delete superfluous `maskTimeOnResponseInMS`,
+    rename `gratingDiaInDeg` → `gratingMaskDiaInDeg`, up kDateOfCurrentSettingsVersion
 2025-09-30 improve: many tool tips
 2025-09-29 improve: add Export/Import
 2025-09-27 enhance: add PDF output to AllTrialsPlot

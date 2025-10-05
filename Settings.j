@@ -10,7 +10,7 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kDateOfCurrentSettingsVersion "2025-05-25"
+#define kDateOfCurrentSettingsVersion "2025-10-05"
 
 
 @import <Foundation/Foundation.j>
@@ -53,7 +53,6 @@ Created by mb on July 15, 2015.
         ["timeoutIsiMillisecs", "float"],
         ["timeoutResponseSeconds", "float"],
         ["timeoutDisplaySeconds", "float"],
-        ["maskTimeOnResponseInMS", "float"],
         ["decimalMarkCharIndex", "int"],
         ["resultsToClipboardIndex", "int"], ["putResultsToClipboardSilent", "bool"],
         ["auditoryFeedback4trialIndex", "int"],
@@ -101,7 +100,7 @@ Created by mb on July 15, 2015.
         ["isContrastDithering", "bool"],
         ["contrastCrowdingType", "int"], //↓Gratings tab
         ["gratingCPD", "float"],
-        ["isGratingMasked", "bool"], ["gratingDiaInDeg", "float"],
+        ["isGratingMasked", "bool"], ["gratingMaskDiaInDeg", "float"],
         ["isGratingErrorDiffusion", "bool"],
         ["isGratingColor", "bool"],
         ["what2sweepIndex", "int"],
@@ -229,7 +228,6 @@ Created by mb on July 15, 2015.
     [self setTimeoutIsiMillisecs: [self checkNum: [self timeoutIsiMillisecs] dflt: 0 min: 0 max: 3000 set: set]];
     [self setTimeoutResponseSeconds: [self checkNum: [self timeoutResponseSeconds] dflt: 30 min: 0.1 max: 9999 set: set]];
     [self setTimeoutDisplaySeconds: [self checkNum: [self timeoutDisplaySeconds] dflt: 30 min: 0.1 max: 9999 set: set]];
-    [self setMaskTimeOnResponseInMS: [self checkNum: [self timeoutDisplaySeconds] dflt: 0 min: 0 max: 9999 set: set]];
     
     [self setResultsToClipboardIndex: [self checkNum: [self resultsToClipboardIndex] dflt: kResultsToClipNone min: kResultsToClipNone max: kResultsToClipFullHistory2PDF set: set]];
     [self setPutResultsToClipboardSilent: [self checkBool: [self putResultsToClipboardSilent] dflt: NO set: set]];
@@ -298,7 +296,7 @@ Created by mb on July 15, 2015.
     //Grating stuff
     [self setGratingCPD: [self checkNum: [self gratingCPD] dflt: 2.0 min: 0.01 max: 18 set: set]];
     [self setIsGratingMasked: [self checkBool: [self isGratingMasked] dflt: NO set: set]];
-    [self setGratingDiaInDeg: [self checkNum: [self gratingDiaInDeg] dflt: 10.0 min: 1.0 max: 50 set: set]];
+    [self setGratingMaskDiaInDeg: [self checkNum: [self gratingMaskDiaInDeg] dflt: 10.0 min: 0.5 max: 50 set: set]];
     [self setIsGratingErrorDiffusion: [self checkBool: [self isGratingErrorDiffusion] dflt: YES set: set]];
     [self setGratingShapeIndex: [self checkNum: [self gratingShapeIndex] dflt: 0 min: 0 max: kGratingShapeIndexCheckerboard set: set]];
     [self setIsGratingColor: [self checkBool: [self isGratingColor] dflt: NO set: set]];
