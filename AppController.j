@@ -159,13 +159,13 @@
     [self setupControllers];
 
     [buttonExportClip setEnabled: NO];  [buttonExportPDF setEnabled: NO];
-    [buttonPlot setEnabled: gTestingPlotting];
+    [buttonPlot setEnabled: gTestingPlottingAcuity];
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:CPUserDefaultsDidChangeNotification object: nil];
 
     [self radioButtonsAcuityBwOrColor_action: null];
 
     [Settings setAutoRunIndex: kAutoRunIndexNone]; //make sure it's not accidentally on
-    [Settings setPatID: "-"]; //clear ID string
+    [Settings setPatID: gPatIDdefault]; //clear ID string
 
     numberFormatter = [[CPNumberFormatter alloc] init];
     [numberFormatter setNumberStyle: CPNumberFormatterDecimalStyle];
@@ -623,7 +623,7 @@
 
 - (IBAction) buttonDoExit_action: (id) sender { //console.info("AppController>buttonExit_action");
     [Misc fullScreenOn: NO];
-    [Settings setPatID: "-"]; //clear ID string
+    [Settings setPatID: gPatIDdefault]; //clear ID string
     [selfWindow close];  [CPApp terminate: nil];  window.close();
 }
 

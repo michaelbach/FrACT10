@@ -26,7 +26,7 @@
 //This is called by IB
 - (id) initWithFrame: (CGRect) theFrame { //CPLog("PlotView>initWithFrame");
     self = [super initWithFrame: theFrame];
-    if (gTestingPlotting) { //this only needed for testing
+    if (gTestingPlottingAcuity) { //this only needed for testing
         testHistoryFinalValue = 0.149;
         testHistory = [
             {value: 1, correct: true},
@@ -58,7 +58,7 @@
         firstTime = "notFirstTime";  return;
     }
     [MDB2plot p2init];
-    if (!gTestingPlotting) {
+    if (!gTestingPlottingAcuity) {
         testHistory = [TrialHistoryController trialHistoryRecord];
         testHistoryFinalValue = gTestDetails[td_resultValue];
     }
@@ -95,7 +95,7 @@
     }
     [MDB2plot p2setTextAlignDefault];
 
-        //ordinate
+    //ordinate
     [MDB2plot p2vlineX: xMin y0: yMin y1: yMax];
     [MDB2plot p2showText: "↓LogMAR" atXpx: [MDB2plot p2tx: xMin+0.5] ypx: 40];
     for (let y = -1; y < 3; y++) {
@@ -167,11 +167,26 @@
     });
 
     doc.setFontSize(10);  doc.setFont("Courier", "bold");
-    let s = "FrACT10 RESULT PLOT" + crlf + crlf;
-    s += "Date: " + gTestDetails[td_dateOfRunStart] + crlf;
-    s += "Time: " + [Misc date2HH_MM: gTestDetails[td_dateTimeOfRunStart]] + crlf;
-    doc.text(s, 15, 10);
-    
+    doc.text("FrACT10 RESULT PLOT", 15, 10);
+
+    let tableBody = [ //let's build a table
+        ['Date', gTestDetails[td_dateOfRunStart]],
+        ['Time', [Misc date2HH_MM: gTestDetails[td_dateTimeOfRunStart]]]
+    ];
+    if (gTestDetails[td_ID] !== gPatIDdefault) {
+        tableBody.push(["ID", gTestDetails[td_ID]]);
+    }
+    if (gTestDetails[td_eyeCondition] !== gEyeIndex2string[0]) { //optional
+        tableBody.push(["Eye", gTestDetails[td_eyeCondition]]);
+    }
+    tableBody.push(["Test", gTestDetails[td_testName]]);
+    const styles = {
+        fontSize: 10, font: "Courier", fontStyle: 'normal', halign: 'left',
+        cellPadding: {top: 1, right: 1, bottom: 1, left: 1},
+    };
+    const columnStyles = {0: {cellWidth: 40}, 1: {cellWidth: 'auto'},}
+    doc.autoTable({body: tableBody, theme: 'grid', styles: styles, columnStyles: columnStyles});
+
     // Scale image to fit (keeping aspect ratio)
     const pageWidth = doc.internal.pageSize.getWidth();
     const pageHeight = doc.internal.pageSize.getHeight();

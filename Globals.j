@@ -83,7 +83,9 @@ gSoundsTrialNo = ["whistle.mp3", "error2.mp3"];
 gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
 gSoundsTrialStart = ["click02.mp3", "notify1.mp3", "notify2.mp3"];
 
+gPatIDdefault = "-";
 gEyeIndex2string = ["eyeNA", "OU", "OD", "OS"]; //OU = "oculus uterque" = both eyes
+
 
 ////global Variables
 gDefaultDistanceInCM = 399;
@@ -96,7 +98,8 @@ gColorFore = [CPColor whiteColor];  gColorBack = [CPColor blackColor];
 //minimal stroke size (half a pixel). Maximal, depending on screen & margin. Poor naming for Vernier. Values are later overridden via Setting and screen size.
 gStrokeMinimal = 0.5;  gStrokeMaximal = 100;
 
-gTestingPlotting = NO;
+gTestingPlottingAcuity = NO;
+gTestingPlottingContrast = NO;
 
 gLatestAlert = null;
 
