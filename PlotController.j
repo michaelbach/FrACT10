@@ -20,14 +20,14 @@
 @implementation PlotView: CPView {
     CPString firstTime;
     id testHistory;
-    float testHistoryFinalValue;
+    float testHistoryResultValue;
 }
 
 //This is called by IB
 - (id) initWithFrame: (CGRect) theFrame { //CPLog("PlotView>initWithFrame");
     self = [super initWithFrame: theFrame];
     if (gTestingPlottingAcuity) { //this only needed for testing
-        testHistoryFinalValue = 0.149;
+        testHistoryResultValue = 0.149;
         testHistory = [
             {value: 1, correct: true},
             {value: 0.7, correct: true},
@@ -60,7 +60,7 @@
     [MDB2plot p2init];
     if (!gTestingPlottingAcuity) {
         testHistory = [TrialHistoryController trialHistoryRecord];
-        testHistoryFinalValue = gTestDetails[td_resultValue];
+        testHistoryResultValue = gTestDetails[td_resultValue];
     }
     const nTrials = testHistory.length;
     const yMin = 3, yMax = -1.05, yHorAxis = yMin; //note inverted axis
@@ -75,7 +75,7 @@
     [MDB2plot p2showText: "Presented acuity grades along the run" atX: (xMax - xMin - 2) / 2 y: yMax];
     if ([Settings doThreshCorrection]) {
         [MDB2plot p2setFontSize: 14];
-        [MDB2plot p2showText: "[Without threshold correction, so 0.05 LogMAR smaller]" atX: (xMax - xMin - 2) / 2 y: yMax +0.21];
+        [MDB2plot p2showText: "[All with DIN/ISO threshold correction]" atX: (xMax - xMin - 2) / 2 y: yMax +0.21];
     }
     [MDB2plot p2setTextAlignDefault];
 
@@ -84,7 +84,6 @@
     [MDB2plot p2setFontSize: 18];
     [MDB2plot p2hlineX0: xMin y: yHorAxis x1: nTrials];
     [MDB2plot p2setTextAlignHorizontal: "end" vertical: "bottom"];
-//    [MDB2plot p2showText: "Trials→" atXpx: [yHorAxis p2tx: xMax-1] ypx: 490];
     [MDB2plot p2showText: "Trials→" atX: xMax - 1 y: yHorAxis + 4 * yTick];
     [MDB2plot p2setTextAlignHorizontal: "center"];
     for (let trial = 1; trial <= nTrials; trial++) {
@@ -109,7 +108,8 @@
     //test points
     [MDB2plot p2setLineWidthInPx: 4];
     for (let trial = 0; trial < nTrials; trial++) {
-        const y = testHistory[trial].value;
+        let y = testHistory[trial].value;
+        if ([Settings doThreshCorrection]) y -= Math.log10(gThresholdCorrection4Ascending);
         if (testHistory[trial].isCorrect) {
             [MDB2plot p2setFillColor: [CPColor colorWithRed: 0 green: 0.6 blue: 0 alpha: 1]];
             [MDB2plot p2fillCircleAtX: trial+0.5 y: y radiusInPx: 10];
@@ -120,17 +120,13 @@
     }
 
     //line for final value
-    let testHistoryFinalValueCorr = testHistoryFinalValue;
-    if ([Settings doThreshCorrection]) { //"anticorrect" to let final coincide with history values
-        testHistoryFinalValueCorr += Math.log10(gThresholdCorrection4Ascending);
-    }
     [MDB2plot p2setStrokeColor: [CPColor blueColor]];
     [MDB2plot p2setLineWidthInPx: 2];
-    [MDB2plot p2hlineX0: xMin+1.5 y: testHistoryFinalValueCorr x1: xMax];
+    [MDB2plot p2hlineX0: xMin+1.5 y: testHistoryResultValue x1: xMax];
     [MDB2plot p2setFillColor: [CPColor blueColor]];
     [MDB2plot p2setTextAlignVertical: "top"];
-    let s = [Misc stringFromNumber: testHistoryFinalValueCorr decimals: 2];
-    [MDB2plot p2showText: s+"↑" atXpx: [MDB2plot p2tx: xMin+1.5] ypx: [MDB2plot p2ty: testHistoryFinalValueCorr]+8];
+    let s = [Misc stringFromNumber: testHistoryResultValue decimals: 2];
+    [MDB2plot p2showText: s+"↑" atXpx: [MDB2plot p2tx: xMin+1.5] ypx: [MDB2plot p2ty: testHistoryResultValue]+8];
 }
 @end
 
