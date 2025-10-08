@@ -72,7 +72,9 @@
 	<key>CFBundleIdentifier</key>
 	<string></string>
 	<key>VersionNumberString</key>
-	<string>3.1.2</string>
+	<string>3.2</string>
+	<key>LSRequiresIPhoneOS</key>
+	<false/>
 	<key>CFBundleIconName</key>
 	<string></string>
 	<key>CFBundleIconFile</key>
