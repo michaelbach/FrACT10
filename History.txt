@@ -1,5 +1,6 @@
 # History
 
+2025-10-08 improve: AllTrialsPlot can also plot Contrast results
 2025-10-07 improve: AllTrialsPlot deals better with the DIN/ISO threshold correction
 2025-10-06 improve: add more info to PDF of AllTrialsPlot on request, prepare for plotting of Contrast
 2025-10-05 improve: readability of json settings export file;

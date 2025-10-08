@@ -159,7 +159,7 @@
     [self setupControllers];
 
     [buttonExportClip setEnabled: NO];  [buttonExportPDF setEnabled: NO];
-    [buttonPlot setEnabled: gTestingPlottingAcuity];
+    [buttonPlot setEnabled: (gTestingPlottingAcuity1Contrast2 !== 0)];
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:CPUserDefaultsDidChangeNotification object: nil];
 
     [self radioButtonsAcuityBwOrColor_action: null];
@@ -413,7 +413,7 @@
     }
     [buttonExportClip setEnabled: ([currentTestResultExportString length] > 1)];
     [buttonExportPDF setEnabled: ([currentTestResultExportString length] > 1)];
-    if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO].includes(gCurrentTestID)){
+    if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO, kTestContrastLett, kTestContrastC, kTestContrastE, kTestContrastG].includes(gCurrentTestID)){
         [buttonPlot setEnabled: ([currentTestResultExportString length] > 1)];
     }
 }

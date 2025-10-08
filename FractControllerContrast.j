@@ -163,7 +163,9 @@ Created by Bach on 2020-09-02
         [gAppController setResultString: gAbortMessage];
     } else {
         stimStrengthInDeviceunits = Math.min(stimStrengthInDeviceunits, gMaxResultLogCSWeber);
+        gTestDetails[td_resultValue] = stimStrengthInDeviceunits;
         [gAppController setResultString: [self contrastComposeResultString]];
+
     }
     [super runEnd];
 }

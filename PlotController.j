@@ -21,32 +21,56 @@
     CPString firstTime;
     id testHistory;
     float testHistoryResultValue;
+    BOOL isAcuity, isContrast;
 }
 
 //This is called by IB
 - (id) initWithFrame: (CGRect) theFrame { //CPLog("PlotView>initWithFrame");
     self = [super initWithFrame: theFrame];
-    if (gTestingPlottingAcuity) { //this only needed for testing
+    if (gTestingPlottingAcuity1Contrast2 == 1) { //this only needed for testing
         testHistoryResultValue = 0.149;
         testHistory = [
-            {value: 1, correct: true},
-            {value: 0.7, correct: true},
-            {value: 0.4, correct: true},
-            {value: 0.1, correct: true},
-            {value: -0.033, correct: false},
-            {value: 0.139, correct: false},
-            {value: 0.284, correct: true},
-            {value: 0.203, correct: true},
-            {value: 0.136, correct: true},
-            {value: 0.078, correct: false},
-            {value: 0.160, correct: true},
-            {value: 0.615, correct: true},
-            {value: 0.101, correct: true},
-            {value: 0.060, correct: false},
-            {value: 0.121, correct: true},
-            {value: 0.085, correct: false},
-            {value: 0.138, correct: true},
-            {value: 0.609, correct: true}
+            {value: 1, isCorrect: true},
+            {value: 0.7, isCorrect: true},
+            {value: 0.4, isCorrect: true},
+            {value: 0.1, isCorrect: true},
+            {value: -0.033, isCorrect: false},
+            {value: 0.139, isCorrect: false},
+            {value: 0.284, isCorrect: true},
+            {value: 0.203, isCorrect: true},
+            {value: 0.136, isCorrect: true},
+            {value: 0.078, isCorrect: false},
+            {value: 0.160, isCorrect: true},
+            {value: 0.615, isCorrect: true},
+            {value: 0.101, isCorrect: true},
+            {value: 0.060, isCorrect: false},
+            {value: 0.121, isCorrect: true},
+            {value: 0.085, isCorrect: false},
+            {value: 0.138, isCorrect: true},
+            {value: 0.609, isCorrect: true}
+        ]
+    }
+    if (gTestingPlottingAcuity1Contrast2 == 2) { //this only needed for testing
+        testHistoryResultValue = 1.832;
+        testHistory = [
+            {value: 0.584, isCorrect: true},
+            {value: 1.796, isCorrect: false},
+            {value: 1.192, isCorrect: true},
+            {value: 1.498, isCorrect: true},
+            {value: 1.709, isCorrect: true},
+            {value: 1.881, isCorrect: false},
+            {value: 1.724, isCorrect: true},
+            {value: 1.832, isCorrect: false},
+            {value: 1.724, isCorrect: true},
+            {value: 1.802, isCorrect: false},
+            {value: 1.719, isCorrect: true},
+            {value: 1.181, isCorrect: true},
+            {value: 1.797, isCorrect: false},
+            {value: 1.732, isCorrect: true},
+            {value: 1.781, isCorrect: true},
+            {value: 1.827, isCorrect: true},
+            {value: 1.870, isCorrect: false},
+            {value: 1.221, isCorrect: true}
         ]
     }
     return self;
@@ -58,12 +82,20 @@
         firstTime = "notFirstTime";  return;
     }
     [MDB2plot p2init];
-    if (!gTestingPlottingAcuity) {
+    if (gTestingPlottingAcuity1Contrast2 === 0) {
         testHistory = [TrialHistoryController trialHistoryRecord];
         testHistoryResultValue = gTestDetails[td_resultValue];
+        isAcuity = gTestDetails[td_testName].startsWith("Acuity");
+        isContrast = gTestDetails[td_testName].startsWith("Contrast");
+    } else {
+        isAcuity = gTestingPlottingAcuity1Contrast2 == 1;
+        isContrast = gTestingPlottingAcuity1Contrast2 == 2;
     }
     const nTrials = testHistory.length;
-    const yMin = 3, yMax = -1.05, yHorAxis = yMin; //note inverted axis
+    let yMin = 3, yMax = -1.05, yHorAxis = yMin; //note inverted axis
+    if (isContrast) {
+        yMin = 0.0, yMax = 2.5, yHorAxis = yMin; //note normal axis
+    }
     const yTick = (yMax - yMin) / 50;
     const xMin = -1, xMax = nTrials + 1;
     const xTick = (xMax - xMin) / 80;
@@ -72,8 +104,9 @@
     //title
     [MDB2plot p2setFontSize: 24];
     [MDB2plot p2setTextAlignHorizontal: "center" vertical: "hanging"];
-    [MDB2plot p2showText: "Presented acuity grades along the run" atX: (xMax - xMin - 2) / 2 y: yMax];
-    if ([Settings doThreshCorrection]) {
+    const sHeader = "Presented " + (isAcuity ? "acuity" : "logCS") + " grades along the run";
+    [MDB2plot p2showText: sHeader atX: (xMax - xMin - 2) / 2 y: yMax];
+    if ([Settings doThreshCorrection] && isAcuity) {
         [MDB2plot p2setFontSize: 14];
         [MDB2plot p2showText: "[All with DIN/ISO threshold correction]" atX: (xMax - xMin - 2) / 2 y: yMax +0.21];
     }
@@ -96,7 +129,8 @@
 
     //ordinate
     [MDB2plot p2vlineX: xMin y0: yMin y1: yMax];
-    [MDB2plot p2showText: "↓LogMAR" atXpx: [MDB2plot p2tx: xMin+0.5] ypx: 40];
+    const sUnit = isAcuity ? "↓LogMAR" : "↑logCS";
+    [MDB2plot p2showText: sUnit atXpx: [MDB2plot p2tx: xMin+0.5] ypx: 40];
     for (let y = -1; y < 3; y++) {
         [MDB2plot p2hlineX0: xMin y: y x1: xMin + xTick];
         [MDB2plot p2showText: y atX: xMin + xTick +0.1 y: y];
@@ -109,7 +143,7 @@
     [MDB2plot p2setLineWidthInPx: 4];
     for (let trial = 0; trial < nTrials; trial++) {
         let y = testHistory[trial].value;
-        if ([Settings doThreshCorrection]) y -= Math.log10(gThresholdCorrection4Ascending);
+        if ([Settings doThreshCorrection] && isAcuity) y -= Math.log10(gThresholdCorrection4Ascending);
         if (testHistory[trial].isCorrect) {
             [MDB2plot p2setFillColor: [CPColor colorWithRed: 0 green: 0.6 blue: 0 alpha: 1]];
             [MDB2plot p2fillCircleAtX: trial+0.5 y: y radiusInPx: 10];
