@@ -327,7 +327,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         responseWasCorrect = logMARcurrent > logMARtarget;
     }
     if ([self isContrastOptotype]) {
-        responseWasCorrect = stimStrengthInDeviceunits < [1.0, 1.4, 1.8][arIndex];
+        responseWasCorrect = stimStrengthInDeviceunits < [1.8, 1.4, 1.0][arIndex];
     }
     if ([self isContrastG]) {
         //const contrastMichelsonPercentCurrent = [MiscLight contrastMichelsonPercentFromLogCSWeber: stimStrengthInDeviceunits]
