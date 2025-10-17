@@ -1911,8 +1911,11 @@ No money transfer involved 😎, just to calibrate size!     </string>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1M-jn-hMI">
                                                         <rect key="frame" x="18" y="246" width="201" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <string key="toolTip">If unchecked, the raw=psychometric threshold is caculated. If checked (default), it's descending-corrected, thus reflecting DIN/ISO values. If in doubt: checked.
+                                                        <string key="toolTip">If unchecked, the raw=psychometric threshold is caculated. If checked (default), it's descending-corrected, thus reflecting DIN/ISO values.
 
+If checked, ≈0.05 LogMAR will be added to the result, resulting in slightly worse acuity. However, thus the acuity outcome is equal to the one obtained using the standard descending procedure as outlined in the DIN/EU/ISO norms and the ETDRS approach.
+
+If in doubt: checked.
 </string>
                                                         <buttonCell key="cell" type="check" title="Threshold correction DIN/ISO" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="UxQ-w5-9S4">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>

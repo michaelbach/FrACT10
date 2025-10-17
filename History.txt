@@ -1,5 +1,6 @@
 # History
 
+2025-10-17 improve: tooltip for "threshold correction"
 2025-10-10 fix: correct sequence of low-mid-high for contrast autorun
 2025-10-08 improve: AllTrialsPlot can also plot Contrast results
 2025-10-07 improve: AllTrialsPlot deals better with the DIN/ISO threshold correction
@@ -25,7 +26,7 @@
 2025-09-02 fix: outputs in PDF no longer repeated under some condition
     fix: contrast display times no longer mangled by fixtarget displaytime
 2025-08-30 improve: add unittest to `Misc space`, called by key "u"
-2025-08-26 fix regression: enable "show ± ½CI95" was accidentaly bound to Settings
+2025-08-26 fix regression: enable "show ± CI95½" was accidentaly bound to Settings
 2025-08-24 feature: changed "#of trials" textfields → comboboxes, default #2: 36
 2025-08-21 feature: crowding option for contrast
 2025-08-20 feature: option for settings of ID & Eye on the main screen
