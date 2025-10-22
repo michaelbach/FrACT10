@@ -485,8 +485,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         if ([self isAcuityOptotype]) {
             //the below causes a delay of < 1 s with nSamples=10,000
             const historyResults = [TrialHistoryController composeInfo4CI];
-            const ciResults = [MDBDispersionEstimation calculateCIfromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: gNSamplesCI95];
-            gTestDetails[td_halfCI95] = (ciResults.CI0975 - ciResults.CI0025) / 2;
+            gTestDetails[td_halfCI95] = [MDBDispersionEstimation calculateCI95halfFromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: gNSamplesCI95];
             ci95String = " ± " + [Misc stringFromNumber: gTestDetails[td_halfCI95] decimals: 2 localised: YES];
             [gAppController setResultString: [self acuityComposeResultString]]; //this will add CI95 info
             _currentTestResultExportString += tab + "halfCI95" + tab + [Misc stringFromNumber: gTestDetails[td_halfCI95] decimals: 3 localised: YES];

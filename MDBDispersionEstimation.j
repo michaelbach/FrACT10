@@ -44,7 +44,7 @@ let kWorstLogMAR, kBestLogMAR, kGuess, testDF; //there are no class properties i
     //console.info(threshSamples);
     //console.info("extent: ", extent(threshSamples));
     const med = median(threshSamples);
-    const CI0025 = quantile(threshSamples, 0.025)
+    const CI0025 = quantile(threshSamples, 0.025);
     const CI0975 = quantile(threshSamples, 0.975);
     //console.info("med: ", med, ", CI0025: ", CI0025, ", CI0975", CI0975, ", Bland-Altman-equiv: ±", (CI0025 - CI0975) / 2);
     /*let s = ""; //outputting all estimates on the clipboard for further workup in R
@@ -54,12 +54,18 @@ let kWorstLogMAR, kBestLogMAR, kGuess, testDF; //there are no class properties i
 }
 
 
++ (id) calculateCI95halfFromDF: (id) df guessingProbability: (float) guessingProbability nSamples: (int) nSamples {
+    const ciResults = [self calculateCIfromDF: df guessingProbability: guessingProbability nSamples: nSamples];
+    return (ciResults.CI0975 - ciResults.CI0025) / 2;
+}
+
+
 /**
  A naive maximumfinder. Gradient climbers can fail because of very low likelihood values
  */
 function findMaxLlhInRange(df, r1, r2, delta) {
-    let lMax = -1, lMarMax, lMar = r1;
-    while (lMar < r2) {
+    let lMax = Number.NEGATIVE_INFINITY, lMarMax, lMar = r1;
+    while (lMar <= r2) {
         const ll = likelihoodFunc(lMar, df); //console.info(lMar, ll);
         if (ll > lMax) {lMax = ll;  lMarMax = lMar;}
         lMar += delta;

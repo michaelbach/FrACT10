@@ -1,5 +1,6 @@
 # History
 
+2025-10-22 refactor `calculateCIfromDF` and friends, making easier to call
 2025-10-17 improve: tooltip for "threshold correction"
 2025-10-10 fix: correct sequence of low-mid-high for contrast autorun
 2025-10-08 improve: AllTrialsPlot can also plot Contrast results
