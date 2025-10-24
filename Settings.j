@@ -510,7 +510,7 @@ Created by mb on July 15, 2015.
                     const parsedContent = JSON.parse(fileContent);
                     let success = NO;
                     for (const [name, type, value] of parsedContent) {
-                        if (value) {
+                        if (value !== NULL) { // so "false" is also passing through
                             if (type); //to silence warning "unused"
                             success = YES;
                             [[CPUserDefaults standardUserDefaults] setObject: value forKey: name];
