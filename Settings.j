@@ -476,10 +476,22 @@ Created by mb on July 15, 2015.
     filename += ".json"; //console.info(filename);
 
     //On with exporting. Build a 2D JavaScript array first
-    const settingsToExport = settingsNamesAndTypes.map(([name, type]) => {
-        const value = [[CPUserDefaults standardUserDefaults] objectForKey: name];
-        return [name, type, value];
-    });
+    const EXCLUDED_NAMES = new Set([
+        "presetName", //exclude because it's unreliable
+        "minPossibleDecimalAcuity", // this and the next 6 are calculated anyway
+        "minPossibleDecimalAcuityLocalisedString",
+        "maxPossibleDecimalAcuityLocalisedString",
+        "minPossibleLogMAR",
+        "minPossibleLogMARLocalisedString",
+        "maxPossibleLogMAR",
+        "maxPossibleLogMARLocalisedString"
+    ]);
+    const settingsToExport = settingsNamesAndTypes
+        .filter(([name]) => !EXCLUDED_NAMES.has(name))
+        .map(([name, type]) => {
+            const value = [[CPUserDefaults standardUserDefaults] objectForKey: name];
+            return [name, type, value];
+        });
     let jsonString = JSON.stringify(settingsToExport); //all  in one long string, not good
     jsonString = JSON.parse(jsonString); //Parse string into JavaScript array
     jsonString = jsonString.map(item => JSON.stringify(item)); //Stringify each triplet individually
@@ -513,6 +525,10 @@ Created by mb on July 15, 2015.
                         if (value !== NULL) { // so "false" is also passing through
                             if (type); //to silence warning "unused"
                             success = YES;
+                            const previousVal = [[CPUserDefaults standardUserDefaults] objectForKey: name];
+                            if (previousVal !== value) {
+                                console.info(name, previousVal, value)
+                            }
                             [[CPUserDefaults standardUserDefaults] setObject: value forKey: name];
                         }
                     }

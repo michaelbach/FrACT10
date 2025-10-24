@@ -1,6 +1,7 @@
 # History
 
-2025-10-24 fix json parsing: `false` values were ignored
+2025-10-24 fix json parsing: `false` values were ignored;
+    some settings omitted from export (e.g. calculated ones)
 2025-10-22 refactor `calculateCIfromDF` and friends, making easier to call
 2025-10-17 improve: tooltip for "threshold correction"
 2025-10-10 fix: correct sequence of low-mid-high for contrast autorun
