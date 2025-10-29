@@ -98,9 +98,11 @@ gColorFore = [CPColor whiteColor];  gColorBack = [CPColor blackColor];
 //minimal stroke size (half a pixel). Maximal, depending on screen & margin. Poor naming for Vernier. Values are later overridden via Setting and screen size.
 gStrokeMinimal = 0.5;  gStrokeMaximal = 100;
 
-gTestingPlottingAcuity1Contrast2 = 0; //for easier testing of the AllTrialsPlot
-
 gLatestAlert = null; //save the most recent alert so it can be automatically dismissed
+
+//for testing
+gTestingPlottingAcuity1Contrast2 = 0; //for easier testing of the AllTrialsPlot
+gTestingCI95 = NO;
 
 //general exporting
 td_vsExpFormat = "vsExpFormat";

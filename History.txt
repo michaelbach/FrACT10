@@ -1,5 +1,6 @@
 # History
 
+2025-10-29 check CI95 calculation: fix inconsequential bugs, improve documentation, improve code for speed and clarity
 2025-10-24 fix json parsing: `false` values were ignored;
     some settings omitted from export (e.g. calculated ones)
 2025-10-22 refactor `calculateCIfromDF` and friends, making easier to call
