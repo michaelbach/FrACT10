@@ -392,12 +392,13 @@ const testingSuite = async () => {
 	let response;
 
 	addText("TESTING SUITE STARTING\nDuration: ≈ 2½ minutes.\n\nDo not press any key until “TESTING SUITE done”.\n\nFor early termination: Reload.\n");
-	await doTextTestfunText("Test fullscreen", async () => {/* do this later, doesn't work any more ??? */
+/*	Let's leave out for now, because it shows intermediate blank screens after a testing round
+await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn't work (safety?)
 		await oneStep3Ms('setFullScreen', YES, ''); await pauseMilliseconds(pauseViewMS * 1.5);
 		await oneStep3Ms('settingsPane', 0, ''); await pauseMilliseconds(pauseViewMS);
+		await oneStep3Ms('setFullScreen', NO, ''); await pauseMilliseconds(pauseViewMS);
 		await oneStep3Ms('settingsPane', -1, ''); await pauseMilliseconds(pauseViewMS);
-		await oneStep3Ms('setFullScreen', NO, '');
-	});
+	}); */
 	await doTextTestfunText("Test `getVersion` etc.", async () => {
 		await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
 		let response = await oneStep3Ms('getSetting', 'distanceInCM', '');
