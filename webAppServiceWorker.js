@@ -2,7 +2,7 @@
 //file "webAppServiceWorker.js"
 //
 
-const cacheName = "FrACT10·2025-11-05";
+const cacheName = "FrACT10·2025-11-07";
 
 
 //Fetching content using Service Worker, this is called on reload. If cache name has changed, `install` is next
@@ -48,12 +48,16 @@ self.addEventListener('install', (event) => {
                             './Resources/buttons/buttonAcuityTAO.png',
                             './Resources/buttons/buttonAcuityVernier.png',
                             './Resources/buttons/iconAbout.png',
+                            './Resources/buttons/iconCross.png',
                             './Resources/buttons/iconHelp.png',
                             './Resources/buttons/iconSettings.png',
                             './Resources/icons/FrACT_icon-128.png',
                             './Resources/icons/FrACT_icon-390.png',
                             './Resources/icons/FrACT3icon.ico',
                             './Resources/icons/icon.png',
+                            './Resources/js/FileSaver.min.js',
+                            './Resources/js/jspdf.plugin.autotable.min.js',
+                            './Resources/js/jspdf.umd.min.js',
                             './Resources/keyMaps/keyMap4.png',
                             './Resources/keyMaps/keyMap4keysOnly.png',
                             './Resources/keyMaps/keyMap8.png',
@@ -66,6 +70,9 @@ self.addEventListener('install', (event) => {
                             './Resources/sounds/runEnd/gong.mp3',
                             './Resources/sounds/trialNo/error2.mp3',
                             './Resources/sounds/trialNo/whistle.mp3',
+                            './Resources/sounds/trialStart/click02.mp3',
+                            './Resources/sounds/trialStart/notify1.mp3',
+                            './Resources/sounds/trialStart/notify2.mp3',
                             './Resources/sounds/trialYes/miniPop.mp3',
                             './Resources/sounds/trialYes/tink.mp3',
                             './Resources/TAOs/butterfly.png',
@@ -78,8 +85,6 @@ self.addEventListener('install', (event) => {
                             './Resources/TAOs/rabbit.png',
                             './Resources/TAOs/rocket.png',
                             './Resources/TAOs/tree.png',
-                            './Resources/js/jspdf.umd.min.js',
-                            './Resources/js/jspdf.plugin.autotable.min.js'
                                             ]);
                     })
                     );
