@@ -1,5 +1,6 @@
 # History
 
+2025-11-09 improve Export: on comptible browsers use showSaveFilePicker, else use `FileSaver.js`
 2025-11-07 fix: add more files to `webAppServiceWorker` for download
 2025-11-05 Omit fullscreen from testing because it leaves intermediate blank screens??
 2025-10-29 check CI95 calculation: fix inconsequential bugs, improve documentation, improve code for speed and clarity

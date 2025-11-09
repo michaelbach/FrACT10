@@ -463,28 +463,14 @@ Created by mb on July 15, 2015.
 
 ////////////////
 + (void) exportAllSettings { //CPLog("Settings>exportAllSettings")
-    let s = "Please enter a descriptive filename." + crlf + crlf;
-    s += "I will remove most illegal characters and add extension ‘.json’." + crlf + crlf;
-    s += "Your browser will ask to allow the download from my site into your downloads folder." + crlf;
-    s += "Afterwards, you can move that file to a better place, to be used for future Importing."
-    let filename = prompt(s, "FrACT-mySettings");
-    if (!filename) return; //null if canceled
-    //now let's sanitize the string
-    filename = filename.replace(/[\/\?<>\\:\*\|\""]/g, '_');//illegal characters → _
-    filename = filename.trim().replace(/^\.+|\.+$/g, ''); //trim ␣ and .
-    filename = filename.slice(0, 50); //arbitrary max length
-    filename += ".json"; //console.info(filename);
-
-    //On with exporting. Build a 2D JavaScript array first
-    const EXCLUDED_NAMES = new Set([
+    //Prepare JSON data
+    const EXCLUDED_NAMES = new Set([ //some not necessary
         "presetName", //exclude because it's unreliable
-        "minPossibleDecimalAcuity", // this and the next 6 are calculated anyway
+        "minPossibleDecimalAcuity", //this and the next 6 are calculated later, skip
         "minPossibleDecimalAcuityLocalisedString",
         "maxPossibleDecimalAcuityLocalisedString",
-        "minPossibleLogMAR",
-        "minPossibleLogMARLocalisedString",
-        "maxPossibleLogMAR",
-        "maxPossibleLogMARLocalisedString"
+        "minPossibleLogMAR", "minPossibleLogMARLocalisedString",
+        "maxPossibleLogMAR", "maxPossibleLogMARLocalisedString"
     ]);
     const settingsToExport = settingsNamesAndTypes
         .filter(([name]) => !EXCLUDED_NAMES.has(name))
@@ -492,21 +478,52 @@ Created by mb on July 15, 2015.
             const value = [[CPUserDefaults standardUserDefaults] objectForKey: name];
             return [name, type, value];
         });
-    let jsonString = JSON.stringify(settingsToExport); //all  in one long string, not good
-    jsonString = JSON.parse(jsonString); //Parse string into JavaScript array
-    jsonString = jsonString.map(item => JSON.stringify(item)); //Stringify each triplet individually
-    jsonString = '[\n' + jsonString.join(',\n') + '\n]' //Join triplets with comma and newline, and wrap them
-    
-    //modern, non-blocking way to trigger a download.
-    const blob = new Blob([jsonString], { type: "application/json;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;  link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    let jsonString = JSON.stringify(settingsToExport); //all  in one long string, I not like
+    jsonString = JSON.parse(jsonString); //parse string into JavaScript array
+    jsonString = jsonString.map(item => JSON.stringify(item)); //stringify each triplet individually
+    jsonString = '[\n' + jsonString.join(',\n') + '\n]' //join triplets with comma and newline, and wrap them. That's what I find more readable than the ", 2" option.
+    const jsonBlob = new Blob([jsonString], {type: "application/json;charset=utf-8"});
+    const suggestedFilename = "FrACT-settings-01";
+
+    (async () => { //so we can use `await`
+        if (window.showSaveFilePicker) { //Use modern API if available
+            try {
+                const handle = await window.showSaveFilePicker({
+                    suggestedName: suggestedFilename,
+                    types: [{description: 'JSON Files',
+                        accept: {'application/json': ['.json']}}],
+                });
+                const writable = await handle.createWritable();
+                await writable.write(jsonBlob);
+                await writable.close(); //console.info('File saved successfully!');
+            } catch (err) {
+                if (err.name !== 'AbortError') {
+                    console.error(err.name, err.message);
+                } else {
+                    console.info('Save operation cancelled by user.');
+                }
+            }
+            return;
+        }
+        //Fallback for older browsers (FileSaver.js)
+        let s = "Please enter a descriptive filename." + crlf + crlf;
+        s += "I will remove illegal characters and add the extension ‘.json’." + crlf + crlf;
+        s += "Your browser will ask to allow the download from my site into your downloads folder." + crlf;
+        s += "Afterwards, you can move that file to a better place, to be used for future Importing."
+        let filename = prompt(s, suggestedFilename);
+        if (!filename) { //User cancelled the prompt
+            console.info('Save operation cancelled by user.');
+            return;
+        }
+        // Sanitize filename
+        filename = filename.replace(/[\/\?<>\\:\*\|\""]/g, '_') // Replace illegal characters
+            .trim().replace(/^\.+|\.+$/g, '')   // Trim whitespace and dots
+            .slice(0, 50);                      // Limit length
+        saveAs(jsonBlob, filename + ".json"); //finally save it in the downloads folder
+    })();
 }
+
+
 + (void) importAllSettings { //CPLog("Settings>importAllSettings")
     const dummyInput = document.createElement('input');
     dummyInput.type = 'file';  dummyInput.accept = '.json';
