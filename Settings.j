@@ -537,19 +537,18 @@ Created by mb on July 15, 2015.
                 const fileContent = e.target.result;
                 try {
                     const parsedContent = JSON.parse(fileContent);
-                    let success = NO;
-                    for (const [name, type, value] of parsedContent) {
-                        if (value !== NULL) { // so "false" is also passing through
-                            if (type); //to silence warning "unused"
-                            success = YES;
+                    let importOccurred = NO;
+                    for (const [name, , value] of parsedContent) { //don't need `type`
+                        if (value !== NULL) { //so "false" is also passing through
+                            importOccurred = YES;
                             const previousVal = [[CPUserDefaults standardUserDefaults] objectForKey: name];
                             if (previousVal !== value) {
-                                console.info(name, previousVal, value)
+                                console.info(`Update '${name}': '${previousVal}' → '${value}'`);
+                                [[CPUserDefaults standardUserDefaults] setObject: value forKey: name];
                             }
-                            [[CPUserDefaults standardUserDefaults] setObject: value forKey: name];
                         }
                     }
-                    if (success) [self setPresetName: file.name];
+                    if (importOccurred) [self setPresetName: file.name];
                 } catch (jsonError) { //handle potential JSON parsing errors
                     console.error("Error parsing JSON:", jsonError);
                     alert("The selected file is not valid JSON.");
