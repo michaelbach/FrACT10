@@ -465,12 +465,13 @@ Created by mb on July 15, 2015.
 + (void) exportAllSettings { //CPLog("Settings>exportAllSettings")
     //Prepare JSON data
     const EXCLUDED_NAMES = new Set([ //some not necessary
-        "presetName", //exclude because it's unreliable
-        "minPossibleDecimalAcuity", //this and the next 6 are calculated later, skip
+        "presetName", //exclude because it's not reliable info
+        "minPossibleDecimalAcuity", //this and ↓ are always calculated, omit
+        "minPossibleLogMAR", "minPossibleLogMARLocalisedString",
+        "maxPossibleLogMAR", "maxPossibleLogMARLocalisedString",
         "minPossibleDecimalAcuityLocalisedString",
         "maxPossibleDecimalAcuityLocalisedString",
-        "minPossibleLogMAR", "minPossibleLogMARLocalisedString",
-        "maxPossibleLogMAR", "maxPossibleLogMARLocalisedString"
+        "distanceInInchLocalisedString"
     ]);
     const settingsToExport = settingsNamesAndTypes
         .filter(([name]) => !EXCLUDED_NAMES.has(name))
