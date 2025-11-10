@@ -34,6 +34,9 @@ gNSamplesCI95 = 10000; //with 10000 the median differs by LoA=0.003LogMAR from f
 gMaxAllowedLogCSWeber = 4.0;
 gMaxResultLogCSWeber = 2.0;
 
+//calibration defaults
+gDefaultDistanceInCM = 399;
+gDefaultCalibrationBarLengthInMM = 149;
 gCalBarLengthInPixel = 700;
 
 gMeter2FeetMultiplier = 3.28084;  tab = "\t";  crlf = "\n";
@@ -88,8 +91,6 @@ gEyeIndex2string = ["eyeNA", "OU", "OD", "OS"]; //OU = "oculus uterque" = both e
 
 
 ////global Variables
-gDefaultDistanceInCM = 399;
-gDefaultCalibrationBarLengthInMM = 149;
 
 //cgc as global makes for easy access in Optotypes and contrast calcs
 cgc = [[CPGraphicsContext currentContext] graphicsPort];

@@ -188,7 +188,7 @@
     const imgData = canvas.toDataURL("image/png", 1.0);
 
     // Default is 'pt' units and 'a4' size
-    const doc = new jspdf.jsPDF({
+    const doc = new window.jspdf.jsPDF({
         title: 'FrACT10 RESULT PLOT',
         author: 'bach@uni-freiburg.de',
         keywords: 'visual acuity',

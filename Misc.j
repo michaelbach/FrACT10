@@ -279,7 +279,7 @@ function _pause(ms) { //console.info("Misc>_pause");
  Helper function: Create a PDF from received text and save it, ".pdf" appended to "inFile"
  */
 /*+ (void) saveAsPDF: (CPString) theText inFile: (CPString) filename {
-    const doc = new jspdf.jsPDF();
+    const doc = new window.jspdf.jsPDF();
     doc.setFontSize(8);
     doc.setFont("courier", "normal");
     doc.text(theText, 4, 10); //https://artskydj.github.io/jsPDF/docs/jsPDF.html#text

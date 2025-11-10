@@ -420,7 +420,7 @@
 
 
 - (void) exportPDF { //CPLog("AppController>exportPDF");
-    const doc = new jspdf.jsPDF(); //https://artskydj.github.io/jsPDF/docs/jsPDF.html
+    const doc = new window.jspdf.jsPDF(); //https://artskydj.github.io/jsPDF/docs/jsPDF.html
     doc.setProperties({
      title: 'FrACT10 RESULT RECORD',
      author: 'bach@uni-freiburg.de',
