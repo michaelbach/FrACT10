@@ -13,11 +13,11 @@ cd "${0:a:h}"
 # pwd
 
 
-# Check version date in service worker, update if necessary
+echo "» Check version date in service worker, update if necessary"
 node ./updateServiceWorkerDateFromInfoPlist.js
 
 
-# delete old version
+echo "» delete old version"
 #rm -R ../FrACT ← this would give the iCloud services a hiccup, so instead mv to trash
 pathFractTrash=$HOME/Library/Mobile\ Documents/.Trash/FrACT
 sleep 1
@@ -29,10 +29,12 @@ sleep 1
 # ensure stop on error
 set -e
 
+
+echo "» do 'jake release'"
 # "compile"
 jake release
 
-# delete unnecessary build products
+echo "» delete unnecessary build products"
 rm -R Build/Release/FrACT/CommonJS.environment # we don't need this
 mv Build/Release/FrACT ../ # move it up, creating the "FrACT" folder
 #would preserve date, but jake messes them up… cp -Rp Build/Release/FrACT ../ # move it up, creating the "FrACT" folder
