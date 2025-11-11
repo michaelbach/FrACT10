@@ -248,9 +248,8 @@ Optotypes.j
         return;
     }
     cgc = [[CPGraphicsContext currentContext] graphicsPort];
-    //const hollowSquareForFlanker = [[5, -5], [-5, -5], [-5, 5], [5, 5], [5, -5], [3, -3], [-3, -3], [-3, 3], [3, 3], [3, -3]];
     const ePoints = [[5, -5], [-5, -5], [-5, 5], [5, 5], [5, 3], [-3, 3], [-3, 1], [5, 1], [5, -1], [-3, -1], [-3, -3], [5, -3]];
-    const angle = -Math.PI / 4 * theDirection;//0: "E" right, 2: "Ш" up, 4: Ǝ left, 6: "m" down
+    const angle = -Math.PI / 4 * theDirection; //0: "E" right, 2: "Ш" up, 4: Ǝ left, 6: "m" down
     CGContextRotateCTM(cgc, angle);
     [self fillPolygon: ePoints withD: d * 0.5];
     CGContextRotateCTM(cgc, -angle);
