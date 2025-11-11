@@ -33,7 +33,7 @@ app (projectName, function(task)
     task.setIdentifier("de.michaelbach.FrACT10");
     task.setVersion("1.0");
     task.setAuthor("michaelbach.de");
-    task.setEmail("mike @nospam@ michaelbach.de");
+    task.setEmail("bach @nospam@ uni-freiburg.de");
     task.setSummary("FrACT");
     task.setSources(new FileList("**/*.j").exclude(path.join("Build", "**")).exclude(path.join("Frameworks", "Source", "**")));
     task.setResources(new FileList("Resources/**"));

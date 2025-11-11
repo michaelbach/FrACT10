@@ -242,23 +242,18 @@ Optotypes.j
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-- (void) tumblingEWithStrokeInPx: (float) d direction: (int) theDirection { //console.info("Optotypes>tumblingEWithStrokeInPx");
-    //theDirection = directionIfMirrored(theDirection);
-    cgc = [[CPGraphicsContext currentContext] graphicsPort];
-    let p;
-    switch (theDirection) {
-        case 0: "E"
-            p = [[5, -5], [-5, -5], [-5, 5], [5, 5], [5, 3], [-3, 3], [-3, 1], [5, 1], [5, -1], [-3, -1], [-3, -3], [5, -3]];  break;
-        case 2:
-            p = [[-5, 5], [-5, -5], [5, -5], [5, 5], [3, 5], [3, -3], [1, -3], [1, 5], [-1, 5], [-1, -3], [-3, -3], [-3, 5]];  break;
-        case 4:
-            p = [[-5, -5], [5, -5], [5, 5], [-5, 5], [-5, 3], [3, 3], [3, 1], [-5, 1], [-5, -1], [3, -1], [3, -3], [-5, -3]];  break;
-        case 6:
-            p = [[5, -5], [5, 5], [-5, 5], [-5, -5], [-3, -5], [-3, 3], [-1, 3], [-1, -5], [1, -5], [1, 3], [3, 3], [3, -5]];  break;
-        default:    //hollow square (for flanker)
-            p = [[5, -5], [-5, -5], [-5, 5], [5, 5], [5, -5], [3, -3], [-3, -3], [-3, 3], [3, 3], [3, -3]];
+- (void) tumblingEWithStrokeInPx: (float) d direction: (int) theDirection {
+    if (![0, 2, 4, 6].includes(theDirection)) {
+        console.error ("Optotypes>tumblingEWithStrokeInPx, theDirection:", theDirection, " should not occur");
+        return;
     }
-    [self fillPolygon: p withD: d * 0.5];
+    cgc = [[CPGraphicsContext currentContext] graphicsPort];
+    //const hollowSquareForFlanker = [[5, -5], [-5, -5], [-5, 5], [5, 5], [5, -5], [3, -3], [-3, -3], [-3, 3], [3, 3], [3, -3]];
+    const ePoints = [[5, -5], [-5, -5], [-5, 5], [5, 5], [5, 3], [-3, 3], [-3, 1], [5, 1], [5, -1], [-3, -1], [-3, -3], [5, -3]];
+    const angle = -Math.PI / 4 * theDirection;//0: "E" right, 2: "Ш" up, 4: Ǝ left, 6: "m" down
+    CGContextRotateCTM(cgc, angle);
+    [self fillPolygon: ePoints withD: d * 0.5];
+    CGContextRotateCTM(cgc, -angle);
 }
 
 

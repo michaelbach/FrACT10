@@ -29,7 +29,7 @@ sleep 1
 # ensure stop on error
 set -e
 
-
+echo
 echo "» do 'jake release'"
 # "compile"
 jake release
