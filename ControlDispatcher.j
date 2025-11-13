@@ -133,7 +133,7 @@
 
 + (void) manageSetSetting {
     if ((m2 === "preset") || (m2 === "Preset")) {
-        [self _notify: "applyPresetNamed" object: m3];  return;
+        [self _notify: "notificationApplyPresetNamed" object: m3];  return;
     }
     const allowedBoolSettings = ["showIdAndEyeOnMain", "isGratingObliqueOnly", "showResponseInfoAtStart", "enableTouchControls", "eccentShowCenterFixMark", "eccentRandomizeX", "eccentRandomizeY", "autoFullScreen", "respondsToMobileOrientation", "showTrialInfo", "putResultsToClipboardSilent", "showRewardPicturesWhenDone", "embedInNoise", "isAcuityColor", "isLandoltObliqueOnly", "acuityHasEasyTrials", "showAcuityFormatDecimal", "showAcuityFormatLogMAR", "showAcuityFormatSnellenFractionFoot", "forceSnellen20", "showCI95", "isLineByLineChartModeConstantVA", "contrastHasEasyTrials", "isContrastDarkOnLight", "contrastShowFixMark", "isContrastDithering", "isGratingMasked", "isGratingErrorDiffusion", "isGratingColor", "specialBcmOn", "hideExitButton", "giveAuditoryFeedback4run", "isAcuityPresentedConstant"];
     if (allowedBoolSettings.includes(m2)) {

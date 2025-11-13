@@ -28,7 +28,7 @@
 
 //after applying the preset, respond via GUI or send back to caller?
 @typedef feedbackTypeType
-kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
+kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
 
 
 @implementation Presets: CPObject {
@@ -51,7 +51,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
         for (const aPreset of allPresets) [_popUpButton addItemWithTitle: aPreset];
         [_popUpButton setSelectedIndex: 0]; //always show "PRESETS"
 
-        [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(applyPresetNamed:) name: "applyPresetNamed" object: nil];
+        [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationApplyPresetNamed:) name: "notificationApplyPresetNamed" object: nil];
     }
     return self;
 }
@@ -84,9 +84,19 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
 /**
  Called by by ControlDispatcher after receiving a pertinent HTMLMessage
  */
-- (void) applyPresetNamed: (CPNotification) aNotification { //console.info("Presets>applyPresetNamed");
+- (void) notificationApplyPresetNamed: (CPNotification) aNotification { //console.info("Presets>notificationApplyPresetNamed");
     _presetName = [aNotification object];
     [self apply2withFeedbackType: kFeedbackTypeHTMLMessage];
+}
+
+
+/**
+ To be called by auto-presetting
+ Call like this: [presets applyPresetNamed: "Testing"];
+ */
+- (void) applyPresetNamed: (CPString) presetName {
+    _presetName = presetName;
+    [self apply2withFeedbackType: kFeedbackTypeNone];
 }
 
 
@@ -163,6 +173,7 @@ kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
         case kFeedbackTypeHTMLMessage:
             [ControlDispatcher post2parentM1: "Settings" m2: "Preset" m3: _presetName success: true];
             break;
+        case kFeedbackTypeNone: break; //explicitly doing nothing
     }
 }
 

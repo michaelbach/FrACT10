@@ -71,9 +71,6 @@ kAutoRunIndexNone = 0; kAutoRunIndexHi = 1; kAutoRunIndexMid = 2; kAutoRunIndexL
 @typedef VernierTypeType
 kVernierType2bars = 0; kVernierType3bars = 1;
 
-@typedef SoundTypeType
-kSoundRunEnd = 0; kSoundTrialYes = 1; kSoundTrialNo = 2; kSoundTrialStart = 3;
-
 @typedef decimalMarkCharIndexType
 kDecimalMarkCharIndexAuto = 0; kDecimalMarkCharIndexDot = 1; kDecimalMarkCharIndexComma = 2;
 
@@ -81,6 +78,8 @@ kDecimalMarkCharIndexAuto = 0; kDecimalMarkCharIndexDot = 1; kDecimalMarkCharInd
 kGratingShapeIndexSinus = 0; kGratingShapeIndexSquare = 1;
 kGratingShapeIndexTriangle = 2; kGratingShapeIndexCheckerboard = 3;
 
+@typedef SoundTypeType
+kSoundRunEnd = 0; kSoundTrialYes = 1; kSoundTrialNo = 2; kSoundTrialStart = 3;
 gSoundsTrialYes = ["tink.mp3", "miniPop.mp3"];
 gSoundsTrialNo = ["whistle.mp3", "error2.mp3"];
 gSoundsRunEnd = ["gong.mp3", "cuteLevelUp.mp3"];
