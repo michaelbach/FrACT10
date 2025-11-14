@@ -1,5 +1,6 @@
 # History
 
+2025-11-14 prepare for auto-presetting, remove unnecessary code
 2025-11-11 put correct email into Jakefile, simplify `Optotypes.j` using rotation rather than many point lists
 2025-11-10 simplify `importAllSettings, add "distanceInInchLocalisedString" to list "exclude from exporting", get rid of `jspdf` compiler warning by changing to `window.jspdf`
 2025-11-09 improve Export: on comptible browsers use showSaveFilePicker, else use `FileSaver.js`
