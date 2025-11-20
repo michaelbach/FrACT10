@@ -1,5 +1,6 @@
 # History
 
+2025-11-20 save 1 MB by changing `allRewardSprites` from png to webp, slight refactoring in `AboutAndHelpController`
 2025-11-16 in "Help" change reference to a difficult to reach PDF, also make code more readable
 2025-11-14 prepare for auto-presetting, remove unnecessary code
 2025-11-11 put correct email into Jakefile, simplify `Optotypes.j` using rotation rather than many point lists

@@ -72,20 +72,21 @@
 - (void) oneWebView: (CPWebView) theView htmlString: (CPString) htmlString {
     [theView setBackgroundColor: [CPColor colorWithWhite: 0.99 alpha: 1]];
     [theView setScrollMode: CPWebViewScrollNone];
-    s = "<html lang='en'><head><meta charset='UTF-8'> <style>body{ font-family:sans-serif; font-size:13px; line-height:1.2em; padding: 8px; margin:0; border:1px solid black; border-radius:5px;} h4{margin-bottom:4px; padding:0;} ul{margin-top:0;}li{margin-bottom:0.3em;}</style></head><body>";
+    let s = "<html lang='en'><head><meta charset='UTF-8'> <style>body{ font-family:sans-serif; font-size:13px; line-height:1.2em; padding: 8px; margin:0; border:1px solid black; border-radius:5px;} h4{margin-bottom:4px; padding:0;} ul{margin-top:0;}li{margin-bottom:0.3em;}</style></head><body>";
     s += htmlString + "</body></html>";
     [theView loadHTMLString: s];
 }
 
 
 - (void) populateAboutPanelView1 {
-    s = "<h2 align='center'>FrACT₁₀</h2>";
+    let s = "<h2 align='center'>FrACT₁₀</h2>";
     s += "Freiburg Visual Acuity and Contrast Test 10, ";
     s += "<a href='https://michaelbach.de/fract/index.html#anchorWhatsNew' target='_blank'>" + "Vs " + gVersionStringOfFract + "</a>, <br>";
     s += "release date " + gVersionDateOfFrACT + ".<br><br>";
     s += "Semi-automatic assessment of visual acuities following ISO, and contrast thresholds.<br><br>Optotypes: Sloan letters, Landolt C, Tumbling E, TAO, gratings, and hyperacuity targets.<br><br>Acuity results in LogMAR, decimal or Snellen notation; several export options plus 2-way HTML messaging for data management systems.<br><br>With <a href='https://doi.org/10.3758/BF03204398' target='_blank'>‘Best PEST’</a>, <a href='https://dx.doi.org/10.1163/156856897x00087' target='_blank'>anti-aliasing and dithering</a>.<br><br>"
     s += "Includes <a href='https://michaelbach.de/sci/stim/balm/index.html' target='_blank'>BaLM as BaLM₁₀</a>";
     [self oneWebView: aboutWebView1 htmlString: s];
+
 
     s = "©1993–" + [gVersionDateOfFrACT substringWithRange: CPMakeRange(0, 4)];
      s += "<br>Prof. Michael Bach, Eye Center, Medical Center<br>"
@@ -117,7 +118,7 @@
 
 
 - (void) populateHelpPanel {
-    s = "<h4>General</h4> <ul><li><b>Make use of the cool tool tips</b> by hovering with the mouse over the pertinent interface element.</li>";
+    let s = "<h4>General</h4> <ul><li><b>Make use of the cool tool tips</b> by hovering with the mouse over the pertinent interface element.</li>";
     s += "<li>Be sure to calibrate (→Settings) for correct results. Preferences are automatically saved.</li>";
     s += "<li>This is a forced choice test – even when your observers indicate that they cannot see a thing, encourage them to make their best guess; the software knows about the lucky guesses. Motivate them to react swiftly, lengthy squinting at the optotype is not helpful.</li>";
     s += "<li>Quality results require knowledge in sensory testing. At least observe the <a href='https://michaelbach.de/fract/checklist.html' target='_blank'>Checklist</a>.</li>";

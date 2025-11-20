@@ -27,7 +27,7 @@ kNImages = 32;
 kSize = 200;
 kScale = 3;
 kSizeScaled = kSize * kScale;
-kSpriteFile = "allRewardSprites.png";
+kSpriteFile = "allRewardSprites.webp";
 
 
 @implementation RewardsController: CPObject {
