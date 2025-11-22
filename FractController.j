@@ -75,6 +75,14 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) runStart { //console.info("FractController>runStart");
+    [self _initializeTestParameters];
+    [self _initializeGenerators];
+    [self _initializeTestDetails];
+    [self trialStart];
+}
+
+
+- (void) _initializeTestParameters {
     [self updateViewWidthHeight];
     [gAppController copyColorsFromSettings]; //could have been overwritten
     gStrokeMinimal = [Settings minStrokeAcuity]; //smallest possible stroke is ½pixel. Made into a Setting.
@@ -86,8 +94,12 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     iTrial = 0;
     oldResponseKeyChar = " ";
     state = kStateDrawBack;
+    responseWasCorrect = YES;  responseWasCorrectCumulative = YES;
+    strokeSizeInPix = [MiscSpace pixelFromDegree: [Settings contrastOptotypeDiameter] / 60] / 5;
+}
+
+- (void) _initializeGenerators {
     const obliqueOnlyG = [self isGratingAny] && [Settings isGratingObliqueOnly];
-    alternativesGenerator = [[AlternativesGenerator alloc] initWithNumAlternatives: nAlternatives andNTrials: nTrials obliqueOnly: obliqueOnlyG];
     alternativesGenerator = [[AlternativesGenerator alloc] initWithNumAlternatives: nAlternatives andNTrials: nTrials obliqueOnly: obliqueOnlyG];
     if ([Settings eccentRandomizeX]) {
         alternativesGeneratorEccentRandomizeX = [[AlternativesGenerator alloc] initWithNumAlternatives: 2 andNTrials: nTrials obliqueOnly: NO];
@@ -97,9 +109,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     }
     thresholder = [[Thresholder alloc] initWithNumAlternatives: nAlternatives];
     [TrialHistoryController initWithNumTrials: nTrials];
-    responseWasCorrect = YES;  responseWasCorrectCumulative = YES;
-    strokeSizeInPix = [MiscSpace pixelFromDegree: [Settings contrastOptotypeDiameter] / 60] / 5;
+}
 
+- (void) _initializeTestDetails {
     const dateTime = [CPDate date];
     gTestDetails[td_dateTimeOfRunStart] = dateTime;
     gTestDetails[td_dateOfRunStart] = [Misc date2YYYY_MM_DD: dateTime];
@@ -110,8 +122,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     gTestDetails[td_testName] = [Misc testNameGivenTestID: gCurrentTestID];
     gTestDetails[td_eccentricityX] = [Settings eccentXInDeg];
     gTestDetails[td_eccentricityY] = [Settings eccentYInDeg];
-
-    [self trialStart];
 }
 
 
@@ -258,32 +268,45 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     let sze = 52, sze2 = sze / 2;
     switch  (gCurrentTestID) { //kTestAcuityTAO, kTestAcuityVernier: done in instance
         case kTestAcuityLett: case kTestContrastLett:
-            sze = viewWidth / ((nAlternatives+1) * 1.4 + 1);
-            for (let i = 0; i < nAlternatives; i++) {
-                [self buttonCenteredAtX: (i + 0.9) * 1.4 * sze y: viewHeightHalf - sze2 - 1
-                                   size: sze title: [@"CDHKNORSVZØ" characterAtIndex: i]];
-            }
+            [self _drawTouchControlsForLett: sze sze2: sze2];
             break;
         case kTestAcuityC: case kTestContrastC: case kTestContrastG:
-            const radius = 0.5 * Math.min(viewWidth, viewHeight) - sze2 - 1;
-            for (let i = 0; i < 8; i++) {
-                if ( ([Settings nAlternatives] > 4)  || (![Misc isOdd: i])) {
-                    let iConsiderObliqueOnly = i;
-                    if ((([Settings nAlternatives] === 4) && [Settings isLandoltObliqueOnly])
-                        || ([self isGratingAny] && [Settings isGratingObliqueOnly])) iConsiderObliqueOnly++;
-                    const ang = iConsiderObliqueOnly / 8 * 2 * Math.PI;
-                    [self buttonCenteredAtX: viewWidthHalf + Math.cos(ang) * radius y:  Math.sin(ang) * radius size: sze title: [@"632147899" characterAtIndex: iConsiderObliqueOnly]];
-                }
-            }
+            [self _drawTouchControlsForC: sze sze2: sze2];
             break;
         case kTestAcuityE: case kTestContrastE:
-            [self buttonCenteredAtX: viewWidth-sze2 y: 0 size: sze title: "6"];
-            [self buttonCenteredAtX: sze2 y: 0 size: sze title: "4"];
-            [self buttonCenteredAtX: viewWidthHalf y: -viewHeightHalf + sze2 size: sze title: "8"];
-            [self buttonCenteredAtX: viewWidthHalf y: viewHeightHalf - sze2 size: sze title: "2"];
+            [self _drawTouchControlsForE: sze sze2: sze2];
     }
     [self buttonCenteredAtX: viewWidth - sze2 - 1 y: viewHeightHalf - sze2 - 1 size: sze title: "Ø"];
 }
+
+- (void) _drawTouchControlsForLett: (float) sze sze2: (float) sze2 {
+    sze = viewWidth / ((nAlternatives+1) * 1.4 + 1);
+    for (let i = 0; i < nAlternatives; i++) {
+        [self buttonCenteredAtX: (i + 0.9) * 1.4 * sze y: viewHeightHalf - sze2 - 1
+                           size: sze title: [@"CDHKNORSVZØ" characterAtIndex: i]];
+    }
+}
+
+- (void) _drawTouchControlsForC: (float) sze sze2: (float) sze2 {
+    const radius = 0.5 * Math.min(viewWidth, viewHeight) - sze2 - 1;
+    for (let i = 0; i < 8; i++) {
+        if ( ([Settings nAlternatives] > 4)  || (![Misc isOdd: i])) {
+            let iConsiderObliqueOnly = i;
+            if ((([Settings nAlternatives] === 4) && [Settings isLandoltObliqueOnly])
+                || ([self isGratingAny] && [Settings isGratingObliqueOnly])) iConsiderObliqueOnly++;
+            const ang = iConsiderObliqueOnly / 8 * 2 * Math.PI;
+            [self buttonCenteredAtX: viewWidthHalf + Math.cos(ang) * radius y:  Math.sin(ang) * radius size: sze title: [@"632147899" characterAtIndex: iConsiderObliqueOnly]];
+        }
+    }
+}
+
+- (void) _drawTouchControlsForE: (float) sze sze2: (float) sze2 {
+    [self buttonCenteredAtX: viewWidth-sze2 y: 0 size: sze title: "6"];
+    [self buttonCenteredAtX: sze2 y: 0 size: sze title: "4"];
+    [self buttonCenteredAtX: viewWidthHalf y: -viewHeightHalf + sze2 size: sze title: "8"];
+    [self buttonCenteredAtX: viewWidthHalf y: viewHeightHalf - sze2 size: sze title: "2"];
+}
+
 - (CPButton) buttonCenteredAtX: (float) x y: (float) y size: (float) size title: (CPString) title {
     [self buttonCenteredAtX: x y: y size: size title: title keyEquivalent: title];
 }
@@ -472,7 +495,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     const sv = [[gAppController.selfWindow contentView] subviews];
     for (const svi of sv) [svi removeFromSuperview];
     [gAppController.selfWindow close];
-    [gAppController setRunAborted: (iTrial < nTrials)]; //premature end
+    [gAppController setRunAborted: (iTrial < nTrials)]; //premature end?
     [gAppController setCurrentTestResultExportString: [self composeExportString]];
     //delay to give the screen time to update for immediate response feedback
     await [Misc asyncDelaySeconds: 0.03];
@@ -480,7 +503,17 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [gAppController setCurrentTestResultsHistoryExportString: [TrialHistoryController resultsHistoryString]];
     if ([Settings giveAuditoryFeedback4run]) [sound playNumber: kSoundRunEnd];
 
-    let _currentTestResultExportString = [gAppController currentTestResultExportString];
+    let exportString = [gAppController currentTestResultExportString];
+    exportString = [self _appendCI95InfoToString: exportString];
+    exportString = [self _appendColorInfoToString: exportString];
+    exportString = [self _appendNoiseInfoToString: exportString];
+    exportString = [self _appendGratingInfoToString: exportString];
+    [gAppController setCurrentTestResultExportString: exportString + crlf];
+    [gAppController runEnd];
+}
+
+
+- (CPString) _appendCI95InfoToString: (CPString) exportString {
     if ([Settings showCI95] && (![gAppController runAborted])) {
         if ([self isAcuityOptotype]) {
             //the below causes a delay of < 1 s with nSamples=10,000
@@ -488,30 +521,39 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             gTestDetails[td_halfCI95] = [MDBDispersionEstimation calculateCI95halfFromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: gNSamplesCI95];
             ci95String = " ± " + [Misc stringFromNumber: gTestDetails[td_halfCI95] decimals: 2 localised: YES];
             [gAppController setResultString: [self acuityComposeResultString]]; //this will add CI95 info
-            _currentTestResultExportString += tab + "halfCI95" + tab + [Misc stringFromNumber: gTestDetails[td_halfCI95] decimals: 3 localised: YES];
+            exportString += tab + "halfCI95" + tab + [Misc stringFromNumber: gTestDetails[td_halfCI95] decimals: 3 localised: YES];
         }
     }
+    return exportString;
+}
+
+- (CPString) _appendColorInfoToString: (CPString) exportString {
     if ([Settings isAcuityColor]) {
         if ([self isAcuityOptotype] && (![self isAcuityTAO])) {
-            _currentTestResultExportString += tab + "colorFore" + tab + [gColorFore hexString];
-            _currentTestResultExportString += tab + "colorBack" + tab + [gColorBack hexString];
+            exportString += tab + "colorFore" + tab + [gColorFore hexString];
+            exportString += tab + "colorBack" + tab + [gColorBack hexString];
             gTestDetails[td_colorFore] = gColorFore;  gTestDetails[td_colorBack] = gColorBack;
         }
     }
+    return exportString;
+}
+
+- (CPString) _appendNoiseInfoToString: (CPString) exportString {
     if ([Settings embedInNoise]) {
         if (([self isAcuityOptotype] || [self isContrastOptotype]) && (![self isAcuityTAO])) {
-            _currentTestResultExportString += tab + "noiseContrast" + tab + [Misc stringFromInteger: [Settings noiseContrast]];
+            exportString += tab + "noiseContrast" + tab + [Misc stringFromInteger: [Settings noiseContrast]];
             gTestDetails[td_noiseContrast] = [Settings noiseContrast];
         }
     }
+    return exportString;
+}
 
+- (CPString) _appendGratingInfoToString: (CPString) exportString {
     if (gCurrentTestID === kTestContrastG) {
-        _currentTestResultExportString += tab + "gratingShape" + tab + [Settings gratingShapeIndex];
+        exportString += tab + "gratingShape" + tab + [Settings gratingShapeIndex];
         gTestDetails[td_gratingShape] = [Settings gratingShapeIndex];
     }
-
-    [gAppController setCurrentTestResultExportString: _currentTestResultExportString + crlf];
-    [gAppController runEnd];
+    return exportString;
 }
 
 

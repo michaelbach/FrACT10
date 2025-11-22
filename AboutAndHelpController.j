@@ -22,7 +22,6 @@
 @implementation AboutAndHelpController : CPWindowController {
     @outlet CPPanel aboutPanel, helpPanel;
     @outlet CPWebView aboutWebView1, aboutWebView2, helpWebView1, helpWebView2, helpWebView3, helpWebView4;
-    CPString s;
 }
 
 
