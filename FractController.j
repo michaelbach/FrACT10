@@ -405,10 +405,10 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 //0–8: valid; -1: ignore; -2: invalid
 - (int) responseNumber8FromChar: (CPString) keyChar { //console.info("FractController>responseNumber8FromChar: ", keyChar);
     switch (keyChar) {
-        case CPLeftArrowFunctionKey: kKEY_RESPONSE_LEFT: return 4;
-        case CPRightArrowFunctionKey: kKEY_RESPONSE_RIGHT: return 0;
-        case CPUpArrowFunctionKey: kKEY_RESPONSE_UP: return 2;
-        case CPDownArrowFunctionKey: kKEY_RESPONSE_DOWN: return 6;
+        case CPLeftArrowFunctionKey: case kKEY_RESPONSE_LEFT: return 4;
+        case CPRightArrowFunctionKey: case kKEY_RESPONSE_RIGHT: return 0;
+        case CPUpArrowFunctionKey: case kKEY_RESPONSE_UP: return 2;
+        case CPDownArrowFunctionKey: case kKEY_RESPONSE_DOWN: return 6;
         case kKEY_RESPONSE_UP_RIGHT: return 1;
         case kKEY_RESPONSE_UP_LEFT: return 3;
         case kKEY_RESPONSE_DOWN_LEFT: return 5;
