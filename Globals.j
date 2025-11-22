@@ -22,6 +22,16 @@ gVersionOfExportFormat = "6"; //incremented 2025-05-13 after adding ID and eyeCo
 gFilename4ResultStorage = "FRACT10-FINAL-RESULT-STRING";
 gFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
 
+kKEY_RESPONSE_RIGHT = "6";  // geographic mapping of keys for numeric keypad
+kKEY_RESPONSE_UP_RIGHT = "9";
+kKEY_RESPONSE_UP = "8";
+kKEY_RESPONSE_UP_LEFT = "7";
+kKEY_RESPONSE_LEFT = "4";
+kKEY_RESPONSE_DOWN_LEFT = "1";
+kKEY_RESPONSE_DOWN = "2";
+kKEY_RESPONSE_DOWN_RIGHT = "3";
+kKEY_RESPONSE_ABORT = "5";
+
 gAbortMessage = "Run canceled.";
 //Correction for threshold underestimation by DIN/ISO-ascending method (in VAdecimal)
 gThresholdCorrection4Ascending = 0.891;// multiplicative for decimal acuity ≙ 0.0501 logMAR addition

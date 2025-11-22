@@ -140,10 +140,8 @@ Created by Bach on 14.08.2017.
 
 - (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerAcuityVernier>responseNumberFromChar: ", keyChar);
     switch (keyChar) {
-        case CPLeftArrowFunctionKey: return 4;
-        case CPRightArrowFunctionKey: return 0;
-        case "6": return 0;
-        case "4": return 4;
+        case CPLeftArrowFunctionKey: case kKEY_RESPONSE_LEFT: return 4;
+        case CPRightArrowFunctionKey: case kKEY_RESPONSE_RIGHT: return 0;
     }
     return -2; //0, 4: valid; -1: ignore; -2: invalid
 }

@@ -214,28 +214,24 @@ const specialBcmStepsize = 0.1;
 - (int) responseNumberFromChar: (CPString) keyChar { //console.info("FractControllerContrastE>responseNumberFromChar: ", keyChar);
     if (gratingShapeIndex === kGratingShapeIndexCheckerboard) {
         //additional mappings for cardinal/oblique checkerboards
-        if (["1", "3", "7", "9"].includes(keyChar)) { //oblique
+        if ([kKEY_RESPONSE_DOWN_LEFT, kKEY_RESPONSE_DOWN_RIGHT, kKEY_RESPONSE_UP_LEFT, kKEY_RESPONSE_UP_RIGHT].includes(keyChar)) { //oblique
             keyChar = CPRightArrowFunctionKey;
         } else {
-            if (["2", "4", "6", "8"].includes(keyChar)) { //cardinal
+            if ([kKEY_RESPONSE_DOWN, kKEY_RESPONSE_LEFT, kKEY_RESPONSE_RIGHT, kKEY_RESPONSE_UP].includes(keyChar)) { //cardinal
                 keyChar = CPUpArrowFunctionKey;
             }
         }
     }
     switch (keyChar) {
-        case CPLeftArrowFunctionKey: return 4; //⬅️
-        case CPRightArrowFunctionKey: return 4; //➡️
-        case CPUpArrowFunctionKey: return 0; //⬆️
-        case CPDownArrowFunctionKey: return 0; //⬇️
-        case "1": return 6; //↙️
-        case "2": return 0; //⬇️
-        case "3": return 2; //↘️
-        case "4": return 4; //⬅️
-        case "5": return -1;
-        case "6": return 4; //➡️
-        case "7": return 2; //↖️
-        case "8": return 0; //⬆️
-        case "9": return 6; //↗️
+        case CPLeftArrowFunctionKey: case kKEY_RESPONSE_LEFT: return 4; //⬅️
+        case CPRightArrowFunctionKey: case kKEY_RESPONSE_RIGHT: return 4; //➡️
+        case CPUpArrowFunctionKey: case kKEY_RESPONSE_UP: return 0; //⬆️
+        case CPDownArrowFunctionKey: case kKEY_RESPONSE_DOWN: return 0; //⬇️
+        case kKEY_RESPONSE_DOWN_LEFT: return 6; //↙️
+        case kKEY_RESPONSE_DOWN_RIGHT: return 2; //↘️
+        case kKEY_RESPONSE_UP_LEFT: return 2; //↖️
+        case kKEY_RESPONSE_UP_RIGHT: return 6; //↗️
+        case kKEY_RESPONSE_ABORT: return -1;
     }
     return -2; //0, 2, 4, 6: valid; -1: ignore; -2: invalid
 }

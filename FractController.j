@@ -62,7 +62,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
         optotypes = [[Optotypes alloc] init];
         [Settings checkDefaults];
-        abortCharacter = "5";
+        abortCharacter = kKEY_RESPONSE_ABORT;
         [gAppController setRunAborted: YES];
         [gAppController.selfWindow makeKeyAndOrderFront: self];  [gAppController.selfWindow makeFirstResponder: self];
         //[self performSelector: @selector(runStart) withObject: nil afterDelay: 0.01]; //geht nicht mehr nach DEPLOY???
@@ -301,10 +301,10 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 - (void) _drawTouchControlsForE: (float) sze sze2: (float) sze2 {
-    [self buttonCenteredAtX: viewWidth-sze2 y: 0 size: sze title: "6"];
-    [self buttonCenteredAtX: sze2 y: 0 size: sze title: "4"];
-    [self buttonCenteredAtX: viewWidthHalf y: -viewHeightHalf + sze2 size: sze title: "8"];
-    [self buttonCenteredAtX: viewWidthHalf y: viewHeightHalf - sze2 size: sze title: "2"];
+    [self buttonCenteredAtX: viewWidth-sze2 y: 0 size: sze title: kKEY_RESPONSE_RIGHT];
+    [self buttonCenteredAtX: sze2 y: 0 size: sze title: kKEY_RESPONSE_LEFT];
+    [self buttonCenteredAtX: viewWidthHalf y: -viewHeightHalf + sze2 size: sze title: kKEY_RESPONSE_UP];
+    [self buttonCenteredAtX: viewWidthHalf y: viewHeightHalf - sze2 size: sze title: kKEY_RESPONSE_DOWN];
 }
 
 - (CPButton) buttonCenteredAtX: (float) x y: (float) y size: (float) size title: (CPString) title {
@@ -382,65 +382,47 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (int) responseNumber2FromChar: (CPString) keyChar { //console.info("responseNumber2FromChar>responseNumberFromChar: ", keyChar);
     switch (keyChar) { //0=no light, 4=light
         case CPLeftArrowFunctionKey: case CPDownArrowFunctionKey:
-        case "2": case "4": return 0;
+        case kKEY_RESPONSE_DOWN: case kKEY_RESPONSE_LEFT: return 0;
         case CPRightArrowFunctionKey: case CPUpArrowFunctionKey:
-        case "6": case "8": return 4;
-        case "5": return -1;
+        case kKEY_RESPONSE_RIGHT: case kKEY_RESPONSE_UP: return 4;
+        case kKEY_RESPONSE_ABORT: return -1;
     }
-    return -2;
+    return -2; //invalid key
 }
 //for a four cardinal directions/alternatives
 - (int) responseNumber4FromChar: (CPString) keyChar {
     //console.info("FractController>responseNumber4FromChar: ", keyChar);
     switch (keyChar) {
-        case CPRightArrowFunctionKey: case "6": //→
-            return 0;
-        case CPDownArrowFunctionKey: case "2": //↓
-            return 6;
-        case CPLeftArrowFunctionKey: case "4": //←
-            return 4;
-        case CPUpArrowFunctionKey: case "8": //↑
-            return 2;
-        case "5": return -1;
+        case CPRightArrowFunctionKey: case kKEY_RESPONSE_RIGHT: return 0; //→
+        case CPDownArrowFunctionKey: case kKEY_RESPONSE_DOWN: return 6; //↓
+        case CPLeftArrowFunctionKey: case kKEY_RESPONSE_LEFT: return 4; //←
+        case CPUpArrowFunctionKey: case kKEY_RESPONSE_UP: return 2; //↑
+        case kKEY_RESPONSE_ABORT: return -1;
     }
-    return -2;
+    return -2; //invalid key
 }
 //8 directions/alternatives, this can be used for Landolt Cs
 //0–8: valid; -1: ignore; -2: invalid
 - (int) responseNumber8FromChar: (CPString) keyChar { //console.info("FractController>responseNumber8FromChar: ", keyChar);
     switch (keyChar) {
-        case CPLeftArrowFunctionKey: return 4;
-        case CPRightArrowFunctionKey: return 0;
-        case CPUpArrowFunctionKey: return 2;
-        case CPDownArrowFunctionKey: return 6;
-        case "6": return 0;
-        case "9": return 1;
-        case "8": return 2;
-        case "7": return 3;
-        case "4": return 4;
-        case "1": return 5;
-        case "2": return 6;
-        case "3": return 7;
-        case "5": return -1;
+        case CPLeftArrowFunctionKey: kKEY_RESPONSE_LEFT: return 4;
+        case CPRightArrowFunctionKey: kKEY_RESPONSE_RIGHT: return 0;
+        case CPUpArrowFunctionKey: kKEY_RESPONSE_UP: return 2;
+        case CPDownArrowFunctionKey: kKEY_RESPONSE_DOWN: return 6;
+        case kKEY_RESPONSE_UP_RIGHT: return 1;
+        case kKEY_RESPONSE_UP_LEFT: return 3;
+        case kKEY_RESPONSE_DOWN_LEFT: return 5;
+        case kKEY_RESPONSE_DOWN_RIGHT: return 7;
+        case kKEY_RESPONSE_ABORT: return -1;
     }
-    return -2;
+    return -2; //invalid key
 }
 //10 alternatives, this can be used for Letters
 - (int) responseNumber10FromChar: (CPString) keyChar { //console.info("FractController>responseNumber10FromChar: ", keyChar);
-    switch ([keyChar uppercaseString]) { //"CDHKNORSVZ"
-        case "C": return 0;
-        case "D": return 1;
-        case "H": return 2;
-        case "K": return 3;
-        case "N": return 4;
-        case "O": return 5;
-        case "R": return 6;
-        case "S": return 7;
-        case "V": return 8;
-        case "Z": return 9;
-        case "5": return -1;
-    }
-    return -2; //-1: ignore; -2: invalid
+    const keyMap = {"C": 0, "D": 1, "H": 2, "K": 3, "N": 4, "O": 5,
+        "R": 6, "S": 7, "V": 8, "Z": 9, kKEY_RESPONSE_ABORT: -1};
+    const result = keyMap[[keyChar uppercaseString]];
+    return result !== undefined ? result : -2; //if key exists, return its value, otherwise -2
 }
 
 
