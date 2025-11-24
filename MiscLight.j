@@ -89,7 +89,7 @@
  Unit tests to the degree possible
  */
 + (BOOL) unittest {
-    console.log("\nMiscLight>unittest")
+    //console.log("\nMiscLight>unittest")
     let isSuccess = YES;
     for (val0 of [0, 0.1, 0.3, 1]) {
         val1 = [self contrastWeberPercentFromLogCSWeber: val0];

@@ -111,7 +111,7 @@
  Tests for round-trip accuracy (deg→px→deg, logMAR↔VA, …
  */
 + (BOOL) unittest {
-    console.log("\nMiscSpace>unittest")
+    //console.log("\nMiscSpace>unittest")
     let isSuccess = [self unittestDeg2Pix2Deg];
     isSuccess &&= [self unittestLogMAR2VA2LogMAR];
     isSuccess &&= [self unittestConversionsPositiveValsOnly];
