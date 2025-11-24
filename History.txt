@@ -1,6 +1,7 @@
 # History
 
-2025-11-24 refactor: change all numerical keypad keys to symbolic constants, simplify some key→code mappings; refactor FractController.j for better readability, no change in function
+2025-11-24 refactor: change all numerical keypad keys to symbolic constants, simplify some key→code mappings; refactor FractController.j for better readability, no change in function;
+    improve: add `allUnittests` in `Misc`, as HTMLmessage keyword "allAutomatic", to `testingSuite.js`
 2025-11-20 save 1 MB by changing `allRewardSprites` from png to webp, slight refactoring in `AboutAndHelpController`
 2025-11-16 in "Help" change reference to a difficult to reach PDF, also make code more readable
 2025-11-14 prepare for auto-presetting, remove unnecessary code

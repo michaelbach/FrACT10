@@ -370,6 +370,22 @@ function _pause(ms) { //console.info("Misc>_pause");
 }
 
 
++ (BOOL) allUnittests {
+    let s = "Unittests: ", successAll = YES, success;
+    success = [Misc unittest];  successAll &&= success;
+    s += "Mc" + (success ? "√" : "Ø");  [gAppController setResultString: s];
+    success = [MiscSpace unittest];  successAll &&= success;
+    s += ", McS" + (success ? "√" : "Ø");  [gAppController setResultString: s];
+    success = [MiscLight unittest];  successAll &&= success;
+    s += ", McL" + (success ? "√" : "Ø");  [gAppController setResultString: s];
+    success = [MDBDispersionEstimation unittestLogisticFun];  successAll &&= success;
+    s += ", DispE" + (success ? "√" : "Ø");  [gAppController setResultString: s];
+    s += (success ? "" : "failed");
+    [gAppController setResultString: s];
+    return success;
+}
+
+
 /* /////////////////////////////////////OLD, not in use (yet) */
 
 /*

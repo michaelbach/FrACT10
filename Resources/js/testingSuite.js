@@ -399,6 +399,10 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
 		await oneStep3Ms('setFullScreen', NO, ''); await pauseMilliseconds(pauseViewMS);
 		await oneStep3Ms('settingsPane', -1, ''); await pauseMilliseconds(pauseViewMS);
 	}); */
+
+    await doTextTestfunText("Internal unit tests", async () => {
+        await oneStep3Ms('unittest', 'allAutomatic', '');
+    });
 	await doTextTestfunText("Test `getVersion` etc.", async () => {
 		await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
 		let response = await oneStep3Ms('getSetting', 'distanceInCM', '');

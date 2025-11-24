@@ -206,6 +206,9 @@
 + (void) manageUnittests {
     console.log("\nControlDispatcher>unittest")
     switch(m2) {
+        case "allAutomatic":
+            [self post2parentM1: m1 m2: m2 m3: m3 success: [Misc allUnittests]];
+            break;
         case "rewardImages": case "RewardImages": //ignore m3
             [gAppController.rewardsController unittest];
             break;

@@ -491,17 +491,7 @@
         case "B":
             [self balmSwitch];  break;
         case "U":
-            let s = "Unittests: ", successAll = YES, success;
-            success = [Misc unittest];  successAll &&= success;
-            s += "Mc" + (success ? "√" : "Ø");  [self setResultString: s];
-            success = [MiscSpace unittest];  successAll &&= success;
-            s += ", McS" + (success ? "√" : "Ø");  [self setResultString: s];
-            success = [MiscLight unittest];  successAll &&= success;
-            s += ", McL" + (success ? "√" : "Ø");  [self setResultString: s];
-            success = [MDBDispersionEstimation unittestLogisticFun];  successAll &&= success;
-            s += ", DispE" + (success ? "√" : "Ø");  [self setResultString: s];
-            s += (success ? "" : "failed");
-            [self setResultString: s];
+            [Misc allUnittests];
             break;
         default:
             [super keyDown: theEvent];  break;
