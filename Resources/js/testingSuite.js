@@ -438,5 +438,5 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
 	addText("↓ Set `Standard Defaults` & Reload.");
 	await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
 	tellIframe3Ms('reload', '', '');
-	addText(" TESTING SUITE done.");
+	addText("\n TESTING SUITE done.");
 }

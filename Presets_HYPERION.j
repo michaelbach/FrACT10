@@ -15,6 +15,7 @@
     [Settings setDefaults];
 
     //general pane
+    [Settings setNTrials08: 24];
     [Settings setShowResponseInfoAtStart: NO]; [Settings setEnableTouchControls: NO];
     [Settings setDecimalMarkCharIndex: kDecimalMarkCharIndexDot];
     [Settings setDistanceInCM: 400];
