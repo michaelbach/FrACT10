@@ -119,7 +119,7 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [self applyTestingPresets];  [Settings setNTrials02: 4];  [Settings setNTrials04: 4];
             [Settings setDistanceInCM: 29];  [Settings setBalmIsiMillisecs: 500];
             break;
-        case "BaLM₁₀": //easier testing
+        case "BaLM₁₀":
             [Settings setDefaults];
             [Settings setTimeoutResponseSeconds: 2];
             [Settings setNTrials02: 24];  [Settings setNTrials04: 24];
