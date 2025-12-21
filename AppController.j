@@ -182,7 +182,7 @@
     [Misc centerWindowOrPanel: [selfWindow contentView]]; //→center
     [selfWindow orderFront: self]; //ensures that it will receive clicks w/o activating
     [resultStringField setVerticalAlignment: CPTopVerticalTextAlignment];
-    [self setResultString: "→ Result displayed here ←"];
+    [self setResultString: "– Result displayed here –"];
 }
 
 
