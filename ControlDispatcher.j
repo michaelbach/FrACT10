@@ -47,6 +47,10 @@
             "setSetting": () => [self manageSetSetting],
             "getValue": () => [self manageGetValue],
             "run": () => [self manageRun],
+            "getTestDetails": () => {
+                [self post2parentM1:"getTestDetails" m2:gTestDetails m3:"" success:YES];
+                _sendHTMLMessageOnRunDone = NO;
+            },
             "sendChar": () => {
                 [self sendChar:m2];  [self post2parentM1:m1 m2:m2 m3:m3 success:YES];
             },
