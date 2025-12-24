@@ -1,6 +1,6 @@
 /*
  This file is part of FrACT10, a vision test battery.
- Copyright © 2024 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
+ © 2024 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
  Presets_Hyper_TUDo.j (a helper for Presets)
  Settings for a hyperacuity project at Universität Dortmung

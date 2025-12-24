@@ -1,6 +1,6 @@
 /*
  This file is part of FrACT10, a vision test battery.
- Copyright © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
+ © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
  2025-03-05 created class "FractControllerBalmMotion" inheriting from "FractController"
  */

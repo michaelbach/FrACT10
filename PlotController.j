@@ -1,6 +1,6 @@
 /*
  This file is part of FrACT10, a vision test battery.
- Copyright © 2025 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
+ © 2025 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
  PlotController.j
 

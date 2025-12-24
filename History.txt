@@ -1,6 +1,6 @@
 # History
 
-2025-12-24 enhance: optionally show Snellen fraction in "line of optotypes"
+2025-12-24 enhance: optionally show Snellen fraction in "line of optotypes". Docs: remove the unnecessary doubling "Copyright ©"
 2025-12-21 add `getTestDetails` to `ControlDispatcher` to improve modelObserver
 2025-11-25 refactor: modernize `ControlDispatcher`, no change in function, also now drop most deprecated HTML messages (mostly capitalisation issues, no big deal);
     One Preset: up nTrials08 → 24

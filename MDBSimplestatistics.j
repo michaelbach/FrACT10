@@ -1,6 +1,6 @@
 /*
 This file is part of FrACT10, a vision test battery.
-Copyright © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
+© 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
 MDBSimplestatistics.j
 
@@ -13,7 +13,7 @@ MDBSimplestatistics.j
 
 /*
    These functions are  largely unmodified excerpts from »simple-statistics.js« <https://simplestatistics.org/>
-   Copyright (c) 2014, Tom MacWright
+   © 2014, Tom MacWright
    simple-statistics is licensed under the ISC License,
    a permissive license leting people do anything with the code with proper attribution and without warranty…
    
