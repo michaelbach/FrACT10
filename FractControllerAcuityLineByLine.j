@@ -134,11 +134,16 @@ Created by mb on 2021-12-21.
             let stringWidth = 140, lineHeight = 24;
             CGContextShowTextAtPoint(cgc, -viewWidthHalf, -viewHeightHalf + lineHeight, " Use ↑↓, ⇄");
             let s = (lines > 1) ? "middle line: " : "";
-            s += [Misc stringFromNumber: localLogMAR decimals: 1 localised: YES] + " LogMAR ";
+
+            if ([Settings showAcuityFormatSnellenFractionFoot]) {
+                s += [self format4SnellenInFeet: [MiscSpace decVAfromLogMAR: localLogMAR]] + " ";
+            } else {
+                s += [Misc stringFromNumber: localLogMAR decimals: 1 localised: YES] + " LogMAR ";
+            }
             try {
                 const tInfo = cgc.measureText(s);
                 stringWidth = tInfo.width;
-                //lineHeight = tInfo.emHeightAscent; //+ tInfo.emHeightDescent;
+                //lineHeight=tInfo.emHeightAscent+tInfo.emHeightDescent;
             } catch(e) {}
             CGContextShowTextAtPoint(cgc, viewWidthHalf - stringWidth, -viewHeightHalf + lineHeight, s);
             break;

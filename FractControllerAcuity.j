@@ -128,6 +128,9 @@
 }
 
 
+/**
+ Return string representation for Snellen Fraction
+ */
 - (CPString) format4SnellenInFeet: (float) decVA {
     const distanceInMetres = [Settings distanceInCM] / 100.0;
     let distanceInFeet = distanceInMetres * gMeter2FeetMultiplier;
@@ -136,10 +139,6 @@
     s += [Misc stringFromNumber: (distanceInFeet / decVA) decimals: 0 localised: YES];
     return s;
 }
-/*private function format4SnellenInMeter(theAcuityResult):String {
- let distanceInMetres=Prefs.distanceInCM.n / 100.0, distanceInFeet=distanceInMetres * 3.28084;
- return Utils.DeleteTrailing_PointZero(Utils.rStrNInt(distanceInMetres, 1, Prefs.decimalPointChar)) + "/" + Utils.DeleteTrailing_PointZero(Utils.rStrNInt(distanceInMetres / theAcuityResult,1,Prefs.decimalPointChar));
- }*/
 
 
 /*    Transformation formula:   stroke = c1 * exp(tPest * c2).
