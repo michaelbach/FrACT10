@@ -1,0 +1,47 @@
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg" viewBox="-60 -60 120 120">
+
+<!-- bläuliche Iris -->
+<circle cx="0" cy="0" r="50" fill="#6699CC" />
+<!-- weiße Lücke -->
+<rect x="0" y="-10" width="80" height="20" fill="white" transform="rotate(45)" />
+<!-- schwarze Pupille -->
+<circle cx="0" cy="0" r="30" fill="black" />
+
+<!-- Oberlid -->
+<circle cx='0' cy='206' r='250' fill='none' stroke='rgb(231, 181, 111)' stroke-width='1.1' />
+<circle cx='0' cy='205' r='250' fill='none' stroke='rgb(231, 181, 111)' stroke-width='1.1' />
+<circle cx='0' cy='204' r='250' fill='none' stroke='rgb(230, 180, 110)' stroke-width='1.1' />
+<circle cx='0' cy='203' r='250' fill='none' stroke='rgb(228, 178, 108)' stroke-width='1.1' />
+<circle cx='0' cy='202' r='250' fill='none' stroke='rgb(226, 176, 106)' stroke-width='1.1' />
+<circle cx='0' cy='201' r='250' fill='none' stroke='rgb(223, 173, 103)' stroke-width='1.1' />
+<circle cx='0' cy='200' r='250' fill='none' stroke='rgb(220, 170, 100)' stroke-width='1.1' />
+<circle cx='0' cy='199' r='250' fill='none' stroke='rgb(216, 166, 96)' stroke-width='1.1' />
+<circle cx='0' cy='198' r='250' fill='none' stroke='rgb(211, 161, 91)' stroke-width='1.1' />
+<circle cx='0' cy='197' r='250' fill='none' stroke='rgb(204, 154, 84)' stroke-width='1.1' />
+<circle cx='0' cy='196' r='250' fill='none' stroke='rgb(196, 146, 76)' stroke-width='1.1' />
+<circle cx='0' cy='195' r='250' fill='none' stroke='rgb(186, 136, 66)' stroke-width='1.1' />
+<circle cx='0' cy='194' r='250' fill='none' stroke='rgb(174, 124, 54)' stroke-width='1.1' />
+<circle cx='0' cy='193' r='250' fill='none' stroke='rgb(158, 108, 38)' stroke-width='1.1' />
+<circle cx='0' cy='192' r='250' fill='none' stroke='rgb(138, 88, 18)' stroke-width='1.1' />
+<circle cx='0' cy='191' r='250' fill='none' stroke='rgb(114, 64, 18)' stroke-width='1.1' />
+<circle cx='0' cy='190' r='250' fill='none' stroke='rgb(83, 33, 18)' stroke-width='1.1' />
+<circle cx='0' cy='189' r='250' fill='none' stroke='rgb(45, 18, 18)' stroke-width='1.1' />
+<circle cx='0' cy='188' r='250' fill='none' stroke='rgb(18, 18, 18)' stroke-width='1.1' />
+<circle cx='0' cy='187' r='250' fill='none' stroke='rgb(18, 18, 18)' stroke-width='1.1' />
+<circle cx='0' cy='186' r='250' fill='none' stroke='rgb(18, 18, 18)' stroke-width='1.1' />
+<circle cx='0' cy='185' r='250' fill='none' stroke='rgb(18, 18, 18)' stroke-width='1.1' />
+<circle cx='0' cy='184' r='250' fill='none' stroke='rgb(18, 18, 18)' stroke-width='1.1' />
+<circle cx='0' cy='183' r='250' fill='none' stroke='rgb(18, 18, 18)' stroke-width='1.1' />
+<circle cx='0' cy='182' r='250' fill='none' stroke='rgb(18, 18, 18)' stroke-width='1.1' />
+
+<circle cx='0' cy='206' r='250' fill='none' stroke='black' stroke-width='1.1' />
+
+<!-- Unterlid -->
+<circle cx='0' cy='-196' r='250' fill='none' stroke='rgb(138, 88, 18)' stroke-width='1.1' />
+<circle cx='0' cy='-195' r='250' fill='none' stroke='rgb(138, 88, 18)' stroke-width='1.1' />
+<circle cx='0' cy='-194' r='250' fill='none' stroke='rgb(174, 124, 54)' stroke-width='1.1' />
+<circle cx='0' cy='-193' r='250' fill='none' stroke='rgb(196, 146, 7)' stroke-width='1.1' />
+<circle cx='0' cy='-192' r='250' fill='none' stroke='rgb(211, 161, 91)' stroke-width='1.1' />
+<circle cx='0' cy='-191' r='250' fill='none' stroke='rgb(220, 170, 100)' stroke-width='1.1' />
+
+</svg>
