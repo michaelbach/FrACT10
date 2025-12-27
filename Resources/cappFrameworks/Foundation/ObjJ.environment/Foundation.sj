@@ -10682,6 +10682,68 @@ var meta_class = the_class.isa;class_addMethods(the_class, [new objj_method(sel_
 ,["void","CPCoder"])]);
 }
 p;7;CPLog.jt;19;@STATIC;1.0;t;3;1;
+p;12;CPMapTable.jt;2618;@STATIC;1.0;i;10;CPObject.ji;14;CPEnumerator.ji;14;CPDictionary.ji;9;CPArray.jt;2533;objj_executeFile("CPObject.j", YES);objj_executeFile("CPEnumerator.j", YES);objj_executeFile("CPDictionary.j", YES);objj_executeFile("CPArray.j", YES);
+{var the_class = objj_allocateClassPair(CPObject, "CPMapTable"),
+meta_class = the_class.isa;class_addIvars(the_class, [new objj_ivar("_map", "id")]);objj_registerClassPair(the_class);
+class_addMethods(the_class, [new objj_method(sel_getUid("init"), function $CPMapTable__init(self, _cmd)
+{
+    if (self = (objj_getClass("CPMapTable").super_class.method_dtable["init"] || _objj_forward)(self, "init"))
+    {
+        self._map = new Map();
+    }
+    return self;
+}
+
+,["id"]), new objj_method(sel_getUid("objectForKey:"), function $CPMapTable__objectForKey_(self, _cmd, aKey)
+{
+    var value = self._map.get(aKey);
+    return value === undefined ? nil : value;
+}
+
+,["id","id"]), new objj_method(sel_getUid("keyEnumerator"), function $CPMapTable__keyEnumerator(self, _cmd)
+{
+    return ((___r1 = [...self._map.keys()]), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["objectEnumerator"] || _objj_forward)(___r1, "objectEnumerator"));
+    var ___r1;
+}
+
+,["CPEnumerator"]), new objj_method(sel_getUid("objectEnumerator"), function $CPMapTable__objectEnumerator(self, _cmd)
+{
+    return ((___r1 = [...self._map.values()]), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["objectEnumerator"] || _objj_forward)(___r1, "objectEnumerator"));
+    var ___r1;
+}
+
+,["CPEnumerator"]), new objj_method(sel_getUid("count"), function $CPMapTable__count(self, _cmd)
+{
+    return self._map.size;
+}
+
+,["unsigned int"]), new objj_method(sel_getUid("setObject:forKey:"), function $CPMapTable__setObject_forKey_(self, _cmd, anObject, aKey)
+{
+    self._map.set(aKey, anObject);
+}
+
+,["void","id","id"]), new objj_method(sel_getUid("removeObjectForKey:"), function $CPMapTable__removeObjectForKey_(self, _cmd, aKey)
+{
+    self._map.delete(aKey);
+}
+
+,["void","id"]), new objj_method(sel_getUid("removeAllObjects"), function $CPMapTable__removeAllObjects(self, _cmd)
+{
+    self._map.clear();
+}
+
+,["void"]), new objj_method(sel_getUid("dictionaryRepresentation"), function $CPMapTable__dictionaryRepresentation(self, _cmd)
+{
+    var dictionary = (CPDictionary.isa.method_msgSend["dictionary"] || _objj_forward)(CPDictionary, "dictionary");
+for(var [key, value] of self._map.entries())
+    {
+        (dictionary == null ? dictionary : (dictionary.isa.method_msgSend["setObject:forKey:"] || _objj_forward)(dictionary, "setObject:forKey:", value, key));
+    }
+    return dictionary;
+}
+
+,["CPDictionary"])]);
+}
 p;16;CPNotification.jt;2675;@STATIC;1.0;i;13;CPException.ji;10;CPObject.ji;14;CPDictionary.jt;2604;objj_executeFile("CPException.j", YES);objj_executeFile("CPObject.j", YES);objj_executeFile("CPDictionary.j", YES);
 {var the_class = objj_allocateClassPair(CPObject, "CPNotification"),
 meta_class = the_class.isa;class_addIvars(the_class, [new objj_ivar("_name", "CPString"), new objj_ivar("_object", "id"), new objj_ivar("_userInfo", "CPDictionary")]);objj_registerClassPair(the_class);
