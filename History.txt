@@ -1,5 +1,6 @@
 # History
 
+2025-12-28e add `doThreshCorrection` to allowed settings in `ControlDispatcher`
 2025-12-28d update FrACT icon, fullscreen icon, more shortcuts via "Key Equivalent" in IB, only one svg-icon in webmanifest
 2025-11-24 refactor: change all numerical keypad keys to symbolic constants, simplify some key→code mappings; refactor FractController.j for better readability, no change in function;
     improve: add `allUnittests` in `Misc`, as HTMLmessage keyword "allAutomatic", to `testingSuite.js`
