@@ -10,18 +10,14 @@
   "display": "standalone",
   "icons": [
     {
-      "src": "icons/FrACT_icon-390.png",
-      "sizes": "390x390",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "icons/FrACT_icon-390.png",
-      "sizes": "390x390",
-      "type": "image/png",
-      "purpose": "any"
+      "src": "icons/FrACT_svg_icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
   ],
   "orientation": "landscape",
   "description": "Vision Test Battery (acuities, contrast, ...)"
 }
+
+

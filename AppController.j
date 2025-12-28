@@ -472,15 +472,10 @@
     if (kShortcutKeys4TestsArray[key]) {
         [self runFractControllerTest: kShortcutKeys4TestsArray[key]];  return;
     }
-    switch(key) {
+    switch(key) { // many keys are dealt with via the "Key Equivalent" in IB
         case "W" : [Misc infoAllWindows]; break;
         case "Q": case "X": case "-": //Quit or eXit
             [self buttonDoExit_action: nil];  break;
-        case "S": //Settings
-            //this complicated version avoids propagation of the "s"
-            [[CPRunLoop currentRunLoop] performSelector: @selector(buttonSettings_action:) target: self argument: nil order: 10000 modes: [CPDefaultRunLoopMode]];  break;
-        case "F":
-            [self buttonFullScreen_action: nil];  break;
         case "5":
             const sto5 = [Settings testOnFive];
             if (sto5 > 0) [self runFractControllerTest: sto5];
@@ -488,8 +483,6 @@
         case "R":
             [Settings setAutoRunIndex: [Settings autoRunIndex] === kAutoRunIndexNone ? kAutoRunIndexMid : kAutoRunIndexNone];
             break;
-        case "B":
-            [self balmSwitch];  break;
         case "U":
             [Misc allUnittests];
             break;

@@ -1,12 +1,12 @@
-<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg" viewBox="-60 -60 120 120">
-
-<!-- bläuliche Iris -->
+<svg width="126" height="126" xmlns="http://www.w3.org/2000/svg" viewBox="-62 -60 126 126">
+<!-- Hintergrund -->
+<rect x="-62" y="-60" width="126" height="115" fill="#FAFAFA" />
+<!-- Iris -->
 <circle cx="0" cy="0" r="50" fill="#6699CC" />
-<!-- weiße Lücke -->
-<rect x="0" y="-10" width="80" height="20" fill="white" transform="rotate(45)" />
-<!-- schwarze Pupille -->
+<!-- Lücke -->
+<rect x="0" y="-10" width="54" height="20" fill="#FAFAFA" transform="rotate(45)" />
+<!-- Pupille -->
 <circle cx="0" cy="0" r="30" fill="black" />
-
 <!-- Oberlid -->
 <circle cx='0' cy='206' r='250' fill='none' stroke='rgb(231, 181, 111)' stroke-width='1.1' />
 <circle cx='0' cy='205' r='250' fill='none' stroke='rgb(231, 181, 111)' stroke-width='1.1' />
@@ -33,9 +33,7 @@
 <circle cx='0' cy='184' r='250' fill='none' stroke='rgb(18, 18, 18)' stroke-width='1.1' />
 <circle cx='0' cy='183' r='250' fill='none' stroke='rgb(18, 18, 18)' stroke-width='1.1' />
 <circle cx='0' cy='182' r='250' fill='none' stroke='rgb(18, 18, 18)' stroke-width='1.1' />
-
 <circle cx='0' cy='206' r='250' fill='none' stroke='black' stroke-width='1.1' />
-
 <!-- Unterlid -->
 <circle cx='0' cy='-196' r='250' fill='none' stroke='rgb(138, 88, 18)' stroke-width='1.1' />
 <circle cx='0' cy='-195' r='250' fill='none' stroke='rgb(138, 88, 18)' stroke-width='1.1' />
@@ -43,5 +41,10 @@
 <circle cx='0' cy='-193' r='250' fill='none' stroke='rgb(196, 146, 7)' stroke-width='1.1' />
 <circle cx='0' cy='-192' r='250' fill='none' stroke='rgb(211, 161, 91)' stroke-width='1.1' />
 <circle cx='0' cy='-191' r='250' fill='none' stroke='rgb(220, 170, 100)' stroke-width='1.1' />
-
+<circle cx='0' cy='-190' r='250' fill='none' stroke='rgb(220, 170, 100)' stroke-width='1.1' />
+<circle cx='0' cy='-189' r='250' fill='none' stroke='rgb(220, 170, 100)' stroke-width='1.1' />
+<circle cx='0' cy='-188' r='250' fill='none' stroke='rgb(220, 170, 100)' stroke-width='1.1' />
+<circle cx='0' cy='-187' r='250' fill='none' stroke='rgb(220, 170, 100)' stroke-width='1.1' />
+<circle cx='0' cy='-186' r='250' fill='none' stroke='rgb(220, 170, 100)' stroke-width='1.1' />
+<circle cx='0' cy='-185' r='250' fill='none' stroke='rgb(220, 170, 100)' stroke-width='1.1' />
 </svg>

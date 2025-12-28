@@ -1,0 +1,15 @@
+<svg width="768" height="768" viewBox="-384 -384 768 768" xmlns="http://www.w3.org/2000/svg">
+<!-- <rect x="-384" y="-384" width="768" height="768" fill="white"></rect> -->
+<!-- ↗️ -->
+<g  id="g1">
+<line x1="100" y1="-100" x2="241" y2="-241" stroke="black" stroke-width="30" stroke-linecap="round" />
+<line x1="140" y1="-241" x2="241" y2="-241" stroke="black" stroke-width="30" stroke-linecap="round" />
+<line x1="241" y1="-241" x2="241" y2="-140" stroke="black" stroke-width="30" stroke-linecap="round" />
+</g>
+<!-- ↘️ -->
+<use href="#g1" transform="rotate(90)" />
+<!-- ↙️ -->
+<use href="#g1" transform="rotate(180)" />
+<!-- ↖️ -->
+<use href="#g1" transform="rotate(-90)" />
+</svg>

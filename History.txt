@@ -1,10 +1,6 @@
 # History
 
-2025-12-27 enhance: use svg-formatted icon (needed fix in Cappuccino's `imagesize`)
-2025-12-24 enhance: optionally show Snellen fraction in "line of optotypes". Docs: remove the unnecessary doubling "Copyright ©"
-2025-12-21 add `getTestDetails` to `ControlDispatcher` to improve modelObserver
-2025-11-25 refactor: modernize `ControlDispatcher`, no change in function, also now drop most deprecated HTML messages (mostly capitalisation issues, no big deal);
-    One Preset: up nTrials08 → 24
+2025-12-28d update FrACT icon, fullscreen icon, more shortcuts via "Key Equivalent" in IB, only one svg-icon in webmanifest
 2025-11-24 refactor: change all numerical keypad keys to symbolic constants, simplify some key→code mappings; refactor FractController.j for better readability, no change in function;
     improve: add `allUnittests` in `Misc`, as HTMLmessage keyword "allAutomatic", to `testingSuite.js`
 2025-11-20 save 1 MB by changing `allRewardSprites` from png to webp, slight refactoring in `AboutAndHelpController`
