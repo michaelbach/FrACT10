@@ -1215,7 +1215,7 @@ Very useful for testing kid. I like them too 😎.</string>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wrj-XQ-Ter">
-                                                        <rect key="frame" x="12" y="57" width="55" height="26"/>
+                                                        <rect key="frame" x="12" y="57" width="57" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes (TAO).  For Landolt Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.</string>
                                                         <popUpButtonCell key="cell" type="push" title="2" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="MNg-IJ-MqA" id="jUX-2m-CLf">
@@ -1225,7 +1225,7 @@ Very useful for testing kid. I like them too 😎.</string>
                                                                 <items>
                                                                     <menuItem title="2" state="on" id="MNg-IJ-MqA"/>
                                                                     <menuItem title="4" id="Phl-Rb-rJK"/>
-                                                                    <menuItem title="8" id="7IW-QD-W13"/>
+                                                                    <menuItem title="≥8" id="7IW-QD-W13"/>
                                                                 </items>
                                                             </menu>
                                                         </popUpButtonCell>
@@ -1248,14 +1248,14 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gNV-ad-8PW">
                                                         <rect key="frame" x="186" y="25" width="250" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" title="number of trials  for 2, 4, or 8/10 choices" id="rae-uy-roh">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" title="number of trials  for selected choices" id="rae-uy-roh">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cEj-Jr-YXR">
-                                                        <rect key="frame" x="305" y="59" width="120" height="18"/>
+                                                        <rect key="frame" x="295" y="59" width="120" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">LC = Landolt C.
 
@@ -1273,7 +1273,7 @@ The response keys are NOT updated (yet) by can be guessed :).</string>
                                                         </connections>
                                                     </button>
                                                     <comboBox focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8ZN-pt-i6I">
-                                                        <rect key="frame" x="132" y="24" width="50" height="23"/>
+                                                        <rect key="frame" x="132" y="24" width="52" height="23"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">The number of trials presented when 8 or 10 choices are possible (e.g. Sloan Letters or Landolt
 Cs set for 8).
@@ -1291,12 +1291,13 @@ You can select a suggestion or enter any value.
                                                             </objectValues>
                                                         </comboBoxCell>
                                                         <connections>
+                                                            <binding destination="450" name="enabled" keyPath="is8plusAlternatives" id="TWT-f7-TYm"/>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.nTrials08" id="E1f-vc-oLS"/>
                                                             <outlet property="nextKeyView" destination="OYn-Zv-7ZB" id="KCc-ku-eXu"/>
                                                         </connections>
                                                     </comboBox>
                                                     <comboBox focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wjh-JY-aXB">
-                                                        <rect key="frame" x="73" y="24" width="50" height="23"/>
+                                                        <rect key="frame" x="73" y="24" width="52" height="23"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">The number of trials presented when 4 choices are possible (e.g. tumbling E, or Landolt C set for 4).
 
@@ -1313,12 +1314,13 @@ You can select a suggestion or enter any value.
                                                             </objectValues>
                                                         </comboBoxCell>
                                                         <connections>
+                                                            <binding destination="450" name="enabled" keyPath="is4alternatives" id="Tjb-gq-vu8"/>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.nTrials04" id="KFF-gL-2Rh"/>
                                                             <outlet property="nextKeyView" destination="8ZN-pt-i6I" id="uYq-nz-qWD"/>
                                                         </connections>
                                                     </comboBox>
                                                     <comboBox focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pWH-8k-W6i">
-                                                        <rect key="frame" x="14" y="24" width="50" height="23"/>
+                                                        <rect key="frame" x="14" y="24" width="52" height="23"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">The number of trials presented when 2 choices are possible (e.g. Vernier).
 
@@ -1335,7 +1337,8 @@ You can select a suggestion or enter any value.
                                                             </objectValues>
                                                         </comboBoxCell>
                                                         <connections>
-                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.nTrials02" id="f2K-Bm-Bxj"/>
+                                                            <binding destination="450" name="enabled" keyPath="is2alternatives" id="V9p-rl-gga"/>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.nTrials02" id="0H6-0b-kF4"/>
                                                             <outlet property="nextKeyView" destination="wjh-JY-aXB" id="PJQ-D2-nwa"/>
                                                         </connections>
                                                     </comboBox>

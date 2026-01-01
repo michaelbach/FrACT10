@@ -15,7 +15,7 @@
 	<key>Main cib file base name</key>
 	<string>MainMenu.cib</string>
 	<key>VersionDate</key>
-	<string>2025-12-31</string>
+	<string>2026-01-01</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string></string>
@@ -76,7 +76,7 @@
 	<key>CFBundleIdentifier</key>
 	<string></string>
 	<key>VersionNumberString</key>
-	<string>3.2</string>
+	<string>3.3</string>
 	<key>LSRequiresIPhoneOS</key>
 	<false/>
 	<key>CFBundleIconName</key>

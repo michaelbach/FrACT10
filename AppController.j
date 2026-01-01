@@ -74,6 +74,9 @@
     BOOL runAborted @accessors;
     BOOL has4orientations @accessors;
     BOOL has2orientations @accessors;
+    BOOL is2alternatives @accessors;
+    BOOL is4alternatives @accessors;
+    BOOL is8plusAlternatives @accessors;
     id allPanels;
     int settingsPaneTabViewSelectedIndex @accessors;
     float calBarLengthInMMbefore;
@@ -240,6 +243,9 @@
 - (void) settingsDidChange: (CPNotification) aNotification { //console.info("settingsDidChange");
     [self setHas4orientations: ([Settings nAlternatives] === 4)];
     [self setHas2orientations: ([Settings nAlternatives] === 2)];
+    [self setIs2alternatives: ([Settings nAlternatives] === 2)];
+    [self setIs4alternatives: ([Settings nAlternatives] === 4)];
+    [self setIs8plusAlternatives: ([Settings nAlternatives] >= 8)];
     [selfWindow setBackgroundColor: [self windowBackgroundColor]];
     if ([Settings minPossibleLogMAR] > 0) { //red: not good enough for normal vision
         [self setColorOfBestPossibleAcuity: [CPColor redColor]];
