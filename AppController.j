@@ -241,7 +241,7 @@
  Observe changes in the settings panel, making sure dependencies are updated
  Danger: endless loops need to be avoided
  */
-- (void) settingsDidChange: (CPNotification) aNotification { console.info("settingsDidChange");
+- (void) settingsDidChange: (CPNotification) aNotification { //console.info("settingsDidChange");
     [self setHas4orientations: ([Settings nAlternatives] === 4)];
     [self setHas2orientations: ([Settings nAlternatives] === 2)];
     if (is2alternatives !== ([Settings nAlternatives] === 2)) {
