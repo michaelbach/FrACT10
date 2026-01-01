@@ -239,13 +239,20 @@
 
 /**
  Observe changes in the settings panel, making sure dependencies are updated
+ Danger: endless loops need to be avoided
  */
-- (void) settingsDidChange: (CPNotification) aNotification { //console.info("settingsDidChange");
+- (void) settingsDidChange: (CPNotification) aNotification { console.info("settingsDidChange");
     [self setHas4orientations: ([Settings nAlternatives] === 4)];
     [self setHas2orientations: ([Settings nAlternatives] === 2)];
-    [self setIs2alternatives: ([Settings nAlternatives] === 2)];
-    [self setIs4alternatives: ([Settings nAlternatives] === 4)];
-    [self setIs8plusAlternatives: ([Settings nAlternatives] >= 8)];
+    if (is2alternatives !== ([Settings nAlternatives] === 2)) {
+        [self setIs2alternatives: ([Settings nAlternatives] === 2)];
+    } // this complicated way avoids endless loop
+    if (is4alternatives !== ([Settings nAlternatives] === 4)) {
+        [self setIs4alternatives: ([Settings nAlternatives] === 4)];
+    }
+    if (is8plusAlternatives !== ([Settings nAlternatives] >= 8)) {
+        [self setIs8plusAlternatives: ([Settings nAlternatives] >= 8)];
+    }
     [selfWindow setBackgroundColor: [self windowBackgroundColor]];
     if ([Settings minPossibleLogMAR] > 0) { //red: not good enough for normal vision
         [self setColorOfBestPossibleAcuity: [CPColor redColor]];
