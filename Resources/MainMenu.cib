@@ -112,11 +112,10 @@ If checked, ≈0.05 LogMAR will be added to the result, resulting in slightly wo
 If in doubt: checked.
 S;163;If unchecked, the raw=psychometric threshold is caculated. If checked (default), it's descending-corrected, thus reflecting DIN/ISO values. If in doubt: checked.
 
-S;92;If you are using eccentric optotypes, this will put up a stationary central fixation target.S;35;If you don't want central fixation…S;76;Increase the gamma value a little. This makes the background a bit brighter.S;78;Interstimulus Interval for Light: the dark phase before thte potential flash. S;127;LC = Landolt C.
+S;92;If you are using eccentric optotypes, this will put up a stationary central fixation target.S;35;If you don't want central fixation…S;76;Increase the gamma value a little. This makes the background a bit brighter.S;78;Interstimulus Interval for Light: the dark phase before thte potential flash. S;66;LC = Landolt C.
 
 Applies only to Landolt Cs with 4 orientations.
-
-The response keys are NOT updated (yet) by can be guessed :).S;94;Last selected Preset or Import.
+ S;94;Last selected Preset or Import.
 May not be correct if settings have been changed afterwards.
 
 S;31;Legal notice and more.         S;65;Measure luminance in these 2 fields to calculate actual contrast.S;36;Motion speed in degrees per second. S;18;Noise percentage
