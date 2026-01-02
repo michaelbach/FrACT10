@@ -6,6 +6,8 @@ This file is part of FrACT10, a vision test battery.
 */
 
 
+@import <Foundation/CPObject.j>
+
 @import "AlternativesGenerator.j"
 @import "Thresholder.j";
 @import "Optotypes.j";

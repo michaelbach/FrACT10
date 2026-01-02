@@ -6,8 +6,6 @@
 
  */
 
-@import <Foundation/Foundation.j>
-@import <AppKit/AppKit.j>
 @import "AppController.j"
 @import "MDB2plot.j"
 

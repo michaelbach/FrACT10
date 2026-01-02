@@ -9,7 +9,6 @@ Sound.j
 
 
 @import <Foundation/Foundation.j>
-@import <AppKit/AppKit.j>
 
 
 @implementation Sound: CPObject {

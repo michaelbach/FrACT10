@@ -1,5 +1,6 @@
 # History
 
+2026-01-02 improve build size: only need to import part of AppKit (16→14MB)
 2026-01-01 improve GUI: change to segmented control, disable inactive nTrials (Vs 3.3)
 2025-12-28e add `doThreshCorrection` to allowed settings in `ControlDispatcher`
 2025-12-28d update FrACT icon, fullscreen icon, more shortcuts via "Key Equivalent" in IB, only one svg-icon in webmanifest

@@ -12,7 +12,6 @@ TAOController.j
 
 
 @import <Foundation/Foundation.j>
-@import <AppKit/AppKit.j>
 
 
 @implementation TAOController: CPObject {

@@ -23,7 +23,6 @@ Created by Bach on 2024-03-23.
 
 
 @import <Foundation/CPObject.j>
-@import <AppKit/AppKit.j>
 
 
 @implementation Dithering: CPObject {

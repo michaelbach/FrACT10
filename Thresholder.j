@@ -9,7 +9,6 @@ A wrapper for whatever thresholding algorithm is used (currently only BestPEST)
 
 
 @import <Foundation/Foundation.j>
-@import <AppKit/AppKit.j>
 @import "ThresholderPest.j";
 
 

@@ -7,8 +7,6 @@ Misc.j
 */
 
 
-@import <Foundation/Foundation.j>
-@import <AppKit/AppKit.j>
 @import "Globals.j"
 @import "Settings.j"
 

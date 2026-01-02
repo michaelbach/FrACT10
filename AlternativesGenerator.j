@@ -19,7 +19,6 @@ Generates "alternatives" (e.g. Landolt C directions) from 0 to (nAlternatives-1)
 
 
 @import <Foundation/CPObject.j>
-@import <AppKit/AppKit.j>
 
 
 @implementation AlternativesGenerator: CPObject {

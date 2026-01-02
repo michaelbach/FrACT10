@@ -7,6 +7,12 @@
  Created by mb on 2017-07-12.
  */
 
+@import <Foundation/Foundation.j>
+@import <AppKit/CPView.j> //don't need to include the full `AppKit.j`
+@import <AppKit/CPWindowController.j>
+@import <AppKit/CPAlert.j>
+@import <AppKit/CPWebView.j>
+
 @import "Globals.j"
 @import "Misc.j"
 @import "FractView.j"

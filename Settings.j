@@ -13,9 +13,9 @@ Created by mb on July 15, 2015.
 #define kDateOfCurrentSettingsVersion "2025-10-05"
 
 
-@import <Foundation/Foundation.j>
-@import <AppKit/AppKit.j>
 @import <Foundation/CPUserDefaults.j>
+@import <AppKit/CPUserDefaultsController.j>
+
 @import "Misc.j"
 @import "MiscLight.j"
 @import "MiscSpace.j"

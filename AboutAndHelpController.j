@@ -14,8 +14,6 @@
  Dealing with with the Help/About panels
  */
 
-@import <Foundation/Foundation.j>
-@import <AppKit/AppKit.j>
 @import "AppController.j"
 
 
