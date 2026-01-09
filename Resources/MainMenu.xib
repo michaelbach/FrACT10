@@ -774,13 +774,13 @@ May not be correct if settings have been changed afterwards.
                         </connections>
                     </textField>
                     <button tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z0L-0q-JnB">
-                        <rect key="frame" x="327" y="14" width="124" height="24"/>
+                        <rect key="frame" x="324" y="14" width="140" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">To Export your personalised settings into a file. You can “Import” them later. This is useful if you want to ensure you always test with your personalised settings, and also for rapid switching between personalised settings.
 
 The export file will be placed into your Downloads folder, but then can be moved anywhere – just be sure you can find it again for later importing 😎.
 </string>
-                        <buttonCell key="cell" type="push" title="Export Settings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i9g-Iu-m2w">
+                        <buttonCell key="cell" type="push" title="Export All Settings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i9g-Iu-m2w">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -789,11 +789,11 @@ The export file will be placed into your Downloads folder, but then can be moved
                         </connections>
                     </button>
                     <button tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MYC-Id-ZFX">
-                        <rect key="frame" x="458" y="14" width="124" height="24"/>
+                        <rect key="frame" x="470" y="14" width="140" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">To Import your personalised settings, which were previously Exported.
 </string>
-                        <buttonCell key="cell" type="push" title="Import Settings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jQn-Er-Ixx">
+                        <buttonCell key="cell" type="push" title="Import All Settings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jQn-Er-Ixx">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -1892,7 +1892,7 @@ No money transfer involved 😎, just to calibrate size!     </string>
                                                         <rect key="frame" x="20" y="27" width="52" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Acuity can esaily be better than 0.3 LogMAR, but this may irritate. So it can be clipped for display, export values are left unchanged.</string>
-                                                        <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="KWU-19-CiH">
+                                                        <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="KWU-19-CiH">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
