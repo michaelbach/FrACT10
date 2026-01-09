@@ -192,6 +192,9 @@
     [selfWindow orderFront: self]; //ensures that it will receive clicks w/o activating
     [resultStringField setVerticalAlignment: CPTopVerticalTextAlignment];
     [self setResultString: "– Result displayed here –"];
+    if ([Settings isAutoPreset]) {
+        [presets applyPresetNamed: [Settings presetName]];
+    }
 }
 
 

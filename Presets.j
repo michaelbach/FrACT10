@@ -153,6 +153,14 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             console.log("FrACT10>Presets>unknown preset: ", _presetName);
             if (feedbackType === kFeedbackTypeHTMLMessage) {
                 [ControlDispatcher post2parentM1: "Settings" m2: "Preset" m3: _presetName success: NO];
+            } else {
+                if ([Settings isAutoPreset]) {
+                    [Settings setIsAutoPreset: NO];
+                    gLatestAlert = [CPAlert alertWithMessageText: "WARNING" defaultButton: "OK" alternateButton: nil otherButton: nil informativeTextWithFormat: "\rTrying to apply unknown preset: “" + _presetName + "”.\r\rI suggest to reselect the desired preset.\r"];
+                    [gLatestAlert runModalWithDidEndBlock: function(alert, returnCode) {
+                        gLatestAlert = null;
+                    }];
+                }
             }
             return;
     }

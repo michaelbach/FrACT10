@@ -124,7 +124,8 @@ Created by mb on July 15, 2015.
         ["soundTrialYesIndex", "int"], ["soundTrialNoIndex", "int"],
         ["patID", "str"], ["eyeIndex", "int"],
         ["isAcuityPresentedConstant", "bool"],
-        ["acuityPresentedConstantLogMAR", "float"]
+        ["acuityPresentedConstantLogMAR", "float"],
+        ["isAutoPreset", "bool"]
     ];
     for (const [name, type] of settingsNamesAndTypes) {
         switch (type) {
@@ -326,8 +327,11 @@ Created by mb on July 15, 2015.
     
     [self setIsAcuityPresentedConstant: [self checkBool: [self isAcuityPresentedConstant] dflt: NO set: set]];
     [self setAcuityPresentedConstantLogMAR: [self checkNum: [self acuityPresentedConstantLogMAR] dflt: 0 min: -1.0 max: 3.0 set: set]];
-    
-    
+
+    [self setIsAutoPreset: [self checkBool: [self isAutoPreset] dflt: NO set: set]];
+
+
+
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
 
