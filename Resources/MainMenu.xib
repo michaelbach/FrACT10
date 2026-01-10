@@ -1117,7 +1117,7 @@ Very useful for testing kid. I like them too 😎.</string>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.rewardPicturesWhenDone" id="Q1V-Sj-kY5"/>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.showRewardPicturesWhenDone" id="B9T-7Y-JAA"/>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.timeoutRewardPicturesInSeconds" id="JVm-dc-Wac"/>
                                                             <outlet property="nextKeyView" destination="sNY-mP-vcW" id="xcs-zY-kJA"/>
                                                         </connections>
