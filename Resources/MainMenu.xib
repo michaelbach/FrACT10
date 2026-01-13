@@ -4462,7 +4462,7 @@ This is useful for instance when you want a darker environment.
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="plasticCard4calibration" id="q9B-HM-fLc"/>
                     </imageView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nPX-rq-4OH">
-                        <rect key="frame" x="695" y="17" width="84" height="23"/>
+                        <rect key="frame" x="711" y="17" width="68" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="OK" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VoI-V9-wAH">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -4476,7 +4476,7 @@ DQ
                         </connections>
                     </button>
                     <button tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pRh-xT-FdM">
-                        <rect key="frame" x="605" y="17" width="84" height="23"/>
+                        <rect key="frame" x="629" y="17" width="68" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="Cancel" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sBH-V3-ZQi">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -4490,7 +4490,7 @@ Gw
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mGn-Sf-aBZ">
-                        <rect key="frame" x="76" y="17" width="44" height="23"/>
+                        <rect key="frame" x="66" y="17" width="44" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="+" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ckT-7B-irH">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -4513,7 +4513,7 @@ Gw
                         </connections>
                     </button>
                     <button tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Rg-MD-HAx">
-                        <rect key="frame" x="133" y="17" width="44" height="23"/>
+                        <rect key="frame" x="113" y="17" width="44" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="–" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RQO-Lp-ZMq">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -4525,7 +4525,7 @@ Gw
                         </connections>
                     </button>
                     <button tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PNL-1Q-iqK">
-                        <rect key="frame" x="190" y="17" width="44" height="23"/>
+                        <rect key="frame" x="160" y="17" width="44" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="– –" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ODR-4n-aj3">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -4536,7 +4536,7 @@ Gw
                         </connections>
                     </button>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nyq-Ks-EJ5" customClass="MDBLabel">
-                        <rect key="frame" x="251" y="18" width="299" height="21"/>
+                        <rect key="frame" x="211" y="18" width="299" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" allowsUndo="NO" title="← Use the ± buttons to fit the card ↑" allowsEditingTextAttributes="YES" id="Wfw-08-xS0">
                             <font key="font" metaFont="system" size="18"/>
@@ -4564,6 +4564,24 @@ have a standardized size (ISO/IEC 7810:2019)</string>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dQF-jC-hGl">
+                        <rect key="frame" x="573" y="15" width="46" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="Dz6-J9-Lbg">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="unemphasizedSelectedContentBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WP6-Rq-azX">
+                        <rect key="frame" x="513" y="20" width="61" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="→mm/px:" id="px7-wk-2I7">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
             <point key="canvasLocation" x="-101" y="759"/>
@@ -4572,6 +4590,7 @@ have a standardized size (ISO/IEC 7810:2019)</string>
             <connections>
                 <outlet property="plasticCardImageView" destination="pj2-Gh-qNp" id="mGT-J1-5SH"/>
                 <outlet property="plasticCardPanel" destination="Wcf-tk-C3n" id="Mdh-3L-pBY"/>
+                <outlet property="resolutionField" destination="dQF-jC-hGl" id="PIk-g2-4CU"/>
             </connections>
         </customObject>
         <customObject id="Xof-Bh-cQU" customClass="CheckingContrastController"/>

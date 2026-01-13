@@ -72,24 +72,26 @@ xcodeSupportDirectory='.XcodeSupport'
 
 
 ## Here starts main
-#
+
 cd ${0:a:h} # go to starting directory
 workingDirectory=$(pwd) # save it for later
-echo "Our working directory is: $workingDirectory"
+echo "Our working directory is:\n$workingDirectory"
 echo " "
 
-# Save any changed Xcode files
-echo "Saving any changed Xcode files."
+
+echo "***\nSaving any changed Xcode files."
 osascript <<'END'
 tell application "Xcode" to activate
 delay 0.2
 tell application "System Events" to keystroke "s" using {command down, option down}
 tell application "Terminal" to activate
 END
-echo " "
+echo "***\n"
+
 
 # Check version date in service worker, update if necessary
 node ./updateServiceWorkerDateFromInfoPlist.js
+
 
 # Create xcodeSupportDirectory if necessary
 if [ ! -d "$xcodeSupportDirectory" ]; then
@@ -98,7 +100,8 @@ if [ ! -d "$xcodeSupportDirectory" ]; then
 	echo " "
 fi
 
-# Check all source files; for newer ones recreate the pertinent *.h/*.m files
+
+echo "***\nChecking all source files, for newer ones recreate the pertinent *.h/*.m files."
 sourceArray=(*.j)
 for aFile in "${sourceArray[@]}"; do
 	# drop the trailing `.j`
@@ -108,9 +111,10 @@ for aFile in "${sourceArray[@]}"; do
 		OneObjj2objcskeleton $temp
 	fi
 done
-echo " "
+echo "All source files checked.\n***\n"
 
-# (re)create the cib file when necessary (depending on file modification times)
+
+echo "***\n(re)create the cib file when necessary (depending on file modification times)."
 modificationTimeXib=$(FileModTime Resources/MainMenu.xib)
 modificationTimeCib=$(FileModTime Resources/MainMenu.cib)
 #echo "modificationTimeXib: " $modificationTimeXib ",  modificationTimeCib: " $modificationTimeCib
@@ -120,7 +124,8 @@ if [ $modificationTimeXib -ge $modificationTimeCib ]; then
 else
 	echo "CIB file is current."
 fi
-echo " "
+echo "***\n"
+
 
 # Clear Safari's caches and open the project's index.html
 osascript <<'END'

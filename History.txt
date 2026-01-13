@@ -1,5 +1,6 @@
 # History
 
+2026-01-13 add `resolutionField` to plastic card panel
 2026-01-10 fix regression "showRewardPicturesWhenDone" was not updated in the seconds field when renaming (demonstrating how dangerous renaming is!)
 2026-01-09 rename "Export Settings" → "Export All Settings", same for Import
 2026-01-06 add "Auto Prefix"

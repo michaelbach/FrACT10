@@ -17,7 +17,8 @@
 @implementation CardController : CPWindowController {
     @outlet CPPanel plasticCardPanel;
     @outlet CPImageView plasticCardImageView;
-    float calBarLengthInMMbefore;
+    @outlet CPTextField resolutionField; 
+    float calBarLengthInMMbefore; 
 }
 
 
@@ -29,6 +30,9 @@
     //ID-1: nominally 85,60 mm wide by 53,98 mm high by 0,76 mm thick
     const hInPx = wInPx * hOverW, xc = 400, yc = 300 - 24; //position in window, space for buttons
     [plasticCardImageView setFrame: CGRectMake(xc - wInPx / 2, yc - hInPx / 2, wInPx, hInPx)];
+    [resolutionField setStringValue:
+      [Misc stringFromNumber:
+        [MiscSpace millimeterFromPixel: 1] decimals: 3 localised: YES]];
 }
 
 
