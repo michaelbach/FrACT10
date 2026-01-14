@@ -743,7 +743,8 @@ DQ
                         <string key="toolTip">Preset a set of settings.
 This is useful for studies / clinical trials for standardisation across time and/or centers.
 
- </string>
+If disabled: → Settings▸Misc▸Auto Preset
+</string>
                         <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="lkr-61-A7f" id="JI4-Wi-eC6" userLabel="PRESETS">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="message"/>
@@ -755,6 +756,11 @@ This is useful for studies / clinical trials for standardisation across time and
                         </popUpButtonCell>
                         <connections>
                             <action selector="popupPreset_action:" target="450" id="s9a-Hy-zVf"/>
+                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.isAutoPreset" id="3Wl-ra-QBv">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
                         </connections>
                     </popUpButton>
                     <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N8d-dZ-cuN" userLabel="presetName">
@@ -776,10 +782,10 @@ May not be correct if settings have been changed afterwards.
                     <button tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z0L-0q-JnB">
                         <rect key="frame" x="324" y="14" width="140" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">To Export your personalised settings into a file. You can “Import” them later. This is useful if you want to ensure you always test with your personalised settings, and also for rapid switching between personalised settings.
+                        <mutableString key="toolTip">To Export your personalised settings into a file. You can “Import” them later. This is useful if you want to ensure you always test with your personalised settings, and also for rapid switching between personalised settings.
 
 The export file will be placed into your Downloads folder, but then can be moved anywhere – just be sure you can find it again for later importing 😎.
-</string>
+</mutableString>
                         <buttonCell key="cell" type="push" title="Export All Settings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i9g-Iu-m2w">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -792,6 +798,8 @@ The export file will be placed into your Downloads folder, but then can be moved
                         <rect key="frame" x="470" y="14" width="140" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">To Import your personalised settings, which were previously Exported.
+
+If disabled: → Settings▸Misc▸Auto Preset
 </string>
                         <buttonCell key="cell" type="push" title="Import All Settings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jQn-Er-Ixx">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -799,6 +807,11 @@ The export file will be placed into your Downloads folder, but then can be moved
                         </buttonCell>
                         <connections>
                             <action selector="buttonSettingsExportImport_action:" target="450" id="fPT-dt-ISO"/>
+                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.isAutoPreset" id="CaV-kf-6m0">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
                         </connections>
                     </button>
                     <tabView fixedFrame="YES" initialItem="Ppw-we-9iU" translatesAutoresizingMaskIntoConstraints="NO" id="S1X-kS-Zwg">
@@ -4380,11 +4393,11 @@ This is useful for instance when you want a darker environment.
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KZP-Or-0F6">
-                                            <rect key="frame" x="34" y="-13" width="267" height="18"/>
+                                            <rect key="frame" x="34" y="-13" width="376" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">When checked, the recently applied preset will be automatically re-applied on reload or startup. This ensures reproducible settings. 
  </string>
-                                            <buttonCell key="cell" type="check" title="Automatically apply this preset ↓" bezelStyle="regularSquare" imagePosition="left" inset="2" id="vgN-Pd-BMv">
+                                            <buttonCell key="cell" type="check" title="Auto Preset: Automatically apply ↓ this preset" bezelStyle="regularSquare" imagePosition="left" inset="2" id="vgN-Pd-BMv">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>

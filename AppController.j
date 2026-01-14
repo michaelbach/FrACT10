@@ -194,6 +194,7 @@
     [self setResultString: "– Result displayed here –"];
     if ([Settings isAutoPreset]) {
         [presets applyPresetNamed: [Settings presetName]];
+        [Settings setIsAutoPreset: YES];
     }
 }
 
