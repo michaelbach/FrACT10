@@ -211,6 +211,26 @@ const testColorStuff = async () => {
 }
 
 
+const simpleSimon = async () => {
+	await ensureHomeState();
+	let response = await await oneStep3Ms('getSetting', 'enableTestAcuityLandolt', '');
+	await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
+	if (response.m3) {
+        await oneStep3Ms('setSetting', 'enableTestAcuityLett', YES);
+        await oneStep3Ms('setSetting', 'enableTestAcuityLandolt', NO);
+        await oneStep3Ms('setSetting', 'enableTestAcuityE', NO);
+        await oneStep3Ms('setSetting', 'enableTestAcuityTAO', NO);
+        await oneStep3Ms('setSetting', 'enableTestAcuityVernier', NO);
+        await oneStep3Ms('setSetting', 'enableTestContrastLett', NO);
+        await oneStep3Ms('setSetting', 'enableTestContrastLandolt', NO);
+        await oneStep3Ms('setSetting', 'enableTestContrastE', NO);
+        await oneStep3Ms('setSetting', 'enableTestContrastG', NO);
+        await oneStep3Ms('setSetting', 'enableTestAcuityLineByLine', NO);
+        await oneStep3Ms('setSetting', 'enableTestBalmGeneral', NO);
+	}
+}
+
+
 const testMultipleOptotypes = async () => {
 	await oneStep3Ms('setSetting', 'Preset', 'Testing');
 	await oneStep3Ms('setSetting', 'nTrials08', 1);
@@ -321,6 +341,7 @@ const testAllGratingShapes = async () => { //console.info("testAllGratingShapes"
 }
 
 
+// no longer needed
 const testSafariBugWithClippedGrating = async () => { //console.info("testBalm");
     await oneStep3Ms('setSetting', 'Preset', 'Testing');
     await oneStep3Ms('setSetting', 'isGratingMasked', YES);
@@ -431,7 +452,7 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
 	await doTextTestfunText("Test 'line(s) of optotypes'", testLinesOfOptotypes);
 	await doTextTestfunText("Cycle through all panes of Settings", testAllSettings);
 	await doTextTestfunText("Cycle through grating shapes", testAllGratingShapes);
-    await doTextTestfunText("test Safari bug with clipped grating", testSafariBugWithClippedGrating);
+    await doTextTestfunText("Test Testenabler", simpleSimon);
 	await doTextTestfunText("Cycle through BaLM tests", testBalm);
 	await doTextTestfunText("Traverse all Presets", testAllPresets);
 

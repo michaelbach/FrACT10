@@ -53,6 +53,7 @@ Shortcut: L
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoTest_action:" target="450" id="NLI-ne-nVY"/>
+                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestAcuityLett" id="392-eh-6px"/>
                         </connections>
                     </button>
                     <button tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWr-KV-CRJ" customClass="MDBButton">
@@ -68,6 +69,7 @@ Shortcut: C 
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoTest_action:" target="450" id="RTQ-4L-1gq"/>
+                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestAcuityLandolt" id="qJt-7g-0fy"/>
                         </connections>
                     </button>
                     <button tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Phl-6Z-YpU" customClass="MDBButton">
@@ -83,6 +85,7 @@ Shortcut: E
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoTest_action:" target="450" id="uK9-3u-byo"/>
+                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestAcuityE" id="iS3-O1-0bU"/>
                         </connections>
                     </button>
                     <button tag="4" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6e2-Sj-gkY" customClass="MDBButton">
@@ -98,6 +101,7 @@ Shortcut: A
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoTest_action:" target="450" id="qDF-sP-wbj"/>
+                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestAcuityTAO" id="3Nw-Xm-rIU"/>
                         </connections>
                     </button>
                     <button tag="5" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oB-kn-EbO" customClass="MDBButton">
@@ -113,6 +117,7 @@ Shortcut: V      
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoTest_action:" target="450" id="4E9-IS-8yD"/>
+                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestAcuityVernier" id="t9V-U9-umb"/>
                         </connections>
                     </button>
                     <button tag="11" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JdF-37-xKU" customClass="MDBButton">
@@ -130,6 +135,7 @@ Shortcut: B
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoTest_action:" target="450" id="BSK-RE-Did"/>
+                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestBalmGeneral" id="Z2t-gS-rbh"/>
                         </connections>
                     </button>
                     <button tag="6" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rNE-r4-ESi" customClass="MDBButton">
@@ -145,6 +151,7 @@ Shortcut: 1
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoTest_action:" target="450" id="xsc-1M-0UT"/>
+                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestContrastLett" id="yZ5-Zg-RNx"/>
                         </connections>
                     </button>
                     <button tag="7" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="teG-PN-Gq7" customClass="MDBButton">
@@ -160,6 +167,7 @@ Shortcut: 2
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoTest_action:" target="450" id="f0r-Bp-LkI"/>
+                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestContrastLandolt" id="SYX-dl-6tm"/>
                         </connections>
                     </button>
                     <button tag="8" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0h-oh-O7H" customClass="MDBButton">
@@ -175,6 +183,7 @@ Shortcut: 3
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoTest_action:" target="450" id="XMH-r3-u8z"/>
+                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestContrastE" id="7iy-Ne-KUX"/>
                         </connections>
                     </button>
                     <button tag="9" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aRI-1u-jl3" customClass="MDBButton">
@@ -190,6 +199,7 @@ Shortcut: g
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoTest_action:" target="450" id="ijC-aJ-7dO"/>
+                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestContrastG" id="Qxf-cy-zdv"/>
                         </connections>
                     </button>
                     <button tag="10" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-y6-Eca" customClass="MDBButton">
@@ -206,6 +216,7 @@ Shortcut: 4
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoTest_action:" target="450" id="PTe-sO-rie"/>
+                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestAcuityLineByLine" id="EgR-te-aVz"/>
                         </connections>
                     </button>
                     <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUU-sC-ci6" propertyAccessControl="none">
@@ -782,10 +793,10 @@ May not be correct if settings have been changed afterwards.
                     <button tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z0L-0q-JnB">
                         <rect key="frame" x="324" y="14" width="140" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <mutableString key="toolTip">To Export your personalised settings into a file. You can “Import” them later. This is useful if you want to ensure you always test with your personalised settings, and also for rapid switching between personalised settings.
+                        <string key="toolTip">To Export your personalised settings into a file. You can “Import” them later. This is useful if you want to ensure you always test with your personalised settings, and also for rapid switching between personalised settings.
 
 The export file will be placed into your Downloads folder, but then can be moved anywhere – just be sure you can find it again for later importing 😎.
-</mutableString>
+</string>
                         <buttonCell key="cell" type="push" title="Export All Settings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i9g-Iu-m2w">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -815,7 +826,7 @@ If disabled: → Settings▸Misc▸Auto Preset
                         </connections>
                     </button>
                     <tabView fixedFrame="YES" initialItem="Ppw-we-9iU" translatesAutoresizingMaskIntoConstraints="NO" id="S1X-kS-Zwg">
-                        <rect key="frame" x="7" y="53" width="780" height="539"/>
+                        <rect key="frame" x="4" y="53" width="780" height="539"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
@@ -4019,14 +4030,14 @@ CQ
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="kZW-Nr-fsM">
-                                            <rect key="frame" x="492" y="195" width="239" height="66"/>
+                                            <rect key="frame" x="309" y="269" width="185" height="59"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="BHt-rH-U3y">
-                                                <rect key="frame" x="0.0" y="0.0" width="239" height="66"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="185" height="59"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button toolTip="For some designs, it may be advantageous to randomse target appearance to left or right." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VtB-h9-XQq">
-                                                        <rect key="frame" x="42" y="24" width="40" height="18"/>
+                                                        <rect key="frame" x="32" y="16" width="40" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="check" title="⇄" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="gcZ-p8-SZP">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -4037,7 +4048,7 @@ CQ
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ixj-ux-urY">
-                                                        <rect key="frame" x="140" y="25" width="40" height="16"/>
+                                                        <rect key="frame" x="100" y="17" width="40" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">For some designs, it may be advantageous to randomse target appearance up or down.
 </string>
@@ -4053,7 +4064,7 @@ CQ
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YA8-cJ-HC0">
-                                            <rect key="frame" x="527" y="247" width="168" height="22"/>
+                                            <rect key="frame" x="324" y="314" width="154" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Randomize eccentricity" bezelStyle="round" id="elL-OJ-pRU">
                                                 <font key="font" metaFont="system"/>
@@ -4061,66 +4072,13 @@ CQ
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="DmF-dV-9Qa">
-                                            <rect key="frame" x="492" y="49" width="239" height="98"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView" id="KnA-cE-9rl">
-                                                <rect key="frame" x="0.0" y="0.0" width="239" height="98"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <textField toolTip="for a special experiment: always present this acuity grade" focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hru-Yg-Axx">
-                                                        <rect key="frame" x="20" y="23" width="40" height="21"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" id="6jL-JA-JrB">
-                                                            <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                        <connections>
-                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.acuityPresentedConstantLogMAR" id="LwC-P0-Lpx"/>
-                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.isAcuityPresentedConstant" id="66f-xg-oye"/>
-                                                            <outlet property="nextKeyView" destination="6lP-RP-LyP" id="p4i-wB-G7m"/>
-                                                        </connections>
-                                                    </textField>
-                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PyM-x2-2u4">
-                                                        <rect key="frame" x="68" y="23" width="55" height="16"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="LogMAR" id="XLl-48-dMU">
-                                                            <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                    <button toolTip="for a special experiment: always present the same acuity grade" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vWH-V9-NRz">
-                                                        <rect key="frame" x="18" y="58" width="149" height="18"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="present constant VA" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nPl-qd-uWo">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.isAcuityPresentedConstant" id="d48-tU-rHa"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </view>
-                                        </box>
-                                        <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ifz-L2-wIZ">
-                                            <rect key="frame" x="551" y="133" width="120" height="22"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Constant VA" bezelStyle="round" id="k51-x2-V0c">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKl-qE-MnI">
-                                            <rect key="frame" x="513" y="361" width="302" height="18"/>
+                                            <rect key="frame" x="533" y="363" width="223" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">If "Line of optotypes" is set to “Chart mode”, here you can select that all 3 lines have the same acuity grade (instead of 0.1 LogMAR difference between them).
 
 </string>
-                                            <buttonCell key="cell" type="check" title="&quot;Line of optotypes&quot; Chart Mode: Constant VA" bezelStyle="regularSquare" imagePosition="left" inset="2" id="3nO-1o-wRI">
+                                            <buttonCell key="cell" type="check" title="&quot;Line of optotypes&quot;: Constant VA" bezelStyle="regularSquare" imagePosition="left" inset="2" id="3nO-1o-wRI">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
@@ -4129,7 +4087,7 @@ CQ
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Woj-eV-bwS">
-                                            <rect key="frame" x="513" y="317" width="124" height="18"/>
+                                            <rect key="frame" x="533" y="319" width="124" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">For some contexts (e.g., embeddng FrACT in a larger project) the Exit button may be detrimental – so disable it here.
 
@@ -4143,14 +4101,14 @@ CQ
                                             </connections>
                                         </button>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="TaC-8z-ATT">
-                                            <rect key="frame" x="34" y="49" width="257" height="180"/>
+                                            <rect key="frame" x="34" y="140" width="257" height="188"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="SHV-oL-MQO">
-                                                <rect key="frame" x="0.0" y="0.0" width="257" height="180"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="257" height="188"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <popUpButton tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LG4-aN-i05">
-                                                        <rect key="frame" x="20" y="120" width="143" height="25"/>
+                                                        <rect key="frame" x="20" y="127" width="143" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Select a soundfile giving feedback on "Correct".
 
@@ -4170,7 +4128,7 @@ CQ
                                                         </connections>
                                                     </popUpButton>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yDr-o5-85R">
-                                                        <rect key="frame" x="167" y="122" width="50" height="16"/>
+                                                        <rect key="frame" x="167" y="129" width="50" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Correct" id="zUl-BP-Ho4">
                                                             <font key="font" metaFont="system"/>
@@ -4179,7 +4137,7 @@ CQ
                                                         </textFieldCell>
                                                     </textField>
                                                     <popUpButton tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mWY-c6-Jrm">
-                                                        <rect key="frame" x="20" y="75" width="143" height="25"/>
+                                                        <rect key="frame" x="20" y="81" width="143" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Select a soundfile giving feedback on "Incorrect".
 
@@ -4199,7 +4157,7 @@ CQ
                                                         </connections>
                                                     </popUpButton>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ele-Us-qcy">
-                                                        <rect key="frame" x="167" y="78" width="59" height="16"/>
+                                                        <rect key="frame" x="167" y="84" width="59" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Incorrect" id="HFc-TQ-ZXI">
                                                             <font key="font" metaFont="system"/>
@@ -4208,7 +4166,7 @@ CQ
                                                         </textFieldCell>
                                                     </textField>
                                                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0wa-1C-3dD">
-                                                        <rect key="frame" x="20" y="31" width="143" height="25"/>
+                                                        <rect key="frame" x="20" y="36" width="143" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Select a soundfile giving feedback on end of run.
 
@@ -4228,7 +4186,7 @@ CQ
                                                         </connections>
                                                     </popUpButton>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OBb-NE-cnC">
-                                                        <rect key="frame" x="167" y="34" width="67" height="16"/>
+                                                        <rect key="frame" x="167" y="39" width="67" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="End of run" id="df0-sa-HTN">
                                                             <font key="font" metaFont="system"/>
@@ -4240,9 +4198,149 @@ CQ
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oi1-uI-HB5">
-                                            <rect key="frame" x="85" y="215" width="135" height="22"/>
+                                            <rect key="frame" x="85" y="314" width="135" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Feedback Sounds" bezelStyle="round" id="NZY-ji-TCC">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="KQF-M1-FAw">
+                                            <rect key="frame" x="34" y="15" width="638" height="104"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <view key="contentView" id="tsV-PX-djb">
+                                                <rect key="frame" x="0.0" y="0.0" width="638" height="104"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="URg-aK-NSb">
+                                                        <rect key="frame" x="20" y="63" width="100" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="Acuity Letter" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="psa-39-CWJ">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTestAcuityLett" id="33Q-6n-hq3"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fez-rG-6Fk">
+                                                        <rect key="frame" x="153" y="63" width="68" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="Landolt" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="UZ9-fb-JPS">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTestAcuityLandolt" id="NWn-Hi-w7a"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IUG-OC-0iF">
+                                                        <rect key="frame" x="249" y="63" width="71" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="Tumbl E" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="W6J-Ev-b8p">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTestAcuityE" id="FGz-d4-dje"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ySS-hF-InS">
+                                                        <rect key="frame" x="353" y="63" width="48" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="TAO" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6Gp-uO-LiK">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTestAcuityTAO" id="k7p-i5-sEh"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dtp-zk-7VQ">
+                                                        <rect key="frame" x="433" y="63" width="66" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="Vernier" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ckC-kn-uYh">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTestAcuityVernier" id="GLb-In-gNJ"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G0b-pJ-jaN">
+                                                        <rect key="frame" x="532" y="63" width="57" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="BaLM" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="dwY-RO-I9q">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTestBalmGeneral" id="0fu-xf-Q5k"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Tp-YZ-Pqk">
+                                                        <rect key="frame" x="20" y="26" width="114" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="Contrast Letter" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kQf-Cg-kdx">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTestContrastLett" id="tsp-sb-lv7"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6vi-eF-hga">
+                                                        <rect key="frame" x="153" y="26" width="68" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="Landolt" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ujg-Qt-VfR">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTestContrastLandolt" id="mzU-Vn-bAJ"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eov-lF-3nb">
+                                                        <rect key="frame" x="249" y="26" width="71" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="Tumbl E" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="1FF-CJ-Eof">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTestContrastE" id="ry0-ed-Fcw"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4hz-t2-wM7">
+                                                        <rect key="frame" x="353" y="26" width="67" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="Grating" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="v7S-ow-zrh">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTestContrastG" id="GPm-f5-M5H"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mN4-n0-dEd">
+                                                        <rect key="frame" x="462" y="26" width="135" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="Lines of optotypes" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="NJy-Fg-P0m">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTestAcuityLineByLine" id="FZy-0J-NLq"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </view>
+                                        </box>
+                                        <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rRc-cQ-Wnu">
+                                            <rect key="frame" x="75" y="104" width="114" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Enabled Tests" bezelStyle="round" id="WES-ZY-8d1">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -4320,28 +4418,8 @@ CQ
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPx-4F-4Cr">
-                                            <rect key="frame" x="34" y="281" width="62" height="23"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">The background color of the entire window can be selected here.
-This is useful for instance when you want a darker environment. 
-</string>
-                                            <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <binding destination="450" name="value" keyPath="windowBackgroundColor" id="5ZB-1E-Xxc"/>
-                                            </connections>
-                                        </colorWell>
-                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ngk-rr-VCS">
-                                            <rect key="frame" x="102" y="284" width="83" height="16"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Windowcolor" id="R1D-PV-saB">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
                                         <button toolTip="Optotypes will be overlaid with static visual noise." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6pt-B4-AcQ">
-                                            <rect key="frame" x="511" y="449" width="119" height="18"/>
+                                            <rect key="frame" x="533" y="449" width="119" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Embed in noise" bezelStyle="regularSquare" imagePosition="left" inset="2" id="WdN-lg-Whn">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -4352,7 +4430,7 @@ This is useful for instance when you want a darker environment.
                                             </connections>
                                         </button>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1kJ-oA-3Zg">
-                                            <rect key="frame" x="634" y="448" width="40" height="21"/>
+                                            <rect key="frame" x="656" y="448" width="40" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Noise percentage
 .</string>
@@ -4368,7 +4446,7 @@ This is useful for instance when you want a darker environment.
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fgv-ea-rya" customClass="MDBLabel">
-                                            <rect key="frame" x="678" y="448" width="16" height="16"/>
+                                            <rect key="frame" x="693" y="448" width="16" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="%" id="zNM-e8-xcq">
                                                 <font key="font" metaFont="system"/>
@@ -4380,7 +4458,7 @@ This is useful for instance when you want a darker environment.
                                             </connections>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K8K-N9-esB">
-                                            <rect key="frame" x="511" y="405" width="113" height="18"/>
+                                            <rect key="frame" x="533" y="405" width="113" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Very specific setting for the BCM@Scheie project. Don't use unless…
 </string>
@@ -4405,6 +4483,79 @@ This is useful for instance when you want a darker environment.
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.isAutoPreset" id="7qw-Cr-J9W"/>
                                             </connections>
                                         </button>
+                                        <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPx-4F-4Cr">
+                                            <rect key="frame" x="533" y="273" width="62" height="23"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <string key="toolTip">The background color of the entire window can be selected here.
+This is useful for instance when you want a darker environment. 
+</string>
+                                            <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <binding destination="450" name="value" keyPath="windowBackgroundColor" id="5ZB-1E-Xxc"/>
+                                            </connections>
+                                        </colorWell>
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ngk-rr-VCS">
+                                            <rect key="frame" x="601" y="276" width="83" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Windowcolor" id="R1D-PV-saB">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="DmF-dV-9Qa">
+                                            <rect key="frame" x="309" y="140" width="239" height="98"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <view key="contentView" id="KnA-cE-9rl">
+                                                <rect key="frame" x="0.0" y="0.0" width="239" height="98"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textField toolTip="for a special experiment: always present this acuity grade" focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hru-Yg-Axx">
+                                                        <rect key="frame" x="20" y="23" width="40" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" id="6jL-JA-JrB">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.acuityPresentedConstantLogMAR" id="LwC-P0-Lpx"/>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.isAcuityPresentedConstant" id="66f-xg-oye"/>
+                                                            <outlet property="nextKeyView" destination="6lP-RP-LyP" id="p4i-wB-G7m"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PyM-x2-2u4">
+                                                        <rect key="frame" x="68" y="23" width="55" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="LogMAR" id="XLl-48-dMU">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <button toolTip="for a special experiment: always present the same acuity grade" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vWH-V9-NRz">
+                                                        <rect key="frame" x="18" y="58" width="149" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="present constant VA" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nPl-qd-uWo">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.isAcuityPresentedConstant" id="d48-tU-rHa"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </view>
+                                        </box>
+                                        <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ifz-L2-wIZ">
+                                            <rect key="frame" x="368" y="224" width="120" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Constant VA" bezelStyle="round" id="k51-x2-V0c">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -4428,8 +4579,8 @@ This is useful for instance when you want a darker environment.
                 <outlet property="buttonAcuityE" destination="Phl-6Z-YpU" id="obG-lD-sX0"/>
                 <outlet property="buttonAcuityLett" destination="jHx-aa-MPC" id="tuh-WT-4uS"/>
                 <outlet property="buttonAcuityLineByLine" destination="s1F-y6-Eca" id="mXW-qr-ZAe"/>
-                <outlet property="buttonAcuityTAO" destination="6e2-Sj-gkY" id="wS5-ys-hpB"/>
-                <outlet property="buttonAcuityVernier" destination="8oB-kn-EbO" id="D7M-xX-xff"/>
+                <outlet property="buttonAcuityTAO" destination="6e2-Sj-gkY" id="7Ev-jc-0iY"/>
+                <outlet property="buttonAcuityVernier" destination="8oB-kn-EbO" id="f6V-p1-THL"/>
                 <outlet property="buttonExportClip" destination="L8d-bR-KqO" id="pL7-9C-xYE"/>
                 <outlet property="buttonExportPDF" destination="nR3-vD-4DK" id="fao-uj-EGO"/>
                 <outlet property="buttonPlot" destination="1i4-ka-JiB" id="6nc-Qu-82k"/>

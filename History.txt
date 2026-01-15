@@ -1,5 +1,6 @@
 # History
 
+2026-01-15 add enableTestXX-buttons. Need to up Settings▸kDateOfCurrentSettingsVersion to ensure not everthing is disabled. Add `simpleSimon()` (Simplify) to `testingSuite.js`
 2026-01-14 finish "Auto Prefix" mechanics
 2026-01-13 add `resolutionField` to plastic card panel
 2026-01-10 fix regression "showRewardPicturesWhenDone" was not updated in the seconds field when renaming (demonstrating how dangerous renaming is!)

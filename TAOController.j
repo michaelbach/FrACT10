@@ -44,7 +44,9 @@ TAOController.j
     if ([aNotification loadStatus] === CPImageLoadStatusCompleted) {
         if (++_nTAOImagesLoaded > 9) {
             [self setNImages: _nTAOImagesLoaded];
-            [_button setEnabled: YES];
+            if ([Settings enableTestAcuityTAO]) {
+                [_button setEnabled: YES];
+            }
         }
     }
 }

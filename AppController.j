@@ -256,7 +256,7 @@
     [self setHas2orientations: ([Settings nAlternatives] === 2)];
     if (is2alternatives !== ([Settings nAlternatives] === 2)) {
         [self setIs2alternatives: ([Settings nAlternatives] === 2)];
-    } // this complicated way avoids endless loop
+    } //this complicated way avoids endless loop
     if (is4alternatives !== ([Settings nAlternatives] === 4)) {
         [self setIs4alternatives: ([Settings nAlternatives] === 4)];
     }
@@ -403,7 +403,7 @@
     [ControlDispatcher runDoneSuccessful: !runAborted];
 
     //allow 1 eventloop
-    const UI_UPDATE_DELAY = 1; // 1 millisecond is enough
+    const UI_UPDATE_DELAY = 1; //1 millisecond is enough
     setTimeout(() => {[[selfWindow contentView] setNeedsDisplay: YES];}, UI_UPDATE_DELAY);
     //console.info(gTestDetails);
 }
@@ -457,7 +457,7 @@
     // main output
     const items = currentTestResultExportString.trim().split('\t');
     let tableData = []; //https://github.com/simonbengtsson/jsPDF-AutoTable
-    for (let i = 0; i < items.length; i += 2) { // every second item: new row
+    for (let i = 0; i < items.length; i += 2) { //every second item: new row
         tableData.push([items[i], items[i + 1]]);
     }
     const styles = {fontSize: 8, cellWidth: 30, font: "Courier", cellPadding: {top: 1, right: 1, bottom: 1, left: 1}};
@@ -495,7 +495,7 @@
     if (kShortcutKeys4TestsArray[key]) {
         [self runFractControllerTest: kShortcutKeys4TestsArray[key]];  return;
     }
-    switch(key) { // many keys are dealt with via the "Key Equivalent" in IB
+    switch(key) { //many keys are dealt with via the "Key Equivalent" in IB
         case "W" : [Misc infoAllWindows]; break;
         case "Q": case "X": case "-": //Quit or eXit
             [self buttonDoExit_action: nil];  break;
@@ -560,7 +560,7 @@
  All test buttons land here, discriminated by their tag values (→Globals for `TestIDType`)
  */
 - (IBAction) buttonDoTest_action: (id) sender { //console.info("buttonDoTest_action ", [sender tag])
-    if ([sender tag] === 11) {
+    if ([sender tag] === kTestBalmGeneral) {
         [self balmSwitch];  return;
     }
     [self runFractControllerTest: [sender tag]];

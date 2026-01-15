@@ -22,7 +22,7 @@ gVersionOfExportFormat = "6"; //incremented 2025-05-13 after adding ID and eyeCo
 gFilename4ResultStorage = "FRACT10-FINAL-RESULT-STRING";
 gFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
 
-kKEY_RESPONSE_RIGHT = "6";  // geographic mapping of keys for numeric keypad
+kKEY_RESPONSE_RIGHT = "6";  //geographic mapping of keys for numeric keypad
 kKEY_RESPONSE_UP_RIGHT = "9";
 kKEY_RESPONSE_UP = "8";
 kKEY_RESPONSE_UP_LEFT = "7";
@@ -34,7 +34,7 @@ kKEY_RESPONSE_ABORT = "5";
 
 gAbortMessage = "Run canceled.";
 //Correction for threshold underestimation by DIN/ISO-ascending method (in VAdecimal)
-gThresholdCorrection4Ascending = 0.892;// multiplicative for decimal acuity ≙ 0.0496 ≅ 0.05 logMAR addition
+gThresholdCorrection4Ascending = 0.892;//multiplicative for decimal acuity ≙ 0.0496 ≅ 0.05 logMAR addition
 
 //parameter for the CI95 dispersion estimation; strongly affects CI95
 gSlopeCI95 = 15; //strongly affects CI95, this value approximates test-retest variability
@@ -54,8 +54,10 @@ gMeter2FeetMultiplier = 3.28084;  tab = "\t";  crlf = "\n";
 @typedef TestIDType
 kTestNone = 0; kTestAcuityLett = 1; kTestAcuityC = 2; kTestAcuityE = 3; kTestAcuityTAO = 4;
 kTestAcuityVernier = 5; kTestContrastLett = 6; kTestContrastC = 7; kTestContrastE = 8;
-kTestContrastG = 9; kTestAcuityLineByLine = 10; kTestContrastDitherUnittest = 11;
+kTestContrastG = 9; kTestAcuityLineByLine = 10;
+kTestBalmGeneral = 11;
 kTestBalmLight = 12; kTestBalmLocation = 13; kTestBalmMotion = 14;
+kTestContrastDitherUnittest = 15;
 gCurrentTestID = kTestNone;
 
 gBalmTestIDs = [kTestBalmLight, kTestBalmLocation, kTestBalmMotion];

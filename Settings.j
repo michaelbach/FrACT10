@@ -10,7 +10,8 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kDateOfCurrentSettingsVersion "2025-10-05"
+//#define kDateOfCurrentSettingsVersion "2025-10-05"
+#define kDateOfCurrentSettingsVersion "2026-01-15"
 
 
 @import <Foundation/CPUserDefaults.j>
@@ -125,8 +126,20 @@ Created by mb on July 15, 2015.
         ["patID", "str"], ["eyeIndex", "int"],
         ["isAcuityPresentedConstant", "bool"],
         ["acuityPresentedConstantLogMAR", "float"],
-        ["isAutoPreset", "bool"]
+        ["isAutoPreset", "bool"],
+        ["enableTestAcuityLett", "bool"],
+        ["enableTestAcuityLandolt", "bool"],
+        ["enableTestAcuityE", "bool"],
+        ["enableTestAcuityTAO", "bool"],
+        ["enableTestAcuityVernier", "bool"],
+        ["enableTestContrastLett", "bool"],
+        ["enableTestContrastLandolt", "bool"],
+        ["enableTestContrastE", "bool"],
+        ["enableTestContrastG", "bool"],
+        ["enableTestAcuityLineByLine", "bool"],
+        ["enableTestBalmGeneral", "bool"],
     ];
+
     for (const [name, type] of settingsNamesAndTypes) {
         switch (type) {
             case "str": [self addStringAccessors4Key: name]; break;
@@ -148,6 +161,7 @@ Created by mb on July 15, 2015.
  */
 + (BOOL) checkBool: (BOOL) val dflt: (BOOL) def set: (BOOL) set {
     //console.info("chckBool ", val, "set: ", set);
+    if (isNaN(val)) return def;
     if (!set && !isNaN(val)) return val;
     return def;
 }
@@ -330,7 +344,17 @@ Created by mb on July 15, 2015.
 
     [self setIsAutoPreset: [self checkBool: [self isAutoPreset] dflt: NO set: set]];
 
-
+    [self setEnableTestAcuityLett: [self checkBool: [self enableTestAcuityLett] dflt: YES set: set]];
+    [self setEnableTestAcuityLandolt: [self checkBool: [self enableTestAcuityLandolt] dflt: YES set: set]];
+    [self setEnableTestAcuityE: [self checkBool: [self enableTestAcuityE] dflt: YES set: set]];
+    [self setEnableTestAcuityTAO: [self checkBool: [self enableTestAcuityTAO] dflt: YES set: set]];
+    [self setEnableTestAcuityVernier: [self checkBool: [self enableTestAcuityVernier] dflt: YES set: set]];
+    [self setEnableTestContrastLett: [self checkBool: [self enableTestContrastLett] dflt: YES set: set]];
+    [self setEnableTestContrastLandolt: [self checkBool: [self enableTestContrastLandolt] dflt: YES set: set]];
+    [self setEnableTestContrastE: [self checkBool: [self enableTestContrastE] dflt: YES set: set]];
+    [self setEnableTestContrastG: [self checkBool: [self enableTestContrastG] dflt: YES set: set]];
+    [self setEnableTestAcuityLineByLine: [self checkBool: [self enableTestAcuityLineByLine] dflt: YES set: set]];
+    [self setEnableTestBalmGeneral: [self checkBool: [self enableTestBalmGeneral] dflt: YES set: set]];
 
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
@@ -521,9 +545,9 @@ Created by mb on July 15, 2015.
             return;
         }
         // Sanitize filename
-        filename = filename.replace(/[\/\?<>\\:\*\|\""]/g, '_') // Replace illegal characters
-            .trim().replace(/^\.+|\.+$/g, '')   // Trim whitespace and dots
-            .slice(0, 50);                      // Limit length
+        filename = filename.replace(/[\/\?<>\\:\*\|\""]/g, '_') //Replace illegal characters
+            .trim().replace(/^\.+|\.+$/g, '')   //Trim whitespace and dots
+            .slice(0, 50);                      //Limit length
         saveAs(jsonBlob, filename + ".json"); //finally save it in the downloads folder
     })();
 }

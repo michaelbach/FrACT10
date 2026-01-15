@@ -234,8 +234,8 @@ function _pause(ms) { //console.info("Misc>_pause");
  Given an epsilon, we test for "equality" of 2 floating point numbers
  */
 + (BOOL) areNearlyEqual: (float)a and: (float) b {
-    const epsilon = 1e-8; // problems begin at 1e-16
-    const diff = Math.abs(a - b); // ↓special case zero
+    const epsilon = 1e-8; //problems begin at 1e-16
+    const diff = Math.abs(a - b); //↓special case zero
     const magnitude = Math.max(epsilon, Math.abs(a) + Math.abs(b));
     return (diff / magnitude) < epsilon;
 }
