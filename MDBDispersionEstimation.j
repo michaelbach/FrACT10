@@ -117,10 +117,11 @@ function likelihoodFunc(thresh, df) { //console.info("MDBDispersionEstimation>li
 
 /**
  Logistic function for mAFC tasks, lMar on the kWorstLogMAR…kBestLogMAR scale
- lMar=kWorstLogMAR: ≈1.0, lMar=kBestLogMAR: guessingProb
+ lMar=kWorstLogMAR: ≈1.0, lMar=kBestLogMAR: guessingProb.
+ flex = inflectionPoint.
  */
-function probCorrectGivenLogMAR(guessingProbability, inflectionPoint, lMar) {
-    return guessingProbability + (1 - guessingProbability) / (1 + Math.exp(-gSlopeCI95 * (lMar - inflectionPoint)));
+function probCorrectGivenLogMAR(guessingProbability, flex, lMar) {
+    return guessingProbability + (1 - guessingProbability) / (1 + Math.exp(-gSlopeCI95 * (lMar - flex)));
 }
 
 
@@ -129,7 +130,7 @@ Logistic function for nAFC tasks, x on a LogMAR scale
 x=0: below threshold, =guess; x=1: above threshold, =1
  */
 + (BOOL) unittestProbCorrectGivenLogMAR {
-    console.log("\nMDBDispersionEstimation>probCorrectGivenLogMAR (logisti fun)");
+    console.log("\nMDBDispersionEstimation>probCorrectGivenLogMAR (logistic fun)");
     console.log("from 'kWorstLogMAR' to 'kBestLogMAR'");
     [self initResultStatistics];
     for (let v of [kWorstLogMAR, 0.5, kBestLogMAR]) {
