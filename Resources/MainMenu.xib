@@ -216,6 +216,14 @@ Shortcut: 4
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoTest_action:" target="450" id="PTe-sO-rie"/>
+                            <binding destination="izh-pU-csC" name="enabled2" keyPath="values" previousBinding="EgR-te-aVz" id="lix-Ii-ept">
+                                <dictionary key="options">
+                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                </dictionary>
+                            </binding>
                             <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestAcuityLineByLine" id="EgR-te-aVz"/>
                         </connections>
                     </button>

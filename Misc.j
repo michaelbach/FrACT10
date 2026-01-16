@@ -376,7 +376,7 @@ function _pause(ms) { //console.info("Misc>_pause");
     s += ", McS" + (success ? "√" : "Ø");  [gAppController setResultString: s];
     success = [MiscLight unittest];  successAll &&= success;
     s += ", McL" + (success ? "√" : "Ø");  [gAppController setResultString: s];
-    success = [MDBDispersionEstimation unittestLogisticFun];  successAll &&= success;
+    success = [MDBDispersionEstimation unittestProbCorrectGivenLogMAR];  successAll &&= success;
     s += ", DispE" + (success ? "√" : "Ø");  [gAppController setResultString: s];
     s += (success ? "" : "failed");
     [gAppController setResultString: s];

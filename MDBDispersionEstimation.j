@@ -39,8 +39,6 @@ let kWorstLogMAR, kBestLogMAR, kGuess, testDF; //there are no class properties i
         findMaxLlhInRange
             likelihoodFunc
                 probCorrectGivenLogMAR
-                    logMAR2pest
-                    logisticFun
  */
 /**
  df is for data frame, inspired by R, here an array of 2-tupels {correct, lMar}
@@ -102,18 +100,6 @@ function threshEstimate(df) { //console.info("threshEstimate");
 
 
 /**
- Conversion functions
- The term "pest" refers to a 0…1 scale of the Thresholder. Carried over from old FrACT.
- */
-function pest2logMAR(pestVal) {
-    return kWorstLogMAR - pestVal * (kWorstLogMAR - kBestLogMAR);
-}
-function logMAR2pest(lmar) {
-    return (kWorstLogMAR - lmar) / (kWorstLogMAR - kBestLogMAR);
-}
-
-
-/**
  likelihood stuff
  */
 function likelihoodFunc(thresh, df) { //console.info("MDBDispersionEstimation>likelihoodFunc");
@@ -130,32 +116,27 @@ function likelihoodFunc(thresh, df) { //console.info("MDBDispersionEstimation>li
 
 
 /**
- Logistic function for nAFC tasks, lMar on the kWorstLogMAR…kBestLogMAR scale
+ Logistic function for mAFC tasks, lMar on the kWorstLogMAR…kBestLogMAR scale
  lMar=kWorstLogMAR: ≈1.0, lMar=kBestLogMAR: guessingProb
  */
 function probCorrectGivenLogMAR(guessingProbability, inflectionPoint, lMar) {
-    lMar = logMAR2pest(lMar);  inflectionPoint = logMAR2pest(inflectionPoint);
-    return logisticFun(guessingProbability, inflectionPoint, lMar);
+    return guessingProbability + (1 - guessingProbability) / (1 + Math.exp(-gSlopeCI95 * (lMar - inflectionPoint)));
 }
 
 
 /**
-Logistic function for nAFC tasks, x on a linear 0…1 scale
+Logistic function for nAFC tasks, x on a LogMAR scale
 x=0: below threshold, =guess; x=1: above threshold, =1
  */
-+ (BOOL) unittestLogisticFun {
-    console.log("\nMDBDispersionEstimation>unittestLogisticFun")
-    for (let v of [0, 0.5, 1]) {
-        const f = parseFloat(logisticFun(0.125, 0.5, v).toFixed(3));
-        console.log(v, f);
++ (BOOL) unittestProbCorrectGivenLogMAR {
+    console.log("\nMDBDispersionEstimation>probCorrectGivenLogMAR (logisti fun)");
+    console.log("from 'kWorstLogMAR' to 'kBestLogMAR'");
+    [self initResultStatistics];
+    for (let v of [kWorstLogMAR, 0.5, kBestLogMAR]) {
+        const f = probCorrectGivenLogMAR(0.125, 0.5, v);
+        console.log(v.toFixed(3), f.toFixed(3));
     }
     return YES;
-}
-function logisticFun(guessingProbability, inflectionPoint, x) {
-    //console.log("guessingProbability: ", guessingProbability, ", inflectionPoint: ", inflectionPoint);
-    x = 1 - x;  inflectionPoint = 1 - inflectionPoint;
-    //2023-02-07 previously, slope was defined inversely. No change in result, now more readable
-    return guessingProbability + (1 - guessingProbability) / (1 + Math.exp(-gSlopeCI95 * (x - inflectionPoint)));
 }
 
 

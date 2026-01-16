@@ -37,7 +37,7 @@ gAbortMessage = "Run canceled.";
 gThresholdCorrection4Ascending = 0.892;//multiplicative for decimal acuity ≙ 0.0496 ≅ 0.05 logMAR addition
 
 //parameter for the CI95 dispersion estimation; strongly affects CI95
-gSlopeCI95 = 15; //strongly affects CI95, this value approximates test-retest variability
+gSlopeCI95 = 7; //strongly affects CI95, this value approximates test-retest variability
 gNSamplesCI95 = 10000; //with 10000 the median differs by LoA=0.003LogMAR from full run
 
 //Clamping the max logCSWeber value to avoid log of zero during conversions. Value way beyond physiologically possible.
