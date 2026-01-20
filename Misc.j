@@ -241,12 +241,6 @@ function _pause(ms) { //console.info("Misc>_pause");
 }
 
 
-+ (void) makeFrameSquareFromWidth: (CPView) view {
-    const rect1 = [view frame];
-    [view setFrame: CGRectMake(rect1.origin.x, rect1.origin.y - (rect1.size.width - 16) / 2, rect1.size.width, rect1.size.width)];
-}
-
-
 /**
  Helper function: Find out if a URL exists
  */

@@ -40,10 +40,10 @@
                         <rect key="frame" x="20" y="523" width="760" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
-                    <button tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jHx-aa-MPC" customClass="MDBButton">
+                    <button tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jHx-aa-MPC" customClass="MDBButton_Test">
                         <rect key="frame" x="20" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Acuity assessment using Sloan Letters. 
+                        <string key="toolTip">Acuity assessment using Sloan Letters.
 
 Shortcut: L
  </string>
@@ -56,7 +56,7 @@ Shortcut: L
                             <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestAcuityLett" id="392-eh-6px"/>
                         </connections>
                     </button>
-                    <button tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWr-KV-CRJ" customClass="MDBButton">
+                    <button tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWr-KV-CRJ" customClass="MDBButton_Test">
                         <rect key="frame" x="152" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Acuity assessment using Landolt Cs. 
@@ -72,10 +72,10 @@ Shortcut: C 
                             <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestAcuityLandolt" id="qJt-7g-0fy"/>
                         </connections>
                     </button>
-                    <button tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Phl-6Z-YpU" customClass="MDBButton">
+                    <button tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Phl-6Z-YpU" customClass="MDBButton_Test">
                         <rect key="frame" x="284" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Acuity assessment using tumbling Es.  
+                        <string key="toolTip">Acuity assessment using tumbling Es.
 
 Shortcut: E
  </string>
@@ -88,7 +88,7 @@ Shortcut: E
                             <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestAcuityE" id="iS3-O1-0bU"/>
                         </connections>
                     </button>
-                    <button tag="4" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6e2-Sj-gkY" customClass="MDBButton">
+                    <button tag="4" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6e2-Sj-gkY" customClass="MDBButton_Test">
                         <rect key="frame" x="416" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Acuity assessment using TAO (The Auckland Optotypes).
@@ -104,7 +104,7 @@ Shortcut: A
                             <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestAcuityTAO" id="3Nw-Xm-rIU"/>
                         </connections>
                     </button>
-                    <button tag="5" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oB-kn-EbO" customClass="MDBButton">
+                    <button tag="5" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oB-kn-EbO" customClass="MDBButton_Test">
                         <rect key="frame" x="548" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Hyperacuity (Vernier) assessment.
@@ -120,13 +120,13 @@ Shortcut: V      
                             <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestAcuityVernier" id="t9V-U9-umb"/>
                         </connections>
                     </button>
-                    <button tag="11" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JdF-37-xKU" customClass="MDBButton">
+                    <button tag="11" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JdF-37-xKU" customClass="MDBButton_Test">
                         <rect key="frame" x="680" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">BaLM₁₀ (Basic Assessment of Light, Location &amp; Motion. 
+                        <string key="toolTip">BaLM₁₀ (Basic Assessment of Light, Location &amp; Motion.
 Click to access Help for it.
 
-Shortcut: B 
+Shortcut: B
  </string>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonBalm" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="lHR-rw-W7J">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -138,10 +138,10 @@ Shortcut: B
                             <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestBalmGeneral" id="Z2t-gS-rbh"/>
                         </connections>
                     </button>
-                    <button tag="6" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rNE-r4-ESi" customClass="MDBButton">
+                    <button tag="6" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rNE-r4-ESi" customClass="MDBButton_Test">
                         <rect key="frame" x="20" y="288" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Contrast assessment using Sloan Letters.  
+                        <string key="toolTip">Contrast assessment using Sloan Letters.
 
 Shortcut: 1
  </string>
@@ -154,10 +154,10 @@ Shortcut: 1
                             <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestContrastLett" id="yZ5-Zg-RNx"/>
                         </connections>
                     </button>
-                    <button tag="7" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="teG-PN-Gq7" customClass="MDBButton">
+                    <button tag="7" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="teG-PN-Gq7" customClass="MDBButton_Test">
                         <rect key="frame" x="185" y="288" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Contrast assessment using Landolt Cs.  
+                        <string key="toolTip">Contrast assessment using Landolt Cs.
 
 Shortcut: 2
  </string>
@@ -170,10 +170,10 @@ Shortcut: 2
                             <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestContrastLandolt" id="SYX-dl-6tm"/>
                         </connections>
                     </button>
-                    <button tag="8" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0h-oh-O7H" customClass="MDBButton">
+                    <button tag="8" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0h-oh-O7H" customClass="MDBButton_Test">
                         <rect key="frame" x="350" y="288" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Contrast assessment using Tumbling Es.  
+                        <string key="toolTip">Contrast assessment using Tumbling Es.
 
 Shortcut: 3
  </string>
@@ -186,10 +186,10 @@ Shortcut: 3
                             <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestContrastE" id="7iy-Ne-KUX"/>
                         </connections>
                     </button>
-                    <button tag="9" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aRI-1u-jl3" customClass="MDBButton">
+                    <button tag="9" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aRI-1u-jl3" customClass="MDBButton_Test">
                         <rect key="frame" x="515" y="288" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Contrast assessment using gratings. Settings&gt;Contrast to set spatial frequency and diameter. 
+                        <string key="toolTip">Contrast assessment using gratings. Settings&gt;Contrast to set spatial frequency and diameter.
 
 Shortcut: g
  </string>
@@ -202,7 +202,7 @@ Shortcut: g
                             <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestContrastG" id="Qxf-cy-zdv"/>
                         </connections>
                     </button>
-                    <button tag="10" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-y6-Eca" customClass="MDBButton">
+                    <button tag="10" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-y6-Eca" customClass="MDBButton_Test">
                         <rect key="frame" x="680" y="288" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">"Line of optotypes"": 1–5 lines of optypes, akin to an acuity chart.
@@ -248,8 +248,8 @@ Shortcut: 4
                     <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHP-WN-mFO" propertyAccessControl="none">
                         <rect key="frame" x="184" y="173" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Toggle fullscreen.      
-                               
+                        <string key="toolTip">Toggle fullscreen.
+
 Shortcut: f
 </string>
                         <buttonCell key="cell" type="roundTextured" title="Fullscrn" bezelStyle="texturedRounded" image="iconFullscreen" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cEz-jl-XIn">
@@ -264,7 +264,7 @@ Shortcut: f
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KcI-ws-Dhl">
                         <rect key="frame" x="352" y="173" width="107" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Automatic run, targeting some acuity or contrast. 
+                        <string key="toolTip">Automatic run, targeting some acuity or contrast.
 
 Hi ≙ high acuity = low LogMAR.‘
 
@@ -315,7 +315,7 @@ For testing.
                         <rect key="frame" x="651" y="111" width="130" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">This button is enabled after a finished run and plots the detailed test history of this run.
- 
+
 Shortcut: P
 </string>
                         <buttonCell key="cell" type="roundTextured" title="📈   All Trials Plot" bezelStyle="texturedRounded" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nuw-PE-PlE">
@@ -2655,7 +2655,7 @@ Maximum: 5px.
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AQw-jE-a5x">
                                             <rect key="frame" x="18" y="148" width="45" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Best not change it… 
+                                            <string key="toolTip">Best not change it…
 See manual.
    .
   </string>
@@ -4481,7 +4481,7 @@ CQ
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KZP-Or-0F6">
                                             <rect key="frame" x="34" y="-13" width="376" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">When checked, the recently applied preset will be automatically re-applied on reload or startup. This ensures reproducible settings. 
+                                            <string key="toolTip">When checked, the recently applied preset will be automatically re-applied on reload or startup. This ensures reproducible settings.
  </string>
                                             <buttonCell key="cell" type="check" title="Auto Preset: Automatically apply ↓ this preset" bezelStyle="regularSquare" imagePosition="left" inset="2" id="vgN-Pd-BMv">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -4495,7 +4495,7 @@ CQ
                                             <rect key="frame" x="533" y="273" width="62" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">The background color of the entire window can be selected here.
-This is useful for instance when you want a darker environment. 
+This is useful for instance when you want a darker environment.
 </string>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -4578,17 +4578,7 @@ This is useful for instance when you want a darker environment.
         </window>
         <customObject id="450" customClass="AppController">
             <connections>
-                <outlet property="bottonBalm" destination="JdF-37-xKU" id="rAg-pm-fya"/>
-                <outlet property="buttCntC" destination="teG-PN-Gq7" id="Vvz-oi-F4f"/>
-                <outlet property="buttCntE" destination="V0h-oh-O7H" id="mPS-2H-434"/>
-                <outlet property="buttCntG" destination="aRI-1u-jl3" id="yJu-4E-H1I"/>
-                <outlet property="buttCntLett" destination="rNE-r4-ESi" id="lAC-91-RlZ"/>
-                <outlet property="buttonAcuityC" destination="sWr-KV-CRJ" id="eJP-Al-Hhm"/>
-                <outlet property="buttonAcuityE" destination="Phl-6Z-YpU" id="obG-lD-sX0"/>
-                <outlet property="buttonAcuityLett" destination="jHx-aa-MPC" id="tuh-WT-4uS"/>
-                <outlet property="buttonAcuityLineByLine" destination="s1F-y6-Eca" id="mXW-qr-ZAe"/>
                 <outlet property="buttonAcuityTAO" destination="6e2-Sj-gkY" id="7Ev-jc-0iY"/>
-                <outlet property="buttonAcuityVernier" destination="8oB-kn-EbO" id="f6V-p1-THL"/>
                 <outlet property="buttonExportClip" destination="L8d-bR-KqO" id="pL7-9C-xYE"/>
                 <outlet property="buttonExportPDF" destination="nR3-vD-4DK" id="fao-uj-EGO"/>
                 <outlet property="buttonPlot" destination="1i4-ka-JiB" id="6nc-Qu-82k"/>

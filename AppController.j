@@ -35,7 +35,7 @@
 @import "TAOController.j"
 @import "Sound.j"
 @import "GammaView.j"
-@import "MDBButton.j"
+@import "MDBButton_Test.j"
 @import "MDBTextField.j"
 @import "MDBLabel.j"
 @import "MDBAlert.j"
@@ -56,7 +56,7 @@
     CPWindow selfWindow;
     @outlet CPWindow fractControllerWindow;
     @outlet CPPanel settingsPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine;
-    @outlet MDBButton buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, bottonBalm, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine;
+    @outlet MDBButton_Test buttonAcuityTAO;
     @outlet CPButton buttonExportClip, buttonExportPDF, buttonPlot;
     @outlet CPButton radioButtonAcuityBW, radioButtonAcuityColor;
     @outlet GammaView gammaView;
@@ -85,7 +85,6 @@
     BOOL is8plusAlternatives @accessors;
     id allPanels;
     int settingsPaneTabViewSelectedIndex @accessors;
-    float calBarLengthInMMbefore;
     CPColor colorOfBestPossibleAcuity @accessors;
     CPNumberFormatter numberFormatter;
     @outlet CPTextField contrastMaxLogCSWeberField;
@@ -152,9 +151,6 @@
     [self setVersionDateString: gTestDetails[td_vsFrACT]];
     [CPMenu setMenuBarVisible: NO];
     [self setupEventListeners];
-
-    const allTestButtons = [buttonAcuityLett, buttonAcuityC, buttonAcuityE, buttonAcuityTAO, buttonAcuityVernier, bottonBalm, buttCntLett, buttCntC, buttCntE, buttCntG, buttonAcuityLineByLine];
-    for (const b of allTestButtons)  [Misc makeFrameSquareFromWidth: b];
 
     [Settings checkDefaults]; //what was the reason to put this here???
 

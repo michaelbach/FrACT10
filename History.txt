@@ -1,5 +1,6 @@
 # History
 
+2026-01-20 refactor: MDBButton→MDBButton_Test, _init to square, thus obviate code in `AppController` and `Misc`
 2026-01-16 Simplify `MDBDispersionEstimation` by omitting `pest2logMAR` and `logMAR2pest` since the psychometric function can run directly on LogMAR scale, this implies reducing slope from 15 to 8 to conserve scaling
 2026-01-15 add enableTestXX-buttons. Need to up Settings▸kDateOfCurrentSettingsVersion to ensure not everthing is disabled. Add `simpleSimon()` (Simplify) to `testingSuite.js`
 2026-01-14 finish "Auto Prefix" mechanics
