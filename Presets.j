@@ -131,7 +131,6 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             [Settings setIsAcuityColor: YES];
             [Settings setAcuityForeColor: [CPColor redColor]];
             [Settings setAcuityBackColor: [CPColor colorWithRed: 0 green: 0.70 blue: 0 alpha: 1]]; //dark green, near equiluminant to red
-            [gAppController copyColorsFromSettings];
             break;
         case "EndoArt01": case "ESU": case "BCM@Scheie": case "CNS@Freiburg": case "Maculight":
         case "AT@LeviLab": case "Hyper@TUDo": case "ULV@Gensight": case "ETCF": case "HYPERION":
@@ -167,7 +166,6 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
     [Settings setPresetName: _presetName];
     [Settings calculateMinMaxPossibleAcuity];
     [gAppController.sound updateSoundFiles];
-    [gAppController copyColorsFromSettings]; //this synchronises the color settings between userdefaults & AppController
     [_popUpButton setSelectedIndex: 0]; //always show "PRESETS"
 
     switch (feedbackType) {

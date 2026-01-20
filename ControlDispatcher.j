@@ -266,7 +266,9 @@
     const sNameCapitalised = sName.charAt(0).toUpperCase() + sName.slice(1);
     const setter = CPSelectorFromString("set" + sNameCapitalised + ":");
     [Settings performSelector: setter withObject: m3];
-    [gAppController copyColorsFromSettings];
+
+    [[CPNotificationCenter defaultCenter] postNotificationName: "settingsDidChange" object: nil]; //make sure colors are updated
+
     let m3Now = [Settings performSelector: CPSelectorFromString(sName)]; //read back
     m3Now = [m3Now hexString];
     [Misc udpateGUI];

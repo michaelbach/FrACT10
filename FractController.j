@@ -86,7 +86,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 - (void) _initializeTestParameters {
     [self updateViewWidthHeight];
-    [gAppController copyColorsFromSettings]; //could have been overwritten
+    [[CPNotificationCenter defaultCenter] postNotificationName: "settingsDidChange" object: nil]; //make sure everything is updated
     gStrokeMinimal = [Settings minStrokeAcuity]; //smallest possible stroke is ½pixel. Made into a Setting.
     gStrokeMaximal = Math.min(viewHeight, viewWidth) / (5 + [Settings margin4maxOptotypeIndex]); //leave a margin of ½·index around the largest optotype
     if (!([Settings showAcuityFormatLogMAR] || [Settings showAcuityFormatDecimal] ||  [Settings showAcuityFormatSnellenFractionFoot])) {

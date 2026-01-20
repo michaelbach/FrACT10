@@ -245,7 +245,7 @@
 
 /**
  Observe changes in the settings panel, making sure dependencies are updated
- Danger: endless loops need to be avoided
+ Caution: endless loops need to be avoided
  */
 - (void) settingsDidChange: (CPNotification) aNotification { //console.info("settingsDidChange");
     [self setHas4orientations: ([Settings nAlternatives] === 4)];
@@ -259,7 +259,6 @@
     if (is8plusAlternatives !== ([Settings nAlternatives] >= 8)) {
         [self setIs8plusAlternatives: ([Settings nAlternatives] >= 8)];
     }
-    [selfWindow setBackgroundColor: [self windowBackgroundColor]];
     if ([Settings minPossibleLogMAR] > 0) { //red: not good enough for normal vision
         [self setColorOfBestPossibleAcuity: [CPColor redColor]];
     } else {
@@ -280,18 +279,20 @@
     let rct = CGRectMake(0, 560, 800, 84); //placeResultStringField
     if ([Settings showIdAndEyeOnMain])  rct = CGRectOffset(rct, 84 / 2, 0);
     [resultStringField setFrame: rct];
-}
 
-
-/**
- Synchronising userdefaults & Appcontroller
- This mirroring is necessary, because the Settingspanel cannot read the stored colors, because the Archiver does not work
- */
-- (void) copyColorsFromSettings { //console.info("copyColorsFromSettings");
-    gColorFore = [Settings acuityForeColor];  [self setAcuityForeColor: gColorFore];
-    gColorBack = [Settings acuityBackColor];  [self setAcuityBackColor: gColorBack];
-    [self setGratingForeColor: [Settings gratingForeColor]];  [self setGratingBackColor: [Settings gratingBackColor]];
-    [self setWindowBackgroundColor: [Settings windowBackgroundColor]];
+    gColorFore = [Settings acuityForeColor];
+    gColorBack = [Settings acuityBackColor];
+    if (![[self acuityForeColor] isEqual: gColorFore]) { //avoid endless loop
+        [self setAcuityForeColor: gColorFore];
+        [self setAcuityBackColor: gColorBack];
+    }
+    if (![[self gratingForeColor] isEqual: [Settings gratingForeColor]]) {
+        [self setGratingForeColor: [Settings gratingForeColor]];
+        [self setGratingBackColor: [Settings gratingBackColor]];
+    }
+    if (![[self windowBackgroundColor] isEqual: [Settings windowBackgroundColor]]) {
+        [self setWindowBackgroundColor: [Settings windowBackgroundColor]];
+    }
     [selfWindow setBackgroundColor: [self windowBackgroundColor]];
 }
 
@@ -579,7 +580,6 @@
             gLatestAlert = null;
         }];
     }
-    [self copyColorsFromSettings];
 }
 
 - (IBAction) buttonSettingsClose_action: (id) sender {
