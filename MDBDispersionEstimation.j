@@ -133,7 +133,7 @@ x=0: below threshold, =guess; x=1: above threshold, =1
     console.log("\nMDBDispersionEstimation>probCorrectGivenLogMAR (logistic fun)");
     console.log("from 'kWorstLogMAR' to 'kBestLogMAR'");
     [self initResultStatistics];
-    for (let v of [kWorstLogMAR, 0.5, kBestLogMAR]) {
+    for (let v of [99, kWorstLogMAR, 0.5, kBestLogMAR, -99]) {
         const f = probCorrectGivenLogMAR(0.125, 0.5, v);
         console.log(v.toFixed(3), f.toFixed(3));
     }

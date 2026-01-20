@@ -4,23 +4,17 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>FrACT₁₀ with testing suite</title>
 	<script src="Resources/js/testingSuite.js"></script>
-</head>
-
-<body>
-
-<button onclick="testingSuite();">Run software testing suite</button>
-<br><br>
-
-<script>
-allSettings = async function() {
-	for (let i = 0; i < 7; i++) {
-		tellIframe3Ms('settingsPane', i, '');
-		await pauseMilliseconds(1000);
+	<script>
+	allSettings = async function() {
+		for (let i = 0; i < 7; i++) {
+			tellIframe3Ms('settingsPane', i, '');
+			await pauseMilliseconds(1000);
+		}
+		tellIframe3Ms('settingsPane', -1, '');
 	}
-	tellIframe3Ms('settingsPane', -1, '');
-}
-</script>
-
+	</script>
+</head>
+<body>
 <iframe id="fractFrame" src="index.html" scrolling="no" allow="clipboard-write" style="width: 800px; height: 628px; border: 1px solid #3050C0; padding:0px; margin:0px;"></iframe>
 
 <div id="belowFractFrame"></div>
