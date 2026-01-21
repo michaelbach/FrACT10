@@ -834,7 +834,7 @@ If disabled: → Settings▸Misc▸Auto Preset
                         </connections>
                     </button>
                     <tabView fixedFrame="YES" initialItem="Ppw-we-9iU" translatesAutoresizingMaskIntoConstraints="NO" id="S1X-kS-Zwg">
-                        <rect key="frame" x="4" y="53" width="780" height="539"/>
+                        <rect key="frame" x="9" y="53" width="780" height="539"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
