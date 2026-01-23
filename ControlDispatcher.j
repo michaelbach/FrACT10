@@ -101,11 +101,11 @@
             }
         };
         /* deprecated names
-        messageHandlers["Version"] = messageHandlers["getVersion"];
-        messageHandlers["Settings"] = messageHandlers["setSetting"];
-        messageHandlers["Run"] = messageHandlers["run"];
-        messageHandlers["Unittest"] = messageHandlers["unittest"];
-        messageHandlers["setHomeStatus"] = messageHandlers["setHomeState"];*/
+         messageHandlers["Version"] = messageHandlers["getVersion"];
+         messageHandlers["Settings"] = messageHandlers["setSetting"];
+         messageHandlers["Run"] = messageHandlers["run"];
+         messageHandlers["Unittest"] = messageHandlers["unittest"];
+         messageHandlers["setHomeStatus"] = messageHandlers["setHomeState"];*/
 
         const handler = messageHandlers[m1];
         if (handler) {
@@ -147,11 +147,13 @@
 
 
 +
- (void) manageSetSetting {
+(void) manageSetSetting {
     const settingTypes = {
-        "showIdAndEyeOnMain": "boolean", "isGratingObliqueOnly": "boolean", "showResponseInfoAtStart": "boolean", "enableTouchControls": "boolean", "eccentShowCenterFixMark": "boolean", "eccentRandomizeX": "boolean", "eccentRandomizeY": "boolean", "autoFullScreen": "boolean", "respondsToMobileOrientation": "boolean", "showTrialInfo": "boolean", "putResultsToClipboardSilent": "boolean", "showRewardPicturesWhenDone": "boolean", "embedInNoise": "boolean", "isAcuityColor": "boolean", "isLandoltObliqueOnly": "boolean", "acuityHasEasyTrials": "boolean", "doThreshCorrection": "boolean", "showAcuityFormatDecimal": "boolean", "showAcuityFormatLogMAR": "boolean", "showAcuityFormatSnellenFractionFoot": "boolean", "forceSnellen20": "boolean", "showCI95": "boolean", "isLineByLineChartModeConstantVA": "boolean", "contrastHasEasyTrials": "boolean", "isContrastDarkOnLight": "boolean", "contrastShowFixMark": "boolean", "isContrastDithering": "boolean", "isGratingMasked": "boolean", "isGratingErrorDiffusion": "boolean", "isGratingColor": "boolean", "specialBcmOn": "boolean", "hideExitButton": "boolean", "giveAuditoryFeedback4run": "boolean", "isAcuityPresentedConstant": "boolean", "isAutoPreset": "boolean", "enableTestAcuityLett": "boolean", "enableTestAcuityLandolt": "boolean", "enableTestAcuityE": "boolean", "enableTestAcuityTAO": "boolean", "enableTestAcuityVernier": "boolean", "enableTestContrastLett": "boolean", "enableTestContrastLandolt": "boolean", "enableTestContrastE": "boolean", "enableTestContrastG": "boolean", "enableTestAcuityLineByLine": "boolean", "enableTestBalmGeneral": "boolean",
-        "nAlternativesIndex": "number", "nTrials02": "number", "nTrials04": "number", "nTrials08": "number", "distanceInCM": "number", "calBarLengthInMM": "number", "testOnFive": "number", "decimalMarkCharIndex": "number", "eccentXInDeg": "number", "eccentYInDeg": "number", "displayTransform": "number", "trialInfoFontSize": "number", "timeoutIsiMillisecs": "number", "timeoutResponseSeconds": "number", "timeoutDisplaySeconds": "number", "soundVolume": "number", "auditoryFeedback4trialIndex": "number", "timeoutRewardPicturesInSeconds": "number", "resultsToClipboardIndex": "number", "noiseContrast": "number", "contrastAcuityWeber": "number", "maxDisplayedAcuity": "number", "minStrokeAcuity": "number", "acuityStartingLogMAR": "number", "margin4maxOptotypeIndex": "number", "autoRunIndex": "number", "crowdingType": "number", "crowdingDistanceCalculationType": "number", "testOnLineByLineIndex": "number", "lineByLineDistanceType": "number", "lineByLineHeadcountIndex": "number", "lineByLineLinesIndex": "number", "vernierType": "number", "vernierWidth": "number", "vernierLength": "number", "vernierGap": "number", "gammaValue": "number", "contrastOptotypeDiameter": "number", "contrastTimeoutFixmark": "number", "contrastMaxLogCSWeber": "number", "contrastCrowdingType": "number", "gratingCPD": "number", "gratingMaskDiaInDeg": "number", "gratingShapeIndex": "number", "what2sweepIndex": "number", "gratingCPDmin": "number", "gratingCPDmax": "number", "gratingContrastMichelsonPercent": "number", "soundTrialYesIndex": "number", "soundTrialNoIndex": "number", "soundRunEndIndex": "number", "acuityPresentedConstantLogMAR": "number",
-        "windowBackgroundColor": "color", "gratingForeColor": "color", "gratingBackColor": "color", "acuityForeColor": "color", "acuityBackColor": "color"
+        "isGratingObliqueOnly": "boolean", "showResponseInfoAtStart": "boolean", "enableTouchControls": "boolean", "eccentShowCenterFixMark": "boolean", "eccentRandomizeX": "boolean", "eccentRandomizeY": "boolean", "autoFullScreen": "boolean", "respondsToMobileOrientation": "boolean", "showTrialInfo": "boolean", "putResultsToClipboardSilent": "boolean", "showRewardPicturesWhenDone": "boolean", "embedInNoise": "boolean", "isAcuityColor": "boolean", "isLandoltObliqueOnly": "boolean", "acuityHasEasyTrials": "boolean", "doThreshCorrection": "boolean", "showAcuityFormatDecimal": "boolean", "showAcuityFormatLogMAR": "boolean", "showAcuityFormatSnellenFractionFoot": "boolean", "forceSnellen20": "boolean", "showCI95": "boolean", "isLineByLineChartModeConstantVA": "boolean", "contrastHasEasyTrials": "boolean", "isContrastDarkOnLight": "boolean", "contrastShowFixMark": "boolean", "isContrastDithering": "boolean", "isGratingMasked": "boolean", "isGratingErrorDiffusion": "boolean", "isGratingColor": "boolean", "specialBcmOn": "boolean", "hideExitButton": "boolean", "giveAuditoryFeedback4run": "boolean", "showIdAndEyeOnMain": "boolean", "isAcuityPresentedConstant": "boolean", "isAutoPreset": "boolean", "enableTestAcuityLett": "boolean", "enableTestAcuityLandolt": "boolean", "enableTestAcuityE": "boolean", "enableTestAcuityTAO": "boolean", "enableTestAcuityVernier": "boolean", "enableTestContrastLett": "boolean", "enableTestContrastLandolt": "boolean", "enableTestContrastE": "boolean", "enableTestContrastG": "boolean", "enableTestAcuityLineByLine": "boolean", "enableTestBalmGeneral": "boolean",
+            "isAllSettingsDisabled": "boolean",
+        "nAlternativesIndex": "number", "nTrials02": "number", "nTrials04": "number", "nTrials08": "number", "distanceInCM": "number", "calBarLengthInMM": "number", "testOnFive": "number", "decimalMarkCharIndex": "number", "eccentXInDeg": "number", "eccentYInDeg": "number", "displayTransform": "number", "trialInfoFontSize": "number", "timeoutIsiMillisecs": "number", "timeoutResponseSeconds": "number", "timeoutDisplaySeconds": "number", "soundVolume": "number", "auditoryFeedback4trialIndex": "number", "timeoutRewardPicturesInSeconds": "number", "resultsToClipboardIndex": "number", "noiseContrast": "number", "contrastAcuityWeber": "number", "maxDisplayedAcuity": "number", "minStrokeAcuity": "number", "acuityStartingLogMAR": "number", "margin4maxOptotypeIndex": "number", "autoRunIndex": "number", "crowdingType": "number", "crowdingDistanceCalculationType": "number", "testOnLineByLineIndex": "number", "lineByLineDistanceType": "number", "lineByLineHeadcountIndex": "number", "lineByLineLinesIndex": "number", "vernierType": "number", "vernierWidth": "number", "vernierLength": "number", "vernierGap": "number", "gammaValue": "number", "contrastOptotypeDiameter": "number", "contrastTimeoutFixmark": "number", "contrastMaxLogCSWeber": "number", "contrastCrowdingType": "number", "gratingCPD": "number", "gratingMaskDiaInDeg": "number", "gratingShapeIndex": "number", "what2sweepIndex": "number", "gratingCPDmin": "number", "gratingCPDmax": "number", "gratingContrastMichelsonPercent": "number", "soundTrialYesIndex": "number", "soundTrialNoIndex": "number", "soundRunEndIndex": "number", "acuityPresentedConstantLogMAR": "number", "eyeIndex": "number",
+        "windowBackgroundColor": "color", "gratingForeColor": "color", "gratingBackColor": "color", "acuityForeColor": "color", "acuityBackColor": "color",
+        "patID": "str"
     };
 
     if ((m2 === "preset") || (m2 === "Preset")) {
@@ -159,13 +161,15 @@
         return;
     }
 
-    const settingType = settingTypes[m2];
-    if (settingType === "boolean" || settingType === "number") {
-        [self setSettingNamed:m2];
-    } else if (settingType === "color") {
-        [self setColorSettingNamed:m2];
-    } else {
-        [self _logProblemM123];
+    switch(settingTypes[m2]) {
+        case "boolean": case "number":
+            [self setNumberSettingNamed:m2]; break;
+        case "color":
+            [self setColorSettingNamed:m2]; break;
+        case "str":
+            [self setStringSettingNamed:m2]; break;
+        default:
+            [self _logProblemM123];
     }
 }
 
@@ -239,7 +243,7 @@
 }
 
 
-+ (void) setSettingNamed: (CPString) sName { //console.info("setSettingNamed: ", sName);
++ (void) setNumberSettingNamed: (CPString) sName { //console.info("setNumberSettingNamed: ", sName);
     if (isNaN(m3AsNumber)) {
         [self _logProblemM123];  return;
     }
@@ -247,7 +251,7 @@
     const setter = CPSelectorFromString("set" + sNameCapitalised + ":");
     [Settings performSelector: setter withObject: m3AsNumber];
     [Settings allNotCheckButSet: NO]; //check whether we were in range
-    let m3Now = [Settings performSelector: CPSelectorFromString(sName)]; //read back
+    let m3Now = [Settings performSelector: CPSelectorFromString(sName)];
     if (typeof(m3Now) === "boolean") {
         m3Now = Number(m3Now);
     }
@@ -256,7 +260,17 @@
 }
 
 
-+ (void) setColorSettingNamed: (CPString) sName { //console.info("setSettingNamed: ", sName);
++ (void) setStringSettingNamed: (CPString) sName {
+    const sNameCapitalised = sName.charAt(0).toUpperCase() + sName.slice(1);
+    const setter = CPSelectorFromString("set" + sNameCapitalised + ":");
+    [Settings performSelector: setter withObject: m3];
+    let m3Now = [Settings performSelector: CPSelectorFromString(sName)];
+    [Misc udpateGUI];
+    [self post2parentM1: m1 m2: m2 m3: m3Now success: m3 === m3Now];
+}
+
+
++ (void) setColorSettingNamed: (CPString) sName {
     if (["acuityForeColor", "acuityBackColor"].includes(m2)) {
         [Settings setIsAcuityColor: YES];
     }

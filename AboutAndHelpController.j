@@ -104,7 +104,7 @@
 
     s += "FrACT₁₀ places “cookies” on your computer:<ol>";
     s += "<li>To save the settings across sessions</li>";
-    s += "<li>To save the web app itself for use w/o internet</li>";
+    s += "<li>To save the progressive web app itself for use w/o internet</li>";
     s += "<li>The last results, exported for access outside FrACT.</li></ol><br>";
 
     s += "This is free software, there is no warranty for anything: <a href='https://github.com/michaelbach/FrACT10/blob/main/LICENSE.md' target='_blank'>GNU GPL licence</a>. ";

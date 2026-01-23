@@ -243,6 +243,11 @@ Shortcut: 4
                         </buttonCell>
                         <connections>
                             <action selector="buttonSettings_action:" target="450" id="Gsf-c7-lcD"/>
+                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.isAllSettingsDisabled" id="b29-vW-JSZ">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
                         </connections>
                     </button>
                     <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHP-WN-mFO" propertyAccessControl="none">

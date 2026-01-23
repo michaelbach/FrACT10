@@ -138,6 +138,7 @@ Created by mb on July 15, 2015.
         ["enableTestContrastG", "bool"],
         ["enableTestAcuityLineByLine", "bool"],
         ["enableTestBalmGeneral", "bool"],
+        ["isAllSettingsDisabled", "bool"],
     ];
 
     for (const [name, type] of settingsNamesAndTypes) {
@@ -355,7 +356,7 @@ Created by mb on July 15, 2015.
     [self setEnableTestContrastG: [self checkBool: [self enableTestContrastG] dflt: YES set: set]];
     [self setEnableTestAcuityLineByLine: [self checkBool: [self enableTestAcuityLineByLine] dflt: YES set: set]];
     [self setEnableTestBalmGeneral: [self checkBool: [self enableTestBalmGeneral] dflt: YES set: set]];
-
+    [self setIsAllSettingsDisabled: [self checkBool: [self isAllSettingsDisabled] dflt: NO set: set]];
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
 
