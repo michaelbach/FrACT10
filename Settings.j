@@ -187,6 +187,21 @@ Created by mb on July 15, 2015.
 }
 
 
++ (void) enableNotDisableAllTests: (BOOL) enab {
+    [self setEnableTestAcuityLett: enab];
+    [self setEnableTestAcuityLandolt: enab];
+    [self setEnableTestAcuityE: enab];
+    [self setEnableTestAcuityTAO: enab];
+    [self setEnableTestAcuityVernier: enab];
+    [self setEnableTestContrastLett: enab];
+    [self setEnableTestContrastLandolt: enab];
+    [self setEnableTestContrastE: enab];
+    [self setEnableTestContrastG: enab];
+    [self setEnableTestAcuityLineByLine: enab];
+    [self setEnableTestBalmGeneral: enab];
+}
+
+
 /**
  Test all settings for in-range (set===NO) or set the to defaults (set===YES)
  */
@@ -345,7 +360,8 @@ Created by mb on July 15, 2015.
 
     [self setIsAutoPreset: [self checkBool: [self isAutoPreset] dflt: NO set: set]];
 
-    [self setEnableTestAcuityLett: [self checkBool: [self enableTestAcuityLett] dflt: YES set: set]];
+    if (set) [self enableNotDisableAllTests: YES];
+/*    [self setEnableTestAcuityLett: [self checkBool: [self enableTestAcuityLett] dflt: YES set: set]];
     [self setEnableTestAcuityLandolt: [self checkBool: [self enableTestAcuityLandolt] dflt: YES set: set]];
     [self setEnableTestAcuityE: [self checkBool: [self enableTestAcuityE] dflt: YES set: set]];
     [self setEnableTestAcuityTAO: [self checkBool: [self enableTestAcuityTAO] dflt: YES set: set]];
@@ -355,7 +371,7 @@ Created by mb on July 15, 2015.
     [self setEnableTestContrastE: [self checkBool: [self enableTestContrastE] dflt: YES set: set]];
     [self setEnableTestContrastG: [self checkBool: [self enableTestContrastG] dflt: YES set: set]];
     [self setEnableTestAcuityLineByLine: [self checkBool: [self enableTestAcuityLineByLine] dflt: YES set: set]];
-    [self setEnableTestBalmGeneral: [self checkBool: [self enableTestBalmGeneral] dflt: YES set: set]];
+    [self setEnableTestBalmGeneral: [self checkBool: [self enableTestBalmGeneral] dflt: YES set: set]]; */
     [self setIsAllSettingsDisabled: [self checkBool: [self isAllSettingsDisabled] dflt: NO set: set]];
     [[CPUserDefaults standardUserDefaults] synchronize];
 }

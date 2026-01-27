@@ -15,7 +15,7 @@
 	<key>Main cib file base name</key>
 	<string>MainMenu.cib</string>
 	<key>VersionDate</key>
-	<string>2026-01-21</string>
+	<string>2026-01-27</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string></string>

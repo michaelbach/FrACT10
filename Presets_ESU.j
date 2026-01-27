@@ -17,6 +17,8 @@
     [Settings setDistanceInCM: 150];
     [[CPUserDefaults standardUserDefaults] setInteger: kNAlternativesIndex4 forKey: "nAlternativesIndex"]; //4 alternatives
     [Settings setNTrials04: 18];
+    //[Settings enableNotDisableAllTests: NO];
+    //[Settings setEnableTestAcuityLandolt: YES];
     [Settings setTestOnFive: kTestAcuityC];
     [Settings setTimeoutResponseSeconds: 999]; [Settings setTimeoutDisplaySeconds: 999];
     [Settings setAuditoryFeedback4trialIndex: kauditoryFeedback4trialIndexNone];
