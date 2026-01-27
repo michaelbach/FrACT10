@@ -217,7 +217,7 @@
                 [self _notify: "notificationRunFractControllerTest" object: testKey];  return;
             }}
         case "contrast": case "Contrast": {
-            const testKey = {"Letters": kTestContrastLett, "LandoltC": kTestContrastLandolt, "TumblingE": kTestContrastE, "Grating": kTestContrastG}[m3];
+            const testKey = {"Letters": kTestContrastLett, "Landolt": kTestContrastLandolt, "LandoltRing": kTestContrastLandolt, "LandoltC": kTestContrastLandolt, "TumblingE": kTestContrastE, "Grating": kTestContrastG}[m3];
             if (testKey !== undefined) {
                 [self _notify: "notificationRunFractControllerTest" object: testKey];  return;
             }}
