@@ -1,7 +1,7 @@
 # History
 
 
-2026-01-27 prepare for easy test disabling in Presets (good for ESU, not used yet). "Landolt C" → "Landolt ring" (norm nomenclature), "kTestAcuityC"→"kTestAcuityLandolt", "kTestContrastC"→"kTestContrastLandolt" for consistency
+2026-01-27 prepare for easy test disabling in Presets (good for ESU, not used yet). "Landolt C" → "Landolt ring" (norm nomenclature), "kTestAcuityC"→"kTestAcuityLandolt", "kTestContrastC"→"kTestContrastLandolt" for consistency. Allow  `Landolt`, `LandoltRing` and `LandoltC` as test name for HTML-message control
 2026-01-21 add missing "str" dispatch; add `isAllSettingsDisabled`
 2026-01-20 refactor and simplify: `copyColorsFromSettings` replaced by actions in `settingsDidChange`
 2026-01-20 refactor: MDBButton→MDBButton_Test, _init to square, thus obviate code in `AppController` and `Misc`

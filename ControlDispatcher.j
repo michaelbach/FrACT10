@@ -211,7 +211,7 @@
                 [self _notify: "notificationRunFractControllerTest" object: m3AsNumber];  return;
             }
         case "acuity": case "Acuity": { //need brackets so scope of variables stays local
-            const testKey = {"Letters": kTestAcuityLett, "LandoltC": kTestAcuityLandolt, "TumblingE": kTestAcuityE, "TAO": kTestAcuityTAO, "Vernier": kTestAcuityVernier, "Line": kTestAcuityLineByLine,
+            const testKey = {"Letters": kTestAcuityLett, "Landolt": kTestAcuityLandolt, "LandoltRing": kTestAcuityLandolt, "LandoltC": kTestAcuityLandolt, "TumblingE": kTestAcuityE, "TAO": kTestAcuityTAO, "Vernier": kTestAcuityVernier, "Line": kTestAcuityLineByLine,
                 "BalmLight": kTestBalmLight, "BalmLocation": kTestBalmLocation, "BalmMotion": kTestBalmMotion}[m3];
             if (testKey !== undefined) {
                 [self _notify: "notificationRunFractControllerTest" object: testKey];  return;
