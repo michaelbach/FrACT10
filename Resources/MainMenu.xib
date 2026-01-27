@@ -59,9 +59,9 @@ Shortcut: L
                     <button tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWr-KV-CRJ" customClass="MDBButton_Test">
                         <rect key="frame" x="152" y="434" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Acuity assessment using Landolt Cs. 
+                        <string key="toolTip">Acuity assessment using Landolt rings. 
 
-Shortcut: C 
+Shortcut: C (for "Landolt C")
   </string>
                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityC" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="ivt-76-XPn">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -157,7 +157,7 @@ Shortcut: 1
                     <button tag="7" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="teG-PN-Gq7" customClass="MDBButton_Test">
                         <rect key="frame" x="185" y="288" width="100" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Contrast assessment using Landolt Cs.
+                        <string key="toolTip">Contrast assessment using Landolt rings.
 
 Shortcut: 2
  </string>
@@ -1071,7 +1071,7 @@ Especially for the export to clipboard action, it is necessary to choose the rig
                                                         <menuItem title="Sloan Letters" id="QkU-ga-vLd">
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
-                                                        <menuItem title="Landolt C" id="BXA-eo-iGt">
+                                                        <menuItem title="Landolt ring" id="BXA-eo-iGt">
                                                             <modifierMask key="keyEquivalentModifierMask"/>
                                                         </menuItem>
                                                         <menuItem title="Tumbling E" id="2Sc-p1-NW5">
@@ -1302,7 +1302,7 @@ You can select a suggestion or enter any value.
                                                     <comboBox focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wjh-JY-aXB">
                                                         <rect key="frame" x="74" y="23" width="55" height="23"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <string key="toolTip">The number of trials presented when 4 choices are possible (e.g. tumbling E, or Landolt C set for 4).
+                                                        <string key="toolTip">The number of trials presented when 4 choices are possible (e.g. tumbling E, or Landolt ring set for 4).
 
 You can select a suggestion or enter any value.
  </string>
@@ -1349,9 +1349,9 @@ You can select a suggestion or enter any value.
                                                         <rect key="frame" x="190" y="53" width="247" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Some optotypes have a fixed number of choices, or variants: Always 10 for Sloan Letters and Auckland Optotypes (TAO); Vernier 2.
-For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
+For Landolt rings, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
 </string>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" alignment="left" title="# of choices for Landolt Cs and gratings" id="2kS-jg-XcS">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" alignment="left" title="# of choices for Landolt rings and gratings" id="2kS-jg-XcS">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1360,9 +1360,9 @@ For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cEj-Jr-YXR">
                                                         <rect key="frame" x="298" y="25" width="120" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <string key="toolTip">LC = Landolt C.
+                                                        <string key="toolTip">LC = Landolt ring.
 
-Applies only to Landolt Cs with 4 orientations.
+Applies only to Landolt rings with 4 orientations.
  </string>
                                                         <buttonCell key="cell" type="check" title="LC oblique only" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ybg-Vb-Abm">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2291,7 +2291,7 @@ Denoted as "σ", since the line has a Gaussian profile.
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hOD-0i-CeR">
                                             <rect key="frame" x="22" y="254" width="107" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">To avoid contact between the largest optotype and the screen edge. Margin in units of stroke (0 gap for Landolt C).
+                                            <string key="toolTip">To avoid contact between the largest optotype and the screen edge. Margin in units of stroke (0 gap for Landolt ring).
 
  </string>
                                             <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wkG-jG-jTL" id="sa5-f6-go7">
@@ -2416,7 +2416,7 @@ Denoted as "σ", since the line has a Gaussian profile.
                                                                     <menuItem title="Sloan Letters" id="QJz-ye-aX8">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
-                                                                    <menuItem title="Landolt C" id="JwM-wv-wuO">
+                                                                    <menuItem title="Landolt ring" id="JwM-wv-wuO">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
                                                                     <menuItem title="Tumbling E" hidden="YES" enabled="NO" id="Dku-mY-oaj">
@@ -3438,7 +3438,7 @@ If you go very close or you may be able to resolve the pattern.
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ED5-xZ-XLE">
                                             <rect key="frame" x="190" y="248" width="54" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes (TAO).  For Landolt Cs, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.
+                                            <string key="toolTip">Some optotypes have a fixed number of choices, or variants: 10 for Sloan Letters and Auckland Optotypes (TAO).  For Landolt rings, it can be 2, 4, 8; for the tumbling E, it can be 2 or 4.
 
 For gratings: 2 or 4.
 </string>
@@ -3461,7 +3461,7 @@ For gratings: 2 or 4.
                                             <rect key="frame" x="246" y="251" width="104" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Some optotypes have a fixed number of choices, or variants: Always 10 for Sloan Letters and Auckland Optotypes (TAO); Vernier 2.
-For Landolt Cs, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
+For Landolt rings, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 4.
 </string>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" title="# of orientations" id="JPi-TN-Wrt">
                                                 <font key="font" metaFont="system"/>
@@ -4864,7 +4864,7 @@ Gw
             </view>
             <point key="canvasLocation" x="-101" y="759"/>
         </window>
-        <window title="Landolt C acuity – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="KH7-H9-rEd" userLabel="responseinfoPanelAcuity4C" customClass="NSPanel">
+        <window title="Landolt ring acuity – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="KH7-H9-rEd" userLabel="responseinfoPanelAcuity4C" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1512" height="948"/>
@@ -4944,7 +4944,7 @@ Type 55 or &lt;esc&gt;, or touch Ø to abort the run.
             </view>
             <point key="canvasLocation" x="-101" y="759"/>
         </window>
-        <window title="Landolt C contrast assessment – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Tf3-6J-w5e" userLabel="responseinfoPanelContrastC" customClass="NSPanel">
+        <window title="Landolt ring contrast assessment – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Tf3-6J-w5e" userLabel="responseinfoPanelContrastC" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1512" height="948"/>
@@ -5028,7 +5028,7 @@ Gw
                             <outlet property="nextKeyView" destination="WCS-rL-YCa" id="y3y-cH-5le"/>
                         </connections>
                     </button>
-                    <imageView toolTip="For a Landolt C, when 8 alternatives are selected, the response keys correspond &quot;geographically&quot; to the position of the gap." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EZp-il-3C3">
+                    <imageView toolTip="For a Landolt ring, when 8 alternatives are selected, the response keys correspond &quot;geographically&quot; to the position of the gap." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EZp-il-3C3">
                         <rect key="frame" x="515" y="305" width="180" height="180"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap8" id="iy7-db-b7L"/>
@@ -5037,7 +5037,7 @@ Gw
             </view>
             <point key="canvasLocation" x="-101" y="759"/>
         </window>
-        <window title="Landolt C acuity – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="UBW-u3-RSn" userLabel="responseinfoPanelAcuity8C" customClass="NSPanel">
+        <window title="Landolt ring acuity – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="UBW-u3-RSn" userLabel="responseinfoPanelAcuity8C" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1512" height="948"/>
@@ -5121,7 +5121,7 @@ Gw
                             <outlet property="nextKeyView" destination="WCS-rL-YCa" id="jed-LZ-G7t"/>
                         </connections>
                     </button>
-                    <imageView toolTip="For a Landolt C, when 8 alternatives are selected, the response keys correspond &quot;geographically&quot; to the position of the gap." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2HV-bd-tDr">
+                    <imageView toolTip="For a Landolt ring, when 8 alternatives are selected, the response keys correspond &quot;geographically&quot; to the position of the gap." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2HV-bd-tDr">
                         <rect key="frame" x="515" y="305" width="180" height="180"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap8" id="HQF-UM-Wbw"/>
@@ -5447,7 +5447,7 @@ Gw
             </view>
             <point key="canvasLocation" x="-101" y="759"/>
         </window>
-        <window title="Landolt C contrast assessment – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="6tH-lc-nrw" userLabel="responseinfoPanelContrastG" customClass="NSPanel">
+        <window title="Landolt ring contrast assessment – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="6tH-lc-nrw" userLabel="responseinfoPanelContrastG" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1512" height="948"/>
@@ -5527,7 +5527,7 @@ Gw
                             <outlet property="nextKeyView" destination="WCS-rL-YCa" id="dP3-7V-TvQ"/>
                         </connections>
                     </button>
-                    <imageView toolTip="For a Landolt C, when 8 alternatives are selected, the response keys correspond &quot;geographically&quot; to the position of the gap." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Qv-0S-pbh">
+                    <imageView toolTip="For a Landolt ring, when 8 alternatives are selected, the response keys correspond &quot;geographically&quot; to the position of the gap." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Qv-0S-pbh">
                         <rect key="frame" x="483" y="284" width="242" height="221"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="keyMap8gratings" id="qYm-mF-bxW"/>

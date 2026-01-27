@@ -26,7 +26,7 @@
     [Settings setCalBarLengthInMM: 191];
     [Settings setResultsToClipboardIndex: kResultsToClipFullHistory];
     [Settings setDisplayTransform: 1]; //1=mirror horizontally
-    [Settings setTestOnFive: kTestAcuityC];
+    [Settings setTestOnFive: kTestAcuityLandolt];
     //Acuity pane
     [Settings setMaxDisplayedAcuity: 99];
     //Misc pane

@@ -52,8 +52,8 @@ gCalBarLengthInPixel = 700;
 gMeter2FeetMultiplier = 3.28084;  tab = "\t";  crlf = "\n";
 
 @typedef TestIDType
-kTestNone = 0; kTestAcuityLett = 1; kTestAcuityC = 2; kTestAcuityE = 3; kTestAcuityTAO = 4;
-kTestAcuityVernier = 5; kTestContrastLett = 6; kTestContrastC = 7; kTestContrastE = 8;
+kTestNone = 0; kTestAcuityLett = 1; kTestAcuityLandolt = 2; kTestAcuityE = 3; kTestAcuityTAO = 4;
+kTestAcuityVernier = 5; kTestContrastLett = 6; kTestContrastLandolt = 7; kTestContrastE = 8;
 kTestContrastG = 9; kTestAcuityLineByLine = 10;
 kTestBalmGeneral = 11;
 kTestBalmLight = 12; kTestBalmLocation = 13; kTestBalmMotion = 14;
@@ -62,9 +62,9 @@ gCurrentTestID = kTestNone;
 
 gBalmTestIDs = [kTestBalmLight, kTestBalmLocation, kTestBalmMotion];
 
-kShortcutKeys4TestsArray = {"L": kTestAcuityLett, "C": kTestAcuityC, "E": kTestAcuityE,
+kShortcutKeys4TestsArray = {"L": kTestAcuityLett, "C": kTestAcuityLandolt, "E": kTestAcuityE,
     "A": kTestAcuityTAO, "V": kTestAcuityVernier,
-    "1": kTestContrastLett, "2": kTestContrastC, "3": kTestContrastE,
+    "1": kTestContrastLett, "2": kTestContrastLandolt, "3": kTestContrastE,
     "G": kTestContrastG, "9": kTestContrastDitherUnittest, "4": kTestAcuityLineByLine};
 
 @typedef NAlternativesIndexType

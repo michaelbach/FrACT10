@@ -19,7 +19,7 @@
     [Settings setNTrials04: 18];
     //[Settings enableNotDisableAllTests: NO];
     //[Settings setEnableTestAcuityLandolt: YES];
-    [Settings setTestOnFive: kTestAcuityC];
+    [Settings setTestOnFive: kTestAcuityLandolt];
     [Settings setTimeoutResponseSeconds: 999]; [Settings setTimeoutDisplaySeconds: 999];
     [Settings setAuditoryFeedback4trialIndex: kauditoryFeedback4trialIndexNone];
     [Settings setShowRewardPicturesWhenDone: YES];

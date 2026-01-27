@@ -312,12 +312,12 @@ function _pause(ms) { //console.info("Misc>_pause");
 + (CPString) testNameGivenTestID: (TestIDType) theTestID {
     switch (theTestID) {
         case kTestAcuityLett: return "Acuity_Letters";
-        case kTestAcuityC: return "Acuity_LandoltC";
+        case kTestAcuityLandolt: return "Acuity_LandoltC";
         case kTestAcuityE: return "Acuity_TumblingE";
         case kTestAcuityTAO: return "Acuity_TAO";
         case kTestAcuityVernier: return "Acuity_Vernier";
         case kTestContrastLett: return "Contrast_Letters";
-        case kTestContrastC: return "Contrast_LandoltC";
+        case kTestContrastLandolt: return "Contrast_LandoltC";
         case kTestContrastE: return "Contrast_TumblingE";
         case kTestContrastG:
             if ([self isContrastGMisc]) return "Contrast_Grating";

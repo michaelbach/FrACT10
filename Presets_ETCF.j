@@ -14,7 +14,7 @@
 + (void) apply { //console.info("Preset_ETCF>apply")
     [Settings setDefaults];
     //general pane
-    [Settings setTestOnFive: kTestContrastC];
+    [Settings setTestOnFive: kTestContrastLandolt];
     [Settings setShowResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
     [Settings setResultsToClipboardIndex: kResultsToClipFinalOnly];
     [Settings setDistanceInCM: 100];

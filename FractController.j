@@ -21,7 +21,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 /**
  FractController
- 
+
  */
 @implementation FractController: CPWindowController {
     int iTrial, nTrials, nAlternatives;
@@ -272,7 +272,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         case kTestAcuityLett: case kTestContrastLett:
             [self _drawTouchControlsForLett: sze sze2: sze2];
             break;
-        case kTestAcuityC: case kTestContrastC: case kTestContrastG:
+        case kTestAcuityLandolt: case kTestContrastLandolt: case kTestContrastG:
             [self _drawTouchControlsForC: sze sze2: sze2];
             break;
         case kTestAcuityE: case kTestContrastE:
@@ -403,7 +403,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     }
     return -2; //invalid key
 }
-//8 directions/alternatives, this can be used for Landolt Cs
+//8 directions/alternatives, this can be used for Landolt rings
 //0–8: valid; -1: ignore; -2: invalid
 - (int) responseNumber8FromChar: (CPString) keyChar { //console.info("FractController>responseNumber8FromChar: ", keyChar);
     switch (keyChar) {
@@ -639,7 +639,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     return [kTestAcuityTAO].includes(gCurrentTestID);
 }
 - (BOOL) isAcuityOptotype {
-    return [kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO].includes(gCurrentTestID);
+    return [kTestAcuityLett, kTestAcuityLandolt, kTestAcuityE, kTestAcuityTAO].includes(gCurrentTestID);
 }
 - (BOOL) isAcuityGrating {
     return (gCurrentTestID === kTestContrastG) && ([Settings what2sweepIndex] === 1);
@@ -651,7 +651,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     return [kTestContrastG].includes(gCurrentTestID) && (![self isAcuityGrating]);
 }
 - (BOOL) isContrastOptotype { //console.info("isContrastOptotype ", gCurrentTestID);
-    return [kTestContrastLett, kTestContrastC, kTestContrastE].includes(gCurrentTestID);
+    return [kTestContrastLett, kTestContrastLandolt, kTestContrastE].includes(gCurrentTestID);
 }
 - (BOOL) isContrastAny {
     return [self isContrastOptotype] || (gCurrentTestID === kTestContrastG);

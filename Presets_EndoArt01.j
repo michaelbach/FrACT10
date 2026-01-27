@@ -24,7 +24,7 @@
     [Settings setTimeoutIsiMillisecs: 0];
     [Settings setTimeoutResponseSeconds: 20];
     [Settings setTimeoutDisplaySeconds: 30];
-    [Settings setTestOnFive: kTestAcuityC];
+    [Settings setTestOnFive: kTestAcuityLandolt];
     [Settings setResultsToClipboardIndex: kResultsToClipFullHistory];
     [Settings setAuditoryFeedback4trialIndex: kauditoryFeedback4trialIndexNone];
 

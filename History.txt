@@ -1,6 +1,7 @@
 # History
 
-2026-01-27 prepare for easy test disabling in Presets (good for ESU, not used yet)
+
+2026-01-27 prepare for easy test disabling in Presets (good for ESU, not used yet). "Landolt C" → "Landolt ring" (norm nomenclature), "kTestAcuityC"→"kTestAcuityLandolt", "kTestContrastC"→"kTestContrastLandolt" for consistency
 2026-01-21 add missing "str" dispatch; add `isAllSettingsDisabled`
 2026-01-20 refactor and simplify: `copyColorsFromSettings` replaced by actions in `settingsDidChange`
 2026-01-20 refactor: MDBButton→MDBButton_Test, _init to square, thus obviate code in `AppController` and `Misc`
@@ -375,7 +376,7 @@ more fun with "es2022", implement some "for x of <array>"
 + 2022-08-03 allow larger distance (50 m, for presentations in halls), rename Quit/Exit → Exit/Quit
 + 2022-07-18 make Quit/Exit always available (no longer only in Node), also easier because no nw/electron discriminatin necessary
 + 2022-07-03 select Line-by-line distance between optotypes either ISO or ETDRS
-+ 2022-07-02 Line-by-line to allow Landolt Cs in addition to Sloan Letters
++ 2022-07-02 Line-by-line to allow Landolt rings in addition to Sloan Letters
 + 2022-06-23 improve wording in About
 + 2022-06-17 improve webview in About (border not faked by textfield etc.),
 Help panel also with webview, share buttons between Help and About panels,

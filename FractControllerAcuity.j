@@ -106,7 +106,7 @@
 - (void) runEnd { //console.info("FractControllerAcuity>runEnd");
     switch (gCurrentTestID) {
         case kTestAcuityLett:
-        case kTestAcuityC:
+        case kTestAcuityLandolt:
         case kTestAcuityE:
         case kTestAcuityTAO:
             if (iTrial < nTrials) { //premature end

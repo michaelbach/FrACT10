@@ -346,18 +346,18 @@
 - (void) runFractController2 { //console.info("AppController>runFractController2");
     [self closeAllPanels];  [self centerAllPanels];
     const allInfoPanels = {[kTestAcuityLett]: responseinfoPanelAcuityL,
-        [kTestAcuityC]: responseinfoPanelAcuity8C,
+        [kTestAcuityLandolt]: responseinfoPanelAcuity8C,
         [kTestAcuityE]: responseinfoPanelAcuityE,
         [kTestAcuityTAO]: responseinfoPanelAcuityTAO,
         [kTestAcuityVernier]: responseinfoPanelAcuityVernier,
         [kTestContrastLett]: responseinfoPanelContrastLett,
-        [kTestContrastC]: responseinfoPanelContrastC,
+        [kTestContrastLandolt]: responseinfoPanelContrastC,
         [kTestContrastE]: responseinfoPanelContrastE,
         [kTestContrastG]: responseinfoPanelContrastG,
         [kTestAcuityLineByLine]: responseinfoPanelAcuityLineByLine};
     if ([Settings showResponseInfoAtStart] && (gCurrentTestID in allInfoPanels)) {
         [allInfoPanels[gCurrentTestID] makeKeyAndOrderFront: self];
-        if ((gCurrentTestID === kTestAcuityC) && ([Settings nAlternatives] === 4)) {
+        if ((gCurrentTestID === kTestAcuityLandolt) && ([Settings nAlternatives] === 4)) {
             [responseinfoPanelAcuity4C makeKeyAndOrderFront: self];
         }
     } else {
@@ -433,7 +433,7 @@
     }
     [buttonExportClip setEnabled: ([currentTestResultExportString length] > 1)];
     [buttonExportPDF setEnabled: ([currentTestResultExportString length] > 1)];
-    if ([kTestAcuityLett, kTestAcuityC, kTestAcuityE, kTestAcuityTAO, kTestContrastLett, kTestContrastC, kTestContrastE, kTestContrastG].includes(gCurrentTestID)){
+    if ([kTestAcuityLett, kTestAcuityLandolt, kTestAcuityE, kTestAcuityTAO, kTestContrastLett, kTestContrastLandolt, kTestContrastE, kTestContrastG].includes(gCurrentTestID)){
         [buttonPlot setEnabled: ([currentTestResultExportString length] > 1)];
     }
 }
