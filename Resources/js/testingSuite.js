@@ -179,7 +179,7 @@ const doResponseChain = async (invertedKeys = NO, delay = pauseMS) => {
 /* runRespondingCorrectly */
 const runRespondingCorrectly = async () => {
 	await postToIframe('setSetting', 'preset', 'Testing');
-	tellIframe3Ms('run', 'acuity', 'LandoltC');
+	tellIframe3Ms('run', 'acuity', 'Landolt');
 	doResponseChain(NO, 100);
 }
 
@@ -237,11 +237,19 @@ const testMultipleOptotypes = async () => {
 	await oneStep3Ms('setSetting', 'nTrials04', 1);
 	await oneStep3Ms('setSetting', 'nTrials02', 1);
 	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
-	tellIframe3Ms('run','acuity', 'TAO');
+    tellIframe3Ms('run','acuity', 'Landolt');
+    await pauseMilliseconds(pauseViewMS);
+    tellIframe3Ms('run','acuity', 'TumblingE');
+    await pauseMilliseconds(pauseViewMS);
+    tellIframe3Ms('run','acuity', 'TAO');
 	await pauseMilliseconds(pauseViewMS);
 	tellIframe3Ms('run','acuity', 'Vernier');
-	await pauseMilliseconds(pauseViewMS);
-	tellIframe3Ms('run','contrast', 'LandoltC');
+    await pauseMilliseconds(pauseViewMS);
+    tellIframe3Ms('run','contrast', 'Letters');
+    await pauseMilliseconds(pauseViewMS);
+    tellIframe3Ms('run','contrast', 'Landolt');
+    await pauseMilliseconds(pauseViewMS);
+    tellIframe3Ms('run','contrast', 'TumblingE');
 	await pauseMilliseconds(pauseViewMS);
 	tellIframe3Ms('run','contrast', 'Grating');
 }
@@ -272,7 +280,7 @@ const testContrastCrowding = async () => {
     await oneStep3Ms('setSetting', 'enableTouchControls', NO);
 	tellIframe3Ms('run','contrast', 'Letters');
 	await pauseMilliseconds(pauseViewMS);
-	tellIframe3Ms('run','contrast', 'LandoltC');
+	tellIframe3Ms('run','contrast', 'Landolt');
 	await pauseMilliseconds(pauseViewMS);
 	tellIframe3Ms('run','contrast', 'TumblingE');
 	await pauseMilliseconds(pauseViewMS);
