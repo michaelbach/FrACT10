@@ -7,7 +7,6 @@
  */
 
 
-@import <Foundation/Foundation.j>
 @import "Settings.j"
 
 

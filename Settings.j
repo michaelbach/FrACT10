@@ -17,6 +17,7 @@ Created by mb on July 15, 2015.
 @import <Foundation/CPUserDefaults.j>
 @import <AppKit/CPUserDefaultsController.j>
 
+@import "Globals.j"
 @import "Misc.j"
 @import "MiscLight.j"
 @import "MiscSpace.j"
@@ -482,6 +483,7 @@ Created by mb on July 15, 2015.
 }
 
 + (CPString) decimalMarkChar { //console.info("settings>decimalMarkChar");
+    const oldMark = [[CPUserDefaults standardUserDefaults] objectForKey: "decimalMarkChar"]; //see below for necessity
     let _mark = ".";
     switch ([self decimalMarkCharIndex]) {
         case 0: //"Automatic"
@@ -496,7 +498,10 @@ Created by mb on July 15, 2015.
         case 2: //comma
             _mark = ","; break;
     }
-    [self setDecimalMarkChar: _mark];
+    // necessary, because otherwise, when just asking for the mark for internationalisation, the `settingsDidChange` avalanche starts, possibly resetting colors
+    if (oldMark !== _mark) {
+        [self setDecimalMarkChar: _mark];
+    }
     return _mark;
 }
 + (void) setDecimalMarkChar: (CPString) val {

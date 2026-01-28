@@ -7,7 +7,6 @@ Misc.j
 */
 
 
-@import "Globals.j"
 @import "Settings.j"
 
 
