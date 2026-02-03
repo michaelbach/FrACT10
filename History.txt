@@ -1,5 +1,6 @@
 # History
 
+2026-02-03 improve: Color picker with more intuitive behaviour via `MDBColorWell`
 2026-01-28 fix bug where contrast crowders had wrong grey value. Interesting bug cause: generating info text during testing needed internationalised string, which asked for decimal mark, which triggered the settingsDidChange avalanche, causing reset of gColorFore etc.
 2026-01-27 prepare for easy test disabling in Presets (good for ESU, not used yet). "Landolt C" → "Landolt ring" (norm nomenclature), "kTestAcuityC"→"kTestAcuityLandolt", "kTestContrastC"→"kTestContrastLandolt" for consistency. Allow  `Landolt`, `LandoltRing` and `LandoltC` as test name for HTML-message control
 2026-01-21 add missing "str" dispatch; add `isAllSettingsDisabled`
