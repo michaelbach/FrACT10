@@ -39,7 +39,6 @@
 @import "MDBTextField.j"
 @import "MDBLabel.j"
 @import "MDBAlert.j"
-@import "MDBColorWell.j"
 @import "Presets.j"
 @import "ControlDispatcher.j"
 @import "CardController.j"

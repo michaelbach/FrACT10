@@ -1793,7 +1793,7 @@ No money transfer involved 😎, just to calibrate size!     </string>
                                                 <color key="backgroundColor" name="unemphasizedSelectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <colorWell fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eR-Ax-gL1" customClass="MDBColorWell">
+                                        <colorWell fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eR-Ax-gL1">
                                             <rect key="frame" x="96" y="373" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Color well for foreground color.
@@ -1805,7 +1805,7 @@ No money transfer involved 😎, just to calibrate size!     </string>
                                                 <binding destination="izh-pU-csC" name="enabled" keyPath="values.isAcuityColor" id="ku1-Jo-gmr"/>
                                             </connections>
                                         </colorWell>
-                                        <colorWell fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSW-TH-Yop" customClass="MDBColorWell">
+                                        <colorWell fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSW-TH-Yop">
                                             <rect key="frame" x="149" y="373" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Color well for background color.
@@ -3391,7 +3391,7 @@ If you go very close or you may be able to resolve the pattern.
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
                                         </box>
-                                        <colorWell toolTip="Color well, foreground color" fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHP-iN-i0V" customClass="MDBColorWell">
+                                        <colorWell toolTip="Color well, foreground color" fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHP-iN-i0V">
                                             <rect key="frame" x="433" y="353" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -3400,7 +3400,7 @@ If you go very close or you may be able to resolve the pattern.
                                                 <binding destination="izh-pU-csC" name="enabled" keyPath="values.isGratingColor" id="U82-TW-1F4"/>
                                             </connections>
                                         </colorWell>
-                                        <colorWell toolTip="Color well, background color" fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3K9-fA-5PA" customClass="MDBColorWell">
+                                        <colorWell toolTip="Color well, background color" fixedFrame="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3K9-fA-5PA">
                                             <rect key="frame" x="494" y="353" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
