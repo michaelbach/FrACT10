@@ -1,5 +1,6 @@
 # History
 
+2026-02-11 add `MDBSetHandCursor` to set cursor to  "hand" over buttons, segmented controls and color wells
 2026-02-07 omit `MDBColorWell` again, since it's now corrected in Cappuccino
 2026-02-03 improve: Color picker with more intuitive behaviour via `MDBColorWell`
 2026-01-28 fix bug where contrast crowders had wrong grey value. Interesting bug cause: generating info text during testing needed internationalised string, which asked for decimal mark, which triggered the settingsDidChange avalanche, causing reset of gColorFore etc.

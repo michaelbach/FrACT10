@@ -35,6 +35,7 @@
 @import "TAOController.j"
 @import "Sound.j"
 @import "GammaView.j"
+@import "MDBSetHandCursor.j"
 @import "MDBButton_Test.j"
 @import "MDBTextField.j"
 @import "MDBLabel.j"

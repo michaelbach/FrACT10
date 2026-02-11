@@ -42,6 +42,7 @@
 		8A6D71C32CE0C6E100BB7107 /* Presets_Maculight.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A6D71C22CE0C6E100BB7107 /* Presets_Maculight.j */; };
 		8A865B932D7B246200743123 /* FractControllerBalmMotion.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A865B922D7B246200743123 /* FractControllerBalmMotion.j */; };
 		8A891B7E2A5585AE00ACEFDF /* MDBDispersionEstimation.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A891B7D2A5585AE00ACEFDF /* MDBDispersionEstimation.j */; };
+		8A9BDBD72F3BD7B0005C7A79 /* MDBSetHandCursor.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A9BDBD62F3BD7B0005C7A79 /* MDBSetHandCursor.j */; };
 		8A9C70602BFE496000DD5E76 /* MDBTextField.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A9C705F2BFE496000DD5E76 /* MDBTextField.j */; };
 		8A9E4D422D7A15F80056D4B9 /* FractControllerBalmLocation.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A9E4D412D7A15F80056D4B9 /* FractControllerBalmLocation.j */; };
 		8AA330D92DE9B43C004869CC /* PlotController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AA330D72DE9B43C004869CC /* PlotController.h */; };
@@ -149,6 +150,7 @@
 				8A0427882DEFA0400066977E /* Presets_EndoArt01.j in CopyFiles */,
 				8A3F88A12D5854A500183F76 /* CheckingContrastController.j in CopyFiles */,
 				8A061F5D2A2737F8006B5CAD /* AlternativesGenerator.j in CopyFiles */,
+				8A9BDBD72F3BD7B0005C7A79 /* MDBSetHandCursor.j in CopyFiles */,
 				8A061F602A273809006B5CAD /* Globals.j in CopyFiles */,
 				8AAB437E2A55824B00825E47 /* FractControllerContrastG.j in CopyFiles */,
 				8AF26B652D4F6EBA0033A618 /* CardController.j in CopyFiles */,
@@ -249,6 +251,7 @@
 		8A865B922D7B246200743123 /* FractControllerBalmMotion.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerBalmMotion.j; sourceTree = SOURCE_ROOT; };
 		8A891B7D2A5585AE00ACEFDF /* MDBDispersionEstimation.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MDBDispersionEstimation.j; sourceTree = SOURCE_ROOT; };
 		8A8BFD81283837D800DD61BB /* Presets.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets.j; sourceTree = SOURCE_ROOT; };
+		8A9BDBD62F3BD7B0005C7A79 /* MDBSetHandCursor.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = MDBSetHandCursor.j; sourceTree = "<group>"; };
 		8A9C705F2BFE496000DD5E76 /* MDBTextField.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MDBTextField.j; sourceTree = SOURCE_ROOT; };
 		8A9E4D412D7A15F80056D4B9 /* FractControllerBalmLocation.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerBalmLocation.j; sourceTree = SOURCE_ROOT; };
 		8AA330D72DE9B43C004869CC /* PlotController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlotController.h; path = .XcodeSupport/PlotController.h; sourceTree = "<group>"; };
@@ -348,6 +351,7 @@
 				C61449039211562F0283776F /* GammaView.j */,
 				5139419A9E317C413C110C0F /* AlternativesGenerator.j */,
 				8ABF4DC62D804E8000F63DD5 /* MDBAlert.j */,
+				8A9BDBD62F3BD7B0005C7A79 /* MDBSetHandCursor.j */,
 				46EC4178BBFDF502EFF4AF49 /* MDBButton_Test.j */,
 				8A9C705F2BFE496000DD5E76 /* MDBTextField.j */,
 				8AE548342D5F63CB008DED70 /* MDBLabel.j */,
