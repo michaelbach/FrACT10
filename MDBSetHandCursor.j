@@ -9,59 +9,71 @@
 
 
 /**
-A category to give the following controls a "hand" cursor when hovering:
-• Button
-• Segmented control
-• Color well
+A category to give the following controls a "hand" cursor when hovering over:
+• Buttons
+• Segmented controls
+• Color wells
+
+It is possible to restore the former cursor shape, but not used here since reverting to arrow cursor works fine in the FrACT context.
  */
 
+@import <AppKit/CPCursor.j>
 @import <AppKit/CPButton.j>
 @import <AppKit/CPSegmentedControl.j>
 @import <AppKit/CPColorWell.j>
 
 
-@implementation CPButton (MDBSetHandCursor)
+@implementation CPButton (MDBSetHandCursor) {
+    CPCursor formerCursor;
+}
 
 // Turn into hand when entering the control's tracking area
 - (void) mouseEntered: (CPEvent) e {
+    //formerCursor = [CPCursor currentCursor];
     [[CPCursor pointingHandCursor] set];
 }
 
-// Exiting
-// Assuming "arrow" as the right exit shape may be problematic, but looks good so far
+// On exit restore former cursor
 - (void) mouseExited: (CPEvent) e {
+    //[formerCursor set];
     [[CPCursor arrowCursor] set];
 }
 
 @end
 
 
-@implementation CPSegmentedControl (MDBSetHandCursor)
+@implementation CPSegmentedControl (MDBSetHandCursor) {
+    CPCursor formerCursor;
+}
 
 // Turn into hand when entering the control's tracking area
 - (void) mouseEntered: (CPEvent) e {
+    //formerCursor = [CPCursor currentCursor];
     [[CPCursor pointingHandCursor] set];
 }
 
-// Exiting
-// Assuming "arrow" as the right exit shape may be problematic, but looks good so far
+// On exit restore former cursor
 - (void) mouseExited: (CPEvent) e {
+    //[formerCursor set];
     [[CPCursor arrowCursor] set];
 }
 
 @end
 
 
-@implementation CPColorWell (MDBSetHandCursor)
+@implementation CPColorWell (MDBSetHandCursor) {
+    CPCursor formerCursor;
+}
 
 // Turn into hand when entering the control's tracking area
 - (void) mouseEntered: (CPEvent) e {
+    //formerCursor = [CPCursor currentCursor];
     [[CPCursor pointingHandCursor] set];
 }
 
-// Exiting
-// Assuming "arrow" as the right exit shape may be problematic, but looks good so far
+// On exit restore former cursor
 - (void) mouseExited: (CPEvent) e {
+    //[formerCursor set];
     [[CPCursor arrowCursor] set];
 }
 
