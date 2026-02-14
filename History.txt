@@ -1,5 +1,6 @@
 # History
 
+2026-02-14 GUI tweaks: read-only textfields changed so I-beam does not appear, tooltips for test en/disabling
 2026-02-11 add `MDBSetHandCursor` to set cursor to  "hand" over buttons, segmented controls and color wells
 2026-02-07 omit `MDBColorWell` again, since it's now corrected in Cappuccino
 2026-02-03 improve: Color picker with more intuitive behaviour via `MDBColorWell`

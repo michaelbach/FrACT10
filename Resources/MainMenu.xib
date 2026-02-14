@@ -874,7 +874,7 @@ If disabled: → Settings▸Misc▸Auto Preset
                                         <textField toolTip="This displays the Observer distance above converted from centimetres to inch" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" id="fkv-fu-ees" userLabel="in Inch">
                                             <rect key="frame" x="17" y="-22" width="44" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="4HD-Fz-O2P">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="4HD-Fz-O2P">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -2779,7 +2779,7 @@ See manual.
                                             <string key="toolTip">This displays the realisable Michelson contrast, depending on color discreteness and gamma value.
 
  </string>
-                                            <textFieldCell key="cell" selectable="YES" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="Puz-11-8LJ">
+                                            <textFieldCell key="cell" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="Puz-11-8LJ">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -2836,7 +2836,7 @@ See manual.
                                             <string key="toolTip">This displays the realisable Weber contrast, depending on color discreteness and gamma value.
 
  </string>
-                                            <textFieldCell key="cell" selectable="YES" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="tZh-H7-P0v">
+                                            <textFieldCell key="cell" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="tZh-H7-P0v">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -4229,6 +4229,9 @@ CQ
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="URg-aK-NSb">
                                                         <rect key="frame" x="20" y="63" width="100" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">                                          .
+Enable / disable specific button.
+  </string>
                                                         <buttonCell key="cell" type="check" title="Acuity Letter" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="psa-39-CWJ">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -4240,6 +4243,9 @@ CQ
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fez-rG-6Fk">
                                                         <rect key="frame" x="153" y="63" width="68" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">                                          .
+Enable / disable specific button.
+  </string>
                                                         <buttonCell key="cell" type="check" title="Landolt" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="UZ9-fb-JPS">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -4251,6 +4257,9 @@ CQ
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IUG-OC-0iF">
                                                         <rect key="frame" x="249" y="63" width="71" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">                                          .
+Enable / disable specific button.
+  </string>
                                                         <buttonCell key="cell" type="check" title="Tumbl E" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="W6J-Ev-b8p">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -4262,6 +4271,9 @@ CQ
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ySS-hF-InS">
                                                         <rect key="frame" x="353" y="63" width="48" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">                                          .
+Enable / disable specific button.
+  </string>
                                                         <buttonCell key="cell" type="check" title="TAO" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6Gp-uO-LiK">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -4273,6 +4285,9 @@ CQ
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dtp-zk-7VQ">
                                                         <rect key="frame" x="433" y="63" width="66" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">                                          .
+Enable / disable specific button.
+  </string>
                                                         <buttonCell key="cell" type="check" title="Vernier" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ckC-kn-uYh">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -4284,6 +4299,9 @@ CQ
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G0b-pJ-jaN">
                                                         <rect key="frame" x="532" y="63" width="57" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">                                          .
+Enable / disable specific button.
+  </string>
                                                         <buttonCell key="cell" type="check" title="BaLM" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="dwY-RO-I9q">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -4295,6 +4313,9 @@ CQ
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Tp-YZ-Pqk">
                                                         <rect key="frame" x="20" y="26" width="114" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">                                          .
+Enable / disable specific button.
+  </string>
                                                         <buttonCell key="cell" type="check" title="Contrast Letter" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kQf-Cg-kdx">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -4306,6 +4327,9 @@ CQ
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6vi-eF-hga">
                                                         <rect key="frame" x="153" y="26" width="68" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">                                          .
+Enable / disable specific button.
+  </string>
                                                         <buttonCell key="cell" type="check" title="Landolt" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ujg-Qt-VfR">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -4317,6 +4341,9 @@ CQ
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eov-lF-3nb">
                                                         <rect key="frame" x="249" y="26" width="71" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">                                          .
+Enable / disable specific button.
+  </string>
                                                         <buttonCell key="cell" type="check" title="Tumbl E" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="1FF-CJ-Eof">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -4328,6 +4355,9 @@ CQ
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4hz-t2-wM7">
                                                         <rect key="frame" x="353" y="26" width="67" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">                                          .
+Enable / disable specific button.
+  </string>
                                                         <buttonCell key="cell" type="check" title="Grating" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="v7S-ow-zrh">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -4339,6 +4369,9 @@ CQ
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mN4-n0-dEd">
                                                         <rect key="frame" x="462" y="26" width="135" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">                                          .
+Enable / disable specific button.
+  </string>
                                                         <buttonCell key="cell" type="check" title="Lines of optotypes" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="NJy-Fg-P0m">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
