@@ -212,22 +212,19 @@ const testColorStuff = async () => {
 
 
 const simpleSimon = async () => {
-	await ensureHomeState();
-	let response = await await oneStep3Ms('getSetting', 'enableTestAcuityLandolt', '');
-	await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
-	if (response.m3) {
-        await oneStep3Ms('setSetting', 'enableTestAcuityLett', YES);
-        await oneStep3Ms('setSetting', 'enableTestAcuityLandolt', NO);
-        await oneStep3Ms('setSetting', 'enableTestAcuityE', NO);
-        await oneStep3Ms('setSetting', 'enableTestAcuityTAO', NO);
-        await oneStep3Ms('setSetting', 'enableTestAcuityVernier', NO);
-        await oneStep3Ms('setSetting', 'enableTestContrastLett', NO);
-        await oneStep3Ms('setSetting', 'enableTestContrastLandolt', NO);
-        await oneStep3Ms('setSetting', 'enableTestContrastE', NO);
-        await oneStep3Ms('setSetting', 'enableTestContrastG', NO);
-        await oneStep3Ms('setSetting', 'enableTestAcuityLineByLine', NO);
-        await oneStep3Ms('setSetting', 'enableTestBalmGeneral', NO);
-	}
+    await ensureHomeState();
+    let response = await await oneStep3Ms('getSetting', 'enableTestAcuityLandolt', '');
+    await oneStep3Ms('setSetting', 'enableTestAcuityLett', YES);
+    await oneStep3Ms('setSetting', 'enableTestAcuityLandolt', !response.m3);
+    await oneStep3Ms('setSetting', 'enableTestAcuityE', !response.m3);
+    await oneStep3Ms('setSetting', 'enableTestAcuityTAO', !response.m3);
+    await oneStep3Ms('setSetting', 'enableTestAcuityVernier', !response.m3);
+    await oneStep3Ms('setSetting', 'enableTestContrastLett', !response.m3);
+    await oneStep3Ms('setSetting', 'enableTestContrastLandolt', !response.m3);
+    await oneStep3Ms('setSetting', 'enableTestContrastE', !response.m3);
+    await oneStep3Ms('setSetting', 'enableTestContrastG', !response.m3);
+    await oneStep3Ms('setSetting', 'enableTestAcuityLineByLine', !response.m3);
+    await oneStep3Ms('setSetting', 'enableTestBalmGeneral', !response.m3);
 }
 
 
