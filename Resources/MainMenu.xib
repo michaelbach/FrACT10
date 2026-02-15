@@ -4086,7 +4086,7 @@ CQ
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKl-qE-MnI">
-                                            <rect key="frame" x="533" y="363" width="223" height="16"/>
+                                            <rect key="frame" x="533" y="358" width="223" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">If "Line of optotypes" is set to “Chart mode”, here you can select that all 3 lines have the same acuity grade (instead of 0.1 LogMAR difference between them).
 
@@ -4100,7 +4100,7 @@ CQ
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Woj-eV-bwS">
-                                            <rect key="frame" x="533" y="319" width="124" height="18"/>
+                                            <rect key="frame" x="533" y="314" width="124" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">For some contexts (e.g., embeddng FrACT in a larger project) the Exit button may be detrimental – so disable it here.
 
@@ -4220,10 +4220,10 @@ CQ
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="KQF-M1-FAw">
-                                            <rect key="frame" x="34" y="15" width="638" height="104"/>
+                                            <rect key="frame" x="34" y="15" width="717" height="104"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="tsV-PX-djb">
-                                                <rect key="frame" x="0.0" y="0.0" width="638" height="104"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="717" height="104"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="URg-aK-NSb">
@@ -4241,7 +4241,7 @@ Enable / disable specific button.
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fez-rG-6Fk">
-                                                        <rect key="frame" x="153" y="63" width="68" height="16"/>
+                                                        <rect key="frame" x="148" y="63" width="68" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">                                          .
 Enable / disable specific button.
@@ -4255,7 +4255,7 @@ Enable / disable specific button.
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IUG-OC-0iF">
-                                                        <rect key="frame" x="249" y="63" width="71" height="16"/>
+                                                        <rect key="frame" x="269" y="63" width="71" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">                                          .
 Enable / disable specific button.
@@ -4269,7 +4269,7 @@ Enable / disable specific button.
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ySS-hF-InS">
-                                                        <rect key="frame" x="353" y="63" width="48" height="16"/>
+                                                        <rect key="frame" x="393" y="63" width="48" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">                                          .
 Enable / disable specific button.
@@ -4283,7 +4283,7 @@ Enable / disable specific button.
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dtp-zk-7VQ">
-                                                        <rect key="frame" x="433" y="63" width="66" height="16"/>
+                                                        <rect key="frame" x="513" y="63" width="66" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">                                          .
 Enable / disable specific button.
@@ -4297,7 +4297,7 @@ Enable / disable specific button.
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G0b-pJ-jaN">
-                                                        <rect key="frame" x="532" y="63" width="57" height="16"/>
+                                                        <rect key="frame" x="632" y="63" width="57" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">                                          .
 Enable / disable specific button.
@@ -4325,7 +4325,7 @@ Enable / disable specific button.
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6vi-eF-hga">
-                                                        <rect key="frame" x="153" y="26" width="68" height="16"/>
+                                                        <rect key="frame" x="148" y="26" width="68" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">                                          .
 Enable / disable specific button.
@@ -4339,7 +4339,7 @@ Enable / disable specific button.
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eov-lF-3nb">
-                                                        <rect key="frame" x="249" y="26" width="71" height="16"/>
+                                                        <rect key="frame" x="269" y="26" width="71" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">                                          .
 Enable / disable specific button.
@@ -4353,7 +4353,7 @@ Enable / disable specific button.
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4hz-t2-wM7">
-                                                        <rect key="frame" x="353" y="26" width="67" height="16"/>
+                                                        <rect key="frame" x="393" y="26" width="67" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">                                          .
 Enable / disable specific button.
@@ -4367,7 +4367,7 @@ Enable / disable specific button.
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mN4-n0-dEd">
-                                                        <rect key="frame" x="462" y="26" width="135" height="16"/>
+                                                        <rect key="frame" x="513" y="26" width="135" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">                                          .
 Enable / disable specific button.
@@ -4465,7 +4465,7 @@ Enable / disable specific button.
                                             </textFieldCell>
                                         </textField>
                                         <button toolTip="Optotypes will be overlaid with static visual noise." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6pt-B4-AcQ">
-                                            <rect key="frame" x="533" y="449" width="119" height="18"/>
+                                            <rect key="frame" x="533" y="444" width="119" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Embed in noise" bezelStyle="regularSquare" imagePosition="left" inset="2" id="WdN-lg-Whn">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -4476,7 +4476,7 @@ Enable / disable specific button.
                                             </connections>
                                         </button>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1kJ-oA-3Zg">
-                                            <rect key="frame" x="656" y="448" width="40" height="21"/>
+                                            <rect key="frame" x="656" y="443" width="40" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Noise percentage
 .</string>
@@ -4504,7 +4504,7 @@ Enable / disable specific button.
                                             </connections>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K8K-N9-esB">
-                                            <rect key="frame" x="533" y="405" width="113" height="18"/>
+                                            <rect key="frame" x="533" y="400" width="113" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Very specific setting for the BCM@Scheie project. Don't use unless…
 </string>
@@ -4517,7 +4517,7 @@ Enable / disable specific button.
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KZP-Or-0F6">
-                                            <rect key="frame" x="34" y="-13" width="376" height="18"/>
+                                            <rect key="frame" x="34" y="-16" width="376" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">When checked, the recently applied preset will be automatically re-applied on reload or startup. This ensures reproducible settings.
  </string>
@@ -4530,7 +4530,7 @@ Enable / disable specific button.
                                             </connections>
                                         </button>
                                         <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPx-4F-4Cr">
-                                            <rect key="frame" x="533" y="273" width="62" height="23"/>
+                                            <rect key="frame" x="533" y="268" width="62" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">The background color of the entire window can be selected here.
 This is useful for instance when you want a darker environment.
@@ -4541,7 +4541,7 @@ This is useful for instance when you want a darker environment.
                                             </connections>
                                         </colorWell>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ngk-rr-VCS">
-                                            <rect key="frame" x="601" y="276" width="83" height="16"/>
+                                            <rect key="frame" x="601" y="271" width="83" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Windowcolor" id="R1D-PV-saB">
                                                 <font key="font" metaFont="system"/>
@@ -4550,10 +4550,10 @@ This is useful for instance when you want a darker environment.
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="DmF-dV-9Qa">
-                                            <rect key="frame" x="309" y="140" width="239" height="98"/>
+                                            <rect key="frame" x="309" y="140" width="185" height="98"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="KnA-cE-9rl">
-                                                <rect key="frame" x="0.0" y="0.0" width="239" height="98"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="185" height="98"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField toolTip="for a special experiment: always present this acuity grade" focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hru-Yg-Axx">
@@ -4594,7 +4594,7 @@ This is useful for instance when you want a darker environment.
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ifz-L2-wIZ">
-                                            <rect key="frame" x="368" y="224" width="120" height="22"/>
+                                            <rect key="frame" x="324" y="224" width="120" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Constant VA" bezelStyle="round" id="k51-x2-V0c">
                                                 <font key="font" metaFont="system"/>
