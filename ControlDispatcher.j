@@ -32,11 +32,11 @@
         }
         _origin = e.origin;
         if (Object.keys(e.data).length !== 3) return; //avoid overruns from possibly malicious senders
-        m1 = e.data.m1, m2 = e.data.m2, m3 = e.data.m3;
+        m1 = e.data.m1, m2 = e.data.m2, m3 = e.data.m3; //need to copy, `e` is ephemeral
+        //let's vet the message content somewhat
         if ((m1 === undefined) || (m2 === undefined) || (m3 === undefined)) return;
         if (m1.length + m2.length + m3.length > 100) return;
-        m2AsNumber = Number(m2);
-        m3AsNumber = Number(m3);
+        m2AsNumber = Number(m2);  m3AsNumber = Number(m3);
         const messageHandlers = {
             "getVersion": () => {
                 [self post2parentM1:"getVersion" m2:gVersionStringOfFract m3:gVersionDateOfFrACT success:YES];
@@ -45,6 +45,7 @@
             "getSetting": () => [self manageGetSetting],
             "setSetting": () => [self manageSetSetting],
             "getValue": () => [self manageGetValue],
+            "setValue": () => [self manageSetValue],
             "run": () => [self manageRun],
             "getTestDetails": () => {
                 [self post2parentM1:"getTestDetails" m2:gTestDetails m3:"" success:YES];
@@ -148,6 +149,10 @@
 
 +
 (void) manageSetSetting {
+    if ((m2 === "preset") || (m2 === "Preset")) {
+        [self _notify:"notificationApplyPresetNamed" object:m3];
+        return;
+    }
     const settingTypes = {
         "isGratingObliqueOnly": "boolean", "showResponseInfoAtStart": "boolean", "enableTouchControls": "boolean", "eccentShowCenterFixMark": "boolean", "eccentRandomizeX": "boolean", "eccentRandomizeY": "boolean", "autoFullScreen": "boolean", "respondsToMobileOrientation": "boolean", "showTrialInfo": "boolean", "putResultsToClipboardSilent": "boolean", "showRewardPicturesWhenDone": "boolean", "embedInNoise": "boolean", "isAcuityColor": "boolean", "isLandoltObliqueOnly": "boolean", "acuityHasEasyTrials": "boolean", "doThreshCorrection": "boolean", "showAcuityFormatDecimal": "boolean", "showAcuityFormatLogMAR": "boolean", "showAcuityFormatSnellenFractionFoot": "boolean", "forceSnellen20": "boolean", "showCI95": "boolean", "isLineByLineChartModeConstantVA": "boolean", "contrastHasEasyTrials": "boolean", "isContrastDarkOnLight": "boolean", "contrastShowFixMark": "boolean", "isContrastDithering": "boolean", "isGratingMasked": "boolean", "isGratingErrorDiffusion": "boolean", "isGratingColor": "boolean", "specialBcmOn": "boolean", "hideExitButton": "boolean", "giveAuditoryFeedback4run": "boolean", "showIdAndEyeOnMain": "boolean", "isAcuityPresentedConstant": "boolean", "isAutoPreset": "boolean", "enableTestAcuityLett": "boolean", "enableTestAcuityLandolt": "boolean", "enableTestAcuityE": "boolean", "enableTestAcuityTAO": "boolean", "enableTestAcuityVernier": "boolean", "enableTestContrastLett": "boolean", "enableTestContrastLandolt": "boolean", "enableTestContrastE": "boolean", "enableTestContrastG": "boolean", "enableTestAcuityLineByLine": "boolean", "enableTestBalmGeneral": "boolean",
             "isAllSettingsDisabled": "boolean",
@@ -155,12 +160,6 @@
         "windowBackgroundColor": "color", "gratingForeColor": "color", "gratingBackColor": "color", "acuityForeColor": "color", "acuityBackColor": "color",
         "patID": "str"
     };
-
-    if ((m2 === "preset") || (m2 === "Preset")) {
-        [self _notify:"notificationApplyPresetNamed" object:m3];
-        return;
-    }
-
     switch(settingTypes[m2]) {
         case "boolean": case "number":
             [self setNumberSettingNamed:m2]; break;
@@ -196,6 +195,18 @@
         case "currentValue":
             m3 = [TrialHistoryController value];
             [self post2parentM1: m1 m2: m2 m3: m3 success: (m3 !== null)];
+            break;
+        default:
+            [self _logProblemM123];
+    }
+}
+
+
++ (void) manageSetValue {
+    switch(m2) {
+        case "resultString":
+            [gAppController setResultString: m3];
+            [self post2parentM1:m1 m2:m2 m3:m3 success:YES];
             break;
         default:
             [self _logProblemM123];

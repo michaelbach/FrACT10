@@ -1,5 +1,6 @@
 # History
 
+2026-02-15 GUI: improve aesthetics in Settings▸Misc. Add HTML message `setValue▸resultString
 2026-02-14 GUI tweaks: read-only textfields changed so I-beam does not appear, tooltips for test en/disabling. Simplifiy "Simplify" (`simpleSimon`)
 2026-02-11 add `MDBSetHandCursor` to set cursor to  "hand" over buttons, segmented controls and color wells
 2026-02-07 omit `MDBColorWell` again, since it's now corrected in Cappuccino
