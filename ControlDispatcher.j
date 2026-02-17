@@ -206,6 +206,7 @@
     switch(m2) {
         case "resultString":
             [gAppController setResultString: m3];
+            [Misc udpateGUI];
             [self post2parentM1:m1 m2:m2 m3:m3 success:YES];
             break;
         default:
