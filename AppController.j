@@ -137,11 +137,13 @@
     [Misc CPLogSetup];
     settingsNeededNewDefaults = [Settings needNewDefaults];
     [Settings checkDefaults]; //important to do this very early, before nib loading, otherwise the updates don't populate the settings panel
-    if (window.crypto.randomUUID) {
-        currentUUID = window.crypto.randomUUID();
-    } else { //if this API is not available
-        currentUUID = "12345678-d523-4b1c-83ea-0aeb4a018a13";
-    }
+    currentUUID = window.crypto?.randomUUID?.() ??
+      "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+        const r = window.crypto?.getRandomValues
+          ? window.crypto.getRandomValues(new Uint8Array(1))[0] % 16
+          : (Math.random() * 16) | 0;
+        return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
+      }); //The ?.() optional call short-circuits to undefined if randomUUID doesn't exist, letting ?? kick in and run the fallback inline.
     return self;
 }
 
