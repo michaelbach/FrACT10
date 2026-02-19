@@ -137,8 +137,11 @@
     [Misc CPLogSetup];
     settingsNeededNewDefaults = [Settings needNewDefaults];
     [Settings checkDefaults]; //important to do this very early, before nib loading, otherwise the updates don't populate the settings panel
-    currentUUID = window.crypto.randomUUID(); //↓just in case this API is not available
-    if (!currentUUID) currentUUID = "12345678-d523-4b1c-83ea-0aeb4a018a13";
+    if (window.crypto.randomUUID) {
+        currentUUID = window.crypto.randomUUID();
+    } else { //if this API is not available
+        currentUUID = "12345678-d523-4b1c-83ea-0aeb4a018a13";
+    }
     return self;
 }
 
