@@ -1,5 +1,6 @@
 # History
 
+2026-02-20 refactor `ControlDispatcher` and add `ResponseBoxController`, for virtual response box
 2026-02-19 add `currentUUID` in init and GUI, preparing for virtual response box
 2026-02-17 change BaLM preset (20 not 24 trials in Loc + Mot), wording in GUI
 2026-02-15 GUI: improve aesthetics in Settings▸Misc. Add HTML message `setValue▸resultString

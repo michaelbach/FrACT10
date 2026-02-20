@@ -38,6 +38,22 @@ FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
 	                '    <div style="flex-grow: 65"></div>' +
                     '</div>';
         </script>
+        <script>
+            //placeholder for window.firebaseResponseReceived to prevent errors if Firebase calls it before Cappuccino has fully initialized.
+            window.firebaseResponseReceived = function(value, timestamp) { //console.warn("Firebase response received before Cappuccino's AppController was ready. Data:", {value, timestamp});
+                //no need to warn, will be dropped in AppController
+            };
+        </script>
+        <script type="module">
+          import {initializeApp} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+          import {getDatabase, ref, onValue, goOffline, goOnline} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
+          window.firebaseInitializeApp = initializeApp; //move to global variables
+          window.firebaseGetDatabase = getDatabase;
+          window.firebaseOnValue = onValue;
+          window.firebaseRef = ref;
+          //window.firebaseGoOffline = goOffline;
+          //window.firebaseGoOnline = goOnline;
+        </script>
         <script src="Resources/cappFrameworks/Objective-J/Objective-J.js"></script>
         <script src="Resources/js/jspdf.umd.min.js"></script>
         <script src="Resources/js/jspdf.plugin.autotable.min.js"></script>
@@ -131,7 +147,7 @@ FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
                 </div>
             </noscript>
         </div>
-        <script defer> /* try to activate the service worker */
+        <script> /* try to activate the service worker */
 		  try {
 			if ("serviceWorker" in navigator) {
 			  navigator.serviceWorker.register("webAppServiceWorker.js").then((registration) => {

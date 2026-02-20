@@ -25,6 +25,7 @@
  */
 + (void) init { //console.info("ControlDispatcher>init")
     _sendHTMLMessageOnRunDone = NO;
+    [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(dispatchNotification:) name: "dispatchNotification" object: nil];
     window.addEventListener("message", (e) => { //console.info("In addEventListener>message: ", e);
         if (e.origin !== "http://localhost:4000") { //only from local host (for unittesting)
             if (e.source !== window.parent) return; //or from embedding window
@@ -32,91 +33,97 @@
         }
         _origin = e.origin;
         if (Object.keys(e.data).length !== 3) return; //avoid overruns from possibly malicious senders
-        m1 = e.data.m1, m2 = e.data.m2, m3 = e.data.m3; //need to copy, `e` is ephemeral
-        //let's vet the message content somewhat
-        if ((m1 === undefined) || (m2 === undefined) || (m3 === undefined)) return;
-        if (m1.length + m2.length + m3.length > 100) return;
-        m2AsNumber = Number(m2);  m3AsNumber = Number(m3);
-        const messageHandlers = {
-            "getVersion": () => {
-                [self post2parentM1:"getVersion" m2:gVersionStringOfFract m3:gVersionDateOfFrACT success:YES];
-                _sendHTMLMessageOnRunDone = NO;
-            },
-            "getSetting": () => [self manageGetSetting],
-            "setSetting": () => [self manageSetSetting],
-            "getValue": () => [self manageGetValue],
-            "setValue": () => [self manageSetValue],
-            "run": () => [self manageRun],
-            "getTestDetails": () => {
-                [self post2parentM1:"getTestDetails" m2:gTestDetails m3:"" success:YES];
-                _sendHTMLMessageOnRunDone = NO;
-            },
-            "sendChar": () => {
-                [self sendChar:m2];  [self post2parentM1:m1 m2:m2 m3:m3 success:YES];
-            },
-            "respondWithChar": () => {
-                const keyEvent = [CPEvent keyEventWithType:CPKeyDown location:CGPointMakeZero() modifierFlags:0 timestamp:0 windowNumber:0 context:nil characters:m2 charactersIgnoringModifiers:m2 isARepeat:NO keyCode:0];
-                [gAppController.currentFractController performSelector:@selector(keyDown:) withObject:keyEvent];
-                [self post2parentM1:m1 m2:m2 m3:m3 success:YES];
-            },
-            "unittest": () => [self manageUnittests],
-            "reload": () => window.location.reload(NO),
-            "setFullScreen": () => {
-                [Misc fullScreenOn:m2];  [self post2parentM1:m1 m2:m2 m3:m3 success:YES];
-            },
-            "settingsPane": () => {
-                if (isNaN(m2AsNumber) || (m2AsNumber > 6)) {
-                    [self _logProblemM123];
-                    return;
-                }
-                if (m2AsNumber < 0) {
-                    [gAppController buttonSettingsClose_action:nil];
-                    [self post2parentM1:m1 m2:m2 m3:m3 success:YES];
-                    return;
-                }
-                [gAppController setSettingsPaneTabViewSelectedIndex:m2AsNumber];
-                [gAppController buttonSettings_action:nil];
-                [Misc udpateGUI];
-                [self post2parentM1:m1 m2:m2 m3:m3 success:YES];
-            },
-            "redraw": () => {
-                [Misc udpateGUI];  [self post2parentM1:m1 m2:m2 m3:m3 success:YES];
-            },
-            "setHomeState": () => {
-                [self sendChar:String.fromCharCode(13)];
-                [self sendChar:String.fromCharCode(10)];
-                if ([Misc isInRun]) {
-                    [gAppController.currentFractController runEnd];
-                } else {
-                    if (gLatestAlert) {
-                        let alertWindow = [gLatestAlert window];
-                        if (alertWindow) {
-                            [CPApp stopModal];
-                            [alertWindow orderOut:self];
-                            gLatestAlert = null;
-                        }
-                    }
-                }
-                [gAppController.selfWindow makeKeyWindow];
-                [self post2parentM1:m1 m2:m2 m3:m3 success:YES];
-            }
-        };
-        /* deprecated names
-         messageHandlers["Version"] = messageHandlers["getVersion"];
-         messageHandlers["Settings"] = messageHandlers["setSetting"];
-         messageHandlers["Run"] = messageHandlers["run"];
-         messageHandlers["Unittest"] = messageHandlers["unittest"];
-         messageHandlers["setHomeStatus"] = messageHandlers["setHomeState"];*/
-
-        const handler = messageHandlers[m1];
-        if (handler) {
-            handler();
-        } else {
-            [self _logProblem:e.data];
-        }
+        const userInfo = {m1: e.data.m1, m2: e.data.m2, m3: e.data.m3};
+        [[CPNotificationCenter defaultCenter] postNotificationName: "dispatchNotification" object: nil userInfo: userInfo];
     });
 }
 
+
++ (void) dispatchNotification: (CPNotification) notification {
+    //let's vet the message content somewhat
+    const message = [notification userInfo];
+    if ((message.m1 === undefined) || (message.m2 === undefined) || (message.m3 === undefined)) return;
+    if (message.m1.length + message.m2.length + message.m3.length > 100) return;
+    m1 = message.m1; m2 = message.m2;  m3 = message.m3;
+    m2AsNumber = Number(m2);  m3AsNumber = Number(m3);
+    const messageHandlers = {
+        "getVersion": () => {
+            [self post2parentM1:"getVersion" m2:gVersionStringOfFract m3:gVersionDateOfFrACT success:YES];
+            _sendHTMLMessageOnRunDone = NO;
+        },
+        "getSetting": () => [self manageGetSetting],
+        "setSetting": () => [self manageSetSetting],
+        "getValue": () => [self manageGetValue],
+        "setValue": () => [self manageSetValue],
+        "run": () => [self manageRun],
+        "getTestDetails": () => {
+            [self post2parentM1:"getTestDetails" m2:gTestDetails m3:"" success:YES];
+            _sendHTMLMessageOnRunDone = NO;
+        },
+        "sendChar": () => {
+            [self sendChar:m2];  [self post2parentM1:m1 m2:m2 m3:m3 success:YES];
+        },
+        "respondWithChar": () => {
+            const keyEvent = [CPEvent keyEventWithType:CPKeyDown location:CGPointMakeZero() modifierFlags:0 timestamp:0 windowNumber:0 context:nil characters:m2 charactersIgnoringModifiers:m2 isARepeat:NO keyCode:0];
+            [gAppController.currentFractController performSelector:@selector(keyDown:) withObject:keyEvent];
+            [self post2parentM1:m1 m2:m2 m3:m3 success:YES];
+        },
+        "unittest": () => [self manageUnittests],
+        "reload": () => window.location.reload(NO),
+        "setFullScreen": () => {
+            [Misc fullScreenOn:m2];  [self post2parentM1:m1 m2:m2 m3:m3 success:YES];
+        },
+        "settingsPane": () => {
+            if (isNaN(m2AsNumber) || (m2AsNumber > 6)) {
+                [self _logProblemM123];
+                return;
+            }
+            if (m2AsNumber < 0) {
+                [gAppController buttonSettingsClose_action:nil];
+                [self post2parentM1:m1 m2:m2 m3:m3 success:YES];
+                return;
+            }
+            [gAppController setSettingsPaneTabViewSelectedIndex:m2AsNumber];
+            [gAppController buttonSettings_action:nil];
+            [Misc udpateGUI];
+            [self post2parentM1:m1 m2:m2 m3:m3 success:YES];
+        },
+        "redraw": () => {
+            [Misc udpateGUI];  [self post2parentM1:m1 m2:m2 m3:m3 success:YES];
+        },
+        "setHomeState": () => {
+            [self sendChar:String.fromCharCode(13)];
+            [self sendChar:String.fromCharCode(10)];
+            if ([Misc isInRun]) {
+                [gAppController.currentFractController runEnd];
+            } else {
+                if (gLatestAlert) {
+                    let alertWindow = [gLatestAlert window];
+                    if (alertWindow) {
+                        [CPApp stopModal];
+                        [alertWindow orderOut:self];
+                        gLatestAlert = null;
+                    }
+                }
+            }
+            [gAppController.selfWindow makeKeyWindow];
+            [self post2parentM1:m1 m2:m2 m3:m3 success:YES];
+        }
+    };
+    /* deprecated names
+     messageHandlers["Version"] = messageHandlers["getVersion"];
+     messageHandlers["Settings"] = messageHandlers["setSetting"];
+     messageHandlers["Run"] = messageHandlers["run"];
+     messageHandlers["Unittest"] = messageHandlers["unittest"];
+     messageHandlers["setHomeStatus"] = messageHandlers["setHomeState"];*/
+
+    const handler = messageHandlers[m1];
+    if (handler) {
+        handler();
+    } else {
+        [self _logProblem:e.data];
+    }
+}
 
 //works except for <esc> in BaLM switch
 + (void) sendChar: (CPString) s { //console.info("ControlDispatcher>sendChar", s)
@@ -155,7 +162,7 @@
     }
     const settingTypes = {
         "isGratingObliqueOnly": "boolean", "showResponseInfoAtStart": "boolean", "enableTouchControls": "boolean", "eccentShowCenterFixMark": "boolean", "eccentRandomizeX": "boolean", "eccentRandomizeY": "boolean", "autoFullScreen": "boolean", "respondsToMobileOrientation": "boolean", "showTrialInfo": "boolean", "putResultsToClipboardSilent": "boolean", "showRewardPicturesWhenDone": "boolean", "embedInNoise": "boolean", "isAcuityColor": "boolean", "isLandoltObliqueOnly": "boolean", "acuityHasEasyTrials": "boolean", "doThreshCorrection": "boolean", "showAcuityFormatDecimal": "boolean", "showAcuityFormatLogMAR": "boolean", "showAcuityFormatSnellenFractionFoot": "boolean", "forceSnellen20": "boolean", "showCI95": "boolean", "isLineByLineChartModeConstantVA": "boolean", "contrastHasEasyTrials": "boolean", "isContrastDarkOnLight": "boolean", "contrastShowFixMark": "boolean", "isContrastDithering": "boolean", "isGratingMasked": "boolean", "isGratingErrorDiffusion": "boolean", "isGratingColor": "boolean", "specialBcmOn": "boolean", "hideExitButton": "boolean", "giveAuditoryFeedback4run": "boolean", "showIdAndEyeOnMain": "boolean", "isAcuityPresentedConstant": "boolean", "isAutoPreset": "boolean", "enableTestAcuityLett": "boolean", "enableTestAcuityLandolt": "boolean", "enableTestAcuityE": "boolean", "enableTestAcuityTAO": "boolean", "enableTestAcuityVernier": "boolean", "enableTestContrastLett": "boolean", "enableTestContrastLandolt": "boolean", "enableTestContrastE": "boolean", "enableTestContrastG": "boolean", "enableTestAcuityLineByLine": "boolean", "enableTestBalmGeneral": "boolean",
-            "isAllSettingsDisabled": "boolean",
+        "isAllSettingsDisabled": "boolean",
         "nAlternativesIndex": "number", "nTrials02": "number", "nTrials04": "number", "nTrials08": "number", "distanceInCM": "number", "calBarLengthInMM": "number", "testOnFive": "number", "decimalMarkCharIndex": "number", "eccentXInDeg": "number", "eccentYInDeg": "number", "displayTransform": "number", "trialInfoFontSize": "number", "timeoutIsiMillisecs": "number", "timeoutResponseSeconds": "number", "timeoutDisplaySeconds": "number", "soundVolume": "number", "auditoryFeedback4trialIndex": "number", "timeoutRewardPicturesInSeconds": "number", "resultsToClipboardIndex": "number", "noiseContrast": "number", "contrastAcuityWeber": "number", "maxDisplayedAcuity": "number", "minStrokeAcuity": "number", "acuityStartingLogMAR": "number", "margin4maxOptotypeIndex": "number", "autoRunIndex": "number", "crowdingType": "number", "crowdingDistanceCalculationType": "number", "testOnLineByLineIndex": "number", "lineByLineDistanceType": "number", "lineByLineHeadcountIndex": "number", "lineByLineLinesIndex": "number", "vernierType": "number", "vernierWidth": "number", "vernierLength": "number", "vernierGap": "number", "gammaValue": "number", "contrastOptotypeDiameter": "number", "contrastTimeoutFixmark": "number", "contrastMaxLogCSWeber": "number", "contrastCrowdingType": "number", "gratingCPD": "number", "gratingMaskDiaInDeg": "number", "gratingShapeIndex": "number", "what2sweepIndex": "number", "gratingCPDmin": "number", "gratingCPDmax": "number", "gratingContrastMichelsonPercent": "number", "soundTrialYesIndex": "number", "soundTrialNoIndex": "number", "soundRunEndIndex": "number", "acuityPresentedConstantLogMAR": "number", "eyeIndex": "number",
         "windowBackgroundColor": "color", "gratingForeColor": "color", "gratingBackColor": "color", "acuityForeColor": "color", "acuityBackColor": "color",
         "patID": "str"
@@ -308,8 +315,12 @@
 }
 
 
-+ (void) post2parentM1: (CPString) m1 m2: (CPString) m2 m3: (CPString) m3 success: (BOOL) success {
-    window.parent.postMessage({success: success, m1, m2, m3}, _origin);
++ (void) post2parentM1: (CPString) m1 m2: (CPString) m2 m3: (CPString) m3 success: (BOOL) success { //console.info("post2parentM1");
+    try {
+        window.parent.postMessage({success: success, m1, m2, m3}, _origin);
+    }
+    catch(e) { //avoid the global error catcher, `_origin` might be undefined
+    }
 }
 
 

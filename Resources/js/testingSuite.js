@@ -416,7 +416,7 @@ const testingSuite = async () => {
 	document.getElementById('belowFractFrame').appendChild(textarea);
 	window.addEventListener('message', listener4textarea);
 	let response;
-	addText("TESTING SUITE STARTING\nDuration: ≈ 2½ minutes.\n\nDo not press any key until “TESTING SUITE done”.\n\nFor early termination: Reload.\n");
+	addText("SOFTWARE TESTING SUITE STARTING\nDuration: ≈ 2½ minutes.\n\nDo not press any key until “TESTING SUITE done”.\n\nFor early termination: Reload.\n");
 /*	Let's leave out for now, because it shows intermediate blank screens after a testing round
 await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn't work (safety?)
 		await oneStep3Ms('setFullScreen', YES, ''); await pauseMilliseconds(pauseViewMS * 1.5);
@@ -425,7 +425,7 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
 		await oneStep3Ms('settingsPane', -1, ''); await pauseMilliseconds(pauseViewMS);
 	}); */
 
-    await oneStep3Ms('setValue', 'resultString', 'TESTING SUITE starting, runs 2½ mins.');
+    await oneStep3Ms('setValue', 'resultString', 'SOFTWARE TESTING SUITE starting, runs 2½ mins.');
     await pauseMilliseconds(pauseViewMS);
 
     await doTextTestfunText("Internal unit tests", async () => {
@@ -466,6 +466,6 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
 	addText("↓ Set `Standard Defaults` & Reload.");
 	await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
 	tellIframe3Ms('reload', '', '');  await pauseMilliseconds(pauseViewMS);
-    await oneStep3Ms('setValue', 'resultString', 'TESTING SUITE done.');
-	addText("\n TESTING SUITE done.");
+    await oneStep3Ms('setValue', 'resultString', 'SOFTWARE TESTING SUITE done.');
+	addText("\n SOFTWARE TESTING SUITE done.");
 }

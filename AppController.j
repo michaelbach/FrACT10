@@ -41,6 +41,7 @@
 @import "MDBLabel.j"
 @import "MDBAlert.j"
 @import "Presets.j"
+@import "ResponseBoxController.j"
 @import "ControlDispatcher.j"
 @import "CardController.j"
 @import "AboutAndHelpController.j"
