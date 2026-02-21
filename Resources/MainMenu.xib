@@ -227,7 +227,7 @@ Shortcut: 4
                             <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestAcuityLineByLine" id="EgR-te-aVz"/>
                         </connections>
                     </button>
-                    <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUU-sC-ci6" propertyAccessControl="none">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUU-sC-ci6" propertyAccessControl="none">
                         <rect key="frame" x="19" y="173" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip"> Enter Settings screen.
@@ -250,7 +250,7 @@ Shortcut: 4
                             </binding>
                         </connections>
                     </button>
-                    <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHP-WN-mFO" propertyAccessControl="none">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHP-WN-mFO" propertyAccessControl="none">
                         <rect key="frame" x="184" y="173" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Toggle fullscreen.
@@ -266,8 +266,8 @@ Shortcut: f
                             <action selector="buttonFullScreen_action:" target="450" id="OjF-xB-SV6"/>
                         </connections>
                     </button>
-                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KcI-ws-Dhl">
-                        <rect key="frame" x="352" y="173" width="107" height="25"/>
+                    <popUpButton hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KcI-ws-Dhl">
+                        <rect key="frame" x="352" y="113" width="107" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">Automatic run, targeting some acuity or contrast.
 
@@ -275,7 +275,7 @@ Hi ≙ high acuity = low LogMAR.‘
 
 For testing.
 </string>
-                        <popUpButtonCell key="cell" type="push" title="Ø Autorun" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Eg0-co-ecm" id="3tm-qQ-uSh">
+                        <popUpButtonCell key="cell" type="push" title="Ø Autorun" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" enabled="NO" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Eg0-co-ecm" id="3tm-qQ-uSh">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="message"/>
                             <menu key="menu" id="X9t-wa-fsO">
@@ -293,7 +293,7 @@ For testing.
                             <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.autoRunIndex" id="9Nl-Ih-LZF"/>
                         </connections>
                     </popUpButton>
-                    <button toolTip="Guess what this button does…    " imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CDI-8L-YSC">
+                    <button toolTip="Guess what this button does…    " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CDI-8L-YSC">
                         <rect key="frame" x="514" y="173" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="Help   " bezelStyle="texturedRounded" image="iconHelp" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7qY-Pl-QqO">
@@ -374,7 +374,7 @@ Depending on the pertinent setting in Settings&gt;General it will export the fin
                     <textField autoresizesSubviews="NO" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBn-1C-8cg" customClass="MDBLabel">
                         <rect key="frame" x="0.0" y="-43" width="800" height="84"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" continuous="YES" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="resultStringField" allowsEditingTextAttributes="YES" usesSingleLineMode="YES" id="eZN-cU-So4">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" continuous="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="resultStringField" allowsEditingTextAttributes="YES" usesSingleLineMode="YES" id="eZN-cU-So4">
                             <font key="font" metaFont="system" size="28"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -473,6 +473,22 @@ Depending on your browser, it will ask for file location or ask whether it's ok 
                             <binding destination="izh-pU-csC" name="enabled" keyPath="values.showIdAndEyeOnMain" id="yRy-0j-Mhh"/>
                         </connections>
                     </popUpButton>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="COK-Dg-nfY" propertyAccessControl="none">
+                        <rect key="frame" x="354" y="173" width="102" height="23"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <string key="toolTip">for a REMOTE RESPONSE BOX this will pair with a QR code.
+
+Shortcut: r
+</string>
+                        <buttonCell key="cell" type="roundTextured" title="Pair rem." bezelStyle="texturedRounded" image="qrcode" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DNX-N0-zbA">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent">r</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="buttonRemoteResponse_action:" target="450" id="w26-ao-BKU"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <connections>
@@ -4608,7 +4624,7 @@ This is useful for instance when you want a darker environment.
                                             <string key="toolTip">The Universally Unique Identifier for the current session
  </string>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="mbv-gm-KaP">
-                                                <font key="font" metaFont="system" size="11"/>
+                                                <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -5899,5 +5915,6 @@ Type any unused key to exit this module.
         <image name="optotypeE180" width="216" height="215"/>
         <image name="optotypeE270" width="215" height="216"/>
         <image name="plasticCard4calibration" width="2100" height="1361"/>
+        <image name="qrcode" width="800" height="800"/>
     </resources>
 </document>

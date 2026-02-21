@@ -106,6 +106,7 @@ gEyeIndex2string = ["eyeNA", "OU", "OD", "OS"]; //OU = "oculus uterque" = both e
 //cgc as global makes for easy access in Optotypes and contrast calcs
 cgc = [[CPGraphicsContext currentContext] graphicsPort];
 gAppController = null; //allows globally communicating with the AppController
+gCurrentUUID = "";
 gColorFore = [CPColor whiteColor];  gColorBack = [CPColor blackColor];
 //minimal stroke size (half a pixel). Maximal, depending on screen & margin. Poor naming for Vernier. Values are later overridden via Setting and screen size.
 gStrokeMinimal = 0.5;  gStrokeMaximal = 100;

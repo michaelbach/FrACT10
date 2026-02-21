@@ -24,7 +24,8 @@
     };
     const app = window.firebaseInitializeApp(firebaseConfig);
     const db = window.firebaseGetDatabase(app);
-    window.firebaseOnValue(window.firebaseRef(db, 'response/current'), (snapshot) => {
+    const responseRef = window.firebaseRef(db, 'responses/' + gCurrentUUID);
+    firebaseOnValue(responseRef, (snapshot) => {
         const data = snapshot.val();
         if (data) {
             window.firebaseResponseReceived(data); //bridge to Cappuccino
@@ -37,13 +38,18 @@
         if (!data.appName || !data.session || !data.value || !data.timestamp) return;
         if ((data.value === undefined) || (data.timestamp === undefined)) return;
         if (data.appName.length + data.session.length + data.value.length + data.timestamp.length > 200) return;
-        const deltaT = Date.now() - data.timestamp; //console.info("deltaT", deltaT);
+        const deltaT = Date.now() - data.timaestamp; //console.info("deltaT", deltaT);
         if (deltaT > 1000) { //console.warn("deltaT too high: ", deltaT);
+            return;
+        }
+        if (data.session !== gCurrentUUID) {
+            console.info("ResponseBoxController, Wrong sessionID: ", data.session, ", expected: ", gCurrentUUID);
             return;
         }
         //console.info("firebaseResponseReceived", data.appName, data.session, data.value, data.timestamp);
         //[gAppController setResultString: data.appName + ", " + data.session + ", "+  data.value];
         [[CPNotificationCenter defaultCenter] postNotificationName: "dispatchNotification" object: nil userInfo: data.value];
+        //console.info(data.value);
     }
 }
 

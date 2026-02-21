@@ -40,6 +40,7 @@
 @import "MDBTextField.j"
 @import "MDBLabel.j"
 @import "MDBAlert.j"
+@import "QRPanel.j"
 @import "Presets.j"
 @import "ResponseBoxController.j"
 @import "ControlDispatcher.j"
@@ -138,13 +139,14 @@
     [Misc CPLogSetup];
     settingsNeededNewDefaults = [Settings needNewDefaults];
     [Settings checkDefaults]; //important to do this very early, before nib loading, otherwise the updates don't populate the settings panel
-    currentUUID = window.crypto?.randomUUID?.() ??
+    gCurrentUUID = window.crypto?.randomUUID?.() ??
       "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
         const r = window.crypto?.getRandomValues
           ? window.crypto.getRandomValues(new Uint8Array(1))[0] % 16
           : (Math.random() * 16) | 0;
         return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
       }); //The ?.() optional call short-circuits to undefined if randomUUID doesn't exist, letting ?? kick in and run the fallback inline.
+    [self setCurrentUUID: gCurrentUUID]; //for the GUI
     return self;
 }
 
@@ -384,7 +386,7 @@
     if (currentFractController) {
         [currentFractController release];  currentFractController = null;
     }
-    const allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherUnittest,                          FractControllerBalmLight, FractControllerBalmLocation, FractControllerBalmMotion]; //sequence like Hierachy kTest#s
+    const allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherUnittest, FractControllerBalmLight, FractControllerBalmLocation, FractControllerBalmMotion]; //sequence like Hierachy kTest#s
     currentFractController = [[allTestControllers[gCurrentTestID] alloc] initWithWindow: fractControllerWindow];
     [currentFractController setSound: sound];
     currentTestResultExportString = "";
@@ -510,9 +512,9 @@
             const sto5 = [Settings testOnFive];
             if (sto5 > 0) [self runFractControllerTest: sto5];
             break;
-        case "R":
-            [Settings setAutoRunIndex: [Settings autoRunIndex] === kAutoRunIndexNone ? kAutoRunIndexMid : kAutoRunIndexNone];
-            break;
+//        case "R":
+//            [Settings setAutoRunIndex: [Settings autoRunIndex] === kAutoRunIndexNone ? kAutoRunIndexMid : kAutoRunIndexNone];
+//            break;
         case "U":
             [Misc allUnittests];
             break;
@@ -571,6 +573,15 @@
         [self balmSwitch];  return;
     }
     [self runFractControllerTest: [sender tag]];
+}
+
+
+- (IBAction) buttonRemoteResponse_action: (id) sender { //console.info("AppController>buttonRemoteResponse_action");
+    let url = "https://michaelbach.de/fract/respond.html";
+    url += "?session=" + currentUUID;
+    const panel = [[QRPanel alloc] initWithQRString: url];
+    [panel makeKeyAndOrderFront: self];
+    [ResponseBoxController init];
 }
 
 

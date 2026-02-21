@@ -40,6 +40,7 @@
 		8A48269329CF4F260035607A /* MiscLight.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A48269229CF4F260035607A /* MiscLight.j */; };
 		8A48269529CF58F30035607A /* MiscSpace.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A48269429CF58F30035607A /* MiscSpace.j */; };
 		8A4D57002D00AF8C00980A21 /* Presets_HYPERION.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A4D56FF2D00AF8C00980A21 /* Presets_HYPERION.j */; };
+		8A5DE1C22F48DD7F0077C276 /* QRPanel.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A5DE1C12F48DD7F0077C276 /* QRPanel.j */; };
 		8A6D71C32CE0C6E100BB7107 /* Presets_Maculight.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A6D71C22CE0C6E100BB7107 /* Presets_Maculight.j */; };
 		8A7465542F471AB800B47DC2 /* index.html in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A7465532F471AB800B47DC2 /* index.html */; };
 		8A865B932D7B246200743123 /* FractControllerBalmMotion.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A865B922D7B246200743123 /* FractControllerBalmMotion.j */; };
@@ -134,6 +135,7 @@
 				8A28B6C12E56773E002FD5FC /* MDBTextfFieldAutoBlur.h in CopyFiles */,
 				8A28B6C22E56773E002FD5FC /* MDBTextfFieldAutoBlur.m in CopyFiles */,
 				8AAB43902A55826800825E47 /* Sound.j in CopyFiles */,
+				8A5DE1C22F48DD7F0077C276 /* QRPanel.j in CopyFiles */,
 				8AAB43822A55825500825E47 /* FractControllerAcuityVernier.j in CopyFiles */,
 				8A44B4CB2D5F8E5300E55DEF /* History.txt in CopyFiles */,
 				8AAB437D2A55824900825E47 /* FractControllerContrastLett.j in CopyFiles */,
@@ -252,6 +254,7 @@
 		8A48269429CF58F30035607A /* MiscSpace.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MiscSpace.j; sourceTree = SOURCE_ROOT; };
 		8A4D56FF2D00AF8C00980A21 /* Presets_HYPERION.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets_HYPERION.j; sourceTree = SOURCE_ROOT; };
 		8A574A8F29FAE30F00D28C1B /* FractControllerContrastG.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = FractControllerContrastG.j; sourceTree = SOURCE_ROOT; };
+		8A5DE1C12F48DD7F0077C276 /* QRPanel.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = QRPanel.j; sourceTree = "<group>"; };
 		8A6D71C22CE0C6E100BB7107 /* Presets_Maculight.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets_Maculight.j; sourceTree = SOURCE_ROOT; };
 		8A7465532F471AB800B47DC2 /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		8A865B922D7B246200743123 /* FractControllerBalmMotion.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerBalmMotion.j; sourceTree = SOURCE_ROOT; };
@@ -381,6 +384,7 @@
 				8A07B8402C919922007513BB /* Presets_ULV_Gensight.j */,
 				8A4D56FF2D00AF8C00980A21 /* Presets_HYPERION.j */,
 				8A1A596E2F47896C003E195C /* ResponseBoxController.j */,
+				8A5DE1C12F48DD7F0077C276 /* QRPanel.j */,
 				29834A62A925E37F8057FF9A /* RewardsController.j */,
 				F3064227AB4A793DAF144D61 /* Settings.j */,
 				B9F044A9AF27FFCAFF026886 /* Sound.j */,
