@@ -38,8 +38,7 @@ FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
 	                '    <div style="flex-grow: 65"></div>' +
                     '</div>';
         </script>
-        <script>
-            //placeholder for window.firebaseResponseReceived to prevent errors if Firebase calls it before Cappuccino has fully initialized.
+        <script> //placeholder for window.firebaseResponseReceived to prevent errors if Firebase calls it before Cappuccino has fully initialized.
             window.firebaseResponseReceived = function(value, timestamp) { //console.warn("Firebase response received before Cappuccino's AppController was ready. Data:", {value, timestamp});
                 //no need to warn, will be dropped in AppController
             };
@@ -51,14 +50,12 @@ FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
           window.firebaseGetDatabase = getDatabase;
           window.firebaseOnValue = onValue;
           window.firebaseRef = ref;
-          //window.firebaseGoOffline = goOffline;
-          //window.firebaseGoOnline = goOnline;
         </script>
         <script src="Resources/cappFrameworks/Objective-J/Objective-J.js"></script>
         <script src="Resources/js/jspdf.umd.min.js"></script>
         <script src="Resources/js/jspdf.plugin.autotable.min.js"></script>
         <script src="Resources/js/FileSaver.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+        <script src="Resources/js/qrcode.min.js"></script>
 
         <style type="text/css">
             html, body, h1, p {
