@@ -3,9 +3,9 @@
   "lang": "en",
   "name": "FrACT10",
   "short_name": "FrACT10",
-  "start_url": "./index.html",
-  "id": "./index.html",
-  "theme_color": "#44C",
+  "start_url": "index.html",
+  "id": "fract10-pwa",
+  "theme_color": "#4444CC",
   "background_color": "#3050C0",
   "display": "standalone",
   "icons": [

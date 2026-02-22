@@ -41,7 +41,8 @@ mv Build/Release/FrACT ../ # move it up, creating the "FrACT" folder
 rm -R Build # and get rid of the rest of the built items
 sleep 1
 
-# need to copy this too, could be added to jake?
+# need to copy these too, could be added to jake?
+cp webApp.webmanifest ../FrACT/
 cp webAppServiceWorker.js ../FrACT/
 
 # finally…
