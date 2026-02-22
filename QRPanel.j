@@ -13,7 +13,8 @@ Created by Bach on 2026-02-20.
 
 @import <Foundation/Foundation.j>
 @import <AppKit/AppKit.j>
-
+@global QRCode //to get rid of the warnings
+@global document
 // QRCode.js loaded in index.html:
 // <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
