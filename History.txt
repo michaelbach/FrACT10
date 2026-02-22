@@ -1,7 +1,7 @@
 # History
 
 2026-02-22 add `setResultStringFieldTo` to simplify logic, enable on all messages;
-    add "Help" and "About" to testings suite, correct entry in `webAppServiceWorker.js`, remove superflous icon files
+    add "Help" and "About" to testings suite, correct entry in `webAppServiceWorker.js`, remove superflous icon files, convert `keyMap8gratings` to avif, saving 200kB
 2026-02-21 now fully working remote response box, deserves version increment.
             qrcode.min.js now "built in".
 2026-02-20 refactor `ControlDispatcher` and add `ResponseBoxController`, for virtual response box
