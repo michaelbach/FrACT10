@@ -84,6 +84,7 @@
 		8ABF4DC72D804E8000F63DD5 /* MDBAlert.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8ABF4DC62D804E8000F63DD5 /* MDBAlert.j */; };
 		8ABF4DC92D804FA400F63DD5 /* FractControllerBalm.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8ABF4DC82D804FA400F63DD5 /* FractControllerBalm.j */; };
 		8ACD7D522C0362BD00FE90C6 /* ThresholderNupMdown.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8ACD7D512C0362BD00FE90C6 /* ThresholderNupMdown.j */; };
+		8AD251DB2F4B1DD600961017 /* webApp.webmanifest in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AD251DA2F4B1DD600961017 /* webApp.webmanifest */; };
 		8AE2AD332CE096BC00305C56 /* Presets_CNS_Freiburg.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AE2AD322CE096BC00305C56 /* Presets_CNS_Freiburg.j */; };
 		8AE548352D5F63CB008DED70 /* MDBLabel.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AE548342D5F63CB008DED70 /* MDBLabel.j */; };
 		8AF26B652D4F6EBA0033A618 /* CardController.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AF26B642D4F6EBA0033A618 /* CardController.j */; };
@@ -175,6 +176,7 @@
 				8AAB43802A55825000825E47 /* FractControllerContrastC.j in CopyFiles */,
 				8A3F88B42D585CBE00183F76 /* Dithering.h in CopyFiles */,
 				8A3F88B52D585CBE00183F76 /* Dithering.m in CopyFiles */,
+				8AD251DB2F4B1DD600961017 /* webApp.webmanifest in CopyFiles */,
 				8A061F5E2A2737FC006B5CAD /* AppController.j in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
@@ -224,13 +226,13 @@
 		80FE46B397440BDDC8F91389 /* FractControllerAcuityLineByLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractControllerAcuityLineByLine.h; path = .XcodeSupport/FractControllerAcuityLineByLine.h; sourceTree = SOURCE_ROOT; };
 		83704BCBB6703D9E573D12C0 /* Presets.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Presets.m; path = .XcodeSupport/Presets.m; sourceTree = SOURCE_ROOT; };
 		856F4B1AA111E0F21404D2EB /* AppController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppController.m; path = .XcodeSupport/AppController.m; sourceTree = SOURCE_ROOT; };
-		8A0427872DEFA0400066977E /* Presets_EndoArt01.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets_EndoArt01.j; sourceTree = "<group>"; };
+		8A0427872DEFA0400066977E /* Presets_EndoArt01.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets_EndoArt01.j; sourceTree = SOURCE_ROOT; };
 		8A061F592A273350006B5CAD /* webAppServiceWorker.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = webAppServiceWorker.js; sourceTree = SOURCE_ROOT; };
 		8A07B8402C919922007513BB /* Presets_ULV_Gensight.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_ULV_Gensight.j; sourceTree = SOURCE_ROOT; };
 		8A07B8422C919BB9007513BB /* Presets_ESU.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_ESU.j; sourceTree = SOURCE_ROOT; };
 		8A07B8442C919F0F007513BB /* Presets_BCM_Scheie.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_BCM_Scheie.j; sourceTree = SOURCE_ROOT; };
 		8A0CDCF32D67943A0013BE3A /* FractControllerBalmLight.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerBalmLight.j; sourceTree = SOURCE_ROOT; };
-		8A1A596E2F47896C003E195C /* ResponseBoxController.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = ResponseBoxController.j; sourceTree = "<group>"; };
+		8A1A596E2F47896C003E195C /* ResponseBoxController.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = ResponseBoxController.j; sourceTree = SOURCE_ROOT; };
 		8A28B6BF2E56773E002FD5FC /* MDBTextfFieldAutoBlur.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MDBTextfFieldAutoBlur.h; path = .XcodeSupport/MDBTextfFieldAutoBlur.h; sourceTree = "<group>"; };
 		8A28B6C02E56773E002FD5FC /* MDBTextfFieldAutoBlur.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MDBTextfFieldAutoBlur.m; path = .XcodeSupport/MDBTextfFieldAutoBlur.m; sourceTree = "<group>"; };
 		8A2E1BE92C941F0F00F6FE00 /* Presets_Hyper_TUDo.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Presets_Hyper_TUDo.j; sourceTree = SOURCE_ROOT; };
@@ -254,13 +256,13 @@
 		8A48269429CF58F30035607A /* MiscSpace.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MiscSpace.j; sourceTree = SOURCE_ROOT; };
 		8A4D56FF2D00AF8C00980A21 /* Presets_HYPERION.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets_HYPERION.j; sourceTree = SOURCE_ROOT; };
 		8A574A8F29FAE30F00D28C1B /* FractControllerContrastG.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = FractControllerContrastG.j; sourceTree = SOURCE_ROOT; };
-		8A5DE1C12F48DD7F0077C276 /* QRPanel.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = QRPanel.j; sourceTree = "<group>"; };
+		8A5DE1C12F48DD7F0077C276 /* QRPanel.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = QRPanel.j; sourceTree = SOURCE_ROOT; };
 		8A6D71C22CE0C6E100BB7107 /* Presets_Maculight.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets_Maculight.j; sourceTree = SOURCE_ROOT; };
-		8A7465532F471AB800B47DC2 /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		8A7465532F471AB800B47DC2 /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = SOURCE_ROOT; };
 		8A865B922D7B246200743123 /* FractControllerBalmMotion.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerBalmMotion.j; sourceTree = SOURCE_ROOT; };
 		8A891B7D2A5585AE00ACEFDF /* MDBDispersionEstimation.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MDBDispersionEstimation.j; sourceTree = SOURCE_ROOT; };
 		8A8BFD81283837D800DD61BB /* Presets.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets.j; sourceTree = SOURCE_ROOT; };
-		8A9BDBD62F3BD7B0005C7A79 /* MDBSetHandCursor.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = MDBSetHandCursor.j; sourceTree = "<group>"; };
+		8A9BDBD62F3BD7B0005C7A79 /* MDBSetHandCursor.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = MDBSetHandCursor.j; sourceTree = SOURCE_ROOT; };
 		8A9C705F2BFE496000DD5E76 /* MDBTextField.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MDBTextField.j; sourceTree = SOURCE_ROOT; };
 		8A9E4D412D7A15F80056D4B9 /* FractControllerBalmLocation.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerBalmLocation.j; sourceTree = SOURCE_ROOT; };
 		8AA330D72DE9B43C004869CC /* PlotController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlotController.h; path = .XcodeSupport/PlotController.h; sourceTree = "<group>"; };
@@ -268,12 +270,13 @@
 		8AA45BB32C393726005F5951 /* FractControllerContrastDitherUnittest.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = FractControllerContrastDitherUnittest.j; sourceTree = SOURCE_ROOT; };
 		8AABF0DE2D50022600176166 /* AboutAndHelpController.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = AboutAndHelpController.j; sourceTree = SOURCE_ROOT; };
 		8AAFB6012C0C8F5800E3BBEC /* ControlDispatcher.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = ControlDispatcher.j; sourceTree = SOURCE_ROOT; };
-		8AB27F712DE8630900F68D21 /* MDB2plot.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = MDB2plot.j; sourceTree = "<group>"; };
+		8AB27F712DE8630900F68D21 /* MDB2plot.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = MDB2plot.j; sourceTree = SOURCE_ROOT; };
 		8AB27F732DE86ABF00F68D21 /* PlotController.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = PlotController.j; sourceTree = SOURCE_ROOT; };
 		8ABDA6D4291A501000D68E3C /* capp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = capp; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ABF4DC62D804E8000F63DD5 /* MDBAlert.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = MDBAlert.j; sourceTree = SOURCE_ROOT; };
 		8ABF4DC82D804FA400F63DD5 /* FractControllerBalm.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerBalm.j; sourceTree = SOURCE_ROOT; };
 		8ACD7D512C0362BD00FE90C6 /* ThresholderNupMdown.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = ThresholderNupMdown.j; sourceTree = SOURCE_ROOT; };
+		8AD251DA2F4B1DD600961017 /* webApp.webmanifest */ = {isa = PBXFileReference; lastKnownFileType = text; path = webApp.webmanifest; sourceTree = SOURCE_ROOT; };
 		8AE2AD322CE096BC00305C56 /* Presets_CNS_Freiburg.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets_CNS_Freiburg.j; sourceTree = SOURCE_ROOT; };
 		8AE548342D5F63CB008DED70 /* MDBLabel.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = MDBLabel.j; sourceTree = SOURCE_ROOT; };
 		8AF26B642D4F6EBA0033A618 /* CardController.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = CardController.j; sourceTree = SOURCE_ROOT; };
@@ -393,6 +396,7 @@
 				BA8E410483A87F38EB021188 /* ThresholderPest.j */,
 				8ACD7D512C0362BD00FE90C6 /* ThresholderNupMdown.j */,
 				4A5547F8854B1200466F770F /* TrialHistoryController.j */,
+				8AD251DA2F4B1DD600961017 /* webApp.webmanifest */,
 				8A061F592A273350006B5CAD /* webAppServiceWorker.js */,
 				8A7465532F471AB800B47DC2 /* index.html */,
 			);

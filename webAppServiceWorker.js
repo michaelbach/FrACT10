@@ -2,7 +2,7 @@
 //file "webAppServiceWorker.js"
 //
 
-const cacheName = "FrACT10·2026-02-22";
+const cacheName = "FrACT10·2026-02-22d";
 
 
 //Fetching content using Service Worker, this is called on reload. If cache name has changed, `install` is next
@@ -64,6 +64,7 @@ self.addEventListener('install', (event) => {
                             './Resources/keyMaps/keyMap4keysOnly.png',
                             './Resources/keyMaps/keyMap8.png',
                             './Resources/keyMaps/keyMapUpDownOnly.png',
+                            './Resources/keyMaps/keyMap8gratings.avif',
                             './Resources/optotypeEs/optotypeE000.png',
                             './Resources/optotypeEs/optotypeE090.png',
                             './Resources/optotypeEs/optotypeE180.png',

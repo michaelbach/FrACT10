@@ -3,14 +3,14 @@
   "lang": "en",
   "name": "FrACT10",
   "short_name": "FrACT10",
-  "start_url": "../index.html",
-  "id": "/fract/FrACT10/FrACT/index.html",
+  "start_url": "./index.html",
+  "id": "./index.html",
   "theme_color": "#44C",
   "background_color": "#3050C0",
   "display": "standalone",
   "icons": [
     {
-      "src": "icons/FrACT_svg_icon.svg",
+      "src": "Resources/icons/FrACT_svg_icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
@@ -19,5 +19,3 @@
   "orientation": "landscape",
   "description": "Vision Test Battery (acuities, contrast, ...)"
 }
-
-
