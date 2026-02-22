@@ -311,6 +311,7 @@ For testing.
                         <buttonCell key="cell" type="roundTextured" title="About  " bezelStyle="texturedRounded" image="iconAbout" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="duS-rs-9gg">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent">o</string>
                         </buttonCell>
                         <connections>
                             <action selector="buttonAbout_action:" target="UIp-33-ymo" id="1H2-b1-Gk8"/>
@@ -379,9 +380,6 @@ Depending on the pertinent setting in Settings&gt;General it will export the fin
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </textFieldCell>
-                        <connections>
-                            <binding destination="450" name="value" keyPath="resultString" id="R5j-xh-4nd"/>
-                        </connections>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9X3-mm-3Mb">
                         <rect key="frame" x="757" y="561" width="24" height="14"/>
@@ -473,14 +471,14 @@ Depending on your browser, it will ask for file location or ask whether it's ok 
                             <binding destination="izh-pU-csC" name="enabled" keyPath="values.showIdAndEyeOnMain" id="yRy-0j-Mhh"/>
                         </connections>
                     </popUpButton>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="COK-Dg-nfY" propertyAccessControl="none">
-                        <rect key="frame" x="354" y="173" width="102" height="23"/>
+                    <button imageHugsTitle="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="COK-Dg-nfY" propertyAccessControl="none">
+                        <rect key="frame" x="345" y="173" width="110" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">for a REMOTE RESPONSE BOX this will pair with a QR code.
 
 Shortcut: r
 </string>
-                        <buttonCell key="cell" type="roundTextured" title="Pair rem." bezelStyle="texturedRounded" image="qrcode" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DNX-N0-zbA">
+                        <buttonCell key="cell" type="roundTextured" title="Pair remote" bezelStyle="texturedRounded" image="qrcode" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DNX-N0-zbA">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                             <string key="keyEquivalent">r</string>

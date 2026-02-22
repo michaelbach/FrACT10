@@ -110,18 +110,18 @@
         case kTestAcuityE:
         case kTestAcuityTAO:
             if (iTrial < nTrials) { //premature end
-                [gAppController setResultString: gAbortMessage];
+                [gAppController setResultStringFieldTo: gAbortMessage];
             } else {
                 if ([Settings isAcuityPresentedConstant]) {
                     stimStrengthInDeviceunits = [MiscSpace strokePixelsFromlogMAR: [Settings acuityPresentedConstantLogMAR]];
                 }
-                [gAppController setResultString: [self acuityComposeResultString]];
+                [gAppController setResultStringFieldTo: [self acuityComposeResultString]];
             }
             break;
         case kTestAcuityVernier:
             break;
         case kTestAcuityLineByLine:
-            [gAppController setResultString: ""];
+            [gAppController setResultStringFieldTo: ""];
             break;
     }
     [super runEnd];

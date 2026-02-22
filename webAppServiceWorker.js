@@ -2,7 +2,7 @@
 //file "webAppServiceWorker.js"
 //
 
-const cacheName = "FrACT10·2026-02-21";
+const cacheName = "FrACT10·2026-02-22";
 
 
 //Fetching content using Service Worker, this is called on reload. If cache name has changed, `install` is next
@@ -14,7 +14,7 @@ self.addEventListener('fetch', (event) => {
         const response2 = await fetch(event.request);
         const cache = await caches.open(cacheName);
         //console.info(`webAppServiceWorker Caching new resource: ${event.request.url}`);
-        cache.put(event.request, response2.clone());
+               await cache.put(event.request, response2.clone());
         return response2;
     })());
 });
@@ -28,25 +28,26 @@ self.addEventListener('install', (event) => {
                         return cache.addAll([ //Cache all these files
                             './',
                             './Browser.environment/dataURLs.txt',
+                            './Browser.environment/FrACT.sj',
                             './Browser.environment/MHTMLData.txt',
                             './Browser.environment/MHTMLPaths.txt',
                             './Browser.environment/MHTMLTest.txt',
-                            './Browser.environment/FrACT.sj',
                             './index.html',
                             './Info.plist',
                             './Resources/allRewardSprites.webp',
                             './Resources/plasticCard4calibration.png',
                             './Resources/MainMenu.cib',
-                            './Resources/buttons/buttonContrastC.png',
-                            './Resources/buttons/buttonContrastE.png',
-                            './Resources/buttons/buttonContrastLett.png',
-                            './Resources/buttons/buttonGrating.png',
                             './Resources/buttons/buttonAcuityC.png',
                             './Resources/buttons/buttonAcuityE.png',
                             './Resources/buttons/buttonAcuityLett.png',
                             './Resources/buttons/buttonAcuityLineByLine.png',
                             './Resources/buttons/buttonAcuityTAO.png',
                             './Resources/buttons/buttonAcuityVernier.png',
+                            './Resources/buttons/buttonBalm.png',
+                            './Resources/buttons/buttonContrastC.png',
+                            './Resources/buttons/buttonContrastE.png',
+                            './Resources/buttons/buttonContrastLett.png',
+                            './Resources/buttons/buttonGrating.png',
                             './Resources/buttons/iconAbout.png',
                             './Resources/buttons/iconCross.png',
                             './Resources/buttons/iconFullscreen.svg',
@@ -58,7 +59,7 @@ self.addEventListener('install', (event) => {
                             './Resources/js/jspdf.plugin.autotable.min.js',
                             './Resources/js/jspdf.umd.min.js',
                             './Resources/js/testingSuite.js',
-                            './Resources/js/qrcode.js',
+                            './Resources/js/qrcode.min.js',
                             './Resources/keyMaps/keyMap4.png',
                             './Resources/keyMaps/keyMap4keysOnly.png',
                             './Resources/keyMaps/keyMap8.png',

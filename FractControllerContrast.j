@@ -160,11 +160,11 @@ Created by Bach on 2020-09-02
 
 - (void) runEnd { //console.info("FractControllerContrast>runEnd");
     if (iTrial < nTrials) { //premature end
-        [gAppController setResultString: gAbortMessage];
+        [gAppController setResultStringFieldTo: gAbortMessage];
     } else {
         stimStrengthInDeviceunits = Math.min(stimStrengthInDeviceunits, gMaxResultLogCSWeber);
         gTestDetails[td_resultValue] = stimStrengthInDeviceunits;
-        [gAppController setResultString: [self contrastComposeResultString]];
+        [gAppController setResultStringFieldTo: [self contrastComposeResultString]];
 
     }
     [super runEnd];

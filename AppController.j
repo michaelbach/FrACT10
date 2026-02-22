@@ -68,9 +68,8 @@
     @outlet CPPopUpButton settingsPaneMiscSoundsTrialYesPopUp;
     @outlet CPPopUpButton settingsPaneMiscSoundsTrialNoPopUp;
     @outlet CPPopUpButton settingsPaneMiscSoundsRunEndPopUp;
-    CPString versionDateString @accessors; //for the main Xib window top right
-    CPString resultString @accessors;
     @outlet MDBLabel resultStringField;
+    CPString versionDateString @accessors; //for the main Xib window top right
     CPString currentTestResultUnit @accessors;
     CPString currentTestResultExportString @accessors;
     CPString currentTestResultsHistoryExportString @accessors;
@@ -199,7 +198,8 @@
     [Misc centerWindowOrPanel: [selfWindow contentView]]; //→center
     [selfWindow orderFront: self]; //ensures that it will receive clicks w/o activating
     [resultStringField setVerticalAlignment: CPTopVerticalTextAlignment];
-    [self setResultString: "– Result displayed here –"];
+    [self setResultStringFieldTo: "– Result displayed here –"];
+    [resultStringField setEnabled: NO];
     if ([Settings isAutoPreset]) {
         [presets applyPresetNamed: [Settings presetName]];
         [Settings setIsAutoPreset: YES];
@@ -314,6 +314,11 @@
 }
 - (void) centerAllPanels {
     for (const p of allPanels)  [Misc centerWindowOrPanel: p];
+}
+
+
+- (void) setResultStringFieldTo: (CPString) s {
+    [resultStringField setStringValue: s]; [resultStringField setEnabled: YES];
 }
 
 

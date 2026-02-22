@@ -364,15 +364,15 @@ function _pause(ms) { //console.info("Misc>_pause");
 + (BOOL) allUnittests {
     let s = "Unittests: ", successAll = YES, success;
     success = [Misc unittest];  successAll &&= success;
-    s += "Mc" + (success ? "√" : "Ø");  [gAppController setResultString: s];
+    s += "Mc" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
     success = [MiscSpace unittest];  successAll &&= success;
-    s += ", McS" + (success ? "√" : "Ø");  [gAppController setResultString: s];
+    s += ", McS" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
     success = [MiscLight unittest];  successAll &&= success;
-    s += ", McL" + (success ? "√" : "Ø");  [gAppController setResultString: s];
+    s += ", McL" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
     success = [MDBDispersionEstimation unittestProbCorrectGivenLogMAR];  successAll &&= success;
-    s += ", DispE" + (success ? "√" : "Ø");  [gAppController setResultString: s];
+    s += ", DispE" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
     s += (success ? "" : "failed");
-    [gAppController setResultString: s];
+    [gAppController setResultStringFieldTo: s];
     return success;
 }
 

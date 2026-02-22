@@ -89,9 +89,9 @@
 - (void) runEnd { //console.info("FractControllerBalm>runEnd");
     [Settings setAuditoryFeedback4trialIndex: savedauditoryFeedback4trialIndex];
     if (iTrial < nTrials) { //premature end
-        [gAppController setResultString: gAbortMessage];
+        [gAppController setResultStringFieldTo: gAbortMessage];
     } else {
-        [gAppController setResultString: [self composeResultString]];
+        [gAppController setResultStringFieldTo: [self composeResultString]];
     }
     [super runEnd];
 }

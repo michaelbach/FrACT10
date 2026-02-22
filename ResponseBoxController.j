@@ -47,7 +47,7 @@
             return;
         }
         //console.info("firebaseResponseReceived", data.appName, data.session, data.value, data.timestamp);
-        //[gAppController setResultString: data.appName + ", " + data.session + ", "+  data.value];
+        //[gAppController setResultStringFieldTo: data.appName + ", " + data.session + ", "+  data.value];
         [[CPNotificationCenter defaultCenter] postNotificationName: "dispatchNotification" object: nil userInfo: data.value];
         //console.info(data.value);
     }

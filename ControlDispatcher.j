@@ -125,6 +125,7 @@
     }
 }
 
+
 //works except for <esc> in BaLM switch
 + (void) sendChar: (CPString) s { //console.info("ControlDispatcher>sendChar", s)
     const keyEvent = [CPEvent keyEventWithType:CPKeyDown location:CGPointMakeZero() modifierFlags:0 timestamp:0 windowNumber:0 context:nil characters:s charactersIgnoringModifiers:s isARepeat:NO keyCode:s.charCodeAt(0)];
@@ -154,8 +155,7 @@
 }
 
 
-+
-(void) manageSetSetting {
++ (void) manageSetSetting {
     if ((m2 === "preset") || (m2 === "Preset")) {
         [self _notify:"notificationApplyPresetNamed" object:m3];
         return;
@@ -212,7 +212,7 @@
 + (void) manageSetValue {
     switch(m2) {
         case "resultString":
-            [gAppController setResultString: m3];
+            [gAppController setResultStringFieldTo: m3];
             [Misc udpateGUI];
             [self post2parentM1:m1 m2:m2 m3:m3 success:YES];
             break;

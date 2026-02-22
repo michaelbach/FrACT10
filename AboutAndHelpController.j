@@ -97,9 +97,7 @@
     const cappucinoVersion = [[[CPBundle bundleWithIdentifier: "com.280n.Foundation"] infoDictionary] objectForKey:@"CPBundleVersion"]; //initialised in AppController
     s += "&nbsp; &nbsp; <a href='https://michaelbach.de/ot/-misc/cappFrameworks/index.html' target='_blank'>Cappuccino " + cappucinoVersion + "</a>,&nbsp; ";
     s += "<a href='https://simple-statistics.github.io' target='_blank'>simple-statistics</a>,&nbsp; <a href='https://github.com/parallax/jsPDF' target='_blank'>jsPDF</a>,<br>&nbsp; &nbsp; <a href='https://github.com/simonbengtsson/jsPDF-AutoTable' target='_blank'>jsPDF-AutoTable</a>,&nbsp; <a href='https://github.com/eligrey/FileSaver.js' target='_blank'>FileSaver.js</a>,&nbsp; ";
-    s += "<a href='https://github.com/davidshimjs/qrcodejs' target='_blank'>davidshimjs-qrcodejs,</a><br>";
-    //s += "<a href='https://nodejs.org/' target='_blank'>Node.js,</a><br>";
-    //s += "<a href='https://www.electronjs.org' target='_blank'>Electron</a>, <a href='https://www.electron.build' target='_blank'>electron-builder</a>";
+    s += "<a href='https://github.com/davidshimjs/qrcodejs' target='_blank'>qrcodejs,</a><br>";
     s += "&nbsp; &nbsp; Some sounds from <a href='https://pixabay.com/' target='_blank'>pixabay</a>."
     s += "<br><br>";
 
