@@ -37,18 +37,15 @@ FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
 	                '    <div style="flex-grow: 65"></div>' +
                     '</div>';
         </script>
-        <script> //placeholder for window.firebaseResponseReceived to prevent errors if Firebase calls it before Cappuccino has fully initialized.
-            window.firebaseResponseReceived = function(value, timestamp) { //console.warn("Firebase response received before Cappuccino's AppController was ready. Data:", {value, timestamp});
-                //no need to warn, will be dropped in AppController
-            };
-        </script>
         <script type="module">
-          import {initializeApp} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
-          import {getDatabase, ref, onValue, goOffline, goOnline} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
-          window.firebaseInitializeApp = initializeApp; //move to global variables
-          window.firebaseGetDatabase = getDatabase;
-          window.firebaseOnValue = onValue;
-          window.firebaseRef = ref;
+            // https://github.com/firebase/firebase-js-sdk/releases
+            const fbOrigin = "https://www.gstatic.com/firebasejs/12.9.0/"; //↑latest
+            const {initializeApp} = await import(fbOrigin + "firebase-app.js");
+            const {getDatabase, ref, onValue} = await import(fbOrigin + "firebase-database.js");
+            window.firebaseInitializeApp = initializeApp; //move to global variables
+            window.firebaseGetDatabase = getDatabase; //but don't do anything yet
+            window.firebaseOnValue = onValue;
+            window.firebaseRef = ref;
         </script>
         <script src="Resources/cappFrameworks/Objective-J/Objective-J.js"></script>
         <script src="Resources/js/jspdf.umd.min.js"></script>
