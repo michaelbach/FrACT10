@@ -1,5 +1,6 @@
 # History
 
+2026-02-26 fix typo in, and simplify `ResponseBoxController`; deploy
 2026-02-23 add Firebase to About; simplify firebase logic, synchronise version with response page
 2026-02-22 add `setResultStringFieldTo` to simplify logic, enable on all messages;
     add "Help" and "About" to testings suite, correct entry in `webAppServiceWorker.js`, remove superflous icon files, convert `keyMap8gratings` to avif, saving 200kB, move `webApp.webmanifest` to root, fix icon references (png needed, unfortunately); add `@global …` in QRPanel.j to get rid of the warnings
