@@ -10,13 +10,14 @@
  Custom ad-hoc textfield to work around this problem:
  A bezeled=bordered textfield has a fixed text size (bug in Cappuccino),
  so I draw the border.  Not a good _general_ solution…
+ 2026-03-02: only needed for the decimal mark field
  */
 
 @implementation MDBTextField: CPTextField {
 }
 
 
-- (void) drawRect: (CGRect) dirtyRect { //console.info("MDBTextField>drawRect");
+- (void) drawRect: (CGRect) dirtyRect { //console.info("MDBTextField>drawRect", self);
     const cgc = [[CPGraphicsContext currentContext] graphicsPort];
     CGContextSaveGState(cgc);
     CGContextSetFillColor(cgc, [CPColor whiteColor]);
