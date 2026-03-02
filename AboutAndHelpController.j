@@ -107,7 +107,7 @@
     s += "<li>The last results for access outside FrACT</li>";
     s += "<li>Only when using the remote response box: <a href='https://console.firebase.google.com' target='_blank'>Google's Firebase</a>.</li></ol>";
     s += "This is free software (<a href='https://github.com/michaelbach/FrACT10/blob/main/LICENSE.md' target='_blank'>GNU GPL licence</a>).";
-    s += " There is no warranty for anything, it is not formally certified for medical purposes."
+    s += " There is no warranty for anything, it is not EU-certified for medical purposes."
 
     [self oneWebView: aboutWebView2 htmlString: s];
 }
