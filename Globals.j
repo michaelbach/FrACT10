@@ -40,7 +40,7 @@ gThresholdCorrection4Ascending = 0.892;//multiplicative for decimal acuity ≙ 0
 gSlopeCI95 = 7; //strongly affects CI95, this value approximates test-retest variability
 gNSamplesCI95 = 10000; //with 10000 the median differs by LoA=0.003LogMAR from full run
 
-//Clamping the max logCSWeber value to avoid log of zero during conversions. Value way beyond physiologically possible.
+//Clamping the max logCSWeber value to avoid logarithm of zero during conversions. Value way beyond physiologically possible.
 gMaxAllowedLogCSWeber = 4.0;
 gMaxResultLogCSWeber = 2.0;
 
