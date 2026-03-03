@@ -320,7 +320,7 @@ Created by mb on July 15, 2015.
     [self setContrastOptotypeDiameter: [self checkNum: [self contrastOptotypeDiameter] dflt: 50 min: 1 max: 2500 set: set]];
     [self setContrastShowFixMark: [self checkBool: [self contrastShowFixMark] dflt: YES set: set]];
     [self setContrastTimeoutFixmark: [self checkNum: [self contrastTimeoutFixmark] dflt: 500 min: 20 max: 5000 set: set]];
-    [self setContrastMaxLogCSWeber: [self checkNum: [self contrastMaxLogCSWeber] dflt: 3.0 min: 1.5 max: gMaxAllowedLogCSWeber set: set]];
+    [self setContrastMaxLogCSWeber: [self checkNum: [self contrastMaxLogCSWeber] dflt: 3.0 min: 1.5 max: kMaxAllowedLogCSWeber set: set]];
     [self setContrastBitStealing: [self checkBool: [self contrastBitStealing] dflt: NO set: set]];
     [self setIsContrastDithering: [self checkBool: [self isContrastDithering] dflt: YES set: set]];
     [self setContrastCrowdingType: [self checkNum: [self contrastCrowdingType] dflt: 0 min: 0 max: 6 set: set]];

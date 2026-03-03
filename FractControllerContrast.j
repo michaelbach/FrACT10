@@ -193,7 +193,7 @@ basic flow:
     return [MiscLight contrastWeberPercentFromMichelsonPercent: [self getCurrentContrastMichelsonPercent]];
 }*/
 //Problem here: 0% weber contrast corresponds to infinite logCSWeber.
-//But since the latter is clamped at gMaxAllowedLogCSWeber, after rounding this will still read 0%. Solved.
+//But since the latter is clamped at kMaxAllowedLogCSWeber, after rounding this will still read 0%. Solved.
 - (float) getCurrentContrastLogCSWeber {
     const michelsonPercent = [self getCurrentContrastMichelsonPercent];
     const weberPercent = [MiscLight contrastWeberPercentFromMichelsonPercent: michelsonPercent];

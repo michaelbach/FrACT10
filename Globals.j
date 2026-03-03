@@ -41,7 +41,7 @@ gSlopeCI95 = 7; //strongly affects CI95, this value approximates test-retest var
 gNSamplesCI95 = 10000; //with 10000 the median differs by LoA=0.003LogMAR from full run
 
 //Clamping the max logCSWeber value to avoid logarithm of zero during conversions. Value way beyond physiologically possible.
-gMaxAllowedLogCSWeber = 4.0;
+kMaxAllowedLogCSWeber = 4.0; //used as max in Settings value vetting
 gMaxResultLogCSWeber = 2.0;
 
 //calibration defaults
