@@ -133,7 +133,7 @@
  */
 - (CPString) format4SnellenInFeet: (float) decVA {
     const distanceInMetres = [Settings distanceInCM] / 100.0;
-    let distanceInFeet = distanceInMetres * gMeter2FeetMultiplier;
+    let distanceInFeet = distanceInMetres * kMeter2FeetMultiplier;
     if ([Settings forceSnellen20])  distanceInFeet = 20;
     let s = [Misc stringFromNumber: distanceInFeet decimals: 0 localised: YES] + "/";
     s += [Misc stringFromNumber: (distanceInFeet / decVA) decimals: 0 localised: YES];
@@ -180,7 +180,7 @@
 - (float) acuityResultInDecVA {
     const resultInStrokePx = stimStrengthInDeviceunits;
     let resultInDecVA = [MiscSpace decVAFromStrokePixels: resultInStrokePx];
-    if ([Settings doThreshCorrection]) resultInDecVA *= gThresholdCorrection4Ascending;
+    if ([Settings doThreshCorrection]) resultInDecVA *= kThresholdCorrectionFactor4Ascending;
     //console.info("FractControllerAcuity>acuityResultInDecVA: ", resultInDecVA);
     return resultInDecVA;
 }

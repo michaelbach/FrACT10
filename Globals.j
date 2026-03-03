@@ -34,7 +34,7 @@ kKEY_RESPONSE_ABORT = "5";
 
 gAbortMessage = "Run canceled.";
 //Correction for threshold underestimation by DIN/ISO-ascending method (in VAdecimal)
-gThresholdCorrection4Ascending = 0.892;//multiplicative for decimal acuity ≙ 0.0496 ≅ 0.05 logMAR addition
+kThresholdCorrectionFactor4Ascending = 0.892;//multiplicative for decimal acuity ≙ 0.0496 ≅ 0.05 logMAR addition
 
 //parameter for the CI95 dispersion estimation; strongly affects CI95
 gSlopeCI95 = 7; //strongly affects CI95, this value approximates test-retest variability
@@ -49,7 +49,7 @@ gDefaultDistanceInCM = 399;
 gDefaultCalibrationBarLengthInMM = 149;
 gCalBarLengthInPixel = 700;
 
-gMeter2FeetMultiplier = 3.28084;  tab = "\t";  crlf = "\n";
+kMeter2FeetMultiplier = 3.28084;  tab = "\t";  crlf = "\n";
 
 @typedef TestIDType
 kTestNone = 0; kTestAcuityLett = 1; kTestAcuityLandolt = 2; kTestAcuityE = 3; kTestAcuityTAO = 4;

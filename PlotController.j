@@ -141,7 +141,7 @@
     [MDB2plot p2setLineWidthInPx: 4];
     for (let trial = 0; trial < nTrials; trial++) {
         let y = testHistory[trial].value;
-        if ([Settings doThreshCorrection] && isAcuity) y -= Math.log10(gThresholdCorrection4Ascending);
+        if ([Settings doThreshCorrection] && isAcuity) y -= Math.log10(kThresholdCorrectionFactor4Ascending);
         if (testHistory[trial].isCorrect) {
             [MDB2plot p2setFillColor: [CPColor colorWithRed: 0 green: 0.6 blue: 0 alpha: 1]];
             [MDB2plot p2fillCircleAtX: trial+0.5 y: y radiusInPx: 10];
