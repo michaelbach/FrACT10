@@ -77,18 +77,21 @@ let SharedAboutAndHelpController = nil;
     [btnManual setFrame: CGRectMake(left, buttonsY, buttonsWidth, buttonsHeight)];
     [btnManual setTarget: self];  [btnManual setTag: 3];
     [btnManual setAction: @selector(buttonGotoURLgivenTag_action:)];
+    [btnManual setToolTip: "Opens the manual in your browser."];
     [contentView addSubview: btnManual];
 
-    const btnSite = [CPButton buttonWithTitle: "→FrACT site"];
+    const btnSite = [CPButton buttonWithTitle: "→FrACT home"];
     [btnSite setFrame: CGRectMake(274, buttonsY, buttonsWidth, buttonsHeight)];
     [btnSite setTarget: self];  [btnSite setTag: 1];
     [btnSite setAction: @selector(buttonGotoURLgivenTag_action:)];
+    [btnSite setToolTip: "Opens the FrACT home page in your browser."];
     [contentView addSubview: btnSite];
 
     const btnBlog = [CPButton buttonWithTitle: "→FrACT blog"];
     [btnBlog setFrame: CGRectMake(508, buttonsY, buttonsWidth, buttonsHeight)];
     [btnBlog setTarget: self];  [btnBlog setTag: 2];
     [btnBlog setAction: @selector(buttonGotoURLgivenTag_action:)];
+    [btnBlog setToolTip: "Opens the FrACT blog page in your browser."];
     [contentView addSubview: btnBlog];
 
     const btnOk = [CPButton buttonWithTitle: "OK"];
@@ -104,7 +107,6 @@ let SharedAboutAndHelpController = nil;
     helpPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(167, 107, panelWidth, panelHeight) styleMask: CPTitledWindowMask | CPClosableWindowMask];
     [helpPanel setTitle: "FrACT₁₀ – Help"];
 
-
     const view13w = 764, view23y = 221, view23h = 96;
     helpWebView1 = [[CPWebView alloc] initWithFrame: CGRectMake(left, 12, view13w, 202)];
     helpWebView2 = [[CPWebView alloc] initWithFrame: CGRectMake(left, view23y, 388, view23h)];
@@ -115,36 +117,40 @@ let SharedAboutAndHelpController = nil;
     [contentView addSubview: helpWebView1];  [contentView addSubview: helpWebView2];
     [contentView addSubview: helpWebView3];  [contentView addSubview: helpWebView4];
 
-    const btnOk = [CPButton buttonWithTitle: "OK"];
-    [btnOk setFrame: CGRectMake(738, buttonsY, buttonsOkWidth, buttonsHeight)];
-    [btnOk setTarget: self];
-    [btnOk setAction: @selector(buttonHelpClose_action:)];
-    [btnOk setKeyEquivalent: "\r"];
-    [contentView addSubview: btnOk];
-
     const btnManual = [CPButton buttonWithTitle: "→Manual"];
     [btnManual setFrame: CGRectMake(19, buttonsY, buttonsWidth, buttonsHeight)];
     [btnManual setTarget: self];  [btnManual setTag: 3];
     [btnManual setAction: @selector(buttonGotoURLgivenTag_action:)];
+    [btnManual setToolTip: "Opens the manual in your browser."];
     [contentView addSubview: btnManual];
 
     const btnChecklist = [CPButton buttonWithTitle: "→Checklist"];
     [btnChecklist setFrame: CGRectMake(204, buttonsY, buttonsWidth, buttonsHeight)];
     [btnChecklist setTarget: self];  [btnChecklist setTag: 4];
     [btnChecklist setAction: @selector(buttonGotoURLgivenTag_action:)];
+    [btnChecklist setToolTip: "Opens the FrACT home page in your browser."];
     [contentView addSubview: btnChecklist];
 
     const btnFormats = [CPButton buttonWithTitle: "→Acuity Formats"];
     [btnFormats setFrame: CGRectMake(383, buttonsY, buttonsWidth, buttonsHeight)];
     [btnFormats setTarget: self];  [btnFormats setTag: 5];
     [btnFormats setAction: @selector(buttonGotoURLgivenTag_action:)];
+    [btnFormats setToolTip: "Opens the “Acuity Cheat Sheet in your browser."];
     [contentView addSubview: btnFormats];
 
     const btnExported = [CPButton buttonWithTitle: "→Check Exported"];
     [btnExported setFrame: CGRectMake(561, buttonsY, buttonsWidth, buttonsHeight)];
     [btnExported setTarget: self];  [btnExported setTag: 6];
     [btnExported setAction: @selector(buttonGotoURLgivenTag_action:)];
+    [btnExported setToolTip: "Opens a website which will read and display the test results exported by default."];
     [contentView addSubview: btnExported];
+
+    const btnOk = [CPButton buttonWithTitle: "OK"];
+    [btnOk setFrame: CGRectMake(738, buttonsY, buttonsOkWidth, buttonsHeight)];
+    [btnOk setTarget: self];
+    [btnOk setAction: @selector(buttonHelpClose_action:)];
+    [btnOk setKeyEquivalent: "\r"];
+    [contentView addSubview: btnOk];
 }
 
 
