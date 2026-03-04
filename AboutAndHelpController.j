@@ -11,32 +11,159 @@
 /**
  AboutAndHelpController
 
- Dealing with with the Help/About panels
+ Dealing with the Help/About panels programmatically rather than Xib-based
  */
 
-@import "AppController.j"
+@import <AppKit/CPWindowController.j>
+@import <AppKit/CPPanel.j>
+@import <AppKit/CPWebView.j>
+@import <AppKit/CPButton.j>
+@import "Globals.j"
+@import "Misc.j"
+
+
+let SharedAboutAndHelpController = nil;
+#define panelWidth 800
+#define panelHeight 600
+#define buttonsWidth 130
+#define buttonsOkWidth 48
+#define buttonsHeight 23
+#define buttonsY (panelHeight - buttonsHeight - 18)
+#define left 18
 
 
 @implementation AboutAndHelpController : CPWindowController {
-    @outlet CPPanel aboutPanel, helpPanel;
-    @outlet CPWebView aboutWebView1, aboutWebView2, helpWebView1, helpWebView2, helpWebView3, helpWebView4;
+    CPPanel aboutPanel;
+    CPPanel helpPanel;
+    CPWebView aboutWebView1, aboutWebView2;
+    CPWebView helpWebView1, helpWebView2, helpWebView3, helpWebView4;
+}
+
+
+//is this ↓ really necesary?
++ (AboutAndHelpController) sharedController { console.info("AboutAndHelpController>sharedController")
+    if (!SharedAboutAndHelpController) {
+        SharedAboutAndHelpController = [[AboutAndHelpController alloc] init];
+    }
+    return SharedAboutAndHelpController;
+}
+
+
+- (id) init { //console.info("AboutAndHelpController>init")
+    self = [super init];
+    if (self) {
+        [self createAboutPanel];  [self createHelpPanel];
+    }
+    return self;
+}
+
+
+- (void) createAboutPanel {
+    aboutPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(167, 107, panelWidth, panelHeight) styleMask: CPTitledWindowMask | CPClosableWindowMask];
+    [aboutPanel setTitle: "FrACT₁₀ – About"];
+    [aboutPanel setFloatingPanel: YES];
+
+    const viewY = 20, viewWidth = 364, viewHeight = 420;
+
+    aboutWebView1 = [[CPWebView alloc] initWithFrame: CGRectMake(left, viewY, viewWidth, viewHeight)];
+    aboutWebView2 = [[CPWebView alloc] initWithFrame: CGRectMake(414, viewY, viewWidth, viewHeight)];
+
+    [aboutWebView1 setFrame: CGRectMake(left, viewY, viewWidth, viewHeight)];
+    [aboutWebView2 setFrame: CGRectMake(414, viewY, viewWidth, viewHeight)];
+
+    const contentView = [aboutPanel contentView];
+    [contentView addSubview: aboutWebView1];  [contentView addSubview: aboutWebView2];
+
+    const btnManual = [CPButton buttonWithTitle: "→Manual"];
+    [btnManual setFrame: CGRectMake(left, buttonsY, buttonsWidth, buttonsHeight)];
+    [btnManual setTarget: self];  [btnManual setTag: 3];
+    [btnManual setAction: @selector(buttonGotoURLgivenTag_action:)];
+    [contentView addSubview: btnManual];
+
+    const btnSite = [CPButton buttonWithTitle: "→FrACT site"];
+    [btnSite setFrame: CGRectMake(274, buttonsY, buttonsWidth, buttonsHeight)];
+    [btnSite setTarget: self];  [btnSite setTag: 1];
+    [btnSite setAction: @selector(buttonGotoURLgivenTag_action:)];
+    [contentView addSubview: btnSite];
+
+    const btnBlog = [CPButton buttonWithTitle: "→FrACT blog"];
+    [btnBlog setFrame: CGRectMake(508, buttonsY, buttonsWidth, buttonsHeight)];
+    [btnBlog setTarget: self];  [btnBlog setTag: 2];
+    [btnBlog setAction: @selector(buttonGotoURLgivenTag_action:)];
+    [contentView addSubview: btnBlog];
+
+    const btnOk = [CPButton buttonWithTitle: "OK"];
+    [btnOk setFrame: CGRectMake(732, buttonsY, buttonsOkWidth, buttonsHeight)];
+    [btnOk setTarget: self];
+    [btnOk setAction: @selector(buttonAboutClose_action:)];
+    [btnOk setKeyEquivalent: "\r"];
+    [contentView addSubview: btnOk];
+}
+
+
+- (void) createHelpPanel {
+    helpPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(167, 107, panelWidth, panelHeight) styleMask: CPTitledWindowMask | CPClosableWindowMask];
+    [helpPanel setTitle: "FrACT₁₀ – Help"];
+    [helpPanel setFloatingPanel: YES];
+
+
+    const view13w = 764, view23y = 221, view23h = 96;
+    helpWebView1 = [[CPWebView alloc] initWithFrame: CGRectMake(left, 12, view13w, 202)];
+    helpWebView2 = [[CPWebView alloc] initWithFrame: CGRectMake(left, view23y, 388, view23h)];
+    helpWebView3 = [[CPWebView alloc] initWithFrame: CGRectMake(416, view23y, 366, view23h)];
+    helpWebView4 = [[CPWebView alloc] initWithFrame: CGRectMake(left, 324, view13w, 224)];
+
+    const contentView = [helpPanel contentView];
+    [contentView addSubview: helpWebView1];  [contentView addSubview: helpWebView2];
+    [contentView addSubview: helpWebView3];  [contentView addSubview: helpWebView4];
+
+    const btnOk = [CPButton buttonWithTitle: "OK"];
+    [btnOk setFrame: CGRectMake(738, buttonsY, buttonsOkWidth, buttonsHeight)];
+    [btnOk setTarget: self];
+    [btnOk setAction: @selector(buttonHelpClose_action:)];
+    [btnOk setKeyEquivalent: "\r"];
+    [contentView addSubview: btnOk];
+
+    const btnManual = [CPButton buttonWithTitle: "→Manual"];
+    [btnManual setFrame: CGRectMake(19, buttonsY, buttonsWidth, buttonsHeight)];
+    [btnManual setTarget: self];  [btnManual setTag: 3];
+    [btnManual setAction: @selector(buttonGotoURLgivenTag_action:)];
+    [contentView addSubview: btnManual];
+
+    const btnChecklist = [CPButton buttonWithTitle: "→Checklist"];
+    [btnChecklist setFrame: CGRectMake(204, buttonsY, buttonsWidth, buttonsHeight)];
+    [btnChecklist setTarget: self];  [btnChecklist setTag: 4];
+    [btnChecklist setAction: @selector(buttonGotoURLgivenTag_action:)];
+    [contentView addSubview: btnChecklist];
+
+    const btnFormats = [CPButton buttonWithTitle: "→Acuity Formats"];
+    [btnFormats setFrame: CGRectMake(383, buttonsY, buttonsWidth, buttonsHeight)];
+    [btnFormats setTarget: self];  [btnFormats setTag: 5];
+    [btnFormats setAction: @selector(buttonGotoURLgivenTag_action:)];
+    [contentView addSubview: btnFormats];
+
+    const btnExported = [CPButton buttonWithTitle: "→Check Exported"];
+    [btnExported setFrame: CGRectMake(561, buttonsY, buttonsWidth, buttonsHeight)];
+    [btnExported setTarget: self];  [btnExported setTag: 6];
+    [btnExported setAction: @selector(buttonGotoURLgivenTag_action:)];
+    [contentView addSubview: btnExported];
 }
 
 
 - (IBAction) buttonAbout_action: (id) sender {
     [aboutPanel setMovable: NO];
     [Misc centerWindowOrPanel: aboutPanel];
-    [self populateAboutPanelView1];
+    [self populateAboutPanelViews];
     [aboutPanel makeKeyAndOrderFront: self];
 }
 
 
-- (IBAction) buttonAboutClose_action: (id) sender { //console.info("AboutAndHelpController>buttonAboutClose_action");
+- (IBAction) buttonAboutClose_action: (id) sender {
     [aboutPanel close];
 }
 
 
-- (IBAction) buttonHelp_action: (id) sender { //console.info("AboutAndHelpController>buttonHelp_action");
+- (IBAction) buttonHelp_action: (id) sender {
     [helpPanel setMovable: NO];
     [Misc centerWindowOrPanel: helpPanel];
     [self populateHelpPanel];
@@ -44,7 +171,7 @@
 }
 
 
-- (IBAction) buttonHelpClose_action: (id) sender { //console.info("AppController>buttonHelpClose_action");
+- (IBAction) buttonHelpClose_action: (id) sender {
     [helpPanel close];
 }
 
@@ -75,7 +202,7 @@
 }
 
 
-- (void) populateAboutPanelView1 {
+- (void) populateAboutPanelViews {
     let s = "<h2 align='center'>FrACT₁₀</h2>";
     s += "Freiburg Visual Acuity and Contrast Test 10, ";
     s += "<a href='https://michaelbach.de/fract/index.html#anchorWhatsNew' target='_blank'>" + "Vs " + gVersionStringOfFract + "</a>, <br>";
@@ -105,7 +232,7 @@
     s += "<li>To save the settings across sessions</li>";
     s += "<li>To save the progressive web app itself for use w/o internet</li>";
     s += "<li>The last results for access outside FrACT</li>";
-    s += "<li>Only when using the remote response box: <a href='https://console.firebase.google.com' target='_blank'>Google's&nbsp;Firebase</a>.</li></ol>";
+    s += "<li>Only when you use the remote response box: <a href='https://console.firebase.google.com' target='_blank'>Google's&nbsp;Firebase</a>.</li></ol>";
     s += "This is free software (<a href='https://github.com/michaelbach/FrACT10/blob/main/LICENSE.md' target='_blank'>GNU GPL licence</a>).";
     s += " There is no warranty for anything, it is not EU-certified for medical purposes."
 

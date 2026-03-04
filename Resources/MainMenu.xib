@@ -3,7 +3,6 @@
     <dependencies>
         <deployment version="130000" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24506"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="24506"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +16,7 @@
         <window title="selfWindow" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" releasedWhenClosed="NO" animationBehavior="default" id="371" userLabel="selfWindow">
             <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="335" y="390" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1129"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="372">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -494,199 +493,10 @@ Shortcut: r
             </connections>
             <point key="canvasLocation" x="-102" y="77"/>
         </window>
-        <window title="FrACT₁₀ – About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="ErU-UN-jpI" userLabel="aboutPanel" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
-            <rect key="contentRect" x="167" y="107" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1129"/>
-            <view key="contentView" id="fHp-lY-tmM">
-                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mWG-7R-MZp">
-                        <rect key="frame" x="734" y="18" width="47" height="23"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" title="OK" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BhT-tL-ONO">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonAboutClose_action:" target="UIp-33-ymo" id="cse-5h-PaT"/>
-                        </connections>
-                    </button>
-                    <button toolTip="This will open the FrACT blog page in your browser." tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UsK-H5-DbG">
-                        <rect key="frame" x="508" y="18" width="135" height="23"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" title="→FrACT blog" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KLB-6N-g7V">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonGotoURLgivenTag_action:" target="UIp-33-ymo" id="U2C-cX-awC"/>
-                        </connections>
-                    </button>
-                    <button tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eo3-yh-5sO">
-                        <rect key="frame" x="20" y="18" width="135" height="23"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">This will open the manual in your browser.
- 
- 
- </string>
-                        <buttonCell key="cell" type="roundTextured" title="→Manual" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wxe-tx-m9W">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonGotoURLgivenTag_action:" target="UIp-33-ymo" id="7Zm-c8-nkZ"/>
-                        </connections>
-                    </button>
-                    <webView fixedFrame="YES" maintainsBackForwardList="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68J-Vy-hV1">
-                        <rect key="frame" x="23" y="160" width="364" height="420"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" plugInsEnabled="NO" javaEnabled="NO" javaScriptEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO" loadsImagesAutomatically="NO" allowsAnimatedImages="NO" allowsAnimatedImageLooping="NO">
-                            <nil key="identifier"/>
-                        </webPreferences>
-                    </webView>
-                    <webView fixedFrame="YES" maintainsBackForwardList="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nO5-T6-Njd">
-                        <rect key="frame" x="416" y="160" width="364" height="420"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" plugInsEnabled="NO" javaEnabled="NO" javaScriptEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO" loadsImagesAutomatically="NO" allowsAnimatedImages="NO" allowsAnimatedImageLooping="NO">
-                            <nil key="identifier"/>
-                        </webPreferences>
-                    </webView>
-                    <button toolTip="This will open the FrACT home page in your browser." tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xo5-1y-fja">
-                        <rect key="frame" x="274" y="18" width="135" height="23"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" title="→FrACT site" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FmC-12-fbn">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonGotoURLgivenTag_action:" target="UIp-33-ymo" id="fOy-mb-0m5"/>
-                        </connections>
-                    </button>
-                </subviews>
-            </view>
-            <point key="canvasLocation" x="-101" y="759"/>
-        </window>
-        <window title="FrACT₁₀ – Help" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="28C-lv-KIF" userLabel="helpPanel" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
-            <rect key="contentRect" x="167" y="107" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1129"/>
-            <view key="contentView" id="DFi-VM-uxC">
-                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <webView id="eki-H2-z5T">
-                        <rect key="frame" x="20" y="390" width="764" height="202"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" plugInsEnabled="NO" javaEnabled="NO" javaScriptEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO" loadsImagesAutomatically="NO" allowsAnimatedImages="NO" allowsAnimatedImageLooping="NO">
-                            <nil key="identifier"/>
-                        </webPreferences>
-                    </webView>
-                    <webView id="27W-sb-xg0">
-                        <rect key="frame" x="20" y="285" width="389" height="97"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" plugInsEnabled="NO" javaEnabled="NO" javaScriptEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO" loadsImagesAutomatically="NO" allowsAnimatedImages="NO" allowsAnimatedImageLooping="NO">
-                            <nil key="identifier"/>
-                        </webPreferences>
-                    </webView>
-                    <webView id="xqp-kf-f7Y">
-                        <rect key="frame" x="417" y="285" width="367" height="97"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" plugInsEnabled="NO" javaEnabled="NO" javaScriptEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO" loadsImagesAutomatically="NO" allowsAnimatedImages="NO" allowsAnimatedImageLooping="NO">
-                            <nil key="identifier"/>
-                        </webPreferences>
-                    </webView>
-                    <webView id="CEW-xu-zjz">
-                        <rect key="frame" x="20" y="53" width="764" height="224"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" plugInsEnabled="NO" javaEnabled="NO" javaScriptEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO" loadsImagesAutomatically="NO" allowsAnimatedImages="NO" allowsAnimatedImageLooping="NO">
-                            <nil key="identifier"/>
-                        </webPreferences>
-                    </webView>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v4E-5P-uLh">
-                        <rect key="frame" x="738" y="18" width="47" height="23"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" title="OK" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="03s-Qu-GWf">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonHelpClose_action:" target="UIp-33-ymo" id="a0v-EO-JdR"/>
-                        </connections>
-                    </button>
-                    <button tag="3" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pig-bH-1jM">
-                        <rect key="frame" x="19" y="18" width="126" height="23"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Opens the manual in your browser. 
- 
- </string>
-                        <buttonCell key="cell" type="roundTextured" title="→Manual" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="L5g-3L-9xi">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonGotoURLgivenTag_action:" target="UIp-33-ymo" id="ycb-Ce-NqI"/>
-                        </connections>
-                    </button>
-                    <button tag="4" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iza-6M-cRz">
-                        <rect key="frame" x="204" y="18" width="126" height="23"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Opens the FrACT home page 
-in your browser.
- 
-  
-</string>
-                        <buttonCell key="cell" type="roundTextured" title="→Checklist" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="stL-8j-RhU">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonGotoURLgivenTag_action:" target="UIp-33-ymo" id="eYt-bH-SUE"/>
-                        </connections>
-                    </button>
-                    <button tag="5" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFU-iu-5G1">
-                        <rect key="frame" x="383" y="18" width="126" height="23"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Opens the “Acuity Cheat Sheet" in your browser.
- 
- 
-</string>
-                        <buttonCell key="cell" type="roundTextured" title="→Acuity Formats" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sdj-oG-XTl">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonGotoURLgivenTag_action:" target="UIp-33-ymo" id="vam-5Z-0kR"/>
-                        </connections>
-                    </button>
-                    <button tag="6" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SdT-ry-TcO">
-                        <rect key="frame" x="561" y="18" width="126" height="23"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Opens a website which will read and display the test results exported by default.
-</string>
-                        <buttonCell key="cell" type="roundTextured" title="→Check Exported" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ltp-PJ-flF">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonGotoURLgivenTag_action:" target="UIp-33-ymo" id="e38-ig-t3Y"/>
-                        </connections>
-                    </button>
-                </subviews>
-            </view>
-            <point key="canvasLocation" x="-101" y="759"/>
-        </window>
         <window title="FrACT₁₀ – Plot" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="BEK-Ad-Tt4" userLabel="plotPanel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1129"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="zgw-vN-0L7">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -742,7 +552,7 @@ DQ
         <window title="factControllerWindow" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="r6R-bh-Qyp" userLabel="fractControllerWindow">
             <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="0.0" y="0.0" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1129"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="ZKN-RJ-jLS" customClass="FractView">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -756,7 +566,7 @@ DQ
         <window title="FrACT₁₀ – Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" deferred="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="MF5-y3-Ol0" userLabel="settingsPanel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1129"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="WXy-dU-HQc">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4690,7 +4500,7 @@ This is useful for instance when you want a darker environment.
         <window title="FrACT₁₀ – Settings,  Size Calibration" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Wcf-tk-C3n" userLabel="plasticCardPanel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1129"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="9ma-2n-eEt">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -4833,18 +4643,7 @@ have a standardized size (ISO/IEC 7810:2019)</string>
             </connections>
         </customObject>
         <customObject id="Xof-Bh-cQU" customClass="CheckingContrastController"/>
-        <customObject id="UIp-33-ymo" userLabel="AboutAndHelpController" customClass="AboutAndHelpController">
-            <connections>
-                <outlet property="aboutPanel" destination="ErU-UN-jpI" id="5H1-aZ-KYP"/>
-                <outlet property="aboutWebView1" destination="68J-Vy-hV1" id="uRP-E9-GNw"/>
-                <outlet property="aboutWebView2" destination="nO5-T6-Njd" id="7VY-Ce-UMv"/>
-                <outlet property="helpPanel" destination="28C-lv-KIF" id="L7k-uS-6Gb"/>
-                <outlet property="helpWebView1" destination="eki-H2-z5T" id="gqJ-F6-yae"/>
-                <outlet property="helpWebView2" destination="27W-sb-xg0" id="rkj-9C-MvB"/>
-                <outlet property="helpWebView3" destination="xqp-kf-f7Y" id="cpD-d2-jXC"/>
-                <outlet property="helpWebView4" destination="CEW-xu-zjz" id="4KN-pl-1v1"/>
-            </connections>
-        </customObject>
+        <customObject id="UIp-33-ymo" userLabel="AboutAndHelpController" customClass="AboutAndHelpController"/>
         <customObject id="g7B-ke-xcD" userLabel="PlotController" customClass="PlotController">
             <connections>
                 <outlet property="plotPanel" destination="BEK-Ad-Tt4" id="mTC-fN-TQR"/>
@@ -4855,7 +4654,7 @@ have a standardized size (ISO/IEC 7810:2019)</string>
         <window title="Letter acuity – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="1zz-Aw-bf2" userLabel="responseinfoPanelAcuityL" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1129"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="OSW-BJ-gNn">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -4939,7 +4738,7 @@ Gw
         <window title="Landolt ring acuity – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="KH7-H9-rEd" userLabel="responseinfoPanelAcuity4C" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1129"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="Jbq-XP-yAI">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -5019,7 +4818,7 @@ Type 55 or &lt;esc&gt;, or touch Ø to abort the run.
         <window title="Landolt ring contrast assessment – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Tf3-6J-w5e" userLabel="responseinfoPanelContrastC" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1129"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="eXA-SD-gZy">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -5112,7 +4911,7 @@ Gw
         <window title="Landolt ring acuity – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="UBW-u3-RSn" userLabel="responseinfoPanelAcuity8C" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1129"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="ELz-sQ-ZEg">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -5205,7 +5004,7 @@ Gw
         <window title="Tumbling E acuity – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="TXq-Ap-CfY" userLabel="responseinfoPanelAcuity4E" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1129"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="d1f-g1-MSR">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -5353,7 +5152,7 @@ Type 55 or &lt;esc&gt;, or touch Ø to abort the run.
         <window title="TAO (Auckland Optotypes) acuity – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="mal-zk-76C" userLabel="responseinfoPanelAcuityTAO" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1129"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="jdG-Yk-8KU">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -5438,7 +5237,7 @@ https://doi.org/10.1167/18.3.13</string>
         <window title="Vernier acuity – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="aQE-yg-pvo" userLabel="responseinfoPanelAcuityVernier" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1129"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="s0J-zh-Eaa">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -5522,7 +5321,7 @@ Gw
         <window title="Landolt ring contrast assessment – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="6tH-lc-nrw" userLabel="responseinfoPanelContrastG" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1129"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="BkM-Ff-taW">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -5611,7 +5410,7 @@ Gw
         <window title="Letter contrast assessment – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="FJ1-4N-r6U" userLabel="responseinfoPanelContrastLett" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1129"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="eyu-nI-EUu">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -5697,7 +5496,7 @@ Gw
         <window title="Tumbling E contrast assessment – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="XVY-wU-ZJF" userLabel="responseinfoPanelContrastE" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1129"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="fw2-6c-qtl">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -5809,7 +5608,7 @@ Type 55 or &lt;esc&gt;, or touch Ø to abort the run.
         <window title="Acuity Line-by-Line – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="fK9-Iy-zEB" userLabel="responseinfoPanelAcuityLineByLine" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1129"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="bv1-mR-C40">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
