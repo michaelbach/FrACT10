@@ -37,6 +37,7 @@ let SharedAboutAndHelpController = nil;
     CPPanel helpPanel;
     CPWebView aboutWebView1, aboutWebView2;
     CPWebView helpWebView1, helpWebView2, helpWebView3, helpWebView4;
+    CPView contentView;
 }
 
 
@@ -58,99 +59,57 @@ let SharedAboutAndHelpController = nil;
 }
 
 
+//all buttons are very similar
+- (CPButton) addButtonWithTitle: (CPString) title frame: (CGRect) frame tag: (int) tag tooltip: (CPString) tooltip selector: (SEL) sel {
+    const b = [CPButton buttonWithTitle: title];
+    [b setFrame: frame];  [b setTarget: self];  [b setAction: sel];
+    if (tag >= 0) [b setTag: tag];
+    if (tooltip !== "") [b setToolTip: tooltip];
+    [contentView addSubview: b];
+    return b;
+}
+
+
 - (void) createAboutPanel {
     aboutPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(167, 107, panelWidth, panelHeight) styleMask: CPTitledWindowMask | CPClosableWindowMask];
+    contentView = [aboutPanel contentView];
     [aboutPanel setTitle: "FrACT₁₀ – About"];
 
     const viewY = 20, viewWidth = 364, viewHeight = 420;
-
     aboutWebView1 = [[CPWebView alloc] initWithFrame: CGRectMake(left, viewY, viewWidth, viewHeight)];
+    [contentView addSubview: aboutWebView1];
     aboutWebView2 = [[CPWebView alloc] initWithFrame: CGRectMake(414, viewY, viewWidth, viewHeight)];
+    [contentView addSubview: aboutWebView2];
 
-    [aboutWebView1 setFrame: CGRectMake(left, viewY, viewWidth, viewHeight)];
-    [aboutWebView2 setFrame: CGRectMake(414, viewY, viewWidth, viewHeight)];
-
-    const contentView = [aboutPanel contentView];
-    [contentView addSubview: aboutWebView1];  [contentView addSubview: aboutWebView2];
-
-    const btnManual = [CPButton buttonWithTitle: "→Manual"];
-    [btnManual setFrame: CGRectMake(left, buttonsY, buttonsWidth, buttonsHeight)];
-    [btnManual setTarget: self];  [btnManual setTag: 3];
-    [btnManual setAction: @selector(buttonGotoURLgivenTag_action:)];
-    [btnManual setToolTip: "Opens the manual in your browser."];
-    [contentView addSubview: btnManual];
-
-    const btnSite = [CPButton buttonWithTitle: "→FrACT home"];
-    [btnSite setFrame: CGRectMake(274, buttonsY, buttonsWidth, buttonsHeight)];
-    [btnSite setTarget: self];  [btnSite setTag: 1];
-    [btnSite setAction: @selector(buttonGotoURLgivenTag_action:)];
-    [btnSite setToolTip: "Opens the FrACT home page in your browser."];
-    [contentView addSubview: btnSite];
-
-    const btnBlog = [CPButton buttonWithTitle: "→FrACT blog"];
-    [btnBlog setFrame: CGRectMake(508, buttonsY, buttonsWidth, buttonsHeight)];
-    [btnBlog setTarget: self];  [btnBlog setTag: 2];
-    [btnBlog setAction: @selector(buttonGotoURLgivenTag_action:)];
-    [btnBlog setToolTip: "Opens the FrACT blog page in your browser."];
-    [contentView addSubview: btnBlog];
-
-    const btnOk = [CPButton buttonWithTitle: "OK"];
-    [btnOk setFrame: CGRectMake(732, buttonsY, buttonsOkWidth, buttonsHeight)];
-    [btnOk setTarget: self];
-    [btnOk setAction: @selector(buttonAboutClose_action:)];
-    [btnOk setKeyEquivalent: "\r"];
-    [contentView addSubview: btnOk];
+    [self addButtonWithTitle: "→FrACT home" frame: CGRectMake(left, buttonsY, buttonsWidth, buttonsHeight) tag: 1 tooltip: "Opens the FrACT home page in your browser." selector: @selector(buttonGotoURLgivenTag_action:)]
+    [self addButtonWithTitle: "→Manual" frame: CGRectMake(274, buttonsY, buttonsWidth, buttonsHeight) tag: 3 tooltip: "Opens the manual in your browser." selector: @selector(buttonGotoURLgivenTag_action:)]
+    [self addButtonWithTitle: "→FrACT blog" frame: CGRectMake(508, buttonsY, buttonsWidth, buttonsHeight) tag: 2 tooltip: "" selector: @selector(buttonGotoURLgivenTag_action:)]
+    const btnOk = [self addButtonWithTitle: "OK" frame: CGRectMake(732, buttonsY, buttonsOkWidth, buttonsHeight) tag: -1 tooltip: "" selector: @selector(buttonAboutClose_action:)]
+    [btnOk setKeyEquivalent: crlf];
 }
 
 
 - (void) createHelpPanel {
     helpPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(167, 107, panelWidth, panelHeight) styleMask: CPTitledWindowMask | CPClosableWindowMask];
+    contentView = [helpPanel contentView];
     [helpPanel setTitle: "FrACT₁₀ – Help"];
 
     const view13w = 764, view23y = 221, view23h = 96;
     helpWebView1 = [[CPWebView alloc] initWithFrame: CGRectMake(left, 12, view13w, 202)];
+    [contentView addSubview: helpWebView1];
     helpWebView2 = [[CPWebView alloc] initWithFrame: CGRectMake(left, view23y, 388, view23h)];
+    [contentView addSubview: helpWebView2];
     helpWebView3 = [[CPWebView alloc] initWithFrame: CGRectMake(416, view23y, 366, view23h)];
+    [contentView addSubview: helpWebView3];
     helpWebView4 = [[CPWebView alloc] initWithFrame: CGRectMake(left, 324, view13w, 224)];
+    [contentView addSubview: helpWebView4];
 
-    const contentView = [helpPanel contentView];
-    [contentView addSubview: helpWebView1];  [contentView addSubview: helpWebView2];
-    [contentView addSubview: helpWebView3];  [contentView addSubview: helpWebView4];
-
-    const btnManual = [CPButton buttonWithTitle: "→Manual"];
-    [btnManual setFrame: CGRectMake(19, buttonsY, buttonsWidth, buttonsHeight)];
-    [btnManual setTarget: self];  [btnManual setTag: 3];
-    [btnManual setAction: @selector(buttonGotoURLgivenTag_action:)];
-    [btnManual setToolTip: "Opens the manual in your browser."];
-    [contentView addSubview: btnManual];
-
-    const btnChecklist = [CPButton buttonWithTitle: "→Checklist"];
-    [btnChecklist setFrame: CGRectMake(204, buttonsY, buttonsWidth, buttonsHeight)];
-    [btnChecklist setTarget: self];  [btnChecklist setTag: 4];
-    [btnChecklist setAction: @selector(buttonGotoURLgivenTag_action:)];
-    [btnChecklist setToolTip: "Opens the FrACT home page in your browser."];
-    [contentView addSubview: btnChecklist];
-
-    const btnFormats = [CPButton buttonWithTitle: "→Acuity Formats"];
-    [btnFormats setFrame: CGRectMake(383, buttonsY, buttonsWidth, buttonsHeight)];
-    [btnFormats setTarget: self];  [btnFormats setTag: 5];
-    [btnFormats setAction: @selector(buttonGotoURLgivenTag_action:)];
-    [btnFormats setToolTip: "Opens the “Acuity Cheat Sheet in your browser."];
-    [contentView addSubview: btnFormats];
-
-    const btnExported = [CPButton buttonWithTitle: "→Check Exported"];
-    [btnExported setFrame: CGRectMake(561, buttonsY, buttonsWidth, buttonsHeight)];
-    [btnExported setTarget: self];  [btnExported setTag: 6];
-    [btnExported setAction: @selector(buttonGotoURLgivenTag_action:)];
-    [btnExported setToolTip: "Opens a website which will read and display the test results exported by default."];
-    [contentView addSubview: btnExported];
-
-    const btnOk = [CPButton buttonWithTitle: "OK"];
-    [btnOk setFrame: CGRectMake(738, buttonsY, buttonsOkWidth, buttonsHeight)];
-    [btnOk setTarget: self];
-    [btnOk setAction: @selector(buttonHelpClose_action:)];
-    [btnOk setKeyEquivalent: "\r"];
-    [contentView addSubview: btnOk];
+    [self addButtonWithTitle: "→Manual" frame: CGRectMake(19, buttonsY, buttonsWidth, buttonsHeight) tag: 3 tooltip: "Opens the manual in your browser"  selector: @selector(buttonGotoURLgivenTag_action:)]
+    [self addButtonWithTitle: "→Checklist" frame: CGRectMake(204, buttonsY, buttonsWidth, buttonsHeight) tag: 4 tooltip: "Opens the checklist in your browser"  selector: @selector(buttonGotoURLgivenTag_action:)]
+    [self addButtonWithTitle: "→Acuity Formats" frame: CGRectMake(383, buttonsY, buttonsWidth, buttonsHeight) tag: 5 tooltip: "Opens the “Acuity Cheat Sheet in your browser"  selector: @selector(buttonGotoURLgivenTag_action:)]
+    [self addButtonWithTitle: "→Check Exported" frame: CGRectMake(561, buttonsY, buttonsWidth, buttonsHeight) tag: 6 tooltip: "Opens a website which will read and display the test results exported by default"  selector: @selector(buttonGotoURLgivenTag_action:)]
+    const btnOk = [self addButtonWithTitle: "OK" frame: CGRectMake(738, buttonsY, buttonsOkWidth, buttonsHeight) tag: -1 tooltip: ""  selector: @selector(buttonHelpClose_action:)];
+    [btnOk setKeyEquivalent: crlf];
 }
 
 
