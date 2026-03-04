@@ -40,7 +40,7 @@ let SharedAboutAndHelpController = nil;
 }
 
 
-//is this ↓ really necesary?
+//not really necessary, because `AboutAndHelpController` is instantiated in the XIB
 + (AboutAndHelpController) sharedController { console.info("AboutAndHelpController>sharedController")
     if (!SharedAboutAndHelpController) {
         SharedAboutAndHelpController = [[AboutAndHelpController alloc] init];
@@ -61,7 +61,6 @@ let SharedAboutAndHelpController = nil;
 - (void) createAboutPanel {
     aboutPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(167, 107, panelWidth, panelHeight) styleMask: CPTitledWindowMask | CPClosableWindowMask];
     [aboutPanel setTitle: "FrACT₁₀ – About"];
-    [aboutPanel setFloatingPanel: YES];
 
     const viewY = 20, viewWidth = 364, viewHeight = 420;
 
@@ -104,7 +103,6 @@ let SharedAboutAndHelpController = nil;
 - (void) createHelpPanel {
     helpPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(167, 107, panelWidth, panelHeight) styleMask: CPTitledWindowMask | CPClosableWindowMask];
     [helpPanel setTitle: "FrACT₁₀ – Help"];
-    [helpPanel setFloatingPanel: YES];
 
 
     const view13w = 764, view23y = 221, view23h = 96;
@@ -151,8 +149,7 @@ let SharedAboutAndHelpController = nil;
 
 
 - (IBAction) buttonAbout_action: (id) sender {
-    [aboutPanel setMovable: NO];
-    [Misc centerWindowOrPanel: aboutPanel];
+    [aboutPanel setMovable: NO];  [Misc centerWindowOrPanel: aboutPanel];
     [self populateAboutPanelViews];
     [aboutPanel makeKeyAndOrderFront: self];
 }
@@ -164,8 +161,7 @@ let SharedAboutAndHelpController = nil;
 
 
 - (IBAction) buttonHelp_action: (id) sender {
-    [helpPanel setMovable: NO];
-    [Misc centerWindowOrPanel: helpPanel];
+    [helpPanel setMovable: NO];  [Misc centerWindowOrPanel: helpPanel];
     [self populateHelpPanel];
     [helpPanel makeKeyAndOrderFront: self];
 }

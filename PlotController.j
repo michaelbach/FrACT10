@@ -15,6 +15,15 @@
  */
 
 
+#define panelWidth 800
+#define panelHeight 600
+#define buttonsWidth 130
+#define buttonsOkWidth 48
+#define buttonsHeight 23
+#define buttonsY (panelHeight - buttonsHeight - 18)
+#define left 18
+
+
 @implementation PlotView: CPView {
     CPString firstTime;
     id testHistory;
@@ -22,7 +31,7 @@
     BOOL isAcuity, isContrast;
 }
 
-//This is called by IB
+
 - (id) initWithFrame: (CGRect) theFrame { //CPLog("PlotView>initWithFrame");
     self = [super initWithFrame: theFrame];
     if (gTestingPlottingAcuity1Contrast2 == 1) { //this only needed for testing
@@ -163,15 +172,58 @@
 @end
 
 
+let SharedPlotController = nil;
+
+
 @implementation PlotController: CPWindowController {
-    @outlet CPPanel plotPanel;
-    @outlet PlotView plotView1;
+    CPPanel plotPanel;
+    PlotView plotView;
+}
+
+
+//not really necessary, because `PlotController` is instantiated in the XIB
++ (PlotController) sharedController {
+    if (!SharedPlotController) {
+        SharedPlotController = [[PlotController alloc] init];
+    }
+    return SharedPlotController;
+}
+
+
+- (id) init { //console.info("PlotController>init")
+    self = [super init];
+    if (self) {
+        [self createPlotPanel];
+    }
+    return self;
+}
+
+
+- (void) createPlotPanel {
+    plotPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(0, 0, panelWidth, panelHeight) styleMask: CPTitledWindowMask | CPClosableWindowMask];
+    [plotPanel setTitle: "FrACT₁₀ – Plot"];
+    const contentView = [plotPanel contentView];
+
+    plotView = [[PlotView alloc] initWithFrame: CGRectMake(left, 16, 760, 530)];
+    [contentView addSubview: plotView];
+
+    const btnPdf = [CPButton buttonWithTitle: "Plot → PDF"];
+    [btnPdf setFrame: CGRectMake(left, buttonsY, 84, buttonsHeight)];
+    [btnPdf setTarget: self];  [btnPdf setAction: @selector(buttonPlotToPDF_action:)];
+    [btnPdf setKeyEquivalent: "p"];
+    [contentView addSubview: btnPdf];
+
+    const btnOk = [CPButton buttonWithTitle: "OK"];
+    [btnOk setFrame: CGRectMake(734, buttonsY, buttonsOkWidth, buttonsHeight)];
+    [btnOk setTarget: self];  [btnOk setAction: @selector(buttonPlotClose_action:)];
+    [btnOk setKeyEquivalent: "\r"];
+    [contentView addSubview: btnOk];
 }
 
 
 - (IBAction) buttonPlotOpen_action: (id) sender { //CPLog("PlotView>buttonPlotOpen_action");
-    [plotPanel setMovable: NO];
-    [Misc centerWindowOrPanel: plotPanel];
+    if (!plotPanel) [self createPlotPanel];
+    [plotPanel setMovable: NO];  [Misc centerWindowOrPanel: plotPanel];
     [plotPanel makeKeyAndOrderFront: self];
 }
 

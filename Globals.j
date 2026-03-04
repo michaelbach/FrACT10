@@ -113,7 +113,7 @@ gStrokeMinimal = 0.5;  gStrokeMaximal = 100;
 
 gLatestAlert = null; //save the most recent alert (if not closed yet) so it can be automatically dismissed
 
-//for testing
+//for testing; 0 for production
 gTestingPlottingAcuity1Contrast2 = 0; //for easier testing of the AllTrialsPlot
 gTestingCI95 = NO;
 

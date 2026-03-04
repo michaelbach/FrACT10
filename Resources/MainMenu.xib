@@ -493,62 +493,6 @@ Shortcut: r
             </connections>
             <point key="canvasLocation" x="-102" y="77"/>
         </window>
-        <window title="FrACT₁₀ – Plot" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="BEK-Ad-Tt4" userLabel="plotPanel" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
-            <rect key="contentRect" x="167" y="107" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
-            <view key="contentView" id="zgw-vN-0L7">
-                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X8D-yc-xSw">
-                        <rect key="frame" x="734" y="18" width="47" height="23"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" title="OK" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="giG-co-gpO">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonPlotClose_action:" target="g7B-ke-xcD" id="Zai-wc-aw8"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kOF-AD-uyM">
-                        <rect key="frame" x="19" y="18" width="84" height="23"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundTextured" title="Plot → PDF" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pJB-gT-76k">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent">p</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonPlotToPDF_action:" target="g7B-ke-xcD" id="Rmu-8j-1Fj"/>
-                        </connections>
-                    </button>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cfr-lS-W9p" customClass="PlotView">
-                        <rect key="frame" x="20" y="48" width="760" height="532"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    </customView>
-                    <button hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wr4-dy-TNA">
-                        <rect key="frame" x="110" y="21" width="201" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">If unchecked, the raw=psychometric threshold is caculated. If checked (default), it's descending-corrected, thus reflecting DIN/ISO values. If in doubt: checked.
-
-</string>
-                        <buttonCell key="cell" type="check" title="Threshold correction DIN/ISO" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="P3K-M6-DoN">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <binding destination="izh-pU-csC" name="value" keyPath="values.doThreshCorrection" id="RFa-Mn-KqC"/>
-                        </connections>
-                    </button>
-                </subviews>
-            </view>
-            <point key="canvasLocation" x="-101" y="759"/>
-        </window>
         <window title="factControllerWindow" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="r6R-bh-Qyp" userLabel="fractControllerWindow">
             <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="0.0" y="0.0" width="800" height="600"/>
@@ -4644,12 +4588,7 @@ have a standardized size (ISO/IEC 7810:2019)</string>
         </customObject>
         <customObject id="Xof-Bh-cQU" customClass="CheckingContrastController"/>
         <customObject id="UIp-33-ymo" userLabel="AboutAndHelpController" customClass="AboutAndHelpController"/>
-        <customObject id="g7B-ke-xcD" userLabel="PlotController" customClass="PlotController">
-            <connections>
-                <outlet property="plotPanel" destination="BEK-Ad-Tt4" id="mTC-fN-TQR"/>
-                <outlet property="plotView1" destination="Cfr-lS-W9p" id="xYa-cJ-aSD"/>
-            </connections>
-        </customObject>
+        <customObject id="g7B-ke-xcD" userLabel="PlotController" customClass="PlotController"/>
         <userDefaultsController representsSharedInstance="YES" id="izh-pU-csC"/>
         <window title="Letter acuity – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="1zz-Aw-bf2" userLabel="responseinfoPanelAcuityL" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
