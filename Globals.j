@@ -21,6 +21,7 @@ gVersionOfExportFormat = "6"; //incremented 2025-05-13 after adding ID and eyeCo
 
 gFilename4ResultStorage = "FRACT10-FINAL-RESULT-STRING";
 gFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
+kFractWidth = 800;  kFractHeight = 600;
 
 kKEY_RESPONSE_RIGHT = "6";  //geographic mapping of keys for numeric keypad
 kKEY_RESPONSE_UP_RIGHT = "9";

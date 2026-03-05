@@ -15,13 +15,10 @@
  */
 
 
-#define panelWidth 800
-#define panelHeight 600
-#define buttonsWidth 130
-#define buttonsOkWidth 48
-#define buttonsHeight 23
-#define buttonsY (panelHeight - buttonsHeight - 18)
-#define left 18
+const left = 18;
+const buttonsWidth = 130, buttonsHeight = 23;
+const buttonsOkWidth = 48;
+const buttonsY = (kFractHeight - buttonsHeight - 18);
 
 
 @implementation PlotView: CPView {
@@ -200,7 +197,7 @@ let SharedPlotController = nil;
 
 
 - (void) createPlotPanel {
-    plotPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(0, 0, panelWidth, panelHeight) styleMask: CPTitledWindowMask | CPClosableWindowMask];
+    plotPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(0, 0, kFractWidth, kFractHeight) styleMask: CPTitledWindowMask | CPClosableWindowMask];
     [plotPanel setTitle: "FrACT₁₀ – Plot"];
     const contentView = [plotPanel contentView];
 

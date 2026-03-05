@@ -22,17 +22,14 @@
 @import "Misc.j"
 
 
+const left = 18;
+const buttonsWidth = 130, buttonsHeight = 23;
+const buttonsOkWidth = 48;
+const buttonsY = (kFractHeight - buttonsHeight - 18);
 let SharedAboutAndHelpController = nil;
-#define panelWidth 800
-#define panelHeight 600
-#define buttonsWidth 130
-#define buttonsOkWidth 48
-#define buttonsHeight 23
-#define buttonsY (panelHeight - buttonsHeight - 18)
-#define left 18
 
 
-@implementation AboutAndHelpController : CPWindowController {
+@implementation AboutAndHelpController: CPWindowController {
     CPPanel aboutPanel;
     CPPanel helpPanel;
     CPWebView aboutWebView1, aboutWebView2;
@@ -71,7 +68,7 @@ let SharedAboutAndHelpController = nil;
 
 
 - (void) createAboutPanel {
-    aboutPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(167, 107, panelWidth, panelHeight) styleMask: CPTitledWindowMask | CPClosableWindowMask];
+    aboutPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(167, 107, kFractWidth, kFractHeight) styleMask: CPTitledWindowMask | CPClosableWindowMask];
     contentView = [aboutPanel contentView];
     [aboutPanel setTitle: "FrACT₁₀ – About"];
 
@@ -90,7 +87,7 @@ let SharedAboutAndHelpController = nil;
 
 
 - (void) createHelpPanel {
-    helpPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(167, 107, panelWidth, panelHeight) styleMask: CPTitledWindowMask | CPClosableWindowMask];
+    helpPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(167, 107, kFractWidth, kFractHeight) styleMask: CPTitledWindowMask | CPClosableWindowMask];
     contentView = [helpPanel contentView];
     [helpPanel setTitle: "FrACT₁₀ – Help"];
 
