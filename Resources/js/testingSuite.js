@@ -4,6 +4,7 @@
 History
 =======
 
+2026-03-05 Add checks on plastic card, About and Help
 2025-09-11 testSuite more systematic using anonymous functions
 2025-08-18 `runRespondingCorrectly` uses `doResponseChain`;
     rename `tellIframeReturningPromise3Ms` → `postToIframe`
@@ -20,7 +21,7 @@ History
 */
 
 'use strict';
-const NO = false, YES = !NO;
+const NO = false, YES = !NO, crlf = "\n";
 const textarea = document.createElement('textarea');
 const listener4textarea = (e) => {addText(JSON.stringify(e.data));};
 
@@ -74,7 +75,7 @@ const addText = (text) => {
 	text = text.replace('}', '').replace('m1:', '');
 	text = text.replace('m2:', '').replace('m3:', '');
 	const box = document.getElementById('scrollBox');
-	box.value += text + '\n';
+	box.value += text + crlf;
 	box.scrollTop = box.scrollHeight; /* Auto-scroll to bottom */
 }
 
@@ -398,7 +399,7 @@ const doTextTestfunText = async (text, testfun) => {
     await ensureHomeState();
 	await testfun();
 	await pauseMilliseconds(pauseViewMS);
-	addText("↑ " + text + ": Done.\n");
+	addText("↑ " + text + ": Done." + crlf);
 }
 
 
@@ -463,14 +464,23 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
 	await doTextTestfunText("Cycle through BaLM tests", testBalm);
 	await doTextTestfunText("Traverse all Presets", testAllPresets);
 
+    //check plastic card
+    await oneStep3Ms('settingsPane', 0, '');
+    await postToIframe('sendChar', "c", '');
+    await pauseMilliseconds(pauseViewMS);
+    await postToIframe('sendChar', crlf, '');
+    await pauseMilliseconds(pauseViewMS);
+    await oneStep3Ms('settingsPane', -1, '');
+
+    //check Help and About
     await oneStep3Ms('sendChar', 'h', ''); //Help
-    await pauseMilliseconds(pauseViewMS); await oneStep3Ms('sendChar', '\r', '');
+    await pauseMilliseconds(pauseViewMS); await oneStep3Ms('sendChar', crlf, '');
     await oneStep3Ms('sendChar', 'o', ''); //About
-    await pauseMilliseconds(pauseViewMS); await oneStep3Ms('sendChar', '\r', '');
+    await pauseMilliseconds(pauseViewMS); await oneStep3Ms('sendChar', crlf, '');
 
 	addText("↓ Set `Standard Defaults` & Reload.");
 	await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
 	tellIframe3Ms('reload', '', '');  await pauseMilliseconds(pauseViewMS);
     await oneStep3Ms('setValue', 'resultString', 'SOFTWARE TESTING SUITE done.');
-	addText("\n SOFTWARE TESTING SUITE done.");
+	addText(crlf + " SOFTWARE TESTING SUITE done.");
 }
