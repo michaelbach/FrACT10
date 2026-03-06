@@ -46,10 +46,10 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
 
 
 - (void) createWindow {
-    plasticCardPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(0, 0, kFractWidth, kFractHeight) styleMask: CPTitledWindowMask | CPClosableWindowMask];
+    plasticCardPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(0, 0, kFractWidth, kFractHeight) styleMask: CPTitledWindowMask];
     contentView = [plasticCardPanel contentView];
     [plasticCardPanel setTitle: "FrACT₁₀ – Settings ▸ Size Calibration"];
-    [plasticCardPanel setFloatingPanel: YES];
+    [plasticCardPanel setFloatingPanel: YES];  [plasticCardPanel setMovable: NO];
     [self setWindow: plasticCardPanel];
 
     const infoText = [[CPTextField alloc] initWithFrame: CGRectMake(left, 16, 762, 68)];

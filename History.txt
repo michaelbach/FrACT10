@@ -1,5 +1,6 @@
 # History
 
+2026-03-06 remove close button from panels, set all to "regular" (no visible change); add shortcuts to Settings▸︎Gamma▸︎±
 2026-03-05 Plastic card panel created programmatically; harmonise programmatic GUI with globals; recheck calibration: distance 344 cm, starting LogMAR 1.0: Tumbling-E size = 5 cm; harmonise programmatic GUI with globals; add shortcut 'c' to "Calibrate with plastic card"; add check on plastic card to testing suite
 2026-03-04 About and Help panels created programmatically, not with a Xib; PlotController panel created programmatically, not with a Xib
 2026-02-26 fix typo in, and simplify `ResponseBoxController`; deploy

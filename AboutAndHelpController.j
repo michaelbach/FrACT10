@@ -68,7 +68,7 @@ let SharedAboutAndHelpController = nil;
 
 
 - (void) createAboutPanel {
-    aboutPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(167, 107, kFractWidth, kFractHeight) styleMask: CPTitledWindowMask | CPClosableWindowMask];
+    aboutPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(167, 107, kFractWidth, kFractHeight) styleMask: CPTitledWindowMask];
     contentView = [aboutPanel contentView];
     [aboutPanel setTitle: "FrACT₁₀ – About"];
 
@@ -87,7 +87,7 @@ let SharedAboutAndHelpController = nil;
 
 
 - (void) createHelpPanel {
-    helpPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(167, 107, kFractWidth, kFractHeight) styleMask: CPTitledWindowMask | CPClosableWindowMask];
+    helpPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(167, 107, kFractWidth, kFractHeight) styleMask: CPTitledWindowMask];
     contentView = [helpPanel contentView];
     [helpPanel setTitle: "FrACT₁₀ – Help"];
 

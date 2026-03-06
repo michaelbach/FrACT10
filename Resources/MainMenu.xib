@@ -508,7 +508,7 @@ Shortcut: r
         </window>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="FrACT₁₀ – Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" deferred="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="MF5-y3-Ol0" userLabel="settingsPanel" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
+            <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="WXy-dU-HQc">
@@ -3725,23 +3725,31 @@ For Landolt rings, it can be set to 2, 4, 8; for the tumbling E, it can be 2 or 
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <button toolTip="Increase the gamma value a little. This makes the background a bit brighter." tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VFX-B5-9gh" userLabel="–">
+                                        <button tag="1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VFX-B5-9gh" userLabel="–">
                                             <rect key="frame" x="464" y="376" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <string key="toolTip">Increase the gamma value a little. This makes the background a bit brighter.
+
+Shortcut: + </string>
                                             <buttonCell key="cell" type="roundTextured" title="+" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="j1S-Qo-P56" userLabel="–">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
+                                                <string key="keyEquivalent">+</string>
                                                 <connections>
                                                     <action selector="buttonGamma_action:" target="450" id="VhW-vt-zOT"/>
                                                 </connections>
                                             </buttonCell>
                                         </button>
-                                        <button toolTip="Decrease the gamma value a little. This makes the background a bit darker." tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HgA-UX-e3C" userLabel="+">
+                                        <button tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HgA-UX-e3C" userLabel="+">
                                             <rect key="frame" x="464" y="310" width="46" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <string key="toolTip">Decrease the gamma value a little. This makes the background a bit darker.
+
+Shortcut: - </string>
                                             <buttonCell key="cell" type="roundTextured" title="–" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ooH-5B-x6e" userLabel="+">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
+                                                <string key="keyEquivalent">-</string>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="buttonGamma_action:" target="450" id="c50-4O-SOR"/>
@@ -4448,7 +4456,7 @@ This is useful for instance when you want a darker environment.
         <customObject id="g7B-ke-xcD" userLabel="PlotController" customClass="PlotController"/>
         <userDefaultsController representsSharedInstance="YES" id="izh-pU-csC"/>
         <window title="Letter acuity – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="1zz-Aw-bf2" userLabel="responseinfoPanelAcuityL" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
+            <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="OSW-BJ-gNn">
@@ -4532,7 +4540,7 @@ Gw
             <point key="canvasLocation" x="-101" y="759"/>
         </window>
         <window title="Landolt ring acuity – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="KH7-H9-rEd" userLabel="responseinfoPanelAcuity4C" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
+            <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="Jbq-XP-yAI">
@@ -4612,7 +4620,7 @@ Type 55 or &lt;esc&gt;, or touch Ø to abort the run.
             <point key="canvasLocation" x="-101" y="759"/>
         </window>
         <window title="Landolt ring contrast assessment – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Tf3-6J-w5e" userLabel="responseinfoPanelContrastC" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
+            <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="eXA-SD-gZy">
@@ -4705,7 +4713,7 @@ Gw
             <point key="canvasLocation" x="-101" y="759"/>
         </window>
         <window title="Landolt ring acuity – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="UBW-u3-RSn" userLabel="responseinfoPanelAcuity8C" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
+            <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="ELz-sQ-ZEg">
@@ -4798,7 +4806,7 @@ Gw
             <point key="canvasLocation" x="-101" y="759"/>
         </window>
         <window title="Tumbling E acuity – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="TXq-Ap-CfY" userLabel="responseinfoPanelAcuity4E" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
+            <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="d1f-g1-MSR">
@@ -4946,7 +4954,7 @@ Type 55 or &lt;esc&gt;, or touch Ø to abort the run.
             <point key="canvasLocation" x="-101" y="759"/>
         </window>
         <window title="TAO (Auckland Optotypes) acuity – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="mal-zk-76C" userLabel="responseinfoPanelAcuityTAO" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
+            <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="jdG-Yk-8KU">
@@ -5031,7 +5039,7 @@ https://doi.org/10.1167/18.3.13</string>
             <point key="canvasLocation" x="-101" y="759"/>
         </window>
         <window title="Vernier acuity – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="aQE-yg-pvo" userLabel="responseinfoPanelAcuityVernier" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="s0J-zh-Eaa">
@@ -5115,7 +5123,7 @@ Gw
             <point key="canvasLocation" x="-101" y="759"/>
         </window>
         <window title="Landolt ring contrast assessment – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="6tH-lc-nrw" userLabel="responseinfoPanelContrastG" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="BkM-Ff-taW">
@@ -5204,7 +5212,7 @@ Gw
             <point key="canvasLocation" x="-101" y="759"/>
         </window>
         <window title="Letter contrast assessment – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="FJ1-4N-r6U" userLabel="responseinfoPanelContrastLett" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="eyu-nI-EUu">
@@ -5290,7 +5298,7 @@ Gw
             <point key="canvasLocation" x="-101" y="759"/>
         </window>
         <window title="Tumbling E contrast assessment – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="XVY-wU-ZJF" userLabel="responseinfoPanelContrastE" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="fw2-6c-qtl">
@@ -5402,7 +5410,7 @@ Type 55 or &lt;esc&gt;, or touch Ø to abort the run.
             <point key="canvasLocation" x="-101" y="759"/>
         </window>
         <window title="Acuity Line-by-Line – How to operate this test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="fK9-Iy-zEB" userLabel="responseinfoPanelAcuityLineByLine" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
             <view key="contentView" id="bv1-mR-C40">

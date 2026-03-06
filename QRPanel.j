@@ -24,7 +24,7 @@ Created by Bach on 2026-02-20.
 
 - (id)initWithQRString: (CPString) aString {
     const panelRect = CGRectMake(0, 0, 300, 400);
-    self = [super initWithContentRect: panelRect styleMask: CPTitledWindowMask | CPClosableWindowMask];
+    self = [super initWithContentRect: panelRect styleMask: CPTitledWindowMask];
     if (self) {
         [self setTitle: "QR Code"];
         [self center];

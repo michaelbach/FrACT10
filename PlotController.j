@@ -197,7 +197,7 @@ let SharedPlotController = nil;
 
 
 - (void) createPlotPanel {
-    plotPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(0, 0, kFractWidth, kFractHeight) styleMask: CPTitledWindowMask | CPClosableWindowMask];
+    plotPanel = [[CPPanel alloc] initWithContentRect: CGRectMake(0, 0, kFractWidth, kFractHeight) styleMask: CPTitledWindowMask];
     [plotPanel setTitle: "FrACT₁₀ – Plot"];
     const contentView = [plotPanel contentView];
 
