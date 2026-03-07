@@ -36,7 +36,7 @@
         if (!data.appName || !data.session || !data.value || !data.timestamp) return;
         if ((data.value === undefined) || (data.timestamp === undefined)) return;
         if (data.appName.length + data.session.length + data.value.length + data.timestamp.length > 200) return;
-        const deltaT = Date.now() - data.timestamp; console.info("deltaT", deltaT);
+        const deltaT = Date.now() - data.timestamp; // console.info("deltaT", deltaT);
         if (deltaT > 1000) { //console.warn("deltaT too high: ", deltaT);
             return;
         }

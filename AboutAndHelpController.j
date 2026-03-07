@@ -22,7 +22,6 @@
 @import "Misc.j"
 
 
-const left = 18;
 const buttonsWidth = 130, buttonsHeight = 23;
 const buttonsOkWidth = 48;
 const buttonsY = (kFractHeight - buttonsHeight - 18);
@@ -73,12 +72,12 @@ let SharedAboutAndHelpController = nil;
     [aboutPanel setTitle: "FrACT₁₀ – About"];
 
     const viewY = 20, viewWidth = 364, viewHeight = 420;
-    aboutWebView1 = [[CPWebView alloc] initWithFrame: CGRectMake(left, viewY, viewWidth, viewHeight)];
+    aboutWebView1 = [[CPWebView alloc] initWithFrame: CGRectMake(kGuiMarginHorizontal, viewY, viewWidth, viewHeight)];
     [contentView addSubview: aboutWebView1];
     aboutWebView2 = [[CPWebView alloc] initWithFrame: CGRectMake(414, viewY, viewWidth, viewHeight)];
     [contentView addSubview: aboutWebView2];
 
-    [self addButtonWithTitle: "→FrACT home" frame: CGRectMake(left, buttonsY, buttonsWidth, buttonsHeight) tag: 1 tooltip: "Opens the FrACT home page in your browser." selector: @selector(buttonGotoURLgivenTag_action:)]
+    [self addButtonWithTitle: "→FrACT home" frame: CGRectMake(kGuiMarginHorizontal, buttonsY, buttonsWidth, buttonsHeight) tag: 1 tooltip: "Opens the FrACT home page in your browser." selector: @selector(buttonGotoURLgivenTag_action:)]
     [self addButtonWithTitle: "→Manual" frame: CGRectMake(274, buttonsY, buttonsWidth, buttonsHeight) tag: 3 tooltip: "Opens the manual in your browser." selector: @selector(buttonGotoURLgivenTag_action:)]
     [self addButtonWithTitle: "→FrACT blog" frame: CGRectMake(508, buttonsY, buttonsWidth, buttonsHeight) tag: 2 tooltip: "" selector: @selector(buttonGotoURLgivenTag_action:)]
     const btnOk = [self addButtonWithTitle: "OK" frame: CGRectMake(732, buttonsY, buttonsOkWidth, buttonsHeight) tag: -1 tooltip: "" selector: @selector(buttonAboutClose_action:)]
@@ -92,13 +91,13 @@ let SharedAboutAndHelpController = nil;
     [helpPanel setTitle: "FrACT₁₀ – Help"];
 
     const view13w = 764, view23y = 221, view23h = 96;
-    helpWebView1 = [[CPWebView alloc] initWithFrame: CGRectMake(left, 12, view13w, 202)];
+    helpWebView1 = [[CPWebView alloc] initWithFrame: CGRectMake(kGuiMarginHorizontal, 12, view13w, 202)];
     [contentView addSubview: helpWebView1];
-    helpWebView2 = [[CPWebView alloc] initWithFrame: CGRectMake(left, view23y, 388, view23h)];
+    helpWebView2 = [[CPWebView alloc] initWithFrame: CGRectMake(kGuiMarginHorizontal, view23y, 388, view23h)];
     [contentView addSubview: helpWebView2];
     helpWebView3 = [[CPWebView alloc] initWithFrame: CGRectMake(416, view23y, 366, view23h)];
     [contentView addSubview: helpWebView3];
-    helpWebView4 = [[CPWebView alloc] initWithFrame: CGRectMake(left, 324, view13w, 224)];
+    helpWebView4 = [[CPWebView alloc] initWithFrame: CGRectMake(kGuiMarginHorizontal, 324, view13w, 224)];
     [contentView addSubview: helpWebView4];
 
     [self addButtonWithTitle: "→Manual" frame: CGRectMake(19, buttonsY, buttonsWidth, buttonsHeight) tag: 3 tooltip: "Opens the manual in your browser"  selector: @selector(buttonGotoURLgivenTag_action:)]

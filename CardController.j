@@ -19,7 +19,6 @@
 @import "MiscSpace.j"
 
 
-const left = 18;
 const buttonsWidth = 44, buttonsHeight = 23;
 const buttonsOkWidth = 68;
 const buttonsY = (kFractHeight - buttonsHeight - 18);
@@ -52,7 +51,7 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
     [plasticCardPanel setFloatingPanel: YES];  [plasticCardPanel setMovable: NO];
     [self setWindow: plasticCardPanel];
 
-    const infoText = [[CPTextField alloc] initWithFrame: CGRectMake(left, 16, 762, 68)];
+    const infoText = [[CPTextField alloc] initWithFrame: CGRectMake(kGuiMarginHorizontal, 16, 762, 68)];
     [infoText setStringValue: "ID-1 cards as used for, e.g., credit cards or personal identification,\nhave a standardized size (ISO/IEC 7810:2019)"];
     [infoText setAlignment: CPCenterTextAlignment];
     [infoText setFont: [CPFont systemFontOfSize: 18]];  [infoText setEditable: NO];
@@ -70,7 +69,7 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
     [placeCardText setFont: [CPFont systemFontOfSize: 18]];  [placeCardText setEditable: NO];
     [contentView addSubview: placeCardText];
 
-    [self addButtonWithTitle: "+ +" frame: CGRectMake(left, buttonsY, buttonsWidth, buttonsHeight) tag: 1 tooltip: "Click or press to increase the size of the plastic card image by 10%" selector: @selector(buttonPlasticCardPlusMinus_action:)];
+    [self addButtonWithTitle: "+ +" frame: CGRectMake(kGuiMarginHorizontal, buttonsY, buttonsWidth, buttonsHeight) tag: 1 tooltip: "Click or press to increase the size of the plastic card image by 10%" selector: @selector(buttonPlasticCardPlusMinus_action:)];
     [self addButtonWithTitle: "+" frame: CGRectMake(66, buttonsY, buttonsWidth, buttonsHeight) tag: 0 tooltip: "Click or press to increase the size of the plastic card image by 1%" selector: @selector(buttonPlasticCardPlusMinus_action:)];
     [self addButtonWithTitle: "–" frame: CGRectMake(113, buttonsY, buttonsWidth, buttonsHeight) tag: 2 tooltip: "Click or press to decrease the size of the plastic card image by 1%" selector: @selector(buttonPlasticCardPlusMinus_action:)];
     [self addButtonWithTitle: "– –" frame: CGRectMake(160, buttonsY, buttonsWidth, buttonsHeight) tag: 3 tooltip: "Click or press to decrease the size of the plastic card image by 10%" selector: @selector(buttonPlasticCardPlusMinus_action:)];
@@ -92,7 +91,7 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
     [contentView addSubview: resolutionField];
 
     const btnCancel = [self addButtonWithTitle: "Cancel" frame: CGRectMake(629, buttonsY, buttonsOkWidth, buttonsHeight) tag: 1 tooltip: "Cancel calibration and revert to previous value" selector: @selector(buttonPlasticCardClosePanel_action:)];
-    [btnCancel setKeyEquivalent: @"\e"];
+    [btnCancel setKeyEquivalent: CPEscapeFunctionKey];
     
     const btnOK = [self addButtonWithTitle: "OK" frame: CGRectMake(711, buttonsY, buttonsOkWidth, buttonsHeight) tag: 0 tooltip: "Accept calibration and close panel" selector: @selector(buttonPlasticCardClosePanel_action:)];
     [btnOK setKeyEquivalent: crlf];

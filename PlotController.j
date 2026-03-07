@@ -15,9 +15,7 @@
  */
 
 
-const left = 18;
-const buttonsWidth = 130, buttonsHeight = 23;
-const buttonsOkWidth = 48;
+const buttonsWidth = 130, buttonsHeight = 23, buttonsOkWidth = 48;
 const buttonsY = (kFractHeight - buttonsHeight - 18);
 
 
@@ -201,11 +199,11 @@ let SharedPlotController = nil;
     [plotPanel setTitle: "FrACT₁₀ – Plot"];
     const contentView = [plotPanel contentView];
 
-    plotView = [[PlotView alloc] initWithFrame: CGRectMake(left, 16, 760, 530)];
+    plotView = [[PlotView alloc] initWithFrame: CGRectMake(kGuiMarginHorizontal, 16, 760, 530)];
     [contentView addSubview: plotView];
 
     const btnPdf = [CPButton buttonWithTitle: "Plot → PDF"];
-    [btnPdf setFrame: CGRectMake(left, buttonsY, 84, buttonsHeight)];
+    [btnPdf setFrame: CGRectMake(kGuiMarginHorizontal, buttonsY, 84, buttonsHeight)];
     [btnPdf setTarget: self];  [btnPdf setAction: @selector(buttonPlotToPDF_action:)];
     [btnPdf setKeyEquivalent: "p"];
     [contentView addSubview: btnPdf];

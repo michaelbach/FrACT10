@@ -17,8 +17,8 @@
 @import "Misc.j"
 @import "FractView.j"
 @import "FractController.j"
-@import "FractControllerAcuityC.j"
 @import "FractControllerAcuityL.j"
+@import "FractControllerAcuityC.j"
 @import "FractControllerAcuityE.j"
 @import "FractControllerAcuityTAO.j"
 @import "FractControllerAcuityVernier.j"
@@ -48,6 +48,7 @@
 @import "AboutAndHelpController.j"
 @import "PlotController.j"
 @import "CheckingContrastController.j"
+@import "ResponseInfoPanelController.j"
 
 
 /**
@@ -58,7 +59,8 @@
 @implementation AppController : CPWindowController {
     CPWindow selfWindow;
     @outlet CPWindow fractControllerWindow;
-    @outlet CPPanel settingsPanel, responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine;
+    @outlet CPPanel settingsPanel;
+    CPPanel currentInfoPanel;
     @outlet MDBButton_Test buttonAcuityTAO;
     @outlet CPButton buttonExportClip, buttonExportPDF, buttonPlot;
     @outlet CPButton radioButtonAcuityBW, radioButtonAcuityColor;
@@ -165,7 +167,8 @@
 
     [Settings checkDefaults]; //what was the reason to put this here???
 
-    allPanels = [responseinfoPanelAcuityL, responseinfoPanelAcuity4C, responseinfoPanelAcuity8C, responseinfoPanelAcuityE, responseinfoPanelAcuityTAO, responseinfoPanelAcuityVernier, responseinfoPanelContrastLett, responseinfoPanelContrastC, responseinfoPanelContrastE, responseinfoPanelContrastG, responseinfoPanelAcuityLineByLine, settingsPanel];
+    allPanels = [settingsPanel];
+    if (currentInfoPanel) [allPanels addObject: currentInfoPanel];
     for (const p of allPanels)  [p setMovable: NO];
     [self setSettingsPaneTabViewSelectedIndex: 0]; //select the "General" tab in Settings
 
@@ -309,11 +312,13 @@
 }
 
 
-- (void) closeAllPanels {
-    for (const p of allPanels)  [p close];
+- (void) closeAllPanels { //console.info("closeAllPanels")
+    if (settingsPanel) [settingsPanel close];
+    if (currentInfoPanel) [currentInfoPanel close];
 }
 - (void) centerAllPanels {
-    for (const p of allPanels)  [Misc centerWindowOrPanel: p];
+    if (settingsPanel) [Misc centerWindowOrPanel: settingsPanel];
+    if (currentInfoPanel) [Misc centerWindowOrPanel: currentInfoPanel];
 }
 
 
@@ -361,22 +366,15 @@
  The above prerequisites were met, so let's run the test specified in the global`gCurrentTestID`
  */
 - (void) runFractController2 { //console.info("AppController>runFractController2");
-    [self closeAllPanels];  [self centerAllPanels];
-    const allInfoPanels = {[kTestAcuityLett]: responseinfoPanelAcuityL,
-        [kTestAcuityLandolt]: responseinfoPanelAcuity8C,
-        [kTestAcuityE]: responseinfoPanelAcuityE,
-        [kTestAcuityTAO]: responseinfoPanelAcuityTAO,
-        [kTestAcuityVernier]: responseinfoPanelAcuityVernier,
-        [kTestContrastLett]: responseinfoPanelContrastLett,
-        [kTestContrastLandolt]: responseinfoPanelContrastC,
-        [kTestContrastE]: responseinfoPanelContrastE,
-        [kTestContrastG]: responseinfoPanelContrastG,
-        [kTestAcuityLineByLine]: responseinfoPanelAcuityLineByLine};
-    if ([Settings showResponseInfoAtStart] && (gCurrentTestID in allInfoPanels)) {
-        [allInfoPanels[gCurrentTestID] makeKeyAndOrderFront: self];
-        if ((gCurrentTestID === kTestAcuityLandolt) && ([Settings nAlternatives] === 4)) {
-            [responseinfoPanelAcuity4C makeKeyAndOrderFront: self];
-        }
+    [self closeAllPanels];
+
+    if ([Settings showResponseInfoAtStart] && (gCurrentTestID !== kTestContrastDitherUnittest) && (gCurrentTestID !== kTestBalmGeneral)) {
+        /*if (!currentInfoPanel || ([currentInfoPanel testID] !== gCurrentTestID)) {
+            currentInfoPanel = [ResponseInfoPanelController panelForTestID: gCurrentTestID];
+        }*/
+        currentInfoPanel = [ResponseInfoPanelController panelForTestID: gCurrentTestID];
+        [self centerAllPanels];
+        [currentInfoPanel makeKeyAndOrderFront: self];
     } else {
         [self runFractController2_actionOK: nil];
     }
@@ -391,11 +389,32 @@
     if (currentFractController) {
         [currentFractController release];  currentFractController = null;
     }
-    const allTestControllers = [nil, FractControllerAcuityL, FractControllerAcuityC, FractControllerAcuityE, FractControllerAcuityTAO, FractControllerAcuityVernier, FractControllerContrastLett, FractControllerContrastC, FractControllerContrastE, FractControllerContrastG, FractControllerAcuityLineByLine, FractControllerContrastDitherUnittest, FractControllerBalmLight, FractControllerBalmLocation, FractControllerBalmMotion]; //sequence like Hierachy kTest#s
-    currentFractController = [[allTestControllers[gCurrentTestID] alloc] initWithWindow: fractControllerWindow];
-    [currentFractController setSound: sound];
-    currentTestResultExportString = "";
-    [currentFractController runStart];
+    const TEST_CLASS_MAP = {
+        [kTestAcuityLett]: "FractControllerAcuityL",
+        [kTestAcuityLandolt]: "FractControllerAcuityC",
+        [kTestAcuityE]: "FractControllerAcuityE",
+        [kTestAcuityTAO]: "FractControllerAcuityTAO",
+        [kTestAcuityVernier]: "FractControllerAcuityVernier",
+        [kTestContrastLett]: "FractControllerContrastLett",
+        [kTestContrastLandolt]: "FractControllerContrastC",
+        [kTestContrastE]: "FractControllerContrastE",
+        [kTestContrastG]: "FractControllerContrastG",
+        [kTestAcuityLineByLine]: "FractControllerAcuityLineByLine",
+        [kTestContrastDitherUnittest]: "FractControllerContrastDitherUnittest",
+        [kTestBalmLight]: "FractControllerBalmLight",
+        [kTestBalmLocation]: "FractControllerBalmLocation",
+        [kTestBalmMotion]: "FractControllerBalmMotion"
+    };
+    const className = TEST_CLASS_MAP[gCurrentTestID];
+    const testClass = CPClassFromString(className);
+    if (testClass) {
+        currentFractController = [[testClass alloc] initWithWindow: fractControllerWindow];
+        [currentFractController setSound: sound];
+        currentTestResultExportString = "";
+        [currentFractController runStart];
+    } else {
+        console.error("Unknown test class for ID:", gCurrentTestID);
+    }
 }
 /**
  ok, so let's not run this test after all
@@ -543,7 +562,7 @@
     [[gLatestAlert buttons][1] setKeyEquivalent: "2"];
     [[gLatestAlert buttons][2] setKeyEquivalent: "3"];
     [[gLatestAlert buttons][3] setKeyEquivalent: "h"]; //help
-    [[gLatestAlert buttons][4] setKeyEquivalent: "\x1b"]; //esc
+    [[gLatestAlert buttons][4] setKeyEquivalent: CPEscapeFunctionKey]; //esc
     [gLatestAlert runModalWithDidEndBlock: function(alert, returnCode) {
         switch (returnCode) {
             case 4: //console.info(returnCode); //Light
