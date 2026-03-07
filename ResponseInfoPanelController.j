@@ -156,8 +156,8 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
         [kTestAcuityVernier]: {
             title: "Vernier acuity",
             text: "\nTwo (or three) bars appear, one above the other.\nIs the TOP / MIDDLE line left or right?\n\nUse the cursor keys (←, →) or on a keypad: ← = 4, → = 6." + TOUCH_BOTTOM + GUESS("direction") + ABORT_55,
-            imageName: "keyMaps/keyMapUpDownOnly.png",
-            imageWidth: 80
+            //imageName: "keyMaps/keyMapUpDownOnly.png",
+            //imageWidth: 80
         },
         [kTestContrastLett]: {
             title: "Letter contrast assessment",
