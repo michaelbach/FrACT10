@@ -53,12 +53,12 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
     [_panel setTitle: content.title]; [_panel setFloatingPanel: YES]; [_panel setMovable: NO];
     contentView = [_panel contentView];
     
-    //Text Field (need MDBTextField and not bezeled to change font size)
-    const textField = [[MDBTextField alloc] initWithFrame: CGRectMake(kGuiMarginHorizontal, kGuiMarginHorizontal, 400, 320)];
+    const textField = [[CPTextField alloc] initWithFrame: CGRectMake(kGuiMarginHorizontal, kGuiMarginHorizontal, 400, 320)];
     [textField setStringValue: content.text];
     [textField setFont: [CPFont systemFontOfSize: 16]];
     [textField setLineBreakMode: CPLineBreakByWordWrapping];
-    [textField setSelectable: YES];  [textField setEditable: NO];  [textField setBezeled: NO];
+    [textField setSelectable: YES];  [textField setEditable: NO];
+    [textField setBezeled: NO]; //I'd prefer YES, but then font size reverts to smaller default
     [contentView addSubview: textField];
 
     if (content.imageName) {  //optional image
