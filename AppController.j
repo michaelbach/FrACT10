@@ -368,10 +368,7 @@
 - (void) runFractController2 { //console.info("AppController>runFractController2");
     [self closeAllPanels];
 
-    if ([Settings showResponseInfoAtStart] && (gCurrentTestID !== kTestContrastDitherUnittest) && (gCurrentTestID !== kTestBalmGeneral)) {
-        /*if (!currentInfoPanel || ([currentInfoPanel testID] !== gCurrentTestID)) {
-            currentInfoPanel = [ResponseInfoPanelController panelForTestID: gCurrentTestID];
-        }*/
+    if ([Settings showResponseInfoAtStart] && !([kTestContrastDitherUnittest, kTestBalmGeneral, kTestBalmLight, kTestBalmLocation, kTestBalmMotion].includes(gCurrentTestID))) {
         currentInfoPanel = [ResponseInfoPanelController panelForTestID: gCurrentTestID];
         [self centerAllPanels];
         [currentInfoPanel makeKeyAndOrderFront: self];

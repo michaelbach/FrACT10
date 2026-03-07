@@ -1,5 +1,6 @@
 # History
 
+2026-03-07a fix crash in BaLM when called as the first test, use `MDBTextField` to allow larger size
 2026-03-07 create all "ResponseInfoPanels", no more XIBs; dynamic instantiaion of test classes in `AppController`
 2026-03-06 remove close button from panels, set all to "regular" (no visible change); add shortcuts to Settings▸︎Gamma▸︎±
 2026-03-05 Plastic card panel created programmatically; harmonise programmatic GUI with globals; recheck calibration: distance 344 cm, starting LogMAR 1.0: Tumbling-E size = 5 cm; harmonise programmatic GUI with globals; add shortcut 'c' to "Calibrate with plastic card"; add check on plastic card to testing suite

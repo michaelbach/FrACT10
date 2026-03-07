@@ -14,6 +14,7 @@
 @import <AppKit/CPImage.j>
 
 @import "Globals.j"
+@import "MDBTextField.j"
 
 const buttonsWidth = 130, buttonsHeight = 23, buttonsOkWidth = 64;
 const buttonsY = (kFractHeight - buttonsHeight - 18);
@@ -52,12 +53,12 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
     [_panel setTitle: content.title]; [_panel setFloatingPanel: YES]; [_panel setMovable: NO];
     contentView = [_panel contentView];
     
-    //Text Field
-    const textField = [[CPTextField alloc] initWithFrame: CGRectMake(kGuiMarginHorizontal, kGuiMarginHorizontal, 400, 280)];
+    //Text Field (need MDBTextField and not bezeled to change font size)
+    const textField = [[MDBTextField alloc] initWithFrame: CGRectMake(kGuiMarginHorizontal, kGuiMarginHorizontal, 400, 320)];
     [textField setStringValue: content.text];
     [textField setFont: [CPFont systemFontOfSize: 16]];
     [textField setLineBreakMode: CPLineBreakByWordWrapping];
-    [textField setSelectable: YES];  [textField setEditable: NO];  [textField setBezeled: YES];
+    [textField setSelectable: YES];  [textField setEditable: NO];  [textField setBezeled: NO];
     [contentView addSubview: textField];
 
     if (content.imageName) {  //optional image
@@ -118,7 +119,7 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
 - (id) _contentForTestID: (int) aTestID {
     const content = {title: "", text: "", imageName: nil, imageToolTip: nil, imageWidth: 200};
 
-    const TOUCH_BOTTOM = "\n\nOn touch devices, use the buttons at the bottom of the screen (may need to enable).",
+    const TOUCH_BOTTOM = "\n\nOn touch devices, use the buttons at the bottom of the screen (when enabled).",
         TOUCH_AROUND = "\n\nOn touch devices, use the buttons around the screen (when enabled).",
         ABORT_55 = "\n\nType 55 or <esc>, or touch Ø to abort the run.",
         GUESS = function(what) { return "\n\nIf you can't recognise the " + what + ", use your best guess."; };
@@ -146,7 +147,7 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
             title: "Tumbling E acuity",
             text: "\n“Tumbling Es“ will appear, how are they oriented?\n\nUse the cursor keys, or on a keypad:\n→ = 6,  ↑ = 8,  ← = 4,  ↓ = 2." + TOUCH_AROUND + GUESS("orientation") + ABORT_55,
             imageName: "keyMaps/keyMap4keysOnly.png",
-            imageToolTip: "When 4 alternatives are selected, the keypad (see above) can be used, but also the cursor keys.",
+            imageToolTip: "When 4 alternatives are selected, the keypad (see above) can be used, and also the cursor keys.",
             imageWidth: 120
         },
         [kTestAcuityTAO]: {
@@ -155,7 +156,7 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
         },
         [kTestAcuityVernier]: {
             title: "Vernier acuity",
-            text: "\nTwo (or three) bars appear, one above the other.\nIs the TOP / MIDDLE line left or right?\n\nUse the cursor keys (←, →) or on a keypad: ← = 4, → = 6." + TOUCH_BOTTOM + GUESS("direction") + ABORT_55,
+            text: "\nTwo (or three) bars appear, one above the other.\nIs the TOP / MIDDLE line left or right?\n\nUse the cursor keys (←, →) or on a keypad: ← = 4, → = 6." + TOUCH_BOTTOM + GUESS("direction") + ABORT_55,
             //imageName: "keyMaps/keyMapUpDownOnly.png",
             //imageWidth: 80
         },
@@ -184,7 +185,7 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
         },
         [kTestAcuityLineByLine]: {
             title: "Acuity Line-by-Line",
-            text: "\nOne or more line of 3–5 letters will appear.\n\nUse the cursor keys, or digits on a keypad (↑ = 8,  ↓ = 2), to change their acuity grade.\n\nUse ← and → to create a new letter sample." + TOUCH_AROUND + "\n\nThis is NOT an automated threshold test to access acuity. It was created on request for fully manual operation and help refracting.\n\nType any unused key to exit this module.",
+            text: "\nOne or more lines of 3–5 letters will appear.\n\nUse the cursor keys, or digits on a keypad (↑ = 8,  ↓ = 2), to change their acuity grade.\n\nUse ← and → to create a new letter sample." + TOUCH_AROUND + "\n\nThis is NOT an automated threshold test to access acuity. It was created on request for fully manual operation and help refracting.\n\nType any unused key to exit this module.",
             imageName: "keyMaps/keyMap4keysOnly.png",
             imageToolTip: "When 4 alternatives are selected, the keypad (see above) can be used, but also the cursor keys.",
             imageWidth: 100
