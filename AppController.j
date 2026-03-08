@@ -37,7 +37,7 @@
 @import "GammaView.j"
 @import "MDBSetHandCursor.j"
 @import "MDBButton_Test.j"
-@import "MDBTextField.j"
+@import "CPTextField_Category.j"
 @import "MDBLabel.j"
 @import "MDBAlert.j"
 @import "QRPanel.j"
@@ -95,7 +95,7 @@
     @outlet CPTextField contrastMaxLogCSWeberField;
     @outlet CPTextField gammaValueField;
     int decimalMarkCharIndexPrevious;
-    @outlet MDBTextField decimalMarkCharField;
+    @outlet CPTextField decimalMarkCharField;
 }
 
 
@@ -285,11 +285,8 @@
     if (decimalMarkCharIndexCurrent !== decimalMarkCharIndexPrevious) { //startup value is always null
         decimalMarkCharIndexPrevious = decimalMarkCharIndexCurrent; //save for next time
         [Settings setDecimalMarkChar: [Settings decimalMarkChar]]; //this updates in GUI
-        [decimalMarkCharField setTextColor: [CPColor blueColor]]; //while we're here…
-        [decimalMarkCharField setFont: [CPFont systemFontOfSize: 24]]; //need more visibility
-        [decimalMarkCharField sizeToFit]; //can't change font size of CPTextField, so →MDBTextField,
-        let r = [decimalMarkCharField bounds]; r.size.height = 30; r.origin.y = 12;
-        [decimalMarkCharField setBounds: r];
+        [decimalMarkCharField setFont: [CPFont systemFontOfSize: 20]]; //need more visibility
+        [decimalMarkCharField sizeToFit]; //doesn't work ↑ in IB
     }
     let rct = CGRectMake(0, 560, 800, 84); //placeResultStringField
     if ([Settings showIdAndEyeOnMain])  rct = CGRectOffset(rct, 84 / 2, 0);

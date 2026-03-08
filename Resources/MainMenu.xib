@@ -16,7 +16,7 @@
         <window title="selfWindow" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" releasedWhenClosed="NO" animationBehavior="default" id="371" userLabel="selfWindow">
             <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="335" y="390" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1129"/>
             <view key="contentView" id="372">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -494,7 +494,7 @@ Shortcut: r
         <window title="factControllerWindow" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="r6R-bh-Qyp" userLabel="fractControllerWindow">
             <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="0.0" y="0.0" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1129"/>
             <view key="contentView" id="ZKN-RJ-jLS" customClass="FractView">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -508,7 +508,7 @@ Shortcut: r
         <window title="FrACT₁₀ – Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" deferred="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="MF5-y3-Ol0" userLabel="settingsPanel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1129"/>
             <view key="contentView" id="WXy-dU-HQc">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -664,21 +664,6 @@ If disabled: → Settings▸Misc▸Auto Preset
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
-                                        </textField>
-                                        <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FoD-Bg-sIb" customClass="MDBTextField">
-                                            <rect key="frame" x="265" y="84" width="30" height="22"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Current decimal separator.
-
- </string>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" alignment="center" drawsBackground="YES" id="UuG-0h-cVb">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                            <connections>
-                                                <binding destination="izh-pU-csC" name="value" keyPath="values.decimalMarkChar" id="rQT-rQ-Kme"/>
-                                            </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qMH-Kz-jR5">
                                             <rect key="frame" x="155" y="83" width="115" height="16"/>
@@ -1433,7 +1418,7 @@ Assumes full screen mode.
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PuM-ue-ids">
-                                            <rect key="frame" x="266" y="120" width="69" height="18"/>
+                                            <rect key="frame" x="261" y="120" width="69" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Export results to the clipboard WITHOUT asking.
 Is faster, but it's easier to forget switching to the spreadsheet to transfer the clipboard content.</string>
@@ -1538,6 +1523,18 @@ Shortcut: c 
                                                 <action selector="buttonPlasticCardUse_action:" target="oLe-nj-mal" id="4Ny-H7-wB6"/>
                                             </connections>
                                         </button>
+                                        <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rYB-qU-fJ6">
+                                            <rect key="frame" x="261" y="84" width="18" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="saq-bl-vBz">
+                                                <font key="font" metaFont="system" size="24"/>
+                                                <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="izh-pU-csC" name="value" keyPath="values.decimalMarkChar" id="vjX-hF-tJ4"/>
+                                            </connections>
+                                        </textField>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -4424,7 +4421,7 @@ This is useful for instance when you want a darker environment.
                 <outlet property="buttonExportPDF" destination="nR3-vD-4DK" id="fao-uj-EGO"/>
                 <outlet property="buttonPlot" destination="1i4-ka-JiB" id="6nc-Qu-82k"/>
                 <outlet property="contrastMaxLogCSWeberField" destination="AQw-jE-a5x" id="gGe-Qj-bic"/>
-                <outlet property="decimalMarkCharField" destination="FoD-Bg-sIb" id="mCX-RN-Jxx"/>
+                <outlet property="decimalMarkCharField" destination="rYB-qU-fJ6" id="WKr-nb-ef9"/>
                 <outlet property="fractControllerWindow" destination="r6R-bh-Qyp" id="WQx-mH-JUh"/>
                 <outlet property="gammaValueField" destination="jv4-5m-hDh" id="Luz-7v-gyX"/>
                 <outlet property="gammaView" destination="c7s-eX-XEN" id="fNv-bD-BRg"/>

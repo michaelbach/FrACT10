@@ -14,7 +14,7 @@
 @import <AppKit/CPImage.j>
 
 @import "Globals.j"
-@import "MDBTextField.j"
+
 
 const buttonsWidth = 130, buttonsHeight = 23, buttonsOkWidth = 64;
 const buttonsY = (kFractHeight - buttonsHeight - 18);
@@ -58,7 +58,7 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
     [textField setFont: [CPFont systemFontOfSize: 16]];
     [textField setLineBreakMode: CPLineBreakByWordWrapping];
     [textField setSelectable: YES];  [textField setEditable: NO];
-    [textField setBezeled: NO]; //I'd prefer YES, but then font size reverts to smaller default
+    [textField setBezeled: YES];
     [contentView addSubview: textField];
 
     if (content.imageName) {  //optional image
