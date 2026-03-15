@@ -446,44 +446,13 @@
                 [Misc copyString2ClipboardWithDialog: string4clipboard];
             }
             break;
-        case kResultsToClipFullHistory2PDF: [self exportPDF]; break;
+        case kResultsToClipFullHistory2PDF: [Misc export2PDF: currentTestResultExportString withHistory: currentTestResultsHistoryExportString]; break;
     }
     [buttonExportClip setEnabled: ([currentTestResultExportString length] > 1)];
     [buttonExportPDF setEnabled: ([currentTestResultExportString length] > 1)];
     if ([kTestAcuityLett, kTestAcuityLandolt, kTestAcuityE, kTestAcuityTAO, kTestContrastLett, kTestContrastLandolt, kTestContrastE, kTestContrastG].includes(gCurrentTestID)){
         [buttonPlot setEnabled: ([currentTestResultExportString length] > 1)];
     }
-}
-
-
-- (void) exportPDF { //CPLog("AppController>exportPDF");
-    const doc = new window.jspdf.jsPDF(); //https://artskydj.github.io/jsPDF/docs/jsPDF.html
-    doc.setProperties({
-     title: 'FrACT10 RESULT RECORD',
-     author: 'bach@uni-freiburg.de',
-     keywords: 'visual acuity',
-     creator: "FrACT10_" + gVersionStringOfFract + "·" + gVersionDateOfFrACT
-    });
-
-    doc.setTextColor(0);  doc.setFontSize(8);  doc.setFont("Courier", "bold");
-    doc.text("FrACT10 RESULT RECORD" + crlf, 15, 10); //https://artskydj.github.io/jsPDF/docs/jsPDF.html#text
-
-    // main output
-    const items = currentTestResultExportString.trim().split('\t');
-    let tableData = []; //https://github.com/simonbengtsson/jsPDF-AutoTable
-    for (let i = 0; i < items.length; i += 2) { //every second item: new row
-        tableData.push([items[i], items[i + 1]]);
-    }
-    const styles = {fontSize: 8, cellWidth: 30, font: "Courier", textColor: 0, cellPadding: {top: 1, right: 1, bottom: 1, left: 1}};
-    doc.autoTable({body: tableData, theme: 'grid', styles: styles, headStyles: {textColor: 0}, bodyStyles: {textColor: 0}});
-    
-    // trial-by-trial output
-    tableData = currentTestResultsHistoryExportString.trim()
-      .split('\n') //split rows by newline
-      .map(row => row.split('\t')); //split columns by tab
-    doc.autoTable({body: tableData, theme: 'grid', styles: styles, headStyles: {textColor: 0}, bodyStyles: {textColor: 0}});
-    const filename = "FrACT_"+ gTestDetails[td_dateOfRunStart] + "_" + [Misc date2HHdashMM: gTestDetails[td_dateTimeOfRunStart]] + ".pdf";
-    doc.save(filename); //https://github.com/eligrey/FileSaver.js
 }
 
 
@@ -648,7 +617,7 @@
     [buttonExportClip setEnabled: NO];
 }
 - (IBAction) buttonExportPDF_action: (id) sender { //CPLog("AppController>buttonExportPDF_action");
-    [self exportPDF];
+    [Misc export2PDF: currentTestResultExportString withHistory: currentTestResultsHistoryExportString];
 }
 
 
