@@ -16,21 +16,20 @@ FractView.j
  */
 @implementation FractView : CPView {
     @outlet CPWindowController drawingDelegate; //has a connection from view to delegate in IB
-    SEL drawStimulusInRect;
+    //SEL drawStimulusInRect; //not needed
 }
 
 
 /**
- This is never called. Why is it here? And how can the drawRect work if never instantated?
- Ah, now I understand: that is done by IB
+ This is never called, does not need to be here. Initialisation is done by IB
  */
-- (id)initWithFrame:(CGRect)frame { //console.info("FractView>initWithFrame");
+- (id) initWithFrame: (CGRect)frame { //console.info("FractView>initWithFrame");
     self = [super initWithFrame:frame];
     return self;
 }
 
 
-- (void)drawRect: (CGRect) dirtyRect { //console.info("FractView>drawRect");
+- (void) drawRect: (CGRect) dirtyRect { //console.info("FractView>drawRect");
     [drawingDelegate drawStimulusInRect: dirtyRect forView: self];
 }
 
