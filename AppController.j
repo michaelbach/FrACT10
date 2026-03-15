@@ -140,6 +140,8 @@
     [Misc CPLogSetup];
     settingsNeededNewDefaults = [Settings needNewDefaults];
     [Settings checkDefaults]; //important to do this very early, before nib loading, otherwise the updates don't populate the settings panel
+
+    //create UUID with optional fallback
     gCurrentUUID = window.crypto?.randomUUID?.() ??
       "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
         const r = window.crypto?.getRandomValues
@@ -148,6 +150,7 @@
         return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
       }); //The ?.() optional call short-circuits to undefined if randomUUID doesn't exist, letting ?? kick in and run the fallback inline.
     [self setCurrentUUID: gCurrentUUID]; //for the GUI
+    
     return self;
 }
 
