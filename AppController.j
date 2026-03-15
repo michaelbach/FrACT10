@@ -386,23 +386,7 @@
     if (currentFractController) {
         [currentFractController release];  currentFractController = null;
     }
-    const TEST_CLASS_MAP = {
-        [kTestAcuityLett]: "FractControllerAcuityL",
-        [kTestAcuityLandolt]: "FractControllerAcuityC",
-        [kTestAcuityE]: "FractControllerAcuityE",
-        [kTestAcuityTAO]: "FractControllerAcuityTAO",
-        [kTestAcuityVernier]: "FractControllerAcuityVernier",
-        [kTestContrastLett]: "FractControllerContrastLett",
-        [kTestContrastLandolt]: "FractControllerContrastC",
-        [kTestContrastE]: "FractControllerContrastE",
-        [kTestContrastG]: "FractControllerContrastG",
-        [kTestAcuityLineByLine]: "FractControllerAcuityLineByLine",
-        [kTestContrastDitherUnittest]: "FractControllerContrastDitherUnittest",
-        [kTestBalmLight]: "FractControllerBalmLight",
-        [kTestBalmLocation]: "FractControllerBalmLocation",
-        [kTestBalmMotion]: "FractControllerBalmMotion"
-    };
-    const className = TEST_CLASS_MAP[gCurrentTestID];
+    const className = gTestRegistry[gCurrentTestID]?.className;
     const testClass = CPClassFromString(className);
     if (testClass) {
         currentFractController = [[testClass alloc] initWithWindow: fractControllerWindow];
@@ -522,8 +506,11 @@
 #pragma mark
 - (void) keyDown: (CPEvent) theEvent { //console.info("AppController>keyDown");
     const key = [[[theEvent charactersIgnoringModifiers] characterAtIndex: 0] uppercaseString];
-    if (kShortcutKeys4TestsArray[key]) {
-        [self runFractControllerTest: kShortcutKeys4TestsArray[key]];  return;
+    for (const testID in gTestRegistry) {
+        if (gTestRegistry[testID].shortcut === key) {
+            [self runFractControllerTest: parseInt(testID)];
+            return;
+        }
     }
     switch(key) { //many keys are dealt with via the "Key Equivalent" in IB
         case "W" : [Misc infoAllWindows]; break;

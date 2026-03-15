@@ -309,24 +309,14 @@ function _pause(ms) { //console.info("Misc>_pause");
     return [kTestContrastG].includes(gCurrentTestID) && (![self isAcuityGratingMisc]);
 }
 + (CPString) testNameGivenTestID: (TestIDType) theTestID {
-    switch (theTestID) {
-        case kTestAcuityLett: return "Acuity_Letters";
-        case kTestAcuityLandolt: return "Acuity_LandoltC";
-        case kTestAcuityE: return "Acuity_TumblingE";
-        case kTestAcuityTAO: return "Acuity_TAO";
-        case kTestAcuityVernier: return "Acuity_Vernier";
-        case kTestContrastLett: return "Contrast_Letters";
-        case kTestContrastLandolt: return "Contrast_LandoltC";
-        case kTestContrastE: return "Contrast_TumblingE";
-        case kTestContrastG:
-            if ([self isContrastGMisc]) return "Contrast_Grating";
-            return "Acuity_Grating";
-        case kTestAcuityLineByLine: return "Acuity_LineByLine";
-        case kTestBalmLight: return "BalmLight";
-        case kTestBalmLocation: return "BalmLocation";
-        case kTestBalmMotion: return "BalmMotion";
+    //this special treatment of gratings is historical and not satisfactory
+    if (theTestID === kTestContrastG) {
+        if ([self isContrastGMisc]) return "Contrast_Grating";
+        return "Acuity_Grating";
     }
-    return "TEST NUMBER " + [self stringFromInteger: theTestID] + "NOT ASSIGNED";
+    const entry = gTestRegistry[theTestID];
+    if (entry && entry.name) return entry.name;
+    return "TEST NUMBER " + [self stringFromInteger: theTestID] + " NOT ASSIGNED";
 }
 
 

@@ -60,14 +60,25 @@ kTestContrastG = 9; kTestAcuityLineByLine = 10;
 kTestBalmGeneral = 11;
 kTestBalmLight = 12; kTestBalmLocation = 13; kTestBalmMotion = 14;
 kTestContrastDitherUnittest = 15;
-gCurrentTestID = kTestNone;
-
+gTestRegistry = {
+    [kTestAcuityLett]: {className: "FractControllerAcuityL", shortcut: "L", name: "Acuity_Letters"},
+    [kTestAcuityLandolt]: {className: "FractControllerAcuityC", shortcut: "C", name: "Acuity_LandoltC"},
+    [kTestAcuityE]: {className: "FractControllerAcuityE", shortcut: "E", name: "Acuity_TumblingE"},
+    [kTestAcuityTAO]: {className: "FractControllerAcuityTAO", shortcut: "A", name: "Acuity_TAO"},
+    [kTestAcuityVernier]: {className: "FractControllerAcuityVernier", shortcut: "V", name: "Acuity_Vernier"},
+    [kTestContrastLett]: {className: "FractControllerContrastLett", shortcut: "1", name: "Contrast_Letters"},
+    [kTestContrastLandolt]: {className: "FractControllerContrastC", shortcut: "2", name: "Contrast_LandoltC"},
+    [kTestContrastE]: {className: "FractControllerContrastE", shortcut: "3", name: "Contrast_TumblingE"},
+    [kTestContrastG]: {className: "FractControllerContrastG", shortcut: "G", name: "Contrast_Grating"},
+    [kTestAcuityLineByLine]: {className: "FractControllerAcuityLineByLine", shortcut: "4", name: "Acuity_LineByLine"},
+    [kTestBalmGeneral]: {name: "BaLM"},
+    [kTestBalmLight]: {className: "FractControllerBalmLight", name: "BalmLight"},
+    [kTestBalmLocation]: {className: "FractControllerBalmLocation", name: "BalmLocation"},
+    [kTestBalmMotion]: {className: "FractControllerBalmMotion", name: "BalmMotion"},
+    [kTestContrastDitherUnittest]: {className: "FractControllerContrastDitherUnittest", shortcut: "9", name: "ContrastDitherUnittest"}
+};
 gBalmTestIDs = [kTestBalmLight, kTestBalmLocation, kTestBalmMotion];
-
-kShortcutKeys4TestsArray = {"L": kTestAcuityLett, "C": kTestAcuityLandolt, "E": kTestAcuityE,
-    "A": kTestAcuityTAO, "V": kTestAcuityVernier,
-    "1": kTestContrastLett, "2": kTestContrastLandolt, "3": kTestContrastE,
-    "G": kTestContrastG, "9": kTestContrastDitherUnittest, "4": kTestAcuityLineByLine};
+gCurrentTestID = kTestNone;
 
 @typedef NAlternativesIndexType
 kNAlternativesIndex2 = 0; kNAlternativesIndex4 = 1; kNAlternativesIndex8plus = 2;

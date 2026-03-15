@@ -1,5 +1,6 @@
 # History
 
+2026-03-15 refactor: introduce `gTestRegistry` Globals.j to remove redundant shortcut mapping and centralise test class identification and naming
 2026-03-08 add class `CPTextField_Category.j` to solve the problem that textfields in bezeled state did not respond to non-default font family/size settings, `MDBTextfield.j` no longer needed
 2026-03-07a fix crash in BaLM when called as the first test, use `MDBTextField` to allow larger size
 2026-03-07 create all "ResponseInfoPanels", no more XIBs; dynamic instantiaion of test classes in `AppController`
