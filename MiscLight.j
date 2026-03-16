@@ -100,7 +100,7 @@
 
         val1 = [self contrastWeberPercentFromLogCSWeber: val0];
         val1 = [self contrastMichelsonPercentFromWeberPercent: val1];
-        val1 = [self contrastWeberPercentFromMichelsonPercent: val1]
+        val1 = [self contrastWeberPercentFromMichelsonPercent: val1];
         val1 = [self contrastLogCSWeberFromWeberPercent: val1];
         isSuccess &&= [Misc areNearlyEqual: val0 and: val1];
         if (!isSuccess) {

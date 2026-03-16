@@ -112,7 +112,6 @@ Created by mb on July 15, 2015.
         ["gratingShapeIndex", "int"],
         ["gratingForeColor", "col"], ["gratingBackColor", "col"], //↓BaLM tab
         ["balmIsiMillisecs", "int"], ["balmOnMillisecs", "int"],
-        ["balmSpeedInDegPerSec", "float"],
         ["balmLocationDiameterInDeg", "float"],
         ["balmLocationEccentricityInDeg", "float"],
         ["balmMotionDiameterInDeg", "float"],
