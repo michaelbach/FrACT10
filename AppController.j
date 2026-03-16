@@ -455,6 +455,43 @@
 }
 
 
+/**
+ Perform a "health check" verifying that all outlets are connected and the global state is consistent. Useful for finding issues after refactorings or Xib changes.
+ @return YES if all checks pass
+ */
+- (BOOL) unittestHealth {
+    let success = YES, report = crlf + "Report from “unittestHealth”:" + crlf;
+    if (gAppController !== self) { //Check global controller
+        report += " - ERROR: gAppController is not self!" + crlf;  success = NO;
+    }
+
+    //Check critical outlets
+    const criticalOutlets = [
+        {name: "fractControllerWindow", val: fractControllerWindow},
+        {name: "settingsPanel", val: settingsPanel},
+        {name: "buttonAcuityTAO", val: buttonAcuityTAO},
+        {name: "gammaView", val: gammaView},
+        {name: "resultStringField", val: resultStringField}
+    ];
+    for (const outlet of criticalOutlets) {
+        if (!outlet.val) {
+            report += " - ERROR: Outlet '" + outlet.name + "' is nil!" + crlf;  success = NO;
+        }
+    }
+
+    if (![[self window] isKeyWindow] && !currentFractController) { //Check window state
+        report += " - WARNING: Main window is not Key, but no test is running." + crlf;
+    }
+
+    if (success) {
+        report += " - All critical outlets and global states are OK." + crlf;
+    }
+
+    console.info(report);
+    return success;
+}
+
+
 /*- (void) controlTextDidChange: (CPNotification) notification {
  }*/
 /**

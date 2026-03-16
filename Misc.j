@@ -388,13 +388,20 @@ function _pause(ms) { //console.info("Misc>_pause");
     let s = "Unittests: ", successAll = YES, success;
     success = [Misc unittest];  successAll &&= success;
     s += "Mc" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
+
     success = [MiscSpace unittest];  successAll &&= success;
     s += ", McS" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
+
     success = [MiscLight unittest];  successAll &&= success;
     s += ", McL" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
+
     success = [MDBDispersionEstimation unittestProbCorrectGivenLogMAR];  successAll &&= success;
     s += ", DispE" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
-    s += (success ? "" : "failed");
+
+    success = [gAppController unittestHealth];
+    s += (success ? "" : "failed");  successAll &&= success;
+    s += ", AppH" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
+
     [gAppController setResultStringFieldTo: s];
     return success;
 }
