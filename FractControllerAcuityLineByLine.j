@@ -55,7 +55,7 @@ Created by mb on 2021-12-21.
     iTrial = 1;
     stimStrengthInDeviceunits = [MiscSpace strokePixelsFromlogMAR: localLogMAR];
     state = kStateDrawFore;
-    [[gAppController.selfWindow contentView] setNeedsDisplay: YES];
+    [[[self window] contentView] setNeedsDisplay: YES];
 }
 
 
@@ -170,7 +170,7 @@ Created by mb on 2021-12-21.
     [Settings setLineByLineHeadcountIndex:value];
 }
 - (void)acuityNLinesPopupChanged:(id)sender { // necessary for immediate update
-    [[gAppController.selfWindow contentView] setNeedsDisplay: YES];
+    [[[self window] contentView] setNeedsDisplay: YES];
 }
 
 

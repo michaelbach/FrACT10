@@ -106,7 +106,7 @@
                     }
                 }
             }
-            [gAppController.selfWindow makeKeyWindow];
+            [[gAppController window] makeKeyWindow];
             [self post2parentM1:m1 m2:m2 m3:m3 success:YES];
         }
     };

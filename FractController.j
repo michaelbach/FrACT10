@@ -45,16 +45,15 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) updateViewWidthHeight {
-    viewWidth = CGRectGetWidth([gAppController.selfWindow frame]);  viewWidthHalf = viewWidth / 2;
-    viewHeight = CGRectGetHeight([gAppController.selfWindow frame]);  viewHeightHalf = viewHeight / 2;
+    viewWidth = CGRectGetWidth([[self window] frame]);  viewWidthHalf = viewWidth / 2;
+    viewHeight = CGRectGetHeight([[self window] frame]);  viewHeightHalf = viewHeight / 2;
 }
 
 
 - (id) initWithWindow: (CPWindow) aWindow { //console.info("FractController>initWithWindow");
     self = [super initWithWindow: aWindow];
     if (self) {
-        gAppController.selfWindow = [self window];
-        [gAppController.selfWindow setFullPlatformWindow: YES];
+        [[self window] setFullPlatformWindow: YES];
         [aWindow setDelegate: self];
         [self updateViewWidthHeight];
         state = kStateDrawBack;
@@ -66,7 +65,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         [Settings checkDefaults];
         abortCharacter = kKEY_RESPONSE_ABORT;
         [gAppController setRunAborted: YES];
-        [gAppController.selfWindow makeKeyAndOrderFront: self];  [gAppController.selfWindow makeFirstResponder: self];
+        [[self window] makeKeyAndOrderFront: self];  [[self window] makeFirstResponder: self];
+
         //[self performSelector: @selector(runStart) withObject: nil afterDelay: 0.01]; //geht nicht mehr nach DEPLOY???
         [MDBDispersionEstimation initResultStatistics];  ci95String = "";
         //[self runStart];
@@ -161,7 +161,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     }
     const tIsi = gBalmTestIDs.includes(gCurrentTestID) ? [Settings balmIsiMillisecs] : [Settings timeoutIsiMillisecs];
     timerIsi = [CPTimer scheduledTimerWithTimeInterval: tIsi / 1000 target:self selector:@selector(onTimeoutIsi:) userInfo:nil repeats:NO];
-    state = kStateDrawBack; [[gAppController.selfWindow contentView] setNeedsDisplay: YES];
+    state = kStateDrawBack; [[[self window] contentView] setNeedsDisplay: YES];
 }
 - (void) onTimeoutIsi: (CPTimer) timer { //CPLog("onTimeoutIsi");
     //now we can draw the stimulus
@@ -180,7 +180,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             timerAutoResponse = [CPTimer scheduledTimerWithTimeInterval: autoTime target:self selector:@selector(onTimeoutAutoResponse:) userInfo:nil repeats:NO];
         }
     }
-    state = kStateDrawFore; [[gAppController.selfWindow contentView] setNeedsDisplay: YES];
+    state = kStateDrawFore; [[[self window] contentView] setNeedsDisplay: YES];
 }
 
 
@@ -194,10 +194,10 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         CGContextSetFillColor(cgc, [CPColor whiteColor]); //contrast always 100% with TAO
     if ([self isContrastOptotype] && [Settings isContrastDithering]) {
         CGContextSetFillColor(cgc, colorBackUndithered); //else black background is briefly visible, due to dithering delay
-        CGContextFillRect(cgc, [gAppController.selfWindow frame]);
+        CGContextFillRect(cgc, [[self window] frame]);
         CGContextSetFillColor(cgc, gColorBack);
     }
-    CGContextFillRect(cgc, [gAppController.selfWindow frame]);
+    CGContextFillRect(cgc, [[self window] frame]);
     CGContextSaveGState(cgc);
     CGContextTranslateCTM(cgc,  viewWidthHalf, viewHeightHalf); //origin to center
     CGContextTranslateCTM(cgc,  -xEccInPix, -yEccInPix); //eccentric if desired
@@ -319,7 +319,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [button setTitle: title];  [button setKeyEquivalent: keyEquivalent];
     [button setTarget: self];  [button setAction: @selector(responseButton_action:)];
     [button setBezelStyle: CPRoundRectBezelStyle];
-    [[gAppController.selfWindow contentView] addSubview: button];
+    [[[self window] contentView] addSubview: button];
     responseButtonsAdded = YES;
     return button;
 }
@@ -331,7 +331,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) onTimeoutDisplay: (CPTimer) timer { //console.info("FractController>onTimeoutDisplay");
-    state = kStateDrawBack;  [[gAppController.selfWindow contentView] setNeedsDisplay: YES];
+    state = kStateDrawBack;  [[[self window] contentView] setNeedsDisplay: YES];
 }
 
 
@@ -441,7 +441,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [self invalidateTrialTimers];
 
     CGContextSetFillColor(cgc, gColorBack); //need to clear for ISI to work
-    CGContextFillRect(cgc, [gAppController.selfWindow frame]);
+    CGContextFillRect(cgc, [[self window] frame]);
 
     [TrialHistoryController setIsCorrect: responseWasCorrect]; //placed here so reached by "onTimeoutAutoResponse"
     [thresholder enterTrialOutcomeWithAppliedStim: [self stimThresholderunitsFromDeviceunits: stimStrengthInDeviceunits] wasCorrect: responseWasCorrect];
@@ -477,9 +477,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 - (async void) runEnd { //console.info("FractController>runEnd");
     [self invalidateTrialTimers];
-    const sv = [[gAppController.selfWindow contentView] subviews];
+    const sv = [[[self window] contentView] subviews];
     for (const svi of sv) [svi removeFromSuperview];
-    [gAppController.selfWindow close];
+    [[self window] close];
     [gAppController setRunAborted: (iTrial < nTrials)]; //premature end?
     [gAppController setCurrentTestResultExportString: [self composeExportString]];
     //delay to give the screen time to update for immediate response feedback

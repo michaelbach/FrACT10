@@ -56,8 +56,7 @@
 
  */
 
-@implementation AppController : CPWindowController {
-    CPWindow selfWindow;
+@implementation AppController: CPWindowController {
     @outlet CPWindow fractControllerWindow;
     @outlet CPPanel settingsPanel;
     CPPanel currentInfoPanel;
@@ -128,7 +127,7 @@
 - (CPColor) gratingBackColor {return [Settings gratingBackColor];}
 - (CPColor) windowBackgroundColor {return [Settings windowBackgroundColor];}
 - (void) setWindowBackgroundColor: (CPColor) col { //console.info("AppController>setAcuityBackColor");
-    [Settings setWindowBackgroundColor: col];  [selfWindow setBackgroundColor: col];
+    [Settings setWindowBackgroundColor: col];  [[self window] setBackgroundColor: col];
 }
 
 
@@ -160,10 +159,9 @@
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>…Launching");
     currentFractController = null; //making sure, is used to check whether inRun
     [Misc randomizeRandomGenerator];
-    selfWindow = [self window];
-    [selfWindow setFullPlatformWindow: YES];
-    [selfWindow setBackgroundColor: [self windowBackgroundColor]];
-    [selfWindow setTitle: "FrACT10"];
+    [[self window] setFullPlatformWindow: YES];
+    [[self window] setBackgroundColor: [self windowBackgroundColor]];
+    [[self window] setTitle: "FrACT10"];
     [self setVersionDateString: gTestDetails[td_vsFrACT]];
     [CPMenu setMenuBarVisible: NO];
     [self setupEventListeners];
@@ -176,7 +174,7 @@
     [self setSettingsPaneTabViewSelectedIndex: 0]; //select the "General" tab in Settings
 
     rewardImageView = [[CPImageView alloc] initWithFrame: CGRectMake(100, 0, 600, 600)];
-    [[selfWindow contentView] addSubview: rewardImageView positioned: CPWindowBelow relativeTo: nil];
+    [[[self window] contentView] addSubview: rewardImageView positioned: CPWindowBelow relativeTo: nil];
 
     [self setupControllers];
 
@@ -201,8 +199,8 @@
     [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationRunFractControllerTest:) name: "notificationRunFractControllerTest" object: nil];
     [ControlDispatcher init];
 
-    [Misc centerWindowOrPanel: [selfWindow contentView]]; //→center
-    [selfWindow orderFront: self]; //ensures that it will receive clicks w/o activating
+    [Misc centerWindowOrPanel: [[self window] contentView]]; //→center
+    [[self window] orderFront: self]; //ensures that it will receive clicks w/o activating
     [resultStringField setVerticalAlignment: CPTopVerticalTextAlignment];
     [self setResultStringFieldTo: "– Result displayed here –"];
     [resultStringField setEnabled: NO];
@@ -232,17 +230,13 @@
                 [currentFractController runEnd]; //because the <esc> was consumed
             }
         }
-        if (![Misc isInRun]) { //don't do ⇙this while "inRun"
-            selfWindow = [self window]; //this prevents origin shift for fullScreen on/off
-        }
     });
     /*if ([Settings autoFullScreen]) { //does not work because it needs user interaction
         [Misc fullScreenOn: YES];
     }*/
     window.addEventListener("resize", (event) => {
         if ([Misc isInRun]) return; //don't do ⇙this while "inRun"
-        selfWindow = [self window]; //this prevents origin shift for fullScreen on/off
-        [Misc centerWindowOrPanel: [selfWindow contentView]];
+        [Misc centerWindowOrPanel: [[self window] contentView]];
 
 /*        //https://ua.hexalys.com
         console.info("scale", window.visualViewport.scale);
@@ -308,7 +302,7 @@
     if (![[self windowBackgroundColor] isEqual: [Settings windowBackgroundColor]]) {
         [self setWindowBackgroundColor: [Settings windowBackgroundColor]];
     }
-    [selfWindow setBackgroundColor: [self windowBackgroundColor]];
+    [[self window] setBackgroundColor: [self windowBackgroundColor]];
 }
 
 
@@ -418,7 +412,7 @@
 
     //allow 1 eventloop
     const UI_UPDATE_DELAY = 1; //1 millisecond is enough
-    setTimeout(() => {[[selfWindow contentView] setNeedsDisplay: YES];}, UI_UPDATE_DELAY);
+    setTimeout(() => {[[[self window] contentView] setNeedsDisplay: YES];}, UI_UPDATE_DELAY);
     //console.info(gTestDetails);
 }
 
@@ -624,7 +618,7 @@
 - (IBAction) buttonDoExit_action: (id) sender { //console.info("AppController>buttonExit_action");
     [Misc fullScreenOn: NO];
     [Settings setPatID: gPatIDdefault]; //clear ID string
-    [selfWindow close];  [CPApp terminate: nil];  window.close();
+    [[self window] close];  [CPApp terminate: nil];  window.close();
 }
 
 

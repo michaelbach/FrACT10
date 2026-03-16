@@ -122,9 +122,9 @@ function _pause(ms) { //console.info("Misc>_pause");
 
 
 + (void) udpateGUI {
-    [[gAppController.selfWindow contentView] display];
+    [[[gAppController window] contentView] display];
     setTimeout(function() {
-        [[gAppController.selfWindow contentView] display];
+        [[[gAppController window] contentView] display];
     }, 1);
 }
 
