@@ -1,5 +1,6 @@
 # History
 
+2026-03-17 refactor: rename a variable
 2026-03-16 fix brittle window management; code improvvment, nor really errors: remove double `balmSpeedInDegPerSec`, add missing ";" at end of lines; add `unittestHealth`
 2026-03-15 refactor: introduce `gTestRegistry` Globals.j to remove redundant shortcut mapping and centralise test class identification and naming
 2026-03-08 add class `CPTextField_Category.j` to solve the problem that textfields in bezeled state did not respond to non-default font family/size settings, `MDBTextfield.j` no longer needed

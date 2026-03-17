@@ -61,21 +61,21 @@ kTestBalmGeneral = 11;
 kTestBalmLight = 12; kTestBalmLocation = 13; kTestBalmMotion = 14;
 kTestContrastDitherUnittest = 15;
 gTestRegistry = {
-    [kTestAcuityLett]: {className: "FractControllerAcuityL", shortcut: "L", name: "Acuity_Letters"},
-    [kTestAcuityLandolt]: {className: "FractControllerAcuityC", shortcut: "C", name: "Acuity_LandoltC"},
-    [kTestAcuityE]: {className: "FractControllerAcuityE", shortcut: "E", name: "Acuity_TumblingE"},
-    [kTestAcuityTAO]: {className: "FractControllerAcuityTAO", shortcut: "A", name: "Acuity_TAO"},
-    [kTestAcuityVernier]: {className: "FractControllerAcuityVernier", shortcut: "V", name: "Acuity_Vernier"},
-    [kTestContrastLett]: {className: "FractControllerContrastLett", shortcut: "1", name: "Contrast_Letters"},
-    [kTestContrastLandolt]: {className: "FractControllerContrastC", shortcut: "2", name: "Contrast_LandoltC"},
-    [kTestContrastE]: {className: "FractControllerContrastE", shortcut: "3", name: "Contrast_TumblingE"},
-    [kTestContrastG]: {className: "FractControllerContrastG", shortcut: "G", name: "Contrast_Grating"},
-    [kTestAcuityLineByLine]: {className: "FractControllerAcuityLineByLine", shortcut: "4", name: "Acuity_LineByLine"},
-    [kTestBalmGeneral]: {name: "BaLM"},
-    [kTestBalmLight]: {className: "FractControllerBalmLight", name: "BalmLight"},
-    [kTestBalmLocation]: {className: "FractControllerBalmLocation", name: "BalmLocation"},
-    [kTestBalmMotion]: {className: "FractControllerBalmMotion", name: "BalmMotion"},
-    [kTestContrastDitherUnittest]: {className: "FractControllerContrastDitherUnittest", shortcut: "9", name: "ContrastDitherUnittest"}
+    [kTestAcuityLett]: {className: "FractControllerAcuityL", shortcut: "L", name4xport: "Acuity_Letters"},
+    [kTestAcuityLandolt]: {className: "FractControllerAcuityC", shortcut: "C", name4xport: "Acuity_LandoltC"},
+    [kTestAcuityE]: {className: "FractControllerAcuityE", shortcut: "E", name4xport: "Acuity_TumblingE"},
+    [kTestAcuityTAO]: {className: "FractControllerAcuityTAO", shortcut: "A", name4xport: "Acuity_TAO"},
+    [kTestAcuityVernier]: {className: "FractControllerAcuityVernier", shortcut: "V", name4xport: "Acuity_Vernier"},
+    [kTestContrastLett]: {className: "FractControllerContrastLett", shortcut: "1", name4xport: "Contrast_Letters"},
+    [kTestContrastLandolt]: {className: "FractControllerContrastC", shortcut: "2", name4xport: "Contrast_LandoltC"},
+    [kTestContrastE]: {className: "FractControllerContrastE", shortcut: "3", name4xport: "Contrast_TumblingE"},
+    [kTestContrastG]: {className: "FractControllerContrastG", shortcut: "G", name4xport: "Contrast_Grating"},
+    [kTestAcuityLineByLine]: {className: "FractControllerAcuityLineByLine", shortcut: "4", name4xport: "Acuity_LineByLine"},
+    [kTestBalmGeneral]: {name4xport: "BaLM"},
+    [kTestBalmLight]: {className: "FractControllerBalmLight", name4xport: "BalmLight"},
+    [kTestBalmLocation]: {className: "FractControllerBalmLocation", name4xport: "BalmLocation"},
+    [kTestBalmMotion]: {className: "FractControllerBalmMotion", name4xport: "BalmMotion"},
+    [kTestContrastDitherUnittest]: {className: "FractControllerContrastDitherUnittest", shortcut: "9", name4xport: "ContrastDitherUnittest"}
 };
 gBalmTestIDs = [kTestBalmLight, kTestBalmLocation, kTestBalmMotion];
 gCurrentTestID = kTestNone;

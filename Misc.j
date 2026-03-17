@@ -348,7 +348,7 @@ function _pause(ms) { //console.info("Misc>_pause");
         return "Acuity_Grating";
     }
     const entry = gTestRegistry[theTestID];
-    if (entry && entry.name) return entry.name;
+    if (entry && entry.name4xport) return entry.name4xport;
     return "TEST NUMBER " + [self stringFromInteger: theTestID] + " NOT ASSIGNED";
 }
 
