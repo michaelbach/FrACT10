@@ -371,7 +371,7 @@ function _pause(ms) { //console.info("Misc>_pause");
  */
 + (BOOL) unittest {
     let isSuccess = YES;
-    console.log("\nMisc>Testing rounding of floating point numbers")
+    console.log("\nMisc▸Testing rounding of floating point numbers")
     for (let val0 of [0.8049, 0.80499, 0.8050, 0.80501, 0.8051]) {
         let val1 = [self stringFromNumber: val0 decimals: 1 localised: NO];
         let val2 = [self stringFromNumber: val0 decimals: 2 localised: NO];
@@ -398,9 +398,9 @@ function _pause(ms) { //console.info("Misc>_pause");
     success = [MDBDispersionEstimation unittestProbCorrectGivenLogMAR];  successAll &&= success;
     s += ", DispE" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
 
-    success = [gAppController unittestHealth];
+    success = [gAppController unittestAppC];
     s += (success ? "" : "failed");  successAll &&= success;
-    s += ", AppH" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
+    s += ", AppC" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
 
     [gAppController setResultStringFieldTo: s];
     return success;

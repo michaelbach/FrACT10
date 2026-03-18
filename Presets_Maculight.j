@@ -17,7 +17,7 @@
     [Settings setShowResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
     [Settings setResultsToClipboardIndex: kResultsToClipFinalOnly];
     [Settings setDistanceInCM: 400];
-    [Settings setTestOnFive: kTestAcuityLett];
+    [Settings setTestOnFive: kTestAcuityLetters];
     //contrast pane
     [Settings setContrastOptotypeDiameter: 170];
 }

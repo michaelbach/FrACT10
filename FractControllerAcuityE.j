@@ -27,7 +27,7 @@ Created by Bach on 14.08.2017.
 - (CPString) composeExportString {return [self acuityComposeExportString];}
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerAcuityC>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerAcuityE>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
     [self prepareDrawing];
     switch(state) {

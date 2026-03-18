@@ -174,7 +174,7 @@ Created by mb on 2021-12-21.
 }
 
 
-- (void) runStart { //console.info("FractControllerAcuityLetters>runStart");
+- (void) runStart { //console.info("FractControllerAcuityLineByLine>runStart");
     nAlternatives = 10;
     switch([Settings testOnLineByLineIndex]) {
         case 1: nAlternatives = 10;  break;

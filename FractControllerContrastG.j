@@ -199,7 +199,7 @@ const specialBcmStepsize = 0.1;
 }
 
 
-- (void) runStart { //console.info("FractControllerContrastLett>runStart");
+- (void) runStart { //console.info("FractControllerContrastG>runStart");
     gratingShapeIndex = [Settings gratingShapeIndex];
     nAlternatives = Math.min([Settings nAlternatives], 4);
     if (gratingShapeIndex === kGratingShapeIndexCheckerboard) {

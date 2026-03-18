@@ -215,12 +215,12 @@ const testColorStuff = async () => {
 const simpleSimon = async () => {
     await ensureHomeState();
     let response = await await oneStep3Ms('getSetting', 'enableTestAcuityLandolt', '');
-    await oneStep3Ms('setSetting', 'enableTestAcuityLett', YES);
+    await oneStep3Ms('setSetting', 'enableTestAcuityLetters', YES);
     await oneStep3Ms('setSetting', 'enableTestAcuityLandolt', !response.m3);
     await oneStep3Ms('setSetting', 'enableTestAcuityE', !response.m3);
     await oneStep3Ms('setSetting', 'enableTestAcuityTAO', !response.m3);
     await oneStep3Ms('setSetting', 'enableTestAcuityVernier', !response.m3);
-    await oneStep3Ms('setSetting', 'enableTestContrastLett', !response.m3);
+    await oneStep3Ms('setSetting', 'enableTestContrastLetters', !response.m3);
     await oneStep3Ms('setSetting', 'enableTestContrastLandolt', !response.m3);
     await oneStep3Ms('setSetting', 'enableTestContrastE', !response.m3);
     await oneStep3Ms('setSetting', 'enableTestContrastG', !response.m3);

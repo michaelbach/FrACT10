@@ -57,7 +57,7 @@ kSpriteFile = "allRewardSprites.webp";
 }
 
 
-- (void) unittest { //console.info("RewardsController>test");
+- (void) unittest { //console.info("RewardsController▸test");
     _unitTesting = YES;
     _currentImage = 0;
     _savedTimeout = [Settings timeoutRewardPicturesInSeconds]

@@ -2,14 +2,14 @@
 This file is part of FrACT10, a vision test battery.
 © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
-FractControllerAcuityC.j
+ FractControllerAcuityLandolt.j
 
 Created by Bach on 18.07.2017.
 */
 
 
 @import "FractControllerAcuity.j"
-@implementation FractControllerAcuityC: FractControllerAcuity {
+@implementation FractControllerAcuityLandolt: FractControllerAcuity {
 }
 
 
@@ -26,7 +26,7 @@ Created by Bach on 18.07.2017.
 - (CPString) composeExportString {return [self acuityComposeExportString];}
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerAcuityC>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerAcuityLandolt>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
     [self prepareDrawing];
     switch(state) {

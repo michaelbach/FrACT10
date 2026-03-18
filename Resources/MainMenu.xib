@@ -46,13 +46,13 @@
 
 Shortcut: L
  </string>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityLett" imagePosition="only" alignment="center" tag="1" imageScaling="proportionallyUpOrDown" inset="2" id="xw1-er-aQN">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityLetters" imagePosition="only" alignment="center" tag="1" imageScaling="proportionallyUpOrDown" inset="2" id="xw1-er-aQN">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoTest_action:" target="450" id="NLI-ne-nVY"/>
-                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestAcuityLett" id="392-eh-6px"/>
+                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestAcuityLetters" id="GGr-o4-M4z"/>
                         </connections>
                     </button>
                     <button tag="2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWr-KV-CRJ" customClass="MDBButton_Test">
@@ -62,7 +62,7 @@ Shortcut: L
 
 Shortcut: C (for "Landolt C")
   </string>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityC" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="ivt-76-XPn">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonAcuityLandolt" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="ivt-76-XPn">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -144,13 +144,13 @@ Shortcut: B
 
 Shortcut: 1
  </string>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonContrastLett" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="g65-ae-fbX">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonContrastLetters" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="g65-ae-fbX">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
                             <action selector="buttonDoTest_action:" target="450" id="xsc-1M-0UT"/>
-                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestContrastLett" id="yZ5-Zg-RNx"/>
+                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.enableTestContrastLetters" id="ChH-o0-R5p"/>
                         </connections>
                     </button>
                     <button tag="7" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="teG-PN-Gq7" customClass="MDBButton_Test">
@@ -160,7 +160,7 @@ Shortcut: 1
 
 Shortcut: 2
  </string>
-                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonContrastC" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="RRU-h0-CYF">
+                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="buttonContrastLandolt" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="RRU-h0-CYF">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -4445,16 +4445,16 @@ This is useful for instance when you want a darker environment.
     </objects>
     <resources>
         <image name="FrACT_svg_icon" width="126" height="126"/>
-        <image name="buttonAcuityC" width="849" height="849"/>
         <image name="buttonAcuityE" width="662" height="662"/>
-        <image name="buttonAcuityLett" width="869" height="889"/>
+        <image name="buttonAcuityLandolt" width="849" height="849"/>
+        <image name="buttonAcuityLetters" width="869" height="889"/>
         <image name="buttonAcuityLineByLine" width="1055" height="1055"/>
         <image name="buttonAcuityTAO" width="820" height="820"/>
         <image name="buttonAcuityVernier" width="798" height="798"/>
         <image name="buttonBalm" width="862" height="825"/>
-        <image name="buttonContrastC" width="1160" height="1160"/>
         <image name="buttonContrastE" width="970" height="970"/>
-        <image name="buttonContrastLett" width="1098" height="1098"/>
+        <image name="buttonContrastLandolt" width="1160" height="1160"/>
+        <image name="buttonContrastLetters" width="1098" height="1098"/>
         <image name="buttonGrating" width="412" height="412"/>
         <image name="iconAbout" width="396" height="396"/>
         <image name="iconCross" width="482" height="480"/>

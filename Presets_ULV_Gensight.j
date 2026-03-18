@@ -21,7 +21,7 @@
     [Settings setNTrials08: 24];
     [Settings setAuditoryFeedback4trialIndex: kauditoryFeedback4trialIndexAlways];
     [Settings setTimeoutResponseSeconds: 60]; [Settings setTimeoutDisplaySeconds: 60];
-    [Settings setTestOnFive: kTestAcuityLett];
+    [Settings setTestOnFive: kTestAcuityLetters];
     [Settings setResultsToClipboardIndex: kResultsToClipFullHistory];
     //acuity pane
     [Settings setMaxDisplayedAcuity: 2.5];

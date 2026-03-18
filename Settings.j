@@ -127,12 +127,12 @@ Created by mb on July 15, 2015.
         ["isAcuityPresentedConstant", "bool"],
         ["acuityPresentedConstantLogMAR", "float"],
         ["isAutoPreset", "bool"],
-        ["enableTestAcuityLett", "bool"],
+        ["enableTestAcuityLetters", "bool"],
         ["enableTestAcuityLandolt", "bool"],
         ["enableTestAcuityE", "bool"],
         ["enableTestAcuityTAO", "bool"],
         ["enableTestAcuityVernier", "bool"],
-        ["enableTestContrastLett", "bool"],
+        ["enableTestContrastLetters", "bool"],
         ["enableTestContrastLandolt", "bool"],
         ["enableTestContrastE", "bool"],
         ["enableTestContrastG", "bool"],
@@ -188,12 +188,12 @@ Created by mb on July 15, 2015.
 
 
 + (void) enableNotDisableAllTests: (BOOL) enab {
-    [self setEnableTestAcuityLett: enab];
+    [self setEnableTestAcuityLetters: enab];
     [self setEnableTestAcuityLandolt: enab];
     [self setEnableTestAcuityE: enab];
     [self setEnableTestAcuityTAO: enab];
     [self setEnableTestAcuityVernier: enab];
-    [self setEnableTestContrastLett: enab];
+    [self setEnableTestContrastLetters: enab];
     [self setEnableTestContrastLandolt: enab];
     [self setEnableTestContrastE: enab];
     [self setEnableTestContrastG: enab];
@@ -238,8 +238,8 @@ Created by mb on July 15, 2015.
     
     [self setDecimalMarkCharIndex: [self checkNum: [self decimalMarkCharIndex] dflt: kDecimalMarkCharIndexAuto min: kDecimalMarkCharIndexAuto max: kDecimalMarkCharIndexComma set: set]];
     
-    [self setTestOnFive: [self checkNum: [self testOnFive] dflt: kTestAcuityLett min: kTestNone max: kTestAcuityLineByLine set: set]]; //1: Sloan Letters
-    
+    [self setTestOnFive: [self checkNum: [self testOnFive] dflt: kTestAcuityLetters min: kTestNone max: kTestAcuityLineByLine set: set]]; //1: Sloan Letters
+
     [self setEccentXInDeg: [self checkNum: [self eccentXInDeg] dflt: 0 min: -99 max: 99 set: set]];
     [self setEccentYInDeg: [self checkNum: [self eccentYInDeg] dflt: 0 min: -99 max: 99 set: set]];
     [self setEccentShowCenterFixMark: [self checkBool: [self eccentShowCenterFixMark] dflt: YES set: set]];
@@ -361,12 +361,12 @@ Created by mb on July 15, 2015.
     [self setIsAutoPreset: [self checkBool: [self isAutoPreset] dflt: NO set: set]];
 
     if (set) [self enableNotDisableAllTests: YES];
-/*    [self setEnableTestAcuityLett: [self checkBool: [self enableTestAcuityLett] dflt: YES set: set]];
+/*    [self setEnableTestAcuityLetters: [self checkBool: [self enableTestAcuityLetters] dflt: YES set: set]];
     [self setEnableTestAcuityLandolt: [self checkBool: [self enableTestAcuityLandolt] dflt: YES set: set]];
     [self setEnableTestAcuityE: [self checkBool: [self enableTestAcuityE] dflt: YES set: set]];
     [self setEnableTestAcuityTAO: [self checkBool: [self enableTestAcuityTAO] dflt: YES set: set]];
     [self setEnableTestAcuityVernier: [self checkBool: [self enableTestAcuityVernier] dflt: YES set: set]];
-    [self setEnableTestContrastLett: [self checkBool: [self enableTestContrastLett] dflt: YES set: set]];
+    [self setEnableTestContrastLetters: [self checkBool: [self enableTestContrastLetters] dflt: YES set: set]];
     [self setEnableTestContrastLandolt: [self checkBool: [self enableTestContrastLandolt] dflt: YES set: set]];
     [self setEnableTestContrastE: [self checkBool: [self enableTestContrastE] dflt: YES set: set]];
     [self setEnableTestContrastG: [self checkBool: [self enableTestContrastG] dflt: YES set: set]];

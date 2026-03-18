@@ -43,7 +43,7 @@ Implementation of BestPEST
 
 
 - (void) unitTest {
-    console.log("\nThresholderPest>unittest")
+    console.log("\nThresholderPest▸unittest")
     for (let i = 0; i < 10; ++i) {
         const stim = [self nextStim2apply];
         console.info(i + " " + stim);

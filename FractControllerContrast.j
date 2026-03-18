@@ -141,7 +141,7 @@ Created by Bach on 2020-09-02
                         if (directionInRow === [alternativesGenerator currentAlternative])
                             directionInRow = [rowAlternatives nextAlternative];
                         switch (gCurrentTestID) {
-                            case kTestContrastLett:
+                            case kTestContrastLetters:
                                 [optotypes drawLetterNr: directionInRow withStrokeInPx: strokeSizeInPix];  break;
                             case kTestContrastE:
                                 [optotypes tumblingEWithStrokeInPx: strokeSizeInPix direction: directionInRow];  break;

@@ -54,19 +54,19 @@ gCalBarLengthInPixel = 700;
 kMeter2FeetMultiplier = 3.28084;  tab = "\t";  crlf = "\n";
 
 @typedef TestIDType
-kTestNone = 0; kTestAcuityLett = 1; kTestAcuityLandolt = 2; kTestAcuityE = 3; kTestAcuityTAO = 4;
-kTestAcuityVernier = 5; kTestContrastLett = 6; kTestContrastLandolt = 7; kTestContrastE = 8;
+kTestNone = 0; kTestAcuityLetters = 1; kTestAcuityLandolt = 2; kTestAcuityE = 3; kTestAcuityTAO = 4;
+kTestAcuityVernier = 5; kTestContrastLetters = 6; kTestContrastLandolt = 7; kTestContrastE = 8;
 kTestContrastG = 9; kTestAcuityLineByLine = 10;
 kTestBalmGeneral = 11;
 kTestBalmLight = 12; kTestBalmLocation = 13; kTestBalmMotion = 14;
 kTestContrastDitherUnittest = 15;
 gTestRegistry = {
-    [kTestAcuityLett]: {testName: "AcuityLett", className: "FractControllerAcuityL", shortcut: "L", name4xport: "Acuity_Letters"},
-    [kTestAcuityLandolt]: {testName: "AcuityLandolt", className: "FractControllerAcuityC", shortcut: "C", name4xport: "Acuity_LandoltC"},
+    [kTestAcuityLetters]: {testName: "AcuityLetters", className: "FractControllerAcuityLetters", shortcut: "L", name4xport: "Acuity_Letters"},
+    [kTestAcuityLandolt]: {testName: "AcuityLandolt", className: "FractControllerAcuityLandolt", shortcut: "C", name4xport: "Acuity_LandoltC"},
     [kTestAcuityE]: {testName: "AcuityE", className: "FractControllerAcuityE", shortcut: "E", name4xport: "Acuity_TumblingE"},
     [kTestAcuityTAO]: {testName: "AcuityTAO", className: "FractControllerAcuityTAO", shortcut: "A", name4xport: "Acuity_TAO"},
     [kTestAcuityVernier]: {testName: "AcuityVernier", className: "FractControllerAcuityVernier", shortcut: "V", name4xport: "Acuity_Vernier"},
-    [kTestContrastLett]: {testName: "ContrastLett", className: "FractControllerContrastLett", shortcut: "1", name4xport: "Contrast_Letters"},
+    [kTestContrastLetters]: {testName: "ContrastLetters", className: "FractControllerContrastLetters", shortcut: "1", name4xport: "Contrast_Letters"},
     [kTestContrastLandolt]: {testName: "ContrastLandolt", className: "FractControllerContrastC", shortcut: "2", name4xport: "Contrast_LandoltC"},
     [kTestContrastE]: {testName: "ContrastE", className: "FractControllerContrastE", shortcut: "3", name4xport: "Contrast_TumblingE"},
     [kTestContrastG]: {testName: "ContrastG", className: "FractControllerContrastG", shortcut: "G", name4xport: "Contrast_Grating"},

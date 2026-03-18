@@ -130,7 +130,7 @@ Logistic function for nAFC tasks, x on a LogMAR scale
 x=0: below threshold, =guess; x=1: above threshold, =1
  */
 + (BOOL) unittestProbCorrectGivenLogMAR {
-    console.log("\nMDBDispersionEstimation>probCorrectGivenLogMAR (logistic fun)");
+    console.log("\nMDBDispersionEstimation▸probCorrectGivenLogMAR (logistic fun)");
     console.log("from 'kWorstLogMAR' to 'kBestLogMAR'");
     [self initResultStatistics];
     for (let v of [99, kWorstLogMAR, 0.5, kBestLogMAR, -99]) {

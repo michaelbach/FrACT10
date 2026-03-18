@@ -2,18 +2,18 @@
 This file is part of FrACT10, a vision test battery.
 © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
-FractControllerContrastLett.j
- 
+FractControllerContrastLetters.j
+
 Created by Bach on 2020-08-17
 */
 
 
 @import "FractControllerContrast.j"
-@implementation FractControllerContrastLett: FractControllerContrast {
+@implementation FractControllerContrastLetters: FractControllerContrast {
 }
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerContrastLett>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerContrastLetters>drawStimulusInRect");
     [self calculateForeBackColors];
     [self prepareDrawing];
     switch(state) {
@@ -37,7 +37,7 @@ Created by Bach on 2020-08-17
 }
 
 
-- (void) runStart { //console.info("FractControllerContrastLett>runStart");
+- (void) runStart { //console.info("FractControllerContrastLetters>runStart");
     nAlternatives = 10;  nTrials = [Settings nTrials08];
     [super runStart];
 }

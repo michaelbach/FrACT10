@@ -87,14 +87,14 @@
  Unit tests to the degree possible
  */
 + (BOOL) unittest {
-    //console.log("\nMiscLight>unittest")
+    //console.log("\nMiscLight▸unittest")
     let isSuccess = YES;
     for (val0 of [0, 0.1, 0.3, 1]) {
         val1 = [self contrastWeberPercentFromLogCSWeber: val0];
         val1 = [self contrastLogCSWeberFromWeberPercent: val1];
         isSuccess &&= [Misc areNearlyEqual: val0 and: val1];
         if (!isSuccess) {
-            console.info("unittest MiscLight 1", val0, val1, isSuccess);
+            console.info("MiscLight▸unittest 1", val0, val1, isSuccess);
             return isSuccess;
         }
 
@@ -104,7 +104,7 @@
         val1 = [self contrastLogCSWeberFromWeberPercent: val1];
         isSuccess &&= [Misc areNearlyEqual: val0 and: val1];
         if (!isSuccess) {
-            console.info("unittest MiscLight 2", val0, val1, isSuccess);
+            console.info("MiscLight▸unittest 2", val0, val1, isSuccess);
             return isSuccess;
         }
     }

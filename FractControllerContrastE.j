@@ -13,7 +13,7 @@ Created by Bach on 2020-09-02
 }
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerContrastLett>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerContrastE>drawStimulusInRect");
     [self calculateForeBackColors];
     [self prepareDrawing];
     switch(state) {
@@ -37,7 +37,7 @@ Created by Bach on 2020-09-02
 }
 
 
-- (void) runStart { //console.info("FractControllerContrastLett>runStart");
+- (void) runStart { //console.info("FractControllerContrastE>runStart");
     nAlternatives = 4;  nTrials = [Settings nTrials04];
     [super runStart];
 }

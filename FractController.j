@@ -269,8 +269,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if ((![Settings enableTouchControls]) || (responseButtonsAdded)) return;
     let sze = 52, sze2 = sze / 2;
     switch  (gCurrentTestID) { //kTestAcuityTAO, kTestAcuityVernier: done in instance
-        case kTestAcuityLett: case kTestContrastLett:
-            [self _drawTouchControlsForLett: sze sze2: sze2];
+        case kTestAcuityLetters: case kTestContrastLetters:
+            [self _drawTouchControlsForLetters: sze sze2: sze2];
             break;
         case kTestAcuityLandolt: case kTestContrastLandolt: case kTestContrastG:
             [self _drawTouchControlsForC: sze sze2: sze2];
@@ -281,7 +281,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [self buttonCenteredAtX: viewWidth - sze2 - 1 y: viewHeightHalf - sze2 - 1 size: sze title: "Ø"];
 }
 
-- (void) _drawTouchControlsForLett: (float) sze sze2: (float) sze2 {
+- (void) _drawTouchControlsForLetters: (float) sze sze2: (float) sze2 {
     sze = viewWidth / ((nAlternatives+1) * 1.4 + 1);
     for (let i = 0; i < nAlternatives; i++) {
         [self buttonCenteredAtX: (i + 0.9) * 1.4 * sze y: viewHeightHalf - sze2 - 1
@@ -640,7 +640,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     return [kTestAcuityTAO].includes(gCurrentTestID);
 }
 - (BOOL) isAcuityOptotype {
-    return [kTestAcuityLett, kTestAcuityLandolt, kTestAcuityE, kTestAcuityTAO].includes(gCurrentTestID);
+    return [kTestAcuityLetters, kTestAcuityLandolt, kTestAcuityE, kTestAcuityTAO].includes(gCurrentTestID);
 }
 - (BOOL) isAcuityGrating {
     return (gCurrentTestID === kTestContrastG) && ([Settings what2sweepIndex] === 1);
@@ -652,7 +652,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     return [kTestContrastG].includes(gCurrentTestID) && (![self isAcuityGrating]);
 }
 - (BOOL) isContrastOptotype { //console.info("isContrastOptotype ", gCurrentTestID);
-    return [kTestContrastLett, kTestContrastLandolt, kTestContrastE].includes(gCurrentTestID);
+    return [kTestContrastLetters, kTestContrastLandolt, kTestContrastE].includes(gCurrentTestID);
 }
 - (BOOL) isContrastAny {
     return [self isContrastOptotype] || (gCurrentTestID === kTestContrastG);

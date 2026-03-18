@@ -17,12 +17,12 @@
 @import "Misc.j"
 @import "FractView.j"
 @import "FractController.j"
-@import "FractControllerAcuityL.j"
-@import "FractControllerAcuityC.j"
+@import "FractControllerAcuityLetters.j"
+@import "FractControllerAcuityLandolt.j"
 @import "FractControllerAcuityE.j"
 @import "FractControllerAcuityTAO.j"
 @import "FractControllerAcuityVernier.j"
-@import "FractControllerContrastLett.j"
+@import "FractControllerContrastLetters.j"
 @import "FractControllerContrastC.j"
 @import "FractControllerContrastE.j"
 @import "FractControllerContrastG.j"
@@ -444,7 +444,7 @@
     }
     [buttonExportClip setEnabled: ([currentTestResultExportString length] > 1)];
     [buttonExportPDF setEnabled: ([currentTestResultExportString length] > 1)];
-    if ([kTestAcuityLett, kTestAcuityLandolt, kTestAcuityE, kTestAcuityTAO, kTestContrastLett, kTestContrastLandolt, kTestContrastE, kTestContrastG].includes(gCurrentTestID)){
+    if ([kTestAcuityLetters, kTestAcuityLandolt, kTestAcuityE, kTestAcuityTAO, kTestContrastLetters, kTestContrastLandolt, kTestContrastE, kTestContrastG].includes(gCurrentTestID)){
         [buttonPlot setEnabled: ([currentTestResultExportString length] > 1)];
     }
 }
@@ -459,10 +459,10 @@
  Perform a "health check" verifying that all outlets are connected and the global state is consistent. Useful for finding issues after refactorings or Xib changes.
  @return YES if all checks pass
  */
-- (BOOL) unittestHealth {
-    let success = YES, report = crlf + "Report from “unittestHealth”:" + crlf;
+- (BOOL) unittestAppC {
+    let success = YES, report = crlf + "AppController▸unittestAppC:" + crlf;
     if (gAppController !== self) { //Check global controller
-        report += " - ERROR: gAppController is not self!" + crlf;  success = NO;
+        report += "  ERROR: gAppController is not self!" + crlf;  success = NO;
     }
 
     //Check critical outlets
@@ -475,16 +475,16 @@
     ];
     for (const outlet of criticalOutlets) {
         if (!outlet.val) {
-            report += " - ERROR: Outlet '" + outlet.name + "' is nil!" + crlf;  success = NO;
+            report += "  ERROR: Outlet '" + outlet.name + "' is nil!" + crlf;  success = NO;
         }
     }
 
     if (![[self window] isKeyWindow] && !currentFractController) { //Check window state
-        report += " - WARNING: Main window is not Key, but no test is running." + crlf;
+        report += "  WARNING: Main window is not Key, but no test is running." + crlf;
     }
 
     if (success) {
-        report += " - All critical outlets and global states are OK." + crlf;
+        report += "  All critical outlets and global states are OK." + crlf;
     }
 
     console.info(report);

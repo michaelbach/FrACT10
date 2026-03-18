@@ -81,7 +81,7 @@
                             if (directionInRow === [alternativesGenerator currentAlternative])
                                 directionInRow = [rowAlternatives nextAlternative];
                             switch (gCurrentTestID) {
-                                case kTestAcuityLett:
+                                case kTestAcuityLetters:
                                     [optotypes drawLetterNr: directionInRow withStrokeInPx: stimStrengthInDeviceunits];  break;
                                 case kTestAcuityE:
                                     [optotypes tumblingEWithStrokeInPx: stimStrengthInDeviceunits direction: directionInRow];  break;
@@ -105,7 +105,7 @@
 
 - (void) runEnd { //console.info("FractControllerAcuity>runEnd");
     switch (gCurrentTestID) {
-        case kTestAcuityLett:
+        case kTestAcuityLetters:
         case kTestAcuityLandolt:
         case kTestAcuityE:
         case kTestAcuityTAO:
@@ -144,7 +144,7 @@
 /*    Transformation formula:   stroke = c1 * exp(tPest * c2).
  Constants c1 and c2 are determined by these 2 condions: tPest==0 → stroke=gStrokeMinimal;  tPest==1 → stroke=gStrokeMaximal.
  =>c2 = ln(gStrokeMinimal / gStrokeMaximal)/(0 - 1);  c1 = gStrokeMinimal / exp(0 * c2)  */
-- (float) acuityStimDeviceunitsFromThresholderunits: (float) tPest { //console.info("FractControllerAcuityC>stimDeviceunitsFromThresholderunits");
+- (float) acuityStimDeviceunitsFromThresholderunits: (float) tPest { //console.info("FractControllerAcuityLandolt>stimDeviceunitsFromThresholderunits");
     const c2 = - Math.log(gStrokeMinimal / gStrokeMaximal), c1 = gStrokeMinimal;
     const deviceVal = c1 * Math.exp(tPest * c2); //console.info("DeviceFromPest " + tPest + " " + deviceVal);
     //ROUNDING for realisable stroke values? @@@
@@ -163,7 +163,7 @@
 }
 
 
-- (float) acuityStimThresholderunitsFromDeviceunits: (float) d { //console.info("FractControllerAcuityC>stimThresholderunitsFromDeviceunits");
+- (float) acuityStimThresholderunitsFromDeviceunits: (float) d { //console.info("FractControllerAcuityLandolt>stimThresholderunitsFromDeviceunits");
     const c2 = - Math.log(gStrokeMinimal / gStrokeMaximal), c1 = gStrokeMinimal;
     const retVal = Math.log(d / c1) / c2; //console.info("PestFromDevice " + d + " " + retVal);
     return retVal;

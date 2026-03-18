@@ -18,7 +18,7 @@
     [Settings setRespondsToMobileOrientation: NO];
     [Settings setResultsToClipboardIndex: kResultsToClipFinalOnly];
     [Settings setDistanceInCM: 200];
-    [Settings setTestOnFive: kTestAcuityLett];
+    [Settings setTestOnFive: kTestAcuityLetters];
 }
 
 @end

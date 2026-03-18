@@ -125,7 +125,7 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
         GUESS = function(what) { return "\n\nIf you can't recognise the " + what + ", use your best guess."; };
 
     const dataMapping = {
-        [kTestAcuityLett]: {
+        [kTestAcuityLetters]: {
             title: "Letter acuity",
             text: "\nUse the letter keys on your keyboard to type the letter appearing on the screen." + TOUCH_BOTTOM + GUESS("letter") + ABORT_55
         },
@@ -160,7 +160,7 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
             //imageName: "keyMaps/keyMapUpDownOnly.png",
             //imageWidth: 80
         },
-        [kTestContrastLett]: {
+        [kTestContrastLetters]: {
             title: "Letter contrast assessment",
             text: "\nUse the letter keys on your keyboard to type the letter appearing on the screen." + TOUCH_BOTTOM + GUESS("letter") + ABORT_55
         },

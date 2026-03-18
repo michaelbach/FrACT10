@@ -23,7 +23,7 @@
     [Settings setAuditoryFeedback4trialIndex: kauditoryFeedback4trialIndexAlways];
     [Settings setTimeoutIsiMillisecs: 1];
     [Settings setTimeoutResponseSeconds: 60]; [Settings setTimeoutDisplaySeconds: 60];
-    [Settings setTestOnFive: kTestAcuityLett];
+    [Settings setTestOnFive: kTestAcuityLetters];
     [Settings setResultsToClipboardIndex: kResultsToClipFullHistory];
 
     //acuity pane
