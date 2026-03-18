@@ -10,8 +10,7 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-//#define kDateOfCurrentSettingsVersion "2025-10-05"
-#define kDateOfCurrentSettingsVersion "2026-01-15"
+#define kDateOfCurrentSettingsVersion "2026-03-18a"
 
 
 @import <Foundation/CPUserDefaults.j>
