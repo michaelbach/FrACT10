@@ -2,14 +2,14 @@
 This file is part of FrACT10, a vision test battery.
 © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
-FractControllerAcuityLetters.j
+FractControllerAcuityLett.j
 
 Created by Bach on 08.08.2017.
 */
 
 
 @import "FractControllerAcuity.j"
-@implementation FractControllerAcuityL: FractControllerAcuity {
+@implementation FractControllerAcuityLett: FractControllerAcuity {
 }
 
 
@@ -23,7 +23,7 @@ Created by Bach on 08.08.2017.
 - (CPString) composeExportString {return [self acuityComposeExportString];}
 
 
-- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerAcuityLetters>drawStimulusInRect");
+- (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerAcuityLett>drawStimulusInRect");
     trialInfoString = [self acuityComposeTrialInfoString];
     [self prepareDrawing];
     switch(state) {
@@ -41,7 +41,7 @@ Created by Bach on 08.08.2017.
 }
 
 
-- (void) runStart { //console.info("FractControllerAcuityLetters>runStart");
+- (void) runStart { //console.info("FractControllerAcuityLett>runStart");
     nAlternatives = 10;  nTrials = [Settings nTrials08];
     [gAppController setCurrentTestResultUnit: "LogMAR"];
     [super runStart];
