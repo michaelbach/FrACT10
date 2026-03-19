@@ -231,7 +231,7 @@ function _pause(ms) { //console.info("Misc>_pause");
     return [self stringFromNumber: num decimals: decs localised: NO];
 }
 + (CPString) stringFromNumber: (float) num decimals: (int) decs localised: (BOOL) locd { //console.info("Misc>stringFromNumber");
-    if (decs < 1)  return [self stringFromInteger: num];
+    if (decs < 1)  return [self stringFromInteger: Math.round(num)];
     const fmt = @"%6." + [CPString stringWithFormat:@"%d", decs] + "f";
     let str = [CPString stringWithFormat: fmt, num];
     while ([str hasPrefix:@" "] && [str length] > 1) {

@@ -80,6 +80,7 @@ Created by mb on July 15, 2015.
         ["crowdingType", "int"], ["crowdingDistanceCalculationType", "int"],
         ["showAcuityFormatDecimal", "bool"],
         ["showAcuityFormatLogMAR", "bool"],
+        ["showAcuityFormatLetterScore", "bool"],
         ["showAcuityFormatSnellenFractionFoot", "bool"],
         ["forceSnellen20", "bool"],
         ["showCI95", "bool"],
@@ -288,6 +289,7 @@ Created by mb on July 15, 2015.
     [self setDoThreshCorrection: [self checkBool: [self doThreshCorrection] dflt: YES set: set]];
     [self setShowAcuityFormatDecimal: [self checkBool: [self showAcuityFormatDecimal] dflt: YES set: set]];
     [self setShowAcuityFormatLogMAR: [self checkBool: [self showAcuityFormatLogMAR] dflt: YES set: set]];
+    [self setShowAcuityFormatLetterScore: [self checkBool: [self showAcuityFormatLetterScore] dflt: NO set: set]];
     [self setShowAcuityFormatSnellenFractionFoot: [self checkBool: [self showAcuityFormatSnellenFractionFoot] dflt: NO set: set]];
     [self setForceSnellen20: [self checkBool: [self forceSnellen20] dflt: NO set: set]];
     [self setShowCI95: [self checkBool: [self showCI95] dflt: NO set: set]];

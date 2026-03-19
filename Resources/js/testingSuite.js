@@ -104,6 +104,7 @@ const doDemoRun = async () => {
 	await oneStep3Ms('setSetting', 'preset', 'Testing');
     await oneStep3Ms('setSetting', 'autoRunIndex', 2);
     await oneStep3Ms('setSetting', 'nTrials08', 18);
+    await oneStep3Ms('setSetting', 'showAcuityFormatLetterScore', true);
     await oneStep3Ms('run', 'Acuity', 'Letters', 20000); // long delay for entire run
     await oneStep3Ms('setSetting', 'preset', 'Standard Defaults');
 }

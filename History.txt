@@ -1,5 +1,6 @@
 # History
 
+2026-03-19 add Letter Score as output format, fix rounding problem in `stringFromNumber`
 2026-03-18 rename FractControllerAcuityC→FractControllerAcuityLandolt, FractControllerAcuityL→FractControllerAcuityLetters, same for contrast, also renamed associated buttons
 2026-03-17 refactor: rename a variable; add `testName` field to `gTestRegistry`
 2026-03-16 fix brittle window management; code improvvment, nor really errors: remove double `balmSpeedInDegPerSec`, add missing ";" at end of lines; add `unittestAppC`

@@ -15,7 +15,7 @@
 	<key>Main cib file base name</key>
 	<string>MainMenu.cib</string>
 	<key>VersionDate</key>
-	<string>2026-03-18a</string>
+	<string>2026-03-19</string>
 	<key>UIApplicationExitsOnSuspend</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>

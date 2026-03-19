@@ -106,6 +106,20 @@
 
 
 /**
+ Letter Score ⇄ LogMAR
+ */
++ (float) lettersFromlogMAR: (float) logMAR {
+    return 85 - 50 * logMAR;
+}
++ (float) lettersRoundedFromlogMAR: (float) logMAR {
+    return Math.round([self lettersFromlogMAR: logMAR])
+}
++ (float) logMARFromLetters: (float) letters {
+    return 1.7 - 0.02 * letters
+}
+
+
+/**
  Tests for round-trip accuracy (deg→px→deg, logMAR↔VA, …
  */
 + (BOOL) unittest {
@@ -113,7 +127,9 @@
     let isSuccess = [self unittestDeg2Pix2Deg];
     isSuccess &&= [self unittestLogMAR2VA2LogMAR];
     isSuccess &&= [self unittestConversionsPositiveValsOnly];
-    //console.info("MiscSpace unittest, isSuccess:", isSuccess);
+    isSuccess &&= [self unittestLogMAR2letters2LogMAR];
+
+    //console.info("MiscSpace▸unittest, isSuccess:", isSuccess);
     return isSuccess;
 }
 + (BOOL) unittestDeg2Pix2Deg {
@@ -150,6 +166,17 @@
         const val1 = [self logMARFromStrokePixels: val];
         isSuccess &&= [Misc areNearlyEqual: val0 and: val1];
         if (!isSuccess) console.info("unittestConversionsPositiveOnly", val, val0, val1, isSuccess);
+    }
+    return isSuccess;
+}
++ (BOOL) unittestLogMAR2letters2LogMAR {
+    let isSuccess = YES;
+    console.info(crlf + "MiscSpace▸unittestLogMAR2letters2LogMAR:" + crlf)
+    for (logMAR0 of [-0.3, 0.005, 1, 1.7, 3]) {
+        let logMAR1 = [self logMARFromLetters: [self lettersFromlogMAR: logMAR0]];
+        console.info(logMAR0, [self lettersFromlogMAR: logMAR0], [self lettersRoundedFromlogMAR: logMAR0], logMAR1)
+        isSuccess &&= [Misc areNearlyEqual: logMAR0 and: logMAR1];
+        if (!isSuccess) console.info("unittestLogMAR2letters2LogMAR", logMAR0, logMAR0, isSuccess);
     }
     return isSuccess;
 }

@@ -1629,7 +1629,7 @@ Shortcut: c 
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-So-EuO">
-                                                        <rect key="frame" x="18" y="211" width="200" height="18"/>
+                                                        <rect key="frame" x="18" y="211" width="87" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">VA result will be in LogMAR.
                       </string>
@@ -1733,15 +1733,29 @@ If in doubt: checked.
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uJM-h3-PcN">
                                                         <rect key="frame" x="18" y="176" width="113" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <string key="toolTip">The result will include a “±0.xx” number to indicate the 95% confidence interval; based on resampling. Only works when LogMAR is enabled.
-
-</string>
-                                                        <buttonCell key="cell" type="check" title="show ± ½CI95" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="v7r-tv-miZ">
+                                                        <string key="toolTip">VA result will include the “Letter Score”:
+0≙1.7 LogMAR, 100≙–0.3 LogMAR           </string>
+                                                        <buttonCell key="cell" type="check" title="Letter score" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="v7r-tv-miZ">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.showCI95" id="LV2-yV-dfJ"/>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.showAcuityFormatLetterScore" id="e40-dh-ovI"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BWv-9Y-q1T">
+                                                        <rect key="frame" x="117" y="211" width="86" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">The result will include a “±0.xx” number to indicate the 95% confidence interval; based on resampling. Only works with LogMAR.
+
+</string>
+                                                        <buttonCell key="cell" type="check" title="± ½CI95" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ec4-of-BRg">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.showAcuityFormatLogMAR" id="7DH-9M-BBN"/>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.showCI95" id="iFQ-Td-CIL"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
