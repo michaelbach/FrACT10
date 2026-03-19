@@ -144,7 +144,7 @@ FrACT10>index.html. Created & © by Michael Bach on 2022-05-24.
         </div>
         <script> /* try to activate the service worker */
 		  try {
-			if ("serviceWorker" in navigator) {
+			if (("serviceWorker" in navigator) && ['http:', 'https:'].includes(location.protocol)) {
 			  navigator.serviceWorker.register("webAppServiceWorker.js").then((registration) => {
 				  /*console.info('Service worker registration succeeded:', registration);*/
 				}, /*catch*/ (error) => {
