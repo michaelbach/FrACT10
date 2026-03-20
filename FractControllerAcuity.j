@@ -213,7 +213,7 @@
     if ([Settings showAcuityFormatLetterScore]) {
         if (s.length > 1) s += ",  ";
         s += "letter score: " + [self rangeStatusIndicatorStringInverted: NO];
-        s += [Misc stringFromNumber: [MiscSpace lettersFromlogMAR: resultInLogMARCeilinged] decimals: 0 localised: NO]
+        s += [Misc stringFromNumber: [MiscSpace lettersRoundedFromlogMAR: resultInLogMARCeilinged] decimals: 0 localised: NO]
     }
     if ([Settings showAcuityFormatDecimal]) {
         if (s.length > 1) s += ",  ";
