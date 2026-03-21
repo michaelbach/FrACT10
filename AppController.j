@@ -584,12 +584,20 @@
 }
 
 
-- (IBAction) buttonRemoteResponse_action: (id) sender { //console.info("AppController>buttonRemoteResponse_action");
+- (IBAction) buttonRemoteResponse_action: (id) sender {
+    if (!navigator.onLine) { //skip if browser thinks we're offline
+        const s = "We're not online, but that's required for the" + crlf + "Remote Response Box";
+        gLatestAlert = [CPAlert alertWithMessageText: "WARNING" defaultButton: "OK" alternateButton: nil otherButton: nil informativeTextWithFormat: s];
+        [gLatestAlert runModalWithDidEndBlock: function(alert, returnCode) {
+            gLatestAlert = null;
+        }];
+        return;
+    }
+    [ResponseBoxController init];
     let url = "https://michaelbach.de/fract/respond.html";
     url += "?session=" + currentUUID;
     const panel = [[QRPanel alloc] initWithQRString: url];
     [panel makeKeyAndOrderFront: self];
-    [ResponseBoxController init];
 }
 
 
