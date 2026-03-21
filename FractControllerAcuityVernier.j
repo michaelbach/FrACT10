@@ -56,7 +56,7 @@ Created by Bach on 14.08.2017.
     const backGray = [MiscLight upperLuminanceFromContrastMilsn: [MiscLight contrastMichelsonPercentFromWeberPercent: [Settings contrastAcuityWeber]]];
     const cnt = [Settings contrastAcuityWeber] / 100;
     for (let ix = ix0 - iSigma; ix <= ix0 + iSigma; ix++) {
-        const gaussValue = Math.exp(-Math.pow(x0 - ix, 2) / sigma);
+        const gaussValue = Math.exp(-0.5 * Math.pow((x0 - ix) / sigma, 2));
         const grayValue = [MiscLight devicegrayFromLuminance: backGray - cnt * gaussValue];
         CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: grayValue alpha: 1]);
         CGContextBeginPath(cgc);
