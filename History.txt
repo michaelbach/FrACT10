@@ -1,5 +1,6 @@
 # History
 
+2026-03-22 bugfix Vernier line width formula, simplify firebase coding, deploy
 2026-03-19 add Letter Score as output format, fix rounding problem in `stringFromNumber`;
     add check for protocol to avoid error in local testing
 2026-03-18 rename FractControllerAcuityC→FractControllerAcuityLandolt, FractControllerAcuityL→FractControllerAcuityLetters, same for contrast, also renamed associated buttons

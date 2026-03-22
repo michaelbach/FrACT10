@@ -15,7 +15,7 @@
 	<key>Main cib file base name</key>
 	<string>MainMenu.cib</string>
 	<key>VersionDate</key>
-	<string>2026-03-19</string>
+	<string>2026-03-22</string>
 	<key>UIApplicationExitsOnSuspend</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
@@ -78,7 +78,7 @@
 	<key>CFBundleIdentifier</key>
 	<string></string>
 	<key>VersionNumberString</key>
-	<string>3.4</string>
+	<string>3.5</string>
 	<key>LSRequiresIPhoneOS</key>
 	<false/>
 	<key>CFBundleIconName</key>
