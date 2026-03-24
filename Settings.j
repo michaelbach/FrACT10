@@ -589,12 +589,14 @@ Created by mb on July 15, 2015.
                     const parsedContent = JSON.parse(fileContent);
                     let importOccurred = NO;
                     for (const [name, , value] of parsedContent) { //don't need `type`
-                        if (value !== NULL) { //so "false" is also passing through
-                            importOccurred = YES;
-                            const previousVal = [[CPUserDefaults standardUserDefaults] objectForKey: name];
-                            if (previousVal !== value) {
-                                console.info(`Update '${name}': '${previousVal}' → '${value}'`);
-                                [[CPUserDefaults standardUserDefaults] setObject: value forKey: name];
+                        if (name !== "dateOfSettingsVersion") { //this must not be changed!
+                            if (value !== NULL) { //so "false" is also passing through
+                                importOccurred = YES;
+                                const previousVal = [[CPUserDefaults standardUserDefaults] objectForKey: name];
+                                if (previousVal !== value) {
+                                    console.info(`Update '${name}': '${previousVal}' → '${value}'`);
+                                    [[CPUserDefaults standardUserDefaults] setObject: value forKey: name];
+                                }
                             }
                         }
                     }
