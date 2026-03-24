@@ -447,11 +447,19 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
 		tellIframe3Ms('run','acuity', 'Letters');
 	});
 	await doTextTestfunText("Test color stuff", testColorStuff);
-	await doTextTestfunText("Test multiple optotypes", testMultipleOptotypes);
-	await doTextTestfunText("'showIdAndEyeOnMain'", async () => {
-		await oneStep3Ms('setSetting', 'showIdAndEyeOnMain', YES); await pauseMilliseconds(2 * pauseViewMS);
-		await oneStep3Ms('setSetting', 'showIdAndEyeOnMain', NO);
-	});
+    await doTextTestfunText("Test negative contrast + crowding", async () => {
+        await oneStep3Ms('setSetting', 'Preset', 'Testing');
+        await oneStep3Ms('setSetting', 'contrastAcuityWeber', -10000);
+        await oneStep3Ms('setSetting', 'nTrials08', 1);
+        await oneStep3Ms('setSetting', 'crowdingType', 1);
+        await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
+        tellIframe3Ms('run','acuity', 'Letters');
+    });
+    await doTextTestfunText("Test multiple optotypes", testMultipleOptotypes);
+    await doTextTestfunText("'showIdAndEyeOnMain'", async () => {
+        await oneStep3Ms('setSetting', 'showIdAndEyeOnMain', YES); await pauseMilliseconds(2 * pauseViewMS);
+        await oneStep3Ms('setSetting', 'showIdAndEyeOnMain', NO);
+    });
 	await doTextTestfunText("Cycle through acuity crowding possibilities", testAcuityCrowdingPossibilities);
     await doTextTestfunText("Test Contrast Crowding", testContrastCrowding);
 	await doTextTestfunText("`showRewardPicturesWhenDone`", testShowRewardPictures);

@@ -1,6 +1,7 @@
 # History
 
-2026-03-24 bugfix: "Import All Settings" must not overwrite `dateOfSettingsVersion`
+2026-03-24 bugfix: "Import All Settings" must not overwrite `dateOfSettingsVersion`,
+    crowding inducers respect foreground color
 2026-03-22 bugfix Vernier line width formula, simplify firebase coding, deploy
 2026-03-19 add Letter Score as output format, fix rounding problem in `stringFromNumber`;
     add check for protocol to avoid error in local testing

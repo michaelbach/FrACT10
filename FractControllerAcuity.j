@@ -42,6 +42,7 @@
             const distance4bars = crowdingGap + (0.5 + 2.5) * stimStrengthInDeviceunits;
             const distance4optotypes = crowdingGap + 5 * stimStrengthInDeviceunits;
             CGContextSetLineWidth(cgc, stimStrengthInDeviceunits);
+            CGContextSetStrokeColor(cgc, gColorFore);
             switch ([Settings crowdingType]) {
                 case 0:  break; //should not occur here anyway
                 case 1: //flanking bars
