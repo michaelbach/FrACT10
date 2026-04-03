@@ -385,37 +385,25 @@ function _pause(ms) { //console.info("Misc>_pause");
 
 
 + (BOOL) allUnittests {
-    let s = "UTs: ", successAll = YES, success;
-    success = [Misc unittest];  successAll &&= success;
-    s += "Mc" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
+    const runOne = (target, selector, label) => {
+        const success = [target performSelector: selector];
+        successAll &&= success;
+        s += label + (success ? "√" : "Ø") + ", ";
+        [gAppController setResultStringFieldTo: s];
+    };
+    
+    let s = "UnitTests: ", successAll = YES;
+    runOne(Misc, @selector(unittest), "Mc");
+    runOne(MiscSpace, @selector(unittest), "McS");
+    runOne(MiscLight, @selector(unittest), "McL");
+    runOne(MDBDispersionEstimation, @selector(unittestProbCorrectGivenLogMAR), "DispE");
+    runOne(gAppController, @selector(unittestAppC), "AppC");
+    runOne(Optotypes, @selector(unittest), "Opto");
+    runOne(AlternativesGenerator, @selector(unittest), "AltG");
+    runOne(Thresholder, @selector(unittest), "Thrh");
 
-    success = [MiscSpace unittest];  successAll &&= success;
-    s += ", McS" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
-
-    success = [MiscLight unittest];  successAll &&= success;
-    s += ", McL" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
-
-    success = [MDBDispersionEstimation unittestProbCorrectGivenLogMAR];  successAll &&= success;
-    s += ", DispE" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
-
-    success = [gAppController unittestAppC];
-    s += (success ? "" : "failed");  successAll &&= success;
-    s += ", AppC" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
-
-    success = [Optotypes unittest];
-    s += (success ? "" : "failed");  successAll &&= success;
-    s += ", Opto" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
-
-    success = [AlternativesGenerator unittest];
-    s += (success ? "" : "failed");  successAll &&= success;
-    s += ", AltG" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
-
-    success = [Thresholder unittest];
-    s += (success ? "" : "failed");  successAll &&= success;
-    s += ", Thrh" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
-
-    [gAppController setResultStringFieldTo: s];
-    return success;
+    [gAppController setResultStringFieldTo: [s substringToIndex: [s length] - 2]]; //remove last ", "
+    return successAll;
 }
 
 

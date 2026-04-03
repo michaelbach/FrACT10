@@ -13,7 +13,7 @@ MDBDispersionEstimation.j
  Calculate the CI95
  2021-04-22  begun
  */
-@implementation MDBDispersionEstimation
+@implementation MDBDispersionEstimation: CPObject
 
 
 let kWorstLogMAR, kBestLogMAR, kGuess, testDF; //there are no class properties in Cappuccino, so use JavaScript
