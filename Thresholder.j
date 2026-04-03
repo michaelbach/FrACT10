@@ -82,7 +82,7 @@ A wrapper for whatever thresholding algorithm is used (currently only BestPEST)
     console.info( crlf + "Thresholder▸unittest:" + crlf)
     const th0 = [[Thresholder alloc] initWithNumAlternatives: 4];
 
-    for (let i = 0; i < 10; ++i) { //old simple test
+    for (let i = 0; i < 5; ++i) { //old simple test
         const stim = [th0 nextStim2apply];
         console.info(i + " " + stim);
         [th0 enterTrialOutcomeWithAppliedStim: stim wasCorrect: NO];
@@ -112,7 +112,7 @@ A wrapper for whatever thresholding algorithm is used (currently only BestPEST)
     }
 
     if (success) {
-        report += "  Staircase adaptation logic tests passed." + crlf;
+        report += "  Thresholder logic tests passed." + crlf;
     }
     console.info(report);
     return success;

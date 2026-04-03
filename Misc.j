@@ -397,9 +397,11 @@ function _pause(ms) { //console.info("Misc>_pause");
     runOne(MiscSpace, @selector(unittest), "McS");
     runOne(MiscLight, @selector(unittest), "McL");
     runOne(MDBDispersionEstimation, @selector(unittestProbCorrectGivenLogMAR), "DispE");
+    runOne(Settings, @selector(unittest), "Sett");
     runOne(gAppController, @selector(unittestAppC), "AppC");
     runOne(Optotypes, @selector(unittest), "Opto");
     runOne(AlternativesGenerator, @selector(unittest), "AltG");
+    runOne(TrialHistoryController, @selector(unittest), "THC");
     runOne(Thresholder, @selector(unittest), "Thrh");
 
     [gAppController setResultStringFieldTo: [s substringToIndex: [s length] - 2]]; //remove last ", "

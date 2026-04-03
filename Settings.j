@@ -691,4 +691,52 @@ Created by mb on July 15, 2015.
 }
 
 
+/**
+ Perform logic unit tests for Settings (persistence and vetting).
+ @return YES if all tests pass
+ */
++ (BOOL) unittest {
+    let success = YES, report = crlf + "Settings▸unittest:" + crlf;
+
+    //Test 1: Basic Persistence (using a string setting)
+    const originalID = [Settings patID];
+    const testID = "UnitTest-123";
+    [Settings setPatID: testID];
+    [[CPUserDefaults standardUserDefaults] synchronize];
+    if ([Settings patID] !== testID) {
+        report += "  ERROR: String persistence failed!" + crlf; success = NO;
+    }
+    [Settings setPatID: originalID]; // Restore
+
+    //Test 2: Range Validation (Vetting)
+    //distanceInCM has min: 1, max: 2500, dflt: gDefaultDistanceInCM
+    const originalDist = [Settings distanceInCM];
+    [Settings setDistanceInCM: -50]; //Set invalid value
+    [Settings allNotCheckButSet: NO]; //Trigger vetting
+    if ([Settings distanceInCM] === -50) {
+        report += "  ERROR: Negative distance was not vetted!" + crlf; success = NO;
+    }
+    if ([Settings distanceInCM] !== gDefaultDistanceInCM) {
+        report += "  ERROR: Invalid distance did not revert to default! (is " + [Settings distanceInCM] + ")" + crlf; success = NO;
+    }
+    [Settings setDistanceInCM: originalDist]; //Restore
+
+    //Test 3: Boolean Vetting
+    const originalEasy = [Settings acuityHasEasyTrials];
+    // checkBool handles NaN by returning dflt
+    [[CPUserDefaults standardUserDefaults] setObject: NaN forKey: "acuityHasEasyTrials"];
+    [Settings allNotCheckButSet: NO];
+    if (isNaN([Settings acuityHasEasyTrials])) {
+        report += "  ERROR: NaN boolean was not vetted!" + crlf; success = NO;
+    }
+    [Settings setAcuityHasEasyTrials: originalEasy]; //Restore
+
+    if (success) {
+        report += "  Persistence and vetting tests passed." + crlf;
+    }
+    console.info(report);
+    return success;
+}
+
+
 @end

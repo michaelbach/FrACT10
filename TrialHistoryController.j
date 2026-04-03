@@ -109,4 +109,55 @@
     }
     return trialsDF;
 }
+/**
+ Perform logic unit tests for TrialHistoryController.
+ @return YES if all tests pass
+ Code by Gemini
+ */
++ (BOOL) unittest {
+    let success = YES, report = crlf + "TrialHistoryController▸unittest:" + crlf;
+
+    //Test 1: Initialization and Trial Recording
+    [TrialHistoryController initWithNumTrials: 5];
+    [TrialHistoryController setValue: 0.5];
+    [TrialHistoryController setPresented: 2];
+    [TrialHistoryController setResponded: 2];
+    [TrialHistoryController setIsCorrect: YES];
+    [TrialHistoryController trialEnded];
+
+    [TrialHistoryController setValue: 0.8];
+    [TrialHistoryController setPresented: 4];
+    [TrialHistoryController setResponded: 0];
+    [TrialHistoryController setIsCorrect: NO];
+    [TrialHistoryController trialEnded];
+
+    if (gTestDetails[td_nTrials] !== 2 || gTestDetails[td_nCorrect] !== 1 || gTestDetails[td_nIncorrect] !== 1) {
+        report += "  ERROR: Trial counters in gTestDetails are incorrect!" + crlf; success = NO;
+    }
+
+    //Test 2: Data Frame Composition for CI95
+    const info = [TrialHistoryController composeInfo4CI];
+    if (info.length !== 2) {
+        report += "  ERROR: Composed info length mismatch!" + crlf; success = NO;
+    } else {
+        if (info[0].lMar !== 0.5 || info[0].correct !== YES || info[1].lMar !== 0.8 || info[1].correct !== NO) {
+            report += "  ERROR: Composed info data mismatch!" + crlf; success = NO;
+        }
+    }
+
+    //Test 3: Run End String Generation
+    [TrialHistoryController runEnded];
+    const historyStr = [TrialHistoryController resultsHistoryString];
+    if (!historyStr || [historyStr length] < 20 || ![historyStr containsString: "choicePresented"]) {
+        report += "  ERROR: Result history string generation failed!" + crlf; success = NO;
+    }
+
+    if (success) {
+        report += "  History recording and composition tests passed." + crlf;
+    }
+    console.info(report);
+    return success;
+}
+
+
 @end
