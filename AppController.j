@@ -455,43 +455,6 @@
 }
 
 
-/**
- Perform a "health check" verifying that all outlets are connected and the global state is consistent. Useful for finding issues after refactorings or Xib changes.
- @return YES if all checks pass
- */
-- (BOOL) unittestAppC {
-    let success = YES, report = crlf + "AppController▸unittestAppC:" + crlf;
-    if (gAppController !== self) { //Check global controller
-        report += "  ERROR: gAppController is not self!" + crlf;  success = NO;
-    }
-
-    //Check critical outlets
-    const criticalOutlets = [
-        {name: "fractControllerWindow", val: fractControllerWindow},
-        {name: "settingsPanel", val: settingsPanel},
-        {name: "buttonAcuityTAO", val: buttonAcuityTAO},
-        {name: "gammaView", val: gammaView},
-        {name: "resultStringField", val: resultStringField}
-    ];
-    for (const outlet of criticalOutlets) {
-        if (!outlet.val) {
-            report += "  ERROR: Outlet '" + outlet.name + "' is nil!" + crlf;  success = NO;
-        }
-    }
-
-    if (![[self window] isKeyWindow] && !currentFractController) { //Check window state
-        report += "  WARNING: Main window is not Key, but no test is running." + crlf;
-    }
-
-    if (success) {
-        report += "  All critical outlets and global states are OK." + crlf;
-    }
-
-    console.info(report);
-    return success;
-}
-
-
 /*- (void) controlTextDidChange: (CPNotification) notification {
  }*/
 /**
@@ -680,6 +643,69 @@
 - (IBAction) buttonGamma_action: (id) sender {
     [Settings setGammaValue: [Settings gammaValue] + ([sender tag] === 1 ? 0.1 : -0.1)];
     [gammaView setNeedsDisplay: YES];
+}
+
+
+/**
+ Perform a "health check" verifying that all outlets are connected and the global state is consistent. Useful for finding issues after refactorings or Xib changes.
+ Then perform functional unit tests for AppController state and logic.
+ @return YES if all checks pass
+ */
+- (BOOL) unittestAppC {
+    let success = YES, report = crlf + "AppController▸unittestAppC:" + crlf;
+    if (gAppController !== self) { //Check global controller
+        report += "  ERROR: gAppController is not self!" + crlf;  success = NO;
+    }
+
+    //Check critical outlets
+    const criticalOutlets = [
+        {name: "fractControllerWindow", val: fractControllerWindow},
+        {name: "settingsPanel", val: settingsPanel},
+        {name: "buttonAcuityTAO", val: buttonAcuityTAO},
+        {name: "gammaView", val: gammaView},
+        {name: "resultStringField", val: resultStringField}
+    ];
+    for (const outlet of criticalOutlets) {
+        if (!outlet.val) {
+            report += "  ERROR: Outlet '" + outlet.name + "' is nil!" + crlf;  success = NO;
+        }
+    }
+    if (![[self window] isKeyWindow] && !currentFractController) { //Check window state
+        report += "  WARNING: Main window is not Key, but no test is running." + crlf;
+    }
+    if (success) {
+        report += "  All critical outlets and global states are OK." + crlf;
+    }
+
+    //Test UUID Generation
+    report += "AppController▸unittestAppC_Functional:" + crlf;
+    if (!currentUUID || [currentUUID length] < 10) {
+        report += "  ERROR: currentUUID is invalid or empty!" + crlf; success = NO;
+    }
+
+    //Test Color Synchronization
+    const originalFore = [self acuityForeColor];
+    const testColor = [CPColor redColor];
+    [self setAcuityForeColor: testColor];
+    if (![[self acuityForeColor] isEqual: testColor] || ![gColorFore isEqual: testColor]) {
+        report += "  ERROR: acuityForeColor synchronization failed!" + crlf; success = NO;
+    }
+    [self setAcuityForeColor: originalFore]; // Restore
+
+    //Test Calibration Logic. We can't easily mock Settings, but we can check if isNotCalibrated behaves as expected given current settings.
+    const isCalibrated = ![Settings isNotCalibrated];
+    const distance = [Settings distanceInCM], barLength = [Settings calBarLengthInMM];
+    const expectedCalibrated = (distance !== gDefaultDistanceInCM)
+        && (barLength !== gDefaultCalibrationBarLengthInMM);
+    if (isCalibrated !== expectedCalibrated) {
+         report += "  ERROR: Calibration status mismatch! (Dist: " + distance + ", Bar: " + barLength + ")" + crlf; success = NO;
+    }
+
+    if (success) {
+        report += "  Functional tests passed." + crlf;
+    }
+    console.info(report);
+    return success;
 }
 
 
