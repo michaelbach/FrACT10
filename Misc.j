@@ -402,6 +402,10 @@ function _pause(ms) { //console.info("Misc>_pause");
     s += (success ? "" : "failed");  successAll &&= success;
     s += ", AppC" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
 
+    success = [Optotypes unittest];
+    s += (success ? "" : "failed");  successAll &&= success;
+    s += ", Opto" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
+
     [gAppController setResultStringFieldTo: s];
     return success;
 }

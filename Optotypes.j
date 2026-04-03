@@ -239,9 +239,6 @@ Optotypes.j
 }
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 - (void) tumblingEWithStrokeInPx: (float) d direction: (int) theDirection {
     if (![0, 2, 4, 6].includes(theDirection)) {
         console.error ("Optotypes>tumblingEWithStrokeInPx, theDirection:", theDirection, " should not occur");
@@ -253,6 +250,84 @@ Optotypes.j
     CGContextRotateCTM(cgc, angle);
     [self fillPolygon: ePoints withD: d * 0.5];
     CGContextRotateCTM(cgc, -angle);
+}
+
+
+/**
+ Perform logic unit tests for Optotypes (tracking of currentX/Y).
+ @return YES if all tests pass
+ */
++ (BOOL) unittest {
+    let success = YES, report = crlf + "Optotypes▸unittest:" + crlf;
+    const opto = [[Optotypes alloc] init];
+
+    //To avoid crashing during pure logic unit tests  provide a mock context that does nothing.
+    const originalCgc = (typeof cgc !== "undefined") ? cgc : null;
+    cgc = {
+        beginPath: function() {},
+        moveTo: function() {},
+        lineTo: function() {},
+        stroke: function() {},
+        fill: function() {},
+        save: function() {},
+        restore: function() {},
+        translate: function() {},
+        scale: function() {},
+        rotate: function() {},
+        arc: function() {},
+        closePath: function() {},
+        rect: function() {},
+        strokeRect: function() {},
+        fillRect: function() {}
+    };
+
+    // Test 1: strokeLineX0 updates currentX/Y
+    [opto strokeLineX0: 10 y0: 20 x1: 30 y1: 40];
+
+    if (opto.currentX !== 30 || opto.currentY !== 40) {
+        report += "  ERROR: strokeLineX0 did not update currentX/Y correctly!" + crlf; success = NO;
+    }
+
+    // Test 2: strokeLineToX updates currentX/Y
+    [opto strokeLineToX: 50 y: 60];
+    if (opto.currentX !== 50 || opto.currentY !== 60) {
+        report += "  ERROR: strokeLineToX did not update currentX/Y correctly!" + crlf; success = NO;
+    }
+
+    // Test 3: strokeVLineAtX updates currentX/Y
+    [opto strokeVLineAtX: 100 y0: 0 y1: 200];
+    if (opto.currentX !== 100 || opto.currentY !== 200) {
+        report += "  ERROR: strokeVLineAtX did not update currentX/Y correctly!" + crlf; success = NO;
+    }
+
+    // Test 4: strokeLineDeltaX updates currentX/Y
+    [opto strokeLineX0: 0 y0: 0 x1: 10 y1: 10]; // Reset
+    [opto strokeLineDeltaX: 5 deltaY: -5];
+    if (opto.currentX !== 15 || opto.currentY !== 5) {
+        report += "  ERROR: strokeLineDeltaX did not update currentX/Y correctly!" + crlf; success = NO;
+    }
+
+    // Test 5: strokeHLineAtX0 updates currentX/Y
+    [opto strokeHLineAtX0: 0 y: 50 x1: 100];
+    if (opto.currentX !== 100 || opto.currentY !== 50) {
+        report += "  ERROR: strokeHLineAtX0 did not update currentX/Y correctly!" + crlf; success = NO;
+    }
+
+    // Test 6: strokeXAtX updates currentX/Y (verifying diagonal end point)
+    [opto strokeXAtX: 100 y: 100 size: 20];
+    const s_offset = 10 * Math.SQRT1_2; // 20 * 0.5 / sqrt(2)
+    if (Math.abs(opto.currentX - (100 + s_offset)) > 0.0001 || Math.abs(opto.currentY - (100 - s_offset)) > 0.0001) {
+        report += "  ERROR: strokeXAtX did not update currentX/Y correctly!" + crlf; success = NO;
+    }
+
+    // Restore global cgc
+    cgc = originalCgc;
+
+    if (success) {
+        report += "  Position tracking and validation tests passed." + crlf;
+    }
+    console.info(report);
+    return success;
 }
 
 
