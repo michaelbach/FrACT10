@@ -385,7 +385,7 @@ function _pause(ms) { //console.info("Misc>_pause");
 
 
 + (BOOL) allUnittests {
-    let s = "Unittests: ", successAll = YES, success;
+    let s = "UTs: ", successAll = YES, success;
     success = [Misc unittest];  successAll &&= success;
     s += "Mc" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
 
@@ -405,6 +405,14 @@ function _pause(ms) { //console.info("Misc>_pause");
     success = [Optotypes unittest];
     s += (success ? "" : "failed");  successAll &&= success;
     s += ", Opto" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
+
+    success = [AlternativesGenerator unittest];
+    s += (success ? "" : "failed");  successAll &&= success;
+    s += ", AltG" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
+
+    success = [Thresholder unittest];
+    s += (success ? "" : "failed");  successAll &&= success;
+    s += ", Thrh" + (success ? "√" : "Ø");  [gAppController setResultStringFieldTo: s];
 
     [gAppController setResultStringFieldTo: s];
     return success;
