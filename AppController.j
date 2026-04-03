@@ -319,7 +319,7 @@
 - (void) setResultStringFieldTo: (CPString) s {
     [resultStringField setStringValue: s]; [resultStringField setEnabled: YES];
     const maxWidth = kFractWidth - kGuiMarginHorizontal; //Auto-adjust font size to fit this
-    let fontSize = 36; //Start with a default large size
+    let fontSize = 28; //Start with a default large size
     let font = [CPFont systemFontOfSize: fontSize];
     let size = [s sizeWithFont: font];
     while (size.width > maxWidth && fontSize > 8) {
