@@ -88,6 +88,7 @@
 		8AD251DB2F4B1DD600961017 /* webApp.webmanifest in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AD251DA2F4B1DD600961017 /* webApp.webmanifest */; };
 		8AE2AD332CE096BC00305C56 /* Presets_CNS_Freiburg.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AE2AD322CE096BC00305C56 /* Presets_CNS_Freiburg.j */; };
 		8AE548352D5F63CB008DED70 /* MDBLabel.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AE548342D5F63CB008DED70 /* MDBLabel.j */; };
+		8AED9E492F81225800330C65 /* ExportManager.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AED9E482F81225800330C65 /* ExportManager.j */; };
 		8AF26B652D4F6EBA0033A618 /* CardController.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AF26B642D4F6EBA0033A618 /* CardController.j */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +107,7 @@
 				8AAB43852A55825C00825E47 /* FractControllerAcuityLetters.j in CopyFiles */,
 				8ABF4DC72D804E8000F63DD5 /* MDBAlert.j in CopyFiles */,
 				8AAB43862A55826300825E47 /* FractControllerAcuity.j in CopyFiles */,
+				8AED9E492F81225800330C65 /* ExportManager.j in CopyFiles */,
 				8A438B3A2BAF77FE00B33287 /* Dithering.j in CopyFiles */,
 				8AAB43812A55825200825E47 /* FractControllerContrast.j in CopyFiles */,
 				8A3F88AC2D585C8B00183F76 /* CardController.m in CopyFiles */,
@@ -282,6 +284,7 @@
 		8AD251DA2F4B1DD600961017 /* webApp.webmanifest */ = {isa = PBXFileReference; lastKnownFileType = text; path = webApp.webmanifest; sourceTree = SOURCE_ROOT; };
 		8AE2AD322CE096BC00305C56 /* Presets_CNS_Freiburg.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Presets_CNS_Freiburg.j; sourceTree = SOURCE_ROOT; };
 		8AE548342D5F63CB008DED70 /* MDBLabel.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = MDBLabel.j; sourceTree = SOURCE_ROOT; };
+		8AED9E482F81225800330C65 /* ExportManager.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = ExportManager.j; sourceTree = "<group>"; };
 		8AF26B642D4F6EBA0033A618 /* CardController.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = CardController.j; sourceTree = SOURCE_ROOT; };
 		90444B1A970FC75C0FF93DB7 /* FractControllerContrastE.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerContrastE.j; sourceTree = SOURCE_ROOT; };
 		91844612BA04B04966D2045C /* AlternativesGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AlternativesGenerator.h; path = .XcodeSupport/AlternativesGenerator.h; sourceTree = SOURCE_ROOT; };
@@ -339,6 +342,7 @@
 				8A44B4CA2D5F8E5300E55DEF /* History.txt */,
 				D7F842D1A68D8C133FA29CF9 /* Globals.j */,
 				6F8642B1B93603A5A204CC32 /* AppController.j */,
+				8AED9E482F81225800330C65 /* ExportManager.j */,
 				8AABF0DE2D50022600176166 /* AboutAndHelpController.j */,
 				8AB27F732DE86ABF00F68D21 /* PlotController.j */,
 				8AF26B642D4F6EBA0033A618 /* CardController.j */,

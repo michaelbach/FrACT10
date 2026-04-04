@@ -49,6 +49,7 @@
 @import "PlotController.j"
 @import "CheckingContrastController.j"
 @import "ResponseInfoPanelController.j"
+@import "ExportManager.j"
 
 
 /**
@@ -79,6 +80,7 @@
     CPImageView rewardImageView;
     RewardsController rewardsController;
     TAOController taoController;
+    ExportManager exportManager;
     FractController currentFractController;
     BOOL settingsNeededNewDefaults;
     BOOL runAborted @accessors;
@@ -142,14 +144,14 @@
 
     //create UUID with optional fallback
     gCurrentUUID = window.crypto?.randomUUID?.() ??
-      "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+    "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
         const r = window.crypto?.getRandomValues
-          ? window.crypto.getRandomValues(new Uint8Array(1))[0] % 16
-          : (Math.random() * 16) | 0;
+        ? window.crypto.getRandomValues(new Uint8Array(1))[0] % 16
+        : (Math.random() * 16) | 0;
         return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
-      }); //The ?.() optional call short-circuits to undefined if randomUUID doesn't exist, letting ?? kick in and run the fallback inline.
+    }); //The ?.() optional call short-circuits to undefined if randomUUID doesn't exist, letting ?? kick in and run the fallback inline.
     [self setCurrentUUID: gCurrentUUID]; //for the GUI
-    
+
     return self;
 }
 
@@ -232,16 +234,16 @@
         }
     });
     /*if ([Settings autoFullScreen]) { //does not work because it needs user interaction
-        [Misc fullScreenOn: YES];
-    }*/
+     [Misc fullScreenOn: YES];
+     }*/
     window.addEventListener("resize", (event) => {
         if ([Misc isInRun]) return; //don't do ⇙this while "inRun"
         [Misc centerWindowOrPanel: [[self window] contentView]];
 
-/*        //https://ua.hexalys.com
-        console.info("scale", window.visualViewport.scale);
-        console.info("window.devicePixelRatio", window.devicePixelRatio);
-        console.info("window.outerWidth / window.innerWidth", window.outerWidth / window.innerWidth);*/
+        /*        //https://ua.hexalys.com
+         console.info("scale", window.visualViewport.scale);
+         console.info("window.devicePixelRatio", window.devicePixelRatio);
+         console.info("window.outerWidth / window.innerWidth", window.outerWidth / window.innerWidth);*/
 
     });
 }
@@ -250,6 +252,7 @@
 - (void) setupControllers { //called from `applicationDidFinishLaunching`
     rewardsController = [[RewardsController alloc] initWithView: rewardImageView];
     taoController = [[TAOController alloc] initWithButton2Enable: buttonAcuityTAO];
+    exportManager = [[ExportManager alloc] initWithButtonClip: buttonExportClip buttonPDF: buttonExportPDF buttonPlot: buttonPlot];
     sound = [[Sound alloc] init];
     presets = [[Presets alloc] initWithPopup: settingsPanePresetsPopUpButton];
 }
@@ -347,8 +350,8 @@
     gCurrentTestID = testNr;
     if ([Settings isNotCalibrated]) {
         gLatestAlert = [CPAlert alertWithMessageText: "Calibration is mandatory for valid results!"
-                                      defaultButton: "I just want to try…" alternateButton: "OK, go to  ‘⛭ Settings’" otherButton: "Cancel"
-                          informativeTextWithFormat: "\rGoto ‘⛭ Settings’ and enter appropriate values for \r«Observer distance» and «Length of blue ruler».\r\rThis will also get rid of the present obnoxious warning dialog."];
+                                       defaultButton: "I just want to try…" alternateButton: "OK, go to  ‘⛭ Settings’" otherButton: "Cancel"
+                           informativeTextWithFormat: "\rGoto ‘⛭ Settings’ and enter appropriate values for \r«Observer distance» and «Length of blue ruler».\r\rThis will also get rid of the present obnoxious warning dialog."];
         [gLatestAlert runModalWithDidEndBlock: function(alert, returnCode) {
             switch (returnCode) {
                 case 1: //alternateButton: go to Settings
@@ -415,7 +418,10 @@
         if ([Settings showRewardPicturesWhenDone]) {
             [rewardsController drawRandom];
         }
-        [self exportCurrentTestResult];
+        [exportManager updateResult: currentTestResultExportString
+                            history: currentTestResultsHistoryExportString
+                          forTestID: gCurrentTestID];
+        [exportManager exportToClipboardAuto];
     }
     [ControlDispatcher runDoneSuccessful: !runAborted];
 
@@ -423,39 +429,6 @@
     const UI_UPDATE_DELAY = 1; //1 millisecond is enough
     setTimeout(() => {[[[self window] contentView] setNeedsDisplay: YES];}, UI_UPDATE_DELAY);
     //console.info(gTestDetails);
-}
-
-
-- (void) exportCurrentTestResult { //console.info("AppController>exportCurrentTestResult");
-    try {//in localStorage we don't want to localise
-        let temp = currentTestResultExportString.replace(/,/g, ".");
-        localStorage.setItem(gFilename4ResultStorage, temp);
-        temp = currentTestResultsHistoryExportString.replace(/,/g, ".");
-        localStorage.setItem(gFilename4ResultsHistoryStorage, temp);
-    } catch (e) {
-        console.warn("localStorage not available:", e);
-        // Fallback behavior not really availabe
-    }
-    let string4clipboard = currentTestResultExportString;
-    switch ([Settings resultsToClipboardIndex]) {
-        case kResultsToClipNone: break;
-        case kResultsToClipFullHistory:
-            string4clipboard += currentTestResultsHistoryExportString;
-            //purposefully "fall throught" to next:
-        case kResultsToClipFinalOnly:
-            if ([Settings putResultsToClipboardSilent]) {
-                [Misc copyString2Clipboard: string4clipboard];
-            } else {
-                [Misc copyString2ClipboardWithDialog: string4clipboard];
-            }
-            break;
-        case kResultsToClipFullHistory2PDF: [Misc export2PDF: currentTestResultExportString withHistory: currentTestResultsHistoryExportString]; break;
-    }
-    [buttonExportClip setEnabled: ([currentTestResultExportString length] > 1)];
-    [buttonExportPDF setEnabled: ([currentTestResultExportString length] > 1)];
-    if ([kTestAcuityLetters, kTestAcuityLandolt, kTestAcuityE, kTestAcuityTAO, kTestContrastLetters, kTestContrastLandolt, kTestContrastE, kTestContrastG].includes(gCurrentTestID)){
-        [buttonPlot setEnabled: ([currentTestResultExportString length] > 1)];
-    }
 }
 
 
@@ -623,12 +596,14 @@
 /**
  And more buttons…
  */
-- (IBAction) buttonExportClip_action: (id) sender { //CPLog("AppController>buttonExportClip_action");
-    [Misc copyString2Clipboard: currentTestResultExportString];
-    [buttonExportClip setEnabled: NO];
+
+- (IBAction) buttonExportClip_action: (id) sender {
+    [exportManager exportToClipboardManually];
 }
-- (IBAction) buttonExportPDF_action: (id) sender { //CPLog("AppController>buttonExportPDF_action");
-    [Misc export2PDF: currentTestResultExportString withHistory: currentTestResultsHistoryExportString];
+
+
+- (IBAction) buttonExportPDF_action: (id) sender {
+    [exportManager exportToPDF];
 }
 
 

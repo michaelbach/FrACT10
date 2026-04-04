@@ -1,5 +1,6 @@
 # History
 
+2026-04-04 refactor: simplify `AppController` by creating `ExportManager`
 2026-03-28 use updated Cappucciono frameworks (no difference because I had linked-in the improved ColorWell stuf already)
 2026-03-24 bugfix: "Import All Settings" must not overwrite `dateOfSettingsVersion`,
     crowding inducers respect foreground color

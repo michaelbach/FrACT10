@@ -183,15 +183,18 @@ function _pause(ms) { //console.info("Misc>_pause");
 
 
 /**
- Utility to copy a string to the clipboard which surprisingly now works in all(?) modern browsers
+ Utility to copy a string to the clipboard which surprisingly now works in all modern browsers
  */
 + (void) copyString2Clipboard: (CPString) s { //console.info("Misc>copyString2Clipboard: ", s);
-    try {
-        navigator.clipboard.writeText(s); //only over https, returns a Promise
-    }
-    catch(e) { //avoid the global error catcher
-        console.info("Error copying result to clipboard: ", e); //alert(e);
-    }
+    navigator.clipboard.writeText(s)
+        .then(() => {
+            //console.info("Successfully copied to clipboard.");
+        })
+        .catch((e) => {
+            console.warn("Error copying result to clipboard: ", e);
+            //todo: the below could be a nice dialog which does the export
+            alert("Automatic clipboard export not allowed, please press export button.");
+        });
 }
 
 
