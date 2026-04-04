@@ -85,7 +85,7 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
     }
     [MDB2plot p2init];
     if (gTestingPlottingAcuity1Contrast2 === 0) {
-        testHistory = [TrialHistoryController trialHistoryRecord];
+        testHistory = [TrialHistoryManager trialHistoryRecord];
         testHistoryResultValue = gTestDetails[td_resultValue];
         isAcuity = gTestDetails[td_testName].startsWith("Acuity");
         isContrast = gTestDetails[td_testName].startsWith("Contrast");

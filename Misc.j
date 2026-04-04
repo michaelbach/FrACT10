@@ -405,8 +405,9 @@ function _pause(ms) { //console.info("Misc>_pause");
     runOne(gAppController, @selector(unittestAppC), "AppC");
     runOne(Optotypes, @selector(unittest), "Opto");
     runOne(AlternativesGenerator, @selector(unittest), "AltG");
-    runOne(TrialHistoryController, @selector(unittest), "THC");
+    runOne(TrialHistoryManager, @selector(unittest), "THC");
     runOne(Thresholder, @selector(unittest), "Thrh");
+    runOne(ExportManager, @selector(unittest), "ExM");
 
     [gAppController setResultStringFieldTo: [s substringToIndex: [s length] - 2]]; //remove last ", "
     return successAll;

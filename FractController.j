@@ -11,7 +11,7 @@ This file is part of FrACT10, a vision test battery.
 @import "AlternativesGenerator.j"
 @import "Thresholder.j";
 @import "Optotypes.j";
-@import "TrialHistoryController.j"
+@import "TrialHistoryManager.j"
 @import "MDBDispersionEstimation.j"
 
 
@@ -110,7 +110,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         alternativesGeneratorEccentRandomizeY = [[AlternativesGenerator alloc] initWithNumAlternatives: 2 andNTrials: nTrials obliqueOnly: NO];
     }
     thresholder = [[Thresholder alloc] initWithNumAlternatives: nAlternatives];
-    [TrialHistoryController initWithNumTrials: nTrials];
+    [TrialHistoryManager initWithNumTrials: nTrials];
 }
 
 - (void) _initializeTestDetails {
@@ -337,8 +337,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 - (void) onTimeoutResponse: (CPTimer) timer { //console.info("FractController>onTimeoutResponse");
     responseWasCorrect = NO;
-    [TrialHistoryController setResponded: -1];
-    [TrialHistoryController setPresented: [alternativesGenerator currentAlternative]];
+    [TrialHistoryManager setResponded: -1];
+    [TrialHistoryManager setPresented: [alternativesGenerator currentAlternative]];
     [self trialEnd];
 }
 
@@ -362,8 +362,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if ([self isAcuityGrating]) {
         responseWasCorrect = spatialFreqCPD < [0.3, 1, 10][arIndex];
     }
-    [TrialHistoryController setPresented: [alternativesGenerator currentAlternative]];
-    [TrialHistoryController setResponded: -1]; //doesn't make sense on autorun, but something needs to be entered
+    [TrialHistoryManager setPresented: [alternativesGenerator currentAlternative]];
+    [TrialHistoryManager setResponded: -1]; //doesn't make sense on autorun, but something needs to be entered
     [self trialEnd];
 }
 
@@ -373,8 +373,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     const ca = [alternativesGenerator currentAlternative];
     if (responseKeyChar === "Ø") [self runEnd]; //added for the remote response box
     const r = [self responseNumberFromChar: responseKeyChar];
-    [TrialHistoryController setPresented: ca];
-    [TrialHistoryController setResponded: r];
+    [TrialHistoryManager setPresented: ca];
+    [TrialHistoryManager setResponded: r];
     responseWasCorrect = (r === ca);
     [self trialEnd];
 }
@@ -443,7 +443,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     CGContextSetFillColor(cgc, gColorBack); //need to clear for ISI to work
     CGContextFillRect(cgc, [[self window] frame]);
 
-    [TrialHistoryController setIsCorrect: responseWasCorrect]; //placed here so reached by "onTimeoutAutoResponse"
+    [TrialHistoryManager setIsCorrect: responseWasCorrect]; //placed here so reached by "onTimeoutAutoResponse"
     [thresholder enterTrialOutcomeWithAppliedStim: [self stimThresholderunitsFromDeviceunits: stimStrengthInDeviceunits] wasCorrect: responseWasCorrect];
     switch ([Settings auditoryFeedback4trialIndex]) { //case 0: nothing
         case kauditoryFeedback4trialIndexAlways:
@@ -455,7 +455,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             else [sound playNumber: kSoundTrialNo];
             break;
     }
-    [TrialHistoryController trialEnded];
+    [TrialHistoryManager trialEnded];
     [self trialStart];
 }
 
@@ -484,8 +484,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [gAppController setCurrentTestResultExportString: [self composeExportString]];
     //delay to give the screen time to update for immediate response feedback
     await [Misc asyncDelaySeconds: 0.03];
-    [TrialHistoryController runEnded];
-    [gAppController setCurrentTestResultsHistoryExportString: [TrialHistoryController resultsHistoryString]];
+    [TrialHistoryManager runEnded];
+    [gAppController setCurrentTestResultsHistoryExportString: [TrialHistoryManager resultsHistoryString]];
     if ([Settings giveAuditoryFeedback4run]) [sound playNumber: kSoundRunEnd];
 
     let exportString = [gAppController currentTestResultExportString];
@@ -502,7 +502,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if ([Settings showCI95] && (![gAppController runAborted])) {
         if ([self isAcuityOptotype]) {
             //the below causes a delay of < 1 s with nSamples=10,000
-            const historyResults = [TrialHistoryController composeInfo4CI];
+            const historyResults = [TrialHistoryManager composeInfo4CI];
             gTestDetails[td_halfCI95] = [MDBDispersionEstimation calculateCI95halfFromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: gNSamplesCI95];
             ci95String = " ± " + [Misc stringFromNumber: gTestDetails[td_halfCI95] decimals: 2 localised: YES];
             [gAppController setResultStringFieldTo: [self acuityComposeResultString]]; //this will add CI95 info

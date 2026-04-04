@@ -113,4 +113,43 @@ Coded by Gemini, many corrections by MB
 }
 
 
+/**
+ Perform logic unit tests for ExportManager.
+ @return YES if all tests pass
+ */
++ (BOOL) unittest {
+    let success = YES, report = "\r\nExportManager▸unittest:" + crlf;
+
+    //Setup: Simulate a test result
+    const em = [[ExportManager alloc] init];
+    const testResult = "value\t0.5";
+    const testHistory = "trial\t1\t...\r\n";
+    
+    //Test 1: Helper string composition
+    [Settings setResultsToClipboardIndex: kResultsToClipFinalOnly];
+    [em updateResult: testResult history: testHistory forTestID: kTestAcuityLetters];
+    if ([em _getExportString] !== testResult) {
+        report += "  ERROR: Export string mismatch (FinalOnly)!" + crlf; success = NO;
+    }
+
+    [Settings setResultsToClipboardIndex: kResultsToClipFullHistory];
+    if ([em _getExportString] !== testResult + testHistory) {
+        report += "  ERROR: Export string mismatch (FullHistory)!" + crlf; success = NO;
+    }
+
+    //Test 2: LocalStorage formatting
+    [em updateResult: "0,5" history: "1,2" forTestID: kTestAcuityLetters];
+    [em syncToLocalStorage];
+    if (localStorage.getItem(gFilename4ResultStorage) !== "0.5") {
+         report += "  ERROR: LocalStorage decimal conversion failed!" + crlf; success = NO;
+    }
+
+    if (success) {
+        report += "  ExportManager logic tests passed." + crlf;
+    }
+    console.info(report);
+    return success;
+}
+
+
 @end

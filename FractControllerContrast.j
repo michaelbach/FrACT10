@@ -90,7 +90,7 @@ Created by Bach on 2020-09-02
     if ([Settings isContrastDithering]) {
         stimStrengthInDeviceunits = stimStrengthInDeviceunitsUnquantised;
     }
-    [TrialHistoryController setValue: stimStrengthInDeviceunits];
+    [TrialHistoryManager setValue: stimStrengthInDeviceunits];
 
     if (([Settings contrastCrowdingType] > 0) && (state === kStateDrawFore2) &&
         (!([kTestAcuityLineByLine, kTestAcuityVernier, kTestContrastG].includes(gCurrentTestID)))) { //don't do crowding with these

@@ -2,7 +2,7 @@
  This file is part of FrACT10, a vision test battery.
  © 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
- TrialHistoryController.j
+ TrialHistoryManager.j
 
  */
 
@@ -13,7 +13,7 @@
 /**
  2021-01-06 This class manages the FrACT10 trial history that collects the full run info
  */
-@implementation TrialHistoryController: CPObject {
+@implementation TrialHistoryManager: CPObject {
     id trialHistoryRecord;
     // the fields of above record
     float value;
@@ -46,12 +46,12 @@
 + (void) setResultsHistoryString: (CPString) v {resultsHistoryString = v;}
 
 
-+ (void) initialize { //CPLog("TrialHistoryController>initialize");
++ (void) initialize { //CPLog("TrialHistoryManager>initialize");
     [super initialize];
 }
 
 
-+ initWithNumTrials: (int) nTrials { //console.info("TrialHistoryController>initWithNumTrials", nTrials);
++ initWithNumTrials: (int) nTrials { //console.info("TrialHistoryManager>initWithNumTrials", nTrials);
     trialHistoryRecord = [];
     gTestDetails = {};
     gTestDetails[td_vsExpFormat] = gVersionOfExportFormat;
@@ -66,7 +66,7 @@
 }
 
 
-+ (void) trialEnded { //console.info("TrialHistoryController>trialEnded");
++ (void) trialEnded { //console.info("TrialHistoryManager>trialEnded");
     if (currentIndex > nTrialsLocal) return;  //just for safety, should not occur
     trialHistoryRecord[currentIndex] = {};
     trialHistoryRecord[currentIndex].value = value;
@@ -83,7 +83,7 @@
 }
 
 
-+ (void) runEnded { //console.info("TrialHistoryController>trialEnded");
++ (void) runEnded { //console.info("TrialHistoryManager>trialEnded");
     //console.info(trialHistoryRecord);
     let s = "trial" + tab + "value" + tab + "choicePresented" + tab + "choiceResponded" + tab + "correct" + tab + "reactionTimeInMs" + crlf;
     for (let i = 0; i < trialHistoryRecord.length; ++i) {
@@ -110,33 +110,33 @@
     return trialsDF;
 }
 /**
- Perform logic unit tests for TrialHistoryController.
+ Perform logic unit tests for TrialHistoryManager.
  @return YES if all tests pass
  Code by Gemini
  */
 + (BOOL) unittest {
-    let success = YES, report = crlf + "TrialHistoryController▸unittest:" + crlf;
+    let success = YES, report = crlf + "TrialHistoryManager▸unittest:" + crlf;
 
     //Test 1: Initialization and Trial Recording
-    [TrialHistoryController initWithNumTrials: 5];
-    [TrialHistoryController setValue: 0.5];
-    [TrialHistoryController setPresented: 2];
-    [TrialHistoryController setResponded: 2];
-    [TrialHistoryController setIsCorrect: YES];
-    [TrialHistoryController trialEnded];
+    [TrialHistoryManager initWithNumTrials: 5];
+    [TrialHistoryManager setValue: 0.5];
+    [TrialHistoryManager setPresented: 2];
+    [TrialHistoryManager setResponded: 2];
+    [TrialHistoryManager setIsCorrect: YES];
+    [TrialHistoryManager trialEnded];
 
-    [TrialHistoryController setValue: 0.8];
-    [TrialHistoryController setPresented: 4];
-    [TrialHistoryController setResponded: 0];
-    [TrialHistoryController setIsCorrect: NO];
-    [TrialHistoryController trialEnded];
+    [TrialHistoryManager setValue: 0.8];
+    [TrialHistoryManager setPresented: 4];
+    [TrialHistoryManager setResponded: 0];
+    [TrialHistoryManager setIsCorrect: NO];
+    [TrialHistoryManager trialEnded];
 
     if (gTestDetails[td_nTrials] !== 2 || gTestDetails[td_nCorrect] !== 1 || gTestDetails[td_nIncorrect] !== 1) {
         report += "  ERROR: Trial counters in gTestDetails are incorrect!" + crlf; success = NO;
     }
 
     //Test 2: Data Frame Composition for CI95
-    const info = [TrialHistoryController composeInfo4CI];
+    const info = [TrialHistoryManager composeInfo4CI];
     if (info.length !== 2) {
         report += "  ERROR: Composed info length mismatch!" + crlf; success = NO;
     } else {
@@ -146,8 +146,8 @@
     }
 
     //Test 3: Run End String Generation
-    [TrialHistoryController runEnded];
-    const historyStr = [TrialHistoryController resultsHistoryString];
+    [TrialHistoryManager runEnded];
+    const historyStr = [TrialHistoryManager resultsHistoryString];
     if (!historyStr || [historyStr length] < 20 || ![historyStr containsString: "choicePresented"]) {
         report += "  ERROR: Result history string generation failed!" + crlf; success = NO;
     }

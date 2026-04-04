@@ -25,7 +25,7 @@ const specialBcmStepsize = 0.1;
     if (iTrial === 1) {
         nTrials = 200;
         alternativesGenerator = [[AlternativesGenerator alloc] initWithNumAlternatives: 2 andNTrials: nTrials obliqueOnly: [Settings isGratingObliqueOnly]];
-        [TrialHistoryController initWithNumTrials: nTrials];
+        [TrialHistoryManager initWithNumTrials: nTrials];
 
         specialBcmFreq = [Settings gratingCPDmin];
         specialBcmFreqPrevious = 0;  specialBcmCountAtStep = 1;  specialBcmCountAtStepError = 0;
@@ -192,9 +192,9 @@ const specialBcmStepsize = 0.1;
     CGContextRestoreGState(cgc);
     [super drawStimulusInRect: dirtyRect];
     if ([self isContrastG]) {
-        [TrialHistoryController setValue: contrastMichelsonPercent];
+        [TrialHistoryManager setValue: contrastMichelsonPercent];
     } else { //acuity_grating
-        [TrialHistoryController setValue: spatialFreqCPD];
+        [TrialHistoryManager setValue: spatialFreqCPD];
     }
 }
 

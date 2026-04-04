@@ -43,7 +43,7 @@ let kWorstLogMAR, kBestLogMAR, kGuess, testDF; //there are no class properties i
 /**
  df is for data frame, inspired by R, here an array of 2-tupels {correct, lMar}
  It represents the full run info of presented acuity (float lMAR) and response (BOOL correct)
- That dataframe is composed in TrialHistoryController
+ That dataframe is composed in TrialHistoryManager
  */
 + (id) calculateCIfromDF: (id) df guessingProbability: (float) guessingProbability nSamples: (int) nSamples {
     kGuess = guessingProbability; //as global parameter to speed up

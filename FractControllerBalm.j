@@ -60,7 +60,7 @@
 //alternateButton: "Cancel  (ߵcߴ)"
 
 - (void) drawStimulusInRect: (CGRect) dirtyRect forView: (FractView) fractView { //console.info("FractControllerBalm>drawStimulusInRect");
-    [TrialHistoryController setValue: 1];
+    [TrialHistoryManager setValue: 1];
     CGContextSaveGState(cgc);
     CGContextTranslateCTM(cgc,  viewWidthHalf, viewHeightHalf); //origin to center
     if (viewHeightHalf > extentInPix) {
