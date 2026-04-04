@@ -39,6 +39,7 @@ function _pause(ms) { //console.info("Misc>_pause");
 
 /**
  Randomize the pseudorandom sequence based on current time
+ Technically redundant in a modern web context, but does not hurt.
  */
 + (void) randomizeRandomGenerator {
     const SEED_CYCLES_MAX = 333;

@@ -22,7 +22,7 @@ Implementation of BestPEST
 - (id)initWithNumAlternatives: (int) numAlternatives { //console.info("ThresholderPest>init");
     self = [super init];
     if (self) { //Code below is really really old, but at least long proven
-        kRange = 5000;  kRange1 = kRange - 1;  kRange2 = kRange * 2
+        kRange = 5000;  kRange1 = kRange - 1;  kRange2 = kRange * 2;
         probability = new Array(kRange);  plgit = new Array(kRange * 2);  mlgit = new Array(kRange * 2);
         for (let i = 0; i < kRange; i++) {
             probability[i] = 0.0;
@@ -43,7 +43,7 @@ Implementation of BestPEST
 
 
 - (void) unitTest {
-    console.log("\nThresholderPest▸unittest")
+    console.log("\nThresholderPest▸unittest");
     for (let i = 0; i < 10; ++i) {
         const stim = [self nextStim2apply];
         console.info(i + " " + stim);
@@ -59,7 +59,7 @@ Implementation of BestPEST
 
 - (void) enterTrialOutcomeWithAppliedStim: (float) appliedStim wasCorrect: (BOOL) wasCorrect {
     //console.info("Pest>enterTrialOutcomeWithAppliedStim ", wasCorrect);
-    appliedStimStored = appliedStim,
+    appliedStimStored = appliedStim;
     wasCorrectStored = wasCorrect;
 }
 
