@@ -16,16 +16,12 @@ Coded by Gemini, many corrections by MB
 
 @implementation ExportManager: CPObject {
     CPString resultString, historyString;
-    CPButton buttonExportClip, buttonExportPDF, buttonPlot;
 }
 
 
-- (id) initWithButtonClip: (CPButton) aButtonClip buttonPDF: (CPButton) aButtonPDF buttonPlot: (CPButton) aButtonPlot { //console.info("ExportManager>initWithButtonClip");
+- (id) init { //console.info("ExportManager>init");
     self = [super init];
     if (self) {
-        buttonExportClip = aButtonClip;
-        buttonExportPDF = aButtonPDF;
-        buttonPlot = aButtonPlot;
         resultString = "";  historyString = "";
     }
     return self;
@@ -39,13 +35,13 @@ Coded by Gemini, many corrections by MB
     resultString = aResult;  historyString = aHistory;
 
     const haveData = [resultString length] > 1;
-    [buttonExportClip setEnabled: haveData];
-    [buttonExportPDF setEnabled: haveData];
+    [gAppController.buttonExportClip setEnabled: haveData];
+    [gAppController.buttonExportPDF setEnabled: haveData];
 
     //Plotting is currently only available for certain test types
     const canPlot = [kTestAcuityLetters, kTestAcuityLandolt, kTestAcuityE, kTestAcuityTAO,
                     kTestContrastLetters, kTestContrastLandolt, kTestContrastE, kTestContrastG].includes(testID);
-    [buttonPlot setEnabled: (haveData && canPlot)];
+    [gAppController.buttonPlot setEnabled: (haveData && canPlot)];
 
     [self syncToLocalStorage];
 }
@@ -91,7 +87,7 @@ Coded by Gemini, many corrections by MB
             if ([Settings putResultsToClipboardSilent]) {
                 [Misc copyString2Clipboard: [self _getExportString]];
             } else {
-                [Misc copyString2ClipboardWithDialog: [self _getExportString]];
+                [self copyToClipboardWithDialog: [self _getExportString]];
             }
             break;
         case kResultsToClipFullHistory2PDF: 
@@ -104,12 +100,8 @@ Coded by Gemini, many corrections by MB
 /**
  Copy current result (and optionally history) to clipboard.
  */
-- (void) exportToClipboard { //console.info("ExportManager>exportToClipboard");
-    if ([Settings putResultsToClipboardSilent]) {
-        [Misc copyString2Clipboard: [self _getExportString]];
-    } else {
-        [self copyToClipboardWithDialog: [self _getExportString]];
-    }
+- (void) exportToClipboardManually { //console.info("ExportManager>exportToClipboardManually");
+    [Misc copyString2Clipboard: [self _getExportString]];
 }
 
 
