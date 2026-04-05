@@ -13,7 +13,7 @@
 
 + (void) apply {
     [Settings setDefaults];
-//    [Presets setStandardDefaultsKeepingCalBarLength];
+//    [Settings setDefaultsKeepingCalBarLength];
     //General pane
     [[CPUserDefaults standardUserDefaults] setInteger: kNAlternativesIndex4 forKey: "nAlternativesIndex"]; //4
     [Settings setNTrials04: 24];

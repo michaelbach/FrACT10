@@ -12,7 +12,7 @@
 @implementation Presets_Maculight: CPObject
 
 + (void) apply { //console.info("Presets_Maculight>apply")
-    [Presets setStandardDefaultsKeepingCalBarLength];
+    [Settings setDefaultsKeepingCalBarLength];
     //general pane
     [Settings setShowResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
     [Settings setResultsToClipboardIndex: kResultsToClipFinalOnly];

@@ -11,7 +11,7 @@
 @implementation Presets_ESU: CPObject
 
 + (void) apply {
-    [Presets setStandardDefaultsKeepingCalBarLength];
+    [Settings setDefaultsKeepingCalBarLength];
     //general pane
     [Settings setShowResponseInfoAtStart: NO];  [Settings setEnableTouchControls: NO];
     [Settings setDistanceInCM: 150];

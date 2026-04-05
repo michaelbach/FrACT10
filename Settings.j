@@ -425,6 +425,11 @@ Created by mb on July 15, 2015.
 + (void) setDefaults { //console.info("Settings>setDefaults");
     [self allNotCheckButSet: YES];
 }
++ (void) setDefaultsKeepingCalBarLength {
+    const calBarLengthInMM_prior = [Settings calBarLengthInMM];
+    [self setDefaults];
+    [self setCalBarLengthInMM: calBarLengthInMM_prior];
+}
 
 
 /**
