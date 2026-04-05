@@ -87,7 +87,7 @@ Coded by Gemini, many corrections by MB
             if ([Settings putResultsToClipboardSilent]) {
                 [Misc copyString2Clipboard: [self _getExportString]];
             } else {
-                [self copyToClipboardWithDialog: [self _getExportString]];
+                [Misc copyString2ClipboardWithDialog: [self _getExportString]];
             }
             break;
         case kResultsToClipFullHistory2PDF: 
@@ -100,7 +100,7 @@ Coded by Gemini, many corrections by MB
 /**
  Copy current result (and optionally history) to clipboard.
  */
-- (void) exportToClipboardManually { //console.info("ExportManager>exportToClipboardManually");
+- (void) exportToClipboardManually { console.info("ExportManager>exportToClipboardManually");
     [Misc copyString2Clipboard: [self _getExportString]];
 }
 
