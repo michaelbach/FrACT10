@@ -362,18 +362,8 @@ Created by mb on July 15, 2015.
     [self setIsAutoPreset: [self checkBool: [self isAutoPreset] dflt: NO set: set]];
 
     if (set) [self enableNotDisableAllTests: YES];
-/*    [self setEnableTestAcuityLetters: [self checkBool: [self enableTestAcuityLetters] dflt: YES set: set]];
-    [self setEnableTestAcuityLandolt: [self checkBool: [self enableTestAcuityLandolt] dflt: YES set: set]];
-    [self setEnableTestAcuityE: [self checkBool: [self enableTestAcuityE] dflt: YES set: set]];
-    [self setEnableTestAcuityTAO: [self checkBool: [self enableTestAcuityTAO] dflt: YES set: set]];
-    [self setEnableTestAcuityVernier: [self checkBool: [self enableTestAcuityVernier] dflt: YES set: set]];
-    [self setEnableTestContrastLetters: [self checkBool: [self enableTestContrastLetters] dflt: YES set: set]];
-    [self setEnableTestContrastLandolt: [self checkBool: [self enableTestContrastLandolt] dflt: YES set: set]];
-    [self setEnableTestContrastE: [self checkBool: [self enableTestContrastE] dflt: YES set: set]];
-    [self setEnableTestContrastG: [self checkBool: [self enableTestContrastG] dflt: YES set: set]];
-    [self setEnableTestAcuityLineByLine: [self checkBool: [self enableTestAcuityLineByLine] dflt: YES set: set]];
-    [self setEnableTestBalmGeneral: [self checkBool: [self enableTestBalmGeneral] dflt: YES set: set]]; */
     [self setIsAllSettingsDisabled: [self checkBool: [self isAllSettingsDisabled] dflt: NO set: set]];
+
     [[CPUserDefaults standardUserDefaults] synchronize];
 }
 
