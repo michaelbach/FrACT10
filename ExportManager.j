@@ -100,7 +100,7 @@ Coded by Gemini, many corrections by MB
 /**
  Copy current result (and optionally history) to clipboard.
  */
-- (void) exportToClipboardManually { console.info("ExportManager>exportToClipboardManually");
+- (void) exportToClipboardManually { //console.info("ExportManager>exportToClipboardManually");
     [Misc copyString2Clipboard: [self _getExportString]];
 }
 
