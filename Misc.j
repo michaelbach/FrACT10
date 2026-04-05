@@ -402,6 +402,7 @@ function _pause(ms) { //console.info("Misc>_pause");
     runOne(MiscLight, @selector(unittest), "McL");
     runOne(MDBDispersionEstimation, @selector(unittestProbCorrectGivenLogMAR), "DispE");
     runOne(Settings, @selector(unittest), "Sett");
+    runOne([gAppController presets], @selector(unittest), "Prs");
     runOne(gAppController, @selector(unittestAppC), "AppC");
     runOne(Optotypes, @selector(unittest), "Opto");
     runOne(AlternativesGenerator, @selector(unittest), "AltG");

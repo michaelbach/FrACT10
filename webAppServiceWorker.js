@@ -69,6 +69,7 @@ self.addEventListener('install', (event) => {
                             './Resources/optotypeEs/optotypeE090.png',
                             './Resources/optotypeEs/optotypeE180.png',
                             './Resources/optotypeEs/optotypeE270.png',
+                            './Resources/Presets.json',
                             './Resources/sounds/runEnd/cuteLevelUp.mp3',
                             './Resources/sounds/runEnd/gong.mp3',
                             './Resources/sounds/trialNo/error2.mp3',

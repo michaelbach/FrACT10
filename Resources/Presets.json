@@ -1,9 +1,13 @@
 {
-  "Standard Defaults": { "action": "setDefaults" },
-
-  "Testing": { "action": "applyTestingPresets" },
+  "Standard Defaults": {
+    "action": "setDefaults"
+  },
+  "Testing": {
+    "action": "applyTestingPresets"
+  },
 
   "BaLM₁₀": {
+    "action": "setDefaults",
     "settings": {
       "timeoutResponseSeconds": 2,
       "nTrials02": 24,

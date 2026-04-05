@@ -65,7 +65,7 @@
     @outlet CPButton buttonExportClip, buttonExportPDF, buttonPlot;
     @outlet CPButton radioButtonAcuityBW, radioButtonAcuityColor;
     @outlet GammaView gammaView;
-    @outlet CPPopUpButton settingsPanePresetsPopUpButton;  Presets presets;
+    @outlet CPPopUpButton settingsPanePresetsPopUpButton;
     @outlet CPPopUpButton settingsPaneSoundsTrialStartPopUp;
     @outlet CPPopUpButton settingsPaneMiscSoundsTrialYesPopUp;
     @outlet CPPopUpButton settingsPaneMiscSoundsTrialNoPopUp;
@@ -81,6 +81,7 @@
     RewardsController rewardsController;
     TAOController taoController;
     ExportManager exportManager;
+    Presets presets @accessors;
     FractController currentFractController;
     BOOL settingsNeededNewDefaults;
     BOOL runAborted @accessors;

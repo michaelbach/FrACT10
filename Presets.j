@@ -17,20 +17,32 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
 
 
 @implementation Presets: CPObject {
-    CPString _presetName;
-    CPPopUpButton _popUpButton;
+    id allPresets;
+    CPString presetName, allPresetNames;
+    CPPopUpButton popUpButton;
 }
 
 
 - (id) initWithPopup: (CPPopUpButton) thePopUpButton {
     self = [super init];
     if (self) {
-        const allPresets = ["PRESETS", "Standard Defaults", "AT@LeviLab", "BaLM₁₀", "BCM@Scheie", "CNS@Freiburg", "Color Equiluminance", "EndoArt01", "ESU", "ETCF", "Hyper@TUDo", "HYPERION", "Maculight", "ULV@Gensight", "Testing"];
+        popUpButton = thePopUpButton;
+        [popUpButton removeAllItems];
+        [popUpButton addItemWithTitle: "PRESETS"];
+        [popUpButton setSelectedIndex: 0];
 
-        _popUpButton = thePopUpButton;
-        [_popUpButton removeAllItems];
-        for (const aPreset of allPresets) [_popUpButton addItemWithTitle: aPreset];
-        [_popUpButton setSelectedIndex: 0];
+        const path = [[CPBundle mainBundle] pathForResource: "Presets.json"];
+        fetch(path)
+            .then(response => response.json())
+            .then(presets => {
+                allPresets = presets;
+                allPresetNames = Object.keys(allPresets);
+                allPresetNames.sort();
+                for (const name of allPresetNames) {
+                    [popUpButton addItemWithTitle: name];
+                }
+            })
+            .catch(error => console.error("Failed to load presets for popup:", error));
 
         [[CPNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationApplyPresetNamed:) name: "notificationApplyPresetNamed" object: nil];
     }
@@ -38,13 +50,20 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
 }
 
 
+- (void) applyPresetNamed: (CPString) aPresetName {
+    presetName = aPresetName;
+    [self apply2withFeedbackType: kFeedbackTypeNone];
+}
+
+
+
 //called from the GUI Presets popup
 - (void) apply: (id) sender {
-    const _presetIndex = [sender indexOfSelectedItem];
-    if (_presetIndex === 0) return;
+    const presetIndex = [sender indexOfSelectedItem];
+    if (presetIndex === 0) return;
 
-    _presetName = [sender itemTitleAtIndex: _presetIndex];
-    const messageText = "Really all Settings to “" + _presetName + "” ?";
+    presetName = [sender itemTitleAtIndex: presetIndex];
+    const messageText = "Really all Settings to “" + presetName + "” ?";
     gLatestAlert = [CPAlert alertWithMessageText: messageText
                                    defaultButton: "NO   (ߵnߴ)" alternateButton: "YES   (ߵyߴ)" otherButton: nil
                        informativeTextWithFormat: "Many Settings will change. You should know what you are doing here. Luckily, you can always return to defaults."];
@@ -61,126 +80,135 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
 
 //called from `ControlDispatcher`
 - (void) notificationApplyPresetNamed: (CPNotification) aNotification {
-    _presetName = [aNotification object];
+    presetName = [aNotification object];
     [self apply2withFeedbackType: kFeedbackTypeHTMLMessage];
 }
 
 
 - (void) apply2withFeedbackType: (feedbackTypeType) feedbackType {
-    const knownPresets = ["Standard Defaults", "Demo", "Testing", "DemoBaLM", "BaLM₁₀", "Color Equiluminance", "EndoArt01", "ESU", "BCM@Scheie", "CNS@Freiburg", "Maculight", "AT@LeviLab", "Hyper@TUDo", "ULV@Gensight", "ETCF", "HYPERION"];
-                          
-    if (!knownPresets.includes(_presetName)) {
-        console.log("FrACT10>Presets>unknown preset: ", _presetName);
+    if (!allPresetNames.includes(presetName)) {
+        console.log("FrACT10▸Presets▸unknown preset: ", presetName);
         if (feedbackType === kFeedbackTypeHTMLMessage) {
-            [ControlDispatcher post2parentM1: "Settings" m2: "Preset" m3: _presetName success: NO];
+            [ControlDispatcher post2parentM1: "Settings" m2: "Preset" m3: presetName success: NO];
         } else if ([Settings isAutoPreset]) {
             [Settings setIsAutoPreset: NO];
-            gLatestAlert = [CPAlert alertWithMessageText: "WARNING" defaultButton: "OK" alternateButton: nil otherButton: nil informativeTextWithFormat: "\rTrying to apply unknown preset: “" + _presetName + "”.\r\rI suggest to reselect the desired preset.\r"];
+            gLatestAlert = [CPAlert alertWithMessageText: "WARNING" defaultButton: "OK" alternateButton: nil otherButton: nil informativeTextWithFormat: "\rTrying to apply unknown preset: “" + presetName + "”.\r\rI suggest to reselect the desired preset.\r"];
             [gLatestAlert runModal];
         }
         return;
     }
 
-    [self applyPresetLogic: _presetName]
-        .then(() => {
-            [_popUpButton setSelectedIndex: 0];
+    [self applyPresetLogic];
+    [popUpButton setSelectedIndex: 0];
 
-            switch (feedbackType) {
-                case kFeedbackTypeGUI:
-                    gLatestAlert = [CPAlert alertWithMessageText: "Preset  »" + _presetName + "«  was applied." defaultButton: "OK" alternateButton: nil otherButton: nil informativeTextWithFormat: ""];
-                    [gLatestAlert runModal];
-                    break;
-                case kFeedbackTypeHTMLMessage:
-                    [ControlDispatcher post2parentM1: "Settings" m2: "Preset" m3: _presetName success: true];
-                    break;
-            }
-        })
-        .catch(error => console.error("Preset application failed:", error));
+    switch (feedbackType) {
+        case kFeedbackTypeGUI:
+            gLatestAlert = [CPAlert alertWithMessageText: "Preset  »" + presetName + "«  was applied." defaultButton: "OK" alternateButton: nil otherButton: nil informativeTextWithFormat: ""];
+            [gLatestAlert runModal];
+            break;
+        case kFeedbackTypeHTMLMessage:
+            [ControlDispatcher post2parentM1: "Settings" m2: "Preset" m3: presetName success: true];
+            break;
+    }
 }
 
 
-- (CPPromise) applyPresetLogic: (CPString) presetName { //console.info("applyPresetLogic")
-    const path = [[CPBundle mainBundle] pathForResource: "Presets.json"];
-    
-    return fetch(path)
-        .then(function(response) { return response.json(); })
-        .then(function(presets) {
-            const config = presets[presetName];
-            if (!config) {
-                alert("Config for »"+ presetName + "« does not exist");
-                return;
+- (void) applyPresetLogic { //console.info("applyPresetLogic")
+    const config = allPresets[presetName];
+    if (!config) { //this was already tested, can't hurt
+        alert("Config for »"+ presetName + "« does not exist");
+        return;
+    }
+
+    switch (config.action) { //Reset defaults
+        case "setDefaults": [Settings setDefaults]; break;
+        case "setDefaultsKeepingCalBarLength": [Settings setDefaultsKeepingCalBarLength]; break;
+        case "applyTestingPresets": [self applyTestingPresets]; break;
+        default: console.warn("`switch (config.action)` finds unknown action: ", config.action);
+    }
+
+    if (config.settings) { //Apply settings
+        const ConstantMap = { //mapping so we can use symbolic constants in the json file
+            "kResultsToClipNone": kResultsToClipNone,
+            "kResultsToClipFullHistory": kResultsToClipFullHistory,
+            "kResultsToClipFinalOnly": kResultsToClipFinalOnly,
+            "kNAlternativesIndex2": kNAlternativesIndex2,
+            "kNAlternativesIndex4": kNAlternativesIndex4,
+            "kNAlternativesIndex8plus": kNAlternativesIndex8plus,
+            "kauditoryFeedback4trialIndexNone": kauditoryFeedback4trialIndexNone,
+            "kauditoryFeedback4trialIndexAlways": kauditoryFeedback4trialIndexAlways,
+            "kauditoryFeedback4trialIndexOncorrect": kauditoryFeedback4trialIndexOncorrect,
+            "kauditoryFeedback4trialIndexWithinfo": kauditoryFeedback4trialIndexWithinfo,
+            "kTestNone": kTestNone,
+            "kTestAcuityLetters": kTestAcuityLetters,
+            "kTestAcuityLandolt": kTestAcuityLandolt,
+            "kTestAcuityE": kTestAcuityE,
+            "kTestAcuityTAO": kTestAcuityTAO,
+            "kTestAcuityVernier": kTestAcuityVernier,
+            "kTestContrastLetters": kTestContrastLetters,
+            "kTestContrastLandolt": kTestContrastLandolt,
+            "kTestContrastE": kTestContrastE,
+            "kTestContrastG": kTestContrastG,
+            "kDecimalMarkCharIndexAuto": kDecimalMarkCharIndexAuto,
+            "kDecimalMarkCharIndexDot": kDecimalMarkCharIndexDot,
+            "kDecimalMarkCharIndexComma": kDecimalMarkCharIndexComma,
+        };
+
+        for (const key in config.settings) {
+            let value = config.settings[key];
+            if (typeof value === "string" && ConstantMap[value] !== undefined) {
+                value = ConstantMap[value];
             }
-
-            //Reset defaults
-            switch (config.action) {
-                case "setDefaults": [Settings setDefaults]; break;
-                case "setDefaultsKeepingCalBarLength": [Settings setDefaultsKeepingCalBarLength]; break;
-                case "applyTestingPresets": [self applyTestingPresets]; break;
+            const setterName = "set" + key.charAt(0).toUpperCase() + key.substring(1) + ":";
+            const selector = sel_getUid(setterName);
+            if ([Settings respondsToSelector: selector]) {
+                //console.info("Setter ", setterName, "to be applied.")
+                [Settings performSelector: selector withObject: value];
+            } else {
+                console.warn("Setter ", setterName, "not defined.")
             }
-            if (config.settings) { //Apply settings
-                const ConstantMap = { //mapping so we can use symbolic constants in the json file
-                    "kResultsToClipNone": kResultsToClipNone,
-                    "kResultsToClipFullHistory": kResultsToClipFullHistory,
-                    "kResultsToClipFinalOnly": kResultsToClipFinalOnly,
-                    "kNAlternativesIndex2": kNAlternativesIndex2,
-                    "kNAlternativesIndex4": kNAlternativesIndex4,
-                    "kNAlternativesIndex8plus": kNAlternativesIndex8plus,
-                    "kauditoryFeedback4trialIndexNone": kauditoryFeedback4trialIndexNone,
-                    "kauditoryFeedback4trialIndexAlways": kauditoryFeedback4trialIndexAlways,
-                    "kauditoryFeedback4trialIndexOncorrect": kauditoryFeedback4trialIndexOncorrect,
-                    "kauditoryFeedback4trialIndexWithinfo": kauditoryFeedback4trialIndexWithinfo,
-                    "kTestNone": kTestNone,
-                    "kTestAcuityLetters": kTestAcuityLetters,
-                    "kTestAcuityLandolt": kTestAcuityLandolt,
-                    "kTestAcuityE": kTestAcuityE,
-                    "kTestAcuityTAO": kTestAcuityTAO,
-                    "kTestAcuityVernier": kTestAcuityVernier,
-                    "kTestContrastLetters": kTestContrastLetters,
-                    "kTestContrastLandolt": kTestContrastLandolt,
-                    "kTestContrastE": kTestContrastE,
-                    "kTestContrastG": kTestContrastG,
-                    "kDecimalMarkCharIndexAuto": kDecimalMarkCharIndexAuto,
-                    "kDecimalMarkCharIndexDot": kDecimalMarkCharIndexDot,
-                    "kDecimalMarkCharIndexComma": kDecimalMarkCharIndexComma,
-                };
+        }
+    }
 
-                for (let key in config.settings) {
-                    let value = config.settings[key];
-                    //console.info(value)
-                    if (typeof value === "string" && ConstantMap[value] !== undefined) {
-                        value = ConstantMap[value];
-                    }
-                    //console.info(value)
-
-                    const setterName = "set" + key.charAt(0).toUpperCase() + key.substring(1) + ":";
-                    const selector = sel_getUid(setterName);
-                    if ([Settings respondsToSelector: selector]) {
-                        //console.info("Setter ", setterName, "to be applied.")
-                        [Settings performSelector: selector withObject: value];
-                    } else {
-                        console.warn("Setter ", setterName, "not defined.")
-                    }
-                }
-            }
-
-            [Settings setPresetName: presetName];
-            [Settings calculateMinMaxPossibleAcuity];
-            [gAppController.sound updateSoundFiles];
-        });
+    [Settings setPresetName: presetName];
+    [Settings calculateMinMaxPossibleAcuity];
+    [gAppController.sound updateSoundFiles];
 }
 
 
 - (void) applyTestingPresets {
     [Settings setDefaults];
-    [Settings setCalBarLengthInMM: 140];
     [Settings setNTrials02: 24];
     [Settings setNTrials04: 18];
     [Settings setNTrials08: 18];
-    [Settings setDistanceInCM: 400]; [Settings setCalBarLengthInMM: 150];
+    [Settings setDistanceInCM: 400];
+    [Settings setCalBarLengthInMM: 140];
     [Settings setShowResponseInfoAtStart: NO];
     [Settings setShowCI95: YES];
     [Settings setSoundTrialYesIndex: 0]; [Settings setSoundTrialNoIndex: 1];
     [Settings setSoundRunEndIndex: 1];
+}
+
+
+/**
+ Perform logic unit tests for Presets (loading and existence of standard preset).
+ @return YES if all tests pass
+ */
+- (BOOL) unittest {
+    let success = YES, report = crlf + "Presets▸unittest:" + crlf;
+
+    if (!allPresets || Object.keys(allPresets).length === 0) {
+        report += "  ERROR: allPresets not loaded!" + crlf; success = NO;
+    }
+    if (!allPresetNames || !allPresetNames.includes("Standard Defaults")) {
+        report += "  ERROR: 'Standard Defaults' missing from allPresetNames!" + crlf; success = NO;
+    }
+
+    if (success) {
+        report += "  Preset loading and validation tests passed." + crlf;
+    }
+    console.info(report);
+    return success;
 }
 
 
