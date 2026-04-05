@@ -1,6 +1,7 @@
 # History
 
-2026-04-04 refactor: simplify `AppController` by creating `ExportManager`; rename TrialHistoryController → TrialHistoryManager; add unittest to `ExportManager`; simplify `TAOController`
+2026-04-05 refactor the `Presets` system: now presets are read from a JSON file in Resources, specific class files not longer necessary; fixed old presets error: color hexstrings must not start with "#"
+2026-04-04 refactor: simplify `AppController` by creating `ExportManager`; rename TrialHistoryController → TrialHistoryManager; add unittest to `ExportManager`; simplify `TAOController`; refactor `Presets` by creating `PresetManager`
 2026-03-28 use updated Cappucciono frameworks (no difference because I had linked-in the improved ColorWell stuf already)
 2026-03-24 bugfix: "Import All Settings" must not overwrite `dateOfSettingsVersion`,
     crowding inducers respect foreground color

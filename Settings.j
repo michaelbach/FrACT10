@@ -179,7 +179,11 @@ Created by mb on July 15, 2015.
     if (theData === nil) theData = fallbackInHex; //safety measure and default
     return [CPColor colorWithHexString: theData];
 }
-+ (void) _setColor: (CPColor) theColor forKey: (CPString) keyString {
++ (void) _setColor: (CPColor) theColor forKey: (CPString) keyString { //console.info("_setColor ", theColor, keyString)
+    if (!theColor) {
+        console.warn("Settings>_setColor: theColor==null for: ", keyString)
+        theColor = [CPColor blackColor];
+    }
     if (typeof(theColor) !== "string") { //allow both hexstring (from HTML message) & CPColor
         theColor = [theColor hexString];
     }

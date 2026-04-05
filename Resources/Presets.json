@@ -1,0 +1,222 @@
+{
+  "Standard Defaults": { "action": "setDefaults" },
+
+  "Testing": { "action": "applyTestingPresets" },
+
+  "BaLM₁₀": {
+    "settings": {
+      "timeoutResponseSeconds": 2,
+      "nTrials02": 24,
+      "nTrials04": 20,
+      "showResponseInfoAtStart": false,
+      "distanceInCM": 57,
+      "balmIsiMillisecs": 500
+    }
+  },
+
+  "Color Equiluminance": {
+    "action": "applyTestingPresets",
+    "settings": {
+      "isAcuityColor": true,
+      "acuityForeColor": "FF0000",
+      "acuityBackColor": "00B200"
+    }
+  },
+
+  "ESU": {
+    "action": "setDefaultsKeepingCalBarLength",
+    "settings": {
+      "showResponseInfoAtStart": false,
+      "enableTouchControls": false,
+      "distanceInCM": 150,
+      "nAlternativesIndex": "kNAlternativesIndex4",
+      "nTrials04": 18,
+      "testOnFive": "kTestAcuityLandolt",
+      "timeoutResponseSeconds": 999,
+      "timeoutDisplaySeconds": 999,
+      "auditoryFeedback4trialIndex": "kauditoryFeedback4trialIndexNone",
+      "showRewardPicturesWhenDone": true,
+      "decimalMarkCharIndex": "kDecimalMarkCharIndexComma",
+      "resultsToClipboardIndex": "kResultsToClipNone",
+      "showAcuityFormatLogMAR": false,
+      "trialInfoFontSize": 24
+    }
+  },
+
+  "AT@LeviLab": {
+    "action": "setDefaults",
+    "settings": {
+      "nTrials04": 24,
+      "showResponseInfoAtStart": false,
+      "enableTouchControls": false,
+      "decimalMarkCharIndex": "kDecimalMarkCharIndexComma",
+      "timeoutDisplaySeconds": 0.15,
+      "eccentYInDeg": 5,
+      "distanceInCM": 68.5,
+      "calBarLengthInMM": 191,
+      "resultsToClipboardIndex": "kResultsToClipFullHistory",
+      "displayTransform": 1
+    }
+  },
+
+  "BCM@Scheie": {
+    "action": "setDefaults",
+    "settings": {
+      "nAlternativesIndex": "kNAlternativesIndex2",
+      "nTrials02": 10,
+      "timeoutResponseSeconds": 120,
+      "timeoutDisplaySeconds": 120,
+      "showResponseInfoAtStart": false,
+      "enableTouchControls": false,
+      "respondsToMobileOrientation": false,
+      "resultsToClipboardIndex": "kResultsToClipFullHistory",
+      "auditoryFeedback4trialIndex": "kauditoryFeedback4trialIndexNone",
+      "calBarLengthInMM": 189,
+      "distanceInCM": 100,
+      "contrastAcuityWeber": -1000000,
+      "lineByLineDistanceType": 1,
+      "lineByLineHeadcountIndex": 0,
+      "acuityHasEasyTrials": false,
+      "contrastHasEasyTrials": false,
+      "isGratingObliqueOnly": true,
+      "isGratingColor": true,
+      "what2sweepIndex": 1,
+      "gratingContrastMichelsonPercent": 99,
+      "gratingCPDmin": 1,
+      "gratingCPDmax": 7
+    }
+  },
+
+  "CNS@Freiburg": {
+    "action": "setDefaults",
+    "settings": {
+      "showResponseInfoAtStart": false,
+      "enableTouchControls": false,
+      "respondsToMobileOrientation": false,
+      "resultsToClipboardIndex": "kResultsToClipFinalOnly",
+      "distanceInCM": 200,
+      "testOnFive": "kTestAcuityLetters"
+    }
+  },
+
+  "EndoArt01": {
+    "action": "setDefaults",
+    "settings": {
+        "NAlternativesIndex": "kNAlternativesIndex4",
+        "NTrials04": 30,
+        "ShowResponseInfoAtStart": false,
+        "EnableTouchControls": false,
+        "DecimalMarkCharIndex": "kDecimalMarkCharIndexDot",
+        "DistanceInCM": 50,
+        "TimeoutIsiMillisecs": 0,
+        "TimeoutResponseSeconds": 20,
+        "TimeoutDisplaySeconds": 30,
+        "TestOnFive": "kTestAcuityLandolt",
+        "ResultsToClipboardIndex": "kResultsToClipFullHistory",
+        "AuditoryFeedback4trialIndex": "kauditoryFeedback4trialIndexNone",
+        "AcuityStartingLogMAR": 2.5,
+        "ShowCI95": false,
+        "ShowAcuityFormatLogMAR": true,
+        "ShowAcuityFormatDecimal": false,
+        "ContrastOptotypeDiameter": 500,
+        "GammaValue": 2.0
+    }
+  },
+
+  "ETCF": {
+    "action": "setDefaults",
+    "settings": {
+      "testOnFive": "kTestContrastLandolt",
+      "showResponseInfoAtStart": false,
+      "enableTouchControls": false,
+      "resultsToClipboardIndex": "kResultsToClipFinalOnly",
+      "distanceInCM": 100,
+      "contrastOptotypeDiameter": 170,
+      "gammaValue": 1.0
+    }
+  },
+
+  "Hyper@TUDo": {
+    "action": "setDefaults",
+    "settings": {
+      "timeoutResponseSeconds": 600,
+      "timeoutDisplaySeconds": 90,
+      "distanceInCM": 147,
+      "calBarLengthInMM": 134,
+      "showResponseInfoAtStart": false,
+      "testOnFive": "kTestNone",
+      "resultsToClipboardIndex": "kResultsToClipFullHistory",
+      "putResultsToClipboardSilent": true,
+      "vernierType": 1,
+      "vernierWidth": 1.5,
+      "vernierLength": 40,
+      "vernierGap": 0.2,
+      "showCI95": true,
+      "gammaValue": 2.2,
+      "windowBackgroundColor": "FFFFFF",
+      "soundTrialNoIndex": 1
+    }
+  },
+
+  "HYPERION": {
+    "action": "setDefaults",
+    "settings": {
+      "nTrials08": 24,
+      "showResponseInfoAtStart": false,
+      "enableTouchControls": false,
+      "decimalMarkCharIndex": "kDecimalMarkCharIndexDot",
+      "distanceInCM": 400,
+      "nAlternativesIndex": "kNAlternativesIndex4",
+      "auditoryFeedback4trialIndex": "kauditoryFeedback4trialIndexAlways",
+      "timeoutIsiMillisecs": 1,
+      "timeoutResponseSeconds": 60,
+      "timeoutDisplaySeconds": 60,
+      "testOnFive": "kTestAcuityLetters",
+      "resultsToClipboardIndex": "kResultsToClipFullHistory",
+      "maxDisplayedAcuity": 99,
+      "acuityStartingLogMAR": 1.0,
+      "showAcuityFormatLogMAR": true,
+      "showCI95": true,
+      "showAcuityFormatDecimal": false,
+      "crowdingType": 1,
+      "crowdingDistanceCalculationType": 3,
+      "lineByLineLinesIndex": 2
+    }
+  },
+
+  "Maculight": {
+    "action": "setDefaultsKeepingCalBarLength",
+    "settings": {
+      "showResponseInfoAtStart": false,
+      "enableTouchControls": false,
+      "resultsToClipboardIndex": "kResultsToClipFinalOnly",
+      "distanceInCM": 400,
+      "testOnFive": "kTestAcuityLetters",
+      "contrastOptotypeDiameter": 170
+    }
+  },
+
+  "ULV@Gensight": {
+    "action": "setDefaults",
+    "settings": {
+      "showResponseInfoAtStart": false,
+      "enableTouchControls": false,
+      "distanceInCM": 100,
+      "nAlternativesIndex": "kNAlternativesIndex4",
+      "nTrials04": 32,
+      "nTrials08": 24,
+      "auditoryFeedback4trialIndex": "kauditoryFeedback4trialIndexAlways",
+      "timeoutResponseSeconds": 60,
+      "timeoutDisplaySeconds": 60,
+      "testOnFive": "kTestAcuityLetters",
+      "resultsToClipboardIndex": "kResultsToClipFullHistory",
+      "maxDisplayedAcuity": 2.5,
+      "acuityStartingLogMAR": 1.5,
+      "showAcuityFormatLogMAR": true,
+      "showCI95": true,
+      "showAcuityFormatDecimal": false,
+      "crowdingType": 1,
+      "crowdingDistanceCalculationType": 3
+    }
+  }
+}
