@@ -251,7 +251,7 @@
 
 - (void) setupControllers { //called from `applicationDidFinishLaunching`
     rewardsController = [[RewardsController alloc] initWithView: rewardImageView];
-    taoController = [[TAOController alloc] initWithButton2Enable: buttonAcuityTAO];
+    taoController = [[TAOController alloc] init];
     exportManager = [[ExportManager alloc] init];
     sound = [[Sound alloc] init];
     presets = [[Presets alloc] initWithPopup: settingsPanePresetsPopUpButton];

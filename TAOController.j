@@ -12,21 +12,20 @@ TAOController.j
 
 
 @import <Foundation/Foundation.j>
+@import "Globals.j"
 
 
 @implementation TAOController: CPObject {
     int nImages @accessors;
     id _taoImages;
-    CPButton _button;
     int _nTAOImagesLoaded;
 }
 
 
-- (id) initWithButton2Enable: (CPButton) button { //console.info("TAOController>initWithButton2Enable");
+- (id) init { //console.info("TAOController>init");
     self = [super init];
     if (self) {
-        _button = button;
-        [_button setEnabled: NO];
+        [gAppController.buttonAcuityTAO setEnabled: NO];
         [self setNImages: 0];
         const _taoImageNames = ["butterfly", "car", "duck", "flower", "heart", "house", "moon", "rabbit", "rocket", "tree"];
         _taoImages = [];
@@ -42,10 +41,10 @@ TAOController.j
 
 - (void) imageDidLoad: (CPNotification) aNotification { //console.info("TAOController>didLoadRepresentation: ", aNotification);
     if ([aNotification loadStatus] === CPImageLoadStatusCompleted) {
-        if (++_nTAOImagesLoaded > 9) {
+        if (++_nTAOImagesLoaded >= 10) {
             [self setNImages: _nTAOImagesLoaded];
             if ([Settings enableTestAcuityTAO]) {
-                [_button setEnabled: YES];
+                [gAppController.buttonAcuityTAO setEnabled: YES];
             }
         }
     }
