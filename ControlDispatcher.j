@@ -121,7 +121,7 @@
     if (handler) {
         handler();
     } else {
-        [self _logProblem:e.data];
+        [self _logProblem: m1 + ", " + m2 + ", " + m3];
     }
 }
 
