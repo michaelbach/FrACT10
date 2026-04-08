@@ -7,6 +7,7 @@
 
 
 @import "FractControllerBalm.j"
+@import "SoundManager.j"
 
 
 @implementation FractControllerBalmLight: FractControllerBalm {
@@ -25,7 +26,7 @@
     switch(state) {
         case kStateDrawBack: break;
         case kStateDrawFore://console.info("kStateDrawFore");
-            [sound playNumber: kSoundTrialStart];
+            [[SoundManager sharedManager] playSound: kSoundTrialStart];
             if ([alternativesGenerator currentAlternative] !== 0) {
                 CGContextSetFillColor(cgc, gColorFore);
                 CGContextFillRect(cgc, CGRectMake(-viewWidthHalf, -viewHeightHalf, viewWidth, viewHeight));

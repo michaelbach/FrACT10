@@ -33,7 +33,7 @@
 @import "FractControllerBalmMotion.j"
 @import "RewardsController.j"
 @import "TAOController.j"
-@import "Sound.j"
+@import "SoundManager.j"
 @import "GammaView.j"
 @import "MDBSetHandCursor.j"
 @import "MDBButton_Test.j"
@@ -76,7 +76,6 @@
     CPString currentTestResultExportString @accessors;
     CPString currentTestResultsHistoryExportString @accessors;
     CPString currentUUID @accessors;
-    Sound sound;
     CPImageView rewardImageView;
     RewardsController rewardsController;
     TAOController taoController;
@@ -254,7 +253,6 @@
     rewardsController = [[RewardsController alloc] initWithView: rewardImageView];
     taoController = [[TAOController alloc] init];
     exportManager = [[ExportManager alloc] init];
-    sound = [[Sound alloc] init];
     presets = [[Presets alloc] initWithPopup: settingsPanePresetsPopUpButton];
 }
 
@@ -347,7 +345,7 @@
     if (currentFractController !== null) return; //got here by accident, already inRun?
 
     [buttonExportClip setEnabled: NO];  [buttonExportPDF setEnabled: NO];  [buttonPlot setEnabled: NO];
-    [sound initAfterUserinteraction];
+    [[SoundManager sharedManager] initAfterUserinteraction];
     gCurrentTestID = testNr;
     if ([Settings isNotCalibrated]) {
         gLatestAlert = [CPAlert alertWithMessageText: "Calibration is mandatory for valid results!"
@@ -397,7 +395,6 @@
     const testClass = CPClassFromString(className);
     if (testClass) {
         currentFractController = [[testClass alloc] initWithWindow: fractControllerWindow];
-        [currentFractController setSound: sound];
         currentTestResultExportString = "";
         [currentFractController runStart];
     } else {
@@ -551,7 +548,7 @@
  Deal with the Settings panel
  */
 - (IBAction) buttonSettings_action: (id) sender { //console.info("AppController>buttonSettings");
-    [sound initAfterUserinteraction];
+    [[SoundManager sharedManager] initAfterUserinteraction];
     [Settings checkDefaults];  [settingsPanel makeKeyAndOrderFront: self];
     [Misc centerWindowOrPanel: settingsPanel];
     if (settingsNeededNewDefaults) {
@@ -570,8 +567,8 @@
 }
 
 - (IBAction) buttonSettingsTestSound_action: (id) sender { //console.info("buttonSettingsTestSound_action", [sender tag]);
-    [sound updateSoundFiles];
-    [sound playDelayedNumber: [sender tag]]; //delay because new buffer to be loaded; 0.02 would be enough.
+    [[SoundManager sharedManager] updateSoundFiles];
+    [[SoundManager sharedManager] playSound: [sender tag] delayed: 0.1];
 }
 
 - (IBAction) buttonSettingsContrastAcuityMaxMin_action: (id) sender {

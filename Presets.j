@@ -10,6 +10,7 @@
 @import "Globals.j"
 @import "Settings.j"
 @import "ControlDispatcher.j"
+@import "SoundManager.j"
 
 //after applying the preset, respond via GUI or send back to caller?
 @typedef feedbackTypeType
@@ -172,7 +173,7 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
 
     [Settings setPresetName: presetName];
     [Settings calculateMinMaxPossibleAcuity];
-    [gAppController.sound updateSoundFiles];
+    [[SoundManager sharedManager] updateSoundFiles];
 }
 
 

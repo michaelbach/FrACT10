@@ -7,6 +7,7 @@
 
 
 @import "FractControllerBalm.j"
+@import "SoundManager.j"
 
 
 @implementation FractControllerBalmMotion: FractControllerBalm {
@@ -72,7 +73,7 @@
             break;
         case kStateDrawFore://console.info("kStateDrawFore");
             if (!isMoving) { //detect first time
-                [sound playNumber: kSoundTrialStart];
+                [[SoundManager sharedManager] playSound: kSoundTrialStart];
                 isMoving = YES;  motionOffset = 0;  animationTimeStamp = -1;
                 discardKeyEntries = NO; //now allow responding
             }

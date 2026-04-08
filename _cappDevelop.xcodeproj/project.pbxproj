@@ -64,7 +64,7 @@
 		8AAB438D2A55826800825E47 /* ThresholderPest.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA8E410483A87F38EB021188 /* ThresholderPest.j */; };
 		8AAB438E2A55826800825E47 /* Optotypes.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FC749C28C919101C41788D1 /* Optotypes.j */; };
 		8AAB438F2A55826800825E47 /* Settings.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = F3064227AB4A793DAF144D61 /* Settings.j */; };
-		8AAB43902A55826800825E47 /* Sound.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = B9F044A9AF27FFCAFF026886 /* Sound.j */; };
+		8AAB43902A55826800825E47 /* SoundManager.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = B9F044A9AF27FFCAFF026886 /* SoundManager.j */; };
 		8AAB43912A55826800825E47 /* RewardsController.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 29834A62A925E37F8057FF9A /* RewardsController.j */; };
 		8AAB43922A55826800825E47 /* TrialHistoryManager.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4A5547F8854B1200466F770F /* TrialHistoryManager.j */; };
 		8AAB43932A55826800825E47 /* Presets.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A8BFD81283837D800DD61BB /* Presets.j */; };
@@ -123,7 +123,7 @@
 				8AAB43932A55826800825E47 /* Presets.j in CopyFiles */,
 				8A28B6C12E56773E002FD5FC /* MDBTextfFieldAutoBlur.h in CopyFiles */,
 				8A28B6C22E56773E002FD5FC /* MDBTextfFieldAutoBlur.m in CopyFiles */,
-				8AAB43902A55826800825E47 /* Sound.j in CopyFiles */,
+				8AAB43902A55826800825E47 /* SoundManager.j in CopyFiles */,
 				8A5DE1C22F48DD7F0077C276 /* QRPanel.j in CopyFiles */,
 				8AAB43822A55825500825E47 /* FractControllerAcuityVernier.j in CopyFiles */,
 				8A44B4CB2D5F8E5300E55DEF /* History.txt in CopyFiles */,
@@ -261,7 +261,7 @@
 		91B445DC96A0E8A06A4740E5 /* FractControllerAcuity.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerAcuity.j; sourceTree = SOURCE_ROOT; };
 		95314F558B96A134B5ECC8F9 /* MDBButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MDBButton.m; path = .XcodeSupport/MDBButton.m; sourceTree = SOURCE_ROOT; };
 		96DD483B80EDF2A6B16630C6 /* FractControllerAcuityVernier.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerAcuityVernier.j; sourceTree = SOURCE_ROOT; };
-		99DF4D9EA571357C98E8008A /* Sound.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Sound.m; path = .XcodeSupport/Sound.m; sourceTree = SOURCE_ROOT; };
+		99DF4D9EA571357C98E8008A /* SoundManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SoundManager.m; path = .XcodeSupport/SoundManager.m; sourceTree = SOURCE_ROOT; };
 		9A7C477DA04651E0EE6F21CE /* FractView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractView.h; path = .XcodeSupport/FractView.h; sourceTree = SOURCE_ROOT; };
 		9ADC4C46A65D7794540F1808 /* FractController.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractController.j; sourceTree = SOURCE_ROOT; };
 		9E064587A2E20ED6EE887DAB /* FractControllerAcuityE.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FractControllerAcuityE.m; path = .XcodeSupport/FractControllerAcuityE.m; sourceTree = SOURCE_ROOT; };
@@ -274,7 +274,7 @@
 		B1CB47079DDB390E132D62A4 /* TAOController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TAOController.h; path = .XcodeSupport/TAOController.h; sourceTree = SOURCE_ROOT; };
 		B226486EA66367A84C81FBFF /* TAOController.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = TAOController.j; sourceTree = SOURCE_ROOT; };
 		B9B34842BD62A8DF0F86C9A1 /* FractControllerContrast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FractControllerContrast.m; path = .XcodeSupport/FractControllerContrast.m; sourceTree = SOURCE_ROOT; };
-		B9F044A9AF27FFCAFF026886 /* Sound.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Sound.j; sourceTree = SOURCE_ROOT; };
+		B9F044A9AF27FFCAFF026886 /* SoundManager.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = SoundManager.j; sourceTree = SOURCE_ROOT; };
 		BA8E410483A87F38EB021188 /* ThresholderPest.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = ThresholderPest.j; sourceTree = SOURCE_ROOT; };
 		BDC7432CBD70CCD5236EC4E7 /* Misc.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Misc.j; sourceTree = SOURCE_ROOT; };
 		C0EE4B1598CA2C8EFF83CF50 /* FractControllerContrastC.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerContrastC.j; sourceTree = SOURCE_ROOT; };
@@ -284,7 +284,7 @@
 		CBDB4B9299F18D081A944A50 /* Optotypes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Optotypes.m; path = .XcodeSupport/Optotypes.m; sourceTree = SOURCE_ROOT; };
 		CF0749DAB364C33210466311 /* FractControllerAcuityTAO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractControllerAcuityTAO.h; path = .XcodeSupport/FractControllerAcuityTAO.h; sourceTree = SOURCE_ROOT; };
 		D7F842D1A68D8C133FA29CF9 /* Globals.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Globals.j; sourceTree = SOURCE_ROOT; };
-		DCA24A16AA1D86B0F6CA0649 /* Sound.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Sound.h; path = .XcodeSupport/Sound.h; sourceTree = SOURCE_ROOT; };
+		DCA24A16AA1D86B0F6CA0649 /* SoundManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SoundManager.h; path = .XcodeSupport/SoundManager.h; sourceTree = SOURCE_ROOT; };
 		DD9E41E0A3CD61720F7AF84C /* FractControllerAcuityL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractControllerAcuityL.h; path = .XcodeSupport/FractControllerAcuityL.h; sourceTree = SOURCE_ROOT; };
 		DED842598DD16F0DDDE21618 /* AlternativesGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AlternativesGenerator.m; path = .XcodeSupport/AlternativesGenerator.m; sourceTree = SOURCE_ROOT; };
 		DEF24C8DA94A1A3BC22D7F49 /* AppController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = .XcodeSupport/AppController.h; sourceTree = SOURCE_ROOT; };
@@ -358,7 +358,7 @@
 				8A5DE1C12F48DD7F0077C276 /* QRPanel.j */,
 				29834A62A925E37F8057FF9A /* RewardsController.j */,
 				F3064227AB4A793DAF144D61 /* Settings.j */,
-				B9F044A9AF27FFCAFF026886 /* Sound.j */,
+				B9F044A9AF27FFCAFF026886 /* SoundManager.j */,
 				B226486EA66367A84C81FBFF /* TAOController.j */,
 				E6F94F1D968592E61A4C192B /* Thresholder.j */,
 				BA8E410483A87F38EB021188 /* ThresholderPest.j */,
@@ -446,8 +446,8 @@
 				AB56484CA869868832A292D3 /* RewardsController.m */,
 				031040FBB26314B672212D9C /* Settings.h */,
 				5B9944698B42B5A2E9B3274B /* Settings.m */,
-				DCA24A16AA1D86B0F6CA0649 /* Sound.h */,
-				99DF4D9EA571357C98E8008A /* Sound.m */,
+				DCA24A16AA1D86B0F6CA0649 /* SoundManager.h */,
+				99DF4D9EA571357C98E8008A /* SoundManager.m */,
 				B1CB47079DDB390E132D62A4 /* TAOController.h */,
 				7D2A413E8DDCCF0A9AE3A5B0 /* TAOController.m */,
 				FD624357A967BCFA29B128FE /* Thresholder.h */,

@@ -1,5 +1,6 @@
 # History
 
+2026-04-08 refactor `Sound.j` → singleton `SoundManager.j`, thereby cleaning up `AppController`
 2026-04-05 refactor the `Presets` system: now presets are read from a JSON file in Resources, specific class files not longer necessary; fixed old presets error: color hexstrings must not start with "#"; add `unittest` to `Presets.j`
 2026-04-04 refactor: simplify `AppController` by creating `ExportManager`; rename TrialHistoryController → TrialHistoryManager; add unittest to `ExportManager`; simplify `TAOController`; refactor `Presets` by creating `PresetManager`
 2026-03-28 use updated Cappucciono frameworks (no difference because I had linked-in the improved ColorWell stuf already)

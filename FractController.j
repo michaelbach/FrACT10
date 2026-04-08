@@ -13,6 +13,7 @@ This file is part of FrACT10, a vision test battery.
 @import "Optotypes.j";
 @import "TrialHistoryManager.j"
 @import "MDBDispersionEstimation.j"
+@import "SoundManager.j"
 
 
 @typedef StateType
@@ -37,7 +38,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     CPString trialInfoString @accessors;
     CPTimer timerDisplay, timerResponse, timerFixMark, timerAutoResponse, timerIsi, timerBalmOff;
     CPString kRangeLimitDefault, kRangeLimitOk, kRangeLimitValueAtFloor, kRangeLimitValueAtCeiling, rangeLimitStatus, abortCharacter, ci95String;
-    id sound @accessors;
     BOOL responseButtonsAdded, isSpecialBcmDone;
     BOOL discardKeyEntries; //this allows flushing the event queue to discard early responses
     CPColor colorForeUndithered, colorBackUndithered;
@@ -447,12 +447,12 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [thresholder enterTrialOutcomeWithAppliedStim: [self stimThresholderunitsFromDeviceunits: stimStrengthInDeviceunits] wasCorrect: responseWasCorrect];
     switch ([Settings auditoryFeedback4trialIndex]) { //case 0: nothing
         case kauditoryFeedback4trialIndexAlways:
-            [sound playNumber: kSoundTrialYes];  break;
+            [[SoundManager sharedManager] playSound: kSoundTrialYes];  break;
         case kauditoryFeedback4trialIndexOncorrect:
-            if (responseWasCorrect) [sound playNumber: kSoundTrialYes];  break;
+            if (responseWasCorrect) [[SoundManager sharedManager] playSound: kSoundTrialYes];  break;
         case kauditoryFeedback4trialIndexWithinfo:
-            if (responseWasCorrect) [sound playNumber: kSoundTrialYes];
-            else [sound playNumber: kSoundTrialNo];
+            if (responseWasCorrect) [[SoundManager sharedManager] playSound: kSoundTrialYes];
+            else [[SoundManager sharedManager] playSound: kSoundTrialNo];
             break;
     }
     [TrialHistoryManager trialEnded];
@@ -486,7 +486,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     await [Misc asyncDelaySeconds: 0.03];
     [TrialHistoryManager runEnded];
     [gAppController setCurrentTestResultsHistoryExportString: [TrialHistoryManager resultsHistoryString]];
-    if ([Settings giveAuditoryFeedback4run]) [sound playNumber: kSoundRunEnd];
+    if ([Settings giveAuditoryFeedback4run]) [[SoundManager sharedManager] playSound: kSoundRunEnd];
 
     let exportString = [gAppController currentTestResultExportString];
     exportString = [self _appendCI95InfoToString: exportString];
