@@ -11,7 +11,7 @@
 
 /**
  Custom button to make the large square buttons look nicer,
- with rounded corners and 2px border width
+ with rounded corners and 2px border width, indicate disabled with alpha < 1
  Created on 2021-08-16
  
  Works with many button types.
@@ -31,6 +31,7 @@
 
 - (void) drawRect: (CGRect) dirtyRect { //console.info("MDBButton_Test>drawRect");
     const cgc = [[CPGraphicsContext currentContext] graphicsPort];
+    cgc.globalAlpha = [self isEnabled] ? 1 : 0.3;
     const f1 = CGRectInset([self bounds], 1, 1), radius = 8; //frame a little smaller  to fit into visibleRect
     //console.log(_isHighlighted, [self isHighlighted], [self hasThemeState:CPThemeStateHighlighted]);
     
@@ -39,10 +40,8 @@
     CGContextFillRoundedRectangleInRect(cgc, f1, radius, YES, YES, YES, YES);
     
     CGContextSetStrokeColor(cgc, [CPColor colorWithWhite: 0.5 alpha: 1]); //border, darker than any fill
-    if ([self isEnabled]) { //so I notice if inadvertantly disabled
-        CGContextSetLineWidth(cgc, 3);
-        CGContextStrokeRoundedRectangleInRect(cgc, f1, radius, YES, YES, YES, YES);
-    }
+    CGContextSetLineWidth(cgc, 3);
+    CGContextStrokeRoundedRectangleInRect(cgc, f1, radius, YES, YES, YES, YES);
 }
 
 
