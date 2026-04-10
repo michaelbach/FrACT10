@@ -108,18 +108,19 @@
  NSUnarchiveFromData, Error message [CPData encodeWithCoder:] unrecognized selector
  https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/DrawColor/Tasks/StoringNSColorInDefaults.html
  */
-- (CPColor) acuityForeColor {
+- (CPColor) acuityForeColorAppC {
     gColorFore = [Settings acuityForeColor];
     return gColorFore;}
-- (void) setAcuityForeColor: (CPColor) col {
+- (void) setAcuityForeColorAppC: (CPColor) col {
+    console.info("AppController▸︎setAcuityForeColorAppC", col);
     gColorFore = col;
     [Settings setAcuityForeColor: gColorFore];
 }
-- (CPColor) acuityBackColor {
+- (CPColor) acuityBackColorAppC {
     gColorBack = [Settings acuityBackColor];
     return gColorBack;
 }
-- (void) setAcuityBackColor: (CPColor) col {
+- (void) setAcuityBackColorAppC: (CPColor) col {
     gColorBack = col;
     [Settings setAcuityBackColor: gColorBack];
 }
@@ -293,11 +294,13 @@
     if ([Settings showIdAndEyeOnMain])  rct = CGRectOffset(rct, 84 / 2, 0);
     [resultStringField setFrame: rct];
 
+    //[Settings calculateAcuityForeBackColorsFromContrast];
+
     gColorFore = [Settings acuityForeColor];
     gColorBack = [Settings acuityBackColor];
-    if (![[self acuityForeColor] isEqual: gColorFore]) { //avoid endless loop
-        [self setAcuityForeColor: gColorFore];
-        [self setAcuityBackColor: gColorBack];
+    if (![[self acuityForeColorAppC] isEqual: gColorFore]) { //avoid endless loop
+        [self setAcuityForeColorAppC: gColorFore];
+        [self setAcuityBackColorAppC: gColorBack];
     }
     if (![[self gratingForeColor] isEqual: [Settings gratingForeColor]]) {
         [self setGratingForeColor: [Settings gratingForeColor]];
@@ -667,13 +670,13 @@
     }
 
     //Test Color Synchronization
-    const originalFore = [self acuityForeColor];
+    const originalFore = [self acuityForeColorAppC];
     const testColor = [CPColor redColor];
-    [self setAcuityForeColor: testColor];
-    if (![[self acuityForeColor] isEqual: testColor] || ![gColorFore isEqual: testColor]) {
-        report += "  ERROR: acuityForeColor synchronization failed!" + crlf; success = NO;
+    [self setAcuityForeColorAppC: testColor];
+    if (![[self acuityForeColorAppC] isEqual: testColor] || ![gColorFore isEqual: testColor]) {
+        report += "  ERROR: acuityForeColorAppC synchronization failed!" + crlf; success = NO;
     }
-    [self setAcuityForeColor: originalFore]; // Restore
+    [self setAcuityForeColorAppC: originalFore]; // Restore
 
     //Test Calibration Logic. We can't easily mock Settings, but we can check if isNotCalibrated behaves as expected given current settings.
     const isCalibrated = ![Settings isNotCalibrated];

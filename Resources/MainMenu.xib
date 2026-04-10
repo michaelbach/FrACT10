@@ -1568,7 +1568,7 @@ Shortcut: c 
  </string>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <binding destination="450" name="value" keyPath="acuityForeColor" id="Sfr-Nl-xTH"/>
+                                                <binding destination="450" name="value" keyPath="acuityForeColorAppC" id="Ye8-3a-DAg"/>
                                                 <binding destination="izh-pU-csC" name="enabled" keyPath="values.isAcuityColor" id="ku1-Jo-gmr"/>
                                             </connections>
                                         </colorWell>
@@ -1580,7 +1580,7 @@ Shortcut: c 
  </string>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <binding destination="450" name="value" keyPath="acuityBackColor" id="ucH-f7-hdz"/>
+                                                <binding destination="450" name="value" keyPath="acuityBackColorAppC" id="0TV-sZ-YiI"/>
                                                 <binding destination="izh-pU-csC" name="enabled" keyPath="values.isAcuityColor" id="RDK-pm-IBz"/>
                                             </connections>
                                         </colorWell>
