@@ -681,7 +681,7 @@ Created by mb on July 15, 2015.
     const setterName = "set" + key.charAt(0).toUpperCase() + key.substring(1) + ":";
     const getterSel = CPSelectorFromString(key),
         setterSel = CPSelectorFromString(setterName);
-    class_addMethod(self.isa, getterSel, function(self, _cmd) {
+    class_addMethod(self.isa, getterSel, function(self, _cmd) { //CPLog("Color getter called for key: " + key);
         return [self _colorForKey: key fallbackInHex: "777777"];
     });
     class_addMethod(self.isa, setterSel, function(self, _cmd, val) { //CPLog("Color setter called for key: " + key + " with value: " + val);

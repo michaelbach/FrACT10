@@ -1,5 +1,6 @@
 # History
 
+2026-04-10 fix inconsistency in the `windowBackgroundColor` Setting, introduced `windowBackgroundColorAppC` to disambiguate from the Settings version; need both to access them in the GUI because CPColors cannot be generically handled in user defaults (missing serialiser)
 2026-04-09 change disabled view in `MCBButton_Test`
 2026-04-08 refactor `Sound.j` → singleton `SoundManager.j`, thereby cleaning up `AppController`
 2026-04-05 refactor the `Presets` system: now presets are read from a JSON file in Resources, specific class files not longer necessary; fixed old presets error: color hexstrings must not start with "#"; add `unittest` to `Presets.j`

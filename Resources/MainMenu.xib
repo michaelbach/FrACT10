@@ -4326,7 +4326,7 @@ This is useful for instance when you want a darker environment.
 </string>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <binding destination="450" name="value" keyPath="windowBackgroundColor" id="5ZB-1E-Xxc"/>
+                                                <binding destination="450" name="value" keyPath="windowBackgroundColorAppC" id="2gF-Px-diL"/>
                                             </connections>
                                         </colorWell>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ngk-rr-VCS">

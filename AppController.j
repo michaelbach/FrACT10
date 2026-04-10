@@ -127,9 +127,12 @@
 - (CPColor) gratingForeColor {return [Settings gratingForeColor];}
 - (void) setGratingBackColor: (CPColor) col {[Settings setGratingBackColor: col];}
 - (CPColor) gratingBackColor {return [Settings gratingBackColor];}
-- (CPColor) windowBackgroundColor {return [Settings windowBackgroundColor];}
-- (void) setWindowBackgroundColor: (CPColor) col { //console.info("AppController>setAcuityBackColor");
-    [Settings setWindowBackgroundColor: col];  [[self window] setBackgroundColor: col];
+- (CPColor) windowBackgroundColorAppC { //console.info("AppController>windowBackgroundColorAppC");
+    [[self window] setBackgroundColor: [Settings windowBackgroundColor]];
+    return [[self window] backgroundColor];
+}
+- (void) setWindowBackgroundColorAppC: (CPColor) col { //console.info("AppController>setWindowBackgroundColorAppC");
+    [[self window] setBackgroundColor: col];  [Settings setWindowBackgroundColor: col];
 }
 
 
@@ -162,7 +165,6 @@
     currentFractController = null; //making sure, is used to check whether inRun
     [Misc randomizeRandomGenerator];
     [[self window] setFullPlatformWindow: YES];
-    [[self window] setBackgroundColor: [self windowBackgroundColor]];
     [[self window] setTitle: "FrACT10"];
     [self setVersionDateString: gTestDetails[td_vsFrACT]];
     [CPMenu setMenuBarVisible: NO];
@@ -301,10 +303,9 @@
         [self setGratingForeColor: [Settings gratingForeColor]];
         [self setGratingBackColor: [Settings gratingBackColor]];
     }
-    if (![[self windowBackgroundColor] isEqual: [Settings windowBackgroundColor]]) {
-        [self setWindowBackgroundColor: [Settings windowBackgroundColor]];
+    if (![[[self window] backgroundColor] isEqual: [Settings windowBackgroundColor]]) {
+        [self setWindowBackgroundColorAppC: [Settings windowBackgroundColor]];
     }
-    [[self window] setBackgroundColor: [self windowBackgroundColor]];
 }
 
 
