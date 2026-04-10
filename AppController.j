@@ -109,31 +109,48 @@
  https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/DrawColor/Tasks/StoringNSColorInDefaults.html
  */
 - (CPColor) acuityForeColorAppC {
-    gColorFore = [Settings acuityForeColor];
-    return gColorFore;}
+    return gColorFore;
+}
 - (void) setAcuityForeColorAppC: (CPColor) col {
-    console.info("AppController▸︎setAcuityForeColorAppC", col);
+    if ([gColorFore isEqual: col]) return;
+    [self willChangeValueForKey: @"acuityForeColorAppC"];
     gColorFore = col;
     [Settings setAcuityForeColor: gColorFore];
+    [self didChangeValueForKey: @"acuityForeColorAppC"];
 }
 - (CPColor) acuityBackColorAppC {
-    gColorBack = [Settings acuityBackColor];
     return gColorBack;
 }
 - (void) setAcuityBackColorAppC: (CPColor) col {
+    if ([gColorBack isEqual: col]) return;
+    [self willChangeValueForKey: @"acuityBackColorAppC"];
     gColorBack = col;
     [Settings setAcuityBackColor: gColorBack];
+    [self didChangeValueForKey: @"acuityBackColorAppC"];
 }
-- (void) setGratingForeColor: (CPColor) col {[Settings setGratingForeColor: col];}
+- (void) setGratingForeColor: (CPColor) col {
+    if ([[Settings gratingForeColor] isEqual: col]) return;
+    [self willChangeValueForKey: @"gratingForeColor"];
+    [Settings setGratingForeColor: col];
+    [self didChangeValueForKey: @"gratingForeColor"];
+}
 - (CPColor) gratingForeColor {return [Settings gratingForeColor];}
-- (void) setGratingBackColor: (CPColor) col {[Settings setGratingBackColor: col];}
+- (void) setGratingBackColor: (CPColor) col {
+    if ([[Settings gratingBackColor] isEqual: col]) return;
+    [self willChangeValueForKey: @"gratingBackColor"];
+    [Settings setGratingBackColor: col];
+    [self didChangeValueForKey: @"gratingBackColor"];
+}
 - (CPColor) gratingBackColor {return [Settings gratingBackColor];}
-- (CPColor) windowBackgroundColorAppC { //console.info("AppController>windowBackgroundColorAppC");
-    [[self window] setBackgroundColor: [Settings windowBackgroundColor]];
+- (CPColor) windowBackgroundColorAppC {
     return [[self window] backgroundColor];
 }
-- (void) setWindowBackgroundColorAppC: (CPColor) col { //console.info("AppController>setWindowBackgroundColorAppC");
-    [[self window] setBackgroundColor: col];  [Settings setWindowBackgroundColor: col];
+- (void) setWindowBackgroundColorAppC: (CPColor) col {
+    if (!col || [[[self window] backgroundColor] isEqual: col]) return;
+    [self willChangeValueForKey: @"windowBackgroundColorAppC"];
+    [[self window] setBackgroundColor: col];
+    [Settings setWindowBackgroundColor: col];
+    [self didChangeValueForKey: @"windowBackgroundColorAppC"];
 }
 
 
@@ -213,6 +230,7 @@
         [presets applyPresetNamed: [Settings presetName]];
         [Settings setIsAutoPreset: YES];
     }
+    [self settingsDidChange: null];
 }
 
 
@@ -294,21 +312,12 @@
     if ([Settings showIdAndEyeOnMain])  rct = CGRectOffset(rct, 84 / 2, 0);
     [resultStringField setFrame: rct];
 
-    //[Settings calculateAcuityForeBackColorsFromContrast];
-
-    gColorFore = [Settings acuityForeColor];
-    gColorBack = [Settings acuityBackColor];
-    if (![[self acuityForeColorAppC] isEqual: gColorFore]) { //avoid endless loop
-        [self setAcuityForeColorAppC: gColorFore];
-        [self setAcuityBackColorAppC: gColorBack];
-    }
-    if (![[self gratingForeColor] isEqual: [Settings gratingForeColor]]) {
-        [self setGratingForeColor: [Settings gratingForeColor]];
-        [self setGratingBackColor: [Settings gratingBackColor]];
-    }
-    if (![[[self window] backgroundColor] isEqual: [Settings windowBackgroundColor]]) {
-        [self setWindowBackgroundColorAppC: [Settings windowBackgroundColor]];
-    }
+    [Settings calculateAcuityForeBackColorsFromContrast];
+    [self setAcuityForeColorAppC: [Settings acuityForeColor]];
+    [self setAcuityBackColorAppC: [Settings acuityBackColor]];
+    [self setGratingForeColor: [Settings gratingForeColor]];
+    [self setGratingBackColor: [Settings gratingBackColor]];
+    [self setWindowBackgroundColorAppC: [Settings windowBackgroundColor]];
 }
 
 
@@ -670,6 +679,8 @@
     }
 
     //Test Color Synchronization
+    const originalIsAcuityColor = [Settings isAcuityColor];
+    [Settings setIsAcuityColor: YES];
     const originalFore = [self acuityForeColorAppC];
     const testColor = [CPColor redColor];
     [self setAcuityForeColorAppC: testColor];
@@ -677,6 +688,7 @@
         report += "  ERROR: acuityForeColorAppC synchronization failed!" + crlf; success = NO;
     }
     [self setAcuityForeColorAppC: originalFore]; // Restore
+    [Settings setIsAcuityColor: originalIsAcuityColor]; // Restore mode
 
     //Test Calibration Logic. We can't easily mock Settings, but we can check if isNotCalibrated behaves as expected given current settings.
     const isCalibrated = ![Settings isNotCalibrated];

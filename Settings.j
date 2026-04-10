@@ -181,13 +181,13 @@ Created by mb on July 15, 2015.
 }
 + (void) _setColor: (CPColor) theColor forKey: (CPString) keyString { //console.info("_setColor ", theColor, keyString)
     if (!theColor) {
-        console.warn("Settings>_setColor: theColor==null for: ", keyString)
-        theColor = [CPColor blackColor];
+        // console.warn("Settings>_setColor: theColor==null for: ", keyString)
+        return;
     }
-    if (typeof(theColor) !== "string") { //allow both hexstring (from HTML message) & CPColor
-        theColor = [theColor hexString];
-    }
-    [[CPUserDefaults standardUserDefaults] setObject: theColor forKey: keyString];
+    const newHexString = (typeof(theColor) === "string") ? theColor : [theColor hexString];
+    const previousValue = [[CPUserDefaults standardUserDefaults] stringForKey: keyString];
+    if (newHexString === previousValue) return;
+    [[CPUserDefaults standardUserDefaults] setObject: newHexString forKey: keyString];
 }
 
 
@@ -397,12 +397,12 @@ Created by mb on July 15, 2015.
 + (void) calculateAcuityForeBackColorsFromContrast { //console.info("Settings>calculateAcuityForeBackColorsFromContrast");
     if ([self isAcuityColor]) return;
     const cnt = [MiscLight contrastMichelsonPercentFromWeberPercent: [self contrastAcuityWeber]];
-    let temp = [MiscLight lowerLuminanceFromContrastMilsn: cnt];  temp = [MiscLight devicegrayFromLuminance: temp];
-    gColorFore = [CPColor colorWithWhite: temp alpha: 1];
-    [self setAcuityForeColor: gColorFore];
-    temp = [MiscLight upperLuminanceFromContrastMilsn: cnt];  temp = [MiscLight devicegrayFromLuminance: temp];
-    gColorBack = [CPColor colorWithWhite: temp alpha: 1];
-    [self setAcuityBackColor: gColorBack];
+    let temp = [MiscLight lowerLuminanceFromContrastMilsn: cnt];
+    temp = [MiscLight devicegrayFromLuminance: temp];
+    [self setAcuityForeColor: [CPColor colorWithWhite: temp alpha: 1]];
+    temp = [MiscLight upperLuminanceFromContrastMilsn: cnt];
+    temp = [MiscLight devicegrayFromLuminance: temp];
+    [self setAcuityBackColor: [CPColor colorWithWhite: temp alpha: 1]];
 }
 
 
