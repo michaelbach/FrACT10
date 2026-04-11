@@ -23,131 +23,20 @@ Created by mb on July 15, 2015.
 
 
 @implementation Settings: CPUserDefaultsController {
-    id settingsNamesAndTypes;
 }
 
 
 + (void) initialize {
     [super initialize];  [Misc CPLogSetup];
     sharedSettingsInstance = nil; //not really necessary
-    //my accessor functions are constructed from this array, depending on type
-    settingsNamesAndTypes = [ //array of arrays for all settings and their type
-        //[name, type]
-        ["presetName", "str"], //above all or for all setting tabs
-        ["autoRunIndex", "int"],
-        ["dateOfSettingsVersion", "str"],
-        ["showIdAndEyeOnMain", "bool"],//↓General tab
-        ["nTrials02", "int"], ["nTrials04", "int"], ["nTrials08", "int"],
-        ["nAlternativesIndex", "int"],
-        ["distanceInCM", "float"],
-        ["distanceInInchLocalisedString", "str"],
-        ["calBarLengthInMM", "float"],
-        ["showResponseInfoAtStart", "bool"],
-        ["testOnFive", "int"],
-        ["eccentXInDeg", "float"], ["eccentYInDeg", "float"],
-        ["eccentShowCenterFixMark", "bool"],
-        ["eccentRandomizeX", "bool"], ["eccentRandomizeY", "bool"],
-        ["respondsToMobileOrientation", "bool"],
-        ["autoFullScreen", "bool"],
-        ["displayTransform", "int"],
-        ["showTrialInfo", "bool"], ["trialInfoFontSize", "int"],
-        ["timeoutIsiMillisecs", "float"],
-        ["timeoutResponseSeconds", "float"],
-        ["timeoutDisplaySeconds", "float"],
-        ["decimalMarkCharIndex", "int"],
-        ["resultsToClipboardIndex", "int"], ["putResultsToClipboardSilent", "bool"],
-        ["auditoryFeedback4trialIndex", "int"],
-        ["visualFeedback", "int"],
-        ["giveAuditoryFeedback4run", "bool"],
-        ["soundVolume", "float"],
-        ["showRewardPicturesWhenDone", "bool"],
-        ["timeoutRewardPicturesInSeconds", "float"],
-        ["enableTouchControls", "bool"],//↓Acuity tab
-        ["acuityForeColor", "col"], ["acuityBackColor", "col"],
-        ["isAcuityColor", "bool"],
-        ["maxPossibleDecimalAcuityLocalisedString", "str"],
-        ["minPossibleDecimalAcuity", "float"],
-        ["minPossibleDecimalAcuityLocalisedString", "str"],
-        ["minPossibleLogMAR", "float"],
-        ["minPossibleLogMARLocalisedString", "str"],
-        ["maxPossibleLogMAR", "float"],
-        ["maxPossibleLogMARLocalisedString", "str"],
-        ["doThreshCorrection", "bool"],
-        ["maxDisplayedAcuity", "float"],
-        ["minStrokeAcuity", "float"],
-        ["acuityStartingLogMAR", "float"],
-        ["margin4maxOptotypeIndex", "int"],
-        ["crowdingType", "int"], ["crowdingDistanceCalculationType", "int"],
-        ["showAcuityFormatDecimal", "bool"],
-        ["showAcuityFormatLogMAR", "bool"],
-        ["showAcuityFormatLetterScore", "bool"],
-        ["showAcuityFormatSnellenFractionFoot", "bool"],
-        ["forceSnellen20", "bool"],
-        ["showCI95", "bool"],
-        ["contrastAcuityWeber", "float"],
-        ["acuityHasEasyTrials", "bool"],
-        ["isLandoltObliqueOnly", "bool"], //↓Acuity>Line-by-line
-        ["testOnLineByLineIndex", "int"], ["lineByLineDistanceType", "int"],
-        ["lineByLineHeadcountIndex", "int"], ["lineByLineLinesIndex", "int"],
-        ["isLineByLineChartModeConstantVA", "bool"], //↓Acuity>Vernier
-        ["vernierType", "int"], ["vernierWidth", "float"],
-        ["vernierLength", "float"], ["vernierGap", "float"], //↓Contrast tab
-        ["contrastHasEasyTrials", "bool"],
-        ["isContrastDarkOnLight", "bool"],
-        ["contrastOptotypeDiameter", "float"],
-        ["contrastShowFixMark", "bool"], ["contrastTimeoutFixmark", "float"],
-        ["contrastMaxLogCSWeber", "float"],
-        ["gammaValue", "float"],
-        ["contrastBitStealing", "bool"],
-        ["isContrastDithering", "bool"],
-        ["contrastCrowdingType", "int"], //↓Gratings tab
-        ["gratingCPD", "float"],
-        ["isGratingMasked", "bool"], ["gratingMaskDiaInDeg", "float"],
-        ["isGratingErrorDiffusion", "bool"],
-        ["isGratingColor", "bool"],
-        ["what2sweepIndex", "int"],
-        ["gratingCPDmin", "float"], ["gratingCPDmax", "float"],
-        ["gratingContrastMichelsonPercent", "float"],
-        ["isGratingObliqueOnly", "bool"],
-        ["gratingShapeIndex", "int"],
-        ["gratingForeColor", "col"], ["gratingBackColor", "col"], //↓BaLM tab
-        ["balmIsiMillisecs", "int"], ["balmOnMillisecs", "int"],
-        ["balmLocationDiameterInDeg", "float"],
-        ["balmLocationEccentricityInDeg", "float"],
-        ["balmMotionDiameterInDeg", "float"],
-        ["balmSpeedInDegPerSec", "float"],
-        ["balmExtentInDeg", "float"], //↓Misc tab
-        ["windowBackgroundColor", "col"],
-        ["specialBcmOn", "bool"],
-        ["hideExitButton", "bool"],
-        ["embedInNoise", "bool"], ["noiseContrast", "int"],
-        ["soundTrialStartIndex", "int"], ["soundRunEndIndex", "int"],
-        ["soundTrialYesIndex", "int"], ["soundTrialNoIndex", "int"],
-        ["patID", "str"], ["eyeIndex", "int"],
-        ["isAcuityPresentedConstant", "bool"],
-        ["acuityPresentedConstantLogMAR", "float"],
-        ["isAutoPreset", "bool"],
-        ["enableTestAcuityLetters", "bool"],
-        ["enableTestAcuityLandolt", "bool"],
-        ["enableTestAcuityE", "bool"],
-        ["enableTestAcuityTAO", "bool"],
-        ["enableTestAcuityVernier", "bool"],
-        ["enableTestContrastLetters", "bool"],
-        ["enableTestContrastLandolt", "bool"],
-        ["enableTestContrastE", "bool"],
-        ["enableTestContrastG", "bool"],
-        ["enableTestAcuityLineByLine", "bool"],
-        ["enableTestBalmGeneral", "bool"],
-        ["isAllSettingsDisabled", "bool"],
-    ];
-
-    for (const [name, type] of settingsNamesAndTypes) {
+    //my accessor functions are constructed from the gSettingsNamesAndTypes array, depending on type
+    for (const [name, type] of gSettingsNamesAndTypes) {
         switch (type) {
             case "str": [self addStringAccessors4Key: name]; break;
             case "int": [self addIntAccessors4Key: name]; break;
             case "bool": [self addBoolAccessors4Key: name]; break;
             case "float": [self addFloatAccessors4Key: name]; break;
-            case "col": [self addColorAccessors4Key: name]; break;
+            case "color": [self addColorAccessors4Key: name]; break;
             default: alert("Settings>initialize, this must not occur: " + type + ", " + name);
         }
     }
@@ -521,7 +410,7 @@ Created by mb on July 15, 2015.
         "maxPossibleDecimalAcuityLocalisedString",
         "distanceInInchLocalisedString"
     ]);
-    const settingsToExport = settingsNamesAndTypes
+    const settingsToExport = gSettingsNamesAndTypes
         .filter(([name]) => !EXCLUDED_NAMES.has(name))
         .map(([name, type]) => {
             const value = [[CPUserDefaults standardUserDefaults] objectForKey: name];

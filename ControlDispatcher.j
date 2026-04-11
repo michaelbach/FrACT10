@@ -10,6 +10,7 @@
 
 
 @import <Foundation/Foundation.j>
+@import "Globals.j"
 
 
 @implementation ControlDispatcher: CPObject {
@@ -160,15 +161,9 @@
         [self _notify:"notificationApplyPresetNamed" object:m3];
         return;
     }
-    const settingTypes = {
-        "isGratingObliqueOnly": "boolean", "showResponseInfoAtStart": "boolean", "enableTouchControls": "boolean", "eccentShowCenterFixMark": "boolean", "eccentRandomizeX": "boolean", "eccentRandomizeY": "boolean", "autoFullScreen": "boolean", "respondsToMobileOrientation": "boolean", "showTrialInfo": "boolean", "putResultsToClipboardSilent": "boolean", "showRewardPicturesWhenDone": "boolean", "embedInNoise": "boolean", "isAcuityColor": "boolean", "isLandoltObliqueOnly": "boolean", "acuityHasEasyTrials": "boolean", "doThreshCorrection": "boolean", "showAcuityFormatDecimal": "boolean", "showAcuityFormatLogMAR": "boolean", "showCI95": "boolean", "showAcuityFormatLetterScore": "boolean", "showAcuityFormatSnellenFractionFoot": "boolean", "forceSnellen20": "boolean", "isLineByLineChartModeConstantVA": "boolean", "contrastHasEasyTrials": "boolean", "isContrastDarkOnLight": "boolean", "contrastShowFixMark": "boolean", "isContrastDithering": "boolean", "isGratingMasked": "boolean", "isGratingErrorDiffusion": "boolean", "isGratingColor": "boolean", "specialBcmOn": "boolean", "hideExitButton": "boolean", "giveAuditoryFeedback4run": "boolean", "showIdAndEyeOnMain": "boolean", "isAcuityPresentedConstant": "boolean", "isAutoPreset": "boolean", "enableTestAcuityLetters": "boolean", "enableTestAcuityLandolt": "boolean", "enableTestAcuityE": "boolean", "enableTestAcuityTAO": "boolean", "enableTestAcuityVernier": "boolean", "enableTestContrastLetters": "boolean", "enableTestContrastLandolt": "boolean", "enableTestContrastE": "boolean", "enableTestContrastG": "boolean", "enableTestAcuityLineByLine": "boolean", "enableTestBalmGeneral": "boolean",
-        "isAllSettingsDisabled": "boolean",
-        "nAlternativesIndex": "number", "nTrials02": "number", "nTrials04": "number", "nTrials08": "number", "distanceInCM": "number", "calBarLengthInMM": "number", "testOnFive": "number", "decimalMarkCharIndex": "number", "eccentXInDeg": "number", "eccentYInDeg": "number", "displayTransform": "number", "trialInfoFontSize": "number", "timeoutIsiMillisecs": "number", "timeoutResponseSeconds": "number", "timeoutDisplaySeconds": "number", "soundVolume": "number", "auditoryFeedback4trialIndex": "number", "timeoutRewardPicturesInSeconds": "number", "resultsToClipboardIndex": "number", "noiseContrast": "number", "contrastAcuityWeber": "number", "maxDisplayedAcuity": "number", "minStrokeAcuity": "number", "acuityStartingLogMAR": "number", "margin4maxOptotypeIndex": "number", "autoRunIndex": "number", "crowdingType": "number", "crowdingDistanceCalculationType": "number", "testOnLineByLineIndex": "number", "lineByLineDistanceType": "number", "lineByLineHeadcountIndex": "number", "lineByLineLinesIndex": "number", "vernierType": "number", "vernierWidth": "number", "vernierLength": "number", "vernierGap": "number", "gammaValue": "number", "contrastOptotypeDiameter": "number", "contrastTimeoutFixmark": "number", "contrastMaxLogCSWeber": "number", "contrastCrowdingType": "number", "gratingCPD": "number", "gratingMaskDiaInDeg": "number", "gratingShapeIndex": "number", "what2sweepIndex": "number", "gratingCPDmin": "number", "gratingCPDmax": "number", "gratingContrastMichelsonPercent": "number", "soundTrialYesIndex": "number", "soundTrialNoIndex": "number", "soundRunEndIndex": "number", "acuityPresentedConstantLogMAR": "number", "eyeIndex": "number",
-        "windowBackgroundColor": "color", "gratingForeColor": "color", "gratingBackColor": "color", "acuityForeColor": "color", "acuityBackColor": "color",
-        "patID": "str"
-    };
-    switch(settingTypes[m2]) {
-        case "boolean": case "number":
+    console.info(gTestMap)
+    switch(gSettingsNamesAndTypesMap.get(m2)) {
+        case "bool": case "int": case "float":
             [self setNumberSettingNamed:m2]; break;
         case "color":
             [self setColorSettingNamed:m2]; break;
