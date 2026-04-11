@@ -15,7 +15,7 @@ let isFirebaseInitialized = NO;
 @implementation ResponseBoxController: CPObject
 
 
-+ (void) init { console.info("ResponseBoxController>init")
++ (void) init { //console.info("ResponseBoxController>init")
     if (isFirebaseInitialized) return;
     isFirebaseInitialized = YES;
     (async () => {
