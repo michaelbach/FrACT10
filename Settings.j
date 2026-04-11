@@ -29,8 +29,8 @@ Created by mb on July 15, 2015.
 + (void) initialize {
     [super initialize];  [Misc CPLogSetup];
     sharedSettingsInstance = nil; //not really necessary
-    //my accessor functions are constructed from the gSettingsNamesAndTypes array, depending on type
-    for (const [name, type] of gSettingsNamesAndTypes) {
+    //my accessor functions are constructed from the gSettingsNamesAndTypesMap map, depending on type
+    for (const [name, type] of gSettingsNamesAndTypesMap) {
         switch (type) {
             case "str": [self addStringAccessors4Key: name]; break;
             case "int": [self addIntAccessors4Key: name]; break;
@@ -410,7 +410,7 @@ Created by mb on July 15, 2015.
         "maxPossibleDecimalAcuityLocalisedString",
         "distanceInInchLocalisedString"
     ]);
-    const settingsToExport = gSettingsNamesAndTypes
+    const settingsToExport = Array.from(gSettingsNamesAndTypesMap)
         .filter(([name]) => !EXCLUDED_NAMES.has(name))
         .map(([name, type]) => {
             const value = [[CPUserDefaults standardUserDefaults] objectForKey: name];

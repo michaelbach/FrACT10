@@ -61,7 +61,8 @@ kTestBalmGeneral = 11;
 kTestBalmLight = 12; kTestBalmLocation = 13; kTestBalmMotion = 14;
 kTestContrastDitherUnittest = 15;
 
-gSettingsNamesAndTypes = [ //array of arrays for all settings and their type
+//all settings and their types for `Settings` and `ControlDispatcher`
+gSettingsNamesAndTypesMap = new Map([
     //[name, type]
     ["presetName", "str"], //above all or for all setting tabs
     ["autoRunIndex", "int"],
@@ -93,8 +94,8 @@ gSettingsNamesAndTypes = [ //array of arrays for all settings and their type
     ["showRewardPicturesWhenDone", "bool"],
     ["timeoutRewardPicturesInSeconds", "float"],
     ["enableTouchControls", "bool"],//↓Acuity tab
+    ["isAcuityColor", "bool"],//musst come first, so the next↓ 2 color values are not killed by b/w contrast in Importing
     ["acuityForeColor", "color"], ["acuityBackColor", "color"],
-    ["isAcuityColor", "bool"],
     ["maxPossibleDecimalAcuityLocalisedString", "str"],
     ["minPossibleDecimalAcuity", "float"],
     ["minPossibleDecimalAcuityLocalisedString", "str"],
@@ -134,12 +135,12 @@ gSettingsNamesAndTypes = [ //array of arrays for all settings and their type
     ["gratingCPD", "float"],
     ["isGratingMasked", "bool"], ["gratingMaskDiaInDeg", "float"],
     ["isGratingErrorDiffusion", "bool"],
-    ["isGratingColor", "bool"],
     ["what2sweepIndex", "int"],
     ["gratingCPDmin", "float"], ["gratingCPDmax", "float"],
     ["gratingContrastMichelsonPercent", "float"],
     ["isGratingObliqueOnly", "bool"],
     ["gratingShapeIndex", "int"],
+    ["isGratingColor", "bool"],//this must com before the next 2↓
     ["gratingForeColor", "color"], ["gratingBackColor", "color"], //↓BaLM tab
     ["balmIsiMillisecs", "int"], ["balmOnMillisecs", "int"],
     ["balmLocationDiameterInDeg", "float"],
@@ -169,10 +170,9 @@ gSettingsNamesAndTypes = [ //array of arrays for all settings and their type
     ["enableTestAcuityLineByLine", "bool"],
     ["enableTestBalmGeneral", "bool"],
     ["isAllSettingsDisabled", "bool"],
-];
-gSettingsNamesAndTypesMap = new Map(gSettingsNamesAndTypes);//todo: don't really need both
+]);
 
-gTestRegistry = {
+gTestRegistry = { //Object to hold all tests, names, their classes, shortcuts etc.
     [kTestAcuityLetters]: {testName: "AcuityLetters", className: "FractControllerAcuityLetters", shortcut: "L", name4xport: "Acuity_Letters"},
     [kTestAcuityLandolt]: {testName: "AcuityLandolt", className: "FractControllerAcuityLandolt", shortcut: "C", name4xport: "Acuity_LandoltC"},
     [kTestAcuityE]: {testName: "AcuityE", className: "FractControllerAcuityE", shortcut: "E", name4xport: "Acuity_TumblingE"},
