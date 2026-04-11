@@ -27,29 +27,10 @@
     }
   },
 
-  "ESU": {
-    "action": "setDefaultsKeepingCalBarLength",
-    "settings": {
-      "showResponseInfoAtStart": false,
-      "enableTouchControls": false,
-      "distanceInCM": 150,
-      "nAlternativesIndex": "kNAlternativesIndex4",
-      "nTrials04": 18,
-      "testOnFive": "kTestAcuityLandolt",
-      "timeoutResponseSeconds": 999,
-      "timeoutDisplaySeconds": 999,
-      "auditoryFeedback4trialIndex": "kauditoryFeedback4trialIndexNone",
-      "showRewardPicturesWhenDone": true,
-      "decimalMarkCharIndex": "kDecimalMarkCharIndexComma",
-      "resultsToClipboardIndex": "kResultsToClipNone",
-      "showAcuityFormatLogMAR": false,
-      "trialInfoFontSize": 24
-    }
-  },
-
   "AT@LeviLab": {
     "action": "setDefaults",
     "settings": {
+      "nAlternativesIndex": "kNAlternativesIndex4",
       "nTrials04": 24,
       "showResponseInfoAtStart": false,
       "enableTouchControls": false,
@@ -59,7 +40,9 @@
       "distanceInCM": 68.5,
       "calBarLengthInMM": 191,
       "resultsToClipboardIndex": "kResultsToClipFullHistory",
-      "displayTransform": 1
+      "displayTransform": 1,
+      "maxDisplayedAcuity": 99,
+      "eccentRandomizeY": true
     }
   },
 
@@ -84,6 +67,8 @@
       "contrastHasEasyTrials": false,
       "isGratingObliqueOnly": true,
       "isGratingColor": true,
+      "gratingForeColor": "FF00FF",
+      "gratingBackColor": "0000FF",
       "what2sweepIndex": 1,
       "gratingContrastMichelsonPercent": 99,
       "gratingCPDmin": 1,
@@ -106,24 +91,44 @@
   "EndoArt01": {
     "action": "setDefaults",
     "settings": {
-        "NAlternativesIndex": "kNAlternativesIndex4",
-        "NTrials04": 30,
-        "ShowResponseInfoAtStart": false,
-        "EnableTouchControls": false,
-        "DecimalMarkCharIndex": "kDecimalMarkCharIndexDot",
-        "DistanceInCM": 50,
-        "TimeoutIsiMillisecs": 0,
-        "TimeoutResponseSeconds": 20,
-        "TimeoutDisplaySeconds": 30,
-        "TestOnFive": "kTestAcuityLandolt",
-        "ResultsToClipboardIndex": "kResultsToClipFullHistory",
-        "AuditoryFeedback4trialIndex": "kauditoryFeedback4trialIndexNone",
-        "AcuityStartingLogMAR": 2.5,
-        "ShowCI95": false,
-        "ShowAcuityFormatLogMAR": true,
-        "ShowAcuityFormatDecimal": false,
-        "ContrastOptotypeDiameter": 500,
-        "GammaValue": 2.0
+        "nAlternativesIndex": "kNAlternativesIndex4",
+        "nTrials04": 30,
+        "showResponseInfoAtStart": false,
+        "enableTouchControls": false,
+        "decimalMarkCharIndex": "kDecimalMarkCharIndexDot",
+        "distanceInCM": 50,
+        "timeoutIsiMillisecs": 0,
+        "timeoutResponseSeconds": 20,
+        "timeoutDisplaySeconds": 30,
+        "testOnFive": "kTestAcuityLandolt",
+        "resultsToClipboardIndex": "kResultsToClipFullHistory",
+        "auditoryFeedback4trialIndex": "kauditoryFeedback4trialIndexNone",
+        "acuityStartingLogMAR": 2.5,
+        "showCI95": false,
+        "showAcuityFormatLogMAR": true,
+        "showAcuityFormatDecimal": false,
+        "contrastOptotypeDiameter": 500,
+        "gammaValue": 2.0
+    }
+  },
+
+  "ESU": {
+    "action": "setDefaultsKeepingCalBarLength",
+    "settings": {
+      "showResponseInfoAtStart": false,
+      "enableTouchControls": false,
+      "distanceInCM": 150,
+      "nAlternativesIndex": "kNAlternativesIndex4",
+      "nTrials04": 18,
+      "testOnFive": "kTestAcuityLandolt",
+      "timeoutResponseSeconds": 999,
+      "timeoutDisplaySeconds": 999,
+      "auditoryFeedback4trialIndex": "kauditoryFeedback4trialIndexNone",
+      "showRewardPicturesWhenDone": true,
+      "decimalMarkCharIndex": "kDecimalMarkCharIndexComma",
+      "resultsToClipboardIndex": "kResultsToClipNone",
+      "showAcuityFormatLogMAR": false,
+      "trialInfoFontSize": 24
     }
   },
 
@@ -151,7 +156,7 @@
       "testOnFive": "kTestNone",
       "resultsToClipboardIndex": "kResultsToClipFullHistory",
       "putResultsToClipboardSilent": true,
-      "vernierType": 1,
+      "vernierType": "kVernierType3bars",
       "vernierWidth": 1.5,
       "vernierLength": 40,
       "vernierGap": 0.2,

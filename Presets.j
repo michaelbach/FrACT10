@@ -153,6 +153,7 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             "kDecimalMarkCharIndexAuto": kDecimalMarkCharIndexAuto,
             "kDecimalMarkCharIndexDot": kDecimalMarkCharIndexDot,
             "kDecimalMarkCharIndexComma": kDecimalMarkCharIndexComma,
+            "kVernierType3bars": kVernierType3bars,
         };
 
         for (const key in config.settings) {
