@@ -161,7 +161,6 @@
         [self _notify:"notificationApplyPresetNamed" object:m3];
         return;
     }
-    console.info(gTestMap)
     switch(gSettingsNamesAndTypesMap.get(m2)) {
         case "bool": case "int": case "float":
             [self setNumberSettingNamed:m2]; break;
