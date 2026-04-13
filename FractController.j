@@ -159,7 +159,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
             yEccInPix *= -1;
         }
     }
-    const tIsi = gBalmTestIDs.includes(gCurrentTestID) ? [Settings balmIsiMillisecs] : [Settings timeoutIsiMillisecs];
+    const tIsi = kBalmTestIDs.includes(gCurrentTestID) ? [Settings balmIsiMillisecs] : [Settings timeoutIsiMillisecs];
     timerIsi = [CPTimer scheduledTimerWithTimeInterval: tIsi / 1000 target:self selector:@selector(onTimeoutIsi:) userInfo:nil repeats:NO];
     state = kStateDrawBack; [[[self window] contentView] setNeedsDisplay: YES];
 }
@@ -612,7 +612,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
  */
 - (CPString) generalComposeExportString { //console.info("FractController>generalComposeExportString");
     const nowDateTime = [CPDate date];
-    let s = "vsExportFormat" + tab + gVersionOfExportFormat;
+    let s = "vsExportFormat" + tab + kVersionOfExportFormat;
     s += tab + "vsFrACT" + tab + gVersionDateOfFrACT;
     s += tab + "decimalMark" + tab + [Settings decimalMarkChar];
     s += tab + "ID" + tab + [Settings patID];

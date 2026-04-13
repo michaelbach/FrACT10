@@ -4026,7 +4026,7 @@ Enable / disable specific button.
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTestAcuityLett" id="33Q-6n-hq3"/>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTestAcuityLetters" id="V21-zg-DRc"/>
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fez-rG-6Fk">
@@ -4110,7 +4110,7 @@ Enable / disable specific button.
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTestContrastLett" id="tsp-sb-lv7"/>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.enableTestContrastLetters" id="bhE-oW-usS"/>
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6vi-eF-hga">

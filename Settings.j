@@ -10,8 +10,6 @@ Also calculates Fore- and BackColors
 Created by mb on July 15, 2015.
 */
 
-#define kDateOfCurrentSettingsVersion "2026-03-18a"
-
 
 @import <Foundation/CPUserDefaults.j>
 @import <AppKit/CPUserDefaultsController.j>
@@ -100,162 +98,40 @@ Created by mb on July 15, 2015.
  */
 + (void) allNotCheckButSet: (BOOL) set {
     [[CPUserDefaults standardUserDefaults] synchronize];
-    if (set) {
+
+    if (set) { //dspecial handling for dependent settings and those with complex defaults
         [self setDateOfSettingsVersion: kDateOfCurrentSettingsVersion];
-        //for `CPColor` I have no `CheckCol` (yet) #tbd, worth it?
-        [self setWindowBackgroundColor: [CPColor colorWithRed: 1 green: 1 blue: 0.9 alpha: 1]];
-        [self setGratingForeColor: [CPColor lightGrayColor]];
-        [self setGratingBackColor: [CPColor darkGrayColor]];
-        [self setPresetName: "Standard Defaults"]; //synchronise with corresponding item in Presets!
-        [self setPatID: "-"];
+        [self enableNotDisableAllTests: YES];
     }
-    
-    //above or for all setting tabs
-    [self setAutoRunIndex: [self checkNum: [self autoRunIndex] dflt: kAutoRunIndexNone min: kAutoRunIndexNone max: kAutoRunIndexLow set: set]];
-    [self setShowIdAndEyeOnMain: [self checkBool: [self showIdAndEyeOnMain] dflt: NO set: set]];
-    
-    //General stuff
-    //need to check before setNAlternativesIndex 'cause oblique might force to index=0
-    [self setIsGratingObliqueOnly: [self checkBool: [self isGratingObliqueOnly] dflt: NO set: set]];
-    //for all tests
-    [self setNAlternativesIndex: [self checkNum: [self nAlternativesIndex] dflt: kNAlternativesIndex8plus min: kNAlternativesIndex2 max: kNAlternativesIndex8plus set:set]]; //dflt:8
-    [self setNTrials02: [self checkNum: [self nTrials02] dflt: 36 min: 1 max: 500 set: set]];
-    [self setNTrials04: [self checkNum: [self nTrials04] dflt: 24 min: 1 max: 500 set: set]];
-    [self setNTrials08: [self checkNum: [self nTrials08] dflt: 18 min: 1 max: 500 set: set]];
-    
-    [self setDistanceInCM: [self checkNum: [self distanceInCM] dflt: gDefaultDistanceInCM min: 1 max: 2500 set: set]];
-    [self setCalBarLengthInMM: [self checkNum: [self calBarLengthInMM] dflt: gDefaultCalibrationBarLengthInMM min: 1 max: 10000 set: set]];
-    
-    [self setShowResponseInfoAtStart: [self checkBool: [self showResponseInfoAtStart] dflt: YES set: set]];
-    [self setEnableTouchControls: [self checkBool: [self enableTouchControls] dflt: YES set: set]];
-    
-    [self setDecimalMarkCharIndex: [self checkNum: [self decimalMarkCharIndex] dflt: kDecimalMarkCharIndexAuto min: kDecimalMarkCharIndexAuto max: kDecimalMarkCharIndexComma set: set]];
-    
-    [self setTestOnFive: [self checkNum: [self testOnFive] dflt: kTestAcuityLetters min: kTestNone max: kTestAcuityLineByLine set: set]]; //1: Sloan Letters
 
-    [self setEccentXInDeg: [self checkNum: [self eccentXInDeg] dflt: 0 min: -99 max: 99 set: set]];
-    [self setEccentYInDeg: [self checkNum: [self eccentYInDeg] dflt: 0 min: -99 max: 99 set: set]];
-    [self setEccentShowCenterFixMark: [self checkBool: [self eccentShowCenterFixMark] dflt: YES set: set]];
-    [self setEccentRandomizeX: [self checkBool: [self eccentRandomizeX] dflt: NO set: set]];
-    [self setEccentRandomizeY: [self checkBool: [self eccentRandomizeY] dflt: NO set: set]];
-    
-    [self setAutoFullScreen: [self checkBool: [self autoFullScreen] dflt: NO set: set]];
-    
-    [self setRespondsToMobileOrientation: [self checkBool: [self respondsToMobileOrientation] dflt: YES set: set]];
-    
-    //0=normal, 1=mirror horizontally, 2=mirror vertically, 3=both=rot180°
-    [self setDisplayTransform: [self checkNum: [self displayTransform] dflt: 0 min: 0 max: 3 set: set]];
-    
-    [self setShowTrialInfo: [self checkBool: [self showTrialInfo] dflt: YES set: set]];
-    [self setTrialInfoFontSize: [self checkNum: [self trialInfoFontSize] dflt: 10 min: 4 max: 48 set: set]];
-    
-    [self setTimeoutIsiMillisecs: [self checkNum: [self timeoutIsiMillisecs] dflt: 0 min: 0 max: 3000 set: set]];
-    [self setTimeoutResponseSeconds: [self checkNum: [self timeoutResponseSeconds] dflt: 30 min: 0.1 max: 9999 set: set]];
-    [self setTimeoutDisplaySeconds: [self checkNum: [self timeoutDisplaySeconds] dflt: 30 min: 0.1 max: 9999 set: set]];
-    
-    [self setResultsToClipboardIndex: [self checkNum: [self resultsToClipboardIndex] dflt: kResultsToClipNone min: kResultsToClipNone max: kResultsToClipFullHistory2PDF set: set]];
-    [self setPutResultsToClipboardSilent: [self checkBool: [self putResultsToClipboardSilent] dflt: NO set: set]];
-    
-    //0: none, 1: always, 2: on correct, 3: w/ info
-    [self setAuditoryFeedback4trialIndex: [self checkNum: [self auditoryFeedback4trialIndex] dflt: kauditoryFeedback4trialIndexWithinfo min: kauditoryFeedback4trialIndexNone max: kauditoryFeedback4trialIndexWithinfo set: set]];
-    //0: none, 1: always, 2: on correct, 3: w/ info
-    [self setVisualFeedback: [self checkNum: [self visualFeedback] dflt: 0 min: 0 max: 3 set: set]]; //NOT IN USE
-    [self setGiveAuditoryFeedback4run: [self checkBool: [self giveAuditoryFeedback4run] dflt: YES set: set]];
-    [self setSoundVolume: [self checkNum: [self soundVolume] dflt: 20 min: 1 max: 100 set: set]];
-    
-    [self setShowRewardPicturesWhenDone: [self checkBool: [self showRewardPicturesWhenDone] dflt: NO set: set]];
-    [self setTimeoutRewardPicturesInSeconds: [self checkNum: [self timeoutRewardPicturesInSeconds] dflt: 5 min: 0.1 max: 999 set: set]];
-    
-    [self setEmbedInNoise: [self checkBool: [self embedInNoise] dflt: NO set: set]];
-    [self setNoiseContrast: [self checkNum: [self noiseContrast] dflt: 50 min: 0 max: 100 set: set]];
-    
-    //Acuity stuff
-    [self setIsAcuityColor: [self checkBool: [self isAcuityColor] dflt: NO set: set]];
-    [self setIsLandoltObliqueOnly: [self checkBool: [self isLandoltObliqueOnly] dflt: NO set: set]]; //only applies to acuity with 4 Landolt orienations
-    [self setContrastAcuityWeber: [self checkNum: [self contrastAcuityWeber] dflt: 100 min: -1E6 max: 100 set: set]];
+    for (const [name, meta] of gSettingsNamesAndTypesMap) {
+        const currentVal = [[CPUserDefaults standardUserDefaults] objectForKey: name];
+        let newVal = currentVal;
+        switch (meta.type) {
+            case "bool":
+                newVal = [self checkBool: currentVal dflt: meta.dflt set: set];  break;
+            case "int": case "float":
+                newVal = [self checkNum: currentVal dflt: meta.dflt min: meta.min max: meta.max set: set];  break;
+            case "str":
+                if (set || currentVal === null) newVal = meta.dflt;
+                break;
+            case "color":
+                if (set || currentVal === null) {
+                    if (meta.dflt !== null) {
+                        [self _setColor: meta.dflt forKey: name];
+                        continue; //_setColor already handles it
+                    }
+                }
+                break;
+        }
+        //Apply the value if it changed or if we are forcing defaults
+        if (newVal !== currentVal || (set && meta.type !== "color")) {
+             [[CPUserDefaults standardUserDefaults] setObject: newVal forKey: name];
+        }
+    }
+
     [self calculateAcuityForeBackColorsFromContrast];
-    [self setAcuityHasEasyTrials: [self checkBool: [self acuityHasEasyTrials] dflt: YES set: set]];
-    [self setMaxDisplayedAcuity: [self checkNum: [self maxDisplayedAcuity] dflt: 2 min: 1 max: 99 set: set]];
-    [self setMinStrokeAcuity: [self checkNum: [self minStrokeAcuity] dflt: 0.5 min: 0.5 max: 5 set: set]];
-    [self setAcuityStartingLogMAR: [self checkNum: [self acuityStartingLogMAR] dflt: 1 min: 0.3 max: 2.5 set: set]];
-    [self setMargin4maxOptotypeIndex: [self checkNum: [self margin4maxOptotypeIndex] dflt: 1 min: 0 max: 4 set: set]];
-    [self setDoThreshCorrection: [self checkBool: [self doThreshCorrection] dflt: YES set: set]];
-    [self setShowAcuityFormatDecimal: [self checkBool: [self showAcuityFormatDecimal] dflt: YES set: set]];
-    [self setShowAcuityFormatLogMAR: [self checkBool: [self showAcuityFormatLogMAR] dflt: YES set: set]];
-    [self setShowAcuityFormatLetterScore: [self checkBool: [self showAcuityFormatLetterScore] dflt: NO set: set]];
-    [self setShowAcuityFormatSnellenFractionFoot: [self checkBool: [self showAcuityFormatSnellenFractionFoot] dflt: NO set: set]];
-    [self setForceSnellen20: [self checkBool: [self forceSnellen20] dflt: NO set: set]];
-    [self setShowCI95: [self checkBool: [self showCI95] dflt: NO set: set]];
     [self calculateMinMaxPossibleAcuity];
-    
-    //Crowding, crowdingType: 0 = none, 1: flanking bars, 2 = flanking rings, 3 = surounding bars, 4: surounding ring, 5 = surounding square, 6 = row of optotypes
-    [self setCrowdingType: [self checkNum: [self crowdingType] dflt: 0 min: 0 max: 6 set: set]];
-    //0 = 2·stroke between rings, 1 = fixed 2.6 arcmin between rings, 2 = fixed 30', 3 = like ETDRS
-    [self setCrowdingDistanceCalculationType: [self checkNum: [self crowdingDistanceCalculationType] dflt: 0 min: 0 max: 3 set: set]];
-    
-    //Line-by-line stuff
-    [self setTestOnLineByLineIndex: [self checkNum: [self testOnLineByLineIndex] dflt: 1 min: 1 max: 4 set: set]]; //1: Sloan Letters. 0: nicht erlaubt, 2: Landolt, 3…
-    [self setLineByLineDistanceType: [self checkNum: [self lineByLineDistanceType] dflt: 1 min: 0 max: 1 set: set]]; //0: DIN-EN-ISO, 1: ETDRS
-    [self setLineByLineHeadcountIndex: [self checkNum: [self lineByLineHeadcountIndex] dflt: 2 min: 0 max: 4 set: set]]; //0: "1", 2: "3", 3: "5", 4: "7"
-    [self setLineByLineLinesIndex: [self checkNum: [self lineByLineLinesIndex] dflt: 0 min: 0 max: 2 set: set]]; //0: "1", 1: "3", 2: "5"
-    [self setIsLineByLineChartModeConstantVA: [self checkBool: [self isLineByLineChartModeConstantVA] dflt: NO set: set]];
-    
-    //Vernier stuff
-    [self setVernierType: [self checkNum: [self vernierType] dflt: 0 min: 0 max: 1 set: set]]; //2 or 3 bars
-    [self setVernierWidth: [self checkNum: [self vernierWidth] dflt: 1.0 min: 0.1 max: 120 set: set]]; //in arcminutes
-    [self setVernierLength: [self checkNum: [self vernierLength] dflt: 15.0 min: 0.1 max: 1200 set: set]];
-    [self setVernierGap: [self checkNum: [self vernierGap] dflt: 0.2 min: 0.0 max: 120 set: set]];
-    
-    //Contrast stuff
-    [self setGammaValue: [self checkNum: [self gammaValue] dflt: 2.0 min: 0.8 max: 4 set: set]];
-    [self setContrastHasEasyTrials: [self checkBool: [self contrastHasEasyTrials] dflt: YES set: set]];
-    [self setIsContrastDarkOnLight: [self checkBool: [self isContrastDarkOnLight] dflt: YES set: set]];
-    [self setContrastOptotypeDiameter: [self checkNum: [self contrastOptotypeDiameter] dflt: 50 min: 1 max: 2500 set: set]];
-    [self setContrastShowFixMark: [self checkBool: [self contrastShowFixMark] dflt: YES set: set]];
-    [self setContrastTimeoutFixmark: [self checkNum: [self contrastTimeoutFixmark] dflt: 500 min: 20 max: 5000 set: set]];
-    [self setContrastMaxLogCSWeber: [self checkNum: [self contrastMaxLogCSWeber] dflt: 3.0 min: 1.5 max: kMaxAllowedLogCSWeber set: set]];
-    [self setContrastBitStealing: [self checkBool: [self contrastBitStealing] dflt: NO set: set]];
-    [self setIsContrastDithering: [self checkBool: [self isContrastDithering] dflt: YES set: set]];
-    [self setContrastCrowdingType: [self checkNum: [self contrastCrowdingType] dflt: 0 min: 0 max: 6 set: set]];
-    
-    //Grating stuff
-    [self setGratingCPD: [self checkNum: [self gratingCPD] dflt: 2.0 min: 0.01 max: 18 set: set]];
-    [self setIsGratingMasked: [self checkBool: [self isGratingMasked] dflt: NO set: set]];
-    [self setGratingMaskDiaInDeg: [self checkNum: [self gratingMaskDiaInDeg] dflt: 10.0 min: 0.5 max: 50 set: set]];
-    [self setIsGratingErrorDiffusion: [self checkBool: [self isGratingErrorDiffusion] dflt: YES set: set]];
-    [self setGratingShapeIndex: [self checkNum: [self gratingShapeIndex] dflt: 0 min: 0 max: kGratingShapeIndexCheckerboard set: set]];
-    [self setIsGratingColor: [self checkBool: [self isGratingColor] dflt: NO set: set]];
-    [self setWhat2sweepIndex: [self checkNum: [self what2sweepIndex] dflt: 0 min: 0 max: 1 set: set]]; //0: sweep contrast, 1: sweep spatial frequency
-    [self setGratingCPDmin: [self checkNum: [self gratingCPDmin] dflt: 0.5 min: 0.01 max: 60 set: set]];
-    [self setGratingCPDmax: [self checkNum: [self gratingCPDmax] dflt: 30 min: 0.01 max: 60 set: set]];
-    [self setGratingContrastMichelsonPercent: [self checkNum: [self gratingContrastMichelsonPercent] dflt: 95 min: 0.3 max: 99 set: set]];
-    
-    //BaLM stuff
-    [self setBalmIsiMillisecs: [self checkNum: [self balmIsiMillisecs] dflt: 1500 min: 20 max: 5000 set: set]];
-    [self setBalmOnMillisecs: [self checkNum: [self balmOnMillisecs] dflt: 200 min: 20 max: 2000 set: set]];
-    [self setBalmLocationEccentricityInDeg: [self checkNum: [self balmLocationEccentricityInDeg] dflt: 15 min: 1 max: 30 set: set]];
-    [self setBalmLocationDiameterInDeg: [self checkNum: [self balmLocationDiameterInDeg] dflt: 5 min: 0.1 max: 20 set: set]];
-    [self setBalmMotionDiameterInDeg: [self checkNum: [self balmMotionDiameterInDeg] dflt: 3.3 min: 0.1 max: 10 set: set]];
-    [self setBalmSpeedInDegPerSec: [self checkNum: [self balmSpeedInDegPerSec] dflt: 3.3 min: 0.1 max: 10 set: set]];
-    [self setBalmExtentInDeg: [self checkNum: [self balmExtentInDeg] dflt: 15 min: 5 max: 30 set: set]];
-    
-    //Misc stuff
-    [self setSpecialBcmOn: [self checkBool: [self specialBcmOn] dflt: NO set: set]];
-    [self setHideExitButton: [self checkBool: [self hideExitButton] dflt: NO set: set]];
-    
-    [self setSoundTrialStartIndex: [self checkNum: [self soundTrialStartIndex] dflt: 1 min: 0 max: gSoundsTrialStart.length-1 set: set]];
-    [self setSoundTrialYesIndex: [self checkNum: [self soundTrialYesIndex] dflt: 0 min: 0 max: gSoundsTrialYes.length-1 set: set]];
-    [self setSoundTrialNoIndex: [self checkNum: [self soundTrialNoIndex] dflt: 0 min: 0 max: gSoundsTrialNo.length-1 set: set]];
-    [self setSoundRunEndIndex: [self checkNum: [self soundRunEndIndex] dflt: 0 min: 0 max: gSoundsRunEnd.length-1 set: set]];
-    [self setEyeIndex: [self checkNum: [self eyeIndex] dflt: 0 min: 0 max: 3 set: set]];
-    
-    [self setIsAcuityPresentedConstant: [self checkBool: [self isAcuityPresentedConstant] dflt: NO set: set]];
-    [self setAcuityPresentedConstantLogMAR: [self checkNum: [self acuityPresentedConstantLogMAR] dflt: 0 min: -1.0 max: 3.0 set: set]];
-
-    [self setIsAutoPreset: [self checkBool: [self isAutoPreset] dflt: NO set: set]];
-
-    if (set) [self enableNotDisableAllTests: YES];
-    [self setIsAllSettingsDisabled: [self checkBool: [self isAllSettingsDisabled] dflt: NO set: set]];
 
     [[CPUserDefaults standardUserDefaults] synchronize];
 }

@@ -121,7 +121,7 @@ Coded by Gemini, many corrections by MB
     //Prepare JSON data
     const EXCLUDED_NAMES = new Set([ //some not necessary
         "presetName", //exclude because it's not reliable info
-        "minPossibleDecimalAcuity", //this and ↓ are always calculated, omit
+        //these ↓ are always calculated, so omit
         "minPossibleLogMAR", "minPossibleLogMARLocalisedString",
         "maxPossibleLogMAR", "maxPossibleLogMARLocalisedString",
         "minPossibleDecimalAcuityLocalisedString",

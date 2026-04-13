@@ -54,7 +54,7 @@
 + initWithNumTrials: (int) nTrials { //console.info("TrialHistoryManager>initWithNumTrials", nTrials);
     trialHistoryRecord = [];
     gTestDetails = {};
-    gTestDetails[td_vsExpFormat] = gVersionOfExportFormat;
+    gTestDetails[td_vsExpFormat] = kVersionOfExportFormat;
     gTestDetails[td_vsFrACT] = "FrACT10·" + gVersionStringOfFract + "·" + gVersionDateOfFrACT;
     gTestDetails[td_nTrials] = 0;
     gTestDetails[td_nCorrect] = 0;
@@ -73,7 +73,7 @@
     trialHistoryRecord[currentIndex].presented = presented;
     trialHistoryRecord[currentIndex].responded = responded;
     trialHistoryRecord[currentIndex].isCorrect = isCorrect;
-    const tIsi = gBalmTestIDs.includes(gCurrentTestID) ? [Settings balmIsiMillisecs] : [Settings timeoutIsiMillisecs];
+    const tIsi = kBalmTestIDs.includes(gCurrentTestID) ? [Settings balmIsiMillisecs] : [Settings timeoutIsiMillisecs];
     trialHistoryRecord[currentIndex].reactionTimeInMs = Math.round(-[dateStart timeIntervalSinceNow] * 1000.0) - tIsi;
     currentIndex++;
     gTestDetails[td_nTrials] += 1; //calculation for BaLM

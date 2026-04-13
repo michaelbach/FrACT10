@@ -65,7 +65,9 @@ const tellIframeReturningPromise = (message, timeout = 1000) => {
 
 const postToIframe = (m1, m2, m3, timeout = 1000) => {
 	const msg = {m1: m1, m2: m2, m3: m3};
-	return tellIframeReturningPromise(msg, timeout);
+    const retVal = tellIframeReturningPromise(msg, timeout);
+    //console.info(retVal);
+    return retVal;
 }
 
 
@@ -88,6 +90,7 @@ const pauseMilliseconds = (ms) => {
 const oneStep3Ms = async (m1, m2, m3, timeout = 1000) => {
 	const response = await postToIframe(m1, m2, m3, timeout);
 	if (!response.success) errorAlert();
+    //console.info(response)
 	return response;
 }
 
@@ -363,6 +366,7 @@ const testSafariBugWithClippedGrating = async () => { //console.info("testBalm")
 
 
 const testBalm = async () => { //console.info("testBalm");
+    await ensureHomeState();
 	await oneStep3Ms('setSetting', 'Preset', 'Testing');
 	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
 	await oneStep3Ms('setSetting', 'nTrials02', 4);
@@ -469,34 +473,26 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
 	await doTextTestfunText("Test 'line(s) of optotypes'", testLinesOfOptotypes);
 	await doTextTestfunText("Cycle through all panes of Settings", testAllSettings);
 	await doTextTestfunText("Cycle through grating shapes", testAllGratingShapes);
-    await doTextTestfunText("Test Testenabler", simpleSimon);
+    await doTextTestfunText("Test TestEnabler", simpleSimon);
 	await doTextTestfunText("Cycle through BaLM tests", testBalm);
 	await doTextTestfunText("Traverse all Presets", testAllPresets);
 
-    //check plastic card
-    await oneStep3Ms('settingsPane', 0, '');
-    await postToIframe('sendChar', "c", '');
-    await pauseMilliseconds(pauseViewMS);
-    await postToIframe('sendChar', crlf, '');
-    await pauseMilliseconds(pauseViewMS);
-    await oneStep3Ms('settingsPane', -1, '');
+    await doTextTestfunText("Check plastic card", async () => {
+        await oneStep3Ms('settingsPane', 0, '');  await pauseMilliseconds(pauseViewMS);
+        await postToIframe('sendChar', "c", '');  await pauseMilliseconds(pauseViewMS);
+        await postToIframe('sendChar', crlf, '');  await pauseMilliseconds(pauseViewMS);
+        await oneStep3Ms('settingsPane', -1, '');  await pauseMilliseconds(pauseViewMS);
+    });
 
-    //check Help and About
-    await oneStep3Ms('sendChar', 'h', ''); //Help
-    await pauseMilliseconds(pauseViewMS); await oneStep3Ms('sendChar', crlf, '');
-    await oneStep3Ms('sendChar', 'o', ''); //About
-    await pauseMilliseconds(pauseViewMS); await oneStep3Ms('sendChar', crlf, '');
-
-    await doTextTestfunText("Demo window background color", async () => {
-        await oneStep3Ms('settingsPane', -1, '');
-        await oneStep3Ms('setSetting', 'windowBackgroundColor', 'FF77BB');
-        await pauseMilliseconds(pauseViewMS);
-        await oneStep3Ms('setSetting', 'windowBackgroundColor', '666666');
-        await pauseMilliseconds(pauseViewMS);
+    await doTextTestfunText("Check Help and About", async () => {
+        await oneStep3Ms('sendChar', 'h', '');  await pauseMilliseconds(pauseViewMS); //Help
+        await oneStep3Ms('sendChar', crlf, '');  await pauseMilliseconds(pauseViewMS);
+        await oneStep3Ms('sendChar', 'o', '');  await pauseMilliseconds(pauseViewMS); //About
+        await oneStep3Ms('sendChar', crlf, '');  await pauseMilliseconds(pauseViewMS);
     });
 
     await doTextTestfunText("Demo window background color", async () => {
-        await oneStep3Ms('settingsPane', -1, '');
+        await oneStep3Ms('settingsPane', -1, '');  await pauseMilliseconds(pauseViewMS);
         await oneStep3Ms('setSetting', 'windowBackgroundColor', 'FF77BB');
         await pauseMilliseconds(pauseViewMS);
         await oneStep3Ms('setSetting', 'windowBackgroundColor', '666666');
