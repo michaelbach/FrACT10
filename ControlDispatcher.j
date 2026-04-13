@@ -161,7 +161,8 @@
         [self _notify:"notificationApplyPresetNamed" object:m3];
         return;
     }
-    switch(gSettingsNamesAndTypesMap.get(m2)) {
+    const meta = gSettingsNamesAndTypesMap.get(m2);
+    switch(meta ? meta.type : null) {
         case "bool": case "int": case "float":
             [self setNumberSettingNamed:m2]; break;
         case "color":

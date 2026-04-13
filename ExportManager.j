@@ -131,9 +131,9 @@ Coded by Gemini, many corrections by MB
     const settingsToExport = Array.from(gSettingsNamesAndTypesMap)
         .filter(item => !EXCLUDED_NAMES.has(item[0]))
         .map(item => {
-            const name = item[0], type = item[1];
+            const name = item[0], meta = item[1];
             const value = [[CPUserDefaults standardUserDefaults] objectForKey: name];
-            return [name, type, value];
+            return [name, meta.type, value];
         });
     let jsonString = JSON.stringify(settingsToExport); //all in one long string, I not like
     jsonString = JSON.parse(jsonString); //parse string into JavaScript array

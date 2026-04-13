@@ -30,14 +30,14 @@ Created by mb on July 15, 2015.
     [super initialize];  [Misc CPLogSetup];
     sharedSettingsInstance = nil; //not really necessary
     //my accessor functions are constructed from the gSettingsNamesAndTypesMap map, depending on type
-    for (const [name, type] of gSettingsNamesAndTypesMap) {
-        switch (type) {
+    for (const [name, meta] of gSettingsNamesAndTypesMap) {
+        switch (meta.type) {
             case "str": [self addStringAccessors4Key: name]; break;
             case "int": [self addIntAccessors4Key: name]; break;
             case "bool": [self addBoolAccessors4Key: name]; break;
             case "float": [self addFloatAccessors4Key: name]; break;
             case "color": [self addColorAccessors4Key: name]; break;
-            default: alert("Settings>initialize, this must not occur: " + type + ", " + name);
+            default: alert("Settings>initialize, this must not occur: " + meta.type + ", " + name);
         }
     }
 }
