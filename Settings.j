@@ -388,8 +388,31 @@ Created by mb on July 15, 2015.
     }
     [Settings setAcuityHasEasyTrials: originalEasy]; //Restore
 
+    //Test 4: Metadata-driven Range Vetting (Systematic)
+    report += "  Running systematic metadata range tests…" + crlf;
+    for (const [name, meta] of gSettingsNamesAndTypesMap) {
+        if (["minPossibleLogMAR", "maxPossibleLogMAR"].includes(name)) continue; //don't test these
+        if (meta.type === "int" || meta.type === "float") {
+            const originalVal = [[CPUserDefaults standardUserDefaults] objectForKey: name];
+            //Test Below Min
+            [[CPUserDefaults standardUserDefaults] setObject: meta.min - 1 forKey: name];
+            [Settings allNotCheckButSet: NO];
+            if ([[CPUserDefaults standardUserDefaults] objectForKey: name] !== meta.dflt) {
+                report += "  ERROR: '" + name + "' below min (" + (meta.min - 1) + ") did not revert to default!" + crlf; success = NO;
+            }
+            //Test Above Max
+            if (!["nAlternativesIndex"].includes(name)) { //avoids array overflow when testing
+                [[CPUserDefaults standardUserDefaults] setObject: meta.max + 1 forKey: name];
+                [Settings allNotCheckButSet: NO];
+                if ([[CPUserDefaults standardUserDefaults] objectForKey: name] !== meta.dflt) {
+                    report += "  ERROR: '" + name + "' above max (" + (meta.max + 1) + ") did not revert to default!" + crlf; success = NO;
+                }
+            }
+            [[CPUserDefaults standardUserDefaults] setObject: originalVal forKey: name]; //Restore
+        }
+    }
     if (success) {
-        report += "  Persistence and vetting tests passed." + crlf;
+        report += "  Settings logic and range vetting tests passed." + crlf;
     }
     console.info(report);
     return success;

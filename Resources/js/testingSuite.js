@@ -400,8 +400,10 @@ const testAllPresets = async () => { //console.info("testAllPresets");
 
 // run one sub-test with leading and trailing text info
 const doTextTestfunText = async (text, testfun) => {
-	addText(" ↓ " + text);
     await ensureHomeState();
+    await oneStep3Ms('setValue', 'resultString', text);
+    addText(" ↓ " + text);
+    await pauseMilliseconds(pauseViewMS);
 	await testfun();
 	await pauseMilliseconds(pauseViewMS);
 	addText("↑ " + text + ": Done." + crlf);
@@ -434,8 +436,9 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
     await oneStep3Ms('setValue', 'resultString', 'SOFTWARE TESTING SUITE start, runs 2½ mins.');
     await pauseMilliseconds(pauseViewMS);
 
-    await doTextTestfunText("Internal unit tests", async () => {
+    await doTextTestfunText("Internal unit tests…", async () => {
         await oneStep3Ms('unittest', 'allAutomatic', '');
+        await oneStep3Ms('setValue', 'resultString', "… successful (see console).");
     });
 	await doTextTestfunText("Test `getVersion` etc.", async () => {
 		await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
@@ -481,14 +484,14 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
         await oneStep3Ms('settingsPane', 0, '');  await pauseMilliseconds(pauseViewMS);
         await postToIframe('sendChar', "c", '');  await pauseMilliseconds(pauseViewMS);
         await postToIframe('sendChar', crlf, '');  await pauseMilliseconds(pauseViewMS);
-        await oneStep3Ms('settingsPane', -1, '');  await pauseMilliseconds(pauseViewMS);
+        await oneStep3Ms('settingsPane', -1, '');
     });
 
     await doTextTestfunText("Check Help and About", async () => {
         await oneStep3Ms('sendChar', 'h', '');  await pauseMilliseconds(pauseViewMS); //Help
         await oneStep3Ms('sendChar', crlf, '');  await pauseMilliseconds(pauseViewMS);
         await oneStep3Ms('sendChar', 'o', '');  await pauseMilliseconds(pauseViewMS); //About
-        await oneStep3Ms('sendChar', crlf, '');  await pauseMilliseconds(pauseViewMS);
+        await oneStep3Ms('sendChar', crlf, '');
     });
 
     await doTextTestfunText("Demo window background color", async () => {
@@ -496,7 +499,6 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
         await oneStep3Ms('setSetting', 'windowBackgroundColor', 'FF77BB');
         await pauseMilliseconds(pauseViewMS);
         await oneStep3Ms('setSetting', 'windowBackgroundColor', '666666');
-        await pauseMilliseconds(pauseViewMS);
     });
 
 	addText("↓ Set `Standard Defaults` & Reload.");

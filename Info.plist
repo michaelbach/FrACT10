@@ -15,7 +15,7 @@
 	<key>Main cib file base name</key>
 	<string>MainMenu.cib</string>
 	<key>VersionDate</key>
-	<string>2026-04-11a</string>
+	<string>2026-04-13</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleDefault</string>
 	<key>UIApplicationExitsOnSuspend</key>

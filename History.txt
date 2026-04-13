@@ -1,5 +1,6 @@
 # History
 
+2026-04-13 simplify (enormeously) Settings by replacing the long default set/range check function list with metadata in gSettingsNamesAndTypesMap; fix error in enableTestAcuityLetters / enableTestAcuityLetter; add another unittest to Settings; modify `testingSuite.j`, deploy
 2026-04-11a Settings▸︎importAllSettings: all to default beforehand, refactor for less nesting; refactor: unify the allSettingsTypes for Settings and ControlDispatcher by converting to global gSettingsNamesAndTypesMap
 2026-04-11 fix incompletely translated Presets
 2026-04-10 fix inconsistency in the `windowBackgroundColor` Setting, introduced `windowBackgroundColorAppC` to disambiguate from the Settings version; need both to access them in the GUI because CPColors cannot be generically handled in user defaults (missing serialiser)
