@@ -487,6 +487,22 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
     await oneStep3Ms('sendChar', 'o', ''); //About
     await pauseMilliseconds(pauseViewMS); await oneStep3Ms('sendChar', crlf, '');
 
+    await doTextTestfunText("Demo window background color", async () => {
+        await oneStep3Ms('settingsPane', -1, '');
+        await oneStep3Ms('setSetting', 'windowBackgroundColor', 'FF77BB');
+        await pauseMilliseconds(pauseViewMS);
+        await oneStep3Ms('setSetting', 'windowBackgroundColor', '666666');
+        await pauseMilliseconds(pauseViewMS);
+    });
+
+    await doTextTestfunText("Demo window background color", async () => {
+        await oneStep3Ms('settingsPane', -1, '');
+        await oneStep3Ms('setSetting', 'windowBackgroundColor', 'FF77BB');
+        await pauseMilliseconds(pauseViewMS);
+        await oneStep3Ms('setSetting', 'windowBackgroundColor', '666666');
+        await pauseMilliseconds(pauseViewMS);
+    });
+
 	addText("↓ Set `Standard Defaults` & Reload.");
 	await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
 	tellIframe3Ms('reload', '', '');  await pauseMilliseconds(pauseViewMS);
