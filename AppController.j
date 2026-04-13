@@ -597,8 +597,8 @@
 
 - (IBAction) buttonSettingsExportImport_action: (id) sender {
     switch ([sender tag]) {
-        case 1: [Settings exportAllSettings];  break;
-        case 2: [Settings importAllSettings];  break;
+        case 1: [exportManager exportAllSettings];  break;
+        case 2: [exportManager importAllSettings];  break;
     }
 }
 

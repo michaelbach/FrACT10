@@ -113,6 +113,125 @@ Coded by Gemini, many corrections by MB
 }
 
 
+////////////////////////////////////////////////
+/**
+ All Settings export/import
+ */
+- (void) exportAllSettings { //CPLog("Settings>exportAllSettings")
+    //Prepare JSON data
+    const EXCLUDED_NAMES = new Set([ //some not necessary
+        "presetName", //exclude because it's not reliable info
+        "minPossibleDecimalAcuity", //this and ↓ are always calculated, omit
+        "minPossibleLogMAR", "minPossibleLogMARLocalisedString",
+        "maxPossibleLogMAR", "maxPossibleLogMARLocalisedString",
+        "minPossibleDecimalAcuityLocalisedString",
+        "maxPossibleDecimalAcuityLocalisedString",
+        "distanceInInchLocalisedString"
+    ]);
+    const settingsToExport = Array.from(gSettingsNamesAndTypesMap)
+        .filter(item => !EXCLUDED_NAMES.has(item[0]))
+        .map(item => {
+            const name = item[0], type = item[1];
+            const value = [[CPUserDefaults standardUserDefaults] objectForKey: name];
+            return [name, type, value];
+        });
+    let jsonString = JSON.stringify(settingsToExport); //all in one long string, I not like
+    jsonString = JSON.parse(jsonString); //parse string into JavaScript array
+    jsonString = jsonString.map(item => JSON.stringify(item)); //stringify each triplet individually
+    jsonString = '[\n' + jsonString.join(',\n') + '\n]' //join triplets with comma and newline, and wrap them. That's what I find more readable than the ", 2" option offered by stringify.
+    const jsonBlob = new Blob([jsonString], {type: "application/json;charset=utf-8"});
+    const suggestedFilename = "FrACT-settings-01";
+
+    (async () => { //so we can use `await`
+        if (window.showSaveFilePicker) { //Use modern API if available
+            try {
+                const handle = await window.showSaveFilePicker({
+                    suggestedName: suggestedFilename,
+                    types: [{description: 'JSON Files',
+                        accept: {'application/json': ['.json']}}],
+                });
+                const writable = await handle.createWritable();
+                await writable.write(jsonBlob);
+                await writable.close(); //console.info('File saved successfully!');
+            } catch (err) {
+                if (err.name !== 'AbortError') {
+                    console.error(err.name, err.message);
+                } else {
+                    console.info('Save operation cancelled by user.');
+                }
+            }
+            return;
+        }
+        //Fallback for older browsers (FileSaver.js)
+        let s = "Please enter a descriptive filename." + crlf + crlf;
+        s += "I will remove illegal characters and add the extension ‘.json’." + crlf + crlf;
+        s += "Your browser will ask: “Do you want to allow downloads…”." + crlf;
+        s += "Afterwards, you can move that file from your downloads folder to a better place for future Importing."
+        let filename = prompt(s, suggestedFilename);
+        if (!filename) { //User cancelled the prompt
+            console.info('Save operation cancelled by user.');
+            return;
+        }
+        // Sanitize filename
+        filename = filename.replace(/[\/\?<>\\:\*\|\""]/g, '_') //Replace illegal characters
+            .trim().replace(/^\.+|\.+$/g, '')   //Trim whitespace and dots
+            .slice(0, 50);                      //Limit length
+        saveAs(jsonBlob, filename + ".json"); //finally save it in the downloads folder
+    })();
+}
+
+
+- (void) importAllSettings { //CPLog("Settings>importAllSettings")
+    [Settings setDefaults]; //make sure we start with clean slate (in case there are new settings)
+    const dummyInput = document.createElement('input');
+    dummyInput.type = 'file';  dummyInput.accept = '.json';
+    dummyInput.style.display = 'none';
+    document.body.appendChild(dummyInput);
+    dummyInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const fileContent = e.target.result;
+                try {
+                    const parsedContent = JSON.parse(fileContent);
+                    let importOccurred = NO;
+                    console.info("*** ExportManager▸︎importAllSettings begin")
+                    for (const [name, , value] of parsedContent) { //we don't need `type`
+                        if (name === "dateOfSettingsVersion") { //this must not be changed!
+                            console.info(`Skipping '${name}'`)
+                            continue;
+                        }
+                        if (value === null) { //so "false" is also passing through
+                            console.info(`Skipping '${name}' because of null value`)
+                            continue;
+                        }
+                        importOccurred = YES;
+                        const previousVal = [[CPUserDefaults standardUserDefaults] objectForKey: name];
+                        if (previousVal !== value) {
+                            console.info(`Update '${name}': '${previousVal}' → '${value}'`);
+                            [[CPUserDefaults standardUserDefaults] setObject: value forKey: name];
+                        }
+                    }
+                    if (importOccurred) [Settings setPresetName: file.name];
+                } catch (jsonError) { //handle potential JSON parsing errors
+                    console.error("Error parsing JSON:", jsonError);
+                    alert("The selected file is not valid JSON.");
+                }
+            console.info("*** ExportManager▸︎importAllSettings done.")
+            document.body.removeChild(dummyInput); //clean up
+                [Settings allNotCheckButSet: NO]; //vet imported settings
+            };
+            reader.readAsText(file);
+        } else {
+            document.body.removeChild(dummyInput); //clean up
+        }
+    });
+    dummyInput.click();
+}
+////////////////////////////////////////////////
+
+
 /**
  Perform logic unit tests for ExportManager.
  @return YES if all tests pass
