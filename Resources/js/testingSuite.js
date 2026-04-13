@@ -463,7 +463,7 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
         tellIframe3Ms('run','acuity', 'Letters');
     });
     await doTextTestfunText("Test multiple optotypes", testMultipleOptotypes);
-    await doTextTestfunText("'showIdAndEyeOnMain'", async () => {
+    await doTextTestfunText("Test 'show_Id_And_Eye_On_Main'", async () => {
         await oneStep3Ms('setSetting', 'showIdAndEyeOnMain', YES); await pauseMilliseconds(2 * pauseViewMS);
         await oneStep3Ms('setSetting', 'showIdAndEyeOnMain', NO);
     });
@@ -476,7 +476,7 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
 	await doTextTestfunText("Test 'line(s) of optotypes'", testLinesOfOptotypes);
 	await doTextTestfunText("Cycle through all panes of Settings", testAllSettings);
 	await doTextTestfunText("Cycle through grating shapes", testAllGratingShapes);
-    await doTextTestfunText("Test TestEnabler", simpleSimon);
+    await doTextTestfunText("Test TestEnabler/Disabler", simpleSimon);
 	await doTextTestfunText("Cycle through BaLM tests", testBalm);
 	await doTextTestfunText("Traverse all Presets", testAllPresets);
 

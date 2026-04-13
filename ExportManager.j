@@ -174,23 +174,23 @@ Coded by Gemini, many corrections by MB
         }
         // Sanitize filename
         filename = filename.replace(/[\/\?<>\\:\*\|\""]/g, '_') //Replace illegal characters
-            .trim().replace(/^\.+|\.+$/g, '')   //Trim whitespace and dots
-            .slice(0, 50);                      //Limit length
-        saveAs(jsonBlob, filename + ".json"); //finally save it in the downloads folder
+            .trim().replace(/^\.+|\.+$/g, '') //Trim whitespace and dots
+            .slice(0, 50);                    //Limit length
+        window.saveAs(jsonBlob, filename + ".json"); //finally save to downloads folder
     })();
 }
 
 
 - (void) importAllSettings { //CPLog("Settings>importAllSettings")
     [Settings setDefaults]; //make sure we start with clean slate (in case there are new settings)
-    const dummyInput = document.createElement('input');
+    const dummyInput = window.document.createElement('input');
     dummyInput.type = 'file';  dummyInput.accept = '.json';
     dummyInput.style.display = 'none';
-    document.body.appendChild(dummyInput);
+    window.document.body.appendChild(dummyInput);
     dummyInput.addEventListener('change', (event) => {
         const file = event.target.files[0];
         if (file) {
-            const reader = new FileReader();
+            const reader = new window.FileReader();
             reader.onload = (e) => {
                 const fileContent = e.target.result;
                 try {
@@ -219,12 +219,12 @@ Coded by Gemini, many corrections by MB
                     alert("The selected file is not valid JSON.");
                 }
             console.info("*** ExportManager▸︎importAllSettings done.")
-            document.body.removeChild(dummyInput); //clean up
+            window.document.body.removeChild(dummyInput); //clean up
                 [Settings allNotCheckButSet: NO]; //vet imported settings
             };
             reader.readAsText(file);
         } else {
-            document.body.removeChild(dummyInput); //clean up
+            window.document.body.removeChild(dummyInput); //clean up
         }
     });
     dummyInput.click();

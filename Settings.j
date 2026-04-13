@@ -13,7 +13,6 @@ Created by mb on July 15, 2015.
 
 @import <Foundation/CPUserDefaults.j>
 @import <AppKit/CPUserDefaultsController.j>
-
 @import "Globals.j"
 @import "Misc.j"
 @import "MiscLight.j"
