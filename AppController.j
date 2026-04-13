@@ -693,7 +693,7 @@
     //Test Calibration Logic. We can't easily mock Settings, but we can check if isNotCalibrated behaves as expected given current settings.
     const isCalibrated = ![Settings isNotCalibrated];
     const distance = [Settings distanceInCM], barLength = [Settings calBarLengthInMM];
-    const expectedCalibrated = (distance !== gDefaultDistanceInCM)
+    const expectedCalibrated = (distance !== kDefaultDistanceInCM)
         && (barLength !== gDefaultCalibrationBarLengthInMM);
     if (isCalibrated !== expectedCalibrated) {
          report += "  ERROR: Calibration status mismatch! (Dist: " + distance + ", Bar: " + barLength + ")" + crlf; success = NO;

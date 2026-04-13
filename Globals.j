@@ -52,7 +52,7 @@ kMaxAllowedLogCSWeber = 4.0; //used as max in Settings value vetting
 gMaxResultLogCSWeber = 2.0;
 
 //calibration defaults
-gDefaultDistanceInCM = 399;
+kDefaultDistanceInCM = 399;
 gDefaultCalibrationBarLengthInMM = 149;
 gCalBarLengthInPixel = 700;
 
@@ -107,7 +107,7 @@ gSettingsNamesAndTypesMap = new Map([
     ["nTrials02", {type: "int", dflt: 36, min: 1, max: 500}],
     ["nTrials04", {type: "int", dflt: 24, min: 1, max: 500}], ["nTrials08", {type: "int", dflt: 18, min: 1, max: 500}],
     ["nAlternativesIndex", {type: "int", dflt: kNAlternativesIndex8plus, min: kNAlternativesIndex2, max: kNAlternativesIndex8plus}],
-    ["distanceInCM", {type: "float", dflt: gDefaultDistanceInCM, min: 1, max: 2500}],
+    ["distanceInCM", {type: "float", dflt: kDefaultDistanceInCM, min: 1, max: 2500}],
     ["distanceInInchLocalisedString", {type: "str", dflt: "", min: null, max: null}],
     ["calBarLengthInMM", {type: "float", dflt: gDefaultCalibrationBarLengthInMM, min: 1, max: 10000}],
     ["showResponseInfoAtStart", {type: "bool", dflt: YES, min: null, max: null}],

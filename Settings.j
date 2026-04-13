@@ -99,7 +99,7 @@ Created by mb on July 15, 2015.
 + (void) allNotCheckButSet: (BOOL) set {
     [[CPUserDefaults standardUserDefaults] synchronize];
 
-    if (set) { //dspecial handling for dependent settings and those with complex defaults
+    if (set) { //special handling for dependent settings and those with complex defaults
         [self setDateOfSettingsVersion: kDateOfCurrentSettingsVersion];
         [self enableNotDisableAllTests: YES];
     }
@@ -206,7 +206,7 @@ Created by mb on July 15, 2015.
  */
 + (BOOL) isNotCalibrated {
     [self checkDefaults];
-    return (([self distanceInCM] === gDefaultDistanceInCM) || ([self calBarLengthInMM] === gDefaultCalibrationBarLengthInMM));
+    return (([self distanceInCM] === kDefaultDistanceInCM) || ([self calBarLengthInMM] === gDefaultCalibrationBarLengthInMM));
 }
 
 
@@ -262,7 +262,7 @@ Created by mb on July 15, 2015.
         case 2: //comma
             _mark = ","; break;
     }
-    // necessary, because otherwise, when just asking for the mark for internationalisation, the `settingsDidChange` avalanche starts, possibly resetting colors
+    //necessary, because otherwise, when just asking for the mark for internationalisation, the `settingsDidChange` avalanche starts, possibly resetting colors
     if (oldMark !== _mark) {
         [self setDecimalMarkChar: _mark];
     }
@@ -366,14 +366,14 @@ Created by mb on July 15, 2015.
     [Settings setPatID: originalID]; // Restore
 
     //Test 2: Range Validation (Vetting)
-    //distanceInCM has min: 1, max: 2500, dflt: gDefaultDistanceInCM
+    //distanceInCM has min: 1, max: 2500, dflt: kDefaultDistanceInCM
     const originalDist = [Settings distanceInCM];
     [Settings setDistanceInCM: -50]; //Set invalid value
     [Settings allNotCheckButSet: NO]; //Trigger vetting
     if ([Settings distanceInCM] === -50) {
         report += "  ERROR: Negative distance was not vetted!" + crlf; success = NO;
     }
-    if ([Settings distanceInCM] !== gDefaultDistanceInCM) {
+    if ([Settings distanceInCM] !== kDefaultDistanceInCM) {
         report += "  ERROR: Invalid distance did not revert to default! (is " + [Settings distanceInCM] + ")" + crlf; success = NO;
     }
     [Settings setDistanceInCM: originalDist]; //Restore
