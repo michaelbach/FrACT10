@@ -2,11 +2,11 @@
 
 <br>
 
-[FrACT](https://michaelbach.de/fract/) is a semiautomated vision test battery. FrACT₁₀ is a version that runs in a browser on all plattforms or as a progressive web app. Full details: <https://michaelbach.de/fract/>.
+[FrACT](https://michaelbach.de/fract/) is a semiautomated vision test battery, full details here: <https://michaelbach.de/fract/>. It became FrACT₁₀ running in a browser on all plattforms or as a progressive web app. 
 
 
 ## Programming overview
-The program is mostly written in Objective-J, a language implemented by <https://www.cappuccino.dev>, and compiled by Cappuccino into JavaScript. [While the Cappuccino site looks a bit lazy, there is a small, select and active community working on it, communicating via Gitter.] Objective-J is modeled on Objective-C and implements much of Apple's GUI. Some parts of FrACT₁₀ are also pure JavaScript. Apple's Xcode is used as the development environment. The program is started by opening the project-relative top-level `index.html` in a browser while the directory is hosted by a HTML server.
+The program is mostly written in Objective-J, a language implemented by <https://www.cappuccino.dev>, and compiled by Cappuccino into JavaScript. [While the Cappuccino site looks a bit lazy, there is a small, select and active community working on it, communicating via Gitter.] Objective-J is modeled on Objective-C and implements much of Apple's GUI. Some parts of FrACT₁₀ are also pure JavaScript. Apple's Xcode is used as the development environment; the GUI is created via Xcodes Interface Builder. The program is started by opening the project-relative top-level `index.html` in a browser while the directory is hosted by a HTML server.
 
 For more see [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -29,4 +29,4 @@ For more see [CONTRIBUTING.md](CONTRIBUTING.md).
 <hr>
 
 This file is part of FrACT10.
-© 2021 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
+© 2026 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
