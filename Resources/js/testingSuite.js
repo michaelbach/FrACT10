@@ -37,6 +37,9 @@ const tellIframe = (message) => {
 const tellIframe3Ms = (m1, m2, m3) => {
 	tellIframe({m1: m1, m2: m2, m3: m3});
 }
+const tellIframe3MsAndLogResponse = async (m1, m2, m3) => {
+    console.info(await tellIframeReturningPromise({m1: m1, m2: m2, m3: m3}));
+}
 
 const pauseMS = 300, pauseViewMS = 2000;
 

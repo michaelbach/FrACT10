@@ -33,8 +33,27 @@
             if (e.origin !== window.location.origin) return; //same
         }
         _origin = e.origin;
-        if (Object.keys(e.data).length !== 3) return; //avoid overruns from possibly malicious senders
-        const userInfo = {m1: e.data.m1, m2: e.data.m2, m3: e.data.m3};
+        const data = e.data;
+        if (!data || (typeof data !== "object") || Array.isArray(data)) {
+            [self _logProblem: {error: "bad payload", reason: "data is not object"}];
+            return;
+        }
+        const m1 = data.m1, m2Raw = data.m2, m3Raw = data.m3;
+        if (typeof m1 !== "string") {
+            [self _logProblem: {error: "bad payload", reason: "m1 not string"}];
+            return;
+        }
+        if ((m2Raw === undefined) || (m3Raw === undefined) || (m2Raw === null) || (m3Raw === null)) {
+            [self _logProblem: {error: "bad payload", reason: "m fields missing"}];
+            return;
+        }
+        const m2 = String(m2Raw);
+        const m3 = String(m3Raw);
+        if ((m1.length > 32) || (m2.length > 256) || (m3.length > 2048)) {
+            [self _logProblem: {error: "bad payload", reason: "payload too large"}];
+            return;
+        }
+        const userInfo = {m1: m1, m2: m2, m3: m3};
         [[CPNotificationCenter defaultCenter] postNotificationName: "dispatchNotification" object: nil userInfo: userInfo];
     });
 }
@@ -43,10 +62,19 @@
 + (void) dispatchNotification: (CPNotification) notification {
     //let's vet the message content somewhat
     const message = [notification userInfo];
-    if ((message.m1 === undefined) || (message.m2 === undefined) || (message.m3 === undefined)) return;
-    if (message.m1.length + message.m2.length + message.m3.length > 100) return;
+    if (!message || (typeof message !== "object") || Array.isArray(message)) return;
+    if ((typeof message.m1 !== "string") || (typeof message.m2 !== "string") || (typeof message.m3 !== "string")) return;
+    if ((message.m1.length > 32) || (message.m2.length > 256) || (message.m3.length > 2048)) return;
     m1 = message.m1; m2 = message.m2;  m3 = message.m3;
-    m2AsNumber = Number(m2);  m3AsNumber = Number(m3);
+    const m2AsNumber = Number(m2);
+    const m3Lower = m3.toLowerCase ? m3.toLowerCase() : m3;
+    if (m3Lower === "true") {
+        m3AsNumber = 1;
+    } else if (m3Lower === "false") {
+        m3AsNumber = 0;
+    } else {
+        m3AsNumber = Number(m3);
+    }
     const messageHandlers = {
         "getVersion": () => {
             [self post2parentM1:"getVersion" m2:gVersionStringOfFract m3:gVersionDateOfFrACT success:YES];

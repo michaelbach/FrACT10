@@ -43,10 +43,10 @@
 
 <br>
 
-<button onclick="tellIframe3Ms({m1: 'getVersion', m2: '', m3: ''});">getVersion</button>
-<button onclick="tellIframe3Ms({m1: 'getSetting', m2: 'UNKNOWN', m3: ''});">getSetting UNKNOWN</button>
-<button onclick="tellIframe3Ms({m1: 'getSetting', m2: 'nTrials08', m3: ''});">getSetting nTrials08</button>
-<button onclick="tellIframe3Ms({m1: 'getSetting', m2: 'allKeys', m3: ''});">getSetting allKeys</button>
+<button onclick="tellIframe3MsAndLogResponse('getVersion', '', '');">getVersion</button>
+<button onclick="tellIframe3MsAndLogResponse('getSetting', 'UNKNOWN', '');">getSetting UNKNOWN</button>
+<button onclick="tellIframe3MsAndLogResponse('getSetting', 'nTrials08', '');">getSetting nTrials08</button>
+<button onclick="tellIframe3MsAndLogResponse('getSetting', 'allKeys', '');">getSetting allKeys</button>
 <br><br>
 
 <button onclick="tellIframe({m1: 'setSetting', m2: 'preset', m3: 'NOTAPRESET'});">setSetting Preset NOTAPRESET</button>
@@ -69,16 +69,10 @@
 <button onclick="tellIframe({m1: 'setSetting', m2: 'isAllSettingsDisabled', m3: '1'});">setSetting isAllSettingsDisabled: 1</button>
 <br><br>
 
-<button onclick="tellIframe({m1: 'getValue', m2: 'isInRun', m3: ''});">getValue isInRun</button>
-<button onclick="tellIframe({m1: 'getValue', m2: 'currentTrial', m3: ''});">getValue currentTrial</button>
-<button onclick="tellIframe({m1: 'getValue', m2: 'currentAlternative', m3: ''});">getValue currentAlternative</button>
-<br>
-<script>
-const getTestDetails = async () => {
-    console.info(await tellIframeReturningPromise({m1: 'getTestDetails', m2: '', m3: ''}));
-}
-</script>
-<button onclick="getTestDetails();">getTestDetails</button>
+<button onclick="tellIframe3MsAndLogResponse('getValue', 'isInRun', '');">getValue isInRun</button>
+<button onclick="tellIframe3MsAndLogResponse('getValue', 'currentTrial', '');">getValue currentTrial</button>
+<button onclick="tellIframe3MsAndLogResponse('getValue', 'currentAlternative', '');">getValue currentAlternative</button>
+<button onclick="tellIframe3MsAndLogResponse('getTestDetails', '', '');">getTestDetails</button>
 <br>
 <button onclick="tellIframe({m1: 'setValue', m2: 'resultString', m3: 'Test Message'});">setValue “Test Message”</button>
 <br><br>
