@@ -1,9 +1,7 @@
 {
   "name": "FrACT10",
   "version": "10.3.4",
-  "dependencies": {
-    "cappuccino": "git://github.com/cappuccino/cappuccino.git"
-  },
+  "dependencies": {},
   "author": {
     "name": "Michael Bach",
     "email": "bach@uni-freiburg.de",
