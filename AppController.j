@@ -550,8 +550,20 @@
         return;
     }
     [ResponseBoxController init];
-    let url = "https://michaelbach.de/fract/respond.html";
-    url += "?session=" + currentUUID;
+    let isLocalTesting = window.location.protocol === "file:"; //are we testing locally?
+    isLocalTesting = NO;
+    let url = isLocalTesting ? "http://localhost:4000" : "https://michaelbach.de";
+    url += "/fract/respond.html";
+    const queryParams = {
+        session: currentUUID,
+        isCalibrated: ![Settings isNotCalibrated],
+        distanceInCM: [Settings distanceInCM],
+        //calBarLengthInMM: [Settings calBarLengthInMM]
+    };
+    const query = new URLSearchParams(queryParams);
+    const queryString = query.toString();
+    url += "?" + queryString;
+    if (isLocalTesting) console.info(url);
     const panel = [[QRPanel alloc] initWithQRString: url];
     [panel makeKeyAndOrderFront: self];
 }
