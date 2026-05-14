@@ -263,33 +263,6 @@ Shortcut: f
                             <action selector="buttonFullScreen_action:" target="450" id="OjF-xB-SV6"/>
                         </connections>
                     </button>
-                    <popUpButton hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KcI-ws-Dhl">
-                        <rect key="frame" x="352" y="113" width="107" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <string key="toolTip">Automatic run, targeting some acuity or contrast.
-
-Hi ≙ high acuity = low LogMAR.‘
-
-For testing.
-</string>
-                        <popUpButtonCell key="cell" type="push" title="Ø Autorun" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" enabled="NO" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Eg0-co-ecm" id="3tm-qQ-uSh">
-                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="message"/>
-                            <menu key="menu" id="X9t-wa-fsO">
-                                <items>
-                                    <menuItem title="Ø Autorun" state="on" id="Eg0-co-ecm"/>
-                                    <menuItem title="Autorun hi" id="W3Q-XT-Tgo">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="Autorun mid" id="Wwq-9z-igw"/>
-                                    <menuItem title="Autorun low" id="Zs5-zC-20Z"/>
-                                </items>
-                            </menu>
-                        </popUpButtonCell>
-                        <connections>
-                            <binding destination="izh-pU-csC" name="selectedIndex" keyPath="values.autoRunIndex" id="9Nl-Ih-LZF"/>
-                        </connections>
-                    </popUpButton>
                     <button toolTip="Guess what this button does…    " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CDI-8L-YSC">
                         <rect key="frame" x="514" y="173" width="102" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -484,6 +457,15 @@ Shortcut: r
                             <action selector="buttonRemoteResponse_action:" target="450" id="w26-ao-BKU"/>
                         </connections>
                     </button>
+                    <textField autoresizesSubviews="NO" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ce4-vX-9bM">
+                        <rect key="frame" x="332" y="113" width="285" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" continuous="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="calibrationWarningField" allowsEditingTextAttributes="YES" usesSingleLineMode="YES" id="LBz-Ny-f7a">
+                            <font key="font" metaFont="system" size="18"/>
+                            <color key="textColor" red="0.82498598337173457" green="0.23089347153791109" blue="0.13637442761327159" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
             <connections>
@@ -4434,6 +4416,7 @@ This is useful for instance when you want a darker environment.
                 <outlet property="buttonExportClip" destination="L8d-bR-KqO" id="pL7-9C-xYE"/>
                 <outlet property="buttonExportPDF" destination="nR3-vD-4DK" id="fao-uj-EGO"/>
                 <outlet property="buttonPlot" destination="1i4-ka-JiB" id="6nc-Qu-82k"/>
+                <outlet property="calibrationWarningField" destination="Ce4-vX-9bM" id="IGe-Om-yff"/>
                 <outlet property="contrastMaxLogCSWeberField" destination="AQw-jE-a5x" id="gGe-Qj-bic"/>
                 <outlet property="decimalMarkCharField" destination="rYB-qU-fJ6" id="WKr-nb-ef9"/>
                 <outlet property="fractControllerWindow" destination="r6R-bh-Qyp" id="WQx-mH-JUh"/>

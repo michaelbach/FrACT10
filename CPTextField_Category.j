@@ -27,7 +27,7 @@ This fixes this Cappuccino issue: https://github.com/cappuccino/cappuccino/issue
     if ([self currentValueForThemeAttribute: "font"] === aFont) return;
 
     if ([self hasThemeState: CPThemeStateControlSizeRegular])
-        [self setFont :aFont inThemeStates: [CPThemeStateControlSizeRegular]];
+        [self setFont: aFont inThemeStates: [CPThemeStateControlSizeRegular]];
 
     if ([self hasThemeState: CPThemeStateBezeled])
         [self setFont: aFont inThemeStates: [CPThemeStateBezeled]];

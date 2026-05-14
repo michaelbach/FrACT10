@@ -71,6 +71,7 @@
     @outlet CPPopUpButton settingsPaneMiscSoundsTrialNoPopUp;
     @outlet CPPopUpButton settingsPaneMiscSoundsRunEndPopUp;
     @outlet MDBLabel resultStringField;
+    @outlet CPTextField calibrationWarningField;
     CPString versionDateString @accessors; //for the main Xib window top right
     CPString currentTestResultUnit @accessors;
     CPString currentTestResultExportString @accessors;
@@ -318,6 +319,10 @@
     [self setGratingForeColor: [Settings gratingForeColor]];
     [self setGratingBackColor: [Settings gratingBackColor]];
     [self setWindowBackgroundColorAppC: [Settings windowBackgroundColor]];
+
+    const isNotCalibrated = ([Settings distanceInCM] === kDefaultDistanceInCM) ||
+                ([Settings calBarLengthInMM] === gDefaultCalibrationBarLengthInMM);
+    [calibrationWarningField setStringValue: isNotCalibrated ? "(currently not calibrated)" : ""];
 }
 
 
@@ -332,6 +337,7 @@
 
 
 - (void) setResultStringFieldTo: (CPString) s {
+    if (s.length > 255) return; //sanity check
     [resultStringField setStringValue: s]; [resultStringField setEnabled: YES];
     const maxWidth = kFractWidth - kGuiMarginHorizontal; //Auto-adjust font size to fit this
     let fontSize = 28; //Start with a default large size
