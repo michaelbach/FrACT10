@@ -1,6 +1,6 @@
 # History
 
-2026-05-14 improve: use `new URLSearchParams` to build the query string (which is sent to the response box), add `isCalibrated` and `distanceInCM`; add `calibrationWarningField` + associated logic; software testing suite: display version result, announce Letters test
+2026-05-14 improve: use `new URLSearchParams` to build the query string (which is sent to the response box), add `isCalibrated` and `distanceInCM`; add `calibrationWarningField` + associated logic; software testing suite: display version result, announce Letters test; add tooltip to `calibrationWarningField`
 2026-04-23 fix small inconsistencies; improve error checking on HTML messages; log more testing returns; deploy
 2026-04-13 simplify (enormeously) Settings by replacing the long default set/range check function list with metadata in gSettingsNamesAndTypesMap; fix error in enableTestAcuityLetters / enableTestAcuityLetter; add another unittest to Settings; modify `testingSuite.j`, deploy
 2026-04-11a Settings▸︎importAllSettings: all to default beforehand, refactor for less nesting; refactor: unify the allSettingsTypes for Settings and ControlDispatcher by converting to global gSettingsNamesAndTypesMap
