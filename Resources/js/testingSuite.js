@@ -4,19 +4,20 @@
 History
 =======
 
-2026-03-05 Add checks on plastic card, About and Help
-2025-09-11 testSuite more systematic using anonymous functions
-2025-08-18 `runRespondingCorrectly` uses `doResponseChain`;
+ 2026-05-14 display version result, announce Letters test
+ 2026-03-05 Add checks on plastic card, About and Help
+ 2025-09-11 testSuite more systematic using anonymous functions
+ 2025-08-18 `runRespondingCorrectly` uses `doResponseChain`;
     rename `tellIframeReturningPromise3Ms` → `postToIframe`
-2025-08-14 `testBalm` only once, add `ensureHomeState` to make more robust against previous state
-2025-03-28 `doDemoRun` w/o Demo preset
-2025-02-08 had added more tests, now add look at Settings in fullscreen
-2025-02-02 fix regression: restore demo run
-2025-01-30 move fullscreen to front, otherwise won't work (delay user interaction??)
-2025-01-28 add grating shapes, cleanup
-2025-01-10 add settingsPanes etc., convert function declarations to arrow functions
-2025-01-05 add rewardPicturesWhenDone
-2025-01-01 created
+ 2025-08-14 `testBalm` only once, add `ensureHomeState` to make more robust against previous state
+ 2025-03-28 `doDemoRun` w/o Demo preset
+ 2025-02-08 had added more tests, now add look at Settings in fullscreen
+ 2025-02-02 fix regression: restore demo run
+ 2025-01-30 move fullscreen to front, otherwise won't work (delay user interaction??)
+ 2025-01-28 add grating shapes, cleanup
+ 2025-01-10 add settingsPanes etc., convert function declarations to arrow functions
+ 2025-01-05 add rewardPicturesWhenDone
+ 2025-01-01 created
 
 */
 
@@ -436,7 +437,7 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
 		await oneStep3Ms('settingsPane', -1, ''); await pauseMilliseconds(pauseViewMS);
 	}); */
 
-    await oneStep3Ms('setValue', 'resultString', 'SOFTWARE TESTING SUITE start, runs 2½ mins.');
+    await oneStep3Ms('setValue', 'resultString', 'SOFTWARE TESTING SUITE start, runs 3½ mins.');
     await pauseMilliseconds(pauseViewMS);
 
     await doTextTestfunText("Internal unit tests…", async () => {
@@ -444,16 +445,20 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
         await oneStep3Ms('setValue', 'resultString', "… successful (see console).");
     });
 	await doTextTestfunText("Test `getVersion` etc.", async () => {
+        let response = await oneStep3Ms('getVersion', '', '');
+        await oneStep3Ms('setValue', 'resultString', "Version: " + response.m2 + "·" + response.m3);
 		await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
-		let response = await oneStep3Ms('getSetting', 'distanceInCM', '');
+		response = await oneStep3Ms('getSetting', 'distanceInCM', '');
 		if (response.m3 != 399) errorAlert();
 	});
-	await doTextTestfunText("Test `setSetting` etc.", async () => {
+	await doTextTestfunText("Test `setSetting` & `getSetting`", async () => {
 		await oneStep3Ms('setSetting', 'Preset', 'Testing');
 		response = await oneStep3Ms('getSetting', 'distanceInCM', '');
 		if (response.m3 != 400) errorAlert();
 		await oneStep3Ms('setSetting', 'nTrials08', 1);
 		await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
+        await oneStep3Ms('setValue', 'resultString', "Run “Letters”");
+        await pauseMilliseconds(pauseViewMS);
 		tellIframe3Ms('run','acuity', 'Letters');
 	});
 	await doTextTestfunText("Test color stuff", testColorStuff);
