@@ -38,7 +38,11 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             .then(presets => {
                 allPresets = presets;
                 allPresetNames = Object.keys(allPresets);
-                allPresetNames.sort();
+                allPresetNames.sort((a, b) => { //sort alphabetically…
+                    if (a === "Standard Defaults") return -1; //…but ensuring…
+                    if (b === "Standard Defaults") return 1; //…this is first entry
+                    return a.localeCompare(b, undefined, {sensitivity: "base"});//ignore case
+                });
                 for (const name of allPresetNames) {
                     [popUpButton addItemWithTitle: name];
                 }
