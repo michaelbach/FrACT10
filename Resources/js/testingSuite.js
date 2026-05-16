@@ -471,7 +471,7 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
         tellIframe3Ms('run','acuity', 'Letters');
     });
     await doTextTestfunText("Test multiple optotypes", testMultipleOptotypes);
-    await doTextTestfunText("Test 'show_Id_And_Eye_On_Main'", async () => {
+    await doTextTestfunText("← Test 'show_Id_And_Eye_On_Main'", async () => {
         await oneStep3Ms('setSetting', 'showIdAndEyeOnMain', YES); await pauseMilliseconds(2 * pauseViewMS);
         await oneStep3Ms('setSetting', 'showIdAndEyeOnMain', NO);
     });
