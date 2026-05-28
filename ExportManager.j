@@ -164,9 +164,9 @@ Coded by Gemini, many corrections by MB
         }
         //Fallback for older browsers (FileSaver.js)
         let s = "Please enter a descriptive filename." + crlf + crlf;
-        s += "I will remove illegal characters and add the extension ‘.json’." + crlf + crlf;
+        s += "I will remove illegal characters and add the extension «.json»." + crlf + crlf;
         s += "Your browser will ask: “Do you want to allow downloads…”." + crlf;
-        s += "Afterwards, you can move that file from your downloads folder to a better place for future Importing."
+        s += "Afterwards, you can move that file from your downloads folder to a better location for future Importing."
         let filename = prompt(s, suggestedFilename);
         if (!filename) { //User cancelled the prompt
             console.info('Save operation cancelled by user.');
@@ -175,8 +175,8 @@ Coded by Gemini, many corrections by MB
         // Sanitize filename
         filename = filename.replace(/[\/\?<>\\:\*\|\""]/g, '_') //Replace illegal characters
             .trim().replace(/^\.+|\.+$/g, '') //Trim whitespace and dots
-            .slice(0, 50);                    //Limit length
-        window.saveAs(jsonBlob, filename + ".json"); //finally save to downloads folder
+            .slice(0, 58);                    //Limit length to 63 chars total
+        window.saveAs(jsonBlob, filename + ".json"); //Save to downloads folder
     })();
 }
 
