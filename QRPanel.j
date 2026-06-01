@@ -3,7 +3,7 @@ This file is part of FrACT10, a vision test battery.
 © 2026 Michael Bach, bach@uni-freiburg.de, <https://michaelbach.de>
 
 QRPanel.j
-For the remote response box: create a QR code with url + session code
+For the phone response box: create a QR code with url + session code
 
 Created by Bach on 2026-02-20.
 
@@ -39,7 +39,7 @@ Created by Bach on 2026-02-20.
         [_imageWell setEditable: NO];
         [contentView addSubview: _imageWell];
 
-        const lbl = [CPTextField labelWithTitle: "Scan QR code↑ with smartphone;\nopen webpage to pair.\nThen you can respond remotely."];
+        const lbl = [CPTextField labelWithTitle: "Scan QR code↑ with smartphone;\nopen webpage to pair.\nThen you can respond with the phone."];
 
         [lbl setFrame: CGRectMake(0, 0, bounds.size.width, 0)]; //ensures multiline
         [lbl setLineBreakMode: CPLineBreakByWordWrapping];

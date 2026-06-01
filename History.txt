@@ -1,5 +1,6 @@
 # History
 
+2026-06-01 rename "Pair remote" → "Pair phone" and all associated text, including manual
 2026-05-27 GUI cleaning: "Show info (top left) …" and "Respond to mobile orientation" → Misc
 2026-05-16 improve Presets popup: "Standard Defaults" first, all others alphabetrically
 2026-05-14 improve: use `new URLSearchParams` to build the query string (which is sent to the response box), add `isCalibrated` and `distanceInCM`; add `calibrationWarningField` + associated logic; software testing suite: display version result, announce Letters test; add tooltip to `calibrationWarningField`

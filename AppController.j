@@ -546,9 +546,9 @@
 }
 
 
-- (IBAction) buttonRemoteResponse_action: (id) sender {
+- (IBAction) buttonPhoneResponseBox_action: (id) sender {
     if (!navigator.onLine) { //skip if browser thinks we're offline
-        const s = "We're not online, but that's required for the" + crlf + "Remote Response Box";
+        const s = "We're not online, but that's required for the" + crlf + "Phone Response Box";
         gLatestAlert = [CPAlert alertWithMessageText: "WARNING" defaultButton: "OK" alternateButton: nil otherButton: nil informativeTextWithFormat: s];
         [gLatestAlert runModalWithDidEndBlock: function(alert, returnCode) {
             gLatestAlert = null;
