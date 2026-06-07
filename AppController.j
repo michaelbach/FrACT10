@@ -322,7 +322,7 @@
 
     const isNotCalibrated = ([Settings distanceInCM] === kDefaultDistanceInCM) ||
                 ([Settings calBarLengthInMM] === gDefaultCalibrationBarLengthInMM);
-    [calibrationWarningField setStringValue: isNotCalibrated ? "(currently not calibrated)" : ""];
+    [calibrationWarningField setStringValue: isNotCalibrated ? "(needs calibration)" : ""];
 }
 
 

@@ -1,5 +1,6 @@
 # History
 
+2026-06-07 GUI: make disabled test buttons less visible (could be a setting? even transparent?); also change wording "currently not calibrated" → "needs calibration"
 2026-06-01 rename "Pair remote" → "Pair phone" and all associated text, including manual
 2026-05-27 GUI cleaning: "Show info (top left) …" and "Respond to mobile orientation" → Misc
 2026-05-16 improve Presets popup: "Standard Defaults" first, all others alphabetrically
