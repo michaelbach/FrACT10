@@ -222,6 +222,7 @@ const testColorStuff = async () => {
 
 const simpleSimon = async () => {
     await ensureHomeState();
+    await oneStep3Ms('setSetting', 'alphaWhenDisabled', 0.3);
     let response = await await oneStep3Ms('getSetting', 'enableTestAcuityLandolt', '');
     await oneStep3Ms('setSetting', 'enableTestAcuityLetters', YES);
     await oneStep3Ms('setSetting', 'enableTestAcuityLandolt', !response.m3);
@@ -234,6 +235,16 @@ const simpleSimon = async () => {
     await oneStep3Ms('setSetting', 'enableTestContrastG', !response.m3);
     await oneStep3Ms('setSetting', 'enableTestAcuityLineByLine', !response.m3);
     await oneStep3Ms('setSetting', 'enableTestBalmGeneral', !response.m3);
+    await pauseMilliseconds(pauseViewMS);
+    await oneStep3Ms('setSetting', 'alphaWhenDisabled', 0);
+    //await await oneStep3Ms('redraw', '', ''); does not update the buttons!
+    response = await await oneStep3Ms('getSetting', 'enableTestAcuityLandolt', '');
+    await oneStep3Ms('setSetting', 'enableTestAcuityLetters', !response);
+    await oneStep3Ms('setSetting', 'enableTestAcuityLandolt', !response.m3);
+    await oneStep3Ms('setSetting', 'enableTestAcuityE', YES); //need toggle to update
+    await oneStep3Ms('setSetting', 'enableTestAcuityE', NO);
+    await oneStep3Ms('setSetting', 'enableTestAcuityTAO', YES);
+    await oneStep3Ms('setSetting', 'enableTestAcuityTAO', NO);
 }
 
 
@@ -441,6 +452,7 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
     await oneStep3Ms('setValue', 'resultString', 'SOFTWARE TESTING SUITE start, runs 3½ mins.');
     await pauseMilliseconds(pauseViewMS);
 
+    await doTextTestfunText("Test TestEnabler/Disabler", simpleSimon);
     await doTextTestfunText("Internal unit tests…", async () => {
         await oneStep3Ms('unittest', 'allAutomatic', '');
         await oneStep3Ms('setValue', 'resultString', "… successful (see console).");
