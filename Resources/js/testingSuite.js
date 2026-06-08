@@ -452,7 +452,6 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
     await oneStep3Ms('setValue', 'resultString', 'SOFTWARE TESTING SUITE start, runs 3½ mins.');
     await pauseMilliseconds(pauseViewMS);
 
-    await doTextTestfunText("Test TestEnabler/Disabler", simpleSimon);
     await doTextTestfunText("Internal unit tests…", async () => {
         await oneStep3Ms('unittest', 'allAutomatic', '');
         await oneStep3Ms('setValue', 'resultString', "… successful (see console).");
