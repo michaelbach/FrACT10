@@ -25,12 +25,12 @@
 - (void) _init { //console.info("MDBButton_Test>_init");
     [super _init];
     const rect1 = [self frame];
-    [self setFrame: CGRectMake(rect1.origin.x, rect1.origin.y - (rect1.size.width - 16) / 2, rect1.size.width, rect1.size.width)];
+    [self setFrame: CGRectMake(rect1.origin.x, rect1.origin.y - (rect1.size.width - 16) / 2, rect1.size.width, rect1.size.width)]; //make square & centered
 }
 
 
 - (void) drawRect: (CGRect) dirtyRect { //console.info("MDBButton_Test>drawRect");
-    [self setAlphaValue: [self isEnabled] ? 1 : 0.2];
+    [self setAlphaValue: [self isEnabled] ? 1 : [Settings alphaWhenDisabled]];
     const cgc = [[CPGraphicsContext currentContext] graphicsPort];
     const f1 = CGRectInset([self bounds], 1, 1), radius = 8; //frame a little smaller  to fit into visibleRect
     //console.log(_isHighlighted, [self isHighlighted], [self hasThemeState:CPThemeStateHighlighted]);

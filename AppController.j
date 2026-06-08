@@ -232,6 +232,8 @@
         [Settings setIsAutoPreset: YES];
     }
     [self settingsDidChange: null];
+
+    console.info([Settings alphaWhenDisabled])
 }
 
 

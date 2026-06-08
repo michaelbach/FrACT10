@@ -265,7 +265,8 @@ const testAcuityCrowdingPossibilities = async () => {
 	await oneStep3Ms('setSetting', 'nTrials08', 1);
 	await oneStep3Ms('setSetting', 'nTrials04', 1);
 	await oneStep3Ms('setSetting', 'nTrials02', 1);
-	await oneStep3Ms('setSetting', 'acuityStartingLogMAR', 0.3);
+    await oneStep3Ms('setSetting', 'acuityStartingLogMAR', 0.3);
+    await oneStep3Ms('setSetting', 'crowdingDistanceCalculationType', 3); //ETDRS
 	const kCrowdingTypeMax = 6; /* 6 */
 	for (let iCrowdingType = 1; iCrowdingType <= kCrowdingTypeMax; iCrowdingType++) {
 		await oneStep3Ms('setSetting', 'crowdingType', iCrowdingType);

@@ -22,7 +22,7 @@ const bundleDict = [[CPBundle bundleWithIdentifier: "de.michaelbach.FrACT10"] in
 gVersionDateOfFrACT = [bundleDict objectForKey:@"VersionDate"];
 gVersionStringOfFract = [bundleDict objectForKey:@"VersionNumberString"]; //CPBundleVersion mangled by jake
 kVersionOfExportFormat = "6"; //incremented 2025-05-13 after adding ID and eyeCondition
-kDateOfCurrentSettingsVersion = "2026-03-18a"
+kDateOfCurrentSettingsVersion = "2026-06-08"; //change for `alphaWhenDisabled`
 
 gFilename4ResultStorage = "FRACT10-FINAL-RESULT-STRING";
 gFilename4ResultsHistoryStorage = "FRACT10-RESULTS-HISTORY-STRING";
@@ -224,6 +224,7 @@ gSettingsNamesAndTypesMap = new Map([
     ["enableTestAcuityLineByLine", {type: "bool", dflt: YES, min: null, max: null}],
     ["enableTestBalmGeneral", {type: "bool", dflt: YES, min: null, max: null}],
     ["isAllSettingsDisabled", {type: "bool", dflt: NO, min: null, max: null}],
+    ["alphaWhenDisabled", {type: "float", dflt: 0.2, min: 0, max: 1}],
 ]);
 
 gTestRegistry = { //Object to hold all tests, names, their classes, shortcuts etc.
