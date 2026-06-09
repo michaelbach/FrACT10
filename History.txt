@@ -1,5 +1,7 @@
 # History
 
+2026-06-09a fix regression in the "Simplify" demo
+2026-06-09 wording "needs calibration" → "uncalibrated", deploy
 2026-06-08 Vs. 3.5.1: add `alphaWhenDisabled` to improve GUI for optional test disabling; need `kDateOfCurrentSettingsVersion` update
 2026-06-07 GUI: make disabled test buttons less visible (could be a setting? even transparent?); also change wording "currently not calibrated" → "needs calibration"
 2026-06-01 rename "Pair remote" → "Pair phone" and all associated text, including manual

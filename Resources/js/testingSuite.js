@@ -220,9 +220,9 @@ const testColorStuff = async () => {
 }
 
 
-const simpleSimon = async () => {
+const simpleSimon = async () => {console.info(4)
     await ensureHomeState();
-    await oneStep3Ms('setSetting', 'alphaWhenDisabled', 0.3);
+//    await oneStep3Ms('setSetting', 'alphaWhenDisabled', 0.0);
     let response = await await oneStep3Ms('getSetting', 'enableTestAcuityLandolt', '');
     await oneStep3Ms('setSetting', 'enableTestAcuityLetters', YES);
     await oneStep3Ms('setSetting', 'enableTestAcuityLandolt', !response.m3);
@@ -235,6 +235,8 @@ const simpleSimon = async () => {
     await oneStep3Ms('setSetting', 'enableTestContrastG', !response.m3);
     await oneStep3Ms('setSetting', 'enableTestAcuityLineByLine', !response.m3);
     await oneStep3Ms('setSetting', 'enableTestBalmGeneral', !response.m3);
+    //await oneStep3Ms('setSetting', 'alphaWhenDisabled', 0.2);
+    return;
     await pauseMilliseconds(pauseViewMS);
     await oneStep3Ms('setSetting', 'alphaWhenDisabled', 0);
     //await await oneStep3Ms('redraw', '', ''); does not update the buttons!
