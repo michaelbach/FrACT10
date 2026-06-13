@@ -12,6 +12,9 @@
 /**
  For plotting test results history
  Created by Bach on 2025-05-29
+
+ set Globals>gTestingPlottingAcuity1Contrast2 to ≠ 0 for easier testing
+
  */
 
 
@@ -31,6 +34,7 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
     self = [super initWithFrame: theFrame];
     if (gTestingPlottingAcuity1Contrast2 == 1) { //this only needed for testing
         testHistoryResultValue = 0.149;
+        gTestDetails[td_halfCI95] = 0.19
         testHistory = [
             {value: 1, isCorrect: true},
             {value: 0.7, isCorrect: true},
@@ -141,6 +145,15 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
         [MDB2plot p2hlineX0: xMin y: y x1: xMin + xTick/2];
     }
 
+    //CI95 shading; plot first, so it's in the background
+    if (isAcuity && [Settings showCI95]) {
+        const w1 = testHistoryResultValue, w2 = gTestDetails[td_halfCI95];
+        const w = Math.abs([MDB2plot p2ty: w1 + w2] - [MDB2plot p2ty: w1 - w2]);
+        [MDB2plot p2setStrokeColor: [CPColor colorWithWhite: 0 alpha: 0.05]];
+        [MDB2plot p2setLineWidthInPx: w];
+        [MDB2plot p2hlineX0: xMin + 5.5 y: w1 x1: xMax];
+    }
+
     //test points
     [MDB2plot p2setLineWidthInPx: 4];
     for (let trial = 0; trial < nTrials; trial++) {
@@ -159,10 +172,12 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
     [MDB2plot p2setStrokeColor: [CPColor blueColor]];
     [MDB2plot p2setLineWidthInPx: 2];
     [MDB2plot p2hlineX0: xMin+1.5 y: testHistoryResultValue x1: xMax];
+
+    //some labeling
     [MDB2plot p2setFillColor: [CPColor blueColor]];
     [MDB2plot p2setTextAlignVertical: "top"];
     let s = [Misc stringFromNumber: testHistoryResultValue decimals: 2];
-    [MDB2plot p2showText: s+"↑" atXpx: [MDB2plot p2tx: xMin+1.5] ypx: [MDB2plot p2ty: testHistoryResultValue]+8];
+    [MDB2plot p2showText: s+"↑" atXpx: [MDB2plot p2tx: xMin + 1.5] ypx: [MDB2plot p2ty: testHistoryResultValue] + 8];
 }
 @end
 

@@ -4,7 +4,7 @@
 History
 =======
 
- 2026-06-13 acknowledge a possible "updated settings…" dialog
+ 2026-06-13 acknowledge a possible "updated settings…" dialog, ensure standard start settings
  2026-05-14 display version result, announce Letters test
  2026-03-05 Add checks on plastic card, About and Help
  2025-09-11 testSuite more systematic using anonymous functions
@@ -444,7 +444,7 @@ const testingSuite = async () => {
 	document.getElementById('belowFractFrame').appendChild(textarea);
 	window.addEventListener('message', listener4textarea);
 	let response;
-	addText("SOFTWARE TESTING SUITE START\nDuration: ≈ 2½ minutes.\n\nDo not press any key until “TESTING SUITE done”.\n\nFor early termination: Reload.\n");
+	addText("SOFTWARE TESTING SUITE START\nDuration: ≈ 3½ minutes.\n\nDo not press any key until “TESTING SUITE done”.\n\nFor early termination: Reload.\n");
 /*	Let's leave out for now, because it shows intermediate blank screens after a testing round
 await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn't work (safety?)
 		await oneStep3Ms('setFullScreen', YES, ''); await pauseMilliseconds(pauseViewMS * 1.5);
@@ -453,6 +453,7 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
 		await oneStep3Ms('settingsPane', -1, ''); await pauseMilliseconds(pauseViewMS);
 	}); */
 
+    await postToIframe('setSetting', 'Preset', 'Standard Defaults'); //ensure standard
     await oneStep3Ms('setValue', 'resultString', 'SOFTWARE TESTING SUITE start, runs 3½ mins.');
     await pauseMilliseconds(pauseViewMS);
 
@@ -482,7 +483,7 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
 		tellIframe3Ms('run','acuity', 'Letters');
 	});
 	await doTextTestfunText("Test color stuff", testColorStuff);
-    await doTextTestfunText("Test negative contrast + crowding", async () => {
+    await doTextTestfunText("Test negative contrast + close crowding", async () => {
         await oneStep3Ms('setSetting', 'Preset', 'Testing');
         await oneStep3Ms('setSetting', 'contrastAcuityWeber', -10000);
         await oneStep3Ms('setSetting', 'nTrials08', 1);
