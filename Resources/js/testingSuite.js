@@ -4,6 +4,7 @@
 History
 =======
 
+ 2026-06-13 acknowledge a possible "updated settings…" dialog
  2026-05-14 display version result, announce Letters test
  2026-03-05 Add checks on plastic card, About and Help
  2025-09-11 testSuite more systematic using anonymous functions
@@ -428,6 +429,7 @@ const doTextTestfunText = async (text, testfun) => {
 }
 
 
+
 /* testingSuite */
 const testingSuite = async () => {
 	const scrollBoxInstance=document.getElementById('scrollBox');
@@ -453,6 +455,10 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
 
     await oneStep3Ms('setValue', 'resultString', 'SOFTWARE TESTING SUITE start, runs 3½ mins.');
     await pauseMilliseconds(pauseViewMS);
+
+    await postToIframe('sendChar', "s", ''); //clear a possible …
+    await postToIframe('sendChar', crlf, ''); //… "updated settings" …
+    await postToIframe('sendChar', crlf, ''); //… dialog
 
     await doTextTestfunText("Internal unit tests…", async () => {
         await oneStep3Ms('unittest', 'allAutomatic', '');
