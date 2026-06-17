@@ -37,7 +37,6 @@
 @import "GammaView.j"
 @import "MDBSetHandCursor.j"
 @import "MDBButton_Test.j"
-@import "CPTextField_Category.j"
 @import "MDBLabel.j"
 @import "MDBAlert.j"
 @import "QRPanel.j"

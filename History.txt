@@ -1,5 +1,6 @@
 # History
 
+2026-06-17 replace Cappuccino frameworks with latest, finally delete `CPTextField_Category.j`
 2026-06-13 improve testingSuite: acknowledge/discard a possible "updated settings…" dialog;
     add CI95-shading to `All Trials Plot`
 2026-06-09a fix regression in the "Simplify" demo
