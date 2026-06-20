@@ -221,7 +221,7 @@ const testColorStuff = async () => {
 }
 
 
-const simpleSimon = async () => {console.info(4)
+const simpleSimon = async () => {
     await ensureHomeState();
 //    await oneStep3Ms('setSetting', 'alphaWhenDisabled', 0.0);
     let response = await await oneStep3Ms('getSetting', 'enableTestAcuityLandolt', '');
