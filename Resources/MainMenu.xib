@@ -4133,7 +4133,7 @@ Enable / disable specific button.
                                                     <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vf0-t5-y1v">
                                                         <rect key="frame" x="647" y="22" width="40" height="24"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <string key="toolTip">The alpha value (0=transparent, 1=normal) of a disabled test button. Set to zero to completely hide disabled buttons.
+                                                        <string key="toolTip">The alpha value (0=transparent, 1=opaque) of a disabled test button. Set to zero to completely hide disabled buttons.
 </string>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" id="Dgb-hh-ggd">
                                                             <font key="font" metaFont="system"/>
@@ -4147,6 +4147,8 @@ Enable / disable specific button.
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="csf-cl-WP2" customClass="MDBLabel">
                                                         <rect key="frame" x="633" y="48" width="67" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">The alpha value (0=transparent, 1=opaque) of a disabled test button. Set to zero to completely hide disabled buttons.
+</string>
                                                         <textFieldCell key="cell" lineBreakMode="charWrapping" selectable="YES" alignment="center" id="47x-Fv-7dh">
                                                             <font key="font" metaFont="system"/>
                                                             <string key="title">𝛼 when
