@@ -221,33 +221,45 @@ const testColorStuff = async () => {
 }
 
 
+
+const allTestsEnable = async (enable) => {
+    await oneStep3Ms('setSetting', 'enableTestAcuityLetters', enable);
+    await oneStep3Ms('setSetting', 'enableTestAcuityLandolt', enable);
+    await oneStep3Ms('setSetting', 'enableTestAcuityE', enable);
+    await oneStep3Ms('setSetting', 'enableTestAcuityTAO', enable);
+    await oneStep3Ms('setSetting', 'enableTestAcuityVernier', enable);
+    await oneStep3Ms('setSetting', 'enableTestContrastLetters', enable);
+    await oneStep3Ms('setSetting', 'enableTestContrastLandolt', enable);
+    await oneStep3Ms('setSetting', 'enableTestContrastE', enable);
+    await oneStep3Ms('setSetting', 'enableTestContrastG', enable);
+    await oneStep3Ms('setSetting', 'enableTestAcuityLineByLine', enable);
+    await oneStep3Ms('setSetting', 'enableTestBalmGeneral', enable);
+}
+
 const simpleSimon = async () => {
     await ensureHomeState();
-//    await oneStep3Ms('setSetting', 'alphaWhenDisabled', 0.0);
+    await oneStep3Ms('setSetting', 'alphaWhenDisabled', 0.2);
     let response = await await oneStep3Ms('getSetting', 'enableTestAcuityLandolt', '');
+    await allTestsEnable(!response.m3)
     await oneStep3Ms('setSetting', 'enableTestAcuityLetters', YES);
-    await oneStep3Ms('setSetting', 'enableTestAcuityLandolt', !response.m3);
-    await oneStep3Ms('setSetting', 'enableTestAcuityE', !response.m3);
-    await oneStep3Ms('setSetting', 'enableTestAcuityTAO', !response.m3);
-    await oneStep3Ms('setSetting', 'enableTestAcuityVernier', !response.m3);
-    await oneStep3Ms('setSetting', 'enableTestContrastLetters', !response.m3);
-    await oneStep3Ms('setSetting', 'enableTestContrastLandolt', !response.m3);
-    await oneStep3Ms('setSetting', 'enableTestContrastE', !response.m3);
-    await oneStep3Ms('setSetting', 'enableTestContrastG', !response.m3);
-    await oneStep3Ms('setSetting', 'enableTestAcuityLineByLine', !response.m3);
-    await oneStep3Ms('setSetting', 'enableTestBalmGeneral', !response.m3);
-    //await oneStep3Ms('setSetting', 'alphaWhenDisabled', 0.2);
     return;
-    await pauseMilliseconds(pauseViewMS);
+}
+
+const simpleSimonFull = async () => {
+    //first switch all but first to disabled
+    await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
+    await simpleSimon();  await pauseMilliseconds(pauseViewMS);
+
+    //now switch all but second to invisible
+    await allTestsEnable(YES);
     await oneStep3Ms('setSetting', 'alphaWhenDisabled', 0);
-    //await await oneStep3Ms('redraw', '', ''); does not update the buttons!
-    response = await await oneStep3Ms('getSetting', 'enableTestAcuityLandolt', '');
-    await oneStep3Ms('setSetting', 'enableTestAcuityLetters', !response);
-    await oneStep3Ms('setSetting', 'enableTestAcuityLandolt', !response.m3);
-    await oneStep3Ms('setSetting', 'enableTestAcuityE', YES); //need toggle to update
-    await oneStep3Ms('setSetting', 'enableTestAcuityE', NO);
-    await oneStep3Ms('setSetting', 'enableTestAcuityTAO', YES);
-    await oneStep3Ms('setSetting', 'enableTestAcuityTAO', NO);
+    await allTestsEnable(NO);
+    await oneStep3Ms('setSetting', 'enableTestAcuityLandolt', YES);
+    await pauseMilliseconds(pauseViewMS);
+
+    await oneStep3Ms('setSetting', 'Preset', 'Standard Defaults');
+    await allTestsEnable(YES); // makes all visible again
+    return;
 }
 
 
@@ -505,7 +517,7 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
 	await doTextTestfunText("Test 'line(s) of optotypes'", testLinesOfOptotypes);
 	await doTextTestfunText("Cycle through all panes of Settings", testAllSettings);
 	await doTextTestfunText("Cycle through grating shapes", testAllGratingShapes);
-    await doTextTestfunText("Test TestEnabler/Disabler", simpleSimon);
+    await doTextTestfunText("Demo TestEnabler/Disabler", simpleSimonFull);
 	await doTextTestfunText("Cycle through BaLM tests", testBalm);
 	await doTextTestfunText("Traverse all Presets", testAllPresets);
 
