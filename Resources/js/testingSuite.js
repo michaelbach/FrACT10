@@ -217,6 +217,7 @@ const testColorStuff = async () => {
 
 	await oneStep3Ms('setSetting', 'nTrials04', 1);
 	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
+    await oneStep3Ms('setSetting', 'areResultsHidden', YES);
 	tellIframe3Ms('run','acuity', 'TumblingE');
 }
 
@@ -494,7 +495,7 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
         await pauseMilliseconds(pauseViewMS);
 		tellIframe3Ms('run','acuity', 'Letters');
 	});
-	await doTextTestfunText("Test color stuff", testColorStuff);
+	await doTextTestfunText("Test color stuff (with hidden response)", testColorStuff);
     await doTextTestfunText("Test negative contrast + close crowding", async () => {
         await oneStep3Ms('setSetting', 'Preset', 'Testing');
         await oneStep3Ms('setSetting', 'contrastAcuityWeber', -10000);

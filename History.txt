@@ -1,5 +1,6 @@
 # History
 
+2026-07-15 add `areResultsHidden`, test it in `testColorStuff`
 2026-07-05 fix regression in BaLM fore-/background colors
 2026-06-26 add missing tool tip, revise them, slight GUI re-arrangement
 2026-06-17 replace Cappuccino frameworks with latest, finally delete `CPTextField_Category.j`

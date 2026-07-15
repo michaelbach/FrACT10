@@ -15,7 +15,7 @@
 	<key>Main cib file base name</key>
 	<string>MainMenu.cib</string>
 	<key>VersionDate</key>
-	<string>2026-07-05</string>
+	<string>2026-07-15</string>
 	<key>UIStatusBarHidden</key>
 	<false/>
 	<key>UIStatusBarStyle</key>
@@ -82,7 +82,9 @@
 	<key>CFBundleIdentifier</key>
 	<string></string>
 	<key>VersionNumberString</key>
-	<string>3.5.1</string>
+	<string>3.5.2</string>
+	<key>UIPrerenderedIcon</key>
+	<false/>
 	<key>UIInterfaceOrientation</key>
 	<string>UIInterfaceOrientationPortrait</string>
 	<key>LSRequiresIPhoneOS</key>

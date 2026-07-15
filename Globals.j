@@ -151,6 +151,7 @@ gSettingsNamesAndTypesMap = new Map([
     ["margin4maxOptotypeIndex", {type: "int", dflt: 1, min: 0, max: 4}],
     ["crowdingType", {type: "int", dflt: 0, min: 0, max: 6}],
     ["crowdingDistanceCalculationType", {type: "int", dflt: 0, min: 0, max: 3}],
+    ["areResultsHidden", {type: "bool", dflt: NO, min: null, max: null}],
     ["showAcuityFormatDecimal", {type: "bool", dflt: YES, min: null, max: null}],
     ["showAcuityFormatLogMAR", {type: "bool", dflt: YES, min: null, max: null}],
     ["showAcuityFormatLetterScore", {type: "bool", dflt: NO, min: null, max: null}],

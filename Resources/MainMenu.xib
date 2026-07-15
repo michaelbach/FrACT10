@@ -16,7 +16,7 @@
         <window title="selfWindow" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" releasedWhenClosed="NO" animationBehavior="default" id="371" userLabel="selfWindow">
             <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="335" y="390" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="948"/>
             <view key="contentView" id="372">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -486,7 +486,7 @@ Shortcut: r
         <window title="factControllerWindow" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="r6R-bh-Qyp" userLabel="fractControllerWindow">
             <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="0.0" y="0.0" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="948"/>
             <view key="contentView" id="ZKN-RJ-jLS" customClass="FractView">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -500,7 +500,7 @@ Shortcut: r
         <window title="FrACT₁₀ – Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" deferred="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="MF5-y3-Ol0" userLabel="settingsPanel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="167" y="107" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1094"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="948"/>
             <view key="contentView" id="WXy-dU-HQc">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1588,7 +1588,7 @@ Shortcut: c 
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-So-EuO">
-                                                        <rect key="frame" x="18" y="211" width="87" height="18"/>
+                                                        <rect key="frame" x="18" y="181" width="87" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">VA result will be in LogMAR.
                       </string>
@@ -1597,11 +1597,16 @@ Shortcut: c 
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.areResultsHidden" id="D7a-IS-cbm">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                                </dictionary>
+                                                            </binding>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.showAcuityFormatLogMAR" id="JF3-jr-ESJ"/>
                                                         </connections>
                                                     </button>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="coP-Jl-su5">
-                                                        <rect key="frame" x="18" y="141" width="200" height="18"/>
+                                                        <rect key="frame" x="18" y="121" width="200" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">VA result will be in decimal acuity.
                                </string>
@@ -1610,11 +1615,16 @@ Shortcut: c 
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.areResultsHidden" id="gHH-tv-asc">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                                </dictionary>
+                                                            </binding>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.showAcuityFormatDecimal" id="JFa-L3-bIQ"/>
                                                         </connections>
                                                     </button>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="18b-AZ-XJs">
-                                                        <rect key="frame" x="18" y="106" width="200" height="18"/>
+                                                        <rect key="frame" x="18" y="91" width="200" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">VA result will be in Snellen fraction.
                              </string>
@@ -1623,11 +1633,16 @@ Shortcut: c 
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.areResultsHidden" id="5sy-8m-eQt">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                                </dictionary>
+                                                            </binding>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.showAcuityFormatSnellenFractionFoot" id="O0F-HF-B8F"/>
                                                         </connections>
                                                     </button>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0XK-Po-7GX">
-                                                        <rect key="frame" x="18" y="71" width="200" height="18"/>
+                                                        <rect key="frame" x="18" y="61" width="200" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">for the Snellen fraction.
                     </string>
@@ -1636,23 +1651,35 @@ Shortcut: c 
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.areResultsHidden" id="sB7-fi-inx">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                                </dictionary>
+                                                            </binding>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.forceSnellen20" id="ucr-9B-eeX"/>
                                                         </connections>
                                                     </button>
-                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qsd-g5-eto">
-                                                        <rect key="frame" x="76" y="31" width="139" height="16"/>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qsd-g5-eto" customClass="MDBLabel">
+                                                        <rect key="frame" x="76" y="26" width="126" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Acuity can esaily be better than 0.3 LogMAR, but this may irritate. So it can be clipped for display, export values are left unchanged.
 
 </string>
-                                                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" title="max. reported dec. VA" id="osW-YR-Yfx">
+                                                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" title="max. shown dec. VA" id="osW-YR-Yfx">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.areResultsHidden" id="Koi-zw-6NZ">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
                                                     </textField>
                                                     <comboBox focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JW2-QN-Paz">
-                                                        <rect key="frame" x="20" y="27" width="52" height="25"/>
+                                                        <rect key="frame" x="20" y="22" width="52" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">Acuity can esaily be better than 0.3 LogMAR, but this may irritate. So it can be clipped for display, export values are left unchanged.</string>
                                                         <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="KWU-19-CiH">
@@ -1669,6 +1696,11 @@ Shortcut: c 
                                                             </objectValues>
                                                         </comboBoxCell>
                                                         <connections>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.areResultsHidden" id="yYP-v4-UpI">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                                </dictionary>
+                                                            </binding>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.maxDisplayedAcuity" id="rU5-mf-eQg"/>
                                                         </connections>
                                                     </comboBox>
@@ -1690,7 +1722,7 @@ If in doubt: checked.
                                                         </connections>
                                                     </button>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uJM-h3-PcN">
-                                                        <rect key="frame" x="18" y="176" width="113" height="18"/>
+                                                        <rect key="frame" x="18" y="151" width="113" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">VA result will include the “Letter Score”:
 0≙1.7 LogMAR, 100≙–0.3 LogMAR           </string>
@@ -1699,11 +1731,16 @@ If in doubt: checked.
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
+                                                            <binding destination="izh-pU-csC" name="enabled" keyPath="values.areResultsHidden" id="a5d-Je-A6g">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                                </dictionary>
+                                                            </binding>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.showAcuityFormatLetterScore" id="e40-dh-ovI"/>
                                                         </connections>
                                                     </button>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BWv-9Y-q1T">
-                                                        <rect key="frame" x="117" y="211" width="86" height="18"/>
+                                                        <rect key="frame" x="117" y="181" width="86" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <string key="toolTip">The result will include a “±0.xx” number to indicate the 95% confidence interval; based on resampling. Only works with LogMAR.
 
@@ -1715,6 +1752,19 @@ If in doubt: checked.
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="enabled" keyPath="values.showAcuityFormatLogMAR" id="7DH-9M-BBN"/>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.showCI95" id="iFQ-Td-CIL"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R72-hl-e1Z">
+                                                        <rect key="frame" x="18" y="214" width="124" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <string key="toolTip">VA result will be in LogMAR.
+                      </string>
+                                                        <buttonCell key="cell" type="check" title="Hide results" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="aqN-jC-dYd">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="izh-pU-csC" name="value" keyPath="values.areResultsHidden" id="g3A-eP-Kee"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

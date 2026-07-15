@@ -200,6 +200,7 @@
 
 
 - (CPString) acuityComposeResultString { //2021-05-02: now all formats are "ceilinged"
+    if ([Settings areResultsHidden]) return "";
     const resultInDecVACeilinged = Math.min([Settings maxDisplayedAcuity], [self acuityResultInDecVA]);
     const resultInLogMARCeilinged = [MiscSpace logMARfromDecVA: resultInDecVACeilinged];
     let s = "";
