@@ -16,6 +16,12 @@
 	<string>MainMenu.cib</string>
 	<key>VersionDate</key>
 	<string>2026-07-15</string>
+	<key>UIRequiresPersistentWiFi</key>
+	<false/>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string></string>
+	</array>
 	<key>UIStatusBarHidden</key>
 	<false/>
 	<key>UIStatusBarStyle</key>
