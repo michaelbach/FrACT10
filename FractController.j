@@ -489,17 +489,18 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if ([Settings giveAuditoryFeedback4run]) [[SoundManager sharedManager] playSound: kSoundRunEnd];
 
     let exportString = [gAppController currentTestResultExportString];
-    exportString = [self _appendCI95InfoToString: exportString];
-    exportString = [self _appendColorInfoToString: exportString];
-    exportString = [self _appendNoiseInfoToString: exportString];
-    exportString = [self _appendGratingInfoToString: exportString];
-    exportString = [self _appendHPOCodeToString: exportString];
+    exportString += [self _appendCI95Info];
+    exportString += [self _appendColorInfo];
+    exportString += [self _appendNoiseInfo];
+    exportString += [self _appendGratingInfo];
+    exportString += [self _appendHPOCodeInfo];
     [gAppController setCurrentTestResultExportString: exportString + crlf];
     [gAppController runEnd];
 }
 
 
-- (CPString) _appendCI95InfoToString: (CPString) exportString {
+- (CPString) _appendCI95Info {
+    let exportString = "";
     if ([Settings showCI95] && (![gAppController runAborted])) {
         if ([self isAcuityOptotype]) {
             //the below causes a delay of < 1 s with nSamples=10,000
@@ -513,7 +514,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     return exportString;
 }
 
-- (CPString) _appendColorInfoToString: (CPString) exportString {
+- (CPString) _appendColorInfo {
+    let exportString = "";
     if ([Settings isAcuityColor]) {
         if ([self isAcuityOptotype] && (![self isAcuityTAO])) {
             exportString += tab + "colorFore" + tab + [gColorFore hexString];
@@ -524,7 +526,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     return exportString;
 }
 
-- (CPString) _appendNoiseInfoToString: (CPString) exportString {
+- (CPString) _appendNoiseInfo {
+    let exportString = "";
     if ([Settings embedInNoise]) {
         if (([self isAcuityOptotype] || [self isContrastOptotype]) && (![self isAcuityTAO])) {
             exportString += tab + "noiseContrast" + tab + [Misc stringFromInteger: [Settings noiseContrast]];
@@ -534,7 +537,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     return exportString;
 }
 
-- (CPString) _appendGratingInfoToString: (CPString) exportString {
+- (CPString) _appendGratingInfo {
+    let exportString = "";
     if (gCurrentTestID === kTestContrastG) {
         exportString += tab + "gratingShape" + tab + [Settings gratingShapeIndex];
         gTestDetails[td_gratingShape] = [Settings gratingShapeIndex];
@@ -543,7 +547,8 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
-- (CPString) _appendHPOCodeToString: (CPString) exportString {
+- (CPString) _appendHPOCodeInfo {
+    let exportString = "";
     if (![self isAcuityOptotype]) return exportString;
     if (![Settings shouldExportHPOCode]) return exportString;
     exportString += tab + "HPOCode" + tab + [Misc hpoCodeFromLogMAR: [self resultValue4Export]];
