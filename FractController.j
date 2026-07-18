@@ -493,6 +493,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     exportString = [self _appendColorInfoToString: exportString];
     exportString = [self _appendNoiseInfoToString: exportString];
     exportString = [self _appendGratingInfoToString: exportString];
+    exportString = [self _appendHPOCodeToString: exportString];
     [gAppController setCurrentTestResultExportString: exportString + crlf];
     [gAppController runEnd];
 }
@@ -538,6 +539,14 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         exportString += tab + "gratingShape" + tab + [Settings gratingShapeIndex];
         gTestDetails[td_gratingShape] = [Settings gratingShapeIndex];
     }
+    return exportString;
+}
+
+
+- (CPString) _appendHPOCodeToString: (CPString) exportString {
+    if (![self isAcuityOptotype]) return exportString;
+    if (![Settings shouldExportHPOCode]) return exportString;
+    exportString += tab + "HPOCode" + tab + [Misc hpoCodeFromLogMAR: [self resultValue4Export]];
     return exportString;
 }
 

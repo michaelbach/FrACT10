@@ -158,6 +158,7 @@ gSettingsNamesAndTypesMap = new Map([
     ["showAcuityFormatSnellenFractionFoot", {type: "bool", dflt: NO, min: null, max: null}],
     ["forceSnellen20", {type: "bool", dflt: NO, min: null, max: null}],
     ["showCI95", {type: "bool", dflt: NO, min: null, max: null}],
+    ["shouldExportHPOCode", {type: "bool", dflt: NO, min: null, max: null}],
     ["contrastAcuityWeber", {type: "float", dflt: 100, min: -1E6, max: 100}],
     ["acuityHasEasyTrials", {type: "bool", dflt: YES, min: null, max: null}],
     ["isLandoltObliqueOnly", {type: "bool", dflt: NO, min: null, max: null}], //↓Acuity>Line-by-line

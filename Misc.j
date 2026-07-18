@@ -253,6 +253,37 @@ function _pause(ms) { //console.info("Misc>_pause");
 }
 
 
++ (CPString) hpoCodeFromLogMAR: (float) logMAR {
+    // https://hpo.jax.org/browse/term/HP:0030534
+    if (logMAR < 0.05) return "";
+    if (logMAR >= 1.35) { //HPO does not have codes for  1.4–1.9  LogMAR
+        if (logMAR <= 2.5) return "HP:0030567"; // so map here
+        return "HP:0030568";
+    }
+    const logMAR10 = Math.round(logMAR * 10);
+    switch (logMAR10) {
+        case 1: return "HP:0030554";
+        case 2: return "HP:0030555";
+        case 3: return "HP:0030556";
+        case 4: return "HP:0030557";
+        case 5: return "HP:0030558";
+        case 6: return "HP:0030560";
+        case 7: return "HP:0030559";
+        case 8: return "HP:0030561";
+        case 9: return "HP:0030562";
+        case 10: return "HP:0030563";
+        case 11: return "HP:0030564";
+        case 12: return "HP:0030565";
+        case 13: return "HP:0030566";
+        default: console.error("bad code point in `hpoCodeFromLogMAR`", logMAR10);
+    }
+    // not mapped:
+    // HP:0030551 – Visual acuity light perception with projection
+    // HP:0030552 – Visual acuity light perception without projection
+    // HP:0030553 – Visual acuity no light perception
+}
+
+
 + (CPString) replaceEvery2ndTabWithNewlineInString: (CPString) input {
     const parts = input.split(tab);
     let result = '';
@@ -375,7 +406,7 @@ function _pause(ms) { //console.info("Misc>_pause");
  */
 + (BOOL) unittest {
     let isSuccess = YES;
-    console.log("\nMisc▸Testing rounding of floating point numbers")
+    console.log("\nMisc▸Testing rounding of floating point numbers");
     for (let val0 of [0.8049, 0.80499, 0.8050, 0.80501, 0.8051]) {
         let val1 = [self stringFromNumber: val0 decimals: 1 localised: NO];
         let val2 = [self stringFromNumber: val0 decimals: 2 localised: NO];
@@ -384,6 +415,13 @@ function _pause(ms) { //console.info("Misc>_pause");
     }
     isSuccess &&= [self stringFromNumber: 0.8049 decimals: 2 localised: NO] === "0.80";
     isSuccess &&= [self stringFromNumber: 0.8051 decimals: 2 localised: NO] === "0.81";
+
+    console.log("\nMisc▸Testing HPO code");
+    isSuccess &&= [self hpoCodeFromLogMAR: 0] == "";
+    isSuccess &&= [self hpoCodeFromLogMAR: 0.1] == "HP:0030554";
+    isSuccess &&= [self hpoCodeFromLogMAR: 2.6] == "HP:0030568";
+    isSuccess &&= [self hpoCodeFromLogMAR: 3.0] == "HP:0030568";
+
     return isSuccess;
 }
 
