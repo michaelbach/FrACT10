@@ -8,7 +8,7 @@ MDBSimplestatistics.j
 */
 
 
-@implementation mdbSimplestatistics
+@implementation MDBSimplestatistics
 
 
 /*
@@ -16,7 +16,7 @@ MDBSimplestatistics.j
    © 2014, Tom MacWright
    simple-statistics is licensed under the ISC License,
    a permissive license leting people do anything with the code with proper attribution and without warranty…
-   
+
    Changes: @example → @ example
 */
 
@@ -118,20 +118,20 @@ function sampleWithReplacement(x, n, randomSource) {
     if (x.length === 0) {
         return [];
     }
-    
+
     //a custom random number source can be provided if you want to use
     //a fixed seed or another random number generator, like
     //[random-js](https://www.npmjs.org/package/random-js)
     randomSource = randomSource || Math.random;
-    
+
     const length = x.length;
     const sample = [];
-    
+
     for (let i = 0; i < n; i++) {
         const index = Math.floor(randomSource() * length);
         sample.push(x[index]);
     }
-    
+
     return sample;
 }
 
@@ -216,7 +216,7 @@ function quantileSorted(x, p) {
 function quickselect(arr, k, left, right) {
     left = left || 0;
     right = right || arr.length - 1;
-    
+
     while (right > left) {
         //600 and 0.5 are arbitrary constants chosen in the original paper to minimize execution time
         if (right - left > 600) {
@@ -233,14 +233,14 @@ function quickselect(arr, k, left, right) {
                                     );
             quickselect(arr, k, newLeft, newRight);
         }
-        
+
         const t = arr[k];
         let i = left;
         let j = right;
-        
+
         swap(arr, left, k);
         if (arr[right] > t) { swap(arr, left, right); }
-        
+
         while (i < j) {
             swap(arr, i, j);
             i++;
@@ -248,13 +248,13 @@ function quickselect(arr, k, left, right) {
             while (arr[i] < t) { i++; }
             while (arr[j] > t) { j--; }
         }
-        
+
         if (arr[left] === t) { swap(arr, left, j); }
         else {
             j++;
             swap(arr, j, right);
         }
-        
+
         if (j <= k) { left = j + 1; }
         if (k <= j) { right = j - 1; }
     }
@@ -290,7 +290,7 @@ function swap(arr, i, j) {
  */
 function quantile(x, p) {
     const copy = x.slice();
-    
+
     if (Array.isArray(p)) {
         //rearrange elements so that each element corresponding to a requested
         //quantile is on a place it would be if the array was fully sorted
@@ -326,14 +326,14 @@ function multiQuantileSelect(arr, p) {
     }
     indices.push(arr.length - 1);
     indices.sort(compare);
-    
+
     const stack = [0, indices.length - 1];
-    
+
     while (stack.length) {
         const r = Math.ceil(stack.pop());
         const l = Math.floor(stack.pop());
         if (r - l <= 1) { continue; }
-        
+
         const m = Math.floor((l + r) / 2);
         quantileSelect(
                        arr,
@@ -341,7 +341,7 @@ function multiQuantileSelect(arr, p) {
                        Math.floor(indices[l]),
                        Math.ceil(indices[r])
                        );
-        
+
         stack.push(l, m, m, r);
     }
 }

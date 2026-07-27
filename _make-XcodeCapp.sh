@@ -81,7 +81,17 @@ echo " "
 
 echo "***\nSaving any changed Xcode files."
 osascript <<'END'
-tell application "Xcode" to activate
+use AppleScript version "2.4" -- Yosemite (10.10) or later
+use framework "Foundation"
+use scripting additions
+set thePath to "/Applications/Xcode-beta.app"
+set fileManager to current application's NSFileManager's defaultManager()
+set betaInstalled to fileManager's fileExistsAtPath:thePath
+if betaInstalled then
+    tell application "Xcode-beta" to activate
+else
+    tell application "Xcode" to activate
+end if
 delay 0.2
 tell application "System Events" to keystroke "s" using {command down, option down}
 tell application "Terminal" to activate
@@ -134,3 +144,5 @@ delay 0.2
 tell application "System Events" to keystroke "e" using {command down, option down}
 END
 open -a Safari $workingDirectory"/index4testing.html"
+
+return 0
