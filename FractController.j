@@ -500,63 +500,49 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (CPString) _appendCI95Info {
-    let exportString = "";
-    if ([Settings showCI95] && (![gAppController runAborted])) {
-        if ([self isAcuityOptotype]) {
-            //the below causes a delay of < 1 s with nSamples=10,000
-            const historyResults = [TrialHistoryManager composeInfo4CI];
-            gTestDetails[td_halfCI95] = [MDBDispersionEstimation calculateCI95halfFromDF: historyResults guessingProbability: 1.0 / nAlternatives nSamples: gNSamplesCI95];
-            ci95String = " ± " + [Misc stringFromNumber: gTestDetails[td_halfCI95] decimals: 2 localised: YES];
-            [gAppController setResultStringFieldTo: [self acuityComposeResultString]]; //this will add CI95 info
-            exportString += tab + "halfCI95" + tab + [Misc stringFromNumber: gTestDetails[td_halfCI95] decimals: 3 localised: YES];
-        }
-    }
-    return exportString;
+    if (![Settings showCI95]) return "";
+    if ([gAppController runAborted]) return "";
+    if (![self isAcuityOptotype]) return "";
+    //the calculation causes a delay of < ½ s with nSamples=10,000
+    const historyResultsDF = [TrialHistoryManager composeInfo4CI];
+    const hCI = [MDBDispersionEstimation calculateCI95halfFromDF: historyResultsDF guessingProbability: 1.0 / nAlternatives nSamples: gNSamplesCI95];
+    gTestDetails[td_halfCI95] = hCI;
+    ci95String = " ± " + [Misc stringFromNumber: hCI decimals: 2 localised: YES]; //this↓ will add CI95 info
+    [gAppController setResultStringFieldTo: [self acuityComposeResultString]]; //↑via side effect, sadly
+    return tab + "halfCI95" + tab + [Misc stringFromNumber: hCI decimals: 3 localised: YES];
 }
 
 - (CPString) _appendColorInfo {
-    let exportString = "";
-    if ([Settings isAcuityColor]) {
-        if ([self isAcuityOptotype] && (![self isAcuityTAO])) {
-            exportString += tab + "colorFore" + tab + [gColorFore hexString];
-            exportString += tab + "colorBack" + tab + [gColorBack hexString];
-            gTestDetails[td_colorFore] = gColorFore;  gTestDetails[td_colorBack] = gColorBack;
-        }
-    }
-    return exportString;
+    if (![Settings isAcuityColor]) return "";
+    if (![self isAcuityOptotype]) return "";
+    if ([self isAcuityTAO]) return "";
+    gTestDetails[td_colorFore] = gColorFore;
+    gTestDetails[td_colorBack] = gColorBack;
+    return tab + "colorFore" + tab + [gColorFore hexString] + tab + "colorBack" + tab + [gColorBack hexString];
 }
 
 - (CPString) _appendNoiseInfo {
-    let exportString = "";
-    if ([Settings embedInNoise]) {
-        if (([self isAcuityOptotype] || [self isContrastOptotype]) && (![self isAcuityTAO])) {
-            exportString += tab + "noiseContrast" + tab + [Misc stringFromInteger: [Settings noiseContrast]];
-            gTestDetails[td_noiseContrast] = [Settings noiseContrast];
-        }
-    }
-    return exportString;
+    if (![Settings embedInNoise]) return "";
+    if ([self isAcuityTAO]) return "";
+    if (!([self isAcuityOptotype] || [self isContrastOptotype])) return "";
+    gTestDetails[td_noiseContrast] = [Settings noiseContrast];
+    return tab + "noiseContrast" + tab + [Misc stringFromInteger: [Settings noiseContrast]];
 }
 
 - (CPString) _appendGratingInfo {
-    let exportString = "";
-    if (gCurrentTestID === kTestContrastG) {
-        exportString += tab + "gratingShape" + tab + [Settings gratingShapeIndex];
-        gTestDetails[td_gratingShape] = [Settings gratingShapeIndex];
-    }
-    return exportString;
+    if (gCurrentTestID !== kTestContrastG) return "";
+    gTestDetails[td_gratingShape] = [Settings gratingShapeIndex];
+    return tab + "gratingShape" + tab + [Settings gratingShapeIndex];
 }
-
 
 - (CPString) _appendHPOCodeInfo {
-    let exportString = "";
-    if (![self isAcuityOptotype]) return exportString;
-    if (![Settings shouldExportHPOCode]) return exportString;
-    exportString += tab + "HPOCode" + tab + [Misc hpoCodeFromLogMAR: [self resultValue4Export]];
-    return exportString;
+    if (![self isAcuityOptotype]) return "";
+    if (![Settings shouldExportHPOCode]) return "";
+    return tab + "HPOCode" + tab + [Misc hpoCodeFromLogMAR: [self resultValue4Export]];
 }
 
 
-- (BOOL) acceptsFirstResponder { //console.info("FractController>acceptsFirstResponder");
+- (BOOL) acceptsFirstResponder {
     return YES;
 }
 
