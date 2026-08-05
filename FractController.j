@@ -446,11 +446,11 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [TrialHistoryManager setIsCorrect: responseWasCorrect]; //placed here so reached by "onTimeoutAutoResponse"
     [thresholder enterTrialOutcomeWithAppliedStim: [self stimThresholderunitsFromDeviceunits: stimStrengthInDeviceunits] wasCorrect: responseWasCorrect];
     switch ([Settings auditoryFeedback4trialIndex]) { //case 0: nothing
-        case kauditoryFeedback4trialIndexAlways:
+        case kAuditoryFeedback4trialIndexAlways:
             [[SoundManager sharedManager] playSound: kSoundTrialYes];  break;
-        case kauditoryFeedback4trialIndexOncorrect:
+        case kAuditoryFeedback4trialIndexOncorrect:
             if (responseWasCorrect) [[SoundManager sharedManager] playSound: kSoundTrialYes];  break;
-        case kauditoryFeedback4trialIndexWithinfo:
+        case kAuditoryFeedback4trialIndexWithinfo:
             if (responseWasCorrect) [[SoundManager sharedManager] playSound: kSoundTrialYes];
             else [[SoundManager sharedManager] playSound: kSoundTrialNo];
             break;

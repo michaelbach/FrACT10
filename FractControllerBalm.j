@@ -37,7 +37,7 @@
     [Settings setAcuityBackColor: [CPColor blackColor]];
 
     savedauditoryFeedback4trialIndex = [Settings auditoryFeedback4trialIndex];
-    //[Settings setAuditoryFeedback4trialIndex: kauditoryFeedback4trialIndexNone];
+    //[Settings setAuditoryFeedback4trialIndex: kAuditoryFeedback4trialIndexNone];
 
     extentInPix = Math.round([MiscSpace pixelFromDegree: [Settings balmExtentInDeg]]);
 

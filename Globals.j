@@ -70,7 +70,7 @@ kTestContrastDitherUnittest = 15;
 kNAlternativesIndex2 = 0; kNAlternativesIndex4 = 1; kNAlternativesIndex8plus = 2;
 
 @typedef auditoryFeedback4trialIndexType
-kauditoryFeedback4trialIndexNone = 0; kauditoryFeedback4trialIndexAlways = 1; kauditoryFeedback4trialIndexOncorrect = 2; kauditoryFeedback4trialIndexWithinfo = 3;
+kAuditoryFeedback4trialIndexNone = 0; kAuditoryFeedback4trialIndexAlways = 1; kAuditoryFeedback4trialIndexOncorrect = 2; kAuditoryFeedback4trialIndexWithinfo = 3;
 
 @typedef ResultsToClipChoiceType
 kResultsToClipNone = 0; kResultsToClipFinalOnly = 1; kResultsToClipFullHistory = 2;
@@ -128,7 +128,7 @@ gSettingsNamesAndTypesMap = new Map([
     ["decimalMarkCharIndex", {type: "int", dflt: kDecimalMarkCharIndexAuto, min: kDecimalMarkCharIndexAuto, max: kDecimalMarkCharIndexComma}],
     ["resultsToClipboardIndex", {type: "int", dflt: kResultsToClipNone, min: kResultsToClipNone, max: kResultsToClipFullHistory2PDF}],
     ["putResultsToClipboardSilent", {type: "bool", dflt: NO, min: null, max: null}],
-    ["auditoryFeedback4trialIndex", {type: "int", dflt: kauditoryFeedback4trialIndexWithinfo, min: kauditoryFeedback4trialIndexNone, max: kauditoryFeedback4trialIndexWithinfo}],
+    ["auditoryFeedback4trialIndex", {type: "int", dflt: kAuditoryFeedback4trialIndexWithinfo, min: kAuditoryFeedback4trialIndexNone, max: kAuditoryFeedback4trialIndexWithinfo}],
     ["visualFeedback", {type: "int", dflt: 0, min: 0, max: 3}],
     ["giveAuditoryFeedback4run", {type: "bool", dflt: YES, min: null, max: null}],
     ["soundVolume", {type: "float", dflt: 20, min: 1, max: 100}],
