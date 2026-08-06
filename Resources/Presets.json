@@ -84,7 +84,18 @@
       "respondsToMobileOrientation": false,
       "resultsToClipboardIndex": "kResultsToClipFinalOnly",
       "distanceInCM": 200,
-      "testOnFive": "kTestAcuityLetters"
+      "testOnFive": "kTestAcuityLetters",
+      "alphaWhenDisabled": 0,
+      "enableTestAcuityLandolt": false,
+      "enableTestAcuityE": false,
+      "enableTestAcuityTAO": false,
+      "enableTestAcuityVernier": false,
+      "enableTestContrastLetters": false,
+      "enableTestContrastLandolt": false,
+      "enableTestContrastE": false,
+      "enableTestContrastG": false,
+      "enableTestAcuityLineByLine": false,
+      "enableTestBalmGeneral": false
     }
   },
 

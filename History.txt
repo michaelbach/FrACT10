@@ -1,5 +1,6 @@
 # History
 
+2026-08-06 modify a Preset
 2026-07-29 simplify logic for export string
 2026-07-27 fix small capitalisation inconsistency `MDBSimplestatistics`, extend build script for Xcode-beta
 2026-07-15 add `areResultsHidden`, test it in `testColorStuff`
