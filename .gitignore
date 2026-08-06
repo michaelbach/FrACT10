@@ -4,7 +4,7 @@ Cocoa Classes/*
 .XcodeSupport/*
 _cappDevelop.xcodeproj/project.xcworkspace/xcuserdata/bach.xcuserdatad/UserInterfaceState.xcuserstate
 xcuserdata
-Resources/MainMenu.cib*
+# Resources/MainMenu.cib*
 *.h
 *.m
 Build/
