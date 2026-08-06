@@ -14,8 +14,6 @@
 		8A061F602A273809006B5CAD /* Globals.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7F842D1A68D8C133FA29CF9 /* Globals.j */; };
 		8A0CDCF42D67943A0013BE3A /* FractControllerBalmLight.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A0CDCF32D67943A0013BE3A /* FractControllerBalmLight.j */; };
 		8A1A596F2F47896C003E195C /* ResponseBoxController.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A1A596E2F47896C003E195C /* ResponseBoxController.j */; };
-		8A28B6C12E56773E002FD5FC /* MDBTextfFieldAutoBlur.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A28B6BF2E56773E002FD5FC /* MDBTextfFieldAutoBlur.h */; };
-		8A28B6C22E56773E002FD5FC /* MDBTextfFieldAutoBlur.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A28B6C02E56773E002FD5FC /* MDBTextfFieldAutoBlur.m */; };
 		8A3384C72AA11B3B000325D0 /* Info.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A3384C62AA11B3B000325D0 /* Info.plist */; };
 		8A3F88A12D5854A500183F76 /* CheckingContrastController.j in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A3F88A02D5854A500183F76 /* CheckingContrastController.j */; };
 		8A3F88A42D585A8D00183F76 /* CheckingContrastController.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A3F88A32D585A8D00183F76 /* CheckingContrastController.m */; };
@@ -121,8 +119,6 @@
 				8AAB437F2A55824E00825E47 /* FractControllerContrastE.j in CopyFiles */,
 				8AAB43782A55820F00825E47 /* MDBButton_Test.j in CopyFiles */,
 				8AAB43932A55826800825E47 /* Presets.j in CopyFiles */,
-				8A28B6C12E56773E002FD5FC /* MDBTextfFieldAutoBlur.h in CopyFiles */,
-				8A28B6C22E56773E002FD5FC /* MDBTextfFieldAutoBlur.m in CopyFiles */,
 				8AAB43902A55826800825E47 /* SoundManager.j in CopyFiles */,
 				8A5DE1C22F48DD7F0077C276 /* QRPanel.j in CopyFiles */,
 				8AAB43822A55825500825E47 /* FractControllerAcuityVernier.j in CopyFiles */,
@@ -171,13 +167,10 @@
 
 /* Begin PBXFileReference section */
 		031040FBB26314B672212D9C /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = .XcodeSupport/Settings.h; sourceTree = SOURCE_ROOT; };
-		06C04AA3AA702BF636809D08 /* FractControllerAcuityC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FractControllerAcuityC.m; path = .XcodeSupport/FractControllerAcuityC.m; sourceTree = SOURCE_ROOT; };
 		071A473B87D9C7D2E893547B /* FractControllerAcuityTAO.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerAcuityTAO.j; sourceTree = SOURCE_ROOT; };
 		11F94C3494303BAF3CBD78FC /* FractControllerContrastC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractControllerContrastC.h; path = .XcodeSupport/FractControllerContrastC.h; sourceTree = SOURCE_ROOT; };
-		17214E91B17E0D03AD1D26FA /* TrialHistoryController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TrialHistoryController.m; path = .XcodeSupport/TrialHistoryController.m; sourceTree = SOURCE_ROOT; };
 		1979436C8E51D5214A6FAE33 /* MDBDispersionEstimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MDBDispersionEstimation.m; path = .XcodeSupport/MDBDispersionEstimation.m; sourceTree = SOURCE_ROOT; };
 		1A6747EEA1C6D7A1C89BD03C /* FractControllerContrastE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractControllerContrastE.h; path = .XcodeSupport/FractControllerContrastE.h; sourceTree = SOURCE_ROOT; };
-		22D14B04BDBBD29062DC9F38 /* TrialHistoryController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrialHistoryController.h; path = .XcodeSupport/TrialHistoryController.h; sourceTree = SOURCE_ROOT; };
 		26DE446DABE9E3C226ED99EF /* FractController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FractController.m; path = .XcodeSupport/FractController.m; sourceTree = SOURCE_ROOT; };
 		29834A62A925E37F8057FF9A /* RewardsController.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = RewardsController.j; sourceTree = SOURCE_ROOT; };
 		2F574A0FBE37760CBE3F9A3D /* FractControllerAcuity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractControllerAcuity.h; path = .XcodeSupport/FractControllerAcuity.h; sourceTree = SOURCE_ROOT; };
@@ -188,18 +181,14 @@
 		415B497C815E74E12736701D /* FractControllerAcuityE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractControllerAcuityE.h; path = .XcodeSupport/FractControllerAcuityE.h; sourceTree = SOURCE_ROOT; };
 		467742E49AA187BE82A24A2E /* FractControllerAcuityLineByLine.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerAcuityLineByLine.j; sourceTree = SOURCE_ROOT; };
 		46EC4178BBFDF502EFF4AF49 /* MDBButton_Test.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = MDBButton_Test.j; sourceTree = SOURCE_ROOT; };
-		476F40E79E7E02EDD09E2D07 /* FractControllerContrastLett.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FractControllerContrastLett.m; path = .XcodeSupport/FractControllerContrastLett.m; sourceTree = SOURCE_ROOT; };
 		4A5547F8854B1200466F770F /* TrialHistoryManager.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = TrialHistoryManager.j; sourceTree = SOURCE_ROOT; };
 		4E774729B670BDE69678922F /* FractControllerContrastC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FractControllerContrastC.m; path = .XcodeSupport/FractControllerContrastC.m; sourceTree = SOURCE_ROOT; };
 		5139419A9E317C413C110C0F /* AlternativesGenerator.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = AlternativesGenerator.j; sourceTree = SOURCE_ROOT; };
 		521B4104A56B8556565DDAEA /* MDBSimplestatistics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MDBSimplestatistics.h; path = .XcodeSupport/MDBSimplestatistics.h; sourceTree = SOURCE_ROOT; };
 		58774F10A4E526AAF82243E7 /* Presets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Presets.h; path = .XcodeSupport/Presets.h; sourceTree = SOURCE_ROOT; };
-		5B6B4942AD5F142FC6431D4D /* MDBButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MDBButton.h; path = .XcodeSupport/MDBButton.h; sourceTree = SOURCE_ROOT; };
 		5B9944698B42B5A2E9B3274B /* Settings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = .XcodeSupport/Settings.m; sourceTree = SOURCE_ROOT; };
 		63B04195983D9CC7CD3C5C2F /* FractControllerAcuityTAO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FractControllerAcuityTAO.m; path = .XcodeSupport/FractControllerAcuityTAO.m; sourceTree = SOURCE_ROOT; };
 		644D4F5FA2772D3095E57056 /* MDBSimplestatistics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MDBSimplestatistics.m; path = .XcodeSupport/MDBSimplestatistics.m; sourceTree = SOURCE_ROOT; };
-		692840129B4D97F1D87C15B6 /* FractControllerAcuityC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractControllerAcuityC.h; path = .XcodeSupport/FractControllerAcuityC.h; sourceTree = SOURCE_ROOT; };
-		6CFE49FAA1E12CD91A7D8CDA /* FractControllerContrastLett.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractControllerContrastLett.h; path = .XcodeSupport/FractControllerContrastLett.h; sourceTree = SOURCE_ROOT; };
 		6F8642B1B93603A5A204CC32 /* AppController.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = AppController.j; sourceTree = SOURCE_ROOT; };
 		71634BCAB305282261E246C6 /* FractView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FractView.m; path = .XcodeSupport/FractView.m; sourceTree = SOURCE_ROOT; };
 		73A2415CA7B66684D1AC99BE /* GammaView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GammaView.h; path = .XcodeSupport/GammaView.h; sourceTree = SOURCE_ROOT; };
@@ -215,8 +204,6 @@
 		8A061F592A273350006B5CAD /* webAppServiceWorker.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = webAppServiceWorker.js; sourceTree = SOURCE_ROOT; };
 		8A0CDCF32D67943A0013BE3A /* FractControllerBalmLight.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerBalmLight.j; sourceTree = SOURCE_ROOT; };
 		8A1A596E2F47896C003E195C /* ResponseBoxController.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = ResponseBoxController.j; sourceTree = SOURCE_ROOT; };
-		8A28B6BF2E56773E002FD5FC /* MDBTextfFieldAutoBlur.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MDBTextfFieldAutoBlur.h; path = .XcodeSupport/MDBTextfFieldAutoBlur.h; sourceTree = "<group>"; };
-		8A28B6C02E56773E002FD5FC /* MDBTextfFieldAutoBlur.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MDBTextfFieldAutoBlur.m; path = .XcodeSupport/MDBTextfFieldAutoBlur.m; sourceTree = "<group>"; };
 		8A3384C62AA11B3B000325D0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		8A3F88A02D5854A500183F76 /* CheckingContrastController.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = CheckingContrastController.j; sourceTree = SOURCE_ROOT; };
 		8A3F88A22D585A8D00183F76 /* CheckingContrastController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CheckingContrastController.h; path = .XcodeSupport/CheckingContrastController.h; sourceTree = "<group>"; };
@@ -263,7 +250,6 @@
 		90444B1A970FC75C0FF93DB7 /* FractControllerContrastE.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerContrastE.j; sourceTree = SOURCE_ROOT; };
 		91844612BA04B04966D2045C /* AlternativesGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AlternativesGenerator.h; path = .XcodeSupport/AlternativesGenerator.h; sourceTree = SOURCE_ROOT; };
 		91B445DC96A0E8A06A4740E5 /* FractControllerAcuity.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerAcuity.j; sourceTree = SOURCE_ROOT; };
-		95314F558B96A134B5ECC8F9 /* MDBButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MDBButton.m; path = .XcodeSupport/MDBButton.m; sourceTree = SOURCE_ROOT; };
 		96DD483B80EDF2A6B16630C6 /* FractControllerAcuityVernier.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerAcuityVernier.j; sourceTree = SOURCE_ROOT; };
 		99DF4D9EA571357C98E8008A /* SoundManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SoundManager.m; path = .XcodeSupport/SoundManager.m; sourceTree = SOURCE_ROOT; };
 		9A7C477DA04651E0EE6F21CE /* FractView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractView.h; path = .XcodeSupport/FractView.h; sourceTree = SOURCE_ROOT; };
@@ -289,7 +275,6 @@
 		CF0749DAB364C33210466311 /* FractControllerAcuityTAO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractControllerAcuityTAO.h; path = .XcodeSupport/FractControllerAcuityTAO.h; sourceTree = SOURCE_ROOT; };
 		D7F842D1A68D8C133FA29CF9 /* Globals.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Globals.j; sourceTree = SOURCE_ROOT; };
 		DCA24A16AA1D86B0F6CA0649 /* SoundManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SoundManager.h; path = .XcodeSupport/SoundManager.h; sourceTree = SOURCE_ROOT; };
-		DD9E41E0A3CD61720F7AF84C /* FractControllerAcuityL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractControllerAcuityL.h; path = .XcodeSupport/FractControllerAcuityL.h; sourceTree = SOURCE_ROOT; };
 		DED842598DD16F0DDDE21618 /* AlternativesGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AlternativesGenerator.m; path = .XcodeSupport/AlternativesGenerator.m; sourceTree = SOURCE_ROOT; };
 		DEF24C8DA94A1A3BC22D7F49 /* AppController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = .XcodeSupport/AppController.h; sourceTree = SOURCE_ROOT; };
 		E164FE29172185F500263CE3 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = SOURCE_ROOT; };
@@ -301,7 +286,6 @@
 		E83E476782CBBF57F9CCE814 /* MDBDispersionEstimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MDBDispersionEstimation.h; path = .XcodeSupport/MDBDispersionEstimation.h; sourceTree = SOURCE_ROOT; };
 		EE6D44D9ADCF372813EE9FD4 /* FractControllerContrast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractControllerContrast.h; path = .XcodeSupport/FractControllerContrast.h; sourceTree = SOURCE_ROOT; };
 		F09C4D5B8DDCC16542BF9F47 /* FractControllerAcuityE.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerAcuityE.j; sourceTree = SOURCE_ROOT; };
-		F25A45BCA423DB7A7538E09B /* FractControllerAcuityL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FractControllerAcuityL.m; path = .XcodeSupport/FractControllerAcuityL.m; sourceTree = SOURCE_ROOT; };
 		F3064227AB4A793DAF144D61 /* Settings.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Settings.j; sourceTree = SOURCE_ROOT; };
 		F71043F69484B3E36875B5AE /* FractView.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractView.j; sourceTree = SOURCE_ROOT; };
 		FA764627AE5F870B1F99D5A0 /* FractControllerContrastE.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FractControllerContrastE.m; path = .XcodeSupport/FractControllerContrastE.m; sourceTree = SOURCE_ROOT; };
@@ -404,12 +388,8 @@
 				26DE446DABE9E3C226ED99EF /* FractController.m */,
 				2F574A0FBE37760CBE3F9A3D /* FractControllerAcuity.h */,
 				A22D45DCADB3542E770FA6FC /* FractControllerAcuity.m */,
-				692840129B4D97F1D87C15B6 /* FractControllerAcuityC.h */,
-				06C04AA3AA702BF636809D08 /* FractControllerAcuityC.m */,
 				415B497C815E74E12736701D /* FractControllerAcuityE.h */,
 				9E064587A2E20ED6EE887DAB /* FractControllerAcuityE.m */,
-				DD9E41E0A3CD61720F7AF84C /* FractControllerAcuityL.h */,
-				F25A45BCA423DB7A7538E09B /* FractControllerAcuityL.m */,
 				80FE46B397440BDDC8F91389 /* FractControllerAcuityLineByLine.h */,
 				3D414F3EBB05A901EADFF0E1 /* FractControllerAcuityLineByLine.m */,
 				CF0749DAB364C33210466311 /* FractControllerAcuityTAO.h */,
@@ -422,22 +402,16 @@
 				4E774729B670BDE69678922F /* FractControllerContrastC.m */,
 				1A6747EEA1C6D7A1C89BD03C /* FractControllerContrastE.h */,
 				FA764627AE5F870B1F99D5A0 /* FractControllerContrastE.m */,
-				6CFE49FAA1E12CD91A7D8CDA /* FractControllerContrastLett.h */,
-				476F40E79E7E02EDD09E2D07 /* FractControllerContrastLett.m */,
 				9A7C477DA04651E0EE6F21CE /* FractView.h */,
 				71634BCAB305282261E246C6 /* FractView.m */,
 				73A2415CA7B66684D1AC99BE /* GammaView.h */,
 				74A64B12A3E82A96BB9CCAFD /* GammaView.m */,
 				E3DF42A2891D0F2FB72E5C73 /* Globals.h */,
 				C19B49718058F4A7D3E206B7 /* Globals.m */,
-				5B6B4942AD5F142FC6431D4D /* MDBButton.h */,
-				95314F558B96A134B5ECC8F9 /* MDBButton.m */,
 				E83E476782CBBF57F9CCE814 /* MDBDispersionEstimation.h */,
 				1979436C8E51D5214A6FAE33 /* MDBDispersionEstimation.m */,
 				521B4104A56B8556565DDAEA /* MDBSimplestatistics.h */,
 				644D4F5FA2772D3095E57056 /* MDBSimplestatistics.m */,
-				8A28B6BF2E56773E002FD5FC /* MDBTextfFieldAutoBlur.h */,
-				8A28B6C02E56773E002FD5FC /* MDBTextfFieldAutoBlur.m */,
 				75084FCC9719E6E38CC9A31F /* Misc.h */,
 				E4BB4C6386E462030290EAF1 /* Misc.m */,
 				AAC943E39D548D5050E1B931 /* Optotypes.h */,
@@ -458,8 +432,6 @@
 				A3AE4AE8AFA7A74D41905F54 /* Thresholder.m */,
 				C2C44E81A34AFBC35F6B7EED /* ThresholderPest.h */,
 				A0A54AF7AE21284A829625D8 /* ThresholderPest.m */,
-				22D14B04BDBBD29062DC9F38 /* TrialHistoryController.h */,
-				17214E91B17E0D03AD1D26FA /* TrialHistoryController.m */,
 			);
 			name = "Cocoa Classes";
 			sourceTree = SOURCE_ROOT;
