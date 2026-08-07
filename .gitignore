@@ -1,14 +1,11 @@
 .DS_Store
-Frameworks/*
-Cocoa Classes/*
+Cocoa Classes/* # ??
 .XcodeSupport/*
 _cappDevelop.xcodeproj/project.xcworkspace/xcuserdata/bach.xcuserdatad/UserInterfaceState.xcuserstate
-xcuserdata
-# Resources/MainMenu.cib*
+xcuserdata # ??
 *.h
 *.m
 Build/
 
-# for unit testing, experimental right now 2024-07-05
-cypress*
+cypress* # for unit testing, experimental right now 2024-07-05
 
