@@ -17,7 +17,7 @@
                BlueprintIdentifier = "8ABDA6D3291A501000D68E3C"
                BuildableName = "capp"
                BlueprintName = "capp"
-               ReferencedContainer = "container:_cappDevelop.xcodeproj">
+               ReferencedContainer = "container:_FrACT10.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,7 +47,7 @@
             BlueprintIdentifier = "8ABDA6D3291A501000D68E3C"
             BuildableName = "capp"
             BlueprintName = "capp"
-            ReferencedContainer = "container:_cappDevelop.xcodeproj">
+            ReferencedContainer = "container:_FrACT10.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </LaunchAction>
@@ -63,7 +63,7 @@
             BlueprintIdentifier = "8ABDA6D3291A501000D68E3C"
             BuildableName = "capp"
             BlueprintName = "capp"
-            ReferencedContainer = "container:_cappDevelop.xcodeproj">
+            ReferencedContainer = "container:_FrACT10.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
