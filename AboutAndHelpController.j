@@ -29,8 +29,7 @@ let SharedAboutAndHelpController = nil;
 
 
 @implementation AboutAndHelpController: CPWindowController {
-    CPPanel aboutPanel;
-    CPPanel helpPanel;
+    CPPanel aboutPanel, helpPanel;
     CPWebView aboutWebView1, aboutWebView2;
     CPWebView helpWebView1, helpWebView2, helpWebView3, helpWebView4;
     CPView contentView;
@@ -90,14 +89,23 @@ let SharedAboutAndHelpController = nil;
     contentView = [helpPanel contentView];
     [helpPanel setTitle: "FrACT₁₀ – Help"];
 
-    const view13w = 764, view23y = 221, view23h = 96;
-    helpWebView1 = [[CPWebView alloc] initWithFrame: CGRectMake(kGuiMarginHorizontal, 12, view13w, 202)];
+    //General
+    const view13w = 764, view13h = 190;  let y = 12;
+    helpWebView1 = [[CPWebView alloc] initWithFrame: CGRectMake(kGuiMarginHorizontal, y, view13w, view13h)];
     [contentView addSubview: helpWebView1];
-    helpWebView2 = [[CPWebView alloc] initWithFrame: CGRectMake(kGuiMarginHorizontal, view23y, 388, view23h)];
+
+    //Acuity
+    const view23h = 84;  y += view13h + 6
+    helpWebView2 = [[CPWebView alloc] initWithFrame: CGRectMake(kGuiMarginHorizontal, y, 388, view23h)];
     [contentView addSubview: helpWebView2];
-    helpWebView3 = [[CPWebView alloc] initWithFrame: CGRectMake(416, view23y, 366, view23h)];
+
+    //Contrast
+    helpWebView3 = [[CPWebView alloc] initWithFrame: CGRectMake(416, y, 366, view23h)];
     [contentView addSubview: helpWebView3];
-    helpWebView4 = [[CPWebView alloc] initWithFrame: CGRectMake(kGuiMarginHorizontal, 324, view13w, 224)];
+
+    //References
+    y += view23h + 6;
+    helpWebView4 = [[CPWebView alloc] initWithFrame: CGRectMake(kGuiMarginHorizontal, y, view13w, 222)];
     [contentView addSubview: helpWebView4];
 
     [self addButtonWithTitle: "→Manual" frame: CGRectMake(19, buttonsY, buttonsWidth, buttonsHeight) tag: 3 tooltip: "Opens the manual in your browser"  selector: @selector(buttonGotoURLgivenTag_action:)];
@@ -153,7 +161,7 @@ let SharedAboutAndHelpController = nil;
 - (void) oneWebView: (CPWebView) theView htmlString: (CPString) htmlString {
     [theView setBackgroundColor: [CPColor colorWithWhite: 0.99 alpha: 1]];
     [theView setScrollMode: CPWebViewScrollNone];
-    let s = "<html lang='en'><head><meta charset='UTF-8'> <style>body{ font-family:sans-serif; font-size:13px; line-height:1.2em; padding: 8px; margin:0; border:1px solid black; border-radius:5px;} h4{margin-bottom:4px; padding:0;} ul{margin-top:0;}li{margin-bottom:0.3em;}</style></head><body>";
+    let s = "<html lang='en'><head><meta charset='UTF-8'> <style>body{ font-family:sans-serif; font-size:12px; line-height:1.2em; padding: 8px; margin:0; border:1px solid black; border-radius:5px;} h4{margin-bottom:4px; padding:0;} ul{margin-top:0;}li{margin-bottom:0.3em;}</style></head><body>";
     s += htmlString + "</body></html>";
     [theView loadHTMLString: s];
 }
@@ -164,7 +172,7 @@ let SharedAboutAndHelpController = nil;
     s += "Freiburg Visual Acuity and Contrast Test 10, ";
     s += "<a href='https://michaelbach.de/fract/index.html#anchorWhatsNew' target='_blank'>" + "Vs " + gVersionStringOfFract + "</a>, <br>";
     s += "release date " + gVersionDateOfFrACT + ".<br><br>";
-    s += "Semi-automatic assessment of visual acuities following ISO, and contrast thresholds.<br><br>Optotypes: Sloan letters, Landolt rings, Tumbling E, TAO, gratings, and hyperacuity targets.<br><br>Acuity results in LogMAR, decimal or Snellen notation; several export options plus 2-way HTML messaging for data management systems.<br><br>With <a href='https://doi.org/10.3758/BF03204398' target='_blank'>‘Best PEST’</a>, <a href='https://dx.doi.org/10.1163/156856897x00087' target='_blank'>anti-aliasing and dithering</a>.<br><br>"
+    s += "Semi-automatic assessment of visual acuities following ISO, and contrast thresholds.<br><br>Optotypes: Sloan letters, Landolt rings, Tumbling E, TAO, gratings, and hyperacuity targets.<br><br>Acuity results in LogMAR, Letter Score, decimal or Snellen notation; several export options plus 2-way HTML messaging for data management systems.<br><br>With <a href='https://doi.org/10.3758/BF03204398' target='_blank'>‘Best PEST’</a>, <a href='https://dx.doi.org/10.1163/156856897x00087' target='_blank'>anti-aliasing and dithering</a>.<br><br>"
     s += "Includes <a href='https://michaelbach.de/sci/stim/balm/index.html' target='_blank'>BaLM₁₀</a>";
     [self oneWebView: aboutWebView1 htmlString: s];
 
@@ -200,13 +208,13 @@ let SharedAboutAndHelpController = nil;
 - (void) populateHelpPanel {
     let s = "<h4>General</h4> <ul><li><b>Make use of the cool tool tips</b> by hovering with the mouse over the pertinent interface element.</li>";
     s += "<li>Be sure to calibrate (→Settings) for correct results. Preferences are automatically saved.</li>";
-    s += "<li>This is a forced choice test – even when your observers indicate that they cannot see a thing, encourage them to make their best guess; the software knows about the lucky guesses. Motivate them to react swiftly, lengthy squinting at the optotype is not helpful.</li>";
+    s += "<li>This is an (equal-alternative) forced choice test – even when your observers indicate that they cannot see a thing, encourage them to make their best guess; the software knows about the lucky guesses. Motivate your testees to react swiftly, lengthy squinting at the optotype is not helpful.</li>";
     s += "<li>Quality results require knowledge in sensory testing. At least observe the <a href='https://michaelbach.de/fract/checklist.html' target='_blank'>Checklist</a>.</li>";
     s += "<li>The <a href='https://michaelbach.de/fract/manual.html' target='_blank'>Manual</a> should cover everything, also don't hesitate to contact me: <a href='mailto:bach@uni-freiburg.de'>bach@uni-freiburg.de</a>.</li>";
     s += "<li>Speed up operation with <a href='https://michaelbach.de/fract/manual.html#anchor_Shortcuts' target='_blank'>Shortcuts</a>.</li></ul>";
     [self oneWebView: helpWebView1 htmlString: s];
 
-    s = "<h4>Visual Acuity</h4> <ul><li>Results in logMAR, decimal acuity or Snellen format</li>";
+    s = "<h4>Visual Acuity</h4> <ul><li>LogMAR, Letter Score, decimal acuity or Snellen format</li>";
     s += "<li>Limited screen resolution (pixel size) may clip high acuity</ul>";
     [self oneWebView: helpWebView2 htmlString: s];
 
@@ -214,7 +222,7 @@ let SharedAboutAndHelpController = nil;
     s += "<li>CS = contrast sensitivity</ul>";
     [self oneWebView: helpWebView3 htmlString: s];
 
-    s = "<h4>References</h4> <ul><li><a href='https://dx.doi.org/10.1007/s00417-024-06638-z' target='_blank'>Bach M (2024)</a> Freiburg Vision Test (FrACT): Optimal number of trials? Graefes Arch [<a href='https://link.springer.com/content/pdf/10.1007/s00417-024-06638-z.pdf' target='_blank'>PDF</a>]</li>";
+    s = "<h4>Some References</h4> <ul><li><a href='https://dx.doi.org/10.1007/s00417-024-06638-z' target='_blank'>Bach M (2024)</a> Freiburg Vision Test (FrACT): Optimal number of trials? Graefes Arch [<a href='https://link.springer.com/content/pdf/10.1007/s00417-024-06638-z.pdf' target='_blank'>PDF</a>]</li>";
     s += "<li><a href='http://dx.doi.org/10.1371/journal.pone.0147803' target='_blank'>Bach M, Schäfer K (2016)</a> Visual Acuity Testing: Feedback affects neither outcome nor reproducibility, but leaves participants happier. PLoS One 11:e0147803</li>";
     s += "<li><a href='http://dx.doi.org/10.1007/s00417-006-0474-4' target='_blank'>Bach M (2007)</a> The Freiburg Visual Acuity Test-variability unchanged by post-hoc re-analysis. Graefes Arch Clin Exp Ophthalmol 245:965–971 [<a href='http://rdcu.be/p2Ju' target='_blank'>→PDF</a>]</li>";
     s += "<li>Schulze-Bonsel K, Feltgen N, Burau H, Hansen LL, Bach M (2006) Visual acuities “Hand Motion” and “Counting Fingers” can be quantified using the Freiburg Visual Acuity Test. Invest Ophthalmol Vis Sci 47:1236–1240</li>";

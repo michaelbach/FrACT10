@@ -1,5 +1,6 @@
 # History
 
+2026-08-11 improve text & logic in help panel, font 1pt smaller to fit all platforms
 2026-08-06 modify a Preset; comment-out `Resources/MainMenu.cib*` in `.gitignore` so the repository contains a working version.
 2026-07-29 simplify logic for export string
 2026-07-27 fix small capitalisation inconsistency `MDBSimplestatistics`, extend build script for Xcode-beta
