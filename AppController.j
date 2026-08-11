@@ -188,7 +188,8 @@
     [CPMenu setMenuBarVisible: NO];
     [self setupEventListeners];
 
-    [Settings checkDefaults]; //what was the reason to put this here???
+    [Settings setPatID: gPatIDdefault]; //clear ID string
+    [Settings checkDefaults]; //also in settings cookie
 
     allPanels = [settingsPanel];
     if (currentInfoPanel) [allPanels addObject: currentInfoPanel];
@@ -207,7 +208,6 @@
     [self radioButtonsAcuityBwOrColor_action: null];
 
     [Settings setAutoRunIndex: kAutoRunIndexNone]; //make sure it's not accidentally on
-    [Settings setPatID: gPatIDdefault]; //clear ID string
 
     numberFormatter = [[CPNumberFormatter alloc] init];
     [numberFormatter setNumberStyle: CPNumberFormatterDecimalStyle];
