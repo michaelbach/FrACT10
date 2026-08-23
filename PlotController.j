@@ -226,7 +226,8 @@ let SharedPlotController = nil;
     const btnOk = [CPButton buttonWithTitle: "OK"];
     [btnOk setFrame: CGRectMake(734, buttonsY, buttonsOkWidth, buttonsHeight)];
     [btnOk setTarget: self];  [btnOk setAction: @selector(buttonPlotClose_action:)];
-    [btnOk setKeyEquivalent: "\r"];
+    [btnOk setBezelStyle:CPRoundedBezelStyle];
+    [btnOk setKeyEquivalent: CPCarriageReturnCharacter];
     [contentView addSubview: btnOk];
 }
 

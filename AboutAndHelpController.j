@@ -80,7 +80,8 @@ let SharedAboutAndHelpController = nil;
     [self addButtonWithTitle: "→Manual" frame: CGRectMake(274, buttonsY, buttonsWidth, buttonsHeight) tag: 3 tooltip: "Opens the manual in your browser." selector: @selector(buttonGotoURLgivenTag_action:)];
     [self addButtonWithTitle: "→FrACT blog" frame: CGRectMake(508, buttonsY, buttonsWidth, buttonsHeight) tag: 2 tooltip: "" selector: @selector(buttonGotoURLgivenTag_action:)];
     const btnOk = [self addButtonWithTitle: "OK" frame: CGRectMake(732, buttonsY, buttonsOkWidth, buttonsHeight) tag: -1 tooltip: "" selector: @selector(buttonAboutClose_action:)];
-    [btnOk setKeyEquivalent: crlf];
+    [btnOk setBezelStyle:CPRoundedBezelStyle];
+    [btnOk setKeyEquivalent: CPCarriageReturnCharacter];
 }
 
 
@@ -113,7 +114,8 @@ let SharedAboutAndHelpController = nil;
     [self addButtonWithTitle: "→Acuity Formats" frame: CGRectMake(383, buttonsY, buttonsWidth, buttonsHeight) tag: 5 tooltip: "Opens the “Acuity Cheat Sheet in your browser"  selector: @selector(buttonGotoURLgivenTag_action:)];
     [self addButtonWithTitle: "→Check Exported" frame: CGRectMake(561, buttonsY, buttonsWidth, buttonsHeight) tag: 6 tooltip: "Opens a website which will read and display the test results exported by default"  selector: @selector(buttonGotoURLgivenTag_action:)];
     const btnOk = [self addButtonWithTitle: "OK" frame: CGRectMake(738, buttonsY, buttonsOkWidth, buttonsHeight) tag: -1 tooltip: ""  selector: @selector(buttonHelpClose_action:)];
-    [btnOk setKeyEquivalent: crlf];
+    [btnOk setBezelStyle:CPRoundedBezelStyle];
+    [btnOk setKeyEquivalent: CPCarriageReturnCharacter];
 }
 
 

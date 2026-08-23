@@ -93,8 +93,9 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
     const btnCancel = [self addButtonWithTitle: "Cancel" frame: CGRectMake(629, buttonsY, buttonsOkWidth, buttonsHeight) tag: 1 tooltip: "Cancel calibration and revert to previous value" selector: @selector(buttonPlasticCardClosePanel_action:)];
     [btnCancel setKeyEquivalent: CPEscapeFunctionKey];
     
-    const btnOK = [self addButtonWithTitle: "OK" frame: CGRectMake(711, buttonsY, buttonsOkWidth, buttonsHeight) tag: 0 tooltip: "Accept calibration and close panel" selector: @selector(buttonPlasticCardClosePanel_action:)];
-    [btnOK setKeyEquivalent: crlf];
+    const btnOk = [self addButtonWithTitle: "OK" frame: CGRectMake(711, buttonsY, buttonsOkWidth, buttonsHeight) tag: 0 tooltip: "Accept calibration and close panel" selector: @selector(buttonPlasticCardClosePanel_action:)];
+    [btnOk setBezelStyle:CPRoundedBezelStyle];
+    [btnOk setKeyEquivalent: CPCarriageReturnCharacter];
 }
 
 
