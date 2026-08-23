@@ -258,7 +258,7 @@ Optotypes.j
  @return YES if all tests pass
  */
 + (BOOL) unittest {
-    let success = YES, report = crlf + "Optotypes▸unittest:" + crlf;
+    let success = YES, report = CPCarriageReturnCharacter + "Optotypes▸unittest:" + CPCarriageReturnCharacter;
     const opto = [[Optotypes alloc] init];
 
     //To avoid crashing during pure logic unit tests  provide a mock context that does nothing.
@@ -285,46 +285,46 @@ Optotypes.j
     [opto strokeLineX0: 10 y0: 20 x1: 30 y1: 40];
 
     if (opto.currentX !== 30 || opto.currentY !== 40) {
-        report += "  ERROR: strokeLineX0 did not update currentX/Y correctly!" + crlf; success = NO;
+        report += "  ERROR: strokeLineX0 did not update currentX/Y correctly!" + CPCarriageReturnCharacter; success = NO;
     }
 
     // Test 2: strokeLineToX updates currentX/Y
     [opto strokeLineToX: 50 y: 60];
     if (opto.currentX !== 50 || opto.currentY !== 60) {
-        report += "  ERROR: strokeLineToX did not update currentX/Y correctly!" + crlf; success = NO;
+        report += "  ERROR: strokeLineToX did not update currentX/Y correctly!" + CPCarriageReturnCharacter; success = NO;
     }
 
     // Test 3: strokeVLineAtX updates currentX/Y
     [opto strokeVLineAtX: 100 y0: 0 y1: 200];
     if (opto.currentX !== 100 || opto.currentY !== 200) {
-        report += "  ERROR: strokeVLineAtX did not update currentX/Y correctly!" + crlf; success = NO;
+        report += "  ERROR: strokeVLineAtX did not update currentX/Y correctly!" + CPCarriageReturnCharacter; success = NO;
     }
 
     // Test 4: strokeLineDeltaX updates currentX/Y
     [opto strokeLineX0: 0 y0: 0 x1: 10 y1: 10]; // Reset
     [opto strokeLineDeltaX: 5 deltaY: -5];
     if (opto.currentX !== 15 || opto.currentY !== 5) {
-        report += "  ERROR: strokeLineDeltaX did not update currentX/Y correctly!" + crlf; success = NO;
+        report += "  ERROR: strokeLineDeltaX did not update currentX/Y correctly!" + CPCarriageReturnCharacter; success = NO;
     }
 
     // Test 5: strokeHLineAtX0 updates currentX/Y
     [opto strokeHLineAtX0: 0 y: 50 x1: 100];
     if (opto.currentX !== 100 || opto.currentY !== 50) {
-        report += "  ERROR: strokeHLineAtX0 did not update currentX/Y correctly!" + crlf; success = NO;
+        report += "  ERROR: strokeHLineAtX0 did not update currentX/Y correctly!" + CPCarriageReturnCharacter; success = NO;
     }
 
     // Test 6: strokeXAtX updates currentX/Y (verifying diagonal end point)
     [opto strokeXAtX: 100 y: 100 size: 20];
     const s_offset = 10 * Math.SQRT1_2; // 20 * 0.5 / sqrt(2)
     if (Math.abs(opto.currentX - (100 + s_offset)) > 0.0001 || Math.abs(opto.currentY - (100 - s_offset)) > 0.0001) {
-        report += "  ERROR: strokeXAtX did not update currentX/Y correctly!" + crlf; success = NO;
+        report += "  ERROR: strokeXAtX did not update currentX/Y correctly!" + CPCarriageReturnCharacter; success = NO;
     }
 
     // Restore global cgc
     cgc = originalCgc;
 
     if (success) {
-        report += "  Position tracking and validation tests passed." + crlf;
+        report += "  Position tracking and validation tests passed." + CPCarriageReturnCharacter;
     }
     console.info(report);
     return success;

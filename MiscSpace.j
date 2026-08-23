@@ -171,7 +171,7 @@
 }
 + (BOOL) unittestLogMAR2letters2LogMAR {
     let isSuccess = YES;
-    console.info(crlf + "MiscSpace▸unittestLogMAR2letters2LogMAR:" + crlf)
+    console.info(CPCarriageReturnCharacter + "MiscSpace▸unittestLogMAR2letters2LogMAR:" + CPCarriageReturnCharacter)
     for (logMAR0 of [-0.3, 0.005, 1, 1.7, 3]) {
         let logMAR1 = [self logMARFromLetters: [self lettersFromlogMAR: logMAR0]];
         console.info(logMAR0, [self lettersFromlogMAR: logMAR0], [self lettersRoundedFromlogMAR: logMAR0], logMAR1)

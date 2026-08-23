@@ -235,7 +235,7 @@ basic flow:
     if (stimStrengthInDeviceunits >= gMaxResultLogCSWeber) { //todo: do this while testing
         rangeLimitStatus = kRangeLimitValueAtCeiling;
     }
-    let s = "Contrast threshold: " + crlf;
+    let s = "Contrast threshold: " + CPCarriageReturnCharacter;
     s += [self rangeStatusIndicatorStringInverted: YES];
     s += [Misc stringFromNumber: stimStrengthInDeviceunits decimals: 2 localised: YES];
     s += " logCS(Weber) ≙ ";

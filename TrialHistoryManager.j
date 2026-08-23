@@ -85,7 +85,7 @@
 
 + (void) runEnded { //console.info("TrialHistoryManager>trialEnded");
     //console.info(trialHistoryRecord);
-    let s = "trial" + tab + "value" + tab + "choicePresented" + tab + "choiceResponded" + tab + "correct" + tab + "reactionTimeInMs" + crlf;
+    let s = "trial" + tab + "value" + tab + "choicePresented" + tab + "choiceResponded" + tab + "correct" + tab + "reactionTimeInMs" + CPCarriageReturnCharacter;
     for (let i = 0; i < trialHistoryRecord.length; ++i) {
         const th = trialHistoryRecord[i];
         s += [Misc stringFromInteger: i + 1] + tab;
@@ -93,7 +93,7 @@
         s += th.presented + tab;
         s += th.responded + tab;
         s += th.isCorrect + tab;
-        s += th.reactionTimeInMs + crlf;
+        s += th.reactionTimeInMs + CPCarriageReturnCharacter;
     }
     [self setResultsHistoryString: s];
 }
@@ -115,7 +115,7 @@
  Code by Gemini
  */
 + (BOOL) unittest {
-    let success = YES, report = crlf + "TrialHistoryManager▸unittest:" + crlf;
+    let success = YES, report = CPCarriageReturnCharacter + "TrialHistoryManager▸unittest:" + CPCarriageReturnCharacter;
 
     //Test 1: Initialization and Trial Recording
     [TrialHistoryManager initWithNumTrials: 5];
@@ -132,16 +132,16 @@
     [TrialHistoryManager trialEnded];
 
     if (gTestDetails[td_nTrials] !== 2 || gTestDetails[td_nCorrect] !== 1 || gTestDetails[td_nIncorrect] !== 1) {
-        report += "  ERROR: Trial counters in gTestDetails are incorrect!" + crlf; success = NO;
+        report += "  ERROR: Trial counters in gTestDetails are incorrect!" + CPCarriageReturnCharacter; success = NO;
     }
 
     //Test 2: Data Frame Composition for CI95
     const info = [TrialHistoryManager composeInfo4CI];
     if (info.length !== 2) {
-        report += "  ERROR: Composed info length mismatch!" + crlf; success = NO;
+        report += "  ERROR: Composed info length mismatch!" + CPCarriageReturnCharacter; success = NO;
     } else {
         if (info[0].lMar !== 0.5 || info[0].correct !== YES || info[1].lMar !== 0.8 || info[1].correct !== NO) {
-            report += "  ERROR: Composed info data mismatch!" + crlf; success = NO;
+            report += "  ERROR: Composed info data mismatch!" + CPCarriageReturnCharacter; success = NO;
         }
     }
 
@@ -149,11 +149,11 @@
     [TrialHistoryManager runEnded];
     const historyStr = [TrialHistoryManager resultsHistoryString];
     if (!historyStr || [historyStr length] < 20 || ![historyStr containsString: "choicePresented"]) {
-        report += "  ERROR: Result history string generation failed!" + crlf; success = NO;
+        report += "  ERROR: Result history string generation failed!" + CPCarriageReturnCharacter; success = NO;
     }
 
     if (success) {
-        report += "  History recording and composition tests passed." + crlf;
+        report += "  History recording and composition tests passed." + CPCarriageReturnCharacter;
     }
     console.info(report);
     return success;

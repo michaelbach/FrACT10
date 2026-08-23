@@ -163,9 +163,9 @@ Coded by Gemini, many corrections by MB
             return;
         }
         //Fallback for older browsers (FileSaver.js)
-        let s = "Please enter a descriptive filename." + crlf + crlf;
-        s += "I will remove illegal characters and add the extension «.json»." + crlf + crlf;
-        s += "Your browser will ask: “Do you want to allow downloads…”." + crlf;
+        let s = "Please enter a descriptive filename." + CPCarriageReturnCharacter + CPCarriageReturnCharacter;
+        s += "I will remove illegal characters and add the extension «.json»." + CPCarriageReturnCharacter + CPCarriageReturnCharacter;
+        s += "Your browser will ask: “Do you want to allow downloads…”." + CPCarriageReturnCharacter;
         s += "Afterwards, you can move that file from your downloads folder to a better location for future Importing."
         let filename = prompt(s, suggestedFilename);
         if (!filename) { //User cancelled the prompt
@@ -237,7 +237,7 @@ Coded by Gemini, many corrections by MB
  @return YES if all tests pass
  */
 + (BOOL) unittest {
-    let success = YES, report = "\r\nExportManager▸unittest:" + crlf;
+    let success = YES, report = "\r\nExportManager▸unittest:" + CPCarriageReturnCharacter;
 
     //Setup: Simulate a test result
     const em = [[ExportManager alloc] init];
@@ -248,23 +248,23 @@ Coded by Gemini, many corrections by MB
     [Settings setResultsToClipboardIndex: kResultsToClipFinalOnly];
     [em updateResult: testResult history: testHistory forTestID: kTestAcuityLetters];
     if ([em _getExportString] !== testResult) {
-        report += "  ERROR: Export string mismatch (FinalOnly)!" + crlf; success = NO;
+        report += "  ERROR: Export string mismatch (FinalOnly)!" + CPCarriageReturnCharacter; success = NO;
     }
 
     [Settings setResultsToClipboardIndex: kResultsToClipFullHistory];
     if ([em _getExportString] !== testResult + testHistory) {
-        report += "  ERROR: Export string mismatch (FullHistory)!" + crlf; success = NO;
+        report += "  ERROR: Export string mismatch (FullHistory)!" + CPCarriageReturnCharacter; success = NO;
     }
 
     //Test 2: LocalStorage formatting
     [em updateResult: "0,5" history: "1,2" forTestID: kTestAcuityLetters];
     [em syncToLocalStorage];
     if (localStorage.getItem(gFilename4ResultStorage) !== "0.5") {
-         report += "  ERROR: LocalStorage decimal conversion failed!" + crlf; success = NO;
+         report += "  ERROR: LocalStorage decimal conversion failed!" + CPCarriageReturnCharacter; success = NO;
     }
 
     if (success) {
-        report += "  ExportManager logic tests passed." + crlf;
+        report += "  ExportManager logic tests passed." + CPCarriageReturnCharacter;
     }
     console.info(report);
     return success;

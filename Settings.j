@@ -353,7 +353,7 @@ Created by mb on July 15, 2015.
  @return YES if all tests pass
  */
 + (BOOL) unittest {
-    let success = YES, report = crlf + "Settings▸unittest:" + crlf;
+    let success = YES, report = CPCarriageReturnCharacter + "Settings▸unittest:" + CPCarriageReturnCharacter;
 
     //Test 1: Basic Persistence (using a string setting)
     const originalID = [Settings patID];
@@ -361,7 +361,7 @@ Created by mb on July 15, 2015.
     [Settings setPatID: testID];
     [[CPUserDefaults standardUserDefaults] synchronize];
     if ([Settings patID] !== testID) {
-        report += "  ERROR: String persistence failed!" + crlf; success = NO;
+        report += "  ERROR: String persistence failed!" + CPCarriageReturnCharacter; success = NO;
     }
     [Settings setPatID: originalID]; // Restore
 
@@ -371,10 +371,10 @@ Created by mb on July 15, 2015.
     [Settings setDistanceInCM: -50]; //Set invalid value
     [Settings allNotCheckButSet: NO]; //Trigger vetting
     if ([Settings distanceInCM] === -50) {
-        report += "  ERROR: Negative distance was not vetted!" + crlf; success = NO;
+        report += "  ERROR: Negative distance was not vetted!" + CPCarriageReturnCharacter; success = NO;
     }
     if ([Settings distanceInCM] !== kDefaultDistanceInCM) {
-        report += "  ERROR: Invalid distance did not revert to default! (is " + [Settings distanceInCM] + ")" + crlf; success = NO;
+        report += "  ERROR: Invalid distance did not revert to default! (is " + [Settings distanceInCM] + ")" + CPCarriageReturnCharacter; success = NO;
     }
     [Settings setDistanceInCM: originalDist]; //Restore
 
@@ -384,12 +384,12 @@ Created by mb on July 15, 2015.
     [[CPUserDefaults standardUserDefaults] setObject: NaN forKey: "acuityHasEasyTrials"];
     [Settings allNotCheckButSet: NO];
     if (isNaN([Settings acuityHasEasyTrials])) {
-        report += "  ERROR: NaN boolean was not vetted!" + crlf; success = NO;
+        report += "  ERROR: NaN boolean was not vetted!" + CPCarriageReturnCharacter; success = NO;
     }
     [Settings setAcuityHasEasyTrials: originalEasy]; //Restore
 
     //Test 4: Metadata-driven Range Vetting (Systematic)
-    report += "  Running systematic metadata range tests…" + crlf;
+    report += "  Running systematic metadata range tests…" + CPCarriageReturnCharacter;
     for (const [name, meta] of gSettingsNamesAndTypesMap) {
         if (["minPossibleLogMAR", "maxPossibleLogMAR"].includes(name)) continue; //don't test these
         if (meta.type === "int" || meta.type === "float") {
@@ -398,21 +398,21 @@ Created by mb on July 15, 2015.
             [[CPUserDefaults standardUserDefaults] setObject: meta.min - 1 forKey: name];
             [Settings allNotCheckButSet: NO];
             if ([[CPUserDefaults standardUserDefaults] objectForKey: name] !== meta.dflt) {
-                report += "  ERROR: '" + name + "' below min (" + (meta.min - 1) + ") did not revert to default!" + crlf; success = NO;
+                report += "  ERROR: '" + name + "' below min (" + (meta.min - 1) + ") did not revert to default!" + CPCarriageReturnCharacter; success = NO;
             }
             //Test Above Max
             if (!["nAlternativesIndex"].includes(name)) { //avoids array overflow when testing
                 [[CPUserDefaults standardUserDefaults] setObject: meta.max + 1 forKey: name];
                 [Settings allNotCheckButSet: NO];
                 if ([[CPUserDefaults standardUserDefaults] objectForKey: name] !== meta.dflt) {
-                    report += "  ERROR: '" + name + "' above max (" + (meta.max + 1) + ") did not revert to default!" + crlf; success = NO;
+                    report += "  ERROR: '" + name + "' above max (" + (meta.max + 1) + ") did not revert to default!" + CPCarriageReturnCharacter; success = NO;
                 }
             }
             [[CPUserDefaults standardUserDefaults] setObject: originalVal forKey: name]; //Restore
         }
     }
     if (success) {
-        report += "  Settings logic and range vetting tests passed." + crlf;
+        report += "  Settings logic and range vetting tests passed." + CPCarriageReturnCharacter;
     }
     console.info(report);
     return success;

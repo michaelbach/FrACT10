@@ -79,7 +79,7 @@ A wrapper for whatever thresholding algorithm is used (currently only BestPEST)
 + (BOOL) unittest {
     let success = YES, report = "";
 
-    console.info( crlf + "Thresholder▸unittest:" + crlf)
+    console.info( CPCarriageReturnCharacter + "Thresholder▸unittest:" + CPCarriageReturnCharacter)
     const th0 = [[Thresholder alloc] initWithNumAlternatives: 4];
 
     for (let i = 0; i < 5; ++i) { //old simple test
@@ -98,7 +98,7 @@ A wrapper for whatever thresholding algorithm is used (currently only BestPEST)
     [th enterTrialOutcomeWithAppliedStim: stim1 wasCorrect: NO];
     let stim2 = [th nextStim2apply];
     if (stim2 <= stim1) {
-        report += "  ERROR: Stimulus did not get easier after failure! (" + stim1 + " → " + stim2 + ")" + crlf; success = NO;
+        report += "  ERROR: Stimulus did not get easier after failure! (" + stim1 + " → " + stim2 + ")" + CPCarriageReturnCharacter; success = NO;
     }
 
     //Succeed multiple trials -> stimulus should eventually get harder (decrease in value)
@@ -108,11 +108,11 @@ A wrapper for whatever thresholding algorithm is used (currently only BestPEST)
         currentStim = [th nextStim2apply];
     }
     if (currentStim >= stim2) {
-        report += "  ERROR: Stimulus did not get harder after 5 successes! (" + stim2 + " → " + currentStim + ")" + crlf; success = NO;
+        report += "  ERROR: Stimulus did not get harder after 5 successes! (" + stim2 + " → " + currentStim + ")" + CPCarriageReturnCharacter; success = NO;
     }
 
     if (success) {
-        report += "  Thresholder logic tests passed." + crlf;
+        report += "  Thresholder logic tests passed." + CPCarriageReturnCharacter;
     }
     console.info(report);
     return success;

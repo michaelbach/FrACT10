@@ -201,17 +201,17 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
  @return YES if all tests pass
  */
 - (BOOL) unittest {
-    let success = YES, report = crlf + "Presets▸unittest:" + crlf;
+    let success = YES, report = CPCarriageReturnCharacter + "Presets▸unittest:" + CPCarriageReturnCharacter;
 
     if (!allPresets || Object.keys(allPresets).length === 0) {
-        report += "  ERROR: allPresets not loaded!" + crlf; success = NO;
+        report += "  ERROR: allPresets not loaded!" + CPCarriageReturnCharacter; success = NO;
     }
     if (!allPresetNames || !allPresetNames.includes("Standard Defaults")) {
-        report += "  ERROR: 'Standard Defaults' missing from allPresetNames!" + crlf; success = NO;
+        report += "  ERROR: 'Standard Defaults' missing from allPresetNames!" + CPCarriageReturnCharacter; success = NO;
     }
 
     if (success) {
-        report += "  Preset loading and validation tests passed." + crlf;
+        report += "  Preset loading and validation tests passed." + CPCarriageReturnCharacter;
     }
     console.info(report);
     return success;

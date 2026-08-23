@@ -161,7 +161,7 @@ function _pause(ms) { //console.info("Misc>_pause");
     });
 
     doc.setTextColor(0);  doc.setFontSize(8);  doc.setFont("Courier", "bold");
-    doc.text("FrACT10 RESULT RECORD" + crlf, 15, 10); //https://artskydj.github.io/jsPDF/docs/jsPDF.html#text
+    doc.text("FrACT10 RESULT RECORD" + CPCarriageReturnCharacter, 15, 10); //https://artskydj.github.io/jsPDF/docs/jsPDF.html#text
 
     // main output
     const items = sTestResult.trim().split('\t');
@@ -290,7 +290,7 @@ function _pause(ms) { //console.info("Misc>_pause");
     for (let i = 0; i < parts.length; i++) {
         result += parts[i];
         if (i < parts.length - 1) {
-            result += (i % 2 === 0) ? tab : crlf;
+            result += (i % 2 === 0) ? tab : CPCarriageReturnCharacter;
         }
     }
     return result;

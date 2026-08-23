@@ -102,7 +102,7 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
     [okButton setTitle: "OK"];
     [okButton setTarget: gAppController];
     [okButton setAction: @selector(runFractController2_actionOK:)];
-    [okButton setKeyEquivalent: crlf];
+    [okButton setKeyEquivalent: CPCarriageReturnCharacter];
     [contentView addSubview: okButton];
 
     const cancelButton = [[CPButton alloc] initWithFrame: CGRectMake(kFractWidth-kGuiMarginHorizontal-2*buttonsOkWidth-kGuiMarginHorizontal, buttonsY, buttonsOkWidth, buttonsHeight)];

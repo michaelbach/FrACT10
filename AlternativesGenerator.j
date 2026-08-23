@@ -124,7 +124,7 @@ function randomiseArray(array) {
  @return YES if all tests pass
  */
 + (BOOL) unittest {
-    let success = YES, report = crlf + "AlternativesGenerator▸unittest:" + crlf;
+    let success = YES, report = CPCarriageReturnCharacter + "AlternativesGenerator▸unittest:" + CPCarriageReturnCharacter;
 
     // Test 1: Basic 4-alternative generation (cardinal directions)
     const gen4 = [[AlternativesGenerator alloc] initWithNumAlternatives: 4 andNTrials: 20 obliqueOnly: NO];
@@ -132,7 +132,7 @@ function randomiseArray(array) {
     for (let i = 0; i < 20; i++) results4.push([gen4 nextAlternative]);
     // Expecting 0, 2, 4, 6 (cardinal)
     if (results4.some(v => ![0, 2, 4, 6].includes(v))) {
-        report += "  ERROR: 4-alternative generator produced non-cardinal values: " + results4 + crlf; success = NO;
+        report += "  ERROR: 4-alternative generator produced non-cardinal values: " + results4 + CPCarriageReturnCharacter; success = NO;
     }
 
     // Test 2: 2-alternative generation
@@ -141,7 +141,7 @@ function randomiseArray(array) {
     for (let i = 0; i < 10; i++) results2.push([gen2 nextAlternative]);
     // Expecting 0, 4
     if (results2.some(v => ![0, 4].includes(v))) {
-        report += "  ERROR: 2-alternative generator produced unexpected values: " + results2 + crlf; success = NO;
+        report += "  ERROR: 2-alternative generator produced unexpected values: " + results2 + CPCarriageReturnCharacter; success = NO;
     }
 
     // Test 3: ObliqueOnly logic (for 4 alternatives)
@@ -151,7 +151,7 @@ function randomiseArray(array) {
     const results4O = [];
     for (let i = 0; i < 10; i++) results4O.push([gen4O nextAlternative]);
     if (results4O.some(v => ![2, 4, 6, 8].includes(v))) {
-         report += "  ERROR: 4-alternative oblique generator produced unexpected values: " + results4O + crlf; success = NO;
+         report += "  ERROR: 4-alternative oblique generator produced unexpected values: " + results4O + CPCarriageReturnCharacter; success = NO;
     }
 
     // Test 4: 10 alternatives (Letters)
@@ -159,11 +159,11 @@ function randomiseArray(array) {
     const results10 = [];
     for (let i = 0; i < 30; i++) results10.push([gen10 nextAlternative]);
     if (results10.some(v => v < 0 || v > 9)) {
-         report += "  ERROR: 10-alternative generator out of range: " + results10 + crlf; success = NO;
+         report += "  ERROR: 10-alternative generator out of range: " + results10 + CPCarriageReturnCharacter; success = NO;
     }
 
     if (success) {
-        report += "  Sequence generation and range tests passed." + crlf;
+        report += "  Sequence generation and range tests passed." + CPCarriageReturnCharacter;
     }
     console.info(report);
     return success;

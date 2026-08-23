@@ -547,7 +547,7 @@
 
 - (IBAction) buttonPhoneResponseBox_action: (id) sender {
     if (!navigator.onLine) { //skip if browser thinks we're offline
-        const s = "We're not online, but that's required for the" + crlf + "Phone Response Box";
+        const s = "We're not online, but that's required for the" + CPCarriageReturnCharacter + "Phone Response Box";
         gLatestAlert = [CPAlert alertWithMessageText: "WARNING" defaultButton: "OK" alternateButton: nil otherButton: nil informativeTextWithFormat: s];
         [gLatestAlert runModalWithDidEndBlock: function(alert, returnCode) {
             gLatestAlert = null;
@@ -664,9 +664,9 @@
  @return YES if all checks pass
  */
 - (BOOL) unittestAppC {
-    let success = YES, report = crlf + "AppController▸unittestAppC:" + crlf;
+    let success = YES, report = CPCarriageReturnCharacter + "AppController▸unittestAppC:" + CPCarriageReturnCharacter;
     if (gAppController !== self) { //Check global controller
-        report += "  ERROR: gAppController is not self!" + crlf;  success = NO;
+        report += "  ERROR: gAppController is not self!" + CPCarriageReturnCharacter;  success = NO;
     }
 
     //Check critical outlets
@@ -679,20 +679,20 @@
     ];
     for (const outlet of criticalOutlets) {
         if (!outlet.val) {
-            report += "  ERROR: Outlet '" + outlet.name + "' is nil!" + crlf;  success = NO;
+            report += "  ERROR: Outlet '" + outlet.name + "' is nil!" + CPCarriageReturnCharacter;  success = NO;
         }
     }
     if (![[self window] isKeyWindow] && !currentFractController) { //Check window state
-        report += "  WARNING: Main window is not Key, but no test is running." + crlf;
+        report += "  WARNING: Main window is not Key, but no test is running." + CPCarriageReturnCharacter;
     }
     if (success) {
-        report += "  All critical outlets and global states are OK." + crlf;
+        report += "  All critical outlets and global states are OK." + CPCarriageReturnCharacter;
     }
 
     //Test UUID Generation
-    report += "AppController▸unittestAppC_Functional:" + crlf;
+    report += "AppController▸unittestAppC_Functional:" + CPCarriageReturnCharacter;
     if (!currentUUID || [currentUUID length] < 10) {
-        report += "  ERROR: currentUUID is invalid or empty!" + crlf; success = NO;
+        report += "  ERROR: currentUUID is invalid or empty!" + CPCarriageReturnCharacter; success = NO;
     }
 
     //Test Color Synchronization
@@ -702,7 +702,7 @@
     const testColor = [CPColor redColor];
     [self setAcuityForeColorAppC: testColor];
     if (![[self acuityForeColorAppC] isEqual: testColor] || ![gColorFore isEqual: testColor]) {
-        report += "  ERROR: acuityForeColorAppC synchronization failed!" + crlf; success = NO;
+        report += "  ERROR: acuityForeColorAppC synchronization failed!" + CPCarriageReturnCharacter; success = NO;
     }
     [self setAcuityForeColorAppC: originalFore]; // Restore
     [Settings setIsAcuityColor: originalIsAcuityColor]; // Restore mode
@@ -713,11 +713,11 @@
     const expectedCalibrated = (distance !== kDefaultDistanceInCM)
         && (barLength !== gDefaultCalibrationBarLengthInMM);
     if (isCalibrated !== expectedCalibrated) {
-         report += "  ERROR: Calibration status mismatch! (Dist: " + distance + ", Bar: " + barLength + ")" + crlf; success = NO;
+         report += "  ERROR: Calibration status mismatch! (Dist: " + distance + ", Bar: " + barLength + ")" + CPCarriageReturnCharacter; success = NO;
     }
 
     if (success) {
-        report += "  Functional tests passed." + crlf;
+        report += "  Functional tests passed." + CPCarriageReturnCharacter;
     }
     console.info(report);
     return success;

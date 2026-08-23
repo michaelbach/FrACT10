@@ -494,7 +494,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     exportString += [self _appendNoiseInfo];
     exportString += [self _appendGratingInfo];
     exportString += [self _appendHPOCodeInfo];
-    [gAppController setCurrentTestResultExportString: exportString + crlf];
+    [gAppController setCurrentTestResultExportString: exportString + CPCarriageReturnCharacter];
     [gAppController runEnd];
 }
 
