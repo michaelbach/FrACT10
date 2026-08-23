@@ -461,7 +461,7 @@ Shortcut: r
                         </connections>
                     </button>
                     <textField autoresizesSubviews="NO" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ce4-vX-9bM">
-                        <rect key="frame" x="334" y="109" width="281" height="21"/>
+                        <rect key="frame" x="332" y="109" width="285" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <string key="toolTip">To calibrate:
 
@@ -470,7 +470,7 @@ Shortcut: r
 · Enter your 'Observer distance˚
 · Calibrate screen pixel size with “Plastic card”
  </string>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" alignment="center" title="calibrationWarningField" drawsBackground="YES" allowsEditingTextAttributes="YES" usesSingleLineMode="YES" id="LBz-Ny-f7a">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" alignment="center" title="calibrationWarningField" allowsEditingTextAttributes="YES" usesSingleLineMode="YES" id="LBz-Ny-f7a">
                             <font key="font" metaFont="system" size="18"/>
                             <color key="textColor" red="0.82498598337173457" green="0.23089347153791109" blue="0.13637442761327159" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
