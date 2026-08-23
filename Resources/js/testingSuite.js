@@ -4,6 +4,7 @@
 History
 =======
 
+ 2026-08-23 reduce feedback sound during testing (becomes anoying)
  2026-06-13 acknowledge a possible "updated settings…" dialog, ensure standard start settings
  2026-05-14 display version result, announce Letters test
  2026-03-05 Add checks on plastic card, About and Help
@@ -270,6 +271,7 @@ const testMultipleOptotypes = async () => {
 	await oneStep3Ms('setSetting', 'nTrials04', 1);
 	await oneStep3Ms('setSetting', 'nTrials02', 1);
 	await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
+    await oneStep3Ms('setSetting', 'soundVolume', 5);
     tellIframe3Ms('run','acuity', 'Landolt');
     await pauseMilliseconds(pauseViewMS);
     tellIframe3Ms('run','acuity', 'TumblingE');
@@ -491,6 +493,7 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
 		if (response.m3 != 400) errorAlert();
 		await oneStep3Ms('setSetting', 'nTrials08', 1);
 		await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
+        await oneStep3Ms('setSetting', 'soundVolume', 5);
         await oneStep3Ms('setValue', 'resultString', "Run “Letters”");
         await pauseMilliseconds(pauseViewMS);
 		tellIframe3Ms('run','acuity', 'Letters');
@@ -500,6 +503,7 @@ await doTextTestfunText("Test fullscreen", async () => {// do this later, doesn'
         await oneStep3Ms('setSetting', 'Preset', 'Testing');
         await oneStep3Ms('setSetting', 'contrastAcuityWeber', -10000);
         await oneStep3Ms('setSetting', 'nTrials08', 1);
+        await oneStep3Ms('setSetting', 'soundVolume', 5);
         await oneStep3Ms('setSetting', 'crowdingType', 1);
         await oneStep3Ms('setSetting', 'timeoutResponseSeconds', 1);
         tellIframe3Ms('run','acuity', 'Letters');
