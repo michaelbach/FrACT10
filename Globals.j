@@ -56,8 +56,6 @@ kDefaultDistanceInCM = 399;
 gDefaultCalibrationBarLengthInMM = 149;
 gCalBarLengthInPixel = 700;
 
-kMeter2FeetMultiplier = 3.28084;
-
 @typedef TestIDType
 kTestNone = 0; kTestAcuityLetters = 1; kTestAcuityLandolt = 2; kTestAcuityE = 3; kTestAcuityTAO = 4;
 kTestAcuityVernier = 5; kTestContrastLetters = 6; kTestContrastLandolt = 7; kTestContrastE = 8;

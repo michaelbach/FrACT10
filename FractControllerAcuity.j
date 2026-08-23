@@ -134,7 +134,8 @@
  */
 - (CPString) format4SnellenInFeet: (float) decVA {
     const distanceInMetres = [Settings distanceInCM] / 100.0;
-    let distanceInFeet = distanceInMetres * kMeter2FeetMultiplier;
+    const kMeter2FeetMultiplier = 3.28084;
+    const distanceInFeet = distanceInMetres * kMeter2FeetMultiplier;
     if ([Settings forceSnellen20])  distanceInFeet = 20;
     let s = [Misc stringFromNumber: distanceInFeet decimals: 0 localised: YES] + "/";
     s += [Misc stringFromNumber: (distanceInFeet / decVA) decimals: 0 localised: YES];
