@@ -117,14 +117,14 @@
     if (gAppController.runAborted) return "";
     let s = [self generalComposeExportString];
     const nDigits = 3;
-    s += tab + "value" + tab + [Misc stringFromNumber: [self resultValue4Export] decimals: nDigits localised: YES];
-    s += tab + "unit1" + tab + gAppController.currentTestResultUnit
-    s += tab + "distanceInCm" + tab + [Misc stringFromNumber: [Settings distanceInCM] decimals: 1 localised: YES];
-    s += tab + "contrastWeber" + tab + 99;
-    s += tab + "unit2" + tab + "%";
-    s += tab + "nTrials" + tab + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
-    s += tab + "rangeLimitStatus" + tab + rangeLimitStatus;
-    s += tab + "crowding" + tab + [Settings crowdingType];
+    s += CPTabCharacter + "value" + CPTabCharacter + [Misc stringFromNumber: [self resultValue4Export] decimals: nDigits localised: YES];
+    s += CPTabCharacter + "unit1" + CPTabCharacter + gAppController.currentTestResultUnit
+    s += CPTabCharacter + "distanceInCm" + CPTabCharacter + [Misc stringFromNumber: [Settings distanceInCM] decimals: 1 localised: YES];
+    s += CPTabCharacter + "contrastWeber" + CPTabCharacter + 99;
+    s += CPTabCharacter + "unit2" + CPTabCharacter + "%";
+    s += CPTabCharacter + "nTrials" + CPTabCharacter + [Misc stringFromNumber: nTrials decimals: 0 localised: YES];
+    s += CPTabCharacter + "rangeLimitStatus" + CPTabCharacter + rangeLimitStatus;
+    s += CPTabCharacter + "crowding" + CPTabCharacter + [Settings crowdingType];
     return [self generalComposeExportStringFinalize: s];
 }
 

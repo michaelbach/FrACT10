@@ -509,7 +509,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     gTestDetails[td_halfCI95] = hCI;
     ci95String = " ± " + [Misc stringFromNumber: hCI decimals: 2 localised: YES]; //this↓ will add CI95 info
     [gAppController setResultStringFieldTo: [self acuityComposeResultString]]; //↑via side effect, sadly
-    return tab + "halfCI95" + tab + [Misc stringFromNumber: hCI decimals: 3 localised: YES];
+    return CPTabCharacter + "halfCI95" + CPTabCharacter + [Misc stringFromNumber: hCI decimals: 3 localised: YES];
 }
 
 - (CPString) _appendColorInfo {
@@ -518,7 +518,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if ([self isAcuityTAO]) return "";
     gTestDetails[td_colorFore] = gColorFore;
     gTestDetails[td_colorBack] = gColorBack;
-    return tab + "colorFore" + tab + [gColorFore hexString] + tab + "colorBack" + tab + [gColorBack hexString];
+    return CPTabCharacter + "colorFore" + CPTabCharacter + [gColorFore hexString] + CPTabCharacter + "colorBack" + CPTabCharacter + [gColorBack hexString];
 }
 
 - (CPString) _appendNoiseInfo {
@@ -526,19 +526,19 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     if ([self isAcuityTAO]) return "";
     if (!([self isAcuityOptotype] || [self isContrastOptotype])) return "";
     gTestDetails[td_noiseContrast] = [Settings noiseContrast];
-    return tab + "noiseContrast" + tab + [Misc stringFromInteger: [Settings noiseContrast]];
+    return CPTabCharacter + "noiseContrast" + CPTabCharacter + [Misc stringFromInteger: [Settings noiseContrast]];
 }
 
 - (CPString) _appendGratingInfo {
     if (gCurrentTestID !== kTestContrastG) return "";
     gTestDetails[td_gratingShape] = [Settings gratingShapeIndex];
-    return tab + "gratingShape" + tab + [Settings gratingShapeIndex];
+    return CPTabCharacter + "gratingShape" + CPTabCharacter + [Settings gratingShapeIndex];
 }
 
 - (CPString) _appendHPOCodeInfo {
     if (![self isAcuityOptotype]) return "";
     if (![Settings shouldExportHPOCode]) return "";
-    return tab + "HPOCode" + tab + [Misc hpoCodeFromLogMAR: [self resultValue4Export]];
+    return CPTabCharacter + "HPOCode" + CPTabCharacter + [Misc hpoCodeFromLogMAR: [self resultValue4Export]];
 }
 
 
@@ -612,22 +612,22 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
  */
 - (CPString) generalComposeExportString { //console.info("FractController>generalComposeExportString");
     const nowDateTime = [CPDate date];
-    let s = "vsExportFormat" + tab + kVersionOfExportFormat;
-    s += tab + "vsFrACT" + tab + gVersionDateOfFrACT;
-    s += tab + "decimalMark" + tab + [Settings decimalMarkChar];
-    s += tab + "ID" + tab + [Settings patID];
-    s += tab + "eyeCondition" + tab + gEyeIndex2string[[Settings eyeIndex]];
-    s += tab + "date" + tab + [Misc date2YYYY_MM_DD: nowDateTime];
-    s += tab + "time" + tab + [Misc date2HH_MM_SS: nowDateTime];
-    s += tab + "test" + tab + [Misc testNameGivenTestID: gCurrentTestID];
+    let s = "vsExportFormat" + CPTabCharacter + kVersionOfExportFormat;
+    s += CPTabCharacter + "vsFrACT" + CPTabCharacter + gVersionDateOfFrACT;
+    s += CPTabCharacter + "decimalMark" + CPTabCharacter + [Settings decimalMarkChar];
+    s += CPTabCharacter + "ID" + CPTabCharacter + [Settings patID];
+    s += CPTabCharacter + "eyeCondition" + CPTabCharacter + gEyeIndex2string[[Settings eyeIndex]];
+    s += CPTabCharacter + "date" + CPTabCharacter + [Misc date2YYYY_MM_DD: nowDateTime];
+    s += CPTabCharacter + "time" + CPTabCharacter + [Misc date2HH_MM_SS: nowDateTime];
+    s += CPTabCharacter + "test" + CPTabCharacter + [Misc testNameGivenTestID: gCurrentTestID];
     return s;
 }
 //in order to not mangle parameter sequence I'm tucking this addition at the end
 //to be used for optional conditions
 - (CPString) generalComposeExportStringFinalize: (CPString) s {
     if (([Settings eccentXInDeg] !== 0) || ([Settings eccentYInDeg] !== 0)) {
-        s += tab + "eccentricityX" + tab + [Misc stringFromNumber: [Settings eccentXInDeg] decimals: 1 localised: YES];
-        s += tab + "eccentricityY" + tab + [Misc stringFromNumber: [Settings eccentYInDeg] decimals: 1 localised: YES];
+        s += CPTabCharacter + "eccentricityX" + CPTabCharacter + [Misc stringFromNumber: [Settings eccentXInDeg] decimals: 1 localised: YES];
+        s += CPTabCharacter + "eccentricityY" + CPTabCharacter + [Misc stringFromNumber: [Settings eccentYInDeg] decimals: 1 localised: YES];
     }
     return s;
 }

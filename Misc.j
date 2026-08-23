@@ -164,7 +164,7 @@ function _pause(ms) { //console.info("Misc>_pause");
     doc.text("FrACT10 RESULT RECORD" + CPCarriageReturnCharacter, 15, 10); //https://artskydj.github.io/jsPDF/docs/jsPDF.html#text
 
     // main output
-    const items = sTestResult.trim().split('\t');
+    const items = sTestResult.trim().split(CPTabCharacter);
     let tableData = []; //https://github.com/simonbengtsson/jsPDF-AutoTable
     for (let i = 0; i < items.length; i += 2) { //every second item: new row
         tableData.push([items[i], items[i + 1]]);
@@ -173,9 +173,11 @@ function _pause(ms) { //console.info("Misc>_pause");
     doc.autoTable({body: tableData, theme: 'grid', styles: styles, headStyles: {textColor: 0}, bodyStyles: {textColor: 0}});
     
     // trial-by-trial output
+    console.info(sHistory);
     tableData = sHistory.trim()
-      .split('\n') //split rows by newline
-      .map(row => row.split('\t')); //split columns by tab
+      .split(CPCarriageReturnCharacter) //split rows by newline
+      .map(row => row.split(CPTabCharacter)); //split columns by tab
+    console.info(tableData);
     doc.autoTable({body: tableData, theme: 'grid', styles: styles, headStyles: {textColor: 0}, bodyStyles: {textColor: 0}});
     const filename = "FrACT_"+ gTestDetails[td_dateOfRunStart] + "_" + [Misc date2HHdashMM: gTestDetails[td_dateTimeOfRunStart]] + ".pdf";
     doc.save(filename); //https://github.com/eligrey/FileSaver.js
@@ -290,7 +292,7 @@ function _pause(ms) { //console.info("Misc>_pause");
     for (let i = 0; i < parts.length; i++) {
         result += parts[i];
         if (i < parts.length - 1) {
-            result += (i % 2 === 0) ? tab : CPCarriageReturnCharacter;
+            result += (i % 2 === 0) ? CPTabCharacter : CPCarriageReturnCharacter;
         }
     }
     return result;

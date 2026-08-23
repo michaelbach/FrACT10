@@ -85,14 +85,14 @@
 
 + (void) runEnded { //console.info("TrialHistoryManager>trialEnded");
     //console.info(trialHistoryRecord);
-    let s = "trial" + tab + "value" + tab + "choicePresented" + tab + "choiceResponded" + tab + "correct" + tab + "reactionTimeInMs" + CPCarriageReturnCharacter;
+    let s = "trial" + CPTabCharacter + "value" + CPTabCharacter + "choicePresented" + CPTabCharacter + "choiceResponded" + CPTabCharacter + "correct" + CPTabCharacter + "reactionTimeInMs" + CPCarriageReturnCharacter;
     for (let i = 0; i < trialHistoryRecord.length; ++i) {
         const th = trialHistoryRecord[i];
-        s += [Misc stringFromInteger: i + 1] + tab;
-        s += [Misc stringFromNumber: th.value decimals: 3 localised: YES]  + tab;
-        s += th.presented + tab;
-        s += th.responded + tab;
-        s += th.isCorrect + tab;
+        s += [Misc stringFromInteger: i + 1] + CPTabCharacter;
+        s += [Misc stringFromNumber: th.value decimals: 3 localised: YES]  + CPTabCharacter;
+        s += th.presented + CPTabCharacter;
+        s += th.responded + CPTabCharacter;
+        s += th.isCorrect + CPTabCharacter;
         s += th.reactionTimeInMs + CPCarriageReturnCharacter;
     }
     [self setResultsHistoryString: s];

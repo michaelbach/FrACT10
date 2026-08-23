@@ -54,7 +54,7 @@ let kWorstLogMAR, kBestLogMAR, kGuess, testDF; //there are no class properties i
     const [CI0025, med, CI0975] = quantiles;
     //console.info("med: ", med, ", CI0025: ", CI0025, ", CI0975", CI0975, ", Bland-Altman-equiv: ±", (CI0025 - CI0975) / 2);
     /*let s = ""; //outputting all estimates on the clipboard for further workup in R
-    for (i =0; i<threshSamples.length; i++) s += threshSamples[i]+ "\n";
+    for (i =0; i<threshSamples.length; i++) s += threshSamples[i] + CPCarriageReturnCharacter;
     [Misc copyString2ClipboardWithDialog: s];*/
     return {median: med, CI0025: CI0025, CI0975: CI0975};
 }

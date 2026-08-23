@@ -52,7 +52,7 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
     [self setWindow: plasticCardPanel];
 
     const infoText = [[CPTextField alloc] initWithFrame: CGRectMake(kGuiMarginHorizontal, 16, 762, 68)];
-    [infoText setStringValue: "ID-1 cards as used for, e.g., credit cards or personal identification,\nhave a standardized size (ISO/IEC 7810:2019)"];
+    [infoText setStringValue: "ID-1 cards as used for, e.g., credit cards or personal identification,\rhave a standardized size (ISO/IEC 7810:2019)"];
     [infoText setAlignment: CPCenterTextAlignment];
     [infoText setFont: [CPFont systemFontOfSize: 18]];  [infoText setEditable: NO];
     [contentView addSubview: infoText];
