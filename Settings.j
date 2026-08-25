@@ -27,7 +27,7 @@ Created by mb on July 15, 2015.
     [super initialize];  [Misc CPLogSetup];
     sharedSettingsInstance = nil; //not really necessary
     //my accessor functions are constructed from the gSettingsNamesAndTypesMap map, depending on type
-    for (const [name, meta] of gSettingsNamesAndTypesMap) {
+    for (let [name, meta] of gSettingsNamesAndTypesMap) {
         switch (meta.type) {
             case "str": [self addStringAccessors4Key: name]; break;
             case "int": [self addIntAccessors4Key: name]; break;
@@ -103,7 +103,7 @@ Created by mb on July 15, 2015.
         [self enableNotDisableAllTests: YES];
     }
 
-    for (const [name, meta] of gSettingsNamesAndTypesMap) {
+    for (let [name, meta] of gSettingsNamesAndTypesMap) {
         const currentVal = [[CPUserDefaults standardUserDefaults] objectForKey: name];
         let newVal = currentVal;
         switch (meta.type) {
@@ -219,7 +219,7 @@ Created by mb on July 15, 2015.
     for (let i = 0; i < popupsArray.length; i++) {
         const p = popupsArray[i];
         [p removeAllItems]; //first remove all, then add selected ones
-        for (const soundName of allSounds[i]) [p addItemWithTitle: soundName];
+        for (let soundName of allSounds[i]) [p addItemWithTitle: soundName];
         [p setSelectedIndex: allIndexes[i]]; //was lost after remove
     }
 }
@@ -390,7 +390,7 @@ Created by mb on July 15, 2015.
 
     //Test 4: Metadata-driven Range Vetting (Systematic)
     report += "  Running systematic metadata range tests…" + CPCarriageReturnCharacter;
-    for (const [name, meta] of gSettingsNamesAndTypesMap) {
+    for (let [name, meta] of gSettingsNamesAndTypesMap) {
         if (["minPossibleLogMAR", "maxPossibleLogMAR"].includes(name)) continue; //don't test these
         if (meta.type === "int" || meta.type === "float") {
             const originalVal = [[CPUserDefaults standardUserDefaults] objectForKey: name];

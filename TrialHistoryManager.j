@@ -103,7 +103,7 @@
  */
 + (id) composeInfo4CI {
     const trialsDF = [];
-    for (const thi of trialHistoryRecord) {
+    for (let thi of trialHistoryRecord) {
         trialsDF.push({lMar: thi.value, correct: thi.isCorrect});
     }
     return trialsDF;

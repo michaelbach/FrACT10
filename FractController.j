@@ -506,7 +506,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 - (async void) runEnd { //console.info("FractController>runEnd");
     [self invalidateTrialTimers];
     const sv = [[[self window] contentView] subviews];
-    for (const svi of sv) [svi removeFromSuperview];
+    for (let svi of sv) [svi removeFromSuperview];
     [[self window] close];
     [gAppController setRunAborted: (iTrial < nTrials)]; //premature end?
     [gAppController setCurrentTestResultExportString: [self composeExportString]];

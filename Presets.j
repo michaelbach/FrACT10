@@ -44,7 +44,7 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
                     if (b === "Standard Defaults") return 1; //…this is first entry
                     return a.localeCompare(b, undefined, {sensitivity: "base"});//ignore case
                 });
-                for (const name of allPresetNames) {
+                for (let name of allPresetNames) {
                     [popUpButton addItemWithTitle: name];
                 }
             })
@@ -161,7 +161,7 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
             "kVernierType3bars": kVernierType3bars,
         };
 
-        for (const key in config.settings) {
+        for (let key in config.settings) {
             let value = config.settings[key];
             if (typeof value === "string" && ConstantMap[value] !== undefined) {
                 value = ConstantMap[value];

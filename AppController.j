@@ -196,7 +196,7 @@
 
     allPanels = [settingsPanel];
     if (currentInfoPanel) [allPanels addObject: currentInfoPanel];
-    for (const p of allPanels)  [p setMovable: NO];
+    for (let p of allPanels)  [p setMovable: NO];
     [self setSettingsPaneTabViewSelectedIndex: 0]; //select the "General" tab in Settings
 
     rewardImageView = [[CPImageView alloc] initWithFrame: CGRectMake(100, 0, 600, 600)];
@@ -470,7 +470,7 @@
 #pragma mark
 - (void) keyDown: (CPEvent) theEvent { //console.info("AppController>keyDown");
     const key = [[[theEvent charactersIgnoringModifiers] characterAtIndex: 0] uppercaseString];
-    for (const testID in gTestRegistry) {
+    for (let testID in gTestRegistry) {
         if (gTestRegistry[testID].shortcut === key) {
             [self runFractControllerTest: parseInt(testID)];
             return;
@@ -680,7 +680,7 @@
         {name: "gammaView", val: gammaView},
         {name: "resultStringField", val: resultStringField}
     ];
-    for (const outlet of criticalOutlets) {
+    for (let outlet of criticalOutlets) {
         if (!outlet.val) {
             report += "  ERROR: Outlet '" + outlet.name + "' is nil!" + CPCarriageReturnCharacter;  success = NO;
         }

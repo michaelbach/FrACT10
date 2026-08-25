@@ -198,7 +198,7 @@ Coded by Gemini, many corrections by MB
                     const parsedContent = JSON.parse(fileContent);
                     let importOccurred = NO;
                     console.info("*** ExportManager▸︎importAllSettings begin")
-                    for (const [name, , value] of parsedContent) { //we don't need `type`
+                    for (let [name, , value] of parsedContent) { //we don't need `type`
                         if (name === "dateOfSettingsVersion") { //this must not be changed!
                             console.info(`Skipping '${name}'`)
                             continue;
