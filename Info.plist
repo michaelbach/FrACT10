@@ -15,7 +15,11 @@
 	<key>Main cib file base name</key>
 	<string>MainMenu.cib</string>
 	<key>VersionDate</key>
-	<string>2026-08-23</string>
+	<string>2026-08-23.</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
 	<key>UISupportedExternalAccessoryProtocols</key>
 	<array>
 		<string></string>
