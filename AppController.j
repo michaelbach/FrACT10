@@ -61,8 +61,11 @@
     @outlet CPPanel settingsPanel;
     CPPanel currentInfoPanel;
     @outlet MDBButton_Test buttonAcuityTAO;
-    @outlet CPButton buttonExportClip, buttonExportPDF, buttonPlot;
-    @outlet CPButton radioButtonAcuityBW, radioButtonAcuityColor;
+    @outlet CPButton buttonExportClip;
+    @outlet CPButton buttonExportPDF;
+    @outlet CPButton buttonPlot;
+    @outlet CPButton radioButtonAcuityBW;
+    @outlet CPButton radioButtonAcuityColor;
     @outlet GammaView gammaView;
     @outlet CPPopUpButton settingsPanePresetsPopUpButton;
     @outlet CPPopUpButton settingsPaneSoundsTrialStartPopUp;

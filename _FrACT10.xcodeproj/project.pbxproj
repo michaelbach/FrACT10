@@ -241,7 +241,7 @@
 		8ABDA6D4291A501000D68E3C /* capp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = capp; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ABF4DC62D804E8000F63DD5 /* MDBAlert.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = MDBAlert.j; sourceTree = SOURCE_ROOT; };
 		8ABF4DC82D804FA400F63DD5 /* FractControllerBalm.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FractControllerBalm.j; sourceTree = SOURCE_ROOT; };
-		8AC85E413016711F00B199D7 /* MDBSimplestatistics.j */ = {isa = PBXFileReference; lastKnownFileType = text; path = MDBSimplestatistics.j; sourceTree = "<group>"; };
+		8AC85E413016711F00B199D7 /* MDBSimplestatistics.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = MDBSimplestatistics.j; sourceTree = "<group>"; };
 		8ACD7D512C0362BD00FE90C6 /* ThresholderNupMdown.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = ThresholderNupMdown.j; sourceTree = SOURCE_ROOT; };
 		8AD251DA2F4B1DD600961017 /* webApp.webmanifest */ = {isa = PBXFileReference; lastKnownFileType = text; path = webApp.webmanifest; sourceTree = SOURCE_ROOT; };
 		8AE548342D5F63CB008DED70 /* MDBLabel.j */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = MDBLabel.j; sourceTree = SOURCE_ROOT; };

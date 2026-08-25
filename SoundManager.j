@@ -21,7 +21,8 @@ let SharedSoundManager = nil;
 
 
 @implementation SoundManager: CPObject {
-    id audioContext, volumeNode;
+    id audioContext;
+    id volumeNode;
     Object soundBuffers;
     BOOL needsInitAfterUserinteraction;
 }

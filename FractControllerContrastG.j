@@ -11,9 +11,13 @@
 @import "FractControllerContrast.j"
 @implementation FractControllerContrastG: FractControllerContrast {
     float periodInPixel;
-    BOOL isGratingColor, isErrorDiffusion;
-    float specialBcmFreq, specialBcmFreqPrevious;
-    int specialBcmCountAtStep, specialBcmCountAtStepError, gratingShapeIndex;
+    BOOL isGratingColor;
+    BOOL isErrorDiffusion;
+    float specialBcmFreq;
+    float specialBcmFreqPrevious;
+    int specialBcmCountAtStep;
+    int specialBcmCountAtStepError;
+    int gratingShapeIndex;
 }
 
 

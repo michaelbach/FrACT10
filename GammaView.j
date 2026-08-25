@@ -15,8 +15,18 @@ GammaView.m
  */
 @implementation GammaView: CPView {
     CGContext _cgc; //differs from the global `cgc`
-    CPColor grayHalf, grayPlus, grayMinus;
-    int checkSize, iLeft, iRight, iBottom, iTop, ix, iy, xm, ym;
+    CPColor grayHalf;
+    CPColor grayPlus;
+    CPColor grayMinus;
+    int checkSize;
+    int iLeft;
+    int iRight;
+    int iBottom;
+    int iTop;
+    int ix;
+    int iy;
+    int xm;
+    int ym;
     BOOL polarity;
 }
 

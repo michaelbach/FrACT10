@@ -25,22 +25,50 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
  */
 @implementation FractController: CPWindowController {
-    int iTrial, nTrials, nAlternatives;
+    int iTrial;
+    int nTrials;
+    int nAlternatives;
     StateType state;
-    BOOL isBonusTrial, responseWasCorrect, responseWasCorrectCumulative;
-    char oldResponseKeyChar, responseKeyChar;
-    float stimStrengthInThresholderUnits, stimStrengthInDeviceunits, viewWidth, viewHeight, viewWidthHalf, viewHeightHalf;
-    float strokeSizeInPix, spatialFreqCPD, contrastMichelsonPercent;
-    float xEccInPix, yEccInPix; //eccentricity
+    BOOL isBonusTrial;
+    BOOL responseWasCorrect;
+    BOOL responseWasCorrectCumulative;
+    char oldResponseKeyChar;
+    char responseKeyChar;
+    float stimStrengthInThresholderUnits;
+    float stimStrengthInDeviceunits;
+    float viewWidth;
+    float viewHeight;
+    float viewWidthHalf;
+    float viewHeightHalf;
+    float strokeSizeInPix;
+    float spatialFreqCPD;
+    float contrastMichelsonPercent;
+    float xEccInPix;
+    float yEccInPix; //eccentricity
     Thresholder thresholder;
-    AlternativesGenerator alternativesGenerator, alternativesGeneratorEccentRandomizeX, alternativesGeneratorEccentRandomizeY;
+    AlternativesGenerator alternativesGenerator;
+    AlternativesGenerator alternativesGeneratorEccentRandomizeX;
+    AlternativesGenerator alternativesGeneratorEccentRandomizeY;
     Optotypes optotypes;
     CPString trialInfoString @accessors;
-    CPTimer timerDisplay, timerResponse, timerFixMark, timerAutoResponse, timerIsi, timerBalmOff;
-    CPString kRangeLimitDefault, kRangeLimitOk, kRangeLimitValueAtFloor, kRangeLimitValueAtCeiling, rangeLimitStatus, abortCharacter, ci95String;
-    BOOL responseButtonsAdded, isSpecialBcmDone;
+    CPTimer timerDisplay;
+    CPTimer timerResponse;
+    CPTimer timerFixMark;
+    CPTimer timerAutoResponse;
+    CPTimer timerIsi;
+    CPTimer timerBalmOff;
+    CPString kRangeLimitDefault;
+    CPString kRangeLimitOk;
+    CPString kRangeLimitValueAtFloor;
+    CPString kRangeLimitValueAtCeiling;
+    CPString rangeLimitStatus;
+    CPString abortCharacter;
+    CPString ci95String;
+    BOOL responseButtonsAdded;
+    BOOL isSpecialBcmDone;
     BOOL discardKeyEntries; //this allows flushing the event queue to discard early responses
-    CPColor colorForeUndithered, colorBackUndithered;
+    CPColor colorForeUndithered;
+    CPColor colorBackUndithered;
 }
 
 

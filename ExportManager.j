@@ -15,7 +15,8 @@ Coded by Gemini, many corrections by MB
 
 
 @implementation ExportManager: CPObject {
-    CPString resultString, historyString;
+    CPString resultString;
+    CPString historyString;
 }
 
 

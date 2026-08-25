@@ -29,9 +29,14 @@ let SharedAboutAndHelpController = nil;
 
 
 @implementation AboutAndHelpController: CPWindowController {
-    CPPanel aboutPanel, helpPanel;
-    CPWebView aboutWebView1, aboutWebView2;
-    CPWebView helpWebView1, helpWebView2, helpWebView3, helpWebView4;
+    CPPanel aboutPanel;
+    CPPanel helpPanel;
+    CPWebView aboutWebView1;
+    CPWebView aboutWebView2;
+    CPWebView helpWebView1;
+    CPWebView helpWebView2;
+    CPWebView helpWebView3;
+    CPWebView helpWebView4;
     CPView contentView;
 }
 

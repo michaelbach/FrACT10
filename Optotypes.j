@@ -12,8 +12,10 @@ Optotypes.j
  Begun: 2020-08-17
  */
 @implementation Optotypes: CPObject {
-    float kPi, kPi2;
-    float currentX, currentY; //for drawing
+    float kPi;
+    float kPi2;
+    float currentX; //for drawing
+    float currentY;
 }
 
 

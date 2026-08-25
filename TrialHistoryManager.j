@@ -15,14 +15,13 @@
  */
 @implementation TrialHistoryManager: CPObject {
     id trialHistoryRecord;
-    // the fields of above record
-    float value;
+    float value; //begin fields of above record
     int presented;
     int responded;
-    BOOL isCorrect;
-    // end fields
+    BOOL isCorrect; //end of fields
     CPDate dateStart;
-    int currentIndex, nTrialsLocal;
+    int currentIndex;
+    int nTrialsLocal;
     CPString resultsHistoryString;
 }
 

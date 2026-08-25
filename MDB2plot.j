@@ -17,10 +17,20 @@
 
 @implementation MDB2plot: CPObject {
     id cgcLocal;
-    float currentX, currentY; //for drawing
-    float p2wvxm, p2wvym, p2wvxa, p2wvya;
-    float p2wxr, p2wxl, p2wyb, p2wyt;
-    int p2vxl, p2vxr, p2vyb, p2vyt;
+    float currentX;
+    float currentY; //for drawing
+    float p2wvxm;
+    float p2wvym;
+    float p2wvxa;
+    float p2wvya;
+    float p2wxr;
+    float p2wxl;
+    float p2wyb;
+    float p2wyt;
+    int p2vxl;
+    int p2vxr;
+    int p2vyb;
+    int p2vyt;
 }
 
 

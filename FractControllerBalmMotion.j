@@ -11,12 +11,18 @@
 
 
 @implementation FractControllerBalmMotion: FractControllerBalm {
-    float motionOffset, radiusInPix, speedInPixPerSec, dotCenterDist, motionJumpBack;
+    float motionOffset;
+    float radiusInPix;
+    float speedInPixPerSec;
+    float dotCenterDist;
+    float motionJumpBack;
     BOOL isMoving;
     id animationRequestID;
     id animationTimeStamp;
-    int dotgridNY, dotgridNX;
-    id dotsX, dotsY;
+    int dotgridNY;
+    int dotgridNX;
+    id dotsX;
+    id dotsY;
 }
 
 

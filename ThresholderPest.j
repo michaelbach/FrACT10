@@ -12,8 +12,12 @@ Implementation of BestPEST
 
 
 @implementation ThresholderPest : CPObject {
-    int kRange, kRange1, kRange2;
-    id probability, plgit, mlgit;
+    int kRange;
+    int kRange1;
+    int kRange2;
+    id probability;
+    id plgit;
+    id mlgit;
     float appliedStimStored;
     BOOL wasCorrectStored;
 }

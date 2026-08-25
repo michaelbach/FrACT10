@@ -26,7 +26,8 @@ const buttonsY = (kFractHeight - buttonsHeight - 18);
     CPString firstTime;
     id testHistory;
     float testHistoryResultValue;
-    BOOL isAcuity, isContrast;
+    BOOL isAcuity;
+    BOOL isContrast;
 }
 
 

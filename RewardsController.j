@@ -33,7 +33,8 @@ kSpriteFile = "allRewardSprites.webp";
     CPImage _rewardImageStrip;
     CPTimer _timerRewardsController;
     CPImageView _rewardView;
-    int _oldImage, _currentImage;
+    int _oldImage;
+    int _currentImage;
     BOOL _unitTesting;
     float _savedTimeout;
 }

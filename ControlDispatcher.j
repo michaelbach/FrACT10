@@ -14,10 +14,12 @@
 
 
 @implementation ControlDispatcher: CPObject {
-    CPString m1, m2, m3;
+    CPString m1;
+    CPString m2;
+    CPString m3;
+    CPString _origin;
     float m3AsNumber;
     BOOL _sendHTMLMessageOnRunDone;
-    CPString _origin;
 }
 
 

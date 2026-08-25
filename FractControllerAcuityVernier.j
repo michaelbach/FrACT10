@@ -10,7 +10,8 @@ Created by Bach on 14.08.2017.
 
 @import "FractControllerAcuity.j"
 @implementation FractControllerAcuityVernier: FractControllerAcuity {
-    float offsetVernierMinimalArcSec, offsetVernierMaximalArcSec;
+    float offsetVernierMinimalArcSec;
+    float offsetVernierMaximalArcSec;
 }
 
 

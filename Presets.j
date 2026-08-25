@@ -19,7 +19,8 @@ kFeedbackTypeNone = 0; kFeedbackTypeGUI = 1; kFeedbackTypeHTMLMessage = 2;
 
 @implementation Presets: CPObject {
     id allPresets;
-    CPString presetName, allPresetNames;
+    CPString presetName;
+    CPString allPresetNames;
     CPPopUpButton popUpButton;
 }
 
