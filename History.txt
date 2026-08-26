@@ -1,5 +1,6 @@
 # History
 
+2026-08-26 fix regression: const → let
 2026-08-25 style: switch to one ivar per line (because the new Objective-J.js needs it)
 2026-08-23 fix: `calibrationWarningField` transparent regardless of theme; reduce feedback sound during testing (becomes anoying)
 2026-08-11 improve text & logic in help panel, font 1pt smaller to fit all platforms; clear `patID` string earlier
