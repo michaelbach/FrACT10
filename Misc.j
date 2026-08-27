@@ -173,11 +173,9 @@ function _pause(ms) { //console.info("Misc>_pause");
     doc.autoTable({body: tableData, theme: 'grid', styles: styles, headStyles: {textColor: 0}, bodyStyles: {textColor: 0}});
     
     // trial-by-trial output
-    console.info(sHistory);
     tableData = sHistory.trim()
       .split(CPCarriageReturnCharacter) //split rows by newline
       .map(row => row.split(CPTabCharacter)); //split columns by tab
-    console.info(tableData);
     doc.autoTable({body: tableData, theme: 'grid', styles: styles, headStyles: {textColor: 0}, bodyStyles: {textColor: 0}});
     const filename = "FrACT_"+ gTestDetails[td_dateOfRunStart] + "_" + [Misc date2HHdashMM: gTestDetails[td_dateTimeOfRunStart]] + ".pdf";
     doc.save(filename); //https://github.com/eligrey/FileSaver.js
