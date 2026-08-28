@@ -49,6 +49,7 @@
 @import "CheckingContrastController.j"
 @import "ResponseInfoPanelController.j"
 @import "ExportManager.j"
+@import "ListenersManager.j"
 
 
 /**
@@ -161,7 +162,7 @@
  Our main initialisation begins here
  */
 - (id) init { //console.info("AppController>init");
-    gAppController = self; //so others can reference via global variable
+    gAppController = self; //so others can reference globally
     [Misc CPLogSetup];
     settingsNeededNewDefaults = [Settings needNewDefaults];
     [Settings checkDefaults]; //important to do this very early, before nib loading, otherwise the updates don't populate the settings panel
@@ -183,13 +184,13 @@
 #pragma mark
 /** runs after "init" above */
 - (void) applicationDidFinishLaunching: (CPNotification) aNotification { //console.info("AppController>…Launching");
-    currentFractController = null; //making sure, is used to check whether inRun
+    currentFractController = null; //used to check whether inRun
     [Misc randomizeRandomGenerator];
     [[self window] setFullPlatformWindow: YES];
     [[self window] setTitle: "FrACT10"];
     [self setVersionDateString: gTestDetails[td_vsFrACT]];
     [CPMenu setMenuBarVisible: NO];
-    [self setupEventListeners];
+    [ListenersManager setup];
 
     [Settings setPatID: gPatIDdefault]; //clear ID string
     [Settings checkDefaults]; //also in settings cookie
@@ -234,51 +235,6 @@
         [Settings setIsAutoPreset: YES];
     }
     [self settingsDidChange: null];
-}
-
-
-- (void) setupEventListeners { //called from `applicationDidFinishLaunching`
-    window.addEventListener('error', function(e) {
-        //console.error("Error details:", e);
-        const stack = (e.error && e.error.stack) ? e.error.stack : "(no stack)";
-        const details = e.message
-            //+ "\rFile: " + e.filename + "Line: " + e.lineno + ", Column: " + e.colno
-            + "\r\rStack: " + stack.substring(0, 140) + "…"; //140 chars is enough
-        alert("An error occured, I'm sorry. Details:\r\r" + details + "\r\rIf it recurs, please notify bach@uni-freiburg.de, ideally relating the message, e.g. via a screenshot.\rI will look into it and endeavour to provide a fix ASAP.\r\rOn “Close”, the window will reload and you can retry.");
-        window.location.reload(NO);
-    });
-    window.addEventListener('unhandledrejection', function(e) {
-        //console.error("Unhandled promise rejection:", e.reason);
-        alert("An error occured, I'm sorry: Unhandled promise rejection:", e.reason, "\r\rIf it recurs, please notify bach@uni-freiburg.de, ideally relating the message, e.g. via a screenshot.\rI will look into it and endeavour to provide a fix ASAP.\r\rOn “Close”, the window will reload and you can retry.");
-        window.location.reload(NO);
-    });
-    window.addEventListener("orientationchange", function(e) {
-        if ([Settings respondsToMobileOrientation]) {
-            //alert("Orientation change, now "+e.target.screen.orientation.angle+"°.\r\rOn “Close”, the window will reload to fit.");
-            window.location.reload(NO);
-        }
-    });
-    window.addEventListener("fullscreenchange", (event) => { //called _after_ the change
-        //console.info("isFullScreen: ", [Misc isFullScreen]);
-        if (![Misc isFullScreen]) { //so it was full before, possibly we're in a run
-            if (currentFractController !== null) { //need to end run when leaving fullscreen
-                [currentFractController runEnd]; //because the <esc> was consumed
-            }
-        }
-    });
-    /*if ([Settings autoFullScreen]) { //does not work because it needs user interaction
-     [Misc fullScreenOn: YES];
-     }*/
-    window.addEventListener("resize", (event) => {
-        if ([Misc isInRun]) return; //don't do ⇙this while "inRun"
-        [Misc centerWindowOrPanel: [[self window] contentView]];
-
-        /*        //https://ua.hexalys.com
-         console.info("scale", window.visualViewport.scale);
-         console.info("window.devicePixelRatio", window.devicePixelRatio);
-         console.info("window.outerWidth / window.innerWidth", window.outerWidth / window.innerWidth);*/
-
-    });
 }
 
 

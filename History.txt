@@ -1,5 +1,6 @@
 # History
 
+2026-08-28 refactor: create singleton `ListenersManager.j` with code previously in `AppController`
 2026-08-27 `acuityResultValue4Export … return tmp;` remove [] around `tmp` (which, luckily, had had no ill effects); remove leftover console.info statements
 2026-08-26 fix regression: const → let
 2026-08-25 style: switch to one ivar per line (because the new Objective-J.js needs it)
