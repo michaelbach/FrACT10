@@ -239,8 +239,17 @@
 
 - (void) setupEventListeners { //called from `applicationDidFinishLaunching`
     window.addEventListener('error', function(e) {
-        console.error("Error details:", e);
-        alert("An error occured, I'm sorry. Error message:\r\r" + e.message + "\r\rIf it recurs, please notify bach@uni-freiburg.de, ideally relating the message, e.g. via a screeshot.\rI will look into it and endeavour to provide a fix ASAP.\r\rOn “Close”, the window will reload and you can retry.");
+        //console.error("Error details:", e);
+        const stack = (e.error && e.error.stack) ? e.error.stack : "(no stack)";
+        const details = e.message
+            //+ "\rFile: " + e.filename + "Line: " + e.lineno + ", Column: " + e.colno
+            + "\r\rStack: " + stack.substring(0, 140) + "…"; //140 chars is enough
+        alert("An error occured, I'm sorry. Details:\r\r" + details + "\r\rIf it recurs, please notify bach@uni-freiburg.de, ideally relating the message, e.g. via a screenshot.\rI will look into it and endeavour to provide a fix ASAP.\r\rOn “Close”, the window will reload and you can retry.");
+        window.location.reload(NO);
+    });
+    window.addEventListener('unhandledrejection', function(e) {
+        //console.error("Unhandled promise rejection:", e.reason);
+        alert("An error occured, I'm sorry: Unhandled promise rejection:", e.reason, "\r\rIf it recurs, please notify bach@uni-freiburg.de, ideally relating the message, e.g. via a screenshot.\rI will look into it and endeavour to provide a fix ASAP.\r\rOn “Close”, the window will reload and you can retry.");
         window.location.reload(NO);
     });
     window.addEventListener("orientationchange", function(e) {
@@ -489,6 +498,9 @@
 //            break;
         case "U":
             [Misc allUnittests];
+            break;
+        case "Ø":
+            throw new Error("Runtime error on purpose, you pressed ”Ø“.");
             break;
         default:
             [super keyDown: theEvent];  break;
