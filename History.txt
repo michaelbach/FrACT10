@@ -1,5 +1,6 @@
 # History
 
+2026-08-30· undo factoring out of the window event setup into `ListenersManager.j`, led to strange error messages (only on-line), now back in `AppController`
 2026-08-30 improve message in crash handlers: wording and using same const for two messages
 2026-08-28 refactor: create singleton `ListenersManager.j` with code previously in `AppController`
 2026-08-27 `acuityResultValue4Export … return tmp;` remove [] around `tmp` (which, luckily, had had no ill effects); remove leftover console.info statements
