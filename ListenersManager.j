@@ -13,6 +13,10 @@
 /**
  2026-08-28 This class manages window listeneners for errors etc.
  */
+
+const msg2 = "\r\rIf it recurs, please notify bach@uni-freiburg.de, ideally relating the message above, e.g. via a screenshot.\rI will look into it and endeavour to provide a fix ASAP.\r\rOn “Close”, the window will reload and you can retry.";
+
+
 @implementation ListenersManager: CPObject {
 }
 
@@ -28,13 +32,13 @@
         const stack = (e.error && e.error.stack) ? e.error.stack : "(no stack)";
         const details = e.message
             //+ "\rFile: " + e.filename + "Line: " + e.lineno + ", Column: " + e.colno
-            + "\r\rStack: " + stack.substring(0, 140) + "…"; //140 chars is enough
-        alert("An error occured, I'm sorry. Details:\r\r" + details + "\r\rIf it recurs, please notify bach@uni-freiburg.de, ideally relating the message, e.g. via a screenshot.\rI will look into it and endeavour to provide a fix ASAP.\r\rOn “Close”, the window will reload and you can retry.");
+            + "\rStack: " + stack.substring(0, 140) + "…"; //140 chars is enough
+        alert("An error occured, I'm sorry. Details:\r\r" + details + msg2);
         window.location.reload(NO);
     });
     window.addEventListener('unhandledrejection', function(e) {
         //console.error("Unhandled promise rejection:", e.reason);
-        alert("An error occured, I'm sorry: Unhandled promise rejection:", e.reason, "\r\rIf it recurs, please notify bach@uni-freiburg.de, ideally relating the message, e.g. via a screenshot.\rI will look into it and endeavour to provide a fix ASAP.\r\rOn “Close”, the window will reload and you can retry.");
+        alert("An error occured, I'm sorry: Unhandled promise rejection:" + e.reason + msg2);
         window.location.reload(NO);
     });
     window.addEventListener("orientationchange", function(e) {
