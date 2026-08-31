@@ -4,6 +4,7 @@
 History
 =======
 
+ 2026-08-31 unsuccessfully tried to read, e.g., shift to speed up the testing suite (events don't trickle down there)
  2026-08-23 reduce feedback sound during testing (becomes anoying)
  2026-06-13 acknowledge a possible "updated settings…" dialog, ensure standard start settings
  2026-05-14 display version result, announce Letters test
@@ -27,6 +28,9 @@ History
 const NO = false, YES = !NO, crlf = "\n";
 const textarea = document.createElement('textarea');
 const listener4textarea = (e) => {addText(JSON.stringify(e.data));};
+const pauseMSdefault = 300, pauseViewMSdefault = 2000;
+let pauseMS = pauseMSdefault, pauseViewMS = pauseViewMSdefault;
+//pauseViewMS = 10; //←this speeds up, but not interactively
 
 
 const errorAlert = () => {
@@ -44,7 +48,6 @@ const tellIframe3MsAndLogResponse = async (m1, m2, m3) => {
     console.info(await tellIframeReturningPromise({m1: m1, m2: m2, m3: m3}));
 }
 
-const pauseMS = 300, pauseViewMS = 2000;
 
 const tellIframeReturningPromise = (message, timeout = 1000) => {
   return new Promise((resolve, reject) => {
@@ -442,7 +445,6 @@ const doTextTestfunText = async (text, testfun) => {
 	await pauseMilliseconds(pauseViewMS);
 	addText("↑ " + text + ": Done." + crlf);
 }
-
 
 
 /* testingSuite */
