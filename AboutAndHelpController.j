@@ -83,7 +83,7 @@ let SharedAboutAndHelpController = nil;
 
     [self addButtonWithTitle: "→FrACT home" frame: CGRectMake(kGuiMarginHorizontal, buttonsY, buttonsWidth, buttonsHeight) tag: 1 tooltip: "Opens the FrACT home page in your browser." selector: @selector(buttonGotoURLgivenTag_action:)];
     [self addButtonWithTitle: "→Manual" frame: CGRectMake(274, buttonsY, buttonsWidth, buttonsHeight) tag: 3 tooltip: "Opens the manual in your browser." selector: @selector(buttonGotoURLgivenTag_action:)];
-    [self addButtonWithTitle: "→FrACT blog" frame: CGRectMake(508, buttonsY, buttonsWidth, buttonsHeight) tag: 2 tooltip: "" selector: @selector(buttonGotoURLgivenTag_action:)];
+    [self addButtonWithTitle: "→FrACT blog" frame: CGRectMake(508, buttonsY, buttonsWidth, buttonsHeight) tag: 2 tooltip: "Opens a webpage in your browser containing all FrACT blog entries" selector: @selector(buttonGotoURLgivenTag_action:)];
     const btnOk = [self addButtonWithTitle: "OK" frame: CGRectMake(732, buttonsY, buttonsOkWidth, buttonsHeight) tag: -1 tooltip: "" selector: @selector(buttonAboutClose_action:)];
     [btnOk setBezelStyle:CPRoundedBezelStyle];
     [btnOk setKeyEquivalent: CPCarriageReturnCharacter];
@@ -116,8 +116,8 @@ let SharedAboutAndHelpController = nil;
 
     [self addButtonWithTitle: "→Manual" frame: CGRectMake(19, buttonsY, buttonsWidth, buttonsHeight) tag: 3 tooltip: "Opens the manual in your browser"  selector: @selector(buttonGotoURLgivenTag_action:)];
     [self addButtonWithTitle: "→Checklist" frame: CGRectMake(204, buttonsY, buttonsWidth, buttonsHeight) tag: 4 tooltip: "Opens the checklist in your browser"  selector: @selector(buttonGotoURLgivenTag_action:)];
-    [self addButtonWithTitle: "→Acuity Formats" frame: CGRectMake(383, buttonsY, buttonsWidth, buttonsHeight) tag: 5 tooltip: "Opens the “Acuity Cheat Sheet in your browser"  selector: @selector(buttonGotoURLgivenTag_action:)];
-    [self addButtonWithTitle: "→Check Exported" frame: CGRectMake(561, buttonsY, buttonsWidth, buttonsHeight) tag: 6 tooltip: "Opens a website which will read and display the test results exported by default"  selector: @selector(buttonGotoURLgivenTag_action:)];
+    [self addButtonWithTitle: "→Acuity Formats" frame: CGRectMake(383, buttonsY, buttonsWidth, buttonsHeight) tag: 5 tooltip: "Opens the “Acuity Cheat Sheet” in your browser"  selector: @selector(buttonGotoURLgivenTag_action:)];
+    [self addButtonWithTitle: "→Check Exported" frame: CGRectMake(561, buttonsY, buttonsWidth, buttonsHeight) tag: 6 tooltip: "Opens a webpage which will read and display the results exported by default after each test"  selector: @selector(buttonGotoURLgivenTag_action:)];
     const btnOk = [self addButtonWithTitle: "OK" frame: CGRectMake(738, buttonsY, buttonsOkWidth, buttonsHeight) tag: -1 tooltip: ""  selector: @selector(buttonHelpClose_action:)];
     [btnOk setBezelStyle:CPRoundedBezelStyle];
     [btnOk setKeyEquivalent: CPCarriageReturnCharacter];
@@ -195,7 +195,7 @@ let SharedAboutAndHelpController = nil;
     s += "Frameworks/Libraries used (thanks!):<br>";
     const cappucinoVersion = [[[CPBundle bundleWithIdentifier: "com.280n.Foundation"] infoDictionary] objectForKey:@"CPBundleVersion"]; //initialised in AppController
     s += "&nbsp; &nbsp; <a href='https://michaelbach.de/ot/-misc/cappFrameworks/index.html' target='_blank'>Cappuccino " + cappucinoVersion + "</a>,&nbsp; ";
-    s += "<a href='https://simple-statistics.github.io' target='_blank'>simple-statistics</a>,&nbsp; <a href='https://github.com/parallax/jsPDF' target='_blank'>jsPDF</a>,<br>&nbsp; &nbsp; <a href='https://github.com/simonbengtsson/jsPDF-AutoTable' target='_blank'>jsPDF-AutoTable</a>,&nbsp; <a href='https://github.com/eligrey/FileSaver.js' target='_blank'>FileSaver.js</a>,&nbsp; ";
+    s += "<a href='https://simple-statistics.github.io' target='_blank'>simple-statistics</a>,&nbsp; <a href='https://github.com/parallax/jsPDF' target='_blank'>jsPDF</a>,<br>&nbsp; &nbsp; <a href='https://github.com/simonbengtsson/jsPDF-AutoTable' target='_blank'>jsPDF-AutoTable</a>,&nbsp; <a href='https://github.com/eligrey/FileSaveor.js' target='_blank'>FileSaver.js</a>,&nbsp; ";
     s += "<a href='https://github.com/davidshimjs/qrcodejs' target='_blank'>qrcodejs,</a><br>";
     s += "&nbsp; &nbsp; Some sounds from <a href='https://pixabay.com/' target='_blank'>pixabay</a>."
     s += "<br><br>";
@@ -203,7 +203,7 @@ let SharedAboutAndHelpController = nil;
     s += "FrACT₁₀ uses cookies on your computer:<ol>";
     s += "<li>To save the settings across sessions</li>";
     s += "<li>To save the progressive web app itself for use w/o internet</li>";
-    s += "<li>The last results for access outside FrACT</li>";
+    s += "<li>The last results for access from outside FrACT</li>";
     s += "<li>Only when you use the phone response box: <a href='https://console.firebase.google.com' target='_blank'>Google's&nbsp;Firebase</a>.</li></ol>";
     s += "This is free software (<a href='https://github.com/michaelbach/FrACT10/blob/main/LICENSE.md' target='_blank'>GNU GPL licence</a>).";
     s += " There is no warranty for anything, it is not EU-certified for medical purposes."
