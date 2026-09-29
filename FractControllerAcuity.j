@@ -161,6 +161,7 @@
             rangeLimitStatus = kRangeLimitOk;
         }
     }
+    //console.info(rangeLimitStatus);
     return deviceVal;
 }
 

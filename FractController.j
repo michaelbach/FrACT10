@@ -605,9 +605,10 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 
-- (void) modifyThresholderStimulusWithBonus {
+- (void) modifyThresholderStimulusWithBonus { //console.info("FractController>modifyThresholderStimulusWithBonus");
     if (iTrial > nTrials) return; //don't change if done
     isBonusTrial = (iTrial % 6 === 0) && (iTrial !== 6);
+    //console.info("isBonusTrial", isBonusTrial);
     if (isBonusTrial) stimStrengthInThresholderUnits = Math.min(stimStrengthInThresholderUnits + 0.2, 1.0);
 }
 
