@@ -96,7 +96,11 @@
 	<key>CFBundleIdentifier</key>
 	<string></string>
 	<key>VersionNumberString</key>
-	<string>3.5.2</string>
+	<string>3.5.3</string>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
 	<key>UIPrerenderedIcon</key>
 	<false/>
 	<key>UIInterfaceOrientation</key>
