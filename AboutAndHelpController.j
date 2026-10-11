@@ -229,9 +229,11 @@ let SharedAboutAndHelpController = nil;
     s += "<li>CS = contrast sensitivity</ul>";
     [self oneWebView: helpWebView3 htmlString: s];
 
-    s = "<h4>Some References</h4> <ul><li><a href='https://dx.doi.org/10.1007/s00417-024-06638-z' target='_blank'>Bach M (2024)</a> Freiburg Vision Test (FrACT): Optimal number of trials? Graefes Arch [<a href='https://link.springer.com/content/pdf/10.1007/s00417-024-06638-z.pdf' target='_blank'>PDF</a>]</li>";
+    s = "<h4>Some References</h4><ul>";
+    s += "<li><a href='https://dx.doi.org/10.1007/s00417-026-07546-0' target='_blank'>Bach et al. (2026)</a> Visual acuity: single-run confidence interval obtained via bootstrapping, implemented in the Freiburg Vision Test. Graefes Arch [<a href='https://link.springer.com/content/pdf/10.1007/s00417-024-06638-z.pdf' target='_blank'>PDF</a>]</li>";
+    s += "<li><a href='https://dx.doi.org/10.1007/s00417-024-06638-z' target='_blank'>Bach M (2024)</a> Freiburg Vision Test (FrACT): Optimal number of trials? Graefes Arch [<a href='https://link.springer.com/content/pdf/10.1007/s00417-024-06638-z.pdf' target='_blank'>PDF</a>]</li>";
     s += "<li><a href='http://dx.doi.org/10.1371/journal.pone.0147803' target='_blank'>Bach M, Schäfer K (2016)</a> Visual Acuity Testing: Feedback affects neither outcome nor reproducibility, but leaves participants happier. PLoS One 11:e0147803</li>";
-    s += "<li><a href='http://dx.doi.org/10.1007/s00417-006-0474-4' target='_blank'>Bach M (2007)</a> The Freiburg Visual Acuity Test-variability unchanged by post-hoc re-analysis. Graefes Arch Clin Exp Ophthalmol 245:965–971 [<a href='http://rdcu.be/p2Ju' target='_blank'>→PDF</a>]</li>";
+    s += "<li><a href='http://dx.doi.org/10.1007/s00417-006-0474-4' target='_blank'>Bach M (2007)</a> The Freiburg Visual Acuity Test-variability unchanged by post-hoc re-analysis. Graefes Arch Clin Exp Ophthalmol 245:965–971 [<a href='http://rdcu.be/p2Ju' target='_blank'>PDF</a>]</li>";
     s += "<li>Schulze-Bonsel K, Feltgen N, Burau H, Hansen LL, Bach M (2006) Visual acuities “Hand Motion” and “Counting Fingers” can be quantified using the Freiburg Visual Acuity Test. Invest Ophthalmol Vis Sci 47:1236–1240</li>";
     s += "<li>Neargarder SA, Stone ER, Cronin-Golomb A, Oross S 3rd (2003) The impact of acuity on performance of four clinical measures of contrast sensitivity in Alzheimer's disease. J Gerontol B Psychol Sci Soc Sci. 58:54–62</li>";
     s += "<li>Wesemann W (2002) [Visual acuity measured via the Freiburg visual acuity test (FVT), Bailey Lovie chart and Landolt Ring chart] Klin Monatsbl Augenheilkd 219:660–667</li>";
