@@ -39,6 +39,7 @@
       "eccentYInDeg": 5,
       "distanceInCM": 68.5,
       "calBarLengthInMM": 191,
+      "showCI95": false,
       "resultsToClipboardIndex": "kResultsToClipFullHistory",
       "displayTransform": 1,
       "maxDisplayedAcuity": 99,
@@ -60,6 +61,7 @@
       "auditoryFeedback4trialIndex": "kauditoryFeedback4trialIndexNone",
       "calBarLengthInMM": 189,
       "distanceInCM": 100,
+      "showCI95": false,
       "contrastAcuityWeber": -1000000,
       "lineByLineDistanceType": 1,
       "lineByLineHeadcountIndex": 0,
@@ -85,6 +87,7 @@
       "resultsToClipboardIndex": "kResultsToClipFinalOnly",
       "distanceInCM": 200,
       "testOnFive": "kTestAcuityLetters",
+      "showCI95": false,
       "alphaWhenDisabled": 0,
       "enableTestAcuityLandolt": false,
       "enableTestAcuityE": false,
@@ -134,6 +137,7 @@
       "testOnFive": "kTestAcuityLandolt",
       "timeoutResponseSeconds": 999,
       "timeoutDisplaySeconds": 999,
+      "showCI95": false,
       "auditoryFeedback4trialIndex": "kauditoryFeedback4trialIndexNone",
       "showRewardPicturesWhenDone": true,
       "decimalMarkCharIndex": "kDecimalMarkCharIndexComma",
@@ -149,6 +153,7 @@
       "testOnFive": "kTestContrastLandolt",
       "showResponseInfoAtStart": false,
       "enableTouchControls": false,
+      "showCI95": false,
       "resultsToClipboardIndex": "kResultsToClipFinalOnly",
       "distanceInCM": 100,
       "contrastOptotypeDiameter": 170,
@@ -207,6 +212,7 @@
   "Maculight": {
     "action": "setDefaultsKeepingCalBarLength",
     "settings": {
+      "showCI95": false,
       "showResponseInfoAtStart": false,
       "enableTouchControls": false,
       "resultsToClipboardIndex": "kResultsToClipFinalOnly",
@@ -240,3 +246,4 @@
     }
   }
 }
+
