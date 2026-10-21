@@ -206,27 +206,31 @@
 
 
 + (void) manageGetValue {
-    m3 = null;  const _inRun = [Misc isInRun];
+    const _inRun = [Misc isInRun];
     if (m2 === "isInRun") {
         const s = _inRun ? [Misc testNameGivenTestID: gCurrentTestID] : "";
         [self post2parentM1: m1 m2: _inRun m3: s success: YES];
         return;
     }
-    if (!_inRun) { //if no test is running, all options further down are moot
-        [self _logProblemM123];  return;
-    }
+    m3 = -1; //default value to be returned when not `inRun`
     switch(m2) {
         case "currentAlternative":
-            m3 = [gAppController.currentFractController.alternativesGenerator currentAlternative]
-            [self post2parentM1: m1 m2: m2 m3: m3 success: (m3 !== null)];
+            if (_inRun) {
+                m3 = [gAppController.currentFractController.alternativesGenerator currentAlternative]
+            }
+            [self post2parentM1: m1 m2: m2 m3: m3 success: YES];
             break;
         case "currentTrial":
-            m3 = gAppController.currentFractController.iTrial;
-            [self post2parentM1: m1 m2: m2 m3: m3 success: (m3 !== null)];
+            if (_inRun) {
+                m3 = gAppController.currentFractController.iTrial;
+            }
+            [self post2parentM1: m1 m2: m2 m3: m3 success: YES];
             break;
         case "currentValue":
-            m3 = [TrialHistoryManager value];
-            [self post2parentM1: m1 m2: m2 m3: m3 success: (m3 !== null)];
+            if (_inRun) {
+                m3 = [TrialHistoryManager value];
+            }
+            [self post2parentM1: m1 m2: m2 m3: m3 success: YES];
             break;
         default:
             [self _logProblemM123];
