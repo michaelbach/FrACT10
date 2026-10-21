@@ -208,7 +208,7 @@
 + (void) manageGetValue {
     m3 = null;  const _inRun = [Misc isInRun];
     if (m2 === "isInRun") {
-        const s = [Misc testNameGivenTestID: gCurrentTestID];
+        const s = _inRun ? [Misc testNameGivenTestID: gCurrentTestID] : "";
         [self post2parentM1: m1 m2: _inRun m3: s success: YES];
         return;
     }
