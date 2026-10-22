@@ -169,8 +169,10 @@
  called from AppController
  */
 +  (void) runDoneSuccessful: (BOOL) success { //console.info("ControlDispatcher>runDoneSuccessful")
-    if (!_sendHTMLMessageOnRunDone) return;
-    _sendHTMLMessageOnRunDone = NO;
+    if (!_sendHTMLMessageOnRunDone) return; //for some special situations no message should be sent
+    _sendHTMLMessageOnRunDone = NO; //only do it once unless enabled by next test run
+    m1 = "run";  m2 = [Misc testNameGivenTestID: gCurrentTestID];  m3 = "done";
+    //console.info("ControlDispatcher>runDoneSuccessful", m1, m2, m3, success)
     [self post2parentM1: m1 m2: m2 m3: m3 success: success];
 }
 
