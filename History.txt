@@ -1,5 +1,6 @@
 # History
 
+2026-10-28 fix: message "isInRun" returns an empty string for the current test name if not running; improve: when not in run, no error is returned but currentAlternative, currentTrial & currentValue return -1; fix: send correct html message when run done. Increase version to 3.5.4 due to changes in messages protocol.
 2026-09-07 improve wording in GUI, fix typos
 2026-08-31 fix typo (numerator) and improve wording "Normal"→"Neutral" in GUI
 2026-08-30· undo factoring-out of the window event setup into `ListenersManager.j`, led to strange error messages (only on-line), now back in `AppController`
