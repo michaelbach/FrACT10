@@ -4346,7 +4346,7 @@ disabled</string>
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aKm-bE-Woa" customClass="MDBLabel">
-                                            <rect key="frame" x="592" y="190" width="13" height="16"/>
+                                            <rect key="frame" x="580" y="190" width="13" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="×" id="eJJ-P4-xBJ">
                                                 <font key="font" metaFont="system"/>
@@ -4358,9 +4358,9 @@ disabled</string>
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lLJ-Lp-c2c" customClass="MDBLabel">
-                                            <rect key="frame" x="665" y="190" width="79" height="16"/>
+                                            <rect key="frame" x="641" y="190" width="106" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" enabled="NO" alignment="left" title="Window Sze" id="xDR-Cm-4Jb">
+                                            <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" enabled="NO" alignment="left" title="Window Sze [px]" id="xDR-Cm-4Jb">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -4469,7 +4469,7 @@ This is useful for instance when you want a darker environment.
                                             </textFieldCell>
                                         </textField>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qfD-BA-kva">
-                                            <rect key="frame" x="511" y="144" width="236" height="22"/>
+                                            <rect key="frame" x="511" y="145" width="236" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">The Universally Unique Identifier for the current session
  </string>
@@ -4483,7 +4483,7 @@ This is useful for instance when you want a darker environment.
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tuq-yt-Tdo">
-                                            <rect key="frame" x="533" y="188" width="58" height="22"/>
+                                            <rect key="frame" x="533" y="188" width="46" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">The Universally Unique Identifier for the current session
  </string>
@@ -4497,7 +4497,7 @@ This is useful for instance when you want a darker environment.
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cNS-gZ-k59" customClass="MDBLabel">
-                                            <rect key="frame" x="509" y="165" width="36" height="16"/>
+                                            <rect key="frame" x="510" y="165" width="36" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">The Universally Unique Identifier for the current session
  </string>
@@ -4533,7 +4533,7 @@ This is useful for instance when you want a darker environment.
                                             </connections>
                                         </button>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nzh-ic-Lje">
-                                            <rect key="frame" x="604" y="188" width="58" height="22"/>
+                                            <rect key="frame" x="592" y="188" width="46" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">The Universally Unique Identifier for the current session
  </string>
