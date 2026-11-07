@@ -100,6 +100,8 @@
     @outlet CPTextField gammaValueField;
     int decimalMarkCharIndexPrevious;
     @outlet CPTextField decimalMarkCharField;
+    float currentViewWidth @accessors;
+    float currentViewHeight @accessors;
 }
 
 
@@ -332,6 +334,10 @@
     const isNotCalibrated = ([Settings distanceInCM] === kDefaultDistanceInCM) ||
                 ([Settings calBarLengthInMM] === gDefaultCalibrationBarLengthInMM);
     [calibrationWarningField setStringValue: isNotCalibrated ? "(uncalibrated)" : ""];
+
+    [self setCurrentViewWidth: CGRectGetWidth([[self window] frame])];
+    //↑ same as `window.innerWidth`, window.òuterwidth gives full screen
+     [self setCurrentViewHeight: CGRectGetHeight([[self window] frame])];
 }
 
 
