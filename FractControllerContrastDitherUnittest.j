@@ -24,7 +24,7 @@ Created by Bach on 2025-03-11
     [self prepareDrawing];
     const w = 10;
     stimStrengthInDeviceunits = 2.0;//logCSWeber: this will be very low contrast
-    for (let x = -viewWidthHalf; x < viewWidth; x += w) {
+    for (let x = -viewWidthHalf; x < gAppController.viewWidth; x += w) {
         let r = CGRectMake(x, -viewHeightHalf, w, viewHeightHalf);
         stimStrengthInDeviceunits -= 0.007;
         if (stimStrengthInDeviceunits > 1) stimStrengthInDeviceunits = 1;

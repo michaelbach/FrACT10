@@ -152,7 +152,7 @@ Created by mb on 2021-12-21.
     
     if (!responseButtonsAdded) {
         const sze = 50, sze2 = sze / 2;
-        [self buttonCenteredAtX: viewWidth - sze2 y: viewHeightHalf - sze2 size: sze title: "Ø"];
+        [self buttonCenteredAtX: gAppController.viewWidth - sze2 y: viewHeightHalf - sze2 size: sze title: "Ø"];
         [fractView addSubview: acuityNLinesPopup]; //to directly change number of lines
         [fractView addSubview: acuityNOptosPopup]; //to directly change number of optotypes
     }

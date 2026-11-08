@@ -32,7 +32,7 @@ Created by Bach on 2020-05-21
         case kStateDrawFore:
             [gAppController.taoController drawTaoWithStrokeInPx: stimStrengthInDeviceunits taoNumber: [alternativesGenerator currentAlternative]];
             [self prepareDrawingTransformUndo]; //otherwise the button numbers are subject to "display transform"
-            const size = viewWidth / (nAlternatives * 2 + 2)
+            const size = gAppController.viewWidth / (nAlternatives * 2 + 2)
             if (!responseButtonsAdded) {
                 for (let i = 0; i < (nAlternatives); i++) {
                     const button = [self buttonCenteredAtX: (i + 0.75) * 2 * size y: viewHeightHalf - 0.5 * size size: size title: "" keyEquivalent: [@"1234567890" characterAtIndex: i]];
@@ -44,7 +44,7 @@ Created by Bach on 2020-05-21
             CGContextSetTextDrawingMode(cgc, kCGTextFill);
             CGContextSelectFont(cgc, "36px sans-serif"); //this, surprisingly, must be CSS
             for (let i = 0; i < (nAlternatives); i++)
-                CGContextShowTextAtPoint(cgc, (i + 0.5) * 2 * size + size / 2 - 8, viewHeight - 1.4 * size, [Misc stringFromInteger: (i + 1) % 10]);
+                CGContextShowTextAtPoint(cgc, (i + 0.5) * 2 * size + size / 2 - 8, gAppController.viewHeight - 1.4 * size, [Misc stringFromInteger: (i + 1) % 10]);
             break;
         default: break;
     }

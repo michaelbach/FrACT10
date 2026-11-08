@@ -100,8 +100,8 @@
     @outlet CPTextField gammaValueField;
     int decimalMarkCharIndexPrevious;
     @outlet CPTextField decimalMarkCharField;
-    float currentViewWidth @accessors;
-    float currentViewHeight @accessors;
+    float viewWidth @accessors; //only needed in FracController, but declared here easier to also show in GUI
+    float viewHeight @accessors;
 }
 
 
@@ -271,13 +271,8 @@
     });
     window.addEventListener("resize", (event) => {
         if ([Misc isInRun]) return; //don't do ⇙this while "inRun"
+        [self settingsDidChange: null]; //←↓this may take too long for fast resizes, never mind for now
         [Misc centerWindowOrPanel: [[self window] contentView]];
-
-        /*        //https://ua.hexalys.com
-         console.info("scale", window.visualViewport.scale);
-         console.info("window.devicePixelRatio", window.devicePixelRatio);
-         console.info("window.outerWidth / window.innerWidth", window.outerWidth / window.innerWidth);*/
-
     });
 }
 
@@ -335,9 +330,8 @@
                 ([Settings calBarLengthInMM] === gDefaultCalibrationBarLengthInMM);
     [calibrationWarningField setStringValue: isNotCalibrated ? "(uncalibrated)" : ""];
 
-    [self setCurrentViewWidth: CGRectGetWidth([[self window] frame])];
-    //↑ same as `window.innerWidth`, window.òuterwidth gives full screen
-     [self setCurrentViewHeight: CGRectGetHeight([[self window] frame])];
+    [self setViewWidth: CGRectGetWidth([[self window] frame])];
+    [self setViewHeight: CGRectGetHeight([[self window] frame])];
 }
 
 

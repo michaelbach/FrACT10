@@ -64,8 +64,8 @@
     CGContextSaveGState(cgc);
     CGContextTranslateCTM(cgc,  viewWidthHalf, viewHeightHalf); //origin to center
     if (viewHeightHalf > extentInPix) {
-        CGContextFillRect(cgc, CGRectMake(-viewWidthHalf, -viewHeightHalf, viewWidth, viewHeightHalf-extentInPix));
-        CGContextFillRect(cgc, CGRectMake(-viewWidthHalf, extentInPix, viewWidth, viewHeightHalf-extentInPix));
+        CGContextFillRect(cgc, CGRectMake(-viewWidthHalf, -viewHeightHalf, gAppController.viewWidth, viewHeightHalf-extentInPix));
+        CGContextFillRect(cgc, CGRectMake(-viewWidthHalf, extentInPix, gAppController.viewWidth, viewHeightHalf-extentInPix));
     }
     if (viewWidthHalf > extentInPix) {
         CGContextFillRect(cgc, CGRectMake(-viewWidthHalf, -extentInPix, viewWidthHalf-extentInPix, 2 * extentInPix));

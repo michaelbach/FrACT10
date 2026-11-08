@@ -18,7 +18,7 @@
 - (void) runStart { //console.info("FractControllerBalmLocation>runStart");
     nAlternatives = 4;  nTrials = [Settings nTrials04];
     radiusInPix = 0.5 * [MiscSpace pixelFromDegree: [Settings balmLocationDiameterInDeg]];
-    if (radiusInPix > 0.3 * Math.min(viewWidth, viewHeight)) {
+    if (radiusInPix > 0.3 * Math.min(gAppController.viewWidth, gAppController.viewHeight)) {
         [self alertProblemOfDiameter: [Settings balmLocationDiameterInDeg]];
     }
     [super runStart];

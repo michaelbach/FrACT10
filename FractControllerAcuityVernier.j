@@ -114,9 +114,9 @@ Created by Bach on 14.08.2017.
     }
     if ([Settings enableTouchControls] && (!responseButtonsAdded)) {
         const sze = 50, sze2 = sze / 2;
-        [self buttonCenteredAtX: viewWidth-sze2 y: 0 size: sze title: "6"];
+        [self buttonCenteredAtX: gAppController.viewWidth - sze2 y: 0 size: sze title: "6"];
         [self buttonCenteredAtX: sze2 y: 0 size: sze title: "4"];
-        [self buttonCenteredAtX: viewWidth - sze2 y: viewHeightHalf - sze2 size: sze title: "Ø"];
+        [self buttonCenteredAtX: gAppController.viewWidth - sze2 y: viewHeightHalf - sze2 size: sze title: "Ø"];
     }
     CGContextRestoreGState(cgc);
     [super drawStimulusInRect: dirtyRect];

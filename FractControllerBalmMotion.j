@@ -30,13 +30,13 @@
     nAlternatives = 4;  nTrials = [Settings nTrials04];
     animationRequestID = 0;
     radiusInPix = 0.5 * [MiscSpace pixelFromDegree: [Settings balmMotionDiameterInDeg]];
-    if (radiusInPix > 0.1 * Math.min(viewWidth, viewHeight)) {
+    if (radiusInPix > 0.1 * Math.min(gAppController.viewWidth, gAppController.viewHeight)) {
         [self alertProblemOfDiameter: [Settings balmMotionDiameterInDeg]];
     }
     speedInPixPerSec = [MiscSpace pixelFromDegree: [Settings balmSpeedInDegPerSec]];
     dotCenterDist = radiusInPix * 4;
-    dotgridNX = Math.ceil((3 * viewWidth) / dotCenterDist); //create x/y arrays for the dots
-    dotgridNY = Math.ceil((3 * viewHeight) / dotCenterDist);
+    dotgridNX = Math.ceil((3 * gAppController.viewWidth) / dotCenterDist); //create x/y arrays for the dots
+    dotgridNY = Math.ceil((3 * gAppController.viewHeight) / dotCenterDist);
     dotsX = [dotgridNX]; //allocate the dots position arrays
     for (let i = 0; i < dotgridNX; i++) dotsX[i] = [dotgridNY];
     dotsY = [dotgridNX];

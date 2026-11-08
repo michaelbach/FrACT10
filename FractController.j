@@ -36,8 +36,6 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     char responseKeyChar;
     float stimStrengthInThresholderUnits;
     float stimStrengthInDeviceunits;
-    float viewWidth;
-    float viewHeight;
     float viewWidthHalf;
     float viewHeightHalf;
     float strokeSizeInPix;
@@ -73,8 +71,9 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 
 
 - (void) updateViewWidthHeight {
-    viewWidth = CGRectGetWidth([[self window] frame]);  viewWidthHalf = viewWidth / 2;
-    viewHeight = CGRectGetHeight([[self window] frame]);  viewHeightHalf = viewHeight / 2;
+    [gAppController setViewWidth: CGRectGetWidth([[self window] frame])]; //in principle this window is same size…
+    [gAppController setViewHeight: CGRectGetHeight([[self window] frame])]; //as Appcontroller's. Making sure.
+    viewWidthHalf = gAppController.viewWidth / 2;  viewHeightHalf = gAppController.viewHeight / 2;
 }
 
 
@@ -116,7 +115,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
     [self updateViewWidthHeight];
     [[CPNotificationCenter defaultCenter] postNotificationName: "settingsDidChange" object: nil]; //make sure everything is updated
     gStrokeMinimal = [Settings minStrokeAcuity]; //smallest possible stroke is ½pixel. Made into a Setting.
-    gStrokeMaximal = Math.min(viewHeight, viewWidth) / (5 + [Settings margin4maxOptotypeIndex]); //leave a margin of ½·index around the largest optotype
+    gStrokeMaximal = Math.min(gAppController.viewHeight, gAppController.viewWidth) / (5 + [Settings margin4maxOptotypeIndex]); //leave a margin of ½·index around the largest optotype
     if (!([Settings showAcuityFormatLogMAR] || [Settings showAcuityFormatDecimal] ||  [Settings showAcuityFormatSnellenFractionFoot])) {
         [Settings setShowAcuityFormatLogMAR: YES];  [Settings setShowAcuityFormatDecimal: YES]; //make sure not all formats are de-selected
     }
@@ -306,11 +305,11 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
         case kTestAcuityE: case kTestContrastE:
             [self _drawTouchControlsForE: sze sze2: sze2];
     }
-    [self buttonCenteredAtX: viewWidth - sze2 - 1 y: viewHeightHalf - sze2 - 1 size: sze title: "Ø"];
+    [self buttonCenteredAtX: gAppController.viewWidth - sze2 - 1 y: viewHeightHalf - sze2 - 1 size: sze title: "Ø"];
 }
 
 - (void) _drawTouchControlsForLetters: (float) sze sze2: (float) sze2 {
-    sze = viewWidth / ((nAlternatives+1) * 1.4 + 1);
+    sze = gAppController.viewWidth / ((nAlternatives+1) * 1.4 + 1);
     for (let i = 0; i < nAlternatives; i++) {
         [self buttonCenteredAtX: (i + 0.9) * 1.4 * sze y: viewHeightHalf - sze2 - 1
                            size: sze title: [@"CDHKNORSVZØ" characterAtIndex: i]];
@@ -318,7 +317,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 - (void) _drawTouchControlsForC: (float) sze sze2: (float) sze2 {
-    const radius = 0.5 * Math.min(viewWidth, viewHeight) - sze2 - 1;
+    const radius = 0.5 * Math.min(gAppController.viewWidth, gAppController.viewHeight) - sze2 - 1;
     for (let i = 0; i < 8; i++) {
         if ( ([Settings nAlternatives] > 4)  || (![Misc isOdd: i])) {
             let iConsiderObliqueOnly = i;
@@ -331,7 +330,7 @@ kStateDrawBack = 0; kStateDrawFore = 1; kStateDrawFore2 = 2;
 }
 
 - (void) _drawTouchControlsForE: (float) sze sze2: (float) sze2 {
-    [self buttonCenteredAtX: viewWidth-sze2 y: 0 size: sze title: kKEY_RESPONSE_RIGHT];
+    [self buttonCenteredAtX: gAppController.viewWidth-sze2 y: 0 size: sze title: kKEY_RESPONSE_RIGHT];
     [self buttonCenteredAtX: sze2 y: 0 size: sze title: kKEY_RESPONSE_LEFT];
     [self buttonCenteredAtX: viewWidthHalf y: -viewHeightHalf + sze2 size: sze title: kKEY_RESPONSE_UP];
     [self buttonCenteredAtX: viewWidthHalf y: viewHeightHalf - sze2 size: sze title: kKEY_RESPONSE_DOWN];

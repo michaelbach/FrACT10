@@ -4493,7 +4493,7 @@ This is useful for instance when you want a darker environment.
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <connections>
-                                                <binding destination="450" name="value" keyPath="currentViewWidth" id="h72-5j-NIO"/>
+                                                <binding destination="450" name="value" keyPath="viewWidth" id="cLw-0X-R34"/>
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cNS-gZ-k59" customClass="MDBLabel">
@@ -4543,7 +4543,7 @@ This is useful for instance when you want a darker environment.
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <connections>
-                                                <binding destination="450" name="value" keyPath="currentViewHeight" id="Sga-AD-ooX"/>
+                                                <binding destination="450" name="value" keyPath="viewHeight" id="OBS-bX-X8B"/>
                                             </connections>
                                         </textField>
                                     </subviews>

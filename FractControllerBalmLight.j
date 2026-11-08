@@ -29,7 +29,7 @@
             [[SoundManager sharedManager] playSound: kSoundTrialStart];
             if ([alternativesGenerator currentAlternative] !== 0) {
                 CGContextSetFillColor(cgc, gColorFore);
-                CGContextFillRect(cgc, CGRectMake(-viewWidthHalf, -viewHeightHalf, viewWidth, viewHeight));
+                CGContextFillRect(cgc, CGRectMake(-viewWidthHalf, -viewHeightHalf, gAppController.viewWidth, gAppController.viewHeight));
             }
             discardKeyEntries = NO; //now allow responding
             break;

@@ -159,7 +159,7 @@ const specialBcmStepsize = 0.1;
     [self prepareDrawing];
     if (!isGratingColor) {
         CGContextSetFillColor(cgc, [CPColor colorWithWhite: [MiscLight devicegrayFromLuminance: 0.5] alpha: 1]);
-        CGContextFillRect(cgc, CGRectMake(-viewWidthHalf, +viewHeightHalf, viewWidth, -viewHeight));
+        CGContextFillRect(cgc, CGRectMake(-viewWidthHalf, +viewHeightHalf, gAppController.viewWidth, -gAppController.viewHeight));
     }
     switch(state) {
         case kStateDrawBack: break;
