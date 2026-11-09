@@ -1,5 +1,6 @@
 # History
 
+2026-11-09 add "(C-Test)" for the 2.6' crowding distance
 2026-11-07 improve: in Settings>Misc add fields for window width & height to help solving resolution problems. Later: refactor, unifying viewWidth/Height between FractControllers and appController
 2026-10-28 fix: message "isInRun" returns an empty string for the current test name if not running; improve: when not in run, no error is returned but currentAlternative, currentTrial & currentValue return -1; fix: send correct html message when run done. Increase version to 3.5.4 due to changes in messages protocol.
 2026-09-07 improve wording in GUI, fix typos
