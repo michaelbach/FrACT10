@@ -136,10 +136,8 @@ Coded by Gemini, many corrections by MB
             const value = [[CPUserDefaults standardUserDefaults] objectForKey: name];
             return [name, meta.type, value];
         });
-    let jsonString = JSON.stringify(settingsToExport); //all in one long string, I not like
-    jsonString = JSON.parse(jsonString); //parse string into JavaScript array
-    jsonString = jsonString.map(item => JSON.stringify(item)); //stringify each triplet individually
-    jsonString = '[\n' + jsonString.join(',\n') + '\n]' //join triplets with comma and newline, and wrap them. That's what I find more readable than the ", 2" option offered by stringify.
+    const jsonString = '[\n  ' +
+      settingsToExport.map(oneEntry => JSON.stringify(oneEntry)).join(',\n  ') + '\n]'; //gives one entry per line
     const jsonBlob = new Blob([jsonString], {type: "application/json;charset=utf-8"});
     const suggestedFilename = "FrACT-settings-01";
 
