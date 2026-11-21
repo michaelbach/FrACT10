@@ -2459,8 +2459,7 @@ See manual.
                                             </textFieldCell>
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.contrastMaxLogCSWeber" id="gMB-Zo-3un"/>
-                                                <outlet property="delegate" destination="450" id="t55-S3-VgM"/>
-                                                <outlet property="nextKeyView" destination="5nK-SZ-F8t" id="kzT-o6-bSq"/>
+                                                <outlet property="nextKeyView" destination="5nK-SZ-F8t" id="A6X-sf-ZvJ"/>
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Syd-WZ-yVY">
@@ -2701,7 +2700,7 @@ If you go very close or you may be able to resolve the pattern.
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="enabled" keyPath="values.contrastShowFixMark" id="rdR-sc-Fi1"/>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.contrastTimeoutFixmark" id="ipc-hU-yMG"/>
-                                                <outlet property="delegate" destination="450" id="cNa-z3-9Bb"/>
+                                                <outlet property="nextKeyView" destination="AQw-jE-a5x" id="P32-bJ-Ita"/>
                                             </connections>
                                         </textField>
                                         <button hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TIh-uw-rMc">
@@ -2815,8 +2814,8 @@ If you go very close or you may be able to resolve the pattern.
                                             </textFieldCell>
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.contrastOptotypeDiameter" id="Z5m-G4-zWF"/>
-                                                <outlet property="delegate" destination="450" id="3vP-Qv-q4a"/>
-                                                <outlet property="nextKeyView" destination="56f-od-lIR" id="X8M-EC-bKk"/>
+                                                <outlet property="delegate" destination="qPZ-Zq-ojx" id="htc-fb-aw0"/>
+                                                <outlet property="nextKeyView" destination="56f-od-lIR" id="o1x-da-Kfa"/>
                                             </connections>
                                         </textField>
                                     </subviews>
@@ -3800,7 +3799,6 @@ Change it with the ± buttons.</string>
                                             </textFieldCell>
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.gammaValue" id="oAR-iQ-fsG"/>
-                                                <outlet property="nextKeyView" destination="AQw-jE-a5x" id="2y4-gy-0Yj"/>
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OxX-bl-ne7">
@@ -4196,6 +4194,7 @@ Enable / disable specific button.
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.alphaWhenDisabled" id="kDd-zQ-eOZ"/>
+                                                            <outlet property="nextKeyView" destination="1kJ-oA-3Zg" id="bnt-MJ-K6F"/>
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="csf-cl-WP2" customClass="MDBLabel">
@@ -4242,6 +4241,7 @@ disabled</string>
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.patID" id="Cuv-EF-BRS"/>
+                                                            <outlet property="nextKeyView" destination="Vf0-t5-y1v" id="0Qh-uQ-mD6"/>
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o6O-DM-Dbo">
@@ -4319,7 +4319,7 @@ disabled</string>
                                             <connections>
                                                 <binding destination="izh-pU-csC" name="enabled" keyPath="values.embedInNoise" id="g1o-Hj-Xdj"/>
                                                 <binding destination="izh-pU-csC" name="value" keyPath="values.noiseContrast" id="FzF-rg-p8B"/>
-                                                <outlet property="nextKeyView" destination="hru-Yg-Axx" id="mai-fc-txQ"/>
+                                                <outlet property="nextKeyView" destination="6lP-RP-LyP" id="eN1-Dq-py3"/>
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fgv-ea-rya" customClass="MDBLabel">
@@ -4422,7 +4422,6 @@ This is useful for instance when you want a darker environment.
                                                         <connections>
                                                             <binding destination="izh-pU-csC" name="value" keyPath="values.acuityPresentedConstantLogMAR" id="LwC-P0-Lpx"/>
                                                             <binding destination="izh-pU-csC" name="enabled" keyPath="values.isAcuityPresentedConstant" id="66f-xg-oye"/>
-                                                            <outlet property="nextKeyView" destination="6lP-RP-LyP" id="p4i-wB-G7m"/>
                                                         </connections>
                                                     </textField>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PyM-x2-2u4">
