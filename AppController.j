@@ -333,7 +333,7 @@
 
     [self setViewWidth: CGRectGetWidth([[self window] frame])];
     [self setViewHeight: CGRectGetHeight([[self window] frame])];
-    [self setWindowDevicePixelRatio: window.devicePixelRatio];
+    [self setWindowDevicePixelRatio: Math.round(window.devicePixelRatio * 1000) / 1000];
 }
 
 
