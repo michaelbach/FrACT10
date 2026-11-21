@@ -3840,7 +3840,7 @@ CQ
                                 </view>
                             </tabViewItem>
                             <tabViewItem label=" Misc " identifier=" MiscTab" id="y49-Ly-CCM">
-                                <view key="view" id="fn7-9w-6zV">
+                                <view key="view" toolTip="DevicePixelRatio" id="fn7-9w-6zV">
                                     <rect key="frame" x="10" y="33" width="760" height="493"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -3879,7 +3879,7 @@ CQ
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YA8-cJ-HC0">
-                                            <rect key="frame" x="324" y="314" width="154" height="22"/>
+                                            <rect key="frame" x="325" y="314" width="154" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Randomize eccentricity" bezelStyle="round" id="elL-OJ-pRU">
                                                 <font key="font" metaFont="system"/>
@@ -4013,7 +4013,7 @@ CQ
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oi1-uI-HB5">
-                                            <rect key="frame" x="85" y="314" width="135" height="22"/>
+                                            <rect key="frame" x="54" y="314" width="135" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Feedback Sounds" bezelStyle="round" id="NZY-ji-TCC">
                                                 <font key="font" metaFont="system"/>
@@ -4214,7 +4214,7 @@ disabled</string>
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rRc-cQ-Wnu">
-                                            <rect key="frame" x="75" y="104" width="114" height="24"/>
+                                            <rect key="frame" x="54" y="104" width="114" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Enabled Tests" bezelStyle="round" id="WES-ZY-8d1">
                                                 <font key="font" metaFont="system"/>
@@ -4287,7 +4287,7 @@ disabled</string>
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bmk-W7-iS9">
-                                            <rect key="frame" x="124" y="446" width="177" height="22"/>
+                                            <rect key="frame" x="54" y="446" width="177" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Documenation for export" bezelStyle="round" id="3fl-oA-9Mh">
                                                 <font key="font" metaFont="system"/>
@@ -4335,7 +4335,7 @@ disabled</string>
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aKm-bE-Woa" customClass="MDBLabel">
-                                            <rect key="frame" x="580" y="190" width="13" height="16"/>
+                                            <rect key="frame" x="559" y="189" width="13" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="×" id="eJJ-P4-xBJ">
                                                 <font key="font" metaFont="system"/>
@@ -4347,7 +4347,7 @@ disabled</string>
                                             </connections>
                                         </textField>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lLJ-Lp-c2c" customClass="MDBLabel">
-                                            <rect key="frame" x="641" y="190" width="106" height="16"/>
+                                            <rect key="frame" x="620" y="189" width="106" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" enabled="NO" alignment="left" title="Window Sze [px]" id="xDR-Cm-4Jb">
                                                 <font key="font" metaFont="system"/>
@@ -4388,7 +4388,7 @@ disabled</string>
                                             <rect key="frame" x="533" y="225" width="62" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">The background color of the entire window can be selected here.
-This is useful for instance when you want a darker environment.
+Useful for instance when you want a darker environment.
 </string>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -4448,7 +4448,7 @@ This is useful for instance when you want a darker environment.
                                             </view>
                                         </box>
                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ifz-L2-wIZ">
-                                            <rect key="frame" x="324" y="224" width="120" height="22"/>
+                                            <rect key="frame" x="342" y="224" width="120" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Constant VA" bezelStyle="round" id="k51-x2-V0c">
                                                 <font key="font" metaFont="system"/>
@@ -4470,11 +4470,9 @@ This is useful for instance when you want a darker environment.
                                                 <binding destination="450" name="value" keyPath="currentUUID" id="gm0-8M-9wD"/>
                                             </connections>
                                         </textField>
-                                        <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tuq-yt-Tdo">
-                                            <rect key="frame" x="533" y="188" width="46" height="22"/>
+                                        <textField toolTip="The width of the current window FrACT can use." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tuq-yt-Tdo">
+                                            <rect key="frame" x="512" y="188" width="46" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">The Universally Unique Identifier for the current session
- </string>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="QJc-M2-RHv">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -4520,11 +4518,9 @@ This is useful for instance when you want a darker environment.
                                                 <outlet property="nextKeyView" destination="WCS-rL-YCa" id="YZe-p7-Sds"/>
                                             </connections>
                                         </button>
-                                        <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nzh-ic-Lje">
-                                            <rect key="frame" x="592" y="188" width="46" height="22"/>
+                                        <textField toolTip="The height of the current window FrACT can use." focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nzh-ic-Lje">
+                                            <rect key="frame" x="571" y="188" width="46" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">The Universally Unique Identifier for the current session
- </string>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="jld-i6-qgh">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -4532,6 +4528,20 @@ This is useful for instance when you want a darker environment.
                                             </textFieldCell>
                                             <connections>
                                                 <binding destination="450" name="value" keyPath="viewHeight" id="OBS-bX-X8B"/>
+                                            </connections>
+                                        </textField>
+                                        <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eA6-KV-fpv">
+                                            <rect key="frame" x="725" y="188" width="22" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <string key="toolTip">The devicePixelRatio. Any value &gt;1 means FrACT cannot use the full resolution of the screen for high acuity.
+ </string>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" bezelStyle="round" id="Twu-ut-ZCs">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="450" name="value" keyPath="windowDevicePixelRatio" id="71D-mK-6ic"/>
                                             </connections>
                                         </textField>
                                     </subviews>

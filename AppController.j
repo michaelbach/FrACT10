@@ -102,6 +102,7 @@
     @outlet CPTextField decimalMarkCharField;
     float viewWidth @accessors; //only needed in FracController, but declared here easier to also show in GUI
     float viewHeight @accessors;
+    float windowDevicePixelRatio @accessors;
 }
 
 
@@ -332,6 +333,7 @@
 
     [self setViewWidth: CGRectGetWidth([[self window] frame])];
     [self setViewHeight: CGRectGetHeight([[self window] frame])];
+    [self setWindowDevicePixelRatio: window.devicePixelRatio];
 }
 
 
