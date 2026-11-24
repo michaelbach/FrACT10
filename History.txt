@@ -1,5 +1,6 @@
 # History
 
+2026-11-24 `devicePixelRatio` field more readable, deploy
 2026-11-21 enhance: add `window.devicePixelRatio` to Settings>Misc
 2026-11-20 fix: an extraneous connection in some textfields changed value type to object which crashed JSON.stringify on `Export All Settings`. While hunting for this simplified code for the json file formatting
 2026-11-09 add "(C-Test)" for the 2.6' crowding distance
